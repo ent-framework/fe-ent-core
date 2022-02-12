@@ -25,7 +25,7 @@ import ApiRadioGroup from './components/ApiRadioGroup.vue';
 import RadioButtonGroup from './components/RadioButtonGroup.vue';
 import ApiSelect from './components/ApiSelect.vue';
 import ApiTreeSelect from './components/ApiTreeSelect.vue';
-import ApiCascader from './components/ApiCascader.vue';
+// import ApiCascader from './components/ApiCascader.vue'; //FIXME maybe cause error
 import { BasicUpload } from 'ent-fe-core/components//Upload';
 import { StrengthMeter } from 'ent-fe-core/components//StrengthMeter';
 import { IconPicker } from 'ent-fe-core/components//Icon';
@@ -51,7 +51,7 @@ componentMap.set('RadioButtonGroup', RadioButtonGroup);
 componentMap.set('RadioGroup', Radio.Group);
 componentMap.set('Checkbox', Checkbox);
 componentMap.set('CheckboxGroup', Checkbox.Group);
-componentMap.set('ApiCascader', ApiCascader);
+// componentMap.set('ApiCascader', ApiCascader); //FIXME maybe cause error
 componentMap.set('Cascader', Cascader);
 componentMap.set('Slider', Slider);
 componentMap.set('Rate', Rate);

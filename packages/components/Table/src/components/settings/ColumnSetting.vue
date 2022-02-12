@@ -132,6 +132,7 @@
     label: string;
     value: string;
     fixed?: boolean | 'left' | 'right';
+    ifShow?: boolean;
   }
 
   export default defineComponent({

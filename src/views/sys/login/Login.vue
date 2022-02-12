@@ -18,7 +18,7 @@
           <div class="my-auto">
             <img
               :alt="title"
-              src="../../../assets/svg/login-box-bg.svg"
+              :src="loginImg"
               class="w-1/2 -mt-16 -enter-x"
             />
             <div class="mt-10 font-medium text-white -enter-x">
@@ -62,7 +62,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { computed } from 'vue';
+import {computed, defineComponent, ref} from 'vue';
   import { AppLogo } from 'ent-fe-core/components/Application';
   import { AppLocalePicker, AppDarkModeToggle } from 'ent-fe-core/components/Application';
   import LoginForm from './LoginForm.vue';
@@ -74,10 +74,17 @@
   import { useI18n } from '/@/hooks/web/useI18n';
   import { useDesign } from '/@/hooks/web/useDesign';
   import { useLocaleStore } from '/@/store/modules/locale';
+  import loginImg from '/@/assets/svg/login-box-bg.svg';
 
   defineProps({
     sessionTimeout: {
       type: Boolean,
+    },
+  });
+  defineComponent({
+    components: {
+      AppLocalePicker,
+      AppDarkModeToggle,
     },
   });
 
@@ -87,6 +94,7 @@
   const localeStore = useLocaleStore();
   const showLocale = localeStore.getShowPicker;
   const title = computed(() => globSetting?.title ?? '');
+
 </script>
 <style lang="less">
   @prefix-cls: ~'@{namespace}-login';

@@ -7,7 +7,7 @@ import { generateModifyVars } from './build/generate/generateModifyVars';
 import { createProxy } from './build/vite/proxy';
 import { wrapperEnv } from './build/utils';
 import { createVitePlugins } from './build/vite/plugin';
-import { OUTPUT_DIR } from './build/constant';
+// import { OUTPUT_DIR } from './build/constant';
 
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);
@@ -27,7 +27,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   // The boolean type read by loadEnv is a string. This function can be converted to boolean type
   const viteEnv = wrapperEnv(env);
 
-  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DROP_CONSOLE } = viteEnv;
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = viteEnv;
 
   const isBuild = command === 'build';
 
@@ -63,20 +63,20 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       // Load proxy configuration from .env
       proxy: createProxy(VITE_PROXY),
     },
-    build: {
-      target: 'es2015',
-      outDir: OUTPUT_DIR,
-      terserOptions: {
-        compress: {
-          keep_infinity: true,
-          // Used to delete console in production environment
-          drop_console: VITE_DROP_CONSOLE,
-        },
-      },
-      // Turning off brotliSize display can slightly reduce packaging time
-      brotliSize: false,
-      chunkSizeWarningLimit: 2000,
-    },
+    // build: {
+    //   target: 'es2015',
+    //   outDir: OUTPUT_DIR,
+    //   terserOptions: {
+    //     compress: {
+    //       keep_infinity: true,
+    //       // Used to delete console in production environment
+    //       drop_console: VITE_DROP_CONSOLE,
+    //     },
+    //   },
+    //   // Turning off brotliSize display can slightly reduce packaging time
+    //   brotliSize: false,
+    //   chunkSizeWarningLimit: 2000,
+    // },
     define: {
       // setting vue-i18-next
       // Suppress warning

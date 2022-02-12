@@ -14,6 +14,6 @@ export const demoListApi = (params: DemoParams) =>
     url: Api.DEMO_LIST,
     params,
     headers: {
-      ignoreCancelToken: true,
+      ignoreCancelToken: 'true', //FIXME maybe cause error
     },
   });
