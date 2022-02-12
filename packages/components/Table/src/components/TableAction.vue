@@ -38,9 +38,9 @@
   import { ActionItem, TableActionType } from 'fe-ent-core/components//Table';
   import { PopConfirmButton } from 'fe-ent-core/components//Button';
   import { Dropdown } from 'fe-ent-core/components//Dropdown';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { useTableContext } from '../hooks/useTableContext';
-  import { usePermission } from '/@/hooks/web/usePermission';
+  import { usePermission } from 'fe-ent-core/hooks/web/usePermission';
   import { isBoolean, isFunction, isString } from 'fe-ent-core/utils/is';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { ACTION_COLUMN_FLAG } from '../const';

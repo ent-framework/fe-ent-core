@@ -12,13 +12,13 @@
 </template>
 <script lang="ts" setup>
   import { computed, unref } from 'vue';
-  import { useGlobSetting } from '/@/hooks/setting';
-  import { useGo } from '/@/hooks/web/usePage';
-  import { useMenuSetting } from '/@/hooks/setting/useMenuSetting';
-  import { useDesign } from '/@/hooks/web/useDesign';
-  import { PageEnum } from '/@/enums/pageEnum';
-  import { useUserStore } from '/@/store/modules/user';
-  import LogoImg from '/@/assets/images/logo.png';
+  import { useGlobSetting } from 'fe-ent-core/hooks/setting';
+  import { useGo } from 'fe-ent-core/hooks/web/usePage';
+  import { useMenuSetting } from 'fe-ent-core/hooks/setting/useMenuSetting';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
+  import { PageEnum } from 'fe-ent-core/enums/pageEnum';
+  import { useUserStore } from 'fe-ent-core/store/modules/user';
+  import LogoImg from 'fe-ent-core/assets/images/logo.png';
   const props = defineProps({
     /**
      * The theme of the current parent component

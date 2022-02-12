@@ -11,8 +11,8 @@
 <script lang="ts">
   import { defineComponent, unref, ref } from 'vue';
   import { CollapseContainer } from 'fe-ent-core/components/Container/index';
-  import { useCopyToClipboard } from '/@/hooks/web/useCopyToClipboard';
-  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useCopyToClipboard } from 'fe-ent-core/hooks/web/useCopyToClipboard';
+  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { PageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({

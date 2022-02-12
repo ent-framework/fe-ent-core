@@ -10,7 +10,7 @@
 <script lang="ts" setup>
   import { computed } from 'vue';
   import { Icon } from 'fe-ent-core/components//Icon';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
 
   const props = defineProps({
     /**

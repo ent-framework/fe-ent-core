@@ -38,11 +38,11 @@
   import { defineComponent, computed, watch, ref, unref } from 'vue';
   import PageFooter from './PageFooter.vue';
 
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { omit } from 'lodash-es';
   import { PageHeader } from 'ant-design-vue';
-  import { useContentHeight } from '/@/hooks/web/useContentHeight';
+  import { useContentHeight } from 'fe-ent-core/hooks/web/useContentHeight';
   import { PageWrapperFixedHeightKey } from '..';
 
   export default defineComponent({

@@ -43,7 +43,7 @@
 
   import { propTypes } from 'fe-ent-core/utils/propTypes';
 
-  import { useI18n } from '/@/hooks/web/useI18n';
+  import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
   import { useDebounceFn } from '@vueuse/core';
 
   enum ToolbarEnum {

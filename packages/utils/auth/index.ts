@@ -1,7 +1,7 @@
 import { Persistent, BasicKeys } from 'fe-ent-core/utils/cache/persistent';
-import { CacheTypeEnum } from '/@/enums/cacheEnum';
-import projectSetting from '/@/settings/projectSetting';
-import { TOKEN_KEY } from '/@/enums/cacheEnum';
+import { CacheTypeEnum } from 'fe-ent-core/enums/cacheEnum';
+import projectSetting from 'fe-ent-core/settings/projectSetting';
+import { TOKEN_KEY } from 'fe-ent-core/enums/cacheEnum';
 
 const { permissionCacheType } = projectSetting;
 const isLocal = permissionCacheType === CacheTypeEnum.LOCAL;

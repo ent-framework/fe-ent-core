@@ -6,8 +6,8 @@ import qs from 'qs';
 import { AxiosCanceler } from './axiosCancel';
 import { isFunction } from 'fe-ent-core/utils/is';
 import { cloneDeep } from 'lodash-es';
-import { ContentTypeEnum } from '/@/enums/httpEnum';
-import { RequestEnum } from '/@/enums/httpEnum';
+import { ContentTypeEnum } from 'fe-ent-core/enums/httpEnum';
+import { RequestEnum } from 'fe-ent-core/enums/httpEnum';
 
 export * from './axiosTransform';
 

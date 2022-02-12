@@ -1,4 +1,4 @@
-import componentSetting from '/@/settings/componentSetting';
+import componentSetting from 'fe-ent-core/settings/componentSetting';
 
 const { table } = componentSetting;
 

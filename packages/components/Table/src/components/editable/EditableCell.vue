@@ -42,10 +42,10 @@
   import { CheckOutlined, CloseOutlined, FormOutlined } from '@ant-design/icons-vue';
   import { CellComponent } from './CellComponent';
 
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { useTableContext } from '../../hooks/useTableContext';
 
-  import clickOutside from '/@/directives/clickOutside';
+  import clickOutside from 'fe-ent-core/directives/clickOutside';
 
   import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { isArray, isBoolean, isFunction, isNumber, isString } from 'fe-ent-core/utils/is';

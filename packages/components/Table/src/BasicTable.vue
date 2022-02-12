@@ -60,7 +60,7 @@
   import { createTableContext } from './hooks/useTableContext';
   import { useTableFooter } from './hooks/useTableFooter';
   import { useTableForm } from './hooks/useTableForm';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
 
   import { omit } from 'lodash-es';
   import { basicProps } from './props';

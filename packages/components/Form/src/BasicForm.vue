@@ -60,7 +60,7 @@
   import { useModalContext } from 'fe-ent-core/components//Modal';
 
   import { basicProps } from './props';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
 
   export default defineComponent({
     name: 'BasicForm',

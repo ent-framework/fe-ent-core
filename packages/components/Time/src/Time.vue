@@ -3,7 +3,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, watch } from 'vue';
-  import { useI18n } from '/@/hooks/web/useI18n';
+  import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
   import { useIntervalFn } from '@vueuse/core';
   import { formatToDateTime, formatToDate, dateUtil } from 'fe-ent-core/utils/dateUtil';
   import { isNumber, isObject, isString } from 'fe-ent-core/utils/is';

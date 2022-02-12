@@ -67,11 +67,11 @@
   import { toolbar, plugins } from './tinymce';
   import { buildShortUUID } from 'fe-ent-core/utils/uuid';
   import { bindHandlers } from './helper';
-  import { onMountedOrActivated } from '/@/hooks/core/onMountedOrActivated';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { onMountedOrActivated } from 'fe-ent-core/hooks/core/onMountedOrActivated';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { isNumber } from 'fe-ent-core/utils/is';
-  import { useLocale } from '/@/locales/useLocale';
-  import { useAppStore } from '/@/store/modules/app';
+  import { useLocale } from 'fe-ent-core/locales/useLocale';
+  import { useAppStore } from 'fe-ent-core/store/modules/app';
 
   const tinymceProps = {
     options: {

@@ -1,7 +1,7 @@
-import type { AppRouteModule } from '/@/router/types';
+import type { AppRouteModule } from 'fe-ent-core/router/types';
 
-import { getParentLayout, LAYOUT } from '/@/router/constant';
-import { t } from '/@/hooks/web/useI18n';
+import { getParentLayout, LAYOUT } from 'fe-ent-core/router/constant';
+import { t } from 'fe-ent-core/hooks/web/useI18n';
 
 const permission: AppRouteModule = {
   path: '/level',

@@ -1,8 +1,8 @@
 <script lang="tsx">
   import type { Ref } from 'vue';
   import { defineComponent, ref, computed, unref, reactive, watch, watchEffect } from 'vue';
-  import { useTimeoutFn } from '/@/hooks/core/useTimeout';
-  import { useEventListener } from '/@/hooks/event/useEventListener';
+  import { useTimeoutFn } from 'fe-ent-core/hooks/core/useTimeout';
+  import { useEventListener } from 'fe-ent-core/hooks/event/useEventListener';
   import { basicProps } from './props';
   import { getSlot } from 'fe-ent-core/utils/helper/tsxHelper';
   import { CheckOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';

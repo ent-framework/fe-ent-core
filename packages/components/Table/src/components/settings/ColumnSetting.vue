@@ -114,10 +114,10 @@
   import { SettingOutlined, DragOutlined } from '@ant-design/icons-vue';
   import { Icon } from 'fe-ent-core/components//Icon';
   import { ScrollContainer } from 'fe-ent-core/components//Container';
-  import { useI18n } from '/@/hooks/web/useI18n';
+  import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
   import { useTableContext } from '../../hooks/useTableContext';
-  import { useDesign } from '/@/hooks/web/useDesign';
-  import { useSortable } from '/@/hooks/web/useSortable';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
+  import { useSortable } from 'fe-ent-core/hooks/web/useSortable';
   import { isFunction, isNullAndUnDef } from 'fe-ent-core/utils/is';
   import { getPopupContainer as getParentContainer } from 'fe-ent-core/utils';
   import { omit } from 'lodash-es';

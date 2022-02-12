@@ -30,7 +30,7 @@
   import { defineComponent, nextTick } from 'vue';
 
   import { BasicTable, useTable, TableAction } from 'fe-ent-core/components/Table';
-  import { getMenuList } from '/@/api/demo/system';
+  import { getMenuList } from 'fe-ent-core/api/demo/system';
 
   import { useDrawer } from 'fe-ent-core/components/Drawer';
   import MenuDrawer from './MenuDrawer.vue';

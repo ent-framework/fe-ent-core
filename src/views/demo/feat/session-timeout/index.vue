@@ -17,9 +17,9 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { PageWrapper } from 'fe-ent-core/components/Page';
-  import { useUserStore } from '/@/store/modules/user';
+  import { useUserStore } from 'fe-ent-core/store/modules/user';
 
-  import { sessionTimeoutApi, tokenExpiredApi } from '/@/api/demo/account';
+  import { sessionTimeoutApi, tokenExpiredApi } from 'fe-ent-core/api/demo/account';
   import { Card } from 'ant-design-vue';
 
   export default defineComponent({

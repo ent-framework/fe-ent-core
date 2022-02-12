@@ -22,7 +22,7 @@
   import { defineComponent, computed, ref, watch, unref, watchEffect } from 'vue';
   import { Input } from 'ant-design-vue';
   import { zxcvbn, ZxcvbnResult } from '@zxcvbn-ts/core';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
 
   export default defineComponent({

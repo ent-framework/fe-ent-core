@@ -6,7 +6,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { PageWrapper } from 'fe-ent-core/components/Page';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import intro from 'intro.js';
   import 'intro.js/minified/introjs.min.css';
 

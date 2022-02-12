@@ -19,7 +19,7 @@
   import { BasicTable, useTable } from 'fe-ent-core/components/Table';
   import { getCustomHeaderColumns } from './tableData';
   import { FormOutlined } from '@ant-design/icons-vue';
-  import { demoListApi } from '/@/api/demo/table';
+  import { demoListApi } from 'fe-ent-core/api/demo/table';
   import { BasicHelp } from 'fe-ent-core/components/Basic';
 
   export default defineComponent({

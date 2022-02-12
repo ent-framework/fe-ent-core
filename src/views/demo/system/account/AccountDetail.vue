@@ -30,8 +30,8 @@
   import { defineComponent, ref } from 'vue';
   import { useRoute } from 'vue-router';
   import { PageWrapper } from 'fe-ent-core/components/Page';
-  import { useGo } from '/@/hooks/web/usePage';
-  import { useTabs } from '/@/hooks/web/useTabs';
+  import { useGo } from 'fe-ent-core/hooks/web/usePage';
+  import { useTabs } from 'fe-ent-core/hooks/web/useTabs';
   import { Tabs } from 'ant-design-vue';
   export default defineComponent({
     name: 'AccountDetail',

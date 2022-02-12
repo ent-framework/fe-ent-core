@@ -7,7 +7,7 @@
 <script lang="ts">
   import { defineComponent, ref, unref, nextTick } from 'vue';
   import { Scrollbar, ScrollbarType } from 'fe-ent-core/components//Scrollbar';
-  import { useScrollTo } from '/@/hooks/event/useScrollTo';
+  import { useScrollTo } from 'fe-ent-core/hooks/event/useScrollTo';
 
   export default defineComponent({
     name: 'ScrollContainer',

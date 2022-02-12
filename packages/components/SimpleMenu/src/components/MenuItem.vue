@@ -19,7 +19,7 @@
 <script lang="ts">
   import { PropType } from 'vue';
   import { defineComponent, ref, computed, unref, getCurrentInstance, watch } from 'vue';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { useMenuItem } from './useMenu';
   import { Tooltip } from 'ant-design-vue';

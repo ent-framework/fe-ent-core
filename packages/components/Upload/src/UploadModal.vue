@@ -48,7 +48,7 @@
   //   import { BasicTable, useTable } from 'fe-ent-core/components//Table';
   // hooks
   import { useUploadType } from './useUpload';
-  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   //   types
   import { FileItem, UploadResultStatus } from './typing';
   import { basicProps } from './props';
@@ -59,7 +59,7 @@
   import { isFunction } from 'fe-ent-core/utils/is';
   import { warn } from 'fe-ent-core/utils/log';
   import FileList from './FileList.vue';
-  import { useI18n } from '/@/hooks/web/useI18n';
+  import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
 
   export default defineComponent({
     components: { BasicModal, Upload, Alert, FileList },

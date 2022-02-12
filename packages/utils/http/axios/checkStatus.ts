@@ -1,11 +1,11 @@
 import type { ErrorMessageMode } from '/#/axios';
-import { useMessage } from '/@/hooks/web/useMessage';
-import { useI18n } from '/@/hooks/web/useI18n';
-// import router from '/@/router';
-// import { PageEnum } from '/@/enums/pageEnum';
-import { useUserStoreWithOut } from '/@/store/modules/user';
-import projectSetting from '/@/settings/projectSetting';
-import { SessionTimeoutProcessingEnum } from '/@/enums/appEnum';
+import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
+import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
+// import router from 'fe-ent-core/router';
+// import { PageEnum } from 'fe-ent-core/enums/pageEnum';
+import { useUserStoreWithOut } from 'fe-ent-core/store/modules/user';
+import projectSetting from 'fe-ent-core/settings/projectSetting';
+import { SessionTimeoutProcessingEnum } from 'fe-ent-core/enums/appEnum';
 
 const { createMessage, createErrorModal } = useMessage();
 const error = createMessage.error!;

@@ -36,9 +36,9 @@
   import { PageWrapper } from 'fe-ent-core/components/Page';
   import { CollapseContainer } from 'fe-ent-core/components/Container';
   import { CropperImage, CropperAvatar } from 'fe-ent-core/components/Cropper';
-  import { uploadApi } from '/@/api/sys/upload';
-  import img from '/@/assets/images/header.jpg';
-  import { useUserStore } from '/@/store/modules/user';
+  import { uploadApi } from 'fe-ent-core/api/sys/upload';
+  import img from 'fe-ent-core/assets/images/header.jpg';
+  import { useUserStore } from 'fe-ent-core/store/modules/user';
 
   export default defineComponent({
     components: {

@@ -11,7 +11,7 @@
   import { defineComponent, computed } from 'vue';
   import BasicHelp from 'fe-ent-core/components//Basic/src/BasicHelp.vue';
   import EditTableHeaderCell from './EditTableHeaderIcon.vue';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
 
   export default defineComponent({
     name: 'TableHeaderCell',

@@ -4,7 +4,7 @@ import type { ComputedRef, Ref } from 'vue';
 import type { FormProps, FormSchema } from '../types/form';
 import { computed, unref, watch } from 'vue';
 import { isBoolean, isFunction, isNumber, isObject } from 'fe-ent-core/utils/is';
-import { useBreakpoint } from '/@/hooks/event/useBreakpoint';
+import { useBreakpoint } from 'fe-ent-core/hooks/event/useBreakpoint';
 import { useDebounceFn } from '@vueuse/core';
 
 const BASIC_COL_LEN = 24;

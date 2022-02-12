@@ -23,8 +23,8 @@
   import { ref, watchEffect, unref, computed } from 'vue';
   import { Dropdown } from 'fe-ent-core/components//Dropdown';
   import { Icon } from 'fe-ent-core/components//Icon';
-  import { useLocale } from '/@/locales/useLocale';
-  import { localeList } from '/@/settings/localeSetting';
+  import { useLocale } from 'fe-ent-core/locales/useLocale';
+  import { localeList } from 'fe-ent-core/settings/localeSetting';
 
   const props = defineProps({
     /**

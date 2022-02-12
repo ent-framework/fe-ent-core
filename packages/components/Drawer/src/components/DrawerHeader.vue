@@ -22,7 +22,7 @@
   import { BasicTitle } from 'fe-ent-core/components//Basic';
   import { ArrowLeftOutlined } from '@ant-design/icons-vue';
 
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
 
   import { propTypes } from 'fe-ent-core/utils/propTypes';
   export default defineComponent({

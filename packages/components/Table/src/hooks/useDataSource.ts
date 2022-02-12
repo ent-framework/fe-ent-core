@@ -11,7 +11,7 @@ import {
   Ref,
   watchEffect,
 } from 'vue';
-import { useTimeoutFn } from '/@/hooks/core/useTimeout';
+import { useTimeoutFn } from 'fe-ent-core/hooks/core/useTimeout';
 import { buildUUID } from 'fe-ent-core/utils/uuid';
 import { isFunction, isBoolean } from 'fe-ent-core/utils/is';
 import { get, cloneDeep } from 'lodash-es';

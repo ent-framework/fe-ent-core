@@ -18,7 +18,7 @@
     nextTick,
     onUnmounted,
   } from 'vue';
-  import { useWindowSizeFn } from '/@/hooks/event/useWindowSizeFn';
+  import { useWindowSizeFn } from 'fe-ent-core/hooks/event/useWindowSizeFn';
   import { ScrollContainer } from 'fe-ent-core/components//Container';
   import { createModalContext } from '../hooks/useModalContext';
   import { useMutationObserver } from '@vueuse/core';

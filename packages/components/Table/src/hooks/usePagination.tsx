@@ -4,7 +4,7 @@ import { computed, unref, ref, ComputedRef, watch } from 'vue';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
 import { isBoolean } from 'fe-ent-core/utils/is';
 import { PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../const';
-import { useI18n } from '/@/hooks/web/useI18n';
+import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
 
 interface ItemRender {
   page: number;

@@ -17,12 +17,12 @@
     ActionItem,
     EditRecordRow,
   } from 'fe-ent-core/components/Table';
-  import { optionsListApi } from '/@/api/demo/select';
+  import { optionsListApi } from 'fe-ent-core/api/demo/select';
 
-  import { demoListApi } from '/@/api/demo/table';
-  import { treeOptionsListApi } from '/@/api/demo/tree';
+  import { demoListApi } from 'fe-ent-core/api/demo/table';
+  import { treeOptionsListApi } from 'fe-ent-core/api/demo/tree';
   import { cloneDeep } from 'lodash-es';
-  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
 
   const columns: BasicColumn[] = [
     {

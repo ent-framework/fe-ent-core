@@ -1,5 +1,5 @@
 import BasicTree from './src/Tree.vue';
 
 export { BasicTree };
-export type { ContextMenuItem } from '/@/hooks/web/useContextMenu';
+export type { ContextMenuItem } from 'fe-ent-core/hooks/web/useContextMenu';
 export * from './src/typing';

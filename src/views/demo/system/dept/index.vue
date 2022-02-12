@@ -30,7 +30,7 @@
   import { defineComponent } from 'vue';
 
   import { BasicTable, useTable, TableAction } from 'fe-ent-core/components/Table';
-  import { getDeptList } from '/@/api/demo/system';
+  import { getDeptList } from 'fe-ent-core/api/demo/system';
 
   import { useModal } from 'fe-ent-core/components/Modal';
   import DeptModal from './DeptModal.vue';

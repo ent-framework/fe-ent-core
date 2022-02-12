@@ -11,9 +11,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useContextMenu } from '/@/hooks/web/useContextMenu';
+  import { useContextMenu } from 'fe-ent-core/hooks/web/useContextMenu';
   import { CollapseContainer } from 'fe-ent-core/components/Container';
-  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { PageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({

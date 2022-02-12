@@ -13,6 +13,7 @@ import {
 } from 'vite-plugin-theme';
 import { getThemeColors, generateColors } from '../../config/themeConfig';
 import { generateModifyVars } from '../../generate/generateModifyVars';
+import { pkgRoot } from '../../paths';
 
 export function configThemePlugin(isBuild: boolean): Plugin[] {
   const colors = generateColors({
@@ -49,7 +50,7 @@ export function configThemePlugin(isBuild: boolean): Plugin[] {
       preloadFiles: [
         path.resolve(process.cwd(), 'node_modules/ant-design-vue/dist/antd.less'),
         //path.resolve(process.cwd(), 'node_modules/ant-design-vue/dist/antd.dark.less'),
-        path.resolve(process.cwd(), 'src/design/index.less'),
+        path.resolve(pkgRoot, 'design/index.less'),
       ],
       filter: (id) => (isBuild ? !id.endsWith('antd.less') : true),
       // extractCss: false,

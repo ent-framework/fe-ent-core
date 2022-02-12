@@ -1,8 +1,8 @@
-import type { AppRouteModule } from '/@/router/types';
+import type { AppRouteModule } from 'fe-ent-core/router/types';
 
-import { getParentLayout, LAYOUT } from '/@/router/constant';
-import { RoleEnum } from '/@/enums/roleEnum';
-import { t } from '/@/hooks/web/useI18n';
+import { getParentLayout, LAYOUT } from 'fe-ent-core/router/constant';
+import { RoleEnum } from 'fe-ent-core/enums/roleEnum';
+import { t } from 'fe-ent-core/hooks/web/useI18n';
 
 const permission: AppRouteModule = {
   path: '/permission',

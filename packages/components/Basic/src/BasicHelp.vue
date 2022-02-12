@@ -6,7 +6,7 @@
   import { getPopupContainer } from 'fe-ent-core/utils';
   import { isString, isArray } from 'fe-ent-core/utils/is';
   import { getSlot } from 'fe-ent-core/utils/helper/tsxHelper';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
 
   const props = {
     /**

@@ -1,5 +1,5 @@
 import type { TreeDataItem, CheckEvent as CheckEventOrigin } from 'ant-design-vue/es/tree/Tree';
-import { ContextMenuItem } from '/@/hooks/web/useContextMenu';
+import { ContextMenuItem } from 'fe-ent-core/hooks/web/useContextMenu';
 export interface ActionItem {
   render: (record: Recordable) => any;
   show?: boolean | ((record: Recordable) => boolean);

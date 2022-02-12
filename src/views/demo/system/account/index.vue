@@ -38,7 +38,7 @@
   import { defineComponent, reactive } from 'vue';
 
   import { BasicTable, useTable, TableAction } from 'fe-ent-core/components/Table';
-  import { getAccountList } from '/@/api/demo/system';
+  import { getAccountList } from 'fe-ent-core/api/demo/system';
   import { PageWrapper } from 'fe-ent-core/components/Page';
   import DeptTree from './DeptTree.vue';
 
@@ -46,7 +46,7 @@
   import AccountModal from './AccountModal.vue';
 
   import { columns, searchFormSchema } from './account.data';
-  import { useGo } from '/@/hooks/web/usePage';
+  import { useGo } from 'fe-ent-core/hooks/web/usePage';
 
   export default defineComponent({
     name: 'AccountManagement',

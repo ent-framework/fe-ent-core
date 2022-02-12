@@ -1,7 +1,7 @@
 import { getStorageShortName } from 'fe-ent-core/utils/env';
 import { createStorage as create, CreateStorageParams } from './storageCache';
-import { enableStorageEncryption } from '/@/settings/encryptionSetting';
-import { DEFAULT_CACHE_TIME } from '/@/settings/encryptionSetting';
+import { enableStorageEncryption } from 'fe-ent-core/settings/encryptionSetting';
+import { DEFAULT_CACHE_TIME } from 'fe-ent-core/settings/encryptionSetting';
 
 export type Options = Partial<CreateStorageParams>;
 

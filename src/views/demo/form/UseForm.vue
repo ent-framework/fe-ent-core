@@ -63,9 +63,9 @@
   import { defineComponent } from 'vue';
   import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
   import { CollapseContainer } from 'fe-ent-core/components/Container/index';
-  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { PageWrapper } from 'fe-ent-core/components/Page';
-  import { areaRecord } from '/@/api/demo/cascader';
+  import { areaRecord } from 'fe-ent-core/api/demo/cascader';
 
   const schemas: FormSchema[] = [
     {

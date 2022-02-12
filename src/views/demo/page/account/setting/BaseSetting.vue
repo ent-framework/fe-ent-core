@@ -28,13 +28,13 @@
   import { CollapseContainer } from 'fe-ent-core/components/Container';
   import { CropperAvatar } from 'fe-ent-core/components/Cropper';
 
-  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
 
-  import headerImg from '/@/assets/images/header.jpg';
-  import { accountInfoApi } from '/@/api/demo/account';
+  import headerImg from 'fe-ent-core/assets/images/header.jpg';
+  import { accountInfoApi } from 'fe-ent-core/api/demo/account';
   import { baseSetschemas } from './data';
-  import { useUserStore } from '/@/store/modules/user';
-  import { uploadApi } from '/@/api/sys/upload';
+  import { useUserStore } from 'fe-ent-core/store/modules/user';
+  import { uploadApi } from 'fe-ent-core/api/sys/upload';
 
   export default defineComponent({
     components: {

@@ -7,7 +7,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { PageWrapper } from 'fe-ent-core/components/Page';
-  import { useTabs } from '/@/hooks/web/useTabs';
+  import { useTabs } from 'fe-ent-core/hooks/web/useTabs';
   import { useRoute } from 'vue-router';
 
   export default defineComponent({

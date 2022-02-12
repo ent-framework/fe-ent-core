@@ -6,7 +6,7 @@
 <script lang="ts">
   import { computed, defineComponent, PropType } from 'vue';
   import { BasicTitle } from 'fe-ent-core/components//Basic/index';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { isFunction } from 'fe-ent-core/utils/is';
 
   export default defineComponent({

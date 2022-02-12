@@ -59,12 +59,12 @@
   import { computed, defineComponent, unref, ref } from 'vue';
   import { BasicForm, FormSchema, ApiSelect } from 'fe-ent-core/components/Form/index';
   import { CollapseContainer } from 'fe-ent-core/components/Container';
-  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { PageWrapper } from 'fe-ent-core/components/Page';
 
-  import { optionsListApi } from '/@/api/demo/select';
+  import { optionsListApi } from 'fe-ent-core/api/demo/select';
   import { useDebounceFn } from '@vueuse/core';
-  import { treeOptionsListApi } from '/@/api/demo/tree';
+  import { treeOptionsListApi } from 'fe-ent-core/api/demo/tree';
   import { Select } from 'ant-design-vue';
   import { cloneDeep } from 'lodash-es';
 

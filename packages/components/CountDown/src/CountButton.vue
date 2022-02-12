@@ -8,7 +8,7 @@
   import { Button } from 'ant-design-vue';
   import { useCountdown } from './useCountdown';
   import { isFunction } from 'fe-ent-core/utils/is';
-  import { useI18n } from '/@/hooks/web/useI18n';
+  import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
 
   const props = {
     value: { type: [Object, Number, String, Array] },

@@ -18,7 +18,7 @@
 </template>
 <script lang="ts">
   import { addResizeListener, removeResizeListener } from 'fe-ent-core/utils/event';
-  import componentSetting from '/@/settings/componentSetting';
+  import componentSetting from 'fe-ent-core/settings/componentSetting';
   const { scrollbar } = componentSetting;
   import { toObject } from './util';
   import {

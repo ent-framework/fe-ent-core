@@ -18,11 +18,11 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicUpload } from 'fe-ent-core/components/Upload';
-  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
   import { PageWrapper } from 'fe-ent-core/components/Page';
   import { Alert } from 'ant-design-vue';
-  import { uploadApi } from '/@/api/sys/upload';
+  import { uploadApi } from 'fe-ent-core/api/sys/upload';
 
   const schemas: FormSchema[] = [
     {

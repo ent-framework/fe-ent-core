@@ -1,8 +1,8 @@
-import type { AppRouteModule } from '/@/router/types';
+import type { AppRouteModule } from 'fe-ent-core/router/types';
 
-import { getParentLayout, LAYOUT } from '/@/router/constant';
-import { ExceptionEnum } from '/@/enums/exceptionEnum';
-import { t } from '/@/hooks/web/useI18n';
+import { getParentLayout, LAYOUT } from 'fe-ent-core/router/constant';
+import { ExceptionEnum } from 'fe-ent-core/enums/exceptionEnum';
+import { t } from 'fe-ent-core/hooks/web/useI18n';
 
 const ExceptionPage = () => import('/@/views/sys/exception/Exception.vue');
 

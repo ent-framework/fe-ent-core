@@ -15,10 +15,10 @@
   } from 'vue';
   import Vditor from 'vditor';
   import 'vditor/dist/index.css';
-  import { useLocale } from '/@/locales/useLocale';
+  import { useLocale } from 'fe-ent-core/locales/useLocale';
   import { useModalContext } from '../../Modal';
-  import { useRootSetting } from '/@/hooks/setting/useRootSetting';
-  import { onMountedOrActivated } from '/@/hooks/core/onMountedOrActivated';
+  import { useRootSetting } from 'fe-ent-core/hooks/setting/useRootSetting';
+  import { onMountedOrActivated } from 'fe-ent-core/hooks/core/onMountedOrActivated';
 
   type Lang = 'zh_CN' | 'en_US' | 'ja_JP' | 'ko_KR' | undefined;
 

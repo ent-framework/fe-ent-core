@@ -1,4 +1,4 @@
-import { UploadApiResult } from '/@/api/sys/model/uploadModel';
+import { UploadApiResult } from 'fe-ent-core/api/sys/model/uploadModel';
 
 export enum UploadResultStatus {
   SUCCESS = 'success',

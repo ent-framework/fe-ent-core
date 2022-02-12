@@ -12,8 +12,8 @@
   import { CardList } from 'fe-ent-core/components/CardList';
   import { Button } from 'fe-ent-core/components/Button';
   import { PageWrapper } from 'fe-ent-core/components/Page';
-  import { demoListApi } from '/@/api/demo/table';
-  import { useMessage } from '/@/hooks/web/useMessage';
+  import { demoListApi } from 'fe-ent-core/api/demo/table';
+  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   const { notification } = useMessage();
   // 请求api时附带参数
   const params = {};

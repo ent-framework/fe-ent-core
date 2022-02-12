@@ -9,8 +9,8 @@
 <script lang="ts" setup>
   import { ConfigProvider } from 'ant-design-vue';
   import { AppProvider } from 'fe-ent-core/components/Application';
-  import { useTitle } from '/@/hooks/web/useTitle';
-  import { useLocale } from '/@/locales/useLocale';
+  import { useTitle } from 'fe-ent-core/hooks/web/useTitle';
+  import { useLocale } from 'fe-ent-core/locales/useLocale';
 
   // support Multi-language
   const { getAntdLocale } = useLocale();

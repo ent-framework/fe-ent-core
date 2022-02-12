@@ -53,7 +53,7 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { BasicDragVerify, DragVerifyActionType, PassingData } from 'fe-ent-core/components/Verify/index';
-  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { BugOutlined, RightOutlined } from '@ant-design/icons-vue';
   import { PageWrapper } from 'fe-ent-core/components/Page';
 

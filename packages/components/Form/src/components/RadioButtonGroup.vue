@@ -14,8 +14,8 @@
   import { defineComponent, PropType, computed } from 'vue';
   import { Radio } from 'ant-design-vue';
   import { isString } from 'fe-ent-core/utils/is';
-  import { useRuleFormItem } from '/@/hooks/component/useFormItem';
-  import { useAttrs } from '/@/hooks/core/useAttrs';
+  import { useRuleFormItem } from 'fe-ent-core/hooks/component/useFormItem';
+  import { useAttrs } from 'fe-ent-core/hooks/core/useAttrs';
 
   type OptionsItem = { label: string; value: string | number | boolean; disabled?: boolean };
   type RadioItem = string | OptionsItem;

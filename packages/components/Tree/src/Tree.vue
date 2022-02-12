@@ -24,8 +24,8 @@
   import { filter, treeToList } from 'fe-ent-core/utils/helper/treeHelper';
 
   import { useTree } from './useTree';
-  import { useContextMenu } from '/@/hooks/web/useContextMenu';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useContextMenu } from 'fe-ent-core/hooks/web/useContextMenu';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
 
   import { basicProps } from './props';
   import { CreateContextOptions } from 'fe-ent-core/components//ContextMenu';

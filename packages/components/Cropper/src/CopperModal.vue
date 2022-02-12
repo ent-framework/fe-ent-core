@@ -116,11 +116,11 @@
   import { defineComponent, ref } from 'vue';
   import CropperImage from './Cropper.vue';
   import { Space, Upload, Avatar, Tooltip } from 'ant-design-vue';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { BasicModal, useModalInner } from 'fe-ent-core/components//Modal';
   import { dataURLtoBlob } from 'fe-ent-core/utils/file/base64Conver';
   import { isFunction } from 'fe-ent-core/utils/is';
-  import { useI18n } from '/@/hooks/web/useI18n';
+  import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
 
   type apiFunParams = { file: Blob; name: string; filename: string };
 

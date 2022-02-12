@@ -9,7 +9,7 @@
   import { defineComponent } from 'vue';
   import { RotateDragVerify } from 'fe-ent-core/components/Verify/index';
 
-  import img from '/@/assets/images/header.jpg';
+  import img from 'fe-ent-core/assets/images/header.jpg';
 
   import { PageWrapper } from 'fe-ent-core/components/Page';
 

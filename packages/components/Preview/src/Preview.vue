@@ -19,7 +19,7 @@
   import { defineComponent, computed } from 'vue';
 
   import { Image } from 'ant-design-vue';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { isString } from 'fe-ent-core/utils/is';
 

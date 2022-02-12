@@ -77,7 +77,7 @@
 </template>
 <script lang="ts" setup>
   import { ref, watchEffect, watch, unref } from 'vue';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { ScrollContainer } from 'fe-ent-core/components//Container';
   import { Input, Popover, Pagination, Empty } from 'ant-design-vue';
   import Icon from './Icon.vue';
@@ -85,11 +85,11 @@
 
   import iconsData from '../data/icons.data';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
-  import { usePagination } from '/@/hooks/web/usePagination';
+  import { usePagination } from 'fe-ent-core/hooks/web/usePagination';
   import { useDebounceFn } from '@vueuse/core';
-  import { useI18n } from '/@/hooks/web/useI18n';
-  import { useCopyToClipboard } from '/@/hooks/web/useCopyToClipboard';
-  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
+  import { useCopyToClipboard } from 'fe-ent-core/hooks/web/useCopyToClipboard';
+  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import svgIcons from 'virtual:svg-icons-names';
 
   // 没有使用别名引入，是因为WebStorm当前版本还不能正确识别，会报unused警告

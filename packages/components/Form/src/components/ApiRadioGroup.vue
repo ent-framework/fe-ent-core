@@ -17,11 +17,11 @@
   import { defineComponent, PropType, ref, watchEffect, computed, unref, watch } from 'vue';
   import { Radio } from 'ant-design-vue';
   import { isFunction } from 'fe-ent-core/utils/is';
-  import { useRuleFormItem } from '/@/hooks/component/useFormItem';
-  import { useAttrs } from '/@/hooks/core/useAttrs';
+  import { useRuleFormItem } from 'fe-ent-core/hooks/component/useFormItem';
+  import { useAttrs } from 'fe-ent-core/hooks/core/useAttrs';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { get, omit } from 'lodash-es';
-  import { useI18n } from '/@/hooks/web/useI18n';
+  import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
   type OptionsItem = { label: string; value: string | number | boolean; disabled?: boolean };
 
   export default defineComponent({

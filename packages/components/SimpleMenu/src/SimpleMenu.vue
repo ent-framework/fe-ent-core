@@ -19,15 +19,15 @@
 </template>
 <script lang="ts">
   import type { MenuState } from './types';
-  import type { Menu as MenuType } from '/@/router/types';
+  import type { Menu as MenuType } from 'fe-ent-core/router/types';
   import type { RouteLocationNormalizedLoaded } from 'vue-router';
   import { defineComponent, computed, ref, unref, reactive, toRefs, watch } from 'vue';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import Menu from './components/Menu.vue';
   import SimpleSubMenu from './SimpleSubMenu.vue';
-  import { listenerRouteChange } from '/@/logics/mitt/routeChange';
+  import { listenerRouteChange } from 'fe-ent-core/logics/mitt/routeChange';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
-  import { REDIRECT_NAME } from '/@/router/constant';
+  import { REDIRECT_NAME } from 'fe-ent-core/router/constant';
   import { useRouter } from 'vue-router';
   import { isFunction, isUrl } from 'fe-ent-core/utils/is';
   import { openWindow } from 'fe-ent-core/utils';

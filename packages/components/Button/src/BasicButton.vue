@@ -20,7 +20,7 @@
   import { Button } from 'ant-design-vue';
   import Icon from 'fe-ent-core/components//Icon/src/Icon.vue';
   import { buttonProps } from './props';
-  import { useAttrs } from '/@/hooks/core/useAttrs';
+  import { useAttrs } from 'fe-ent-core/hooks/core/useAttrs';
 
   const props = defineProps(buttonProps);
   // get component class

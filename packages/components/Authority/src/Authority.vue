@@ -4,8 +4,8 @@
 <script lang="ts">
   import type { PropType } from 'vue';
   import { defineComponent } from 'vue';
-  import { RoleEnum } from '/@/enums/roleEnum';
-  import { usePermission } from '/@/hooks/web/usePermission';
+  import { RoleEnum } from 'fe-ent-core/enums/roleEnum';
+  import { usePermission } from 'fe-ent-core/hooks/web/usePermission';
   import { getSlot } from 'fe-ent-core/utils/helper/tsxHelper';
 
   export default defineComponent({

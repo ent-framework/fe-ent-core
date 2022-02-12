@@ -24,9 +24,9 @@
   import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { isFunction } from 'fe-ent-core/utils/is';
   import { get, omit } from 'lodash-es';
-  import { useRuleFormItem } from '/@/hooks/component/useFormItem';
+  import { useRuleFormItem } from 'fe-ent-core/hooks/component/useFormItem';
   import { LoadingOutlined } from '@ant-design/icons-vue';
-  import { useI18n } from '/@/hooks/web/useI18n';
+  import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
   const { t } = useI18n();
   interface Option {
     value: string;

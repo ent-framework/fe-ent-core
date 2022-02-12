@@ -2,7 +2,7 @@ import { Modal } from 'ant-design-vue';
 import { defineComponent, toRefs, unref } from 'vue';
 import { basicProps } from '../props';
 import { useModalDragMove } from '../hooks/useModalDrag';
-import { useAttrs } from '/@/hooks/core/useAttrs';
+import { useAttrs } from 'fe-ent-core/hooks/core/useAttrs';
 import { extendSlots } from 'fe-ent-core/utils/helper/tsxHelper';
 
 export default defineComponent({

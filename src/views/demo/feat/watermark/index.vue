@@ -14,7 +14,7 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { CollapseContainer } from 'fe-ent-core/components/Container/index';
-  import { useWatermark } from '/@/hooks/web/useWatermark';
+  import { useWatermark } from 'fe-ent-core/hooks/web/useWatermark';
   import { PageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({

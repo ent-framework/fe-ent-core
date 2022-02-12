@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import RippleDirective from '/@/directives/ripple';
+  import RippleDirective from 'fe-ent-core/directives/ripple';
   import { PageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({

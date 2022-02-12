@@ -3,9 +3,9 @@ import type { Ref, ComputedRef } from 'vue';
 import { computed, unref, ref, nextTick, watch } from 'vue';
 import { getViewportOffset } from 'fe-ent-core/utils/domUtils';
 import { isBoolean } from 'fe-ent-core/utils/is';
-import { useWindowSizeFn } from '/@/hooks/event/useWindowSizeFn';
+import { useWindowSizeFn } from 'fe-ent-core/hooks/event/useWindowSizeFn';
 import { useModalContext } from 'fe-ent-core/components//Modal';
-import { onMountedOrActivated } from '/@/hooks/core/onMountedOrActivated';
+import { onMountedOrActivated } from 'fe-ent-core/hooks/core/onMountedOrActivated';
 import { useDebounceFn } from '@vueuse/core';
 
 export function useTableScroll(

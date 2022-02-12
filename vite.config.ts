@@ -20,7 +20,7 @@ const __APP_INFO__ = {
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   // 是否构建库模式
-  const isBuildLib = (mode === 'lib');
+  const isBuildLib = mode === 'lib';
   console.log(`Build in Library mode: ${isBuildLib}`);
   const root = process.cwd();
 

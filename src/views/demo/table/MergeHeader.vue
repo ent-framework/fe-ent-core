@@ -8,7 +8,7 @@
   import { BasicTable, useTable } from 'fe-ent-core/components/Table';
   import { getMergeHeaderColumns } from './tableData';
 
-  import { demoListApi } from '/@/api/demo/table';
+  import { demoListApi } from 'fe-ent-core/api/demo/table';
 
   export default defineComponent({
     components: { BasicTable },

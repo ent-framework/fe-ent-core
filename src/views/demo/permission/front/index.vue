@@ -29,9 +29,9 @@
   import { computed, defineComponent } from 'vue';
   import { Alert } from 'ant-design-vue';
   import CurrentPermissionMode from '../CurrentPermissionMode.vue';
-  import { useUserStore } from '/@/store/modules/user';
-  import { RoleEnum } from '/@/enums/roleEnum';
-  import { usePermission } from '/@/hooks/web/usePermission';
+  import { useUserStore } from 'fe-ent-core/store/modules/user';
+  import { RoleEnum } from 'fe-ent-core/enums/roleEnum';
+  import { usePermission } from 'fe-ent-core/hooks/web/usePermission';
   import { PageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({

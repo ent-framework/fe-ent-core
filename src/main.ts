@@ -1,4 +1,4 @@
-import '/@/design/index.less';
+import 'fe-ent-core/design/index.less';
 import 'virtual:windi-base.css';
 import 'virtual:windi-components.css';
 import 'virtual:windi-utilities.css';
@@ -6,13 +6,13 @@ import 'virtual:windi-utilities.css';
 import 'virtual:svg-icons-register';
 import App from './App.vue';
 import { createApp } from 'vue';
-import { initAppConfigStore } from '/@/logics/initAppConfig';
-import { setupErrorHandle } from '/@/logics/error-handle';
-import { router, setupRouter } from '/@/router';
+import { initAppConfigStore } from 'fe-ent-core/logics/initAppConfig';
+import { setupErrorHandle } from 'fe-ent-core/logics/error-handle';
+import { router, setupRouter } from 'fe-ent-core/router';
 import { setupRouterGuard } from '/@/router/guard';
-import { setupStore } from '/@/store';
-import { setupGlobDirectives } from '/@/directives';
-import { setupI18n } from '/@/locales/setupI18n';
+import { setupStore } from 'fe-ent-core/store';
+import { setupGlobDirectives } from 'fe-ent-core/directives';
+import { setupI18n } from 'fe-ent-core/locales/setupI18n';
 import { registerGlobComp } from 'fe-ent-core/components/registerGlobComp';
 
 // Importing on demand in local development will increase the number of browser requests by around 20%.

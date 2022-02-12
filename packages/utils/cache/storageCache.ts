@@ -1,4 +1,4 @@
-import { cacheCipher } from '/@/settings/encryptionSetting';
+import { cacheCipher } from 'fe-ent-core/settings/encryptionSetting';
 
 import type { EncryptionParams } from 'fe-ent-core/utils/cipher';
 

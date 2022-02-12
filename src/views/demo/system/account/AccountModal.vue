@@ -8,7 +8,7 @@
   import { BasicModal, useModalInner } from 'fe-ent-core/components/Modal';
   import { BasicForm, useForm } from 'fe-ent-core/components/Form/index';
   import { accountFormSchema } from './account.data';
-  import { getDeptList } from '/@/api/demo/system';
+  import { getDeptList } from 'fe-ent-core/api/demo/system';
 
   export default defineComponent({
     name: 'AccountModal',

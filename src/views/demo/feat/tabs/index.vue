@@ -27,11 +27,11 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { CollapseContainer } from 'fe-ent-core/components/Container';
-  import { useTabs } from '/@/hooks/web/useTabs';
+  import { useTabs } from 'fe-ent-core/hooks/web/useTabs';
   import { PageWrapper } from 'fe-ent-core/components/Page';
   import { Input, Alert } from 'ant-design-vue';
-  import { useMessage } from '/@/hooks/web/useMessage';
-  import { useGo } from '/@/hooks/web/usePage';
+  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
+  import { useGo } from 'fe-ent-core/hooks/web/usePage';
 
   export default defineComponent({
     name: 'TabsDemo',

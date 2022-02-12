@@ -63,12 +63,12 @@
   import AppSearchFooter from './AppSearchFooter.vue';
   import Icon from 'fe-ent-core/components//Icon';
   // @ts-ignore
-  import vClickOutside from '/@/directives/clickOutside';
-  import { useDesign } from '/@/hooks/web/useDesign';
-  import { useRefs } from '/@/hooks/core/useRefs';
+  import vClickOutside from 'fe-ent-core/directives/clickOutside';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
+  import { useRefs } from 'fe-ent-core/hooks/core/useRefs';
   import { useMenuSearch } from './useMenuSearch';
-  import { useI18n } from '/@/hooks/web/useI18n';
-  import { useAppInject } from '/@/hooks/web/useAppInject';
+  import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
+  import { useAppInject } from 'fe-ent-core/hooks/web/useAppInject';
 
   const props = defineProps({
     visible: { type: Boolean },

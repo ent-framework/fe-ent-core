@@ -40,10 +40,10 @@
     PropType,
   } from 'vue';
   import CopperModal from './CopperModal.vue';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { useModal } from 'fe-ent-core/components//Modal';
-  import { useMessage } from '/@/hooks/web/useMessage';
-  import { useI18n } from '/@/hooks/web/useI18n';
+  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
+  import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
   import type { ButtonProps } from 'fe-ent-core/components//Button';
   import Icon from 'fe-ent-core/components//Icon';
 

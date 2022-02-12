@@ -7,10 +7,10 @@
   import { get } from 'lodash-es';
   import { Descriptions } from 'ant-design-vue';
   import { CollapseContainer } from 'fe-ent-core/components//Container/index';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { isFunction } from 'fe-ent-core/utils/is';
   import { getSlot } from 'fe-ent-core/utils/helper/tsxHelper';
-  import { useAttrs } from '/@/hooks/core/useAttrs';
+  import { useAttrs } from 'fe-ent-core/hooks/core/useAttrs';
 
   const props = {
     useCollapse: { type: Boolean, default: true },

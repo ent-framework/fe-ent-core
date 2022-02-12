@@ -41,16 +41,16 @@
 </template>
 <script lang="ts">
   import type { PropType } from 'vue';
-  import type { Menu } from '/@/router/types';
+  import type { Menu } from 'fe-ent-core/router/types';
 
   import { defineComponent, computed } from 'vue';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import Icon from 'fe-ent-core/components//Icon/index';
 
   import MenuItem from './components/MenuItem.vue';
   import SubMenu from './components/SubMenuItem.vue';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
-  import { useI18n } from '/@/hooks/web/useI18n';
+  import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
   import { createAsyncComponent } from 'fe-ent-core/utils/factory/createAsyncComponent';
 
   export default defineComponent({

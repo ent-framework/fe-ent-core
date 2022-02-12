@@ -8,8 +8,8 @@
   import { computed, defineComponent } from 'vue';
 
   import Icon from 'fe-ent-core/components//Icon/index';
-  import { useI18n } from '/@/hooks/web/useI18n';
-  import { useDesign } from '/@/hooks/web/useDesign';
+  import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
+  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { contentProps } from '../props';
   const { t } = useI18n();
 

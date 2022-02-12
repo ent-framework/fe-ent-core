@@ -30,7 +30,7 @@
   import { defineComponent, ref, unref } from 'vue';
   import { BasicTree, TreeActionType } from 'fe-ent-core/components/Tree/index';
   import { treeData } from './data';
-  import { useMessage } from '/@/hooks/web/useMessage';
+  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { PageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
