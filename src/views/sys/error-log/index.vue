@@ -31,8 +31,8 @@
   import type { ErrorLogInfo } from '/#/store';
   import { watch, ref, nextTick } from 'vue';
   import DetailModal from './DetailModal.vue';
-  import { BasicTable, useTable, TableAction } from 'ent-fe-core/components/Table/index';
-  import { useModal } from 'ent-fe-core/components/Modal';
+  import { BasicTable, useTable, TableAction } from 'fe-ent-core/components/Table/index';
+  import { useModal } from 'fe-ent-core/components/Modal';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { useErrorLogStore } from '/@/store/modules/errorLog';

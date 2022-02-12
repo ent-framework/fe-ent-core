@@ -2,14 +2,14 @@
   import type { DescriptionProps, DescInstance, DescItem } from './typing';
   import type { DescriptionsProps } from 'ant-design-vue/es/descriptions/index';
   import type { CSSProperties } from 'vue';
-  import type { CollapseContainerOptions } from 'ent-fe-core/components//Container/index';
+  import type { CollapseContainerOptions } from 'fe-ent-core/components//Container/index';
   import { defineComponent, computed, ref, unref } from 'vue';
   import { get } from 'lodash-es';
   import { Descriptions } from 'ant-design-vue';
-  import { CollapseContainer } from 'ent-fe-core/components//Container/index';
+  import { CollapseContainer } from 'fe-ent-core/components//Container/index';
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { isFunction } from 'ent-fe-core/utils/is';
-  import { getSlot } from 'ent-fe-core/utils/helper/tsxHelper';
+  import { isFunction } from 'fe-ent-core/utils/is';
+  import { getSlot } from 'fe-ent-core/utils/helper/tsxHelper';
   import { useAttrs } from '/@/hooks/core/useAttrs';
 
   const props = {

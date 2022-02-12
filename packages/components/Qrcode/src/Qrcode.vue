@@ -7,7 +7,7 @@
   import { defineComponent, watch, PropType, ref, unref, onMounted } from 'vue';
   import { toCanvas, QRCodeRenderersOptions, LogoType } from './qrcodePlus';
   import { toDataURL } from 'qrcode';
-  import { downloadByUrl } from 'ent-fe-core/utils/file/download';
+  import { downloadByUrl } from 'fe-ent-core/utils/file/download';
   import { QrcodeDoneEventParams } from './typing';
 
   export default defineComponent({

@@ -1,10 +1,10 @@
 import { cacheCipher } from '/@/settings/encryptionSetting';
 
-import type { EncryptionParams } from 'ent-fe-core/utils/cipher';
+import type { EncryptionParams } from 'fe-ent-core/utils/cipher';
 
-import { AesEncryption } from 'ent-fe-core/utils/cipher';
+import { AesEncryption } from 'fe-ent-core/utils/cipher';
 
-import { isNullOrUnDef } from 'ent-fe-core/utils/is';
+import { isNullOrUnDef } from 'fe-ent-core/utils/is';
 
 export interface CreateStorageParams extends EncryptionParams {
   prefixKey: string;

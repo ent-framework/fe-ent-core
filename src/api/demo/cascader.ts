@@ -1,4 +1,4 @@
-import { defHttp } from 'ent-fe-core/utils/http/axios';
+import { defHttp } from 'fe-ent-core/utils/http/axios';
 import { AreaModel, AreaParams } from '/@/api/demo/model/areaModel';
 
 enum Api {

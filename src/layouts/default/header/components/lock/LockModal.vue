@@ -28,8 +28,8 @@
   import { defineComponent, computed } from 'vue';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { BasicModal, useModalInner } from 'ent-fe-core/components/Modal/index';
-  import { BasicForm, useForm } from 'ent-fe-core/components/Form/index';
+  import { BasicModal, useModalInner } from 'fe-ent-core/components/Modal/index';
+  import { BasicForm, useForm } from 'fe-ent-core/components/Form/index';
 
   import { useUserStore } from '/@/store/modules/user';
   import { useLockStore } from '/@/store/modules/lock';

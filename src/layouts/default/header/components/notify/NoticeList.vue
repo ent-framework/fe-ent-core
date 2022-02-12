@@ -58,7 +58,7 @@
   import { ListItem } from './data';
   import { useDesign } from '/@/hooks/web/useDesign';
   import { List, Avatar, Tag, Typography } from 'ant-design-vue';
-  import { isNumber } from 'ent-fe-core/utils/is';
+  import { isNumber } from 'fe-ent-core/utils/is';
   export default defineComponent({
     components: {
       [Avatar.name]: Avatar,

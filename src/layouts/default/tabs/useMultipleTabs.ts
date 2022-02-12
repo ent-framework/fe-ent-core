@@ -3,7 +3,7 @@ import type { RouteLocationNormalized } from 'vue-router';
 import { useDesign } from '/@/hooks/web/useDesign';
 import { useSortable } from '/@/hooks/web/useSortable';
 import { useMultipleTabStore } from '/@/store/modules/multipleTab';
-import { isNullAndUnDef } from 'ent-fe-core/utils/is';
+import { isNullAndUnDef } from 'fe-ent-core/utils/is';
 import projectSetting from '/@/settings/projectSetting';
 import { useRouter } from 'vue-router';
 

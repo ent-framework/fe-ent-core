@@ -16,10 +16,10 @@
   import { defineComponent, unref, computed, toRaw } from 'vue';
   import { Table } from 'ant-design-vue';
   import { cloneDeep } from 'lodash-es';
-  import { isFunction } from 'ent-fe-core/utils/is';
+  import { isFunction } from 'fe-ent-core/utils/is';
   import type { BasicColumn } from '../types/table';
   import { INDEX_COLUMN_FLAG } from '../const';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { useTableContext } from '../hooks/useTableContext';
 
   const SUMMARY_ROW_KEY = '_row';

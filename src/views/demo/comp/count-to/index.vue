@@ -38,8 +38,8 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Card } from 'ant-design-vue';
-  import { CountTo } from 'ent-fe-core/components/CountTo/index';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { CountTo } from 'fe-ent-core/components/CountTo/index';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
     components: {

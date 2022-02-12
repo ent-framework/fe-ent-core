@@ -16,19 +16,19 @@
   import { Tree, Empty } from 'ant-design-vue';
   import { TreeIcon } from './TreeIcon';
   import TreeHeader from './TreeHeader.vue';
-  import { ScrollContainer } from 'ent-fe-core/components//Container';
+  import { ScrollContainer } from 'fe-ent-core/components//Container';
 
   import { omit, get, difference } from 'lodash-es';
-  import { isArray, isBoolean, isEmpty, isFunction } from 'ent-fe-core/utils/is';
-  import { extendSlots, getSlot } from 'ent-fe-core/utils/helper/tsxHelper';
-  import { filter, treeToList } from 'ent-fe-core/utils/helper/treeHelper';
+  import { isArray, isBoolean, isEmpty, isFunction } from 'fe-ent-core/utils/is';
+  import { extendSlots, getSlot } from 'fe-ent-core/utils/helper/tsxHelper';
+  import { filter, treeToList } from 'fe-ent-core/utils/helper/treeHelper';
 
   import { useTree } from './useTree';
   import { useContextMenu } from '/@/hooks/web/useContextMenu';
   import { useDesign } from '/@/hooks/web/useDesign';
 
   import { basicProps } from './props';
-  import { CreateContextOptions } from 'ent-fe-core/components//ContextMenu';
+  import { CreateContextOptions } from 'fe-ent-core/components//ContextMenu';
 
   import { CheckEvent } from './typing';
 

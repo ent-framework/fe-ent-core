@@ -17,7 +17,7 @@
   </div>
 </template>
 <script lang="ts">
-  import { addResizeListener, removeResizeListener } from 'ent-fe-core/utils/event';
+  import { addResizeListener, removeResizeListener } from 'fe-ent-core/utils/event';
   import componentSetting from '/@/settings/componentSetting';
   const { scrollbar } = componentSetting;
   import { toObject } from './util';

@@ -17,7 +17,7 @@
   import { Input } from 'ant-design-vue';
   import { computed, defineComponent, ref, unref } from 'vue';
   import { useRouter } from 'vue-router';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
     name: 'TestMenu',

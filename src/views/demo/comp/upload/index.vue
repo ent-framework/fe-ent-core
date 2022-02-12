@@ -17,10 +17,10 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicUpload } from 'ent-fe-core/components/Upload';
+  import { BasicUpload } from 'fe-ent-core/components/Upload';
   import { useMessage } from '/@/hooks/web/useMessage';
-  import { BasicForm, FormSchema, useForm } from 'ent-fe-core/components/Form/index';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
   import { Alert } from 'ant-design-vue';
   import { uploadApi } from '/@/api/sys/upload';
 

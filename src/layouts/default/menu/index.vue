@@ -2,20 +2,20 @@
   import type { PropType, CSSProperties } from 'vue';
 
   import { computed, defineComponent, unref, toRef } from 'vue';
-  import { BasicMenu } from 'ent-fe-core/components/Menu';
-  import { SimpleMenu } from 'ent-fe-core/components/SimpleMenu';
-  import { AppLogo } from 'ent-fe-core/components/Application';
+  import { BasicMenu } from 'fe-ent-core/components/Menu';
+  import { SimpleMenu } from 'fe-ent-core/components/SimpleMenu';
+  import { AppLogo } from 'fe-ent-core/components/Application';
 
   import { MenuModeEnum, MenuSplitTyeEnum } from '/@/enums/menuEnum';
 
   import { useMenuSetting } from '/@/hooks/setting/useMenuSetting';
-  import { ScrollContainer } from 'ent-fe-core/components/Container';
+  import { ScrollContainer } from 'fe-ent-core/components/Container';
 
   import { useGo } from '/@/hooks/web/usePage';
   import { useSplitMenu } from './useLayoutMenu';
-  import { openWindow } from 'ent-fe-core/utils';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
-  import { isUrl } from 'ent-fe-core/utils/is';
+  import { openWindow } from 'fe-ent-core/utils';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
+  import { isUrl } from 'fe-ent-core/utils/is';
   import { useRootSetting } from '/@/hooks/setting/useRootSetting';
   import { useAppInject } from '/@/hooks/web/useAppInject';
   import { useDesign } from '/@/hooks/web/useDesign';

@@ -3,7 +3,7 @@ import { defineComponent, toRefs, unref } from 'vue';
 import { basicProps } from '../props';
 import { useModalDragMove } from '../hooks/useModalDrag';
 import { useAttrs } from '/@/hooks/core/useAttrs';
-import { extendSlots } from 'ent-fe-core/utils/helper/tsxHelper';
+import { extendSlots } from 'fe-ent-core/utils/helper/tsxHelper';
 
 export default defineComponent({
   name: 'Modal',

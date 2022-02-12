@@ -1,4 +1,4 @@
-import { createAsyncComponent } from 'ent-fe-core/utils/factory/createAsyncComponent';
+import { createAsyncComponent } from 'fe-ent-core/utils/factory/createAsyncComponent';
 
 export const TypePicker = createAsyncComponent(() => import('./TypePicker.vue'));
 export const ThemeColorPicker = createAsyncComponent(() => import('./ThemeColorPicker.vue'));

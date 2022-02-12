@@ -33,8 +33,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTable, useTable, TableAction } from 'ent-fe-core/components/Table';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { BasicTable, useTable, TableAction } from 'fe-ent-core/components/Table';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
   import { getBasicColumns } from './tableData';
 
   import { demoListApi } from '/@/api/demo/table';

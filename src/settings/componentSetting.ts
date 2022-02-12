@@ -1,6 +1,6 @@
 // Used to configure the general configuration of some components without modifying the components
 
-import type { SorterResult } from 'ent-fe-core/components/Table';
+import type { SorterResult } from 'fe-ent-core/components/Table';
 
 export default {
   // basic-table setting

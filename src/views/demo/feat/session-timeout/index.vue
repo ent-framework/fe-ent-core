@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
   import { useUserStore } from '/@/store/modules/user';
 
   import { sessionTimeoutApi, tokenExpiredApi } from '/@/api/demo/account';

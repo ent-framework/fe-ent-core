@@ -11,11 +11,11 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTable } from 'ent-fe-core/components/Table';
-  import { jsonToSheetXlsx, ExpExcelModal, ExportModalResult } from 'ent-fe-core/components/Excel';
+  import { BasicTable } from 'fe-ent-core/components/Table';
+  import { jsonToSheetXlsx, ExpExcelModal, ExportModalResult } from 'fe-ent-core/components/Excel';
   import { columns, data } from './data';
-  import { useModal } from 'ent-fe-core/components/Modal';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { useModal } from 'fe-ent-core/components/Modal';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
     components: { BasicTable, ExpExcelModal, PageWrapper },

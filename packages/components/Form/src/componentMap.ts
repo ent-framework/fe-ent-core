@@ -26,10 +26,10 @@ import RadioButtonGroup from './components/RadioButtonGroup.vue';
 import ApiSelect from './components/ApiSelect.vue';
 import ApiTreeSelect from './components/ApiTreeSelect.vue';
 // import ApiCascader from './components/ApiCascader.vue'; //FIXME maybe cause error
-import { BasicUpload } from 'ent-fe-core/components//Upload';
-import { StrengthMeter } from 'ent-fe-core/components//StrengthMeter';
-import { IconPicker } from 'ent-fe-core/components//Icon';
-import { CountdownInput } from 'ent-fe-core/components//CountDown';
+import { BasicUpload } from 'fe-ent-core/components//Upload';
+import { StrengthMeter } from 'fe-ent-core/components//StrengthMeter';
+import { IconPicker } from 'fe-ent-core/components//Icon';
+import { CountdownInput } from 'fe-ent-core/components//CountDown';
 
 const componentMap = new Map<ComponentType, Component>();
 

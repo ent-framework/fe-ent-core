@@ -25,8 +25,8 @@
 <script lang="ts">
   import { List } from 'ant-design-vue';
   import { defineComponent } from 'vue';
-  import { CollapseContainer } from 'ent-fe-core/components/Container/index';
-  import Icon from 'ent-fe-core/components/Icon/index';
+  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
+  import Icon from 'fe-ent-core/components/Icon/index';
 
   import { accountBindList } from './data';
 

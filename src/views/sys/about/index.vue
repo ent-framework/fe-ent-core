@@ -17,8 +17,8 @@
 <script lang="ts" setup>
   import { h } from 'vue';
   import { Tag } from 'ant-design-vue';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
-  import { Description, DescItem, useDescription } from 'ent-fe-core/components/Description/index';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { Description, DescItem, useDescription } from 'fe-ent-core/components/Description/index';
   import { GITHUB_URL, SITE_URL, DOC_URL } from '/@/settings/siteSetting';
 
   const { pkg, lastBuildTime } = __APP_INFO__;

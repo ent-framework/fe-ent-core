@@ -1,4 +1,4 @@
-import { BasicArrow } from 'ent-fe-core/components//Basic';
+import { BasicArrow } from 'fe-ent-core/components//Basic';
 
 export default () => {
   return (props: Recordable) => {

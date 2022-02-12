@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
   import { ConfigProvider } from 'ant-design-vue';
-  import { AppProvider } from 'ent-fe-core/components/Application';
+  import { AppProvider } from 'fe-ent-core/components/Application';
   import { useTitle } from '/@/hooks/web/useTitle';
   import { useLocale } from '/@/locales/useLocale';
 

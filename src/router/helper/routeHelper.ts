@@ -3,7 +3,7 @@ import type { Router, RouteRecordNormalized } from 'vue-router';
 
 import { getParentLayout, LAYOUT, EXCEPTION_COMPONENT } from '/@/router/constant';
 import { cloneDeep, omit } from 'lodash-es';
-import { warn } from 'ent-fe-core/utils/log';
+import { warn } from 'fe-ent-core/utils/log';
 import { createRouter, createWebHashHistory } from 'vue-router';
 
 export type LayoutMapKey = 'LAYOUT';

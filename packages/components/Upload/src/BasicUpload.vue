@@ -40,13 +40,13 @@
   import { defineComponent, ref, watch, unref, computed } from 'vue';
   import UploadModal from './UploadModal.vue';
   import UploadPreviewModal from './UploadPreviewModal.vue';
-  import { Icon } from 'ent-fe-core/components//Icon';
+  import { Icon } from 'fe-ent-core/components//Icon';
   import { Tooltip } from 'ant-design-vue';
-  import { useModal } from 'ent-fe-core/components//Modal';
+  import { useModal } from 'fe-ent-core/components//Modal';
   import { uploadContainerProps } from './props';
   import { omit } from 'lodash-es';
   import { useI18n } from '/@/hooks/web/useI18n';
-  import { isArray } from 'ent-fe-core/utils/is';
+  import { isArray } from 'fe-ent-core/utils/is';
 
   export default defineComponent({
     name: 'BasicUpload',

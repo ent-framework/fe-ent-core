@@ -2,12 +2,12 @@ import type { ComputedRef, Ref } from 'vue';
 import type { FormProps, FormSchema, FormActionType } from '../types/form';
 import type { NamePath } from 'ant-design-vue/lib/form/interface';
 import { unref, toRaw } from 'vue';
-import { isArray, isFunction, isObject, isString } from 'ent-fe-core/utils/is';
-import { deepMerge } from 'ent-fe-core/utils';
+import { isArray, isFunction, isObject, isString } from 'fe-ent-core/utils/is';
+import { deepMerge } from 'fe-ent-core/utils';
 import { dateItemType, handleInputNumberValue } from '../helper';
-import { dateUtil } from 'ent-fe-core/utils/dateUtil';
+import { dateUtil } from 'fe-ent-core/utils/dateUtil';
 import { cloneDeep, uniqBy } from 'lodash-es';
-import { error } from 'ent-fe-core/utils/log';
+import { error } from 'fe-ent-core/utils/log';
 
 interface UseFormActionContext {
   emit: EmitType;

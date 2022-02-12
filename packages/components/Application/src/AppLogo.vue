@@ -4,7 +4,7 @@
 -->
 <template>
   <div class="anticon" :class="getAppLogoClass" @click="goHome">
-    <img src="../../../assets/images/logo.png" />
+    <img :src="LogoImg" />
     <div class="ml-2 truncate md:opacity-100" :class="getTitleClass" v-show="showTitle">
       {{ title }}
     </div>
@@ -18,7 +18,7 @@
   import { useDesign } from '/@/hooks/web/useDesign';
   import { PageEnum } from '/@/enums/pageEnum';
   import { useUserStore } from '/@/store/modules/user';
-
+  import LogoImg from '/@/assets/images/logo.png';
   const props = defineProps({
     /**
      * The theme of the current parent component

@@ -1,5 +1,5 @@
 import contextMenuVue from './ContextMenu.vue';
-import { isClient } from 'ent-fe-core/utils/is';
+import { isClient } from 'fe-ent-core/utils/is';
 import { CreateContextOptions, ContextMenuProps } from './typing';
 import { createVNode, render } from 'vue';
 

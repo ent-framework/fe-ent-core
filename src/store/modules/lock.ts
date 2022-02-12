@@ -3,7 +3,7 @@ import type { LockInfo } from '/#/store';
 import { defineStore } from 'pinia';
 
 import { LOCK_INFO_KEY } from '/@/enums/cacheEnum';
-import { Persistent } from 'ent-fe-core/utils/cache/persistent';
+import { Persistent } from 'fe-ent-core/utils/cache/persistent';
 import { useUserStore } from './user';
 
 interface LockState {

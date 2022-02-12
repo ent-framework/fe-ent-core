@@ -12,9 +12,9 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { useContextMenu } from '/@/hooks/web/useContextMenu';
-  import { CollapseContainer } from 'ent-fe-core/components/Container';
+  import { CollapseContainer } from 'fe-ent-core/components/Container';
   import { useMessage } from '/@/hooks/web/useMessage';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
     components: { CollapseContainer, PageWrapper },

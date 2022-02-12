@@ -12,9 +12,9 @@
 <script lang="ts">
   import { computed, defineComponent, watch, ref, onMounted, unref } from 'vue';
   import { TreeSelect } from 'ant-design-vue';
-  import { isArray, isFunction } from 'ent-fe-core/utils/is';
+  import { isArray, isFunction } from 'fe-ent-core/utils/is';
   import { get } from 'lodash-es';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { LoadingOutlined } from '@ant-design/icons-vue';
   export default defineComponent({
     name: 'ApiTreeSelect',

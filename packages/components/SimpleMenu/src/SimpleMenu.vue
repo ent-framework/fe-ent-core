@@ -26,11 +26,11 @@
   import Menu from './components/Menu.vue';
   import SimpleSubMenu from './SimpleSubMenu.vue';
   import { listenerRouteChange } from '/@/logics/mitt/routeChange';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { REDIRECT_NAME } from '/@/router/constant';
   import { useRouter } from 'vue-router';
-  import { isFunction, isUrl } from 'ent-fe-core/utils/is';
-  import { openWindow } from 'ent-fe-core/utils';
+  import { isFunction, isUrl } from 'fe-ent-core/utils/is';
+  import { openWindow } from 'fe-ent-core/utils';
 
   import { useOpenKeys } from './useOpenKeys';
   export default defineComponent({

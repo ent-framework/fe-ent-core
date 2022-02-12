@@ -56,7 +56,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTable, useTable, BasicColumn, TableAction } from 'ent-fe-core/components/Table';
+  import { BasicTable, useTable, BasicColumn, TableAction } from 'fe-ent-core/components/Table';
 
   import { demoListApi } from '/@/api/demo/table';
   const columns: BasicColumn[] = [

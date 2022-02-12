@@ -23,10 +23,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, computed, unref } from 'vue';
-  import { BasicForm, useForm } from 'ent-fe-core/components/Form/index';
+  import { BasicForm, useForm } from 'fe-ent-core/components/Form/index';
   import { formSchema } from './role.data';
-  import { BasicDrawer, useDrawerInner } from 'ent-fe-core/components/Drawer';
-  import { BasicTree, TreeItem } from 'ent-fe-core/components/Tree';
+  import { BasicDrawer, useDrawerInner } from 'fe-ent-core/components/Drawer';
+  import { BasicTree, TreeItem } from 'fe-ent-core/components/Tree';
 
   import { getMenuList } from '/@/api/demo/system';
 

@@ -10,7 +10,7 @@ import {
   RolePageListGetResultModel,
   RoleListGetResultModel,
 } from './model/systemModel';
-import { defHttp } from 'ent-fe-core/utils/http/axios';
+import { defHttp } from 'fe-ent-core/utils/http/axios';
 
 enum Api {
   AccountList = '/system/getAccountList',

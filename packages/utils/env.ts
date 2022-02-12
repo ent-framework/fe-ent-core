@@ -1,6 +1,6 @@
 import type { GlobEnvConfig } from '/#/config';
 
-import { warn } from 'ent-fe-core/utils/log';
+import { warn } from 'fe-ent-core/utils/log';
 import pkg from '../../package.json';
 import { getConfigFileName } from '../../build/getConfigFileName';
 

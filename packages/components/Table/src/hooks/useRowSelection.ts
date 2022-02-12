@@ -1,9 +1,9 @@
-import { isFunction } from 'ent-fe-core/utils/is';
+import { isFunction } from 'fe-ent-core/utils/is';
 import type { BasicTableProps, TableRowSelection } from '../types/table';
 import { computed, ComputedRef, nextTick, Ref, ref, toRaw, unref, watch } from 'vue';
 import { ROW_KEY } from '../const';
 import { omit } from 'lodash-es';
-import { findNodeAll } from 'ent-fe-core/utils/helper/treeHelper';
+import { findNodeAll } from 'fe-ent-core/utils/helper/treeHelper';
 
 export function useRowSelection(
   propsRef: ComputedRef<BasicTableProps>,

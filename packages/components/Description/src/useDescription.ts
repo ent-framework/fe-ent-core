@@ -1,6 +1,6 @@
 import type { DescriptionProps, DescInstance, UseDescReturnType } from './typing';
 import { ref, getCurrentInstance, unref } from 'vue';
-import { isProdMode } from 'ent-fe-core/utils/env';
+import { isProdMode } from 'fe-ent-core/utils/env';
 
 export function useDescription(props?: Partial<DescriptionProps>): UseDescReturnType {
   if (!getCurrentInstance()) {

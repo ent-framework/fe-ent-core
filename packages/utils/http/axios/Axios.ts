@@ -4,7 +4,7 @@ import type { CreateAxiosOptions } from './axiosTransform';
 import axios from 'axios';
 import qs from 'qs';
 import { AxiosCanceler } from './axiosCancel';
-import { isFunction } from 'ent-fe-core/utils/is';
+import { isFunction } from 'fe-ent-core/utils/is';
 import { cloneDeep } from 'lodash-es';
 import { ContentTypeEnum } from '/@/enums/httpEnum';
 import { RequestEnum } from '/@/enums/httpEnum';

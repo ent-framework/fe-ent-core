@@ -27,9 +27,9 @@
   import { ref } from 'vue';
   // component
   import { Skeleton } from 'ant-design-vue';
-  import { CollapseTransition } from 'ent-fe-core/components//Transition';
+  import { CollapseTransition } from 'fe-ent-core/components//Transition';
   import CollapseHeader from './CollapseHeader.vue';
-  import { triggerWindowResize } from 'ent-fe-core/utils/event';
+  import { triggerWindowResize } from 'fe-ent-core/utils/event';
   // hook
   import { useTimeoutFn } from '/@/hooks/core/useTimeout';
   import { useDesign } from '/@/hooks/web/useDesign';

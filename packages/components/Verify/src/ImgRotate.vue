@@ -3,7 +3,7 @@
   import { defineComponent, computed, unref, reactive, watch, ref } from 'vue';
   import { useTimeoutFn } from '/@/hooks/core/useTimeout';
   import BasicDragVerify from './DragVerify.vue';
-  import { hackCss } from 'ent-fe-core/utils/domUtils';
+  import { hackCss } from 'fe-ent-core/utils/domUtils';
   import { rotateProps } from './props';
   import { useI18n } from '/@/hooks/web/useI18n';
 

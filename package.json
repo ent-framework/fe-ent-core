@@ -1,18 +1,31 @@
 {
-  "name": "ent-fe-core",
+  "name": "fe-ent-core",
   "version": "1.0.0",
   "author": {
-    "name": "vben",
-    "email": "anncwb@126.com",
+    "name": "jeff qian",
+    "email": "baojian.qian@accenture.com",
     "url": "https://github.com/anncwb"
   },
+  "main": "lib/cjs/index.js",
+  "module": "my-ent.es.js",
+  "unpkg": "dist/vuelib.min.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "lib",
+    "types/*.d.ts"
+  ],
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
   "scripts": {
     "bootstrap": "yarn install",
     "serve": "npm run dev",
     "dev": "vite",
-    "build": "cross-env NODE_ENV=production vite build && esno ./build/script/postBuild.ts",
+    "build:lib": "cross-env NODE_ENV=production BUILD_TYPE=lib vite build",
+    "build:web": "cross-env NODE_ENV=production BUILD_TYPE=web vite build && esno ./build/script/postBuild.ts",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
-    "build:lib": "cross-env NODE_ENV=production vue-tsc --noEmit && vite build --config ./lib.config.ts",
+    "build:lib:2": "cross-env NODE_ENV=production vue-tsc --noEmit && vite build",
     "build:no-cache": "yarn clean:cache && npm run build",
     "report": "cross-env REPORT=true npm run build",
     "type:check": "vue-tsc --noEmit --skipLibCheck",

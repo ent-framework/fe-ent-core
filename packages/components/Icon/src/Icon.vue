@@ -27,8 +27,8 @@
   } from 'vue';
   import SvgIcon from './SvgIcon.vue';
   import Iconify from '@purge-icons/generated';
-  import { isString } from 'ent-fe-core/utils/is';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { isString } from 'fe-ent-core/utils/is';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
 
   const SVG_END_WITH_FLAG = '|svg';
   export default defineComponent({

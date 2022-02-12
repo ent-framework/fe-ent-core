@@ -15,7 +15,7 @@
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
   import XLSX from 'xlsx';
-  import { dateUtil } from 'ent-fe-core/utils/dateUtil';
+  import { dateUtil } from 'fe-ent-core/utils/dateUtil';
 
   import type { ExcelData } from './typing';
   export default defineComponent({

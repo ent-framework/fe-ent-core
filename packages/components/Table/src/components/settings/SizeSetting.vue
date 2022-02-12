@@ -29,7 +29,7 @@
   import { ColumnHeightOutlined } from '@ant-design/icons-vue';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { useTableContext } from '../../hooks/useTableContext';
-  import { getPopupContainer } from 'ent-fe-core/utils';
+  import { getPopupContainer } from 'fe-ent-core/utils';
 
   export default defineComponent({
     name: 'SizeSetting',

@@ -23,9 +23,9 @@
 </template>
 <script lang="ts">
   import { defineComponent, reactive, toRefs } from 'vue';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
-  import { Time } from 'ent-fe-core/components/Time';
-  import { CollapseContainer } from 'ent-fe-core/components/Container/index';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { Time } from 'fe-ent-core/components/Time';
+  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
 
   export default defineComponent({
     components: { PageWrapper, Time, CollapseContainer },

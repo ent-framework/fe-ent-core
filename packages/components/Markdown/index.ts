@@ -1,4 +1,4 @@
-import { withInstall } from 'ent-fe-core/utils';
+import { withInstall } from 'fe-ent-core/utils';
 import markDown from './src/Markdown.vue';
 import markDownViewer from './src/MarkdownViewer.vue';
 

@@ -6,7 +6,7 @@
 <script lang="ts">
   import type { PropType } from 'vue';
   import { defineComponent } from 'vue';
-  import { BasicTitle } from 'ent-fe-core/components//Basic';
+  import { BasicTitle } from 'fe-ent-core/components//Basic';
 
   export default defineComponent({
     name: 'BasicModalHeader',

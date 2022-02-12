@@ -20,9 +20,9 @@
   } from 'vue';
 
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { createSimpleRootMenuContext } from './useSimpleMenuContext';
-  import mitt from 'ent-fe-core/utils/mitt';
+  import mitt from 'fe-ent-core/utils/mitt';
   export default defineComponent({
     name: 'Menu',
     props: {

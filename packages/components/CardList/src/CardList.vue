@@ -6,7 +6,7 @@
     {{ sliderProp.width }}
     <div class="p-2 bg-white">
       <List
-        :grid="{ gutter: 5, xs: 1, sm: 2, md: 4, lg: 4, xl: 6, xxl: grid }"
+        :grid="{ gutter: 5, xs: 1, sm: 2, md: 4, lg: 4, xl: 6, xxl: grid, column: 4 }"
         :data-source="data"
         :pagination="paginationProp"
       >
@@ -77,7 +77,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { computed, onMounted, ref } from 'vue';
+  import { computed, defineComponent, onMounted, ref } from 'vue';
   import {
     EditOutlined,
     EllipsisOutlined,
@@ -85,11 +85,11 @@
     TableOutlined,
   } from '@ant-design/icons-vue';
   import { List, Card, Image, Typography, Tooltip, Slider, Avatar } from 'ant-design-vue';
-  import { Dropdown } from 'ent-fe-core/components//Dropdown';
-  import { BasicForm, useForm } from 'ent-fe-core/components//Form';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
-  import { Button } from 'ent-fe-core/components//Button';
-  import { isFunction } from 'ent-fe-core/utils/is';
+  import { Dropdown } from 'fe-ent-core/components//Dropdown';
+  import { BasicForm, useForm } from 'fe-ent-core/components//Form';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
+  import { Button } from 'fe-ent-core/components//Button';
+  import { isFunction } from 'fe-ent-core/utils/is';
   import { useSlider, grid } from './data';
   const ListItem = List.Item;
   const CardMeta = Card.Meta;
@@ -105,6 +105,14 @@
   });
   //暴露内部方法
   const emit = defineEmits(['getMethod', 'delete']);
+  defineComponent({
+    components: {
+      EditOutlined,
+      EllipsisOutlined,
+      RedoOutlined,
+      TableOutlined,
+    },
+  });
   //数据
   const data = ref([]);
   // 切换每行个数

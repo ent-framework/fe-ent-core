@@ -19,8 +19,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { MarkDown, MarkDownActionType, MarkdownViewer } from 'ent-fe-core/components/Markdown';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { MarkDown, MarkDownActionType, MarkdownViewer } from 'fe-ent-core/components/Markdown';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
   import { Card } from 'ant-design-vue';
 
   export default defineComponent({

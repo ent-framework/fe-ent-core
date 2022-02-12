@@ -27,8 +27,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { CountTo } from 'ent-fe-core/components/CountTo/index';
-  import { Icon } from 'ent-fe-core/components/Icon';
+  import { CountTo } from 'fe-ent-core/components/CountTo/index';
+  import { Icon } from 'fe-ent-core/components/Icon';
   import { Tag, Card } from 'ant-design-vue';
   import { growCardList } from '../data';
 

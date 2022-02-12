@@ -1,5 +1,5 @@
 import type { TabContentProps } from './types';
-import type { DropMenu } from 'ent-fe-core/components/Dropdown';
+import type { DropMenu } from 'fe-ent-core/components/Dropdown';
 import type { ComputedRef } from 'vue';
 
 import { computed, unref, reactive } from 'vue';

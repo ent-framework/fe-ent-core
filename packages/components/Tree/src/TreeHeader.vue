@@ -38,10 +38,10 @@
   import { defineComponent, computed, ref, watch } from 'vue';
 
   import { Dropdown, Menu, Input } from 'ant-design-vue';
-  import { Icon } from 'ent-fe-core/components//Icon';
-  import { BasicTitle } from 'ent-fe-core/components//Basic';
+  import { Icon } from 'fe-ent-core/components//Icon';
+  import { BasicTitle } from 'fe-ent-core/components//Basic';
 
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
 
   import { useI18n } from '/@/hooks/web/useI18n';
   import { useDebounceFn } from '@vueuse/core';

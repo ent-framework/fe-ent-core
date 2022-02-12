@@ -41,11 +41,11 @@
   } from 'vue';
   import CopperModal from './CopperModal.vue';
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { useModal } from 'ent-fe-core/components//Modal';
+  import { useModal } from 'fe-ent-core/components//Modal';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { useI18n } from '/@/hooks/web/useI18n';
-  import type { ButtonProps } from 'ent-fe-core/components//Button';
-  import Icon from 'ent-fe-core/components//Icon';
+  import type { ButtonProps } from 'fe-ent-core/components//Button';
+  import Icon from 'fe-ent-core/components//Icon';
 
   const props = {
     width: { type: [String, Number], default: '200px' },

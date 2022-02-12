@@ -3,7 +3,7 @@ import type { AdvanceState } from '../types/hooks';
 import type { ComputedRef, Ref } from 'vue';
 import type { FormProps, FormSchema } from '../types/form';
 import { computed, unref, watch } from 'vue';
-import { isBoolean, isFunction, isNumber, isObject } from 'ent-fe-core/utils/is';
+import { isBoolean, isFunction, isNumber, isObject } from 'fe-ent-core/utils/is';
 import { useBreakpoint } from '/@/hooks/event/useBreakpoint';
 import { useDebounceFn } from '@vueuse/core';
 

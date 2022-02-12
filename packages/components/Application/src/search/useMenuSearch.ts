@@ -2,7 +2,7 @@ import type { Menu } from '/@/router/types';
 import { ref, onBeforeMount, unref, Ref, nextTick } from 'vue';
 import { getMenus } from '/@/router/menus';
 import { cloneDeep } from 'lodash-es';
-import { filter, forEach } from 'ent-fe-core/utils/helper/treeHelper';
+import { filter, forEach } from 'fe-ent-core/utils/helper/treeHelper';
 import { useGo } from '/@/hooks/web/usePage';
 import { useScrollTo } from '/@/hooks/event/useScrollTo';
 import { onKeyStroke, useDebounceFn } from '@vueuse/core';

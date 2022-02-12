@@ -5,12 +5,12 @@
 </template>
 <script lang="ts">
   import { defineComponent, unref, computed } from 'vue';
-  import { Icon } from 'ent-fe-core/components/Icon';
+  import { Icon } from 'fe-ent-core/components/Icon';
 
   import { useDesign } from '/@/hooks/web/useDesign';
   import { useHeaderSetting } from '/@/hooks/setting/useHeaderSetting';
   import { useMenuSetting } from '/@/hooks/setting/useMenuSetting';
-  import { triggerWindowResize } from 'ent-fe-core/utils/event';
+  import { triggerWindowResize } from 'fe-ent-core/utils/event';
 
   export default defineComponent({
     name: 'FoldButton',

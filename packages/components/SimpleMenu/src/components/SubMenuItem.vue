@@ -70,14 +70,14 @@
     inject,
   } from 'vue';
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { useMenuItem } from './useMenu';
   import { useSimpleRootMenuContext } from './useSimpleMenuContext';
-  import { CollapseTransition } from 'ent-fe-core/components//Transition';
-  import Icon from 'ent-fe-core/components//Icon';
+  import { CollapseTransition } from 'fe-ent-core/components//Transition';
+  import Icon from 'fe-ent-core/components//Icon';
   import { Popover } from 'ant-design-vue';
-  import { isBoolean, isObject } from 'ent-fe-core/utils/is';
-  import mitt from 'ent-fe-core/utils/mitt';
+  import { isBoolean, isObject } from 'fe-ent-core/utils/is';
+  import mitt from 'fe-ent-core/utils/mitt';
 
   const DELAY = 200;
   export default defineComponent({

@@ -5,8 +5,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, computed, unref } from 'vue';
-  import { BasicModal, useModalInner } from 'ent-fe-core/components/Modal';
-  import { BasicForm, useForm } from 'ent-fe-core/components/Form/index';
+  import { BasicModal, useModalInner } from 'fe-ent-core/components/Modal';
+  import { BasicForm, useForm } from 'fe-ent-core/components/Form/index';
   import { formSchema } from './dept.data';
 
   import { getDeptList } from '/@/api/demo/system';

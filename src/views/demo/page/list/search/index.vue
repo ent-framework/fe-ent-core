@@ -55,10 +55,10 @@
 <script lang="ts">
   import { Tag } from 'ant-design-vue';
   import { defineComponent } from 'vue';
-  import Icon from 'ent-fe-core/components/Icon/index';
-  import { BasicForm } from 'ent-fe-core/components/Form/index';
+  import Icon from 'fe-ent-core/components/Icon/index';
+  import { BasicForm } from 'fe-ent-core/components/Form/index';
   import { actions, searchList, schemas } from './data';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
   import { List } from 'ant-design-vue';
 
   export default defineComponent({

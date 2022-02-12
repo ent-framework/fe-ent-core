@@ -1,4 +1,4 @@
-import { defHttp } from 'ent-fe-core/utils/http/axios';
+import { defHttp } from 'fe-ent-core/utils/http/axios';
 import { LoginParams, LoginResultModel, GetUserInfoModel } from './model/userModel';
 
 import { ErrorMessageMode } from '/#/axios';

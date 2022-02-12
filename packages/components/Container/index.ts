@@ -1,4 +1,4 @@
-import { withInstall } from 'ent-fe-core/utils';
+import { withInstall } from 'fe-ent-core/utils';
 import collapseContainer from './src/collapse/CollapseContainer.vue';
 import scrollContainer from './src/ScrollContainer.vue';
 import lazyContainer from './src/LazyContainer.vue';

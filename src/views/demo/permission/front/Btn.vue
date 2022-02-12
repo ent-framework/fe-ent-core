@@ -66,8 +66,8 @@
   import { useUserStore } from '/@/store/modules/user';
   import { RoleEnum } from '/@/enums/roleEnum';
   import { usePermission } from '/@/hooks/web/usePermission';
-  import { Authority } from 'ent-fe-core/components/Authority';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { Authority } from 'fe-ent-core/components/Authority';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
     components: { Alert, PageWrapper, CurrentPermissionMode, Divider, Authority },

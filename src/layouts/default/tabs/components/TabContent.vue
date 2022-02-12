@@ -13,8 +13,8 @@
   import type { RouteLocationNormalized } from 'vue-router';
 
   import { defineComponent, computed, unref } from 'vue';
-  import { Dropdown } from 'ent-fe-core/components/Dropdown/index';
-  import { Icon } from 'ent-fe-core/components/Icon';
+  import { Dropdown } from 'fe-ent-core/components/Dropdown/index';
+  import { Icon } from 'fe-ent-core/components/Icon';
 
   import { TabContentProps } from '../types';
 

@@ -57,14 +57,14 @@
 <script lang="ts">
   import { defineComponent, unref, computed } from 'vue';
 
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
 
   import { Layout } from 'ant-design-vue';
-  import { AppLogo } from 'ent-fe-core/components/Application';
+  import { AppLogo } from 'fe-ent-core/components/Application';
   import LayoutMenu from '../menu/index.vue';
   import LayoutTrigger from '../trigger/index.vue';
 
-  import { AppSearch } from 'ent-fe-core/components/Application';
+  import { AppSearch } from 'fe-ent-core/components/Application';
 
   import { useHeaderSetting } from '/@/hooks/setting/useHeaderSetting';
   import { useMenuSetting } from '/@/hooks/setting/useMenuSetting';
@@ -72,13 +72,13 @@
 
   import { MenuModeEnum, MenuSplitTyeEnum } from '/@/enums/menuEnum';
   import { SettingButtonPositionEnum } from '/@/enums/appEnum';
-  import { AppLocalePicker } from 'ent-fe-core/components/Application';
+  import { AppLocalePicker } from 'fe-ent-core/components/Application';
 
   import { UserDropDown, LayoutBreadcrumb, FullScreen, Notify, ErrorAction } from './components';
   import { useAppInject } from '/@/hooks/web/useAppInject';
   import { useDesign } from '/@/hooks/web/useDesign';
 
-  import { createAsyncComponent } from 'ent-fe-core/utils/factory/createAsyncComponent';
+  import { createAsyncComponent } from 'fe-ent-core/utils/factory/createAsyncComponent';
   import { useLocale } from '/@/locales/useLocale';
 
   export default defineComponent({

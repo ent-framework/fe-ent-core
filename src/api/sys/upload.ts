@@ -1,5 +1,5 @@
 import { UploadApiResult } from './model/uploadModel';
-import { defHttp } from 'ent-fe-core/utils/http/axios';
+import { defHttp } from 'fe-ent-core/utils/http/axios';
 import { UploadFileParams } from '/#/axios';
 import { useGlobSetting } from '/@/hooks/setting';
 

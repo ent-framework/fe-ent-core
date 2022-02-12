@@ -16,7 +16,7 @@
 <script lang="ts">
   import { defineComponent, computed, unref } from 'vue';
   import { Layout } from 'ant-design-vue';
-  import { createAsyncComponent } from 'ent-fe-core/utils/factory/createAsyncComponent';
+  import { createAsyncComponent } from 'fe-ent-core/utils/factory/createAsyncComponent';
 
   import LayoutHeader from './header/index.vue';
   import LayoutContent from './content/index.vue';

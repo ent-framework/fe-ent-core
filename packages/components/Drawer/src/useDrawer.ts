@@ -15,11 +15,11 @@ import {
   toRaw,
   computed,
 } from 'vue';
-import { isProdMode } from 'ent-fe-core/utils/env';
-import { isFunction } from 'ent-fe-core/utils/is';
+import { isProdMode } from 'fe-ent-core/utils/env';
+import { isFunction } from 'fe-ent-core/utils/is';
 import { tryOnUnmounted } from '@vueuse/core';
 import { isEqual } from 'lodash-es';
-import { error } from 'ent-fe-core/utils/log';
+import { error } from 'fe-ent-core/utils/log';
 
 const dataTransferRef = reactive<any>({});
 

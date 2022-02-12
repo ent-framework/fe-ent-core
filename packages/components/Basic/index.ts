@@ -1,4 +1,4 @@
-import { withInstall } from 'ent-fe-core/utils';
+import { withInstall } from 'fe-ent-core/utils';
 import basicArrow from './src/BasicArrow.vue';
 import basicTitle from './src/BasicTitle.vue';
 import basicHelp from './src/BasicHelp.vue';

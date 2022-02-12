@@ -4,8 +4,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { createAsyncComponent } from 'ent-fe-core/utils/factory/createAsyncComponent';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { createAsyncComponent } from 'fe-ent-core/utils/factory/createAsyncComponent';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
   import HeaderTrigger from './HeaderTrigger.vue';
 
   export default defineComponent({

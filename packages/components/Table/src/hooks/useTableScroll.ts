@@ -1,10 +1,10 @@
 import type { BasicTableProps, TableRowSelection, BasicColumn } from '../types/table';
 import type { Ref, ComputedRef } from 'vue';
 import { computed, unref, ref, nextTick, watch } from 'vue';
-import { getViewportOffset } from 'ent-fe-core/utils/domUtils';
-import { isBoolean } from 'ent-fe-core/utils/is';
+import { getViewportOffset } from 'fe-ent-core/utils/domUtils';
+import { isBoolean } from 'fe-ent-core/utils/is';
 import { useWindowSizeFn } from '/@/hooks/event/useWindowSizeFn';
-import { useModalContext } from 'ent-fe-core/components//Modal';
+import { useModalContext } from 'fe-ent-core/components//Modal';
 import { onMountedOrActivated } from '/@/hooks/core/onMountedOrActivated';
 import { useDebounceFn } from '@vueuse/core';
 

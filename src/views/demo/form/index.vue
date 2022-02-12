@@ -57,10 +57,10 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, unref, ref } from 'vue';
-  import { BasicForm, FormSchema, ApiSelect } from 'ent-fe-core/components/Form/index';
-  import { CollapseContainer } from 'ent-fe-core/components/Container';
+  import { BasicForm, FormSchema, ApiSelect } from 'fe-ent-core/components/Form/index';
+  import { CollapseContainer } from 'fe-ent-core/components/Container';
   import { useMessage } from '/@/hooks/web/useMessage';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
 
   import { optionsListApi } from '/@/api/demo/select';
   import { useDebounceFn } from '@vueuse/core';

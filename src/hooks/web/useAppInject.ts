@@ -1,4 +1,4 @@
-import { useAppProviderContext } from 'ent-fe-core/components/Application';
+import { useAppProviderContext } from 'fe-ent-core/components/Application';
 import { computed, unref } from 'vue';
 
 export function useAppInject() {

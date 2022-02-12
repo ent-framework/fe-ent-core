@@ -30,7 +30,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { BasicTable, TableActionType } from 'ent-fe-core/components/Table';
+  import { BasicTable, TableActionType } from 'fe-ent-core/components/Table';
   import { getBasicColumns, getBasicShortColumns } from './tableData';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { demoListApi } from '/@/api/demo/table';

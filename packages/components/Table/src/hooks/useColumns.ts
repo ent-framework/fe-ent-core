@@ -5,9 +5,9 @@ import { computed, Ref, ref, toRaw, unref, watch } from 'vue';
 import { renderEditCell } from '../components/editable';
 import { usePermission } from '/@/hooks/web/usePermission';
 import { useI18n } from '/@/hooks/web/useI18n';
-import { isArray, isBoolean, isFunction, isMap, isString } from 'ent-fe-core/utils/is';
+import { isArray, isBoolean, isFunction, isMap, isString } from 'fe-ent-core/utils/is';
 import { cloneDeep, isEqual } from 'lodash-es';
-import { formatToDate } from 'ent-fe-core/utils/dateUtil';
+import { formatToDate } from 'fe-ent-core/utils/dateUtil';
 import { ACTION_COLUMN_FLAG, DEFAULT_ALIGN, INDEX_COLUMN_FLAG, PAGE_SIZE } from '../const';
 
 function handleItem(item: BasicColumn, ellipsis: boolean) {

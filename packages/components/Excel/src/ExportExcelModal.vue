@@ -16,8 +16,8 @@
 <script lang="ts">
   import type { ExportModalResult } from './typing';
   import { defineComponent } from 'vue';
-  import { BasicModal, useModalInner } from 'ent-fe-core/components//Modal';
-  import { BasicForm, FormSchema, useForm } from 'ent-fe-core/components//Form/index';
+  import { BasicModal, useModalInner } from 'fe-ent-core/components//Modal';
+  import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components//Form/index';
 
   import { useI18n } from '/@/hooks/web/useI18n';
 

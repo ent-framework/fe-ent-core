@@ -4,7 +4,7 @@ import type { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
 
 import { cloneDeep } from 'lodash-es';
 import { unref } from 'vue';
-import { forEach } from 'ent-fe-core/utils/helper/treeHelper';
+import { forEach } from 'fe-ent-core/utils/helper/treeHelper';
 
 export function useTree(
   treeDataRef: Ref<TreeDataItem[]>,

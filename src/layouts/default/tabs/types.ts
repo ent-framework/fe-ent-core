@@ -1,4 +1,4 @@
-import type { DropMenu } from 'ent-fe-core/components/Dropdown/index';
+import type { DropMenu } from 'fe-ent-core/components/Dropdown/index';
 import type { RouteLocationNormalized } from 'vue-router';
 
 export enum TabContentEnum {

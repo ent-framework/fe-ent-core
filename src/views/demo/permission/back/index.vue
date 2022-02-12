@@ -28,7 +28,7 @@
   import { RoleEnum } from '/@/enums/roleEnum';
   import { usePermission } from '/@/hooks/web/usePermission';
   import { useUserStore } from '/@/store/modules/user';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
   import { PermissionModeEnum } from '/@/enums/appEnum';
   import { useAppStore } from '/@/store/modules/app';
   import { Alert } from 'ant-design-vue';

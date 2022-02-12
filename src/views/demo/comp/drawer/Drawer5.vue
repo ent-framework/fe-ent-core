@@ -6,7 +6,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicDrawer } from 'ent-fe-core/components/Drawer';
+  import { BasicDrawer } from 'fe-ent-core/components/Drawer';
   export default defineComponent({
     components: { BasicDrawer },
   });

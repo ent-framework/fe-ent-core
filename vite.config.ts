@@ -6,8 +6,7 @@ import { resolve } from 'path';
 import { generateModifyVars } from './build/generate/generateModifyVars';
 import { createProxy } from './build/vite/proxy';
 import { wrapperEnv } from './build/utils';
-import { createVitePlugins } from './build/vite/plugin';
-// import { OUTPUT_DIR } from './build/constant';
+import { createVitePlugins, createBuildTarget } from './build/vite/plugin';
 
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);
@@ -30,6 +29,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = viteEnv;
 
   const isBuild = command === 'build';
+
+  const buildType = process.env.BUILD_TYPE || 'web';
 
   return {
     base: VITE_PUBLIC_PATH,
@@ -63,20 +64,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       // Load proxy configuration from .env
       proxy: createProxy(VITE_PROXY),
     },
-    // build: {
-    //   target: 'es2015',
-    //   outDir: OUTPUT_DIR,
-    //   terserOptions: {
-    //     compress: {
-    //       keep_infinity: true,
-    //       // Used to delete console in production environment
-    //       drop_console: VITE_DROP_CONSOLE,
-    //     },
-    //   },
-    //   // Turning off brotliSize display can slightly reduce packaging time
-    //   brotliSize: false,
-    //   chunkSizeWarningLimit: 2000,
-    // },
+    build: createBuildTarget(viteEnv, isBuild, buildType),
+
     define: {
       // setting vue-i18-next
       // Suppress warning
@@ -94,7 +83,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     },
 
     // The vite plugin used by the project. The quantity is large, so it is separately extracted and managed
-    plugins: createVitePlugins(viteEnv, isBuild),
+    plugins: createVitePlugins(viteEnv, isBuild, buildType),
 
     optimizeDeps: {
       // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly

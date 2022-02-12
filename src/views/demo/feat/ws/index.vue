@@ -55,9 +55,9 @@
 <script lang="ts">
   import { defineComponent, reactive, watchEffect, computed, toRefs } from 'vue';
   import { Tag, Input } from 'ant-design-vue';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
   import { useWebSocket } from '@vueuse/core';
-  import { formatToDateTime } from 'ent-fe-core/utils/dateUtil';
+  import { formatToDateTime } from 'fe-ent-core/utils/dateUtil';
 
   export default defineComponent({
     components: {

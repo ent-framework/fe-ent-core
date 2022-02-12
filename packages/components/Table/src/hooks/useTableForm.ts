@@ -1,8 +1,8 @@
 import type { ComputedRef, Slots } from 'vue';
 import type { BasicTableProps, FetchParams } from '../types/table';
 import { unref, computed } from 'vue';
-import type { FormProps } from 'ent-fe-core/components//Form';
-import { isFunction } from 'ent-fe-core/utils/is';
+import type { FormProps } from 'fe-ent-core/components//Form';
+import { isFunction } from 'fe-ent-core/utils/is';
 
 export function useTableForm(
   propsRef: ComputedRef<BasicTableProps>,

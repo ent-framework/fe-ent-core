@@ -44,8 +44,8 @@
 <script lang="ts">
   import { defineComponent, reactive, ref, toRefs, unref, computed, PropType } from 'vue';
   import { Upload, Alert } from 'ant-design-vue';
-  import { BasicModal, useModalInner } from 'ent-fe-core/components//Modal';
-  //   import { BasicTable, useTable } from 'ent-fe-core/components//Table';
+  import { BasicModal, useModalInner } from 'fe-ent-core/components//Modal';
+  //   import { BasicTable, useTable } from 'fe-ent-core/components//Table';
   // hooks
   import { useUploadType } from './useUpload';
   import { useMessage } from '/@/hooks/web/useMessage';
@@ -55,9 +55,9 @@
   import { createTableColumns, createActionColumn } from './data';
   // utils
   import { checkFileType, checkImgType, getBase64WithFile } from './helper';
-  import { buildUUID } from 'ent-fe-core/utils/uuid';
-  import { isFunction } from 'ent-fe-core/utils/is';
-  import { warn } from 'ent-fe-core/utils/log';
+  import { buildUUID } from 'fe-ent-core/utils/uuid';
+  import { isFunction } from 'fe-ent-core/utils/is';
+  import { warn } from 'fe-ent-core/utils/log';
   import FileList from './FileList.vue';
   import { useI18n } from '/@/hooks/web/useI18n';
 

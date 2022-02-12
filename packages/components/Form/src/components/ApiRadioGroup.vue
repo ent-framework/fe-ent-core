@@ -16,10 +16,10 @@
 <script lang="ts">
   import { defineComponent, PropType, ref, watchEffect, computed, unref, watch } from 'vue';
   import { Radio } from 'ant-design-vue';
-  import { isFunction } from 'ent-fe-core/utils/is';
+  import { isFunction } from 'fe-ent-core/utils/is';
   import { useRuleFormItem } from '/@/hooks/component/useFormItem';
   import { useAttrs } from '/@/hooks/core/useAttrs';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { get, omit } from 'lodash-es';
   import { useI18n } from '/@/hooks/web/useI18n';
   type OptionsItem = { label: string; value: string | number | boolean; disabled?: boolean };

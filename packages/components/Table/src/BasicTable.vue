@@ -41,8 +41,8 @@
 
   import { defineComponent, ref, computed, unref, toRaw, inject, watchEffect } from 'vue';
   import { Table } from 'ant-design-vue';
-  import { BasicForm, useForm } from 'ent-fe-core/components//Form/index';
-  import { PageWrapperFixedHeightKey } from 'ent-fe-core/components//Page';
+  import { BasicForm, useForm } from 'fe-ent-core/components//Form/index';
+  import { PageWrapperFixedHeightKey } from 'fe-ent-core/components//Page';
   import expandIcon from './components/ExpandIcon';
   import HeaderCell from './components/HeaderCell.vue';
   import { InnerHandlers } from './types/table';
@@ -64,8 +64,8 @@
 
   import { omit } from 'lodash-es';
   import { basicProps } from './props';
-  import { isFunction } from 'ent-fe-core/utils/is';
-  import { warn } from 'ent-fe-core/utils/log';
+  import { isFunction } from 'fe-ent-core/utils/is';
+  import { warn } from 'fe-ent-core/utils/log';
 
   export default defineComponent({
     components: {

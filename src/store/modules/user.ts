@@ -5,7 +5,7 @@ import { store } from '/@/store';
 import { RoleEnum } from '/@/enums/roleEnum';
 import { PageEnum } from '/@/enums/pageEnum';
 import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '/@/enums/cacheEnum';
-import { getAuthCache, setAuthCache } from 'ent-fe-core/utils/auth';
+import { getAuthCache, setAuthCache } from 'fe-ent-core/utils/auth';
 import { GetUserInfoModel, LoginParams } from '/@/api/sys/model/userModel';
 import { doLogout, getUserInfo, loginApi } from '/@/api/sys/user';
 import { useI18n } from '/@/hooks/web/useI18n';
@@ -14,7 +14,7 @@ import { router } from '/@/router';
 import { usePermissionStore } from '/@/store/modules/permission';
 import { RouteRecordRaw } from 'vue-router';
 import { PAGE_NOT_FOUND_ROUTE } from '/@/router/routes/basic';
-import { isArray } from 'ent-fe-core/utils/is';
+import { isArray } from 'fe-ent-core/utils/is';
 import { h } from 'vue';
 
 interface UserState {

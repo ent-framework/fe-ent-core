@@ -1,11 +1,11 @@
-import type { BasicColumn, ActionItem } from 'ent-fe-core/components//Table';
+import type { BasicColumn, ActionItem } from 'fe-ent-core/components//Table';
 import { FileItem, PreviewFileItem, UploadResultStatus } from './typing';
 import {
   // checkImgType,
   isImgTypeByName,
 } from './helper';
 import { Progress, Tag } from 'ant-design-vue';
-import TableAction from 'ent-fe-core/components//Table/src/components/TableAction.vue';
+import TableAction from 'fe-ent-core/components//Table/src/components/TableAction.vue';
 import ThumbUrl from './ThumbUrl.vue';
 import { useI18n } from '/@/hooks/web/useI18n';
 

@@ -18,8 +18,8 @@
   import { useAppStore } from '/@/store/modules/app';
   import { createFlowChartContext } from './useFlowContext';
   import { toLogicFlowData } from './adpterForTurbo';
-  import { useModal, BasicModal } from 'ent-fe-core/components//Modal';
-  import { JsonPreview } from 'ent-fe-core/components//CodeEditor';
+  import { useModal, BasicModal } from 'fe-ent-core/components//Modal';
+  import { JsonPreview } from 'fe-ent-core/components//CodeEditor';
   import { configDefaultDndPanel } from './config';
   import '@logicflow/core/dist/style/index.css';
   import '@logicflow/extension/lib/style/index.css';

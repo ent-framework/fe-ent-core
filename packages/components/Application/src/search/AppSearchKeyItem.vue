@@ -4,7 +4,7 @@
   </span>
 </template>
 <script lang="ts" setup>
-  import { Icon } from 'ent-fe-core/components//Icon';
+  import { Icon } from 'fe-ent-core/components//Icon';
   defineProps({
     icon: String,
   });

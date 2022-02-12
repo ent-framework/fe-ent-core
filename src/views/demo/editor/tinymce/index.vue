@@ -5,8 +5,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { Tinymce } from 'ent-fe-core/components/Tinymce/index';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { Tinymce } from 'fe-ent-core/components/Tinymce/index';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
     components: { Tinymce, PageWrapper },

@@ -9,7 +9,7 @@ import type {
 } from './typing';
 import type { ContextMenuItem } from '/@/hooks/web/useContextMenu';
 import type { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
-import { propTypes } from 'ent-fe-core/utils/propTypes';
+import { propTypes } from 'fe-ent-core/utils/propTypes';
 
 export const basicProps = {
   value: {

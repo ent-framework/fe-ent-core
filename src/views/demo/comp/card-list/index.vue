@@ -9,9 +9,9 @@
   </PageWrapper>
 </template>
 <script lang="ts" setup>
-  import { CardList } from 'ent-fe-core/components/CardList';
-  import { Button } from 'ent-fe-core/components/Button';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { CardList } from 'fe-ent-core/components/CardList';
+  import { Button } from 'fe-ent-core/components/Button';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
   import { demoListApi } from '/@/api/demo/table';
   import { useMessage } from '/@/hooks/web/useMessage';
   const { notification } = useMessage();

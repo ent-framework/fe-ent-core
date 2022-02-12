@@ -19,10 +19,10 @@
 </template>
 <script lang="ts" setup>
   import type { LocaleType } from '/#/config';
-  import type { DropMenu } from 'ent-fe-core/components//Dropdown';
+  import type { DropMenu } from 'fe-ent-core/components//Dropdown';
   import { ref, watchEffect, unref, computed } from 'vue';
-  import { Dropdown } from 'ent-fe-core/components//Dropdown';
-  import { Icon } from 'ent-fe-core/components//Icon';
+  import { Dropdown } from 'fe-ent-core/components//Dropdown';
+  import { Icon } from 'fe-ent-core/components//Icon';
   import { useLocale } from '/@/locales/useLocale';
   import { localeList } from '/@/settings/localeSetting';
 

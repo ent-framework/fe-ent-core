@@ -46,13 +46,13 @@
   import { useHeaderSetting } from '/@/hooks/setting/useHeaderSetting';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { useModal } from 'ent-fe-core/components/Modal';
+  import { useModal } from 'fe-ent-core/components/Modal';
 
   import headerImg from '/@/assets/images/header.jpg';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
-  import { openWindow } from 'ent-fe-core/utils';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
+  import { openWindow } from 'fe-ent-core/utils';
 
-  import { createAsyncComponent } from 'ent-fe-core/utils/factory/createAsyncComponent';
+  import { createAsyncComponent } from 'fe-ent-core/utils/factory/createAsyncComponent';
 
   type MenuEvent = 'logout' | 'doc' | 'lock';
 

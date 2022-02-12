@@ -112,14 +112,14 @@
   } from 'vue';
   import { Tooltip, Popover, Checkbox, Divider } from 'ant-design-vue';
   import { SettingOutlined, DragOutlined } from '@ant-design/icons-vue';
-  import { Icon } from 'ent-fe-core/components//Icon';
-  import { ScrollContainer } from 'ent-fe-core/components//Container';
+  import { Icon } from 'fe-ent-core/components//Icon';
+  import { ScrollContainer } from 'fe-ent-core/components//Container';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { useTableContext } from '../../hooks/useTableContext';
   import { useDesign } from '/@/hooks/web/useDesign';
   import { useSortable } from '/@/hooks/web/useSortable';
-  import { isFunction, isNullAndUnDef } from 'ent-fe-core/utils/is';
-  import { getPopupContainer as getParentContainer } from 'ent-fe-core/utils';
+  import { isFunction, isNullAndUnDef } from 'fe-ent-core/utils/is';
+  import { getPopupContainer as getParentContainer } from 'fe-ent-core/utils';
   import { omit } from 'lodash-es';
 
   interface State {

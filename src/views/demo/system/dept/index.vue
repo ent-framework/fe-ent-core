@@ -29,10 +29,10 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import { BasicTable, useTable, TableAction } from 'ent-fe-core/components/Table';
+  import { BasicTable, useTable, TableAction } from 'fe-ent-core/components/Table';
   import { getDeptList } from '/@/api/demo/system';
 
-  import { useModal } from 'ent-fe-core/components/Modal';
+  import { useModal } from 'fe-ent-core/components/Modal';
   import DeptModal from './DeptModal.vue';
 
   import { columns, searchFormSchema } from './dept.data';

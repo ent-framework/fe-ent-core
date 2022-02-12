@@ -6,8 +6,8 @@
 <script lang="ts" setup>
   import type { PropType } from 'vue';
   import type { ErrorLogInfo } from '/#/store';
-  import { BasicModal } from 'ent-fe-core/components/Modal/index';
-  import { Description, useDescription } from 'ent-fe-core/components/Description/index';
+  import { BasicModal } from 'fe-ent-core/components/Modal/index';
+  import { Description, useDescription } from 'fe-ent-core/components/Description/index';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { getDescSchema } from './data';
 

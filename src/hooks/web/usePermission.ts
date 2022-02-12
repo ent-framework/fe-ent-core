@@ -14,7 +14,7 @@ import { PermissionModeEnum } from '/@/enums/appEnum';
 import { RoleEnum } from '/@/enums/roleEnum';
 
 import { intersection } from 'lodash-es';
-import { isArray } from 'ent-fe-core/utils/is';
+import { isArray } from 'fe-ent-core/utils/is';
 import { useMultipleTabStore } from '/@/store/modules/multipleTab';
 
 // User permissions related operations

@@ -1,6 +1,6 @@
 import { ref, watch } from 'vue';
 
-import { isDef } from 'ent-fe-core/utils/is';
+import { isDef } from 'fe-ent-core/utils/is';
 interface Options {
   target?: HTMLElement;
 }

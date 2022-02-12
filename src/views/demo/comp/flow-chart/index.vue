@@ -10,8 +10,8 @@
 </template>
 
 <script lang="ts">
-  import { FlowChart } from 'ent-fe-core/components/FlowChart';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { FlowChart } from 'fe-ent-core/components/FlowChart';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
 
   import demoData from './dataTurbo.json';
   export default {

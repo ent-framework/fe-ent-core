@@ -1,4 +1,4 @@
-import { withInstall } from 'ent-fe-core/utils';
+import { withInstall } from 'fe-ent-core/utils';
 import cropperImage from './src/Cropper.vue';
 import avatarCropper from './src/CropperAvatar.vue';
 

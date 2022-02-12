@@ -17,7 +17,7 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { Select } from 'ant-design-vue';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
   import {
     FadeTransition,
     ScaleTransition,
@@ -32,7 +32,7 @@
     ScaleRotateTransition,
     ExpandXTransition,
     ExpandTransition,
-  } from 'ent-fe-core/components/Transition';
+  } from 'fe-ent-core/components/Transition';
 
   const transitionList = [
     'Fade',

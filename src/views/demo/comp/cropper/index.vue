@@ -33,9 +33,9 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
-  import { CollapseContainer } from 'ent-fe-core/components/Container';
-  import { CropperImage, CropperAvatar } from 'ent-fe-core/components/Cropper';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { CollapseContainer } from 'fe-ent-core/components/Container';
+  import { CropperImage, CropperAvatar } from 'fe-ent-core/components/Cropper';
   import { uploadApi } from '/@/api/sys/upload';
   import img from '/@/assets/images/header.jpg';
   import { useUserStore } from '/@/store/modules/user';

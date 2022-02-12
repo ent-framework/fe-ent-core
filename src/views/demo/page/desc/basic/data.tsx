@@ -1,6 +1,6 @@
-import { DescItem } from 'ent-fe-core/components/Description/index';
-import { BasicColumn } from 'ent-fe-core/components/Table/src/types/table';
-import { Button } from 'ent-fe-core/components/Button';
+import { DescItem } from 'fe-ent-core/components/Description/index';
+import { BasicColumn } from 'fe-ent-core/components/Table/src/types/table';
+import { Button } from 'fe-ent-core/components/Button';
 
 import { Badge } from 'ant-design-vue';
 

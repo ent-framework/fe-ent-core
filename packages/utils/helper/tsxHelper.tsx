@@ -1,5 +1,5 @@
 import { Slots } from 'vue';
-import { isFunction } from 'ent-fe-core/utils/is';
+import { isFunction } from 'fe-ent-core/utils/is';
 
 /**
  * @description:  Get slot to prevent empty error

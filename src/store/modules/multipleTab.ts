@@ -5,11 +5,11 @@ import { defineStore } from 'pinia';
 import { store } from '/@/store';
 
 import { useGo, useRedo } from '/@/hooks/web/usePage';
-import { Persistent } from 'ent-fe-core/utils/cache/persistent';
+import { Persistent } from 'fe-ent-core/utils/cache/persistent';
 
 import { PageEnum } from '/@/enums/pageEnum';
 import { PAGE_NOT_FOUND_ROUTE, REDIRECT_ROUTE } from '/@/router/routes/basic';
-import { getRawRoute } from 'ent-fe-core/utils';
+import { getRawRoute } from 'fe-ent-core/utils';
 import { MULTIPLE_TABS_KEY } from '/@/enums/cacheEnum';
 
 import projectSetting from '/@/settings/projectSetting';

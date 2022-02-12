@@ -1,4 +1,4 @@
-import { withInstall } from 'ent-fe-core/utils';
+import { withInstall } from 'fe-ent-core/utils';
 import countButton from './src/CountButton.vue';
 import countdownInput from './src/CountdownInput.vue';
 

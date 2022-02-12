@@ -65,11 +65,11 @@
   } from 'vue';
   import ImgUpload from './ImgUpload.vue';
   import { toolbar, plugins } from './tinymce';
-  import { buildShortUUID } from 'ent-fe-core/utils/uuid';
+  import { buildShortUUID } from 'fe-ent-core/utils/uuid';
   import { bindHandlers } from './helper';
   import { onMountedOrActivated } from '/@/hooks/core/onMountedOrActivated';
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { isNumber } from 'ent-fe-core/utils/is';
+  import { isNumber } from 'fe-ent-core/utils/is';
   import { useLocale } from '/@/locales/useLocale';
   import { useAppStore } from '/@/store/modules/app';
 

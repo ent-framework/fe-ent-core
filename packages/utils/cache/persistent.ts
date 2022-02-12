@@ -2,7 +2,7 @@ import type { LockInfo, UserInfo } from '/#/store';
 import type { ProjectConfig } from '/#/config';
 import type { RouteLocationNormalized } from 'vue-router';
 
-import { createLocalStorage, createSessionStorage } from 'ent-fe-core/utils/cache';
+import { createLocalStorage, createSessionStorage } from 'fe-ent-core/utils/cache';
 import { Memory } from './memory';
 import {
   TOKEN_KEY,

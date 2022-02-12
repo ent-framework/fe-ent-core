@@ -36,7 +36,7 @@
   import { defineComponent, computed } from 'vue';
   import { useDesign } from '/@/hooks/web/useDesign';
   import { Image, Badge } from 'ant-design-vue';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
 
   export default defineComponent({
     name: 'TableImage',

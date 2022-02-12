@@ -11,8 +11,8 @@
 
   import { computed, defineComponent, getCurrentInstance } from 'vue';
 
-  import Icon from 'ent-fe-core/components/Icon/index';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import Icon from 'fe-ent-core/components/Icon/index';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
 
   export default defineComponent({
     name: 'DropdownMenuItem',

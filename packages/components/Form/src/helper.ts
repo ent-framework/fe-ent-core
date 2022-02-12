@@ -1,8 +1,8 @@
 import type { ValidationRule } from 'ant-design-vue/lib/form/Form';
 import type { ComponentType } from './types/index';
 import { useI18n } from '/@/hooks/web/useI18n';
-import { dateUtil } from 'ent-fe-core/utils/dateUtil';
-import { isNumber, isObject } from 'ent-fe-core/utils/is';
+import { dateUtil } from 'fe-ent-core/utils/dateUtil';
+import { isNumber, isObject } from 'fe-ent-core/utils/is';
 
 const { t } = useI18n();
 

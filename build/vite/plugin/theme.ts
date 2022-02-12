@@ -53,6 +53,7 @@ export function configThemePlugin(isBuild: boolean): Plugin[] {
       ],
       filter: (id) => (isBuild ? !id.endsWith('antd.less') : true),
       // extractCss: false,
+      fileName: 'app-antd-dark-theme-style.css',
       darkModifyVars: {
         ...generateModifyVars(true),
         'text-color': '#c9d1d9',

@@ -1,4 +1,4 @@
-import { withInstall } from 'ent-fe-core/utils/index';
+import { withInstall } from 'fe-ent-core/utils/index';
 import basicDragVerify from './src/DragVerify.vue';
 import rotateDragVerify from './src/ImgRotate.vue';
 

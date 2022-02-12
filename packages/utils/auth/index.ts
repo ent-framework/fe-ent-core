@@ -1,4 +1,4 @@
-import { Persistent, BasicKeys } from 'ent-fe-core/utils/cache/persistent';
+import { Persistent, BasicKeys } from 'fe-ent-core/utils/cache/persistent';
 import { CacheTypeEnum } from '/@/enums/cacheEnum';
 import projectSetting from '/@/settings/projectSetting';
 import { TOKEN_KEY } from '/@/enums/cacheEnum';

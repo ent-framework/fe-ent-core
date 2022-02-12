@@ -34,9 +34,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import Icon from 'ent-fe-core/components/Icon/index';
+  import Icon from 'fe-ent-core/components/Icon/index';
   import { cardList } from './data';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
   import { Card, Row, Col, List } from 'ant-design-vue';
 
   export default defineComponent({

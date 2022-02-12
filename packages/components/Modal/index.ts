@@ -1,4 +1,4 @@
-import { withInstall } from 'ent-fe-core/utils';
+import { withInstall } from 'fe-ent-core/utils';
 import './src/index.less';
 import basicModal from './src/BasicModal.vue';
 

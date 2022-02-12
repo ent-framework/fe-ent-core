@@ -1,4 +1,4 @@
-import { dateUtil } from 'ent-fe-core/utils/dateUtil';
+import { dateUtil } from 'fe-ent-core/utils/dateUtil';
 import { reactive, toRefs } from 'vue';
 import { useLocaleStore } from '/@/store/modules/locale';
 import { tryOnMounted, tryOnUnmounted } from '@vueuse/core';

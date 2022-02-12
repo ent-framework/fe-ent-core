@@ -1,4 +1,4 @@
-import { withInstall } from 'ent-fe-core/utils';
+import { withInstall } from 'fe-ent-core/utils';
 import impExcel from './src/ImportExcel.vue';
 import expExcelModal from './src/ExportExcelModal.vue';
 

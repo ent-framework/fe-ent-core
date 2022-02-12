@@ -29,7 +29,7 @@
   import Step1 from './Step1.vue';
   import Step2 from './Step2.vue';
   import Step3 from './Step3.vue';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
   import { Steps } from 'ant-design-vue';
 
   export default defineComponent({

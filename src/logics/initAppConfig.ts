@@ -15,11 +15,11 @@ import { changeTheme } from '/@/logics/theme';
 import { useAppStore } from '/@/store/modules/app';
 import { useLocaleStore } from '/@/store/modules/locale';
 
-import { getCommonStoragePrefix, getStorageShortName } from 'ent-fe-core/utils/env';
+import { getCommonStoragePrefix, getStorageShortName } from 'fe-ent-core/utils/env';
 
 import { primaryColor } from '../../build/config/themeConfig';
-import { Persistent } from 'ent-fe-core/utils/cache/persistent';
-import { deepMerge } from 'ent-fe-core/utils';
+import { Persistent } from 'fe-ent-core/utils/cache/persistent';
+import { deepMerge } from 'fe-ent-core/utils';
 import { ThemeEnum } from '/@/enums/appEnum';
 
 // Initial project configuration

@@ -9,7 +9,7 @@ import {
   TimePicker,
 } from 'ant-design-vue';
 import type { ComponentType } from './types/componentType';
-import { ApiSelect, ApiTreeSelect } from 'ent-fe-core/components//Form';
+import { ApiSelect, ApiTreeSelect } from 'fe-ent-core/components//Form';
 
 const componentMap = new Map<ComponentType, Component>();
 

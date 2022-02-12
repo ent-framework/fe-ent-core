@@ -8,7 +8,7 @@
   import { useUserStoreWithOut } from '/@/store/modules/user';
 
   import { SettingButtonPositionEnum } from '/@/enums/appEnum';
-  import { createAsyncComponent } from 'ent-fe-core/utils/factory/createAsyncComponent';
+  import { createAsyncComponent } from 'fe-ent-core/utils/factory/createAsyncComponent';
 
   import SessionTimeoutLogin from '/@/views/sys/login/SessionTimeoutLogin.vue';
   export default defineComponent({

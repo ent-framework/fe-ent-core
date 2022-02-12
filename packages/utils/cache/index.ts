@@ -1,4 +1,4 @@
-import { getStorageShortName } from 'ent-fe-core/utils/env';
+import { getStorageShortName } from 'fe-ent-core/utils/env';
 import { createStorage as create, CreateStorageParams } from './storageCache';
 import { enableStorageEncryption } from '/@/settings/encryptionSetting';
 import { DEFAULT_CACHE_TIME } from '/@/settings/encryptionSetting';

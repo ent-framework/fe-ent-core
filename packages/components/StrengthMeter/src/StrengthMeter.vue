@@ -21,9 +21,9 @@
 <script lang="ts">
   import { defineComponent, computed, ref, watch, unref, watchEffect } from 'vue';
   import { Input } from 'ant-design-vue';
-  import { zxcvbn } from '@zxcvbn-ts/core';
+  import { zxcvbn, ZxcvbnResult } from '@zxcvbn-ts/core';
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
 
   export default defineComponent({
     name: 'StrengthMeter',
@@ -42,7 +42,8 @@
         const { disabled } = props;
         if (disabled) return -1;
         const innerValue = unref(innerValueRef);
-        const score = innerValue ? zxcvbn(unref(innerValueRef)).score : -1;
+        const zxcvbnResult = zxcvbn(unref(innerValueRef));
+        const score = innerValue && (<ZxcvbnResult>zxcvbnResult).score ? (<ZxcvbnResult>zxcvbnResult).score : -1;
         emit('score-change', score);
         return score;
       });

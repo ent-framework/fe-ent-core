@@ -12,8 +12,8 @@ import {
   watchEffect,
 } from 'vue';
 import { useTimeoutFn } from '/@/hooks/core/useTimeout';
-import { buildUUID } from 'ent-fe-core/utils/uuid';
-import { isFunction, isBoolean } from 'ent-fe-core/utils/is';
+import { buildUUID } from 'fe-ent-core/utils/uuid';
+import { isFunction, isBoolean } from 'fe-ent-core/utils/is';
 import { get, cloneDeep } from 'lodash-es';
 import { FETCH_SETTING, ROW_KEY, PAGE_SIZE } from '../const';
 

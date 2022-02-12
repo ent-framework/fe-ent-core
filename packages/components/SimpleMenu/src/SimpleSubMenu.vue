@@ -45,13 +45,13 @@
 
   import { defineComponent, computed } from 'vue';
   import { useDesign } from '/@/hooks/web/useDesign';
-  import Icon from 'ent-fe-core/components//Icon/index';
+  import Icon from 'fe-ent-core/components//Icon/index';
 
   import MenuItem from './components/MenuItem.vue';
   import SubMenu from './components/SubMenuItem.vue';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { useI18n } from '/@/hooks/web/useI18n';
-  import { createAsyncComponent } from 'ent-fe-core/utils/factory/createAsyncComponent';
+  import { createAsyncComponent } from 'fe-ent-core/utils/factory/createAsyncComponent';
 
   export default defineComponent({
     name: 'SimpleSubMenu',

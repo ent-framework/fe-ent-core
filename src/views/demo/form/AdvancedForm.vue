@@ -11,9 +11,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicForm, FormSchema, useForm } from 'ent-fe-core/components/Form/index';
-  import { CollapseContainer } from 'ent-fe-core/components/Container';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
+  import { CollapseContainer } from 'fe-ent-core/components/Container';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
 
   const getSchamas = (): FormSchema[] => {
     return [

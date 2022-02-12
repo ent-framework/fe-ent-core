@@ -21,16 +21,16 @@
   import { defineComponent, ref, watchEffect } from 'vue';
 
   import { Breadcrumb } from 'ant-design-vue';
-  import Icon from 'ent-fe-core/components/Icon';
+  import Icon from 'fe-ent-core/components/Icon';
 
   import { useDesign } from '/@/hooks/web/useDesign';
   import { useRootSetting } from '/@/hooks/setting/useRootSetting';
   import { useGo } from '/@/hooks/web/usePage';
   import { useI18n } from '/@/hooks/web/useI18n';
 
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
-  import { isString } from 'ent-fe-core/utils/is';
-  import { filter } from 'ent-fe-core/utils/helper/treeHelper';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
+  import { isString } from 'fe-ent-core/utils/is';
+  import { filter } from 'fe-ent-core/utils/helper/treeHelper';
   import { getMenus } from '/@/router/menus';
 
   import { REDIRECT_NAME } from '/@/router/constant';

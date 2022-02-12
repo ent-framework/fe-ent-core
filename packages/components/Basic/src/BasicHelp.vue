@@ -3,9 +3,9 @@
   import { defineComponent, computed, unref } from 'vue';
   import { Tooltip } from 'ant-design-vue';
   import { InfoCircleOutlined } from '@ant-design/icons-vue';
-  import { getPopupContainer } from 'ent-fe-core/utils';
-  import { isString, isArray } from 'ent-fe-core/utils/is';
-  import { getSlot } from 'ent-fe-core/utils/helper/tsxHelper';
+  import { getPopupContainer } from 'fe-ent-core/utils';
+  import { isString, isArray } from 'fe-ent-core/utils/is';
+  import { getSlot } from 'fe-ent-core/utils/helper/tsxHelper';
   import { useDesign } from '/@/hooks/web/useDesign';
 
   const props = {

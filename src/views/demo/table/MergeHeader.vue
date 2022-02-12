@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTable, useTable } from 'ent-fe-core/components/Table';
+  import { BasicTable, useTable } from 'fe-ent-core/components/Table';
   import { getMergeHeaderColumns } from './tableData';
 
   import { demoListApi } from '/@/api/demo/table';

@@ -6,7 +6,7 @@
   import { defineComponent } from 'vue';
   import { RoleEnum } from '/@/enums/roleEnum';
   import { usePermission } from '/@/hooks/web/usePermission';
-  import { getSlot } from 'ent-fe-core/utils/helper/tsxHelper';
+  import { getSlot } from 'fe-ent-core/utils/helper/tsxHelper';
 
   export default defineComponent({
     name: 'Authority',

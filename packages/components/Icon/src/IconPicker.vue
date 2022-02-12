@@ -78,13 +78,13 @@
 <script lang="ts" setup>
   import { ref, watchEffect, watch, unref } from 'vue';
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { ScrollContainer } from 'ent-fe-core/components//Container';
+  import { ScrollContainer } from 'fe-ent-core/components//Container';
   import { Input, Popover, Pagination, Empty } from 'ant-design-vue';
   import Icon from './Icon.vue';
   import SvgIcon from './SvgIcon.vue';
 
   import iconsData from '../data/icons.data';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { usePagination } from '/@/hooks/web/usePagination';
   import { useDebounceFn } from '@vueuse/core';
   import { useI18n } from '/@/hooks/web/useI18n';

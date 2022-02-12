@@ -44,11 +44,11 @@
   //import type { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
   import { defineComponent, computed, PropType } from 'vue';
   import { Form, Col } from 'ant-design-vue';
-  import { Button, ButtonProps } from 'ent-fe-core/components//Button';
-  import { BasicArrow } from 'ent-fe-core/components//Basic';
+  import { Button, ButtonProps } from 'fe-ent-core/components//Button';
+  import { BasicArrow } from 'fe-ent-core/components//Basic';
   import { useFormContext } from '../hooks/useFormContext';
   import { useI18n } from '/@/hooks/web/useI18n';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
 
   type ButtonOptions = Partial<ButtonProps> & { text: string };
 

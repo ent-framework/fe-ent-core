@@ -8,7 +8,7 @@ import {
   inject,
   Ref,
 } from 'vue';
-import { on, off } from 'ent-fe-core/utils/domUtils';
+import { on, off } from 'fe-ent-core/utils/domUtils';
 
 import { renderThumbStyle, BAR_MAP } from './util';
 

@@ -47,17 +47,17 @@
   import FormAction from './components/FormAction.vue';
 
   import { dateItemType } from './helper';
-  import { dateUtil } from 'ent-fe-core/utils/dateUtil';
+  import { dateUtil } from 'fe-ent-core/utils/dateUtil';
 
   // import { cloneDeep } from 'lodash-es';
-  import { deepMerge } from 'ent-fe-core/utils';
+  import { deepMerge } from 'fe-ent-core/utils';
 
   import { useFormValues } from './hooks/useFormValues';
   import useAdvanced from './hooks/useAdvanced';
   import { useFormEvents } from './hooks/useFormEvents';
   import { createFormContext } from './hooks/useFormContext';
   import { useAutoFocus } from './hooks/useAutoFocus';
-  import { useModalContext } from 'ent-fe-core/components//Modal';
+  import { useModalContext } from 'fe-ent-core/components//Modal';
 
   import { basicProps } from './props';
   import { useDesign } from '/@/hooks/web/useDesign';

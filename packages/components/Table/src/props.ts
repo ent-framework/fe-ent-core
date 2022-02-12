@@ -9,9 +9,9 @@ import type {
   TableRowSelection,
   SizeType,
 } from './types/table';
-import type { FormProps } from 'ent-fe-core/components//Form';
+import type { FormProps } from 'fe-ent-core/components//Form';
 import { DEFAULT_FILTER_FN, DEFAULT_SORT_FN, FETCH_SETTING, DEFAULT_SIZE } from './const';
-import { propTypes } from 'ent-fe-core/utils/propTypes';
+import { propTypes } from 'fe-ent-core/utils/propTypes';
 
 export const basicProps = {
   clickToRowSelect: propTypes.bool.def(true),

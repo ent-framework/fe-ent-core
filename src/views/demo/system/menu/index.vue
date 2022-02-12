@@ -29,10 +29,10 @@
 <script lang="ts">
   import { defineComponent, nextTick } from 'vue';
 
-  import { BasicTable, useTable, TableAction } from 'ent-fe-core/components/Table';
+  import { BasicTable, useTable, TableAction } from 'fe-ent-core/components/Table';
   import { getMenuList } from '/@/api/demo/system';
 
-  import { useDrawer } from 'ent-fe-core/components/Drawer';
+  import { useDrawer } from 'fe-ent-core/components/Drawer';
   import MenuDrawer from './MenuDrawer.vue';
 
   import { columns, searchFormSchema } from './menu.data';

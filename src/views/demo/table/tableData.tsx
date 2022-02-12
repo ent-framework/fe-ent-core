@@ -1,5 +1,5 @@
-import { FormProps, FormSchema } from 'ent-fe-core/components/Table';
-import { BasicColumn } from 'ent-fe-core/components/Table/src/types/table';
+import { FormProps, FormSchema } from 'fe-ent-core/components/Table';
+import { BasicColumn } from 'fe-ent-core/components/Table/src/types/table';
 
 export function getBasicColumns(): BasicColumn[] {
   return [

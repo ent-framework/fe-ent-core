@@ -10,7 +10,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTable, useTable, BasicColumn } from 'ent-fe-core/components/Table';
+  import { BasicTable, useTable, BasicColumn } from 'fe-ent-core/components/Table';
   import { optionsListApi } from '/@/api/demo/select';
 
   import { demoListApi } from '/@/api/demo/table';

@@ -82,10 +82,10 @@
   import type { CSSProperties } from 'vue';
   import { computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
   import type { RouteLocationNormalized } from 'vue-router';
-  import { ScrollContainer } from 'ent-fe-core/components/Container';
-  import { SimpleMenu, SimpleMenuTag } from 'ent-fe-core/components/SimpleMenu';
-  import { Icon } from 'ent-fe-core/components/Icon';
-  import { AppLogo } from 'ent-fe-core/components/Application';
+  import { ScrollContainer } from 'fe-ent-core/components/Container';
+  import { SimpleMenu, SimpleMenuTag } from 'fe-ent-core/components/SimpleMenu';
+  import { Icon } from 'fe-ent-core/components/Icon';
+  import { AppLogo } from 'fe-ent-core/components/Application';
   import { useMenuSetting } from '/@/hooks/setting/useMenuSetting';
   import { usePermissionStore } from '/@/store/modules/permission';
   import { useDragLine } from './useLayoutSider';

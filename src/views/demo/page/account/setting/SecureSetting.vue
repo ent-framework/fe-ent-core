@@ -22,7 +22,7 @@
 <script lang="ts">
   import { List } from 'ant-design-vue';
   import { defineComponent } from 'vue';
-  import { CollapseContainer } from 'ent-fe-core/components/Container/index';
+  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
 
   import { secureSettingList } from './data';
 

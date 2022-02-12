@@ -11,7 +11,7 @@
     CSSProperties,
   } from 'vue';
   import { useEventListener } from '/@/hooks/event/useEventListener';
-  import { getSlot } from 'ent-fe-core/utils/helper/tsxHelper';
+  import { getSlot } from 'fe-ent-core/utils/helper/tsxHelper';
 
   type NumberOrNumberString = PropType<string | number | undefined>;
 

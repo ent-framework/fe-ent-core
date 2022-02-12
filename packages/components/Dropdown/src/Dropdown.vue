@@ -39,9 +39,9 @@
   import { computed, PropType } from 'vue';
   import type { DropMenu } from './typing';
   import { Dropdown, Menu, Popconfirm } from 'ant-design-vue';
-  import { Icon } from 'ent-fe-core/components//Icon';
+  import { Icon } from 'fe-ent-core/components//Icon';
   import { omit } from 'lodash-es';
-  import { isFunction } from 'ent-fe-core/utils/is';
+  import { isFunction } from 'fe-ent-core/utils/is';
 
   const ADropdown = Dropdown;
   const AMenu = Menu;

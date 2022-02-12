@@ -15,8 +15,14 @@ import { configThemePlugin } from './theme';
 import { configImageminPlugin } from './imagemin';
 import { configSvgIconsPlugin } from './svgSprite';
 import { configHmrPlugin } from './hmr';
+import dts from 'vite-plugin-dts';
+import { OUTPUT_DIR } from '../../constant';
+import { getRootPath } from '../../utils';
+import chalk from 'chalk';
 
-export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
+export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean, buildType: string) {
+  const isBuildLib = (buildType == 'lib');
+  console.log(chalk.cyan(`[build type: ${isBuild}, build lib: ${isBuildLib}]`));
   const {
     VITE_USE_IMAGEMIN,
     VITE_USE_MOCK,
@@ -44,7 +50,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
   VITE_LEGACY && isBuild && vitePlugins.push(legacy());
 
   // vite-plugin-html
-  vitePlugins.push(configHtmlPlugin(viteEnv, isBuild));
+  !isBuildLib && vitePlugins.push(configHtmlPlugin(viteEnv, isBuild));
 
   // vite-plugin-svg-icons
   vitePlugins.push(configSvgIconsPlugin(isBuild));
@@ -76,7 +82,52 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 
     // vite-plugin-pwa
     vitePlugins.push(configPwaConfig(viteEnv));
+    // dts plugin
+    vitePlugins.push(dts())
   }
 
   return vitePlugins;
+}
+
+export function createBuildTarget(viteEnv: ViteEnv, isBuild: boolean, buildType: string) {
+  const { VITE_DROP_CONSOLE } = viteEnv;
+  if (buildType == 'web' && isBuild) {
+    return {
+      target: 'es2015',
+      outDir: OUTPUT_DIR,
+      terserOptions: {
+        compress: {
+          keep_infinity: true,
+          // Used to delete console in production environment
+          drop_console: VITE_DROP_CONSOLE,
+        },
+      },
+      // Turning off brotliSize display can slightly reduce packaging time
+      brotliSize: false,
+      chunkSizeWarningLimit: 2000,
+    }
+  }
+  //构建lib 包
+  return {
+    target: 'es2015',
+    outDir: 'lib',
+    assetsDir: 'assets',
+    minify: false,
+    emptyOutDir: true,
+    lib: {
+      entry: getRootPath('./packages/index.ts'),
+      name: 'MyEnt',
+      fileName: (format) => `my-ent.${format}.js`,
+    },
+    rollupOptions: {
+      // 确保外部化处理那些你不想打包进库的依赖
+      external: ['vue'],
+      output: {
+        // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
+        globals: {
+          vue: 'Vue',
+        },
+      },
+    },
+  }
 }

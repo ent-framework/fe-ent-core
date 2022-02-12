@@ -9,7 +9,7 @@
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
   import { useRouter } from 'vue-router';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
   import { Input } from 'ant-design-vue';
 
   export default defineComponent({

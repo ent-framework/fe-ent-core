@@ -39,7 +39,7 @@
   import PageFooter from './PageFooter.vue';
 
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { omit } from 'lodash-es';
   import { PageHeader } from 'ant-design-vue';
   import { useContentHeight } from '/@/hooks/web/useContentHeight';

@@ -20,7 +20,7 @@
   import { PropType } from 'vue';
   import { defineComponent, ref, computed, unref, getCurrentInstance, watch } from 'vue';
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { useMenuItem } from './useMenu';
   import { Tooltip } from 'ant-design-vue';
   import { useSimpleRootMenuContext } from './useSimpleMenuContext';

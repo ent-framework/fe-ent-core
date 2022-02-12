@@ -1,7 +1,7 @@
 import type { GlobConfig } from '/#/config';
 
-import { warn } from 'ent-fe-core/utils/log';
-import { getAppEnvConfig } from 'ent-fe-core/utils/env';
+import { warn } from 'fe-ent-core/utils/log';
+import { getAppEnvConfig } from 'fe-ent-core/utils/env';
 
 export const useGlobSetting = (): Readonly<GlobConfig> => {
   const {

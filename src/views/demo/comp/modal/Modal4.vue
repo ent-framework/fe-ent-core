@@ -12,8 +12,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, nextTick } from 'vue';
-  import { BasicModal, useModalInner } from 'ent-fe-core/components/Modal';
-  import { BasicForm, FormSchema, useForm } from 'ent-fe-core/components/Form/index';
+  import { BasicModal, useModalInner } from 'fe-ent-core/components/Modal';
+  import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
   const schemas: FormSchema[] = [
     {
       field: 'field1',

@@ -52,10 +52,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { BasicDragVerify, DragVerifyActionType, PassingData } from 'ent-fe-core/components/Verify/index';
+  import { BasicDragVerify, DragVerifyActionType, PassingData } from 'fe-ent-core/components/Verify/index';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { BugOutlined, RightOutlined } from '@ant-design/icons-vue';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
     components: { BasicDragVerify, BugOutlined, RightOutlined, PageWrapper },

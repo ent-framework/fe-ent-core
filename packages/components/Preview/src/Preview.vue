@@ -20,8 +20,8 @@
 
   import { Image } from 'ant-design-vue';
   import { useDesign } from '/@/hooks/web/useDesign';
-  import { propTypes } from 'ent-fe-core/utils/propTypes';
-  import { isString } from 'ent-fe-core/utils/is';
+  import { propTypes } from 'fe-ent-core/utils/propTypes';
+  import { isString } from 'fe-ent-core/utils/is';
 
   interface ImageProps {
     alt?: string;

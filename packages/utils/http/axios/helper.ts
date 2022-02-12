@@ -1,4 +1,4 @@
-import { isObject, isString } from 'ent-fe-core/utils/is';
+import { isObject, isString } from 'fe-ent-core/utils/is';
 
 const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';
 

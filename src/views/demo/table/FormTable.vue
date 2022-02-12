@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { BasicTable, useTable } from 'ent-fe-core/components/Table';
+  import { BasicTable, useTable } from 'fe-ent-core/components/Table';
   import { getBasicColumns, getFormConfig } from './tableData';
   import { Alert } from 'ant-design-vue';
 

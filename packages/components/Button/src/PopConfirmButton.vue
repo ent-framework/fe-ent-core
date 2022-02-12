@@ -2,7 +2,7 @@
   import { computed, defineComponent, h, unref } from 'vue';
   import BasicButton from './BasicButton.vue';
   import { Popconfirm } from 'ant-design-vue';
-  import { extendSlots } from 'ent-fe-core/utils/helper/tsxHelper';
+  import { extendSlots } from 'fe-ent-core/utils/helper/tsxHelper';
   import { omit } from 'lodash-es';
   import { useAttrs } from '/@/hooks/core/useAttrs';
   import { useI18n } from '/@/hooks/web/useI18n';

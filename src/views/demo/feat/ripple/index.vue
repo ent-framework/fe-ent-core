@@ -6,7 +6,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import RippleDirective from '/@/directives/ripple';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
     components: { PageWrapper },

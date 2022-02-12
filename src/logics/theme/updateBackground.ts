@@ -1,4 +1,4 @@
-import { colorIsDark, lighten, darken } from 'ent-fe-core/utils/color';
+import { colorIsDark, lighten, darken } from 'fe-ent-core/utils/color';
 import { useAppStore } from '/@/store/modules/app';
 import { ThemeEnum } from '/@/enums/appEnum';
 import { setCssVar } from './util';

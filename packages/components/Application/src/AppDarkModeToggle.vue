@@ -7,7 +7,7 @@
 </template>
 <script lang="ts" setup>
   import { computed, unref } from 'vue';
-  import { SvgIcon } from 'ent-fe-core/components//Icon';
+  import { SvgIcon } from 'fe-ent-core/components//Icon';
   import { useDesign } from '/@/hooks/web/useDesign';
   import { useRootSetting } from '/@/hooks/setting/useRootSetting';
   import { updateHeaderBgColor, updateSidebarBgColor } from '/@/logics/theme/updateBackground';

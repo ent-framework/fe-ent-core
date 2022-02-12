@@ -1,4 +1,4 @@
-import { withInstall } from 'ent-fe-core/utils';
+import { withInstall } from 'fe-ent-core/utils';
 
 import appLogo from './src/AppLogo.vue';
 import appProvider from './src/AppProvider.vue';

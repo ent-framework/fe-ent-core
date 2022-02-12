@@ -7,9 +7,9 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import SettingDrawer from './SettingDrawer';
-  import Icon from 'ent-fe-core/components/Icon';
+  import Icon from 'fe-ent-core/components/Icon';
 
-  import { useDrawer } from 'ent-fe-core/components/Drawer';
+  import { useDrawer } from 'fe-ent-core/components/Drawer';
 
   export default defineComponent({
     name: 'SettingButton',

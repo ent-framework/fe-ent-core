@@ -11,8 +11,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { PageWrapper } from 'ent-fe-core/components/Page';
-  import { BasicForm, useForm } from 'ent-fe-core/components/Form';
+  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { BasicForm, useForm } from 'fe-ent-core/components/Form';
 
   import { formSchema } from './pwd.data';
   export default defineComponent({

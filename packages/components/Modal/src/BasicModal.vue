@@ -67,8 +67,8 @@
   import ModalClose from './components/ModalClose.vue';
   import ModalFooter from './components/ModalFooter.vue';
   import ModalHeader from './components/ModalHeader.vue';
-  import { isFunction } from 'ent-fe-core/utils/is';
-  import { deepMerge } from 'ent-fe-core/utils';
+  import { isFunction } from 'fe-ent-core/utils/is';
+  import { deepMerge } from 'fe-ent-core/utils';
   import { basicProps } from './props';
   import { useFullScreen } from './hooks/useModalFullScreen';
   import { omit } from 'lodash-es';

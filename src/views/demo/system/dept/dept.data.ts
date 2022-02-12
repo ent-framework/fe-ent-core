@@ -1,5 +1,5 @@
-import { BasicColumn } from 'ent-fe-core/components/Table';
-import { FormSchema } from 'ent-fe-core/components/Table';
+import { BasicColumn } from 'fe-ent-core/components/Table';
+import { FormSchema } from 'fe-ent-core/components/Table';
 import { h } from 'vue';
 import { Tag } from 'ant-design-vue';
 

@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { addClass, removeClass } from 'ent-fe-core/utils/domUtils';
+  import { addClass, removeClass } from 'fe-ent-core/utils/domUtils';
 
   export default defineComponent({
     name: 'CollapseTransition',
