@@ -19,6 +19,9 @@ const __APP_INFO__ = {
 };
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
+  // 是否构建库模式
+  const isBuildLib = (mode === 'lib');
+  console.log(`Build in Library mode: ${isBuildLib}`);
   const root = process.cwd();
 
   const env = loadEnv(mode, root);
@@ -29,8 +32,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = viteEnv;
 
   const isBuild = command === 'build';
-
-  const buildType = process.env.BUILD_TYPE || 'web';
 
   return {
     base: VITE_PUBLIC_PATH,
@@ -43,7 +44,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         },
         // /@/xxxx => src/xxxx
         {
-          find: 'ent-fe-core',
+          find: 'fe-ent-core',
           replacement: pathResolve('packages') + '/',
         },
         {
@@ -64,8 +65,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       // Load proxy configuration from .env
       proxy: createProxy(VITE_PROXY),
     },
-    build: createBuildTarget(viteEnv, isBuild, buildType),
-
+    build: createBuildTarget(viteEnv, isBuild, isBuildLib),
     define: {
       // setting vue-i18-next
       // Suppress warning
@@ -83,7 +83,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     },
 
     // The vite plugin used by the project. The quantity is large, so it is separately extracted and managed
-    plugins: createVitePlugins(viteEnv, isBuild, buildType),
+    plugins: createVitePlugins(viteEnv, isBuild, isBuildLib),
 
     optimizeDeps: {
       // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly

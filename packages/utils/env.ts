@@ -2,7 +2,12 @@ import type { GlobEnvConfig } from '/#/config';
 
 import { warn } from 'fe-ent-core/utils/log';
 import pkg from '../../package.json';
-import { getConfigFileName } from '../../build/getConfigFileName';
+
+const getConfigFileName = (env: Record<string, any>) => {
+  return `__PRODUCTION__${env.VITE_GLOB_APP_SHORT_NAME || '__APP'}__CONF__`
+    .toUpperCase()
+    .replace(/\s/g, '');
+};
 
 export function getCommonStoragePrefix() {
   const { VITE_GLOB_APP_SHORT_NAME } = getAppEnvConfig();

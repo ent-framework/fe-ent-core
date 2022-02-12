@@ -18,11 +18,8 @@ import { configHmrPlugin } from './hmr';
 import dts from 'vite-plugin-dts';
 import { OUTPUT_DIR } from '../../constant';
 import { getRootPath } from '../../utils';
-import chalk from 'chalk';
 
-export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean, buildType: string) {
-  const isBuildLib = (buildType == 'lib');
-  console.log(chalk.cyan(`[build type: ${isBuild}, build lib: ${isBuildLib}]`));
+export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean, isBuildLib: boolean) {
   const {
     VITE_USE_IMAGEMIN,
     VITE_USE_MOCK,
@@ -89,9 +86,32 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean, buildType:
   return vitePlugins;
 }
 
-export function createBuildTarget(viteEnv: ViteEnv, isBuild: boolean, buildType: string) {
+export function createBuildTarget(viteEnv: ViteEnv, isBuild: boolean, isBuildLib: boolean) {
   const { VITE_DROP_CONSOLE } = viteEnv;
-  if (buildType == 'web' && isBuild) {
+  if (isBuildLib) {
+    return {
+      //target: 'es2015',
+      outDir: 'lib',
+      emptyOutDir: true,
+      formats: ['es', 'umd'],
+      lib: {
+        entry: getRootPath('./packages/index.ts'),
+        name: 'MyEnt',
+        fileName: (format) => `my-ent.${format}.js`,
+      },
+      rollupOptions: {
+        // 确保外部化处理那些你不想打包进库的依赖
+        external: ['vue'],
+        output: {
+          // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
+          globals: {
+            vue: 'Vue',
+          },
+        },
+      },
+    }
+  } else if (isBuild) {
+    //开发模式或者Web发布模式
     return {
       target: 'es2015',
       outDir: OUTPUT_DIR,
@@ -106,28 +126,5 @@ export function createBuildTarget(viteEnv: ViteEnv, isBuild: boolean, buildType:
       brotliSize: false,
       chunkSizeWarningLimit: 2000,
     }
-  }
-  //构建lib 包
-  return {
-    target: 'es2015',
-    outDir: 'lib',
-    assetsDir: 'assets',
-    minify: false,
-    emptyOutDir: true,
-    lib: {
-      entry: getRootPath('./packages/index.ts'),
-      name: 'MyEnt',
-      fileName: (format) => `my-ent.${format}.js`,
-    },
-    rollupOptions: {
-      // 确保外部化处理那些你不想打包进库的依赖
-      external: ['vue'],
-      output: {
-        // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
-        globals: {
-          vue: 'Vue',
-        },
-      },
-    },
   }
 }
