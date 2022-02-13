@@ -8,7 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "strictFunctionTypes": false,
     "jsx": "preserve",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "allowJs": true,
     "sourceMap": true,
     "esModuleInterop": true,

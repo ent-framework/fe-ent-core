@@ -1,7 +1,7 @@
 import type { AppRouteModule } from 'fe-ent-core/router/types';
 
 import { LAYOUT } from 'fe-ent-core/router/constant';
-const IFrame = () => import('/@/views/sys/iframe/FrameBlank.vue');
+const IFrame = () => import('fe-ent-core/views/sys/iframe/FrameBlank.vue');
 import { t } from 'fe-ent-core/hooks/web/useI18n';
 
 const iframe: AppRouteModule = {
