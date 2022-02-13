@@ -1,8 +1,8 @@
 import { resolve } from 'path';
 
-export const projRoot = resolve(__dirname, '..');
+export const projRoot = resolve(__dirname, '..', '..');
 export const pkgRoot = resolve(projRoot, 'packages');
-export const compRoot = resolve(pkgRoot, 'components');
+export const coreRoot = resolve(pkgRoot, 'core');
 export const themeRoot = resolve(pkgRoot, 'theme-chalk');
 export const hookRoot = resolve(pkgRoot, 'hooks');
 export const localeRoot = resolve(pkgRoot, 'locale');
@@ -17,7 +17,7 @@ export const buildOutput = resolve(projRoot, 'dist');
 export const epOutput = resolve(buildOutput, 'element-plus');
 
 export const projPackage = resolve(projRoot, 'package.json');
-export const compPackage = resolve(compRoot, 'package.json');
+export const corePackage = resolve(coreRoot, 'package.json');
 export const themePackage = resolve(themeRoot, 'package.json');
 export const hookPackage = resolve(hookRoot, 'package.json');
 export const localePackage = resolve(localeRoot, 'package.json');

@@ -20,7 +20,7 @@ import { useLocaleStore } from 'fe-ent-core/store/modules/locale';
 
 import { getCommonStoragePrefix, getStorageShortName } from 'fe-ent-core/utils/env';
 
-import { primaryColor } from '../../build/config/themeConfig';
+import { primaryColor } from '../utils/themeConfig';
 import { Persistent } from 'fe-ent-core/utils/cache/persistent';
 import { deepMerge } from 'fe-ent-core/utils';
 import { ThemeEnum } from 'fe-ent-core/enums/appEnum';
