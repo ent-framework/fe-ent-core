@@ -1,14 +1,13 @@
-import type { UserConfig, ConfigEnv } from 'vite';
 import pkg from './package.json';
 import moment from 'moment';
 import { loadEnv } from 'vite';
 import { resolve } from 'path';
-import { generateModifyVars } from './build/generate/generateModifyVars';
-import { createProxy } from './build/vite/proxy';
-import { wrapperEnv } from './build/utils';
-import { createVitePlugins, createBuildTarget } from './build/vite/plugin';
+import { generateModifyVars } from 'fe-ent-build/generate/generateModifyVars';
+import { createProxy } from 'fe-ent-build/vite/proxy';
+import { wrapperEnv } from 'fe-ent-build/utils';
+import { createVitePlugins, createBuildTarget } from 'fe-ent-build/vite/plugin';
 
-function pathResolve(dir: string) {
+function pathResolve(dir) {
   return resolve(process.cwd(), '.', dir);
 }
 
@@ -18,10 +17,9 @@ const __APP_INFO__ = {
   lastBuildTime: moment().format('YYYY-MM-DD HH:mm:ss'),
 };
 
-export default ({ command, mode }: ConfigEnv): UserConfig => {
+export default ({ command, mode }) => {
   // 是否构建库模式
   const isBuildLib = mode === 'lib';
-  console.log(`Build in Library mode: ${isBuildLib}`);
   const root = process.cwd();
 
   const env = loadEnv(mode, root);
@@ -29,12 +27,9 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   // The boolean type read by loadEnv is a string. This function can be converted to boolean type
   const viteEnv = wrapperEnv(env);
 
-  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = viteEnv;
-
   const isBuild = command === 'build';
 
   return {
-    base: VITE_PUBLIC_PATH,
     root,
     resolve: {
       alias: [
@@ -53,13 +48,13 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         },
       ],
     },
-    server: {
-      // Listening on all local IPs
-      host: true,
-      port: VITE_PORT,
-      // Load proxy configuration from .env
-      proxy: createProxy(VITE_PROXY),
-    },
+    // server: {
+    //   // Listening on all local IPs
+    //   host: true,
+    //   port: VITE_PORT,
+    //   // Load proxy configuration from .env
+    //   proxy: createProxy(VITE_PROXY),
+    // },
     build: createBuildTarget(viteEnv, isBuild, isBuildLib),
     define: {
       // setting vue-i18-next

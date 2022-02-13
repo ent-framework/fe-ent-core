@@ -12,9 +12,8 @@ import { router, setupRouter } from 'fe-ent-core/router';
 import { setupRouterGuard } from '/@/router/guard';
 import { setupStore } from 'fe-ent-core/store';
 import { setupGlobDirectives } from 'fe-ent-core/directives';
-import { setupI18n } from 'fe-ent-core/locales/setupI18n';
 import { registerGlobComp } from 'fe-ent-core/components/registerGlobComp';
-
+import { setupI18n } from 'fe-ent-core/locales/setupI18n';
 // Importing on demand in local development will increase the number of browser requests by around 20%.
 // This may slow down the browser refresh speed.
 // Therefore, only enable on-demand importing in production environments .

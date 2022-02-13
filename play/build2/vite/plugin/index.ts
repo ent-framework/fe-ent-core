@@ -80,7 +80,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean, isBuildLib
     // vite-plugin-pwa
     vitePlugins.push(configPwaConfig(viteEnv));
     // dts plugin
-    vitePlugins.push(dts())
+    vitePlugins.push(dts());
   }
 
   return vitePlugins;
@@ -109,7 +109,7 @@ export function createBuildTarget(viteEnv: ViteEnv, isBuild: boolean, isBuildLib
           },
         },
       },
-    }
+    };
   } else if (isBuild) {
     //开发模式或者Web发布模式
     return {
