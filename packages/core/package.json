@@ -6,7 +6,16 @@
     "email": "baojian.qian@accenture.com",
     "url": "https://github.com/anncwb"
   },
-  "main": "index.ts",
+  "files": ["lib"],
+  "main": "./lib/my-ent.umd.js",
+  "module": "./lib/my-ent.es.js",
+  "exports": {
+    ".": {
+      "import": "./lib/my-ent.es.js",
+      "require": "./lib/my-ent.umd.js"
+    }
+  },
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "cross-env NODE_ENV=production vite build --mode lib --config vite.config.js",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",

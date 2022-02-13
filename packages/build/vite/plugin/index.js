@@ -69,7 +69,7 @@ const createVitePlugins = function (viteEnv, isBuild, isBuildLib) {
   vitePlugins.push(configVisualizerConfig());
 
   //vite-plugin-theme
-  vitePlugins.push(configThemePlugin(isBuild));
+  !isBuildLib && vitePlugins.push(configThemePlugin(isBuild));
 
   // The following plugins only work in the production environment
   if (isBuild) {
@@ -103,8 +103,9 @@ const createBuildTarget = function (viteEnv, isBuild, isBuildLib) {
     return {
       //target: 'es2015',
       outDir: 'lib',
+      sourcemap: false,
       emptyOutDir: true,
-      formats: ['es', 'umd'],
+      formats: ['es'],
       lib: {
         entry: getRootPath('index.ts'),
         name: 'MyEnt',
@@ -114,6 +115,8 @@ const createBuildTarget = function (viteEnv, isBuild, isBuildLib) {
         // 确保外部化处理那些你不想打包进库的依赖
         external: ['vue'],
         output: {
+          format: ['es'],
+          inlineDynamicImports: true,
           // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
           globals: {
             vue: 'Vue',
