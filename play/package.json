@@ -1,6 +1,7 @@
 {
   "name": "fe-ent-play",
   "version": "1.0.0",
+  "private": true,
   "author": {
     "name": "jeff qian",
     "email": "baojian.qian@accenture.com",
