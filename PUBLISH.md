@@ -35,8 +35,8 @@ shamefully-hoist=true
 registry=http://npm.36cpc.com/repository/npm-public/
 ```
 
-包开发调试
+清理pnpm 缓存
 ``` 
-pnpm link fe-ent-core
+rm -rf node_modules/.pnpm
 ``` 
 

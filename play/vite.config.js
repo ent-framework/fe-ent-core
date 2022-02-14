@@ -5,7 +5,6 @@ import { resolve } from 'path';
 import { generateModifyVars } from 'fe-ent-build/generate/generateModifyVars';
 import { createProxy } from 'fe-ent-build/vite/proxy';
 import { wrapperEnv } from 'fe-ent-build/utils';
-import { coreRoot } from 'fe-ent-build/paths';
 import { createVitePlugins, createBuildTarget } from 'fe-ent-build/vite/plugin';
 
 function pathResolve(dir) {
@@ -24,7 +23,6 @@ export default ({ command, mode }) => {
   console.log(`Build in Library mode: ${isBuildLib}`);
   const root = process.cwd();
   console.log(`Run in folder: ${root}`);
-  console.log(`Run in folder: ${coreRoot}`);
 
   const env = loadEnv(mode, root);
 
@@ -40,14 +38,6 @@ export default ({ command, mode }) => {
     root,
     resolve: {
       alias: [
-/*        {
-          find: /^fe-ent-core(\/(es|lib))?$/,
-          replacement: pathResolve(coreRoot, 'index.ts'),
-        },
-        {
-          find: /^fe-ent-core\/(es|lib)\/(.*)$/,
-          replacement: `${coreRoot}/$2`,
-        },*/
         {
           find: 'vue-i18n',
           replacement: 'vue-i18n/dist/vue-i18n.cjs.js',

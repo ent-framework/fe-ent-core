@@ -6,6 +6,10 @@
     "email": "baojian.qian@accenture.com",
     "url": "https://github.com/anncwb"
   },
+  "scripts": {
+    "build": "",
+    "clean": ""
+  },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
     "ant-design-vue": "2.2.8"

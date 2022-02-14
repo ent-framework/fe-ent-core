@@ -9,18 +9,13 @@
   "files": ["lib"],
   "main": "./lib/my-ent.umd.js",
   "module": "./lib/my-ent.es.js",
-  "exports": {
-    ".": {
-      "import": "./lib/my-ent.es.js",
-      "require": "./lib/my-ent.umd.js"
-    }
-  },
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "cross-env NODE_ENV=production vite build --mode lib --config vite.config.js",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
     "build:lib:2": "cross-env NODE_ENV=production vue-tsc --noEmit && vite build",
     "build:no-cache": "yarn clean:cache && npm run build",
+    "clean": "rimraf lib",
     "report": "cross-env REPORT=true npm run build",
     "type:check": "vue-tsc --noEmit --skipLibCheck",
     "preview": "npm run build && vite preview",

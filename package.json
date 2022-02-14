@@ -14,12 +14,10 @@
     "bootstrap": "yarn install",
     "serve": "npm run dev",
     "dev": "pnpm -C play --stream dev",
-    "build": "pnpm -C ./packages/core build",
-    "build:lib": "cross-env NODE_ENV=production vite build --mode lib",
-    "build:web": "pnpm -C play build",
+    "build": "pnpm -C play build",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
-    "build:lib:2": "cross-env NODE_ENV=production vue-tsc --noEmit && vite build",
     "build:no-cache": "yarn clean:cache && npm run build",
+    "clean": "pnpm recursive run clean",
     "report": "cross-env REPORT=true npm run build",
     "type:check": "vue-tsc --noEmit --skipLibCheck",
     "preview": "npm run build && vite preview",
@@ -37,6 +35,7 @@
     "test:br": "npx http-server dist --cors --brotli -c-1",
     "reinstall": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
     "prepare": "husky install",
+    "prepublish": "pnpm recursive run build --filter packages",
     "gen:icon": "esno ./build/generate/icon/index.ts"
   },
   "peerDependencies": {
