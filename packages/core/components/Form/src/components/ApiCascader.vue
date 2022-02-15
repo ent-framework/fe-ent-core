@@ -18,7 +18,7 @@
     </template>
   </a-cascader>
 </template>
-<script lang="ts" setup>
+<script lang="ts">
   import { defineComponent, PropType, ref, unref, watch, watchEffect } from 'vue';
   import { Cascader } from 'ant-design-vue';
   import { propTypes } from 'fe-ent-core/utils/propTypes';

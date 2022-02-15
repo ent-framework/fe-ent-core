@@ -1,4 +1,4 @@
-import type { GlobEnvConfig } from '/#/config';
+import type { GlobEnvConfig } from 'fe-ent-core/types/config';
 
 import { warn } from 'fe-ent-core/utils/log';
 import pkg from '../package.json';

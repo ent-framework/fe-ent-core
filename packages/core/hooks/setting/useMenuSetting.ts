@@ -1,4 +1,4 @@
-import type { MenuSetting } from '/#/config';
+import type { MenuSetting } from 'fe-ent-core/types/config';
 
 import { computed, unref, ref } from 'vue';
 

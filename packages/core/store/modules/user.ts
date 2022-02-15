@@ -1,5 +1,5 @@
-import type { UserInfo } from '/#/store';
-import type { ErrorMessageMode } from '/#/axios';
+import type { UserInfo } from 'fe-ent-core/types/store';
+import type { ErrorMessageMode } from 'fe-ent-core/types/axios';
 import { defineStore } from 'pinia';
 import { store } from 'fe-ent-core/store';
 import { RoleEnum } from 'fe-ent-core/enums/roleEnum';

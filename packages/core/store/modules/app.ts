@@ -4,8 +4,8 @@ import type {
   MenuSetting,
   TransitionSetting,
   MultiTabsSetting,
-} from '/#/config';
-import type { BeforeMiniState } from '/#/store';
+} from 'fe-ent-core/types/config';
+import type { BeforeMiniState } from 'fe-ent-core/types/store';
 
 import { defineStore } from 'pinia';
 import { store } from 'fe-ent-core/store';

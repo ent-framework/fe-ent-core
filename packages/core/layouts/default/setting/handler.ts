@@ -4,7 +4,7 @@ import { updateColorWeak } from 'fe-ent-core/logics/theme/updateColorWeak';
 import { updateGrayMode } from 'fe-ent-core/logics/theme/updateGrayMode';
 
 import { useAppStore } from 'fe-ent-core/store/modules/app';
-import { ProjectConfig } from '/#/config';
+import { ProjectConfig } from 'fe-ent-core/types/config';
 import { changeTheme } from 'fe-ent-core/logics/theme';
 import { updateDarkTheme } from 'fe-ent-core/logics/theme/dark';
 import { useRootSetting } from 'fe-ent-core/hooks/setting/useRootSetting';

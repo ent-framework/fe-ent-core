@@ -1,4 +1,4 @@
-import type { MultiTabsSetting } from '/#/config';
+import type { MultiTabsSetting } from 'fe-ent-core/types/config';
 
 import { computed } from 'vue';
 

@@ -5,7 +5,7 @@
 </template>
 <script lang="ts" setup>
   import type { PropType } from 'vue';
-  import type { ErrorLogInfo } from '/#/store';
+  import type { ErrorLogInfo } from 'fe-ent-core/types/store';
   import { BasicModal } from 'fe-ent-core/components/Modal/index';
   import { Description, useDescription } from 'fe-ent-core/components/Description/index';
   import { useI18n } from 'fe-ent-core/hooks/web/useI18n';

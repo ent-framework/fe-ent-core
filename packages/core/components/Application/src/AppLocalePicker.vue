@@ -18,7 +18,7 @@
   </Dropdown>
 </template>
 <script lang="ts" setup>
-  import type { LocaleType } from '/#/config';
+  import type { LocaleType } from 'fe-ent-core/types/config';
   import type { DropMenu } from 'fe-ent-core/components//Dropdown';
   import { ref, watchEffect, unref, computed } from 'vue';
   import { Dropdown } from 'fe-ent-core/components//Dropdown';

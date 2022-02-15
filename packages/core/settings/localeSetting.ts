@@ -1,5 +1,5 @@
 import type { DropMenu } from 'fe-ent-core/components/Dropdown';
-import type { LocaleSetting, LocaleType } from '/#/config';
+import type { LocaleSetting, LocaleType } from 'fe-ent-core/types/config';
 
 export const LOCALE: { [key: string]: LocaleType } = {
   ZH_CN: 'zh_CN',

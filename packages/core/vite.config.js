@@ -3,7 +3,6 @@ import moment from 'moment';
 import { loadEnv } from 'vite';
 import { resolve } from 'path';
 import { generateModifyVars } from 'fe-ent-build/generate/generateModifyVars';
-import { createProxy } from 'fe-ent-build/vite/proxy';
 import { wrapperEnv } from 'fe-ent-build/utils';
 import { createVitePlugins, createBuildTarget } from 'fe-ent-build/vite/plugin';
 
@@ -40,11 +39,6 @@ export default ({ command, mode }) => {
         {
           find: /\/@\//,
           replacement: pathResolve('src') + '/',
-        },
-        // /#/xxxx => types/xxxx
-        {
-          find: /\/#\//,
-          replacement: pathResolve('types') + '/',
         },
       ],
     },

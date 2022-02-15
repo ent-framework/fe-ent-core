@@ -1,7 +1,7 @@
 /**
  * Application configuration
  */
-import type { ProjectConfig } from '/#/config';
+import type { ProjectConfig } from 'fe-ent-core/types/config';
 
 import { PROJ_CFG_KEY } from 'fe-ent-core/enums/cacheEnum';
 import projectSetting from 'fe-ent-core/settings/projectSetting';

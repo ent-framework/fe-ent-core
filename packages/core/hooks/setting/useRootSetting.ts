@@ -1,4 +1,4 @@
-import type { ProjectConfig } from '/#/config';
+import type { ProjectConfig } from 'fe-ent-core/types/config';
 
 import { computed } from 'vue';
 

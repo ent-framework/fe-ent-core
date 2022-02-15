@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-  import type { ErrorLogInfo } from '/#/store';
+  import type { ErrorLogInfo } from 'fe-ent-core/types/store';
   import { watch, ref, nextTick } from 'vue';
   import DetailModal from './DetailModal.vue';
   import { BasicTable, useTable, TableAction } from 'fe-ent-core/components/Table/index';

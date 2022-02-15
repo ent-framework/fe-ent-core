@@ -1,4 +1,4 @@
-import type { ErrorLogInfo } from '/#/store';
+import type { ErrorLogInfo } from 'fe-ent-core/types/store';
 
 import { defineStore } from 'pinia';
 import { store } from 'fe-ent-core/store';

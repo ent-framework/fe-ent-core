@@ -1,4 +1,4 @@
-import type { ProjectConfig } from '/#/config';
+import type { ProjectConfig } from 'fe-ent-core/types/config';
 import { MenuTypeEnum, MenuModeEnum, TriggerEnum, MixSidebarTriggerEnum } from 'fe-ent-core/enums/menuEnum';
 import { CacheTypeEnum } from 'fe-ent-core/enums/cacheEnum';
 import {

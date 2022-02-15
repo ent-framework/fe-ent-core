@@ -1,4 +1,4 @@
-import type { TransitionSetting } from '/#/config';
+import type { TransitionSetting } from 'fe-ent-core/types/config';
 
 import { computed } from 'vue';
 

@@ -1,4 +1,4 @@
-import type { HeaderSetting } from '/#/config';
+import type { HeaderSetting } from 'fe-ent-core/types/config';
 
 import { computed, unref } from 'vue';
 

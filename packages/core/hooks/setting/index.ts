@@ -1,4 +1,4 @@
-import type { GlobConfig } from '/#/config';
+import type { GlobConfig } from 'fe-ent-core/types/config';
 
 import { warn } from 'fe-ent-core/utils/log';
 import { getAppEnvConfig } from 'fe-ent-core/utils/env';
