@@ -36,8 +36,6 @@
     "gen:icon": "esno ./build/generate/icon/index.ts"
   },
   "dependencies": {
-  },
-  "peerDependencies": {
     "ant-design-vue": "2.2.8",
     "vue": "^3.2.21",
     "vue-i18n": "^9.1.9",
@@ -65,7 +63,7 @@
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "@typescript-eslint/parser": "^5.3.0",
     "@vitejs/plugin-legacy": "^1.6.2",
-    "@vitejs/plugin-vue": "^1.9.4",
+    "@vitejs/plugin-vue": "2.1.0",
     "@vitejs/plugin-vue-jsx": "^1.2.0",
     "@vue/compiler-sfc": "3.2.21",
     "@vue/test-utils": "^2.0.0-rc.16",

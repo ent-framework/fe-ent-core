@@ -18,7 +18,7 @@
     "experimentalDecorators": true,
     "lib": ["dom", "esnext"],
     "types": ["vite/client", "jest"],
-    "typeRoots": ["./node_modules/@types/", "./types"],
+    "typeRoots": ["./node_modules/@types/"],
     "noImplicitAny": false,
     "skipLibCheck": true,
     "paths": {
@@ -31,8 +31,6 @@
     "packages/**/*.d.ts",
     "packages/**/*.tsx",
     "packages/**/*.vue",
-    "types/**/*.d.ts",
-    "types/**/*.ts",
   ],
   "exclude": ["node_modules", "tests/server/**/*.ts", "dist"]
 }

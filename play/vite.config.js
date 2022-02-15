@@ -46,11 +46,6 @@ export default ({ command, mode }) => {
           find: /\/@\//,
           replacement: pathResolve('src') + '/',
         },
-        // /#/xxxx => types/xxxx
-        {
-          find: /\/#\//,
-          replacement: pathResolve('types') + '/',
-        },
       ],
     },
     server: {

@@ -19,7 +19,7 @@ const configImageminPlugin = require('./imagemin');
 const configSvgIconsPlugin = require('./svgSprite');
 const configHmrPlugin = require('./hmr');
 const postBuild = require('../../script/postBuild');
-
+const { projRoot } = require('../../paths');
 const createVitePlugins = function (viteEnv, isBuild, isBuildLib) {
   console.log(`isBuild: ${isBuild}, isBuildLib: ${isBuildLib}`);
   console.log(`viteEnv: ${JSON.stringify(viteEnv)}`);
@@ -51,7 +51,7 @@ const createVitePlugins = function (viteEnv, isBuild, isBuildLib) {
   VITE_LEGACY && isBuild && vitePlugins.push(legacy());
 
   // vite-plugin-html
-  isBuild && !isBuildLib && vitePlugins.push(configHtmlPlugin(viteEnv, isBuild));
+  !isBuildLib && vitePlugins.push(configHtmlPlugin(viteEnv, isBuild));
 
   // vite-plugin-svg-icons
   vitePlugins.push(configSvgIconsPlugin(isBuild));
@@ -102,7 +102,7 @@ const createBuildTarget = function (viteEnv, isBuild, isBuildLib) {
   if (isBuildLib) {
     return {
       //target: 'es2015',
-      outDir: 'lib',
+      outDir: projRoot + '/dist/fe-ent-core',
       sourcemap: false,
       emptyOutDir: true,
       formats: ['es'],
@@ -113,7 +113,7 @@ const createBuildTarget = function (viteEnv, isBuild, isBuildLib) {
       },
       rollupOptions: {
         // 确保外部化处理那些你不想打包进库的依赖
-        external: ['vue'],
+        external: ['vue', 'vue-router', 'vue-i18n', 'ant-design-vue'],
         output: {
           format: ['es'],
           inlineDynamicImports: true,
