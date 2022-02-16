@@ -8,7 +8,6 @@
     "vite.config.ts",
     "./types/**/*.d.ts",
     "./types/**/*.ts",
-    "vite.config.js"
   ],
   "exclude": ["node_modules", "tests/server/**/*.ts", "lib", "**/*.js"]
 }

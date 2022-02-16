@@ -31,6 +31,7 @@
     "packages/**/*.d.ts",
     "packages/**/*.tsx",
     "packages/**/*.vue",
+    "scripts/**/*.ts",
   ],
   "exclude": ["node_modules", "tests/server/**/*.ts", "dist"]
 }

@@ -2,17 +2,17 @@
 
 ## 基于vue-vben-admin 2.7.2 抽离公用组件
 ```
-yarn install
+pnpm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn dev
+pnpm dev
 ```
 
 ### Compiles and minifies for production
 ```
-yarn build:lib
+pnpm build:libs
 ```
 
 ### Customize configuration

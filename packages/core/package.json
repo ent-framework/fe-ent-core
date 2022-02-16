@@ -70,7 +70,8 @@
     "vditor": "^3.8.7",
     "vue-json-pretty": "^2.0.4",
     "vue-types": "^4.1.1",
-    "xlsx": "^0.17.3"
+    "xlsx": "^0.17.3",
+    "fe-ent-cli": "workspace:*"
   },
   "devDependencies": {
   },
