@@ -1,22 +1,19 @@
-// import { App } from 'vue'
-// import NdButton from './components/Application'
-//
-// // 所有组件列表
-// const components = [ NdButton ]
-//
-// // 定义 install 方法， App 作为参数
-// const install = (app: App): void => {
-//     // 遍历注册所有组件
-//     components.map((component) => app.component(component.name, component))
-// }
-//
-// export {
-//     NdButton
-// }
-//
-// export default {
-//     install
-// }
-
+import type { App } from 'vue';
 export * from './components';
 export * from './enums';
+
+import * as components from './components';
+
+export const install = function (app: App) {
+  console.log(Object.keys(components));
+
+  Object.keys(components).forEach((key) => {
+    const component = components[key];
+    if (component.install) {
+      app.use(component);
+    }
+  });
+  return app;
+};
+
+export default install;

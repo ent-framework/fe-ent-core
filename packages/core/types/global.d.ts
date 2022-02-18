@@ -1,6 +1,4 @@
 import type {
-  ComponentRenderProxy,
-  VNode,
   VNodeChild,
   ComponentPublicInstance,
   FunctionalComponent,
@@ -77,21 +75,21 @@ declare global {
 
   declare function parseFloat(string: string | number): number;
 
-  namespace JSX {
-    // tslint:disable no-empty-interface
-    type Element = VNode;
-    // tslint:disable no-empty-interface
-    type ElementClass = ComponentRenderProxy;
-    interface ElementAttributesProperty {
-      $props: any;
-    }
-    interface IntrinsicElements {
-      [elem: string]: any;
-    }
-    interface IntrinsicAttributes {
-      [elem: string]: any;
-    }
-  }
+  // namespace JSX {
+  //   // tslint:disable no-empty-interface
+  //   type Element = VNode;
+  //   // tslint:disable no-empty-interface
+  //   type ElementClass = ComponentRenderProxy;
+  //   interface ElementAttributesProperty {
+  //     $props: any;
+  //   }
+  //   interface IntrinsicElements {
+  //     [elem: string]: any;
+  //   }
+  //   interface IntrinsicAttributes {
+  //     [elem: string]: any;
+  //   }
+  // }
 }
 
 declare module 'vue' {

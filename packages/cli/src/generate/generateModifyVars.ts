@@ -1,7 +1,7 @@
 import { generateAntColors, primaryColor } from '../config/themeConfig';
 const { getThemeVariables } = require('ant-design-vue/dist/theme');
 import path from 'path';
-import { FE_PKG } from '../utils';
+import { FE_PKG, findWorkspaceRoot } from '../utils';
 import fs from 'fs';
 /**
  * less global variable
@@ -17,23 +17,26 @@ export function generateModifyVars(dark = false, runMode: string) {
   }
 
   const modifyVars = getThemeVariables({ dark });
-
-  let preLoadConfigFile = '';
+  const workspace = findWorkspaceRoot();
+  let preLoadFile = '';
 
   if (runMode == 'package' || runMode == 'serve') {
-    preLoadConfigFile = path.resolve(process.cwd(), 'styles/config.less');
-    if (!fs.existsSync(preLoadConfigFile)) {
-      preLoadConfigFile = path.resolve(process.cwd(), `node_modules/${FE_PKG}/styles/config.less`);
+    if (fs.existsSync(process.cwd() + 'src/styles/config.less')) {
+      preLoadFile = path.resolve(process.cwd(), 'src/styles/config.less');
+    } else {
+      preLoadFile = path.resolve(workspace, `node_modules/${FE_PKG}/styles/config.less`);
     }
   } else {
-    preLoadConfigFile = path.resolve(process.cwd(), 'styles/config.less');
+    preLoadFile = path.resolve(process.cwd(), 'styles/config.less');
   }
+
+  console.log(`${preLoadFile}`);
 
   return {
     ...modifyVars,
     // Used for global import to avoid the need to import each style file separately
     // reference:  Avoid repeated references
-    hack: `${modifyVars.hack} @import (reference) "${preLoadConfigFile}";`,
+    hack: `${modifyVars.hack} @import (reference) "${preLoadFile}";`,
     'primary-color': primary,
     ...primaryColorObj,
     'info-color': primary,

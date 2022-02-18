@@ -1,4 +1,3 @@
-import fs from 'fs';
 import type { Plugin } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
@@ -18,7 +17,7 @@ import { configSvgIconsPlugin } from './svgSprite';
 import { configHmrPlugin } from './hmr';
 import { getCurrExecPath, OUTPUT_DIR, findWorkspaceRoot } from '../../utils';
 import type { BuildOptions } from 'vite';
-import dts from 'vite-plugin-dts'
+import dts from './dts';
 
 export function createVitePlugins(viteEnv: ViteEnv, runMode: string) {
   const {
@@ -29,7 +28,7 @@ export function createVitePlugins(viteEnv: ViteEnv, runMode: string) {
     VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE,
   } = viteEnv;
 
-  const vitePlugins: (Plugin | Plugin[])[] = [
+  const defaultPlugins: Plugin[] = [
     // have to
     vue(),
     // have to
@@ -37,6 +36,24 @@ export function createVitePlugins(viteEnv: ViteEnv, runMode: string) {
     // support name
     vueSetupExtend(),
   ];
+
+  const vitePlugins: (Plugin | Plugin[])[] = [];
+
+  if (runMode == 'lib') {
+    vitePlugins.push(dts());
+  }
+
+  if (runMode == 'serve') {
+/*    vitePlugins.push(
+      Components({
+        include: `${getCurrExecPath('.')}/!**`,
+        resolvers: AntDesignVueResolver({ importStyle: 'less' }),
+        dts: false,
+      }),
+    );*/
+  }
+
+  vitePlugins.push(defaultPlugins);
 
   // vite-plugin-windicss
   vitePlugins.push(windiCSS());
@@ -83,10 +100,6 @@ export function createVitePlugins(viteEnv: ViteEnv, runMode: string) {
   // vite-plugin-pwa
   vitePlugins.push(configPwaConfig(viteEnv));
 
-  if (runMode == 'lib') {
-    vitePlugins.push(dts());
-  }
-
   return vitePlugins;
 }
 
@@ -129,7 +142,6 @@ export function createBuildTarget(viteEnv: ViteEnv, runMode: string): BuildOptio
         external: ['vue', 'vue-router', 'vue-i18n', 'ant-design-vue'],
         input: getCurrExecPath('index.ts'),
         output: {
-          format: 'es',
           inlineDynamicImports: true,
           // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
           globals: {

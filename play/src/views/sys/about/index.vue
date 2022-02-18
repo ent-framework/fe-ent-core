@@ -67,6 +67,8 @@
     github: GITHUB_URL,
   };
 
+  console.log(infoData);
+
   Object.keys(dependencies).forEach((key) => {
     schema.push({ field: key, label: key });
   });

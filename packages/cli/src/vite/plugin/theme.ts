@@ -14,7 +14,7 @@ import {
 } from 'vite-plugin-theme';
 import { getThemeColors, generateColors } from '../../config/themeConfig';
 import { generateModifyVars } from '../../generate/generateModifyVars';
-import { FE_PKG } from '../../utils';
+import { FE_PKG, findWorkspaceRoot } from '../../utils';
 
 export function configThemePlugin(runMode: string): Plugin[] {
   const colors = generateColors({
@@ -23,17 +23,19 @@ export function configThemePlugin(runMode: string): Plugin[] {
     tinycolor,
   });
 
-  let preLoadDefineFile = '';
-
+  let preLoadFile = '';
+  const workspace = findWorkspaceRoot();
   if (runMode == 'package' || runMode == 'serve') {
-    preLoadDefineFile = path.resolve(process.cwd(), 'styles/index.less');
-    if (!fs.existsSync(preLoadDefineFile)) {
-      preLoadDefineFile = path.resolve(process.cwd(), `node_modules/${FE_PKG}/styles/index.less`);
+    if (fs.existsSync(process.cwd() + 'src/styles/index.less')) {
+      preLoadFile = path.resolve(process.cwd(), 'src/styles/index.less');
+    } else {
+      preLoadFile = path.resolve(workspace, `node_modules/${FE_PKG}/styles/index.less`);
     }
   } else {
-    preLoadDefineFile = path.resolve(process.cwd(), 'styles/index.less');
+    preLoadFile = path.resolve(process.cwd(), 'styles/index.less');
   }
-  console.log(preLoadDefineFile);
+
+  console.log(preLoadFile);
 
   const plugin = [
     viteThemePlugin({
@@ -64,7 +66,7 @@ export function configThemePlugin(runMode: string): Plugin[] {
       preloadFiles: [
         path.resolve(process.cwd(), 'node_modules/ant-design-vue/dist/antd.less'),
         //path.resolve(process.cwd(), 'node_modules/ant-design-vue/dist/antd.dark.less'),
-        preLoadDefineFile,
+        preLoadFile,
       ],
       filter: (id) =>
         runMode == 'package' || runMode == 'serve' ? !id.endsWith('antd.less') : true,

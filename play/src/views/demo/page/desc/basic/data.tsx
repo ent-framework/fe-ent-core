@@ -1,8 +1,6 @@
-import { DescItem } from 'fe-ent-core/components/Description/index';
+import { DescItem } from 'fe-ent-core/components/Description';
 import { BasicColumn } from 'fe-ent-core/components/Table/src/types/table';
-import { Button } from 'fe-ent-core/components/Button';
-
-import { Badge } from 'ant-design-vue';
+import { Badge, Button } from 'ant-design-vue';
 
 export const refundData = {
   a1: '1000000000',

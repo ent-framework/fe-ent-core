@@ -42,7 +42,7 @@ export const excludeFiles = (files: string[]) => {
  */
 export function findWorkspaceRoot(): string {
   const initial = process.cwd();
-  let previous: String = '';
+  let previous: string;
   let current = path.normalize(initial);
 
   do {

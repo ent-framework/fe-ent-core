@@ -10,7 +10,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { PageWrapper } from 'fe-ent-core/components/Page';
-  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { CollapseContainer } from 'fe-ent-core/components/Container';
 
   import printJS from 'print-js';
 
