@@ -3,17 +3,26 @@
   <div v-html="getHtmlData" :class="$props.class" class="markdown-viewer"></div>
 </template>
 
-<script lang="ts" setup>
-  import { computed } from 'vue';
+<script lang="ts">
+  import { computed, defineComponent } from 'vue';
   import showdown from 'showdown';
 
-  const converter = new showdown.Converter();
-  converter.setOption('tables', true);
-  const props = defineProps({
-    value: { type: String },
-    class: { type: String },
+  export default defineComponent({
+    name: 'MarkdownViewer',
+    components: { showdown },
+    setup() {
+      const converter = new showdown.Converter();
+      converter.setOption('tables', true);
+      const props = defineProps({
+        value: { type: String },
+        class: { type: String },
+      });
+      const getHtmlData = computed(() => converter.makeHtml(props.value || ''));
+      return {
+        getHtmlData,
+      };
+    },
   });
-  const getHtmlData = computed(() => converter.makeHtml(props.value || ''));
 </script>
 
 <style scoped>

@@ -10,12 +10,26 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts">
+  import { defineComponent } from 'vue';
   import AppSearchKeyItem from './AppSearchKeyItem.vue';
   import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
-  const { prefixCls } = useDesign('app-search-footer');
-  const { t } = useI18n();
+
+  export default defineComponent({
+    name: 'AppSearchFooter',
+    components: {
+      AppSearchKeyItem,
+    },
+    setup() {
+      const { prefixCls } = useDesign('app-search-footer');
+      const { t } = useI18n();
+      return {
+        prefixCls,
+        t,
+      };
+    },
+  });
 </script>
 <style lang="less" scoped>
   @prefix-cls: ~'@{namespace}-app-search-footer';

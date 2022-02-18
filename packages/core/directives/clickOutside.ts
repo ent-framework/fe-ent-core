@@ -1,6 +1,6 @@
 import { on } from 'fe-ent-core/utils/domUtils';
 import { isServer } from 'fe-ent-core/utils/is';
-import type { ComponentPublicInstance, DirectiveBinding, ObjectDirective } from 'vue';
+import type { ComponentPublicInstance, DirectiveBinding, ObjectDirective, App } from 'vue';
 
 type DocumentHandler = <T extends MouseEvent>(mouseup: T, mousedown: T) => void;
 
@@ -82,5 +82,9 @@ const ClickOutside: ObjectDirective = {
     nodeList.delete(el);
   },
 };
+
+export function setClickOutsideDirective(app: App) {
+  app.directive('click-outside', ClickOutside);
+}
 
 export default ClickOutside;

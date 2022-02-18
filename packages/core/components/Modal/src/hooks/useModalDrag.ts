@@ -2,7 +2,7 @@ import { Ref, unref, watchEffect } from 'vue';
 import { useTimeoutFn } from 'fe-ent-core/hooks/core/useTimeout';
 
 export interface UseModalDragMoveContext {
-  draggable: Ref<boolean>;
+  draggable: Ref<boolean | undefined> | undefined;
   destroyOnClose: Ref<boolean | undefined> | undefined;
   visible: Ref<boolean>;
 }

@@ -6,14 +6,7 @@ import glob from 'fast-glob';
 import { bold } from 'chalk';
 
 import { errorAndExit, green, yellow } from '../../utils';
-import {
-  buildOutput,
-  epRoot,
-  pkgRoot,
-  findWorkspaceRoot,
-  FE_PKG,
-  OUTPUT_DIR,
-} from '../../utils';
+import { pkgRoot, findWorkspaceRoot, FE_PKG, OUTPUT_DIR } from '../../utils';
 
 import { excludeFiles } from '../../utils';
 import type { SourceFile } from 'ts-morph';
@@ -30,8 +23,10 @@ export const generateTypesDefinitions = async () => {
   const project = new Project({
     compilerOptions: {
       emitDeclarationOnly: true,
+      declaration: true,
       outDir,
       baseUrl: workspaceRoot,
+      disableSizeLimit: true,
     },
     tsConfigFilePath: tsConfigPath,
     skipAddingFilesFromTsConfig: true,
@@ -44,7 +39,7 @@ export const generateTypesDefinitions = async () => {
       onlyFiles: true,
     }),
   );
-
+  let index = 1;
   const sourceFiles: SourceFile[] = [];
   await Promise.all([
     ...filePaths.map(async (file) => {
@@ -63,7 +58,7 @@ export const generateTypesDefinitions = async () => {
           }
           if (scriptSetup) {
             const compiled = vueCompiler.compileScript(sfc.descriptor, {
-              id: 'xxx',
+              id: `${index++}`,
             });
             content += compiled.content;
             if (scriptSetup.lang === 'ts') isTS = true;
@@ -109,9 +104,7 @@ export const generateTypesDefinitions = async () => {
         recursive: true,
       });
 
-      console.log(filepath);
-
-      // await fs.writeFile(filepath, pathRewriter('esm')(outputFile.getText()), 'utf8');
+      await fs.writeFile(filepath, outputFile.getText(), 'utf8');
 
       green(`Definition for file: ${bold(relativePath)} generated`);
     });

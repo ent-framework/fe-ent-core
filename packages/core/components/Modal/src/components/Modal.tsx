@@ -1,14 +1,22 @@
 import { Modal } from 'ant-design-vue';
-import { defineComponent, toRefs, unref } from 'vue';
+import { defineComponent, toRefs, unref, Plugin } from 'vue';
 import { basicProps } from '../props';
 import { useModalDragMove } from '../hooks/useModalDrag';
 import { useAttrs } from 'fe-ent-core/hooks/core/useAttrs';
 import { extendSlots } from 'fe-ent-core/utils/helper/tsxHelper';
+import initDefaultProps from 'fe-ent-core/utils/props';
 
-export default defineComponent({
-  name: 'Modal',
+const EntModal = defineComponent({
+  name: 'EntModal',
   inheritAttrs: false,
-  props: basicProps,
+  props: initDefaultProps(basicProps, {
+    width: 520,
+    transitionName: 'zoom',
+    maskTransitionName: 'fade',
+    confirmLoading: false,
+    visible: false,
+    okType: 'primary',
+  }),
   emits: ['cancel'],
   setup(props, { slots }) {
     const { visible, draggable, destroyOnClose } = toRefs(props);
@@ -25,3 +33,5 @@ export default defineComponent({
     };
   },
 });
+
+export default EntModal as typeof EntModal & Plugin;

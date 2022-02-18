@@ -63,6 +63,7 @@
   });
   defineComponent({
     components: {
+      AppLogo,
       AppLocalePicker,
       AppDarkModeToggle,
     },

@@ -3,12 +3,6 @@ import { createTypes, VueTypeValidableDef, VueTypesInterface } from 'vue-types';
 
 export type VueNode = VNodeChild | JSX.Element;
 
-type PropTypes = VueTypesInterface & {
-  readonly style: VueTypeValidableDef<CSSProperties>;
-  readonly VNodeChild: VueTypeValidableDef<VueNode>;
-  // readonly trueBool: VueTypeValidableDef<boolean>;
-};
-
 const propTypes = createTypes({
   func: undefined,
   bool: undefined,
@@ -16,9 +10,16 @@ const propTypes = createTypes({
   number: undefined,
   object: undefined,
   integer: undefined,
-}) as PropTypes;
+  array: undefined,
+});
 
 propTypes.extend([
+  {
+    name: 'looseBool',
+    getter: true,
+    type: Boolean,
+    default: undefined,
+  },
   {
     name: 'style',
     getter: true,
@@ -32,3 +33,9 @@ propTypes.extend([
   },
 ]);
 export { propTypes };
+
+export default propTypes as VueTypesInterface & {
+  readonly looseBool: VueTypeValidableDef<boolean>;
+  readonly style: VueTypeValidableDef<CSSProperties>;
+  readonly VNodeChild: VueTypeValidableDef<VueNode>;
+};

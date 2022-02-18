@@ -15,7 +15,7 @@
     "serve": "npm run dev",
     "dev": "pnpm -C play --stream dev",
     "build": "pnpm -C play --stream build",
-    "build:libs": "pnpm recursive run build --filter ./packages",
+    "build:libs": "pnpm recursive run build --filter ./packages --stream",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
     "build:no-cache": "yarn clean:cache && npm run build",
     "clean": "pnpm run clean -r --stream && pnpm run clean:dist",
@@ -43,7 +43,7 @@
   },
   "peerDependencies": {
     "ant-design-vue": "2.2.8",
-    "vue": "^3.2.21",
+    "vue": "3.2.31",
     "vue-i18n": "^9.1.9",
     "vue-router": "^4.0.12"
   },
@@ -107,7 +107,7 @@
     "@vitejs/plugin-legacy": "^1.6.2",
     "@vitejs/plugin-vue": "2.1.0",
     "@vitejs/plugin-vue-jsx": "^1.2.0",
-    "@vue/compiler-sfc": "3.2.21",
+    "@vue/compiler-sfc": "3.2.31",
     "@vue/test-utils": "^2.0.0-rc.16",
     "autoprefixer": "^10.4.0",
     "commitizen": "^4.2.4",
@@ -161,7 +161,7 @@
     "vite-plugin-windicss": "^1.4.12",
     "vue-types": "^4.1.1",
     "ant-design-vue": "2.2.8",
-    "vue": "^3.2.21",
+    "vue": "3.2.31",
     "vue-i18n": "^9.1.9",
     "vue-router": "^4.0.12"
   },

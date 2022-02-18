@@ -23,6 +23,7 @@
   type Lang = 'zh_CN' | 'en_US' | 'ja_JP' | 'ko_KR' | undefined;
 
   export default defineComponent({
+    name: 'Markdown',
     inheritAttrs: false,
     props: {
       height: { type: Number, default: 360 },

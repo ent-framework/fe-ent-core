@@ -1,6 +1,6 @@
 import type { NamePath, RuleObject } from 'ant-design-vue/lib/form/interface';
 import type { VNode } from 'vue';
-import type { ButtonProps as AntdButtonProps } from 'fe-ent-core/components/Button';
+import type { ButtonProps } from 'fe-ent-core/components/Button';
 import type { FormItem } from './formItem';
 import type { ColEx, ComponentType } from './index';
 import type { TableActionType } from 'fe-ent-core/components/Table/src/types/table';
@@ -20,7 +20,7 @@ export interface RenderCallbackParams {
   field: string;
 }
 
-export interface ButtonProps extends AntdButtonProps {
+export interface AntdButtonProps extends ButtonProps {
   text?: string;
 }
 
@@ -103,10 +103,10 @@ export interface FormProps {
   showActionButtonGroup?: boolean;
 
   // Reset button configuration
-  resetButtonOptions?: Partial<ButtonProps>;
+  resetButtonOptions?: Partial<AntdButtonProps>;
 
   // Confirm button configuration
-  submitButtonOptions?: Partial<ButtonProps>;
+  submitButtonOptions?: Partial<AntdButtonProps>;
 
   // Operation column configuration
   actionColOptions?: Partial<ColEx>;

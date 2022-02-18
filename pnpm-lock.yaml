@@ -39,7 +39,7 @@ importers:
       '@vitejs/plugin-legacy': ^1.6.2
       '@vitejs/plugin-vue': 2.1.0
       '@vitejs/plugin-vue-jsx': ^1.2.0
-      '@vue/compiler-sfc': 3.2.21
+      '@vue/compiler-sfc': 3.2.31
       '@vue/test-utils': ^2.0.0-rc.16
       '@vueuse/core': 7.6.2
       '@vueuse/shared': 7.6.2
@@ -116,7 +116,7 @@ importers:
       vite-plugin-theme: ^0.8.1
       vite-plugin-vue-setup-extend: ^0.1.0
       vite-plugin-windicss: ^1.4.12
-      vue: ^3.2.21
+      vue: 3.2.31
       vue-i18n: ^9.1.9
       vue-router: ^4.0.12
       vue-types: ^4.1.1
@@ -180,9 +180,9 @@ importers:
       '@vitejs/plugin-legacy': 1.6.2_vite@2.6.13
       '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/2.1.0_vite@2.6.13+vue@3.2.31
       '@vitejs/plugin-vue-jsx': 1.2.0
-      '@vue/compiler-sfc': 3.2.21
+      '@vue/compiler-sfc': registry.npmmirror.com/@vue/compiler-sfc/3.2.31
       '@vue/test-utils': 2.0.0-rc.16_vue@3.2.31
-      ant-design-vue: registry.npmmirror.com/ant-design-vue/2.2.8_3745a178aa659d32fe847df9d7eff203
+      ant-design-vue: registry.npmmirror.com/ant-design-vue/2.2.8_4f726de02e89ff745196f225ebb1bbcf
       autoprefixer: 10.4.0_postcss@8.3.11
       commitizen: 4.2.4
       components-helper: registry.npmmirror.com/components-helper/2.0.0
@@ -250,7 +250,7 @@ importers:
       '@vitejs/plugin-legacy': ^1.6.2
       '@vitejs/plugin-vue': 2.1.0
       '@vitejs/plugin-vue-jsx': ^1.2.0
-      '@vue/compiler-sfc': 3.2.21
+      '@vue/compiler-sfc': 3.2.31
       '@vue/test-utils': ^2.0.0-rc.16
       ant-design-vue: 2.2.8
       autoprefixer: ^10.4.0
@@ -292,7 +292,7 @@ importers:
       vue-tsc: ^0.28.10
     dependencies:
       '@ant-design/colors': registry.npmmirror.com/@ant-design/colors/6.0.0
-      ant-design-vue: registry.npmmirror.com/ant-design-vue/2.2.8_3745a178aa659d32fe847df9d7eff203
+      ant-design-vue: registry.npmmirror.com/ant-design-vue/2.2.8_4f726de02e89ff745196f225ebb1bbcf
     devDependencies:
       '@col0ring/vite-plugin-copy': registry.npmmirror.com/@col0ring/vite-plugin-copy/1.0.1
       '@iconify/json': registry.npmmirror.com/@iconify/json/1.1.422
@@ -304,7 +304,7 @@ importers:
       '@vitejs/plugin-legacy': registry.npmmirror.com/@vitejs/plugin-legacy/1.6.2_vite@2.6.13
       '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/2.1.0_vite@2.6.13+vue@3.2.31
       '@vitejs/plugin-vue-jsx': registry.npmmirror.com/@vitejs/plugin-vue-jsx/1.2.0
-      '@vue/compiler-sfc': registry.npmmirror.com/@vue/compiler-sfc/3.2.21
+      '@vue/compiler-sfc': registry.npmmirror.com/@vue/compiler-sfc/3.2.31
       '@vue/test-utils': registry.npmmirror.com/@vue/test-utils/2.0.0-rc.16_vue@3.2.31
       autoprefixer: registry.npmmirror.com/autoprefixer/10.4.0_postcss@8.3.11
       chalk: registry.npmmirror.com/chalk/4.1.2
@@ -359,7 +359,7 @@ importers:
       vite: ^2.6.13
       vite-plugin-theme: ^0.8.1
     devDependencies:
-      ant-design-vue: registry.npmmirror.com/ant-design-vue/2.2.8_3745a178aa659d32fe847df9d7eff203
+      ant-design-vue: registry.npmmirror.com/ant-design-vue/2.2.8_4f726de02e89ff745196f225ebb1bbcf
       vite: registry.npmmirror.com/vite/2.6.13_less@4.1.2
       vite-plugin-theme: registry.npmmirror.com/vite-plugin-theme/0.8.1_vite@2.6.13
 
@@ -643,12 +643,6 @@ packages:
       '@babel/types': 7.16.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@babel/parser/7.16.2:
-    resolution: {integrity: sha512-RUVpT0G2h6rOZwqLDTrKk7ksNv7YpAilTnYe1/Q+eDjxEceRMKVWbCsX7t8h6C1qCFi/1Y8WZjcEPBAFG27GPw==}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
     dev: true
 
   /@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression/7.16.2_@babel+core@7.16.0:
@@ -2403,58 +2397,6 @@ packages:
       - supports-color
     dev: true
 
-  /@vue/compiler-core/3.2.21:
-    resolution: {integrity: sha512-NhhiQZNG71KNq1h5pMW/fAXdTF7lJRaSI7LDm2edhHXVz1ROMICo8SreUmQnSf4Fet0UPBVqJ988eF4+936iDQ==}
-    dependencies:
-      '@babel/parser': registry.npmmirror.com/@babel/parser/7.17.0
-      '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.21
-      estree-walker: registry.npmmirror.com/estree-walker/2.0.2
-      source-map: registry.npmmirror.com/source-map/0.6.1
-    dev: true
-
-  /@vue/compiler-dom/3.2.21:
-    resolution: {integrity: sha512-gsJD3DpYZSYquiA7UIPsMDSlAooYWDvHPq9VRsqzJEk2PZtFvLvHPb4aaMD8Ufd62xzYn32cnnkzsEOJhyGilA==}
-    dependencies:
-      '@vue/compiler-core': registry.npmmirror.com/@vue/compiler-core/3.2.21
-      '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.21
-    dev: true
-
-  /@vue/compiler-sfc/3.2.21:
-    resolution: {integrity: sha512-+yDlUSebKpz/ovxM2vLRRx7w/gVfY767pOfYTgbIhAs+ogvIV2BsIt4fpxlThnlCNChJ+yE0ERUNoROv2kEGEQ==}
-    dependencies:
-      '@babel/parser': 7.16.2
-      '@vue/compiler-core': 3.2.21
-      '@vue/compiler-dom': 3.2.21
-      '@vue/compiler-ssr': 3.2.21
-      '@vue/ref-transform': 3.2.21
-      '@vue/shared': 3.2.21
-      estree-walker: 2.0.2
-      magic-string: 0.25.7
-      postcss: 8.3.11
-      source-map: 0.6.1
-    dev: true
-
-  /@vue/compiler-ssr/3.2.21:
-    resolution: {integrity: sha512-eU+A0iWYy+1zAo2CRIJ0zSVlv1iuGAIbNRCnllSJ31pV1lX3jypJYzGbJlSRAbB7VP6E+tYveVT1Oq8JKewa3g==}
-    dependencies:
-      '@vue/compiler-dom': registry.npmmirror.com/@vue/compiler-dom/3.2.21
-      '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.21
-    dev: true
-
-  /@vue/ref-transform/3.2.21:
-    resolution: {integrity: sha512-uiEWWBsrGeun9O7dQExYWzXO3rHm/YdtFNXDVqCSoPypzOVxWxdiL+8hHeWzxMB58fVuV2sT80aUtIVyaBVZgQ==}
-    dependencies:
-      '@babel/parser': registry.npmmirror.com/@babel/parser/7.17.0
-      '@vue/compiler-core': registry.npmmirror.com/@vue/compiler-core/3.2.21
-      '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.21
-      estree-walker: registry.npmmirror.com/estree-walker/2.0.2
-      magic-string: registry.npmmirror.com/magic-string/0.25.7
-    dev: true
-
-  /@vue/shared/3.2.21:
-    resolution: {integrity: sha512-5EQmIPK6gw4UVYUbM959B0uPsJ58+xoMESCZs3N89XyvJ9e+fX4pqEPrOGV8OroIk3SbEvJcC+eYc8BH9JQrHA==}
-    dev: true
-
   /@vue/test-utils/2.0.0-rc.16_vue@3.2.31:
     resolution: {integrity: sha512-TubikDVkI2LuRKRPSLv3lYpbpvvucT2DIcGqfBVpvYs4W19u0EBTJEdmfwmSuLY7H1TyAr9Stur3PI1sWWvTGQ==}
     peerDependencies:
@@ -3863,10 +3805,6 @@ packages:
   /estraverse/5.3.0:
     resolution: {integrity: sha512-MMdARuVEQziNTeJD8DgMqmhwR11BRQ/cBP+pLtYdSTnf3MIO8fFeiINEbX36ZdNlfU/7A9f3gUw49B3oQsvwBA==}
     engines: {node: '>=4.0'}
-    dev: true
-
-  /estree-walker/2.0.2:
-    resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
     dev: true
 
   /esutils/2.0.3:
@@ -6697,11 +6635,6 @@ packages:
     resolution: {integrity: sha512-cPiFOTLUKvJFIg4SKVScy4ilPPW6rFgMgfuZJPNoDuMs3nC1HbMUycBoJw77xFIp6z1UJQJOfx6C9GMH80DiTw==}
     dev: true
 
-  /source-map/0.6.1:
-    resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
-    engines: {node: '>=0.10.0'}
-    dev: true
-
   /source-map/0.7.3:
     resolution: {integrity: sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==}
     engines: {node: '>= 8'}
@@ -7571,7 +7504,7 @@ packages:
     peerDependencies:
       vite: '>=2.0.0'
     dependencies:
-      '@vue/compiler-sfc': 3.2.21
+      '@vue/compiler-sfc': registry.npmmirror.com/@vue/compiler-sfc/3.2.31
       magic-string: 0.25.7
       vite: 2.6.13_less@4.1.2
     dev: true
@@ -10737,23 +10670,6 @@ packages:
       '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.31
     dev: true
 
-  registry.npmmirror.com/@vue/compiler-sfc/3.2.21:
-    resolution: {integrity: sha512-+yDlUSebKpz/ovxM2vLRRx7w/gVfY767pOfYTgbIhAs+ogvIV2BsIt4fpxlThnlCNChJ+yE0ERUNoROv2kEGEQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/compiler-sfc/-/compiler-sfc-3.2.21.tgz}
-    name: '@vue/compiler-sfc'
-    version: 3.2.21
-    dependencies:
-      '@babel/parser': registry.npmmirror.com/@babel/parser/7.17.0
-      '@vue/compiler-core': registry.npmmirror.com/@vue/compiler-core/3.2.21
-      '@vue/compiler-dom': registry.npmmirror.com/@vue/compiler-dom/3.2.21
-      '@vue/compiler-ssr': registry.npmmirror.com/@vue/compiler-ssr/3.2.21
-      '@vue/ref-transform': registry.npmmirror.com/@vue/ref-transform/3.2.21
-      '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.21
-      estree-walker: registry.npmmirror.com/estree-walker/2.0.2
-      magic-string: registry.npmmirror.com/magic-string/0.25.7
-      postcss: registry.npmmirror.com/postcss/8.3.11
-      source-map: registry.npmmirror.com/source-map/0.6.1
-    dev: true
-
   registry.npmmirror.com/@vue/compiler-sfc/3.2.31:
     resolution: {integrity: sha512-748adc9msSPGzXgibHiO6T7RWgfnDcVQD+VVwYgSsyyY8Ans64tALHZANrKtOzvkwznV/F4H7OAod/jIlp/dkQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/compiler-sfc/-/compiler-sfc-3.2.31.tgz}
     name: '@vue/compiler-sfc'
@@ -10769,15 +10685,6 @@ packages:
       magic-string: registry.npmmirror.com/magic-string/0.25.7
       postcss: registry.npmmirror.com/postcss/8.3.11
       source-map: registry.npmmirror.com/source-map/0.6.1
-    dev: true
-
-  registry.npmmirror.com/@vue/compiler-ssr/3.2.21:
-    resolution: {integrity: sha512-eU+A0iWYy+1zAo2CRIJ0zSVlv1iuGAIbNRCnllSJ31pV1lX3jypJYzGbJlSRAbB7VP6E+tYveVT1Oq8JKewa3g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/compiler-ssr/-/compiler-ssr-3.2.21.tgz}
-    name: '@vue/compiler-ssr'
-    version: 3.2.21
-    dependencies:
-      '@vue/compiler-dom': registry.npmmirror.com/@vue/compiler-dom/3.2.21
-      '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.21
     dev: true
 
   registry.npmmirror.com/@vue/compiler-ssr/3.2.31:
@@ -10820,18 +10727,6 @@ packages:
     version: 3.2.31
     dependencies:
       '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.31
-    dev: true
-
-  registry.npmmirror.com/@vue/ref-transform/3.2.21:
-    resolution: {integrity: sha512-uiEWWBsrGeun9O7dQExYWzXO3rHm/YdtFNXDVqCSoPypzOVxWxdiL+8hHeWzxMB58fVuV2sT80aUtIVyaBVZgQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/ref-transform/-/ref-transform-3.2.21.tgz}
-    name: '@vue/ref-transform'
-    version: 3.2.21
-    dependencies:
-      '@babel/parser': registry.npmmirror.com/@babel/parser/7.17.0
-      '@vue/compiler-core': registry.npmmirror.com/@vue/compiler-core/3.2.21
-      '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.21
-      estree-walker: registry.npmmirror.com/estree-walker/2.0.2
-      magic-string: registry.npmmirror.com/magic-string/0.25.7
     dev: true
 
   registry.npmmirror.com/@vue/runtime-core/3.2.31:
@@ -11204,7 +11099,7 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  registry.npmmirror.com/ant-design-vue/2.2.8_3745a178aa659d32fe847df9d7eff203:
+  registry.npmmirror.com/ant-design-vue/2.2.8_4f726de02e89ff745196f225ebb1bbcf:
     resolution: {integrity: sha512-3graq9/gCfJQs6hznrHV6sa9oDmk/D1H3Oo0vLdVpPS/I61fZPk8NEyNKCHpNA6fT2cx6xx9U3QS63uuyikg/Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ant-design-vue/-/ant-design-vue-2.2.8.tgz}
     id: registry.npmmirror.com/ant-design-vue/2.2.8
     name: ant-design-vue
@@ -11216,7 +11111,7 @@ packages:
       '@ant-design/icons-vue': registry.npmmirror.com/@ant-design/icons-vue/6.0.1_vue@3.2.31
       '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.16.0
       '@simonwep/pickr': registry.npmmirror.com/@simonwep/pickr/1.8.2
-      '@vue/compiler-sfc': registry.npmmirror.com/@vue/compiler-sfc/3.2.21
+      '@vue/compiler-sfc': registry.npmmirror.com/@vue/compiler-sfc/3.2.31
       array-tree-filter: registry.npmmirror.com/array-tree-filter/2.1.0
       async-validator: registry.npmmirror.com/async-validator/3.5.2
       dom-align: registry.npmmirror.com/dom-align/1.12.2
@@ -21727,7 +21622,7 @@ packages:
     peerDependencies:
       vite: '>=2.0.0'
     dependencies:
-      '@vue/compiler-sfc': registry.npmmirror.com/@vue/compiler-sfc/3.2.21
+      '@vue/compiler-sfc': registry.npmmirror.com/@vue/compiler-sfc/3.2.31
       magic-string: registry.npmmirror.com/magic-string/0.25.7
       vite: registry.npmmirror.com/vite/2.6.13_less@4.1.2
     dev: true

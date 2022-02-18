@@ -63,6 +63,7 @@
     },
   ];
   export default defineComponent({
+    name: 'ExportExcelModal',
     components: { BasicModal, BasicForm },
     emits: ['success', 'register'],
     setup(_, { emit }) {

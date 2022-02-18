@@ -18,7 +18,7 @@ export default defineComponent({
 
     const model = computed({
       get: (): boolean => props.checked,
-      set: val => emit('update:modelValue', val),
+      set: (val) => emit('update:modelValue', val),
     });
 
     return {

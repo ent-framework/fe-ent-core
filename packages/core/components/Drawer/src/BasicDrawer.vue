@@ -55,6 +55,7 @@
   import { useAttrs } from 'fe-ent-core/hooks/core/useAttrs';
 
   export default defineComponent({
+    name: 'BasicDrawer',
     components: { Drawer, ScrollContainer, DrawerFooter, DrawerHeader },
     inheritAttrs: false,
     props: basicProps,
