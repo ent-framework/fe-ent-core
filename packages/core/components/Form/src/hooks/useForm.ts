@@ -1,6 +1,7 @@
 import type { FormProps, FormActionType, UseFormReturnType, FormSchema } from '../types/form';
 import type { NamePath } from 'ant-design-vue/lib/form/interface';
 import type { DynamicProps } from 'fe-ent-core/types/utils';
+import type { Recordable, Nullable } from 'fe-ent-core/types/global';
 import { ref, onUnmounted, unref, nextTick, watch } from 'vue';
 import { isProdMode } from 'fe-ent-core/utils/env';
 import { error } from 'fe-ent-core/utils/log';

@@ -6,6 +6,7 @@ import type { ColEx, ComponentType } from './index';
 import type { TableActionType } from 'fe-ent-core/components/Table/src/types/table';
 import type { CSSProperties } from 'vue';
 import type { RowProps } from 'ant-design-vue/lib/grid/Row';
+import type { Recordable } from 'fe-ent-core/types/global';
 
 export type FieldMapToTime = [string, [string, string], string?][];
 

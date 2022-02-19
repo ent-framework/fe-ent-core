@@ -20,8 +20,10 @@
   import { useRuleFormItem } from 'fe-ent-core/hooks/component/useFormItem';
   import { useAttrs } from 'fe-ent-core/hooks/core/useAttrs';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
-  import { get, omit } from 'lodash-es';
+  import { get, omit } from 'lodash';
   import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
+  import type { Recordable } from 'fe-ent-core/types/global';
+
   type OptionsItem = { label: string; value: string | number | boolean; disabled?: boolean };
 
   export default defineComponent({

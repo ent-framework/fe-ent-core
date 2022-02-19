@@ -3,6 +3,7 @@ import type { BasicTableProps, FetchParams } from '../types/table';
 import { unref, computed } from 'vue';
 import type { FormProps } from 'fe-ent-core/components//Form';
 import { isFunction } from 'fe-ent-core/utils/is';
+import type { Recordable } from 'fe-ent-core/types/global';
 
 export function useTableForm(
   propsRef: ComputedRef<BasicTableProps>,

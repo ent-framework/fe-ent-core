@@ -136,7 +136,7 @@
     "postcss-less": "^5.0.0",
     "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
-    "rollup": "2.59.0",
+    "rollup": "^2.59.0",
     "rollup-plugin-visualizer": "^5.5.2",
     "stylelint": "^14.0.1",
     "stylelint-config-html": "^1.0.0",
@@ -150,7 +150,7 @@
     "vite": "^2.6.13",
     "vite-plugin-compression": "^0.3.5",
     "vite-plugin-html": "^2.1.1",
-    "vite-plugin-imagemin": "^0.4.6",
+    "vite-plugin-imagemin": "0.6.1",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-purge-icons": "^0.7.0",
     "vite-plugin-pwa": "^0.11.3",
@@ -159,7 +159,7 @@
     "vite-plugin-theme": "^0.8.1",
     "vite-plugin-vue-setup-extend": "^0.1.0",
     "vite-plugin-windicss": "^1.4.12",
-    "vue-types": "^4.1.1",
+    "vue-types": "^3.0.2",
     "ant-design-vue": "2.2.8",
     "vue": "3.2.31",
     "vue-i18n": "^9.1.9",
@@ -167,7 +167,8 @@
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china",
-    "rollup": "^2.56.3"
+    "rollup": "^2.56.3",
+    "gifsicle": "5.2.0"
   },
   "repository": {
     "type": "git",

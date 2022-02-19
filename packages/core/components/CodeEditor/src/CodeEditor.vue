@@ -9,7 +9,7 @@
   </div>
 </template>
 <script lang="ts">
-  import { computed, defineComponent } from 'vue';
+  import { computed, defineComponent, PropType } from 'vue';
   import CodeMirrorEditor from './codemirror/CodeMirror.vue';
   import { isString } from 'fe-ent-core/utils/is';
   import { MODE } from './typing';

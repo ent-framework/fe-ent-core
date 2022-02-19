@@ -1,5 +1,6 @@
 import type { LockInfo, UserInfo } from 'fe-ent-core/types/store';
 import type { ProjectConfig } from 'fe-ent-core/types/config';
+import type { Nullable } from 'fe-ent-core/types/global';
 import type { RouteLocationNormalized } from 'vue-router';
 
 import { createLocalStorage, createSessionStorage } from 'fe-ent-core/utils/cache';

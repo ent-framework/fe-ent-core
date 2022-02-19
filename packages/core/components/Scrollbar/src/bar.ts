@@ -8,6 +8,7 @@ import {
   inject,
   Ref,
 } from 'vue';
+import type { Recordable, Nullable } from 'fe-ent-core/types/global';
 import { on, off } from 'fe-ent-core/utils/domUtils';
 
 import { renderThumbStyle, BAR_MAP } from './util';

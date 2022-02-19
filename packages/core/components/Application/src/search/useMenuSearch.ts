@@ -7,6 +7,7 @@ import { useGo } from 'fe-ent-core/hooks/web/usePage';
 import { useScrollTo } from 'fe-ent-core/hooks/event/useScrollTo';
 import { onKeyStroke, useDebounceFn } from '@vueuse/core';
 import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
+import type { EmitType, ElRef, ChangeEvent } from 'fe-ent-core/types/global';
 
 export interface SearchResult {
   name: string;

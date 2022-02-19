@@ -1,4 +1,5 @@
 import type { UnwrapRef, Ref, WritableComputedRef, DeepReadonly } from 'vue';
+import type { Recordable } from 'fe-ent-core/types/global';
 import {
   reactive,
   readonly,

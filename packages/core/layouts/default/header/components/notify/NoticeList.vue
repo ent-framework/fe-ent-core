@@ -59,6 +59,7 @@
   import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { List, Avatar, Tag, Typography } from 'ant-design-vue';
   import { isNumber } from 'fe-ent-core/utils/is';
+  import type { Recordable } from 'fe-ent-core/types/global';
   export default defineComponent({
     components: {
       [Avatar.name]: Avatar,

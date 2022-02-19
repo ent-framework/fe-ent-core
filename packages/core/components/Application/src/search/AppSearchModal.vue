@@ -61,6 +61,7 @@
   import { computed, unref, ref, watch, nextTick, defineComponent } from 'vue';
   import { SearchOutlined } from '@ant-design/icons-vue';
   import AppSearchFooter from './AppSearchFooter.vue';
+  import type { Nullable } from 'fe-ent-core/types/global';
   import Icon from 'fe-ent-core/components/Icon';
   // @ts-ignore
   // import vClickOutside from 'fe-ent-core/directives/clickOutside';

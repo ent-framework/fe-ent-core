@@ -10,12 +10,14 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, watch, ref, onMounted, unref } from 'vue';
+  import { computed, defineComponent, watch, ref, onMounted, unref, PropType } from 'vue';
   import { TreeSelect } from 'ant-design-vue';
   import { isArray, isFunction } from 'fe-ent-core/utils/is';
   import { get } from 'lodash-es';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { LoadingOutlined } from '@ant-design/icons-vue';
+  import type { Recordable } from 'fe-ent-core/types/global';
+
   export default defineComponent({
     name: 'ApiTreeSelect',
     components: { ATreeSelect: TreeSelect, LoadingOutlined },

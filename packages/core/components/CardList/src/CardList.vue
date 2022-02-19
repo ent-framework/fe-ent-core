@@ -76,7 +76,7 @@
   </div>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, onMounted, ref } from 'vue';
+  import { computed, defineComponent, onMounted, ref, PropType } from 'vue';
   import {
     EditOutlined,
     EllipsisOutlined,
@@ -86,20 +86,22 @@
   import { List, Card, Image, Typography, Tooltip, Slider, Avatar } from 'ant-design-vue';
   import { Dropdown } from 'fe-ent-core/components/Dropdown';
   import { BasicForm, useForm } from 'fe-ent-core/components/Form';
-  import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { Button } from 'fe-ent-core/components/Button';
   import { isFunction } from 'fe-ent-core/utils/is';
   import { useSlider, grid } from './data';
   const ListItem = List.Item;
   const CardMeta = Card.Meta;
   const TypographyText = Typography.Text;
-
   // 组件接收参数
   const props = {
     // 请求API的参数
-    params: propTypes.object.def({}),
+    // params: propTypes.object.def({}),
+    params: { type: Object, default: {} },
     //api
-    api: propTypes.func,
+    //api: propTypes.func,
+    api: {
+      type: Function as PropType<(params: any) => any>,
+    },
   };
   //暴露内部方法
   export default defineComponent({

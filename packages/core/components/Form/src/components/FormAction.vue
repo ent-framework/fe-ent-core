@@ -44,7 +44,7 @@
   //import type { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
   import { defineComponent, computed, PropType } from 'vue';
   import { Form, Col } from 'ant-design-vue';
-  import { Button, ButtonProps } from 'fe-ent-core/components//Button';
+  import { Button, ButtonProps } from 'fe-ent-core/components/Button';
   import { BasicArrow } from 'fe-ent-core/components//Basic';
   import { useFormContext } from '../hooks/useFormContext';
   import { useI18n } from 'fe-ent-core/hooks/web/useI18n';

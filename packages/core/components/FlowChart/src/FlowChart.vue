@@ -8,7 +8,7 @@
   </div>
 </template>
 <script lang="ts">
-  import type { Ref } from 'vue';
+  import type { Ref, PropType } from 'vue';
   import type { Definition } from '@logicflow/core';
   import { defineComponent, ref, onMounted, unref, nextTick, computed, watch } from 'vue';
   import FlowChartToolbar from './FlowChartToolbar.vue';
@@ -23,7 +23,6 @@
   import { configDefaultDndPanel } from './config';
   import '@logicflow/core/dist/style/index.css';
   import '@logicflow/extension/lib/style/index.css';
-
   export default defineComponent({
     name: 'FlowChart',
     components: { BasicModal, FlowChartToolbar, JsonPreview },

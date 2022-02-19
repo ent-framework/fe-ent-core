@@ -113,7 +113,7 @@
 <script lang="ts">
   import type { CropendResult, Cropper } from './typing';
 
-  import { defineComponent, ref } from 'vue';
+  import { defineComponent, ref, PropType } from 'vue';
   import CropperImage from './Cropper.vue';
   import { Space, Upload, Avatar, Tooltip } from 'ant-design-vue';
   import { useDesign } from 'fe-ent-core/hooks/web/useDesign';

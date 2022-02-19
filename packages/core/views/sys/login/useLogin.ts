@@ -2,6 +2,7 @@ import type { ValidationRule } from 'ant-design-vue/lib/form/Form';
 import type { RuleObject } from 'ant-design-vue/lib/form/interface';
 import { ref, computed, unref, Ref } from 'vue';
 import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
+import type { Recordable } from 'fe-ent-core/types/global';
 
 export enum LoginStateEnum {
   LOGIN,

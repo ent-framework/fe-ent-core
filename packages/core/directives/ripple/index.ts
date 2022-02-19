@@ -1,5 +1,6 @@
 import type { Directive } from 'vue';
 import './index.less';
+import type { Recordable } from 'fe-ent-core/types/global';
 export interface RippleOptions {
   event: string;
   transition: number;

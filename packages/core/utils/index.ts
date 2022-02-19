@@ -1,6 +1,6 @@
 import type { RouteLocationNormalized, RouteRecordNormalized } from 'vue-router';
-import type { App, Plugin } from 'vue';
-
+//import type { App, Plugin } from 'vue';
+import type { SFCWithInstall, Recordable, TargetContext } from 'fe-ent-core/types/global';
 import { unref } from 'vue';
 import { isObject } from 'fe-ent-core/utils/is';
 
@@ -79,7 +79,7 @@ export function getRawRoute(route: RouteLocationNormalized): RouteLocationNormal
   };
 }
 
-export const withInstall = <T>(component: T, alias?: string) => {
+/*export const withInstall = <T>(component: T, alias?: string) => {
   const comp = component as any;
   comp.install = (app: App) => {
     if (!comp.name && !comp.displayName) {
@@ -91,4 +91,19 @@ export const withInstall = <T>(component: T, alias?: string) => {
     }
   };
   return component as T & Plugin;
+};*/
+
+export const withInstall = <T, E extends Record<string, any>>(main: T, extra?: E) => {
+  (main as SFCWithInstall<T>).install = (app): void => {
+    for (const comp of [main, ...Object.values(extra ?? {})]) {
+      app.component(comp.name, comp);
+    }
+  };
+
+  if (extra) {
+    for (const [key, comp] of Object.entries(extra)) {
+      (main as any)[key] = comp;
+    }
+  }
+  return main as SFCWithInstall<T> & E;
 };

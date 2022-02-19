@@ -13,7 +13,7 @@
   import { computed, unref } from 'vue';
   import { buttonProps } from './props';
   import { Button } from 'ant-design-vue';
-  import Icon from 'fe-ent-core/components/Icon/src/Icon.vue';
+  import Icon from 'fe-ent-core/components/Icon';
   import { useAttrs } from 'fe-ent-core/hooks/core/useAttrs';
 
   export default defineComponent({

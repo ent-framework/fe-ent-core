@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, computed } from 'vue';
-
+  import type { Recordable } from 'fe-ent-core/types/global';
   import { Upload } from 'ant-design-vue';
   import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { useGlobSetting } from 'fe-ent-core/hooks/setting';

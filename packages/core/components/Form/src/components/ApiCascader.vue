@@ -27,6 +27,8 @@
   import { useRuleFormItem } from 'fe-ent-core/hooks/component/useFormItem';
   import { LoadingOutlined } from '@ant-design/icons-vue';
   import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
+  import type { Recordable } from 'fe-ent-core/types/global';
+
   const { t } = useI18n();
   interface Option {
     value: string;
@@ -186,6 +188,7 @@
       }
 
       return {
+        t,
         state,
         options,
         loading,

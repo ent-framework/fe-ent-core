@@ -14,6 +14,7 @@
   import { upperFirst, cloneDeep } from 'lodash-es';
   import { useItemLabelWidth } from '../hooks/useLabelWidth';
   import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
+  import type { Recordable, Nullable } from 'fe-ent-core/types/global';
 
   export default defineComponent({
     name: 'BasicFormItem',

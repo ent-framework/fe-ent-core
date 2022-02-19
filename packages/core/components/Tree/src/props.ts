@@ -10,6 +10,7 @@ import type {
 import type { ContextMenuItem } from 'fe-ent-core/hooks/web/useContextMenu';
 import type { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
 import { propTypes } from 'fe-ent-core/utils/propTypes';
+import type { Recordable } from 'fe-ent-core/types/global';
 
 export const basicProps = {
   value: {

@@ -1,5 +1,6 @@
 <script lang="tsx">
   import type { DescriptionProps, DescInstance, DescItem } from './typing';
+  import type { Recordable, PropType } from 'fe-ent-core/types/global';
   import type { DescriptionsProps } from 'ant-design-vue/es';
   import type { CSSProperties } from 'vue';
   import type { CollapseContainerOptions } from 'fe-ent-core/components/Container';

@@ -2,6 +2,7 @@ import type { PropType } from 'vue';
 
 import { defineComponent, Transition, TransitionGroup } from 'vue';
 import { getSlot } from 'fe-ent-core/utils/helper/tsxHelper';
+import type { Recordable } from 'fe-ent-core/types/global';
 
 type Mode = 'in-out' | 'out-in' | 'default' | undefined;
 

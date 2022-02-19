@@ -21,6 +21,7 @@
   import { INDEX_COLUMN_FLAG } from '../const';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { useTableContext } from '../hooks/useTableContext';
+  import type { Recordable } from 'fe-ent-core/types/global';
 
   const SUMMARY_ROW_KEY = '_row';
   const SUMMARY_INDEX_KEY = '_index';

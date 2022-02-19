@@ -19,7 +19,7 @@
     "experimentalDecorators": true,
     "lib": ["dom", "esnext"],
     "types": ["vite/client", "jest"],
-    "typeRoots": ["./node_modules/@types/", "./node_modules/ant-design-vue/es", "./types"],
+    "typeRoots": ["./node_modules/@types/", "./node_modules/ant-design-vue/es"],
     "noImplicitAny": false,
     "skipLibCheck": true
   },

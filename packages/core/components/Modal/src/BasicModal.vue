@@ -50,6 +50,7 @@
 </template>
 <script lang="ts">
   import type { ModalProps, ModalMethods } from './typing';
+  import type { Recordable } from 'fe-ent-core/types/global';
 
   import {
     defineComponent,

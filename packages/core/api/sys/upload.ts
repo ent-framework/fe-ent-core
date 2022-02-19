@@ -1,6 +1,6 @@
 import { UploadApiResult } from './model/uploadModel';
 import { defHttp } from 'fe-ent-core/utils/http/axios';
-import { UploadFileParams } from 'fe-ent-core/types/axios';
+import type { UploadFileParams } from 'fe-ent-core/types/axios';
 import { useGlobSetting } from 'fe-ent-core/hooks/setting';
 
 const { uploadUrl = '' } = useGlobSetting();

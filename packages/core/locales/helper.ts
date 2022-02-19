@@ -1,4 +1,5 @@
 import type { LocaleType } from 'fe-ent-core/types/config';
+import type { Recordable } from 'fe-ent-core/types/global';
 
 import { set } from 'lodash-es';
 

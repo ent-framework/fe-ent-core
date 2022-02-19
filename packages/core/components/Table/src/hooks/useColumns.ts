@@ -9,6 +9,7 @@ import { isArray, isBoolean, isFunction, isMap, isString } from 'fe-ent-core/uti
 import { cloneDeep, isEqual } from 'lodash-es';
 import { formatToDate } from 'fe-ent-core/utils/dateUtil';
 import { ACTION_COLUMN_FLAG, DEFAULT_ALIGN, INDEX_COLUMN_FLAG, PAGE_SIZE } from '../const';
+import type { Recordable } from 'fe-ent-core/types/global';
 
 function handleItem(item: BasicColumn, ellipsis: boolean) {
   const { key, dataIndex, children } = item;

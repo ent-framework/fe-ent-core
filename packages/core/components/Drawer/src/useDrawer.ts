@@ -20,7 +20,7 @@ import { isFunction } from 'fe-ent-core/utils/is';
 import { tryOnUnmounted } from '@vueuse/core';
 import { isEqual } from 'lodash-es';
 import { error } from 'fe-ent-core/utils/log';
-
+import type { Fn, Nullable } from 'fe-ent-core/types/global';
 const dataTransferRef = reactive<any>({});
 
 const visibleData = reactive<{ [key: number]: boolean }>({});

@@ -4,7 +4,7 @@ import { h, Ref } from 'vue';
 
 import EditableCell from './EditableCell.vue';
 import { isArray } from 'fe-ent-core/utils/is';
-
+import type { Recordable, Fn } from 'fe-ent-core/types/global';
 interface Params {
   text: string;
   record: Recordable;

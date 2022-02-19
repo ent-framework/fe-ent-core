@@ -30,6 +30,7 @@
   import TableSettingComponent from './settings/index.vue';
   import TableTitle from './TableTitle.vue';
   import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
+  import type { Recordable } from 'fe-ent-core/types/global';
 
   export default defineComponent({
     name: 'BasicTableHeader',

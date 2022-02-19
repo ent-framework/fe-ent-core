@@ -1,7 +1,7 @@
 import type { DescriptionProps, DescInstance, UseDescReturnType } from './typing';
 import { ref, getCurrentInstance, unref } from 'vue';
 import { isProdMode } from 'fe-ent-core/utils/env';
-
+import type { Nullable } from 'fe-ent-core/types/global';
 export function useDescription(props?: Partial<DescriptionProps>): UseDescReturnType {
   if (!getCurrentInstance()) {
     throw new Error('useDescription() can only be used inside setup() or functional components!');

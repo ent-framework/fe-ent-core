@@ -5,6 +5,7 @@ import { useModalDragMove } from '../hooks/useModalDrag';
 import { useAttrs } from 'fe-ent-core/hooks/core/useAttrs';
 import { extendSlots } from 'fe-ent-core/utils/helper/tsxHelper';
 import initDefaultProps from 'fe-ent-core/utils/props';
+import type { Recordable } from 'fe-ent-core/types/global';
 
 const EntModal = defineComponent({
   name: 'EntModal',

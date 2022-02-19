@@ -8,9 +8,10 @@
   </span>
 </template>
 <script lang="ts">
-  import { computed, defineComponent } from 'vue';
+  import { computed, CSSProperties, defineComponent, PropType } from 'vue';
   import { Icon } from 'fe-ent-core/components/Icon';
   import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
+  // import PropTypes from 'fe-ent-core/utils/propTypes';
 
   const props = {
     /**
@@ -29,6 +30,10 @@
      * Cancel padding/margin for inline
      */
     inset: { type: Boolean },
+
+    iconStyle: {
+      type: Object as PropType<CSSProperties>,
+    },
   };
 
   export default defineComponent({

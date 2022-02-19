@@ -4,6 +4,7 @@ import { unref } from 'vue';
 import type { Ref, ComputedRef } from 'vue';
 import type { FormProps, FormSchema } from '../types/form';
 import { set } from 'lodash-es';
+import type { Recordable } from 'fe-ent-core/types/global';
 
 interface UseFormValuesContext {
   defaultValueRef: Ref<any>;

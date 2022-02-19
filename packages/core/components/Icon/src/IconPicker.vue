@@ -82,7 +82,7 @@
   import { Input, Popover, Pagination, Empty } from 'ant-design-vue';
   import Icon from './Icon.vue';
   import SvgIcon from './SvgIcon.vue';
-
+  import type { ChangeEvent } from 'fe-ent-core/types/global';
   import iconsData from '../data/icons.data';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { usePagination } from 'fe-ent-core/hooks/web/usePagination';

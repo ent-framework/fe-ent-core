@@ -1,6 +1,8 @@
+import type { Recordable } from './global';
+
 export type ErrorMessageMode = 'none' | 'modal' | 'message' | undefined;
 
-export interface RequestOptions {
+export type RequestOptions = {
   // Splicing request parameters to url
   joinParamsToUrl?: boolean;
   // Format request parameter time
@@ -23,17 +25,17 @@ export interface RequestOptions {
   ignoreCancelToken?: boolean;
   // Whether to send token in header
   withToken?: boolean;
-}
+};
 
-export interface Result<T = any> {
+export type Result<T = any> = {
   code: number;
   type: 'success' | 'error' | 'warning';
   message: string;
   result: T;
-}
+};
 
 // multipart/form-data: upload file
-export interface UploadFileParams {
+export type UploadFileParams = {
   // Other parameters
   data?: Recordable;
   // File parameter interface field name
@@ -43,4 +45,4 @@ export interface UploadFileParams {
   // file name
   filename?: string;
   [key: string]: any;
-}
+};

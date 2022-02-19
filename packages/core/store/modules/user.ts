@@ -1,4 +1,5 @@
 import type { UserInfo } from 'fe-ent-core/types/store';
+import type { Nullable } from 'fe-ent-core/types/global';
 import type { ErrorMessageMode } from 'fe-ent-core/types/axios';
 import { defineStore } from 'pinia';
 import { store } from 'fe-ent-core/store';

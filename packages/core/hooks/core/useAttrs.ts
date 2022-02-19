@@ -1,4 +1,6 @@
 import { getCurrentInstance, reactive, shallowRef, watchEffect } from 'vue';
+import type { Recordable } from 'fe-ent-core/types/global';
+
 import type { Ref } from 'vue';
 interface Params {
   excludeListeners?: boolean;

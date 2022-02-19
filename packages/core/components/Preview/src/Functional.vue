@@ -1,5 +1,5 @@
 <script lang="tsx">
-  import { defineComponent, ref, unref, computed, reactive, watchEffect } from 'vue';
+  import { defineComponent, ref, unref, computed, reactive, watchEffect, PropType } from 'vue';
   import { CloseOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
   import resumeSvg from 'fe-ent-core/assets/svg/preview/resume.svg';
   import rotateSvg from 'fe-ent-core/assets/svg/preview/p-rotate.svg';

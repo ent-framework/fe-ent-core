@@ -1,10 +1,14 @@
 import { HandlerEnum } from './enum';
-import { updateHeaderBgColor, updateSidebarBgColor } from 'fe-ent-core/logics/theme/updateBackground';
+import {
+  updateHeaderBgColor,
+  updateSidebarBgColor,
+} from 'fe-ent-core/logics/theme/updateBackground';
 import { updateColorWeak } from 'fe-ent-core/logics/theme/updateColorWeak';
 import { updateGrayMode } from 'fe-ent-core/logics/theme/updateGrayMode';
 
 import { useAppStore } from 'fe-ent-core/store/modules/app';
-import { ProjectConfig } from 'fe-ent-core/types/config';
+import type { ProjectConfig } from 'fe-ent-core/types/config';
+import type { DeepPartial } from 'fe-ent-core/types/global';
 import { changeTheme } from 'fe-ent-core/logics/theme';
 import { updateDarkTheme } from 'fe-ent-core/logics/theme/dark';
 import { useRootSetting } from 'fe-ent-core/hooks/setting/useRootSetting';

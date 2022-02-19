@@ -37,10 +37,11 @@
 
 <script lang="ts">
   import { computed, PropType, defineComponent } from 'vue';
+  import type { Recordable } from 'fe-ent-core/types/global';
   import type { DropMenu } from './typing';
   import { Dropdown, Menu, Popconfirm } from 'ant-design-vue';
   import { Icon } from 'fe-ent-core/components/Icon';
-  import { omit as lOmit } from 'lodash-es';
+  import { omit } from 'lodash';
   import { isFunction } from 'fe-ent-core/utils/is';
 
   const props = {
@@ -95,7 +96,7 @@
 
       const getPopConfirmAttrs = computed(() => {
         return (attrs) => {
-          const originAttrs = lOmit(attrs, ['confirm', 'cancel', 'icon']);
+          const originAttrs = omit(attrs, ['confirm', 'cancel', 'icon']);
           if (!attrs.onConfirm && attrs.confirm && isFunction(attrs.confirm))
             originAttrs['onConfirm'] = attrs.confirm;
           if (!attrs.onCancel && attrs.cancel && isFunction(attrs.cancel))

@@ -41,7 +41,7 @@
   import type { EditRecordRow } from './index';
   import { CheckOutlined, CloseOutlined, FormOutlined } from '@ant-design/icons-vue';
   import { CellComponent } from './CellComponent';
-
+  import type { Recordable, LabelValueOptions, ChangeEvent, Fn } from 'fe-ent-core/types/global';
   import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { useTableContext } from '../../hooks/useTableContext';
 

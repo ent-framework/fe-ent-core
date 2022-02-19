@@ -19,7 +19,7 @@
   import { useModalContext } from '../../Modal';
   import { useRootSetting } from 'fe-ent-core/hooks/setting/useRootSetting';
   import { onMountedOrActivated } from 'fe-ent-core/hooks/core/onMountedOrActivated';
-
+  import type { ElRef, Nullable } from 'fe-ent-core/types/global';
   type Lang = 'zh_CN' | 'en_US' | 'ja_JP' | 'ko_KR' | undefined;
 
   export default defineComponent({

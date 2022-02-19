@@ -12,8 +12,11 @@
     unref,
     nextTick,
     defineComponent,
+    PropType,
   } from 'vue';
   import { useDebounceFn } from '@vueuse/core';
+  import type { Nullable } from 'fe-ent-core/types/global';
+
   import { useAppStore } from 'fe-ent-core/store/modules/app';
   import { useWindowSizeFn } from 'fe-ent-core/hooks/event/useWindowSizeFn';
   import CodeMirror from 'codemirror';

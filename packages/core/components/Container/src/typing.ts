@@ -1,4 +1,5 @@
 export type ScrollType = 'default' | 'main';
+import type { Nullable, RefType } from 'fe-ent-core/types/global';
 
 export interface CollapseContainerOptions {
   canExpand?: boolean;

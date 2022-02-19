@@ -15,6 +15,7 @@
 </template>
 <script lang="ts">
   import type { PropType } from 'vue';
+  import type { ElRef } from 'fe-ent-core/types/global';
   import {
     defineComponent,
     ref,

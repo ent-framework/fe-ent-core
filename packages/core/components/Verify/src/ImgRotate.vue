@@ -6,7 +6,7 @@
   import { hackCss } from 'fe-ent-core/utils/domUtils';
   import { rotateProps } from './props';
   import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
-
+  import type { Nullable } from 'fe-ent-core/types/global';
   export default defineComponent({
     name: 'ImgRotateDragVerify',
     inheritAttrs: false,

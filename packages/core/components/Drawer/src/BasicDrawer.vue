@@ -32,6 +32,7 @@
 </template>
 <script lang="ts">
   import type { DrawerInstance, DrawerProps } from './typing';
+  import type { Recordable, Nullable } from 'fe-ent-core/types/global';
   import type { CSSProperties } from 'vue';
   import {
     defineComponent,
