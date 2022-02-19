@@ -3,7 +3,6 @@ import type { LoadingProps } from './typing';
 
 import { createVNode, render, reactive, h } from 'vue';
 import Loading from './Loading.vue';
-import type { Nullable } from 'fe-ent-core/types/global';
 export function createLoading(props?: Partial<LoadingProps>, target?: HTMLElement, wait = false) {
   let vm: Nullable<VNode> = null;
   const data = reactive({

@@ -5,7 +5,6 @@ import { getParentLayout, LAYOUT, EXCEPTION_COMPONENT } from 'fe-ent-core/router
 import { cloneDeep, omit } from 'lodash-es';
 import { warn } from 'fe-ent-core/utils/log';
 import { createRouter, createWebHashHistory } from 'vue-router';
-import type { Recordable } from 'fe-ent-core/types/global';
 
 export type LayoutMapKey = 'LAYOUT';
 const IFRAME = () => import('fe-ent-core/views/sys/iframe/FrameBlank.vue');

@@ -3,7 +3,6 @@
 
 import type { AxiosResponse } from 'axios';
 import type { RequestOptions, Result } from 'fe-ent-core/types/axios';
-import type { Recordable } from 'fe-ent-core/types/global';
 import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
 import { VAxios } from './Axios';
 import { checkStatus } from './checkStatus';

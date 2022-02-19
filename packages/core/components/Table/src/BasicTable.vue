@@ -38,7 +38,6 @@
     SizeType,
     ColumnChangeParam,
   } from './types/table';
-  import type { Recordable } from 'fe-ent-core/types/global';
   import { defineComponent, ref, computed, unref, toRaw, inject, watchEffect } from 'vue';
   import { Table } from 'ant-design-vue';
   import { BasicForm, useForm } from 'fe-ent-core/components//Form/index';

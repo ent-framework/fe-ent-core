@@ -1,5 +1,4 @@
 import type { LockInfo } from 'fe-ent-core/types/store';
-import type { Nullable } from 'fe-ent-core/types/global';
 
 import { defineStore } from 'pinia';
 

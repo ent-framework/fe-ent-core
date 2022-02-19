@@ -1,7 +1,7 @@
 import type { PropType } from 'vue';
 import type {
   ReplaceFields,
-  ActionItem,
+  TreeActionItem,
   Keys,
   CheckKeys,
   ContextMenuOptions,
@@ -10,7 +10,6 @@ import type {
 import type { ContextMenuItem } from 'fe-ent-core/hooks/web/useContextMenu';
 import type { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
 import { propTypes } from 'fe-ent-core/utils/propTypes';
-import type { Recordable } from 'fe-ent-core/types/global';
 
 export const basicProps = {
   value: {
@@ -47,7 +46,7 @@ export const basicProps = {
   },
 
   actionList: {
-    type: Array as PropType<ActionItem[]>,
+    type: Array as PropType<TreeActionItem[]>,
     default: () => [],
   },
 
@@ -96,7 +95,7 @@ export const basicProps = {
 
 export const treeNodeProps = {
   actionList: {
-    type: Array as PropType<ActionItem[]>,
+    type: Array as PropType<TreeActionItem[]>,
     default: () => [],
   },
   replaceFields: {

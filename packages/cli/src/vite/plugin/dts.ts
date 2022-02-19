@@ -19,13 +19,13 @@ export const generateTypesDefinitions = async () => {
   const projectRoot = process.cwd();
   const workspaceRoot = findWorkspaceRoot();
   const outDir = path.resolve(workspaceRoot, `${OUTPUT_DIR}/${FE_PKG}`);
-  const tsConfigPath = path.resolve(workspaceRoot, 'tsconfig.json');
+  const tsConfigPath = path.resolve(projectRoot, 'tsconfig.json');
   const project = new Project({
     compilerOptions: {
       emitDeclarationOnly: true,
       declaration: true,
       outDir,
-      baseUrl: workspaceRoot,
+      baseUrl: projectRoot,
       disableSizeLimit: true,
     },
     tsConfigFilePath: tsConfigPath,

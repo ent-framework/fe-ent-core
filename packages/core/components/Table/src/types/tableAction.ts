@@ -1,7 +1,7 @@
 import { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
 import { TooltipProps } from 'ant-design-vue/es/tooltip/Tooltip';
 import { RoleEnum } from 'fe-ent-core/enums/roleEnum';
-export interface ActionItem extends ButtonProps {
+export interface TableActionItem extends ButtonProps {
   onClick?: Fn;
   label?: string;
   color?: 'success' | 'error' | 'warning';
@@ -12,7 +12,7 @@ export interface ActionItem extends ButtonProps {
   // 权限编码控制是否显示
   auth?: RoleEnum | RoleEnum[] | string | string[];
   // 业务控制是否显示
-  ifShow?: boolean | ((action: ActionItem) => boolean);
+  ifShow?: boolean | ((action: TableActionItem) => boolean);
   tooltip?: string | TooltipProps;
 }
 

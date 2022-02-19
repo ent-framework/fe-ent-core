@@ -1,30 +1,30 @@
 import type { ButtonProps } from 'ant-design-vue/lib/button/buttonTypes';
 import type { CSSProperties, VNodeChild, ComputedRef } from 'vue';
-import type { ScrollContainerOptions } from 'fe-ent-core/components//Container/index';
+import type { ScrollContainerOptions } from 'fe-ent-core/components/Container';
 
 export interface DrawerInstance {
   setDrawerProps: (props: Partial<DrawerProps> | boolean) => void;
   emitVisible?: (visible: boolean, uid: number) => void;
 }
 
-export interface ReturnMethods extends DrawerInstance {
+export interface ReturnDrawerMethods extends DrawerInstance {
   openDrawer: <T = any>(visible?: boolean, data?: T, openOnSet?: boolean) => void;
   closeDrawer: () => void;
   getVisible?: ComputedRef<boolean>;
 }
 
-export type RegisterFn = (drawerInstance: DrawerInstance, uuid?: string) => void;
+export type RegisterDrawerFn = (drawerInstance: DrawerInstance, uuid?: string) => void;
 
-export interface ReturnInnerMethods extends DrawerInstance {
+export interface ReturnDrawerInnerMethods extends DrawerInstance {
   closeDrawer: () => void;
   changeLoading: (loading: boolean) => void;
   changeOkLoading: (loading: boolean) => void;
   getVisible?: ComputedRef<boolean>;
 }
 
-export type UseDrawerReturnType = [RegisterFn, ReturnMethods];
+export type UseDrawerReturnType = [RegisterDrawerFn, ReturnDrawerMethods];
 
-export type UseDrawerInnerReturnType = [RegisterFn, ReturnInnerMethods];
+export type UseDrawerInnerReturnType = [RegisterDrawerFn, ReturnDrawerInnerMethods];
 
 export interface DrawerFooterProps {
   showOkBtn: boolean;

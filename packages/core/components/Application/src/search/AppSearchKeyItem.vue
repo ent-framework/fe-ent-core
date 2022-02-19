@@ -3,15 +3,9 @@
     <Icon :icon="icon" />
   </span>
 </template>
-<script lang="ts">
-  import { defineComponent } from 'vue';
+<script lang="ts" setup>
   import { Icon } from 'fe-ent-core/components//Icon';
-  const props = {
+  defineProps({
     icon: String,
-  };
-  export default defineComponent({
-    name: 'AppSearchKeyItem',
-    components: { Icon },
-    props,
   });
 </script>

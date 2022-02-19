@@ -1,4 +1,4 @@
-import type { BasicColumn, ActionItem } from 'fe-ent-core/components//Table';
+import type { BasicColumn, TableActionItem } from 'fe-ent-core/components/Table';
 import { FileItem, PreviewFileItem, UploadResultStatus } from './typing';
 import {
   // checkImgType,
@@ -85,7 +85,7 @@ export function createActionColumn(handleRemove: Function): BasicColumn {
     dataIndex: 'action',
     fixed: false,
     customRender: ({ record }) => {
-      const actions: ActionItem[] = [
+      const actions: TableActionItem[] = [
         {
           label: t('component.upload.del'),
           color: 'error',
@@ -135,7 +135,7 @@ export function createPreviewActionColumn({
     dataIndex: 'action',
     fixed: false,
     customRender: ({ record }) => {
-      const actions: ActionItem[] = [
+      const actions: TableActionItem[] = [
         {
           label: t('component.upload.del'),
           color: 'error',

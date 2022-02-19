@@ -13,7 +13,6 @@
   } from 'vue';
   import { useEventListener } from 'fe-ent-core/hooks/event/useEventListener';
   import { getSlot } from 'fe-ent-core/utils/helper/tsxHelper';
-  import type { Recordable } from 'fe-ent-core/types/global';
   type NumberOrNumberString = PropType<string | number | undefined>;
 
   const props = {

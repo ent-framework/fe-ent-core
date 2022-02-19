@@ -8,13 +8,13 @@
     />
   </div>
 </template>
-<script lang="ts">
-  import { computed, defineComponent, PropType } from 'vue';
+<script lang="ts" setup>
+  import { computed } from 'vue';
   import CodeMirrorEditor from './codemirror/CodeMirror.vue';
   import { isString } from 'fe-ent-core/utils/is';
   import { MODE } from './typing';
 
-  const props = {
+  const props = defineProps({
     value: { type: [Object, String] as PropType<Record<string, any> | string> },
     mode: {
       type: String as PropType<MODE>,
@@ -26,39 +26,29 @@
     },
     readonly: { type: Boolean },
     autoFormat: { type: Boolean, default: true },
-  };
-
-  export default defineComponent({
-    name: 'CodeEditor',
-    components: { CodeMirrorEditor },
-    props,
-    emits: ['change', 'update:value', 'format-error'],
-    setup(props, { emit }) {
-      const getValue = computed(() => {
-        const { value, mode, autoFormat } = props;
-        if (!autoFormat || mode !== MODE.JSON) {
-          return value as string;
-        }
-        let result = value;
-        if (isString(value)) {
-          try {
-            result = JSON.parse(value);
-          } catch (e) {
-            emit('format-error', value);
-            return value as string;
-          }
-        }
-        return JSON.stringify(result, null, 2);
-      });
-
-      function handleValueChange(v) {
-        emit('update:value', v);
-        emit('change', v);
-      }
-      return {
-        getValue,
-        handleValueChange,
-      };
-    },
   });
+
+  const emit = defineEmits(['change', 'update:value', 'format-error']);
+
+  const getValue = computed(() => {
+    const { value, mode, autoFormat } = props;
+    if (!autoFormat || mode !== MODE.JSON) {
+      return value as string;
+    }
+    let result = value;
+    if (isString(value)) {
+      try {
+        result = JSON.parse(value);
+      } catch (e) {
+        emit('format-error', value);
+        return value as string;
+      }
+    }
+    return JSON.stringify(result, null, 2);
+  });
+
+  function handleValueChange(v) {
+    emit('update:value', v);
+    emit('change', v);
+  }
 </script>

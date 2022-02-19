@@ -47,7 +47,6 @@
   import { omit } from 'lodash-es';
   import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
   import { isArray } from 'fe-ent-core/utils/is';
-  import type { Recordable } from 'fe-ent-core/types/global';
   export default defineComponent({
     name: 'BasicUpload',
     components: { UploadModal, UploadPreviewModal, Icon, Tooltip },

@@ -1,8 +1,6 @@
 import { defHttp } from 'fe-ent-core/utils/http/axios';
 import { LoginParams, LoginResultModel, GetUserInfoModel } from './model/userModel';
-
 import { ErrorMessageMode } from 'fe-ent-core/types/axios';
-
 enum Api {
   Login = '/login',
   Logout = '/logout',

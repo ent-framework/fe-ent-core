@@ -21,7 +21,6 @@
 <script lang="ts">
   import type { Editor, RawEditorSettings } from 'tinymce';
   import type { PropType } from 'vue';
-  import type { Recordable, Nullable } from 'fe-ent-core/types/global';
   import tinymce from 'tinymce/tinymce';
   import 'tinymce/themes/silver';
   import 'tinymce/icons/default/icons';

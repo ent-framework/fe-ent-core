@@ -8,7 +8,6 @@
   import { BasicTitle } from 'fe-ent-core/components/Basic';
   import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { isFunction } from 'fe-ent-core/utils/is';
-  import type { Recordable } from 'fe-ent-core/types/global';
 
   export default defineComponent({
     name: 'BasicTableTitle',

@@ -9,7 +9,6 @@ import type {
 import { ComponentType } from './componentType';
 import { VueNode } from 'fe-ent-core/utils/propTypes';
 import { RoleEnum } from 'fe-ent-core/enums/roleEnum';
-import type { Recordable, EmitType, Fn } from 'fe-ent-core/types/global';
 
 export declare type SortOrder = 'ascend' | 'descend';
 

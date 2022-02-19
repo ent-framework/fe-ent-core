@@ -2,25 +2,13 @@
   <div class="relative !h-full w-full overflow-hidden" ref="el"></div>
 </template>
 
-<script lang="ts">
-  import {
-    ref,
-    onMounted,
-    onUnmounted,
-    watchEffect,
-    watch,
-    unref,
-    nextTick,
-    defineComponent,
-    PropType,
-  } from 'vue';
+<script lang="ts" setup>
+  import { ref, onMounted, onUnmounted, watchEffect, watch, unref, nextTick } from 'vue';
   import { useDebounceFn } from '@vueuse/core';
-  import type { Nullable } from 'fe-ent-core/types/global';
-
   import { useAppStore } from 'fe-ent-core/store/modules/app';
   import { useWindowSizeFn } from 'fe-ent-core/hooks/event/useWindowSizeFn';
   import CodeMirror from 'codemirror';
-  import { MODE } from '../typing';
+  import { MODE } from './../typing';
   // css
   import './codemirror.css';
   import 'codemirror/theme/idea.css';
@@ -30,7 +18,7 @@
   import 'codemirror/mode/css/css';
   import 'codemirror/mode/htmlmixed/htmlmixed';
 
-  const props = {
+  const props = defineProps({
     mode: {
       type: String as PropType<MODE>,
       default: MODE.JSON,
@@ -41,94 +29,85 @@
     },
     value: { type: String, default: '' },
     readonly: { type: Boolean, default: false },
-  };
+  });
 
-  export default defineComponent({
-    name: 'CodeMirror',
-    props,
-    emits: ['change'],
-    setup(props, { emit }) {
-      const el = ref();
-      let editor: Nullable<CodeMirror.Editor>;
+  const emit = defineEmits(['change']);
 
-      const debounceRefresh = useDebounceFn(refresh, 100);
-      const appStore = useAppStore();
+  const el = ref();
+  let editor: Nullable<CodeMirror.Editor>;
 
-      watch(
-        () => props.value,
-        async (value) => {
-          await nextTick();
-          const oldValue = editor?.getValue();
-          if (value !== oldValue) {
-            editor?.setValue(value ? value : '');
-          }
-        },
-        { flush: 'post' },
-      );
+  const debounceRefresh = useDebounceFn(refresh, 100);
+  const appStore = useAppStore();
 
-      watchEffect(() => {
-        editor?.setOption('mode', props.mode);
-      });
-
-      watch(
-        () => appStore.getDarkMode,
-        async () => {
-          setTheme();
-        },
-        {
-          immediate: true,
-        },
-      );
-
-      function setTheme() {
-        unref(editor)?.setOption(
-          'theme',
-          appStore.getDarkMode === 'light' ? 'idea' : 'material-palenight',
-        );
+  watch(
+    () => props.value,
+    async (value) => {
+      await nextTick();
+      const oldValue = editor?.getValue();
+      if (value !== oldValue) {
+        editor?.setValue(value ? value : '');
       }
-
-      function refresh() {
-        editor?.refresh();
-      }
-
-      async function init() {
-        const addonOptions = {
-          autoCloseBrackets: true,
-          autoCloseTags: true,
-          foldGutter: true,
-          gutters: ['CodeMirror-linenumbers'],
-        };
-
-        editor = CodeMirror(el.value!, {
-          value: '',
-          mode: props.mode,
-          readOnly: props.readonly,
-          tabSize: 2,
-          theme: 'material-palenight',
-          lineWrapping: true,
-          lineNumbers: true,
-          ...addonOptions,
-        });
-        editor?.setValue(props.value);
-        setTheme();
-        editor?.on('change', () => {
-          emit('change', editor?.getValue());
-        });
-      }
-
-      onMounted(async () => {
-        await nextTick();
-        init();
-        useWindowSizeFn(debounceRefresh);
-      });
-
-      onUnmounted(() => {
-        editor = null;
-      });
-
-      return {
-        el,
-      };
     },
+    { flush: 'post' },
+  );
+
+  watchEffect(() => {
+    editor?.setOption('mode', props.mode);
+  });
+
+  watch(
+    () => appStore.getDarkMode,
+    async () => {
+      setTheme();
+    },
+    {
+      immediate: true,
+    },
+  );
+
+  function setTheme() {
+    unref(editor)?.setOption(
+      'theme',
+      appStore.getDarkMode === 'light' ? 'idea' : 'material-palenight',
+    );
+  }
+
+  function refresh() {
+    editor?.refresh();
+  }
+
+  async function init() {
+    const addonOptions = {
+      autoCloseBrackets: true,
+      autoCloseTags: true,
+      foldGutter: true,
+      gutters: ['CodeMirror-linenumbers'],
+    };
+
+    editor = CodeMirror(el.value!, {
+      value: '',
+      mode: props.mode,
+      readOnly: props.readonly,
+      tabSize: 2,
+      theme: 'material-palenight',
+      lineWrapping: true,
+      lineNumbers: true,
+      ...addonOptions,
+    });
+    editor?.setValue(props.value);
+    setTheme();
+    editor?.on('change', () => {
+      emit('change', editor?.getValue());
+    });
+  }
+
+  onMounted(async () => {
+    await nextTick();
+    init();
+    useWindowSizeFn(debounceRefresh);
+  });
+
+  onUnmounted(() => {
+    editor = null;
   });
 </script>

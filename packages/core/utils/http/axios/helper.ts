@@ -1,5 +1,4 @@
 import { isObject, isString } from 'fe-ent-core/utils/is';
-import type { Recordable } from 'fe-ent-core/types/global';
 
 const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';
 

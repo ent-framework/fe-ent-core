@@ -3,15 +3,15 @@ import { MenuModeEnum, MenuTypeEnum } from 'fe-ent-core/enums/menuEnum';
 import { RoleInfo } from 'fe-ent-core/api/sys/model/userModel';
 
 // Lock screen information
-export type LockInfo = {
+export interface LockInfo {
   // Password required
   pwd?: string | undefined;
   // Is it locked?
   isLock?: boolean;
-};
+}
 
 // Error-log information
-export type ErrorLogInfo = {
+export interface ErrorLogInfo {
   // Type of error
   type: ErrorTypeEnum;
   // Error file
@@ -28,9 +28,9 @@ export type ErrorLogInfo = {
   url: string;
   // Error time
   time?: string;
-};
+}
 
-export type UserInfo = {
+export interface UserInfo {
   userId: string | number;
   username: string;
   realName: string;
@@ -38,11 +38,11 @@ export type UserInfo = {
   desc?: string;
   homePath?: string;
   roles: RoleInfo[];
-};
+}
 
-export type BeforeMiniState = {
+export interface BeforeMiniState {
   menuCollapsed?: boolean;
   menuSplit?: boolean;
   menuMode?: MenuModeEnum;
   menuType?: MenuTypeEnum;
-};
+}

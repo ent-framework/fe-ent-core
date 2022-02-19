@@ -7,13 +7,12 @@
     <Icon icon="ion:chevron-forward" :style="$attrs.iconStyle" />
   </span>
 </template>
-<script lang="ts">
-  import { computed, CSSProperties, defineComponent, PropType } from 'vue';
-  import { Icon } from 'fe-ent-core/components/Icon';
+<script lang="ts" setup>
+  import { computed } from 'vue';
+  import { Icon } from 'fe-ent-core/components//Icon';
   import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
-  // import PropTypes from 'fe-ent-core/utils/propTypes';
 
-  const props = {
+  const props = defineProps({
     /**
      * Arrow expand state
      */
@@ -30,37 +29,22 @@
      * Cancel padding/margin for inline
      */
     inset: { type: Boolean },
+  });
 
-    iconStyle: {
-      type: Object as PropType<CSSProperties>,
-    },
-  };
+  const { prefixCls } = useDesign('basic-arrow');
 
-  export default defineComponent({
-    name: 'BasicArrow',
-    components: { Icon },
-    props,
-    setup(props) {
-      const { prefixCls } = useDesign('basic-arrow');
-
-      // get component class
-      const getClass = computed(() => {
-        const { expand, up, down, inset } = props;
-        return [
-          prefixCls,
-          {
-            [`${prefixCls}--active`]: expand,
-            up,
-            inset,
-            down,
-          },
-        ];
-      });
-      return {
-        prefixCls,
-        getClass,
-      };
-    },
+  // get component class
+  const getClass = computed(() => {
+    const { expand, up, down, inset } = props;
+    return [
+      prefixCls,
+      {
+        [`${prefixCls}--active`]: expand,
+        up,
+        inset,
+        down,
+      },
+    ];
   });
 </script>
 <style lang="less" scoped>

@@ -1,5 +1,4 @@
 import type { PropType } from 'vue';
-import type { Recordable } from 'fe-ent-core/types/global';
 import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
 const { t } = useI18n();
 

@@ -9,20 +9,21 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { computed, unref } from 'vue';
-  import { buttonProps } from './props';
+  import { computed, defineComponent, unref } from 'vue';
   import { Button } from 'ant-design-vue';
-  import Icon from 'fe-ent-core/components/Icon';
+  import Icon from 'fe-ent-core/components/Icon/src/Icon.vue';
+  import { buttonProps } from './props';
   import { useAttrs } from 'fe-ent-core/hooks/core/useAttrs';
 
   export default defineComponent({
-    name: 'EntButton',
+    name: 'AButton',
     inheritAttrs: false,
+    components: {
+      Button,
+      Icon,
+    },
     props: buttonProps,
-    components: { Button, Icon },
     setup(props) {
-      // get component class
       const attrs = useAttrs({ excludeDefaultKeys: false });
       const getButtonClass = computed(() => {
         const { color, disabled } = props;

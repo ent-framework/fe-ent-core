@@ -17,7 +17,7 @@ import { CacheTypeEnum } from 'fe-ent-core/enums/cacheEnum';
 
 export type LocaleType = 'zh_CN' | 'en' | 'ru' | 'ja' | 'ko';
 
-export type MenuSetting = {
+export interface MenuSetting {
   bgColor: string;
   fixed: boolean;
   collapsed: boolean;
@@ -38,7 +38,7 @@ export type MenuSetting = {
   mixSideFixed: boolean;
 }
 
-export type MultiTabsSetting = {
+export interface MultiTabsSetting {
   cache: boolean;
   show: boolean;
   showQuick: boolean;
@@ -47,7 +47,7 @@ export type MultiTabsSetting = {
   showFold: boolean;
 }
 
-export type HeaderSetting = {
+export interface HeaderSetting {
   bgColor: string;
   fixed: boolean;
   show: boolean;
@@ -63,7 +63,7 @@ export type HeaderSetting = {
   showSearch: boolean;
 }
 
-export type LocaleSetting = {
+export interface LocaleSetting {
   showPicker: boolean;
   // Current language
   locale: LocaleType;
@@ -73,7 +73,7 @@ export type LocaleSetting = {
   availableLocales: LocaleType[];
 }
 
-export type TransitionSetting = {
+export interface TransitionSetting {
   //  Whether to open the page switching animation
   enable: boolean;
   // Route basic switching animation
@@ -84,7 +84,7 @@ export type TransitionSetting = {
   openNProgress: boolean;
 }
 
-export type ProjectConfig = {
+export interface ProjectConfig {
   // Storage location of permission related information
   permissionCacheType: CacheTypeEnum;
   // Whether to show the configuration button
@@ -140,7 +140,7 @@ export type ProjectConfig = {
   removeAllHttpPending: boolean;
 }
 
-export type GlobConfig = {
+export interface GlobConfig {
   // Site title
   title: string;
   // Service interface url
@@ -152,7 +152,7 @@ export type GlobConfig = {
   // Project abbreviation
   shortName: string;
 }
-export type GlobEnvConfig = {
+export interface GlobEnvConfig {
   // Site title
   VITE_GLOB_APP_TITLE: string;
   // Service interface url

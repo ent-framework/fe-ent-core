@@ -34,16 +34,50 @@
     "gen:icon": "esno ./build/generate/icon/index.ts"
   },
   "peerDependencies": {
-    "ant-design-vue": "2.2.8",
-    "vue": "3.2.31",
-    "vue-i18n": "^9.1.9",
-    "vue-router": "^4.0.12"
+    "vue": "3.2.31"
   },
   "dependencies": {
-    "fe-ent-cli": "workspace:*"
+    "@ant-design/colors": "^6.0.0",
+    "@ant-design/icons-vue": "^6.0.1",
+    "@iconify/iconify": "^2.1.1",
+    "@logicflow/core": "^1.0.7",
+    "@logicflow/extension": "^1.0.7",
+    "@vue/runtime-core": "^3.2.29",
+    "@vue/shared": "^3.2.29",
+    "@vueuse/core": "^7.5.4",
+    "@vueuse/shared": "^7.5.4",
+    "@zxcvbn-ts/core": "^1.2.0",
+    "ant-design-vue": "2.2.8",
+    "axios": "^0.25.0",
+    "codemirror": "^5.65.1",
+    "cropperjs": "^1.5.12",
+    "crypto-js": "^4.1.1",
+    "dayjs": "^1.10.7",
+    "echarts": "^5.2.2",
+    "intro.js": "^4.3.0",
+    "lodash-es": "^4.17.21",
+    "moment": "^2.29.1",
+    "mockjs": "^1.1.0",
+    "nprogress": "^0.2.0",
+    "path-to-regexp": "^6.2.0",
+    "pinia": "2.0.9",
+    "print-js": "^1.6.0",
+    "qrcode": "^1.5.0",
+    "qs": "^6.10.3",
+    "resize-observer-polyfill": "^1.5.1",
+    "showdown": "^1.9.1",
+    "sortablejs": "^1.14.0",
+    "tinymce": "^5.10.2",
+    "vditor": "^3.8.11",
+    "vue-i18n": "^9.1.9",
+    "vue-router": "^4.0.12",
+    "vue-types": "^3.0.2",
+    "xlsx": "^0.17.5"
   },
   "devDependencies": {
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "@vue/compiler-sfc": "3.2.31",
+    "fe-ent-cli": "workspace:*"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china",

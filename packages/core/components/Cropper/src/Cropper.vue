@@ -17,7 +17,6 @@
   import 'cropperjs/dist/cropper.css';
   import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { useDebounceFn } from '@vueuse/shared';
-  import type { ElRef, Nullable } from 'fe-ent-core/types/global';
 
   type Options = Cropper.Options;
 

@@ -30,7 +30,6 @@
   import { LoadingOutlined } from '@ant-design/icons-vue';
   import { useI18n } from 'fe-ent-core/hooks/web/useI18n';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
-  import type { Recordable } from 'fe-ent-core/types/global';
 
   type OptionsItem = { label: string; value: string; disabled?: boolean };
 

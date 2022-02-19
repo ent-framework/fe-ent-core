@@ -7,7 +7,7 @@ import {
   getPackageManifest,
   findWorkspaceRoot,
   getCurrExecPath,
-} from "../utils";
+} from '../utils';
 import fs, { writeFileSync } from 'fs-extra';
 import chalk from 'chalk';
 

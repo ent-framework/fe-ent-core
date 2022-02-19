@@ -5,51 +5,34 @@
     <SvgIcon size="14" name="moon" />
   </div>
 </template>
-<script lang="ts">
-  import { computed, defineComponent, unref } from 'vue';
-  import { SvgIcon } from 'fe-ent-core/components/Icon';
+<script lang="ts" setup>
+  import { computed, unref } from 'vue';
+  import { SvgIcon } from 'fe-ent-core/components//Icon';
   import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
   import { useRootSetting } from 'fe-ent-core/hooks/setting/useRootSetting';
-  import {
-    updateHeaderBgColor,
-    updateSidebarBgColor,
-  } from 'fe-ent-core/logics/theme/updateBackground';
+  import { updateHeaderBgColor, updateSidebarBgColor } from 'fe-ent-core/logics/theme/updateBackground';
   import { updateDarkTheme } from 'fe-ent-core/logics/theme/dark';
   import { ThemeEnum } from 'fe-ent-core/enums/appEnum';
 
-  export default defineComponent({
-    name: 'AppDarkModeToggle',
-    components: {
-      SvgIcon,
+  const { prefixCls } = useDesign('dark-switch');
+  const { getDarkMode, setDarkMode, getShowDarkModeToggle } = useRootSetting();
+
+  const isDark = computed(() => getDarkMode.value === ThemeEnum.DARK);
+
+  const getClass = computed(() => [
+    prefixCls,
+    {
+      [`${prefixCls}--dark`]: unref(isDark),
     },
-    setup() {
-      const { prefixCls } = useDesign('dark-switch');
-      const { getDarkMode, setDarkMode, getShowDarkModeToggle } = useRootSetting();
+  ]);
 
-      const isDark = computed(() => getDarkMode.value === ThemeEnum.DARK);
-
-      const getClass = computed(() => [
-        prefixCls,
-        {
-          [`${prefixCls}--dark`]: unref(isDark),
-        },
-      ]);
-
-      function toggleDarkMode() {
-        const darkMode = getDarkMode.value === ThemeEnum.DARK ? ThemeEnum.LIGHT : ThemeEnum.DARK;
-        setDarkMode(darkMode);
-        updateDarkTheme(darkMode);
-        updateHeaderBgColor();
-        updateSidebarBgColor();
-      }
-      return {
-        prefixCls,
-        getShowDarkModeToggle,
-        getClass,
-        toggleDarkMode,
-      };
-    },
-  });
+  function toggleDarkMode() {
+    const darkMode = getDarkMode.value === ThemeEnum.DARK ? ThemeEnum.LIGHT : ThemeEnum.DARK;
+    setDarkMode(darkMode);
+    updateDarkTheme(darkMode);
+    updateHeaderBgColor();
+    updateSidebarBgColor();
+  }
 </script>
 <style lang="less" scoped>
   @prefix-cls: ~'@{namespace}-dark-switch';

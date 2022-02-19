@@ -1,7 +1,6 @@
 import type { Ref } from 'vue';
 import type { BasicTableProps, TableActionType } from '../types/table';
 import { provide, inject, ComputedRef } from 'vue';
-import type { Recordable, Nullable } from 'fe-ent-core/types/global';
 const key = Symbol('basic-table');
 
 type Instance = TableActionType & {

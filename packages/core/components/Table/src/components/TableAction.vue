@@ -35,7 +35,7 @@
   import { MoreOutlined } from '@ant-design/icons-vue';
   import { Divider, Tooltip, TooltipProps } from 'ant-design-vue';
   import Icon from 'fe-ent-core/components//Icon/index';
-  import { ActionItem, TableActionType } from 'fe-ent-core/components//Table';
+  import { TableActionItem, TableActionType } from 'fe-ent-core/components//Table';
   import { PopConfirmButton } from 'fe-ent-core/components//Button';
   import { Dropdown } from 'fe-ent-core/components//Dropdown';
   import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
@@ -50,11 +50,11 @@
     components: { Icon, PopConfirmButton, Divider, Dropdown, MoreOutlined, Tooltip },
     props: {
       actions: {
-        type: Array as PropType<ActionItem[]>,
+        type: Array as PropType<TableActionItem[]>,
         default: null,
       },
       dropDownActions: {
-        type: Array as PropType<ActionItem[]>,
+        type: Array as PropType<TableActionItem[]>,
         default: null,
       },
       divider: propTypes.bool.def(true),
@@ -69,7 +69,7 @@
       }
 
       const { hasPermission } = usePermission();
-      function isIfShow(action: ActionItem): boolean {
+      function isIfShow(action: TableActionItem): boolean {
         const ifShow = action.ifShow;
 
         let isIfShow = true;

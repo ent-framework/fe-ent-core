@@ -1,6 +1,5 @@
 <script lang="tsx">
   import type { ReplaceFields, Keys, CheckKeys, TreeActionType, TreeItem } from './typing';
-  import type { Recordable } from 'fe-ent-core/types/global';
   import {
     defineComponent,
     reactive,

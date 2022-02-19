@@ -38,7 +38,6 @@
 </template>
 <script lang="ts">
   import type { FormActionType, FormProps, FormSchema } from './types/form';
-  import type { Recordable, Nullable } from 'fe-ent-core/types/global';
   import type { AdvanceState } from './types/hooks';
   import type { Ref } from 'vue';
 

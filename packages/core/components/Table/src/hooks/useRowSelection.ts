@@ -4,7 +4,6 @@ import { computed, ComputedRef, nextTick, Ref, ref, toRaw, unref, watch } from '
 import { ROW_KEY } from '../const';
 import { omit } from 'lodash-es';
 import { findNodeAll } from 'fe-ent-core/utils/helper/treeHelper';
-import type { Recordable, EmitType } from 'fe-ent-core/types/global';
 export function useRowSelection(
   propsRef: ComputedRef<BasicTableProps>,
   tableData: Ref<Recordable[]>,

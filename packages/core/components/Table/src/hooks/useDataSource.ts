@@ -16,7 +16,6 @@ import { buildUUID } from 'fe-ent-core/utils/uuid';
 import { isFunction, isBoolean } from 'fe-ent-core/utils/is';
 import { get, cloneDeep } from 'lodash-es';
 import { FETCH_SETTING, ROW_KEY, PAGE_SIZE } from '../const';
-import type { Recordable } from 'fe-ent-core/types/global';
 
 interface ActionType {
   getPaginationInfo: ComputedRef<boolean | PaginationProps>;

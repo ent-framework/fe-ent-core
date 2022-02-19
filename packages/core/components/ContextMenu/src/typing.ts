@@ -1,4 +1,3 @@
-import type { Fn } from 'fe-ent-core/types/global';
 export interface Axis {
   x: number;
   y: number;

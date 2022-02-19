@@ -6,7 +6,6 @@ import type { ColEx, ComponentType } from './index';
 import type { TableActionType } from 'fe-ent-core/components/Table/src/types/table';
 import type { CSSProperties } from 'vue';
 import type { RowProps } from 'ant-design-vue/lib/grid/Row';
-import type { Recordable } from 'fe-ent-core/types/global';
 
 export type FieldMapToTime = [string, [string, string], string?][];
 
@@ -45,9 +44,9 @@ export interface FormActionType {
   scrollToField: (name: NamePath, options?: ScrollOptions) => Promise<void>;
 }
 
-export type RegisterFn = (formInstance: FormActionType) => void;
+export type FormRegisterFn = (formInstance: FormActionType) => void;
 
-export type UseFormReturnType = [RegisterFn, FormActionType];
+export type UseFormReturnType = [FormRegisterFn, FormActionType];
 
 export interface FormProps {
   layout?: 'vertical' | 'inline' | 'horizontal';

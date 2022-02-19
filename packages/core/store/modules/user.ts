@@ -1,5 +1,4 @@
 import type { UserInfo } from 'fe-ent-core/types/store';
-import type { Nullable } from 'fe-ent-core/types/global';
 import type { ErrorMessageMode } from 'fe-ent-core/types/axios';
 import { defineStore } from 'pinia';
 import { store } from 'fe-ent-core/store';
@@ -18,7 +17,7 @@ import { PAGE_NOT_FOUND_ROUTE } from 'fe-ent-core/router/routes/basic';
 import { isArray } from 'fe-ent-core/utils/is';
 import { h } from 'vue';
 
-interface UserState {
+export interface UserState {
   userInfo: Nullable<UserInfo>;
   token?: string;
   roleList: RoleEnum[];

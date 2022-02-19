@@ -58,7 +58,6 @@
 <script lang="ts">
   import type { CSSProperties, PropType } from 'vue';
   import type { SubMenuProvider } from './types';
-  import type { Recordable, TimeoutHandle } from 'fe-ent-core/types/global';
   import {
     defineComponent,
     computed,

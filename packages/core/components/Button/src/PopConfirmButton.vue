@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { Recordable } from 'fe-ent-core/types/global';
   import { computed, defineComponent, h, unref } from 'vue';
   import BasicButton from './BasicButton.vue';
   import { Popconfirm } from 'ant-design-vue';

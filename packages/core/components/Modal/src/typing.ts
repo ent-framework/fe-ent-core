@@ -9,17 +9,17 @@ export interface ModalMethods {
   redoModalHeight?: () => void;
 }
 
-export type RegisterFn = (modalMethods: ModalMethods, uuid?: string) => void;
+export type RegisterModalFn = (modalMethods: ModalMethods, uuid?: string) => void;
 
-export interface ReturnMethods extends ModalMethods {
+export interface ReturnModalMethods extends ModalMethods {
   openModal: <T = any>(props?: boolean, data?: T, openOnSet?: boolean) => void;
   closeModal: () => void;
   getVisible?: ComputedRef<boolean>;
 }
 
-export type UseModalReturnType = [RegisterFn, ReturnMethods];
+export type UseModalReturnType = [RegisterModalFn, ReturnModalMethods];
 
-export interface ReturnInnerMethods extends ModalMethods {
+export interface ReturnModalInnerMethods extends ModalMethods {
   closeModal: () => void;
   changeLoading: (loading: boolean) => void;
   changeOkLoading: (loading: boolean) => void;
@@ -27,7 +27,7 @@ export interface ReturnInnerMethods extends ModalMethods {
   redoModalHeight: () => void;
 }
 
-export type UseModalInnerReturnType = [RegisterFn, ReturnInnerMethods];
+export type UseModalInnerReturnType = [RegisterModalFn, ReturnModalInnerMethods];
 
 export interface ModalProps {
   minHeight?: number;

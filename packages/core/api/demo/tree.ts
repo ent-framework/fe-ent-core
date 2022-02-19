@@ -1,5 +1,4 @@
 import { defHttp } from 'fe-ent-core/utils/http/axios';
-import type { Recordable } from 'fe-ent-core/types/global';
 enum Api {
   TREE_OPTIONS_LIST = '/tree/getDemoOptions',
 }

@@ -10,8 +10,8 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-  import { computed, unref, defineComponent } from 'vue';
+<script lang="ts" setup>
+  import { computed, unref } from 'vue';
   import { useGlobSetting } from 'fe-ent-core/hooks/setting';
   import { useGo } from 'fe-ent-core/hooks/web/usePage';
   import { useMenuSetting } from 'fe-ent-core/hooks/setting/useMenuSetting';
@@ -19,8 +19,8 @@
   import { PageEnum } from 'fe-ent-core/enums/pageEnum';
   import { useUserStore } from 'fe-ent-core/store/modules/user';
   import LogoImg from 'fe-ent-core/assets/images/logo.png';
-
-  const props = {
+  import { buildProps } from 'fe-ent-core/utils/props';
+  const props = buildProps({
     /**
      * The theme of the current parent component
      */
@@ -33,45 +33,30 @@
      * The title is also displayed when the menu is collapsed
      */
     alwaysShowTitle: { type: Boolean },
-  };
-
-  export default defineComponent({
-    name: 'AppLogo',
-    props,
-    setup(props) {
-      const { prefixCls } = useDesign('app-logo');
-      const { getCollapsedShowTitle } = useMenuSetting();
-      const userStore = useUserStore();
-      const { title } = useGlobSetting();
-      const go = useGo();
-
-      const getAppLogoClass = computed(() => [
-        prefixCls,
-        props.theme,
-        { 'collapsed-show-title': unref(getCollapsedShowTitle) },
-      ]);
-
-      const getTitleClass = computed(() => [
-        `${prefixCls}__title`,
-        {
-          'xs:opacity-0': !props.alwaysShowTitle,
-        },
-      ]);
-
-      function goHome() {
-        go(userStore.getUserInfo.homePath || PageEnum.BASE_HOME);
-      }
-      return {
-        prefixCls,
-        getCollapsedShowTitle,
-        title,
-        getAppLogoClass,
-        getTitleClass,
-        goHome,
-        LogoImg,
-      };
-    },
   });
+
+  const { prefixCls } = useDesign('app-logo');
+  const { getCollapsedShowTitle } = useMenuSetting();
+  const userStore = useUserStore();
+  const { title } = useGlobSetting();
+  const go = useGo();
+
+  const getAppLogoClass = computed(() => [
+    prefixCls,
+    props.theme,
+    { 'collapsed-show-title': unref(getCollapsedShowTitle) },
+  ]);
+
+  const getTitleClass = computed(() => [
+    `${prefixCls}__title`,
+    {
+      'xs:opacity-0': !props.alwaysShowTitle,
+    },
+  ]);
+
+  function goHome() {
+    go(userStore.getUserInfo.homePath || PageEnum.BASE_HOME);
+  }
 </script>
 <style lang="less" scoped>
   @prefix-cls: ~'@{namespace}-app-logo';
