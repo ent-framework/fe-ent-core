@@ -1,18 +1,18 @@
-import { rollup } from 'rollup'
-import vue from '@vitejs/plugin-vue'
-import css from 'rollup-plugin-css-only'
-import { nodeResolve } from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import esbuild from 'rollup-plugin-esbuild'
-import filesize from 'rollup-plugin-filesize'
-import glob from 'fast-glob'
-import { epRoot, pkgRoot } from './utils/paths'
-import { ElementPlusAlias } from './plugins/element-plus-alias'
-import { generateExternal, writeBundles } from './utils/rollup'
-import { excludeFiles } from './utils/pkg'
-import { reporter } from './plugins/size-reporter'
-import { buildConfigEntries, target } from './build-info'
-import type { OutputOptions } from 'rollup'
+import { rollup } from 'rollup';
+import vue from '@vitejs/plugin-vue';
+import css from 'rollup-plugin-css-only';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import esbuild from 'rollup-plugin-esbuild';
+import filesize from 'rollup-plugin-filesize';
+import glob from 'fast-glob';
+import { epRoot, pkgRoot } from './utils/paths';
+import { ElementPlusAlias } from './plugins/element-plus-alias';
+import { generateExternal, writeBundles } from './utils/rollup';
+import { excludeFiles } from './utils/pkg';
+import { reporter } from './plugins/size-reporter';
+import { buildConfigEntries, target } from './build-info';
+import type { OutputOptions } from 'rollup';
 
 export const buildModules = async () => {
   const input = excludeFiles(
@@ -20,8 +20,8 @@ export const buildModules = async () => {
       cwd: pkgRoot,
       absolute: true,
       onlyFiles: true,
-    })
-  )
+    }),
+  );
   const bundle = await rollup({
     input,
     plugins: [
@@ -45,7 +45,7 @@ export const buildModules = async () => {
     ],
     external: await generateExternal({ full: false }),
     treeshake: false,
-  })
+  });
   await writeBundles(
     bundle,
     buildConfigEntries.map(([module, config]): OutputOptions => {
@@ -57,7 +57,7 @@ export const buildModules = async () => {
         preserveModulesRoot: epRoot,
         sourcemap: true,
         entryFileNames: `[name].${config.ext}`,
-      }
-    })
-  )
-}
+      };
+    }),
+  );
+};

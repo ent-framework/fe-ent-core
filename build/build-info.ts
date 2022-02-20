@@ -1,25 +1,25 @@
-import path from 'path'
-import { epOutput } from './utils/paths'
-import { EP_PKG } from './utils/constants'
-import type { ModuleFormat } from 'rollup'
+import path from 'path';
+import { epOutput } from './utils/paths';
+import { EP_PKG } from './utils/constants';
+import type { ModuleFormat } from 'rollup';
 
-export const modules = ['esm', 'cjs'] as const
-export type Module = typeof modules[number]
+export const modules = ['esm', 'cjs'] as const;
+export type Module = typeof modules[number];
 export interface BuildInfo {
-  module: 'ESNext' | 'CommonJS'
-  format: ModuleFormat
-  ext: 'mjs' | 'cjs' | 'js'
+  module: 'ESNext' | 'CommonJS';
+  format: ModuleFormat;
+  ext: 'mjs' | 'cjs' | 'js';
   output: {
     /** e.g: `es` */
-    name: string
+    name: string;
     /** e.g: `dist/element-plus/es` */
-    path: string
-  }
+    path: string;
+  };
 
   bundle: {
     /** e.g: `element-plus/es` */
-    path: string
-  }
+    path: string;
+  };
 }
 
 export const buildConfig: Record<Module, BuildInfo> = {
@@ -47,12 +47,10 @@ export const buildConfig: Record<Module, BuildInfo> = {
       path: `${EP_PKG}/lib`,
     },
   },
-}
-export const buildConfigEntries = Object.entries(
-  buildConfig
-) as BuildConfigEntries
+};
+export const buildConfigEntries = Object.entries(buildConfig) as BuildConfigEntries;
 
-export type BuildConfig = typeof buildConfig
-export type BuildConfigEntries = [Module, BuildInfo][]
+export type BuildConfig = typeof buildConfig;
+export type BuildConfigEntries = [Module, BuildInfo][];
 
-export const target = 'es2018'
+export const target = 'es2018';
