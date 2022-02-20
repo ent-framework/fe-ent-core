@@ -3,9 +3,9 @@
 set -e
 
 #pnpm i --frozen-lockfile
+#pnpm build:libs
 #pnpm update:version
 
-#pnpm build:libs
 
 cd dist/fe-ent-core
 npm publish --access public -registry http://npm.36cpc.com/repository/npm-snapshots/

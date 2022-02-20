@@ -17,7 +17,7 @@ import { configSvgIconsPlugin } from './svgSprite';
 import { configHmrPlugin } from './hmr';
 import { getCurrExecPath, OUTPUT_DIR, findWorkspaceRoot } from '../../utils';
 import type { BuildOptions } from 'vite';
-import dts from './dts';
+// import dts from './dts';
 
 export function createVitePlugins(viteEnv: ViteEnv, runMode: string) {
   const {
@@ -39,19 +39,9 @@ export function createVitePlugins(viteEnv: ViteEnv, runMode: string) {
 
   const vitePlugins: (Plugin | Plugin[])[] = [];
 
-  if (runMode == 'lib') {
+/*  if (runMode == 'lib') {
     vitePlugins.push(dts());
-  }
-
-  if (runMode == 'serve') {
-/*    vitePlugins.push(
-      Components({
-        include: `${getCurrExecPath('.')}/!**`,
-        resolvers: AntDesignVueResolver({ importStyle: 'less' }),
-        dts: false,
-      }),
-    );*/
-  }
+  }*/
 
   vitePlugins.push(defaultPlugins);
 

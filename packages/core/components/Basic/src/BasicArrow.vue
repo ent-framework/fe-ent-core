@@ -9,7 +9,7 @@
 </template>
 <script lang="ts" setup>
   import { computed } from 'vue';
-  import { Icon } from 'fe-ent-core/components//Icon';
+  import Icon from 'fe-ent-core/components/Icon/src/Icon.vue';
   import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
 
   const props = defineProps({

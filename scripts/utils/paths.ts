@@ -8,7 +8,7 @@ export const hookRoot = resolve(pkgRoot, 'hooks');
 export const localeRoot = resolve(pkgRoot, 'locale');
 export const directiveRoot = resolve(pkgRoot, 'directives');
 export const epRoot = resolve(pkgRoot, 'core');
-export const buildRoot = resolve(pkgRoot, 'build');
+export const buildRoot = resolve(pkgRoot, 'dist');
 export const docRoot = resolve(projRoot, 'docs');
 
 /** dist */

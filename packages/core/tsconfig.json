@@ -20,7 +20,10 @@
     "types": ["vite/client", "jest"],
     "typeRoots": ["./node_modules/@types/", "./types"],
     "noImplicitAny": false,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "fe-ent-core/*": ["./*"]
+    }
   },
   "include": [
     "index.ts",

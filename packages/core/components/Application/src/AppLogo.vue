@@ -20,7 +20,7 @@
   import { useUserStore } from 'fe-ent-core/store/modules/user';
   import LogoImg from 'fe-ent-core/assets/images/logo.png';
   import { buildProps } from 'fe-ent-core/utils/props';
-  const props = buildProps({
+  const props = {
     /**
      * The theme of the current parent component
      */
@@ -33,7 +33,7 @@
      * The title is also displayed when the menu is collapsed
      */
     alwaysShowTitle: { type: Boolean },
-  });
+  };
 
   const { prefixCls } = useDesign('app-logo');
   const { getCollapsedShowTitle } = useMenuSetting();

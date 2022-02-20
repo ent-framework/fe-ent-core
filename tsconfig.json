@@ -19,6 +19,7 @@
   "include": [
     "tests/**/*.ts",
     "typings/*.d.ts",
+    "build",
     "packages/core/**/*.ts",
     "packages/core/**/*.d.ts",
     "packages/core/**/*.tsx",

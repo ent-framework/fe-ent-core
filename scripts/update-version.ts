@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { epPackage, epOutputPackage, buildPackage } from './utils/paths';
+import { epPackage, epOutputPackage, buildPackage, epOutput } from "./utils/paths";
 import { cyan, red, yellow, green } from './utils/log';
 import { getPackageManifest } from './utils/pkg';
 
@@ -39,7 +39,7 @@ cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n'));
 
   if (!(process.argv.includes('-d') || process.argv.includes('--dry-run'))) {
     try {
-      await fs.promises.writeFile(buildPackage, JSON.stringify(jsonBuild, null, 2), {
+      await fs.promises.writeFile(epOutput, JSON.stringify(jsonBuild, null, 2), {
         encoding: 'utf-8',
       });
     } catch (e) {

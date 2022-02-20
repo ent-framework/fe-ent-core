@@ -92,7 +92,7 @@
   import Tooltip from 'ant-design-vue/lib/tooltip';
   import Slider from 'ant-design-vue/lib/slider';
   import Avatar from 'ant-design-vue/lib/avatar';
-  import { Dropdown } from 'fe-ent-core/components//Dropdown';
+  import { Dropdown } from 'fe-ent-core/components/Dropdown';
   import { BasicForm, useForm } from 'fe-ent-core/components/Form';
   import { propTypes } from 'fe-ent-core/utils/propTypes';
   import { Button } from 'fe-ent-core/components/Button';

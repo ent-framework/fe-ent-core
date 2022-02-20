@@ -10,10 +10,9 @@
   "module": "my-ent.es.js",
   "types": "index.d.ts",
   "scripts": {
-    "build": "cross-env NODE_ENV=production vite build --mode lib --debug",
-    "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
-    "build:lib:2": "gulp --require sucrase/register/ts -f build/gulpfile.ts",
-    "build:no-cache": "yarn clean:cache && npm run build",
+    "build": "cross-env NODE_ENV=production pnpm build:lib && pnpm build:dts",
+    "build:lib": "vite build --mode lib",
+    "build:dts": "vue-tsc --declaration --emitDeclarationOnly --outDir ../../dist/fe-ent-core",
     "clean": "rimraf node_modules",
     "report": "cross-env REPORT=true npm run build",
     "type:check": "vue-tsc --noEmit --skipLibCheck",

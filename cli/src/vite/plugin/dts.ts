@@ -33,7 +33,7 @@ export const generateTypesDefinitions = async () => {
   });
 
   const filePaths = excludeFiles(
-    await glob(['**/*.{js,ts,vue}', '!vite.config.ts'], {
+    await glob(['**/*.{js,ts,vue}', '!vite.config.ts', '!index.ts'], {
       cwd: projectRoot,
       absolute: true,
       onlyFiles: true,
