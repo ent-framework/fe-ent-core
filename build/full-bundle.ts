@@ -9,7 +9,7 @@ import filesize from 'rollup-plugin-filesize';
 import { parallel } from 'gulp';
 import glob from 'fast-glob';
 import { camelCase, upperFirst } from 'lodash';
-import { version } from '../packages/element-plus/version';
+import { version } from '../packages/fe-ent-core/version';
 import { reporter } from './plugins/size-reporter';
 import { ElementPlusAlias } from './plugins/element-plus-alias';
 import { epRoot, epOutput, localeRoot } from './utils/paths';

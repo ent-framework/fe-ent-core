@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "author": {
     "name": "jeff qian",
     "email": "baojian.qian@accenture.com",
@@ -13,7 +13,6 @@
     "build": "cross-env NODE_ENV=production pnpm build:lib && pnpm build:dts",
     "build:lib": "vite build --mode lib",
     "build:dts": "vue-tsc --declaration --emitDeclarationOnly --outDir ../../dist/fe-ent-core",
-    "clean": "rimraf node_modules",
     "report": "cross-env REPORT=true npm run build",
     "type:check": "vue-tsc --noEmit --skipLibCheck",
     "preview": "npm run build && vite preview",
@@ -75,12 +74,7 @@
   },
   "devDependencies": {
     "rimraf": "^3.0.2",
-    "@vue/compiler-sfc": "3.2.31",
-    "fe-ent-cli": "workspace:*"
-  },
-  "resolutions": {
-    "bin-wrapper": "npm:bin-wrapper-china",
-    "rollup": "^2.56.3"
+    "@vue/compiler-sfc": "3.2.31"
   },
   "repository": {
     "type": "git",

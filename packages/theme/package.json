@@ -1,0 +1,32 @@
+{
+  "name": "@ent-core/theme",
+  "version": "0.1.0",
+  "description": "Element component chalk theme.",
+  "main": "index.css",
+  "unpkg": "index.css",
+  "jsdelivr": "index.css",
+  "style": "index.css",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "gulp --require sucrase/register/ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/element-plus/element-plus.git"
+  },
+  "keywords": [
+    "vue-components",
+    "element-plus",
+    "theme-chalk",
+    "theme-light"
+  ],
+  "author": "yi.shyang@ele.me",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/element-plus/element-plus#issues"
+  },
+  "homepage": "https://github.com/element-plus/element-plus/blob/dev/packages/theme-chalk/README.md",
+  "devDependencies": {
+  },
+  "gitHead": "c69724230befa8fede0e6b9c37fb0b7e39fd7cdd"
+}

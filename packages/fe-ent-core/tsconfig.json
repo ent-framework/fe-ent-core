@@ -22,7 +22,7 @@
     "noImplicitAny": false,
     "skipLibCheck": true,
     "paths": {
-      "fe-ent-core/*": ["./*"]
+      "@ent-core/*": ["./*"]
     }
   },
   "include": [

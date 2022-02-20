@@ -1,3 +1,3 @@
-export const EP_PREFIX = '@element-plus';
-export const EP_PKG = 'element-plus';
-export const EP_BRAND_NAME = 'Element Plus';
+export const EP_PREFIX = '@ent-core';
+export const EP_PKG = 'fe-ent-core';
+export const EP_BRAND_NAME = 'Ent Core';

@@ -28,10 +28,10 @@ export const copyTypesDefinitions: TaskFunction = (done) => {
 
 export const copyFullStyle = async () => {
   await mkdir(path.resolve(epOutput, 'dist'), { recursive: true });
-  await copyFile(
-    path.resolve(epOutput, 'theme-chalk/index.css'),
-    path.resolve(epOutput, 'dist/index.css'),
-  );
+  // await copyFile(
+  //   path.resolve(epOutput, 'theme-chalk/index.css'),
+  //   path.resolve(epOutput, 'dist/index.css'),
+  // );
 };
 
 export default series(
@@ -40,11 +40,11 @@ export default series(
 
   parallel(
     runTask('buildModules'),
-    runTask('buildFullBundle'),
-    runTask('generateTypesDefinitions'),
+    //runTask('buildFullBundle'),
+    //runTask('generateTypesDefinitions'),
     runTask('buildHelper'),
     series(
-      withTaskName('buildThemeChalk', () => run('pnpm run -C packages/theme-chalk build')),
+      //withTaskName('buildTheme', () => run('pnpm run -C packages/theme build')),
       copyFullStyle,
     ),
   ),

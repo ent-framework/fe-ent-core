@@ -1,8 +1,8 @@
 import type { App } from 'vue';
-export * from './components';
-export * from './enums';
+export * from '@ent-core/components';
+export * from '@ent-core/enums';
 
-import * as components from './components';
+import * as components from '@ent-core/components';
 
 export const install = function (app: App) {
   console.log(Object.keys(components));

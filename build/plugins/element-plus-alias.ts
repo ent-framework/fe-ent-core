@@ -5,7 +5,7 @@ export function ElementPlusAlias(): Plugin {
   const THEME_CHALK = `${EP_PREFIX}/theme-chalk`;
 
   return {
-    name: 'element-plus-alias-plugin',
+    name: 'ent-core-alias-plugin',
     resolveId(id, importer, options) {
       if (!id.startsWith(EP_PREFIX)) return;
 
