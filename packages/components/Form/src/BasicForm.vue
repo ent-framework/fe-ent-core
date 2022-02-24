@@ -49,7 +49,7 @@
   import { dateItemType } from './helper';
   import { dateUtil } from '@ent-core/utils/dateUtil';
 
-  // import { cloneDeep } from 'lodash-es';
+  // import { cloneDeep } from 'lodash';
   import { deepMerge } from '@ent-core/utils';
 
   import { useFormValues } from './hooks/useFormValues';
@@ -291,50 +291,3 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-basic-form';
-
-  .@{prefix-cls} {
-    .ant-form-item {
-      &-label label::after {
-        margin: 0 6px 0 2px;
-      }
-
-      &-with-help {
-        margin-bottom: 0;
-      }
-
-      &:not(.ant-form-item-with-help) {
-        margin-bottom: 20px;
-      }
-
-      &.suffix-item {
-        .ant-form-item-children {
-          display: flex;
-        }
-
-        .ant-form-item-control {
-          margin-top: 4px;
-        }
-
-        .suffix {
-          display: inline-flex;
-          padding-left: 6px;
-          margin-top: 1px;
-          line-height: 1;
-          align-items: center;
-        }
-      }
-    }
-
-    .ant-form-explain {
-      font-size: 14px;
-    }
-
-    &--compact {
-      .ant-form-item {
-        margin-bottom: 8px !important;
-      }
-    }
-  }
-</style>

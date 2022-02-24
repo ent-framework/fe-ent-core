@@ -1,4 +1,3 @@
-import 'fe-ent-core/styles/index.less';
 import 'virtual:windi-base.css';
 import 'virtual:windi-components.css';
 import 'virtual:windi-utilities.css';
@@ -13,15 +12,19 @@ import { setupRouterGuard } from '/@/router/guard';
 import { setupStore } from 'fe-ent-core/store';
 import { setupGlobDirectives } from 'fe-ent-core/directives';
 import { setupI18n } from 'fe-ent-core/locales/setupI18n';
-import EntCore from 'fe-ent-core';
-import AntD from 'ant-design-vue';
+import { registerGlobComp } from 'fe-ent-core/components/registerGlobComp';
+//import EntCore from 'fe-ent-core';
+//import AntD from 'ant-design-vue';
 
 // Importing on demand in local development will increase the number of browser requests by around 20%.
 // This may slow down the browser refresh speed.
 // Therefore, only enable on-demand importing in production environments .
 if (import.meta.env.DEV) {
-  import('ant-design-vue/dist/antd.less');
+   // bug of import order;
+  // import('ant-design-vue/dist/antd.less');
 }
+import 'ant-design-vue/dist/antd.less';
+import 'fe-ent-core/theme/index.less';
 
 async function bootstrap() {
   const app = createApp(App);
@@ -31,6 +34,9 @@ async function bootstrap() {
 
   // Initialize internal system configuration
   initAppConfigStore();
+
+  // Register global components
+  registerGlobComp(app);
 
   // Multilingual configuration
   // Asynchronous case: language files may be obtained from the server side
@@ -52,8 +58,8 @@ async function bootstrap() {
   // await router.isReady();
 
   //register components
-  app.use(AntD);
-  app.use(EntCore);
+  //app.use(AntD);
+  //app.use(EntCore);
 
   app.mount('#app');
 }

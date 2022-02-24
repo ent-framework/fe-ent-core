@@ -26,7 +26,7 @@
   import { isFunction } from '@ent-core/utils/is';
   import { useRuleFormItem } from '@ent-core/hooks/component/useFormItem';
   import { useAttrs } from '@ent-core/hooks/core/useAttrs';
-  import { get, omit } from 'lodash-es';
+  import { get, omit } from 'lodash';
   import { LoadingOutlined } from '@ant-design/icons-vue';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
   import { propTypes } from '@ent-core/utils/propTypes';

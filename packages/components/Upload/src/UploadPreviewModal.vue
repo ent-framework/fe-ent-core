@@ -86,14 +86,3 @@
     },
   });
 </script>
-<style lang="less">
-  .upload-preview-modal {
-    .ant-upload-list {
-      display: none;
-    }
-
-    .ant-table-wrapper .ant-spin-nested-loading {
-      padding: 0;
-    }
-  }
-</style>

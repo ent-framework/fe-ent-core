@@ -17,7 +17,7 @@ import {
 } from 'vue';
 import { isProdMode } from '@ent-core/utils/env';
 import { isFunction } from '@ent-core/utils/is';
-import { isEqual } from 'lodash-es';
+import { isEqual } from 'lodash';
 import { tryOnUnmounted } from '@vueuse/core';
 import { error } from '@ent-core/utils/log';
 import { computed } from 'vue';

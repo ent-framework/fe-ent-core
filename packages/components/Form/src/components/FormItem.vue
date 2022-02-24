@@ -11,7 +11,7 @@
   import { isBoolean, isFunction, isNull } from '@ent-core/utils/is';
   import { getSlot } from '@ent-core/utils/helper/tsxHelper';
   import { createPlaceholderMessage, setComponentRuleType } from '../helper';
-  import { upperFirst, cloneDeep } from 'lodash-es';
+  import { upperFirst, cloneDeep } from 'lodash';
   import { useItemLabelWidth } from '../hooks/useLabelWidth';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
 

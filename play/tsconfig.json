@@ -9,6 +9,7 @@
     "allowSyntheticDefaultImports": true,
     "strictFunctionTypes": false,
     "jsx": "preserve",
+    "baseUrl": ".",
     "allowJs": true,
     "sourceMap": true,
     "esModuleInterop": true,
@@ -18,9 +19,13 @@
     "experimentalDecorators": true,
     "lib": ["dom", "esnext"],
     "types": ["vite/client", "jest"],
-    "typeRoots": ["./node_modules/@types/"],
+    "typeRoots": ["./node_modules/@types/", "../typings/"],
     "noImplicitAny": false,
     "skipLibCheck": true,
+    "paths": {
+      "/@/*": ["src/*"],
+      "fe-ent-core/*": ["../packages/*"]
+    }
   },
   "include": [
     "tests/**/*.ts",

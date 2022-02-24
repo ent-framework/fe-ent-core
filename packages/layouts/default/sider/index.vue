@@ -41,17 +41,3 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-layout-sider-wrapper';
-
-  .@{prefix-cls} {
-    .ant-drawer-body {
-      height: 100vh;
-      padding: 0;
-    }
-
-    .ant-drawer-header-no-title {
-      display: none;
-    }
-  }
-</style>

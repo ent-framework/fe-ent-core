@@ -79,16 +79,4 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-image-preview';
 
-  .@{prefix-cls} {
-    .ant-image {
-      margin-right: 10px;
-    }
-
-    .ant-image-preview-operations {
-      background-color: rgb(0 0 0 / 40%);
-    }
-  }
-</style>

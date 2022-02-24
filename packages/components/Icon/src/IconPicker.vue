@@ -31,18 +31,7 @@
                   v-for="icon in getPaginationList"
                   :key="icon"
                   :class="currentSelect === icon ? 'border border-primary' : ''"
-                  class="
-                    p-2
-                    w-1/8
-                    cursor-pointer
-                    mr-1
-                    mt-1
-                    flex
-                    justify-center
-                    items-center
-                    border border-solid
-                    hover:border-primary
-                  "
+                  class="p-2 w-1/8 cursor-pointer mr-1 mt-1 flex justify-center items-center border border-solid hover:border-primary"
                   @click="handleClick(icon)"
                   :title="icon"
                 >
@@ -90,13 +79,28 @@
   import { useI18n } from '@ent-core/hooks/web/useI18n';
   import { useCopyToClipboard } from '@ent-core/hooks/web/useCopyToClipboard';
   import { useMessage } from '@ent-core/hooks/web/useMessage';
-  import svgIcons from 'virtual:svg-icons-names';
+  //import svgIcons from 'virtual:svg-icons-names';
 
   // 没有使用别名引入，是因为WebStorm当前版本还不能正确识别，会报unused警告
   const AInput = Input;
   const APopover = Popover;
   const APagination = Pagination;
   const AEmpty = Empty;
+  const svgIcons = [
+    'icon-download-count',
+    'icon-dynamic-avatar-1',
+    'icon-dynamic-avatar-2',
+    'icon-dynamic-avatar-3',
+    'icon-dynamic-avatar-4',
+    'icon-dynamic-avatar-5',
+    'icon-dynamic-avatar-6',
+    'icon-moon',
+    'icon-sun',
+    'icon-test',
+    'icon-total-sales',
+    'icon-transaction',
+    'icon-visit-count',
+  ];
 
   function getIcons() {
     const data = iconsData as any;
@@ -179,24 +183,3 @@
     currentList.value = icons.filter((item) => item.includes(value));
   }
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-icon-picker';
-
-  .@{prefix-cls} {
-    .ant-input-group-addon {
-      padding: 0;
-    }
-
-    &-popover {
-      width: 300px;
-
-      .ant-popover-inner-content {
-        padding: 0;
-      }
-
-      .scrollbar {
-        height: 220px;
-      }
-    }
-  }
-</style>

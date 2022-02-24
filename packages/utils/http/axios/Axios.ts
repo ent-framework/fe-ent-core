@@ -5,7 +5,7 @@ import axios from 'axios';
 import qs from 'qs';
 import { AxiosCanceler } from './axiosCancel';
 import { isFunction } from '@ent-core/utils/is';
-import { cloneDeep } from 'lodash-es';
+import { cloneDeep } from 'lodash';
 import { ContentTypeEnum } from '@ent-core/enums/httpEnum';
 import { RequestEnum } from '@ent-core/enums/httpEnum';
 

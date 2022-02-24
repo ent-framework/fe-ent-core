@@ -3,7 +3,7 @@
  * @Description: Multi-language switching component
 -->
 <template>
-  <Dropdown
+  <EntDropdown
     placement="bottomCenter"
     :trigger="['click']"
     :dropMenuList="localeList"
@@ -15,13 +15,13 @@
       <Icon icon="ion:language" />
       <span v-if="showText" class="ml-1">{{ getLocaleText }}</span>
     </span>
-  </Dropdown>
+  </EntDropdown>
 </template>
 <script lang="ts" setup>
   import type { LocaleType } from '@ent-core/types/config';
   import type { DropMenu } from '@ent-core/components/Dropdown';
   import { ref, watchEffect, unref, computed } from 'vue';
-  import { Dropdown } from '@ent-core/components/Dropdown';
+  import { EntDropdown } from '@ent-core/components/Dropdown';
   import { Icon } from '@ent-core/components/Icon';
   import { useLocale } from '@ent-core/locales/useLocale';
   import { localeList } from '@ent-core/settings/localeSetting';
@@ -66,11 +66,3 @@
     toggleLocale(menu.event as string);
   }
 </script>
-
-<style lang="less">
-  .app-locale-picker-overlay {
-    .ant-dropdown-menu-item {
-      min-width: 160px;
-    }
-  }
-</style>

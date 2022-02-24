@@ -29,7 +29,7 @@ export * from './SimpleMenu';
 export * from './StrengthMeter';
 export * from './Table';
 export * from './Time';
-//export * from './Tinymce';
+export * from './Tinymce';
 export * from './Transition';
 export * from './Tree';
 export * from './Upload';

@@ -11,3 +11,9 @@ export function setupGlobDirectives(app: App) {
   setupLoadingDirective(app);
   setClickOutsideDirective(app);
 }
+
+export * from './clickOutside';
+export * from './ripple';
+export * from './loading';
+export * from './permission';
+export * from './repeatClick';

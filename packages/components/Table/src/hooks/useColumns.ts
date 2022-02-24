@@ -6,7 +6,7 @@ import { renderEditCell } from '../components/editable';
 import { usePermission } from '@ent-core/hooks/web/usePermission';
 import { useI18n } from '@ent-core/hooks/web/useI18n';
 import { isArray, isBoolean, isFunction, isMap, isString } from '@ent-core/utils/is';
-import { cloneDeep, isEqual } from 'lodash-es';
+import { cloneDeep, isEqual } from 'lodash';
 import { formatToDate } from '@ent-core/utils/dateUtil';
 import { ACTION_COLUMN_FLAG, DEFAULT_ALIGN, INDEX_COLUMN_FLAG, PAGE_SIZE } from '../const';
 

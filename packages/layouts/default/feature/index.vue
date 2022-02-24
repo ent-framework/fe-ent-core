@@ -25,7 +25,7 @@
       const { getUseOpenBackTop, getShowSettingButton, getSettingButtonPosition, getFullContent } =
         useRootSetting();
       const userStore = useUserStoreWithOut();
-      const { prefixCls } = useDesign('setting-drawer-fearure');
+      const { prefixCls } = useDesign('setting-drawer-feature');
       const { getShowHeader } = useHeaderSetting();
 
       const getIsSessionTimeout = computed(() => userStore.getSessionTimeout);
@@ -59,27 +59,3 @@
   <SettingDrawer v-if="getIsFixedSettingDrawer" :class="prefixCls" />
   <SessionTimeoutLogin v-if="getIsSessionTimeout" />
 </template>
-
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-setting-drawer-fearure';
-
-  .@{prefix-cls} {
-    position: absolute;
-    top: 45%;
-    right: 0;
-    z-index: 10;
-    display: flex;
-    padding: 10px;
-    color: @white;
-    cursor: pointer;
-    background-color: @primary-color;
-    border-radius: 6px 0 0 6px;
-    justify-content: center;
-    align-items: center;
-
-    svg {
-      width: 1em;
-      height: 1em;
-    }
-  }
-</style>

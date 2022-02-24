@@ -2,7 +2,7 @@ import type { AppRouteModule, AppRouteRecordRaw } from '@ent-core/router/types';
 import type { Router, RouteRecordNormalized } from 'vue-router';
 
 import { getParentLayout, LAYOUT, EXCEPTION_COMPONENT } from '@ent-core/router/constant';
-import { cloneDeep, omit } from 'lodash-es';
+import { cloneDeep, omit } from 'lodash';
 import { warn } from '@ent-core/utils/log';
 import { createRouter, createWebHashHistory } from 'vue-router';
 

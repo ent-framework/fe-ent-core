@@ -171,27 +171,3 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-layout-menu';
-  @logo-prefix-cls: ~'@{namespace}-app-logo';
-
-  .@{prefix-cls} {
-    &-logo {
-      height: @header-height;
-      padding: 10px 4px 10px 10px;
-
-      img {
-        width: @logo-width;
-        height: @logo-width;
-      }
-    }
-
-    &--mobile {
-      .@{logo-prefix-cls} {
-        &__title {
-          opacity: 100%;
-        }
-      }
-    }
-  }
-</style>

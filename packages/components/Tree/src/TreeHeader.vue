@@ -176,8 +176,3 @@
     },
   });
 </script>
-<style lang="less" scoped>
-  .basic-tree-header {
-    border-bottom: 1px solid @border-color-base;
-  }
-</style>

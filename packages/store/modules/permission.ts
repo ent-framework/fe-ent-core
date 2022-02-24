@@ -24,7 +24,7 @@ import { getPermCode } from '@ent-core/api/sys/user';
 import { useMessage } from '@ent-core/hooks/web/useMessage';
 import { PageEnum } from '@ent-core/enums/pageEnum';
 
-interface PermissionState {
+export interface PermissionState {
   // Permission code list
   permCodeList: string[] | number[];
   // Whether the route has been dynamically added

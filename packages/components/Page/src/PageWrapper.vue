@@ -40,7 +40,7 @@
 
   import { useDesign } from '@ent-core/hooks/web/useDesign';
   import { propTypes } from '@ent-core/utils/propTypes';
-  import { omit } from 'lodash-es';
+  import { omit } from 'lodash';
   import { PageHeader } from 'ant-design-vue';
   import { useContentHeight } from '@ent-core/hooks/web/useContentHeight';
   import { PageWrapperFixedHeightKey } from '..';
@@ -157,30 +157,3 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-page-wrapper';
-
-  .@{prefix-cls} {
-    position: relative;
-
-    .@{prefix-cls}-content {
-      margin: 16px;
-    }
-
-    .ant-page-header {
-      &:empty {
-        padding: 0;
-      }
-    }
-
-    &-content-bg {
-      background-color: @component-background;
-    }
-
-    &--dense {
-      .@{prefix-cls}-content {
-        margin: 0;
-      }
-    }
-  }
-</style>

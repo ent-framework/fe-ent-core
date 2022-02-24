@@ -63,19 +63,3 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-basic-table-header';
-
-  .@{prefix-cls} {
-    &__toolbar {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-
-      > * {
-        margin-right: 8px;
-      }
-    }
-  }
-</style>

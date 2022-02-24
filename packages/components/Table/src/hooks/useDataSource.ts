@@ -14,7 +14,7 @@ import {
 import { useTimeoutFn } from '@ent-core/hooks/core/useTimeout';
 import { buildUUID } from '@ent-core/utils/uuid';
 import { isFunction, isBoolean } from '@ent-core/utils/is';
-import { get, cloneDeep } from 'lodash-es';
+import { get, cloneDeep } from 'lodash';
 import { FETCH_SETTING, ROW_KEY, PAGE_SIZE } from '../const';
 
 interface ActionType {

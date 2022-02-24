@@ -4,7 +4,7 @@ import { computed, toRaw, unref } from 'vue';
 
 import { useMultipleTabStore } from '@ent-core/store/modules/multipleTab';
 
-import { uniqBy } from 'lodash-es';
+import { uniqBy } from 'lodash';
 
 import { useMultipleTabSetting } from '@ent-core/hooks/setting/useMultipleTabSetting';
 

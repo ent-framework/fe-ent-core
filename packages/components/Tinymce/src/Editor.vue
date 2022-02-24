@@ -329,19 +329,3 @@
     },
   });
 </script>
-
-<style lang="less" scoped></style>
-
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-tinymce-container';
-
-  .@{prefix-cls} {
-    position: relative;
-    line-height: normal;
-
-    textarea {
-      z-index: -1;
-      visibility: hidden;
-    }
-  }
-</style>

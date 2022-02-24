@@ -4,7 +4,7 @@
   import type { CSSProperties } from 'vue';
   import type { CollapseContainerOptions } from '@ent-core/components/Container';
   import { defineComponent, computed, ref, unref } from 'vue';
-  import { get } from 'lodash-es';
+  import { get } from 'lodash';
   import { Descriptions } from 'ant-design-vue';
   import { CollapseContainer } from '@ent-core/components/Container';
   import { useDesign } from '@ent-core/hooks/web/useDesign';

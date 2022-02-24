@@ -18,8 +18,6 @@ export function generateModifyVars(dark = false) {
   const modifyVars = getThemeVariables({ dark });
   const preLoadFile = path.resolve(themeRoot, 'config.less');
 
-  console.log(`${preLoadFile}`);
-
   return {
     ...modifyVars,
     // Used for global import to avoid the need to import each style file separately

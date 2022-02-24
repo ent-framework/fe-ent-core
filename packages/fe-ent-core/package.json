@@ -6,33 +6,34 @@
     "email": "baojian.qian@accenture.com",
     "url": "https://github.com/anncwb"
   },
-  "main": "my-ent.umd.js",
-  "module": "my-ent.es.js",
-  "types": "index.d.ts",
-  "scripts": {
-    "build": "cross-env NODE_ENV=production pnpm build:lib && pnpm build:dts",
-    "build:lib": "vite build --mode lib",
-    "build:dts": "vue-tsc --declaration --emitDeclarationOnly --outDir ../../dist/fe-ent-core",
-    "report": "cross-env REPORT=true npm run build",
-    "type:check": "vue-tsc --noEmit --skipLibCheck",
-    "preview": "npm run build && vite preview",
-    "preview:dist": "vite preview",
-    "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
-    "clean:lib": "rimraf node_modules",
-    "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
-    "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
-    "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
-    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
-    "test:unit": "jest",
-    "test:unit-coverage": "jest --coverage",
-    "test:gzip": "npx http-server dist --cors --gzip -c-1",
-    "test:br": "npx http-server dist --cors --brotli -c-1",
-    "reinstall": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
-    "gen:icon": "esno ./build/generate/icon/index.ts"
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./es/index.mjs"
+    },
+    "./es": "./es/index.mjs",
+    "./lib": "./lib/index.js",
+    "./es/*.mjs": "./es/*.mjs",
+    "./es/*": "./es/*.mjs",
+    "./lib/*.js": "./lib/*.js",
+    "./lib/*": "./lib/*.js",
+    "./*": "./*"
   },
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "style": "dist/index.css",
+  "unpkg": "dist/index.full.js",
+  "jsdelivr": "dist/index.full.js",
+  "sideEffects": [
+    "dist/*",
+    "theme-chalk/*.css",
+    "theme-chalk/src/*.scss",
+    "es/components/*/style/*",
+    "lib/components/*/style/*"
+  ],
   "peerDependencies": {
-    "vue": "3.2.31"
+    "vue": "3.2.31",
+    "ant-design-vue": "2.2.8"
   },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
@@ -53,7 +54,7 @@
     "dayjs": "^1.10.7",
     "echarts": "^5.2.2",
     "intro.js": "^4.3.0",
-    "lodash-es": "^4.17.21",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
@@ -65,16 +66,22 @@
     "resize-observer-polyfill": "^1.5.1",
     "showdown": "^1.9.1",
     "sortablejs": "^1.14.0",
+    "tinycolor2": "^1.4.2",
     "tinymce": "^5.10.2",
     "vditor": "^3.8.11",
     "vue-i18n": "^9.1.9",
     "vue-router": "^4.0.12",
     "vue-types": "^3.0.2",
+    "vite-plugin-theme": "^0.8.1",
     "xlsx": "^0.17.5"
   },
   "devDependencies": {
     "rimraf": "^3.0.2",
-    "@vue/compiler-sfc": "3.2.31"
+    "@vue/compiler-sfc": "3.2.31",
+    "vite": "^2.6.13",
+    "vue": "3.2.31",
+    "ant-design-vue": "2.2.8",
+    "vite-plugin-theme": "^0.8.1"
   },
   "repository": {
     "type": "git",

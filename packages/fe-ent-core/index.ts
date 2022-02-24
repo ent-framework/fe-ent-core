@@ -1,7 +1,4 @@
 import type { App } from 'vue';
-export * from '@ent-core/components';
-export * from '@ent-core/enums';
-
 import * as components from '@ent-core/components';
 
 export const install = function (app: App) {
@@ -17,3 +14,9 @@ export const install = function (app: App) {
 };
 
 export default install;
+
+export * from '@ent-core/components';
+export * from '@ent-core/directives';
+export * from '@ent-core/enums';
+export * from '@ent-core/hooks';
+export * from '@ent-core/logics';

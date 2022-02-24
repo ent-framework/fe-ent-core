@@ -15,7 +15,7 @@
   import type { PropType } from 'vue';
   import { defineComponent, unref, computed, toRaw } from 'vue';
   import { Table } from 'ant-design-vue';
-  import { cloneDeep } from 'lodash-es';
+  import { cloneDeep } from 'lodash';
   import { isFunction } from '@ent-core/utils/is';
   import type { BasicColumn } from '../types/table';
   import { INDEX_COLUMN_FLAG } from '../const';

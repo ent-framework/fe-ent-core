@@ -174,15 +174,3 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-cropper-image';
-
-  .@{prefix-cls} {
-    &--circled {
-      .cropper-view-box,
-      .cropper-face {
-        border-radius: 50%;
-      }
-    }
-  }
-</style>

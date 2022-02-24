@@ -69,36 +69,3 @@
     },
   });
 </script>
-<style lang="less">
-  .file-table {
-    width: 100%;
-    border-collapse: collapse;
-
-    .center {
-      text-align: center;
-    }
-
-    .left {
-      text-align: left;
-    }
-
-    .right {
-      text-align: right;
-    }
-
-    &-th,
-    &-td {
-      padding: 12px 8px;
-    }
-
-    thead {
-      background-color: @background-color-light;
-    }
-
-    table,
-    td,
-    th {
-      border: 1px solid @border-color-base;
-    }
-  }
-</style>

@@ -78,18 +78,3 @@
     },
   });
 </script>
-<style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-tinymce-img-upload';
-
-  .@{prefix-cls} {
-    position: absolute;
-    top: 4px;
-    right: 10px;
-    z-index: 20;
-
-    &.fullscreen {
-      position: fixed;
-      z-index: 10000;
-    }
-  }
-</style>

@@ -1,7 +1,7 @@
 import type { Menu } from '@ent-core/router/types';
 import { ref, onBeforeMount, unref, Ref, nextTick } from 'vue';
 import { getMenus } from '@ent-core/router/menus';
-import { cloneDeep } from 'lodash-es';
+import { cloneDeep } from 'lodash';
 import { filter, forEach } from '@ent-core/utils/helper/treeHelper';
 import { useGo } from '@ent-core/hooks/web/usePage';
 import { useScrollTo } from '@ent-core/hooks/event/useScrollTo';

@@ -47,38 +47,3 @@
     ];
   });
 </script>
-<style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-basic-arrow';
-
-  .@{prefix-cls} {
-    display: inline-block;
-    cursor: pointer;
-    transform: rotate(0deg);
-    transition: all 0.3s ease 0.1s;
-    transform-origin: center center;
-
-    &--active {
-      transform: rotate(90deg);
-    }
-
-    &.inset {
-      line-height: 0px;
-    }
-
-    &.up {
-      transform: rotate(-90deg);
-    }
-
-    &.down {
-      transform: rotate(90deg);
-    }
-
-    &.up.@{prefix-cls}--active {
-      transform: rotate(90deg);
-    }
-
-    &.down.@{prefix-cls}--active {
-      transform: rotate(-90deg);
-    }
-  }
-</style>

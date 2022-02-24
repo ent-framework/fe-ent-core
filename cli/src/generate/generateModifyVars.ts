@@ -6,7 +6,7 @@ import fs from 'fs';
 /**
  * less global variable
  */
-export function generateModifyVars(dark = false, runMode: string) {
+export function generateModifyVars(dark = false, runMode: string, preview: boolean) {
   const palettes = generateAntColors(primaryColor);
   const primary = palettes[5];
 
@@ -20,17 +20,17 @@ export function generateModifyVars(dark = false, runMode: string) {
   const workspace = findWorkspaceRoot();
   let preLoadFile = '';
 
-  if (runMode == 'package' || runMode == 'serve') {
-    if (fs.existsSync(process.cwd() + 'src/styles/config.less')) {
-      preLoadFile = path.resolve(process.cwd(), 'src/styles/config.less');
+  if (preview) {
+    preLoadFile = path.resolve(workspace, `packages/theme/config.less`);
+  } else if (runMode == 'package' || runMode == 'serve') {
+    if (fs.existsSync(process.cwd() + 'src/theme/config.less')) {
+      preLoadFile = path.resolve(process.cwd(), 'src/theme/config.less');
     } else {
-      preLoadFile = path.resolve(workspace, `node_modules/${FE_PKG}/styles/config.less`);
+      preLoadFile = path.resolve(workspace, `node_modules/${FE_PKG}/theme/config.less`);
     }
   } else {
-    preLoadFile = path.resolve(process.cwd(), 'styles/config.less');
+    preLoadFile = path.resolve(process.cwd(), 'theme/config.less');
   }
-
-  console.log(`${preLoadFile}`);
 
   return {
     ...modifyVars,

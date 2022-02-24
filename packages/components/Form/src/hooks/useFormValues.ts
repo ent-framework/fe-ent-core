@@ -3,7 +3,7 @@ import { dateUtil } from '@ent-core/utils/dateUtil';
 import { unref } from 'vue';
 import type { Ref, ComputedRef } from 'vue';
 import type { FormProps, FormSchema } from '../types/form';
-import { set } from 'lodash-es';
+import { set } from 'lodash';
 
 interface UseFormValuesContext {
   defaultValueRef: Ref<any>;

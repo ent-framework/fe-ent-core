@@ -41,16 +41,3 @@
     },
   });
 </script>
-<style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-setting-input-number-item';
-
-  .@{prefix-cls} {
-    display: flex;
-    justify-content: space-between;
-    margin: 16px 0;
-
-    &-input-number {
-      width: 126px;
-    }
-  }
-</style>

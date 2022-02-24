@@ -55,12 +55,3 @@
     },
   });
 </script>
-<style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-setting-switch-item';
-
-  .@{prefix-cls} {
-    display: flex;
-    justify-content: space-between;
-    margin: 16px 0;
-  }
-</style>

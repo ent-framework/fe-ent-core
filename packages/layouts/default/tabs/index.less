@@ -1,7 +1,7 @@
-@prefix-cls: ~'@{namespace}-multiple-tabs';
+@multiple-tabs-prefix-cls: ~'@{namespace}-multiple-tabs';
 
 html[data-theme='dark'] {
-  .@{prefix-cls} {
+  .@{multiple-tabs-prefix-cls} {
     .ant-tabs-tab {
       border-bottom: 1px solid @border-color-base;
     }
@@ -9,14 +9,14 @@ html[data-theme='dark'] {
 }
 
 html[data-theme='light'] {
-  .@{prefix-cls} {
+  .@{multiple-tabs-prefix-cls} {
     .ant-tabs-tab:not(.ant-tabs-tab-active) {
       border: 1px solid #d9d9d9 !important;
     }
   }
 }
 
-.@{prefix-cls} {
+.@{multiple-tabs-prefix-cls} {
   z-index: 10;
   height: @multiple-height + 2;
   line-height: @multiple-height + 2;

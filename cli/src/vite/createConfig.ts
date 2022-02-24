@@ -18,7 +18,11 @@ const __APP_INFO__ = {
   lastBuildTime: moment().format('YYYY-MM-DD HH:mm:ss'),
 };
 
-export function createViteConfig({ command, mode }: ConfigEnv, alias: Alias[] = []): UserConfig {
+export function createViteConfig(
+  { command, mode }: ConfigEnv,
+  alias: Alias[],
+  preview?,
+): UserConfig {
   // 是否构建库模式
 
   const isBuildLib = mode === 'lib';
@@ -33,6 +37,7 @@ export function createViteConfig({ command, mode }: ConfigEnv, alias: Alias[] = 
   //运行模式识别
   //serve 在线运行, lib 库打包模式, package Html打包模式
   const runMode = command === 'serve' ? 'serve' : isBuildLib ? 'lib' : 'package';
+
   green(`Run in folder: ${root}, mode: ${runMode}`);
 
   const resolveAlias: Alias[] = [
@@ -64,14 +69,14 @@ export function createViteConfig({ command, mode }: ConfigEnv, alias: Alias[] = 
     css: {
       preprocessorOptions: {
         less: {
-          modifyVars: generateModifyVars(false, runMode),
+          modifyVars: generateModifyVars(false, runMode, preview),
           javascriptEnabled: true,
         },
       },
     },
 
     // The vite plugin used by the project. The quantity is large, so it is separately extracted and managed
-    plugins: createVitePlugins(viteEnv, runMode),
+    plugins: createVitePlugins(viteEnv, runMode, preview),
 
     optimizeDeps: {
       // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly

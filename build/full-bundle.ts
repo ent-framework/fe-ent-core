@@ -3,6 +3,8 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { rollup } from 'rollup';
 import commonjs from '@rollup/plugin-commonjs';
 import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
+import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import esbuild from 'rollup-plugin-esbuild';
 import replace from '@rollup/plugin-replace';
 import filesize from 'rollup-plugin-filesize';
@@ -12,12 +14,13 @@ import { camelCase, upperFirst } from 'lodash';
 import { version } from '../packages/fe-ent-core/version';
 import { reporter } from './plugins/size-reporter';
 import { ElementPlusAlias } from './plugins/element-plus-alias';
-import { epRoot, epOutput, localeRoot } from './utils/paths';
+import { epRoot, epOutput, localeRoot } from './utils';
 import { formatBundleFilename, generateExternal, writeBundles } from './utils/rollup';
 import { withTaskName } from './utils/gulp';
-import { EP_BRAND_NAME } from './utils/constants';
+import { EP_BRAND_NAME } from './utils';
 import { target } from './build-info';
 import type { Plugin } from 'rollup';
+import json from '@rollup/plugin-json';
 
 const banner = `/*! ${EP_BRAND_NAME} v${version} */\n`;
 
@@ -26,11 +29,14 @@ async function buildFullEntry(minify: boolean) {
     input: path.resolve(epRoot, 'index.ts'),
     plugins: [
       ElementPlusAlias(),
+      json(),
       vue({
         isProduction: true,
       }) as Plugin,
+      vueJsx(),
+      vueSetupExtend(),
       nodeResolve({
-        extensions: ['.mjs', '.js', '.json', '.ts'],
+        extensions: ['.mjs', '.js', '.json', '.ts', '.tsx'],
       }),
       commonjs(),
       esbuild({
@@ -43,7 +49,6 @@ async function buildFullEntry(minify: boolean) {
       }),
       replace({
         'process.env.NODE_ENV': JSON.stringify('production'),
-
         // options
         preventAssignment: true,
       }),
@@ -56,7 +61,7 @@ async function buildFullEntry(minify: boolean) {
       format: 'umd',
       file: path.resolve(epOutput, 'dist', formatBundleFilename('index.full', minify, 'js')),
       exports: 'named',
-      name: 'ElementPlus',
+      name: 'EntCore',
       globals: {
         vue: 'Vue',
       },

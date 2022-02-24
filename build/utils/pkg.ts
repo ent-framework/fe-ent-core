@@ -36,7 +36,7 @@ export const pathRewriter = (module: Module) => {
   const config = buildConfig[module];
 
   return (id: string) => {
-    id = id.replaceAll(`${EP_PREFIX}/theme-chalk`, 'element-plus/theme-chalk');
+    id = id.replaceAll(`${EP_PREFIX}/theme`, 'fe-ent-core/theme');
     id = id.replaceAll(`${EP_PREFIX}/`, `${config.bundle.path}/`);
     return id;
   };

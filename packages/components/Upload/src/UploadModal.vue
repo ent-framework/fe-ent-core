@@ -302,26 +302,3 @@
     },
   });
 </script>
-<style lang="less">
-  .upload-modal {
-    .ant-upload-list {
-      display: none;
-    }
-
-    .ant-table-wrapper .ant-spin-nested-loading {
-      padding: 0;
-    }
-
-    &-toolbar {
-      display: flex;
-      align-items: center;
-      margin-bottom: 8px;
-
-      &__btn {
-        margin-left: 8px;
-        text-align: right;
-        flex: 1;
-      }
-    }
-  }
-</style>

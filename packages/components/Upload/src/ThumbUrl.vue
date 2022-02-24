@@ -16,14 +16,3 @@
     },
   });
 </script>
-<style lang="less">
-  .thumb {
-    img {
-      position: static;
-      display: block;
-      cursor: zoom-in;
-      border-radius: 4px;
-      object-fit: cover;
-    }
-  }
-</style>

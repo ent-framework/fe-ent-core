@@ -29,23 +29,3 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-layout-content';
-
-  .@{prefix-cls} {
-    position: relative;
-    flex: 1 1 auto;
-    min-height: 0;
-
-    &.fixed {
-      width: 1200px;
-      margin: 0 auto;
-    }
-
-    &-loading {
-      position: absolute;
-      top: 200px;
-      z-index: @page-loading-z-index;
-    }
-  }
-</style>

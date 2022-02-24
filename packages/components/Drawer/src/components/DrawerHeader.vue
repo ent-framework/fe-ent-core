@@ -45,30 +45,3 @@
     },
   });
 </script>
-
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-basic-drawer-header';
-  @footer-height: 60px;
-  .@{prefix-cls} {
-    display: flex;
-    height: 100%;
-    align-items: center;
-
-    &__back {
-      padding: 0 12px;
-      cursor: pointer;
-
-      &:hover {
-        color: @primary-color;
-      }
-    }
-
-    &__twrap {
-      flex: 1;
-    }
-
-    &__toolbar {
-      padding-right: 50px;
-    }
-  }
-</style>

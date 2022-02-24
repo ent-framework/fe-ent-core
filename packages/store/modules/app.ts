@@ -17,7 +17,7 @@ import { darkMode } from '@ent-core/settings/designSetting';
 import { resetRouter } from '@ent-core/router';
 import { deepMerge } from '@ent-core/utils';
 
-interface AppState {
+export interface AppState {
   darkMode?: ThemeEnum;
   // Page loading status
   pageLoading: boolean;

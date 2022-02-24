@@ -16,7 +16,7 @@ import { getThemeColors, generateColors } from '../../config/themeConfig';
 import { generateModifyVars } from '../../generate/generateModifyVars';
 import { FE_PKG, findWorkspaceRoot } from '../../utils';
 
-export function configThemePlugin(runMode: string): Plugin[] {
+export function configThemePlugin(runMode: string, preview: boolean): Plugin[] {
   const colors = generateColors({
     mixDarken,
     mixLighten,
@@ -25,17 +25,17 @@ export function configThemePlugin(runMode: string): Plugin[] {
 
   let preLoadFile = '';
   const workspace = findWorkspaceRoot();
-  if (runMode == 'package' || runMode == 'serve') {
-    if (fs.existsSync(process.cwd() + 'src/styles/index.less')) {
-      preLoadFile = path.resolve(process.cwd(), 'src/styles/index.less');
+  if (preview) {
+    preLoadFile = path.resolve(workspace, `packages/theme/index.less`);
+  } else if (runMode == 'package' || runMode == 'serve') {
+    if (fs.existsSync(process.cwd() + 'src/theme/index.less')) {
+      preLoadFile = path.resolve(process.cwd(), 'src/theme/index.less');
     } else {
-      preLoadFile = path.resolve(workspace, `node_modules/${FE_PKG}/styles/index.less`);
+      preLoadFile = path.resolve(workspace, `node_modules/${FE_PKG}/theme/index.less`);
     }
   } else {
-    preLoadFile = path.resolve(process.cwd(), 'styles/index.less');
+    preLoadFile = path.resolve(process.cwd(), 'theme/index.less');
   }
-
-  console.log(preLoadFile);
 
   const plugin = [
     viteThemePlugin({
@@ -69,10 +69,10 @@ export function configThemePlugin(runMode: string): Plugin[] {
         preLoadFile,
       ],
       filter: (id) =>
-        runMode == 'package' || runMode == 'serve' ? !id.endsWith('antd.less') : true,
-      extractCss: true,
+        runMode == 'package' || runMode == 'serve' || preview ? !id.endsWith('antd.less') : true,
+      //extractCss: true,
       darkModifyVars: {
-        ...generateModifyVars(true, runMode),
+        ...generateModifyVars(true, runMode, preview),
         'text-color': '#c9d1d9',
         'primary-1': 'rgb(255 255 255 / 8%)',
         'text-color-base': '#c9d1d9',

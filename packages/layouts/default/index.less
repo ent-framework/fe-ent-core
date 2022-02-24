@@ -1,0 +1,42 @@
+@import './content/index.less';
+@import './feature/index.less';
+@import './footer/index.less';
+@import './header/MultipleHeader.less';
+@import './header/index.less';
+@import './header/components/Breadcrumb.less';
+@import './header/components/lock/LockModal.less';
+@import './header/components/notify/index.less';
+@import './header/components/notify/NoticeList.less';
+@import './header/components/user-dropdown/index.less';
+
+@import './menu/index.less';
+@import './setting/components/InputNumberItem.less';
+@import './setting/components/SelectItem.less';
+@import './setting/components/SettingFooter.less';
+@import './setting/components/SwitchItem.less';
+@import './setting/components/ThemeColorPicker.less';
+@import './setting/components/TypePicker.less';
+@import './sider/DragBar.less';
+@import './sider/LayoutSider.less';
+@import './sider/MixSider.less';
+@import './sider/index.less';
+@import './tabs/index.less';
+
+@default-layout-prefix-cls: ~'@{namespace}-default-layout';
+
+.@{default-layout-prefix-cls} {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  background-color: @content-bg;
+  flex-direction: column;
+
+  > .ant-layout {
+    min-height: 100%;
+  }
+
+  &-main {
+    width: 100%;
+    margin-left: 1px;
+  }
+}

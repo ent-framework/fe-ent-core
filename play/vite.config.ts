@@ -7,12 +7,12 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   const alias = [
     {
       find: /^fe-ent-core$/,
-      replacement: `${workspace}/packages/core/index.ts`,
+      replacement: `${workspace}/packages/fe-ent-core/index.ts`,
     },
     {
       find: /^fe-ent-core\/(.*)$/,
-      replacement: `${workspace}/packages/core/$1`,
+      replacement: `${workspace}/packages/$1`,
     },
   ];
-  return createViteConfig({ command, mode }, alias);
+  return createViteConfig({ command, mode }, alias, true);
 };

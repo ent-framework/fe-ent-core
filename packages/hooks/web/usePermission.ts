@@ -13,7 +13,7 @@ import projectSetting from '@ent-core/settings/projectSetting';
 import { PermissionModeEnum } from '@ent-core/enums/appEnum';
 import { RoleEnum } from '@ent-core/enums/roleEnum';
 
-import { intersection } from 'lodash-es';
+import { intersection } from 'lodash';
 import { isArray } from '@ent-core/utils/is';
 import { useMultipleTabStore } from '@ent-core/store/modules/multipleTab';
 

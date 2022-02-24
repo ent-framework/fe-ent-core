@@ -19,7 +19,7 @@ import { getCurrExecPath, OUTPUT_DIR, findWorkspaceRoot } from '../../utils';
 import type { BuildOptions } from 'vite';
 // import dts from './dts';
 
-export function createVitePlugins(viteEnv: ViteEnv, runMode: string) {
+export function createVitePlugins(viteEnv: ViteEnv, runMode: string, preview: boolean) {
   const {
     VITE_USE_IMAGEMIN,
     VITE_USE_MOCK,
@@ -74,7 +74,7 @@ export function createVitePlugins(viteEnv: ViteEnv, runMode: string) {
   vitePlugins.push(configVisualizerConfig());
 
   //vite-plugin-theme
-  vitePlugins.push(configThemePlugin(runMode));
+  vitePlugins.push(configThemePlugin(runMode, preview));
 
   // The following plugins only work in the production environment
   if (isBuild) {

@@ -1,19 +1,19 @@
 <template>
-  <Dropdown :dropMenuList="getDropMenuList" :trigger="getTrigger" @menuEvent="handleMenuEvent">
+  <EntDropdown :dropMenuList="getDropMenuList" :trigger="getTrigger" @menuEvent="handleMenuEvent">
     <div :class="`${prefixCls}__info`" @contextmenu="handleContext" v-if="getIsTabs">
       <span class="ml-1">{{ getTitle }}</span>
     </div>
     <span :class="`${prefixCls}__extra-quick`" v-else @click="handleContext">
       <Icon icon="ion:chevron-down" />
     </span>
-  </Dropdown>
+  </EntDropdown>
 </template>
 <script lang="ts">
   import type { PropType } from 'vue';
   import type { RouteLocationNormalized } from 'vue-router';
 
   import { defineComponent, computed, unref } from 'vue';
-  import { Dropdown } from '@ent-core/components/Dropdown/index';
+  import { EntDropdown } from '@ent-core/components/Dropdown/index';
   import { Icon } from '@ent-core/components/Icon';
 
   import { TabContentProps } from '../types';
@@ -24,7 +24,7 @@
 
   export default defineComponent({
     name: 'TabContent',
-    components: { Dropdown, Icon },
+    components: { EntDropdown, Icon },
     props: {
       tabItem: {
         type: Object as PropType<RouteLocationNormalized>,

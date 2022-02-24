@@ -44,7 +44,7 @@
   import { Tooltip } from 'ant-design-vue';
   import { useModal } from '@ent-core/components/Modal';
   import { uploadContainerProps } from './props';
-  import { omit } from 'lodash-es';
+  import { omit } from 'lodash';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
   import { isArray } from '@ent-core/utils/is';
   export default defineComponent({

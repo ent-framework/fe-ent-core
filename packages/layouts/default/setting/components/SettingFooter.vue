@@ -88,12 +88,3 @@
     },
   });
 </script>
-<style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-setting-footer';
-
-  .@{prefix-cls} {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-</style>

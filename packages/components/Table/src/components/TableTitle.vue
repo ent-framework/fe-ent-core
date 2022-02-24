@@ -42,12 +42,3 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-basic-table-title';
-
-  .@{prefix-cls} {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-</style>

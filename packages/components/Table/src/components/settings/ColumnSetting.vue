@@ -120,7 +120,7 @@
   import { useSortable } from '@ent-core/hooks/web/useSortable';
   import { isFunction, isNullAndUnDef } from '@ent-core/utils/is';
   import { getPopupContainer as getParentContainer } from '@ent-core/utils';
-  import { omit } from 'lodash-es';
+  import { omit } from 'lodash';
 
   interface State {
     checkAll: boolean;
@@ -388,79 +388,3 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-basic-column-setting';
-
-  .table-coulmn-drag-icon {
-    margin: 0 5px;
-    cursor: move;
-  }
-
-  .@{prefix-cls} {
-    &__popover-title {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    &__check-item {
-      display: flex;
-      align-items: center;
-      min-width: 100%;
-      padding: 4px 16px 8px 0;
-
-      .ant-checkbox-wrapper {
-        width: 100%;
-
-        &:hover {
-          color: @primary-color;
-        }
-      }
-    }
-
-    &__fixed-left,
-    &__fixed-right {
-      color: rgb(0 0 0 / 45%);
-      cursor: pointer;
-
-      &.active,
-      &:hover {
-        color: @primary-color;
-      }
-
-      &.disabled {
-        color: @disabled-color;
-        cursor: not-allowed;
-      }
-    }
-
-    &__fixed-right {
-      transform: rotate(180deg);
-    }
-
-    &__cloumn-list {
-      svg {
-        width: 1em !important;
-        height: 1em !important;
-      }
-
-      .ant-popover-inner-content {
-        // max-height: 360px;
-        padding-right: 0;
-        padding-left: 0;
-        // overflow: auto;
-      }
-
-      .ant-checkbox-group {
-        width: 100%;
-        min-width: 260px;
-        // flex-wrap: wrap;
-      }
-
-      .scrollbar {
-        height: 220px;
-      }
-    }
-  }
-</style>

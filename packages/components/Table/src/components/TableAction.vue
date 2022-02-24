@@ -17,7 +17,7 @@
         v-if="divider && index < getActions.length - 1"
       />
     </template>
-    <Dropdown
+    <EntDropdown
       :trigger="['hover']"
       :dropMenuList="getDropdownList"
       popconfirm
@@ -27,7 +27,7 @@
       <a-button type="link" size="small" v-if="!$slots.more">
         <MoreOutlined class="icon-more" />
       </a-button>
-    </Dropdown>
+    </EntDropdown>
   </div>
 </template>
 <script lang="ts">
@@ -37,7 +37,7 @@
   import Icon from '@ent-core/components/Icon/index';
   import { TableActionItem, TableActionType } from '@ent-core/components/Table';
   import { PopConfirmButton } from '@ent-core/components/Button';
-  import { Dropdown } from '@ent-core/components/Dropdown';
+  import { EntDropdown } from '@ent-core/components/Dropdown';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
   import { useTableContext } from '../hooks/useTableContext';
   import { usePermission } from '@ent-core/hooks/web/usePermission';
@@ -47,7 +47,7 @@
 
   export default defineComponent({
     name: 'TableAction',
-    components: { Icon, PopConfirmButton, Divider, Dropdown, MoreOutlined, Tooltip },
+    components: { Icon, PopConfirmButton, Divider, EntDropdown, MoreOutlined, Tooltip },
     props: {
       actions: {
         type: Array as PropType<TableActionItem[]>,
@@ -148,56 +148,3 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-basic-table-action';
-
-  .@{prefix-cls} {
-    display: flex;
-    align-items: center;
-
-    .action-divider {
-      display: table;
-    }
-
-    &.left {
-      justify-content: flex-start;
-    }
-
-    &.center {
-      justify-content: center;
-    }
-
-    &.right {
-      justify-content: flex-end;
-    }
-
-    button {
-      display: flex;
-      align-items: center;
-
-      span {
-        margin-left: 0 !important;
-      }
-    }
-
-    button.ant-btn-circle {
-      span {
-        margin: auto !important;
-      }
-    }
-
-    .ant-divider,
-    .ant-divider-vertical {
-      margin: 0 2px;
-    }
-
-    .icon-more {
-      transform: rotate(90deg);
-
-      svg {
-        font-size: 1.1em;
-        font-weight: 700;
-      }
-    }
-  }
-</style>

@@ -37,18 +37,3 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-countdown-input';
-
-  .@{prefix-cls} {
-    .ant-input-group-addon {
-      padding-right: 0;
-      background-color: transparent;
-      border: none;
-
-      button {
-        font-size: 14px;
-      }
-    }
-  }
-</style>

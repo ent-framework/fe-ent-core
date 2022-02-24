@@ -3,7 +3,7 @@
   import BasicButton from './BasicButton.vue';
   import { Popconfirm } from 'ant-design-vue';
   import { extendSlots } from '@ent-core/utils/helper/tsxHelper';
-  import { omit } from 'lodash-es';
+  import { omit } from 'lodash';
   import { useAttrs } from '@ent-core/hooks/core/useAttrs';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
 

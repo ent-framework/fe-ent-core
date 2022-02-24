@@ -18,7 +18,7 @@ import {
 import { isProdMode } from '@ent-core/utils/env';
 import { isFunction } from '@ent-core/utils/is';
 import { tryOnUnmounted } from '@vueuse/core';
-import { isEqual } from 'lodash-es';
+import { isEqual } from 'lodash';
 import { error } from '@ent-core/utils/log';
 const dataTransferRef = reactive<any>({});
 

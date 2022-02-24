@@ -62,15 +62,3 @@
     },
   });
 </script>
-<style lang="less">
-  .table-settings {
-    & > * {
-      margin-right: 12px;
-    }
-
-    svg {
-      width: 1.3em;
-      height: 1.3em;
-    }
-  }
-</style>

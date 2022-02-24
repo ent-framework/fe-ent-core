@@ -4,7 +4,7 @@ import { copy } from 'fs-extra';
 import { series, parallel } from 'gulp';
 import { run } from './utils/process';
 import { runTask, withTaskName } from './utils/gulp';
-import { buildOutput, epOutput, epPackage, projRoot } from './utils/paths';
+import { buildOutput, epOutput, epPackage, projRoot } from './utils';
 import { buildConfig } from './build-info';
 import type { TaskFunction } from 'gulp';
 import type { Module } from './build-info';
@@ -28,10 +28,10 @@ export const copyTypesDefinitions: TaskFunction = (done) => {
 
 export const copyFullStyle = async () => {
   await mkdir(path.resolve(epOutput, 'dist'), { recursive: true });
-  // await copyFile(
-  //   path.resolve(epOutput, 'theme-chalk/index.css'),
-  //   path.resolve(epOutput, 'dist/index.css'),
-  // );
+  await copyFile(
+    path.resolve(epOutput, 'theme-chalk/index.css'),
+    path.resolve(epOutput, 'dist/index.css'),
+  );
 };
 
 export default series(
@@ -39,14 +39,14 @@ export default series(
   withTaskName('createOutput', () => mkdir(epOutput, { recursive: true })),
 
   parallel(
-    runTask('buildModules'),
-    //runTask('buildFullBundle'),
-    //runTask('generateTypesDefinitions'),
+   // runTask('buildModules'),
+    runTask('buildFullBundle'),
+   // runTask('generateTypesDefinitions'),
     runTask('buildHelper'),
-    series(
-      //withTaskName('buildTheme', () => run('pnpm run -C packages/theme build')),
+/*    series(
+      runTask('buildTheme'),
       copyFullStyle,
-    ),
+    ),*/
   ),
 
   parallel(copyTypesDefinitions, copyFiles),
@@ -56,3 +56,4 @@ export * from './types-definitions';
 export * from './modules';
 export * from './full-bundle';
 export * from './helper';
+export * from './theme';

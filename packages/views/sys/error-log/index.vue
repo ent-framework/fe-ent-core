@@ -38,7 +38,7 @@
   import { useErrorLogStore } from '@ent-core/store/modules/errorLog';
   import { fireErrorApi } from '@ent-core/api/demo/error';
   import { getColumns } from './data';
-  import { cloneDeep } from 'lodash-es';
+  import { cloneDeep } from 'lodash';
 
   const rowInfo = ref<ErrorLogInfo>();
   const imgList = ref<string[]>([]);

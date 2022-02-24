@@ -1,0 +1,26 @@
+
+  @page-wrapper-prefix-cls: ~'@{namespace}-page-wrapper';
+
+  .@{page-wrapper-prefix-cls} {
+    position: relative;
+
+    .@{page-wrapper-prefix-cls}-content {
+      margin: 16px;
+    }
+
+    .ant-page-header {
+      &:empty {
+        padding: 0;
+      }
+    }
+
+    &-content-bg {
+      background-color: @component-background;
+    }
+
+    &--dense {
+      .@{page-wrapper-prefix-cls}-content {
+        margin: 0;
+      }
+    }
+  }

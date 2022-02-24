@@ -5,7 +5,7 @@ import { Project } from 'ts-morph';
 import glob from 'fast-glob';
 import { bold } from 'chalk';
 
-import { errorAndExit, green, yellow } from './utils/log';
+import { errorAndExit, green, yellow, error } from './utils/log';
 import { buildOutput, epRoot, pkgRoot, projRoot } from './utils/paths';
 
 import { excludeFiles, pathRewriter } from './utils/pkg';
@@ -18,30 +18,56 @@ const outDir = path.resolve(buildOutput, 'types');
  * fork = require( https://github.com/egoist/vue-dts-gen/blob/main/src/index.ts
  */
 export const generateTypesDefinitions = async () => {
+  console.log(`Run in dir: ${process.cwd()}`);
   const project = new Project({
     compilerOptions: {
       emitDeclarationOnly: true,
       outDir,
       baseUrl: projRoot,
       paths: {
-        '@element-plus/*': ['packages/*'],
+        '@ent-core/*': [`${projRoot}/packages/*`],
       },
+      allowJs: true,
+      strict: true,
+      module: 99,
+      target: 99,
+      noImplicitAny: false,
+      declaration: true,
+      moduleResolution: 2,
+      esModuleInterop: true,
+      jsx: 1,
+      sourceMap: true,
+      lib: ['esnext', 'dom'],
+      allowSyntheticDefaultImports: true,
+      forceConsistentCasingInFileNames: true,
+      resolveJsonModule: true,
+      skipLibCheck: true,
+      typeRoots: [`${projRoot}/typings/`],
     },
-    tsConfigFilePath: TSCONFIG_PATH,
+    libFolderPath: `${projRoot}/node_modules/typescript/lib/`,
+    // tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true,
   });
 
   const filePaths = excludeFiles(
-    await glob(['**/*.{js,ts,vue}', '!element-plus/**/*'], {
+    await glob(['**/*.{tsx,ts,vue}', '!fe-ent-core/**/*'], {
       cwd: pkgRoot,
       absolute: true,
       onlyFiles: true,
     }),
   );
   const epPaths = excludeFiles(
-    await glob('**/*.{js,ts,vue}', {
+    await glob('**/*.{tsx,ts,vue}', {
       cwd: epRoot,
       onlyFiles: true,
+    }),
+  );
+
+  const typingPaths = excludeFiles(
+    await glob('**/*.{tsx,ts}', {
+      cwd: `${projRoot}/typings/`,
+      onlyFiles: true,
+      absolute: true,
     }),
   );
 
@@ -55,9 +81,11 @@ export const generateTypesDefinitions = async () => {
         if (script || scriptSetup) {
           let content = '';
           let isTS = false;
+          let isTSX = false;
           if (script && script.content) {
             content += script.content;
             if (script.lang === 'ts') isTS = true;
+            if (script.lang === 'tsx') isTSX = true;
           }
           if (scriptSetup) {
             const compiled = vueCompiler.compileScript(sfc.descriptor, {
@@ -65,9 +93,10 @@ export const generateTypesDefinitions = async () => {
             });
             content += compiled.content;
             if (scriptSetup.lang === 'ts') isTS = true;
+            if (scriptSetup.lang === 'tsx') isTSX = true;
           }
           const sourceFile = project.createSourceFile(
-            path.relative(process.cwd(), file) + (isTS ? '.ts' : '.js'),
+            path.relative(process.cwd(), file) + (isTS ? '.ts' : isTSX ? '.tsx' : '.js'),
             content,
           );
           sourceFiles.push(sourceFile);
@@ -81,10 +110,16 @@ export const generateTypesDefinitions = async () => {
       const content = await fs.readFile(path.resolve(epRoot, file), 'utf-8');
       sourceFiles.push(project.createSourceFile(path.resolve(pkgRoot, file), content));
     }),
+
+    ...typingPaths.map(async (file) => {
+      const sourceFile = project.addSourceFileAtPath(file);
+      sourceFiles.push(sourceFile);
+    }),
   ]);
 
   const diagnostics = project.getPreEmitDiagnostics();
   console.log(project.formatDiagnosticsWithColorAndContext(diagnostics));
+  console.log(error(`Diagnostics count: ${bold(diagnostics.length)}`));
 
   await project.emit({
     emitOnlyDtsFiles: true,
@@ -97,7 +132,8 @@ export const generateTypesDefinitions = async () => {
     const emitOutput = sourceFile.getEmitOutput();
     const emitFiles = emitOutput.getOutputFiles();
     if (emitFiles.length === 0) {
-      errorAndExit(new Error(`Emit no file: ${bold(relativePath)}`));
+      //errorAndExit(new Error(`Emit no file: ${bold(relativePath)}`));
+      error(`Emit no file: ${bold(relativePath)}`);
     }
 
     const tasks = emitFiles.map(async (outputFile) => {

@@ -132,31 +132,3 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-flow-chart-toolbar';
-
-  html[data-theme='dark'] {
-    .lf-dnd {
-      background: #080808;
-    }
-  }
-  .@{prefix-cls} {
-    height: 36px;
-    background-color: @app-content-background;
-    border-bottom: 1px solid @border-color-base;
-
-    .disabeld {
-      color: @disabled-color;
-    }
-
-    &__icon {
-      display: inline-block;
-      padding: 2px 4px;
-      margin-right: 10px;
-
-      &:hover {
-        color: @primary-color;
-      }
-    }
-  }
-</style>

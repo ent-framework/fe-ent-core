@@ -65,21 +65,3 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-basic-table-img';
-
-  .@{prefix-cls} {
-    .ant-image {
-      margin-right: 4px;
-      cursor: zoom-in;
-
-      img {
-        border-radius: 2px;
-      }
-    }
-
-    .img-div {
-      display: inline-grid;
-    }
-  }
-</style>

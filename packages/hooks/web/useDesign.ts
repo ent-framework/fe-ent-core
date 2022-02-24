@@ -1,6 +1,6 @@
 import { useAppProviderContext } from '@ent-core/components/Application';
 // import { computed } from 'vue';
-// import { lowerFirst } from 'lodash-es';
+// import { lowerFirst } from 'lodash';
 export function useDesign(scope: string) {
   const values = useAppProviderContext();
   // const $style = cssModule ? useCssModule() : {};

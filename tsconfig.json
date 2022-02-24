@@ -15,17 +15,13 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "typeRoots": ["./typings/"]
   },
   "include": [
-    "tests/**/*.ts",
-    "typings/*.d.ts",
     "build",
-    "packages/core/**/*.ts",
-    "packages/core/**/*.d.ts",
-    "packages/core/**/*.tsx",
-    "packages/core/**/*.tsx",
-    "play",
-    "scripts/**/*.ts",
+    "gulpfile.ts",
+    "packages",
+    "typings"
   ],
   "exclude": ["node_modules", "tests/server/**/*.ts", "dist"]
 }

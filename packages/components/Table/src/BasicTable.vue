@@ -61,7 +61,7 @@
   import { useTableForm } from './hooks/useTableForm';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
 
-  import { omit } from 'lodash-es';
+  import { omit } from 'lodash';
   import { basicProps } from './props';
   import { isFunction } from '@ent-core/utils/is';
   import { warn } from '@ent-core/utils/log';
@@ -331,103 +331,3 @@
     },
   });
 </script>
-<style lang="less">
-  @border-color: #cecece4d;
-
-  @prefix-cls: ~'@{namespace}-basic-table';
-
-  [data-theme='dark'] {
-    .ant-table-tbody > tr:hover.ant-table-row-selected > td,
-    .ant-table-tbody > tr.ant-table-row-selected td {
-      background-color: #262626;
-    }
-  }
-
-  .@{prefix-cls} {
-    max-width: 100%;
-
-    &-row__striped {
-      td {
-        background-color: @app-content-background;
-      }
-    }
-
-    &-form-container {
-      padding: 16px;
-
-      .ant-form {
-        padding: 12px 10px 6px;
-        margin-bottom: 16px;
-        background-color: @component-background;
-        border-radius: 2px;
-      }
-    }
-
-    .ant-tag {
-      margin-right: 0;
-    }
-
-    .ant-table-wrapper {
-      padding: 6px;
-      background-color: @component-background;
-      border-radius: 2px;
-
-      .ant-table-title {
-        min-height: 40px;
-        padding: 0 0 8px !important;
-      }
-
-      .ant-table.ant-table-bordered .ant-table-title {
-        border: none !important;
-      }
-    }
-
-    .ant-table {
-      width: 100%;
-      overflow-x: hidden;
-
-      &-title {
-        display: flex;
-        padding: 8px 6px;
-        border-bottom: none;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      //.ant-table-tbody > tr.ant-table-row-selected td {
-      //background-color: fade(@primary-color, 8%) !important;
-      //}
-    }
-
-    .ant-pagination {
-      margin: 10px 0 0;
-    }
-
-    .ant-table-footer {
-      padding: 0;
-
-      .ant-table-wrapper {
-        padding: 0;
-      }
-
-      table {
-        border: none !important;
-      }
-
-      .ant-table-body {
-        overflow-x: hidden !important;
-        //  overflow-y: scroll !important;
-      }
-
-      td {
-        padding: 12px 8px;
-      }
-    }
-
-    &--inset {
-      .ant-table-wrapper {
-        padding: 0;
-      }
-    }
-  }
-</style>

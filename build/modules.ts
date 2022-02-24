@@ -1,5 +1,7 @@
 import { rollup } from 'rollup';
 import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
+import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import moment from 'moment';
 import PostCSS from 'rollup-plugin-postcss';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
@@ -15,54 +17,22 @@ import { reporter } from './plugins/size-reporter';
 import { buildConfigEntries, target } from './build-info';
 import type { OutputOptions } from 'rollup';
 import { generateModifyVars } from './theme/generateModifyVars';
-import url from '@rollup/plugin-url';
-// 使rollup可以使用postCss处理样式文件less、css等
-// PostCSS plugins
-// 处理css定义的变量
-import simplevars from 'postcss-simple-vars';
-// 处理less嵌套样式写法
-// 替代cssnext
-import postcssPresetEnv from 'postcss-preset-env';
 import json from '@rollup/plugin-json';
-import nested from 'postcss-nested';
-import cssImport from 'postcss-import';
-import path from 'path';
-import postcssUrl from 'postcss-url';
-import postcssImport from 'postcss-import';
 import autoprefixer from 'autoprefixer';
 import pkg from '../packages/fe-ent-core/package.json';
 import PurgeIcons from 'rollup-plugin-purge-icons';
+import image from '@rollup/plugin-image';
+import css from 'rollup-plugin-css-only';
 
 const { dependencies, devDependencies, name, version } = pkg;
 const __APP_INFO__ = {
   pkg: { dependencies, devDependencies, name, version },
   lastBuildTime: moment().format('YYYY-MM-DD HH:mm:ss'),
 };
+
+const lessModifyVars = generateModifyVars(true);
+
 const postcssPluginList = [
-  postcssImport({
-    resolve(id, basedir) {
-      // resolve alias @css, @import '@css/style.css'
-      // because @css/ has 5 chars
-      if (id.startsWith('@css')) {
-        return path.resolve('./src/assets/styles/css', id.slice(5));
-      }
-
-      // resolve node_modules, @import '~normalize.css/normalize.css'
-      // similar to how css-loader's handling of node_modules
-      if (id.startsWith('~')) {
-        return path.resolve('./node_modules', id.slice(1));
-      }
-
-      // resolve relative path, @import './components/style.css'
-      return path.resolve(basedir, id);
-    },
-  }),
-  simplevars({
-    variables: generateModifyVars(true),
-  }),
-  nested,
-  cssImport(),
-  postcssUrl({ url: 'inline' }),
   autoprefixer({
     overrideBrowserslist: '> 1%, IE 6, Explorer >= 10, Safari >= 7',
   }),
@@ -75,16 +45,16 @@ const postVueConfig = [
       sass: null,
       stylus: null,
       less: {
-        modifyVars: generateModifyVars(true),
+        modifyVars: lessModifyVars,
         javascriptEnabled: true,
       },
     },
     plugins: [...postcssPluginList],
     // 处理.css和.less文件
     extensions: ['.css', 'less'],
-  }),
-  url({
-    include: ['**/*.svg', '**/*.png', '**/*.gif', '**/*.jpg', '**/*.jpeg'],
+    inject: false,
+    extract: true,
+    sourceMap: true,
   }),
 ];
 
@@ -94,11 +64,6 @@ const baseConfig = {
       'process.env.NODE_ENV': JSON.stringify('production'),
       __INTLIFY_PROD_DEVTOOLS__: false,
       __APP_INFO__: JSON.stringify(__APP_INFO__),
-    },
-    vue: {
-      target: 'browser',
-      preprocessStyles: true,
-      postcssPlugins: [...postcssPluginList],
     },
     postVue: [...postVueConfig],
   },
@@ -117,21 +82,46 @@ export const buildModules = async () => {
     plugins: [
       ElementPlusAlias(),
       PurgeIcons({}),
-      ...baseConfig.plugins.postVue,
       json(),
-      vue({
-        ...baseConfig.plugins.vue,
-        isProduction: false,
+      PostCSS({
+        use: {
+          sass: null,
+          stylus: null,
+          less: {
+            modifyVars: lessModifyVars,
+            javascriptEnabled: true,
+          },
+        },
+        plugins: [...postcssPluginList],
+        // 处理.css和.less文件
+        extensions: ['.css', 'less'],
+        inject: false,
+        extract: true,
+        sourceMap: true,
       }),
+      css(),
       nodeResolve({
-        extensions: ['.mjs', '.js', '.json', '.ts'],
+        extensions: ['.mjs', '.js', '.json', '.ts', '.tsx'],
       }),
+      image(),
+      vue({
+        isProduction: false,
+        reactivityTransform: true,
+      }),
+      vueJsx(),
+      vueSetupExtend(),
       commonjs(),
       esbuild({
         sourceMap: true,
         target,
         loaders: {
           '.vue': 'ts',
+          '.tsx': 'tsx',
+        },
+        define: {
+          // @ts-ignore
+          __INTLIFY_PROD_DEVTOOLS__: false,
+          __APP_INFO__: JSON.stringify(__APP_INFO__),
         },
       }),
       filesize({ reporter }),

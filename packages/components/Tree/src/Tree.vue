@@ -17,7 +17,7 @@
   import TreeHeader from './TreeHeader.vue';
   import { ScrollContainer } from '@ent-core/components/Container';
 
-  import { omit, get, difference } from 'lodash-es';
+  import { omit, get, difference } from 'lodash';
   import { isArray, isBoolean, isEmpty, isFunction } from '@ent-core/utils/is';
   import { extendSlots, getSlot } from '@ent-core/utils/helper/tsxHelper';
   import { filter, treeToList } from '@ent-core/utils/helper/treeHelper';
@@ -27,7 +27,7 @@
   import { useDesign } from '@ent-core/hooks/web/useDesign';
 
   import { basicProps } from './props';
-  import { CreateContextOptions } from '@ent-core/components/ContextMenu';
+  import { CreateContextMenuOptions } from '@ent-core/components/ContextMenu';
 
   import { CheckEvent } from './typing';
 
@@ -148,7 +148,7 @@
 
       async function handleRightClick({ event, node }: Recordable) {
         const { rightMenuList: menuList = [], beforeRightClick } = props;
-        let contextMenuOptions: CreateContextOptions = { event, items: [] };
+        let contextMenuOptions: CreateContextMenuOptions = { event, items: [] };
 
         if (beforeRightClick && isFunction(beforeRightClick)) {
           let result = await beforeRightClick(node, event);
@@ -480,50 +480,3 @@
     },
   });
 </script>
-<style lang="less">
-  @prefix-cls: ~'@{namespace}-basic-tree';
-
-  .@{prefix-cls} {
-    background-color: @component-background;
-
-    .ant-tree-node-content-wrapper {
-      position: relative;
-
-      .ant-tree-title {
-        position: absolute;
-        left: 0;
-        width: 100%;
-      }
-    }
-
-    &-title {
-      position: relative;
-      display: flex;
-      align-items: center;
-      width: 100%;
-      padding-right: 10px;
-
-      &:hover {
-        .@{prefix-cls}__action {
-          visibility: visible;
-        }
-      }
-    }
-
-    &__content {
-      overflow: hidden;
-    }
-
-    &__actions {
-      position: absolute;
-      top: 2px;
-      right: 3px;
-      display: flex;
-    }
-
-    &__action {
-      margin-left: 4px;
-      visibility: hidden;
-    }
-  }
-</style>

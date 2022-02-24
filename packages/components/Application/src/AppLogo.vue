@@ -58,37 +58,3 @@
     go(userStore.getUserInfo.homePath || PageEnum.BASE_HOME);
   }
 </script>
-<style lang="less" scoped>
-  @prefix-cls: ~'@{namespace}-app-logo';
-
-  .@{prefix-cls} {
-    display: flex;
-    align-items: center;
-    padding-left: 7px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-
-    &.light {
-      border-bottom: 1px solid @border-color-base;
-    }
-
-    &.collapsed-show-title {
-      padding-left: 20px;
-    }
-
-    &.light &__title {
-      color: @primary-color;
-    }
-
-    &.dark &__title {
-      color: @white;
-    }
-
-    &__title {
-      font-size: 16px;
-      font-weight: 700;
-      transition: all 0.5s;
-      line-height: normal;
-    }
-  }
-</style>

@@ -42,7 +42,7 @@
               <template class="ant-card-actions" #actions>
                 <!--              <SettingOutlined key="setting" />-->
                 <EditOutlined key="edit" />
-                <Dropdown
+                <EntDropdown
                   :trigger="['hover']"
                   :dropMenuList="[
                     {
@@ -57,7 +57,7 @@
                   popconfirm
                 >
                   <EllipsisOutlined key="ellipsis" />
-                </Dropdown>
+                </EntDropdown>
               </template>
 
               <CardMeta>
@@ -92,7 +92,7 @@
   import Tooltip from 'ant-design-vue/lib/tooltip';
   import Slider from 'ant-design-vue/lib/slider';
   import Avatar from 'ant-design-vue/lib/avatar';
-  import { Dropdown } from '@ent-core/components/Dropdown';
+  import { EntDropdown } from '@ent-core/components/Dropdown';
   import { BasicForm, useForm } from '@ent-core/components/Form';
   import { propTypes } from '@ent-core/utils/propTypes';
   import { Button } from '@ent-core/components/Button';
@@ -118,6 +118,7 @@
       EllipsisOutlined,
       RedoOutlined,
       TableOutlined,
+      EntDropdown,
     },
   });
   //数据
