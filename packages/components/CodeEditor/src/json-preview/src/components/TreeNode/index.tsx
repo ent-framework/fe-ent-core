@@ -2,7 +2,6 @@ import { defineComponent, reactive, computed, PropType } from 'vue';
 import Brackets from '../Brackets';
 import CheckController from '../CheckController';
 import { getDataType, JSONFlattenReturnType } from '../../utils';
-import './styles.less';
 
 export interface NodeDataType extends JSONFlattenReturnType {
   id: number;

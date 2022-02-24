@@ -7,16 +7,8 @@
   import { useDebounceFn } from '@vueuse/core';
   import { useAppStore } from '@ent-core/store/modules/app';
   import { useWindowSizeFn } from '@ent-core/hooks/event/useWindowSizeFn';
-  import CodeMirror from 'codemirror';
+  import { CodeMirror } from './codeMirror';
   import { MODE } from './../typing';
-  // css
-  import './codemirror.css';
-  import 'codemirror/theme/idea.css';
-  import 'codemirror/theme/material-palenight.css';
-  // modes
-  import 'codemirror/mode/javascript/javascript';
-  import 'codemirror/mode/css/css';
-  import 'codemirror/mode/htmlmixed/htmlmixed';
 
   const props = defineProps({
     mode: {

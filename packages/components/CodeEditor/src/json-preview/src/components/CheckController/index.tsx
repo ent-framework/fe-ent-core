@@ -1,5 +1,4 @@
 import { defineComponent, computed, PropType } from 'vue';
-import './styles.less';
 
 export default defineComponent({
   emits: ['change', 'update:modelValue'],

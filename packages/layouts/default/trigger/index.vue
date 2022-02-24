@@ -4,14 +4,14 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { createAsyncComponent } from '@ent-core/utils/factory/createAsyncComponent';
+  import SiderTrigger from './SiderTrigger.vue';
   import { propTypes } from '@ent-core/utils/propTypes';
   import HeaderTrigger from './HeaderTrigger.vue';
 
   export default defineComponent({
     name: 'LayoutTrigger',
     components: {
-      SiderTrigger: createAsyncComponent(() => import('./SiderTrigger.vue')),
+      SiderTrigger,
       HeaderTrigger: HeaderTrigger,
     },
     props: {

@@ -5,7 +5,7 @@ import { REDIRECT_ROUTE } from '@ent-core/router/routes/basic';
 import { mainOutRoutes } from '@ent-core/router/routes/mainOut';
 import { PageEnum } from '@ent-core/enums/pageEnum';
 import type { AppRouteRecordRaw } from '@ent-core/router/types';
-
+import Login from '@ent-core/views/sys/login/Login.vue';
 //扫码路径获取路由信息
 //TODO 目前只能固定目录
 const modules = import.meta.globEager(`/src/router/routes/modules/**/*.ts`);
@@ -34,7 +34,7 @@ export const RootRoute: AppRouteRecordRaw = {
 export const LoginRoute: AppRouteRecordRaw = {
   path: '/login',
   name: 'Login',
-  component: () => import('@ent-core/views/sys/login/Login.vue'),
+  component: Login,
   meta: {
     title: t('routes.basic.login'),
   },

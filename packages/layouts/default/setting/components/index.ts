@@ -1,8 +1,8 @@
-import { createAsyncComponent } from '@ent-core/utils/factory/createAsyncComponent';
+import TypePicker from './TypePicker.vue';
+import ThemeColorPicker from './ThemeColorPicker.vue';
+import SettingFooter from './SettingFooter.vue';
+import SwitchItem from './SwitchItem.vue';
+import SelectItem from './SelectItem.vue';
+import InputNumberItem from './InputNumberItem.vue';
 
-export const TypePicker = createAsyncComponent(() => import('./TypePicker.vue'));
-export const ThemeColorPicker = createAsyncComponent(() => import('./ThemeColorPicker.vue'));
-export const SettingFooter = createAsyncComponent(() => import('./SettingFooter.vue'));
-export const SwitchItem = createAsyncComponent(() => import('./SwitchItem.vue'));
-export const SelectItem = createAsyncComponent(() => import('./SelectItem.vue'));
-export const InputNumberItem = createAsyncComponent(() => import('./InputNumberItem.vue'));
+export { TypePicker, ThemeColorPicker, SettingFooter, SwitchItem, SelectItem, InputNumberItem };

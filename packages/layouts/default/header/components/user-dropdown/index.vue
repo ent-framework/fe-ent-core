@@ -52,7 +52,8 @@
   import { propTypes } from '@ent-core/utils/propTypes';
   import { openWindow } from '@ent-core/utils';
 
-  import { createAsyncComponent } from '@ent-core/utils/factory/createAsyncComponent';
+  import MenuItem from './DropMenuItem.vue';
+  import LockAction from '../lock/LockModal.vue';
 
   type MenuEvent = 'logout' | 'doc' | 'lock';
 
@@ -61,9 +62,9 @@
     components: {
       Dropdown,
       Menu,
-      MenuItem: createAsyncComponent(() => import('./DropMenuItem.vue')),
+      MenuItem,
       MenuDivider: Menu.Divider,
-      LockAction: createAsyncComponent(() => import('../lock/LockModal.vue')),
+      LockAction,
     },
     props: {
       theme: propTypes.oneOf(['dark', 'light']),

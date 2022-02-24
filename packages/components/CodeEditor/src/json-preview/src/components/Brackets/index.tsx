@@ -1,5 +1,4 @@
 import { defineComponent, PropType } from 'vue';
-import './styles.less';
 
 export default defineComponent({
   props: {

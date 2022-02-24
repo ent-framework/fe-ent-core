@@ -27,6 +27,11 @@ interface Options {
   retry?: boolean;
 }
 
+/**
+ * 异步调用
+ * @param loader
+ * @param options
+ */
 export function createAsyncComponent(loader: Fn, options: Options = {}) {
   const { size = 'small', delay = 100, timeout = 30000, loading = false, retry = true } = options;
   return defineAsyncComponent({

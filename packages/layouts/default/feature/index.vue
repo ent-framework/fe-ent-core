@@ -8,17 +8,16 @@
   import { useUserStoreWithOut } from '@ent-core/store/modules/user';
 
   import { SettingButtonPositionEnum } from '@ent-core/enums/appEnum';
-  import { createAsyncComponent } from '@ent-core/utils/factory/createAsyncComponent';
 
   import SessionTimeoutLogin from '@ent-core/views/sys/login/SessionTimeoutLogin.vue';
+  import LayoutLockPage from '@ent-core/views/sys/lock/index.vue';
+  import SettingDrawer from '@ent-core/layouts/default/setting/index.vue';
   export default defineComponent({
     name: 'LayoutFeatures',
     components: {
       BackTop,
-      LayoutLockPage: createAsyncComponent(() => import('@ent-core/views/sys/lock/index.vue')),
-      SettingDrawer: createAsyncComponent(
-        () => import('@ent-core/layouts/default/setting/index.vue'),
-      ),
+      LayoutLockPage,
+      SettingDrawer,
       SessionTimeoutLogin,
     },
     setup() {

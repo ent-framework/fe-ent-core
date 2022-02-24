@@ -16,7 +16,6 @@
 <script lang="ts">
   import { defineComponent, computed, unref } from 'vue';
   import { Layout } from 'ant-design-vue';
-  import { createAsyncComponent } from '@ent-core/utils/factory/createAsyncComponent';
 
   import LayoutHeader from './header/index.vue';
   import LayoutContent from './content/index.vue';
@@ -29,12 +28,14 @@
   import { useLockPage } from '@ent-core/hooks/web/useLockPage';
 
   import { useAppInject } from '@ent-core/hooks/web/useAppInject';
+  import LayoutFeatures from '@ent-core/layouts/default/feature/index.vue';
+  import LayoutFooter from '@ent-core/layouts/default/footer/index.vue';
 
   export default defineComponent({
     name: 'DefaultLayout',
     components: {
-      LayoutFeatures: createAsyncComponent(() => import('@ent-core/layouts/default/feature/index.vue')),
-      LayoutFooter: createAsyncComponent(() => import('@ent-core/layouts/default/footer/index.vue')),
+      LayoutFeatures,
+      LayoutFooter,
       LayoutHeader,
       LayoutContent,
       LayoutSideBar,

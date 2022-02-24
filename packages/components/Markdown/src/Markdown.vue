@@ -14,7 +14,6 @@
     onDeactivated,
   } from 'vue';
   import Vditor from 'vditor';
-  import 'vditor/dist/index.css';
   import { useLocale } from '@ent-core/locales/useLocale';
   import { useModalContext } from '../../Modal';
   import { useRootSetting } from '@ent-core/hooks/setting/useRootSetting';

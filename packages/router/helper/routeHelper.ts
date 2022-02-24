@@ -1,5 +1,6 @@
 import type { AppRouteModule, AppRouteRecordRaw } from '@ent-core/router/types';
 import type { Router, RouteRecordNormalized } from 'vue-router';
+import type { Plugin } from 'vue';
 
 import { getParentLayout, LAYOUT, EXCEPTION_COMPONENT } from '@ent-core/router/constant';
 import { cloneDeep, omit } from 'lodash';
@@ -7,9 +8,9 @@ import { warn } from '@ent-core/utils/log';
 import { createRouter, createWebHashHistory } from 'vue-router';
 
 export type LayoutMapKey = 'LAYOUT';
-const IFRAME = () => import('@ent-core/views/sys/iframe/FrameBlank.vue');
+import IFRAME from '@ent-core/views/sys/iframe/FrameBlank.vue';
 
-const LayoutMap = new Map<string, () => Promise<typeof import('*.vue')>>();
+const LayoutMap = new Map<string, Plugin | Function>();
 
 LayoutMap.set('LAYOUT', LAYOUT);
 LayoutMap.set('IFRAME', IFRAME);
@@ -18,7 +19,6 @@ let dynamicViewsModules: Record<string, () => Promise<Recordable>>;
 
 // Dynamic introduction
 function asyncImportRoute(routes: AppRouteRecordRaw[] | undefined) {
-  console.log(import.meta.env.VITE_APP_ROOT);
   dynamicViewsModules = dynamicViewsModules || import.meta.glob('../../views/**/*.{vue,tsx}');
   if (!routes) return;
   routes.forEach((item) => {

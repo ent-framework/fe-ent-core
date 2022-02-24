@@ -6,6 +6,8 @@ import {
   EXCEPTION_COMPONENT,
   PAGE_NOT_FOUND_NAME,
 } from '@ent-core/router/constant';
+import redirect from '@ent-core/views/sys/redirect/index.vue';
+import errorLog from '@ent-core/views/sys/error-log/index.vue';
 
 // 404 on a page
 export const PAGE_NOT_FOUND_ROUTE: AppRouteRecordRaw = {
@@ -44,7 +46,7 @@ export const REDIRECT_ROUTE: AppRouteRecordRaw = {
     {
       path: '/redirect/:path(.*)',
       name: REDIRECT_NAME,
-      component: () => import('@ent-core/views/sys/redirect/index.vue'),
+      component: redirect,
       meta: {
         title: REDIRECT_NAME,
         hideBreadcrumb: true,
@@ -67,7 +69,7 @@ export const ERROR_LOG_ROUTE: AppRouteRecordRaw = {
     {
       path: 'list',
       name: 'ErrorLogList',
-      component: () => import('@ent-core/views/sys/error-log/index.vue'),
+      component: errorLog,
       meta: {
         title: t('routes.basic.errorLogList'),
         hideBreadcrumb: true,

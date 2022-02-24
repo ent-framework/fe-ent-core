@@ -78,8 +78,8 @@
   import { useAppInject } from '@ent-core/hooks/web/useAppInject';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
 
-  import { createAsyncComponent } from '@ent-core/utils/factory/createAsyncComponent';
   import { useLocale } from '@ent-core/locales/useLocale';
+  import SettingDrawer from '@ent-core/layouts/default/setting/index.vue';
 
   export default defineComponent({
     name: 'LayoutHeader',
@@ -95,9 +95,7 @@
       Notify,
       AppSearch,
       ErrorAction,
-      SettingDrawer: createAsyncComponent(() => import('@ent-core/layouts/default/setting/index.vue'), {
-        loading: true,
-      }),
+      SettingDrawer,
     },
     props: {
       fixed: propTypes.bool,
