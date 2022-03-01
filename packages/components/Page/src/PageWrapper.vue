@@ -43,7 +43,7 @@
   import { omit } from 'lodash';
   import { PageHeader } from 'ant-design-vue';
   import { useContentHeight } from '@ent-core/hooks/web/useContentHeight';
-  import { PageWrapperFixedHeightKey } from '..';
+  import { PageWrapperFixedHeightKey } from '../constant';
 
   export default defineComponent({
     name: 'PageWrapper',

@@ -21,8 +21,6 @@
   import { useModal, BasicModal } from '@ent-core/components/Modal';
   import { JsonPreview } from '@ent-core/components/CodeEditor';
   import { configDefaultDndPanel } from './config';
-  import '@logicflow/core/dist/style/index.css';
-  import '@logicflow/extension/lib/style/index.css';
   export default defineComponent({
     name: 'FlowChart',
     components: { BasicModal, FlowChartToolbar, JsonPreview },

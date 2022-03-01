@@ -1,6 +1,7 @@
 import type { AppRouteModule } from 'fe-ent-core/router/types';
 
-import { getParentLayout, LAYOUT } from 'fe-ent-core/router/constant';
+import { getParentLayout } from 'fe-ent-core/router/constant';
+import { default as LAYOUT } from 'fe-ent-core/layouts/default/index.vue';
 import { t } from 'fe-ent-core/hooks/web/useI18n';
 
 const feat: AppRouteModule = {

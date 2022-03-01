@@ -39,17 +39,17 @@ export default series(
   withTaskName('createOutput', () => mkdir(epOutput, { recursive: true })),
 
   parallel(
-   // runTask('buildModules'),
+    runTask('buildModules'),
     runTask('buildFullBundle'),
-  //  runTask('generateTypesDefinitions'),
-    runTask('buildHelper'),
+   // runTask('generateTypesDefinitions'),
+  //  runTask('buildHelper'),
 /*    series(
       runTask('buildTheme'),
       copyFullStyle,
     ),*/
   ),
 
-  parallel(copyTypesDefinitions, copyFiles),
+  //parallel(copyTypesDefinitions, copyFiles),
 );
 
 export * from './build/types-definitions';

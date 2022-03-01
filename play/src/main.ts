@@ -13,18 +13,22 @@ import { setupStore } from 'fe-ent-core/store';
 import { setupGlobDirectives } from 'fe-ent-core/directives';
 import { setupI18n } from 'fe-ent-core/locales/setupI18n';
 import { registerGlobComp } from 'fe-ent-core/components/registerGlobComp';
-//import EntCore from 'fe-ent-core';
+import { useLayout } from 'fe-ent-core/router/helper/layoutHelper';
+import EntCore from 'fe-ent-core';
 //import AntD from 'ant-design-vue';
 
 // Importing on demand in local development will increase the number of browser requests by around 20%.
 // This may slow down the browser refresh speed.
 // Therefore, only enable on-demand importing in production environments .
 if (import.meta.env.DEV) {
-   // bug of import order;
+  // bug of import order;
   // import('ant-design-vue/dist/antd.less');
 }
 import 'ant-design-vue/dist/antd.less';
 import 'fe-ent-core/theme/index.less';
+
+import { default as LAYOUT } from 'fe-ent-core/layouts/default/index.vue';
+import { default as IFRAME } from 'fe-ent-core/views/sys/iframe/FrameBlank.vue';
 
 async function bootstrap() {
   const app = createApp(App);
@@ -38,12 +42,24 @@ async function bootstrap() {
   // Register global components
   registerGlobComp(app);
 
+  //register components
+  //app.use(AntD);
+  app.use(EntCore);
+
   // Multilingual configuration
   // Asynchronous case: language files may be obtained from the server side
   await setupI18n(app);
 
+  const layoutMgt = useLayout();
+  console.log(layoutMgt);
+  //initial layout
+  layoutMgt.use('LAYOUT', LAYOUT);
+  layoutMgt.use('IFRAME', IFRAME);
+
   // Configure routing
   setupRouter(app);
+
+  router.addExtraRoutes(import.meta.globEager(`/src/router/routes/modules/**/*.ts`));
 
   // router-guard
   setupRouterGuard(router);
@@ -56,10 +72,6 @@ async function bootstrap() {
 
   // https://next.router.vuejs.org/api/#isready
   // await router.isReady();
-
-  //register components
-  //app.use(AntD);
-  //app.use(EntCore);
 
   app.mount('#app');
 }

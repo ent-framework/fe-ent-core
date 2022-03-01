@@ -9,7 +9,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import esbuild from 'rollup-plugin-esbuild';
 import filesize from 'rollup-plugin-filesize';
 import glob from 'fast-glob';
-import { epRoot, pkgRoot } from './utils';
+import { epRoot, pkgRoot, projRoot } from "./utils";
 import { ElementPlusAlias } from './plugins/element-plus-alias';
 import { generateExternal, writeBundles } from './utils/rollup';
 import { excludeFiles } from './utils';
@@ -23,6 +23,7 @@ import pkg from '../packages/fe-ent-core/package.json';
 import PurgeIcons from 'rollup-plugin-purge-icons';
 import image from '@rollup/plugin-image';
 import css from 'rollup-plugin-css-only';
+import path from 'path';
 
 const { dependencies, devDependencies, name, version } = pkg;
 const __APP_INFO__ = {
@@ -30,44 +31,14 @@ const __APP_INFO__ = {
   lastBuildTime: moment().format('YYYY-MM-DD HH:mm:ss'),
 };
 
-const lessModifyVars = generateModifyVars(true);
+const lessModifyVars = generateModifyVars(false);
 
 const postcssPluginList = [
   autoprefixer({
     overrideBrowserslist: '> 1%, IE 6, Explorer >= 10, Safari >= 7',
   }),
 ];
-
-const postVueConfig = [
-  // Process all `<style>` blocks except `<style module>`.
-  PostCSS({
-    use: {
-      sass: null,
-      stylus: null,
-      less: {
-        modifyVars: lessModifyVars,
-        javascriptEnabled: true,
-      },
-    },
-    plugins: [...postcssPluginList],
-    // 处理.css和.less文件
-    extensions: ['.css', 'less'],
-    inject: false,
-    extract: true,
-    sourceMap: true,
-  }),
-];
-
-const baseConfig = {
-  plugins: {
-    replace: {
-      'process.env.NODE_ENV': JSON.stringify('production'),
-      __INTLIFY_PROD_DEVTOOLS__: false,
-      __APP_INFO__: JSON.stringify(__APP_INFO__),
-    },
-    postVue: [...postVueConfig],
-  },
-};
+const TSCONFIG_PATH = path.resolve(projRoot, 'tsconfig.json');
 
 export const buildModules = async () => {
   const input = excludeFiles(
@@ -83,6 +54,8 @@ export const buildModules = async () => {
       ElementPlusAlias(),
       PurgeIcons({}),
       json(),
+      image(),
+      css(),
       PostCSS({
         use: {
           sass: null,
@@ -99,11 +72,9 @@ export const buildModules = async () => {
         extract: true,
         sourceMap: true,
       }),
-      css(),
       nodeResolve({
         extensions: ['.mjs', '.js', '.json', '.ts', '.tsx'],
       }),
-      image(),
       vue({
         isProduction: false,
         reactivityTransform: true,
@@ -123,6 +94,7 @@ export const buildModules = async () => {
           __INTLIFY_PROD_DEVTOOLS__: false,
           __APP_INFO__: JSON.stringify(__APP_INFO__),
         },
+        //tsconfig: TSCONFIG_PATH,
       }),
       filesize({ reporter }),
     ],

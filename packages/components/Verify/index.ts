@@ -2,6 +2,6 @@ import { withInstall } from '@ent-core/utils/index';
 import basicDragVerify from './src/DragVerify.vue';
 import rotateDragVerify from './src/ImgRotate.vue';
 
-export const BasicDragVerify = withInstall(basicDragVerify);
-export const RotateDragVerify = withInstall(rotateDragVerify);
+export const EntBasicDragVerify = withInstall(basicDragVerify);
+export const EntRotateDragVerify = withInstall(rotateDragVerify);
 export * from './src/typing';

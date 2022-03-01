@@ -5,7 +5,7 @@ import { usePermissionStoreWithOut } from 'fe-ent-core/store/modules/permission'
 import { PageEnum } from 'fe-ent-core/enums/pageEnum';
 import { useUserStoreWithOut } from 'fe-ent-core/store/modules/user';
 
-import { PAGE_NOT_FOUND_ROUTE } from 'fe-ent-core/router/routes/basic';
+import { PAGE_NOT_FOUND_NAME } from 'fe-ent-core/router/constant';
 
 import { RootRoute } from 'fe-ent-core/router/routes';
 
@@ -73,7 +73,7 @@ export function createPermissionGuard(router: Router) {
     // Jump to the 404 page after processing the login
     if (
       from.path === LOGIN_PATH &&
-      to.name === PAGE_NOT_FOUND_ROUTE.name &&
+      to.name === PAGE_NOT_FOUND_NAME &&
       to.fullPath !== (userStore.getUserInfo.homePath || PageEnum.BASE_HOME)
     ) {
       next(userStore.getUserInfo.homePath || PageEnum.BASE_HOME);
@@ -101,11 +101,11 @@ export function createPermissionGuard(router: Router) {
       router.addRoute(route as unknown as RouteRecordRaw);
     });
 
-    router.addRoute(PAGE_NOT_FOUND_ROUTE as unknown as RouteRecordRaw);
+    //router.addRoute(PAGE_NOT_FOUND_ROUTE as unknown as RouteRecordRaw);
 
     permissionStore.setDynamicAddedRoute(true);
 
-    if (to.name === PAGE_NOT_FOUND_ROUTE.name) {
+    if (to.name === PAGE_NOT_FOUND_NAME) {
       // 动态添加路由后，此处应当重定向到fullPath，否则会加载404页面内容
       next({ path: to.fullPath, replace: true, query: to.query });
     } else {

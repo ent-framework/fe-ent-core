@@ -57,7 +57,7 @@
   };
 
   export default defineComponent({
-    name: 'CropperImage',
+    name: 'EntCropperImage',
     props,
     emits: ['cropend', 'ready', 'cropendError'],
     setup(props, { attrs, emit }) {

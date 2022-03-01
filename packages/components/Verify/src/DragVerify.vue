@@ -8,7 +8,7 @@
   import { CheckOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
 
   export default defineComponent({
-    name: 'BaseDargVerify',
+    name: 'EntBaseDragVerify',
     props: basicProps,
     emits: ['success', 'update:value', 'change', 'start', 'move', 'end'],
     setup(props, { emit, slots, expose }) {

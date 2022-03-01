@@ -7,6 +7,9 @@
     <Icon icon="ion:chevron-forward" :style="$attrs.iconStyle" />
   </span>
 </template>
+<script lang="ts">
+  export default { name: 'EntArrow' };
+</script>
 <script lang="ts" setup>
   import { computed } from 'vue';
   import Icon from '@ent-core/components/Icon/src/Icon.vue';

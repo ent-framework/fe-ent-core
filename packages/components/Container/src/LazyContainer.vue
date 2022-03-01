@@ -66,7 +66,7 @@
   };
 
   export default defineComponent({
-    name: 'LazyContainer',
+    name: 'EntLazyContainer',
     components: { Skeleton },
     inheritAttrs: false,
     props,

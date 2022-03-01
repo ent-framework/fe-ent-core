@@ -55,7 +55,7 @@
   import { useAttrs } from '@ent-core/hooks/core/useAttrs';
 
   export default defineComponent({
-    name: 'BasicDrawer',
+    name: 'EntDrawer',
     components: { Drawer, ScrollContainer, DrawerFooter, DrawerHeader },
     inheritAttrs: false,
     props: basicProps,

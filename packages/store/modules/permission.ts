@@ -13,8 +13,7 @@ import projectSetting from '@ent-core/settings/projectSetting';
 
 import { PermissionModeEnum } from '@ent-core/enums/appEnum';
 
-import { asyncRoutes } from '@ent-core/router/routes';
-import { ERROR_LOG_ROUTE, PAGE_NOT_FOUND_ROUTE } from '@ent-core/router/routes/basic';
+import { registerErrorLogRoute, registerPageNotFoundRoute } from '@ent-core/router/routes/basic';
 
 import { filter } from '@ent-core/utils/helper/treeHelper';
 
@@ -23,6 +22,7 @@ import { getPermCode } from '@ent-core/api/sys/user';
 
 import { useMessage } from '@ent-core/hooks/web/useMessage';
 import { PageEnum } from '@ent-core/enums/pageEnum';
+import { router } from '@ent-core/router';
 
 export interface PermissionState {
   // Permission code list
@@ -148,16 +148,18 @@ export const usePermissionStore = defineStore({
         return;
       };
 
+      console.log(router);
+
       switch (permissionMode) {
         case PermissionModeEnum.ROLE:
-          routes = filter(asyncRoutes, routeFilter);
+          routes = filter(router.extraRoutes, routeFilter);
           routes = routes.filter(routeFilter);
           // Convert multi-level routing to level 2 routing
           routes = flatMultiLevelRoutes(routes);
           break;
 
         case PermissionModeEnum.ROUTE_MAPPING:
-          routes = filter(asyncRoutes, routeFilter);
+          routes = filter(router.extraRoutes, routeFilter);
           routes = routes.filter(routeFilter);
           const menuList = transformRouteToMenu(routes, true);
           routes = filter(routes, routeRemoveIgnoreFilter);
@@ -202,11 +204,11 @@ export const usePermissionStore = defineStore({
           routeList = routeList.filter(routeRemoveIgnoreFilter);
 
           routeList = flatMultiLevelRoutes(routeList);
-          routes = [PAGE_NOT_FOUND_ROUTE, ...routeList];
+          routes = [registerPageNotFoundRoute(), ...routeList];
           break;
       }
 
-      routes.push(ERROR_LOG_ROUTE);
+      routes.push(registerErrorLogRoute());
       patchHomeAffix(routes);
       return routes;
     },

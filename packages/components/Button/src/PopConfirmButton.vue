@@ -19,7 +19,7 @@
   };
 
   export default defineComponent({
-    name: 'PopButton',
+    name: 'EntPopButton',
     inheritAttrs: false,
     props,
     setup(props, { slots }) {

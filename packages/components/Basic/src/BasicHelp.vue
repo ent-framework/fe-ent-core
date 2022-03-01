@@ -40,7 +40,7 @@
   };
 
   export default defineComponent({
-    name: 'BasicHelp',
+    name: 'EntHelp',
     components: { Tooltip },
     props,
     setup(props, { slots }) {

@@ -5,6 +5,9 @@
     <SvgIcon size="14" name="moon" />
   </div>
 </template>
+<script lang="ts">
+  export default { name: 'AppDarkModeToggle' };
+</script>
 <script lang="ts" setup>
   import { computed, unref } from 'vue';
   import { SvgIcon } from '@ent-core/components/Icon';

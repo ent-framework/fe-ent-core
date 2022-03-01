@@ -76,6 +76,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts" setup>
   import { computed, defineComponent, onMounted, ref } from 'vue';
   import {
@@ -84,14 +85,7 @@
     RedoOutlined,
     TableOutlined,
   } from '@ant-design/icons-vue';
-  //import { List, Card, Image, Typography, Tooltip, Slider, Avatar } from 'ant-design-vue';
-  import List from 'ant-design-vue/lib/list';
-  import Card from 'ant-design-vue/lib/card';
-  import Image from 'ant-design-vue/lib/image';
-  import Typography from 'ant-design-vue/lib/typography';
-  import Tooltip from 'ant-design-vue/lib/tooltip';
-  import Slider from 'ant-design-vue/lib/slider';
-  import Avatar from 'ant-design-vue/lib/avatar';
+  import { List, Card, Image, Typography, Tooltip, Slider, Avatar } from 'ant-design-vue';
   import { EntDropdown } from '@ent-core/components/Dropdown';
   import { BasicForm, useForm } from '@ent-core/components/Form';
   import { propTypes } from '@ent-core/utils/propTypes';
@@ -113,6 +107,7 @@
   //暴露内部方法
   const emit = defineEmits(['getMethod', 'delete']);
   defineComponent({
+    name: 'EntCardList',
     components: {
       EditOutlined,
       EllipsisOutlined,

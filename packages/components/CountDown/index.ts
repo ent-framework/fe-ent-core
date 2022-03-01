@@ -2,5 +2,5 @@ import { withInstall } from '@ent-core/utils';
 import countButton from './src/CountButton.vue';
 import countdownInput from './src/CountdownInput.vue';
 
-export const CountdownInput = withInstall(countdownInput);
-export const CountButton = withInstall(countButton);
+export const EntCountdownInput = withInstall(countdownInput);
+export const EntCountButton = withInstall(countButton);

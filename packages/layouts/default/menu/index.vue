@@ -4,7 +4,7 @@
   import { computed, defineComponent, unref, toRef } from 'vue';
   import { BasicMenu } from '@ent-core/components/Menu';
   import { SimpleMenu } from '@ent-core/components/SimpleMenu';
-  import { AppLogo } from '@ent-core/components/Application';
+  import AppLogo from '@ent-core/layouts/default/components/AppLogo.vue';
 
   import { MenuModeEnum, MenuSplitTyeEnum } from '@ent-core/enums/menuEnum';
 

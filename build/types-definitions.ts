@@ -41,10 +41,13 @@ export const generateTypesDefinitions = async () => {
       allowSyntheticDefaultImports: true,
       forceConsistentCasingInFileNames: true,
       resolveJsonModule: true,
+      useDefineForClassFields: true,
       skipLibCheck: true,
-      typeRoots: [`${projRoot}/typings/`],
+      isolatedModules: true,
+      types: ['vite/client'],
+      typeRoots: [`${projRoot}/node_modules/@types/`, `${projRoot}/typings/`],
     },
-    libFolderPath: `${projRoot}/node_modules/typescript/lib/`,
+    libFolderPath: `${projRoot}/node_modules/typescript/lib`,
     // tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true,
   });
@@ -82,24 +85,30 @@ export const generateTypesDefinitions = async () => {
           let content = '';
           let isTS = false;
           let isTSX = false;
-          if (script && script.content) {
-            content += script.content;
-            if (script.lang === 'ts') isTS = true;
-            if (script.lang === 'tsx') isTSX = true;
-          }
           if (scriptSetup) {
             const compiled = vueCompiler.compileScript(sfc.descriptor, {
               id: 'xxx',
             });
             content += compiled.content;
+            if (file.indexOf('packages/views/sys/error-log/index.vue')> 0)  {
+              console.log(compiled.content);
+            }
             if (scriptSetup.lang === 'ts') isTS = true;
             if (scriptSetup.lang === 'tsx') isTSX = true;
+          } else if (script && script.content) {
+            content += script.content;
+            if (script.lang === 'ts') isTS = true;
+            if (script.lang === 'tsx') isTSX = true;
           }
-          const sourceFile = project.createSourceFile(
-            path.relative(process.cwd(), file) + (isTS ? '.ts' : isTSX ? '.tsx' : '.js'),
-            content,
-          );
-          sourceFiles.push(sourceFile);
+          if (content.length == 0) {
+            console.log(error(`Error Get Content : ${bold(file)}`));
+          } else {
+            const sourceFile = project.createSourceFile(
+              path.relative(process.cwd(), file) + (isTS ? '.ts' : isTSX ? '.tsx' : '.js'),
+              content,
+            );
+            sourceFiles.push(sourceFile);
+          }
         }
       } else {
         const sourceFile = project.addSourceFileAtPath(file);

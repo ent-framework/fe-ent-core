@@ -1,25 +1,18 @@
 import type { AppRouteModule, AppRouteRecordRaw } from '@ent-core/router/types';
 import type { Router, RouteRecordNormalized } from 'vue-router';
-import type { Plugin } from 'vue';
-
-import { getParentLayout, LAYOUT, EXCEPTION_COMPONENT } from '@ent-core/router/constant';
+import { getParentLayout, EXCEPTION_COMPONENT } from '@ent-core/router/constant';
 import { cloneDeep, omit } from 'lodash';
 import { warn } from '@ent-core/utils/log';
 import { createRouter, createWebHashHistory } from 'vue-router';
 
-export type LayoutMapKey = 'LAYOUT';
-import IFRAME from '@ent-core/views/sys/iframe/FrameBlank.vue';
-
-const LayoutMap = new Map<string, Plugin | Function>();
-
-LayoutMap.set('LAYOUT', LAYOUT);
-LayoutMap.set('IFRAME', IFRAME);
+import { useLayout } from './layoutHelper';
 
 let dynamicViewsModules: Record<string, () => Promise<Recordable>>;
 
 // Dynamic introduction
 function asyncImportRoute(routes: AppRouteRecordRaw[] | undefined) {
-  dynamicViewsModules = dynamicViewsModules || import.meta.glob('../../views/**/*.{vue,tsx}');
+  dynamicViewsModules = dynamicViewsModules || import.meta.glob('/src/views/**/*.{vue,tsx}');
+  const layoutMgt = useLayout();
   if (!routes) return;
   routes.forEach((item) => {
     if (!item.component && item.meta?.frameSrc) {
@@ -28,7 +21,7 @@ function asyncImportRoute(routes: AppRouteRecordRaw[] | undefined) {
     const { component, name } = item;
     const { children } = item;
     if (component) {
-      const layoutFound = LayoutMap.get(component.toUpperCase());
+      const layoutFound = layoutMgt.getLayout(component.toUpperCase());
       if (layoutFound) {
         item.component = layoutFound;
       } else {
@@ -47,7 +40,7 @@ function dynamicImport(
 ) {
   const keys = Object.keys(dynamicViewsModules);
   const matchKeys = keys.filter((key) => {
-    const k = key.replace('../../views', '');
+    const k = key.replace('/src/views', '');
     const startFlag = component.startsWith('/');
     const endFlag = component.endsWith('.vue') || component.endsWith('.tsx');
     const startIndex = startFlag ? 0 : 1;
@@ -69,15 +62,18 @@ function dynamicImport(
 }
 
 // Turn background objects into routing objects
+// 解耦
 export function transformObjToRoute<T = AppRouteModule>(routeList: AppRouteModule[]): T[] {
+  const layoutMgt = useLayout();
   routeList.forEach((route) => {
     const component = route.component as string;
     if (component) {
       if (component.toUpperCase() === 'LAYOUT') {
-        route.component = LayoutMap.get(component.toUpperCase());
+        route.component = layoutMgt.getLayout('LAYOUT');
       } else {
         route.children = [cloneDeep(route)];
-        route.component = LAYOUT;
+        //TODO FIX
+        route.component = layoutMgt.getLayout('LAYOUT');
         route.name = `${route.name}Parent`;
         route.path = '';
         const meta = route.meta || {};

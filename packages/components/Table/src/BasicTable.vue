@@ -67,6 +67,7 @@
   import { warn } from '@ent-core/utils/log';
 
   export default defineComponent({
+    name: 'EntBasicTable',
     components: {
       Table,
       BasicForm,

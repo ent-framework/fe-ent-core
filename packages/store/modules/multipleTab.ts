@@ -8,7 +8,7 @@ import { useGo, useRedo } from '@ent-core/hooks/web/usePage';
 import { Persistent } from '@ent-core/utils/cache/persistent';
 
 import { PageEnum } from '@ent-core/enums/pageEnum';
-import { PAGE_NOT_FOUND_ROUTE, REDIRECT_ROUTE } from '@ent-core/router/routes/basic';
+import { registerPageNotFoundRoute, registerRedirectRoute } from '@ent-core/router/routes/basic';
 import { getRawRoute } from '@ent-core/utils';
 import { MULTIPLE_TABS_KEY } from '@ent-core/enums/cacheEnum';
 
@@ -119,13 +119,15 @@ export const useMultipleTabStore = defineStore({
     },
 
     async addTab(route: RouteLocationNormalized) {
+      const redirectRoute = registerRedirectRoute();
+      const pageNotFoundRoute = registerPageNotFoundRoute();
       const { path, name, fullPath, params, query, meta } = getRawRoute(route);
       // 404  The page does not need to add a tab
       if (
         path === PageEnum.ERROR_PAGE ||
         path === PageEnum.BASE_LOGIN ||
         !name ||
-        [REDIRECT_ROUTE.name, PAGE_NOT_FOUND_ROUTE.name].includes(name as string)
+        [redirectRoute.name, pageNotFoundRoute.name].includes(name as string)
       ) {
         return;
       }

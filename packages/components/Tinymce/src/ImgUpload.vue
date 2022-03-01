@@ -18,7 +18,7 @@
   import { defineComponent, computed } from 'vue';
   import { Upload } from 'ant-design-vue';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
-  import { useGlobSetting } from '@ent-core/hooks/setting';
+  import { useGlobSetting } from '@ent-core/hooks/setting/useGlobSetting';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
 
   export default defineComponent({

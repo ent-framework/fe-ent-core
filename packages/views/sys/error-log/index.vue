@@ -4,7 +4,7 @@
       <img :src="src" v-show="false" />
     </template>
     <DetailModal :info="rowInfo" @register="registerModal" />
-    <BasicTable @register="register" class="error-handle-table">
+    <ent-basic-table @register="register" class="error-handle-table">
       <template #toolbar>
         <a-button @click="fireVueError" type="primary">
           {{ t('sys.errorLog.fireVueError') }}
@@ -23,15 +23,17 @@
           ]"
         />
       </template>
-    </BasicTable>
+    </ent-basic-table>
   </div>
 </template>
-
+<script lang="ts">
+  export default { name: 'ErrorLog' };
+</script>
 <script lang="ts" setup>
   import type { ErrorLogInfo } from '@ent-core/types/store';
   import { watch, ref, nextTick } from 'vue';
   import DetailModal from './DetailModal.vue';
-  import { BasicTable, useTable, TableAction } from '@ent-core/components/Table/index';
+  import { useTable, TableAction } from '@ent-core/components/Table/index';
   import { useModal } from '@ent-core/components/Modal';
   import { useMessage } from '@ent-core/hooks/web/useMessage';
   import { useI18n } from '@ent-core/hooks/web/useI18n';

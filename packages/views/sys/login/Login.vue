@@ -1,11 +1,11 @@
 <template>
   <div :class="prefixCls" class="relative w-full h-full px-4">
-    <AppLocalePicker
+    <EntAppLocalePicker
       class="absolute text-white top-4 right-4 enter-x xl:text-gray-600"
       :showText="false"
       v-if="!sessionTimeout && showLocale"
     />
-    <AppDarkModeToggle class="absolute top-3 right-7 enter-x" v-if="!sessionTimeout" />
+    <EntAppDarkModeToggle class="absolute top-3 right-7 enter-x" v-if="!sessionTimeout" />
 
     <span class="-enter-x xl:hidden">
       <AppLogo :alwaysShowTitle="true" />
@@ -43,14 +43,14 @@
 </template>
 <script lang="ts" setup>
   import { computed, defineComponent } from 'vue';
-  import { AppLogo } from '@ent-core/components/Application';
-  import { AppLocalePicker, AppDarkModeToggle } from '@ent-core/components/Application';
+  import AppLogo from '@ent-core/layouts/default/components/AppLogo.vue';
+  import { EntAppLocalePicker, EntAppDarkModeToggle } from '@ent-core/components/Application';
   import LoginForm from './LoginForm.vue';
   import ForgetPasswordForm from './ForgetPasswordForm.vue';
   import RegisterForm from './RegisterForm.vue';
   import MobileForm from './MobileForm.vue';
   import QrCodeForm from './QrCodeForm.vue';
-  import { useGlobSetting } from '@ent-core/hooks/setting';
+  import { useGlobSetting } from '@ent-core/hooks/setting/useGlobSetting';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
   import { useLocaleStore } from '@ent-core/store/modules/locale';
@@ -64,8 +64,8 @@
   defineComponent({
     components: {
       AppLogo,
-      AppLocalePicker,
-      AppDarkModeToggle,
+      EntAppLocalePicker,
+      EntAppDarkModeToggle,
     },
   });
 

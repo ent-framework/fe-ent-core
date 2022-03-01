@@ -6,7 +6,7 @@ import type { RequestOptions, Result } from '@ent-core/types/axios';
 import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
 import { VAxios } from './Axios';
 import { checkStatus } from './checkStatus';
-import { useGlobSetting } from '@ent-core/hooks/setting';
+import { useGlobSetting } from '@ent-core/hooks/setting/useGlobSetting';
 import { useMessage } from '@ent-core/hooks/web/useMessage';
 import { RequestEnum, ResultEnum, ContentTypeEnum } from '@ent-core/enums/httpEnum';
 import { isString } from '@ent-core/utils/is';
@@ -17,8 +17,6 @@ import { useI18n } from '@ent-core/hooks/web/useI18n';
 import { joinTimestamp, formatRequestDate } from './helper';
 import { useUserStoreWithOut } from '@ent-core/store/modules/user';
 
-const globSetting = useGlobSetting();
-const urlPrefix = globSetting.urlPrefix;
 const { createMessage, createErrorModal } = useMessage();
 
 /**
@@ -193,6 +191,8 @@ const transform: AxiosTransform = {
 };
 
 function createAxios(opt?: Partial<CreateAxiosOptions>) {
+  const globSetting = useGlobSetting();
+  const urlPrefix = globSetting.urlPrefix;
   return new VAxios(
     deepMerge(
       {

@@ -15,7 +15,7 @@
   import { SizeEnum } from '@ent-core/enums/sizeEnum';
 
   export default defineComponent({
-    name: 'Loading',
+    name: 'EntLoading',
     components: { Spin },
     props: {
       tip: {

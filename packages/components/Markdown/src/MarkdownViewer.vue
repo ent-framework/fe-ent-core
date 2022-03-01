@@ -4,7 +4,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed } from 'vue';
+  import { computed, defineComponent } from 'vue';
   import showdown from 'showdown';
 
   const converter = new showdown.Converter();
@@ -12,6 +12,9 @@
   const props = defineProps({
     value: { type: String },
     class: { type: String },
+  });
+  defineComponent({
+    name: 'EntMarkdownViewer',
   });
   const getHtmlData = computed(() => converter.makeHtml(props.value || ''));
 </script>

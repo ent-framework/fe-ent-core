@@ -13,7 +13,7 @@ import { useMessage } from '@ent-core/hooks/web/useMessage';
 import { router } from '@ent-core/router';
 import { usePermissionStore } from '@ent-core/store/modules/permission';
 import { RouteRecordRaw } from 'vue-router';
-import { PAGE_NOT_FOUND_ROUTE } from '@ent-core/router/routes/basic';
+import { registerPageNotFoundRoute } from '@ent-core/router/routes/basic';
 import { isArray } from '@ent-core/utils/is';
 import { h } from 'vue';
 
@@ -115,7 +115,7 @@ export const useUserStore = defineStore({
           routes.forEach((route) => {
             router.addRoute(route as unknown as RouteRecordRaw);
           });
-          router.addRoute(PAGE_NOT_FOUND_ROUTE as unknown as RouteRecordRaw);
+          router.addRoute(registerPageNotFoundRoute() as unknown as RouteRecordRaw);
           permissionStore.setDynamicAddedRoute(true);
         }
         goHome && (await router.replace(userInfo?.homePath || PageEnum.BASE_HOME));

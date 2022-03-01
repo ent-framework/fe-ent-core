@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed, PropType } from 'vue';
+  import { computed, defineComponent, PropType } from 'vue';
   import type { DropMenu } from './typing';
   import { Dropdown, Menu, Popconfirm } from 'ant-design-vue';
   import { Icon } from '@ent-core/components/Icon';
@@ -70,6 +70,10 @@
       type: Array as PropType<string[]>,
       default: () => [],
     },
+  });
+
+  defineComponent({
+    name: 'EntDropdown',
   });
 
   const emit = defineEmits(['menuEvent']);

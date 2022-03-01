@@ -48,7 +48,7 @@
   import { useI18n } from '@ent-core/hooks/web/useI18n';
   import { isArray } from '@ent-core/utils/is';
   export default defineComponent({
-    name: 'BasicUpload',
+    name: 'EntUpload',
     components: { UploadModal, UploadPreviewModal, Icon, Tooltip },
     props: uploadContainerProps,
     emits: ['change', 'delete', 'preview-delete', 'update:value'],

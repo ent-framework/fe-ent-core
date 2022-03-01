@@ -38,7 +38,7 @@
     checkStrictly: boolean;
   }
   export default defineComponent({
-    name: 'BasicTree',
+    name: 'EntTree',
     inheritAttrs: false,
     props: basicProps,
     emits: [

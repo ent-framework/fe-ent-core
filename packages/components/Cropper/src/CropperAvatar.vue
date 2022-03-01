@@ -57,7 +57,7 @@
   };
 
   export default defineComponent({
-    name: 'CropperAvatar',
+    name: 'EntCropperAvatar',
     components: { CopperModal, Icon },
     props,
     emits: ['update:value', 'change'],

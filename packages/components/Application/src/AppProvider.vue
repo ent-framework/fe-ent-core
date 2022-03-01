@@ -14,7 +14,7 @@
   };
 
   export default defineComponent({
-    name: 'AppProvider',
+    name: 'EntAppProvider',
     inheritAttrs: false,
     props,
     setup(props, { slots }) {

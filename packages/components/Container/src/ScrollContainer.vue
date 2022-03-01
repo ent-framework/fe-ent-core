@@ -10,7 +10,7 @@
   import { useScrollTo } from '@ent-core/hooks/event/useScrollTo';
 
   export default defineComponent({
-    name: 'ScrollContainer',
+    name: 'EntScrollContainer',
     components: { Scrollbar },
     setup() {
       const scrollbarRef = ref<Nullable<ScrollbarType>>(null);

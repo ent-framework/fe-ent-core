@@ -24,7 +24,7 @@
 </template>
 <script lang="ts" setup>
   import type { PropType } from 'vue';
-  import { ref } from 'vue';
+  import { defineComponent, ref } from 'vue';
   // component
   import { Skeleton } from 'ant-design-vue';
   import { CollapseTransition } from '@ent-core/components/Transition';
@@ -57,6 +57,11 @@
      * Delayed loading time
      */
     lazyTime: { type: Number, default: 0 },
+  });
+
+  defineComponent({
+    name: 'EntCollapseContainer',
+    components: { Skeleton },
   });
 
   const show = ref(true);

@@ -25,7 +25,7 @@
   import { useDesign } from '@ent-core/hooks/web/useDesign';
   import { propTypes } from '@ent-core/utils/propTypes';
   export default defineComponent({
-    name: 'StrengthMeter',
+    name: 'EntStrengthMeter',
     components: { InputPassword: Input.Password },
     props: {
       value: propTypes.string,

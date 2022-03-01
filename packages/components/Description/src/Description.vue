@@ -39,7 +39,7 @@
   };
 
   export default defineComponent({
-    name: 'Description',
+    name: 'EntDescription',
     props,
     emits: ['register'],
     setup(props, { slots, emit }) {

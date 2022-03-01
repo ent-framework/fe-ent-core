@@ -9,7 +9,7 @@
   import { getSlot } from '@ent-core/utils/helper/tsxHelper';
 
   export default defineComponent({
-    name: 'Authority',
+    name: 'EntAuthority',
     props: {
       /**
        * Specified role is visible

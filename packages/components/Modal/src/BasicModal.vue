@@ -75,7 +75,7 @@
   import { useDesign } from '@ent-core/hooks/web/useDesign';
 
   export default defineComponent({
-    name: 'BasicModal',
+    name: 'EntModal',
     components: { Modal, ModalWrapper, ModalClose, ModalFooter, ModalHeader },
     inheritAttrs: false,
     props: basicProps,

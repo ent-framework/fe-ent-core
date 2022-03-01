@@ -1,5 +1,5 @@
 import { defineComponent, computed, unref } from 'vue';
-import { BasicDrawer } from '@ent-core/components/Drawer/index';
+import { default as BasicDrawer } from '@ent-core/components/Drawer/src/BasicDrawer.vue';
 import { Divider } from 'ant-design-vue';
 import {
   TypePicker,
@@ -10,7 +10,7 @@ import {
   InputNumberItem,
 } from './components';
 
-import { AppDarkModeToggle } from '@ent-core/components/Application';
+import { EntAppDarkModeToggle } from '@ent-core/components/Application';
 
 import { MenuTypeEnum, TriggerEnum } from '@ent-core/enums/menuEnum';
 
@@ -38,8 +38,6 @@ import {
   SIDE_BAR_BG_COLOR_LIST,
   APP_PRESET_COLOR_LIST,
 } from '@ent-core/settings/designSetting';
-
-const { t } = useI18n();
 
 export default defineComponent({
   name: 'SettingDrawer',
@@ -88,6 +86,8 @@ export default defineComponent({
       getHeaderBgColor,
       getShowSearch,
     } = useHeaderSetting();
+
+    const { t } = useI18n();
 
     const { getShowMultipleTab, getShowQuick, getShowRedo, getShowFold } = useMultipleTabSetting();
 
@@ -404,7 +404,7 @@ export default defineComponent({
         wrapClassName="setting-drawer"
       >
         {unref(getShowDarkModeToggle) && <Divider>{() => t('layout.setting.darkMode')}</Divider>}
-        {unref(getShowDarkModeToggle) && <AppDarkModeToggle class="mx-auto" />}
+        {unref(getShowDarkModeToggle) && <EntAppDarkModeToggle class="mx-auto" />}
         <Divider>{() => t('layout.setting.navMode')}</Divider>
         {renderSidebar()}
         <Divider>{() => t('layout.setting.sysTheme')}</Divider>

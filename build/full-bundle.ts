@@ -14,22 +14,28 @@ import { camelCase, upperFirst } from 'lodash';
 import { version } from '../packages/fe-ent-core/version';
 import { reporter } from './plugins/size-reporter';
 import { ElementPlusAlias } from './plugins/element-plus-alias';
-import { epRoot, epOutput, localeRoot } from './utils';
+import { epRoot, epOutput, localeRoot, projRoot } from './utils';
 import { formatBundleFilename, generateExternal, writeBundles } from './utils/rollup';
 import { withTaskName } from './utils/gulp';
 import { EP_BRAND_NAME } from './utils';
 import { target } from './build-info';
 import type { Plugin } from 'rollup';
 import json from '@rollup/plugin-json';
+import image from '@rollup/plugin-image';
+import PurgeIcons from 'rollup-plugin-purge-icons';
 
 const banner = `/*! ${EP_BRAND_NAME} v${version} */\n`;
+
+const TSCONFIG_PATH = path.resolve(projRoot, 'tsconfig.json');
 
 async function buildFullEntry(minify: boolean) {
   const bundle = await rollup({
     input: path.resolve(epRoot, 'index.ts'),
     plugins: [
       ElementPlusAlias(),
+      PurgeIcons({}),
       json(),
+      image(),
       vue({
         isProduction: true,
       }) as Plugin,
@@ -46,6 +52,7 @@ async function buildFullEntry(minify: boolean) {
         loaders: {
           '.vue': 'ts',
         },
+        tsconfig: TSCONFIG_PATH,
       }),
       replace({
         'process.env.NODE_ENV': JSON.stringify('production'),
@@ -66,6 +73,7 @@ async function buildFullEntry(minify: boolean) {
         vue: 'Vue',
       },
       sourcemap: minify,
+      inlineDynamicImports: true,
       banner,
     },
     {
@@ -73,6 +81,7 @@ async function buildFullEntry(minify: boolean) {
       file: path.resolve(epOutput, 'dist', formatBundleFilename('index.full', minify, 'mjs')),
       sourcemap: minify,
       banner,
+      inlineDynamicImports: true,
     },
   ]);
 }
@@ -102,7 +111,7 @@ async function buildFullLocale(minify: boolean) {
           format: 'umd',
           file: path.resolve(epOutput, 'dist/locale', formatBundleFilename(filename, minify, 'js')),
           exports: 'default',
-          name: `ElementPlusLocale${name}`,
+          name: `EntCoreLocale${name}`,
           sourcemap: minify,
           banner,
         },
@@ -122,9 +131,12 @@ async function buildFullLocale(minify: boolean) {
 }
 
 export const buildFull = (minify: boolean) => async () =>
-  Promise.all([buildFullEntry(minify), buildFullLocale(minify)]);
+  Promise.all([
+    buildFullEntry(minify),
+  //  buildFullLocale(minify)
+  ]);
 
 export const buildFullBundle = parallel(
-  withTaskName('buildFullMinified', buildFull(true)),
+ // withTaskName('buildFullMinified', buildFull(true)),
   withTaskName('buildFull', buildFull(false)),
 );

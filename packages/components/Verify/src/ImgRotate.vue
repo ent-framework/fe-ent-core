@@ -7,7 +7,7 @@
   import { rotateProps } from './props';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
   export default defineComponent({
-    name: 'ImgRotateDragVerify',
+    name: 'EntRotateDragVerify',
     inheritAttrs: false,
     props: rotateProps,
     emits: ['success', 'change', 'update:value'],

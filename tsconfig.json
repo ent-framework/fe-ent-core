@@ -9,12 +9,14 @@
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "jsx": "preserve",
+    "baseUrl": ".",
     "sourceMap": true,
     "lib": ["esnext", "DOM"],
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "types": ["vite/client"],
     "typeRoots": ["./typings/"]
   },
   "include": [

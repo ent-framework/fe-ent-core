@@ -85,11 +85,11 @@
   import { ScrollContainer } from '@ent-core/components/Container';
   import { SimpleMenu, SimpleMenuTag } from '@ent-core/components/SimpleMenu';
   import { Icon } from '@ent-core/components/Icon';
-  import { AppLogo } from '@ent-core/components/Application';
+  import AppLogo from '@ent-core/layouts/default/components/AppLogo.vue';
   import { useMenuSetting } from '@ent-core/hooks/setting/useMenuSetting';
   import { usePermissionStore } from '@ent-core/store/modules/permission';
   import { useDragLine } from './useLayoutSider';
-  import { useGlobSetting } from '@ent-core/hooks/setting';
+  import { useGlobSetting } from '@ent-core/hooks/setting/useGlobSetting';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
   import { useGo } from '@ent-core/hooks/web/usePage';

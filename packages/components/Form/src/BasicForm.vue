@@ -63,7 +63,7 @@
   import { useDesign } from '@ent-core/hooks/web/useDesign';
 
   export default defineComponent({
-    name: 'BasicForm',
+    name: 'EntForm',
     components: { FormItem, Form, Row, FormAction },
     props: basicProps,
     emits: ['advanced-change', 'reset', 'submit', 'register'],

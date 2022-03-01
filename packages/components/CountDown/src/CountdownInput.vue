@@ -25,7 +25,7 @@
   };
 
   export default defineComponent({
-    name: 'CountDownInput',
+    name: 'EntCountDownInput',
     components: { CountButton },
     inheritAttrs: false,
     props,

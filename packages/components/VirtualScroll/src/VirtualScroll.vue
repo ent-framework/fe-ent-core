@@ -49,7 +49,7 @@
   }
 
   export default defineComponent({
-    name: 'VirtualScroll',
+    name: 'EntVirtualScroll',
     props,
     setup(props, { slots }) {
       const wrapElRef = ref<HTMLDivElement | null>(null);

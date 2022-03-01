@@ -20,7 +20,7 @@
   };
 
   export default defineComponent({
-    name: 'CountButton',
+    name: 'EntCountButton',
     components: { Button },
     props,
     setup(props) {

@@ -39,7 +39,7 @@
   };
 
   export default defineComponent({
-    name: 'CountTo',
+    name: 'EntCountTo',
     props,
     emits: ['onStarted', 'onFinished'],
     setup(props, { emit }) {
