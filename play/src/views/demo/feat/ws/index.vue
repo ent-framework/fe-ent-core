@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="WebSocket 示例">
+  <EntPageWrapper title="WebSocket 示例">
     <div class="flex">
       <div class="w-1/3 bg-white p-4">
         <div class="flex items-center">
@@ -50,18 +50,18 @@
         </div>
       </div>
     </div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, reactive, watchEffect, computed, toRefs } from 'vue';
   import { Tag, Input } from 'ant-design-vue';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { useWebSocket } from '@vueuse/core';
   import { formatToDateTime } from 'fe-ent-core/utils/dateUtil';
 
   export default defineComponent({
     components: {
-      PageWrapper,
+      EntPageWrapper,
       [Input.name]: Input,
       InputTextArea: Input.TextArea,
       Tag,

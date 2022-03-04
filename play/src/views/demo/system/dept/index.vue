@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BasicTable @register="registerTable">
+    <EntTable @register="registerTable">
       <template #toolbar>
         <a-button type="primary" @click="handleCreate"> 新增部门 </a-button>
       </template>
@@ -22,14 +22,14 @@
           ]"
         />
       </template>
-    </BasicTable>
+    </EntTable>
     <DeptModal @register="registerModal" @success="handleSuccess" />
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import { BasicTable, useTable, TableAction } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable, TableAction } from 'fe-ent-core/components/Table';
   import { getDeptList } from 'fe-ent-core/api/demo/system';
 
   import { useModal } from 'fe-ent-core/components/Modal';
@@ -39,7 +39,7 @@
 
   export default defineComponent({
     name: 'DeptManagement',
-    components: { BasicTable, DeptModal, TableAction },
+    components: { EntTable, DeptModal, TableAction },
     setup() {
       const [registerModal, { openModal }] = useModal();
       const [registerTable, { reload }] = useTable({

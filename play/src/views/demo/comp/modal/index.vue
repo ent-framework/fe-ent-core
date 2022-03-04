@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="modal组件使用示例">
+  <EntPageWrapper title="modal组件使用示例">
     <Alert
       message="使用 useModal 进行弹窗操作，默认可以拖动，可以通过 draggable
     参数进行控制是否可以拖动/全屏，并演示了在Modal内动态加载内容并自动调整高度"
@@ -31,7 +31,7 @@
     <Modal2 @register="register2" />
     <Modal3 @register="register3" />
     <Modal4 @register="register4" />
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, shallowRef, ComponentOptions, ref, nextTick } from 'vue';
@@ -41,10 +41,10 @@
   import Modal2 from './Modal2.vue';
   import Modal3 from './Modal3.vue';
   import Modal4 from './Modal4.vue';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
-    components: { Alert, Modal1, Modal2, Modal3, Modal4, PageWrapper, ASpace: Space },
+    components: { Alert, Modal1, Modal2, Modal3, Modal4, EntPageWrapper, ASpace: Space },
     setup() {
       const currentModal = shallowRef<Nullable<ComponentOptions>>(null);
       const [register1, { openModal: openModal1 }] = useModal();

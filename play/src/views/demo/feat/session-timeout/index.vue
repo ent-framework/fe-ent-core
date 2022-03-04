@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper
+  <EntPageWrapper
     title="登录过期示例"
     content="用户登录过期示例，不再跳转登录页，直接生成页面覆盖当前页面，方便保持过期前的用户状态！"
   >
@@ -12,11 +12,11 @@
         <a-button class="ml-4" type="primary" @click="test2">Response.code == 401</a-button>
       </a-card-grid>
     </a-card>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { useUserStore } from 'fe-ent-core/store/modules/user';
 
   import { sessionTimeoutApi, tokenExpiredApi } from 'fe-ent-core/api/demo/account';
@@ -24,7 +24,7 @@
 
   export default defineComponent({
     name: 'TestSessionTimeout',
-    components: { ACardGrid: Card.Grid, ACard: Card, PageWrapper },
+    components: { ACardGrid: Card.Grid, ACard: Card, EntPageWrapper },
     setup() {
       const userStore = useUserStore();
       async function test1() {

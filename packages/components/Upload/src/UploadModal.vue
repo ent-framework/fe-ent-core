@@ -1,5 +1,5 @@
 <template>
-  <BasicModal
+  <EntModal
     width="800px"
     :title="t('component.upload.upload')"
     :okText="t('component.upload.save')"
@@ -39,12 +39,12 @@
       </Upload>
     </div>
     <FileList :dataSource="fileListRef" :columns="columns" :actionColumn="actionColumn" />
-  </BasicModal>
+  </EntModal>
 </template>
 <script lang="ts">
   import { defineComponent, reactive, ref, toRefs, unref, computed, PropType } from 'vue';
   import { Upload, Alert } from 'ant-design-vue';
-  import { BasicModal, useModalInner } from '@ent-core/components/Modal';
+  import { EntModal, useModalInner } from '@ent-core/components/Modal';
   //   import { BasicTable, useTable } from '@ent-core/components/Table';
   // hooks
   import { useUploadType } from './useUpload';
@@ -62,7 +62,7 @@
   import { useI18n } from '@ent-core/hooks/web/useI18n';
 
   export default defineComponent({
-    components: { BasicModal, Upload, Alert, FileList },
+    components: { EntModal, Upload, Alert, FileList },
     props: {
       ...basicProps,
       previewFileList: {

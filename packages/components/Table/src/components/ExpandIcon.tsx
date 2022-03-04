@@ -1,4 +1,4 @@
-import { BasicArrow } from '@ent-core/components/Basic';
+import { EntArrow } from '@ent-core/components/Basic';
 
 export default () => {
   return (props: Recordable) => {
@@ -10,7 +10,7 @@ export default () => {
       }
     }
     return (
-      <BasicArrow
+      <EntArrow
         style="margin-right: 8px"
         iconStyle="margin-top: -2px;"
         onClick={(e: Event) => {

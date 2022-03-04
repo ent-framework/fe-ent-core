@@ -9,7 +9,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { computed } from 'vue';
+  import { computed, defineComponent } from 'vue';
   import CodeMirrorEditor from './codemirror/CodeMirror.vue';
   import { isString } from '@ent-core/utils/is';
   import { MODE } from './typing';
@@ -26,6 +26,11 @@
     },
     readonly: { type: Boolean },
     autoFormat: { type: Boolean, default: true },
+  });
+
+  defineComponent({
+    name: 'EntCodeEditor',
+    components: { CodeMirrorEditor },
   });
 
   const emit = defineEmits(['change', 'update:value', 'format-error']);

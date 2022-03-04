@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <BasicTable
+    <EntTable
       title="基础示例"
       titleHelpMessage="温馨提醒"
       :columns="columns"
@@ -25,16 +25,16 @@
           {{ !striped ? '显示斑马纹' : '隐藏斑马纹' }}
         </a-button>
       </template>
-    </BasicTable>
+    </EntTable>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { BasicTable, ColumnChangeParam } from 'fe-ent-core/components/Table';
+  import { EntTable, ColumnChangeParam } from 'fe-ent-core/components/Table';
   import { getBasicColumns, getBasicData } from './tableData';
 
   export default defineComponent({
-    components: { BasicTable },
+    components: { EntTable },
     setup() {
       const canResize = ref(false);
       const loading = ref(false);

@@ -1,9 +1,9 @@
 <template>
-  <ScrollContainer ref="wrapperRef">
+  <EntScrollContainer ref="wrapperRef">
     <div ref="spinRef" :style="spinStyle" v-loading="loading" :loading-tip="loadingTip">
       <slot></slot>
     </div>
-  </ScrollContainer>
+  </EntScrollContainer>
 </template>
 <script lang="ts">
   import type { CSSProperties } from 'vue';
@@ -19,7 +19,7 @@
     onUnmounted,
   } from 'vue';
   import { useWindowSizeFn } from '@ent-core/hooks/event/useWindowSizeFn';
-  import { ScrollContainer } from '@ent-core/components/Container';
+  import { EntScrollContainer } from '@ent-core/components/Container';
   import { createModalContext } from '../hooks/useModalContext';
   import { useMutationObserver } from '@vueuse/core';
 
@@ -38,7 +38,7 @@
 
   export default defineComponent({
     name: 'ModalWrapper',
-    components: { ScrollContainer },
+    components: { EntScrollContainer },
     inheritAttrs: false,
     props,
     emits: ['height-change', 'ext-height'],

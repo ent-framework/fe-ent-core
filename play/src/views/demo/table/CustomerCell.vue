@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <BasicTable @register="registerTable">
+    <EntTable @register="registerTable">
       <template #id="{ record }"> ID: {{ record.id }} </template>
       <template #no="{ record }">
         <Tag color="green">
@@ -20,12 +20,12 @@
           {{ record.no }}
         </Tag>
       </template>
-    </BasicTable>
+    </EntTable>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTable, useTable, BasicColumn, TableImg } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable, BasicColumn, TableImg } from 'fe-ent-core/components/Table';
   import { Tag, Avatar } from 'ant-design-vue';
   import { demoListApi } from 'fe-ent-core/api/demo/table';
   const columns: BasicColumn[] = [
@@ -85,7 +85,7 @@
     },
   ];
   export default defineComponent({
-    components: { BasicTable, TableImg, Tag, Avatar },
+    components: { EntTable, TableImg, Tag, Avatar },
     setup() {
       const [registerTable] = useTable({
         title: '自定义列内容',

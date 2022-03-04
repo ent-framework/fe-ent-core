@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper :class="prefixCls" title="卡片列表">
+  <EntPageWrapper :class="prefixCls" title="卡片列表">
     <template #headerContent>
       基于Vue Next, TypeScript, Ant Design Vue实现的一套完整的企业级后台管理系统。
       <div :class="`${prefixCls}__link`">
@@ -30,19 +30,19 @@
         </a-row>
       </a-list>
     </div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import Icon from 'fe-ent-core/components/Icon/index';
   import { cardList } from './data';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { Card, Row, Col, List } from 'ant-design-vue';
 
   export default defineComponent({
     components: {
       Icon,
-      PageWrapper,
+      EntPageWrapper,
       [Card.name]: Card,
       [List.name]: List,
       [List.Item.name]: List.Item,

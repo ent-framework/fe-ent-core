@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper
+  <EntPageWrapper
     contentFullHeight
     title="基础组件"
     content=" 基础组件依赖于ant-design-vue,组件库已有的基础组件,项目中不会再次进行demo展示（二次封装组件除外）"
@@ -100,13 +100,13 @@
         </a-card>
       </a-col>
     </a-row>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { Card, Row, Col } from 'ant-design-vue';
   export default defineComponent({
-    components: { PageWrapper, ACard: Card, ARow: Row, ACol: Col },
+    components: { EntPageWrapper, ACard: Card, ARow: Row, ACol: Col },
   });
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="表单基础示例" contentFullHeight>
+  <EntPageWrapper title="表单基础示例" contentFullHeight>
     <CollapseContainer title="基础示例">
       <BasicForm
         autoFocusFirstItem
@@ -53,14 +53,14 @@
         </template>
       </BasicForm>
     </CollapseContainer>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { computed, defineComponent, unref, ref } from 'vue';
   import { BasicForm, FormSchema, ApiSelect } from 'fe-ent-core/components/Form/index';
-  import { CollapseContainer } from 'fe-ent-core/components/Container';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   import { optionsListApi } from 'fe-ent-core/api/demo/select';
   import { useDebounceFn } from '@vueuse/core';
@@ -577,7 +577,7 @@
   ];
 
   export default defineComponent({
-    components: { BasicForm, CollapseContainer, PageWrapper, ApiSelect, ASelect: Select },
+    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper, ApiSelect, ASelect: Select },
     setup() {
       const check = ref(null);
       const { createMessage } = useMessage();

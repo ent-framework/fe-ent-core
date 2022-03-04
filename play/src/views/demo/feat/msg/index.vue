@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="消息示例">
+  <EntPageWrapper title="消息示例">
     <CollapseContainer class="w-full h-32 bg-white rounded-md" title="Message">
       <a-button @click="infoMsg('Info message')" class="mr-2"> Info </a-button>
       <a-button @click="successMsg('Success message')" class="mr-2" color="success">
@@ -32,16 +32,16 @@
     >
       <a-button @click="handleNotify" color="success" class="mr-2"> Success </a-button>
     </CollapseContainer>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
-    components: { CollapseContainer, PageWrapper },
+    components: { CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const {
         createMessage,

@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="滚动组件函数示例" content="基于el-scrollbar">
+  <EntPageWrapper title="滚动组件函数示例" content="基于el-scrollbar">
     <div class="my-4">
       <a-button @click="scrollTo(100)" class="mr-2"> 滚动到100px位置 </a-button>
       <a-button @click="scrollTo(800)" class="mr-2"> 滚动到800px位置 </a-button>
@@ -17,15 +17,15 @@
         </ul>
       </ScrollContainer>
     </div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { ScrollContainer, ScrollActionType } from 'fe-ent-core/components/Container/index';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntScrollContainer, ScrollActionType } from 'fe-ent-core/components/Container/index';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
-    components: { ScrollContainer, PageWrapper },
+    components: { ScrollContainer: EntScrollContainer, EntPageWrapper },
     setup() {
       const scrollRef = ref<Nullable<ScrollActionType>>(null);
       const getScroll = () => {

@@ -16,13 +16,13 @@
       <slot name="title"></slot>
     </template>
 
-    <ScrollContainer
+    <EntScrollContainer
       :style="getScrollContentStyle"
       v-loading="getLoading"
       :loading-tip="loadingText || t('common.loadingText')"
     >
       <slot></slot>
-    </ScrollContainer>
+    </EntScrollContainer>
     <DrawerFooter v-bind="getProps" @close="onClose" @ok="handleOk" :height="getFooterHeight">
       <template #[item]="data" v-for="item in Object.keys($slots)">
         <slot :name="item" v-bind="data || {}"></slot>
@@ -49,14 +49,14 @@
   import { deepMerge } from '@ent-core/utils';
   import DrawerFooter from './components/DrawerFooter.vue';
   import DrawerHeader from './components/DrawerHeader.vue';
-  import { ScrollContainer } from '@ent-core/components/Container';
+  import { EntScrollContainer } from '@ent-core/components/Container';
   import { basicProps } from './props';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
   import { useAttrs } from '@ent-core/hooks/core/useAttrs';
 
   export default defineComponent({
     name: 'EntDrawer',
-    components: { Drawer, ScrollContainer, DrawerFooter, DrawerHeader },
+    components: { Drawer, EntScrollContainer, DrawerFooter, DrawerHeader },
     inheritAttrs: false,
     props: basicProps,
     emits: ['visible-change', 'ok', 'close', 'register'],

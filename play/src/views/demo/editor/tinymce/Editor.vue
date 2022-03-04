@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="富文本嵌入表单示例">
+  <EntPageWrapper title="富文本嵌入表单示例">
     <CollapseContainer title="富文本表单">
       <BasicForm
         :labelWidth="100"
@@ -8,15 +8,15 @@
         @submit="handleSubmit"
       />
     </CollapseContainer>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
   import { BasicForm, FormSchema } from 'fe-ent-core/components/Form/index';
-  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { Tinymce } from 'fe-ent-core/components/Tinymce/index';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   const schemas: FormSchema[] = [
     {
@@ -43,7 +43,7 @@
     },
   ];
   export default defineComponent({
-    components: { BasicForm, CollapseContainer, PageWrapper },
+    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const { createMessage } = useMessage();
 

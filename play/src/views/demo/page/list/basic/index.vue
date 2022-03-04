@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper :class="prefixCls" title="标准列表">
+  <EntPageWrapper :class="prefixCls" title="标准列表">
     <div :class="`${prefixCls}__top`">
       <a-row :gutter="12">
         <a-col :span="8" :class="`${prefixCls}__top-col`">
@@ -48,21 +48,21 @@
         </template>
       </a-list>
     </div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { Progress, Row, Col } from 'ant-design-vue';
   import { defineComponent } from 'vue';
   import Icon from 'fe-ent-core/components/Icon/index';
   import { cardList } from './data';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { List } from 'ant-design-vue';
 
   export default defineComponent({
     components: {
       Icon,
       Progress,
-      PageWrapper,
+      EntPageWrapper,
       [List.name]: List,
       [List.Item.name]: List.Item,
       AListItemMeta: List.Item.Meta,

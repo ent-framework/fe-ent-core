@@ -1,5 +1,5 @@
 <template>
-  <BasicModal
+  <EntModal
     width="800px"
     :title="t('component.upload.preview')"
     wrapClassName="upload-preview-modal"
@@ -8,13 +8,13 @@
     :showOkBtn="false"
   >
     <FileList :dataSource="fileListRef" :columns="columns" :actionColumn="actionColumn" />
-  </BasicModal>
+  </EntModal>
 </template>
 <script lang="ts">
   import { defineComponent, watch, ref } from 'vue';
   //   import { BasicTable, useTable } from '@ent-core/components/Table';
   import FileList from './FileList.vue';
-  import { BasicModal, useModalInner } from '@ent-core/components/Modal';
+  import { EntModal, useModalInner } from '@ent-core/components/Modal';
   import { previewProps } from './props';
   import { PreviewFileItem } from './typing';
   import { downloadByUrl } from '@ent-core/utils/file/download';
@@ -23,7 +23,7 @@
   import { isArray } from '@ent-core/utils/is';
 
   export default defineComponent({
-    components: { BasicModal, FileList },
+    components: { EntModal, FileList },
     props: previewProps,
     emits: ['list-change', 'register', 'delete'],
     setup(props, { emit }) {

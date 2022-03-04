@@ -1,29 +1,29 @@
 <template>
   <div class="p-4">
-    <BasicTable @register="registerTable">
+    <EntTable @register="registerTable">
       <template #customTitle>
         <span>
           姓名
-          <BasicHelp class="ml-2" text="姓名" />
+          <EntHelp class="ml-2" text="姓名" />
         </span>
       </template>
       <template #customAddress>
         地址
         <FormOutlined class="ml-2" />
       </template>
-    </BasicTable>
+    </EntTable>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTable, useTable } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable } from 'fe-ent-core/components/Table';
   import { getCustomHeaderColumns } from './tableData';
   import { FormOutlined } from '@ant-design/icons-vue';
   import { demoListApi } from 'fe-ent-core/api/demo/table';
-  import { BasicHelp } from 'fe-ent-core/components/Basic';
+  import { EntHelp } from 'fe-ent-core/components/Basic';
 
   export default defineComponent({
-    components: { BasicTable, FormOutlined, BasicHelp },
+    components: { EntTable, FormOutlined, EntHelp },
     setup() {
       const [registerTable] = useTable({
         title: '定高/头部自定义',

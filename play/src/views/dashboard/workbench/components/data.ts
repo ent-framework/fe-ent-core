@@ -1,4 +1,4 @@
-interface GroupItem {
+export interface GroupItem {
   title: string;
   icon: string;
   color: string;
@@ -7,13 +7,13 @@ interface GroupItem {
   group: string;
 }
 
-interface NavItem {
+export  interface NavItem {
   title: string;
   icon: string;
   color: string;
 }
 
-interface DynamicInfoItem {
+export interface DynamicInfoItem {
   avatar: string;
   name: string;
   date: string;

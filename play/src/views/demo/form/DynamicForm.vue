@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="动态表单示例">
+  <EntPageWrapper title="动态表单示例">
     <div class="mb-4">
       <a-button @click="changeLabel3" class="mr-2"> 更改字段3label </a-button>
       <a-button @click="changeLabel34" class="mr-2"> 同时更改字段3,4label </a-button>
@@ -13,13 +13,13 @@
     <CollapseContainer class="mt-5" title="componentProps动态改变">
       <BasicForm @register="register1" />
     </CollapseContainer>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
-  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   const schemas: FormSchema[] = [
     {
@@ -179,7 +179,7 @@
   ];
 
   export default defineComponent({
-    components: { BasicForm, CollapseContainer, PageWrapper },
+    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const [register, { setProps, updateSchema, appendSchemaByField, removeSchemaByFiled }] =
         useForm({

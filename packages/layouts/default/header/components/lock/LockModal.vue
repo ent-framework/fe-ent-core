@@ -1,5 +1,5 @@
 <template>
-  <BasicModal
+  <EntModal
     :footer="null"
     :title="t('layout.header.lockScreen')"
     v-bind="$attrs"
@@ -22,13 +22,13 @@
         </a-button>
       </div>
     </div>
-  </BasicModal>
+  </EntModal>
 </template>
 <script lang="ts">
   import { defineComponent, computed } from 'vue';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
-  import { BasicModal, useModalInner } from '@ent-core/components/Modal/index';
+  import { EntModal, useModalInner } from '@ent-core/components/Modal/index';
   import { BasicForm, useForm } from '@ent-core/components/Form/index';
 
   import { useUserStore } from '@ent-core/store/modules/user';
@@ -36,7 +36,7 @@
   import headerImg from '@ent-core/assets/images/header.jpg';
   export default defineComponent({
     name: 'LockModal',
-    components: { BasicModal, BasicForm },
+    components: { EntModal, BasicForm },
 
     setup() {
       const { t } = useI18n();

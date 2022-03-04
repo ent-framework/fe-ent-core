@@ -1,7 +1,7 @@
 <template>
-  <PageWrapper title="上传组件示例">
+  <ent-page-wrapper title="上传组件示例">
     <a-alert message="基础示例" />
-    <BasicUpload
+    <ent-upload
       :maxSize="20"
       :maxNumber="10"
       @change="handleChange"
@@ -13,14 +13,14 @@
     <a-alert message="嵌入表单,加入表单校验" />
 
     <BasicForm @register="register" class="my-5" />
-  </PageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicUpload } from 'fe-ent-core/components/Upload';
+  import { EntUpload } from 'fe-ent-core/components/Upload';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { Alert } from 'ant-design-vue';
   import { uploadApi } from 'fe-ent-core/api/sys/upload';
 
@@ -39,7 +39,7 @@
     },
   ];
   export default defineComponent({
-    components: { BasicUpload, BasicForm, PageWrapper, [Alert.name]: Alert },
+    components: { EntUpload, BasicForm, EntPageWrapper, [Alert.name]: Alert },
     setup() {
       const { createMessage } = useMessage();
       const [register] = useForm({

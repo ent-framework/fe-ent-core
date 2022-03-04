@@ -1,5 +1,5 @@
 <template>
-  <BasicModal
+  <EntModal
     v-bind="$attrs"
     @register="register"
     :title="t('component.cropper.modalTitle')"
@@ -108,7 +108,7 @@
         </template>
       </div>
     </div>
-  </BasicModal>
+  </EntModal>
 </template>
 <script lang="ts">
   import type { CropendResult, Cropper } from './typing';
@@ -117,7 +117,7 @@
   import CropperImage from './Cropper.vue';
   import { Space, Upload, Avatar, Tooltip } from 'ant-design-vue';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
-  import { BasicModal, useModalInner } from '@ent-core/components/Modal';
+  import { EntModal, useModalInner } from '@ent-core/components/Modal';
   import { dataURLtoBlob } from '@ent-core/utils/file/base64Conver';
   import { isFunction } from '@ent-core/utils/is';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
@@ -133,7 +133,7 @@
 
   export default defineComponent({
     name: 'CropperModal',
-    components: { BasicModal, Space, CropperImage, Upload, Avatar, Tooltip },
+    components: { EntModal, Space, CropperImage, Upload, Avatar, Tooltip },
     props,
     emits: ['uploadSuccess', 'register'],
     setup(props, { emit }) {

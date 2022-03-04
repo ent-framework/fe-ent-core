@@ -1,5 +1,5 @@
 <template>
-  <BasicTable
+  <EntTable
     @register="registerTable"
     :rowSelection="{ type: 'checkbox', selectedRowKeys: checkedKeys, onChange: onSelectChange }"
   >
@@ -20,18 +20,18 @@
     <template #toolbar>
       <a-button type="primary" @click="getFormValues">获取表单数据</a-button>
     </template>
-  </BasicTable>
+  </EntTable>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { BasicTable, useTable } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable } from 'fe-ent-core/components/Table';
   import { getBasicColumns, getFormConfig } from './tableData';
   import { Alert } from 'ant-design-vue';
 
   import { demoListApi } from 'fe-ent-core/api/demo/table';
 
   export default defineComponent({
-    components: { BasicTable, AAlert: Alert },
+    components: { EntTable, AAlert: Alert },
     setup() {
       const checkedKeys = ref<Array<string | number>>([]);
       const [registerTable, { getForm }] = useTable({

@@ -1,11 +1,17 @@
 <template>
-  <PageWrapper title="数字动画示例">
+  <ent-page-wrapper title="数字动画示例">
     <Card>
       <CardGrid class="count-to-demo-card">
-        <CountTo prefix="$" :color="'#409EFF'" :startVal="1" :endVal="200000" :duration="8000" />
+        <ent-count-to
+          prefix="$"
+          :color="'#409EFF'"
+          :startVal="1"
+          :endVal="200000"
+          :duration="8000"
+        />
       </CardGrid>
       <CardGrid class="count-to-demo-card">
-        <CountTo
+        <ent-count-to
           suffix="$"
           :color="'red'"
           :startVal="1"
@@ -15,7 +21,7 @@
         />
       </CardGrid>
       <CardGrid class="count-to-demo-card">
-        <CountTo
+        <ent-count-to
           suffix="$"
           :color="'rgb(0,238,0)'"
           :startVal="1"
@@ -24,7 +30,7 @@
         />
       </CardGrid>
       <CardGrid class="count-to-demo-card">
-        <CountTo
+        <ent-count-to
           separator="-"
           :color="'rgba(138,43,226,.6)'"
           :startVal="10000"
@@ -33,20 +39,20 @@
         />
       </CardGrid>
     </Card>
-  </PageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Card } from 'ant-design-vue';
-  import { CountTo } from 'fe-ent-core/components/CountTo/index';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntCountTo } from 'fe-ent-core/components/CountTo/index';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
     components: {
       Card,
       CardGrid: Card.Grid,
-      CountTo,
-      PageWrapper,
+      EntCountTo,
+      EntPageWrapper,
     },
   });
 </script>

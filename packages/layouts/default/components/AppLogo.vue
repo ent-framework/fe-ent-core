@@ -19,7 +19,7 @@
   import { PageEnum } from '@ent-core/enums/pageEnum';
   import { useUserStore } from '@ent-core/store/modules/user';
   import LogoImg from '@ent-core/assets/images/logo.png';
-  const props = {
+  const props = defineProps({
     /**
      * The theme of the current parent component
      */
@@ -32,7 +32,7 @@
      * The title is also displayed when the menu is collapsed
      */
     alwaysShowTitle: { type: Boolean },
-  };
+  });
 
   const { prefixCls } = useDesign('app-logo');
   const { getCollapsedShowTitle } = useMenuSetting();

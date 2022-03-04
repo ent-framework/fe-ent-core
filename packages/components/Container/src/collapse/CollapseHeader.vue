@@ -1,22 +1,22 @@
 <template>
   <div :class="[`${prefixCls}__header px-2 py-5`, $attrs.class]">
-    <BasicTitle :helpMessage="helpMessage" normal>
+    <EntTitle :helpMessage="helpMessage" normal>
       <template v-if="title">
         {{ title }}
       </template>
       <template v-else>
         <slot name="title"></slot>
       </template>
-    </BasicTitle>
+    </EntTitle>
     <div :class="`${prefixCls}__action`">
       <slot name="action"></slot>
-      <BasicArrow v-if="canExpan" up :expand="show" @click="$emit('expand')" />
+      <EntArrow v-if="canExpan" up :expand="show" @click="$emit('expand')" />
     </div>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent, PropType } from 'vue';
-  import { BasicArrow, BasicTitle } from '@ent-core/components/Basic';
+  import { EntArrow, EntTitle } from '@ent-core/components/Basic';
 
   const props = {
     prefixCls: { type: String },
@@ -30,7 +30,7 @@
   };
 
   export default defineComponent({
-    components: { BasicArrow, BasicTitle },
+    components: { EntArrow, EntTitle },
     inheritAttrs: false,
     props,
     emits: ['expand'],

@@ -1,5 +1,5 @@
 <template>
-  <BasicDrawer
+  <EntDrawer
     v-bind="$attrs"
     @register="registerDrawer"
     showFooter
@@ -19,20 +19,20 @@
         />
       </template>
     </BasicForm>
-  </BasicDrawer>
+  </EntDrawer>
 </template>
 <script lang="ts">
   import { defineComponent, ref, computed, unref } from 'vue';
   import { BasicForm, useForm } from 'fe-ent-core/components/Form/index';
   import { formSchema } from './role.data';
-  import { BasicDrawer, useDrawerInner } from 'fe-ent-core/components/Drawer';
+  import { EntDrawer, useDrawerInner } from 'fe-ent-core/components/Drawer';
   import { BasicTree, TreeItem } from 'fe-ent-core/components/Tree';
 
   import { getMenuList } from 'fe-ent-core/api/demo/system';
 
   export default defineComponent({
     name: 'RoleDrawer',
-    components: { BasicDrawer, BasicForm, BasicTree },
+    components: { EntDrawer, BasicForm, BasicTree },
     emits: ['success', 'register'],
     setup(_, { emit }) {
       const isUpdate = ref(true);

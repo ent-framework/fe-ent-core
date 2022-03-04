@@ -17,7 +17,7 @@
 
     <LayoutTrigger :class="`${prefixCls}-trigger`" />
 
-    <ScrollContainer>
+    <EntScrollContainer>
       <ul :class="`${prefixCls}-module`">
         <li
           :class="[
@@ -41,7 +41,7 @@
           </p>
         </li>
       </ul>
-    </ScrollContainer>
+    </EntScrollContainer>
 
     <div :class="`${prefixCls}-menu-list`" ref="sideRef" :style="getMenuStyle">
       <div
@@ -61,14 +61,14 @@
           @click="handleFixedMenu"
         />
       </div>
-      <ScrollContainer :class="`${prefixCls}-menu-list__content`">
+      <EntScrollContainer :class="`${prefixCls}-menu-list__content`">
         <SimpleMenu
           :items="childrenMenus"
           :theme="getMenuTheme"
           mixSider
           @menuClick="handleMenuClick"
         />
-      </ScrollContainer>
+      </EntScrollContainer>
       <div
         v-show="getShowDragBar && openMenu"
         :class="`${prefixCls}-drag-bar`"
@@ -82,7 +82,7 @@
   import type { CSSProperties } from 'vue';
   import { computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
   import type { RouteLocationNormalized } from 'vue-router';
-  import { ScrollContainer } from '@ent-core/components/Container';
+  import { EntScrollContainer } from '@ent-core/components/Container';
   import { SimpleMenu, SimpleMenuTag } from '@ent-core/components/SimpleMenu';
   import { Icon } from '@ent-core/components/Icon';
   import AppLogo from '@ent-core/layouts/default/components/AppLogo.vue';
@@ -102,7 +102,7 @@
   export default defineComponent({
     name: 'LayoutMixSider',
     components: {
-      ScrollContainer,
+      EntScrollContainer,
       AppLogo,
       SimpleMenu,
       Icon,

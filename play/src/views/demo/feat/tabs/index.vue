@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="标签页操作示例">
+  <EntPageWrapper title="标签页操作示例">
     <CollapseContainer title="在下面输入框输入文本,切换后回来内容会保存">
       <a-alert banner message="该操作不会影响页面标题，仅修改Tab标题" />
       <div class="mt-2 flex flex-grow-0">
@@ -22,20 +22,20 @@
         打开{{ index }}详情页
       </a-button>
     </CollapseContainer>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { CollapseContainer } from 'fe-ent-core/components/Container';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container';
   import { useTabs } from 'fe-ent-core/hooks/web/useTabs';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { Input, Alert } from 'ant-design-vue';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { useGo } from 'fe-ent-core/hooks/web/usePage';
 
   export default defineComponent({
     name: 'TabsDemo',
-    components: { CollapseContainer, PageWrapper, [Input.name]: Input, [Alert.name]: Alert },
+    components: { CollapseContainer: EntCollapseContainer, EntPageWrapper, [Input.name]: Input, [Alert.name]: Alert },
     setup() {
       const go = useGo();
       const title = ref<string>('');

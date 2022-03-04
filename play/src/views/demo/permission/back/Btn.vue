@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper contentBackground title="按钮权限控制" contentClass="p-4">
+  <EntPageWrapper contentBackground title="按钮权限控制" contentClass="p-4">
     <CurrentPermissionMode />
     <p>
       当前拥有的code列表: <a> {{ permissionStore.getPermCodeList }} </a>
@@ -55,22 +55,22 @@
         拥有code ['1000','2000']角色权限可见
       </a-button>
     </template>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, computed } from 'vue';
   import { Alert, Divider } from 'ant-design-vue';
   import CurrentPermissionMode from '../CurrentPermissionMode.vue';
   import { usePermission } from 'fe-ent-core/hooks/web/usePermission';
-  import { Authority } from 'fe-ent-core/components/Authority';
+  import { EntAuthority as Authority } from 'fe-ent-core/components/Authority';
   import { usePermissionStore } from 'fe-ent-core/store/modules/permission';
   import { PermissionModeEnum } from 'fe-ent-core/enums/appEnum';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { useAppStore } from 'fe-ent-core/store/modules/app';
   import { useUserStore } from 'fe-ent-core/store/modules/user';
 
   export default defineComponent({
-    components: { Alert, PageWrapper, CurrentPermissionMode, Divider, Authority },
+    components: { Alert, EntPageWrapper, CurrentPermissionMode, Divider, Authority },
     setup() {
       const { hasPermission } = usePermission();
       const permissionStore = usePermissionStore();

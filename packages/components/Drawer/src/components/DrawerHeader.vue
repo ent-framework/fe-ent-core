@@ -1,8 +1,8 @@
 <template>
-  <BasicTitle v-if="!isDetail" :class="prefixCls">
+  <EntTitle v-if="!isDetail" :class="prefixCls">
     <slot name="title"></slot>
     {{ !$slots.title ? title : '' }}
-  </BasicTitle>
+  </EntTitle>
 
   <div :class="[prefixCls, `${prefixCls}--detail`]" v-else>
     <span :class="`${prefixCls}__twrap`">
@@ -19,7 +19,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTitle } from '@ent-core/components/Basic';
+  import { EntTitle } from '@ent-core/components/Basic';
   import { ArrowLeftOutlined } from '@ant-design/icons-vue';
 
   import { useDesign } from '@ent-core/hooks/web/useDesign';
@@ -27,7 +27,7 @@
   import { propTypes } from '@ent-core/utils/propTypes';
   export default defineComponent({
     name: 'BasicDrawerHeader',
-    components: { BasicTitle, ArrowLeftOutlined },
+    components: { EntTitle, ArrowLeftOutlined },
     props: {
       isDetail: propTypes.bool,
       showDetailBack: propTypes.bool,

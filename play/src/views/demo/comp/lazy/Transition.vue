@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="懒加载自定义动画示例" content="懒加载组件显示动画">
+  <EntPageWrapper title="懒加载自定义动画示例" content="懒加载组件显示动画">
     <div class="lazy-base-demo-wrap">
       <h1>向下滚动</h1>
 
@@ -9,16 +9,16 @@
         </LazyContainer>
       </div>
     </div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import TargetContent from './TargetContent.vue';
-  import { LazyContainer } from 'fe-ent-core/components/Container/index';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntLazyContainer } from 'fe-ent-core/components/Container/index';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
-    components: { LazyContainer, TargetContent, PageWrapper },
+    components: { LazyContainer: EntLazyContainer, TargetContent, EntPageWrapper },
   });
 </script>
 <style lang="less">

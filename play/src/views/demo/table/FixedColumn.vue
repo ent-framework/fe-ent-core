@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <BasicTable @register="registerTable">
+    <EntTable @register="registerTable">
       <template #action="{ record }">
         <TableAction
           :actions="[
@@ -21,12 +21,12 @@
           ]"
         />
       </template>
-    </BasicTable>
+    </EntTable>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTable, useTable, BasicColumn, TableAction } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable, BasicColumn, TableAction } from 'fe-ent-core/components/Table';
 
   import { demoListApi } from 'fe-ent-core/api/demo/table';
   const columns: BasicColumn[] = [
@@ -62,7 +62,7 @@
     },
   ];
   export default defineComponent({
-    components: { BasicTable, TableAction },
+    components: { EntTable, TableAction },
     setup() {
       const [registerTable] = useTable({
         title: 'TableAction组件及固定列示例',

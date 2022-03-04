@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "vite --debug",
-    "build": "cross-env NODE_ENV=production vite build --debug",
+    "build": "cross-env NODE_ENV=production vite build",
     "build:no-cache": "yarn clean:cache && npm run build",
     "clean": "rimraf dist",
     "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
@@ -50,8 +50,11 @@
     "@types/qs": "^6.9.7",
     "@types/showdown": "^1.9.4",
     "@types/sortablejs": "^1.10.7",
+    "autoprefixer": "^10.4.0",
     "fe-ent-cli": "workspace:*",
-    "vite-plugin-theme": "^0.8.1"
+    "vite-plugin-theme": "^0.8.1",
+    "vite-plugin-windicss": "1.8.2",
+    "vite": "2.8.6"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china",

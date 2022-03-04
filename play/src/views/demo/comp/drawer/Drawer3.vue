@@ -1,5 +1,5 @@
 <template>
-  <BasicDrawer v-bind="$attrs" title="Modal Title" width="50%" showFooter @ok="handleOk">
+  <EntDrawer v-bind="$attrs" title="Modal Title" width="50%" showFooter @ok="handleOk">
     <p class="h-20" v-for="index in 40" :key="index">根据屏幕高度自适应</p>
     <template #insertFooter>
       <a-button> btn</a-button>
@@ -15,13 +15,13 @@
     <!-- <template #footer>
       <a-button> customerFooter</a-button>
     </template> -->
-  </BasicDrawer>
+  </EntDrawer>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicDrawer } from 'fe-ent-core/components/Drawer';
+  import { EntDrawer } from 'fe-ent-core/components/Drawer';
   export default defineComponent({
-    components: { BasicDrawer },
+    components: { EntDrawer },
     setup() {
       return {
         handleOk: () => {

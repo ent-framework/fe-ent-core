@@ -10,3 +10,5 @@ export { useAppProviderContext } from './src/useAppContext';
 export const EntAppProvider = withInstall(appProvider);
 export const EntAppLocalePicker = withInstall(appLocalePicker);
 export const EntAppDarkModeToggle = withInstall(appDarkModeToggle);
+
+export default EntAppProvider;

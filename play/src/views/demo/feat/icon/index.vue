@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="Icon组件示例">
+  <EntPageWrapper title="Icon组件示例">
     <CollapseContainer title="Antv Icon使用 (直接按需引入相应组件即可)">
       <div class="flex justify-around">
         <GithubFilled :style="{ fontSize: '30px' }" />
@@ -48,11 +48,11 @@
       description="Icon组件基本包含所有的图标,在下面网址内你可以查询到你想要的任何图标。并且打包只会打包所用到的图标。"
     />
     <a-button type="link" @click="toIconify"> Iconify 图标大全 </a-button>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import { Alert } from 'ant-design-vue';
   import {
     QqCircleFilled,
@@ -67,12 +67,12 @@
   import { Icon, IconPicker, SvgIcon } from 'fe-ent-core/components/Icon/index';
 
   import { openWindow } from 'fe-ent-core/utils';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
     components: {
-      PageWrapper,
-      CollapseContainer,
+      EntPageWrapper,
+      CollapseContainer: EntCollapseContainer,
       GithubFilled,
       QqCircleFilled,
       WechatFilled,

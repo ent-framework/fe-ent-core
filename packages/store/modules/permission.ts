@@ -148,8 +148,6 @@ export const usePermissionStore = defineStore({
         return;
       };
 
-      console.log(router);
-
       switch (permissionMode) {
         case PermissionModeEnum.ROLE:
           routes = filter(router.extraRoutes, routeFilter);

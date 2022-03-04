@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="Tree函数操作示例" contentBackground contentClass="p-4">
+  <EntPageWrapper title="Tree函数操作示例" contentBackground contentClass="p-4">
     <div class="mb-4">
       <a-button @click="expandAll(true)" class="mr-2"> 展开全部 </a-button>
       <a-button @click="expandAll(false)" class="mr-2"> 折叠全部 </a-button>
@@ -24,17 +24,17 @@
       <a-button @click="updateNodeByKey('1-1')" class="mr-2"> 更新parent2节点 </a-button>
     </div>
     <BasicTree :treeData="treeData" title="函数操作" ref="treeRef" :checkable="true" />
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
   import { BasicTree, TreeActionType } from 'fe-ent-core/components/Tree/index';
   import { treeData } from './data';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
-    components: { BasicTree, PageWrapper },
+    components: { BasicTree, EntPageWrapper },
     setup() {
       const treeRef = ref<Nullable<TreeActionType>>(null);
       const { createMessage } = useMessage();

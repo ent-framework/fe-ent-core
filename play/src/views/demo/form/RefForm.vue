@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="Ref操作示例">
+  <EntPageWrapper title="Ref操作示例">
     <div class="mb-4">
       <a-button @click="setProps({ labelWidth: 150 })" class="mr-2"> 更改labelWidth </a-button>
       <a-button @click="setProps({ labelWidth: 120 })" class="mr-2"> 还原labelWidth </a-button>
@@ -62,14 +62,14 @@
         :actionColOptions="{ span: 24 }"
       />
     </CollapseContainer>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { BasicForm, FormSchema, FormActionType, FormProps } from 'fe-ent-core/components/Form/index';
-  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   const schemas: FormSchema[] = [
     {
@@ -167,7 +167,7 @@
   ];
 
   export default defineComponent({
-    components: { BasicForm, CollapseContainer, PageWrapper },
+    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const formElRef = ref<Nullable<FormActionType>>(null);
       const { createMessage } = useMessage();

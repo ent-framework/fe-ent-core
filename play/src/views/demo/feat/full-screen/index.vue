@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="全屏示例">
+  <EntPageWrapper title="全屏示例">
     <CollapseContainer class="w-full h-32 bg-white rounded-md" title="Window Full Screen">
       <a-button type="primary" @click="enter" class="mr-2"> Enter Window Full Screen </a-button>
       <a-button color="success" @click="toggle" class="mr-2"> Toggle Window Full Screen </a-button>
@@ -19,17 +19,17 @@
     >
       <a-button type="primary" @click="toggleDom" class="mr-2"> Exit Dom Full Screen </a-button>
     </div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import { useFullscreen } from '@vueuse/core';
 
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
-    components: { CollapseContainer, PageWrapper },
+    components: { CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const domRef = ref<Nullable<HTMLElement>>(null);
       const { enter, toggle, exit, isFullscreen } = useFullscreen();

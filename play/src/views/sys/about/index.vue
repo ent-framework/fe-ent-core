@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="关于">
+  <EntPageWrapper title="关于">
     <template #headerContent>
       <div class="flex justify-between items-center">
         <span class="flex-1">
@@ -9,16 +9,16 @@
         </span>
       </div>
     </template>
-    <Description @register="infoRegister" class="enter-y" />
-    <Description @register="register" class="my-4 enter-y" />
-    <Description @register="registerDev" class="enter-y" />
-  </PageWrapper>
+    <EntDescription @register="infoRegister" class="enter-y" />
+    <EntDescription @register="register" class="my-4 enter-y" />
+    <EntDescription @register="registerDev" class="enter-y" />
+  </EntPageWrapper>
 </template>
 <script lang="ts" setup>
-  import { h } from 'vue';
+  import { defineComponent, h } from 'vue';
   import { Tag } from 'ant-design-vue';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
-  import { Description, DescItem, useDescription } from 'fe-ent-core/components/Description';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntDescription, DescItem, useDescription } from 'fe-ent-core/components/Description';
   import { GITHUB_URL, SITE_URL, DOC_URL } from 'fe-ent-core/settings/siteSetting';
 
   const { pkg, lastBuildTime } = __APP_INFO__;
@@ -30,6 +30,10 @@
 
   const commonTagRender = (color: string) => (curVal) => h(Tag, { color }, () => curVal);
   const commonLinkRender = (text: string) => (href) => h('a', { href, target: '_blank' }, text);
+
+  defineComponent({
+    components: { EntPageWrapper, EntDescription },
+  });
 
   const infoSchema: DescItem[] = [
     {

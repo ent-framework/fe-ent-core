@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper
+  <EntPageWrapper
     title="前端权限按钮示例"
     contentBackground
     contentClass="p-4"
@@ -57,7 +57,7 @@
     <a-button v-auth="[RoleEnum.TEST, RoleEnum.SUPER]" color="error" class="mx-4">
       拥有[test,super]角色权限可见
     </a-button>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
@@ -66,11 +66,11 @@
   import { useUserStore } from 'fe-ent-core/store/modules/user';
   import { RoleEnum } from 'fe-ent-core/enums/roleEnum';
   import { usePermission } from 'fe-ent-core/hooks/web/usePermission';
-  import { Authority } from 'fe-ent-core/components/Authority';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntAuthority as Authority } from 'fe-ent-core/components/Authority';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
-    components: { Alert, PageWrapper, CurrentPermissionMode, Divider, Authority },
+    components: { Alert, EntPageWrapper, CurrentPermissionMode, Divider, Authority },
     setup() {
       const { changeRole, hasPermission } = usePermission();
       const userStore = useUserStore();

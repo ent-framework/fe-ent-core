@@ -1,5 +1,10 @@
 import type { ProjectConfig } from '@ent-core/types/config';
-import { MenuTypeEnum, MenuModeEnum, TriggerEnum, MixSidebarTriggerEnum } from '@ent-core/enums/menuEnum';
+import {
+  MenuTypeEnum,
+  MenuModeEnum,
+  TriggerEnum,
+  MixSidebarTriggerEnum,
+} from '@ent-core/enums/menuEnum';
 import { CacheTypeEnum } from '@ent-core/enums/cacheEnum';
 import {
   ContentEnum,

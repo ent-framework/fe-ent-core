@@ -25,14 +25,14 @@
 <script lang="ts">
   import { List } from 'ant-design-vue';
   import { defineComponent } from 'vue';
-  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import Icon from 'fe-ent-core/components/Icon/index';
 
   import { accountBindList } from './data';
 
   export default defineComponent({
     components: {
-      CollapseContainer,
+      CollapseContainer: EntCollapseContainer,
       List,
       ListItem: List.Item,
       ListItemMeta: List.Item.Meta,

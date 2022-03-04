@@ -13,7 +13,10 @@
   import { SvgIcon } from '@ent-core/components/Icon';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
   import { useRootSetting } from '@ent-core/hooks/setting/useRootSetting';
-  import { updateHeaderBgColor, updateSidebarBgColor } from '@ent-core/logics/theme/updateBackground';
+  import {
+    updateHeaderBgColor,
+    updateSidebarBgColor,
+  } from '@ent-core/logics/theme/updateBackground';
   import { updateDarkTheme } from '@ent-core/logics/theme/dark';
   import { ThemeEnum } from '@ent-core/enums/appEnum';
 

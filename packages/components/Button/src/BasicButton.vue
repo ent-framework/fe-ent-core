@@ -17,11 +17,11 @@
 
   export default defineComponent({
     name: 'EntButton',
-    inheritAttrs: false,
     components: {
       Button,
       Icon,
     },
+    inheritAttrs: false,
     props: buttonProps,
     setup(props) {
       const attrs = useAttrs({ excludeDefaultKeys: false });

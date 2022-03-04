@@ -3,7 +3,6 @@ import { createViteConfig, findWorkspaceRoot } from 'fe-ent-cli';
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   const workspace = findWorkspaceRoot();
-  console.log(workspace);
   const alias = [
     {
       find: /^fe-ent-core$/,
@@ -11,6 +10,10 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     },
     {
       find: /^fe-ent-core\/(.*)$/,
+      replacement: `${workspace}/packages/$1`,
+    },
+    {
+      find: /^@ent-core\/(.*)$/,
       replacement: `${workspace}/packages/$1`,
     },
   ];

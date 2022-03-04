@@ -1,34 +1,34 @@
 <template>
-  <PageWrapper title="时间组件示例">
-    <CollapseContainer title="基础示例">
-      <Time :value="time1" />
+  <ent-page-wrapper title="时间组件示例">
+    <ent-collapse-container title="基础示例">
+      <ent-time :value="time1" />
       <br />
-      <Time :value="time2" />
-    </CollapseContainer>
+      <ent-time :value="time2" />
+    </ent-collapse-container>
 
-    <CollapseContainer title="定时更新" class="my-4">
-      <Time :value="now" :step="1" />
+    <ent-collapse-container title="定时更新" class="my-4">
+      <ent-time :value="now" :step="1" />
       <br />
-      <Time :value="now" :step="5" />
-    </CollapseContainer>
+      <ent-time :value="now" :step="5" />
+    </ent-collapse-container>
 
-    <CollapseContainer title="定时更新">
-      <Time :value="now" mode="date" />
+    <ent-collapse-container title="定时更新">
+      <ent-time :value="now" mode="date" />
       <br />
-      <Time :value="now" mode="datetime" />
+      <ent-time :value="now" mode="datetime" />
       <br />
-      <Time :value="now" />
-    </CollapseContainer>
-  </PageWrapper>
+      <ent-time :value="now" />
+    </ent-collapse-container>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, reactive, toRefs } from 'vue';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
-  import { Time } from 'fe-ent-core/components/Time';
-  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntTime } from 'fe-ent-core/components/Time';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
 
   export default defineComponent({
-    components: { PageWrapper, Time, CollapseContainer },
+    components: { EntPageWrapper, EntTime, EntCollapseContainer },
     setup() {
       const now = new Date().getTime();
       const state = reactive({

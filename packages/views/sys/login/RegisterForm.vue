@@ -19,7 +19,7 @@
         />
       </FormItem>
       <FormItem name="sms" class="enter-x">
-        <CountdownInput
+        <EntCountdownInput
           size="large"
           class="fix-auto-fill"
           v-model:value="formData.sms"
@@ -27,7 +27,7 @@
         />
       </FormItem>
       <FormItem name="password" class="enter-x">
-        <StrengthMeter
+        <EntStrengthMeter
           size="large"
           v-model:value="formData.password"
           :placeholder="t('sys.login.password')"
@@ -66,11 +66,11 @@
   </template>
 </template>
 <script lang="ts" setup>
-  import { reactive, ref, unref, computed } from 'vue';
+  import { reactive, ref, unref, computed, defineComponent } from 'vue';
   import LoginFormTitle from './LoginFormTitle.vue';
   import { Form, Input, Button, Checkbox } from 'ant-design-vue';
-  import { StrengthMeter } from '@ent-core/components/StrengthMeter';
-  import { CountdownInput } from '@ent-core/components/CountDown';
+  import { EntStrengthMeter } from '@ent-core/components/StrengthMeter';
+  import { EntCountdownInput } from '@ent-core/components/CountDown';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
   import { useLoginState, useFormRules, useFormValid, LoginStateEnum } from './useLogin';
 
@@ -89,6 +89,10 @@
     mobile: '',
     sms: '',
     policy: false,
+  });
+
+  defineComponent({
+    components: { EntStrengthMeter, EntCountdownInput },
   });
 
   const { getFormRules } = useFormRules(formData);

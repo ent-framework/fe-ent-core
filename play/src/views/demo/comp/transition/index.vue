@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="动画组件示例">
+  <EntPageWrapper title="动画组件示例">
     <div class="flex">
       <Select
         :options="options"
@@ -12,12 +12,12 @@
     <component :is="`${value}Transition`">
       <div class="box" v-show="show"></div>
     </component>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { Select } from 'ant-design-vue';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import {
     FadeTransition,
     ScaleTransition,
@@ -58,7 +58,7 @@
   export default defineComponent({
     components: {
       Select,
-      PageWrapper,
+      EntPageWrapper,
       FadeTransition,
       ScaleTransition,
       SlideYTransition,

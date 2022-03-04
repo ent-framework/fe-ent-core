@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper
+  <EntPageWrapper
     title="后台权限示例"
     contentBackground
     contentClass="p-4"
@@ -20,7 +20,7 @@
         </a-button>
       </a-button-group>
     </div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, computed } from 'vue';
@@ -28,12 +28,12 @@
   import { RoleEnum } from 'fe-ent-core/enums/roleEnum';
   import { usePermission } from 'fe-ent-core/hooks/web/usePermission';
   import { useUserStore } from 'fe-ent-core/store/modules/user';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { PermissionModeEnum } from 'fe-ent-core/enums/appEnum';
   import { useAppStore } from 'fe-ent-core/store/modules/app';
   import { Alert } from 'ant-design-vue';
   export default defineComponent({
-    components: { Alert, CurrentPermissionMode, PageWrapper },
+    components: { Alert, CurrentPermissionMode, EntPageWrapper },
     setup() {
       const { refreshMenu } = usePermission();
       const userStore = useUserStore();

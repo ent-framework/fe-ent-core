@@ -1,10 +1,10 @@
 <template>
-  <PageWrapper title="子级详情页">
+  <EntPageWrapper title="子级详情页">
     <div>子级详情页内容在此</div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
-  export default defineComponent({ components: { PageWrapper } });
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  export default defineComponent({ components: { EntPageWrapper } });
 </script>

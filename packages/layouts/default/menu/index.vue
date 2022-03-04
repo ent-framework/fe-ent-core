@@ -9,7 +9,7 @@
   import { MenuModeEnum, MenuSplitTyeEnum } from '@ent-core/enums/menuEnum';
 
   import { useMenuSetting } from '@ent-core/hooks/setting/useMenuSetting';
-  import { ScrollContainer } from '@ent-core/components/Container';
+  import { EntScrollContainer } from '@ent-core/components/Container';
 
   import { useGo } from '@ent-core/hooks/web/usePage';
   import { useSplitMenu } from './useLayoutMenu';
@@ -37,6 +37,7 @@
         default: '',
       },
     },
+    components: { EntScrollContainer },
     setup(props) {
       const go = useGo();
 
@@ -161,7 +162,7 @@
           <>
             {renderHeader()}
             {unref(getUseScroll) ? (
-              <ScrollContainer style={unref(getWrapperStyle)}>{() => renderMenu()}</ScrollContainer>
+              <EntScrollContainer style={unref(getWrapperStyle)}>{() => renderMenu()}</EntScrollContainer>
             ) : (
               renderMenu()
             )}

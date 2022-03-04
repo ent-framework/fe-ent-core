@@ -1,17 +1,17 @@
 <template>
-  <PageWrapper title="拖动校验示例">
+  <EntPageWrapper title="拖动校验示例">
     <div class="flex justify-center p-4 items-center bg-gray-700">
-      <BasicDragVerify ref="el1" @success="handleSuccess" />
+      <EntDragVerify ref="el1" @success="handleSuccess" />
       <a-button type="primary" class="ml-2" @click="handleBtnClick(el1)"> 还原 </a-button>
     </div>
 
     <div class="flex justify-center p-4 items-center bg-gray-700">
-      <BasicDragVerify ref="el2" @success="handleSuccess" circle />
+      <EntDragVerify ref="el2" @success="handleSuccess" circle />
       <a-button type="primary" class="ml-2" @click="handleBtnClick(el2)"> 还原 </a-button>
     </div>
 
     <div class="flex justify-center p-4 items-center bg-gray-700">
-      <BasicDragVerify
+      <EntDragVerify
         ref="el3"
         @success="handleSuccess"
         text="拖动以进行校验"
@@ -24,17 +24,17 @@
     </div>
 
     <div class="flex justify-center p-4 items-center bg-gray-700">
-      <BasicDragVerify ref="el4" @success="handleSuccess">
+      <EntDragVerify ref="el4" @success="handleSuccess">
         <template #actionIcon="isPassing">
           <BugOutlined v-if="isPassing" />
           <RightOutlined v-else />
         </template>
-      </BasicDragVerify>
+      </EntDragVerify>
       <a-button type="primary" class="ml-2" @click="handleBtnClick(el4)"> 还原 </a-button>
     </div>
 
     <div class="flex justify-center p-4 items-center bg-gray-700">
-      <BasicDragVerify ref="el5" @success="handleSuccess">
+      <EntDragVerify ref="el5" @success="handleSuccess">
         <template #text="isPassing">
           <div v-if="isPassing">
             <BugOutlined />
@@ -45,20 +45,24 @@
             <RightOutlined />
           </div>
         </template>
-      </BasicDragVerify>
+      </EntDragVerify>
       <a-button type="primary" class="ml-2" @click="handleBtnClick(el5)"> 还原 </a-button>
     </div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { BasicDragVerify, DragVerifyActionType, PassingData } from 'fe-ent-core/components/Verify/index';
+  import {
+    EntDragVerify,
+    DragVerifyActionType,
+    PassingData,
+  } from 'fe-ent-core/components/Verify/index';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { BugOutlined, RightOutlined } from '@ant-design/icons-vue';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
-    components: { BasicDragVerify, BugOutlined, RightOutlined, PageWrapper },
+    components: { EntDragVerify, BugOutlined, RightOutlined, EntPageWrapper },
     setup() {
       const { createMessage } = useMessage();
       const el1 = ref<Nullable<DragVerifyActionType>>(null);

@@ -1,21 +1,21 @@
 <template>
-  <PageWrapper
+  <EntPageWrapper
     title="流程图"
     content="简单流程图示例,具体功能需要自己完善"
     contentFullHeight
     fixedHeight
   >
     <FlowChart :data="demoData" />
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 
 <script lang="ts">
   import { FlowChart } from 'fe-ent-core/components/FlowChart';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   import demoData from './dataTurbo.json';
   export default {
-    components: { FlowChart, PageWrapper },
+    components: { FlowChart, EntPageWrapper },
     setup() {
       return { demoData };
     },

@@ -26,10 +26,10 @@ import RadioButtonGroup from './components/RadioButtonGroup.vue';
 import ApiSelect from './components/ApiSelect.vue';
 import ApiTreeSelect from './components/ApiTreeSelect.vue';
 import ApiCascader from './components/ApiCascader.vue';
-import { BasicUpload } from '@ent-core/components/Upload';
-import { StrengthMeter } from '@ent-core/components/StrengthMeter';
+import { EntUpload } from '@ent-core/components/Upload';
+import { EntStrengthMeter } from '@ent-core/components/StrengthMeter';
 import { IconPicker } from '@ent-core/components/Icon';
-import { CountdownInput } from '@ent-core/components/CountDown';
+import { EntCountdownInput } from '@ent-core/components/CountDown';
 
 const componentMap = new Map<ComponentType, Component>();
 
@@ -61,11 +61,11 @@ componentMap.set('MonthPicker', DatePicker.MonthPicker);
 componentMap.set('RangePicker', DatePicker.RangePicker);
 componentMap.set('WeekPicker', DatePicker.WeekPicker);
 componentMap.set('TimePicker', TimePicker);
-componentMap.set('StrengthMeter', StrengthMeter);
+componentMap.set('StrengthMeter', EntStrengthMeter);
 componentMap.set('IconPicker', IconPicker);
-componentMap.set('InputCountDown', CountdownInput);
+componentMap.set('InputCountDown', EntCountdownInput);
 
-componentMap.set('Upload', BasicUpload);
+componentMap.set('Upload', EntUpload);
 componentMap.set('Divider', Divider);
 
 export function add(compName: ComponentType, component: Component) {

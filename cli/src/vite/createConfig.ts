@@ -6,6 +6,8 @@ import { generateModifyVars } from '../generate/generateModifyVars';
 import { createProxy } from './proxy';
 import { wrapperEnv, getPackageManifest, green } from '../utils';
 import { createBuildTarget, createVitePlugins } from './plugin';
+import url from 'postcss-url';
+import type { Plugin } from 'postcss';
 
 function pathResolve(dir) {
   return resolve(process.cwd(), '.', dir);
@@ -52,6 +54,22 @@ export function createViteConfig(
     },
   ];
 
+  const postCssPlugins: Plugin[] = [];
+
+  if (preview) {
+    postCssPlugins.push(
+      url({
+        url: 'copy',
+        // base path to search assets from
+        basePath: pathResolve('../packages'),
+        // dir to copy assets
+        assetsPath: 'img',
+        // using hash names for assets (generates from asset content)
+        useHash: true,
+      }),
+    );
+  }
+
   let config: UserConfig = {
     base: VITE_PUBLIC_PATH,
     root,
@@ -72,6 +90,9 @@ export function createViteConfig(
           modifyVars: generateModifyVars(false, runMode, preview),
           javascriptEnabled: true,
         },
+      },
+      postcss: {
+        plugins: [...postCssPlugins],
       },
     },
 

@@ -1,5 +1,5 @@
 <template>
-  <CollapseContainer title="基本设置" :canExpan="false">
+  <ent-collapse-container title="基本设置" :canExpan="false">
     <a-row :gutter="24">
       <a-col :span="14">
         <BasicForm @register="register" />
@@ -7,7 +7,7 @@
       <a-col :span="10">
         <div class="change-avatar">
           <div class="mb-2">头像</div>
-          <CropperAvatar
+          <ent-cropper-avatar
             :uploadApi="uploadApi"
             :value="avatar"
             btnText="更换头像"
@@ -19,14 +19,14 @@
       </a-col>
     </a-row>
     <Button type="primary" @click="handleSubmit"> 更新基本信息 </Button>
-  </CollapseContainer>
+  </ent-collapse-container>
 </template>
 <script lang="ts">
   import { Button, Row, Col } from 'ant-design-vue';
   import { computed, defineComponent, onMounted } from 'vue';
   import { BasicForm, useForm } from 'fe-ent-core/components/Form/index';
-  import { CollapseContainer } from 'fe-ent-core/components/Container';
-  import { CropperAvatar } from 'fe-ent-core/components/Cropper';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container';
+  import { EntCropperAvatar } from 'fe-ent-core/components/Cropper';
 
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
 
@@ -39,11 +39,11 @@
   export default defineComponent({
     components: {
       BasicForm,
-      CollapseContainer,
+      EntCollapseContainer,
       Button,
       ARow: Row,
       ACol: Col,
-      CropperAvatar,
+      EntCropperAvatar,
     },
     setup() {
       const { createMessage } = useMessage();

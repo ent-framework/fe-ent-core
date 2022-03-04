@@ -2,9 +2,9 @@
   <div class="h-full" :class="prefixCls">
     <FlowChartToolbar :prefixCls="prefixCls" v-if="toolbar" @view-data="handlePreview" />
     <div ref="lfElRef" class="h-full"></div>
-    <BasicModal @register="register" title="流程数据" width="50%">
+    <EntModal @register="register" title="流程数据" width="50%">
       <JsonPreview :data="graphData" />
-    </BasicModal>
+    </EntModal>
   </div>
 </template>
 <script lang="ts">
@@ -18,12 +18,12 @@
   import { useAppStore } from '@ent-core/store/modules/app';
   import { createFlowChartContext } from './useFlowContext';
   import { toLogicFlowData } from './adpterForTurbo';
-  import { useModal, BasicModal } from '@ent-core/components/Modal';
+  import { useModal, EntModal } from '@ent-core/components/Modal';
   import { JsonPreview } from '@ent-core/components/CodeEditor';
   import { configDefaultDndPanel } from './config';
   export default defineComponent({
     name: 'FlowChart',
-    components: { BasicModal, FlowChartToolbar, JsonPreview },
+    components: { EntModal, FlowChartToolbar, JsonPreview },
     props: {
       flowOptions: {
         type: Object as PropType<Definition>,

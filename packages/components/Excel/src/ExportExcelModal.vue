@@ -1,5 +1,5 @@
 <template>
-  <BasicModal
+  <EntModal
     v-bind="$attrs"
     :title="t('component.excel.exportModalTitle')"
     @ok="handleOk"
@@ -11,12 +11,12 @@
       :showActionButtonGroup="false"
       @register="registerForm"
     />
-  </BasicModal>
+  </EntModal>
 </template>
 <script lang="ts">
   import type { ExportModalResult } from './typing';
   import { defineComponent } from 'vue';
-  import { BasicModal, useModalInner } from '@ent-core/components/Modal';
+  import { EntModal, useModalInner } from '@ent-core/components/Modal';
   import { BasicForm, FormSchema, useForm } from '@ent-core/components/Form/index';
 
   import { useI18n } from '@ent-core/hooks/web/useI18n';
@@ -64,7 +64,7 @@
   ];
   export default defineComponent({
     name: 'ExportExcelModal',
-    components: { BasicModal, BasicForm },
+    components: { EntModal, BasicForm },
     emits: ['success', 'register'],
     setup(_, { emit }) {
       const [registerForm, { validateFields }] = useForm();

@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="UseForm操作示例">
+  <EntPageWrapper title="UseForm操作示例">
     <div class="mb-4">
       <a-button @click="setProps({ labelWidth: 150 })" class="mr-2"> 更改labelWidth </a-button>
       <a-button @click="setProps({ labelWidth: 120 })" class="mr-2"> 还原labelWidth </a-button>
@@ -57,14 +57,14 @@
     <CollapseContainer title="useForm示例">
       <BasicForm @register="register" @submit="handleSubmit" />
     </CollapseContainer>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
-  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { areaRecord } from 'fe-ent-core/api/demo/cascader';
 
   const schemas: FormSchema[] = [
@@ -213,7 +213,7 @@
   ];
 
   export default defineComponent({
-    components: { BasicForm, CollapseContainer, PageWrapper },
+    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const { createMessage } = useMessage();
 

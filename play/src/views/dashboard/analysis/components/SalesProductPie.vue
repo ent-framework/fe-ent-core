@@ -4,7 +4,7 @@
   </Card>
 </template>
 <script lang="ts" setup>
-  import { Ref, ref, watch } from 'vue';
+  import { defineComponent, Ref, ref, watch } from 'vue';
   import { Card } from 'ant-design-vue';
   import { useECharts } from 'fe-ent-core/hooks/web/useECharts';
 
@@ -18,6 +18,10 @@
       type: String as PropType<string>,
       default: '300px',
     },
+  });
+
+  defineComponent({
+    components: { Card },
   });
 
   const chartRef = ref<HTMLDivElement | null>(null);

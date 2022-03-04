@@ -14,20 +14,19 @@
         </template>
 
         <div class="py-4 px-4 flex justify-between">
-          <CountTo prefix="$" :startVal="1" :endVal="item.value" class="text-2xl" />
+          <ent-count-to prefix="$" :startVal="1" :endVal="item.value" class="text-2xl" />
           <Icon :icon="item.icon" :size="40" />
         </div>
 
         <div class="p-2 px-4 flex justify-between">
           <span>总{{ item.title }}</span>
-          <CountTo prefix="$" :startVal="1" :endVal="item.total" />
+          <ent-count-to prefix="$" :startVal="1" :endVal="item.total" />
         </div>
       </Card>
     </template>
   </div>
 </template>
 <script lang="ts" setup>
-  import { CountTo } from 'fe-ent-core/components/CountTo/index';
   import { Icon } from 'fe-ent-core/components/Icon';
   import { Tag, Card } from 'ant-design-vue';
   import { growCardList } from '../data';

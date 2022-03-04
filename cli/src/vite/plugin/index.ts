@@ -3,7 +3,6 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
 import purgeIcons from 'vite-plugin-purge-icons';
-import windiCSS from 'vite-plugin-windicss';
 import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import { configHtmlPlugin } from './html';
 import { configPwaConfig } from './pwa';
@@ -15,9 +14,9 @@ import { configThemePlugin } from './theme';
 import { configImageminPlugin } from './imagemin';
 import { configSvgIconsPlugin } from './svgSprite';
 import { configHmrPlugin } from './hmr';
+import { configWindiPlugin } from './windi';
 import { getCurrExecPath, OUTPUT_DIR, findWorkspaceRoot } from '../../utils';
 import type { BuildOptions } from 'vite';
-// import dts from './dts';
 
 export function createVitePlugins(viteEnv: ViteEnv, runMode: string, preview: boolean) {
   const {
@@ -39,14 +38,10 @@ export function createVitePlugins(viteEnv: ViteEnv, runMode: string, preview: bo
 
   const vitePlugins: (Plugin | Plugin[])[] = [];
 
-/*  if (runMode == 'lib') {
-    vitePlugins.push(dts());
-  }*/
-
   vitePlugins.push(defaultPlugins);
 
   // vite-plugin-windicss
-  vitePlugins.push(windiCSS());
+  vitePlugins.push(configWindiPlugin());
 
   const isBuild = runMode == 'package' || runMode == 'lib';
   // TODO
@@ -59,7 +54,7 @@ export function createVitePlugins(viteEnv: ViteEnv, runMode: string, preview: bo
   runMode != 'lib' && vitePlugins.push(configHtmlPlugin(viteEnv, isBuild));
 
   // vite-plugin-svg-icons
-  vitePlugins.push(configSvgIconsPlugin(isBuild));
+  vitePlugins.push(configSvgIconsPlugin(isBuild, preview));
 
   // vite-plugin-mock
   VITE_USE_MOCK && vitePlugins.push(configMockPlugin(isBuild));

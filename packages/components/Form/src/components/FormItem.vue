@@ -7,7 +7,7 @@
   import { defineComponent, computed, unref, toRefs } from 'vue';
   import { Form, Col, Divider } from 'ant-design-vue';
   import { componentMap } from '../componentMap';
-  import { BasicHelp } from '@ent-core/components/Basic';
+  import { EntHelp } from '@ent-core/components/Basic';
   import { isBoolean, isFunction, isNull } from '@ent-core/utils/is';
   import { getSlot } from '@ent-core/utils/helper/tsxHelper';
   import { createPlaceholderMessage, setComponentRuleType } from '../helper';
@@ -300,7 +300,7 @@
         return (
           <span>
             {renderLabel}
-            <BasicHelp placement="top" class="mx-1" text={getHelpMessage} {...helpComponentProps} />
+            <EntHelp placement="top" class="mx-1" text={getHelpMessage} {...helpComponentProps} />
           </span>
         );
       }

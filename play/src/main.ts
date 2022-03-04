@@ -1,3 +1,4 @@
+//windi import要放在theme 后面
 import 'virtual:windi-base.css';
 import 'virtual:windi-components.css';
 import 'virtual:windi-utilities.css';
@@ -22,7 +23,7 @@ import EntCore from 'fe-ent-core';
 // Therefore, only enable on-demand importing in production environments .
 if (import.meta.env.DEV) {
   // bug of import order;
-  // import('ant-design-vue/dist/antd.less');
+  //import('ant-design-vue/dist/antd.less');
 }
 import 'ant-design-vue/dist/antd.less';
 import 'fe-ent-core/theme/index.less';
@@ -51,7 +52,7 @@ async function bootstrap() {
   await setupI18n(app);
 
   const layoutMgt = useLayout();
-  console.log(layoutMgt);
+
   //initial layout
   layoutMgt.use('LAYOUT', LAYOUT);
   layoutMgt.use('IFRAME', IFRAME);

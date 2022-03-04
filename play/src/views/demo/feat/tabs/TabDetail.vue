@@ -1,18 +1,18 @@
 <template>
-  <PageWrapper title="Tab详情页面">
+  <EntPageWrapper title="Tab详情页面">
     <div>{{ index }} - 详情页内容在此</div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { useTabs } from 'fe-ent-core/hooks/web/useTabs';
   import { useRoute } from 'vue-router';
 
   export default defineComponent({
     name: 'TabDetail',
-    components: { PageWrapper },
+    components: { EntPageWrapper },
     setup() {
       const route = useRoute();
       const index = route.params?.id ?? -1;

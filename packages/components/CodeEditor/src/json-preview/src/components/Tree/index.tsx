@@ -68,8 +68,7 @@ export default defineComponent({
           ? item.level >= props.deep
           : item.level === props.deep;
         const pathComparison =
-          depthComparison ||
-          (props.collapsePath && props.collapsePath.test(item.path));
+          depthComparison || (props.collapsePath && props.collapsePath.test(item.path));
         if (
           (item.type === 'objectStart' || item.type === 'arrayStart') &&
           (depthComparison || pathComparison)
@@ -156,7 +155,7 @@ export default defineComponent({
     const onSelectedChange = ({ path }: NodeDataType) => {
       const type = props.selectableType;
       if (type === 'multiple') {
-        const index = selectedPaths.value.findIndex(item => item === path);
+        const index = selectedPaths.value.findIndex((item) => item === path);
         const newVal = [...selectedPaths.value];
         if (index !== -1) {
           newVal.splice(index, 1);
@@ -239,7 +238,7 @@ export default defineComponent({
 
     const nodeContent =
       state.visibleData &&
-      state.visibleData.map(item => (
+      state.visibleData.map((item) => (
         <TreeNode
           key={item.id}
           node={item}

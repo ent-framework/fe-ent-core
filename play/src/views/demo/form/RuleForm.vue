@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="表单校验示例">
+  <EntPageWrapper title="表单校验示例">
     <div class="mb-4">
       <a-button @click="validateForm" class="mr-2"> 手动校验表单 </a-button>
       <a-button @click="resetValidate" class="mr-2"> 清空校验信息 </a-button>
@@ -10,14 +10,14 @@
     <CollapseContainer title="表单校验">
       <BasicForm @register="register" @submit="handleSubmit" />
     </CollapseContainer>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
-  import { CollapseContainer } from 'fe-ent-core/components/Container';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { isAccountExist } from 'fe-ent-core/api/demo/system';
 
   const schemas: FormSchema[] = [
@@ -204,7 +204,7 @@
   ];
 
   export default defineComponent({
-    components: { BasicForm, CollapseContainer, PageWrapper },
+    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const { createMessage } = useMessage();
       const [

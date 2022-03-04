@@ -1,17 +1,17 @@
 <template>
-  <BasicTitle :class="prefixCls" v-if="getTitle" :helpMessage="helpMessage">
+  <EntTitle :class="prefixCls" v-if="getTitle" :helpMessage="helpMessage">
     {{ getTitle }}
-  </BasicTitle>
+  </EntTitle>
 </template>
 <script lang="ts">
   import { computed, defineComponent, PropType } from 'vue';
-  import { BasicTitle } from '@ent-core/components/Basic';
+  import { EntTitle } from '@ent-core/components/Basic';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
   import { isFunction } from '@ent-core/utils/is';
 
   export default defineComponent({
     name: 'BasicTableTitle',
-    components: { BasicTitle },
+    components: { EntTitle },
     props: {
       title: {
         type: [Function, String] as PropType<string | ((data: Recordable) => string)>,

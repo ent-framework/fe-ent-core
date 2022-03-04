@@ -1,17 +1,17 @@
 <template>
   <div>
-    <BasicTable @register="registerTable" @edit-change="handleEditChange">
+    <EntTable @register="registerTable" @edit-change="handleEditChange">
       <template #action="{ record, column }">
         <TableAction :actions="createActions(record, column)" />
       </template>
-    </BasicTable>
+    </EntTable>
     <a-button block class="mt-5" type="dashed" @click="handleAdd"> 新增成员 </a-button>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import {
-    BasicTable,
+    EntTable,
     useTable,
     TableAction,
     BasicColumn,
@@ -55,7 +55,7 @@
     },
   ];
   export default defineComponent({
-    components: { BasicTable, TableAction },
+    components: { EntTable, TableAction },
     setup() {
       const [registerTable, { getDataSource }] = useTable({
         columns: columns,

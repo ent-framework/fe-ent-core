@@ -55,7 +55,7 @@
 <script lang="ts">
   import { Tag, Tabs, Row, Col } from 'ant-design-vue';
   import { defineComponent, computed } from 'vue';
-  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import Icon from 'fe-ent-core/components/Icon/index';
   import Article from './Article.vue';
   import Application from './Application.vue';
@@ -67,7 +67,7 @@
 
   export default defineComponent({
     components: {
-      CollapseContainer,
+      CollapseContainer: EntCollapseContainer,
       Icon,
       Tag,
       Tabs,

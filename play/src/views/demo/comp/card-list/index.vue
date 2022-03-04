@@ -1,17 +1,14 @@
 <template>
-  <PageWrapper title="卡片列表示例" content="基础封装">
-    <CardList :params="params" :api="demoListApi" @getMethod="getMethod" @delete="handleDel">
+  <ent-page-wrapper title="卡片列表示例" content="基础封装">
+    <ent-card-list :params="params" :api="demoListApi" @getMethod="getMethod" @delete="handleDel">
       <template #header>
-        <Button type="primary" color="error"> 按钮1 </Button>
-        <Button type="primary" color="success"> 按钮2 </Button>
+        <ent-button type="primary" color="error"> 按钮1 </ent-button>
+        <ent-button type="primary" color="success"> 按钮2 </ent-button>
       </template>
-    </CardList>
-  </PageWrapper>
+    </ent-card-list>
+  </ent-page-wrapper>
 </template>
 <script lang="ts" setup>
-  import { CardList } from 'fe-ent-core/components/CardList';
-  import { Button } from 'fe-ent-core/components/Button';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
   import { demoListApi } from 'fe-ent-core/api/demo/table';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   const { notification } = useMessage();

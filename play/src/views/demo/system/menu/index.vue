@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BasicTable @register="registerTable" @fetch-success="onFetchSuccess">
+    <EntTable @register="registerTable" @fetch-success="onFetchSuccess">
       <template #toolbar>
         <a-button type="primary" @click="handleCreate"> 新增菜单 </a-button>
       </template>
@@ -22,14 +22,14 @@
           ]"
         />
       </template>
-    </BasicTable>
+    </EntTable>
     <MenuDrawer @register="registerDrawer" @success="handleSuccess" />
   </div>
 </template>
 <script lang="ts">
   import { defineComponent, nextTick } from 'vue';
 
-  import { BasicTable, useTable, TableAction } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable, TableAction } from 'fe-ent-core/components/Table';
   import { getMenuList } from 'fe-ent-core/api/demo/system';
 
   import { useDrawer } from 'fe-ent-core/components/Drawer';
@@ -39,7 +39,7 @@
 
   export default defineComponent({
     name: 'MenuManagement',
-    components: { BasicTable, MenuDrawer, TableAction },
+    components: { EntTable, MenuDrawer, TableAction },
     setup() {
       const [registerDrawer, { openDrawer }] = useDrawer();
       const [registerTable, { reload, expandAll }] = useTable({

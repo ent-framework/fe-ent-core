@@ -17,19 +17,15 @@
     </span>
   </EntDropdown>
 </template>
-<script lang="ts">
-  export default { name: 'EntAppLocalePicker' };
-</script>
 <script lang="ts" setup>
   import type { LocaleType } from '@ent-core/types/config';
   import type { DropMenu } from '@ent-core/components/Dropdown';
-  import { ref, watchEffect, unref, computed } from 'vue';
+  import { ref, watchEffect, unref, computed, defineComponent } from 'vue';
   import { EntDropdown } from '@ent-core/components/Dropdown';
   import { Icon } from '@ent-core/components/Icon';
   import { useLocale } from '@ent-core/locales/useLocale';
   import { localeList } from '@ent-core/settings/localeSetting';
-  import { buildProps } from '@ent-core/utils/props';
-  const props = buildProps({
+  const props = defineProps({
     /**
      * Whether to display text
      */
@@ -38,6 +34,11 @@
      * Whether to refresh the interface when changing
      */
     reload: { type: Boolean },
+  });
+
+  defineComponent({
+    name: 'EntAppLocalePicker',
+    components: { EntDropdown },
   });
 
   const selectedKeys = ref<string[]>([]);

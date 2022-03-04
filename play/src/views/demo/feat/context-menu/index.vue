@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="右键菜单示例">
+  <EntPageWrapper title="右键菜单示例">
     <CollapseContainer title="Simple">
       <a-button type="primary" @contextmenu="handleContext"> Right Click on me </a-button>
     </CollapseContainer>
@@ -7,17 +7,17 @@
     <CollapseContainer title="Multiple" class="mt-4">
       <a-button type="primary" @contextmenu="handleMultipleContext"> Right Click on me </a-button>
     </CollapseContainer>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { useContextMenu } from 'fe-ent-core/hooks/web/useContextMenu';
-  import { CollapseContainer } from 'fe-ent-core/components/Container';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
-    components: { CollapseContainer, PageWrapper },
+    components: { CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const [createContextMenu] = useContextMenu();
       const { createMessage } = useMessage();

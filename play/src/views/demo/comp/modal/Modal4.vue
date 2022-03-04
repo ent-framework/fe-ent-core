@@ -1,5 +1,5 @@
 <template>
-  <BasicModal
+  <EntModal
     v-bind="$attrs"
     @register="register"
     title="Modal Title"
@@ -8,11 +8,11 @@
     <div class="pt-3px pr-3px">
       <BasicForm @register="registerForm" :model="model" />
     </div>
-  </BasicModal>
+  </EntModal>
 </template>
 <script lang="ts">
   import { defineComponent, ref, nextTick } from 'vue';
-  import { BasicModal, useModalInner } from 'fe-ent-core/components/Modal';
+  import { EntModal, useModalInner } from 'fe-ent-core/components/Modal';
   import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
   const schemas: FormSchema[] = [
     {
@@ -34,7 +34,7 @@
     },
   ];
   export default defineComponent({
-    components: { BasicModal, BasicForm },
+    components: { EntModal, BasicForm },
     props: {
       userData: { type: Object },
     },

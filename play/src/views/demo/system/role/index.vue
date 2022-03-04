@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BasicTable @register="registerTable">
+    <EntTable @register="registerTable">
       <template #toolbar>
         <a-button type="primary" @click="handleCreate"> 新增角色 </a-button>
       </template>
@@ -22,14 +22,14 @@
           ]"
         />
       </template>
-    </BasicTable>
+    </EntTable>
     <RoleDrawer @register="registerDrawer" @success="handleSuccess" />
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import { BasicTable, useTable, TableAction } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable, TableAction } from 'fe-ent-core/components/Table';
   import { getRoleListByPage } from 'fe-ent-core/api/demo/system';
 
   import { useDrawer } from 'fe-ent-core/components/Drawer';
@@ -39,7 +39,7 @@
 
   export default defineComponent({
     name: 'RoleManagement',
-    components: { BasicTable, RoleDrawer, TableAction },
+    components: { EntTable, RoleDrawer, TableAction },
     setup() {
       const [registerDrawer, { openDrawer }] = useDrawer();
       const [registerTable, { reload }] = useTable({

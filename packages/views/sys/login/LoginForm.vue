@@ -85,7 +85,13 @@
   import { reactive, ref, unref, computed } from 'vue';
 
   import { Checkbox, Form, Input, Row, Col, Button, Divider } from 'ant-design-vue';
-  import {GithubFilled, WechatFilled, AlipayCircleFilled, GoogleCircleFilled, TwitterCircleFilled,} from '@ant-design/icons-vue';
+  import {
+    GithubFilled,
+    WechatFilled,
+    AlipayCircleFilled,
+    GoogleCircleFilled,
+    TwitterCircleFilled,
+  } from '@ant-design/icons-vue';
   import LoginFormTitle from './LoginFormTitle.vue';
 
   import { useI18n } from '@ent-core/hooks/web/useI18n';

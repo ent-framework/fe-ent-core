@@ -2,15 +2,15 @@
   <div :class="[prefixCls, getAlign]" @click="onCellClick">
     <template v-for="(action, index) in getActions" :key="`${index}-${action.label}`">
       <Tooltip v-if="action.tooltip" v-bind="getTooltip(action.tooltip)">
-        <PopConfirmButton v-bind="action">
+        <EntPopButton v-bind="action">
           <Icon :icon="action.icon" :class="{ 'mr-1': !!action.label }" v-if="action.icon" />
           <template v-if="action.label">{{ action.label }}</template>
-        </PopConfirmButton>
+        </EntPopButton>
       </Tooltip>
-      <PopConfirmButton v-else v-bind="action">
+      <EntPopButton v-else v-bind="action">
         <Icon :icon="action.icon" :class="{ 'mr-1': !!action.label }" v-if="action.icon" />
         <template v-if="action.label">{{ action.label }}</template>
-      </PopConfirmButton>
+      </EntPopButton>
       <Divider
         type="vertical"
         class="action-divider"
@@ -36,7 +36,7 @@
   import { Divider, Tooltip, TooltipProps } from 'ant-design-vue';
   import Icon from '@ent-core/components/Icon/index';
   import { TableActionItem, TableActionType } from '@ent-core/components/Table';
-  import { PopConfirmButton } from '@ent-core/components/Button';
+  import { EntPopButton } from '@ent-core/components/Button';
   import { EntDropdown } from '@ent-core/components/Dropdown';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
   import { useTableContext } from '../hooks/useTableContext';
@@ -47,7 +47,7 @@
 
   export default defineComponent({
     name: 'TableAction',
-    components: { Icon, PopConfirmButton, Divider, EntDropdown, MoreOutlined, Tooltip },
+    components: { Icon, EntPopButton, Divider, EntDropdown, MoreOutlined, Tooltip },
     props: {
       actions: {
         type: Array as PropType<TableActionItem[]>,

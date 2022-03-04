@@ -1,5 +1,5 @@
 <template>
-  <BasicDrawer
+  <EntDrawer
     v-bind="$attrs"
     @register="registerDrawer"
     showFooter
@@ -8,19 +8,19 @@
     @ok="handleSubmit"
   >
     <BasicForm @register="registerForm" />
-  </BasicDrawer>
+  </EntDrawer>
 </template>
 <script lang="ts">
   import { defineComponent, ref, computed, unref } from 'vue';
   import { BasicForm, useForm } from 'fe-ent-core/components/Form/index';
   import { formSchema } from './menu.data';
-  import { BasicDrawer, useDrawerInner } from 'fe-ent-core/components/Drawer';
+  import { EntDrawer, useDrawerInner } from 'fe-ent-core/components/Drawer';
 
   import { getMenuList } from 'fe-ent-core/api/demo/system';
 
   export default defineComponent({
     name: 'MenuDrawer',
-    components: { BasicDrawer, BasicForm },
+    components: { EntDrawer, BasicForm },
     emits: ['success', 'register'],
     setup(_, { emit }) {
       const isUpdate = ref(true);

@@ -1,9 +1,9 @@
 <template>
-  <PageWrapper
+  <EntPageWrapper
     title="可展开表格"
     content="不可与scroll共用。TableAction组件可配置stopButtonPropagation来阻止操作按钮的点击事件冒泡，以便配合Table组件的expandRowByClick"
   >
-    <BasicTable @register="registerTable">
+    <EntTable @register="registerTable">
       <template #expandedRowRender="{ record }">
         <span>No: {{ record.no }} </span>
       </template>
@@ -28,19 +28,19 @@
           ]"
         />
       </template>
-    </BasicTable>
-  </PageWrapper>
+    </EntTable>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTable, useTable, TableAction } from 'fe-ent-core/components/Table';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntTable, useTable, TableAction } from 'fe-ent-core/components/Table';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { getBasicColumns } from './tableData';
 
   import { demoListApi } from 'fe-ent-core/api/demo/table';
 
   export default defineComponent({
-    components: { BasicTable, TableAction, PageWrapper },
+    components: { EntTable, TableAction, EntPageWrapper },
     setup() {
       const [registerTable] = useTable({
         api: demoListApi,

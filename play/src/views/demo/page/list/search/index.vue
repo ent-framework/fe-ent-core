@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper :class="prefixCls" title="搜索列表">
+  <EntPageWrapper :class="prefixCls" title="搜索列表">
     <template #headerContent>
       <BasicForm
         :class="`${prefixCls}__header-form`"
@@ -50,7 +50,7 @@
         </template>
       </a-list>
     </div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { Tag } from 'ant-design-vue';
@@ -58,7 +58,7 @@
   import Icon from 'fe-ent-core/components/Icon/index';
   import { BasicForm } from 'fe-ent-core/components/Form/index';
   import { actions, searchList, schemas } from './data';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { List } from 'ant-design-vue';
 
   export default defineComponent({
@@ -66,7 +66,7 @@
       Icon,
       Tag,
       BasicForm,
-      PageWrapper,
+      EntPageWrapper,
       [List.name]: List,
       [List.Item.name]: List.Item,
       AListItemMeta: List.Item.Meta,

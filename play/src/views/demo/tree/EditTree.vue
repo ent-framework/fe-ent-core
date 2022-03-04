@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="Tree函数操作示例">
+  <EntPageWrapper title="Tree函数操作示例">
     <div class="flex">
       <BasicTree
         class="w-1/3"
@@ -25,17 +25,17 @@
         :beforeRightClick="getRightMenuList"
       />
     </div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
   import { BasicTree, ActionItem, ContextMenuItem } from 'fe-ent-core/components/Tree/index';
   import { treeData } from './data';
   import { PlusOutlined, DeleteOutlined } from '@ant-design/icons-vue';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
-    components: { BasicTree, PageWrapper },
+    components: { BasicTree, EntPageWrapper },
     setup() {
       function handlePlus(node: any) {
         console.log(node);

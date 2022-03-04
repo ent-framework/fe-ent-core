@@ -39,7 +39,7 @@
       </template>
 
       <template #content>
-        <ScrollContainer>
+        <EntScrollContainer>
           <CheckboxGroup v-model:value="checkedList" @change="onChange" ref="columnListRef">
             <template v-for="item in plainOptions" :key="item.value">
               <div :class="`${prefixCls}__check-item`" v-if="!('ifShow' in item && !item.ifShow)">
@@ -92,7 +92,7 @@
               </div>
             </template>
           </CheckboxGroup>
-        </ScrollContainer>
+        </EntScrollContainer>
       </template>
       <SettingOutlined />
     </Popover>
@@ -113,7 +113,7 @@
   import { Tooltip, Popover, Checkbox, Divider } from 'ant-design-vue';
   import { SettingOutlined, DragOutlined } from '@ant-design/icons-vue';
   import { Icon } from '@ent-core/components/Icon';
-  import { ScrollContainer } from '@ent-core/components/Container';
+  import { EntScrollContainer } from '@ent-core/components/Container';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
   import { useTableContext } from '../../hooks/useTableContext';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
@@ -144,7 +144,7 @@
       Checkbox,
       CheckboxGroup: Checkbox.Group,
       DragOutlined,
-      ScrollContainer,
+      EntScrollContainer,
       Divider,
       Icon,
     },

@@ -12,7 +12,6 @@
   import { useDesign } from '@ent-core/hooks/web/useDesign';
   import { contentProps } from '../props';
 
-
   export default defineComponent({
     name: 'MenuItemContent',
     components: {

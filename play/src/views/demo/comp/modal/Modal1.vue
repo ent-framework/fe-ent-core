@@ -1,5 +1,5 @@
 <template>
-  <BasicModal
+  <EntModal
     v-bind="$attrs"
     destroyOnClose
     @register="register"
@@ -18,13 +18,13 @@
         <li v-for="index in lines" :key="index">加载完成{{ index }}！</li>
       </ul>
     </template>
-  </BasicModal>
+  </EntModal>
 </template>
 <script lang="ts">
   import { defineComponent, ref, watch } from 'vue';
-  import { BasicModal, useModalInner } from 'fe-ent-core/components/Modal';
+  import { EntModal, useModalInner } from 'fe-ent-core/components/Modal';
   export default defineComponent({
-    components: { BasicModal },
+    components: { EntModal },
     setup() {
       const loading = ref(true);
       const lines = ref(10);

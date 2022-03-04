@@ -16,7 +16,7 @@
   import { defineComponent } from 'vue';
   import { Tabs } from 'ant-design-vue';
 
-  import { ScrollContainer } from 'fe-ent-core/components/Container/index';
+  import { EntScrollContainer } from 'fe-ent-core/components/Container/index';
   import { settingList } from './data';
 
   import BaseSetting from './BaseSetting.vue';
@@ -26,7 +26,7 @@
 
   export default defineComponent({
     components: {
-      ScrollContainer,
+      ScrollContainer: EntScrollContainer,
       Tabs,
       TabPane: Tabs.TabPane,
       BaseSetting,

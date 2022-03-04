@@ -3,7 +3,7 @@
     <div style="width: 100%" :style="{ textAlign: actionColOpt.style.textAlign }">
       <FormItem>
         <slot name="resetBefore"></slot>
-        <Button
+        <EntButton
           type="default"
           class="mr-2"
           v-bind="getResetBtnOptions"
@@ -11,10 +11,10 @@
           v-if="showResetButton"
         >
           {{ getResetBtnOptions.text }}
-        </Button>
+        </EntButton>
         <slot name="submitBefore"></slot>
 
-        <Button
+        <EntButton
           type="primary"
           class="mr-2"
           v-bind="getSubmitBtnOptions"
@@ -22,18 +22,18 @@
           v-if="showSubmitButton"
         >
           {{ getSubmitBtnOptions.text }}
-        </Button>
+        </EntButton>
 
         <slot name="advanceBefore"></slot>
-        <Button
+        <EntButton
           type="link"
           size="small"
           @click="toggleAdvanced"
           v-if="showAdvancedButton && !hideAdvanceBtn"
         >
           {{ isAdvanced ? t('component.form.putAway') : t('component.form.unfold') }}
-          <BasicArrow class="ml-1" :expand="!isAdvanced" up />
-        </Button>
+          <EntArrow class="ml-1" :expand="!isAdvanced" up />
+        </EntButton>
         <slot name="advanceAfter"></slot>
       </FormItem>
     </div>
@@ -44,8 +44,8 @@
   //import type { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
   import { defineComponent, computed, PropType } from 'vue';
   import { Form, Col } from 'ant-design-vue';
-  import { Button, ButtonProps } from '@ent-core/components/Button';
-  import { BasicArrow } from '@ent-core/components/Basic';
+  import { EntButton, ButtonProps } from '@ent-core/components/Button';
+  import { EntArrow } from '@ent-core/components/Basic';
   import { useFormContext } from '../hooks/useFormContext';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
   import { propTypes } from '@ent-core/utils/propTypes';
@@ -56,8 +56,8 @@
     name: 'BasicFormAction',
     components: {
       FormItem: Form.Item,
-      Button,
-      BasicArrow,
+      EntButton,
+      EntArrow,
       [Col.name]: Col,
     },
     props: {

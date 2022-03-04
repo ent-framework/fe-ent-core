@@ -9,7 +9,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import esbuild from 'rollup-plugin-esbuild';
 import filesize from 'rollup-plugin-filesize';
 import glob from 'fast-glob';
-import { epRoot, pkgRoot, projRoot } from "./utils";
+import { epRoot, pkgRoot, projRoot } from './utils';
 import { ElementPlusAlias } from './plugins/element-plus-alias';
 import { generateExternal, writeBundles } from './utils/rollup';
 import { excludeFiles } from './utils';

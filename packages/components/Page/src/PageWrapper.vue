@@ -46,7 +46,7 @@
   import { PageWrapperFixedHeightKey } from '../constant';
 
   export default defineComponent({
-    name: 'PageWrapper',
+    name: 'EntPageWrapper',
     components: { PageFooter, PageHeader },
     inheritAttrs: false,
     props: {

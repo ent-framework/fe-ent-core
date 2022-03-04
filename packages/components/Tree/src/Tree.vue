@@ -15,7 +15,7 @@
   import { Tree, Empty } from 'ant-design-vue';
   import { TreeIcon } from './TreeIcon';
   import TreeHeader from './TreeHeader.vue';
-  import { ScrollContainer } from '@ent-core/components/Container';
+  import { EntScrollContainer } from '@ent-core/components/Container';
 
   import { omit, get, difference } from 'lodash';
   import { isArray, isBoolean, isEmpty, isFunction } from '@ent-core/utils/is';
@@ -41,6 +41,7 @@
     name: 'EntTree',
     inheritAttrs: false,
     props: basicProps,
+    components: { EntScrollContainer },
     emits: [
       'update:expandedKeys',
       'update:selectedKeys',
@@ -463,7 +464,7 @@
                 {extendSlots(slots)}
               </TreeHeader>
             )}
-            <ScrollContainer style={scrollStyle} v-show={!unref(getNotFound)}>
+            <EntScrollContainer style={scrollStyle} v-show={!unref(getNotFound)}>
               <Tree {...unref(getBindValues)} showIcon={false}>
                 {{
                   // switcherIcon: () => <DownOutlined />,
@@ -471,7 +472,7 @@
                   ...extendSlots(slots),
                 }}
               </Tree>
-            </ScrollContainer>
+            </EntScrollContainer>
 
             <Empty v-show={unref(getNotFound)} image={Empty.PRESENTED_IMAGE_SIMPLE} class="!mt-4" />
           </div>

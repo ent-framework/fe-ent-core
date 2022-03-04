@@ -6,7 +6,7 @@
   import { defineComponent, computed, ref, unref } from 'vue';
   import { get } from 'lodash';
   import { Descriptions } from 'ant-design-vue';
-  import { CollapseContainer } from '@ent-core/components/Container';
+  import { EntCollapseContainer } from '@ent-core/components/Container';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
   import { isFunction } from '@ent-core/utils/is';
   import { getSlot } from '@ent-core/utils/helper/tsxHelper';
@@ -161,12 +161,12 @@
         const { title } = unref(getMergeProps);
 
         return (
-          <CollapseContainer title={title} canExpan={canExpand} helpMessage={helpMessage}>
+          <EntCollapseContainer title={title} canExpan={canExpand} helpMessage={helpMessage}>
             {{
               default: () => content,
               action: () => getSlot(slots, 'action'),
             }}
-          </CollapseContainer>
+          </EntCollapseContainer>
         );
       };
 

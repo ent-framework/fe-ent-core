@@ -1,22 +1,22 @@
 <template>
-  <PageWrapper title="MarkDown组件嵌入Form示例">
-    <CollapseContainer title="MarkDown表单">
+  <ent-page-wrapper title="MarkDown组件嵌入Form示例">
+    <ent-collapse-container title="MarkDown表单">
       <BasicForm
         :labelWidth="100"
         :schemas="schemas"
         :actionColOptions="{ span: 24 }"
         @submit="handleSubmit"
       />
-    </CollapseContainer>
-  </PageWrapper>
+    </ent-collapse-container>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
   import { BasicForm, FormSchema } from 'fe-ent-core/components/Form/index';
-  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
-  import { MarkDown } from 'fe-ent-core/components/Markdown';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntMarkDown } from 'fe-ent-core/components/Markdown';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   const schemas: FormSchema[] = [
     {
@@ -33,7 +33,7 @@
       defaultValue: 'defaultValue',
       rules: [{ required: true, trigger: 'blur' }],
       render: ({ model, field }) => {
-        return h(MarkDown, {
+        return h(EntMarkDown, {
           value: model[field],
           onChange: (value: string) => {
             model[field] = value;
@@ -43,7 +43,7 @@
     },
   ];
   export default defineComponent({
-    components: { BasicForm, CollapseContainer, PageWrapper },
+    components: { BasicForm, EntCollapseContainer, EntPageWrapper },
     setup() {
       const { createMessage } = useMessage();
 

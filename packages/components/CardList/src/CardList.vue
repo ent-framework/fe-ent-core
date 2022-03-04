@@ -22,11 +22,11 @@
                   v-model:value="grid"
                   @change="sliderChange"
               /></template>
-              <Button><TableOutlined /></Button>
+              <EntButton><TableOutlined /></EntButton>
             </Tooltip>
             <Tooltip @click="fetch">
               <template #title>刷新</template>
-              <Button><RedoOutlined /></Button>
+              <EntButton><RedoOutlined /></EntButton>
             </Tooltip>
           </div>
         </template>
@@ -89,7 +89,7 @@
   import { EntDropdown } from '@ent-core/components/Dropdown';
   import { BasicForm, useForm } from '@ent-core/components/Form';
   import { propTypes } from '@ent-core/utils/propTypes';
-  import { Button } from '@ent-core/components/Button';
+  import { EntButton } from '@ent-core/components/Button';
   import { isFunction } from '@ent-core/utils/is';
   import { useSlider, grid } from './data';
   const ListItem = List.Item;
@@ -114,6 +114,7 @@
       RedoOutlined,
       TableOutlined,
       EntDropdown,
+      EntButton,
     },
   });
   //数据

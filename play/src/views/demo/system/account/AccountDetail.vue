@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper
+  <EntPageWrapper
     :title="`用户` + userId + `的资料`"
     content="这是用户资料详情页面。本页面仅用于演示相同路由在tab中打开多个页面并且显示不同的数据"
     contentBackground
@@ -23,19 +23,19 @@
         <div v-for="i in 10" :key="i">这是用户{{ userId }}操作日志Tab</div>
       </template>
     </div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 
 <script>
   import { defineComponent, ref } from 'vue';
   import { useRoute } from 'vue-router';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { useGo } from 'fe-ent-core/hooks/web/usePage';
   import { useTabs } from 'fe-ent-core/hooks/web/useTabs';
   import { Tabs } from 'ant-design-vue';
   export default defineComponent({
     name: 'AccountDetail',
-    components: { PageWrapper, ATabs: Tabs, ATabPane: Tabs.TabPane },
+    components: { EntPageWrapper, ATabs: Tabs, ATabPane: Tabs.TabPane },
     setup() {
       const route = useRoute();
       const go = useGo();

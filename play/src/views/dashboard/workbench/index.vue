@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper>
+  <EntPageWrapper>
     <template #headerContent> <WorkbenchHeader /> </template>
     <div class="lg:flex">
       <div class="lg:w-7/10 w-full !mr-4 enter-y">
@@ -16,12 +16,12 @@
         <SaleRadar :loading="loading" class="enter-y" />
       </div>
     </div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
   import { Card } from 'ant-design-vue';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import WorkbenchHeader from './components/WorkbenchHeader.vue';
   import ProjectCard from './components/ProjectCard.vue';
   import QuickNav from './components/QuickNav.vue';

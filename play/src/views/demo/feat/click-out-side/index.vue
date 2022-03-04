@@ -1,19 +1,19 @@
 <template>
-  <PageWrapper title="点内外部触发事件">
-    <ClickOutSide @clickOutside="handleClickOutside" class="flex justify-center">
+  <EntPageWrapper title="点内外部触发事件">
+    <EntClickOutSide @clickOutside="handleClickOutside" class="flex justify-center">
       <div @click="innerClick" class="demo-box">
         {{ text }}
       </div>
-    </ClickOutSide>
-  </PageWrapper>
+    </EntClickOutSide>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { ClickOutSide } from 'fe-ent-core/components/ClickOutSide';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntClickOutSide } from 'fe-ent-core/components/ClickOutSide';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
-    components: { ClickOutSide, PageWrapper },
+    components: { EntClickOutSide, EntPageWrapper },
     setup() {
       const text = ref('Click');
       function handleClickOutside() {

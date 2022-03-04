@@ -1,16 +1,16 @@
 <template>
   <div class="p-4">
-    <BasicTable @register="registerTable" @edit-change="onEditChange">
+    <EntTable @register="registerTable" @edit-change="onEditChange">
       <template #action="{ record, column }">
         <TableAction :actions="createActions(record, column)" />
       </template>
-    </BasicTable>
+    </EntTable>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import {
-    BasicTable,
+    EntTable,
     useTable,
     TableAction,
     BasicColumn,
@@ -162,7 +162,7 @@
     },
   ];
   export default defineComponent({
-    components: { BasicTable, TableAction },
+    components: { EntTable, TableAction },
     setup() {
       const { createMessage: msg } = useMessage();
       const currentEditKeyRef = ref('');

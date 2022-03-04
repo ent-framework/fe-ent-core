@@ -25,7 +25,7 @@
 
         <template #content>
           <div v-if="getPaginationList.length">
-            <ScrollContainer class="border border-solid border-t-0">
+            <EntScrollContainer class="border border-solid border-t-0">
               <ul class="flex flex-wrap px-2">
                 <li
                   v-for="icon in getPaginationList"
@@ -40,7 +40,7 @@
                   <Icon :icon="icon" v-else />
                 </li>
               </ul>
-            </ScrollContainer>
+            </EntScrollContainer>
             <div class="flex py-2 items-center justify-center" v-if="getTotal >= pageSize">
               <a-pagination
                 showLessItems
@@ -65,9 +65,9 @@
   </a-input>
 </template>
 <script lang="ts" setup>
-  import { ref, watchEffect, watch, unref } from 'vue';
+  import { ref, watchEffect, watch, unref, defineComponent } from 'vue';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
-  import { ScrollContainer } from '@ent-core/components/Container';
+  import { EntScrollContainer } from '@ent-core/components/Container';
   import { Input, Popover, Pagination, Empty } from 'ant-design-vue';
   import Icon from './Icon.vue';
   import SvgIcon from './SvgIcon.vue';
@@ -124,6 +124,11 @@
     pageSize: propTypes.number.def(140),
     copy: propTypes.bool.def(false),
     mode: propTypes.oneOf<('svg' | 'iconify')[]>(['svg', 'iconify']).def('iconify'),
+  });
+
+  defineComponent({
+    name: 'EntIconPicker',
+    components: { EntScrollContainer },
   });
 
   const emit = defineEmits(['change', 'update:value']);

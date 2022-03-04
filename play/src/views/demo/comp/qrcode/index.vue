@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="二维码组件使用示例">
+  <EntPageWrapper title="二维码组件使用示例">
     <div class="flex flex-wrap">
       <CollapseContainer
         title="基础示例"
@@ -72,18 +72,18 @@
         <div class="msg">要进行扩展绘制则不能将tag设为img</div>
       </CollapseContainer>
     </div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
   import { QrCode, QrCodeActionType } from 'fe-ent-core/components/Qrcode/index';
   import LogoImg from 'fe-ent-core/assets/images/logo.png';
-  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   const qrCodeUrl = 'https://www.vvbin.cn';
   export default defineComponent({
-    components: { CollapseContainer, QrCode, PageWrapper },
+    components: { CollapseContainer: EntCollapseContainer, QrCode, EntPageWrapper },
     setup() {
       const qrRef = ref<Nullable<QrCodeActionType>>(null);
       const qrDiyRef = ref<Nullable<QrCodeActionType>>(null);

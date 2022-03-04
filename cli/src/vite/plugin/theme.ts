@@ -36,6 +36,7 @@ export function configThemePlugin(runMode: string, preview: boolean): Plugin[] {
   } else {
     preLoadFile = path.resolve(process.cwd(), 'theme/index.less');
   }
+  console.log(`Theme preload file: ${preLoadFile}`);
 
   const plugin = [
     viteThemePlugin({
@@ -68,8 +69,11 @@ export function configThemePlugin(runMode: string, preview: boolean): Plugin[] {
         //path.resolve(process.cwd(), 'node_modules/ant-design-vue/dist/antd.dark.less'),
         preLoadFile,
       ],
-      filter: (id) =>
-        runMode == 'package' || runMode == 'serve' || preview ? !id.endsWith('antd.less') : true,
+      filter: (id) => {
+        console.log(`${id} id: ${runMode == 'package' ? !id.endsWith('antd.less') : true}`);
+        return runMode == 'package' ? !id.endsWith('antd.less') : true;
+      },
+
       //extractCss: true,
       darkModifyVars: {
         ...generateModifyVars(true, runMode, preview),

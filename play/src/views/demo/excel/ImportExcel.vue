@@ -1,26 +1,26 @@
 <template>
-  <PageWrapper title="excel数据导入示例">
+  <EntPageWrapper title="excel数据导入示例">
     <ImpExcel @success="loadDataSuccess" dateFormat="YYYY-MM-DD">
       <a-button class="m-3"> 导入Excel </a-button>
     </ImpExcel>
-    <BasicTable
+    <EntTable
       v-for="(table, index) in tableListRef"
       :key="index"
       :title="table.title"
       :columns="table.columns"
       :dataSource="table.dataSource"
     />
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
 
   import { ImpExcel, ExcelData } from 'fe-ent-core/components/Excel';
-  import { BasicTable, BasicColumn } from 'fe-ent-core/components/Table';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntTable, BasicColumn } from 'fe-ent-core/components/Table';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
-    components: { BasicTable, ImpExcel, PageWrapper },
+    components: { EntTable, ImpExcel, EntPageWrapper },
 
     setup() {
       const tableListRef = ref<

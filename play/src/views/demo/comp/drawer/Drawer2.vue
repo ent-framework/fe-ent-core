@@ -1,14 +1,14 @@
 <template>
-  <BasicDrawer v-bind="$attrs" @register="register" title="Drawer Title" width="50%">
+  <EntDrawer v-bind="$attrs" @register="register" title="Drawer Title" width="50%">
     Drawer Info.
     <a-button type="primary" @click="closeDrawer"> 内部关闭drawer </a-button>
-  </BasicDrawer>
+  </EntDrawer>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicDrawer, useDrawerInner } from 'fe-ent-core/components/Drawer';
+  import { EntDrawer, useDrawerInner } from 'fe-ent-core/components/Drawer';
   export default defineComponent({
-    components: { BasicDrawer },
+    components: { EntDrawer },
     setup() {
       const [register, { closeDrawer }] = useDrawerInner();
       return { register, closeDrawer };

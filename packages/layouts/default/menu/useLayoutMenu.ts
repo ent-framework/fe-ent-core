@@ -5,7 +5,12 @@ import { useRouter } from 'vue-router';
 import { MenuSplitTyeEnum } from '@ent-core/enums/menuEnum';
 import { useThrottleFn } from '@vueuse/core';
 import { useMenuSetting } from '@ent-core/hooks/setting/useMenuSetting';
-import { getChildrenMenus, getCurrentParentPath, getMenus, getShallowMenus } from '@ent-core/router/menus';
+import {
+  getChildrenMenus,
+  getCurrentParentPath,
+  getMenus,
+  getShallowMenus,
+} from '@ent-core/router/menus';
 import { usePermissionStore } from '@ent-core/store/modules/permission';
 import { useAppInject } from '@ent-core/hooks/web/useAppInject';
 

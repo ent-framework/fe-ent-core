@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="代码编辑器组件示例" contentFullHeight fixedHeight contentBackground>
+  <EntPageWrapper title="代码编辑器组件示例" contentFullHeight fixedHeight contentBackground>
     <template #extra>
       <a-space size="middle">
         <a-button @click="showData" type="primary">获取数据</a-button>
@@ -11,12 +11,12 @@
       </a-space>
     </template>
     <CodeEditor v-model:value="value" :mode="modeValue" />
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref, h } from 'vue';
   import { CodeEditor, JsonPreview, MODE } from 'fe-ent-core/components/CodeEditor';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { Radio, Space, Modal } from 'ant-design-vue';
 
   const jsonData =
@@ -56,7 +56,7 @@
   export default defineComponent({
     components: {
       CodeEditor,
-      PageWrapper,
+      EntPageWrapper,
       RadioButton: Radio.Button,
       RadioGroup: Radio.Group,
       ASpace: Space,

@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <BasicTable
+    <EntTable
       @register="registerTable"
       @edit-end="handleEditEnd"
       @edit-cancel="handleEditCancel"
@@ -10,7 +10,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTable, useTable, BasicColumn } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable, BasicColumn } from 'fe-ent-core/components/Table';
   import { optionsListApi } from 'fe-ent-core/api/demo/select';
 
   import { demoListApi } from 'fe-ent-core/api/demo/table';
@@ -149,7 +149,7 @@
     },
   ];
   export default defineComponent({
-    components: { BasicTable },
+    components: { EntTable },
     setup() {
       const [registerTable] = useTable({
         title: '可编辑单元格示例',

@@ -32,7 +32,7 @@ export default defineComponent({
     return (
       <label
         class={[`vjs-check-controller`, model ? 'is-checked' : '']}
-        onClick={e => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
       >
         <span class={`vjs-check-controller__inner is-${uiType}`} />
         <input

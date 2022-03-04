@@ -1,25 +1,31 @@
 <template>
-  <PageWrapper title="表单增删示例">
+  <EntPageWrapper title="表单增删示例">
     <CollapseContainer title="表单增删">
       <BasicForm @register="register" @submit="handleSubmit">
         <template #add="{ field }">
-          <Button v-if="Number(field) === 0" @click="add">+</Button>
-          <Button v-if="field > 0" @click="del(field)">-</Button>
+          <EntButton v-if="Number(field) === 0" @click="add">+</EntButton>
+          <EntButton v-if="field > 0" @click="del(field)">-</EntButton>
         </template>
       </BasicForm>
     </CollapseContainer>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { BasicForm, useForm } from 'fe-ent-core/components/Form/index';
-  import { CollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import { Input } from 'ant-design-vue';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
-  import { Button } from 'fe-ent-core/components/Button';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntButton } from 'fe-ent-core/components/Button';
 
   export default defineComponent({
-    components: { BasicForm, CollapseContainer, PageWrapper, [Input.name]: Input, Button },
+    components: {
+      BasicForm,
+      CollapseContainer: EntCollapseContainer,
+      EntPageWrapper,
+      [Input.name]: Input,
+      EntButton,
+    },
     setup() {
       const [register, { appendSchemaByField, removeSchemaByFiled, validate }] = useForm({
         schemas: [

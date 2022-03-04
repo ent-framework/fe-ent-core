@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="可折叠表单示例">
+  <EntPageWrapper title="可折叠表单示例">
     <CollapseContainer title="基础收缩示例">
       <BasicForm @register="register" />
     </CollapseContainer>
@@ -7,13 +7,13 @@
     <CollapseContainer title="超过3行自动收起，折叠时保留2行" class="mt-4">
       <BasicForm @register="register1" />
     </CollapseContainer>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
-  import { CollapseContainer } from 'fe-ent-core/components/Container';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntCollapseContainer } from 'fe-ent-core/components/Container';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   const getSchamas = (): FormSchema[] => {
     return [
@@ -149,7 +149,7 @@
     ];
   }
   export default defineComponent({
-    components: { BasicForm, CollapseContainer, PageWrapper },
+    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const [register] = useForm({
         labelWidth: 120,

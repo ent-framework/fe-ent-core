@@ -1,20 +1,20 @@
 <template>
-  <PageWrapper title="旋转校验示例">
+  <EntPageWrapper title="旋转校验示例">
     <div class="flex justify-center p-4 items-center bg-gray-700">
-      <RotateDragVerify :src="img" ref="el" @success="handleSuccess" />
+      <EntRotateDragVerify :src="img" ref="el" @success="handleSuccess" />
     </div>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { RotateDragVerify } from "fe-ent-core/components/Verify";
+  import { EntRotateDragVerify } from 'fe-ent-core/components/Verify';
 
   import img from 'fe-ent-core/assets/images/header.jpg';
 
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
-    components: { RotateDragVerify, PageWrapper },
+    components: { EntRotateDragVerify, EntPageWrapper },
     setup() {
       const handleSuccess = () => {
         console.log('success!');

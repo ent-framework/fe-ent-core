@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="抽屉组件使用示例">
+  <ent-page-wrapper title="抽屉组件使用示例">
     <Alert message="使用 useDrawer 进行抽屉操作" show-icon />
     <a-button type="primary" class="my-4" @click="openDrawerLoading"> 打开Drawer </a-button>
 
@@ -17,7 +17,7 @@
     <Drawer3 @register="register3" />
     <Drawer4 @register="register4" />
     <Drawer5 @register="register5" />
-  </PageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
@@ -28,10 +28,10 @@
   import Drawer3 from './Drawer3.vue';
   import Drawer4 from './Drawer4.vue';
   import Drawer5 from './Drawer5.vue';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
   export default defineComponent({
-    components: { Alert, PageWrapper, Drawer1, Drawer2, Drawer3, Drawer4, Drawer5 },
+    components: { Alert, EntPageWrapper, Drawer1, Drawer2, Drawer3, Drawer4, Drawer5 },
     setup() {
       const [register1, { openDrawer: openDrawer1, setDrawerProps }] = useDrawer();
       const [register2, { openDrawer: openDrawer2 }] = useDrawer();

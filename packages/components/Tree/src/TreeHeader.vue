@@ -1,9 +1,9 @@
 <template>
   <div class="flex px-2 py-1.5 items-center basic-tree-header">
     <slot name="headerTitle" v-if="$slots.headerTitle"></slot>
-    <BasicTitle :helpMessage="helpMessage" v-if="!$slots.headerTitle && title">
+    <EntTitle :helpMessage="helpMessage" v-if="!$slots.headerTitle && title">
       {{ title }}
-    </BasicTitle>
+    </EntTitle>
 
     <div
       class="flex flex-1 justify-self-stretch items-center cursor-pointer"
@@ -39,7 +39,7 @@
 
   import { Dropdown, Menu, Input } from 'ant-design-vue';
   import { Icon } from '@ent-core/components/Icon';
-  import { BasicTitle } from '@ent-core/components/Basic';
+  import { EntTitle } from '@ent-core/components/Basic';
 
   import { propTypes } from '@ent-core/utils/propTypes';
 
@@ -61,7 +61,7 @@
   export default defineComponent({
     name: 'BasicTreeHeader',
     components: {
-      BasicTitle,
+      EntTitle,
       Icon,
       Dropdown,
       Menu,

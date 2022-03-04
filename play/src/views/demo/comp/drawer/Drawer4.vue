@@ -1,13 +1,13 @@
 <template>
-  <BasicDrawer v-bind="$attrs" @register="register" title="Drawer Title" width="50%">
+  <EntDrawer v-bind="$attrs" @register="register" title="Drawer Title" width="50%">
     <div>
       <BasicForm @register="registerForm" />
     </div>
-  </BasicDrawer>
+  </EntDrawer>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicDrawer, useDrawerInner } from 'fe-ent-core/components/Drawer';
+  import { EntDrawer, useDrawerInner } from 'fe-ent-core/components/Drawer';
 
   import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
   const schemas: FormSchema[] = [
@@ -30,7 +30,7 @@
     },
   ];
   export default defineComponent({
-    components: { BasicDrawer, BasicForm },
+    components: { EntDrawer, BasicForm },
     setup() {
       const [registerForm, { setFieldsValue }] = useForm({
         labelWidth: 120,

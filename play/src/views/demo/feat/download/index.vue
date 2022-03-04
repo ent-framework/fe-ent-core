@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="文件下载示例">
+  <EntPageWrapper title="文件下载示例">
     <a-alert message="根据后台接口文件流下载" />
     <a-button type="primary" class="my-4" @click="handleDownByData"> 文件流下载 </a-button>
 
@@ -13,7 +13,7 @@
     <a-button type="primary" class="my-4" @click="handleDownloadByOnlineUrl">
       图片Url下载
     </a-button>
-  </PageWrapper>
+  </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
@@ -24,11 +24,11 @@
     downloadByOnlineUrl,
   } from 'fe-ent-core/utils/file/download';
   import imgBase64 from './imgBase64';
-  import { PageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { Alert } from 'ant-design-vue';
 
   export default defineComponent({
-    components: { PageWrapper, [Alert.name]: Alert },
+    components: { EntPageWrapper, [Alert.name]: Alert },
     setup() {
       function handleDownByData() {
         downloadByData('text content', 'testName.txt');
