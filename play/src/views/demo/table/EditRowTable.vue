@@ -21,7 +21,7 @@
 
   import { demoListApi } from 'fe-ent-core/api/demo/table';
   import { treeOptionsListApi } from 'fe-ent-core/api/demo/tree';
-  import { cloneDeep } from 'lodash-es';
+  import { cloneDeep } from 'lodash';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
 
   const columns: BasicColumn[] = [

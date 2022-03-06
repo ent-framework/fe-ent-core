@@ -4,12 +4,11 @@ import { useI18n } from '@ent-core/hooks/web/useI18n';
 import { dateUtil } from '@ent-core/utils/dateUtil';
 import { isNumber, isObject } from '@ent-core/utils/is';
 
-const { t } = useI18n();
-
 /**
  * @description: 生成placeholder
  */
 export function createPlaceholderMessage(component: ComponentType) {
+  const { t } = useI18n();
   if (component.includes('Input') || component.includes('Complete')) {
     return t('common.inputText');
   }

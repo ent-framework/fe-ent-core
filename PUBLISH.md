@@ -25,11 +25,11 @@ npm-deploy deploy@20120
 
 在项目根目录执行，使脚本能执行（第一次）
 ``` 
- chmod u+x scripts/publish.sh
+ chmod u+x build/publish.sh
 ```
 确认TAG_VERSION，比如1.0.3，构建并更新版本，并推送
 ``` 
- pnpm build:libs && TAG_VERSION=1.0.3 pnpm update:version && sh scripts/publish.sh
+ pnpm build && TAG_VERSION=1.0.1 pnpm update:version && sh build/publish.sh
 ```
 
 在其他项目使用，在项目根目录新增.npmrc文件，并在文件添加

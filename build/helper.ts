@@ -1,7 +1,7 @@
 import path from 'path';
 import helper from 'components-helper';
-import { epPackage, epOutput, projRoot } from './utils/paths';
-import { getPackageManifest } from './utils/pkg';
+import { epPackage, epOutput, projRoot } from './utils';
+import { getPackageManifest } from './utils';
 import type { TaskFunction } from 'gulp';
 import type { InstallOptions } from 'components-helper/lib/type';
 
@@ -27,6 +27,7 @@ const reWebTypesSource: InstallOptions['reWebTypesSource'] = (title) => {
 };
 
 const reAttribute: InstallOptions['reAttribute'] = (value, key) => {
+  console.log(value);
   const _value = value.match(/^\*\*(.*)\*\*$/);
   const str = _value ? _value[1] : value;
 

@@ -66,7 +66,7 @@
   import { useDebounceFn } from '@vueuse/core';
   import { treeOptionsListApi } from 'fe-ent-core/api/demo/tree';
   import { Select } from 'ant-design-vue';
-  import { cloneDeep } from 'lodash-es';
+  import { cloneDeep } from 'lodash';
 
   const valueSelectA = ref<string[]>([]);
   const valueSelectB = ref<string[]>([]);

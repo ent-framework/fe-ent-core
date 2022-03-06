@@ -6,19 +6,6 @@
     "email": "baojian.qian@accenture.com",
     "url": "https://github.com/anncwb"
   },
-  "exports": {
-    ".": {
-      "require": "./lib/index.js",
-      "import": "./es/index.mjs"
-    },
-    "./es": "./es/index.mjs",
-    "./lib": "./lib/index.js",
-    "./es/*.mjs": "./es/*.mjs",
-    "./es/*": "./es/*.mjs",
-    "./lib/*.js": "./lib/*.js",
-    "./lib/*": "./lib/*.js",
-    "./*": "./*"
-  },
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "style": "dist/index.css",

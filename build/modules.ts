@@ -94,7 +94,6 @@ export const buildModules = async () => {
           __INTLIFY_PROD_DEVTOOLS__: false,
           __APP_INFO__: JSON.stringify(__APP_INFO__),
         },
-        //tsconfig: TSCONFIG_PATH,
       }),
       filesize({ reporter }),
     ],

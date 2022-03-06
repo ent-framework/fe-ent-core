@@ -1,42 +1,81 @@
 import path from 'path';
 import chalk from 'chalk';
 import { src, dest, series, parallel } from 'gulp';
-import less from 'gulp-less';
-import dartSass from 'less';
-import autoprefixer from 'gulp-autoprefixer';
-import cleanCSS from 'gulp-clean-css';
-import rename from 'gulp-rename';
-import through from 'through2';
+import less from 'less';
+import type { StaticOptions } from 'less';
+import autoprefixer from 'autoprefixer';
+//import NpmImportPlugin from 'less-plugin-npm-import';
+import through2 from 'through2';
+import postcss from 'postcss';
 import { epOutput, themeRoot, pkgRoot } from './utils';
+import { readFileSync } from 'fs';
 
-const distFolder = path.resolve(__dirname, 'dist');
-const distBundle = path.resolve(epOutput, 'theme-chalk');
+const getPreloadContent = function () {
+  const antdFile = path.resolve(process.cwd(), 'node_modules/ant-design-vue/dist/antd.less');
+  let preLoadContent = readFileSync(`${antdFile}`, 'utf-8');
+  preLoadContent += readFileSync(`${themeRoot}/config.less`, 'utf-8');
+
+  return preLoadContent;
+};
+
+export const buildTheme = parallel(copyThemeSource, copyThemeExceptSource);
 
 /**
  * compile theme-chalk scss & minify
  * not use sass.sync().on('error', sass.logError) to throw exception
  * @returns
  */
-export const buildTheme = function () {
-  return src(`${themeRoot}/app.less`)
-    .pipe(less())
-    .pipe(AssetsRelativePath())
-    .pipe(dest(`${epOutput}/theme`));
+export const compileLess = function (lessFile, config = {}) {
+  const { cwd = process.cwd(), preLoad } = config;
+  const resolvedLessFile = path.resolve(cwd, lessFile);
+  let data = readFileSync(resolvedLessFile, 'utf-8');
+  data = data.replace(/^\uFEFF/, '');
+  // Do less compile
+  const lessOpts: StaticOptions = {
+    paths: [path.resolve(process.cwd(), 'node_modules/ant-design-vue/dist/antd.less'), pkgRoot],
+    filename: resolvedLessFile,
+    //plugins: [new NpmImportPlugin({ prefix: '~' })],
+    javascriptEnabled: true,
+  };
+  return less
+    .render(preLoad + '\n' + data, lessOpts)
+    .then((result) => postcss([autoprefixer]).process(result.css, { from: undefined }))
+    .then((r) => {
+      return r.css;
+    });
 };
 
-/**
- * copy from packages/theme-chalk/dist to dist/element-plus/theme-chalk
- */
-export function copyThemeChalkBundle() {
-  return src(`${distFolder}/**`).pipe(dest(distBundle));
+export function copyThemeSource() {
+  return src(`${pkgRoot}/theme/**/*.less`)
+    .pipe(
+      // 修改文件的别名
+      through2.obj(function (file, encoding, next) {
+        if (file.path.match(/\/app\.less$/)) {
+          const content = file.contents.toString();
+          file.contents = Buffer.from(content.replaceAll('@ent-core', '../es'));
+        } else {
+          const content = file.contents.toString();
+          file.contents = Buffer.from(content.replaceAll('@ent-core', 'fe-ent-core'));
+        }
+        this.push(file);
+        next();
+      }),
+    )
+    .pipe(dest(`${epOutput}/theme`));
 }
 
-/**
- * copy source file to packages
- */
-
-export function copyThemeChalkSource() {
-  return src(path.resolve(__dirname, 'src/**')).pipe(dest(path.resolve(distBundle, 'src')));
+export function copyThemeExceptSource() {
+  return src(`${pkgRoot}/{components,directives,layouts,views}/**/*.{less,css}`)
+    .pipe(
+      // 修改文件的别名
+      through2.obj(function (file, encoding, next) {
+        const content = file.contents.toString();
+        file.contents = Buffer.from(content.replaceAll('@ent-core', 'fe-ent-core'));
+        this.push(file);
+        next();
+      }),
+    )
+    .pipe(dest(`${epOutput}/es`));
 }
 
 function modifyStreamContent(modify) {

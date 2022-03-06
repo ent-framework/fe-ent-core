@@ -1,4 +1,3 @@
-//windi import要放在theme 后面
 import 'virtual:windi-base.css';
 import 'virtual:windi-components.css';
 import 'virtual:windi-utilities.css';

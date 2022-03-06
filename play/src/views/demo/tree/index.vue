@@ -49,7 +49,7 @@
   import { treeData } from './data';
   import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { Card, Row, Col, Spin } from 'ant-design-vue';
-  import { cloneDeep } from 'lodash-es';
+  import { cloneDeep } from 'lodash';
 
   export default defineComponent({
     components: { BasicTree, EntPageWrapper, Card, Row, Col, Spin },

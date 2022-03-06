@@ -24,8 +24,8 @@
     "skipLibCheck": true,
     "paths": {
       "/@/*": ["src/*"],
+      "fe-ent-core/lib/*": ["../packages/*"],
       "fe-ent-core/*": ["../packages/*"],
-      "@ent-core/*": ["../packages/*"]
     }
   },
   "include": [

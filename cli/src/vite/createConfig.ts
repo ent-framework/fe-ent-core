@@ -111,6 +111,14 @@ export function createViteConfig(
       exclude: ['vue-demi'],
     },
   };
+  if (!preview) {
+    config = {
+      ...config,
+      esbuild: {
+        include: /\.(tsx?|jsx?)$/,
+      },
+    };
+  }
   if (runMode === 'serve') {
     config = {
       ...config,

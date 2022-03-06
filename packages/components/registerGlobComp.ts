@@ -14,5 +14,5 @@ export function registerGlobComp(app: App) {
     app.component(comp.name || comp.displayName, comp);
   });
 
-  app.use(Input).use(EntButton).use(Layout);
+  app.use(Input).use(EntButton).use(Layout).use(AntButton);
 }

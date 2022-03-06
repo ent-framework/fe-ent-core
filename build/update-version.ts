@@ -1,7 +1,7 @@
 import fs from 'fs';
-import { epPackage, epOutputPackage, buildPackage, epOutput } from "./utils/paths";
-import { cyan, red, yellow, green } from './utils/log';
-import { getPackageManifest } from './utils/pkg';
+import { epPackage, epOutput } from './utils';
+import { cyan, red, yellow, green } from './utils';
+import { getPackageManifest } from './utils';
 
 const tagVersion = process.env.TAG_VERSION;
 if (!tagVersion) {
@@ -23,32 +23,16 @@ cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n'));
 
   if (!(process.argv.includes('-d') || process.argv.includes('--dry-run'))) {
     try {
-      await fs.promises.writeFile(epOutputPackage, JSON.stringify(json, null, 2), {
+      await fs.promises.writeFile(epOutput + '/package.json', JSON.stringify(json, null, 2), {
         encoding: 'utf-8',
       });
     } catch (e) {
+      console.error(e);
       process.exit(1);
     }
   } else {
     console.log(json);
   }
 
-  const jsonBuild: Record<string, any> = getPackageManifest(buildPackage);
-
-  jsonBuild.version = tagVersion;
-
-  if (!(process.argv.includes('-d') || process.argv.includes('--dry-run'))) {
-    try {
-      await fs.promises.writeFile(epOutput, JSON.stringify(jsonBuild, null, 2), {
-        encoding: 'utf-8',
-      });
-    } catch (e) {
-      process.exit(1);
-    }
-  } else {
-    console.log(jsonBuild);
-  }
-
   green(`Version updated to ${tagVersion}`);
-
 })();

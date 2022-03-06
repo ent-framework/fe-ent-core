@@ -6,7 +6,7 @@ import glob from 'fast-glob';
 import { bold } from 'chalk';
 
 import { errorAndExit, green, yellow, error } from './utils/log';
-import { buildOutput, epRoot, pkgRoot, projRoot } from './utils/paths';
+import { buildOutput, epRoot, pkgRoot, projRoot } from './utils';
 
 import { excludeFiles, pathRewriter } from './utils/pkg';
 import type { SourceFile } from 'ts-morph';
@@ -90,9 +90,6 @@ export const generateTypesDefinitions = async () => {
               id: 'xxx',
             });
             content += compiled.content;
-            if (file.indexOf('packages/views/sys/error-log/index.vue')> 0)  {
-              console.log(compiled.content);
-            }
             if (scriptSetup.lang === 'ts') isTS = true;
             if (scriptSetup.lang === 'tsx') isTSX = true;
           } else if (script && script.content) {
