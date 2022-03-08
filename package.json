@@ -9,7 +9,7 @@
   "workspaces": [
     "packages/*",
     "play",
-    "cli"
+    "tools"
   ],
   "scripts": {
     "bootstrap": "pnpm install",
@@ -18,7 +18,7 @@
     "gen:version": "sucrase-node ./build/gen-version.ts",
     "build": "gulp --require sucrase/register/ts -f ./build/gulpfile.ts",
     "build:play": "pnpm build:cli && pnpm -C play --stream build",
-    "build:cli": "pnpm -C cli --stream build",
+    "build:cli": "pnpm -C tools/cli --stream build",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
     "build:no-cache": "yarn clean:cache && npm run build",
     "clean": "pnpm run clean:dist && pnpm run clean -r --filter packages --stream",

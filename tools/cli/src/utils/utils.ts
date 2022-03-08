@@ -18,7 +18,7 @@ export function isReportMode(): boolean {
 }
 
 // Read all environment variable configuration files to process.env
-export function wrapperEnv(envConf: Recordable): ViteEnv {
+export function wrapperEnv(envConf: Recordable, mode: string): ViteEnv {
   const ret: any = {};
 
   for (const envName of Object.keys(envConf)) {
@@ -42,6 +42,7 @@ export function wrapperEnv(envConf: Recordable): ViteEnv {
       process.env[envName] = JSON.stringify(realName);
     }
   }
+  ret['NODE_ENV'] = mode;
   return ret;
 }
 

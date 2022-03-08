@@ -30,7 +30,7 @@ export function createViteConfig({ command, mode }: ConfigEnv, alias: Alias[]): 
   const env = loadEnv(mode, root);
 
   // The boolean type read by loadEnv is a string. This function can be converted to boolean type
-  const viteEnv = wrapperEnv(env);
+  const viteEnv = wrapperEnv(env, mode);
 
   const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = viteEnv;
   //运行模式识别
