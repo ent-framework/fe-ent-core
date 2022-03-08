@@ -167,4 +167,6 @@ export interface GlobEnvConfig {
   VITE_GLOB_UPLOAD_URL?: string;
   // Layout name
   VITE_GLOB_LAYOUT_NAME?: string;
+  // VBen version
+  VITE_GLOB_VBEN_VERSION?: string;
 }

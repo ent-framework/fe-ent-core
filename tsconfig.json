@@ -20,10 +20,10 @@
     "typeRoots": ["./typings/"]
   },
   "include": [
-    "build",
+    "build/",
     "gulpfile.ts",
-    "packages",
-    "typings"
+    "packages/",
+    "typings/"
   ],
   "exclude": ["node_modules", "tests/server/**/*.ts", "dist"]
 }

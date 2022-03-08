@@ -8,10 +8,10 @@ set -e
 
 
 cd dist/fe-ent-core
-npm publish --access public -registry https://registry.npmjs.org/
+npm publish --access public -registry http://npm.36cpc.com/repository/npm-snapshots/
 cd -
 
-cd cli
-npm publish --access public -registry https://registry.npmjs.org/
+#cd cli
+#npm publish --access public -registry http://npm.36cpc.com/repository/npm-snapshots/
 
 echo "✅ Publish completed"

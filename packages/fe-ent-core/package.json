@@ -20,7 +20,8 @@
   ],
   "peerDependencies": {
     "vue": "3.2.31",
-    "ant-design-vue": "2.2.8"
+    "ant-design-vue": "2.2.8",
+    "vite-plugin-theme": "^0.8.1"
   },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
@@ -28,12 +29,9 @@
     "@iconify/iconify": "^2.1.1",
     "@logicflow/core": "^1.0.7",
     "@logicflow/extension": "^1.0.7",
-    "@vue/runtime-core": "^3.2.29",
-    "@vue/shared": "^3.2.29",
     "@vueuse/core": "^7.5.4",
     "@vueuse/shared": "^7.5.4",
     "@zxcvbn-ts/core": "^1.2.0",
-    "ant-design-vue": "2.2.8",
     "axios": "^0.25.0",
     "codemirror": "^5.65.1",
     "cropperjs": "^1.5.12",
@@ -59,16 +57,14 @@
     "vue-i18n": "^9.1.9",
     "vue-router": "^4.0.12",
     "vue-types": "^3.0.2",
-    "vite-plugin-theme": "^0.8.1",
     "xlsx": "^0.17.5"
   },
   "devDependencies": {
     "rimraf": "^3.0.2",
     "@vue/compiler-sfc": "3.2.31",
-    "vite": "^2.6.13",
     "vue": "3.2.31",
     "ant-design-vue": "2.2.8",
-    "vite-plugin-theme": "^0.8.1"
+    "vue-demi": "^0.12.1"
   },
   "repository": {
     "type": "git",

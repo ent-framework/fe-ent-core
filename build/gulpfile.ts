@@ -1,6 +1,6 @@
 import path from 'path';
 import { mkdir } from 'fs/promises';
-import { copy, copyFile } from 'fs-extra';
+import { copy, copyFile, ensureDirSync } from 'fs-extra';
 import { src, dest, series, parallel } from 'gulp';
 import { run } from './utils/process';
 import { runTask, withTaskName } from './utils/gulp';
@@ -32,11 +32,13 @@ export const copyTypesDefinitions: TaskFunction = (done) => {
       copy(src, buildConfig[module].output.path, { recursive: true }),
     );
 
+  const projectDefinitions = path.resolve(epOutput, 'types');
+  ensureDirSync(projectDefinitions);
   const copyGlobal = () =>
     withTaskName('copyGlobal', () =>
       copyFile(
         path.resolve(projRoot, 'typings/global.d.ts'),
-        path.resolve(epOutput, 'global.d.ts'),
+        path.resolve(projectDefinitions, 'global.d.ts'),
       ),
     );
 

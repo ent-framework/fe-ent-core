@@ -1,4 +1,4 @@
-import CodeMirror from 'codemirror';
+import { default as CodeMirror } from 'codemirror';
 
 // modes
 import 'codemirror/mode/javascript/javascript';

@@ -8,7 +8,7 @@ export async function updateDarkTheme(mode: string | null = 'light') {
   }
   const hasDarkClass = hasClass(htmlRoot, 'dark');
   if (mode === 'dark') {
-    if (import.meta.env.PROD && !darkCssIsReady) {
+    if (!darkCssIsReady) {
       await loadDarkThemeCss();
     }
     htmlRoot.setAttribute('data-theme', 'dark');

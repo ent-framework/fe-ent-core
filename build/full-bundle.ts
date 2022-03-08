@@ -6,7 +6,6 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import esbuild from 'rollup-plugin-esbuild';
-import replace from '@rollup/plugin-replace';
 import filesize from 'rollup-plugin-filesize';
 import { parallel } from 'gulp';
 import glob from 'fast-glob';
@@ -14,7 +13,7 @@ import { camelCase, upperFirst } from 'lodash';
 import { version } from '../packages/fe-ent-core/version';
 import { reporter } from './plugins/size-reporter';
 import { ElementPlusAlias } from './plugins/element-plus-alias';
-import { epRoot, epOutput, localeRoot, projRoot } from './utils';
+import { epRoot, epOutput, localeRoot, projRoot, pkgRoot } from './utils';
 import { formatBundleFilename, generateExternal, writeBundles } from './utils/rollup';
 import { withTaskName } from './utils/gulp';
 import { EP_BRAND_NAME } from './utils';
@@ -23,6 +22,7 @@ import type { Plugin } from 'rollup';
 import json from '@rollup/plugin-json';
 import image from '@rollup/plugin-image';
 import PurgeIcons from 'rollup-plugin-purge-icons';
+import { rollupPluginInjectProcessViteEnv } from './plugins/vite-env';
 
 const banner = `/*! ${EP_BRAND_NAME} v${version} */\n`;
 
@@ -41,8 +41,13 @@ async function buildFullEntry(minify: boolean) {
       }) as Plugin,
       vueJsx(),
       vueSetupExtend(),
+      rollupPluginInjectProcessViteEnv({
+        baseDir: `${pkgRoot}`,
+        exclude: ['**/*.css', '**/*.less', '**/*.svg', '**/*.jpg', '**/*.jpeg', '**/*.png'],
+        verbose: false,
+      }),
       nodeResolve({
-        extensions: ['.mjs', '.js', '.json', '.ts', '.tsx'],
+        extensions: ['.mjs', '.js', '.ts', '.tsx'],
       }),
       commonjs(),
       esbuild({
@@ -52,12 +57,17 @@ async function buildFullEntry(minify: boolean) {
         loaders: {
           '.vue': 'ts',
         },
-        tsconfig: TSCONFIG_PATH,
-      }),
-      replace({
-        'process.env.NODE_ENV': JSON.stringify('production'),
-        // options
-        preventAssignment: true,
+        optimizeDeps: {
+          // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly
+          include: [
+            '@iconify/iconify',
+            'ant-design-vue/es/locale/zh_CN',
+            'moment/dist/locale/zh-cn',
+            'ant-design-vue/es/locale/en_US',
+            'moment/dist/locale/eu',
+          ],
+          exclude: ['vue-demi'],
+        },
       }),
       filesize(),
     ],

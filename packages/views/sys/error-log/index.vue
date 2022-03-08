@@ -41,6 +41,7 @@
   import { fireErrorApi } from '@ent-core/api/demo/error';
   import { getColumns } from './data';
   import { cloneDeep } from 'lodash';
+  import { isDevMode } from '@ent-core/utils/env';
 
   const rowInfo = ref<ErrorLogInfo>();
   const imgList = ref<string[]>([]);
@@ -71,7 +72,7 @@
     },
   );
   const { createMessage } = useMessage();
-  if (import.meta.env.DEV) {
+  if (isDevMode()) {
     createMessage.info(t('sys.errorLog.enableMessage'));
   }
   // 查看详情

@@ -20,14 +20,11 @@ const __APP_INFO__ = {
   lastBuildTime: moment().format('YYYY-MM-DD HH:mm:ss'),
 };
 
-export function createViteConfig(
-  { command, mode }: ConfigEnv,
-  alias: Alias[],
-  preview?,
-): UserConfig {
+export function createViteConfig({ command, mode }: ConfigEnv, alias: Alias[]): UserConfig {
   // 是否构建库模式
 
   const isBuildLib = mode === 'lib';
+  const preview = mode === 'preview';
   const root = process.cwd();
 
   const env = loadEnv(mode, root);
@@ -80,6 +77,7 @@ export function createViteConfig(
     define: {
       // setting vue-i18-next
       // Suppress warning
+      'process.env': viteEnv,
       __INTLIFY_PROD_DEVTOOLS__: false,
       __APP_INFO__: JSON.stringify(__APP_INFO__),
     },

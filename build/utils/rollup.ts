@@ -9,7 +9,7 @@ export const generateExternal = async (options: { full: boolean }) => {
   return (id: string) => {
     const packages: string[] = peerDependencies;
     if (!options.full) {
-      packages.push('element-plus/theme-chalk');
+      packages.push('vue-demi');
       // dependencies
       packages.push('@vue', ...dependencies);
     }

@@ -73,6 +73,7 @@
   import { isNumber } from '@ent-core/utils/is';
   import { useLocale } from '@ent-core/locales/useLocale';
   import { useAppStore } from '@ent-core/store/modules/app';
+  import { getAppEnvConfig } from '@ent-core/utils/env'
 
   const tinymceProps = {
     options: {
@@ -145,9 +146,10 @@
         return ['zh_CN', 'en'].includes(lang) ? lang : 'zh_CN';
       });
 
+      const appEnv = getAppEnvConfig();
       const initOptions = computed((): RawEditorSettings => {
         const { height, options, toolbar, plugins } = props;
-        const publicPath = import.meta.env.VITE_PUBLIC_PATH || '/';
+        const publicPath = appEnv.VITE_PUBLIC_PATH || '/';
         return {
           selector: `#${unref(tinymceId)}`,
           height,

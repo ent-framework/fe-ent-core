@@ -4,6 +4,7 @@ import type { App } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { getBasicRoutes } from './routes';
 import { AppRouteModule, AppRouteRecordRaw } from './types';
+import { getAppEnvConfig } from "@ent-core/utils/env";
 
 export interface EntRouter extends Router {
   parent: Router;
@@ -14,9 +15,10 @@ export interface EntRouter extends Router {
   addExtraRoutes: (routes: Record<string, Record<string, any>>) => void;
   _whiteRouteList: string[];
 }
+const appEnv = getAppEnvConfig();
 // app router
 const parent = createRouter({
-  history: createWebHashHistory(import.meta.env.VITE_PUBLIC_PATH),
+  history: createWebHashHistory(appEnv.VITE_PUBLIC_PATH || ''),
   routes: [],
   strict: true,
   scrollBehavior: () => ({ left: 0, top: 0 }),

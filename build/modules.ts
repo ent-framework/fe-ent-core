@@ -11,6 +11,7 @@ import filesize from 'rollup-plugin-filesize';
 import glob from 'fast-glob';
 import { epRoot, pkgRoot, projRoot } from './utils';
 import { ElementPlusAlias } from './plugins/element-plus-alias';
+import { rollupPluginInjectProcessViteEnv } from './plugins/vite-env';
 import { generateExternal, writeBundles } from './utils/rollup';
 import { excludeFiles } from './utils';
 import { reporter } from './plugins/size-reporter';
@@ -56,6 +57,11 @@ export const buildModules = async () => {
       json(),
       image(),
       css(),
+      rollupPluginInjectProcessViteEnv({
+        baseDir: `${pkgRoot}`,
+        exclude: ['**/*.css', '**/*.less', '**/*.svg', '**/*.jpg', '**/*.jpeg', '**/*.png'],
+        verbose: false,
+      }),
       PostCSS({
         use: {
           sass: null,
@@ -73,7 +79,7 @@ export const buildModules = async () => {
         sourceMap: true,
       }),
       nodeResolve({
-        extensions: ['.mjs', '.js', '.json', '.ts', '.tsx'],
+        extensions: ['.mjs', '.js', '.ts', '.tsx'],
       }),
       vue({
         isProduction: false,
@@ -89,10 +95,16 @@ export const buildModules = async () => {
           '.vue': 'ts',
           '.tsx': 'tsx',
         },
-        define: {
-          // @ts-ignore
-          __INTLIFY_PROD_DEVTOOLS__: false,
-          __APP_INFO__: JSON.stringify(__APP_INFO__),
+        optimizeDeps: {
+          // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly
+          include: [
+            '@iconify/iconify',
+            'ant-design-vue/es/locale/zh_CN',
+            'moment/dist/locale/zh-cn',
+            'ant-design-vue/es/locale/en_US',
+            'moment/dist/locale/eu',
+          ],
+          exclude: ['vue-demi'],
         },
       }),
       filesize({ reporter }),

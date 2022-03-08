@@ -1,13 +1,8 @@
 import type { GlobEnvConfig } from '@ent-core/types/config';
 
-import { warn } from '@ent-core/utils/log';
-import pkg from './package.json';
+const _ViteEnv = process.env;
 
-const getConfigFileName = (env: Record<string, any>) => {
-  return `__PRODUCTION__${env.VITE_GLOB_APP_SHORT_NAME || '__APP'}__CONF__`
-    .toUpperCase()
-    .replace(/\s/g, '');
-};
+interface AppEnv extends GlobEnvConfig, ViteEnv {}
 
 export function getCommonStoragePrefix() {
   const { VITE_GLOB_APP_SHORT_NAME } = getAppEnvConfig();
@@ -16,16 +11,18 @@ export function getCommonStoragePrefix() {
 
 // Generate cache key according to version
 export function getStorageShortName() {
-  return `${getCommonStoragePrefix()}${`__${pkg.version}`}__`.toUpperCase();
+  const appConfig = getAppEnvConfig();
+  const { VITE_GLOB_APP_SHORT_NAME, VITE_GLOB_VBEN_VERSION } = appConfig;
+  return `${VITE_GLOB_APP_SHORT_NAME}__${getEnv()}${`__${VITE_GLOB_VBEN_VERSION}`}__`.toUpperCase();
 }
 
-export function getAppEnvConfig() {
-  const ENV_NAME = getConfigFileName(import.meta.env);
+export function getAppEnvConfig(): AppEnv {
+  const ENV_NAME = '__PRODUCTION__VBEN__APP__CONF__';
 
-  const ENV = (import.meta.env.DEV
+  const ENV = (process.env.NODE_ENV !== 'production'
     ? // Get the global configuration (the configuration will be extracted independently when packaging)
-      (import.meta.env as unknown as GlobEnvConfig)
-    : window[ENV_NAME as any]) as unknown as GlobEnvConfig;
+      (_ViteEnv as unknown as AppEnv)
+    : window[ENV_NAME as any]) as unknown as AppEnv;
 
   const {
     VITE_GLOB_APP_TITLE,
@@ -34,12 +31,15 @@ export function getAppEnvConfig() {
     VITE_GLOB_API_URL_PREFIX,
     VITE_GLOB_UPLOAD_URL,
     VITE_GLOB_LAYOUT_NAME,
+    VITE_GLOB_VBEN_VERSION,
+    ...REST
   } = ENV;
 
   if (!/^[a-zA-Z\_]*$/.test(VITE_GLOB_APP_SHORT_NAME)) {
-    warn(
-      `VITE_GLOB_APP_SHORT_NAME Variables can only be characters/underscores, please modify in the environment variables and re-running.`,
-    );
+    console &&
+      console.warn(
+        `VITE_GLOB_APP_SHORT_NAME Variables can only be characters/underscores, please modify in the environment variables and re-running.`,
+      );
   }
 
   return {
@@ -49,6 +49,8 @@ export function getAppEnvConfig() {
     VITE_GLOB_API_URL_PREFIX,
     VITE_GLOB_UPLOAD_URL,
     VITE_GLOB_LAYOUT_NAME,
+    VITE_GLOB_VBEN_VERSION,
+    ...REST,
   };
 }
 
@@ -68,7 +70,7 @@ export const prodMode = 'production';
  * @example:
  */
 export function getEnv(): string {
-  return import.meta.env.MODE;
+  return process.env.NODE_ENV || 'production';
 }
 
 /**
@@ -77,7 +79,7 @@ export function getEnv(): string {
  * @example:
  */
 export function isDevMode(): boolean {
-  return import.meta.env.DEV;
+  return process.env.NODE_ENV !== 'production';
 }
 
 /**
@@ -86,5 +88,5 @@ export function isDevMode(): boolean {
  * @example:
  */
 export function isProdMode(): boolean {
-  return import.meta.env.PROD;
+  return process.env.NODE_ENV === 'production';
 }
