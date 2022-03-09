@@ -18,12 +18,10 @@ import { reporter } from './plugins/size-reporter';
 import { buildConfigEntries, target } from './build-info';
 import type { OutputOptions } from 'rollup';
 import { generateModifyVars } from './theme/generateModifyVars';
-import json from '@rollup/plugin-json';
 import autoprefixer from 'autoprefixer';
 import pkg from '../packages/fe-ent-core/package.json';
 import PurgeIcons from 'rollup-plugin-purge-icons';
 import image from '@rollup/plugin-image';
-import css from 'rollup-plugin-css-only';
 import path from 'path';
 
 const { dependencies, devDependencies, name, version } = pkg;
@@ -54,29 +52,11 @@ export const buildModules = async () => {
     plugins: [
       ElementPlusAlias(),
       PurgeIcons({}),
-      json(),
       image(),
-      css(),
       rollupPluginInjectProcessViteEnv({
         baseDir: `${pkgRoot}`,
         exclude: ['**/*.css', '**/*.less', '**/*.svg', '**/*.jpg', '**/*.jpeg', '**/*.png'],
         verbose: false,
-      }),
-      PostCSS({
-        use: {
-          sass: null,
-          stylus: null,
-          less: {
-            modifyVars: lessModifyVars,
-            javascriptEnabled: true,
-          },
-        },
-        plugins: [...postcssPluginList],
-        // 处理.css和.less文件
-        extensions: ['.css', 'less'],
-        inject: false,
-        extract: true,
-        sourceMap: true,
       }),
       nodeResolve({
         extensions: ['.mjs', '.js', '.ts', '.tsx'],
@@ -95,7 +75,7 @@ export const buildModules = async () => {
           '.vue': 'ts',
           '.tsx': 'tsx',
         },
-        optimizeDeps: {
+/*        optimizeDeps: {
           // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly
           include: [
             '@iconify/iconify',
@@ -105,7 +85,7 @@ export const buildModules = async () => {
             'moment/dist/locale/eu',
           ],
           exclude: ['vue-demi'],
-        },
+        },*/
       }),
       filesize({ reporter }),
     ],

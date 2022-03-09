@@ -17,8 +17,9 @@ import { configHmrPlugin } from './hmr';
 import { configWindiPlugin } from './windi';
 import { getCurrExecPath, OUTPUT_DIR, findWorkspaceRoot } from '../../utils';
 import type { BuildOptions } from 'vite';
+import { CustomConfigEnv } from '../createConfig';
 
-export function createVitePlugins(viteEnv: ViteEnv, runMode: string, preview: boolean) {
+export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) {
   const {
     VITE_USE_IMAGEMIN,
     VITE_USE_MOCK,
@@ -43,7 +44,7 @@ export function createVitePlugins(viteEnv: ViteEnv, runMode: string, preview: bo
   // vite-plugin-windicss
   vitePlugins.push(configWindiPlugin());
 
-  const isBuild = runMode == 'package' || runMode == 'lib';
+  const isBuild = configEnv.runMode == 'package' || configEnv.runMode == 'lib';
   // TODO
   !isBuild && vitePlugins.push(configHmrPlugin());
 
@@ -51,10 +52,10 @@ export function createVitePlugins(viteEnv: ViteEnv, runMode: string, preview: bo
   VITE_LEGACY && isBuild && vitePlugins.push(legacy());
 
   // vite-plugin-html
-  runMode != 'lib' && vitePlugins.push(configHtmlPlugin(viteEnv, isBuild));
+  configEnv.runMode != 'lib' && vitePlugins.push(configHtmlPlugin(viteEnv, isBuild));
 
   // vite-plugin-svg-icons
-  vitePlugins.push(configSvgIconsPlugin(isBuild, preview));
+  vitePlugins.push(configSvgIconsPlugin(isBuild, !!configEnv.preview));
 
   // vite-plugin-mock
   VITE_USE_MOCK && vitePlugins.push(configMockPlugin(isBuild));
@@ -69,7 +70,7 @@ export function createVitePlugins(viteEnv: ViteEnv, runMode: string, preview: bo
   vitePlugins.push(configVisualizerConfig());
 
   //vite-plugin-theme
-  vitePlugins.push(configThemePlugin(runMode, preview));
+  vitePlugins.push(configThemePlugin(configEnv));
 
   // The following plugins only work in the production environment
   if (isBuild) {

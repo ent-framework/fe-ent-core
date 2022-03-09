@@ -21,7 +21,7 @@
   "peerDependencies": {
     "vue": "3.2.31",
     "ant-design-vue": "2.2.8",
-    "vite-plugin-theme": "^0.8.1"
+    "vite-plugin-ent-theme": "^1.0.1"
   },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",

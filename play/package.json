@@ -52,7 +52,7 @@
     "@types/sortablejs": "^1.10.7",
     "autoprefixer": "^10.4.0",
     "fe-ent-cli": "workspace:*",
-    "vite-plugin-theme": "^0.8.1",
+    "vite-plugin-ent-theme": "^1.0.1",
     "vite-plugin-windicss": "1.8.2",
     "vite": "2.8.6"
   },

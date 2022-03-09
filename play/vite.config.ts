@@ -17,5 +17,5 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       replacement: `${workspace}/packages/$1`,
     },
   ];
-  return createViteConfig({ command, mode }, alias);
+  return createViteConfig({ command, mode }, { alias, customTheme: true });
 };

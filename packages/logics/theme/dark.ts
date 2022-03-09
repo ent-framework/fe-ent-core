@@ -1,4 +1,4 @@
-import { darkCssIsReady, loadDarkThemeCss } from 'vite-plugin-theme/es/client';
+import { darkCssIsReady, loadDarkThemeCss } from 'vite-plugin-ent-theme/es/client';
 import { addClass, hasClass, removeClass } from '@ent-core/utils/domUtils';
 import { isProdMode } from '@ent-core/utils/env';
 

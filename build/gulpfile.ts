@@ -58,7 +58,7 @@ export default series(
     runTask('buildFullBundle'),
     runTask('generateTypesDefinitions'),
     runTask('buildHelper'),
-    series(runTask('buildTheme'), copyFullStyle),
+    series(copyFullStyle, runTask('buildTheme')),
   ),
 
   parallel(copyTypesDefinitions, copyFiles),

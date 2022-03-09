@@ -1,52 +1,96 @@
 import path from 'path';
+import gulp from 'gulp';
 import chalk from 'chalk';
-import { src, dest, series, parallel } from 'gulp';
-import less from 'less';
-import type { StaticOptions } from 'less';
-import autoprefixer from 'autoprefixer';
-//import NpmImportPlugin from 'less-plugin-npm-import';
 import through2 from 'through2';
-import postcss from 'postcss';
-import { epOutput, themeRoot, pkgRoot } from './utils';
-import { readFileSync } from 'fs';
+import { epOutput, pkgRoot, themeRoot } from './utils';
+import { generateModifyVars } from './theme/generateModifyVars';
+import Less from 'gulp-less';
+import { lessPlugin } from './plugins/less';
+import { resolveConfig, ResolvedConfig } from 'vite';
+import cleanCSS from 'gulp-clean-css';
+import rename from 'gulp-rename';
+import autoprefixer from 'gulp-autoprefixer';
+import cssnano from 'gulp-cssnano';
+import { cssImport } from './plugins/css-import';
 
-const getPreloadContent = function () {
-  const antdFile = path.resolve(process.cwd(), 'node_modules/ant-design-vue/dist/antd.less');
-  let preLoadContent = readFileSync(`${antdFile}`, 'utf-8');
-  preLoadContent += readFileSync(`${themeRoot}/config.less`, 'utf-8');
-
-  return preLoadContent;
+type CompileLessOption = {
+  src: string;
+  out: string;
+  cwd: string;
+  dest: string;
+  preLoad?: string;
+  dark?: boolean;
+  resolvedConfig: ResolvedConfig;
 };
 
-export const buildTheme = parallel(copyThemeSource, copyThemeExceptSource);
+export const buildTheme = async () => {
+  const resolvedConfig = await resolveConfig(
+    {
+      configFile: path.resolve(process.cwd(), 'vite.theme.config.ts'),
+    },
+    'build',
+    'production',
+  );
+  await compileLess({
+    cwd: `${themeRoot}`,
+    src: `index.less`,
+    out: `app`,
+    dest: `${epOutput}/dist`,
+    dark: false,
+    resolvedConfig,
+  });
+  await compileLess({
+    cwd: `${themeRoot}`,
+    src: `index.less`,
+    out: `app-theme-dark`,
+    dest: `${epOutput}/dist`,
+    dark: true,
+    resolvedConfig,
+  });
+  copyThemeSource();
+  copyThemeExceptSource();
+};
 
-/**
- * compile theme-chalk scss & minify
- * not use sass.sync().on('error', sass.logError) to throw exception
- * @returns
- */
-export const compileLess = function (lessFile, config = {}) {
-  const { cwd = process.cwd(), preLoad } = config;
-  const resolvedLessFile = path.resolve(cwd, lessFile);
-  let data = readFileSync(resolvedLessFile, 'utf-8');
-  data = data.replace(/^\uFEFF/, '');
+async function compileLess(options: CompileLessOption) {
+  const { cwd = process.cwd(), resolvedConfig } = options;
+  const { src, out, dest, dark } = options;
+  const resolvedLessFile = path.resolve(cwd, src);
   // Do less compile
-  const lessOpts: StaticOptions = {
-    paths: [path.resolve(process.cwd(), 'node_modules/ant-design-vue/dist/antd.less'), pkgRoot],
+  const lessOpts: Less.Options = {
+    sourceMap: true,
+    inline: true,
     filename: resolvedLessFile,
-    //plugins: [new NpmImportPlugin({ prefix: '~' })],
+    modifyVars: generateModifyVars(dark),
+    plugins: [lessPlugin(resolvedLessFile, resolvedConfig)],
     javascriptEnabled: true,
   };
-  return less
-    .render(preLoad + '\n' + data, lessOpts)
-    .then((result) => postcss([autoprefixer]).process(result.css, { from: undefined }))
-    .then((r) => {
-      return r.css;
-    });
-};
+
+  gulp
+    .src([resolvedLessFile])
+    .pipe(Less(lessOpts))
+    .pipe(cssImport(resolvedConfig))
+    .pipe(cssnano())
+    .pipe(autoprefixer({ cascade: false }))
+    .pipe(
+      cleanCSS({}, (details) => {
+        console.log(
+          `${chalk.cyan(`${out}.css`)}: ${chalk.yellow(
+            details.stats.originalSize / 1000,
+          )} KB -> ${chalk.green(details.stats.minifiedSize / 1000)} KB`,
+        );
+      }),
+    )
+    .pipe(
+      rename((path) => {
+        path.basename = `${out}`;
+      }),
+    )
+    .pipe(gulp.dest(dest));
+}
 
 export function copyThemeSource() {
-  return src(`${pkgRoot}/theme/**/*.less`)
+  return gulp
+    .src(`${pkgRoot}/theme/**/*.less`)
     .pipe(
       // 修改文件的别名
       through2.obj(function (file, encoding, next) {
@@ -61,11 +105,12 @@ export function copyThemeSource() {
         next();
       }),
     )
-    .pipe(dest(`${epOutput}/theme`));
+    .pipe(gulp.dest(`${epOutput}/theme`));
 }
 
 export function copyThemeExceptSource() {
-  return src(`${pkgRoot}/{components,directives,layouts,views}/**/*.{less,css}`)
+  return gulp
+    .src(`${pkgRoot}/{components,directives,layouts,views}/**/*.{less,css}`)
     .pipe(
       // 修改文件的别名
       through2.obj(function (file, encoding, next) {
@@ -75,7 +120,7 @@ export function copyThemeExceptSource() {
         next();
       }),
     )
-    .pipe(dest(`${epOutput}/es`));
+    .pipe(gulp.dest(`${epOutput}/es`));
 }
 
 function modifyStreamContent(modify) {

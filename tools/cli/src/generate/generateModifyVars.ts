@@ -1,12 +1,9 @@
 import { generateAntColors, primaryColor } from '../config/themeConfig';
 const { getThemeVariables } = require('ant-design-vue/dist/theme');
-import path from 'path';
-import { FE_PKG, findWorkspaceRoot } from '../utils';
-import fs from 'fs';
 /**
  * less global variable
  */
-export function generateModifyVars(dark = false, runMode: string, preview: boolean) {
+export function generateModifyVars(dark = false, preLoadFile: string) {
   const palettes = generateAntColors(primaryColor);
   const primary = palettes[5];
 
@@ -17,20 +14,6 @@ export function generateModifyVars(dark = false, runMode: string, preview: boole
   }
 
   const modifyVars = getThemeVariables({ dark });
-  const workspace = findWorkspaceRoot();
-  let preLoadFile = '';
-
-  if (preview) {
-    preLoadFile = path.resolve(workspace, `packages/theme/config.less`);
-  } else if (runMode == 'package' || runMode == 'serve') {
-    if (fs.existsSync(process.cwd() + 'src/theme/config.less')) {
-      preLoadFile = path.resolve(process.cwd(), 'src/theme/config.less');
-    } else {
-      preLoadFile = path.resolve(workspace, `node_modules/${FE_PKG}/theme/config.less`);
-    }
-  } else {
-    preLoadFile = path.resolve(process.cwd(), 'theme/config.less');
-  }
 
   return {
     ...modifyVars,

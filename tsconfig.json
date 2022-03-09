@@ -17,13 +17,13 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "types": ["vite/client"],
-    "typeRoots": ["./typings/"]
+    "typeRoots": ["node_modules/@types/", "./typings/"]
   },
   "include": [
     "build/",
     "gulpfile.ts",
-    "packages/",
-    "typings/"
+    "packages",
+    "typings"
   ],
   "exclude": ["node_modules", "tests/server/**/*.ts", "dist"]
 }

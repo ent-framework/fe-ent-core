@@ -4,38 +4,25 @@
  */
 import type { Plugin } from 'vite';
 import path from 'path';
-import fs from 'fs';
 import {
   viteThemePlugin,
   antdDarkThemePlugin,
   mixLighten,
   mixDarken,
   tinycolor,
-} from 'vite-plugin-theme';
+} from 'vite-plugin-ent-theme';
 import { getThemeColors, generateColors } from '../../config/themeConfig';
 import { generateModifyVars } from '../../generate/generateModifyVars';
-import { FE_PKG, findWorkspaceRoot } from '../../utils';
-
-export function configThemePlugin(runMode: string, preview: boolean): Plugin[] {
+import { getThemePluginPreLoadFile, getVitePreLoadFile } from '../../utils/less';
+import { CustomConfigEnv } from '../createConfig';
+export function configThemePlugin(configEnv: CustomConfigEnv): Plugin[] {
   const colors = generateColors({
     mixDarken,
     mixLighten,
     tinycolor,
   });
 
-  let preLoadFile = '';
-  const workspace = findWorkspaceRoot();
-  if (preview) {
-    preLoadFile = path.resolve(workspace, `packages/theme/index.less`);
-  } else if (runMode == 'package' || runMode == 'serve') {
-    if (fs.existsSync(process.cwd() + 'src/theme/index.less')) {
-      preLoadFile = path.resolve(process.cwd(), 'src/theme/index.less');
-    } else {
-      preLoadFile = path.resolve(workspace, `node_modules/${FE_PKG}/theme/index.less`);
-    }
-  } else {
-    preLoadFile = path.resolve(process.cwd(), 'theme/index.less');
-  }
+  const preLoadFile = getThemePluginPreLoadFile(configEnv);
   console.log(`Theme preload file: ${preLoadFile}`);
 
   const plugin = [
@@ -66,17 +53,18 @@ export function configThemePlugin(runMode: string, preview: boolean): Plugin[] {
     antdDarkThemePlugin({
       preloadFiles: [
         path.resolve(process.cwd(), 'node_modules/ant-design-vue/dist/antd.less'),
-        //path.resolve(process.cwd(), 'node_modules/ant-design-vue/dist/antd.dark.less'),
         preLoadFile,
       ],
       filter: (id) => {
-        console.log(`${id} id: ${runMode == 'package' ? !id.endsWith('antd.less') : true}`);
-        return runMode == 'package' ? !id.endsWith('antd.less') : true;
+        console.log(
+          `${id} id: ${configEnv.runMode == 'package' ? !id.endsWith('antd.less') : true}`,
+        );
+        return configEnv.runMode == 'package' ? !id.endsWith('antd.less') : true;
       },
 
       //extractCss: true,
       darkModifyVars: {
-        ...generateModifyVars(true, runMode, preview),
+        ...generateModifyVars(true, getVitePreLoadFile(configEnv)),
         'text-color': '#c9d1d9',
         'primary-1': 'rgb(255 255 255 / 8%)',
         'text-color-base': '#c9d1d9',

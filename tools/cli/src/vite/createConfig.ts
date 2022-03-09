@@ -8,6 +8,15 @@ import { wrapperEnv, getPackageManifest, green } from '../utils';
 import { createBuildTarget, createVitePlugins } from './plugin';
 import url from 'postcss-url';
 import type { Plugin } from 'postcss';
+import { getVitePreLoadFile } from '../utils/less';
+import { default as _ } from 'lodash';
+
+export type CustomConfigEnv = {
+  alias: Alias[];
+  customTheme?: boolean;
+  preview?: boolean;
+  runMode?: string;
+};
 
 function pathResolve(dir) {
   return resolve(process.cwd(), '.', dir);
@@ -20,12 +29,19 @@ const __APP_INFO__ = {
   lastBuildTime: moment().format('YYYY-MM-DD HH:mm:ss'),
 };
 
-export function createViteConfig({ command, mode }: ConfigEnv, alias: Alias[]): UserConfig {
+export function createViteConfig(
+  { command, mode }: ConfigEnv,
+  configEnv: CustomConfigEnv,
+): UserConfig {
   // 是否构建库模式
-
   const isBuildLib = mode === 'lib';
   const preview = mode === 'preview';
+  //运行模式识别
+  //serve 在线运行, lib 库打包模式, package Html打包模式
+  const runMode = command === 'serve' ? 'serve' : isBuildLib ? 'lib' : 'package';
   const root = process.cwd();
+  _.defaults(configEnv, { customTheme: false, preview, runMode });
+  console.log(configEnv);
 
   const env = loadEnv(mode, root);
 
@@ -33,14 +49,11 @@ export function createViteConfig({ command, mode }: ConfigEnv, alias: Alias[]): 
   const viteEnv = wrapperEnv(env, mode);
 
   const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = viteEnv;
-  //运行模式识别
-  //serve 在线运行, lib 库打包模式, package Html打包模式
-  const runMode = command === 'serve' ? 'serve' : isBuildLib ? 'lib' : 'package';
 
   green(`Run in folder: ${root}, mode: ${runMode}`);
 
   const resolveAlias: Alias[] = [
-    ...alias,
+    ...configEnv.alias,
     {
       find: 'vue-i18n',
       replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
@@ -50,6 +63,8 @@ export function createViteConfig({ command, mode }: ConfigEnv, alias: Alias[]): 
       replacement: pathResolve('src') + '/',
     },
   ];
+
+  const vitePreLoadFile = getVitePreLoadFile(configEnv);
 
   const postCssPlugins: Plugin[] = [];
 
@@ -85,7 +100,7 @@ export function createViteConfig({ command, mode }: ConfigEnv, alias: Alias[]): 
     css: {
       preprocessorOptions: {
         less: {
-          modifyVars: generateModifyVars(false, runMode, preview),
+          modifyVars: configEnv.customTheme ? generateModifyVars(false, vitePreLoadFile) : {},
           javascriptEnabled: true,
         },
       },
@@ -95,7 +110,7 @@ export function createViteConfig({ command, mode }: ConfigEnv, alias: Alias[]): 
     },
 
     // The vite plugin used by the project. The quantity is large, so it is separately extracted and managed
-    plugins: createVitePlugins(viteEnv, runMode, preview),
+    plugins: createVitePlugins(viteEnv, configEnv),
 
     optimizeDeps: {
       // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly
