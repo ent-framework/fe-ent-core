@@ -1,13 +1,11 @@
-<div align="center"> <a href="https://github.com/anncwb/vue-vben-admin"> <img alt="VbenAdmin Logo" width="200" height="200" src="https://anncwb.github.io/anncwb/images/logo.png"> </a> <br> <br>
-
-[![license](https://img.shields.io/github/license/anncwb/vue-vben-admin.svg)](LICENSE)
-
-<h1>Vue vben admin</h1>
+<div>
+<h1>Frontend Enterprise Core</h1>
 </div>
 
 ## 简介
 
-Vue Vben Admin 是一个免费开源的中后台模版。使用了最新的`vue3`,`vite2`,`TypeScript`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
+- Frontend Enterprise Core (fe-ent-core)是一个免费开源的中后台模版。使用了最新的`vue3`,`vite2`,`TypeScript`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
+- fe-ent-core是基于`Vue Vben Admin`为基础封装套的一套组件库。
 
 ## 特性
 
@@ -21,8 +19,6 @@ Vue Vben Admin 是一个免费开源的中后台模版。使用了最新的`vue3
 - **工具支持** 独立的build工具方便快速构建项目，cli工具可以快速新增项目模板
 
 ## 文档
-
-[文档地址](https://vvbin.cn/doc-next/)
 
 ## 准备
 
@@ -56,15 +52,12 @@ pnpm install
 - 运行
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 - 打包
 
-[CHANGELOG](./PUBLISH.md)
-```bash
-yarn build
-```
+[Publish](./PUBLISH.md)
 
 ## 更新日志
 
@@ -94,7 +87,6 @@ yarn build
 
 ## 后台整合示例
 
-- [lamp-cloud](https://github.com/zuihou/lamp-cloud) - 基于 SpringCloud Alibaba 的微服务中后台快速开发平台
-- [matecloud](https://github.com/matevip/matecloud) - MateCloud 微服务脚手架，基于 Spring Cloud 2020.0.3、SpringBoot 2.5.3 的全开源平台
+- TODO
 
 ## 维护者
