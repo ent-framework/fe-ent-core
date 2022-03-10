@@ -14,6 +14,7 @@ import { setupGlobDirectives } from 'fe-ent-core/directives';
 import { setupI18n } from 'fe-ent-core/locales/setupI18n';
 import { registerGlobComp } from 'fe-ent-core/components/registerGlobComp';
 import { useLayout } from 'fe-ent-core/router/helper/layoutHelper';
+import { importMenuModules } from 'fe-ent-core/router/menus';
 import EntCore from 'fe-ent-core';
 //import AntD from 'ant-design-vue';
 
@@ -60,6 +61,8 @@ async function bootstrap() {
   setupRouter(app);
 
   router.addExtraRoutes(import.meta.globEager(`/src/router/routes/modules/**/*.ts`));
+
+  importMenuModules(import.meta.globEager('./modules/**/*.ts'));
 
   // router-guard
   setupRouterGuard(router);

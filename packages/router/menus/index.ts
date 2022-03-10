@@ -1,4 +1,4 @@
-import type { Menu, MenuModule } from '@ent-core/router/types';
+import type { Menu } from '@ent-core/router/types';
 import type { RouteRecordNormalized } from 'vue-router';
 
 import { useAppStoreWithOut } from '@ent-core/store/modules/app';
@@ -10,15 +10,10 @@ import { router } from '@ent-core/router';
 import { PermissionModeEnum } from '@ent-core/enums/appEnum';
 import { pathToRegexp } from 'path-to-regexp';
 
-const modules = import.meta.globEager('./modules/**/*.ts');
-
-const menuModules: MenuModule[] = [];
-
-Object.keys(modules).forEach((key) => {
-  const mod = modules[key].default || {};
-  const modList = Array.isArray(mod) ? [...mod] : [mod];
-  menuModules.push(...modList);
-});
+export const importMenuModules = (modules: Record<string, { [key: string]: any }>) => {
+  const permissionStore = usePermissionStore();
+  permissionStore.importMenuModules(modules);
+};
 
 // ===========================
 // ==========Helper===========
@@ -40,8 +35,10 @@ const isRoleMode = () => {
   return getPermissionMode() === PermissionModeEnum.ROLE;
 };
 
-const staticMenus: Menu[] = [];
-(() => {
+const getStaticMenus = (): Menu[] => {
+  const permissionStore = usePermissionStore();
+  const menuModules = permissionStore.getMenuModules;
+  const staticMenus: Menu[] = [];
   menuModules.sort((a, b) => {
     return (a.orderNo || 0) - (b.orderNo || 0);
   });
@@ -49,7 +46,8 @@ const staticMenus: Menu[] = [];
   for (const menu of menuModules) {
     staticMenus.push(transformMenuModule(menu));
   }
-})();
+  return staticMenus;
+};
 
 async function getAsyncMenus() {
   const permissionStore = usePermissionStore();
@@ -59,7 +57,7 @@ async function getAsyncMenus() {
   if (isRouteMappingMode()) {
     return permissionStore.getFrontMenuList.filter((item) => !item.hideMenu);
   }
-  return staticMenus;
+  return getStaticMenus();
 }
 
 export const getMenus = async (): Promise<Menu[]> => {

@@ -1,4 +1,4 @@
-import type { AppRouteRecordRaw, Menu } from '@ent-core/router/types';
+import type { AppRouteRecordRaw, Menu, MenuModule } from '@ent-core/router/types';
 
 import { defineStore } from 'pinia';
 import { store } from '@ent-core/store';
@@ -34,6 +34,7 @@ export interface PermissionState {
   // Backstage menu list
   backMenuList: Menu[];
   frontMenuList: Menu[];
+  menuModules: MenuModule[];
 }
 export const usePermissionStore = defineStore({
   id: 'app-permission',
@@ -47,6 +48,8 @@ export const usePermissionStore = defineStore({
     backMenuList: [],
     // menu List
     frontMenuList: [],
+
+    menuModules: [],
   }),
   getters: {
     getPermCodeList(): string[] | number[] {
@@ -64,8 +67,19 @@ export const usePermissionStore = defineStore({
     getIsDynamicAddedRoute(): boolean {
       return this.isDynamicAddedRoute;
     },
+    getMenuModules(): MenuModule[] {
+      return this.menuModules;
+    },
   },
   actions: {
+    importMenuModules(modules: Record<string, { [key: string]: any }>) {
+      Object.keys(modules).forEach((key) => {
+        const mod = modules[key].default || {};
+        const modList = Array.isArray(mod) ? [...mod] : [mod];
+        this.menuModules.push(...modList);
+      });
+    },
+
     setPermCodeList(codeList: string[]) {
       this.permCodeList = codeList;
     },

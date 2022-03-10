@@ -5,6 +5,8 @@ import { createI18n } from 'vue-i18n';
 import { setHtmlPageLang, setLoadLocalePool } from './helper';
 import { localeSetting } from '@ent-core/settings/localeSetting';
 import { useLocaleStoreWithOut } from '@ent-core/store/modules/locale';
+import zhCN from './lang/zhCN';
+import en from './lang/en';
 
 const { fallback, availableLocales } = localeSetting;
 
@@ -12,10 +14,8 @@ export let i18n: ReturnType<typeof createI18n>;
 
 async function createI18nOptions(): Promise<I18nOptions> {
   const localeStore = useLocaleStoreWithOut();
+  //default locale
   const locale = localeStore.getLocale;
-  const defaultLocal = await import(`./lang/${locale}.ts`);
-  const message = defaultLocal.default?.message ?? {};
-
   setHtmlPageLang(locale);
   setLoadLocalePool((loadLocalePool) => {
     loadLocalePool.push(locale);
@@ -26,7 +26,8 @@ async function createI18nOptions(): Promise<I18nOptions> {
     locale,
     fallbackLocale: fallback,
     messages: {
-      [locale]: message,
+      zh_CN: zhCN.message,
+      en: en.message,
     },
     availableLocales: availableLocales,
     sync: true, //If you don’t want to inherit locale from global scope, you need to set sync of i18n component option to false.

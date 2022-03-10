@@ -1,5 +1,5 @@
 import antdLocale from 'ant-design-vue/es/locale/en_US';
-// import momentLocale from 'moment/dist/locale/en-us';
+//import momentLocale from 'moment/dist/locale/en-us';
 import sys from './en/sys';
 import layout from './en/layout';
 import component from './en/component';
