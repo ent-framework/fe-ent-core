@@ -66,6 +66,7 @@
     "@ent-core/utils": "workspace:*",
     "@ent-core/views": "workspace:*",
     "fe-ent-cli": "workspace:*",
+    "fe-ent-build": "workspace:*",
     "vite-plugin-ent-theme": "workspace:*",
     "fe-ent-theme-api": "workspace:*"
   },
