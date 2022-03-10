@@ -1,16 +1,18 @@
 import { normalizePath } from 'vite';
+import path from 'path';
 
 export const VITE_CLIENT_ENTRY = '/@vite/client';
 
-/*export const VITE_PLUGIN_THEME_CLIENT_ENTRY = normalizePath(
-  path.resolve(process.cwd(), 'node_modules/vite-plugin-ent-theme/es/')
-);*/
+export const VITE_PLUGIN_THEME_CLIENT_ENTRY = normalizePath(
+  path.resolve(process.cwd(), 'node_modules/vite-plugin-ent-theme/es/client')
+);
 
-export const CLIENT_PUBLIC_PATH = 'vite-plugin-ent-theme/es/client';
+export const CLIENT_PUBLIC_ABSOLUTE_PATH = normalizePath(
+  VITE_PLUGIN_THEME_CLIENT_ENTRY + '/index.mjs'
+);
 
-export const VITE_PLUGIN_THEME_CLIENT_ENTRY = require.resolve('vite-plugin-ent-theme/es/client.js');
-
-export const CLIENT_PUBLIC_ABSOLUTE_PATH = normalizePath(VITE_PLUGIN_THEME_CLIENT_ENTRY);
+export const CLIENT_PUBLIC_CJS_PATH = `/${VITE_PLUGIN_THEME_CLIENT_ENTRY}/index.js`;
+export const CLIENT_PUBLIC_ESM_PATH = `/${VITE_PLUGIN_THEME_CLIENT_ENTRY}/index.mjs`;
 
 export const commentRE = /\\\\?n|\n|\\\\?r|\/\*[\s\S]+?\*\//g;
 

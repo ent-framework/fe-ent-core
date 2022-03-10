@@ -3,7 +3,7 @@ import { Plugin } from 'esbuild';
 import less from 'less';
 
 /** Less-loader for esbuild */
-export const lessLoader = (content, options: Less.Options = {}): Plugin => {
+export const lessLoader = (content: string, options: Less.Options = {}): Plugin => {
   return {
     name: 'less-loader',
     setup: (build) => {

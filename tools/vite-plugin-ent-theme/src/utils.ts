@@ -46,7 +46,7 @@ export function createFileHash() {
  * Compress the generated code
  */
 export async function minifyCSS(css: string, config: ResolvedConfig) {
-  const res = new CleanCSS({
+  const res = await new CleanCSS({
     rebase: false,
     ...config.build.cleanCssOptions,
   }).minify(css);

@@ -4,39 +4,6 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
-/**
- * @type { import('rollup').RollupOptions }
- */
-
-const clientInput = {
-  input: path.resolve(__dirname, './client/client.ts'),
-  plugins: [
-    typescript({
-      target: 'es2018',
-      include: ['./client/*.ts'],
-      baseUrl: path.resolve(__dirname, 'client'),
-    }),
-  ],
-};
-
-const clientConfigs = [
-  {
-    ...clientInput,
-    output: {
-      format: 'esm',
-      file: path.resolve(__dirname, 'es/client', 'index.mjs'),
-      sourcemap: true,
-    },
-  },
-  {
-    ...clientInput,
-    output: {
-      format: 'cjs',
-      file: path.resolve(__dirname, 'es/client', 'index.js'),
-      sourcemap: true,
-    },
-  },
-];
 
 /**
  * @type { import('rollup').RollupOptions }
@@ -93,19 +60,20 @@ const createNodeConfig = (isProduction) => {
     ...sharedNodeOptions,
     input: {
       index: path.resolve(__dirname, 'src/index.ts'),
+      cli: path.resolve(__dirname, 'src/cli.ts'),
     },
     output: {
       ...sharedNodeOptions.output,
       sourcemap: !isProduction,
     },
-    external: ['rollup', 'vite', ...external],
+    external: ['rollup', 'vite', 'ant-design-vue', 'vite-plugin-ent-theme', ...external],
     plugins: [
       nodeResolve({ preferBuiltins: true }),
       typescript({
-        tsconfig: 'src/tsconfig.json',
+        tsconfig: './tsconfig.json',
         module: 'esnext',
         target: 'es2019',
-        include: ['src/**/*.ts', 'types/**'],
+        include: ['src/**/*.ts', './types/**'],
         exclude: ['src/**/__tests__/**'],
         esModuleInterop: true,
         // in production we use api-extractor for dts generation
@@ -122,6 +90,7 @@ const createNodeConfig = (isProduction) => {
       }),
       commonjs({
         extensions: ['.js'],
+        ignoreDynamicRequires: true,
         // Optional peer deps of ws. Native deps that are mostly for performance.
         // Since ws is not that perf critical for us, just ignore these deps.
         ignore: ['bufferutil', 'utf-8-validate'],
@@ -157,11 +126,7 @@ export default (commandLineArgs) => {
   const isDev = commandLineArgs.watch;
   const isProduction = !isDev;
 
-  console.log(`Build theme plugin in production mode:  ${isProduction}`);
+  console.log(`Build Cli in production mode:  ${isProduction}`);
 
-  return [
-    ...clientConfigs,
-    createNodeConfig(isProduction),
-    ...(isProduction ? [terserConfig] : []),
-  ];
+  return [createNodeConfig(isProduction), ...(isProduction ? [terserConfig] : [])];
 };

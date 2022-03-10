@@ -1,8 +1,13 @@
-import path from 'path';
 import { ResolvedConfig, normalizePath, Plugin } from 'vite';
 import { ViteThemeOptions } from '.';
-import { CLIENT_PUBLIC_ABSOLUTE_PATH, VITE_PLUGIN_THEME_CLIENT_ENTRY } from './constants';
+import {
+  CLIENT_PUBLIC_ABSOLUTE_PATH,
+  VITE_PLUGIN_THEME_CLIENT_ENTRY,
+  CLIENT_PUBLIC_CJS_PATH,
+  CLIENT_PUBLIC_ESM_PATH,
+} from './constants';
 import { debug as Debug } from 'debug';
+import { readFileSync } from 'fs-extra';
 
 const debug = Debug('vite:inject-vite-plugin-ent-theme-client');
 
@@ -27,6 +32,17 @@ export function injectClientPlugin(
   let config: ResolvedConfig;
   let isServer: boolean;
   let needSourcemap = false;
+  const needProcessId = (id: string) => {
+    const nid = normalizePath(id);
+    const path = normalizePath('vite-plugin-ent-theme/es/client');
+    return (
+      nid === CLIENT_PUBLIC_ABSOLUTE_PATH ||
+      nid.indexOf(path) >= 0 ||
+      nid.endsWith(path) ||
+      // support .vite cache
+      nid.includes(path.replace(/\//gi, '_'))
+    );
+  };
   return {
     name: `vite:inject-vite-plugin-ent-theme-client-${type}`,
     enforce: 'pre',
@@ -50,7 +66,7 @@ export function injectClientPlugin(
               tag: 'script',
               attrs: {
                 type: 'module',
-                src: path.posix.join(clientPublicPath),
+                src: clientPublicPath,
               },
               injectTo: 'head-prepend',
             },
@@ -58,20 +74,36 @@ export function injectClientPlugin(
         };
       },
     },
-    async transform(code, id) {
-      let nid = normalizePath(id);
-      const path = normalizePath('vite-plugin-ent-theme/es/client.js');
-      const getMap = () => (needSourcemap ? this.getCombinedSourcemap() : null);
-      // 防止vite 对JS 文件做hash
-      if (nid.indexOf('?v=') > 0) {
-        nid = nid.substring(0, nid.indexOf('?v='));
+
+    resolveId(id, importer, resolveOpts) {
+      if (id === 'vite-plugin-ent-theme/es/client') {
+        // this is passed by @rollup/plugin-commonjs
+        const isRequire: boolean = resolveOpts?.custom?.['node-resolve']?.isRequire ?? false;
+        if (isRequire) {
+          return CLIENT_PUBLIC_CJS_PATH;
+        } else {
+          return CLIENT_PUBLIC_ESM_PATH;
+        }
       }
-      if (
-        nid === CLIENT_PUBLIC_ABSOLUTE_PATH ||
-        nid.endsWith(path) ||
-        // support .vite cache
-        nid.includes(path.replace(/\//gi, '_'))
-      ) {
+      return null;
+    },
+
+    async transform(code, id) {
+      const getMap = () => (needSourcemap ? this.getCombinedSourcemap() : null);
+      if (needProcessId(id)) {
+        debug('transform client file:', id, code);
+        return {
+          code: code,
+          map: getMap(),
+        };
+      }
+    },
+
+    async load(id) {
+      const nid = normalizePath(id);
+      if (needProcessId(id)) {
+        debug('load client file:', id);
+        let code = readFileSync(nid).toString();
         const {
           build: { assetsDir },
         } = config;
@@ -79,6 +111,8 @@ export function injectClientPlugin(
         const getOutputFile = (name?: string) => {
           return JSON.stringify(`${config.base}${assetsDir}/${name}`);
         };
+
+        if (code == null) return null;
 
         if (type === 'colorPlugin') {
           code = code
@@ -104,12 +138,11 @@ export function injectClientPlugin(
             );
           }
         }
-        debug(`transform client file: ${id}, ${type} \n ${nid}`, code);
-        return {
-          code: code.replace('__PROD__', JSON.stringify(!isServer)),
-          map: getMap(),
-        };
+        code = code.replace('__PROD__', JSON.stringify(!isServer));
+        debug(`load client file: ${id}, ${type} \n ${nid}`, code);
+        return code;
       }
+      return null;
     },
   };
 }

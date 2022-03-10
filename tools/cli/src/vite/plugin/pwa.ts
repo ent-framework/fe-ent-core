@@ -3,7 +3,7 @@
  * https://github.com/antfu/vite-plugin-pwa
  */
 import { VitePWA } from 'vite-plugin-pwa';
-
+import { ViteEnv } from '../../type';
 export function configPwaConfig(env: ViteEnv) {
   const { VITE_USE_PWA, VITE_GLOB_APP_TITLE, VITE_GLOB_APP_SHORT_NAME } = env;
 

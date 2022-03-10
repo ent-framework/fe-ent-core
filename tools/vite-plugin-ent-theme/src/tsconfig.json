@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "strict": true,
+    "declaration": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "esModuleInterop": true,
+    "useUnknownInCatchVariables": false,
+    // compile away optional-chaining-operator
+    // node support table: https://node.green/#ES2020-features-optional-chaining-operator-----
+    "target": "ES2019",
+    "outDir": "../dist/node",
+    "module": "commonjs",
+    "lib": ["ESNext","dom"],
+    "typeRoots": ["../node_modules/@types"],
+    "sourceMap": true
+  },
+  "include": ["./"],
+  "exclude": ["**/__tests__"],
+}

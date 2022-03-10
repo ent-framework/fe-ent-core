@@ -13,8 +13,8 @@
   "jsdelivr": "dist/index.full.js",
   "sideEffects": [
     "dist/*",
-    "theme-chalk/*.css",
-    "theme-chalk/src/*.scss",
+    "theme/*.css",
+    "theme/**/*.less",
     "es/components/*/style/*",
     "lib/components/*/style/*"
   ],
@@ -61,6 +61,7 @@
   },
   "devDependencies": {
     "rimraf": "^3.0.2",
+    "@types/tinycolor2": "^1.4.2",
     "@vue/compiler-sfc": "3.2.31",
     "vue": "3.2.31",
     "ant-design-vue": "2.2.8",

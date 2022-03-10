@@ -18,6 +18,7 @@ import { configWindiPlugin } from './windi';
 import { getCurrExecPath, OUTPUT_DIR, findWorkspaceRoot } from '../../utils';
 import type { BuildOptions } from 'vite';
 import { CustomConfigEnv } from '../createConfig';
+import { ViteEnv } from '../../type';
 
 export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) {
   const {

@@ -4,11 +4,9 @@ import fs from 'fs-extra';
 import { debug as Debug } from 'debug';
 import { extractVariable, minifyCSS } from './utils';
 
-export * from '../client/colorUtils';
-
 export { antdDarkThemePlugin } from './antdDarkThemePlugin';
 
-import { VITE_CLIENT_ENTRY, cssLangRE, cssVariableString, CLIENT_PUBLIC_PATH } from './constants';
+import { VITE_CLIENT_ENTRY, cssLangRE, cssVariableString, CLIENT_PUBLIC_ESM_PATH } from './constants';
 
 export type ResolveSelector = (selector: string) => string;
 
@@ -36,7 +34,7 @@ export function viteThemePlugin(opt: ViteThemeOptions): Plugin[] {
   let clientPath = '';
   const styleMap = new Map<string, string>();
 
-  let extCssSet = new Set<string>();
+  const extCssSet = new Set<string>();
 
   const emptyPlugin: Plugin = {
     name: 'vite:theme',
@@ -85,7 +83,7 @@ export function viteThemePlugin(opt: ViteThemeOptions): Plugin[] {
       configResolved(resolvedConfig) {
         config = resolvedConfig;
         isServer = resolvedConfig.command === 'serve';
-        clientPath = JSON.stringify(CLIENT_PUBLIC_PATH);
+        clientPath = JSON.stringify(path.posix.join(config.base, CLIENT_PUBLIC_ESM_PATH));
         needSourcemap = !!resolvedConfig.build.sourcemap;
         debug('plugin config:', resolvedConfig);
       },

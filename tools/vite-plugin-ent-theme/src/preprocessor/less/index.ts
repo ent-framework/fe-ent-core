@@ -21,29 +21,32 @@ const cssUrlRE = /url\(\s*('[^']+'|"[^"]+"|[^'")]+)\s*\)/;
 
 let ViteLessManager: any;
 
+interface ImportResolvers {
+  less: ResolveFn;
+}
 function createViteLessPlugin(
   rootFile: string,
   alias: Alias[],
-  resolvers: { less: ResolveFn }
+  resolvers: ImportResolvers
 ): Less.Plugin {
   if (!ViteLessManager) {
     ViteLessManager = class ViteManager extends less.FileManager {
       resolvers;
       rootFile;
       alias;
-      constructor(rootFile: string, resolvers: ResolveFn, alias: Alias[]) {
+      constructor(rootFile: string, resolvers: ImportResolvers, alias: Alias[]) {
         super();
         this.rootFile = rootFile;
         this.resolvers = resolvers;
         this.alias = alias;
       }
-      supports() {
+      override supports() {
         return true;
       }
-      supportsSync() {
+      override supportsSync() {
         return false;
       }
-      async loadFile(
+      override async loadFile(
         filename: string,
         dir: string,
         opts: any,
@@ -77,7 +80,7 @@ function createViteLessPlugin(
   };
 }
 
-export function lessPlugin(id, config: ResolvedConfig) {
+export function lessPlugin(id: string, config: ResolvedConfig) {
   const resolvers = createCSSResolvers(config);
   return createViteLessPlugin(id, config.resolve.alias, resolvers);
 }
