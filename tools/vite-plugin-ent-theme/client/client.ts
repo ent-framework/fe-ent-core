@@ -1,27 +1,9 @@
-export const globalField = '__VITE_THEME__';
+import { globalField, getGlobalOptions } from 'fe-ent-theme-api';
+import type { Options, GlobalConfig, InjectTo } from 'fe-ent-theme-api';
+
 export const styleTagId = '__VITE_PLUGIN_THEME__';
 export const darkStyleTagId = '__VITE_PLUGIN_DARK_THEME__';
 export const linkID = '__VITE_PLUGIN_THEME-ANTD_DARK_THEME_LINK__';
-
-export interface Options {
-  colorVariables: string[];
-  wrapperCssSelector?: string;
-  resolveSelector?: (selector: string) => string;
-  fileName?: string;
-  inline?: boolean;
-  injectTo?: InjectTo;
-}
-
-export interface GlobalConfig {
-  replaceStyleVariables: ({ colorVariables }: { colorVariables: string[] }) => void;
-  colorVariables: string[];
-  defaultOptions: Options;
-  appended?: boolean;
-  styleIdMap?: Map<string, string>;
-  styleRenderQueueMap?: Map<string, string>;
-}
-
-export type InjectTo = 'head' | 'body' | 'body-prepend';
 
 declare global {
   interface Window {
@@ -42,8 +24,6 @@ const colorPluginOptions = __COLOR_PLUGIN_OPTIONS__;
 const injectTo = colorPluginOptions.injectTo;
 const debounceThemeRender = debounce(200, renderTheme);
 
-export let darkCssIsReady = false;
-
 (() => {
   if (!window[globalField]) {
     window[globalField] = {
@@ -52,6 +32,7 @@ export let darkCssIsReady = false;
     } as any;
   }
   setGlobalOptions('replaceStyleVariables', replaceStyleVariables);
+  setGlobalOptions('loadDarkThemeCss', loadDarkThemeCss);
   if (!getGlobalOptions('defaultOptions')) {
     // assign defines
     setGlobalOptions('defaultOptions', colorPluginOptions);
@@ -116,6 +97,7 @@ export async function replaceStyleVariables({
 export async function loadDarkThemeCss() {
   const extractCss = __ANTD_DARK_PLUGIN_EXTRACT_CSS__;
   const isLoadLink = __ANTD_DARK_PLUGIN_LOAD_LINK__;
+  const darkCssIsReady = getGlobalOptions('darkCssIsReady');
   if (darkCssIsReady || !extractCss) {
     return;
   }
@@ -131,7 +113,7 @@ export async function loadDarkThemeCss() {
     const styleDom = getStyleDom(darkStyleTagId);
     appendCssToDom(styleDom, cssText, injectTo);
   }
-  darkCssIsReady = true;
+  setGlobalOptions('darkCssIsReady', true);
 }
 
 // Used to replace css color variables. Note that the order of the two arrays must be the same
@@ -163,10 +145,6 @@ export function setGlobalOptions<T extends keyof GlobalConfig = any>(
   value: GlobalConfig[T]
 ) {
   window[globalField][key] = value;
-}
-
-export function getGlobalOptions<T extends keyof GlobalConfig = any>(key: T): GlobalConfig[T] {
-  return window[globalField][key];
 }
 
 export function getStyleDom(id: string) {

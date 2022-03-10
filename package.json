@@ -66,7 +66,8 @@
     "@ent-core/utils": "workspace:*",
     "@ent-core/views": "workspace:*",
     "fe-ent-cli": "workspace:*",
-    "vite-plugin-ent-theme": "workspace:*"
+    "vite-plugin-ent-theme": "workspace:*",
+    "fe-ent-theme-api": "workspace:*"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",

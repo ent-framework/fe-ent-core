@@ -1,4 +1,4 @@
-import { darkCssIsReady, loadDarkThemeCss } from 'vite-plugin-ent-theme/es/client';
+import { darkCssIsReady, loadDarkThemeCss } from 'fe-ent-theme-api';
 import { addClass, hasClass, removeClass } from '@ent-core/utils/domUtils';
 import { isProdMode } from '@ent-core/utils/env';
 
@@ -9,7 +9,7 @@ export async function updateDarkTheme(mode: string | null = 'light') {
   }
   const hasDarkClass = hasClass(htmlRoot, 'dark');
   if (mode === 'dark') {
-    if (isProdMode() && !darkCssIsReady) {
+    if (isProdMode() && !darkCssIsReady()) {
       await loadDarkThemeCss();
     }
     htmlRoot.setAttribute('data-theme', 'dark');

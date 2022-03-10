@@ -80,6 +80,7 @@ importers:
       eslint-plugin-vue: ^8.0.3
       esno: ^0.10.1
       fe-ent-cli: workspace:*
+      fe-ent-theme-api: workspace:*
       fs-extra: ^10.0.0
       gulp: 4.0.2
       gulp-autoprefixer: 8.0.0
@@ -136,6 +137,7 @@ importers:
       '@ent-core/utils': link:packages/utils
       '@ent-core/views': link:packages/views
       fe-ent-cli: link:tools/cli
+      fe-ent-theme-api: link:tools/ent-theme-api
       vite-plugin-ent-theme: link:tools/vite-plugin-ent-theme
     devDependencies:
       '@commitlint/cli': registry.npmmirror.com/@commitlint/cli/14.1.0
@@ -510,6 +512,71 @@ importers:
       typescript: 4.5.5
       vite-plugin-ent-theme: link:../vite-plugin-ent-theme
       vue: 3.2.31
+
+  tools/ent-theme-api:
+    specifiers:
+      '@types/chalk': ^2.2.0
+      '@types/debug': ^4.1.5
+      '@types/fs-extra': ^9.0.11
+      '@types/jest': ^26.0.23
+      '@types/less': ^3.0.2
+      '@types/node': ^14.17.1
+      '@typescript-eslint/eslint-plugin': ^4.25.0
+      '@typescript-eslint/parser': ^4.25.0
+      '@vue/compiler-sfc': ^3.0.11
+      chalk: ^4.1.1
+      clean-css: ^5.1.2
+      cross-env: ^7.0.3
+      debug: ^4.3.2
+      esbuild: ^0.11.23
+      esbuild-plugin-alias: ^0.1.2
+      eslint: ^7.27.0
+      eslint-config-prettier: ^8.3.0
+      eslint-plugin-jest: ^24.3.6
+      fs-extra: ^9.1.0
+      jest: ^26.6.3
+      less: ^4.1.1
+      lint-staged: ^10.5.4
+      pinst: ^2.1.6
+      prettier: ^2.3.0
+      pretty-quick: ^3.1.0
+      rimraf: ^3.0.2
+      shipjs: ^0.23.2
+      ts-jest: ^26.5.6
+      typescript: ^4.2.4
+      vite: ^2.8.6
+    dependencies:
+      '@types/node': 14.18.12
+      chalk: 4.1.2
+      clean-css: 5.2.4
+      debug: 4.3.3
+      esbuild: 0.11.23
+      esbuild-plugin-alias: 0.1.2
+      less: 4.1.2
+    devDependencies:
+      '@types/chalk': 2.2.0
+      '@types/debug': 4.1.7
+      '@types/fs-extra': 9.0.13
+      '@types/jest': 26.0.24
+      '@types/less': 3.0.3
+      '@typescript-eslint/eslint-plugin': 4.33.0_959502c0ea240e86d4d2ba8b8c0fee45
+      '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.5.5
+      '@vue/compiler-sfc': 3.2.31
+      cross-env: 7.0.3
+      eslint: 7.32.0
+      eslint-config-prettier: 8.3.0_eslint@7.32.0
+      eslint-plugin-jest: 24.7.0_3f4b3d5e9ff2eeb92498cbf02acbc5d8
+      fs-extra: 9.1.0
+      jest: 26.6.3_ts-node@10.5.0
+      lint-staged: 10.5.4
+      pinst: 2.1.6
+      prettier: 2.5.1
+      pretty-quick: 3.1.3_prettier@2.5.1
+      rimraf: 3.0.2
+      shipjs: 0.23.3_debug@4.3.3
+      ts-jest: 26.5.6_jest@26.6.3+typescript@4.5.5
+      typescript: 4.5.5
+      vite: 2.8.6_less@4.1.2
 
   tools/vite-plugin-ent-theme:
     specifiers:
