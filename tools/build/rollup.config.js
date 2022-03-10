@@ -60,7 +60,6 @@ const createNodeConfig = (isProduction) => {
     ...sharedNodeOptions,
     input: {
       index: path.resolve(__dirname, 'src/index.ts'),
-      cli: path.resolve(__dirname, 'src/cli.ts'),
     },
     output: {
       ...sharedNodeOptions.output,
@@ -126,7 +125,7 @@ export default (commandLineArgs) => {
   const isDev = commandLineArgs.watch;
   const isProduction = !isDev;
 
-  console.log(`Build Cli in production mode:  ${isProduction}`);
+  console.log(`Build tools/build in production mode:  ${isProduction}`);
 
   return [createNodeConfig(isProduction), ...(isProduction ? [terserConfig] : [])];
 };
