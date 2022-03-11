@@ -5,7 +5,7 @@
     @ok="handleOk"
     @register="registerModal"
   >
-    <BasicForm
+    <EntForm
       :labelWidth="100"
       :schemas="schemas"
       :showActionButtonGroup="false"
@@ -17,7 +17,7 @@
   import type { ExportModalResult } from './typing';
   import { defineComponent } from 'vue';
   import { EntModal, useModalInner } from '@ent-core/components/Modal';
-  import { BasicForm, FormSchema, useForm } from '@ent-core/components/Form/index';
+  import { EntForm, FormSchema, useForm } from '@ent-core/components/Form';
 
   import { useI18n } from '@ent-core/hooks/web/useI18n';
 
@@ -64,7 +64,7 @@
   ];
   export default defineComponent({
     name: 'ExportExcelModal',
-    components: { EntModal, BasicForm },
+    components: { EntModal, EntForm },
     emits: ['success', 'register'],
     setup(_, { emit }) {
       const [registerForm, { validateFields }] = useForm();

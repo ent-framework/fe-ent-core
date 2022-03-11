@@ -1,7 +1,7 @@
 import type { LocaleSetting, LocaleType } from '@ent-core/types/config';
 
 import { defineStore } from 'pinia';
-import { store } from '@ent-core/store';
+import { store } from '@ent-core/store/pinia';
 
 import { LOCALE_KEY } from '@ent-core/enums/cacheEnum';
 import { createLocalStorage } from '@ent-core/utils/cache';

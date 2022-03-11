@@ -2,7 +2,7 @@ import type { RouteLocationNormalized, RouteLocationRaw, Router } from 'vue-rout
 
 import { toRaw, unref } from 'vue';
 import { defineStore } from 'pinia';
-import { store } from '@ent-core/store';
+import { store } from '@ent-core/store/pinia';
 
 import { useGo, useRedo } from '@ent-core/hooks/web/usePage';
 import { Persistent } from '@ent-core/utils/cache/persistent';

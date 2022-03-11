@@ -1,8 +1,9 @@
 import type { UserConfig, ConfigEnv } from 'vite';
-import { createViteConfig, findWorkspaceRoot } from 'fe-ent-cli';
+import { searchForWorkspaceRoot } from 'vite';
+import { createViteConfig } from 'fe-ent-build';
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
-  const workspace = findWorkspaceRoot();
+  const workspace = searchForWorkspaceRoot(process.cwd());
   const alias = [
     {
       find: /^fe-ent-core$/,

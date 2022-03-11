@@ -14,7 +14,7 @@
         </p>
       </div>
 
-      <BasicForm @register="registerForm" />
+      <EntForm @register="registerForm" />
 
       <div :class="`${prefixCls}__footer`">
         <a-button type="primary" block class="mt-2" @click="handleLock">
@@ -28,15 +28,15 @@
   import { defineComponent, computed } from 'vue';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
   import { useDesign } from '@ent-core/hooks/web/useDesign';
-  import { EntModal, useModalInner } from '@ent-core/components/Modal/index';
-  import { BasicForm, useForm } from '@ent-core/components/Form/index';
+  import { EntModal, useModalInner } from '@ent-core/components/Modal';
+  import { EntForm, useForm } from '@ent-core/components/Form';
 
   import { useUserStore } from '@ent-core/store/modules/user';
   import { useLockStore } from '@ent-core/store/modules/lock';
   import headerImg from '@ent-core/assets/images/header.jpg';
   export default defineComponent({
     name: 'LockModal',
-    components: { EntModal, BasicForm },
+    components: { EntModal, EntForm },
 
     setup() {
       const { t } = useI18n();

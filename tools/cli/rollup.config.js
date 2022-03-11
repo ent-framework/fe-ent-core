@@ -48,25 +48,20 @@ const createNodeConfig = (isProduction) => {
   /**
    * @type {*[]}
    */
-  const dependencies = [
-    ...Object.keys(require('./package.json').dependencies),
-    ...(isProduction ? [] : Object.keys(require('./package.json').devDependencies)),
-  ];
-
-  const peerDependencies = [...Object.keys(require('./package.json').peerDependencies)];
-
-  const external = dependencies.filter((s) => !peerDependencies.includes(s));
   const nodeConfig = {
     ...sharedNodeOptions,
     input: {
-      index: path.resolve(__dirname, 'src/index.ts'),
       cli: path.resolve(__dirname, 'src/cli.ts'),
     },
     output: {
       ...sharedNodeOptions.output,
       sourcemap: !isProduction,
     },
-    external: ['rollup', 'vite', 'ant-design-vue', 'vite-plugin-ent-theme', ...external],
+    external: [
+      'fsevents',
+      ...Object.keys(require('./package.json').dependencies),
+      ...(isProduction ? [] : Object.keys(require('./package.json').devDependencies)),
+    ],
     plugins: [
       nodeResolve({ preferBuiltins: true }),
       typescript({

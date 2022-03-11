@@ -1,6 +1,6 @@
 <template>
   <div ref="wrapRef" :class="getWrapperClass">
-    <BasicForm
+    <EntForm
       submitOnReset
       v-bind="getFormProps"
       v-if="getBindValues.useSearchForm"
@@ -12,7 +12,7 @@
       <template #[replaceFormSlotKey(item)]="data" v-for="item in getFormSlotKeys">
         <slot :name="item" v-bind="data || {}"></slot>
       </template>
-    </BasicForm>
+    </EntForm>
 
     <Table
       ref="tableElRef"
@@ -40,7 +40,7 @@
   } from './types/table';
   import { defineComponent, ref, computed, unref, toRaw, inject, watchEffect } from 'vue';
   import { Table } from 'ant-design-vue';
-  import { BasicForm, useForm } from '@ent-core/components/Form/index';
+  import { EntForm, useForm } from '@ent-core/components/Form';
   import { PageWrapperFixedHeightKey } from '@ent-core/components/Page';
   import expandIcon from './components/ExpandIcon';
   import HeaderCell from './components/HeaderCell.vue';
@@ -67,10 +67,10 @@
   import { warn } from '@ent-core/utils/log';
 
   export default defineComponent({
-    name: 'EntBasicTable',
+    name: 'EntTable',
     components: {
       Table,
-      BasicForm,
+      EntForm,
       HeaderCell,
     },
     props: basicProps,

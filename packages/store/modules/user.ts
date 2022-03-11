@@ -1,7 +1,7 @@
 import type { UserInfo } from '@ent-core/types/store';
 import type { ErrorMessageMode } from '@ent-core/types/axios';
 import { defineStore } from 'pinia';
-import { store } from '@ent-core/store';
+import { store } from '@ent-core/store/pinia';
 import { RoleEnum } from '@ent-core/enums/roleEnum';
 import { PageEnum } from '@ent-core/enums/pageEnum';
 import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '@ent-core/enums/cacheEnum';

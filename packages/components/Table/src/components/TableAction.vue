@@ -46,7 +46,7 @@
   import { ACTION_COLUMN_FLAG } from '../const';
 
   export default defineComponent({
-    name: 'TableAction',
+    name: 'EntTableAction',
     components: { Icon, EntPopButton, Divider, EntDropdown, MoreOutlined, Tooltip },
     props: {
       actions: {

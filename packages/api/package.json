@@ -1,7 +1,7 @@
 {
   "name": "@ent-core/api",
   "version": "0.0.5",
-  "description": "all components are settled here",
+  "description": "all api are settled here",
   "peerDependencies": {
     "vue": "^3.2.0"
   },

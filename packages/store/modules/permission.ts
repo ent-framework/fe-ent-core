@@ -1,7 +1,7 @@
 import type { AppRouteRecordRaw, Menu, MenuModule } from '@ent-core/router/types';
 
 import { defineStore } from 'pinia';
-import { store } from '@ent-core/store';
+import { store } from '@ent-core/store/pinia';
 import { useI18n } from '@ent-core/hooks/web/useI18n';
 import { useUserStore } from './user';
 import { useAppStoreWithOut } from './app';

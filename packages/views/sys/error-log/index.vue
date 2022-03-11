@@ -17,7 +17,7 @@
         </a-button>
       </template>
       <template #action="{ record }">
-        <TableAction
+        <EntTableAction
           :actions="[
             { label: t('sys.errorLog.tableActionDesc'), onClick: handleDetail.bind(null, record) },
           ]"
@@ -31,9 +31,9 @@
 </script>
 <script lang="ts" setup>
   import type { ErrorLogInfo } from '@ent-core/types/store';
-  import { watch, ref, nextTick } from 'vue';
+  import { watch, ref, nextTick, defineComponent } from 'vue';
   import DetailModal from './DetailModal.vue';
-  import { useTable, TableAction } from '@ent-core/components/Table/index';
+  import { useTable, EntTableAction } from '@ent-core/components/Table';
   import { useModal } from '@ent-core/components/Modal';
   import { useMessage } from '@ent-core/hooks/web/useMessage';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
@@ -59,6 +59,12 @@
     },
   });
   const [registerModal, { openModal }] = useModal();
+
+  defineComponent({
+    components: {
+      EntTableAction,
+    },
+  });
 
   watch(
     () => errorLogStore.getErrorLogInfoList,

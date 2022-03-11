@@ -1,15 +1,11 @@
 {
   "name": "@ent-core/enums",
   "version": "0.0.5",
-  "description": "all components are settled here",
-  "peerDependencies": {
-    "vue": "^3.2.0"
-  },
+  "description": "all enums are settled here",
   "main": "index.ts",
   "module": "index.ts",
   "types": "index.d.ts",
   "unpkg": "index.js",
   "jsdelivr": "index.js",
-  "sideEffects": false,
   "gitHead": "c69724230befa8fede0e6b9c37fb0b7e39fd7cdd"
 }

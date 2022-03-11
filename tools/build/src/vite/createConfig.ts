@@ -1,6 +1,7 @@
 import type { ConfigEnv, UserConfig, Alias } from 'vite';
-import { loadEnv } from 'vite';
+import vite, { loadEnv, searchForWorkspaceRoot } from 'vite';
 import { resolve } from 'path';
+import fs from 'fs-extra';
 import moment from 'moment';
 import { generateModifyVars } from '../generate/generateModifyVars';
 import { createProxy } from './proxy';
@@ -39,18 +40,29 @@ export function createViteConfig(
   //运行模式识别
   //serve 在线运行, lib 库打包模式, package Html打包模式
   const runMode = command === 'serve' ? 'serve' : isBuildLib ? 'lib' : 'package';
-  const root = process.cwd();
+  const cwd = process.cwd();
   _.defaults(configEnv, { customTheme: false, preview, runMode });
-  console.log(configEnv);
 
-  const env = loadEnv(mode, root);
-
+  let env: Record<string, string> = loadEnv(mode, cwd);
+  if (env == null || Object.keys(env).length == 0) {
+    console.log(`当前目录 ${cwd} 未找到Env文件, 请配置.env/.env.${mode} 文件`);
+    const root = vite.searchForWorkspaceRoot(cwd);
+    env = vite.loadEnv(mode, root);
+    if (env == null || Object.keys(env).length == 0) {
+      console.log(`根目录 ${root} 未找到Env文件, 请配置.env/.env.${mode} 文件`);
+      process.exit(1);
+    } else {
+      console.log(`使用根目录 ${root} 的Env文件`);
+    }
+  } else {
+    console.log(`使用根目录 ${cwd} 的Env文件`);
+  }
   // The boolean type read by loadEnv is a string. This function can be converted to boolean type
   const viteEnv = wrapperEnv(env, mode);
 
-  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = viteEnv;
+  const { VITE_PORT = 3100, VITE_PUBLIC_PATH = '/', VITE_PROXY } = viteEnv;
 
-  green(`Run in folder: ${root}, mode: ${runMode}`);
+  green(`Run in folder: ${cwd}, run mode: ${runMode}, public path: ${VITE_PUBLIC_PATH}`);
 
   const resolveAlias: Alias[] = [
     ...configEnv.alias,
@@ -84,7 +96,7 @@ export function createViteConfig(
 
   let config: UserConfig = {
     base: VITE_PUBLIC_PATH,
-    root,
+    root: cwd,
     resolve: {
       alias: resolveAlias,
     },

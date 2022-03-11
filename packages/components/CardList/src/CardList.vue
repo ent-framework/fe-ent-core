@@ -1,7 +1,7 @@
 <template>
   <div class="p-2">
     <div class="p-4 mb-2 bg-white">
-      <BasicForm @register="registerForm" />
+      <EntForm @register="registerForm" />
     </div>
     {{ sliderProp.width }}
     <div class="p-2 bg-white">
@@ -87,7 +87,7 @@
   } from '@ant-design/icons-vue';
   import { List, Card, Image, Typography, Tooltip, Slider, Avatar } from 'ant-design-vue';
   import { EntDropdown } from '@ent-core/components/Dropdown';
-  import { BasicForm, useForm } from '@ent-core/components/Form';
+  import { EntForm, useForm } from '@ent-core/components/Form';
   import { propTypes } from '@ent-core/utils/propTypes';
   import { EntButton } from '@ent-core/components/Button';
   import { isFunction } from '@ent-core/utils/is';
@@ -113,8 +113,13 @@
       EllipsisOutlined,
       RedoOutlined,
       TableOutlined,
+      EntForm,
       EntDropdown,
       EntButton,
+      Image,
+      Tooltip,
+      Slider,
+      Avatar,
     },
   });
   //数据

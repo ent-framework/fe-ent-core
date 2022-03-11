@@ -1,7 +1,7 @@
 import type { ErrorLogInfo } from '@ent-core/types/store';
 
 import { defineStore } from 'pinia';
-import { store } from '@ent-core/store';
+import { store } from '@ent-core/store/pinia';
 
 import { formatToDateTime } from '@ent-core/utils/dateUtil';
 import projectSetting from '@ent-core/settings/projectSetting';

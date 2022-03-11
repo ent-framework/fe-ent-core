@@ -1,5 +1,4 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -18,13 +17,12 @@
     "noUnusedParameters": true,
     "experimentalDecorators": true,
     "lib": ["dom", "esnext"],
-    "types": ["vite/client", "jest"],
-    "typeRoots": ["./node_modules/@types/", "../typings/"],
+    "types": ["vite/client", "jest", "../typings/global"],
+    "typeRoots": ["./node_modules/@types", "../typings"],
     "noImplicitAny": false,
     "skipLibCheck": true,
     "paths": {
       "/@/*": ["src/*"],
-      "fe-ent-core/lib/*": ["../packages/*"],
       "fe-ent-core/*": ["../packages/*"],
     }
   },

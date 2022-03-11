@@ -8,7 +8,7 @@ import type {
 import type { BeforeMiniState } from '@ent-core/types/store';
 
 import { defineStore } from 'pinia';
-import { store } from '@ent-core/store';
+import { store } from '@ent-core/store/pinia';
 
 import { ThemeEnum } from '@ent-core/enums/appEnum';
 import { APP_DARK_MODE_KEY_, PROJ_CFG_KEY } from '@ent-core/enums/cacheEnum';

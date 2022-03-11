@@ -25,7 +25,6 @@ const clientConfigs = [
     output: {
       format: 'esm',
       file: path.resolve(__dirname, 'es/client', 'index.mjs'),
-      sourcemap: true,
     },
   },
   {
@@ -33,7 +32,6 @@ const clientConfigs = [
     output: {
       format: 'cjs',
       file: path.resolve(__dirname, 'es/client', 'index.js'),
-      sourcemap: true,
     },
   },
 ];
