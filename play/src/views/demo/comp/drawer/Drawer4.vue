@@ -1,7 +1,7 @@
 <template>
   <EntDrawer v-bind="$attrs" @register="register" title="Drawer Title" width="50%">
     <div>
-      <BasicForm @register="registerForm" />
+      <EntForm @register="registerForm" />
     </div>
   </EntDrawer>
 </template>
@@ -9,7 +9,7 @@
   import { defineComponent } from 'vue';
   import { EntDrawer, useDrawerInner } from 'fe-ent-core/components/Drawer';
 
-  import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
+  import { EntForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
   const schemas: FormSchema[] = [
     {
       field: 'field1',
@@ -30,7 +30,7 @@
     },
   ];
   export default defineComponent({
-    components: { EntDrawer, BasicForm },
+    components: { EntDrawer, EntForm },
     setup() {
       const [registerForm, { setFieldsValue }] = useForm({
         labelWidth: 120,

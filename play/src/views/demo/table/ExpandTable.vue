@@ -8,7 +8,7 @@
         <span>No: {{ record.no }} </span>
       </template>
       <template #action="{ record }">
-        <TableAction
+        <EntTableAction
           stopButtonPropagation
           :actions="[
             {
@@ -33,14 +33,14 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable, TableAction } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/components/Table';
   import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import { getBasicColumns } from './tableData';
 
   import { demoListApi } from 'fe-ent-core/api/demo/table';
 
   export default defineComponent({
-    components: { EntTable, TableAction, EntPageWrapper },
+    components: { EntTable, EntTableAction, EntPageWrapper },
     setup() {
       const [registerTable] = useTable({
         api: demoListApi,

@@ -7,7 +7,7 @@
     width="500px"
     @ok="handleSubmit"
   >
-    <BasicForm @register="registerForm">
+    <EntForm @register="registerForm">
       <template #menu="{ model, field }">
         <BasicTree
           v-model:value="model[field]"
@@ -18,12 +18,12 @@
           title="菜单分配"
         />
       </template>
-    </BasicForm>
+    </EntForm>
   </EntDrawer>
 </template>
 <script lang="ts">
   import { defineComponent, ref, computed, unref } from 'vue';
-  import { BasicForm, useForm } from 'fe-ent-core/components/Form/index';
+  import { EntForm, useForm } from 'fe-ent-core/components/Form/index';
   import { formSchema } from './role.data';
   import { EntDrawer, useDrawerInner } from 'fe-ent-core/components/Drawer';
   import { BasicTree, TreeItem } from 'fe-ent-core/components/Tree';
@@ -32,7 +32,7 @@
 
   export default defineComponent({
     name: 'RoleDrawer',
-    components: { EntDrawer, BasicForm, BasicTree },
+    components: { EntDrawer, EntForm, BasicTree },
     emits: ['success', 'register'],
     setup(_, { emit }) {
       const isUpdate = ref(true);

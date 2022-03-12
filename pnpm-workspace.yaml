@@ -1,6 +1,7 @@
 #
 packages:
   - 'packages/**'
+  - 'extensions/**'
   - play
   - 'tools/**'
   - 'xmeta/**'

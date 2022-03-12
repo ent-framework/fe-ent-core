@@ -61,7 +61,6 @@
     "@types/tinycolor2": "^1.4.2",
     "@vue/compiler-sfc": "3.2.31",
     "vue": "3.2.31",
-    "ant-design-vue": "2.2.8",
     "vue-demi": "^0.12.1"
   },
   "repository": {

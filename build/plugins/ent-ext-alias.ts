@@ -1,17 +1,17 @@
 import { EP_PKG, EP_PREFIX } from '../utils/constants';
 import type { Plugin } from 'rollup';
 
-export function ElementPlusAlias(): Plugin {
+export function EntExtAlias(): Plugin {
   const THEME_CHALK = `${EP_PREFIX}/theme`;
 
   return {
-    name: 'ent-core-alias-plugin',
+    name: 'ent-ext-alias-plugin',
     resolveId(id, importer, options) {
       if (!id.startsWith(EP_PREFIX)) return;
 
-      if (id.startsWith(THEME_CHALK)) {
+      if (id.startsWith(EP_PREFIX)) {
         return {
-          id: id.replaceAll(THEME_CHALK, `${EP_PKG}/theme`),
+          id: id.replaceAll(EP_PREFIX, `${EP_PKG}`),
           external: 'absolute',
         };
       }

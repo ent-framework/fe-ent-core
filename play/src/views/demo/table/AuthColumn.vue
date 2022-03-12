@@ -2,7 +2,7 @@
   <div class="p-4">
     <EntTable @register="registerTable">
       <template #action="{ record }">
-        <TableAction
+        <EntTableAction
           :actions="[
             {
               label: '编辑',
@@ -56,7 +56,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable, BasicColumn, TableAction } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable, BasicColumn, EntTableAction } from 'fe-ent-core/components/Table';
 
   import { demoListApi } from 'fe-ent-core/api/demo/table';
   const columns: BasicColumn[] = [
@@ -93,7 +93,7 @@
     },
   ];
   export default defineComponent({
-    components: { EntTable, TableAction },
+    components: { EntTable, EntTableAction },
     setup() {
       const [registerTable] = useTable({
         title: 'TableAction组件及固定列示例',

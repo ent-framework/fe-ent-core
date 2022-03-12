@@ -1,0 +1,47 @@
+{
+  "name": "@fe-ent-extension/code-editor",
+  "version": "1.0.4",
+  "author": {
+    "name": "jeff qian",
+    "email": "baojian.qian@accenture.com",
+    "url": "https://github.com/anncwb"
+  },
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "typings": "lib/index.d.ts",
+  "unpkg": "dist/index.full.min.js",
+  "sideEffects": [
+    "dist",
+    "es",
+    "lib"
+  ],
+  "peerDependencies": {
+    "vue": "3.2.31",
+    "ant-design-vue": "2.2.8"
+  },
+  "dependencies": {
+    "@ant-design/colors": "^6.0.0",
+    "@logicflow/core": "^1.0.7",
+    "@logicflow/extension": "^1.0.7"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "@types/tinycolor2": "^1.4.2",
+    "@vue/compiler-sfc": "3.2.31",
+    "vue": "3.2.31",
+    "fe-ent-core": "^1.0.7",
+    "vue-demi": "^0.12.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/acn_abg/fe-core.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/acn_abg/fe-core/issues"
+  },
+  "homepage": "https://gitlab.com/acn_abg/fe-core",
+  "engines": {
+    "node": "^12 || >=14"
+  }
+}

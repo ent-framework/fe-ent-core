@@ -5,6 +5,7 @@ import type {
   ComponentPublicInstance,
   FunctionalComponent,
   PropType as VuePropType,
+  App,
 } from 'vue';
 
 declare global {
@@ -72,6 +73,28 @@ declare global {
     VITE_USE_IMAGEMIN: boolean;
     VITE_GENERATE_UI: string;
   }
+
+  // declare interface EntInstance {
+  //   init(app: App);
+  // }
+  //
+  // declare const Ent: Ent = Ent.getInstance();
+  //
+  // // 全局实例
+  // class Ent implements EntInstance {
+  //   static instance: Ent;
+  //   _app: App;
+  //   static getInstance() {
+  //     if (!Ent.instance) {
+  //       Ent.instance = new Ent();
+  //     }
+  //     return Ent.instance;
+  //   }
+  //   init(app: App) {
+  //     const _this = Ent.getInstance();
+  //     _this._app = app;
+  //   }
+  // }
 
   declare function parseInt(s: string | number, radix?: number): number;
 

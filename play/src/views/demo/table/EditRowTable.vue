@@ -2,7 +2,7 @@
   <div class="p-4">
     <EntTable @register="registerTable" @edit-change="onEditChange">
       <template #action="{ record, column }">
-        <TableAction :actions="createActions(record, column)" />
+        <EntTableAction :actions="createActions(record, column)" />
       </template>
     </EntTable>
   </div>
@@ -12,7 +12,7 @@
   import {
     EntTable,
     useTable,
-    TableAction,
+    EntTableAction,
     BasicColumn,
     ActionItem,
     EditRecordRow,
@@ -162,7 +162,7 @@
     },
   ];
   export default defineComponent({
-    components: { EntTable, TableAction },
+    components: { EntTable, EntTableAction },
     setup() {
       const { createMessage: msg } = useMessage();
       const currentEditKeyRef = ref('');

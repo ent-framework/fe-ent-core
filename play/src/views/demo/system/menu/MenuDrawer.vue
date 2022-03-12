@@ -7,12 +7,12 @@
     width="50%"
     @ok="handleSubmit"
   >
-    <BasicForm @register="registerForm" />
+    <EntForm @register="registerForm" />
   </EntDrawer>
 </template>
 <script lang="ts">
   import { defineComponent, ref, computed, unref } from 'vue';
-  import { BasicForm, useForm } from 'fe-ent-core/components/Form/index';
+  import { EntForm, useForm } from 'fe-ent-core/components/Form/index';
   import { formSchema } from './menu.data';
   import { EntDrawer, useDrawerInner } from 'fe-ent-core/components/Drawer';
 
@@ -20,7 +20,7 @@
 
   export default defineComponent({
     name: 'MenuDrawer',
-    components: { EntDrawer, BasicForm },
+    components: { EntDrawer, EntForm },
     emits: ['success', 'register'],
     setup(_, { emit }) {
       const isUpdate = ref(true);

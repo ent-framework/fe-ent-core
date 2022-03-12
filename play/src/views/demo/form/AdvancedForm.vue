@@ -1,17 +1,17 @@
 <template>
   <EntPageWrapper title="可折叠表单示例">
     <CollapseContainer title="基础收缩示例">
-      <BasicForm @register="register" />
+      <EntForm @register="register" />
     </CollapseContainer>
 
     <CollapseContainer title="超过3行自动收起，折叠时保留2行" class="mt-4">
-      <BasicForm @register="register1" />
+      <EntForm @register="register1" />
     </CollapseContainer>
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
+  import { EntForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
   import { EntCollapseContainer } from 'fe-ent-core/components/Container';
   import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
@@ -149,7 +149,7 @@
     ];
   }
   export default defineComponent({
-    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
+    components: { EntForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const [register] = useForm({
         labelWidth: 120,

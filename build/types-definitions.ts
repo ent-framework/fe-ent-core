@@ -45,7 +45,7 @@ export const generateTypesDefinitions = async () => {
       skipLibCheck: true,
       isolatedModules: true,
       types: ['vite/client', `${projRoot}/typings/global`],
-      typeRoots: [`${projRoot}/node_modules/@types/`, `${projRoot}/typings/`],
+      typeRoots: [`${projRoot}/node_modules/@types`, `${projRoot}/typings`],
     },
     //libFolderPath: `${projRoot}/node_modules/typescript/lib`,
     tsConfigFilePath: TSCONFIG_PATH,

@@ -4,7 +4,7 @@ import type { App } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { getBasicRoutes } from './routes';
 import { AppRouteModule, AppRouteRecordRaw } from './types';
-import { getAppEnvConfig } from "@ent-core/utils/env";
+import { getAppEnvConfig } from '@ent-core/utils/env';
 
 export interface EntRouter extends Router {
   parent: Router;

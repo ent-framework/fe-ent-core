@@ -14,7 +14,7 @@
 
   // support Multi-language
   const { getAntdLocale } = useLocale();
-
+  console.log(getAntdLocale);
   // Listening to page changes and dynamically changing site titles
   useTitle();
 </script>

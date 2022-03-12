@@ -1,7 +1,7 @@
 <template>
   <EntPageWrapper title="表单基础示例" contentFullHeight>
     <CollapseContainer title="基础示例">
-      <BasicForm
+      <EntForm
         autoFocusFirstItem
         :labelWidth="200"
         :schemas="schemas"
@@ -51,13 +51,13 @@
             @search="onSearch"
           />
         </template>
-      </BasicForm>
+      </EntForm>
     </CollapseContainer>
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { computed, defineComponent, unref, ref } from 'vue';
-  import { BasicForm, FormSchema, ApiSelect } from 'fe-ent-core/components/Form/index';
+  import { EntForm, FormSchema, ApiSelect } from 'fe-ent-core/components/Form/index';
   import { EntCollapseContainer } from 'fe-ent-core/components/Container';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { EntPageWrapper } from 'fe-ent-core/components/Page';
@@ -577,7 +577,7 @@
   ];
 
   export default defineComponent({
-    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper, ApiSelect, ASelect: Select },
+    components: { EntForm, CollapseContainer: EntCollapseContainer, EntPageWrapper, ApiSelect, ASelect: Select },
     setup() {
       const check = ref(null);
       const { createMessage } = useMessage();

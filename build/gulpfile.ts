@@ -62,10 +62,13 @@ export default series(
   ),
 
   parallel(copyTypesDefinitions, copyFiles),
+
+  runTask('buildFullExtensions'),
 );
 
 export * from './types-definitions';
 export * from './modules';
 export * from './full-bundle';
 export * from './helper';
+export * from './extensions';
 export * from './theme';

@@ -1,7 +1,7 @@
 <template>
   <EntPageWrapper title="富文本嵌入表单示例">
     <CollapseContainer title="富文本表单">
-      <BasicForm
+      <EntForm
         :labelWidth="100"
         :schemas="schemas"
         :actionColOptions="{ span: 24 }"
@@ -12,7 +12,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { BasicForm, FormSchema } from 'fe-ent-core/components/Form/index';
+  import { EntForm, FormSchema } from 'fe-ent-core/components/Form/index';
   import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { Tinymce } from 'fe-ent-core/components/Tinymce/index';
@@ -43,7 +43,7 @@
     },
   ];
   export default defineComponent({
-    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
+    components: { EntForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const { createMessage } = useMessage();
 

@@ -7,17 +7,17 @@
       <a-button @click="deleteField" class="mr-2"> 删除字段11 </a-button>
     </div>
     <CollapseContainer title="动态表单示例,动态根据表单内其他值改变">
-      <BasicForm @register="register" />
+      <EntForm @register="register" />
     </CollapseContainer>
 
     <CollapseContainer class="mt-5" title="componentProps动态改变">
-      <BasicForm @register="register1" />
+      <EntForm @register="register1" />
     </CollapseContainer>
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
+  import { EntForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
   import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import { EntPageWrapper } from 'fe-ent-core/components/Page';
 
@@ -169,7 +169,7 @@
           onChange: async () => {
             const { validate } = formActionType;
             // tableAction只适用于在表格内开启表单的例子
-            // const { reload } = tableAction;
+            // const { reload } = EntTableAction;
             const res = await validate();
             console.log(res);
           },
@@ -179,7 +179,7 @@
   ];
 
   export default defineComponent({
-    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
+    components: { EntForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const [register, { setProps, updateSchema, appendSchemaByField, removeSchemaByFiled }] =
         useForm({

@@ -2,6 +2,9 @@
 
 set -e
 
+cd tools/build
+npm publish --access public -registry http://npm.36cpc.com/repository/npm-snapshots/
+cd -
 cd tools/cli
 npm publish --access public -registry http://npm.36cpc.com/repository/npm-snapshots/
 cd -
@@ -10,4 +13,5 @@ npm publish --access public -registry http://npm.36cpc.com/repository/npm-snapsh
 cd -
 cd tools/vite-plugin-ent-theme
 npm publish --access public -registry http://npm.36cpc.com/repository/npm-snapshots/
+cd -
 echo "✅ Publish completed"

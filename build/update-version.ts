@@ -1,7 +1,8 @@
 import fs from 'fs';
-import { epPackage, epOutput } from './utils';
+import { epPackage, epOutput, pkgRoot, toolsRoot } from './utils';
 import { cyan, red, yellow, green } from './utils';
 import { getPackageManifest } from './utils';
+import glob from 'fast-glob';
 
 const tagVersion = process.env.TAG_VERSION;
 if (!tagVersion) {
@@ -25,6 +26,19 @@ cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n'));
     try {
       await fs.promises.writeFile(epOutput + '/package.json', JSON.stringify(json, null, 2), {
         encoding: 'utf-8',
+      });
+      const toolPackages = await glob('*/package.json', {
+        cwd: toolsRoot,
+        absolute: true,
+        onlyFiles: true,
+      });
+      //修改tools 版本号
+      toolPackages.map(async (tool) => {
+        const tJson: Record<string, any> = getPackageManifest(tool);
+        tJson.version = tagVersion;
+        await fs.promises.writeFile(tool, JSON.stringify(tJson, null, 2), {
+          encoding: 'utf-8',
+        });
       });
     } catch (e) {
       console.error(e);

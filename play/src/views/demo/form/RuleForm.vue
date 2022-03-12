@@ -8,13 +8,13 @@
       <a-button @click="resetFields" class="mr-2"> 重置 </a-button>
     </div>
     <CollapseContainer title="表单校验">
-      <BasicForm @register="register" @submit="handleSubmit" />
+      <EntForm @register="register" @submit="handleSubmit" />
     </CollapseContainer>
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
+  import { EntForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
   import { EntCollapseContainer } from 'fe-ent-core/components/Container';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { EntPageWrapper } from 'fe-ent-core/components/Page';
@@ -204,7 +204,7 @@
   ];
 
   export default defineComponent({
-    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
+    components: { EntForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const { createMessage } = useMessage();
       const [

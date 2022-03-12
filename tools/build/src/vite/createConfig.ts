@@ -1,7 +1,6 @@
 import type { ConfigEnv, UserConfig, Alias } from 'vite';
-import vite, { loadEnv, searchForWorkspaceRoot } from 'vite';
+import vite, { loadEnv } from 'vite';
 import { resolve } from 'path';
-import fs from 'fs-extra';
 import moment from 'moment';
 import { generateModifyVars } from '../generate/generateModifyVars';
 import { createProxy } from './proxy';

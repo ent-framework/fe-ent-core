@@ -12,7 +12,7 @@ import glob from 'fast-glob';
 import { camelCase, upperFirst } from 'lodash';
 import { version } from '../packages/fe-ent-core/version';
 import { reporter } from './plugins/size-reporter';
-import { ElementPlusAlias } from './plugins/element-plus-alias';
+import { EntCoreAlias } from './plugins/ent-core-alias';
 import { epRoot, epOutput, localeRoot, projRoot, pkgRoot } from './utils';
 import { formatBundleFilename, generateExternal, writeBundles } from './utils/rollup';
 import { withTaskName } from './utils/gulp';
@@ -32,7 +32,7 @@ async function buildFullEntry(minify: boolean) {
   const bundle = await rollup({
     input: path.resolve(epRoot, 'index.ts'),
     plugins: [
-      ElementPlusAlias(),
+      EntCoreAlias(),
       PurgeIcons({}),
       json(),
       image(),

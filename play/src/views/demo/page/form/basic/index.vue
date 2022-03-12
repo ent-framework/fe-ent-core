@@ -5,11 +5,11 @@
     content=" 表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。"
     contentClass="p-4"
   >
-    <BasicForm @register="register" />
+    <EntForm @register="register" />
   </EntPageWrapper>
 </template>
 <script lang="ts">
-  import { BasicForm, useForm } from 'fe-ent-core/components/Form';
+  import { EntForm, useForm } from 'fe-ent-core/components/Form';
   import { defineComponent } from 'vue';
   import { schemas } from './data';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
@@ -17,7 +17,7 @@
 
   export default defineComponent({
     name: 'FormBasicPage',
-    components: { BasicForm, EntPageWrapper },
+    components: { EntForm, EntPageWrapper },
     setup() {
       const { createMessage } = useMessage();
       const [register, { validate, setProps }] = useForm({

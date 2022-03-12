@@ -11,9 +11,9 @@
         <Avatar :size="60" :src="record.avatar" />
       </template>
       <template #img="{ text }">
-        <TableImg :size="60" :simpleShow="true" :imgList="text" />
+        <EntTableImg :size="60" :simpleShow="true" :imgList="text" />
       </template>
-      <template #imgs="{ text }"> <TableImg :size="60" :imgList="text" /> </template>
+      <template #imgs="{ text }"> <EntTableImg :size="60" :imgList="text" /> </template>
 
       <template #category="{ record }">
         <Tag color="green">
@@ -25,7 +25,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable, BasicColumn, TableImg } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable, BasicColumn, EntTableImg } from 'fe-ent-core/components/Table';
   import { Tag, Avatar } from 'ant-design-vue';
   import { demoListApi } from 'fe-ent-core/api/demo/table';
   const columns: BasicColumn[] = [
@@ -85,7 +85,7 @@
     },
   ];
   export default defineComponent({
-    components: { EntTable, TableImg, Tag, Avatar },
+    components: { EntTable, EntTableImg, Tag, Avatar },
     setup() {
       const [registerTable] = useTable({
         title: '自定义列内容',

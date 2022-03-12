@@ -53,7 +53,6 @@ export function rollupPluginInjectProcessViteEnv(options: Options = {}): Plugin 
   //只装载VITE_开发头的变量定义
   const viteEnv = loadEnv('production', root);
   const env = wrapperEnv(viteEnv);
-  console.log(env);
 
   return {
     name,

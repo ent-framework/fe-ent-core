@@ -9,7 +9,7 @@ import esbuild from 'rollup-plugin-esbuild';
 import filesize from 'rollup-plugin-filesize';
 import glob from 'fast-glob';
 import { epRoot, pkgRoot, projRoot } from './utils';
-import { ElementPlusAlias } from './plugins/element-plus-alias';
+import { EntCoreAlias } from './plugins/ent-core-alias';
 import { rollupPluginInjectProcessViteEnv } from './plugins/vite-env';
 import { generateExternal, writeBundles } from './utils/rollup';
 import { excludeFiles } from './utils';
@@ -49,7 +49,7 @@ export const buildModules = async () => {
   const bundle = await rollup({
     input,
     plugins: [
-      ElementPlusAlias(),
+      EntCoreAlias(),
       PurgeIcons({}),
       image(),
       rollupPluginInjectProcessViteEnv({

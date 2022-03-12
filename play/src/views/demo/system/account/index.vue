@@ -6,7 +6,7 @@
         <a-button type="primary" @click="handleCreate">新增账号</a-button>
       </template>
       <template #action="{ record }">
-        <TableAction
+        <EntTableAction
           :actions="[
             {
               icon: 'clarity:info-standard-line',
@@ -37,7 +37,7 @@
 <script lang="ts">
   import { defineComponent, reactive } from 'vue';
 
-  import { EntTable, useTable, TableAction } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/components/Table';
   import { getAccountList } from 'fe-ent-core/api/demo/system';
   import { EntPageWrapper } from 'fe-ent-core/components/Page';
   import DeptTree from './DeptTree.vue';
@@ -50,7 +50,7 @@
 
   export default defineComponent({
     name: 'AccountManagement',
-    components: { EntTable, EntPageWrapper, DeptTree, AccountModal, TableAction },
+    components: { EntTable, EntPageWrapper, DeptTree, AccountModal, EntTableAction },
     setup() {
       const go = useGo();
       const [registerModal, { openModal }] = useModal();

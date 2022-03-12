@@ -37,7 +37,6 @@
   });
 
   defineComponent({
-    name: 'EntAppLocalePicker',
     components: { EntDropdown },
   });
 

@@ -8,18 +8,18 @@
       <a-descriptions-item label="转账金额"> 500元 </a-descriptions-item>
     </a-descriptions>
     <a-divider />
-    <BasicForm @register="register" />
+    <EntForm @register="register" />
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicForm, useForm } from 'fe-ent-core/components/Form';
+  import { EntForm, useForm } from 'fe-ent-core/components/Form';
   import { step2Schemas } from './data';
   import { Alert, Divider, Descriptions } from 'ant-design-vue';
 
   export default defineComponent({
     components: {
-      BasicForm,
+      EntForm,
       [Alert.name]: Alert,
       [Divider.name]: Divider,
       [Descriptions.name]: Descriptions,

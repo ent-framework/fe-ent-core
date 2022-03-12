@@ -78,13 +78,14 @@ export function getRawRoute(route: RouteLocationNormalized): RouteLocationNormal
   };
 }
 
-export const withInstall = <T>(component: T, alias?: string) => {
+export const withInstall = <T>(component: T, name?: string, alias?: string) => {
   const comp = component as any;
   comp.install = (app: App) => {
-    if (!comp.name && !comp.displayName) {
-      console.log(comp.__file);
+    const compName = name || comp.name || comp.displayName;
+    if (!compName) {
+      console.log(comp);
     } else {
-      app.component(comp.name || comp.displayName, component);
+      app.component(compName, component);
       if (alias) {
         app.config.globalProperties[alias] = component;
       }

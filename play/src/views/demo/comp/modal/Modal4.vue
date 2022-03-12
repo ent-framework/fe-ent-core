@@ -6,14 +6,14 @@
     @visible-change="handleVisibleChange"
   >
     <div class="pt-3px pr-3px">
-      <BasicForm @register="registerForm" :model="model" />
+      <EntForm @register="registerForm" :model="model" />
     </div>
   </EntModal>
 </template>
 <script lang="ts">
   import { defineComponent, ref, nextTick } from 'vue';
   import { EntModal, useModalInner } from 'fe-ent-core/components/Modal';
-  import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
+  import { EntForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
   const schemas: FormSchema[] = [
     {
       field: 'field1',
@@ -34,7 +34,7 @@
     },
   ];
   export default defineComponent({
-    components: { EntModal, BasicForm },
+    components: { EntModal, EntForm },
     props: {
       userData: { type: Object },
     },

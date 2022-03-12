@@ -54,7 +54,7 @@
       </a-button>
     </div>
     <CollapseContainer title="使用ref调用表单内部函数示例">
-      <BasicForm
+      <EntForm
         :schemas="schemas"
         ref="formElRef"
         :labelWidth="100"
@@ -66,7 +66,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { BasicForm, FormSchema, FormActionType, FormProps } from 'fe-ent-core/components/Form/index';
+  import { EntForm, FormSchema, FormActionType, FormProps } from 'fe-ent-core/components/Form/index';
   import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { EntPageWrapper } from 'fe-ent-core/components/Page';
@@ -167,7 +167,7 @@
   ];
 
   export default defineComponent({
-    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
+    components: { EntForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const formElRef = ref<Nullable<FormActionType>>(null);
       const { createMessage } = useMessage();

@@ -1,18 +1,18 @@
 <template>
   <EntPageWrapper title="表单增删示例">
     <CollapseContainer title="表单增删">
-      <BasicForm @register="register" @submit="handleSubmit">
+      <EntForm @register="register" @submit="handleSubmit">
         <template #add="{ field }">
           <EntButton v-if="Number(field) === 0" @click="add">+</EntButton>
           <EntButton v-if="field > 0" @click="del(field)">-</EntButton>
         </template>
-      </BasicForm>
+      </EntForm>
     </CollapseContainer>
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { BasicForm, useForm } from 'fe-ent-core/components/Form/index';
+  import { EntForm, useForm } from 'fe-ent-core/components/Form/index';
   import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import { Input } from 'ant-design-vue';
   import { EntPageWrapper } from 'fe-ent-core/components/Page';
@@ -20,7 +20,7 @@
 
   export default defineComponent({
     components: {
-      BasicForm,
+      EntForm,
       CollapseContainer: EntCollapseContainer,
       EntPageWrapper,
       [Input.name]: Input,

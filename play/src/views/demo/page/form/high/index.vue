@@ -5,10 +5,10 @@
     content=" 高级表单常见于一次性输入和提交大批量数据的场景。"
   >
     <a-card title="仓库管理" :bordered="false">
-      <BasicForm @register="register" />
+      <EntForm @register="register" />
     </a-card>
     <a-card title="任务管理" :bordered="false" class="!mt-5">
-      <BasicForm @register="registerTask" />
+      <EntForm @register="registerTask" />
     </a-card>
     <a-card title="成员管理" :bordered="false">
       <PersonTable ref="tableRef" />
@@ -20,7 +20,7 @@
   </EntPageWrapper>
 </template>
 <script lang="ts">
-  import { BasicForm, useForm } from 'fe-ent-core/components/Form';
+  import { EntForm, useForm } from 'fe-ent-core/components/Form';
   import { defineComponent, ref } from 'vue';
   import PersonTable from './PersonTable.vue';
   import { EntPageWrapper } from 'fe-ent-core/components/Page';
@@ -29,7 +29,7 @@
 
   export default defineComponent({
     name: 'FormHightPage',
-    components: { BasicForm, PersonTable, EntPageWrapper, [Card.name]: Card },
+    components: { EntForm, PersonTable, EntPageWrapper, [Card.name]: Card },
     setup() {
       const tableRef = ref<{ getDataSource: () => any } | null>(null);
 

@@ -2,7 +2,7 @@
   <div>
     <EntTable @register="registerTable" @edit-change="handleEditChange">
       <template #action="{ record, column }">
-        <TableAction :actions="createActions(record, column)" />
+        <EntTableAction :actions="createActions(record, column)" />
       </template>
     </EntTable>
     <a-button block class="mt-5" type="dashed" @click="handleAdd"> 新增成员 </a-button>
@@ -13,7 +13,7 @@
   import {
     EntTable,
     useTable,
-    TableAction,
+    EntTableAction,
     BasicColumn,
     ActionItem,
     EditRecordRow,
@@ -55,7 +55,7 @@
     },
   ];
   export default defineComponent({
-    components: { EntTable, TableAction },
+    components: { EntTable, EntTableAction },
     setup() {
       const [registerTable, { getDataSource }] = useTable({
         columns: columns,

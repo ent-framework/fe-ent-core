@@ -2,6 +2,7 @@ import { resolve } from 'path';
 
 export const projRoot = resolve(__dirname, '..', '..');
 export const pkgRoot = resolve(projRoot, 'packages');
+export const extRoot = resolve(projRoot, 'extensions');
 export const compRoot = resolve(pkgRoot, 'components');
 export const themeRoot = resolve(pkgRoot, 'theme');
 export const hookRoot = resolve(pkgRoot, 'hooks');
@@ -10,6 +11,7 @@ export const directiveRoot = resolve(pkgRoot, 'directives');
 export const epRoot = resolve(pkgRoot, 'fe-ent-core');
 export const utilRoot = resolve(pkgRoot, 'utils');
 export const docRoot = resolve(projRoot, 'docs');
+export const toolsRoot = resolve(projRoot, 'tools');
 
 /** dist */
 export const buildOutput = resolve(projRoot, 'dist');

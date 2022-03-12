@@ -15,6 +15,7 @@ import { setupI18n } from 'fe-ent-core/locales/setupI18n';
 import { registerGlobComp } from 'fe-ent-core/components/registerGlobComp';
 import { useLayout } from 'fe-ent-core/router/helper/layoutHelper';
 import { importMenuModules } from 'fe-ent-core/router/menus';
+//import { init } from 'fe-ent-core/logics/ent';
 import EntCore from 'fe-ent-core';
 //import AntD from 'ant-design-vue';
 
@@ -33,6 +34,9 @@ import { default as IFRAME } from 'fe-ent-core/views/sys/iframe/FrameBlank.vue';
 
 async function bootstrap() {
   const app = createApp(App);
+
+  //初始化全局变量
+  //init(app);
 
   // Configure store
   setupStore(app);

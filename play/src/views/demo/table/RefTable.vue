@@ -41,11 +41,11 @@
       const { createMessage } = useMessage();
 
       function getTableAction() {
-        const tableAction = unref(tableRef);
-        if (!tableAction) {
-          throw new Error('tableAction is null');
+        const EntTableAction = unref(tableRef);
+        if (!EntTableAction) {
+          throw new Error('EntTableAction is null');
         }
-        return tableAction;
+        return EntTableAction;
       }
       function changeLoading() {
         getTableAction().setLoading(true);

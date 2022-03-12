@@ -1,7 +1,7 @@
 <template>
   <div class="step1">
     <div class="step1-form">
-      <BasicForm @register="register">
+      <EntForm @register="register">
         <template #fac="{ model, field }">
           <a-input-group compact>
             <a-select v-model:value="model['pay']" class="pay-select">
@@ -11,7 +11,7 @@
             <a-input class="pay-input" v-model:value="model[field]" />
           </a-input-group>
         </template>
-      </BasicForm>
+      </EntForm>
     </div>
     <a-divider />
     <h3>说明</h3>
@@ -28,13 +28,13 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicForm, useForm } from 'fe-ent-core/components/Form';
+  import { EntForm, useForm } from 'fe-ent-core/components/Form';
   import { step1Schemas } from './data';
 
   import { Select, Input, Divider } from 'ant-design-vue';
   export default defineComponent({
     components: {
-      BasicForm,
+      EntForm,
       [Select.name]: Select,
       ASelectOption: Select.Option,
       [Input.name]: Input,

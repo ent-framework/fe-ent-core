@@ -1,17 +1,17 @@
 <template>
   <EntPageWrapper title="自定义组件示例">
     <CollapseContainer title="自定义表单">
-      <BasicForm @register="register" @submit="handleSubmit">
+      <EntForm @register="register" @submit="handleSubmit">
         <template #f3="{ model, field }">
           <a-input v-model:value="model[field]" placeholder="自定义slot" />
         </template>
-      </BasicForm>
+      </EntForm>
     </CollapseContainer>
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
+  import { EntForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
   import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { Input } from 'ant-design-vue';
@@ -62,7 +62,7 @@
     },
   ];
   export default defineComponent({
-    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper, [Input.name]: Input },
+    components: { EntForm, CollapseContainer: EntCollapseContainer, EntPageWrapper, [Input.name]: Input },
     setup() {
       const { createMessage } = useMessage();
       const [register, { setProps }] = useForm({

@@ -55,13 +55,13 @@
       <a-button @click="handleLoad" class="mr-2"> 联动回显 </a-button>
     </div>
     <CollapseContainer title="useForm示例">
-      <BasicForm @register="register" @submit="handleSubmit" />
+      <EntForm @register="register" @submit="handleSubmit" />
     </CollapseContainer>
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
+  import { EntForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
   import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
   import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
   import { EntPageWrapper } from 'fe-ent-core/components/Page';
@@ -213,7 +213,7 @@
   ];
 
   export default defineComponent({
-    components: { BasicForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
+    components: { EntForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const { createMessage } = useMessage();
 

@@ -2,7 +2,7 @@
   <ent-collapse-container title="基本设置" :canExpan="false">
     <a-row :gutter="24">
       <a-col :span="14">
-        <BasicForm @register="register" />
+        <EntForm @register="register" />
       </a-col>
       <a-col :span="10">
         <div class="change-avatar">
@@ -24,7 +24,7 @@
 <script lang="ts">
   import { Button, Row, Col } from 'ant-design-vue';
   import { computed, defineComponent, onMounted } from 'vue';
-  import { BasicForm, useForm } from 'fe-ent-core/components/Form/index';
+  import { EntForm, useForm } from 'fe-ent-core/components/Form/index';
   import { EntCollapseContainer } from 'fe-ent-core/components/Container';
   import { EntCropperAvatar } from 'fe-ent-core/components/Cropper';
 
@@ -38,7 +38,7 @@
 
   export default defineComponent({
     components: {
-      BasicForm,
+      EntForm,
       EntCollapseContainer,
       Button,
       ARow: Row,
