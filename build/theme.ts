@@ -51,7 +51,7 @@ export const buildTheme = async () => {
   copyThemeExceptSource();
 };
 
-async function compileLess(options: CompileLessOption) {
+export async function compileLess(options: CompileLessOption) {
   const { cwd = process.cwd(), resolvedConfig } = options;
   const { src, out, dest, dark } = options;
   const resolvedLessFile = path.resolve(cwd, src);
@@ -74,7 +74,7 @@ async function compileLess(options: CompileLessOption) {
     .pipe(
       cleanCSS({}, (details) => {
         console.log(
-          `${chalk.cyan(`${out}.css`)}: ${chalk.yellow(
+          `${chalk.cyan(`${dest}/${out}.css`)}: ${chalk.yellow(
             details.stats.originalSize / 1000,
           )} KB -> ${chalk.green(details.stats.minifiedSize / 1000)} KB`,
         );

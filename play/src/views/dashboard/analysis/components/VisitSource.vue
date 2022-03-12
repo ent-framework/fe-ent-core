@@ -6,7 +6,7 @@
 <script lang="ts" setup>
   import { Ref, ref, watch } from 'vue';
   import { Card } from 'ant-design-vue';
-  import { useECharts } from 'fe-ent-core/hooks/web/useECharts';
+  import { useECharts } from '@fe-ent-extension/echarts';
   const props = defineProps({
     loading: Boolean,
     width: {

@@ -4,7 +4,7 @@
 <script lang="ts">
   import { defineComponent, PropType, ref, Ref, onMounted } from 'vue';
 
-  import { useECharts } from 'fe-ent-core/hooks/web/useECharts';
+  import { useECharts } from '@fe-ent-extension/echarts';
 
   export default defineComponent({
     props: {

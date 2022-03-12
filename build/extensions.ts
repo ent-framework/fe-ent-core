@@ -8,29 +8,29 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import esbuild from 'rollup-plugin-esbuild';
 import filesize from 'rollup-plugin-filesize';
-import { parallel } from 'gulp';
+import { parallel, series } from 'gulp';
 import glob from 'fast-glob';
 import { version } from '../packages/fe-ent-core/version';
 import { EntExtAlias } from './plugins/ent-ext-alias';
-import { buildOutput, EP_BRAND_NAME, excludeFiles, extRoot, pkgRoot } from './utils';
+import { EP_BRAND_NAME, epOutput, excludeFiles, extRoot, pkgRoot, themeRoot } from './utils';
 import { formatBundleFilename, generateExtensionExternal, writeBundles } from './utils/rollup';
 import { withTaskName } from './utils/gulp';
 import { target } from './build-info';
-import json from '@rollup/plugin-json';
 import image from '@rollup/plugin-image';
 import PurgeIcons from 'rollup-plugin-purge-icons';
 import { rollupPluginInjectProcessViteEnv } from './plugins/vite-env';
+import { compileLess } from './theme';
+import { resolveConfig } from 'vite';
 
 const banner = `/*! ${EP_BRAND_NAME} v${version} */\n`;
 
-async function buildExtensions(minify: boolean) {
+async function buildExtensions(ext: string, minify: boolean) {
   const buildExt = async (ext: string) => {
     const bundle = await rollup({
       input: path.resolve(extRoot, ext, 'index.ts'),
       plugins: [
         EntExtAlias(),
         PurgeIcons({}),
-        json(),
         image(),
         vue({
           isProduction: true,
@@ -57,7 +57,7 @@ async function buildExtensions(minify: boolean) {
         filesize(),
       ],
       external: await generateExtensionExternal({
-        extRoot: path.resolve(extRoot, ext),
+        extRoot: path.resolve(extRoot, ext, 'package.json'),
         full: true,
       }),
     });
@@ -65,16 +65,12 @@ async function buildExtensions(minify: boolean) {
     await writeBundles(bundle, [
       {
         format: 'umd',
-        file: path.resolve(
-          buildOutput,
-          ext,
-          'dist',
-          formatBundleFilename('index.full', minify, 'js'),
-        ),
+        file: path.resolve(extRoot, ext, 'dist', formatBundleFilename('index', minify, 'js')),
         exports: 'named',
         name: ext,
         globals: {
           vue: 'Vue',
+          'fe-ent-core': 'EntCore',
         },
         sourcemap: minify,
         inlineDynamicImports: true,
@@ -82,12 +78,7 @@ async function buildExtensions(minify: boolean) {
       },
       {
         format: 'esm',
-        file: path.resolve(
-          buildOutput,
-          ext,
-          'dist',
-          formatBundleFilename('index.full', minify, 'mjs'),
-        ),
+        file: path.resolve(extRoot, ext, 'dist', formatBundleFilename('index', minify, 'mjs')),
         sourcemap: minify,
         banner,
         inlineDynamicImports: true,
@@ -95,22 +86,37 @@ async function buildExtensions(minify: boolean) {
     ]);
   };
 
-  const extensions = excludeFiles(
-    await glob('*', {
-      cwd: extRoot,
-      absolute: false,
-      onlyDirectories: true,
-    }),
+  const resolvedConfig = await resolveConfig(
+    {
+      configFile: path.resolve(process.cwd(), 'vite.theme.config.ts'),
+    },
+    'build',
+    'production',
   );
-
-  console.log(extensions);
-
-  return Promise.all(extensions.map((ext) => buildExt(ext)));
+  const buildStyle = (ext: string) =>
+    compileLess({
+      cwd: `${path.resolve(extRoot, ext)}`,
+      src: `index.less`,
+      out: `index${minify ? '.min' : ''}`,
+      dest: `${path.resolve(extRoot, ext)}/dist`,
+      dark: false,
+      resolvedConfig,
+    });
+  return Promise.all([buildExt(ext), buildStyle(ext)]);
 }
+//需要考虑依赖，构建需要顺序
+// const extensions = excludeFiles(
+//   await glob('*', {
+//     cwd: extRoot,
+//     absolute: false,
+//     onlyDirectories: true,
+//   }),
+// );
+const extensions = ['code-editor', 'flow-chart', 'tinymce', 'markdown', 'qrcode', 'echarts'];
 
-const buildFull = (minify: boolean) => async () => Promise.all([buildExtensions(minify)]);
+const buildFull = (ext: string) => async () =>
+  Promise.all([buildExtensions(ext, true), buildExtensions(ext, false)]);
 
-export const buildFullExtensions = parallel(
-  withTaskName('buildFullExtensionsMinified', buildFull(true)),
-  withTaskName('buildFullExtensions', buildFull(false)),
+export const buildFullExtensions = series(
+  extensions.map((ext) => withTaskName(`buildFullExtension:${ext}`, buildFull(ext))),
 );

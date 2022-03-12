@@ -5,7 +5,7 @@ import { createI18n } from 'vue-i18n';
 import { setHtmlPageLang, setLoadLocalePool } from './helper';
 import { localeSetting } from '@ent-core/settings/localeSetting';
 import { useLocaleStoreWithOut } from '@ent-core/store/modules/locale';
-import zhCN from './lang/zhCN';
+import zhCN from './lang/zh-CN';
 import en from './lang/en';
 
 const { fallback, availableLocales } = localeSetting;

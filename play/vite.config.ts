@@ -14,6 +14,10 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       replacement: `${workspace}/packages/$1`,
     },
     {
+      find: /^@fe-ent-extension\/(.*)$/,
+      replacement: `${workspace}/extensions/$1`,
+    },
+    {
       find: /^@ent-core\/(.*)$/,
       replacement: `${workspace}/packages/$1`,
     },

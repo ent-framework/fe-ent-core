@@ -20,16 +20,15 @@ export const generateExternal = async (options: { full: boolean }) => {
 
 export const generateExtensionExternal = async (options: { extRoot: string; full: boolean }) => {
   const { dependencies, peerDependencies } = await getPackageDependencies(options.extRoot);
-
+  const packages: string[] = peerDependencies;
   return (id: string) => {
-    const packages: string[] = peerDependencies;
     if (!options.full) {
       packages.push('vue-demi');
       // dependencies
       packages.push('@vue', ...dependencies);
     }
-
-    return [...new Set(packages)].some((pkg) => id === pkg || id.startsWith(`${pkg}/`));
+    const isExternal = [...new Set(packages)].some((pkg) => id === pkg || id.startsWith(`${pkg}/`));
+    return isExternal;
   };
 };
 

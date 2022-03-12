@@ -1,23 +1,38 @@
 {
-  "name": "@fe-ent-extension/code-editor",
-  "version": "1.0.4",
+  "name": "@fe-ent-extension/flow-chart",
+  "version": "1.1.2",
   "author": {
     "name": "jeff qian",
     "email": "baojian.qian@accenture.com",
     "url": "https://github.com/anncwb"
   },
-  "main": "lib/index.js",
-  "module": "es/index.mjs",
-  "typings": "lib/index.d.ts",
-  "unpkg": "dist/index.full.min.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
+  "unpkg": "dist/index.min.js",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./*": "./*"
+  },
   "sideEffects": [
-    "dist",
-    "es",
-    "lib"
+    "dist"
   ],
+  "files": [
+    "dist",
+    "index.less",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "rimraf dist"
+  },
   "peerDependencies": {
     "vue": "3.2.31",
-    "ant-design-vue": "2.2.8"
+    "ant-design-vue": "2.2.8",
+    "fe-ent-core": "^1.0.7",
+    "@fe-ent-extension/code-editor": "^1.0.4"
   },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
@@ -29,8 +44,8 @@
     "@types/tinycolor2": "^1.4.2",
     "@vue/compiler-sfc": "3.2.31",
     "vue": "3.2.31",
-    "fe-ent-core": "^1.0.7",
-    "vue-demi": "^0.12.1"
+    "vue-demi": "^0.12.1",
+    "fe-ent-core": "^1.0.7"
   },
   "repository": {
     "type": "git",

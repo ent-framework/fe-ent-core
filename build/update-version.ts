@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { epPackage, epOutput, pkgRoot, toolsRoot } from './utils';
+import { epPackage, projRoot } from './utils';
 import { cyan, red, yellow, green } from './utils';
 import { getPackageManifest } from './utils';
 import glob from 'fast-glob';
@@ -16,36 +16,26 @@ cyan('Start updating version');
 
 cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n'));
 (async () => {
-  yellow(`Updating package.json for fe-ent-core`);
-
-  const json: Record<string, any> = getPackageManifest(epPackage);
-
-  json.version = tagVersion;
-
   if (!(process.argv.includes('-d') || process.argv.includes('--dry-run'))) {
     try {
-      await fs.promises.writeFile(epOutput + '/package.json', JSON.stringify(json, null, 2), {
-        encoding: 'utf-8',
-      });
-      const toolPackages = await glob('*/package.json', {
-        cwd: toolsRoot,
+      const packages = await glob('{extensions,tools}/*/package.json', {
+        cwd: projRoot,
         absolute: true,
         onlyFiles: true,
       });
-      //修改tools 版本号
-      toolPackages.map(async (tool) => {
-        const tJson: Record<string, any> = getPackageManifest(tool);
-        tJson.version = tagVersion;
-        await fs.promises.writeFile(tool, JSON.stringify(tJson, null, 2), {
+      packages.push(epPackage);
+      packages.map(async (pkg) => {
+        const json: Record<string, any> = getPackageManifest(pkg);
+        json.version = tagVersion;
+        await fs.promises.writeFile(pkg, JSON.stringify(json, null, 2), {
           encoding: 'utf-8',
         });
+        yellow(`Updating ${pkg} version to ${tagVersion}`);
       });
     } catch (e) {
       console.error(e);
       process.exit(1);
     }
-  } else {
-    console.log(json);
   }
 
   green(`Version updated to ${tagVersion}`);

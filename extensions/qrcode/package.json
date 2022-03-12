@@ -1,0 +1,61 @@
+{
+  "name": "@fe-ent-extension/qrcode",
+  "version": "1.1.2",
+  "author": {
+    "name": "jeff qian",
+    "email": "baojian.qian@accenture.com",
+    "url": "https://github.com/anncwb"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
+  "unpkg": "dist/index.min.js",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./*": "./*"
+  },
+  "sideEffects": [
+    "dist"
+  ],
+  "files": [
+    "dist",
+    "index.less",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "rimraf dist"
+  },
+  "peerDependencies": {
+    "vue": "3.2.31",
+    "ant-design-vue": "2.2.8",
+    "fe-ent-core": "^1.0.7",
+    "lodash": "^4.17.21"
+  },
+  "dependencies": {
+    "@ant-design/colors": "^6.0.0",
+    "qrcode": "^1.5.0"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "@types/tinycolor2": "^1.4.2",
+    "@vue/compiler-sfc": "3.2.31",
+    "vue": "3.2.31",
+    "vue-demi": "^0.12.1",
+    "fe-ent-core": "^1.0.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/acn_abg/fe-core.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/acn_abg/fe-core/issues"
+  },
+  "homepage": "https://gitlab.com/acn_abg/fe-core",
+  "engines": {
+    "node": "^12 || >=14"
+  }
+}

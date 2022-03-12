@@ -1,4 +1,5 @@
 import tinycolor from 'tinycolor2';
+
 export function mixLighten(colorStr: string, weight: number) {
   return mix('fff', colorStr, weight);
 }

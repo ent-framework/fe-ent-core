@@ -3,7 +3,6 @@ export * from './useContentHeight';
 export * from './useContextMenu';
 export * from './useCopyToClipboard';
 export * from './useDesign';
-export * from './useECharts';
 export * from './useFullContent';
 export * from './useI18n';
 export * from './useLockPage';

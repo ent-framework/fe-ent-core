@@ -31,6 +31,7 @@ import 'fe-ent-core/theme/index.less';
 
 import { default as LAYOUT } from 'fe-ent-core/layouts/default/index.vue';
 import { default as IFRAME } from 'fe-ent-core/views/sys/iframe/FrameBlank.vue';
+import { QrCode } from '@fe-ent-extension/qrcode';
 
 async function bootstrap() {
   const app = createApp(App);
@@ -50,6 +51,7 @@ async function bootstrap() {
   //register components
   //app.use(AntD);
   app.use(EntCore);
+  //app.use(QrCode);
 
   // Multilingual configuration
   // Asynchronous case: language files may be obtained from the server side

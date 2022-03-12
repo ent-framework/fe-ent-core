@@ -4,17 +4,18 @@ import { copy, copyFile, ensureDirSync } from 'fs-extra';
 import { src, dest, series, parallel } from 'gulp';
 import { run } from './utils/process';
 import { runTask, withTaskName } from './utils/gulp';
-import { buildOutput, epOutput, pkgRoot, projRoot } from './utils';
+import { buildOutput, epOutput, epRoot, pkgRoot, projRoot } from './utils';
 import { buildConfig } from './build-info';
 import type { TaskFunction } from 'gulp';
 import type { Module } from './build-info';
 
-export const copyFiles: TaskFunction = (done) => {
-  const copyReadmeFile = () =>
-    withTaskName('copyReadmeFile', () =>
-      copyFile(path.resolve(projRoot, 'README.md'), path.resolve(epOutput, 'README.md')),
-    );
+const copyReadmeFile = () =>
+  Promise.all([
+    copyFile(path.resolve(projRoot, 'README.md'), path.resolve(epOutput, 'README.md')),
+    copyFile(path.resolve(epRoot, 'package.json'), path.resolve(epOutput, 'package.json')),
+  ]);
 
+export const copyFiles: TaskFunction = (done) => {
   const assetSrc = path.resolve(pkgRoot, 'assets');
   const assetDest = path.resolve(epOutput, 'assets');
   const copyAssets = () =>
@@ -22,7 +23,7 @@ export const copyFiles: TaskFunction = (done) => {
       return src(`${assetSrc}/**/*.{jpg,svg,png}`).pipe(dest(assetDest));
     });
 
-  return parallel(copyReadmeFile(), copyAssets())(done);
+  return parallel(copyReadmeFile, copyAssets())(done);
 };
 
 export const copyTypesDefinitions: TaskFunction = (done) => {
@@ -56,14 +57,13 @@ export default series(
   parallel(
     runTask('buildModules'),
     runTask('buildFullBundle'),
+    runTask('buildFullExtensions'),
     runTask('generateTypesDefinitions'),
     runTask('buildHelper'),
     series(copyFullStyle, runTask('buildTheme')),
   ),
 
   parallel(copyTypesDefinitions, copyFiles),
-
-  runTask('buildFullExtensions'),
 );
 
 export * from './types-definitions';

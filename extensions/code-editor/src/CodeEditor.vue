@@ -9,9 +9,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { computed, defineComponent } from 'vue';
+  import { computed, defineComponent, PropType } from 'vue';
   import CodeMirrorEditor from './codemirror/CodeMirror.vue';
-  import { isString } from '@ent-core/utils/is';
+  import { isString } from 'fe-ent-core';
   import { MODE } from './typing';
 
   const props = defineProps({

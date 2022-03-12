@@ -1,32 +1,47 @@
 {
   "name": "@fe-ent-extension/code-editor",
-  "version": "1.0.4",
+  "version": "1.1.2",
   "author": {
     "name": "jeff qian",
     "email": "baojian.qian@accenture.com",
     "url": "https://github.com/anncwb"
   },
-  "main": "lib/index.js",
-  "module": "es/index.mjs",
-  "typings": "lib/index.d.ts",
-  "unpkg": "dist/index.full.min.js",
-  "sideEffects": [
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
+  "unpkg": "dist/index.min.js",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./*": "./*"
+  },
+  "files": [
     "dist",
-    "es",
-    "lib"
+    "index.less",
+    "README.md"
   ],
+  "sideEffects": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist"
+  },
   "peerDependencies": {
     "vue": "3.2.31",
-    "ant-design-vue": "2.2.8"
+    "ant-design-vue": "2.2.8",
+    "fe-ent-core": "^1.0.7"
   },
   "dependencies": {
     "codemirror": "^5.65.1"
   },
   "devDependencies": {
+    "@types/codemirror": "^5.60.5",
     "rimraf": "^3.0.2",
     "@vue/compiler-sfc": "3.2.31",
-    "vue": "3.2.31",
-    "fe-ent-core": "^1.0.7"
+    "fe-ent-core": "^1.0.7",
+    "vue": "3.2.31"
   },
   "repository": {
     "type": "git",

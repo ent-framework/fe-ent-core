@@ -5,7 +5,6 @@ import type {
   ComponentPublicInstance,
   FunctionalComponent,
   PropType as VuePropType,
-  App,
 } from 'vue';
 
 declare global {
