@@ -24,7 +24,9 @@
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
     "build:no-cache": "yarn clean:cache && pnpm run build",
     "clean": "pnpm run clean:dist && pnpm run clean:ext",
+    "clean:all": "pnpm run clean:dist && pnpm run clean:tools && pnpm run clean:ext",
     "clean:ext": "pnpm --filter ./extensions --stream clean",
+    "clean:tools": "pnpm --filter ./tools --stream clean",
     "clean:dist": "rimraf dist",
     "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
     "clean:lib": "rimraf node_modules",
@@ -172,7 +174,10 @@
     "tslib": "^2.3.1",
     "typescript": "4.5.5",
     "vite": "2.8.6",
-    "vue": "3.2.31"
+    "vue": "3.2.31",
+    "vue-i18n": "^9.1.9",
+    "vue-router": "^4.0.12",
+    "ant-design-vue": "2.2.8"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china",

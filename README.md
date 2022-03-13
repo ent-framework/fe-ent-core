@@ -43,9 +43,15 @@ git clone https://gitlab.com/acn_abg/fe-core.git
 - 安装依赖
 
 ```bash
-cd vue-vben-admin
+cd fe-core
 
 pnpm install
+
+```
+- 构建tools & cli
+
+```bash
+pnpm build:tools
 
 ```
 

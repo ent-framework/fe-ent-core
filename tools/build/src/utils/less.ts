@@ -3,10 +3,12 @@ import fs from 'fs';
 import { FE_PKG } from './constants';
 import { findWorkspaceRoot } from './pkg';
 import { CustomConfigEnv } from '../vite';
+import { searchForWorkspaceRoot } from 'vite';
 
 export const getVitePreLoadFile = (env: CustomConfigEnv) => {
   // 是否构建库模式
-  const workspace = findWorkspaceRoot();
+  const workspace = searchForWorkspaceRoot(process.cwd());
+  const cwd = process.cwd();
   let preLoadFile = '';
 
   if (env.preview) {
@@ -15,7 +17,11 @@ export const getVitePreLoadFile = (env: CustomConfigEnv) => {
     if (fs.existsSync(process.cwd() + 'src/theme/config.less')) {
       preLoadFile = path.resolve(process.cwd(), 'src/theme/config.less');
     } else {
-      preLoadFile = path.resolve(workspace, `node_modules/${FE_PKG}/theme/config.less`);
+      if (fs.existsSync(`${cwd}/node_modules/${FE_PKG}/theme/config.less`)) {
+        preLoadFile = path.resolve(cwd, `node_modules/${FE_PKG}/theme/config.less`);
+      } else {
+        preLoadFile = path.resolve(workspace, `node_modules/${FE_PKG}/theme/config.less`);
+      }
     }
   } else {
     preLoadFile = path.resolve(process.cwd(), 'theme/config.less');
@@ -25,7 +31,8 @@ export const getVitePreLoadFile = (env: CustomConfigEnv) => {
 
 export const getThemePluginPreLoadFile = (env: CustomConfigEnv) => {
   // 是否构建库模式
-  const workspace = findWorkspaceRoot();
+  const workspace = searchForWorkspaceRoot(process.cwd());
+  const cwd = process.cwd();
   let preLoadFile = '';
 
   if (env.preview) {
@@ -34,10 +41,27 @@ export const getThemePluginPreLoadFile = (env: CustomConfigEnv) => {
     if (fs.existsSync(process.cwd() + 'src/theme/index.less')) {
       preLoadFile = path.resolve(process.cwd(), 'src/theme/index.less');
     } else {
-      preLoadFile = path.resolve(workspace, `node_modules/${FE_PKG}/theme/index.less`);
+      if (fs.existsSync(`${cwd}/node_modules/${FE_PKG}/theme/index.less`)) {
+        preLoadFile = path.resolve(cwd, `node_modules/${FE_PKG}/theme/index.less`);
+      } else {
+        preLoadFile = path.resolve(workspace, `node_modules/${FE_PKG}/theme/index.less`);
+      }
     }
   } else {
     preLoadFile = path.resolve(process.cwd(), 'theme/index.less');
+  }
+  return preLoadFile;
+};
+
+export const getAntdPreLoadFile = () => {
+  // 是否构建库模式
+  const workspace = searchForWorkspaceRoot(process.cwd());
+  const cwd = process.cwd();
+  let preLoadFile = '';
+  if (fs.existsSync(`${cwd}/node_modules/ant-design-vue/dist/antd.less`)) {
+    preLoadFile = path.resolve(cwd, `node_modules/ant-design-vue/dist/antd.less`);
+  } else {
+    preLoadFile = path.resolve(workspace, `node_modules/ant-design-vue/dist/antd.less`);
   }
   return preLoadFile;
 };

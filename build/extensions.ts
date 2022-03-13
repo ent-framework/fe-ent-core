@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs-extra';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import type { Plugin } from 'rollup';
 import { rollup } from 'rollup';
@@ -8,11 +9,10 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import esbuild from 'rollup-plugin-esbuild';
 import filesize from 'rollup-plugin-filesize';
-import { parallel, series } from 'gulp';
-import glob from 'fast-glob';
+import { series } from 'gulp';
 import { version } from '../packages/fe-ent-core/version';
 import { EntExtAlias } from './plugins/ent-ext-alias';
-import { EP_BRAND_NAME, epOutput, excludeFiles, extRoot, pkgRoot, themeRoot } from './utils';
+import { EP_BRAND_NAME, extRoot, pkgRoot } from './utils';
 import { formatBundleFilename, generateExtensionExternal, writeBundles } from './utils/rollup';
 import { withTaskName } from './utils/gulp';
 import { target } from './build-info';
@@ -102,7 +102,10 @@ async function buildExtensions(ext: string, minify: boolean) {
       dark: false,
       resolvedConfig,
     });
-  return Promise.all([buildExt(ext), buildStyle(ext)]);
+  if (fs.existsSync(path.resolve(extRoot, ext, 'index.less'))) {
+    return Promise.all([buildExt(ext), buildStyle(ext)]);
+  }
+  return Promise.all([buildExt(ext)]);
 }
 //需要考虑依赖，构建需要顺序
 // const extensions = excludeFiles(

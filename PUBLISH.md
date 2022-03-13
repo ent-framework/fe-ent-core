@@ -13,26 +13,29 @@ sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
 
 ##### 发布到snapshots
 
-添加用户
+- 添加用户
 
-```
+```bash
 npm adduser -registry http://npm.36cpc.com/repository/npm-snapshots/
 ```
-登录账号
-npm-deploy deploy@20120
-
+登录账号 npm-deploy deploy@20120
 根据提示输入用户、密码，邮箱，登录成功后会把授权信息，保存在npmrc文件
 
-在项目根目录执行，使脚本能执行（第一次）
-``` 
- chmod u+x build/publish.sh
+
+- 确认要发布的版本，TAG_VERSION，比如1.0.3，修改版本
+```bash
+TAG_VERSION=1.0.1 pnpm update:version
 ```
-确认TAG_VERSION，比如1.0.3，构建并更新版本，并推送
-``` 
- pnpm build && TAG_VERSION=1.0.1 pnpm update:version && sh build/publish.sh
+- 构建新版本
+```bash
+pnpm build:all
+```
+- 推送
+```bash
+ pnpm remote
 ```
 
-在其他项目使用，在项目根目录新增.npmrc文件，并在文件添加
+- 项目使用，在项目根目录新增.npmrc文件，并在文件添加
 ```
 shamefully-hoist=true
 registry=http://npm.36cpc.com/repository/npm-public/

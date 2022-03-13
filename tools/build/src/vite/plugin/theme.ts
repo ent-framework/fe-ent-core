@@ -9,7 +9,7 @@ import { mixLighten, mixDarken, tinycolor } from '../../utils/color';
 
 import { getThemeColors, generateColors } from '../../config/themeConfig';
 import { generateModifyVars } from '../../generate/generateModifyVars';
-import { getThemePluginPreLoadFile, getVitePreLoadFile } from '../../utils/less';
+import { getThemePluginPreLoadFile, getVitePreLoadFile, getAntdPreLoadFile } from '../../utils/less';
 import { CustomConfigEnv } from '../createConfig';
 
 export function configThemePlugin(configEnv: CustomConfigEnv): Plugin[] {
@@ -49,7 +49,7 @@ export function configThemePlugin(configEnv: CustomConfigEnv): Plugin[] {
     }),
     antdDarkThemePlugin({
       preloadFiles: [
-        path.resolve(process.cwd(), 'node_modules/ant-design-vue/dist/antd.less'),
+        getAntdPreLoadFile(),
         preLoadFile,
       ],
       filter: (id) => {

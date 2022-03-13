@@ -57,6 +57,8 @@ export default series(
   parallel(
     runTask('buildModules'),
     runTask('buildFullBundle'),
+  ),
+  parallel(
     runTask('buildFullExtensions'),
     runTask('generateTypesDefinitions'),
     runTask('buildHelper'),
