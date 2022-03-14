@@ -17,7 +17,6 @@ export interface RoleInfo {
 export interface LoginResultModel {
   userId: string | number;
   token: string;
-  role: RoleInfo;
 }
 
 /**
@@ -35,4 +34,6 @@ export interface GetUserInfoModel {
   avatar: string;
   // 介绍
   desc?: string;
+
+  [key: string]: any;
 }

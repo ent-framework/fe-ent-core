@@ -1,4 +1,4 @@
-import { BasicPageParams, BasicFetchResult } from '@ent-core/api/model/baseModel';
+import { BasicPageParams, BasicFetchResult } from '@ent-core/api';
 /**
  * @description: Request list interface parameters
  */

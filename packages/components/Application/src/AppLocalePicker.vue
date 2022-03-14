@@ -17,6 +17,9 @@
     </span>
   </EntDropdown>
 </template>
+<script lang="ts">
+  export default { name: 'AppLocalePicker' };
+</script>
 <script lang="ts" setup>
   import type { LocaleType } from '@ent-core/types/config';
   import type { DropMenu } from '@ent-core/components/Dropdown';

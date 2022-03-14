@@ -12,6 +12,7 @@ export interface CreateStorageParams extends EncryptionParams {
   hasEncrypt: boolean;
   timeout?: Nullable<number>;
 }
+// @ts-ignore
 export const createStorage = ({
   prefixKey = '',
   storage = sessionStorage,
@@ -37,10 +38,6 @@ export const createStorage = ({
     private prefixKey?: string;
     private encryption: AesEncryption;
     private hasEncrypt: boolean;
-    /**
-     *
-     * @param {*} storage
-     */
     constructor() {
       this.storage = storage;
       this.prefixKey = prefixKey;
@@ -57,6 +54,7 @@ export const createStorage = ({
      *  Set cache
      * @param {string} key
      * @param {*} value
+     * @param expire
      * @expire Expiration time in seconds
      * @memberof Cache
      */
@@ -75,6 +73,7 @@ export const createStorage = ({
     /**
      *Read cache
      * @param {string} key
+     * @param def
      * @memberof Cache
      */
     get(key: string, def: any = null): any {

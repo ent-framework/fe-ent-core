@@ -2,9 +2,9 @@ import { defHttp } from '@ent-core/utils/http/axios';
 import { GetAccountInfoModel } from './model/accountModel';
 
 enum Api {
-  ACCOUNT_INFO = '/account/getAccountInfo',
-  SESSION_TIMEOUT = '/user/sessionTimeout',
-  TOKEN_EXPIRED = '/user/tokenExpired',
+  ACCOUNT_INFO = '/api/account/getAccountInfo',
+  SESSION_TIMEOUT = '/api/user/sessionTimeout',
+  TOKEN_EXPIRED = '/api/user/tokenExpired',
 }
 
 // Get personal center-basic settings

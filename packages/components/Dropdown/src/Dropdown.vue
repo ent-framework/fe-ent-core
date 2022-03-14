@@ -38,7 +38,9 @@
 <script lang="ts" setup>
   import { computed, defineComponent, PropType } from 'vue';
   import type { DropMenu } from './typing';
-  import { Dropdown, Menu, Popconfirm } from 'ant-design-vue';
+  import Dropdown from 'ant-design-vue/lib/dropdown';
+  import Menu from 'ant-design-vue/lib/menu';
+  import Popconfirm from 'ant-design-vue/lib/popconfirm';
   import { Icon } from '@ent-core/components/Icon';
   import { omit } from 'lodash';
   import { isFunction } from '@ent-core/utils/is';

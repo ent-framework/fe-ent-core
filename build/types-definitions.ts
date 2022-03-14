@@ -25,7 +25,7 @@ export const generateTypesDefinitions = async () => {
       outDir,
       baseUrl: projRoot,
       paths: {
-        '@ent-core/*': [`${projRoot}/packages/*`],
+        '@ent-core/*': [`packages/*`],
       },
       allowJs: true,
       strict: true,
@@ -44,21 +44,22 @@ export const generateTypesDefinitions = async () => {
       useDefineForClassFields: true,
       skipLibCheck: true,
       isolatedModules: true,
-      types: ['vite/client', `${projRoot}/typings/global`],
+      types: ['vite/client', `${projRoot}/typings/global`, '@types/node'],
       typeRoots: [`${projRoot}/node_modules/@types`, `${projRoot}/typings`],
     },
     //libFolderPath: `${projRoot}/node_modules/typescript/lib`,
-    tsConfigFilePath: TSCONFIG_PATH,
+    //tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true,
   });
 
   const filePaths = excludeFiles(
-    await glob(['**/*.{tsx,ts,vue}', '!fe-ent-core/**/*'], {
+    await glob(['**/*.{tsx,ts,vue}', '!fe-ent-core/!**/!*'], {
       cwd: pkgRoot,
       absolute: true,
       onlyFiles: true,
     }),
   );
+  //const filePaths = ['/Volumes/workspace/code/projects/coe/fe-core/packages/components/Dropdown/index.ts'];
   const epPaths = excludeFiles(
     await glob('**/*.{tsx,ts,vue}', {
       cwd: epRoot,
