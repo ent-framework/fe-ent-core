@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    /* Set the JavaScript language version for emitted JavaScript and include
+       compatible library declarations. */
+    "target": "esnext",
+    /* Specify what JSX code is generated. */
+    "jsx": "preserve",
+    /* Specify what module code is generated. */
+    "module": "esnext",
+    /* Specify the root folder within your source files. */
+    /*"rootDir": "./src",*/
+    /* Specify how TypeScript looks up a file from a given module specifier. */
+    "moduleResolution": "node",
+    /* Specify the base directory to resolve non-relative module names. */
+    "baseUrl": "../",
+    /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
+    "declaration": true,
+    /* Create sourcemaps for d.ts files. */
+    "declarationMap": true,
+    /* Create source map files for emitted JavaScript files. */
+    "sourceMap": true,
+    /* Specify an output folder for all emitted files. */
+    "outDir": "../dist/types",
+    /* Emit additional JavaScript to ease support for importing CommonJS modules.
+       This enables `allowSyntheticDefaultImports` for type compatibility. */
+    "esModuleInterop": true,
+    /* Ensure that casing is correct in imports. */
+    "forceConsistentCasingInFileNames": true,
+    /* Enable all strict type-checking options. */
+    "strict": true, /* 临时关闭，为了严谨性，应该打开 */
+    /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true,
+
+    "allowSyntheticDefaultImports": true,
+    "preserveSymlinks": true,
+    "noImplicitAny": false, /* 临时关闭，为了严谨性，应该打开 */
+    "disableSizeLimit": true, /** 依赖循环，可能导致不能生成 TS，应该关闭，临时打开 */
+    "types": [
+      "vite/client", "./typings/global", "@types/node"
+    ],
+    "typeRoots": ["../node_modules/@types", "../typings"]
+  },
+  "include": [
+    "../packages/**/*.ts",
+    "../packages/**/*.d.ts",
+    "../packages/**/*.tsx",
+    "../packages/**/*.vue"
+  ],
+  "exclude": [
+    "**/node_modules",
+  ]
+}

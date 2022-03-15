@@ -9,7 +9,8 @@ export interface RippleProto {
   zIndex?: string;
 }
 
-export type EventType = Event & MouseEvent & TouchEvent;
+//export type EventType = Event & MouseEvent & TouchEvent;
+export type EntRippleEventType = Event | MouseEvent | TouchEvent;
 
 const options: RippleOptions = {
   event: 'mousedown',
@@ -26,7 +27,7 @@ const RippleDirective: Directive & RippleProto = {
     const background = bg || RippleDirective.background;
     const zIndex = RippleDirective.zIndex;
 
-    el.addEventListener(options.event, (event: EventType) => {
+    el.addEventListener(options.event, (event: EntRippleEventType) => {
       rippler({
         event,
         el,
@@ -45,15 +46,22 @@ const RippleDirective: Directive & RippleProto = {
   },
 };
 
+function isTouchEvent(e: EntRippleEventType): e is TouchEvent {
+  return e.constructor.name === 'TouchEvent';
+}
+
 function rippler({
   event,
   el,
   zIndex,
   background,
-}: { event: EventType; el: HTMLElement } & RippleProto) {
+}: { event: EntRippleEventType; el: HTMLElement } & RippleProto) {
   const targetBorder = parseInt(getComputedStyle(el).borderWidth.replace('px', ''));
-  const clientX = event.clientX || event.touches[0].clientX;
-  const clientY = event.clientY || event.touches[0].clientY;
+  const target = isTouchEvent(event)
+    ? event.touches[event.touches.length - 1]
+    : (event as MouseEvent);
+  const clientX = target.clientX;
+  const clientY = target.clientY;
 
   const rect = el.getBoundingClientRect();
   const { left, top } = rect;

@@ -30,7 +30,7 @@
   const { headerHeightRef } = useLayoutHeight();
 
   const { prefixCls } = useDesign('iframe-page');
-  useWindowSizeFn(calcHeight, 150, { immediate: true });
+  useWindowSizeFn<void>(calcHeight, 150, { immediate: true });
 
   const getWrapStyle = computed((): CSSProperties => {
     return {

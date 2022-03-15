@@ -16,6 +16,7 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "preserveSymlinks": true,
     "types": ["vite/client", "./typings/global"],
     "typeRoots": ["node_modules/@types", "./typings"]
   },

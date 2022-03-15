@@ -6,7 +6,7 @@ import { LOCK_INFO_KEY } from '@ent-core/enums/cacheEnum';
 import { Persistent } from '@ent-core/utils/cache/persistent';
 import { useUserStore } from './user';
 
-interface LockState {
+export interface LockState {
   lockInfo: Nullable<LockInfo>;
 }
 

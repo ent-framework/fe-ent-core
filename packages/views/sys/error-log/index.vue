@@ -61,9 +61,7 @@
   const [registerModal, { openModal }] = useModal();
 
   defineComponent({
-    components: {
-      EntTableAction,
-    },
+    name: 'ErrorLog',
   });
 
   watch(

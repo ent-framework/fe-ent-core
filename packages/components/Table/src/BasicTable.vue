@@ -39,7 +39,7 @@
     ColumnChangeParam,
   } from './types/table';
   import { defineComponent, ref, computed, unref, toRaw, inject, watchEffect } from 'vue';
-  import { Table } from 'ant-design-vue';
+  import Table from 'ant-design-vue/lib/table';
   import { EntForm, useForm } from '@ent-core/components/Form';
   import { PageWrapperFixedHeightKey } from '@ent-core/components/Page';
   import expandIcon from './components/ExpandIcon';

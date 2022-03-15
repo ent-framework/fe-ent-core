@@ -11,7 +11,7 @@ import { buildOutput, epRoot, pkgRoot, projRoot } from './utils';
 import { excludeFiles, pathRewriter } from './utils/pkg';
 import type { SourceFile } from 'ts-morph';
 
-const TSCONFIG_PATH = path.resolve(projRoot, 'tsconfig.json');
+const TSCONFIG_PATH = path.resolve(process.cwd(), 'tsconfig.tds.json');
 const outDir = path.resolve(buildOutput, 'types');
 
 /**
@@ -19,6 +19,7 @@ const outDir = path.resolve(buildOutput, 'types');
  */
 export const generateTypesDefinitions = async () => {
   console.log(`Run in dir: ${process.cwd()}`);
+
   const project = new Project({
     compilerOptions: {
       emitDeclarationOnly: true,
@@ -27,28 +28,8 @@ export const generateTypesDefinitions = async () => {
       paths: {
         '@ent-core/*': [`packages/*`],
       },
-      allowJs: true,
-      strict: true,
-      module: 99,
-      target: 99,
-      noImplicitAny: false,
-      declaration: true,
-      moduleResolution: 2,
-      esModuleInterop: true,
-      jsx: 1,
-      sourceMap: true,
-      lib: ['lib.esnext.full.d.ts', 'lib.dom.d.ts'],
-      allowSyntheticDefaultImports: true,
-      forceConsistentCasingInFileNames: true,
-      resolveJsonModule: true,
-      useDefineForClassFields: true,
-      skipLibCheck: true,
-      isolatedModules: true,
-      types: ['vite/client', `${projRoot}/typings/global`, '@types/node'],
-      typeRoots: [`${projRoot}/node_modules/@types`, `${projRoot}/typings`],
     },
-    //libFolderPath: `${projRoot}/node_modules/typescript/lib`,
-    //tsConfigFilePath: TSCONFIG_PATH,
+    tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true,
   });
 

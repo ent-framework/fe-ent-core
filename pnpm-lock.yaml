@@ -130,6 +130,7 @@ importers:
       vue: 3.2.31
       vue-i18n: ^9.1.9
       vue-router: ^4.0.12
+      vue-types: ^4.1.1
     dependencies:
       '@ent-core/api': link:packages/api
       '@ent-core/assets': link:packages/assets
@@ -253,6 +254,7 @@ importers:
       vue: 3.2.31
       vue-i18n: 9.1.9_vue@3.2.31
       vue-router: 4.0.12_vue@3.2.31
+      vue-types: 4.1.1_vue@3.2.31
 
   extensions/code-editor:
     specifiers:
@@ -11603,7 +11605,6 @@ packages:
     dependencies:
       is-plain-object: 5.0.0
       vue: registry.npmmirror.com/vue/3.2.31
-    dev: false
 
   /vue/3.2.31:
     resolution: {integrity: sha512-odT3W2tcffTiQCy57nOT93INw1auq5lYLLYtWpPYQQYQOOdHiqFct9Xhna6GJ+pJQaF67yZABraH47oywkJgFw==}
