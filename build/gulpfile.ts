@@ -54,10 +54,7 @@ export default series(
   withTaskName('clean', () => run('pnpm run clean')),
   withTaskName('createOutput', () => mkdir(epOutput, { recursive: true })),
 
-  parallel(
-    runTask('buildModules'),
-    runTask('buildFullBundle'),
-  ),
+  parallel(runTask('buildModules'), runTask('buildFullBundle')),
   parallel(
     runTask('buildFullExtensions'),
     runTask('generateTypesDefinitions'),

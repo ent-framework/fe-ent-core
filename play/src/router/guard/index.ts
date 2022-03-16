@@ -1,16 +1,16 @@
 import type { Router, RouteLocationNormalized } from 'vue-router';
-import { useAppStoreWithOut } from 'fe-ent-core/store/modules/app';
-import { useUserStoreWithOut } from 'fe-ent-core/store/modules/user';
-import { useTransitionSetting } from 'fe-ent-core/hooks/setting/useTransitionSetting';
-import { AxiosCanceler } from 'fe-ent-core/utils/http/axios/axiosCancel';
+import { useAppStoreWithOut } from 'fe-ent-core/lib/store/modules/app';
+import { useUserStoreWithOut } from 'fe-ent-core/lib/store/modules/user';
+import { useTransitionSetting } from 'fe-ent-core/lib/hooks/setting/useTransitionSetting';
+import { AxiosCanceler } from 'fe-ent-core/lib/utils/http/axios/axiosCancel';
 import { Modal, notification } from 'ant-design-vue';
-import { warn } from 'fe-ent-core/utils/log';
+import { warn } from 'fe-ent-core/lib/utils/log';
 import { unref } from 'vue';
-import { setRouteChange } from 'fe-ent-core/logics/mitt/routeChange';
+import { setRouteChange } from 'fe-ent-core/lib/logics/mitt/routeChange';
 import { createPermissionGuard } from './permissionGuard';
 import { createStateGuard } from './stateGuard';
 import nProgress from 'nprogress';
-import projectSetting from 'fe-ent-core/settings/projectSetting';
+import projectSetting from 'fe-ent-core/lib/settings/projectSetting';
 import { createParamMenuGuard } from './paramMenuGuard';
 
 // Don't change the order of creation

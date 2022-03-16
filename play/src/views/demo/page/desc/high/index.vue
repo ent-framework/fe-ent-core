@@ -94,8 +94,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable } from 'fe-ent-core/components/Table';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntTable, useTable } from 'fe-ent-core/lib/components/Table';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
   import { Divider, Card, Empty, Descriptions, Steps, Tabs } from 'ant-design-vue';
 
   import { refundTimeTableSchema, refundTimeTableData } from './data';

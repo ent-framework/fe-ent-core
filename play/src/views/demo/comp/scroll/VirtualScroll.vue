@@ -25,10 +25,10 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntVirtualScroll } from 'fe-ent-core/components/VirtualScroll/index';
+  import { EntVirtualScroll } from 'fe-ent-core/lib/components/VirtualScroll/index';
 
   import { Divider } from 'ant-design-vue';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
   const data: Recordable[] = (() => {
     const arr: Recordable[] = [];
     for (let index = 1; index < 20000; index++) {

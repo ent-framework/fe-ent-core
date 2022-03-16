@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
 
   export default defineComponent({
     components: { EntPageWrapper },

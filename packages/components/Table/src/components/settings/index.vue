@@ -1,5 +1,5 @@
 <template>
-  <div class="table-settings">
+  <div :class="`${prefixCls}`">
     <RedoSetting v-if="getSetting.redo" :getPopupContainer="getTableContainer" />
     <SizeSetting v-if="getSetting.size" :getPopupContainer="getTableContainer" />
     <ColumnSetting
@@ -20,6 +20,7 @@
   import FullScreenSetting from './FullScreenSetting.vue';
   import { useI18n } from '@ent-core/hooks/web/useI18n';
   import { useTableContext } from '../../hooks/useTableContext';
+  import { useDesign } from '@ent-core/hooks';
 
   export default defineComponent({
     name: 'TableSetting',
@@ -39,7 +40,7 @@
     setup(props, { emit }) {
       const { t } = useI18n();
       const table = useTableContext();
-
+      const { prefixCls } = useDesign('table-setting');
       const getSetting = computed((): TableSetting => {
         return {
           redo: true,
@@ -58,7 +59,7 @@
         return table ? unref(table.wrapRef) : document.body;
       }
 
-      return { getSetting, t, handleColumnChange, getTableContainer };
+      return { getSetting, t, handleColumnChange, getTableContainer, prefixCls };
     },
   });
 </script>

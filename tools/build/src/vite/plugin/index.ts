@@ -56,7 +56,7 @@ export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) 
   configEnv.runMode != 'lib' && vitePlugins.push(configHtmlPlugin(viteEnv, isBuild));
 
   // vite-plugin-svg-icons
-  vitePlugins.push(configSvgIconsPlugin(isBuild, !!configEnv.preview));
+  vitePlugins.push(configSvgIconsPlugin(isBuild, !!configEnv.libDev));
 
   // vite-plugin-mock
   VITE_USE_MOCK && vitePlugins.push(configMockPlugin(isBuild));

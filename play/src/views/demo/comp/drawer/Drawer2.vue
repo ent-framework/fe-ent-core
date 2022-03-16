@@ -6,7 +6,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntDrawer, useDrawerInner } from 'fe-ent-core/components/Drawer';
+  import { EntDrawer, useDrawerInner } from 'fe-ent-core/lib/components/Drawer';
   export default defineComponent({
     components: { EntDrawer },
     setup() {

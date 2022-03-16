@@ -5,20 +5,24 @@
         <a-button @click="openModal"> 导出 </a-button>
       </template>
     </EntTable>
-    <ExpExcelModal @register="register" @success="defaultHeader" />
+    <EntExportExcelModal @register="register" @success="defaultHeader" />
   </EntPageWrapper>
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable } from 'fe-ent-core/components/Table';
-  import { jsonToSheetXlsx, ExpExcelModal, ExportModalResult } from 'fe-ent-core/components/Excel';
+  import { EntTable } from 'fe-ent-core/lib/components/Table';
+  import {
+    jsonToSheetXlsx,
+    EntExportExcelModal,
+    ExportModalResult,
+  } from 'fe-ent-core/lib/components/Excel';
   import { columns, data } from './data';
-  import { useModal } from 'fe-ent-core/components/Modal';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { useModal } from 'fe-ent-core/lib/components/Modal';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
 
   export default defineComponent({
-    components: { EntTable, ExpExcelModal, EntPageWrapper },
+    components: { EntTable, EntExportExcelModal, EntPageWrapper },
     setup() {
       function defaultHeader({ filename, bookType }: ExportModalResult) {
         // 默认Object.keys(data[0])作为header

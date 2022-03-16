@@ -13,7 +13,7 @@
 <script lang="ts" setup>
   import { Card } from 'ant-design-vue';
   import { navItems } from './data';
-  import { Icon } from 'fe-ent-core/components/Icon';
+  import { Icon } from 'fe-ent-core/lib/components/Icon';
 
   const CardGrid = Card.Grid;
 </script>

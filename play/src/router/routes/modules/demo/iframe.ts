@@ -1,8 +1,8 @@
-import type { AppRouteModule } from 'fe-ent-core/router/types';
+import type { AppRouteModule } from 'fe-ent-core/lib/router/types';
 
-import { default as LAYOUT } from 'fe-ent-core/layouts/default/index.vue';
-const IFrame = () => import('fe-ent-core/views/sys/iframe/FrameBlank.vue');
-import { t } from 'fe-ent-core/hooks/web/useI18n';
+import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default/index.vue';
+const IFrame = () => import('fe-ent-core/lib/views/sys/iframe/FrameBlank.vue');
+import { t } from 'fe-ent-core/lib/hooks/web/useI18n';
 
 const iframe: AppRouteModule = {
   path: '/frame',

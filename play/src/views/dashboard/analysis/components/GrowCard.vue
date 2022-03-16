@@ -27,7 +27,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { Icon } from 'fe-ent-core/components/Icon';
+  import { Icon } from 'fe-ent-core/lib/components/Icon';
   import { Tag, Card } from 'ant-design-vue';
   import { growCardList } from '../data';
 

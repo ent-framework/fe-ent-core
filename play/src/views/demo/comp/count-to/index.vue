@@ -44,8 +44,8 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Card } from 'ant-design-vue';
-  import { EntCountTo } from 'fe-ent-core/components/CountTo/index';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntCountTo } from 'fe-ent-core/lib/components/CountTo/index';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
 
   export default defineComponent({
     components: {

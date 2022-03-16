@@ -1,7 +1,6 @@
 import path from 'path';
 import fs from 'fs';
 import { FE_PKG } from './constants';
-import { findWorkspaceRoot } from './pkg';
 import { CustomConfigEnv } from '../vite';
 import { searchForWorkspaceRoot } from 'vite';
 
@@ -11,7 +10,7 @@ export const getVitePreLoadFile = (env: CustomConfigEnv) => {
   const cwd = process.cwd();
   let preLoadFile = '';
 
-  if (env.preview) {
+  if (env.libDev) {
     preLoadFile = path.resolve(workspace, `packages/theme/config.less`);
   } else if (env.runMode == 'package' || env.runMode == 'serve') {
     if (fs.existsSync(process.cwd() + 'src/theme/config.less')) {
@@ -35,7 +34,7 @@ export const getThemePluginPreLoadFile = (env: CustomConfigEnv) => {
   const cwd = process.cwd();
   let preLoadFile = '';
 
-  if (env.preview) {
+  if (env.libDev) {
     preLoadFile = path.resolve(workspace, `packages/theme/index.less`);
   } else if (env.runMode == 'package' || env.runMode == 'serve') {
     if (fs.existsSync(process.cwd() + 'src/theme/index.less')) {

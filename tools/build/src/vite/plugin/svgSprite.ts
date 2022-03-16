@@ -7,10 +7,10 @@ import SvgIconsPlugin from 'vite-plugin-svg-icons';
 import path from 'path';
 import { findWorkspaceRoot } from '../../utils';
 
-export function configSvgIconsPlugin(isBuild: boolean, preview: boolean) {
+export function configSvgIconsPlugin(isBuild: boolean, libDev: boolean) {
   const svgIconsPlugin = SvgIconsPlugin({
     iconDirs: [
-      preview
+      libDev
         ? path.resolve(findWorkspaceRoot(), 'packages/assets/icons')
         : path.resolve(process.cwd(), 'src/assets/icons'),
     ],

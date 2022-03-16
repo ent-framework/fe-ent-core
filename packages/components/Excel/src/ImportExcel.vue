@@ -19,7 +19,7 @@
 
   import type { ExcelData } from './typing';
   export default defineComponent({
-    name: 'ImportExcel',
+    name: 'EntImportExcel',
     props: {
       // 日期时间格式。如果不提供或者提供空值，将返回原始Date对象
       dateFormat: {

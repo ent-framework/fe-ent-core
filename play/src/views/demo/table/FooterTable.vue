@@ -5,10 +5,10 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable } from 'fe-ent-core/lib/components/Table';
   import { getBasicColumns } from './tableData';
 
-  import { demoListApi } from 'fe-ent-core/api/demo/table';
+  import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
 
   export default defineComponent({
     components: { EntTable },

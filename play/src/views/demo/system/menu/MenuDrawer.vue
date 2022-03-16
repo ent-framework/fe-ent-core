@@ -12,11 +12,11 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, computed, unref } from 'vue';
-  import { EntForm, useForm } from 'fe-ent-core/components/Form/index';
+  import { EntForm, useForm } from 'fe-ent-core/lib/components/Form/index';
   import { formSchema } from './menu.data';
-  import { EntDrawer, useDrawerInner } from 'fe-ent-core/components/Drawer';
+  import { EntDrawer, useDrawerInner } from 'fe-ent-core/lib/components/Drawer';
 
-  import { getMenuList } from 'fe-ent-core/api/demo/system';
+  import { getMenuList } from 'fe-ent-core/lib/api/demo/system';
 
   export default defineComponent({
     name: 'MenuDrawer',

@@ -9,8 +9,8 @@
   </ent-page-wrapper>
 </template>
 <script lang="ts" setup>
-  import { demoListApi } from 'fe-ent-core/api/demo/table';
-  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
+  import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
   const { notification } = useMessage();
   // 请求api时附带参数
   const params = {};

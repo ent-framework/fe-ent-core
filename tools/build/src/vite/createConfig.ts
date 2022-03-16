@@ -14,7 +14,7 @@ import { default as _ } from 'lodash';
 export type CustomConfigEnv = {
   alias: Alias[];
   customTheme?: boolean;
-  preview?: boolean;
+  libDev?: boolean; // 是否库开发模式, 默认false
   runMode?: string;
 };
 
@@ -35,12 +35,11 @@ export function createViteConfig(
 ): UserConfig {
   // 是否构建库模式
   const isBuildLib = mode === 'lib';
-  const preview = mode === 'preview';
   //运行模式识别
   //serve 在线运行, lib 库打包模式, package Html打包模式
   const runMode = command === 'serve' ? 'serve' : isBuildLib ? 'lib' : 'package';
   const cwd = process.cwd();
-  _.defaults(configEnv, { customTheme: false, preview, runMode });
+  _.defaults(configEnv, { customTheme: false, libDev: false, runMode });
 
   let env: Record<string, string> = loadEnv(mode, cwd);
   if (env == null || Object.keys(env).length == 0) {
@@ -79,7 +78,7 @@ export function createViteConfig(
 
   const postCssPlugins: Plugin[] = [];
 
-  if (preview) {
+  if (configEnv.libDev) {
     postCssPlugins.push(
       url({
         url: 'copy',
@@ -135,7 +134,7 @@ export function createViteConfig(
       exclude: ['vue-demi'],
     },
   };
-  if (!preview) {
+  if (!configEnv.libDev) {
     config = {
       ...config,
       esbuild: {

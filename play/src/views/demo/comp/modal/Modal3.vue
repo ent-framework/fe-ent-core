@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntModal } from 'fe-ent-core/components/Modal';
+  import { EntModal } from 'fe-ent-core/lib/components/Modal';
   export default defineComponent({
     components: { EntModal },
     setup() {

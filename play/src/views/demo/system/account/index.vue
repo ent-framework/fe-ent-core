@@ -37,16 +37,16 @@
 <script lang="ts">
   import { defineComponent, reactive } from 'vue';
 
-  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/components/Table';
-  import { getAccountList } from 'fe-ent-core/api/demo/system';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/Table';
+  import { getAccountList } from 'fe-ent-core/lib/api/demo/system';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
   import DeptTree from './DeptTree.vue';
 
-  import { useModal } from 'fe-ent-core/components/Modal';
+  import { useModal } from 'fe-ent-core/lib/components/Modal';
   import AccountModal from './AccountModal.vue';
 
   import { columns, searchFormSchema } from './account.data';
-  import { useGo } from 'fe-ent-core/hooks/web/usePage';
+  import { useGo } from 'fe-ent-core/lib/hooks/web/usePage';
 
   export default defineComponent({
     name: 'AccountManagement',

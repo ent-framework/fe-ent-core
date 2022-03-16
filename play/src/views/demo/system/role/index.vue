@@ -29,10 +29,10 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/components/Table';
-  import { getRoleListByPage } from 'fe-ent-core/api/demo/system';
+  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/Table';
+  import { getRoleListByPage } from 'fe-ent-core/lib/api/demo/system';
 
-  import { useDrawer } from 'fe-ent-core/components/Drawer';
+  import { useDrawer } from 'fe-ent-core/lib/components/Drawer';
   import RoleDrawer from './RoleDrawer.vue';
 
   import { columns, searchFormSchema } from './role.data';

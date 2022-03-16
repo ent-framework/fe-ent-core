@@ -11,10 +11,10 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useContextMenu } from 'fe-ent-core/hooks/web/useContextMenu';
-  import { EntCollapseContainer } from 'fe-ent-core/components/Container';
-  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { useContextMenu } from 'fe-ent-core/lib/hooks/web/useContextMenu';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
 
   export default defineComponent({
     components: { CollapseContainer: EntCollapseContainer, EntPageWrapper },

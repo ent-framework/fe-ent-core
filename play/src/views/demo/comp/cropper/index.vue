@@ -33,12 +33,12 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
-  import { EntCollapseContainer } from 'fe-ent-core/components/Container';
-  import { EntCropperImage, EntCropperAvatar } from 'fe-ent-core/components/Cropper';
-  import { uploadApi } from 'fe-ent-core/api/sys/upload';
-  import img from 'fe-ent-core/assets/images/header.jpg';
-  import { useUserStore } from 'fe-ent-core/store/modules/user';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
+  import { EntCropperImage, EntCropperAvatar } from 'fe-ent-core/lib/components/Cropper';
+  import { uploadApi } from 'fe-ent-core/lib/api/sys/upload';
+  import img from 'fe-ent-core/lib/assets/images/header.jpg';
+  import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
 
   export default defineComponent({
     components: {

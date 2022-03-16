@@ -13,7 +13,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntForm, useForm } from 'fe-ent-core/components/Form';
+  import { EntForm, useForm } from 'fe-ent-core/lib/components/Form';
   import { step2Schemas } from './data';
   import { Alert, Divider, Descriptions } from 'ant-design-vue';
 

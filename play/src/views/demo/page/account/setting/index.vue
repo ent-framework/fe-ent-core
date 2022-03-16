@@ -16,7 +16,7 @@
   import { defineComponent } from 'vue';
   import { Tabs } from 'ant-design-vue';
 
-  import { EntScrollContainer } from 'fe-ent-core/components/Container/index';
+  import { EntScrollContainer } from 'fe-ent-core/lib/components/Container/index';
   import { settingList } from './data';
 
   import BaseSetting from './BaseSetting.vue';

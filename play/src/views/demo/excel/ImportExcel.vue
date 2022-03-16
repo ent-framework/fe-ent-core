@@ -1,8 +1,8 @@
 <template>
   <EntPageWrapper title="excel数据导入示例">
-    <ImpExcel @success="loadDataSuccess" dateFormat="YYYY-MM-DD">
+    <ExtImportExcel @success="loadDataSuccess" dateFormat="YYYY-MM-DD">
       <a-button class="m-3"> 导入Excel </a-button>
-    </ImpExcel>
+    </ExtImportExcel>
     <EntTable
       v-for="(table, index) in tableListRef"
       :key="index"
@@ -15,12 +15,12 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
 
-  import { ImpExcel, ExcelData } from 'fe-ent-core/components/Excel';
-  import { EntTable, BasicColumn } from 'fe-ent-core/components/Table';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { ExtImportExcel, ExcelData } from 'fe-ent-core/lib/components/Excel';
+  import { EntTable, BasicColumn } from 'fe-ent-core/lib/components/Table';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
 
   export default defineComponent({
-    components: { EntTable, ImpExcel, EntPageWrapper },
+    components: { EntTable, ExtImportExcel, EntPageWrapper },
 
     setup() {
       const tableListRef = ref<

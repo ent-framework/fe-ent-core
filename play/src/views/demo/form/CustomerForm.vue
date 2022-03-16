@@ -11,11 +11,11 @@
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { EntForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
-  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
-  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
+  import { EntForm, FormSchema, useForm } from 'fe-ent-core/lib/components/Form';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
   import { Input } from 'ant-design-vue';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
 
   const schemas: FormSchema[] = [
     {

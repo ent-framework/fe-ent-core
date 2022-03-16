@@ -12,11 +12,11 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntForm, useForm } from 'fe-ent-core/components/Form/index';
-  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntForm, useForm } from 'fe-ent-core/lib/components/Form/index';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container/index';
   import { Input } from 'ant-design-vue';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
-  import { EntButton } from 'fe-ent-core/components/Button';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntButton } from 'fe-ent-core/lib/components/Button';
 
   export default defineComponent({
     components: {

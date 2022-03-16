@@ -1,8 +1,8 @@
-import type { AppRouteModule } from 'fe-ent-core/router/types';
+import type { AppRouteModule } from 'fe-ent-core/lib/router/types';
 
-import { getParentLayout } from 'fe-ent-core/router/constant';
-import { default as LAYOUT } from 'fe-ent-core/layouts/default/index.vue';
-import { t } from 'fe-ent-core/hooks/web/useI18n';
+import { getParentLayout } from 'fe-ent-core/lib/router/constant';
+import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default/index.vue';
+import { t } from 'fe-ent-core/lib/hooks/web/useI18n';
 
 const feat: AppRouteModule = {
   path: '/feat',

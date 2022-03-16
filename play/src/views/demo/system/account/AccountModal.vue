@@ -5,10 +5,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, computed, unref } from 'vue';
-  import { EntModal, useModalInner } from 'fe-ent-core/components/Modal';
-  import { EntForm, useForm } from 'fe-ent-core/components/Form/index';
+  import { EntModal, useModalInner } from 'fe-ent-core/lib/components/Modal';
+  import { EntForm, useForm } from 'fe-ent-core/lib/components/Form/index';
   import { accountFormSchema } from './account.data';
-  import { getDeptList } from 'fe-ent-core/api/demo/system';
+  import { getDeptList } from 'fe-ent-core/lib/api/demo/system';
 
   export default defineComponent({
     name: 'AccountModal',

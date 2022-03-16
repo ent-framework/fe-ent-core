@@ -1,4 +1,4 @@
-import { FormSchema } from 'fe-ent-core/components/Form';
+import { FormSchema } from 'fe-ent-core/lib/components/Form';
 
 export const step1Schemas: FormSchema[] = [
   {

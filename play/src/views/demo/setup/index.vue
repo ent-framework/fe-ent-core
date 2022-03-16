@@ -5,8 +5,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
-  import { useDesign } from 'fe-ent-core/hooks/web/useDesign';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { useDesign } from 'fe-ent-core/lib/hooks/web/useDesign';
   import intro from 'intro.js';
   import 'intro.js/minified/introjs.min.css';
 

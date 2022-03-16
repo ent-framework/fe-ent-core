@@ -10,10 +10,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, computed } from 'vue';
-  import { useAppStore } from 'fe-ent-core/store/modules/app';
-  import { PermissionModeEnum } from 'fe-ent-core/enums/appEnum';
+  import { useAppStore } from 'fe-ent-core/lib/store/modules/app';
+  import { PermissionModeEnum } from 'fe-ent-core/lib/enums/appEnum';
   import { Divider } from 'ant-design-vue';
-  import { usePermission } from 'fe-ent-core/hooks/web/usePermission';
+  import { usePermission } from 'fe-ent-core/lib/hooks/web/usePermission';
   export default defineComponent({
     name: 'CurrentPermissionMode',
     components: { Divider },

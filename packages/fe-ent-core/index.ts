@@ -6,7 +6,6 @@ export const install = function (app: App) {
     const component = components[key];
     if (component.install) {
       app.use(component);
-      console.log(`Register ${key}`);
     }
   });
   return app;

@@ -28,10 +28,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { BasicTree, TreeActionType } from 'fe-ent-core/components/Tree/index';
+  import { BasicTree, TreeActionType } from 'fe-ent-core/lib/components/Tree/index';
   import { treeData } from './data';
-  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
 
   export default defineComponent({
     components: { BasicTree, EntPageWrapper },

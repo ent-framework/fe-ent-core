@@ -22,9 +22,9 @@
     downloadByData,
     downloadByBase64,
     downloadByOnlineUrl,
-  } from 'fe-ent-core/utils/file/download';
+  } from 'fe-ent-core/lib/utils/file/download';
   import imgBase64 from './imgBase64';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
   import { Alert } from 'ant-design-vue';
 
   export default defineComponent({

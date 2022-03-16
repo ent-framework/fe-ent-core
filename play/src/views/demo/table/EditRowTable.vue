@@ -1,6 +1,9 @@
 <template>
   <div class="p-4">
-    <EntTable @register="registerTable" @edit-change="onEditChange">
+    <EntTable @register="registerTable" @edit-change="onEditChange" :dataSource="dataSource">
+      <template #toolbar>
+        <a-button type="primary" @click="addRecord">添加行</a-button>
+      </template>
       <template #action="{ record, column }">
         <EntTableAction :actions="createActions(record, column)" />
       </template>
@@ -8,21 +11,21 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, ref } from 'vue';
+  import { defineComponent, onMounted, ref, Ref, unref } from 'vue';
   import {
     EntTable,
     useTable,
     EntTableAction,
     BasicColumn,
-    ActionItem,
+    TableActionItem,
     EditRecordRow,
-  } from 'fe-ent-core/components/Table';
-  import { optionsListApi } from 'fe-ent-core/api/demo/select';
+  } from 'fe-ent-core/lib/components/Table';
+  import { optionsListApi } from 'fe-ent-core/lib/api/demo/select';
 
-  import { demoListApi } from 'fe-ent-core/api/demo/table';
-  import { treeOptionsListApi } from 'fe-ent-core/api/demo/tree';
+  import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
+  import { treeOptionsListApi } from 'fe-ent-core/lib/api/demo/tree';
   import { cloneDeep } from 'lodash';
-  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
 
   const columns: BasicColumn[] = [
     {
@@ -166,12 +169,12 @@
     setup() {
       const { createMessage: msg } = useMessage();
       const currentEditKeyRef = ref('');
-      const [registerTable] = useTable({
+      const dataSource: Ref<any[]> = ref([]);
+      const [registerTable, { insertTableDataRecord }] = useTable({
         title: '可编辑行示例',
         titleHelpMessage: [
           '本例中修改[数字输入框]这一列时，同一行的[远程下拉]列的当前编辑数据也会同步发生改变',
         ],
-        api: demoListApi,
         columns: columns,
         showIndexColumn: false,
         showTableSetting: true,
@@ -182,6 +185,17 @@
           dataIndex: 'action',
           slots: { customRender: 'action' },
         },
+      });
+
+      const load = () => {
+        demoListApi({ page: 1, pageSize: 10 })
+          .then((data) => {
+            dataSource.value.push(...data.items);
+          })
+          .catch(() => {});
+      };
+      onMounted(() => {
+        load();
       });
 
       function handleEdit(record: EditRecordRow) {
@@ -218,7 +232,7 @@
         }
       }
 
-      function createActions(record: EditRecordRow, column: BasicColumn): ActionItem[] {
+      function createActions(record: EditRecordRow, column: BasicColumn): TableActionItem[] {
         if (!record.editable) {
           return [
             {
@@ -251,11 +265,29 @@
         console.log(column, value, record);
       }
 
+      function addRecord() {
+        console.log('add row');
+        const rowValue = {
+          name: 'ID',
+          displayName: '',
+          description: '',
+          dataType: '',
+          inputType: '',
+          required: false,
+          unique: false,
+        };
+        insertTableDataRecord(rowValue);
+        // dataSource.value.push(rowValue);
+        // getTableAction().setTableData(dataSource.value);
+      }
+
       return {
         registerTable,
+        dataSource,
         handleEdit,
         createActions,
         onEditChange,
+        addRecord,
       };
     },
   });

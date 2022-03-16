@@ -13,9 +13,9 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
-  import { useWatermark } from 'fe-ent-core/hooks/web/useWatermark';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container/index';
+  import { useWatermark } from 'fe-ent-core/lib/hooks/web/useWatermark';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
 
   export default defineComponent({
     components: { CollapseContainer: EntCollapseContainer, EntPageWrapper },

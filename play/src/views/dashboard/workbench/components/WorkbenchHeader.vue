@@ -25,8 +25,8 @@
 <script lang="ts" setup>
   import { computed } from 'vue';
   import { Avatar } from 'ant-design-vue';
-  import { useUserStore } from 'fe-ent-core/store/modules/user';
-  import headerImg from 'fe-ent-core/assets/images/header.jpg';
+  import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
+  import headerImg from 'fe-ent-core/lib/assets/images/header.jpg';
 
   const userStore = useUserStore();
   const userinfo = computed(() => userStore.getUserInfo);

@@ -25,9 +25,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable, BasicColumn, EntTableImg } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable, BasicColumn, EntTableImg } from 'fe-ent-core/lib/components/Table';
   import { Tag, Avatar } from 'ant-design-vue';
-  import { demoListApi } from 'fe-ent-core/api/demo/table';
+  import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
   const columns: BasicColumn[] = [
     {
       title: 'ID',

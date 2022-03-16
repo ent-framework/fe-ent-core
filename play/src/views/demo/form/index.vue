@@ -57,14 +57,14 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, unref, ref } from 'vue';
-  import { EntForm, FormSchema, ApiSelect } from 'fe-ent-core/components/Form/index';
-  import { EntCollapseContainer } from 'fe-ent-core/components/Container';
-  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntForm, FormSchema, ApiSelect } from 'fe-ent-core/lib/components/Form';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
 
-  import { optionsListApi } from 'fe-ent-core/api/demo/select';
+  import { optionsListApi } from 'fe-ent-core/lib/api/demo/select';
   import { useDebounceFn } from '@vueuse/core';
-  import { treeOptionsListApi } from 'fe-ent-core/api/demo/tree';
+  import { treeOptionsListApi } from 'fe-ent-core/lib/api/demo/tree';
   import { Select } from 'ant-design-vue';
   import { cloneDeep } from 'lodash';
 

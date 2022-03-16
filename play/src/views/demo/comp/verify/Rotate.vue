@@ -7,11 +7,11 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntRotateDragVerify } from 'fe-ent-core/components/Verify';
+  import { EntRotateDragVerify } from 'fe-ent-core/lib/components/Verify';
 
-  import img from 'fe-ent-core/assets/images/header.jpg';
+  import img from 'fe-ent-core/lib/assets/images/header.jpg';
 
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
 
   export default defineComponent({
     components: { EntRotateDragVerify, EntPageWrapper },

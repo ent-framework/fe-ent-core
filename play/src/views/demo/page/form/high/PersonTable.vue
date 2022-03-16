@@ -17,7 +17,7 @@
     BasicColumn,
     ActionItem,
     EditRecordRow,
-  } from 'fe-ent-core/components/Table';
+  } from 'fe-ent-core/lib/components/Table';
 
   const columns: BasicColumn[] = [
     {

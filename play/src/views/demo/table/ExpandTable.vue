@@ -33,11 +33,11 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/components/Table';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/Table';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
   import { getBasicColumns } from './tableData';
 
-  import { demoListApi } from 'fe-ent-core/api/demo/table';
+  import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
 
   export default defineComponent({
     components: { EntTable, EntTableAction, EntPageWrapper },

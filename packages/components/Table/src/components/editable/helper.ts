@@ -1,12 +1,11 @@
 import { ComponentType } from '../../types/componentType';
 import { useI18n } from '@ent-core/hooks/web/useI18n';
 
-const { t } = useI18n();
-
 /**
  * @description: 生成placeholder
  */
 export function createPlaceholderMessage(component: ComponentType) {
+  const { t } = useI18n();
   if (component.includes('Input')) {
     return t('common.inputText');
   }

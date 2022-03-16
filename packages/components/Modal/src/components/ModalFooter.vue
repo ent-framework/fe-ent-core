@@ -21,11 +21,19 @@
   import { defineComponent } from 'vue';
 
   import { basicProps } from '../props';
+  import { useI18n } from '@ent-core/hooks';
   export default defineComponent({
     name: 'BasicModalFooter',
     props: basicProps,
     emits: ['ok', 'cancel'],
-    setup(_, { emit }) {
+    setup(props, { emit }) {
+      const { t } = useI18n();
+      const cancelText =
+        !props.cancelText || props.cancelText.length == 0
+          ? t('common.cancelText')
+          : props.cancelText;
+      const okText = !props.okText || props.okText.length == 0 ? t('common.okText') : props.okText;
+
       function handleOk(e: Event) {
         emit('ok', e);
       }
@@ -34,7 +42,7 @@
         emit('cancel', e);
       }
 
-      return { handleOk, handleCancel };
+      return { handleOk, handleCancel, cancelText, okText };
     },
   });
 </script>

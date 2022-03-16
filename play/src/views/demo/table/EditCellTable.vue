@@ -10,12 +10,12 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable, BasicColumn } from 'fe-ent-core/components/Table';
-  import { optionsListApi } from 'fe-ent-core/api/demo/select';
+  import { EntTable, useTable, BasicColumn } from 'fe-ent-core/lib/components/Table';
+  import { optionsListApi } from 'fe-ent-core/lib/api/demo/select';
 
-  import { demoListApi } from 'fe-ent-core/api/demo/table';
-  import { treeOptionsListApi } from 'fe-ent-core/api/demo/tree';
-  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
+  import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
+  import { treeOptionsListApi } from 'fe-ent-core/lib/api/demo/tree';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
   const columns: BasicColumn[] = [
     {
       title: '输入框',

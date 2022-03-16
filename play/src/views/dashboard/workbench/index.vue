@@ -21,13 +21,13 @@
 <script lang="ts" setup>
   import { ref } from 'vue';
   import { Card } from 'ant-design-vue';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
   import WorkbenchHeader from './components/WorkbenchHeader.vue';
   import ProjectCard from './components/ProjectCard.vue';
   import QuickNav from './components/QuickNav.vue';
   import DynamicInfo from './components/DynamicInfo.vue';
   import SaleRadar from './components/SaleRadar.vue';
-  import img from 'fe-ent-core/assets/svg/illustration.svg';
+  import img from 'fe-ent-core/lib/assets/svg/illustration.svg';
   const loading = ref(true);
 
   setTimeout(() => {

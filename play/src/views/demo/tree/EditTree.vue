@@ -29,10 +29,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { BasicTree, ActionItem, ContextMenuItem } from 'fe-ent-core/components/Tree/index';
+  import { BasicTree, ActionItem, ContextMenuItem } from 'fe-ent-core/lib/components/Tree/index';
   import { treeData } from './data';
   import { PlusOutlined, DeleteOutlined } from '@ant-design/icons-vue';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
 
   export default defineComponent({
     components: { BasicTree, EntPageWrapper },

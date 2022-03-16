@@ -1,9 +1,9 @@
-import { BasicColumn } from 'fe-ent-core/components/Table';
-import { FormSchema } from 'fe-ent-core/components/Table';
+import { BasicColumn } from 'fe-ent-core/lib/components/Table';
+import { FormSchema } from 'fe-ent-core/lib/components/Form';
 import { h } from 'vue';
 import { Switch } from 'ant-design-vue';
-import { setRoleStatus } from 'fe-ent-core/api/demo/system';
-import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
+import { setRoleStatus } from 'fe-ent-core/lib/api/demo/system';
+import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
 
 export const columns: BasicColumn[] = [
   {

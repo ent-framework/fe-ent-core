@@ -12,11 +12,11 @@
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { EntForm, FormSchema } from 'fe-ent-core/components/Form/index';
-  import { EntCollapseContainer } from 'fe-ent-core/components/Container';
-  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
+  import { EntForm, FormSchema } from 'fe-ent-core/lib/components/Form';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
   import { Tinymce } from '@fe-ent-extension/tinymce';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
   import '@fe-ent-extension/tinymce/index.less';
 
   const schemas: FormSchema[] = [

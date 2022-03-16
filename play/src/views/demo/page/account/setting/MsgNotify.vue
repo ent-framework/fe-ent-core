@@ -25,7 +25,7 @@
 <script lang="ts">
   import { List, Switch } from 'ant-design-vue';
   import { defineComponent } from 'vue';
-  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container/index';
 
   import { msgNotifyList } from './data';
 

@@ -5,17 +5,17 @@ import 'virtual:windi-utilities.css';
 import 'virtual:svg-icons-register';
 import App from './App.vue';
 import { createApp } from 'vue';
-import { initAppConfigStore } from 'fe-ent-core/logics/initAppConfig';
-import { setupErrorHandle } from 'fe-ent-core/logics/error-handle';
-import { router, setupRouter } from 'fe-ent-core/router';
+import { initAppConfigStore } from 'fe-ent-core/lib/logics/initAppConfig';
+import { setupErrorHandle } from 'fe-ent-core/lib/logics/error-handle';
+import { router, setupRouter } from 'fe-ent-core/lib/router';
 import { setupRouterGuard } from '/@/router/guard';
-import { setupStore } from 'fe-ent-core/store';
-import { setupGlobDirectives } from 'fe-ent-core/directives';
-import { setupI18n } from 'fe-ent-core/locales/setupI18n';
-import { registerGlobComp } from 'fe-ent-core/components/registerGlobComp';
-import { useLayout } from 'fe-ent-core/router/helper/layoutHelper';
-import { importMenuModules } from 'fe-ent-core/router/menus';
-//import { init } from 'fe-ent-core/logics/ent';
+import { setupStore } from 'fe-ent-core/lib/store';
+import { setupGlobDirectives } from 'fe-ent-core/lib/directives';
+import { setupI18n } from 'fe-ent-core/lib/locales/setupI18n';
+import { registerGlobComp } from 'fe-ent-core/lib/components/registerGlobComp';
+import { useLayout } from 'fe-ent-core/lib/router/helper/layoutHelper';
+import { importMenuModules } from 'fe-ent-core/lib/router/menus';
+//import { init } from 'fe-ent-core/lib/logics/ent';
 import EntCore from 'fe-ent-core';
 //import AntD from 'ant-design-vue';
 
@@ -27,11 +27,10 @@ if (import.meta.env.DEV) {
   //import('ant-design-vue/dist/antd.less');
 }
 import 'ant-design-vue/dist/antd.less';
-import 'fe-ent-core/theme/index.less';
+import 'fe-ent-core/lib/theme/index.less';
 
-import { default as LAYOUT } from 'fe-ent-core/layouts/default/index.vue';
-import { default as IFRAME } from 'fe-ent-core/views/sys/iframe/FrameBlank.vue';
-import { QrCode } from '@fe-ent-extension/qrcode';
+import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default/index.vue';
+import { default as IFRAME } from 'fe-ent-core/lib/views/sys/iframe/FrameBlank.vue';
 
 async function bootstrap() {
   const app = createApp(App);

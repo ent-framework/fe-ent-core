@@ -24,11 +24,11 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntTable, useTable } from 'fe-ent-core/components/Table';
+  import { EntTable, useTable } from 'fe-ent-core/lib/components/Table';
   import { getBasicColumns, getFormConfig } from './tableData';
   import { Alert } from 'ant-design-vue';
 
-  import { demoListApi } from 'fe-ent-core/api/demo/table';
+  import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
 
   export default defineComponent({
     components: { EntTable, AAlert: Alert },

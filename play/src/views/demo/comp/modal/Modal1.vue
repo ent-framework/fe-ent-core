@@ -22,7 +22,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, watch } from 'vue';
-  import { EntModal, useModalInner } from 'fe-ent-core/components/Modal';
+  import { EntModal, useModalInner } from 'fe-ent-core/lib/components/Modal';
   export default defineComponent({
     components: { EntModal },
     setup() {

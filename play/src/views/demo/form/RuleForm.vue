@@ -14,11 +14,11 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntForm, FormSchema, useForm } from 'fe-ent-core/components/Form/index';
-  import { EntCollapseContainer } from 'fe-ent-core/components/Container';
-  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
-  import { isAccountExist } from 'fe-ent-core/api/demo/system';
+  import { EntForm, FormSchema, useForm } from 'fe-ent-core/lib/components/Form';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { isAccountExist } from 'fe-ent-core/lib/api/demo/system';
 
   const schemas: FormSchema[] = [
     {

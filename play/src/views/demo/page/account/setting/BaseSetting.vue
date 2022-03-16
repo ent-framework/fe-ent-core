@@ -24,17 +24,17 @@
 <script lang="ts">
   import { Button, Row, Col } from 'ant-design-vue';
   import { computed, defineComponent, onMounted } from 'vue';
-  import { EntForm, useForm } from 'fe-ent-core/components/Form/index';
-  import { EntCollapseContainer } from 'fe-ent-core/components/Container';
-  import { EntCropperAvatar } from 'fe-ent-core/components/Cropper';
+  import { EntForm, useForm } from 'fe-ent-core/lib/components/Form/index';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
+  import { EntCropperAvatar } from 'fe-ent-core/lib/components/Cropper';
 
-  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
 
-  import headerImg from 'fe-ent-core/assets/images/header.jpg';
-  import { accountInfoApi } from 'fe-ent-core/api/demo/account';
+  import headerImg from 'fe-ent-core/lib/assets/images/header.jpg';
+  import { accountInfoApi } from 'fe-ent-core/lib/api/demo/account';
   import { baseSetschemas } from './data';
-  import { useUserStore } from 'fe-ent-core/store/modules/user';
-  import { uploadApi } from 'fe-ent-core/api/sys/upload';
+  import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
+  import { uploadApi } from 'fe-ent-core/lib/api/sys/upload';
 
   export default defineComponent({
     components: {

@@ -17,9 +17,9 @@
 <script lang="ts" setup>
   import { defineComponent, h } from 'vue';
   import { Tag } from 'ant-design-vue';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
-  import { EntDescription, DescItem, useDescription } from 'fe-ent-core/components/Description';
-  import { GITHUB_URL, SITE_URL, DOC_URL } from 'fe-ent-core/settings/siteSetting';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntDescription, DescItem, useDescription } from 'fe-ent-core/lib/components/Description';
+  import { GITHUB_URL, SITE_URL, DOC_URL } from 'fe-ent-core/lib/settings/siteSetting';
 
   const { pkg, lastBuildTime } = __APP_INFO__;
 

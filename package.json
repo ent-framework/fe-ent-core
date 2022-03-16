@@ -20,7 +20,7 @@
     "build:all": "pnpm build:tools && pnpm build:lib",
     "build:lib": "gulp --require sucrase/register/ts -f ./build/gulpfile.ts",
     "build:tools": "pnpm --filter ./tools --stream build",
-    "build:play": "pnpm build:cli && pnpm -C play --stream build",
+    "build:play": "pnpm -C play --stream build",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
     "build:no-cache": "yarn clean:cache && pnpm run build",
     "clean": "pnpm run clean:dist && pnpm run clean:ext",
