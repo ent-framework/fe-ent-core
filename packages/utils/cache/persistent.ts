@@ -13,8 +13,8 @@ import {
   APP_LOCAL_CACHE_KEY,
   APP_SESSION_CACHE_KEY,
   MULTIPLE_TABS_KEY,
-} from '@ent-core/enums/cacheEnum';
-import { DEFAULT_CACHE_TIME } from '@ent-core/settings/encryptionSetting';
+} from '@ent-core/enums/cache-enum';
+import { DEFAULT_CACHE_TIME } from '@ent-core/settings/encryption-setting';
 import { toRaw } from 'vue';
 import { pick, omit } from 'lodash';
 

@@ -4,7 +4,7 @@
 <script lang="ts">
   import { defineComponent, ref, nextTick, unref, onMounted } from 'vue';
 
-  import { useScript } from 'fe-ent-core/hooks/web/useScript';
+  import { useScript } from 'fe-ent-core/lib/hooks/web/use-script';
 
   const BAI_DU_MAP_URL =
     'https://api.map.baidu.com/getscript?v=3.0&ak=OaBvYmKX3pjF7YFUFeeBCeGdy9Zp7xB2&services=&t=20210201100830&s=1';

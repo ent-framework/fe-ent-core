@@ -26,16 +26,21 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntCollapseContainer } from 'fe-ent-core/components/Container';
-  import { useTabs } from 'fe-ent-core/hooks/web/useTabs';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
+  import { useTabs } from 'fe-ent-core/lib/hooks/web/use-tabs';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { Input, Alert } from 'ant-design-vue';
-  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
-  import { useGo } from 'fe-ent-core/hooks/web/usePage';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
+  import { useGo } from 'fe-ent-core/lib/hooks/web/use-page';
 
   export default defineComponent({
     name: 'TabsDemo',
-    components: { CollapseContainer: EntCollapseContainer, EntPageWrapper, [Input.name]: Input, [Alert.name]: Alert },
+    components: {
+      CollapseContainer: EntCollapseContainer,
+      EntPageWrapper,
+      [Input.name]: Input,
+      [Alert.name]: Alert,
+    },
     setup() {
       const go = useGo();
       const title = ref<string>('');

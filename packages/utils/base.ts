@@ -83,8 +83,9 @@ export const withInstall = <T>(component: T, name?: string, alias?: string) => {
   comp.install = (app: App) => {
     const compName = name || comp.name || comp.displayName;
     if (!compName) {
-      console.log(comp);
+      //console.log(comp);
     } else {
+      console.log(compName);
       app.component(compName, component);
       if (alias) {
         app.config.globalProperties[alias] = component;

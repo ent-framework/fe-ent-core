@@ -17,14 +17,14 @@
 
   import { GithubFilled } from '@ant-design/icons-vue';
 
-  import { DOC_URL, GITHUB_URL, SITE_URL } from '@ent-core/settings/siteSetting';
+  import { DOC_URL, GITHUB_URL, SITE_URL } from '@ent-core/settings/site-setting';
   import { openWindow } from '@ent-core/utils';
 
-  import { useI18n } from '@ent-core/hooks/web/useI18n';
-  import { useRootSetting } from '@ent-core/hooks/setting/useRootSetting';
+  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
   import { useRouter } from 'vue-router';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
-  import { useLayoutHeight } from '../content/useContentViewHeight';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useLayoutHeight } from '../content/use-content-view-height';
 
   export default defineComponent({
     name: 'LayoutFooter',

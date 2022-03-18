@@ -32,21 +32,21 @@
   import { defineComponent, computed, unref, ref } from 'vue';
 
   import { Tabs } from 'ant-design-vue';
-  import TabContent from './components/TabContent.vue';
-  import FoldButton from './components/FoldButton.vue';
-  import TabRedo from './components/TabRedo.vue';
+  import TabContent from './components/tab-content.vue';
+  import FoldButton from './components/fold-button.vue';
+  import TabRedo from './components/tab-redo.vue';
 
-  import { useGo } from '@ent-core/hooks/web/usePage';
+  import { useGo } from '@ent-core/hooks/web/use-page';
 
-  import { useMultipleTabStore } from '@ent-core/store/modules/multipleTab';
+  import { useMultipleTabStore } from '@ent-core/store/modules/multiple-tab';
   import { useUserStore } from '@ent-core/store/modules/user';
 
-  import { initAffixTabs, useTabsDrag } from './useMultipleTabs';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
-  import { useMultipleTabSetting } from '@ent-core/hooks/setting/useMultipleTabSetting';
+  import { initAffixTabs, useTabsDrag } from './use-multiple-tabs';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useMultipleTabSetting } from '@ent-core/hooks/setting/use-multiple-tab-setting';
 
   import { REDIRECT_NAME } from '@ent-core/router/constant';
-  import { listenerRouteChange } from '@ent-core/logics/mitt/routeChange';
+  import { listenerRouteChange } from '@ent-core/logics/mitt/route-change';
 
   import { useRouter } from 'vue-router';
 

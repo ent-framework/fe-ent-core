@@ -13,7 +13,7 @@
   import { defineComponent, unref, computed } from 'vue';
   import FramePage from '@ent-core/views/sys/iframe/index.vue';
 
-  import { useFrameKeepAlive } from './useFrameKeepAlive';
+  import { useFrameKeepAlive } from './use-frame-keep-alive';
 
   export default defineComponent({
     name: 'FrameLayout',

@@ -14,7 +14,7 @@
   import type { CSSProperties, PropType } from 'vue';
   import { defineComponent, onMounted, ref, unref, computed, onUnmounted } from 'vue';
   import Cropper from 'cropperjs';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useDebounceFn } from '@vueuse/shared';
 
   type Options = Cropper.Options;

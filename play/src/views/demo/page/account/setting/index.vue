@@ -16,13 +16,13 @@
   import { defineComponent } from 'vue';
   import { Tabs } from 'ant-design-vue';
 
-  import { EntScrollContainer } from 'fe-ent-core/components/Container/index';
+  import { EntScrollContainer } from 'fe-ent-core/lib/components/container';
   import { settingList } from './data';
 
-  import BaseSetting from './BaseSetting.vue';
-  import SecureSetting from './SecureSetting.vue';
-  import AccountBind from './AccountBind.vue';
-  import MsgNotify from './MsgNotify.vue';
+  import BaseSetting from './base-setting.vue';
+  import SecureSetting from './secure-setting.vue';
+  import AccountBind from './account-bind.vue';
+  import MsgNotify from './msg-notify.vue';
 
   export default defineComponent({
     components: {

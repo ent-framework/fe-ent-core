@@ -1,2 +1,2 @@
-export * from './treeHelper';
-export * from './tsxHelper';
+export * from './tree-helper';
+export * from './tsx-helper';

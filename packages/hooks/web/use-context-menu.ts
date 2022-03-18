@@ -1,0 +1,10 @@
+import { onUnmounted, getCurrentInstance } from 'vue';
+import { createContextMenu, destroyContextMenu } from '@ent-core/components/context-menu';
+export function useContextMenu(authRemove = true) {
+  if (getCurrentInstance() && authRemove) {
+    onUnmounted(() => {
+      destroyContextMenu();
+    });
+  }
+  return [createContextMenu, destroyContextMenu];
+}

@@ -1,4 +1,4 @@
-import { TreeItem } from 'fe-ent-core/components/Tree/index';
+import { TreeItem } from 'fe-ent-core/lib/components/Tree/index';
 
 export const treeData: TreeItem[] = [
   {

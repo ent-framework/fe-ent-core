@@ -24,7 +24,7 @@
     "paths": {
       "/@/*": ["src/*"],
       "fe-ent-core": ["../packages/fe-ent-core/index.ts"],
-      "fe-ent-core/*": ["../packages/*"],
+      "fe-ent-core/lib/*": ["../packages/*"],
       "@fe-ent-extension/*": ["../extensions/*"]
     }
   },

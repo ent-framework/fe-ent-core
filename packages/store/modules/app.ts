@@ -10,10 +10,10 @@ import type { BeforeMiniState } from '@ent-core/types/store';
 import { defineStore } from 'pinia';
 import { store } from '@ent-core/store/pinia';
 
-import { ThemeEnum } from '@ent-core/enums/appEnum';
-import { APP_DARK_MODE_KEY_, PROJ_CFG_KEY } from '@ent-core/enums/cacheEnum';
+import { ThemeEnum } from '@ent-core/enums/app-enum';
+import { APP_DARK_MODE_KEY_, PROJ_CFG_KEY } from '@ent-core/enums/cache-enum';
 import { Persistent } from '@ent-core/utils/cache/persistent';
-import { darkMode } from '@ent-core/settings/designSetting';
+import { darkMode } from '@ent-core/settings/design-setting';
 import { resetRouter } from '@ent-core/router';
 import { deepMerge } from '@ent-core/utils';
 

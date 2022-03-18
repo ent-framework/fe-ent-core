@@ -2,23 +2,23 @@
   import type { PropType, CSSProperties } from 'vue';
 
   import { computed, defineComponent, unref, toRef } from 'vue';
-  import { BasicMenu } from '@ent-core/components/Menu';
-  import { SimpleMenu } from '@ent-core/components/SimpleMenu';
-  import AppLogo from '@ent-core/layouts/default/components/AppLogo.vue';
+  import { BasicMenu } from '@ent-core/components/menu';
+  import { SimpleMenu } from '@ent-core/components/simple-menu';
+  import AppLogo from '@ent-core/layouts/default/components/app-logo.vue';
 
-  import { MenuModeEnum, MenuSplitTyeEnum } from '@ent-core/enums/menuEnum';
+  import { MenuModeEnum, MenuSplitTyeEnum } from '@ent-core/enums/menu-enum';
 
-  import { useMenuSetting } from '@ent-core/hooks/setting/useMenuSetting';
-  import { EntScrollContainer } from '@ent-core/components/Container';
+  import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
+  import { EntScrollContainer } from '@ent-core/components/container';
 
-  import { useGo } from '@ent-core/hooks/web/usePage';
-  import { useSplitMenu } from './useLayoutMenu';
+  import { useGo } from '@ent-core/hooks/web/use-page';
+  import { useSplitMenu } from './use-layout-menu';
   import { openWindow } from '@ent-core/utils';
-  import { propTypes } from '@ent-core/utils/propTypes';
+  import { propTypes } from '@ent-core/utils/prop-types';
   import { isUrl } from '@ent-core/utils/is';
-  import { useRootSetting } from '@ent-core/hooks/setting/useRootSetting';
-  import { useAppInject } from '@ent-core/hooks/web/useAppInject';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
+  import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
+  import { useAppInject } from '@ent-core/hooks/web/use-app-inject';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
 
   export default defineComponent({
     name: 'LayoutMenu',

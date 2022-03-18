@@ -1,15 +1,15 @@
 import type { AxiosRequestConfig, AxiosInstance, AxiosResponse, AxiosError } from 'axios';
 import type { RequestOptions, Result, UploadFileParams } from '@ent-core/types/axios';
-import type { CreateAxiosOptions } from './axiosTransform';
+import type { CreateAxiosOptions } from './axios-transform';
 import axios from 'axios';
 import qs from 'qs';
-import { AxiosCanceler } from './axiosCancel';
+import { AxiosCanceler } from './axios-cancel';
 import { isFunction } from '@ent-core/utils/is';
 import { cloneDeep } from 'lodash';
-import { ContentTypeEnum } from '@ent-core/enums/httpEnum';
-import { RequestEnum } from '@ent-core/enums/httpEnum';
+import { ContentTypeEnum } from '@ent-core/enums/http-enum';
+import { RequestEnum } from '@ent-core/enums/http-enum';
 
-export * from './axiosTransform';
+export * from './axios-transform';
 
 /**
  * @description:  axios module

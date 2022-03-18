@@ -21,8 +21,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { EntScrollContainer, ScrollActionType } from 'fe-ent-core/components/Container/index';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntScrollContainer, ScrollActionType } from 'fe-ent-core/lib/components/container';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({
     components: { ScrollContainer: EntScrollContainer, EntPageWrapper },

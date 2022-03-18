@@ -29,13 +29,13 @@
 
   import FrameLayout from '@ent-core/layouts/iframe/index.vue';
 
-  import { useRootSetting } from '@ent-core/hooks/setting/useRootSetting';
+  import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
 
-  import { useTransitionSetting } from '@ent-core/hooks/setting/useTransitionSetting';
-  import { useMultipleTabSetting } from '@ent-core/hooks/setting/useMultipleTabSetting';
+  import { useTransitionSetting } from '@ent-core/hooks/setting/use-transition-setting';
+  import { useMultipleTabSetting } from '@ent-core/hooks/setting/use-multiple-tab-setting';
   import { getTransitionName } from './transition';
 
-  import { useMultipleTabStore } from '@ent-core/store/modules/multipleTab';
+  import { useMultipleTabStore } from '@ent-core/store/modules/multiple-tab';
 
   export default defineComponent({
     name: 'PageLayout',

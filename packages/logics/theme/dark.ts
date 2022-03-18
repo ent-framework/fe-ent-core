@@ -1,5 +1,5 @@
 import { darkCssIsReady, loadDarkThemeCss } from 'fe-ent-theme-api';
-import { addClass, hasClass, removeClass } from '@ent-core/utils/domUtils';
+import { addClass, hasClass, removeClass } from '@ent-core/utils/dom-utils';
 import { isProdMode } from '@ent-core/utils/env';
 
 export async function updateDarkTheme(mode: string | null = 'light') {

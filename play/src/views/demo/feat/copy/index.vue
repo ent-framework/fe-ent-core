@@ -10,10 +10,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, unref, ref } from 'vue';
-  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
-  import { useCopyToClipboard } from 'fe-ent-core/hooks/web/useCopyToClipboard';
-  import { useMessage } from 'fe-ent-core/hooks/web/useMessage';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
+  import { useCopyToClipboard } from 'fe-ent-core/lib/hooks/web/use-copy-to-clipboard';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({
     name: 'Copy',

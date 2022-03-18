@@ -1,5 +1,5 @@
-import { DescItem } from 'fe-ent-core/components/Description';
-import { BasicColumn } from 'fe-ent-core/components/Table/src/types/table';
+import { DescItem } from 'fe-ent-core/lib/components/description';
+import { BasicColumn } from 'fe-ent-core/lib/components/table/src/types/table';
 import { Badge, Button } from 'ant-design-vue';
 
 export const refundData = {

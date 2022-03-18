@@ -1,13 +1,13 @@
 import { HandlerEnum } from './enum';
-import { updateHeaderBgColor, updateSidebarBgColor } from '@ent-core/logics/theme/updateBackground';
-import { updateColorWeak } from '@ent-core/logics/theme/updateColorWeak';
-import { updateGrayMode } from '@ent-core/logics/theme/updateGrayMode';
+import { updateHeaderBgColor, updateSidebarBgColor } from '@ent-core/logics/theme/update-background';
+import { updateColorWeak } from '@ent-core/logics/theme/update-color-weak';
+import { updateGrayMode } from '@ent-core/logics/theme/update-gray-mode';
 
 import { useAppStore } from '@ent-core/store/modules/app';
 import type { ProjectConfig } from '@ent-core/types/config';
 import { changeTheme } from '@ent-core/logics/theme';
 import { updateDarkTheme } from '@ent-core/logics/theme/dark';
-import { useRootSetting } from '@ent-core/hooks/setting/useRootSetting';
+import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
 
 export function baseHandler(event: HandlerEnum, value: any) {
   const appStore = useAppStore();

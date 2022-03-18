@@ -5,13 +5,13 @@ import { Project } from 'ts-morph';
 import glob from 'fast-glob';
 import { bold } from 'chalk';
 
-import { errorAndExit, green, yellow, error } from './utils/log';
+import { green, yellow, error } from './utils/log';
 import { buildOutput, epRoot, pkgRoot, projRoot } from './utils';
 
 import { excludeFiles, pathRewriter } from './utils/pkg';
 import type { SourceFile } from 'ts-morph';
 
-const TSCONFIG_PATH = path.resolve(projRoot, 'tsconfig.json');
+const TSCONFIG_PATH = path.resolve(process.cwd(), 'tsconfig.tds.json');
 const outDir = path.resolve(buildOutput, 'types');
 
 /**
@@ -19,35 +19,16 @@ const outDir = path.resolve(buildOutput, 'types');
  */
 export const generateTypesDefinitions = async () => {
   console.log(`Run in dir: ${process.cwd()}`);
+
   const project = new Project({
     compilerOptions: {
       emitDeclarationOnly: true,
       outDir,
       baseUrl: projRoot,
       paths: {
-        '@ent-core/*': [`${projRoot}/packages/*`],
+        '@ent-core/*': [`packages/*`],
       },
-      allowJs: true,
-      strict: true,
-      module: 99,
-      target: 99,
-      noImplicitAny: false,
-      declaration: true,
-      moduleResolution: 2,
-      esModuleInterop: true,
-      jsx: 1,
-      sourceMap: true,
-      lib: ['lib.esnext.full.d.ts', 'lib.dom.d.ts'],
-      allowSyntheticDefaultImports: true,
-      forceConsistentCasingInFileNames: true,
-      resolveJsonModule: true,
-      useDefineForClassFields: true,
-      skipLibCheck: true,
-      isolatedModules: true,
-      types: ['vite/client', `${projRoot}/typings/global`],
-      typeRoots: [`${projRoot}/node_modules/@types`, `${projRoot}/typings`],
     },
-    //libFolderPath: `${projRoot}/node_modules/typescript/lib`,
     tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true,
   });
@@ -59,6 +40,7 @@ export const generateTypesDefinitions = async () => {
       onlyFiles: true,
     }),
   );
+  //const filePaths = ['/Volumes/workspace/code/projects/coe/fe-core/packages/components/Dropdown/index.ts'];
   const epPaths = excludeFiles(
     await glob('**/*.{tsx,ts,vue}', {
       cwd: epRoot,

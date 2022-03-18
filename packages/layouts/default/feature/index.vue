@@ -2,14 +2,14 @@
   import { defineComponent, computed, unref } from 'vue';
   import { BackTop } from 'ant-design-vue';
 
-  import { useRootSetting } from '@ent-core/hooks/setting/useRootSetting';
-  import { useHeaderSetting } from '@ent-core/hooks/setting/useHeaderSetting';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
+  import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
+  import { useHeaderSetting } from '@ent-core/hooks/setting/use-header-setting';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useUserStoreWithOut } from '@ent-core/store/modules/user';
 
-  import { SettingButtonPositionEnum } from '@ent-core/enums/appEnum';
+  import { SettingButtonPositionEnum } from '@ent-core/enums/app-enum';
 
-  import SessionTimeoutLogin from '@ent-core/views/sys/login/SessionTimeoutLogin.vue';
+  import SessionTimeoutLogin from '@ent-core/views/sys/login/session-timeout-login.vue';
   import LayoutLockPage from '@ent-core/views/sys/lock/index.vue';
   import SettingDrawer from '@ent-core/layouts/default/setting/index.vue';
   export default defineComponent({

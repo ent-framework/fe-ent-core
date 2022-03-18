@@ -1,0 +1,14 @@
+import { withInstall } from '@ent-core/utils';
+import BasicTable from './src/basic-table.vue';
+// export { default as TableAction } from './src/components/table-action.vue';
+// export { default as TableImg } from './src/components/table-img.vue';
+import TableAction from './src/components/table-action.vue';
+import TableImg from './src/components/table-img.vue';
+export * from './src/types/table';
+export * from './src/types/pagination';
+export * from './src/types/table-action';
+export { useTable } from './src/hooks/use-table';
+export type { EditRecordRow } from './src/components/editable';
+export const EntTable = withInstall(BasicTable);
+export const EntTableAction = withInstall(TableAction);
+export const EntTableImg = withInstall(TableImg);

@@ -1,9 +1,9 @@
 import type { AppRouteRecordRaw } from '@ent-core/router/types';
-import { t } from '@ent-core/hooks/web/useI18n';
+import { t } from '@ent-core/hooks/web/use-i18n';
 import { REDIRECT_NAME, EXCEPTION_COMPONENT, PAGE_NOT_FOUND_NAME } from '@ent-core/router/constant';
 import redirect from '@ent-core/views/sys/redirect/index.vue';
 import errorLog from '@ent-core/views/sys/error-log/index.vue';
-import { useLayout } from '../helper/layoutHelper';
+import { useLayout } from '../helper/layout-helper';
 
 // 404 on a page
 export function registerPageNotFoundRoute(): AppRouteRecordRaw {

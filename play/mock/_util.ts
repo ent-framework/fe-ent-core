@@ -3,7 +3,7 @@
 export function resultSuccess<T = Recordable>(result: T, { message = 'ok' } = {}) {
   return {
     code: 0,
-    result,
+    data: result,
     message,
     type: 'success',
   };
@@ -56,5 +56,9 @@ export interface requestParams {
  *
  */
 export function getRequestToken({ headers }: requestParams): string | undefined {
-  return headers?.authorization;
+  const auth = headers?.authorization;
+  if (auth && auth.startsWith('Bearer')) {
+    return auth.substring(7);
+  }
+  return auth;
 }

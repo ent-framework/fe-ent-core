@@ -14,31 +14,31 @@
 
     <CollapseContainer title="IconIfy 组件使用" class="my-5">
       <div class="flex justify-around flex-wrap">
-        <Icon icon="ion:layers-outline" :size="30" />
-        <Icon icon="ion:bar-chart-outline" :size="30" />
-        <Icon icon="ion:tv-outline" :size="30" />
-        <Icon icon="ion:settings-outline" :size="30" />
+        <EntIcon icon="ion:layers-outline" :size="30" />
+        <EntIcon icon="ion:bar-chart-outline" :size="30" />
+        <EntIcon icon="ion:tv-outline" :size="30" />
+        <EntIcon icon="ion:settings-outline" :size="30" />
       </div>
     </CollapseContainer>
 
     <CollapseContainer title="svg 雪碧图" class="my-5">
       <div class="flex justify-around flex-wrap">
-        <SvgIcon name="test" size="32" />
+        <EntSvgIcon name="test" size="32" />
         <template v-for="item in 6" :key="item">
-          <SvgIcon :name="`dynamic-avatar-${item}`" size="32" />
+          <EntSvgIcon :name="`dynamic-avatar-${item}`" size="32" />
         </template>
       </div>
     </CollapseContainer>
 
     <CollapseContainer title="图标选择器(Iconify)" class="my-5">
       <div class="flex justify-around flex-wrap">
-        <IconPicker />
+        <EntIconPicker />
       </div>
     </CollapseContainer>
 
     <CollapseContainer title="图标选择器(Svg)" class="my-5">
       <div class="flex justify-around flex-wrap">
-        <IconPicker mode="svg" />
+        <EntIconPicker mode="svg" />
       </div>
     </CollapseContainer>
 
@@ -52,7 +52,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
   import { Alert } from 'ant-design-vue';
   import {
     QqCircleFilled,
@@ -64,10 +64,10 @@
     CodepenCircleFilled,
   } from '@ant-design/icons-vue';
 
-  import { Icon, IconPicker, SvgIcon } from 'fe-ent-core/components/Icon/index';
+  import { EntIcon, EntIconPicker, EntSvgIcon } from 'fe-ent-core/lib/components/icon';
 
-  import { openWindow } from 'fe-ent-core/utils';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { openWindow } from 'fe-ent-core/lib/utils';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({
     components: {
@@ -80,10 +80,10 @@
       IeCircleFilled,
       TaobaoCircleFilled,
       CodepenCircleFilled,
-      Icon,
+      EntIcon,
       Alert,
-      IconPicker,
-      SvgIcon,
+      EntIconPicker,
+      EntSvgIcon,
     },
     setup() {
       return {

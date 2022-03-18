@@ -43,7 +43,7 @@ export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) 
   vitePlugins.push(defaultPlugins);
 
   // vite-plugin-windicss
-  vitePlugins.push(configWindiPlugin());
+  vitePlugins.push(configWindiPlugin(configEnv));
 
   const isBuild = configEnv.runMode == 'package' || configEnv.runMode == 'lib';
   // TODO
@@ -56,7 +56,7 @@ export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) 
   configEnv.runMode != 'lib' && vitePlugins.push(configHtmlPlugin(viteEnv, isBuild));
 
   // vite-plugin-svg-icons
-  vitePlugins.push(configSvgIconsPlugin(isBuild, !!configEnv.preview));
+  vitePlugins.push(configSvgIconsPlugin(isBuild, !!configEnv.libDev));
 
   // vite-plugin-mock
   VITE_USE_MOCK && vitePlugins.push(configMockPlugin(isBuild));

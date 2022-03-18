@@ -1,8 +1,8 @@
-import type { AppRouteModule } from 'fe-ent-core/router/types';
+import type { AppRouteModule } from 'fe-ent-core/lib/router/types';
 
-import { getParentLayout } from 'fe-ent-core/router/constant';
-import { default as LAYOUT } from 'fe-ent-core/layouts/default/index.vue';
-import { t } from 'fe-ent-core/hooks/web/useI18n';
+import { getParentLayout } from 'fe-ent-core/lib/router/constant';
+import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default';
+import { t } from 'fe-ent-core/lib/hooks/web/use-i18n';
 
 const feat: AppRouteModule = {
   path: '/feat',
@@ -60,7 +60,7 @@ const feat: AppRouteModule = {
         {
           path: 'detail/:id',
           name: 'TabDetail',
-          component: () => import('/@/views/demo/feat/tabs/TabDetail.vue'),
+          component: () => import('/@/views/demo/feat/tabs/tab-detail.vue'),
           meta: {
             currentActiveMenu: '/feat/tabs',
             title: t('routes.demo.feat.tabDetail'),
@@ -84,7 +84,7 @@ const feat: AppRouteModule = {
         {
           path: 'flat',
           name: 'BreadcrumbFlatDemo',
-          component: () => import('/@/views/demo/feat/breadcrumb/FlatList.vue'),
+          component: () => import('/@/views/demo/feat/breadcrumb/flat-list.vue'),
           meta: {
             title: t('routes.demo.feat.breadcrumbFlat'),
           },
@@ -92,7 +92,7 @@ const feat: AppRouteModule = {
         {
           path: 'flatDetail',
           name: 'BreadcrumbFlatDetailDemo',
-          component: () => import('/@/views/demo/feat/breadcrumb/FlatListDetail.vue'),
+          component: () => import('/@/views/demo/feat/breadcrumb/flat-list-detail.vue'),
           meta: {
             title: t('routes.demo.feat.breadcrumbFlatDetail'),
             hideMenu: true,
@@ -103,7 +103,7 @@ const feat: AppRouteModule = {
         {
           path: 'children',
           name: 'BreadcrumbChildrenDemo',
-          component: () => import('/@/views/demo/feat/breadcrumb/ChildrenList.vue'),
+          component: () => import('/@/views/demo/feat/breadcrumb/children-list.vue'),
           meta: {
             title: t('routes.demo.feat.breadcrumbChildren'),
           },
@@ -111,7 +111,7 @@ const feat: AppRouteModule = {
             {
               path: 'childrenDetail',
               name: 'BreadcrumbChildrenDetailDemo',
-              component: () => import('/@/views/demo/feat/breadcrumb/ChildrenListDetail.vue'),
+              component: () => import('/@/views/demo/feat/breadcrumb/children-list-detail.vue'),
               meta: {
                 currentActiveMenu: '/feat/breadcrumb/children',
                 title: t('routes.demo.feat.breadcrumbChildrenDetail'),
@@ -218,7 +218,7 @@ const feat: AppRouteModule = {
         {
           path: 'customExport',
           name: 'CustomExport',
-          component: () => import('/@/views/demo/excel/CustomExport.vue'),
+          component: () => import('/@/views/demo/excel/custom-export.vue'),
           meta: {
             title: t('routes.demo.excel.customExport'),
           },
@@ -226,7 +226,7 @@ const feat: AppRouteModule = {
         {
           path: 'jsonExport',
           name: 'JsonExport',
-          component: () => import('/@/views/demo/excel/JsonExport.vue'),
+          component: () => import('/@/views/demo/excel/json-export.vue'),
           meta: {
             title: t('routes.demo.excel.jsonExport'),
           },
@@ -234,7 +234,7 @@ const feat: AppRouteModule = {
         {
           path: 'arrayExport',
           name: 'ArrayExport',
-          component: () => import('/@/views/demo/excel/ArrayExport.vue'),
+          component: () => import('/@/views/demo/excel/array-export.vue'),
           meta: {
             title: t('routes.demo.excel.arrayExport'),
           },
@@ -242,7 +242,7 @@ const feat: AppRouteModule = {
         {
           path: 'importExcel',
           name: 'ImportExcel',
-          component: () => import('/@/views/demo/excel/ImportExcel.vue'),
+          component: () => import('/@/views/demo/excel/import-excel.vue'),
           meta: {
             title: t('routes.demo.excel.importExcel'),
           },

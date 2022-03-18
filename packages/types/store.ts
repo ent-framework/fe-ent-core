@@ -1,6 +1,6 @@
-import { ErrorTypeEnum } from '@ent-core/enums/exceptionEnum';
-import { MenuModeEnum, MenuTypeEnum } from '@ent-core/enums/menuEnum';
-import { RoleInfo } from '@ent-core/api/sys/model/userModel';
+import { ErrorTypeEnum } from '@ent-core/enums/exception-enum';
+import { MenuModeEnum, MenuTypeEnum } from '@ent-core/enums/menu-enum';
+import { RoleInfo } from '@ent-core/api/sys/model/user-model';
 
 // Lock screen information
 export interface LockInfo {

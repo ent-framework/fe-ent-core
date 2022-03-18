@@ -28,8 +28,8 @@
     EntDescription,
     DescItem,
     useDescription,
-  } from 'fe-ent-core/components/Description/index';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  } from 'fe-ent-core/lib/components/description';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   const mockData: Recordable = {
     username: 'test',

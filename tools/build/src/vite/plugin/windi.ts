@@ -2,13 +2,15 @@
  * Plugin to minimize and use ejs template syntax in index.html.
  * https://github.com/anncwb/vite-plugin-html
  */
-import type { Plugin } from 'vite';
 import windiCSS from 'vite-plugin-windicss';
 import { primaryColor } from '../../config/themeConfig';
-import { findWorkspaceRoot, getCurrExecPath } from '../../utils';
+import { findWorkspaceRoot } from '../../utils';
 import { UserOptions } from 'vite-plugin-windicss';
+import { CustomConfigEnv } from '../createConfig';
+import { searchForWorkspaceRoot } from 'vite';
+import path from 'path';
 
-export function configWindiPlugin() {
+export function configWindiPlugin(configEnv: CustomConfigEnv) {
   /**
    * Used for animation when the element is displayed
    * @param maxOutput The larger the maxOutput output, the larger the generated css volume
@@ -60,15 +62,23 @@ export function configWindiPlugin() {
     return { handler };
   }
 
+  const workspace = searchForWorkspaceRoot(process.cwd());
+  const cwd = process.cwd();
+
+  const paths: string[] = [];
+  if (configEnv.libDev) {
+    paths.push(`${findWorkspaceRoot()}/packages/**/*.{ts,tsx,vue}`);
+  } else {
+    paths.push(`${path.resolve(workspace, 'node_modules/fe-ent-core/**/*.{js, mjs}')}`);
+  }
+  paths.push(`${cwd}/src/**/*.{ts,tsx,vue}`);
+  paths.push(`${cwd}/index.html`);
+
   const windiConfig: UserOptions = {
     transformCSS: false,
     config: {
       extract: {
-        include: [
-          `${findWorkspaceRoot()}/packages/**/*.{ts,tsx,vue}`,
-          `${getCurrExecPath('.')}/src/**/*.{ts,tsx,vue}`,
-          `${getCurrExecPath('.')}/index.html`,
-        ],
+        include: paths,
         exclude: ['node_modules', '.git'],
       },
       darkMode: 'class',

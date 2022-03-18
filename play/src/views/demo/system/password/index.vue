@@ -11,10 +11,10 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
-  import { EntForm, useForm } from 'fe-ent-core/components/Form';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntForm, useForm } from 'fe-ent-core/lib/components/form';
 
-  import { formSchema } from './pwd.data';
+  import { formSchema } from './pwd-data';
   export default defineComponent({
     name: 'ChangePassword',
     components: { EntForm, EntPageWrapper },

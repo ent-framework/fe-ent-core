@@ -1,3 +1,3 @@
 export * from './error-handle';
-export * from './mitt/routeChange';
+export * from './mitt/route-change';
 export * from './theme';

@@ -28,11 +28,11 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { Alert } from 'ant-design-vue';
-  import CurrentPermissionMode from '../CurrentPermissionMode.vue';
-  import { useUserStore } from 'fe-ent-core/store/modules/user';
-  import { RoleEnum } from 'fe-ent-core/enums/roleEnum';
-  import { usePermission } from 'fe-ent-core/hooks/web/usePermission';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import CurrentPermissionMode from '../current-permission-mode.vue';
+  import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
+  import { RoleEnum } from 'fe-ent-core/lib/enums/role-enum';
+  import { usePermission } from 'fe-ent-core/lib/hooks/web/use-permission';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({
     components: { Alert, CurrentPermissionMode, EntPageWrapper },

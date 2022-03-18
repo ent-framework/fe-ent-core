@@ -2,11 +2,11 @@ import type { LockInfo } from '@ent-core/types/store';
 
 import { defineStore } from 'pinia';
 
-import { LOCK_INFO_KEY } from '@ent-core/enums/cacheEnum';
+import { LOCK_INFO_KEY } from '@ent-core/enums/cache-enum';
 import { Persistent } from '@ent-core/utils/cache/persistent';
 import { useUserStore } from './user';
 
-interface LockState {
+export interface LockState {
   lockInfo: Nullable<LockInfo>;
 }
 

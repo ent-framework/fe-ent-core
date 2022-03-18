@@ -76,10 +76,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { QrCode, QrCodeActionType } from 'fe-ent-core/components/Qrcode/index';
-  import LogoImg from 'fe-ent-core/assets/images/logo.png';
-  import { EntCollapseContainer } from 'fe-ent-core/components/Container/index';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
+  import { QrCode, QrCodeActionType } from '@fe-ent-extension/qrcode';
+  import LogoImg from 'fe-ent-core/lib/assets/images/logo.png';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   const qrCodeUrl = 'https://www.vvbin.cn';
   export default defineComponent({

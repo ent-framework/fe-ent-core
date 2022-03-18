@@ -4,11 +4,11 @@
 
 import type { ErrorLogInfo } from '@ent-core/types/store';
 
-import { useErrorLogStoreWithOut } from '@ent-core/store/modules/errorLog';
+import { useErrorLogStoreWithOut } from '@ent-core/store/modules/error-log';
 
-import { ErrorTypeEnum } from '@ent-core/enums/exceptionEnum';
+import { ErrorTypeEnum } from '@ent-core/enums/exception-enum';
 import { App } from 'vue';
-import projectSetting from '@ent-core/settings/projectSetting';
+import projectSetting from '@ent-core/settings/project-setting';
 
 /**
  * Handling error stack information

@@ -4,3 +4,10 @@
     <a-button @click="$router.go(-1)" class="mt-10" type="primary">Back</a-button>
   </div>
 </template>
+<script lang="ts">
+  import { defineComponent } from 'vue';
+
+  export default defineComponent({
+    name: 'MainOut',
+  });
+</script>

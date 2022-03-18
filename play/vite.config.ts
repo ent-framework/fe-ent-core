@@ -12,7 +12,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       replacement: `${workspace}/packages/fe-ent-core/index.ts`,
     },
     {
-      find: /^fe-ent-core\/(.*)$/,
+      find: /^fe-ent-core\/lib\/(.*)$/,
       replacement: `${workspace}/packages/$1`,
     },
     // 别名，转发 fe-ent-extension 文件请求
@@ -29,5 +29,5 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       replacement: `${workspace}/packages/$1`,
     },
   ];
-  return createViteConfig({ command, mode }, { alias, customTheme: true });
+  return createViteConfig({ command, mode }, { alias, customTheme: true, libDev: true });
 };

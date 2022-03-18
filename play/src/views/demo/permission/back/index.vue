@@ -24,13 +24,13 @@
 </template>
 <script lang="ts">
   import { defineComponent, computed } from 'vue';
-  import CurrentPermissionMode from '../CurrentPermissionMode.vue';
-  import { RoleEnum } from 'fe-ent-core/enums/roleEnum';
-  import { usePermission } from 'fe-ent-core/hooks/web/usePermission';
-  import { useUserStore } from 'fe-ent-core/store/modules/user';
-  import { EntPageWrapper } from 'fe-ent-core/components/Page';
-  import { PermissionModeEnum } from 'fe-ent-core/enums/appEnum';
-  import { useAppStore } from 'fe-ent-core/store/modules/app';
+  import CurrentPermissionMode from '../current-permission-mode.vue';
+  import { RoleEnum } from 'fe-ent-core/lib/enums/role-enum';
+  import { usePermission } from 'fe-ent-core/lib/hooks/web/use-permission';
+  import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { PermissionModeEnum } from 'fe-ent-core/lib/enums/app-enum';
+  import { useAppStore } from 'fe-ent-core/lib/store/modules/app';
   import { Alert } from 'ant-design-vue';
   export default defineComponent({
     components: { Alert, CurrentPermissionMode, EntPageWrapper },

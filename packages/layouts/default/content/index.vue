@@ -6,10 +6,10 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import PageLayout from '@ent-core/layouts/page/index.vue';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
-  import { useRootSetting } from '@ent-core/hooks/setting/useRootSetting';
-  import { useTransitionSetting } from '@ent-core/hooks/setting/useTransitionSetting';
-  import { useContentViewHeight } from './useContentViewHeight';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
+  import { useTransitionSetting } from '@ent-core/hooks/setting/use-transition-setting';
+  import { useContentViewHeight } from './use-content-view-height';
 
   export default defineComponent({
     name: 'LayoutContent',

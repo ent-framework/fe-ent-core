@@ -1,1 +1,1 @@
-export * from './createAsyncComponent';
+export * from './create-async-component';

@@ -11,11 +11,11 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import GrowCard from './components/GrowCard.vue';
-  import SiteAnalysis from './components/SiteAnalysis.vue';
-  import VisitSource from './components/VisitSource.vue';
-  import VisitRadar from './components/VisitRadar.vue';
-  import SalesProductPie from './components/SalesProductPie.vue';
+  import GrowCard from './components/grow-card.vue';
+  import SiteAnalysis from './components/site-analysis.vue';
+  import VisitSource from './components/visit-source.vue';
+  import VisitRadar from './components/visit-radar.vue';
+  import SalesProductPie from './components/sales-product-pie.vue';
 
   const loading = ref(true);
 
