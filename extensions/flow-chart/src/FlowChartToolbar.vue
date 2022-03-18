@@ -4,7 +4,7 @@
       <Tooltip placement="bottom" v-bind="item.disabled ? { visible: false } : {}">
         <template #title>{{ item.tooltip }}</template>
         <span :class="`${prefixCls}-toolbar__icon`" v-if="item.icon" @click="onControl(item)">
-          <Icon
+          <EntIcon
             :icon="item.icon"
             :class="item.disabled ? 'cursor-not-allowed disabeld' : 'cursor-pointer'"
           />
@@ -19,14 +19,14 @@
 
   import { defineComponent, ref, onUnmounted, unref, nextTick, watchEffect } from 'vue';
   import { Divider, Tooltip } from 'ant-design-vue';
-  import { Icon } from 'fe-ent-core';
+  import { EntIcon } from 'fe-ent-core';
 
   import { useFlowChartContext } from './useFlowContext';
   import { ToolbarTypeEnum } from './enum';
 
   export default defineComponent({
     name: 'FlowChartToolbar',
-    components: { Icon, Divider, Tooltip },
+    components: { EntIcon, Divider, Tooltip },
     props: {
       prefixCls: String,
     },

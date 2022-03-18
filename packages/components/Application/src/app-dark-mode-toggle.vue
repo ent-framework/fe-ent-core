@@ -1,8 +1,8 @@
 <template>
   <div v-if="getShowDarkModeToggle" :class="getClass" @click="toggleDarkMode">
     <div :class="`${prefixCls}-inner`"></div>
-    <SvgIcon size="14" name="sun" />
-    <SvgIcon size="14" name="moon" />
+    <EntSvgIcon size="14" name="sun" />
+    <EntSvgIcon size="14" name="moon" />
   </div>
 </template>
 <script lang="ts">
@@ -10,7 +10,7 @@
 </script>
 <script lang="ts" setup>
   import { computed, unref } from 'vue';
-  import { SvgIcon } from '@ent-core/components/icon';
+  import { EntSvgIcon } from '@ent-core/components/icon';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
   import {

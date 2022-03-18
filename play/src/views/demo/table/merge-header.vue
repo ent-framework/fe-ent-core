@@ -6,7 +6,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { EntTable, useTable } from 'fe-ent-core/lib/components/table';
-  import { getMergeHeaderColumns } from './tableData';
+  import { getMergeHeaderColumns } from './table-data';
 
   import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
 

@@ -20,7 +20,6 @@ async function createI18nOptions(): Promise<I18nOptions> {
   setLoadLocalePool((loadLocalePool) => {
     loadLocalePool.push(locale);
   });
-  console.log(zhCN);
   return {
     legacy: false,
     locale,

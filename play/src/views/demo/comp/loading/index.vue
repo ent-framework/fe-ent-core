@@ -30,7 +30,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, reactive, toRefs, ref } from 'vue';
-  import { Loading, useLoading } from 'fe-ent-core/lib/components/Loading';
+  import { Loading, useLoading } from 'fe-ent-core/lib/components/loading';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { Alert } from 'ant-design-vue';
 

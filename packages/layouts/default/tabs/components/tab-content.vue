@@ -4,7 +4,7 @@
       <span class="ml-1">{{ getTitle }}</span>
     </div>
     <span :class="`${prefixCls}__extra-quick`" v-else @click="handleContext">
-      <Icon icon="ion:chevron-down" />
+      <EntIcon icon="ion:chevron-down" />
     </span>
   </EntDropdown>
 </template>
@@ -14,7 +14,7 @@
 
   import { defineComponent, computed, unref } from 'vue';
   import { EntDropdown } from '@ent-core/components/dropdown';
-  import { Icon } from '@ent-core/components/icon';
+  import { EntIcon } from '@ent-core/components/icon';
 
   import { TabContentProps } from '../types';
 
@@ -24,7 +24,7 @@
 
   export default defineComponent({
     name: 'TabContent',
-    components: { EntDropdown, Icon },
+    components: { EntDropdown, EntIcon },
     props: {
       tabItem: {
         type: Object as PropType<RouteLocationNormalized>,

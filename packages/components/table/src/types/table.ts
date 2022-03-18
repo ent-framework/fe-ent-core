@@ -90,7 +90,7 @@ export interface TableActionType {
   clearSelectedRowKeys: () => void;
   expandAll: () => void;
   collapseAll: () => void;
-  getSelectRowKeys: () => string[];
+  getSelectRowKeys: () => string[] | number[];
   deleteSelectRowByKey: (key: string) => void;
   setPagination: (info: Partial<PaginationProps>) => void;
   setTableData: <T = Recordable>(values: T[]) => void;

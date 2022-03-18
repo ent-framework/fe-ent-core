@@ -58,8 +58,8 @@
 <script lang="ts">
   import { computed, defineComponent, unref, ref } from 'vue';
   import { EntForm, FormSchema, ApiSelect } from 'fe-ent-core/lib/components/form';
-  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
-  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   import { optionsListApi } from 'fe-ent-core/lib/api/demo/select';

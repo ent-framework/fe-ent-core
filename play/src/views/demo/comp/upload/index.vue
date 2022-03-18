@@ -17,8 +17,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntUpload } from 'fe-ent-core/lib/components/Upload';
-  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
+  import { EntUpload } from 'fe-ent-core/lib/components/upload';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
   import { EntForm, FormSchema, useForm } from 'fe-ent-core/lib/components/form';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { Alert } from 'ant-design-vue';

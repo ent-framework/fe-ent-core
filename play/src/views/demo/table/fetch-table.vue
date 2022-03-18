@@ -11,7 +11,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { EntTable, useTable } from 'fe-ent-core/lib/components/table';
-  import { getBasicColumns } from './tableData';
+  import { getBasicColumns } from './table-data';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   import { demoListApi } from 'fe-ent-core/lib/api/demo/table';

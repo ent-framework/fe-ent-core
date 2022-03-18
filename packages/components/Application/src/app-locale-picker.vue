@@ -12,7 +12,7 @@
     overlayClassName="app-locale-picker-overlay"
   >
     <span class="cursor-pointer flex items-center">
-      <Icon icon="ion:language" />
+      <EntIcon icon="ion:language" />
       <span v-if="showText" class="ml-1">{{ getLocaleText }}</span>
     </span>
   </EntDropdown>
@@ -25,7 +25,7 @@
   import type { DropMenu } from '@ent-core/components/dropdown';
   import { ref, watchEffect, unref, computed, defineComponent } from 'vue';
   import { EntDropdown } from '@ent-core/components/dropdown';
-  import { Icon } from '@ent-core/components/icon';
+  import { EntIcon } from '@ent-core/components/icon';
   import { useLocale } from '@ent-core/locales/use-locale';
   import { localeList } from '@ent-core/settings/locale-setting';
   const props = defineProps({

@@ -33,9 +33,9 @@
   import { getMenuList } from 'fe-ent-core/lib/api/demo/system';
 
   import { useDrawer } from 'fe-ent-core/lib/components/drawer';
-  import MenuDrawer from './MenuDrawer.vue';
+  import MenuDrawer from './menu-drawer.vue';
 
-  import { columns, searchFormSchema } from './menu.data';
+  import { columns, searchFormSchema } from './menu-data';
 
   export default defineComponent({
     name: 'MenuManagement',

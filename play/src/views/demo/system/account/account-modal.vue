@@ -5,9 +5,9 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, computed, unref } from 'vue';
-  import { EntModal, useModalInner } from 'fe-ent-core/lib/components/Modal';
-  import { EntForm, useForm } from 'fe-ent-core/lib/components/form/index';
-  import { accountFormSchema } from './account.data';
+  import { EntModal, useModalInner } from 'fe-ent-core/lib/components/modal';
+  import { EntForm, useForm } from 'fe-ent-core/lib/components/form';
+  import { accountFormSchema } from './account-data';
   import { getDeptList } from 'fe-ent-core/lib/api/demo/system';
 
   export default defineComponent({

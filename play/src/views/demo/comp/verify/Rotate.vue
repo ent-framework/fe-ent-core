@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntRotateDragVerify } from 'fe-ent-core/lib/components/Verify';
+  import { EntRotateDragVerify } from 'fe-ent-core/lib/components/verify';
 
   import img from 'fe-ent-core/lib/assets/images/header.jpg';
 

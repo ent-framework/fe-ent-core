@@ -18,7 +18,7 @@
         />
       </div>
       <Dropdown @click.prevent v-if="toolbar">
-        <Icon icon="ion:ellipsis-vertical" />
+        <EntIcon icon="ion:ellipsis-vertical" />
         <template #overlay>
           <Menu @click="handleMenuClick">
             <template v-for="item in toolbarList" :key="item.value">
@@ -38,7 +38,7 @@
   import { defineComponent, computed, ref, watch } from 'vue';
 
   import { Dropdown, Menu, Input } from 'ant-design-vue';
-  import { Icon } from '@ent-core/components/icon';
+  import { EntIcon } from '@ent-core/components/icon';
   import { EntTitle } from '@ent-core/components/basic';
 
   import { propTypes } from '@ent-core/utils/prop-types';
@@ -62,7 +62,7 @@
     name: 'BasicTreeHeader',
     components: {
       EntTitle,
-      Icon,
+      EntIcon,
       Dropdown,
       Menu,
       MenuItem: Menu.Item,

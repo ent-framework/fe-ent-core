@@ -13,7 +13,7 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntStrengthMeter } from 'fe-ent-core/lib/components/StrengthMeter';
+  import { EntStrengthMeter } from 'fe-ent-core/lib/components/strength-meter';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({

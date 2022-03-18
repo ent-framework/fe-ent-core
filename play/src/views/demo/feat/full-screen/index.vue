@@ -23,7 +23,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container/index';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
   import { useFullscreen } from '@vueuse/core';
 
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';

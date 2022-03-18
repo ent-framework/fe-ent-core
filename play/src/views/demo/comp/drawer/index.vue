@@ -23,11 +23,11 @@
   import { defineComponent } from 'vue';
   import { Alert } from 'ant-design-vue';
   import { useDrawer } from 'fe-ent-core/lib/components/drawer';
-  import Drawer1 from './Drawer1.vue';
-  import Drawer2 from './Drawer2.vue';
-  import Drawer3 from './Drawer3.vue';
-  import Drawer4 from './Drawer4.vue';
-  import Drawer5 from './Drawer5.vue';
+  import Drawer1 from './drawer-1.vue';
+  import Drawer2 from './drawer-2.vue';
+  import Drawer3 from './drawer-3.vue';
+  import Drawer4 from './drawer-4.vue';
+  import Drawer5 from './drawer-5.vue';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({

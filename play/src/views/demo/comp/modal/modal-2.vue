@@ -11,7 +11,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntModal, useModalInner } from 'fe-ent-core/lib/components/Modal';
+  import { EntModal, useModalInner } from 'fe-ent-core/lib/components/modal';
   export default defineComponent({
     components: { EntModal },
     setup() {

@@ -31,7 +31,7 @@
           :key="item.path"
         >
           <SimpleMenuTag :item="item" collapseParent dot />
-          <Icon
+          <EntIcon
             :class="`${prefixCls}-module__icon`"
             :size="getCollapsed ? 16 : 20"
             :icon="item.icon || (item.meta && item.meta.icon)"
@@ -54,7 +54,7 @@
         ]"
       >
         <span class="text"> {{ title }}</span>
-        <Icon
+        <EntIcon
           :size="16"
           :icon="getMixSideFixed ? 'ri:pushpin-2-fill' : 'ri:pushpin-2-line'"
           class="pushpin"
@@ -84,7 +84,7 @@
   import type { RouteLocationNormalized } from 'vue-router';
   import { EntScrollContainer } from '@ent-core/components/container';
   import { SimpleMenu, SimpleMenuTag } from '@ent-core/components/simple-menu';
-  import { Icon } from '@ent-core/components/icon';
+  import { EntIcon } from '@ent-core/components/icon';
   import AppLogo from '@ent-core/layouts/default/components/app-logo.vue';
   import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
   import { usePermissionStore } from '@ent-core/store/modules/permission';
@@ -105,7 +105,7 @@
       EntScrollContainer,
       AppLogo,
       SimpleMenu,
-      Icon,
+      EntIcon,
       LayoutTrigger,
       SimpleMenuTag,
     },

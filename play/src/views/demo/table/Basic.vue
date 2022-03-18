@@ -31,7 +31,7 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { EntTable, ColumnChangeParam } from 'fe-ent-core/lib/components/table';
-  import { getBasicColumns, getBasicData } from './tableData';
+  import { getBasicColumns, getBasicData } from './table-data';
 
   export default defineComponent({
     components: { EntTable },

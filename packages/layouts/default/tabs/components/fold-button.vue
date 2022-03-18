@@ -1,11 +1,11 @@
 <template>
   <span :class="`${prefixCls}__extra-fold`" @click="handleFold">
-    <Icon :icon="getIcon" />
+    <EntIcon :icon="getIcon" />
   </span>
 </template>
 <script lang="ts">
   import { defineComponent, unref, computed } from 'vue';
-  import { Icon } from '@ent-core/components/icon';
+  import { EntIcon } from '@ent-core/components/icon';
 
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useHeaderSetting } from '@ent-core/hooks/setting/use-header-setting';
@@ -14,7 +14,7 @@
 
   export default defineComponent({
     name: 'FoldButton',
-    components: { Icon },
+    components: { EntIcon },
     setup() {
       const { prefixCls } = useDesign('multiple-tabs-content');
       const { getShowMenu, setMenuSetting } = useMenuSetting();

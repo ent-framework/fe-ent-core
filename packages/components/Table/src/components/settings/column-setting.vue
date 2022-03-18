@@ -56,7 +56,7 @@
                   <template #title>
                     {{ t('component.table.settingFixedLeft') }}
                   </template>
-                  <Icon
+                  <EntIcon
                     icon="line-md:arrow-align-left"
                     :class="[
                       `${prefixCls}__fixed-left`,
@@ -77,7 +77,7 @@
                   <template #title>
                     {{ t('component.table.settingFixedRight') }}
                   </template>
-                  <Icon
+                  <EntIcon
                     icon="line-md:arrow-align-left"
                     :class="[
                       `${prefixCls}__fixed-right`,
@@ -112,7 +112,7 @@
   } from 'vue';
   import { Tooltip, Popover, Checkbox, Divider } from 'ant-design-vue';
   import { SettingOutlined, DragOutlined } from '@ant-design/icons-vue';
-  import { Icon } from '@ent-core/components/icon';
+  import { EntIcon } from '@ent-core/components/icon';
   import { EntScrollContainer } from '@ent-core/components/container';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useTableContext } from '../../hooks/use-table-context';
@@ -146,7 +146,7 @@
       DragOutlined,
       EntScrollContainer,
       Divider,
-      Icon,
+      EntIcon,
     },
     emits: ['columns-change'],
 

@@ -11,7 +11,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { EntTable, useTable } from 'fe-ent-core/lib/components/table';
-  import { getBasicColumns, getTreeTableData } from './tableData';
+  import { getBasicColumns, getTreeTableData } from './table-data';
 
   export default defineComponent({
     components: { EntTable },

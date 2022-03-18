@@ -5,7 +5,7 @@ import { Project } from 'ts-morph';
 import glob from 'fast-glob';
 import { bold } from 'chalk';
 
-import { errorAndExit, green, yellow, error } from './utils/log';
+import { green, yellow, error } from './utils/log';
 import { buildOutput, epRoot, pkgRoot, projRoot } from './utils';
 
 import { excludeFiles, pathRewriter } from './utils/pkg';

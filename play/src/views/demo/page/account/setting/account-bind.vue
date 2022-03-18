@@ -26,7 +26,7 @@
   import { List } from 'ant-design-vue';
   import { defineComponent } from 'vue';
   import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
-  import Icon from 'fe-ent-core/lib/components/icon/index';
+  import Icon from 'fe-ent-core/lib/components/icon';
 
   import { accountBindList } from './data';
 

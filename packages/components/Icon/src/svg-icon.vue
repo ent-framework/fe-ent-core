@@ -13,7 +13,7 @@
   import { useDesign } from '@ent-core/hooks/web/use-design';
 
   export default defineComponent({
-    name: 'SvgIcon',
+    name: 'EntSvgIcon',
     props: {
       prefix: {
         type: String,

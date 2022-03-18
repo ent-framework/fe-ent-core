@@ -28,7 +28,7 @@ import ApiTreeSelect from './components/api-tree-select.vue';
 import ApiCascader from './components/api-cascader.vue';
 import { EntUpload } from '@ent-core/components/upload';
 import { EntStrengthMeter } from '@ent-core/components/strength-meter';
-import { IconPicker } from '@ent-core/components/icon';
+import { EntIconPicker } from '@ent-core/components/icon';
 import { EntCountdownInput } from '@ent-core/components/count-down';
 
 const componentMap = new Map<ComponentType, Component>();
@@ -62,7 +62,7 @@ componentMap.set('RangePicker', DatePicker.RangePicker);
 componentMap.set('WeekPicker', DatePicker.WeekPicker);
 componentMap.set('TimePicker', TimePicker);
 componentMap.set('StrengthMeter', EntStrengthMeter);
-componentMap.set('IconPicker', IconPicker);
+componentMap.set('IconPicker', EntIconPicker);
 componentMap.set('InputCountDown', EntCountdownInput);
 
 componentMap.set('Upload', EntUpload);

@@ -12,7 +12,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { EntForm, FormSchema, useForm } from 'fe-ent-core/lib/components/form';
-  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   const getSchamas = (): FormSchema[] => {

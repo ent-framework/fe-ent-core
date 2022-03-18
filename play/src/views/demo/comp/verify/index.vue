@@ -56,8 +56,8 @@
     EntDragVerify,
     DragVerifyActionType,
     PassingData,
-  } from 'fe-ent-core/lib/components/Verify/index';
-  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
+  } from 'fe-ent-core/lib/components/verify';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
   import { BugOutlined, RightOutlined } from '@ant-design/icons-vue';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 

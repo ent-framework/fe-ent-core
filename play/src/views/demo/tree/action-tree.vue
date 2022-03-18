@@ -28,9 +28,9 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { BasicTree, TreeActionType } from 'fe-ent-core/lib/components/Tree/index';
+  import { BasicTree, TreeActionType } from 'fe-ent-core/lib/components/tree';
   import { treeData } from './data';
-  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({

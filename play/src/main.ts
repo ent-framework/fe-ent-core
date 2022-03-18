@@ -29,10 +29,11 @@ if (import.meta.env.DEV) {
 import 'ant-design-vue/dist/antd.less';
 import 'fe-ent-core/lib/theme/index.less';
 
-import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default/index.vue';
-import { default as IFRAME } from 'fe-ent-core/lib/views/sys/iframe/frame-blank.vue';
+import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default';
+import { default as IFRAME } from 'fe-ent-core/lib/views/sys/iframe/frame-blank';
 
 async function bootstrap() {
+  console.log('111');
   const app = createApp(App);
 
   //初始化全局变量

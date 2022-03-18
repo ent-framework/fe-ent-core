@@ -2,7 +2,7 @@ import { BasicColumn } from 'fe-ent-core/lib/components/table';
 import { FormSchema } from 'fe-ent-core/lib/components/form';
 import { h } from 'vue';
 import { Tag } from 'ant-design-vue';
-import { Icon } from 'fe-ent-core/lib/components/icon';
+import { EntIcon } from 'fe-ent-core/lib/components/icon';
 
 export const columns: BasicColumn[] = [
   {
@@ -16,7 +16,7 @@ export const columns: BasicColumn[] = [
     dataIndex: 'icon',
     width: 50,
     customRender: ({ record }) => {
-      return h(Icon, { icon: record.icon });
+      return h(EntIcon, { icon: record.icon });
     },
   },
   {

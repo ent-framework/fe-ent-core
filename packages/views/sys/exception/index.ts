@@ -1,1 +1,2 @@
-export { default as Exception } from './exception.vue';
+import exception from './exception.vue';
+export default exception;

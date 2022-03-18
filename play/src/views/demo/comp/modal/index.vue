@@ -36,11 +36,11 @@
 <script lang="ts">
   import { defineComponent, shallowRef, ComponentOptions, ref, nextTick } from 'vue';
   import { Alert, Space } from 'ant-design-vue';
-  import { useModal } from 'fe-ent-core/lib/components/Modal';
-  import Modal1 from './Modal1.vue';
-  import Modal2 from './Modal2.vue';
-  import Modal3 from './Modal3.vue';
-  import Modal4 from './Modal4.vue';
+  import { useModal } from 'fe-ent-core/lib/components/modal';
+  import Modal1 from './modal-1.vue';
+  import Modal2 from './modal-2.vue';
+  import Modal3 from './modal-3.vue';
+  import Modal4 from './modal-4.vue';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({

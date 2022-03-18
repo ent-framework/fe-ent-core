@@ -13,7 +13,7 @@ import { on, off } from '@ent-core/utils/dom-utils';
 import { renderThumbStyle, BAR_MAP } from './util';
 
 export default defineComponent({
-  name: 'Bar',
+  name: 'EntScrollBar',
 
   props: {
     vertical: Boolean,

@@ -127,7 +127,6 @@
   });
 
   defineComponent({
-    name: 'EntIconPicker',
     components: { EntScrollContainer },
   });
 

@@ -12,7 +12,7 @@
           </template>
         </template>
         <a-button @click="openPreviewModal">
-          <Icon icon="bi:eye" />
+          <EntIcon icon="bi:eye" />
           <template v-if="fileList.length && showPreviewNumber">
             {{ fileList.length }}
           </template>
@@ -40,7 +40,7 @@
   import { defineComponent, ref, watch, unref, computed } from 'vue';
   import UploadModal from './upload-modal.vue';
   import UploadPreviewModal from './upload-preview-modal.vue';
-  import { Icon } from '@ent-core/components/icon';
+  import { EntIcon } from '@ent-core/components/icon';
   import { Tooltip } from 'ant-design-vue';
   import { useModal } from '@ent-core/components/modal';
   import { uploadContainerProps } from './props';
@@ -49,7 +49,7 @@
   import { isArray } from '@ent-core/utils/is';
   export default defineComponent({
     name: 'EntUpload',
-    components: { UploadModal, UploadPreviewModal, Icon, Tooltip },
+    components: { UploadModal, UploadPreviewModal, EntIcon, Tooltip },
     props: uploadContainerProps,
     emits: ['change', 'delete', 'preview-delete', 'update:value'],
 

@@ -17,8 +17,8 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Skeleton } from 'ant-design-vue';
-  import TargetContent from './TargetContent.vue';
-  import { EntLazyContainer } from 'fe-ent-core/lib/components/Container/index';
+  import TargetContent from './target-Content.vue';
+  import { EntLazyContainer } from 'fe-ent-core/lib/components/container';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({

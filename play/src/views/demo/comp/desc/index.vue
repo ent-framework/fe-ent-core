@@ -28,7 +28,7 @@
     EntDescription,
     DescItem,
     useDescription,
-  } from 'fe-ent-core/lib/components/Description/index';
+  } from 'fe-ent-core/lib/components/description';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   const mockData: Recordable = {

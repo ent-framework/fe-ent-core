@@ -15,7 +15,6 @@
     useTable,
     EntTableAction,
     BasicColumn,
-    TableActionItem,
     EditRecordRow,
   } from 'fe-ent-core/lib/components/table';
 

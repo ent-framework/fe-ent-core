@@ -53,7 +53,7 @@
 <script lang="ts">
   import { Progress, Row, Col } from 'ant-design-vue';
   import { defineComponent } from 'vue';
-  import Icon from 'fe-ent-core/lib/components/icon/index';
+  import Icon from 'fe-ent-core/lib/components/icon';
   import { cardList } from './data';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { List } from 'ant-design-vue';

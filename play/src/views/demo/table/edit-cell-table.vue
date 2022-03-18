@@ -15,7 +15,7 @@
 
   import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
   import { treeOptionsListApi } from 'fe-ent-core/lib/api/demo/tree';
-  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
   const columns: BasicColumn[] = [
     {
       title: '输入框',

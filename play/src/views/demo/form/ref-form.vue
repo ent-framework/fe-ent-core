@@ -67,8 +67,8 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { EntForm, FormSchema, FormActionType, FormProps } from 'fe-ent-core/lib/components/form';
-  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
-  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   const schemas: FormSchema[] = [

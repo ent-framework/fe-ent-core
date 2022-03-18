@@ -11,7 +11,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { EntTable } from 'fe-ent-core/lib/components/table';
-  import { aoaToSheetXlsx } from 'fe-ent-core/lib/components/Excel';
+  import { aoaToSheetXlsx } from 'fe-ent-core/lib/components/excel';
   import { arrHeader, arrData, columns, data } from './data';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 

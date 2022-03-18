@@ -16,15 +16,15 @@
               v-bind="getPopConfirmAttrs(item.popConfirm)"
             >
               <template #icon v-if="item.popConfirm.icon">
-                <Icon :icon="item.popConfirm.icon" />
+                <EntIcon :icon="item.popConfirm.icon" />
               </template>
               <div>
-                <Icon :icon="item.icon" v-if="item.icon" />
+                <EntIcon :icon="item.icon" v-if="item.icon" />
                 <span class="ml-1">{{ item.text }}</span>
               </div>
             </a-popconfirm>
             <template v-else>
-              <Icon :icon="item.icon" v-if="item.icon" />
+              <EntIcon :icon="item.icon" v-if="item.icon" />
               <span class="ml-1">{{ item.text }}</span>
             </template>
           </a-menu-item>
@@ -41,7 +41,7 @@
   import Dropdown from 'ant-design-vue/lib/dropdown';
   import Menu from 'ant-design-vue/lib/menu';
   import Popconfirm from 'ant-design-vue/lib/popconfirm';
-  import { Icon } from '@ent-core/components/icon';
+  import { EntIcon } from '@ent-core/components/icon';
   import { omit } from 'lodash';
   import { isFunction } from '@ent-core/utils/is';
 

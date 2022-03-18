@@ -16,9 +16,9 @@
     jsonToSheetXlsx,
     EntExportExcelModal,
     ExportModalResult,
-  } from 'fe-ent-core/lib/components/Excel';
+  } from 'fe-ent-core/lib/components/excel';
   import { columns, data } from './data';
-  import { useModal } from 'fe-ent-core/lib/components/Modal';
+  import { useModal } from 'fe-ent-core/lib/components/modal';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({

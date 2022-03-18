@@ -12,8 +12,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntForm, useForm } from 'fe-ent-core/lib/components/form/index';
-  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container/index';
+  import { EntForm, useForm } from 'fe-ent-core/lib/components/form';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
   import { Input } from 'ant-design-vue';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { EntButton } from 'fe-ent-core/lib/components/Button';

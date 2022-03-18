@@ -13,7 +13,7 @@
             <!-- eslint-disable-next-line -->
             <template #title> {{ item.name }} <span v-html="item.desc"> </span> </template>
             <template #avatar>
-              <Icon :icon="item.avatar" :size="30" />
+              <ent-icon :icon="item.avatar" :size="30" />
             </template>
           </ListItemMeta>
         </ListItem>
@@ -24,7 +24,7 @@
 <script lang="ts" setup>
   import { Card, List } from 'ant-design-vue';
   import { dynamicInfoItems } from './data';
-  import { Icon } from 'fe-ent-core/lib/components/icon';
+  import { EntIcon } from 'fe-ent-core/lib/components/icon';
 
   const ListItem = List.Item;
   const ListItemMeta = List.Item.Meta;

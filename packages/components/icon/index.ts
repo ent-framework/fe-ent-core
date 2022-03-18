@@ -1,7 +1,10 @@
-import Icon from './src/icon.vue';
-import SvgIcon from './src/svg-icon.vue';
-import IconPicker from './src/icon-picker.vue';
+import { withInstall } from '@ent-core/utils';
+import svgIcon from './src/svg-icon.vue';
+import icon from './src/icon.vue';
+import iconPicker from './src/icon-picker.vue';
 
-export { Icon, IconPicker, SvgIcon };
+export const EntSvgIcon = withInstall(svgIcon);
+export const EntIcon = withInstall(icon);
+export const EntIconPicker = withInstall(iconPicker, 'EntIconPicker');
 
-export default Icon;
+export default EntIcon;

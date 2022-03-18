@@ -35,7 +35,7 @@
   import { defineComponent } from 'vue';
   import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/table';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
-  import { getBasicColumns } from './tableData';
+  import { getBasicColumns } from './table-data';
 
   import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
 

@@ -15,7 +15,7 @@
 
         <div class="py-4 px-4 flex justify-between">
           <ent-count-to prefix="$" :startVal="1" :endVal="item.value" class="text-2xl" />
-          <Icon :icon="item.icon" :size="40" />
+          <ent-icon :icon="item.icon" :size="40" />
         </div>
 
         <div class="p-2 px-4 flex justify-between">
@@ -27,7 +27,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { Icon } from 'fe-ent-core/lib/components/icon';
+  import { EntIcon } from 'fe-ent-core/lib/components/icon';
   import { Tag, Card } from 'ant-design-vue';
   import { growCardList } from '../data';
 

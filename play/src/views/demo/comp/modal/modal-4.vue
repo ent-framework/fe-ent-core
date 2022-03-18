@@ -12,7 +12,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, nextTick } from 'vue';
-  import { EntModal, useModalInner } from 'fe-ent-core/lib/components/Modal';
+  import { EntModal, useModalInner } from 'fe-ent-core/lib/components/modal';
   import { EntForm, FormSchema, useForm } from 'fe-ent-core/lib/components/form';
   const schemas: FormSchema[] = [
     {

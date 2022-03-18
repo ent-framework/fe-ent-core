@@ -62,8 +62,8 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { EntForm, FormSchema, useForm } from 'fe-ent-core/lib/components/form';
-  import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
-  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
+  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { areaRecord } from 'fe-ent-core/lib/api/demo/cascader';
 

@@ -25,7 +25,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntVirtualScroll } from 'fe-ent-core/lib/components/VirtualScroll/index';
+  import { EntVirtualScroll } from 'fe-ent-core/lib/components/virtual-scroll';
 
   import { Divider } from 'ant-design-vue';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';

@@ -32,10 +32,10 @@
   import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/table';
   import { getDeptList } from 'fe-ent-core/lib/api/demo/system';
 
-  import { useModal } from 'fe-ent-core/lib/components/Modal';
-  import DeptModal from './DeptModal.vue';
+  import { useModal } from 'fe-ent-core/lib/components/modal';
+  import DeptModal from './dept-modal.vue';
 
-  import { columns, searchFormSchema } from './dept.data';
+  import { columns, searchFormSchema } from './dept-data';
 
   export default defineComponent({
     name: 'DeptManagement',
