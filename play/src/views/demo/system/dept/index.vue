@@ -29,7 +29,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/Table';
+  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/table';
   import { getDeptList } from 'fe-ent-core/lib/api/demo/system';
 
   import { useModal } from 'fe-ent-core/lib/components/Modal';

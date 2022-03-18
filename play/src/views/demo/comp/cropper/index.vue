@@ -33,7 +33,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
   import { EntCropperImage, EntCropperAvatar } from 'fe-ent-core/lib/components/Cropper';
   import { uploadApi } from 'fe-ent-core/lib/api/sys/upload';

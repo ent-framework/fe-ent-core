@@ -19,8 +19,8 @@
   import { defineComponent, computed } from 'vue';
 
   import { Image } from 'ant-design-vue';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
-  import { propTypes } from '@ent-core/utils/propTypes';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { propTypes } from '@ent-core/utils/prop-types';
   import { isString } from '@ent-core/utils/is';
 
   interface ImageProps {

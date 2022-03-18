@@ -16,13 +16,13 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import Sider from './LayoutSider.vue';
-  import MixSider from './MixSider.vue';
+  import Sider from './layout-sider.vue';
+  import MixSider from './mix-sider.vue';
   import { Drawer } from 'ant-design-vue';
 
-  import { useAppInject } from '@ent-core/hooks/web/useAppInject';
-  import { useMenuSetting } from '@ent-core/hooks/setting/useMenuSetting';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
+  import { useAppInject } from '@ent-core/hooks/web/use-app-inject';
+  import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
   export default defineComponent({
     name: 'SiderWrapper',
     components: { Sider, Drawer, MixSider },

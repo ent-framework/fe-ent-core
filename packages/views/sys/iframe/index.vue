@@ -14,10 +14,10 @@
   import type { CSSProperties } from 'vue';
   import { ref, unref, computed } from 'vue';
   import { Spin } from 'ant-design-vue';
-  import { useWindowSizeFn } from '@ent-core/hooks/event/useWindowSizeFn';
-  import { propTypes } from '@ent-core/utils/propTypes';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
-  import { useLayoutHeight } from '@ent-core/layouts/default/content/useContentViewHeight';
+  import { useWindowSizeFn } from '@ent-core/hooks/event/use-window-size-fn';
+  import { propTypes } from '@ent-core/utils/prop-types';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useLayoutHeight } from '@ent-core/layouts/default/content/use-content-view-height';
 
   defineProps({
     frameSrc: propTypes.string.def(''),

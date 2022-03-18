@@ -1,7 +1,7 @@
-import FullScreen from './FullScreen.vue';
+import FullScreen from './full-screen.vue';
 import UserDropDown from './user-dropdown/index.vue';
-import LayoutBreadcrumb from './Breadcrumb.vue';
+import LayoutBreadcrumb from './breadcrumb.vue';
 import Notify from './notify/index.vue';
-import ErrorAction from './ErrorAction.vue';
+import ErrorAction from './error-action.vue';
 
 export { FullScreen, UserDropDown, LayoutBreadcrumb, Notify, ErrorAction };

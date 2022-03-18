@@ -56,7 +56,7 @@
   import { Tag, Tabs, Row, Col } from 'ant-design-vue';
   import { defineComponent, computed } from 'vue';
   import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container/index';
-  import Icon from 'fe-ent-core/lib/components/Icon/index';
+  import Icon from 'fe-ent-core/lib/components/icon/index';
   import Article from './Article.vue';
   import Application from './Application.vue';
   import Project from './Project.vue';

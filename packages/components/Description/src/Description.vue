@@ -2,15 +2,15 @@
   import type { DescriptionProps, DescInstance, DescItem } from './typing';
   import type { DescriptionsProps } from 'ant-design-vue/es';
   import type { CSSProperties } from 'vue';
-  import type { CollapseContainerOptions } from '@ent-core/components/Container';
+  import type { CollapseContainerOptions } from '@ent-core/components/container';
   import { defineComponent, computed, ref, unref } from 'vue';
   import { get } from 'lodash';
   import { Descriptions } from 'ant-design-vue';
-  import { EntCollapseContainer } from '@ent-core/components/Container';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
+  import { EntCollapseContainer } from '@ent-core/components/container';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
   import { isFunction } from '@ent-core/utils/is';
-  import { getSlot } from '@ent-core/utils/helper/tsxHelper';
-  import { useAttrs } from '@ent-core/hooks/core/useAttrs';
+  import { getSlot } from '@ent-core/utils/helper/tsx-helper';
+  import { useAttrs } from '@ent-core/hooks/core/use-attrs';
 
   const props = {
     useCollapse: { type: Boolean, default: true },

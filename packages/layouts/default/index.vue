@@ -20,14 +20,14 @@
   import LayoutHeader from './header/index.vue';
   import LayoutContent from './content/index.vue';
   import LayoutSideBar from './sider/index.vue';
-  import LayoutMultipleHeader from './header/MultipleHeader.vue';
+  import LayoutMultipleHeader from './header/multiple-header.vue';
 
-  import { useHeaderSetting } from '@ent-core/hooks/setting/useHeaderSetting';
-  import { useMenuSetting } from '@ent-core/hooks/setting/useMenuSetting';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
-  import { useLockPage } from '@ent-core/hooks/web/useLockPage';
+  import { useHeaderSetting } from '@ent-core/hooks/setting/use-header-setting';
+  import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useLockPage } from '@ent-core/hooks/web/use-lock-page';
 
-  import { useAppInject } from '@ent-core/hooks/web/useAppInject';
+  import { useAppInject } from '@ent-core/hooks/web/use-app-inject';
   import LayoutFeatures from '@ent-core/layouts/default/feature/index.vue';
   import LayoutFooter from '@ent-core/layouts/default/footer/index.vue';
 

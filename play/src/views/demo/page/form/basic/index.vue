@@ -9,11 +9,11 @@
   </EntPageWrapper>
 </template>
 <script lang="ts">
-  import { EntForm, useForm } from 'fe-ent-core/lib/components/Form';
+  import { EntForm, useForm } from 'fe-ent-core/lib/components/form';
   import { defineComponent } from 'vue';
   import { schemas } from './data';
-  import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({
     name: 'FormBasicPage',

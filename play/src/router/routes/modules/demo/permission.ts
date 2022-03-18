@@ -2,8 +2,8 @@ import type { AppRouteModule } from 'fe-ent-core/lib/router/types';
 
 import { getParentLayout } from 'fe-ent-core/lib/router/constant';
 import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default/index.vue';
-import { RoleEnum } from 'fe-ent-core/lib/enums/roleEnum';
-import { t } from 'fe-ent-core/lib/hooks/web/useI18n';
+import { RoleEnum } from 'fe-ent-core/lib/enums/role-enum';
+import { t } from 'fe-ent-core/lib/hooks/web/use-i18n';
 
 const permission: AppRouteModule = {
   path: '/permission',
@@ -36,7 +36,7 @@ const permission: AppRouteModule = {
         {
           path: 'btn',
           name: 'FrontBtnAuth',
-          component: () => import('/@/views/demo/permission/front/Btn.vue'),
+          component: () => import('/@/views/demo/permission/front/btn.vue'),
           meta: {
             title: t('routes.demo.permission.frontBtn'),
           },
@@ -44,7 +44,7 @@ const permission: AppRouteModule = {
         {
           path: 'auth-pageA',
           name: 'FrontAuthPageA',
-          component: () => import('/@/views/demo/permission/front/AuthPageA.vue'),
+          component: () => import('/@/views/demo/permission/front/auth-page-a.vue'),
           meta: {
             title: t('routes.demo.permission.frontTestA'),
             roles: [RoleEnum.SUPER],
@@ -53,7 +53,7 @@ const permission: AppRouteModule = {
         {
           path: 'auth-pageB',
           name: 'FrontAuthPageB',
-          component: () => import('/@/views/demo/permission/front/AuthPageB.vue'),
+          component: () => import('/@/views/demo/permission/front/auth-page-b.vue'),
           meta: {
             title: t('routes.demo.permission.frontTestB'),
             roles: [RoleEnum.TEST],
@@ -80,7 +80,7 @@ const permission: AppRouteModule = {
         {
           path: 'btn',
           name: 'BackAuthBtn',
-          component: () => import('/@/views/demo/permission/back/Btn.vue'),
+          component: () => import('/@/views/demo/permission/back/btn.vue'),
           meta: {
             title: t('routes.demo.permission.backBtn'),
           },

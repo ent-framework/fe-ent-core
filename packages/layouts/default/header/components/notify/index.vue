@@ -27,9 +27,9 @@
   import { Popover, Tabs, Badge } from 'ant-design-vue';
   import { BellOutlined } from '@ant-design/icons-vue';
   import { tabListData, ListItem } from './data';
-  import NoticeList from './NoticeList.vue';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
-  import { useMessage } from '@ent-core/hooks/web/useMessage';
+  import NoticeList from './notice-list.vue';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useMessage } from '@ent-core/hooks/web/use-message';
 
   export default defineComponent({
     components: { Popover, BellOutlined, Tabs, TabPane: Tabs.TabPane, Badge, NoticeList },

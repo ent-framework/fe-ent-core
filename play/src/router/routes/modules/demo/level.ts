@@ -2,7 +2,7 @@ import type { AppRouteModule } from 'fe-ent-core/lib/router/types';
 
 import { getParentLayout } from 'fe-ent-core/lib/router/constant';
 import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default/index.vue';
-import { t } from 'fe-ent-core/lib/hooks/web/useI18n';
+import { t } from 'fe-ent-core/lib/hooks/web/use-i18n';
 
 const permission: AppRouteModule = {
   path: '/level',
@@ -37,7 +37,7 @@ const permission: AppRouteModule = {
             {
               path: 'menu1-1-1',
               name: 'Menu111Demo',
-              component: () => import('/@/views/demo/level/Menu111.vue'),
+              component: () => import('/@/views/demo/level/menu-111.vue'),
               meta: {
                 title: 'Menu111',
               },
@@ -47,7 +47,7 @@ const permission: AppRouteModule = {
         {
           path: 'menu1-2',
           name: 'Menu12Demo',
-          component: () => import('/@/views/demo/level/Menu12.vue'),
+          component: () => import('/@/views/demo/level/menu-12.vue'),
           meta: {
             title: 'Menu1-2',
           },
@@ -57,7 +57,7 @@ const permission: AppRouteModule = {
     {
       path: 'menu2',
       name: 'Menu2Demo',
-      component: () => import('/@/views/demo/level/Menu2.vue'),
+      component: () => import('/@/views/demo/level/menu-2.vue'),
       meta: {
         title: 'Menu2',
         // ignoreKeepAlive: true,

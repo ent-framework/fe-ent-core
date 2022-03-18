@@ -3,17 +3,17 @@
 
 import type { AxiosResponse } from 'axios';
 import type { RequestOptions, Result } from '@ent-core/types/axios';
-import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
-import { VAxios } from './Axios';
-import { checkStatus } from './checkStatus';
-import { useGlobSetting } from '@ent-core/hooks/setting/useGlobSetting';
-import { useMessage } from '@ent-core/hooks/web/useMessage';
-import { RequestEnum, ResultEnum, ContentTypeEnum } from '@ent-core/enums/httpEnum';
+import type { AxiosTransform, CreateAxiosOptions } from './axios-transform';
+import { VAxios } from './axios';
+import { checkStatus } from './check-status';
+import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
+import { useMessage } from '@ent-core/hooks/web/use-message';
+import { RequestEnum, ResultEnum, ContentTypeEnum } from '@ent-core/enums/http-enum';
 import { isString } from '@ent-core/utils/is';
 import { getToken } from '@ent-core/utils/auth';
 import { setObjToUrlParams, deepMerge } from '@ent-core/utils';
-import { useErrorLogStoreWithOut } from '@ent-core/store/modules/errorLog';
-import { useI18n } from '@ent-core/hooks/web/useI18n';
+import { useErrorLogStoreWithOut } from '@ent-core/store/modules/error-log';
+import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { joinTimestamp, formatRequestDate } from './helper';
 import { useUserStoreWithOut } from '@ent-core/store/modules/user';
 

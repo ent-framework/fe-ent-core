@@ -9,7 +9,7 @@ import {
   AccountListGetResultModel,
   RolePageListGetResultModel,
   RoleListGetResultModel,
-} from './model/systemModel';
+} from './model/system-model';
 import { defHttp } from '@ent-core/utils/http/axios';
 
 enum Api {

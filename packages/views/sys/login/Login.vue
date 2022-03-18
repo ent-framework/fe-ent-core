@@ -43,16 +43,16 @@
 </template>
 <script lang="ts" setup>
   import { computed } from 'vue';
-  import AppLogo from '@ent-core/layouts/default/components/AppLogo.vue';
-  import { EntAppLocalePicker, EntAppDarkModeToggle } from '@ent-core/components/Application';
-  import LoginForm from './LoginForm.vue';
-  import ForgetPasswordForm from './ForgetPasswordForm.vue';
-  import RegisterForm from './RegisterForm.vue';
-  import MobileForm from './MobileForm.vue';
-  import QrCodeForm from './QrCodeForm.vue';
-  import { useGlobSetting } from '@ent-core/hooks/setting/useGlobSetting';
-  import { useI18n } from '@ent-core/hooks/web/useI18n';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
+  import AppLogo from '@ent-core/layouts/default/components/app-logo.vue';
+  import { EntAppLocalePicker, EntAppDarkModeToggle } from '@ent-core/components/application';
+  import LoginForm from './login-form.vue';
+  import ForgetPasswordForm from './forget-password-form.vue';
+  import RegisterForm from './register-form.vue';
+  import MobileForm from './mobile-form.vue';
+  import QrCodeForm from './qr-code-form.vue';
+  import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
+  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useLocaleStore } from '@ent-core/store/modules/locale';
   import loginImg from '@ent-core/assets/svg/login-box-bg.svg';
 

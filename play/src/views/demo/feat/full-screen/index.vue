@@ -26,7 +26,7 @@
   import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container/index';
   import { useFullscreen } from '@vueuse/core';
 
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({
     components: { CollapseContainer: EntCollapseContainer, EntPageWrapper },

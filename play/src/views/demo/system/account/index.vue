@@ -37,9 +37,9 @@
 <script lang="ts">
   import { defineComponent, reactive } from 'vue';
 
-  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/Table';
+  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/table';
   import { getAccountList } from 'fe-ent-core/lib/api/demo/system';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import DeptTree from './DeptTree.vue';
 
   import { useModal } from 'fe-ent-core/lib/components/Modal';

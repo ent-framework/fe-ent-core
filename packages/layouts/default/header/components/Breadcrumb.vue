@@ -21,20 +21,20 @@
   import { defineComponent, ref, watchEffect } from 'vue';
 
   import { Breadcrumb } from 'ant-design-vue';
-  import Icon from '@ent-core/components/Icon';
+  import Icon from '@ent-core/components/icon';
 
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
-  import { useRootSetting } from '@ent-core/hooks/setting/useRootSetting';
-  import { useGo } from '@ent-core/hooks/web/usePage';
-  import { useI18n } from '@ent-core/hooks/web/useI18n';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
+  import { useGo } from '@ent-core/hooks/web/use-page';
+  import { useI18n } from '@ent-core/hooks/web/use-i18n';
 
-  import { propTypes } from '@ent-core/utils/propTypes';
+  import { propTypes } from '@ent-core/utils/prop-types';
   import { isString } from '@ent-core/utils/is';
-  import { filter } from '@ent-core/utils/helper/treeHelper';
+  import { filter } from '@ent-core/utils/helper/tree-helper';
   import { getMenus } from '@ent-core/router/menus';
 
   import { REDIRECT_NAME } from '@ent-core/router/constant';
-  import { getAllParentPath } from '@ent-core/router/helper/menuHelper';
+  import { getAllParentPath } from '@ent-core/router/helper/menu-helper';
 
   export default defineComponent({
     name: 'LayoutBreadcrumb',

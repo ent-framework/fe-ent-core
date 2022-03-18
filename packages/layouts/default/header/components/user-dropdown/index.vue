@@ -40,20 +40,20 @@
 
   import { defineComponent, computed } from 'vue';
 
-  import { DOC_URL } from '@ent-core/settings/siteSetting';
+  import { DOC_URL } from '@ent-core/settings/site-setting';
 
   import { useUserStore } from '@ent-core/store/modules/user';
-  import { useHeaderSetting } from '@ent-core/hooks/setting/useHeaderSetting';
-  import { useI18n } from '@ent-core/hooks/web/useI18n';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
-  import { useModal } from '@ent-core/components/Modal';
+  import { useHeaderSetting } from '@ent-core/hooks/setting/use-header-setting';
+  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useModal } from '@ent-core/components/modal';
 
   import headerImg from '@ent-core/assets/images/header.jpg';
-  import { propTypes } from '@ent-core/utils/propTypes';
+  import { propTypes } from '@ent-core/utils/prop-types';
   import { openWindow } from '@ent-core/utils';
 
-  import MenuItem from './DropMenuItem.vue';
-  import LockAction from '../lock/LockModal.vue';
+  import MenuItem from './drop-menu-item.vue';
+  import LockAction from '../lock/lock-modal.vue';
 
   type MenuEvent = 'logout' | 'doc' | 'lock';
 

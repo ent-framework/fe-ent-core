@@ -13,7 +13,7 @@ export const install = function (app: App) {
 
 export default install;
 
-export * from '@ent-core/locales/useLocale';
+export * from '@ent-core/locales/use-locale';
 export * from '@ent-core/components';
 export * from '@ent-core/directives';
 export * from '@ent-core/enums';

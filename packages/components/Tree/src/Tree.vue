@@ -13,21 +13,21 @@
     onMounted,
   } from 'vue';
   import { Tree, Empty } from 'ant-design-vue';
-  import { TreeIcon } from './TreeIcon';
-  import TreeHeader from './TreeHeader.vue';
-  import { EntScrollContainer } from '@ent-core/components/Container';
+  import { TreeIcon } from './tree-icon';
+  import TreeHeader from './tree-header.vue';
+  import { EntScrollContainer } from '@ent-core/components/container';
 
   import { omit, get, difference } from 'lodash';
   import { isArray, isBoolean, isEmpty, isFunction } from '@ent-core/utils/is';
-  import { extendSlots, getSlot } from '@ent-core/utils/helper/tsxHelper';
-  import { filter, treeToList } from '@ent-core/utils/helper/treeHelper';
+  import { extendSlots, getSlot } from '@ent-core/utils/helper/tsx-helper';
+  import { filter, treeToList } from '@ent-core/utils/helper/tree-helper';
 
-  import { useTree } from './useTree';
-  import { useContextMenu } from '@ent-core/hooks/web/useContextMenu';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
+  import { useTree } from './use-tree';
+  import { useContextMenu } from '@ent-core/hooks/web/use-context-menu';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
 
   import { basicProps } from './props';
-  import { CreateContextMenuOptions } from '@ent-core/components/ContextMenu';
+  import { CreateContextMenuOptions } from '@ent-core/components/context-menu';
 
   import { CheckEvent } from './typing';
 

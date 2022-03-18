@@ -26,10 +26,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, reactive, toRefs } from 'vue';
-  import Step1 from './Step1.vue';
-  import Step2 from './Step2.vue';
-  import Step3 from './Step3.vue';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import Step1 from './step-1.vue';
+  import Step2 from './step-2.vue';
+  import Step3 from './step-3.vue';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { Steps } from 'ant-design-vue';
 
   export default defineComponent({

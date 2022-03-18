@@ -1,13 +1,13 @@
 export * from './base';
 export * from './cipher';
 export * from './color';
-export * from './dateUtil';
-export * from './domUtils';
+export * from './date-util';
+export * from './dom-utils';
 export * from './env';
 export * from './is';
 export * from './mitt';
-export * from './propTypes';
-export * from './themeConfig';
+export * from './prop-types';
+export * from './theme-config';
 export * from './tiny';
 export * from './uuid';
 

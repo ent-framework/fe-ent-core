@@ -29,7 +29,7 @@
     DescItem,
     useDescription,
   } from 'fe-ent-core/lib/components/Description/index';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   const mockData: Recordable = {
     username: 'test',

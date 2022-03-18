@@ -79,7 +79,7 @@
   import { QrCode, QrCodeActionType } from '@fe-ent-extension/qrcode';
   import LogoImg from 'fe-ent-core/lib/assets/images/logo.png';
   import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   const qrCodeUrl = 'https://www.vvbin.cn';
   export default defineComponent({

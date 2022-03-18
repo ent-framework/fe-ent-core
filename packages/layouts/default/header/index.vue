@@ -57,28 +57,28 @@
 <script lang="ts">
   import { defineComponent, unref, computed } from 'vue';
 
-  import { propTypes } from '@ent-core/utils/propTypes';
+  import { propTypes } from '@ent-core/utils/prop-types';
 
   import { Layout } from 'ant-design-vue';
-  import AppLogo from '@ent-core/layouts/default/components/AppLogo.vue';
+  import AppLogo from '@ent-core/layouts/default/components/app-logo.vue';
   import LayoutMenu from '../menu/index.vue';
   import LayoutTrigger from '../trigger/index.vue';
 
-  import AppSearch from '@ent-core/layouts/default/components/AppSearch.vue';
+  import AppSearch from '@ent-core/layouts/default/components/app-search.vue';
 
-  import { useHeaderSetting } from '@ent-core/hooks/setting/useHeaderSetting';
-  import { useMenuSetting } from '@ent-core/hooks/setting/useMenuSetting';
-  import { useRootSetting } from '@ent-core/hooks/setting/useRootSetting';
+  import { useHeaderSetting } from '@ent-core/hooks/setting/use-header-setting';
+  import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
+  import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
 
-  import { MenuModeEnum, MenuSplitTyeEnum } from '@ent-core/enums/menuEnum';
-  import { SettingButtonPositionEnum } from '@ent-core/enums/appEnum';
-  import { EntAppLocalePicker } from '@ent-core/components/Application';
+  import { MenuModeEnum, MenuSplitTyeEnum } from '@ent-core/enums/menu-enum';
+  import { SettingButtonPositionEnum } from '@ent-core/enums/app-enum';
+  import { EntAppLocalePicker } from '@ent-core/components/application';
 
   import { UserDropDown, LayoutBreadcrumb, FullScreen, Notify, ErrorAction } from './components';
-  import { useAppInject } from '@ent-core/hooks/web/useAppInject';
-  import { useDesign } from '@ent-core/hooks/web/useDesign';
+  import { useAppInject } from '@ent-core/hooks/web/use-app-inject';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
 
-  import { useLocale } from '@ent-core/locales/useLocale';
+  import { useLocale } from '@ent-core/locales/use-locale';
   import SettingDrawer from '@ent-core/layouts/default/setting/index.vue';
 
   export default defineComponent({

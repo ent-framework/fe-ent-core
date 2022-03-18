@@ -60,12 +60,12 @@
 <script lang="ts">
   import { defineComponent, computed } from 'vue';
   import { Alert, Divider } from 'ant-design-vue';
-  import CurrentPermissionMode from '../CurrentPermissionMode.vue';
-  import { usePermission } from 'fe-ent-core/lib/hooks/web/usePermission';
-  import { EntAuthority as Authority } from 'fe-ent-core/lib/components/Authority';
+  import CurrentPermissionMode from '../current-permission-mode.vue';
+  import { usePermission } from 'fe-ent-core/lib/hooks/web/use-permission';
+  import { EntAuthority as Authority } from 'fe-ent-core/lib/components/authority';
   import { usePermissionStore } from 'fe-ent-core/lib/store/modules/permission';
-  import { PermissionModeEnum } from 'fe-ent-core/lib/enums/appEnum';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { PermissionModeEnum } from 'fe-ent-core/lib/enums/app-enum';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { useAppStore } from 'fe-ent-core/lib/store/modules/app';
   import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
 

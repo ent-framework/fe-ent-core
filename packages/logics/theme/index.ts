@@ -1,4 +1,4 @@
-import { getThemeColors, generateColors } from '../../utils/themeConfig';
+import { getThemeColors, generateColors } from '../../utils/theme-config';
 
 import { replaceStyleVariables } from 'fe-ent-theme-api';
 import { mixLighten, mixDarken, tinycolor } from '../../utils/tiny';

@@ -23,7 +23,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, reactive, toRefs } from 'vue';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { EntTime } from 'fe-ent-core/lib/components/Time';
   import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container/index';
 

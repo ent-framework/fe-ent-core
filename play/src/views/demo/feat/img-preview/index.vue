@@ -7,7 +7,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { createImgPreview, ImagePreview } from 'fe-ent-core/lib/components/Preview/index';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   // import { PreviewActions } from 'fe-ent-core/lib/components/Preview/src/typing';
 
   const imgList: string[] = [

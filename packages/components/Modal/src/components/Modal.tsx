@@ -1,9 +1,9 @@
 import { Modal } from 'ant-design-vue';
 import { defineComponent, toRefs, unref, Plugin } from 'vue';
 import { basicProps } from '../props';
-import { useModalDragMove } from '../hooks/useModalDrag';
-import { useAttrs } from '@ent-core/hooks/core/useAttrs';
-import { extendSlots } from '@ent-core/utils/helper/tsxHelper';
+import { useModalDragMove } from '../hooks/use-modal-drag';
+import { useAttrs } from '@ent-core/hooks/core/use-attrs';
+import { extendSlots } from '@ent-core/utils/helper/tsx-helper';
 
 const EntModal = defineComponent({
   name: 'EntModal',

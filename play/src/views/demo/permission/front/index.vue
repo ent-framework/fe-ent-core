@@ -32,7 +32,7 @@
   import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
   import { RoleEnum } from 'fe-ent-core/lib/enums/roleEnum';
   import { usePermission } from 'fe-ent-core/lib/hooks/web/usePermission';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({
     components: { Alert, CurrentPermissionMode, EntPageWrapper },

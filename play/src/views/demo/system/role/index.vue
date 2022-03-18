@@ -29,13 +29,13 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/Table';
+  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/table';
   import { getRoleListByPage } from 'fe-ent-core/lib/api/demo/system';
 
-  import { useDrawer } from 'fe-ent-core/lib/components/Drawer';
-  import RoleDrawer from './RoleDrawer.vue';
+  import { useDrawer } from 'fe-ent-core/lib/components/drawer';
+  import RoleDrawer from './role-drawer.vue';
 
-  import { columns, searchFormSchema } from './role.data';
+  import { columns, searchFormSchema } from './role-data';
 
   export default defineComponent({
     name: 'RoleManagement',

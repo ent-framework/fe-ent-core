@@ -2,7 +2,7 @@ import type { AppRouteModule } from 'fe-ent-core/lib/router/types';
 
 import { getParentLayout } from 'fe-ent-core/lib/router/constant';
 import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default/index.vue';
-import { t } from 'fe-ent-core/lib/hooks/web/useI18n';
+import { t } from 'fe-ent-core/lib/hooks/web/use-i18n';
 
 const comp: AppRouteModule = {
   path: '/comp',
@@ -46,7 +46,7 @@ const comp: AppRouteModule = {
         {
           path: 'useForm',
           name: 'UseFormDemo',
-          component: () => import('/@/views/demo/form/UseForm.vue'),
+          component: () => import('/@/views/demo/form/use-form.vue'),
           meta: {
             title: t('routes.demo.form.useForm'),
           },
@@ -54,7 +54,7 @@ const comp: AppRouteModule = {
         {
           path: 'refForm',
           name: 'RefFormDemo',
-          component: () => import('/@/views/demo/form/RefForm.vue'),
+          component: () => import('/@/views/demo/form/ref-form.vue'),
           meta: {
             title: t('routes.demo.form.refForm'),
           },
@@ -62,7 +62,7 @@ const comp: AppRouteModule = {
         {
           path: 'advancedForm',
           name: 'AdvancedFormDemo',
-          component: () => import('/@/views/demo/form/AdvancedForm.vue'),
+          component: () => import('/@/views/demo/form/advanced-form.vue'),
           meta: {
             title: t('routes.demo.form.advancedForm'),
           },
@@ -70,7 +70,7 @@ const comp: AppRouteModule = {
         {
           path: 'ruleForm',
           name: 'RuleFormDemo',
-          component: () => import('/@/views/demo/form/RuleForm.vue'),
+          component: () => import('/@/views/demo/form/rule-form.vue'),
           meta: {
             title: t('routes.demo.form.ruleForm'),
           },
@@ -78,7 +78,7 @@ const comp: AppRouteModule = {
         {
           path: 'dynamicForm',
           name: 'DynamicFormDemo',
-          component: () => import('/@/views/demo/form/DynamicForm.vue'),
+          component: () => import('/@/views/demo/form/dynamic-form.vue'),
           meta: {
             title: t('routes.demo.form.dynamicForm'),
           },
@@ -86,7 +86,7 @@ const comp: AppRouteModule = {
         {
           path: 'customerForm',
           name: 'CustomerFormDemo',
-          component: () => import('/@/views/demo/form/CustomerForm.vue'),
+          component: () => import('/@/views/demo/form/customer-form.vue'),
           meta: {
             title: t('routes.demo.form.customerForm'),
           },
@@ -94,7 +94,7 @@ const comp: AppRouteModule = {
         {
           path: 'appendForm',
           name: 'appendFormDemo',
-          component: () => import('/@/views/demo/form/AppendForm.vue'),
+          component: () => import('/@/views/demo/form/append-form.vue'),
           meta: {
             title: t('routes.demo.form.appendForm'),
           },
@@ -115,7 +115,7 @@ const comp: AppRouteModule = {
         {
           path: 'basic',
           name: 'TableBasicDemo',
-          component: () => import('/@/views/demo/table/Basic.vue'),
+          component: () => import('/@/views/demo/table/basic.vue'),
           meta: {
             title: t('routes.demo.table.basic'),
           },
@@ -123,7 +123,7 @@ const comp: AppRouteModule = {
         {
           path: 'treeTable',
           name: 'TreeTableDemo',
-          component: () => import('/@/views/demo/table/TreeTable.vue'),
+          component: () => import('/@/views/demo/table/tree-table.vue'),
           meta: {
             title: t('routes.demo.table.treeTable'),
           },
@@ -131,7 +131,7 @@ const comp: AppRouteModule = {
         {
           path: 'fetchTable',
           name: 'FetchTableDemo',
-          component: () => import('/@/views/demo/table/FetchTable.vue'),
+          component: () => import('/@/views/demo/table/fetch-table.vue'),
           meta: {
             title: t('routes.demo.table.fetchTable'),
           },
@@ -139,7 +139,7 @@ const comp: AppRouteModule = {
         {
           path: 'fixedColumn',
           name: 'FixedColumnDemo',
-          component: () => import('/@/views/demo/table/FixedColumn.vue'),
+          component: () => import('/@/views/demo/table/fixed-column.vue'),
           meta: {
             title: t('routes.demo.table.fixedColumn'),
           },
@@ -147,7 +147,7 @@ const comp: AppRouteModule = {
         {
           path: 'customerCell',
           name: 'CustomerCellDemo',
-          component: () => import('/@/views/demo/table/CustomerCell.vue'),
+          component: () => import('/@/views/demo/table/customer-cell.vue'),
           meta: {
             title: t('routes.demo.table.customerCell'),
           },
@@ -155,7 +155,7 @@ const comp: AppRouteModule = {
         {
           path: 'formTable',
           name: 'FormTableDemo',
-          component: () => import('/@/views/demo/table/FormTable.vue'),
+          component: () => import('/@/views/demo/table/form-table.vue'),
           meta: {
             title: t('routes.demo.table.formTable'),
           },
@@ -163,7 +163,7 @@ const comp: AppRouteModule = {
         {
           path: 'useTable',
           name: 'UseTableDemo',
-          component: () => import('/@/views/demo/table/UseTable.vue'),
+          component: () => import('/@/views/demo/table/use-table.vue'),
           meta: {
             title: t('routes.demo.table.useTable'),
           },
@@ -171,7 +171,7 @@ const comp: AppRouteModule = {
         {
           path: 'refTable',
           name: 'RefTableDemo',
-          component: () => import('/@/views/demo/table/RefTable.vue'),
+          component: () => import('/@/views/demo/table/ref-table.vue'),
           meta: {
             title: t('routes.demo.table.refTable'),
           },
@@ -179,7 +179,7 @@ const comp: AppRouteModule = {
         {
           path: 'multipleHeader',
           name: 'MultipleHeaderDemo',
-          component: () => import('/@/views/demo/table/MultipleHeader.vue'),
+          component: () => import('/@/views/demo/table/multiple-header.vue'),
           meta: {
             title: t('routes.demo.table.multipleHeader'),
           },
@@ -187,7 +187,7 @@ const comp: AppRouteModule = {
         {
           path: 'mergeHeader',
           name: 'MergeHeaderDemo',
-          component: () => import('/@/views/demo/table/MergeHeader.vue'),
+          component: () => import('/@/views/demo/table/merge-header.vue'),
           meta: {
             title: t('routes.demo.table.mergeHeader'),
           },
@@ -195,7 +195,7 @@ const comp: AppRouteModule = {
         {
           path: 'expandTable',
           name: 'ExpandTableDemo',
-          component: () => import('/@/views/demo/table/ExpandTable.vue'),
+          component: () => import('/@/views/demo/table/expand-table.vue'),
           meta: {
             title: t('routes.demo.table.expandTable'),
           },
@@ -203,7 +203,7 @@ const comp: AppRouteModule = {
         {
           path: 'fixedHeight',
           name: 'FixedHeightDemo',
-          component: () => import('/@/views/demo/table/FixedHeight.vue'),
+          component: () => import('/@/views/demo/table/fixed-height.vue'),
           meta: {
             title: t('routes.demo.table.fixedHeight'),
           },
@@ -211,7 +211,7 @@ const comp: AppRouteModule = {
         {
           path: 'footerTable',
           name: 'FooterTableDemo',
-          component: () => import('/@/views/demo/table/FooterTable.vue'),
+          component: () => import('/@/views/demo/table/footer-table.vue'),
           meta: {
             title: t('routes.demo.table.footerTable'),
           },
@@ -219,7 +219,7 @@ const comp: AppRouteModule = {
         {
           path: 'editCellTable',
           name: 'EditCellTableDemo',
-          component: () => import('/@/views/demo/table/EditCellTable.vue'),
+          component: () => import('/@/views/demo/table/edit-cell-table.vue'),
           meta: {
             title: t('routes.demo.table.editCellTable'),
           },
@@ -227,7 +227,7 @@ const comp: AppRouteModule = {
         {
           path: 'editRowTable',
           name: 'EditRowTableDemo',
-          component: () => import('/@/views/demo/table/EditRowTable.vue'),
+          component: () => import('/@/views/demo/table/edit-row-table.vue'),
           meta: {
             title: t('routes.demo.table.editRowTable'),
           },
@@ -235,7 +235,7 @@ const comp: AppRouteModule = {
         {
           path: 'authColumn',
           name: 'AuthColumnDemo',
-          component: () => import('/@/views/demo/table/AuthColumn.vue'),
+          component: () => import('/@/views/demo/table/auth-column.vue'),
           meta: {
             title: t('routes.demo.table.authColumn'),
           },
@@ -296,7 +296,7 @@ const comp: AppRouteModule = {
         {
           path: 'editTree',
           name: 'EditTreeDemo',
-          component: () => import('/@/views/demo/tree/EditTree.vue'),
+          component: () => import('/@/views/demo/tree/edit-tree.vue'),
           meta: {
             title: t('routes.demo.comp.editTree'),
           },
@@ -304,7 +304,7 @@ const comp: AppRouteModule = {
         {
           path: 'actionTree',
           name: 'ActionTreeDemo',
-          component: () => import('/@/views/demo/tree/ActionTree.vue'),
+          component: () => import('/@/views/demo/tree/action-tree.vue'),
           meta: {
             title: t('routes.demo.comp.actionTree'),
           },
@@ -349,7 +349,7 @@ const comp: AppRouteModule = {
             {
               path: 'editor',
               name: 'MarkDownFormDemo',
-              component: () => import('/@/views/demo/editor/markdown/Editor.vue'),
+              component: () => import('/@/views/demo/editor/markdown/editor.vue'),
               meta: {
                 title: t('routes.demo.editor.tinymceForm'),
               },
@@ -377,7 +377,7 @@ const comp: AppRouteModule = {
             {
               path: 'editor',
               name: 'TinymceFormDemo',
-              component: () => import('/@/views/demo/editor/tinymce/Editor.vue'),
+              component: () => import('/@/views/demo/editor/tinymce/editor.vue'),
               meta: {
                 title: t('routes.demo.editor.tinymceForm'),
               },
@@ -406,7 +406,7 @@ const comp: AppRouteModule = {
         {
           path: 'action',
           name: 'ActionScrollDemo',
-          component: () => import('/@/views/demo/comp/scroll/Action.vue'),
+          component: () => import('/@/views/demo/comp/scroll/action.vue'),
           meta: {
             title: t('routes.demo.comp.scrollAction'),
           },
@@ -414,7 +414,7 @@ const comp: AppRouteModule = {
         {
           path: 'virtualScroll',
           name: 'VirtualScrollDemo',
-          component: () => import('/@/views/demo/comp/scroll/VirtualScroll.vue'),
+          component: () => import('/@/views/demo/comp/scroll/virtual-scroll.vue'),
           meta: {
             title: t('routes.demo.comp.virtualScroll'),
           },
@@ -467,7 +467,7 @@ const comp: AppRouteModule = {
         {
           path: 'transition',
           name: 'BasicTransitionDemo',
-          component: () => import('/@/views/demo/comp/lazy/Transition.vue'),
+          component: () => import('/@/views/demo/comp/lazy/transition.vue'),
           meta: {
             title: t('routes.demo.comp.lazyTransition'),
           },
@@ -494,7 +494,7 @@ const comp: AppRouteModule = {
         {
           path: 'rotate',
           name: 'VerifyRotateDemo',
-          component: () => import('/@/views/demo/comp/verify/Rotate.vue'),
+          component: () => import('/@/views/demo/comp/verify/rotate.vue'),
           meta: {
             title: t('routes.demo.comp.verifyRotate'),
           },

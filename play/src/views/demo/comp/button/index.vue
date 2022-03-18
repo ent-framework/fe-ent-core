@@ -104,7 +104,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { Card, Row, Col } from 'ant-design-vue';
   export default defineComponent({
     components: { EntPageWrapper, ACard: Card, ARow: Row, ACol: Col },

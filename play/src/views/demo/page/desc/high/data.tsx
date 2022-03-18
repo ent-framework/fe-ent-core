@@ -1,4 +1,4 @@
-import { BasicColumn } from 'fe-ent-core/lib/components/Table/src/types/table';
+import { BasicColumn } from 'fe-ent-core/lib/components/table/src/types/table';
 
 import { Badge } from 'ant-design-vue';
 

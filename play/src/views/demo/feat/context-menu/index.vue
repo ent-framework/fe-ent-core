@@ -14,7 +14,7 @@
   import { useContextMenu } from 'fe-ent-core/lib/hooks/web/useContextMenu';
   import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
   import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({
     components: { CollapseContainer: EntCollapseContainer, EntPageWrapper },

@@ -32,12 +32,12 @@
 <script lang="ts" setup>
   import type { ErrorLogInfo } from '@ent-core/types/store';
   import { watch, ref, nextTick, defineComponent } from 'vue';
-  import DetailModal from './DetailModal.vue';
-  import { useTable } from '@ent-core/components/Table';
-  import { useModal } from '@ent-core/components/Modal';
-  import { useMessage } from '@ent-core/hooks/web/useMessage';
-  import { useI18n } from '@ent-core/hooks/web/useI18n';
-  import { useErrorLogStore } from '@ent-core/store/modules/errorLog';
+  import DetailModal from './detail-modal.vue';
+  import { useTable } from '@ent-core/components/table';
+  import { useModal } from '@ent-core/components/modal';
+  import { useMessage } from '@ent-core/hooks/web/use-message';
+  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { useErrorLogStore } from '@ent-core/store/modules/error-log';
   import { fireErrorApi } from '@ent-core/api/demo/error';
   import { getColumns } from './data';
   import { cloneDeep } from 'lodash';

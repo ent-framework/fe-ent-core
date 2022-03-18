@@ -11,7 +11,7 @@
 
   import img from 'fe-ent-core/lib/assets/images/header.jpg';
 
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({
     components: { EntRotateDragVerify, EntPageWrapper },

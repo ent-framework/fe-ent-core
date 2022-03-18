@@ -28,7 +28,7 @@
   import { defineComponent, ref } from 'vue';
   import { EntCollapseContainer } from 'fe-ent-core/lib/components/Container';
   import { useTabs } from 'fe-ent-core/lib/hooks/web/useTabs';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { Input, Alert } from 'ant-design-vue';
   import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
   import { useGo } from 'fe-ent-core/lib/hooks/web/usePage';

@@ -3,11 +3,11 @@ import type { RouteRecordNormalized } from 'vue-router';
 
 import { useAppStoreWithOut } from '@ent-core/store/modules/app';
 import { usePermissionStore } from '@ent-core/store/modules/permission';
-import { transformMenuModule, getAllParentPath } from '@ent-core/router/helper/menuHelper';
-import { filter } from '@ent-core/utils/helper/treeHelper';
+import { transformMenuModule, getAllParentPath } from '@ent-core/router/helper/menu-helper';
+import { filter } from '@ent-core/utils/helper/tree-helper';
 import { isUrl } from '@ent-core/utils/is';
 import { router } from '@ent-core/router';
-import { PermissionModeEnum } from '@ent-core/enums/appEnum';
+import { PermissionModeEnum } from '@ent-core/enums/app-enum';
 import { pathToRegexp } from 'path-to-regexp';
 
 export const importMenuModules = (modules: Record<string, { [key: string]: any }>) => {

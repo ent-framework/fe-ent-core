@@ -2,26 +2,26 @@ import type { AppRouteRecordRaw, Menu, MenuModule } from '@ent-core/router/types
 
 import { defineStore } from 'pinia';
 import { store } from '@ent-core/store/pinia';
-import { useI18n } from '@ent-core/hooks/web/useI18n';
+import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { useUserStore } from './user';
 import { useAppStoreWithOut } from './app';
 import { toRaw } from 'vue';
-import { transformObjToRoute, flatMultiLevelRoutes } from '@ent-core/router/helper/routeHelper';
-import { transformRouteToMenu } from '@ent-core/router/helper/menuHelper';
+import { transformObjToRoute, flatMultiLevelRoutes } from '@ent-core/router/helper/route-helper';
+import { transformRouteToMenu } from '@ent-core/router/helper/menu-helper';
 
-import projectSetting from '@ent-core/settings/projectSetting';
+import projectSetting from '@ent-core/settings/project-setting';
 
-import { PermissionModeEnum } from '@ent-core/enums/appEnum';
+import { PermissionModeEnum } from '@ent-core/enums/app-enum';
 
 import { registerErrorLogRoute, registerPageNotFoundRoute } from '@ent-core/router/routes/basic';
 
-import { filter } from '@ent-core/utils/helper/treeHelper';
+import { filter } from '@ent-core/utils/helper/tree-helper';
 
 import { getMenuList } from '@ent-core/api/sys/menu';
 import { getPermCode } from '@ent-core/api/sys/user';
 
-import { useMessage } from '@ent-core/hooks/web/useMessage';
-import { PageEnum } from '@ent-core/enums/pageEnum';
+import { useMessage } from '@ent-core/hooks/web/use-message';
+import { PageEnum } from '@ent-core/enums/page-enum';
 import { router } from '@ent-core/router';
 
 export interface PermissionState {

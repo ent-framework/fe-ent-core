@@ -47,7 +47,7 @@
   import { defineComponent, nextTick, ref, unref } from 'vue';
   import { BasicTree, TreeActionType, TreeItem } from 'fe-ent-core/lib/components/Tree/index';
   import { treeData } from './data';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { Card, Row, Col, Spin } from 'ant-design-vue';
   import { cloneDeep } from 'lodash';
 

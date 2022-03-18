@@ -2,10 +2,10 @@ import type { AppRouteModule } from 'fe-ent-core/lib/router/types';
 
 import { getParentLayout } from 'fe-ent-core/lib/router/constant';
 import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default/index.vue';
-import { ExceptionEnum } from 'fe-ent-core/lib/enums/exceptionEnum';
-import { t } from 'fe-ent-core/lib/hooks/web/useI18n';
+import { ExceptionEnum } from 'fe-ent-core/lib/enums/exception-enum';
+import { t } from 'fe-ent-core/lib/hooks/web/use-i18n';
 
-const ExceptionPage = () => import('fe-ent-core/lib/views/sys/exception/Exception.vue');
+const ExceptionPage = () => import('fe-ent-core/lib/views/sys/exception/exception.vue');
 
 const page: AppRouteModule = {
   path: '/page-demo',

@@ -1,8 +1,8 @@
-import TypePicker from './TypePicker.vue';
-import ThemeColorPicker from './ThemeColorPicker.vue';
-import SettingFooter from './SettingFooter.vue';
-import SwitchItem from './SwitchItem.vue';
-import SelectItem from './SelectItem.vue';
-import InputNumberItem from './InputNumberItem.vue';
+import TypePicker from './type-picker.vue';
+import ThemeColorPicker from './theme-color-picker.vue';
+import SettingFooter from './setting-footer.vue';
+import SwitchItem from './switch-item.vue';
+import SelectItem from './select-item.vue';
+import InputNumberItem from './input-number-item.vue';
 
 export { TypePicker, ThemeColorPicker, SettingFooter, SwitchItem, SelectItem, InputNumberItem };

@@ -1,5 +1,5 @@
 import { openWindow } from '..';
-import { dataURLtoBlob, urlToBase64 } from './base64Conver';
+import { dataURLtoBlob, urlToBase64 } from './base64-convert';
 
 /**
  * Download online pictures

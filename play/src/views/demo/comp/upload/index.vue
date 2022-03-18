@@ -19,8 +19,8 @@
   import { defineComponent } from 'vue';
   import { EntUpload } from 'fe-ent-core/lib/components/Upload';
   import { useMessage } from 'fe-ent-core/lib/hooks/web/useMessage';
-  import { EntForm, FormSchema, useForm } from 'fe-ent-core/lib/components/Form';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntForm, FormSchema, useForm } from 'fe-ent-core/lib/components/form';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { Alert } from 'ant-design-vue';
   import { uploadApi } from 'fe-ent-core/lib/api/sys/upload';
 

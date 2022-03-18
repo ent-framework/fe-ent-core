@@ -64,10 +64,10 @@
     CodepenCircleFilled,
   } from '@ant-design/icons-vue';
 
-  import { Icon, IconPicker, SvgIcon } from 'fe-ent-core/lib/components/Icon/index';
+  import { Icon, IconPicker, SvgIcon } from 'fe-ent-core/lib/components/icon/index';
 
   import { openWindow } from 'fe-ent-core/lib/utils';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/Page';
+  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({
     components: {

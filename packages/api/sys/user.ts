@@ -1,5 +1,5 @@
 import { defHttp } from '@ent-core/utils/http/axios';
-import { LoginParams, LoginResultModel, GetUserInfoModel } from './model/userModel';
+import { LoginParams, LoginResultModel, GetUserInfoModel } from './model/user-model';
 import { ErrorMessageMode } from '@ent-core/types/axios';
 enum Api {
   Login = '/api/login',
