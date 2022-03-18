@@ -43,7 +43,7 @@ export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) 
   vitePlugins.push(defaultPlugins);
 
   // vite-plugin-windicss
-  vitePlugins.push(configWindiPlugin());
+  vitePlugins.push(configWindiPlugin(configEnv));
 
   const isBuild = configEnv.runMode == 'package' || configEnv.runMode == 'lib';
   // TODO

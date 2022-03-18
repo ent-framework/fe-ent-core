@@ -4,4 +4,3 @@ packages:
   - 'extensions/**'
   - play
   - 'tools/**'
-  - 'xmeta/**'

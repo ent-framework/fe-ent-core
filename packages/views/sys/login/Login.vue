@@ -42,7 +42,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { computed, defineComponent } from 'vue';
+  import { computed } from 'vue';
   import AppLogo from '@ent-core/layouts/default/components/AppLogo.vue';
   import { EntAppLocalePicker, EntAppDarkModeToggle } from '@ent-core/components/Application';
   import LoginForm from './LoginForm.vue';
@@ -59,13 +59,6 @@
   defineProps({
     sessionTimeout: {
       type: Boolean,
-    },
-  });
-  defineComponent({
-    components: {
-      AppLogo,
-      EntAppLocalePicker,
-      EntAppDarkModeToggle,
     },
   });
 

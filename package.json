@@ -23,6 +23,7 @@
     "build:play": "pnpm -C play --stream build",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
     "build:no-cache": "yarn clean:cache && pnpm run build",
+    "generate:comp": "pnpm -C blank --stream build",
     "clean": "pnpm run clean:dist && pnpm run clean:ext",
     "clean:all": "pnpm run clean:dist && pnpm run clean:tools && pnpm run clean:ext",
     "clean:ext": "pnpm --filter ./extensions --stream clean",
@@ -178,7 +179,8 @@
     "vue-i18n": "^9.1.9",
     "vue-router": "^4.0.12",
     "vue-types": "^4.1.1",
-    "ant-design-vue": "2.2.8"
+    "ant-design-vue": "2.2.8",
+    "unplugin-vue-components": "0.18.0"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china",

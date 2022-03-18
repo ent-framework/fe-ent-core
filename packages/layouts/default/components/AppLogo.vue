@@ -5,7 +5,7 @@
 <template>
   <div class="anticon" :class="getAppLogoClass" @click="goHome">
     <img :src="LogoImg" />
-    <div class="ml-2 truncate md:opacity-100" :class="getTitleClass" v-show="showTitle">
+    <div class="ml-2 truncate md:opacity-100" :class="getTitleClass" v-show="$props.showTitle">
       {{ title }}
     </div>
   </div>

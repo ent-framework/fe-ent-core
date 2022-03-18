@@ -34,7 +34,7 @@ export const generateTypesDefinitions = async () => {
   });
 
   const filePaths = excludeFiles(
-    await glob(['**/*.{tsx,ts,vue}', '!fe-ent-core/!**/!*'], {
+    await glob(['**/*.{tsx,ts,vue}', '!fe-ent-core/**/*'], {
       cwd: pkgRoot,
       absolute: true,
       onlyFiles: true,

@@ -13,7 +13,7 @@ import { camelCase, upperFirst } from 'lodash';
 import { version } from '../packages/fe-ent-core/version';
 import { reporter } from './plugins/size-reporter';
 import { EntCoreAlias } from './plugins/ent-core-alias';
-import { epRoot, epOutput, localeRoot, projRoot, pkgRoot } from './utils';
+import { epRoot, epOutput, localeRoot, pkgRoot } from './utils';
 import { formatBundleFilename, generateExternal, writeBundles } from './utils/rollup';
 import { withTaskName } from './utils/gulp';
 import { EP_BRAND_NAME } from './utils';
@@ -26,8 +26,6 @@ import { rollupPluginInjectProcessViteEnv } from './plugins/vite-env';
 
 const banner = `/*! ${EP_BRAND_NAME} v${version} */\n`;
 
-const TSCONFIG_PATH = path.resolve(projRoot, 'tsconfig.json');
-
 async function buildFullEntry(minify: boolean) {
   const bundle = await rollup({
     input: path.resolve(epRoot, 'index.ts'),
@@ -35,7 +33,7 @@ async function buildFullEntry(minify: boolean) {
       EntCoreAlias(),
       PurgeIcons({}),
       json(),
-      image(),
+      image({ dom: false }),
       vue({
         isProduction: true,
       }) as Plugin,
