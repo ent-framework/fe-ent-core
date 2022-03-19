@@ -33,17 +33,23 @@ export const copyTypesDefinitions: TaskFunction = (done) => {
       copy(src, buildConfig[module].output.path, { recursive: true }),
     );
 
-  const projectDefinitions = path.resolve(epOutput, 'types');
-  ensureDirSync(projectDefinitions);
   const copyGlobal = () =>
     withTaskName('copyGlobal', () =>
       copyFile(
         path.resolve(projRoot, 'typings/global.d.ts'),
-        path.resolve(projectDefinitions, 'global.d.ts'),
+        path.resolve(epOutput, 'global.d.ts'),
       ),
     );
 
-  return parallel(copyTypes('esm'), copyTypes('cjs'), copyGlobal())(done);
+  const copySupport = () =>
+    withTaskName('copySupport', () =>
+      copyFile(
+        path.resolve(projRoot, 'typings/support.d.ts'),
+        path.resolve(epOutput, 'support.d.ts'),
+      ),
+    );
+
+  return parallel(copyTypes('esm'), copyTypes('cjs'), copyGlobal(), copySupport())(done);
 };
 
 export const copyFullStyle = async () => {

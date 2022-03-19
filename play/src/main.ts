@@ -8,7 +8,7 @@ import { createApp } from 'vue';
 import { initAppConfigStore } from 'fe-ent-core/lib/logics/init-app-config';
 import { setupErrorHandle } from 'fe-ent-core/lib/logics/error-handle';
 import { router, setupRouter } from 'fe-ent-core/lib/router';
-import { setupRouterGuard } from '/@/router/guard';
+import { setupRouterGuard } from 'fe-ent-core/lib/router/guard';
 import { setupStore } from 'fe-ent-core/lib/store';
 import { setupGlobDirectives } from 'fe-ent-core/lib/directives';
 import { setupI18n } from 'fe-ent-core/lib/locales/setup-i18n';
@@ -33,7 +33,6 @@ import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default';
 import { default as IFRAME } from 'fe-ent-core/lib/views/sys/iframe/frame-blank';
 
 async function bootstrap() {
-  console.log('111');
   const app = createApp(App);
 
   //初始化全局变量
@@ -66,7 +65,7 @@ async function bootstrap() {
   // Configure routing
   setupRouter(app);
 
-  router.addExtraRoutes(import.meta.globEager(`/src/router/routes/modules/**/*.ts`));
+  router.addExtraRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
 
   importMenuModules(import.meta.globEager('./modules/**/*.ts'));
 

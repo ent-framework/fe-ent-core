@@ -1,10 +1,10 @@
 import type { Router } from 'vue-router';
-import { useAppStore } from 'fe-ent-core/lib/store/modules/app';
-import { useMultipleTabStore } from 'fe-ent-core/lib/store/modules/multiple-tab';
-import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
-import { usePermissionStore } from 'fe-ent-core/lib/store/modules/permission';
-import { PageEnum } from 'fe-ent-core/lib/enums/page-enum';
-import { removeTabChangeListener } from 'fe-ent-core/lib/logics/mitt/route-change';
+import { useAppStore } from '@ent-core/store/modules/app';
+import { useMultipleTabStore } from '@ent-core/store/modules/multiple-tab';
+import { useUserStore } from '@ent-core/store/modules/user';
+import { usePermissionStore } from '@ent-core/store/modules/permission';
+import { PageEnum } from '@ent-core/enums/page-enum';
+import { removeTabChangeListener } from '@ent-core/logics/mitt/route-change';
 
 export function createStateGuard(router: Router) {
   router.afterEach((to) => {

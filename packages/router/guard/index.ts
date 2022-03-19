@@ -1,16 +1,16 @@
 import type { Router, RouteLocationNormalized } from 'vue-router';
-import { useAppStoreWithOut } from 'fe-ent-core/lib/store/modules/app';
-import { useUserStoreWithOut } from 'fe-ent-core/lib/store/modules/user';
-import { useTransitionSetting } from 'fe-ent-core/lib/hooks/setting/use-transition-setting';
-import { AxiosCanceler } from 'fe-ent-core/lib/utils/http/axios/axios-cancel';
+import { useAppStoreWithOut } from '@ent-core/store/modules/app';
+import { useUserStoreWithOut } from '@ent-core/store/modules/user';
+import { useTransitionSetting } from '@ent-core/hooks/setting/use-transition-setting';
+import { AxiosCanceler } from '@ent-core/utils/http/axios/axios-cancel';
 import { Modal, notification } from 'ant-design-vue';
-import { warn } from 'fe-ent-core/lib/utils/log';
+import { warn } from '@ent-core/utils/log';
 import { unref } from 'vue';
-import { setRouteChange } from 'fe-ent-core/lib/logics/mitt/route-change';
+import { setRouteChange } from '@ent-core/logics/mitt/route-change';
 import { createPermissionGuard } from './permission-guard';
 import { createStateGuard } from './state-guard';
 import nProgress from 'nprogress';
-import projectSetting from 'fe-ent-core/lib/settings/project-setting';
+import projectSetting from '@ent-core/settings/project-setting';
 import { createParamMenuGuard } from './param-menu-guard';
 
 // Don't change the order of creation
@@ -29,7 +29,7 @@ export function setupRouterGuard(router: Router) {
 /**
  * Hooks for handling page state
  */
-function createPageGuard(router: Router) {
+export function createPageGuard(router: Router) {
   const loadedPageMap = new Map<string, boolean>();
 
   router.beforeEach(async (to) => {
@@ -47,7 +47,7 @@ function createPageGuard(router: Router) {
 }
 
 // Used to handle page loading status
-function createPageLoadingGuard(router: Router) {
+export function createPageLoadingGuard(router: Router) {
   const userStore = useUserStoreWithOut();
   const appStore = useAppStoreWithOut();
   const { getOpenPageLoading } = useTransitionSetting();
@@ -82,7 +82,7 @@ function createPageLoadingGuard(router: Router) {
  * The interface used to close the current page to complete the request when the route is switched
  * @param router
  */
-function createHttpGuard(router: Router) {
+export function createHttpGuard(router: Router) {
   const { removeAllHttpPending } = projectSetting;
   let axiosCanceler: Nullable<AxiosCanceler>;
   if (removeAllHttpPending) {
@@ -96,7 +96,7 @@ function createHttpGuard(router: Router) {
 }
 
 // Routing switch back to the top
-function createScrollGuard(router: Router) {
+export function createScrollGuard(router: Router) {
   const isHash = (href: string) => {
     return /^#/.test(href);
   };

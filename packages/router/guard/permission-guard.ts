@@ -1,13 +1,13 @@
 import type { Router, RouteRecordRaw } from 'vue-router';
 
-import { usePermissionStoreWithOut } from 'fe-ent-core/lib/store/modules/permission';
+import { usePermissionStoreWithOut } from '@ent-core/store/modules/permission';
 
-import { PageEnum } from 'fe-ent-core/lib/enums/page-enum';
-import { useUserStoreWithOut } from 'fe-ent-core/lib/store/modules/user';
+import { PageEnum } from '@ent-core/enums/page-enum';
+import { useUserStoreWithOut } from '@ent-core/store/modules/user';
 
-import { PAGE_NOT_FOUND_NAME } from 'fe-ent-core/lib/router/constant';
+import { PAGE_NOT_FOUND_NAME } from '@ent-core/router/constant';
 
-import { RootRoute } from 'fe-ent-core/lib/router/routes';
+import { RootRoute } from '@ent-core/router/routes';
 
 const LOGIN_PATH = PageEnum.BASE_LOGIN;
 

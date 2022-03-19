@@ -36,7 +36,7 @@
     "noImplicitAny": false, /* 临时关闭，为了严谨性，应该打开 */
     "disableSizeLimit": true, /** 依赖循环，可能导致不能生成 TS，应该关闭，临时打开 */
     "types": [
-      "vite/client", "../typings/global", "@types/node"
+      "vite/client", "../typings/support", "@types/node"
     ],
     "typeRoots": ["../node_modules/@types", "../typings"]
   },

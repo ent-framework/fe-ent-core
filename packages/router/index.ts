@@ -65,7 +65,7 @@ export function resetRouter() {
 }
 
 // config router
-export function setupRouter(app: App<Element>) {
+export function setupRouter(app: App<Element>): EntRouter {
   const basicRoutes = getBasicRoutes();
   // 白名单应该包含基本静态路由
   const getRouteNames = (array: any[]) => {
@@ -79,4 +79,5 @@ export function setupRouter(app: App<Element>) {
   basicRoutes.map((route) => router.addBasicRoute(route));
   router._whiteRouteList = getRouteNames(basicRoutes);
   app.use(router);
+  return router;
 }

@@ -25,6 +25,7 @@ export const LoginRoute: AppRouteRecordRaw = {
   },
 };
 
+// 绑定了component，需要优化
 // Basic routing without permission
 export function getBasicRoutes() {
   return [
