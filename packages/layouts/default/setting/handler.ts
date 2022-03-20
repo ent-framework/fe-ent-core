@@ -4,7 +4,7 @@ import { updateColorWeak } from '@ent-core/logics/theme/update-color-weak';
 import { updateGrayMode } from '@ent-core/logics/theme/update-gray-mode';
 
 import { useAppStore } from '@ent-core/store/modules/app';
-import type { ProjectConfig } from '@ent-core/types/config';
+import type { ProjectConfig } from '@ent-core/logics/types/config';
 import { changeTheme } from '@ent-core/logics/theme';
 import { updateDarkTheme } from '@ent-core/logics/theme/dark';
 import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';

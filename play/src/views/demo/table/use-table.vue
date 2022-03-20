@@ -24,7 +24,7 @@
   import { EntTable, ColumnChangeParam, useTable } from 'fe-ent-core/lib/components/table';
   import { getBasicColumns, getBasicShortColumns } from './table-data';
   import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
-  import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
+  import { demoListApi } from 'fe-ent-core/lib/logics/api/demo/table';
   export default defineComponent({
     components: { EntTable },
     setup() {

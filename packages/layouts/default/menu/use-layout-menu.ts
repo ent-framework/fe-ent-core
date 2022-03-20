@@ -2,7 +2,7 @@ import type { Menu } from '@ent-core/router/types';
 import type { Ref } from 'vue';
 import { watch, unref, ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { MenuSplitTyeEnum } from '@ent-core/enums/menu-enum';
+import { MenuSplitTyeEnum } from '@ent-core/logics/enums/menu-enum';
 import { useThrottleFn } from '@vueuse/core';
 import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
 import {

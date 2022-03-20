@@ -19,7 +19,7 @@
   import { Tag } from 'ant-design-vue';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { EntDescription, DescItem, useDescription } from 'fe-ent-core/lib/components/description';
-  import { GITHUB_URL, SITE_URL, DOC_URL } from 'fe-ent-core/lib/settings/site-setting';
+  import { GITHUB_URL, SITE_URL, DOC_URL } from 'fe-ent-core/lib/logics/settings/site-setting';
 
   const { pkg, lastBuildTime } = __APP_INFO__;
 

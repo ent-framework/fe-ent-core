@@ -1,7 +1,7 @@
 import { getStorageShortName } from '@ent-core/utils/env';
 import { createStorage as create, CreateStorageParams } from './storage-cache';
-import { enableStorageEncryption } from '@ent-core/settings/encryption-setting';
-import { DEFAULT_CACHE_TIME } from '@ent-core/settings/encryption-setting';
+import { enableStorageEncryption } from '@ent-core/logics/settings/encryption-setting';
+import { DEFAULT_CACHE_TIME } from '@ent-core/logics/settings/encryption-setting';
 
 export type Options = Partial<CreateStorageParams>;
 

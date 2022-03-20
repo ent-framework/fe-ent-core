@@ -1,9 +1,9 @@
 import type { BasicTableProps, TableActionType, FetchParams, BasicColumn } from '../types/table';
 import type { PaginationProps } from '../types/pagination';
-import type { DynamicProps } from '@ent-core/types/utils';
+import type { DynamicProps } from '@ent-core/logics/types/utils';
 import type { FormActionType } from '@ent-core/components/form';
 import type { WatchStopHandle } from 'vue';
-import { getDynamicProps } from '@ent-core/utils';
+import { getDynamicProps } from '@ent-core/utils/base';
 import { ref, onUnmounted, unref, watch, toRaw } from 'vue';
 import { isProdMode } from '@ent-core/utils/env';
 import { error } from '@ent-core/utils/log';

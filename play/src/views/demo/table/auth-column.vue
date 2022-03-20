@@ -58,7 +58,7 @@
   import { defineComponent } from 'vue';
   import { EntTable, useTable, BasicColumn, EntTableAction } from 'fe-ent-core/lib/components/table';
 
-  import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
+  import { demoListApi } from 'fe-ent-core/lib/logics/api/demo/table';
   const columns: BasicColumn[] = [
     {
       title: '编号',

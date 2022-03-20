@@ -2,7 +2,6 @@ import type { RouteRecordRaw, Router } from 'vue-router';
 import type { App } from 'vue';
 
 import { createRouter, createWebHashHistory } from 'vue-router';
-import { getBasicRoutes } from './routes';
 import { AppRouteModule, AppRouteRecordRaw } from './types';
 import { getAppEnvConfig } from '@ent-core/utils/env';
 
@@ -10,6 +9,7 @@ export interface EntRouter extends Router {
   parent: Router;
   basicRoutes: AppRouteRecordRaw[];
   addBasicRoute: (route: AppRouteRecordRaw) => void;
+  addBasicRoutes: (routes: AppRouteRecordRaw[]) => void;
   extraRoutes: AppRouteRecordRaw[];
   addExtraRoute: (route: AppRouteRecordRaw) => void;
   addExtraRoutes: (routes: Record<string, Record<string, any>>) => void;
@@ -51,6 +51,16 @@ export const router: EntRouter = {
     router.basicRoutes.push(route);
     return parent.addRoute(route as RouteRecordRaw);
   },
+  addBasicRoutes: function (basicRoutes: AppRouteRecordRaw[]): () => void {
+    basicRoutes.forEach((route) => {
+      router.addBasicRoute(route);
+      parent.addRoute(route as RouteRecordRaw);
+    });
+    const whiteList: string[] = [];
+    getRouteNames(basicRoutes, whiteList);
+    router._whiteRouteList = whiteList;
+    return noop;
+  },
 };
 
 // reset router
@@ -63,20 +73,15 @@ export function resetRouter() {
     }
   });
 }
-
+// 白名单应该包含基本静态路由
+const getRouteNames = (array: any[], whiteList: string[]) => {
+  array.forEach((item) => {
+    whiteList.push(item.name);
+    getRouteNames(item.children || [], whiteList);
+  });
+};
 // config router
-export function setupRouter(app: App<Element>) {
-  const basicRoutes = getBasicRoutes();
-  // 白名单应该包含基本静态路由
-  const getRouteNames = (array: any[]) => {
-    const WHITE_NAME_LIST: string[] = [];
-    array.forEach((item) => {
-      WHITE_NAME_LIST.push(item.name);
-      getRouteNames(item.children || []);
-    });
-    return WHITE_NAME_LIST;
-  };
-  basicRoutes.map((route) => router.addBasicRoute(route));
-  router._whiteRouteList = getRouteNames(basicRoutes);
+export function setupRouter(app: App<Element>): EntRouter {
   app.use(router);
+  return router;
 }

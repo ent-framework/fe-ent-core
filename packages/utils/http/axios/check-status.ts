@@ -1,11 +1,11 @@
-import type { ErrorMessageMode } from '@ent-core/types/axios';
+import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 // import router from '@ent-core/router';
-// import { PageEnum } from '@ent-core/enums/page-enum';
+// import { PageEnum } from '@ent-core/logics/enums/page-enum';
 import { useUserStoreWithOut } from '@ent-core/store/modules/user';
-import projectSetting from '@ent-core/settings/project-setting';
-import { SessionTimeoutProcessingEnum } from '@ent-core/enums/app-enum';
+import projectSetting from '@ent-core/logics/settings/project-setting';
+import { SessionTimeoutProcessingEnum } from '@ent-core/logics/enums/app-enum';
 
 const { createMessage, createErrorModal } = useMessage();
 const error = createMessage.error!;

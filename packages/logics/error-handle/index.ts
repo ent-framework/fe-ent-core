@@ -2,13 +2,13 @@
  * Used to configure the global error handling function, which can monitor vue errors, script errors, static resource errors and Promise errors
  */
 
-import type { ErrorLogInfo } from '@ent-core/types/store';
+import type { ErrorLogInfo } from '@ent-core/logics/types/store';
 
 import { useErrorLogStoreWithOut } from '@ent-core/store/modules/error-log';
 
-import { ErrorTypeEnum } from '@ent-core/enums/exception-enum';
+import { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
 import { App } from 'vue';
-import projectSetting from '@ent-core/settings/project-setting';
+import projectSetting from '@ent-core/logics/settings/project-setting';
 
 /**
  * Handling error stack information

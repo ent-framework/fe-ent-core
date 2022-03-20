@@ -30,7 +30,7 @@
   import { Alert } from 'ant-design-vue';
   import CurrentPermissionMode from '../current-permission-mode.vue';
   import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
-  import { RoleEnum } from 'fe-ent-core/lib/enums/role-enum';
+  import { RoleEnum } from 'fe-ent-core/lib/logics/enums/role-enum';
   import { usePermission } from 'fe-ent-core/lib/hooks/web/use-permission';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 

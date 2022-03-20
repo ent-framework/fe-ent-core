@@ -1,4 +1,4 @@
-import { cacheCipher } from '@ent-core/settings/encryption-setting';
+import { cacheCipher } from '@ent-core/logics/settings/encryption-setting';
 
 import type { EncryptionParams } from '@ent-core/utils/cipher';
 

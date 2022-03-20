@@ -1,4 +1,4 @@
-import type { GlobConfig } from '@ent-core/types/config';
+import type { GlobConfig } from '@ent-core/logics/types/config';
 
 import { warn } from '@ent-core/utils/log';
 import { getAppEnvConfig } from '@ent-core/utils/env';

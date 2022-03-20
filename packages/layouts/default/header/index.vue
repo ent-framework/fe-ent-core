@@ -70,8 +70,8 @@
   import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
   import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
 
-  import { MenuModeEnum, MenuSplitTyeEnum } from '@ent-core/enums/menu-enum';
-  import { SettingButtonPositionEnum } from '@ent-core/enums/app-enum';
+  import { MenuModeEnum, MenuSplitTyeEnum } from '@ent-core/logics/enums/menu-enum';
+  import { SettingButtonPositionEnum } from '@ent-core/logics/enums/app-enum';
   import { EntAppLocalePicker } from '@ent-core/components/application';
 
   import { UserDropDown, LayoutBreadcrumb, FullScreen, Notify, ErrorAction } from './components';

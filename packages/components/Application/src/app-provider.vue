@@ -2,9 +2,9 @@
   import { defineComponent, toRefs, ref, unref } from 'vue';
   import { createAppProviderContext } from './use-app-context';
   import { createBreakpointListen } from '@ent-core/hooks/event/use-breakpoint';
-  import { prefixCls } from '@ent-core/settings/design-setting';
+  import { prefixCls } from '@ent-core/logics/settings/design-setting';
   import { useAppStore } from '@ent-core/store/modules/app';
-  import { MenuModeEnum, MenuTypeEnum } from '@ent-core/enums/menu-enum';
+  import { MenuModeEnum, MenuTypeEnum } from '@ent-core/logics/enums/menu-enum';
 
   const props = {
     /**

@@ -1,4 +1,4 @@
-import type { MultiTabsSetting } from '@ent-core/types/config';
+import type { MultiTabsSetting } from '@ent-core/logics/types/config';
 
 import { computed } from 'vue';
 

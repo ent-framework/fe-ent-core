@@ -18,7 +18,7 @@
 </template>
 <script lang="ts">
   import { addResizeListener, removeResizeListener } from '@ent-core/utils/event';
-  import componentSetting from '@ent-core/settings/component-setting';
+  import componentSetting from '@ent-core/logics/settings/component-setting';
   const { scrollbar } = componentSetting;
   import { toObject } from './util';
   import {

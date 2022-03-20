@@ -65,7 +65,7 @@
   import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
   import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
-  import { areaRecord } from 'fe-ent-core/lib/api/demo/cascader';
+  import { areaRecord } from 'fe-ent-core/lib/logics/api/demo/cascader';
 
   const schemas: FormSchema[] = [
     {

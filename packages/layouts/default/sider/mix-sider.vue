@@ -93,7 +93,7 @@
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useGo } from '@ent-core/hooks/web/use-page';
-  import { SIDE_BAR_MINI_WIDTH, SIDE_BAR_SHOW_TIT_MINI_WIDTH } from '@ent-core/enums/app-enum';
+  import { SIDE_BAR_MINI_WIDTH, SIDE_BAR_SHOW_TIT_MINI_WIDTH } from '@ent-core/logics/enums/app-enum';
   import clickOutside from '@ent-core/directives/click-out-side';
   import { getChildrenMenus, getCurrentParentPath, getShallowMenus } from '@ent-core/router/menus';
   import { listenerRouteChange } from '@ent-core/logics/mitt/route-change';

@@ -40,7 +40,7 @@
 
   import { defineComponent, computed } from 'vue';
 
-  import { DOC_URL } from '@ent-core/settings/site-setting';
+  import { DOC_URL } from '@ent-core/logics/settings/site-setting';
 
   import { useUserStore } from '@ent-core/store/modules/user';
   import { useHeaderSetting } from '@ent-core/hooks/setting/use-header-setting';

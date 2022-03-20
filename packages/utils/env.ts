@@ -1,4 +1,4 @@
-import type { GlobEnvConfig } from '@ent-core/types/config';
+import type { GlobEnvConfig } from '@ent-core/logics/types/config';
 
 const _ViteEnv = process.env;
 

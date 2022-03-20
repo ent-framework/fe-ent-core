@@ -1,4 +1,4 @@
-import { MenuModeEnum } from '@ent-core/enums/menu-enum';
+import { MenuModeEnum } from '@ent-core/logics/enums/menu-enum';
 import type { Menu as MenuType } from '@ent-core/router/types';
 import type { MenuState } from './types';
 

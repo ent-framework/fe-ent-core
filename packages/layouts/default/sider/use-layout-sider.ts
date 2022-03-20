@@ -2,7 +2,7 @@ import type { Ref } from 'vue';
 
 import { computed, unref, onMounted, nextTick, ref } from 'vue';
 
-import { TriggerEnum } from '@ent-core/enums/menu-enum';
+import { TriggerEnum } from '@ent-core/logics/enums/menu-enum';
 
 import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
 import { useDebounceFn } from '@vueuse/core';

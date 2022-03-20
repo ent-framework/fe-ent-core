@@ -16,7 +16,7 @@
   import { useGo } from '@ent-core/hooks/web/use-page';
   import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { PageEnum } from '@ent-core/enums/page-enum';
+  import { PageEnum } from '@ent-core/logics/enums/page-enum';
   import { useUserStore } from '@ent-core/store/modules/user';
   import LogoImg from '@ent-core/assets/images/logo.png';
   const props = defineProps({

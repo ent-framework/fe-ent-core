@@ -27,7 +27,7 @@
   import { defineComponent } from 'vue';
   import { EntTable, useTable, BasicColumn, EntTableImg } from 'fe-ent-core/lib/components/table';
   import { Tag, Avatar } from 'ant-design-vue';
-  import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
+  import { demoListApi } from 'fe-ent-core/lib/logics/api/demo/table';
   const columns: BasicColumn[] = [
     {
       title: 'ID',

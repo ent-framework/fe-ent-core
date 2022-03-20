@@ -1,4 +1,4 @@
-import { openWindow } from '..';
+import { openWindow } from '../base';
 import { dataURLtoBlob, urlToBase64 } from './base64-convert';
 
 /**

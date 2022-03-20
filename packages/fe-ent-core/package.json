@@ -1,10 +1,10 @@
 {
   "name": "fe-ent-core",
-  "version": "1.2.9",
+  "version": "1.2.12",
   "author": {
     "name": "jeff qian",
     "email": "baojian.qian@accenture.com",
-    "url": "https://github.com/anncwb"
+    "url": "https://gitlab.com/acn_abg/fe-core"
   },
   "main": "lib/index.js",
   "module": "es/index.mjs",

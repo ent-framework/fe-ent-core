@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-theme-api",
-  "version": "1.2.9",
+  "version": "1.2.12",
   "description": "Vite plugin for dynamically changing the theme color of the interface",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

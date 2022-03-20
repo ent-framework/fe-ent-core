@@ -12,7 +12,7 @@ import {
 
 import { EntAppDarkModeToggle } from '@ent-core/components/application';
 
-import { MenuTypeEnum, TriggerEnum } from '@ent-core/enums/menu-enum';
+import { MenuTypeEnum, TriggerEnum } from '@ent-core/logics/enums/menu-enum';
 
 import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
 import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
@@ -37,7 +37,7 @@ import {
   HEADER_PRESET_BG_COLOR_LIST,
   SIDE_BAR_BG_COLOR_LIST,
   APP_PRESET_COLOR_LIST,
-} from '@ent-core/settings/design-setting';
+} from '@ent-core/logics/settings/design-setting';
 
 export default defineComponent({
   name: 'SettingDrawer',
