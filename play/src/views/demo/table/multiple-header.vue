@@ -8,7 +8,7 @@
   import { EntTable, useTable } from 'fe-ent-core/lib/components/table';
   import { getMultipleHeaderColumns } from './table-data';
 
-  import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
+  import { demoListApi } from 'fe-ent-core/lib/logics/api/demo/table';
   export default defineComponent({
     components: { EntTable },
     setup() {

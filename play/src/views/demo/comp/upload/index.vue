@@ -22,7 +22,7 @@
   import { EntForm, FormSchema, useForm } from 'fe-ent-core/lib/components/form';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { Alert } from 'ant-design-vue';
-  import { uploadApi } from 'fe-ent-core/lib/api/sys/upload';
+  import { uploadApi } from 'fe-ent-core/lib/logics/api/sys/upload';
 
   const schemas: FormSchema[] = [
     {

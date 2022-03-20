@@ -1,7 +1,7 @@
 import { registerPageNotFoundRoute } from '@ent-core/router/routes/basic';
 import { registerRedirectRoute } from '@ent-core/router/routes/basic';
 import { mainOutRoutes } from '@ent-core/router/routes/main-out';
-import { PageEnum } from '@ent-core/enums/page-enum';
+import { PageEnum } from '@ent-core/logics/enums/page-enum';
 import type { AppRouteRecordRaw } from '@ent-core/router/types';
 import Login from '@ent-core/views/sys/login/login.vue';
 

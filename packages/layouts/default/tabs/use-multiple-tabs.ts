@@ -4,7 +4,7 @@ import { useDesign } from '@ent-core/hooks/web/use-design';
 import { useSortable } from '@ent-core/hooks/web/use-sortable';
 import { useMultipleTabStore } from '@ent-core/store/modules/multiple-tab';
 import { isNullAndUnDef } from '@ent-core/utils/is';
-import projectSetting from '@ent-core/settings/project-setting';
+import projectSetting from '@ent-core/logics/settings/project-setting';
 import { useRouter } from 'vue-router';
 
 export function initAffixTabs(): string[] {

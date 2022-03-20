@@ -17,7 +17,7 @@
 
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useErrorLogStore } from '@ent-core/store/modules/error-log';
-  import { PageEnum } from '@ent-core/enums/page-enum';
+  import { PageEnum } from '@ent-core/logics/enums/page-enum';
 
   import { useRouter } from 'vue-router';
 

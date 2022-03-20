@@ -1,4 +1,4 @@
-import { ThemeEnum } from '../enums/app-enum';
+import { ThemeEnum } from '@ent-core/logics/enums/app-enum';
 
 export const prefixCls = 'vben';
 

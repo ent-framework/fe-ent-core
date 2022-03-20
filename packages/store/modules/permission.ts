@@ -9,19 +9,19 @@ import { toRaw } from 'vue';
 import { transformObjToRoute, flatMultiLevelRoutes } from '@ent-core/router/helper/route-helper';
 import { transformRouteToMenu } from '@ent-core/router/helper/menu-helper';
 
-import projectSetting from '@ent-core/settings/project-setting';
+import projectSetting from '@ent-core/logics/settings/project-setting';
 
-import { PermissionModeEnum } from '@ent-core/enums/app-enum';
+import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
 
 import { registerErrorLogRoute, registerPageNotFoundRoute } from '@ent-core/router/routes/basic';
 
 import { filter } from '@ent-core/utils/helper/tree-helper';
 
-import { getMenuList } from '@ent-core/api/sys/menu';
-import { getPermCode } from '@ent-core/api/sys/user';
+import { getMenuList } from '@ent-core/logics/api/sys/menu';
+import { getPermCode } from '@ent-core/logics/api/sys/user';
 
 import { useMessage } from '@ent-core/hooks/web/use-message';
-import { PageEnum } from '@ent-core/enums/page-enum';
+import { PageEnum } from '@ent-core/logics/enums/page-enum';
 import { router } from '@ent-core/router';
 
 export interface PermissionState {

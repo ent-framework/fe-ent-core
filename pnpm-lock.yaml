@@ -11,20 +11,16 @@ importers:
     specifiers:
       '@commitlint/cli': ^14.1.0
       '@commitlint/config-conventional': ^14.1.0
-      '@ent-core/api': workspace:*
       '@ent-core/assets': workspace:*
       '@ent-core/components': workspace:*
       '@ent-core/directives': workspace:*
-      '@ent-core/enums': workspace:*
       '@ent-core/hooks': workspace:*
       '@ent-core/layouts': workspace:*
       '@ent-core/locales': workspace:*
       '@ent-core/logics': workspace:*
       '@ent-core/router': workspace:*
-      '@ent-core/settings': workspace:*
       '@ent-core/store': workspace:*
       '@ent-core/theme': workspace:*
-      '@ent-core/types': workspace:*
       '@ent-core/utils': workspace:*
       '@ent-core/views': workspace:*
       '@fe-ent-extension/code-editor': workspace:*
@@ -133,20 +129,16 @@ importers:
       vue-router: ^4.0.12
       vue-types: ^4.1.1
     dependencies:
-      '@ent-core/api': link:packages/api
       '@ent-core/assets': link:packages/assets
       '@ent-core/components': link:packages/components
       '@ent-core/directives': link:packages/directives
-      '@ent-core/enums': link:packages/enums
       '@ent-core/hooks': link:packages/hooks
       '@ent-core/layouts': link:packages/layouts
       '@ent-core/locales': link:packages/locales
       '@ent-core/logics': link:packages/logics
       '@ent-core/router': link:packages/router
-      '@ent-core/settings': link:packages/settings
       '@ent-core/store': link:packages/store
       '@ent-core/theme': link:packages/theme
-      '@ent-core/types': link:packages/types
       '@ent-core/utils': link:packages/utils
       '@ent-core/views': link:packages/views
       '@fe-ent-extension/code-editor': link:extensions/code-editor
@@ -382,9 +374,6 @@ importers:
       vue: 3.2.31
       vue-demi: 0.12.1_vue@3.2.31
 
-  packages/api:
-    specifiers: {}
-
   packages/assets:
     specifiers: {}
 
@@ -392,9 +381,6 @@ importers:
     specifiers: {}
 
   packages/directives:
-    specifiers: {}
-
-  packages/enums:
     specifiers: {}
 
   packages/fe-ent-core:
@@ -481,16 +467,10 @@ importers:
   packages/router:
     specifiers: {}
 
-  packages/settings:
-    specifiers: {}
-
   packages/store:
     specifiers: {}
 
   packages/theme:
-    specifiers: {}
-
-  packages/types:
     specifiers: {}
 
   packages/utils:

@@ -11,7 +11,7 @@
 <script lang="ts">
   import { defineComponent, computed } from 'vue';
   import { useAppStore } from 'fe-ent-core/lib/store/modules/app';
-  import { PermissionModeEnum } from 'fe-ent-core/lib/enums/app-enum';
+  import { PermissionModeEnum } from 'fe-ent-core/lib/logics/enums/app-enum';
   import { Divider } from 'ant-design-vue';
   import { usePermission } from 'fe-ent-core/lib/hooks/web/use-permission';
   export default defineComponent({

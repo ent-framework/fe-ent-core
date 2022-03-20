@@ -1,12 +1,12 @@
-import type { ErrorLogInfo } from '@ent-core/types/store';
+import type { ErrorLogInfo } from '@ent-core/logics/types/store';
 
 import { defineStore } from 'pinia';
 import { store } from '@ent-core/store/pinia';
 
 import { formatToDateTime } from '@ent-core/utils/date-util';
-import projectSetting from '@ent-core/settings/project-setting';
+import projectSetting from '@ent-core/logics/settings/project-setting';
 
-import { ErrorTypeEnum } from '@ent-core/enums/exception-enum';
+import { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
 
 export interface ErrorLogState {
   errorLogInfoList: Nullable<ErrorLogInfo[]>;

@@ -1,4 +1,4 @@
-import { BasicPageParams, BasicFetchResult } from '@ent-core/api';
+import { BasicPageParams, BasicFetchResult } from '@ent-core/logics/api';
 
 export type AccountParams = BasicPageParams & {
   account?: string;

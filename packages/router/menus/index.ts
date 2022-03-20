@@ -7,7 +7,7 @@ import { transformMenuModule, getAllParentPath } from '@ent-core/router/helper/m
 import { filter } from '@ent-core/utils/helper/tree-helper';
 import { isUrl } from '@ent-core/utils/is';
 import { router } from '@ent-core/router';
-import { PermissionModeEnum } from '@ent-core/enums/app-enum';
+import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
 import { pathToRegexp } from 'path-to-regexp';
 
 export const importMenuModules = (modules: Record<string, { [key: string]: any }>) => {

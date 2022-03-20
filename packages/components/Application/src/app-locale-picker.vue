@@ -21,13 +21,13 @@
   export default { name: 'AppLocalePicker' };
 </script>
 <script lang="ts" setup>
-  import type { LocaleType } from '@ent-core/types/config';
+  import type { LocaleType } from '@ent-core/logics/types/config';
   import type { DropMenu } from '@ent-core/components/dropdown';
   import { ref, watchEffect, unref, computed, defineComponent } from 'vue';
   import { EntDropdown } from '@ent-core/components/dropdown';
   import { EntIcon } from '@ent-core/components/icon';
   import { useLocale } from '@ent-core/locales/use-locale';
-  import { localeList } from '@ent-core/settings/locale-setting';
+  import { localeList } from '@ent-core/logics/settings/locale-setting';
   const props = defineProps({
     /**
      * Whether to display text

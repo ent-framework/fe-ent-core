@@ -12,7 +12,7 @@
   import { useUserStore } from '@ent-core/store/modules/user';
   import { usePermissionStore } from '@ent-core/store/modules/permission';
   import { useAppStore } from '@ent-core/store/modules/app';
-  import { PermissionModeEnum } from '@ent-core/enums/app-enum';
+  import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
 
   const { prefixCls } = useDesign('st-login');
   const userStore = useUserStore();

@@ -1,7 +1,7 @@
 import { UploadApiResult } from './model/upload-model';
 import { defHttp } from '@ent-core/utils/http/axios';
 import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
-import type { UploadFileParams } from '@ent-core/types/axios';
+import type { UploadFileParams } from '@ent-core/logics/types/axios';
 const { uploadUrl = '' } = useGlobSetting();
 
 /**

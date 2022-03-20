@@ -1,4 +1,4 @@
-import { SizeEnum } from '@ent-core/enums/size-enum';
+import { SizeEnum } from '@ent-core/logics/enums/size-enum';
 
 export interface LoadingProps {
   tip: string;

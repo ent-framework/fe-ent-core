@@ -33,7 +33,7 @@
 
   import { updateColorWeak } from '@ent-core/logics/theme/update-color-weak';
   import { updateGrayMode } from '@ent-core/logics/theme/update-gray-mode';
-  import defaultSetting from '@ent-core/settings/project-setting';
+  import defaultSetting from '@ent-core/logics/settings/project-setting';
 
   export default defineComponent({
     name: 'SettingFooter',

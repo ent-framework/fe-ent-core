@@ -1,8 +1,8 @@
-import type { LockInfo } from '@ent-core/types/store';
+import type { LockInfo } from '@ent-core/logics/types/store';
 
 import { defineStore } from 'pinia';
 
-import { LOCK_INFO_KEY } from '@ent-core/enums/cache-enum';
+import { LOCK_INFO_KEY } from '@ent-core/logics/enums/cache-enum';
 import { Persistent } from '@ent-core/utils/cache/persistent';
 import { useUserStore } from './user';
 

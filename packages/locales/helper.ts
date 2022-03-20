@@ -1,4 +1,4 @@
-import type { LocaleType } from '@ent-core/types/config';
+import type { LocaleType } from '@ent-core/logics/types/config';
 
 export const loadLocalePool: LocaleType[] = [];
 

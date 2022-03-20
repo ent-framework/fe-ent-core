@@ -30,7 +30,7 @@
   import { defineComponent } from 'vue';
 
   import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/table';
-  import { getDeptList } from 'fe-ent-core/lib/api/demo/system';
+  import { getDeptList } from 'fe-ent-core/lib/logics/api/demo/system';
 
   import { useModal } from 'fe-ent-core/lib/components/modal';
   import DeptModal from './dept-modal.vue';

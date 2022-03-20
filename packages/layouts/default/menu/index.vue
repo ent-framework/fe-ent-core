@@ -6,7 +6,7 @@
   import { SimpleMenu } from '@ent-core/components/simple-menu';
   import AppLogo from '@ent-core/layouts/default/components/app-logo.vue';
 
-  import { MenuModeEnum, MenuSplitTyeEnum } from '@ent-core/enums/menu-enum';
+  import { MenuModeEnum, MenuSplitTyeEnum } from '@ent-core/logics/enums/menu-enum';
 
   import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
   import { EntScrollContainer } from '@ent-core/components/container';

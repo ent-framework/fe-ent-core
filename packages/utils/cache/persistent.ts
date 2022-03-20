@@ -1,5 +1,5 @@
-import type { LockInfo, UserInfo } from '@ent-core/types/store';
-import type { ProjectConfig } from '@ent-core/types/config';
+import type { LockInfo, UserInfo } from '@ent-core/logics/types/store';
+import type { ProjectConfig } from '@ent-core/logics/types/config';
 import type { RouteLocationNormalized } from 'vue-router';
 
 import { createLocalStorage, createSessionStorage } from '@ent-core/utils/cache';
@@ -13,8 +13,8 @@ import {
   APP_LOCAL_CACHE_KEY,
   APP_SESSION_CACHE_KEY,
   MULTIPLE_TABS_KEY,
-} from '@ent-core/enums/cache-enum';
-import { DEFAULT_CACHE_TIME } from '@ent-core/settings/encryption-setting';
+} from '@ent-core/logics/enums/cache-enum';
+import { DEFAULT_CACHE_TIME } from '@ent-core/logics/settings/encryption-setting';
 import { toRaw } from 'vue';
 import { pick, omit } from 'lodash';
 

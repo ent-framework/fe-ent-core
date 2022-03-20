@@ -3,7 +3,7 @@ import {
   MenuModeEnum,
   TriggerEnum,
   MixSidebarTriggerEnum,
-} from '@ent-core/enums/menu-enum';
+} from '@ent-core/logics/enums/menu-enum';
 import {
   ContentEnum,
   PermissionModeEnum,
@@ -11,9 +11,9 @@ import {
   RouterTransitionEnum,
   SettingButtonPositionEnum,
   SessionTimeoutProcessingEnum,
-} from '@ent-core/enums/app-enum';
+} from '@ent-core/logics/enums/app-enum';
 
-import { CacheTypeEnum } from '@ent-core/enums/cache-enum';
+import { CacheTypeEnum } from '@ent-core/logics/enums/cache-enum';
 
 export type LocaleType = 'zh_CN' | 'en' | 'ru' | 'ja' | 'ko';
 

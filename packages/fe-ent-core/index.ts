@@ -19,7 +19,7 @@ export default install;
 export * from '@ent-core/locales/use-locale';
 export * from '@ent-core/components';
 export * from '@ent-core/directives';
-export * from '@ent-core/enums';
+export * from '@ent-core/logics/enums';
 export * from '@ent-core/hooks';
 export * from '@ent-core/logics';
 export * from '@ent-core/utils';

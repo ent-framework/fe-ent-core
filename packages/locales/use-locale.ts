@@ -1,7 +1,7 @@
 /**
  * Multi-language related operations
  */
-import type { LocaleType } from '@ent-core/types/config';
+import type { LocaleType } from '@ent-core/logics/types/config';
 
 import moment from 'moment';
 

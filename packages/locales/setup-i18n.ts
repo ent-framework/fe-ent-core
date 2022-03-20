@@ -3,7 +3,7 @@ import type { I18n, I18nOptions } from 'vue-i18n';
 
 import { createI18n } from 'vue-i18n';
 import { setHtmlPageLang, setLoadLocalePool } from './helper';
-import { localeSetting } from '@ent-core/settings/locale-setting';
+import { localeSetting } from '@ent-core/logics/settings/locale-setting';
 import { useLocaleStoreWithOut } from '@ent-core/store/modules/locale';
 import zhCN from './lang/zh-cn';
 import en from './lang/en';

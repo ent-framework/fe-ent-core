@@ -22,7 +22,7 @@
   import { computed, defineComponent, unref, reactive, watch, toRefs, ref } from 'vue';
   import { Menu } from 'ant-design-vue';
   import BasicSubMenuItem from './components/basic-sub-menu-item.vue';
-  import { MenuModeEnum, MenuTypeEnum } from '@ent-core/enums/menu-enum';
+  import { MenuModeEnum, MenuTypeEnum } from '@ent-core/logics/enums/menu-enum';
   import { useOpenKeys } from './use-open-keys';
   import { RouteLocationNormalizedLoaded, useRouter } from 'vue-router';
   import { isFunction } from '@ent-core/utils/is';

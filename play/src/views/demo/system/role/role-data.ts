@@ -2,7 +2,7 @@ import { BasicColumn } from 'fe-ent-core/lib/components/table';
 import { FormSchema } from 'fe-ent-core/lib/components/form';
 import { h } from 'vue';
 import { Switch } from 'ant-design-vue';
-import { setRoleStatus } from 'fe-ent-core/lib/api/demo/system';
+import { setRoleStatus } from 'fe-ent-core/lib/logics/api/demo/system';
 import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
 
 export const columns: BasicColumn[] = [

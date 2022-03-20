@@ -11,10 +11,10 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { EntTable, useTable, BasicColumn } from 'fe-ent-core/lib/components/table';
-  import { optionsListApi } from 'fe-ent-core/lib/api/demo/select';
+  import { optionsListApi } from 'fe-ent-core/lib/logics/api/demo/select';
 
-  import { demoListApi } from 'fe-ent-core/lib/api/demo/table';
-  import { treeOptionsListApi } from 'fe-ent-core/lib/api/demo/tree';
+  import { demoListApi } from 'fe-ent-core/lib/logics/api/demo/table';
+  import { treeOptionsListApi } from 'fe-ent-core/lib/logics/api/demo/tree';
   import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
   const columns: BasicColumn[] = [
     {

@@ -64,7 +64,7 @@
   import { Alert, Divider } from 'ant-design-vue';
   import CurrentPermissionMode from '../current-permission-mode.vue';
   import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
-  import { RoleEnum } from 'fe-ent-core/lib/enums/role-enum';
+  import { RoleEnum } from 'fe-ent-core/lib/logics/enums/role-enum';
   import { usePermission } from 'fe-ent-core/lib/hooks/web/use-permission';
   import { EntAuthority as Authority } from 'fe-ent-core/lib/components/authority';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';

@@ -17,7 +17,7 @@
 
   import { GithubFilled } from '@ant-design/icons-vue';
 
-  import { DOC_URL, GITHUB_URL, SITE_URL } from '@ent-core/settings/site-setting';
+  import { DOC_URL, GITHUB_URL, SITE_URL } from '@ent-core/logics/settings/site-setting';
   import { openWindow } from '@ent-core/utils';
 
   import { useI18n } from '@ent-core/hooks/web/use-i18n';

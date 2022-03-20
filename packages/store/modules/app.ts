@@ -4,16 +4,16 @@ import type {
   MenuSetting,
   TransitionSetting,
   MultiTabsSetting,
-} from '@ent-core/types/config';
-import type { BeforeMiniState } from '@ent-core/types/store';
+} from '@ent-core/logics/types/config';
+import type { BeforeMiniState } from '@ent-core/logics/types/store';
 
 import { defineStore } from 'pinia';
 import { store } from '@ent-core/store/pinia';
 
-import { ThemeEnum } from '@ent-core/enums/app-enum';
-import { APP_DARK_MODE_KEY_, PROJ_CFG_KEY } from '@ent-core/enums/cache-enum';
+import { ThemeEnum } from '@ent-core/logics/enums/app-enum';
+import { APP_DARK_MODE_KEY_, PROJ_CFG_KEY } from '@ent-core/logics/enums/cache-enum';
 import { Persistent } from '@ent-core/utils/cache/persistent';
-import { darkMode } from '@ent-core/settings/design-setting';
+import { darkMode } from '@ent-core/logics/settings/design-setting';
 import { resetRouter } from '@ent-core/router';
 import { deepMerge } from '@ent-core/utils';
 

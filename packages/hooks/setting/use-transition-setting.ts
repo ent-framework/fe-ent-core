@@ -1,4 +1,4 @@
-import type { TransitionSetting } from '@ent-core/types/config';
+import type { TransitionSetting } from '@ent-core/logics/types/config';
 
 import { computed } from 'vue';
 

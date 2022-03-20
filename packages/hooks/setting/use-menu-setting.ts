@@ -1,11 +1,11 @@
-import type { MenuSetting } from '@ent-core/types/config';
+import type { MenuSetting } from '@ent-core/logics/types/config';
 
 import { computed, unref, ref } from 'vue';
 
 import { useAppStore } from '@ent-core/store/modules/app';
 
-import { SIDE_BAR_MINI_WIDTH, SIDE_BAR_SHOW_TIT_MINI_WIDTH } from '@ent-core/enums/app-enum';
-import { MenuModeEnum, MenuTypeEnum, TriggerEnum } from '@ent-core/enums/menu-enum';
+import { SIDE_BAR_MINI_WIDTH, SIDE_BAR_SHOW_TIT_MINI_WIDTH } from '@ent-core/logics/enums/app-enum';
+import { MenuModeEnum, MenuTypeEnum, TriggerEnum } from '@ent-core/logics/enums/menu-enum';
 import { useFullContent } from '@ent-core/hooks/web/use-full-content';
 
 const mixSideHasChildren = ref(false);

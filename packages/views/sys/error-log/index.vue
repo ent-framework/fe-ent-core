@@ -26,19 +26,16 @@
     </ent-table>
   </div>
 </template>
-<script lang="ts">
-  export default { name: 'ErrorLog' };
-</script>
 <script lang="ts" setup>
-  import type { ErrorLogInfo } from '@ent-core/types/store';
-  import { watch, ref, nextTick, defineComponent } from 'vue';
+  import type { ErrorLogInfo } from '@ent-core/logics/types/store';
+  import { watch, ref, nextTick } from 'vue';
   import DetailModal from './detail-modal.vue';
-  import { useTable } from '@ent-core/components/table';
-  import { useModal } from '@ent-core/components/modal';
+  import { useTable } from '@ent-core/components/table/src/hooks/use-table';
+  import { useModal } from '@ent-core/components/modal/src/hooks/use-modal';
   import { useMessage } from '@ent-core/hooks/web/use-message';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useErrorLogStore } from '@ent-core/store/modules/error-log';
-  import { fireErrorApi } from '@ent-core/api/demo/error';
+  import { fireErrorApi } from '@ent-core/logics/api/demo/error';
   import { getColumns } from './data';
   import { cloneDeep } from 'lodash';
   import { isDevMode } from '@ent-core/utils/env';
@@ -59,10 +56,6 @@
     },
   });
   const [registerModal, { openModal }] = useModal();
-
-  defineComponent({
-    name: 'ErrorLog',
-  });
 
   watch(
     () => errorLogStore.getErrorLogInfoList,

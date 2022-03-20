@@ -10,7 +10,7 @@ import { setRouteChange } from '@ent-core/logics/mitt/route-change';
 import { createPermissionGuard } from './permission-guard';
 import { createStateGuard } from './state-guard';
 import nProgress from 'nprogress';
-import projectSetting from '@ent-core/settings/project-setting';
+import projectSetting from '@ent-core/logics/settings/project-setting';
 import { createParamMenuGuard } from './param-menu-guard';
 
 // Don't change the order of creation

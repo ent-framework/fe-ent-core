@@ -7,12 +7,12 @@ import { store } from '@ent-core/store/pinia';
 import { useGo, useRedo } from '@ent-core/hooks/web/use-page';
 import { Persistent } from '@ent-core/utils/cache/persistent';
 
-import { PageEnum } from '@ent-core/enums/page-enum';
+import { PageEnum } from '@ent-core/logics/enums/page-enum';
 import { registerPageNotFoundRoute, registerRedirectRoute } from '@ent-core/router/routes/basic';
 import { getRawRoute } from '@ent-core/utils';
-import { MULTIPLE_TABS_KEY } from '@ent-core/enums/cache-enum';
+import { MULTIPLE_TABS_KEY } from '@ent-core/logics/enums/cache-enum';
 
-import projectSetting from '@ent-core/settings/project-setting';
+import projectSetting from '@ent-core/logics/settings/project-setting';
 import { useUserStore } from '@ent-core/store/modules/user';
 
 export interface MultipleTabState {

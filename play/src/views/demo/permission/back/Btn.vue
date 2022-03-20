@@ -64,7 +64,7 @@
   import { usePermission } from 'fe-ent-core/lib/hooks/web/use-permission';
   import { EntAuthority as Authority } from 'fe-ent-core/lib/components/authority';
   import { usePermissionStore } from 'fe-ent-core/lib/store/modules/permission';
-  import { PermissionModeEnum } from 'fe-ent-core/lib/enums/app-enum';
+  import { PermissionModeEnum } from 'fe-ent-core/lib/logics/enums/app-enum';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { useAppStore } from 'fe-ent-core/lib/store/modules/app';
   import { useUserStore } from 'fe-ent-core/lib/store/modules/user';

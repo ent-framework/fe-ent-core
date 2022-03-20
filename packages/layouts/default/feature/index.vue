@@ -7,7 +7,7 @@
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useUserStoreWithOut } from '@ent-core/store/modules/user';
 
-  import { SettingButtonPositionEnum } from '@ent-core/enums/app-enum';
+  import { SettingButtonPositionEnum } from '@ent-core/logics/enums/app-enum';
 
   import SessionTimeoutLogin from '@ent-core/views/sys/login/session-timeout-login.vue';
   import LayoutLockPage from '@ent-core/views/sys/lock/index.vue';

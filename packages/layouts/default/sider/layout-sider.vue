@@ -32,7 +32,7 @@
   import LayoutMenu from '../menu/index.vue';
   import LayoutTrigger from '@ent-core/layouts/default/trigger/index.vue';
 
-  import { MenuModeEnum, MenuSplitTyeEnum } from '@ent-core/enums/menu-enum';
+  import { MenuModeEnum, MenuSplitTyeEnum } from '@ent-core/logics/enums/menu-enum';
 
   import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
   import { useTrigger, useDragLine, useSiderEvent } from './use-layout-sider';

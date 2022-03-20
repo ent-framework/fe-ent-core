@@ -1,11 +1,11 @@
-import type { ProjectConfig } from '@ent-core/types/config';
+import type { ProjectConfig } from '@ent-core/logics/types/config';
 import {
   MenuTypeEnum,
   MenuModeEnum,
   TriggerEnum,
   MixSidebarTriggerEnum,
-} from '@ent-core/enums/menu-enum';
-import { CacheTypeEnum } from '@ent-core/enums/cache-enum';
+} from '@ent-core/logics/enums/menu-enum';
+import { CacheTypeEnum } from '@ent-core/logics/enums/cache-enum';
 import {
   ContentEnum,
   PermissionModeEnum,
@@ -13,9 +13,9 @@ import {
   RouterTransitionEnum,
   SettingButtonPositionEnum,
   SessionTimeoutProcessingEnum,
-} from '@ent-core/enums/app-enum';
+} from '@ent-core/logics/enums/app-enum';
 import { SIDE_BAR_BG_COLOR_LIST, HEADER_PRESET_BG_COLOR_LIST } from './design-setting';
-import { primaryColor } from '../utils/theme-config';
+import { primaryColor } from '@ent-core/utils/theme-config';
 
 // ! You need to clear the browser cache after the change
 const setting: ProjectConfig = {

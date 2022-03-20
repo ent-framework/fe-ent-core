@@ -9,9 +9,9 @@ import { useTabs } from './use-tabs';
 import { router, resetRouter } from '@ent-core/router';
 // import { RootRoute } from '@ent-core/router/routes';
 
-import projectSetting from '@ent-core/settings/project-setting';
-import { PermissionModeEnum } from '@ent-core/enums/app-enum';
-import { RoleEnum } from '@ent-core/enums/role-enum';
+import projectSetting from '@ent-core/logics/settings/project-setting';
+import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
+import { RoleEnum } from '@ent-core/logics/enums/role-enum';
 
 import { intersection } from 'lodash';
 import { isArray } from '@ent-core/utils/is';

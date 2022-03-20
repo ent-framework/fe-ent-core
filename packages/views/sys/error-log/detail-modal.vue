@@ -1,26 +1,21 @@
 <template>
-  <EntModal :width="800" :title="t('sys.errorLog.tableActionDesc')" v-bind="$attrs">
-    <EntDescription :data="info" @register="register" />
-  </EntModal>
+  <!--  使用tag解耦，在register-glob-comp.ts 中注册成全局组件-->
+  <ent-modal :width="800" :title="t('sys.errorLog.tableActionDesc')" v-bind="$attrs">
+    <ent-description :data="info" @register="register" />
+  </ent-modal>
 </template>
 <script lang="ts" setup>
   import type { PropType } from 'vue';
-  import type { ErrorLogInfo } from '@ent-core/types/store';
-  import { EntModal } from '@ent-core/components/modal';
-  import { EntDescription, useDescription } from '@ent-core/components/description';
+  import type { ErrorLogInfo } from '@ent-core/logics/types/store';
+  import { useDescription } from '@ent-core/components/description/src/use-description';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { getDescSchema } from './data';
-  import { defineComponent } from 'vue';
 
   defineProps({
     info: {
       type: Object as PropType<ErrorLogInfo>,
       default: null,
     },
-  });
-
-  defineComponent({
-    components: { EntModal, EntDescription },
   });
 
   const { t } = useI18n();

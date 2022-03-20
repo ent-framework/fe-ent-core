@@ -8,7 +8,7 @@ import type {
 
 import { ComponentType } from './component-type';
 import { VueNode } from '@ent-core/utils/prop-types';
-import { RoleEnum } from '@ent-core/enums/role-enum';
+import { RoleEnum } from '@ent-core/logics/enums/role-enum';
 
 export declare type SortOrder = 'ascend' | 'descend';
 

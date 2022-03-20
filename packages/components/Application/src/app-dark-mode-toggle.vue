@@ -18,7 +18,7 @@
     updateSidebarBgColor,
   } from '@ent-core/logics/theme/update-background';
   import { updateDarkTheme } from '@ent-core/logics/theme/dark';
-  import { ThemeEnum } from '@ent-core/enums/app-enum';
+  import { ThemeEnum } from '@ent-core/logics/enums/app-enum';
 
   const { prefixCls } = useDesign('dark-switch');
   const { getDarkMode, setDarkMode, getShowDarkModeToggle } = useRootSetting();

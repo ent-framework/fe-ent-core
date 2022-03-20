@@ -1,10 +1,10 @@
 /**
  * Application configuration
  */
-import type { ProjectConfig } from '@ent-core/types/config';
+import type { ProjectConfig } from '@ent-core/logics/types/config';
 
-import { PROJ_CFG_KEY } from '@ent-core/enums/cache-enum';
-import projectSetting from '@ent-core/settings/project-setting';
+import { PROJ_CFG_KEY } from '@ent-core/logics/enums/cache-enum';
+import projectSetting from '@ent-core/logics/settings/project-setting';
 
 import { updateHeaderBgColor, updateSidebarBgColor } from '@ent-core/logics/theme/update-background';
 import { updateColorWeak } from '@ent-core/logics/theme/update-color-weak';
@@ -20,7 +20,7 @@ import { getCommonStoragePrefix, getStorageShortName } from '@ent-core/utils/env
 import { primaryColor } from '../utils/theme-config';
 import { Persistent } from '@ent-core/utils/cache/persistent';
 import { deepMerge } from '@ent-core/utils';
-import { ThemeEnum } from '@ent-core/enums/app-enum';
+import { ThemeEnum } from '@ent-core/logics/enums/app-enum';
 
 // Initial project configuration
 export function initAppConfigStore() {
