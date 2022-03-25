@@ -24,6 +24,7 @@
       <a-button @click="handleSuccessModal" color="success" class="mr-2"> Success </a-button>
       <a-button @click="handleErrorModal" color="error" class="mr-2"> Error </a-button>
       <a-button @click="handleWarningModal" color="warning" class="mr-2"> Warning </a-button>
+      <a-button @click="handleAjax" color="warning" class="mr-2"> test ajax error </a-button>
     </CollapseContainer>
 
     <CollapseContainer
@@ -39,6 +40,7 @@
   import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
   import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { defHttp } from 'fe-ent-core/lib/utils/http/axios';
 
   export default defineComponent({
     components: { CollapseContainer: EntCollapseContainer, EntPageWrapper },
@@ -76,6 +78,19 @@
       function handleInfoModal() {
         createInfoModal({ title: 'Tip', content: 'content message...' });
       }
+      function handleAjax() {
+        defHttp.post({
+          url: '/hr-organization/add',
+          data: {
+            orgName: 'd',
+            orgCode: 'a',
+            orgSort: 1,
+            statusFlag: 1,
+            orgRemark: 'a',
+            orgId: -1,
+          },
+        });
+      }
       function handleNotify() {
         notification.success({
           message: 'Tip',
@@ -94,6 +109,7 @@
         handleWarningModal,
         handleInfoModal,
         handleNotify,
+        handleAjax,
       };
     },
   });

@@ -38,7 +38,7 @@
   import { defineComponent, reactive } from 'vue';
 
   import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/table';
-  import { getAccountList } from 'fe-ent-core/lib/logics/api/demo/system';
+  import { getAccountList } from '/@/api/system';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import DeptTree from './dept-tree.vue';
 

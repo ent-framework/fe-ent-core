@@ -1,5 +1,5 @@
 import { defHttp } from '@ent-core/utils/http/axios';
-import { GetAccountInfoModel } from './model/account-model';
+import { GetAccountInfoModel } from '../model/account-model';
 
 enum Api {
   ACCOUNT_INFO = '/api/account/getAccountInfo',

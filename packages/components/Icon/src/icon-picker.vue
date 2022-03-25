@@ -169,6 +169,7 @@
 
   function handleClick(icon: string) {
     currentSelect.value = icon;
+    console.log(currentSelect.value);
     if (props.copy) {
       clipboardRef.value = icon;
       if (unref(isSuccessRef)) {

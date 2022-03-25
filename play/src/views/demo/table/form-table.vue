@@ -28,7 +28,7 @@
   import { getBasicColumns, getFormConfig } from './table-data';
   import { Alert } from 'ant-design-vue';
 
-  import { demoListApi } from 'fe-ent-core/lib/logics/api/demo/table';
+  import { demoListApi } from '/@/api/table';
 
   export default defineComponent({
     components: { EntTable, AAlert: Alert },

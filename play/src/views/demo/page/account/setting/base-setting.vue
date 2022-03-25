@@ -31,7 +31,7 @@
   import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
 
   import headerImg from 'fe-ent-core/lib/assets/images/header.jpg';
-  import { accountInfoApi } from 'fe-ent-core/lib/logics/api/demo/account';
+  import { accountInfoApi } from '/@/api/account';
   import { baseSetschemas } from './data';
   import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
   import { uploadApi } from 'fe-ent-core/lib/logics/api/sys/upload';

@@ -9,7 +9,7 @@
   import { EntForm, useForm } from 'fe-ent-core/lib/components/form';
   import { formSchema } from './dept-data';
 
-  import { getDeptList } from 'fe-ent-core/lib/logics/api/demo/system';
+  import { getDeptList } from '/@/api/system';
   export default defineComponent({
     name: 'DeptModal',
     components: { EntModal, EntForm },

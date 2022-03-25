@@ -17,8 +17,8 @@ import { registerErrorLogRoute, registerPageNotFoundRoute } from '@ent-core/rout
 
 import { filter } from '@ent-core/utils/helper/tree-helper';
 
-import { getMenuList } from '@ent-core/logics/api/sys/menu';
-import { getPermCode } from '@ent-core/logics/api/sys/user';
+import { getMenuList } from '@ent-core/logics/api/menu';
+import { getPermCode } from '@ent-core/logics/api/user';
 
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { PageEnum } from '@ent-core/logics/enums/page-enum';

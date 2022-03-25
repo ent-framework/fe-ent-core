@@ -138,7 +138,7 @@ const transform: AxiosTransform = {
     if (token && (config as Recordable)?.requestOptions?.withToken !== false) {
       // jwt token
       (config as Recordable).headers.Authorization = options.authenticationScheme
-        ? `${options.authenticationScheme} ${token}`
+        ? `${options.authenticationScheme}${token}`
         : token;
     }
     return config;
@@ -160,7 +160,10 @@ const transform: AxiosTransform = {
     errorLogStore.addAjaxErrorInfo(error);
     const { response, code, message, config } = error || {};
     const errorMessageMode = config?.requestOptions?.errorMessageMode || 'none';
-    const msg: string = response?.data?.error?.message ?? '';
+    //后端会对异常已经统一捕捉, 处理
+    //response?.data?.error?.message 主要针对spring 原生的错误返回
+    //response?.data?.message 封装后的
+    const msg: string = response?.data?.error?.message || response?.data?.message;
     const err: string = error?.toString?.() ?? '';
     let errMessage = '';
 
@@ -198,7 +201,7 @@ export function createAxios(opt?: Partial<CreateAxiosOptions>) {
         // See https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#authentication_schemes
         // authentication schemes，e.g: Bearer
         // authenticationScheme: 'Bearer',
-        authenticationScheme: 'Bearer',
+        authenticationScheme: '',
         timeout: 10 * 1000,
         // 基础接口地址
         // baseURL: globSetting.apiUrl,
