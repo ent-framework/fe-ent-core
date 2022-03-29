@@ -55,7 +55,7 @@ pnpm build:tools
 
 ```
 
-- 运行
+- 运行，登录账号: admin / 123456
 
 ```bash
 pnpm dev
