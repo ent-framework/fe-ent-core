@@ -17,7 +17,13 @@ export function getStorageShortName() {
 }
 
 export function getAppEnvConfig(): AppEnv {
-  const ENV_NAME = '__PRODUCTION__VBEN__APP__CONF__';
+  const getConfigFileName = (env: Record<string, any>) => {
+    return `__PRODUCTION__${env.VITE_GLOB_APP_SHORT_NAME || '__APP'}__CONF__`
+      .toUpperCase()
+      .replace(/\s/g, '');
+  };
+
+  const ENV_NAME = getConfigFileName(_ViteEnv);
 
   const ENV = (process.env.NODE_ENV !== 'production'
     ? // Get the global configuration (the configuration will be extracted independently when packaging)

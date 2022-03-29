@@ -100,6 +100,7 @@
   import { useUserStore } from '@ent-core/store/modules/user';
   import { LoginStateEnum, useLoginState, useFormRules, useFormValid } from './use-login';
   import { useDesign } from '@ent-core/hooks/web/use-design';
+  import type { AxiosError } from 'axios';
   //import { onKeyStroke } from '@vueuse/core';
 
   const ACol = Col;
@@ -149,7 +150,7 @@
     } catch (error) {
       createErrorModal({
         title: t('sys.api.errorTip'),
-        content: (error as unknown as Error).message || t('sys.api.networkExceptionMsg'),
+        content: (error as unknown as AxiosError)?.response?.data?.message || (error as unknown as Error).message || t('sys.api.networkExceptionMsg'),
         getContainer: () => document.body.querySelector(`.${prefixCls}`) || document.body,
       });
     } finally {

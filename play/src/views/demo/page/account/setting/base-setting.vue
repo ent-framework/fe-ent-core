@@ -34,7 +34,7 @@
   import { accountInfoApi } from '/@/api/account';
   import { baseSetschemas } from './data';
   import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
-  import { uploadApi } from 'fe-ent-core/lib/logics/api/sys/upload';
+  import { uploadApi } from 'fe-ent-core/lib/logics/api/upload';
 
   export default defineComponent({
     components: {

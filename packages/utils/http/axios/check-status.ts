@@ -69,7 +69,6 @@ export function checkStatus(
       break;
     default:
   }
-
   if (errMessage) {
     if (errorMessageMode === 'modal') {
       createErrorModal({ title: t('sys.api.errorTip'), content: errMessage });
