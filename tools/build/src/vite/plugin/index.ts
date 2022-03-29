@@ -14,6 +14,7 @@ import { configThemePlugin } from './theme';
 import { configImageminPlugin } from './imagemin';
 import { configSvgIconsPlugin } from './svgSprite';
 import { configHmrPlugin } from './hmr';
+import { generateEnvFilePlugin } from './env-file';
 import { configWindiPlugin } from './windi';
 import { getCurrExecPath, OUTPUT_DIR, findWorkspaceRoot } from '../../utils';
 import type { BuildOptions } from 'vite';
@@ -54,6 +55,8 @@ export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) 
 
   // vite-plugin-html
   configEnv.runMode != 'lib' && vitePlugins.push(configHtmlPlugin(viteEnv, isBuild));
+
+  configEnv.runMode != 'lib' && vitePlugins.push(generateEnvFilePlugin());
 
   // vite-plugin-svg-icons
   vitePlugins.push(configSvgIconsPlugin(isBuild, !!configEnv.libDev));

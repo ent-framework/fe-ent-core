@@ -37,7 +37,7 @@
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { getBasicColumns } from './table-data';
 
-  import { demoListApi } from 'fe-ent-core/lib/logics/api/demo/table';
+  import { demoListApi } from '/@/api/table';
 
   export default defineComponent({
     components: { EntTable, EntTableAction, EntPageWrapper },

@@ -12,9 +12,6 @@
         <a-button @click="fireResourceError" type="primary">
           {{ t('sys.errorLog.fireResourceError') }}
         </a-button>
-        <a-button @click="fireAjaxError" type="primary">
-          {{ t('sys.errorLog.fireAjaxError') }}
-        </a-button>
       </template>
       <template #action="{ record }">
         <ent-table-action
@@ -35,7 +32,6 @@
   import { useMessage } from '@ent-core/hooks/web/use-message';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useErrorLogStore } from '@ent-core/store/modules/error-log';
-  import { fireErrorApi } from '@ent-core/logics/api/demo/error';
   import { getColumns } from './data';
   import { cloneDeep } from 'lodash';
   import { isDevMode } from '@ent-core/utils/env';
@@ -84,9 +80,5 @@
 
   function fireResourceError() {
     imgList.value.push(`${new Date().getTime()}.png`);
-  }
-
-  async function fireAjaxError() {
-    await fireErrorApi();
   }
 </script>

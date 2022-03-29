@@ -27,6 +27,7 @@ export const LoginRoute: AppRouteRecordRaw = {
 
 // 绑定了component，需要优化
 // Basic routing without permission
+// TODO FIX, 分离会导致login界面刷新页面，页面空白
 export function getBasicRoutes() {
   return [
     LoginRoute,

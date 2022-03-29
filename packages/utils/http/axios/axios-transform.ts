@@ -1,7 +1,7 @@
 /**
  * Data processing class, can be configured according to the project
  */
-import type { AxiosRequestConfig, AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import type { RequestOptions, Result } from '@ent-core/logics/types/axios';
 
 export interface CreateAxiosOptions extends AxiosRequestConfig {
@@ -25,7 +25,7 @@ export abstract class AxiosTransform {
   /**
    * @description: 请求失败处理
    */
-  requestCatchHook?: (e: Error, options: RequestOptions) => Promise<any>;
+  requestCatchHook?: (e: AxiosError, options: RequestOptions) => Promise<any>;
 
   /**
    * @description: 请求之前的拦截器
@@ -48,5 +48,5 @@ export abstract class AxiosTransform {
   /**
    * @description: 请求之后的拦截器错误处理
    */
-  responseInterceptorsCatch?: (error: Error) => void;
+  responseInterceptorsCatch?: (error: AxiosError) => void;
 }

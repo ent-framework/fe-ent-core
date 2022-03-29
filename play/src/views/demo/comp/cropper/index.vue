@@ -36,7 +36,7 @@
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
   import { EntCropperImage, EntCropperAvatar } from 'fe-ent-core/lib/components/cropper';
-  import { uploadApi } from 'fe-ent-core/lib/logics/api/sys/upload';
+  import { uploadApi } from 'fe-ent-core/lib/logics/api/upload';
   import img from 'fe-ent-core/lib/assets/images/header.jpg';
   import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
 

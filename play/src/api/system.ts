@@ -9,17 +9,17 @@ import {
   AccountListGetResultModel,
   RolePageListGetResultModel,
   RoleListGetResultModel,
-} from './model/system-model';
+} from '../model/system-model';
 import { defHttp } from '@ent-core/utils/http/axios';
 
 enum Api {
-  AccountList = '/api/getAccountList',
-  IsAccountExist = '/api/accountExist',
-  DeptList = '/api/getDeptList',
-  setRoleStatus = '/api/setRoleStatus',
-  MenuList = '/api/getMenuList',
-  RolePageList = '/api/getRoleListByPage',
-  GetAllRoleList = '/api/getAllRoleList',
+  AccountList = '/getAccountList',
+  IsAccountExist = '/accountExist',
+  DeptList = '/getDeptList',
+  setRoleStatus = '/setRoleStatus',
+  MenuList = '/getMenuList',
+  RolePageList = '/getRoleListByPage',
+  GetAllRoleList = '/getAllRoleList',
 }
 
 export const getAccountList = (params: AccountParams) =>

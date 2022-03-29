@@ -30,7 +30,7 @@
   import { defineComponent } from 'vue';
 
   import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/table';
-  import { getRoleListByPage } from 'fe-ent-core/lib/logics/api/demo/system';
+  import { getRoleListByPage } from '/@/api/system';
 
   import { useDrawer } from 'fe-ent-core/lib/components/drawer';
   import RoleDrawer from './role-drawer.vue';

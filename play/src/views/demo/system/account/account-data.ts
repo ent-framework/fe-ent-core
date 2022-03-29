@@ -1,4 +1,4 @@
-import { getAllRoleList, isAccountExist } from 'fe-ent-core/lib/logics/api/demo/system';
+import { getAllRoleList, isAccountExist } from '/@/api/system';
 import { BasicColumn } from 'fe-ent-core/lib/components/table';
 import { FormSchema } from 'fe-ent-core/lib/components/form';
 

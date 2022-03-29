@@ -1,7 +1,7 @@
 // axios配置  可自行根据项目进行更改，只需更改该文件即可，其他文件可以不动
 // The axios configuration can be changed according to the project, just change the file, other files can be left unchanged
 
-import type { AxiosResponse } from 'axios';
+import type { AxiosResponse, AxiosError } from 'axios';
 import type { RequestOptions, Result } from '@ent-core/logics/types/axios';
 import type { AxiosTransform, CreateAxiosOptions } from './axios-transform';
 import { VAxios } from './axios';
@@ -39,7 +39,6 @@ const transform: AxiosTransform = {
       return res.data;
     }
     // 错误的时候返回
-
     const { data } = res;
     if (!data) {
       // return '[HTTP] Request has no return value';
@@ -138,7 +137,7 @@ const transform: AxiosTransform = {
     if (token && (config as Recordable)?.requestOptions?.withToken !== false) {
       // jwt token
       (config as Recordable).headers.Authorization = options.authenticationScheme
-        ? `${options.authenticationScheme} ${token}`
+        ? `${options.authenticationScheme}${token}`
         : token;
     }
     return config;
@@ -154,13 +153,17 @@ const transform: AxiosTransform = {
   /**
    * @description: 响应错误处理
    */
-  responseInterceptorsCatch: (error: any) => {
+  responseInterceptorsCatch: (error: AxiosError) => {
     const { t } = useI18n();
     const errorLogStore = useErrorLogStoreWithOut();
     errorLogStore.addAjaxErrorInfo(error);
     const { response, code, message, config } = error || {};
-    const errorMessageMode = config?.requestOptions?.errorMessageMode || 'none';
-    const msg: string = response?.data?.error?.message ?? '';
+    const errorMessageMode =
+      (config as CreateAxiosOptions)?.requestOptions?.errorMessageMode || 'none';
+    //后端会对异常已经统一捕捉, 处理
+    //response?.data?.error?.message 主要针对spring 原生的错误返回
+    //response?.data?.message 封装后的
+    const msg: string = response?.data?.message || response?.data?.error?.message || message;
     const err: string = error?.toString?.() ?? '';
     let errMessage = '';
 
@@ -183,8 +186,7 @@ const transform: AxiosTransform = {
     } catch (error) {
       throw new Error(error as unknown as string);
     }
-
-    checkStatus(error?.response?.status, msg, errorMessageMode);
+    checkStatus(error?.response?.status || 200, msg, errorMessageMode);
     return Promise.reject(error);
   },
 };
@@ -198,7 +200,7 @@ export function createAxios(opt?: Partial<CreateAxiosOptions>) {
         // See https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#authentication_schemes
         // authentication schemes，e.g: Bearer
         // authenticationScheme: 'Bearer',
-        authenticationScheme: 'Bearer',
+        authenticationScheme: '',
         timeout: 10 * 1000,
         // 基础接口地址
         // baseURL: globSetting.apiUrl,

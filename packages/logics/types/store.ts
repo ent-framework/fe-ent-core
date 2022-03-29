@@ -1,6 +1,6 @@
 import { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
 import { MenuModeEnum, MenuTypeEnum } from '@ent-core/logics/enums/menu-enum';
-import { RoleInfo } from '@ent-core/logics/api/sys/model/user-model';
+import { RoleInfo } from '@ent-core/logics/model/user-model';
 
 // Lock screen information
 export interface LockInfo {

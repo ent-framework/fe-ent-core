@@ -15,7 +15,7 @@
   import { defineComponent, onMounted, ref } from 'vue';
 
   import { BasicTree, TreeItem } from 'fe-ent-core/lib/components/tree';
-  import { getDeptList } from 'fe-ent-core/lib/logics/api/demo/system';
+  import { getDeptList } from '/@/api/system';
 
   export default defineComponent({
     name: 'DeptTree',

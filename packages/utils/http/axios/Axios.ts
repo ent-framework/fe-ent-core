@@ -222,9 +222,12 @@ export class VAxios {
           }
           resolve(res as unknown as Promise<T>);
         })
-        .catch((e: Error | AxiosError) => {
+        .catch((e: Error) => {
           if (requestCatchHook && isFunction(requestCatchHook)) {
-            reject(requestCatchHook(e, opt));
+            if (axios.isAxiosError(e)) {
+              const axiosError = e as AxiosError;
+              reject(requestCatchHook(axiosError, opt));
+            }
             return;
           }
           if (axios.isAxiosError(e)) {

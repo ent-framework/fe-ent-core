@@ -1,11 +1,11 @@
 import { defHttp } from '@ent-core/utils/http/axios';
-import { LoginParams, LoginResultModel, GetUserInfoModel } from './model/user-model';
+import { LoginParams, LoginResultModel, GetUserInfoModel } from '../model';
 import { ErrorMessageMode } from '@ent-core/logics/types/axios';
 enum Api {
-  Login = '/api/login',
-  Logout = '/api/logout',
-  GetUserInfo = '/api/user-info',
-  GetPermCode = '/api/perm-code',
+  Login = '/login',
+  Logout = '/logout',
+  GetUserInfo = '/user-info',
+  GetPermCode = '/perm-code',
 }
 
 /**

@@ -18,7 +18,7 @@
   import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
   import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
-  import { isAccountExist } from 'fe-ent-core/lib/logics/api/demo/system';
+  import { isAccountExist } from '/@/api/system';
 
   const schemas: FormSchema[] = [
     {

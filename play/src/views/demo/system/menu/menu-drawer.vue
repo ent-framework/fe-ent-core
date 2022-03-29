@@ -16,7 +16,7 @@
   import { formSchema } from './menu-data';
   import { EntDrawer, useDrawerInner } from 'fe-ent-core/lib/components/drawer';
 
-  import { getMenuList } from 'fe-ent-core/lib/logics/api/demo/system';
+  import { getMenuList } from '/@/api/system';
 
   export default defineComponent({
     name: 'MenuDrawer',

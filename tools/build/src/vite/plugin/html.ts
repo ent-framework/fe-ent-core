@@ -22,7 +22,7 @@ export function configHtmlPlugin(env: ViteEnv, isBuild: boolean) {
       data: {
         title: VITE_GLOB_APP_TITLE,
       },
-      // Embed the generated app.config.js file
+      //Embed the generated app.config.js file
       tags: isBuild
         ? [
             {

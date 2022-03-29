@@ -215,7 +215,7 @@ export function useFormEvents({
   }
 
   async function validate(nameList?: NamePath[] | undefined) {
-    return await unref(formElRef)?.validate(nameList);
+    return unref(formElRef)?.validate(nameList);
   }
 
   async function clearValidate(name?: string | string[]) {

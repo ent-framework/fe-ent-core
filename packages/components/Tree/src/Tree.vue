@@ -39,9 +39,9 @@
   }
   export default defineComponent({
     name: 'EntTree',
+    components: { EntScrollContainer },
     inheritAttrs: false,
     props: basicProps,
-    components: { EntScrollContainer },
     emits: [
       'update:expandedKeys',
       'update:selectedKeys',

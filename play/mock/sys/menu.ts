@@ -235,9 +235,97 @@ const linkRoute = {
   ],
 };
 
+const appRoutes = [
+  {
+    path: '/link',
+    name: 'Link',
+    component: 'LAYOUT',
+    meta: {
+      icon: 'ion:tv-outline',
+      title: 'routes.demo.iframe.frame',
+    },
+    children: [
+      {
+        path: 'doc',
+        name: 'Doc',
+        meta: {
+          title: 'routes.demo.iframe.doc',
+          frameSrc: 'https://vvbin.cn/doc-next/',
+        },
+      },
+      {
+        path: 'https://vvbin.cn/doc-next/',
+        name: 'DocExternal',
+        component: 'LAYOUT',
+        meta: {
+          title: 'routes.demo.iframe.docExternal',
+        },
+      },
+    ],
+  },
+  {
+    path: '/link',
+    name: 'Link',
+    component: 'LAYOUT',
+    meta: {
+      icon: 'ion:tv-outline',
+      title: 'routes.demo.iframe.frame',
+    },
+    children: [
+      {
+        path: 'doc',
+        name: 'Doc',
+        meta: {
+          title: 'routes.demo.iframe.doc',
+          frameSrc: 'https://vvbin.cn/doc-next/',
+        },
+      },
+      {
+        path: 'https://vvbin.cn/doc-next/',
+        name: 'DocExternal',
+        component: 'LAYOUT',
+        meta: {
+          title: 'routes.demo.iframe.docExternal',
+        },
+      },
+    ],
+  },
+];
+
 export default [
   {
-    url: '/api/menu-list',
+    url: '/menu-list',
+    timeout: 1000,
+    method: 'get',
+    response: (request: requestParams) => {
+      const token = getRequestToken(request);
+      if (!token) {
+        return resultError('Invalid token!');
+      }
+      const checkUser = createFakeUserList().find((item) => item.token === token);
+      if (!checkUser) {
+        return resultError('Invalid user token!');
+      }
+      const id = checkUser.userId;
+      let menu: Object[];
+      switch (id) {
+        case '1':
+          dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[0].path;
+          menu = [dashboardRoute, authRoute, levelRoute, sysRoute, linkRoute];
+          break;
+        case '2':
+          dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[1].path;
+          menu = [dashboardRoute, authRoute, levelRoute, linkRoute];
+          break;
+        default:
+          menu = [];
+      }
+
+      return resultSuccess(menu);
+    },
+  },
+  {
+    url: '/app-list',
     timeout: 1000,
     method: 'get',
     response: (request: requestParams) => {

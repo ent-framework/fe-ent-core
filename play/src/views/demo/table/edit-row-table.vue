@@ -20,10 +20,10 @@
     TableActionItem,
     EditRecordRow,
   } from 'fe-ent-core/lib/components/table';
-  import { optionsListApi } from 'fe-ent-core/lib/logics/api/demo/select';
+  import { optionsListApi } from '/@/api/select';
 
-  import { demoListApi } from 'fe-ent-core/lib/logics/api/demo/table';
-  import { treeOptionsListApi } from 'fe-ent-core/lib/logics/api/demo/tree';
+  import { demoListApi } from '/@/api/table';
+  import { treeOptionsListApi } from '/@/api/tree';
   import { cloneDeep } from 'lodash';
   import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
 

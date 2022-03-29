@@ -1,8 +1,9 @@
 import { defHttp } from '@ent-core/utils/http/axios';
-import { getMenuListResultModel } from './model/menu-model';
+import { getMenuListResultModel } from '../model';
 
 enum Api {
-  GetMenuList = '/api/menu-list',
+  GetMenuList = '/menu-list',
+  GetAppList = '/app-list',
 }
 
 /**
@@ -11,4 +12,8 @@ enum Api {
 
 export const getMenuList = () => {
   return defHttp.get<getMenuListResultModel>({ url: Api.GetMenuList });
+};
+
+export const getAppList = () => {
+  return defHttp.get<getMenuListResultModel>({ url: Api.GetAppList });
 };

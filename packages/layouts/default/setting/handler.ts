@@ -1,5 +1,8 @@
 import { HandlerEnum } from './enum';
-import { updateHeaderBgColor, updateSidebarBgColor } from '@ent-core/logics/theme/update-background';
+import {
+  updateHeaderBgColor,
+  updateSidebarBgColor,
+} from '@ent-core/logics/theme/update-background';
 import { updateColorWeak } from '@ent-core/logics/theme/update-color-weak';
 import { updateGrayMode } from '@ent-core/logics/theme/update-gray-mode';
 

@@ -1,4 +1,4 @@
-import { UploadApiResult } from '@ent-core/logics/api/sys/model/upload-model';
+import { UploadApiResult } from '@ent-core/logics/model/upload-model';
 
 export enum UploadResultStatus {
   SUCCESS = 'success',

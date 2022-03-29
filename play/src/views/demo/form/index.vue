@@ -62,9 +62,9 @@
   import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
-  import { optionsListApi } from 'fe-ent-core/lib/logics/api/demo/select';
+  import { optionsListApi } from '/@/api/select';
   import { useDebounceFn } from '@vueuse/core';
-  import { treeOptionsListApi } from 'fe-ent-core/lib/logics/api/demo/tree';
+  import { treeOptionsListApi } from '/@/api/tree';
   import { Select } from 'ant-design-vue';
   import { cloneDeep } from 'lodash';
 
