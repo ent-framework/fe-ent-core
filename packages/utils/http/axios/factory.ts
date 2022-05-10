@@ -193,7 +193,7 @@ const transform: AxiosTransform = {
 
 export function createAxios(opt?: Partial<CreateAxiosOptions>) {
   const globSetting = useGlobSetting();
-  const urlPrefix = globSetting.urlPrefix;
+  const { apiGlobalPrefix, apiUrl, requestTimeout = 10 * 1000 } = globSetting;
   return new VAxios(
     deepMerge(
       {
@@ -201,7 +201,7 @@ export function createAxios(opt?: Partial<CreateAxiosOptions>) {
         // authentication schemes，e.g: Bearer
         // authenticationScheme: 'Bearer',
         authenticationScheme: '',
-        timeout: 10 * 1000,
+        timeout: requestTimeout,
         // 基础接口地址
         // baseURL: globSetting.apiUrl,
 
@@ -225,9 +225,9 @@ export function createAxios(opt?: Partial<CreateAxiosOptions>) {
           // 消息提示类型
           errorMessageMode: 'message',
           // 接口地址
-          apiUrl: globSetting.apiUrl,
+          apiUrl,
           // 接口拼接地址
-          urlPrefix: urlPrefix,
+          urlPrefix: apiGlobalPrefix,
           //  是否加入时间戳
           joinTime: true,
           // 忽略重复请求

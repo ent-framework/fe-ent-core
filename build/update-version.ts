@@ -3,6 +3,7 @@ import { epPackage, projRoot } from './utils';
 import { cyan, red, yellow, green } from './utils';
 import { getPackageManifest } from './utils';
 import glob from 'fast-glob';
+import path from "path";
 
 const tagVersion = process.env.TAG_VERSION;
 if (!tagVersion) {
@@ -32,6 +33,12 @@ cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n'));
         });
         yellow(`Updating ${pkg} version to ${tagVersion}`);
       });
+
+      fs.writeFileSync(
+        path.resolve(__dirname, '../packages/fe-ent-core/version.ts'),
+        `export const version = '${tagVersion}';
+`,
+      );
     } catch (e) {
       console.error(e);
       process.exit(1);

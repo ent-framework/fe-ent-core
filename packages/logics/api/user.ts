@@ -1,6 +1,7 @@
 import { defHttp } from '@ent-core/utils/http/axios';
 import { LoginParams, LoginResultModel, GetUserInfoModel } from '../model';
 import { ErrorMessageMode } from '@ent-core/logics/types/axios';
+import { useGlobSetting } from '@ent-core/hooks';
 enum Api {
   Login = '/login',
   Logout = '/logout',
@@ -12,9 +13,11 @@ enum Api {
  * @description: user login api
  */
 export function loginApi(params: LoginParams, mode: ErrorMessageMode = 'modal') {
+  const globSetting = useGlobSetting();
+  const { userApiPrefix = '' } = globSetting;
   return defHttp.post<LoginResultModel>(
     {
-      url: Api.Login,
+      url: `${userApiPrefix}${Api.Login}`,
       params,
     },
     {
@@ -27,13 +30,22 @@ export function loginApi(params: LoginParams, mode: ErrorMessageMode = 'modal') 
  * @description: getUserInfo
  */
 export function getUserInfo() {
-  return defHttp.get<GetUserInfoModel>({ url: Api.GetUserInfo }, { errorMessageMode: 'none' });
+  const globSetting = useGlobSetting();
+  const { userApiPrefix = '' } = globSetting;
+  return defHttp.get<GetUserInfoModel>(
+    { url: `${userApiPrefix}${Api.GetUserInfo}` },
+    { errorMessageMode: 'none' },
+  );
 }
 
 export function getPermCode() {
-  return defHttp.get<string[]>({ url: Api.GetPermCode });
+  const globSetting = useGlobSetting();
+  const { userApiPrefix = '' } = globSetting;
+  return defHttp.get<string[]>({ url: `${userApiPrefix}${Api.GetPermCode}` });
 }
 
 export function doLogout() {
-  return defHttp.get({ url: Api.Logout });
+  const globSetting = useGlobSetting();
+  const { userApiPrefix = '' } = globSetting;
+  return defHttp.get({ url: `${userApiPrefix}${Api.Logout}` });
 }

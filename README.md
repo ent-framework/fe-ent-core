@@ -37,13 +37,13 @@
 - 获取项目代码
 
 ```bash
-git clone https://gitlab.com/acn_abg/fe-core.git
+git clone https://gitlab.com/acn_abg/fe-ent-core.git
 ```
 
 - 安装依赖
 
 ```bash
-cd fe-core
+cd fe-ent-core
 
 pnpm install
 
@@ -71,7 +71,7 @@ pnpm dev
 
 ## 项目地址
 
-- [fe-ent-core](https://gitlab.com/acn_abg/fe-core.git) - 完整版
+- [fe-ent-core](https://gitlab.com/acn_abg/fe-ent-core.git) - 完整版
 
 ## 浏览器支持
 

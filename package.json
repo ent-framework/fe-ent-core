@@ -15,7 +15,6 @@
   "scripts": {
     "bootstrap": "pnpm install",
     "dev": "pnpm -C play --stream dev",
-    "gen:version": "sucrase-node ./build/gen-version.ts",
     "build": "pnpm build:lib",
     "build:all": "pnpm build:tools && pnpm build:lib",
     "build:lib": "gulp --require sucrase/register/ts -f ./build/gulpfile.ts",
