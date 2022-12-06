@@ -81,7 +81,6 @@ const getRouteNames = (array: any[], whiteList: string[]) => {
   });
 };
 // config router
-export function setupRouter(app: App<Element>): EntRouter {
+export function setupRouter(app: App<Element>): void {
   app.use(router);
-  return router;
 }

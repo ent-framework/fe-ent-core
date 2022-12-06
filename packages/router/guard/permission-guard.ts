@@ -67,6 +67,7 @@ export function createPermissionGuard(router: Router) {
         };
       }
       next(redirectData);
+      window.location.href = LOGIN_PATH as string;
       return;
     }
 

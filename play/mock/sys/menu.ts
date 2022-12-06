@@ -294,7 +294,7 @@ const appRoutes = [
 
 export default [
   {
-    url: '/menu-list',
+    url: '/api/menu-list',
     timeout: 1000,
     method: 'get',
     response: (request: requestParams) => {
@@ -325,7 +325,7 @@ export default [
     },
   },
   {
-    url: '/app-list',
+    url: '/api/app-list',
     timeout: 1000,
     method: 'get',
     response: (request: requestParams) => {

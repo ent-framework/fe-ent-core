@@ -45,7 +45,7 @@ const userInfo = {
 
 export default [
   {
-    url: '/account/getAccountInfo',
+    url: '/api/account/getAccountInfo',
     timeout: 1000,
     method: 'get',
     response: () => {
@@ -53,7 +53,7 @@ export default [
     },
   },
   {
-    url: '/user/sessionTimeout',
+    url: '/api/user/sessionTimeout',
     method: 'post',
     statusCode: 401,
     response: () => {
@@ -61,7 +61,7 @@ export default [
     },
   },
   {
-    url: '/user/tokenExpired',
+    url: '/api/user/tokenExpired',
     method: 'post',
     statusCode: 200,
     response: () => {

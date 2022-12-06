@@ -14,8 +14,8 @@ import { setupGlobDirectives } from 'fe-ent-core/lib/directives';
 import { setupI18n } from 'fe-ent-core/lib/locales/setup-i18n';
 import { registerGlobComp } from 'fe-ent-core/lib/components/register-glob-comp';
 import { useLayout } from 'fe-ent-core/lib/router/helper/layout-helper';
-import { importMenuModules } from 'fe-ent-core/lib/router/menus';
-import { getBasicRoutes } from 'fe-ent-core/lib/router/routes';
+//import { importMenuModules } from 'fe-ent-core/lib/router/menus';
+import { LoginRoute } from 'fe-ent-core/lib/router/routes';
 import EntCore from 'fe-ent-core';
 //import AntD from 'ant-design-vue';
 
@@ -63,14 +63,15 @@ async function bootstrap() {
   layoutMgt.use('IFRAME', IFRAME);
 
   // Configure routing
-  router.addBasicRoutes(getBasicRoutes());
-  router.addExtraRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
-  setupRouter(app);
+  router.addBasicRoutes([LoginRoute]);
 
-  importMenuModules(import.meta.globEager('./modules/**/*.ts'));
+  setupRouter(app);
+  //router.addExtraRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
+
+  //importMenuModules(import.meta.globEager('./modules/**/*.ts'));
 
   // router-guard
-  setupRouterGuard(router, false);
+  setupRouterGuard(router, true);
 
   // Register global directive
   setupGlobDirectives(app);
@@ -81,7 +82,7 @@ async function bootstrap() {
   // https://next.router.vuejs.org/api/#isready
   // await router.isReady();
 
-  app.mount('#app');
+  app.mount('#login');
 }
 
 bootstrap();

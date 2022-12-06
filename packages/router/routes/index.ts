@@ -17,7 +17,7 @@ export const RootRoute: AppRouteRecordRaw = {
 };
 
 export const LoginRoute: AppRouteRecordRaw = {
-  path: '/login',
+  path: '/',
   name: 'Login',
   component: Login,
   meta: {
@@ -29,11 +29,5 @@ export const LoginRoute: AppRouteRecordRaw = {
 // Basic routing without permission
 // TODO FIX, 分离会导致login界面刷新页面，页面空白
 export function getBasicRoutes() {
-  return [
-    LoginRoute,
-    RootRoute,
-    ...mainOutRoutes,
-    registerRedirectRoute(),
-    registerPageNotFoundRoute(),
-  ];
+  return [RootRoute, ...mainOutRoutes, registerRedirectRoute(), registerPageNotFoundRoute()];
 }

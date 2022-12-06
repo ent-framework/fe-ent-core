@@ -2,7 +2,7 @@ import { defHttp } from '@ent-core/utils/http/axios';
 import { AreaModel, AreaParams } from '../model/area-model';
 
 enum Api {
-  AREA_RECORD = '/api/cascader/getAreaRecord',
+  AREA_RECORD = '/cascader/getAreaRecord',
 }
 
 export const areaRecord = (data: AreaParams) =>

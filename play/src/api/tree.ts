@@ -1,6 +1,6 @@
 import { defHttp } from '@ent-core/utils/http/axios';
 enum Api {
-  TREE_OPTIONS_LIST = '/api/tree/getDemoOptions',
+  TREE_OPTIONS_LIST = '/tree/getDemoOptions',
 }
 
 /**

@@ -118,7 +118,7 @@ export const useUserStore = defineStore({
           router.addRoute(registerPageNotFoundRoute() as unknown as RouteRecordRaw);
           permissionStore.setDynamicAddedRoute(true);
         }
-        goHome && (await router.replace(userInfo?.homePath || PageEnum.BASE_HOME));
+        goHome && (window.location.href = PageEnum.BASE_INDEX as string);
       }
       return userInfo;
     },
@@ -150,7 +150,7 @@ export const useUserStore = defineStore({
       this.setToken(undefined);
       this.setSessionTimeout(false);
       this.setUserInfo(null);
-      goLogin && router.push(PageEnum.BASE_LOGIN);
+      goLogin && (window.location.href = PageEnum.BASE_LOGIN as string);
     },
 
     /**

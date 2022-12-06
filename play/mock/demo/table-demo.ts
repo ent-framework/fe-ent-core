@@ -41,7 +41,7 @@ const demoList = (() => {
 
 export default [
   {
-    url: '/table/getDemoList',
+    url: '/api/table/getDemoList',
     timeout: 100,
     method: 'get',
     response: ({ query }) => {
