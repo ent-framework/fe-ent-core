@@ -3,12 +3,11 @@
  */
 import type { LocaleType } from '@ent-core/logics/types/config';
 
-import moment from 'moment';
-
 import { i18n } from './setup-i18n';
 import { useLocaleStoreWithOut } from '@ent-core/store/modules/locale';
 import { unref, computed } from 'vue';
 import { loadLocalePool, setHtmlPageLang } from './helper';
+import dayjs from 'dayjs';
 
 interface LangModule {
   message: Recordable;
@@ -57,6 +56,7 @@ export function useLocale() {
     //globalI18n.setLocaleMessage(locale, message);
     //moment.locale()
     //moment.updateLocale(momentLocaleName, momentLocale);
+    dayjs.locale(locale);
     loadLocalePool.push(locale);
 
     setI18nLanguage(locale);

@@ -3,7 +3,7 @@
  * https://github.com/anncwb/vite-plugin-svg-icons
  */
 import { searchForWorkspaceRoot } from 'vite';
-import SvgIconsPlugin from 'vite-plugin-svg-icons';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import path from 'path';
 import fs from 'fs';
 
@@ -23,7 +23,7 @@ export function configSvgIconsPlugin(isBuild: boolean, libDev: boolean) {
     }
   }
 
-  const svgIconsPlugin = SvgIconsPlugin({
+  const svgIconsPlugin = createSvgIconsPlugin({
     iconDirs,
     svgoOptions: isBuild,
     // default

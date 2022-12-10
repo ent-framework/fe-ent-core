@@ -7,6 +7,8 @@ import { localeSetting } from '@ent-core/logics/settings/locale-setting';
 import { useLocaleStoreWithOut } from '@ent-core/store/modules/locale';
 import zhCN from './lang/zh-cn';
 import en from './lang/en';
+import 'dayjs/locale/zh-cn';
+import 'dayjs/locale/en';
 
 const { fallback, availableLocales } = localeSetting;
 

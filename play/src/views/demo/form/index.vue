@@ -577,7 +577,13 @@
   ];
 
   export default defineComponent({
-    components: { EntForm, CollapseContainer: EntCollapseContainer, EntPageWrapper, ApiSelect, ASelect: Select },
+    components: {
+      EntForm,
+      CollapseContainer: EntCollapseContainer,
+      EntPageWrapper,
+      ApiSelect,
+      ASelect: Select,
+    },
     setup() {
       const check = ref(null);
       const { createMessage } = useMessage();

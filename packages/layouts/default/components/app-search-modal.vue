@@ -84,8 +84,12 @@
   const [refs, setRefs] = useRefs();
   const { getIsMobile } = useAppInject();
 
+  const handleCloseCallback = () => {
+    emit('close');
+  };
+
   const { handleSearch, searchResult, keyword, activeIndex, handleEnter, handleMouseenter } =
-    useMenuSearch(refs, scrollWrap, emit);
+    useMenuSearch(refs, scrollWrap, handleCloseCallback);
 
   const getIsNotData = computed(() => !keyword || unref(searchResult).length === 0);
 

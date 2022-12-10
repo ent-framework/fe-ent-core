@@ -1,45 +1,18 @@
-import type { VNodeChild } from 'vue';
+import type { VNodeChild, SetupContext } from 'vue';
 import type { PaginationProps } from './pagination';
 import type { FormProps } from '@ent-core/components/form';
 import type {
-  ColumnProps,
-  TableRowSelection as ITableRowSelection,
+  ColumnType,
+  ColumnTitle,
+  TableRowSelection,
 } from 'ant-design-vue/lib/table/interface';
-
 import { ComponentType } from './component-type';
-import { VueNode } from '@ent-core/utils/prop-types';
 import { RoleEnum } from '@ent-core/logics/enums/role-enum';
 
 export declare type SortOrder = 'ascend' | 'descend';
 
 export interface TableCurrentDataSource<T = Recordable> {
   currentDataSource: T[];
-}
-
-export interface TableRowSelection<T = any> extends ITableRowSelection {
-  /**
-   * Callback executed when selected rows change
-   * @type Function
-   */
-  onChange?: (selectedRowKeys: string[] | number[], selectedRows: T[]) => any;
-
-  /**
-   * Callback executed when select/deselect one row
-   * @type Function
-   */
-  onSelect?: (record: T, selected: boolean, selectedRows: Object[], nativeEvent: Event) => any;
-
-  /**
-   * Callback executed when select/deselect all rows
-   * @type Function
-   */
-  onSelectAll?: (selected: boolean, selectedRows: T[], changeRows: T[]) => any;
-
-  /**
-   * Callback executed when row selection is inverted
-   * @type Function
-   */
-  onSelectInvert?: (selectedRows: string[] | number[]) => any;
 }
 
 export interface TableCustomRecord<T> {
@@ -63,7 +36,7 @@ export interface TableCustomRecord<T = Recordable> {
 }
 
 export interface SorterResult {
-  column: ColumnProps;
+  column: ColumnType;
   order: SortOrder;
   field: string;
   columnKey: string;
@@ -110,7 +83,7 @@ export interface TableActionType {
   getSize: () => SizeType;
   getRowSelection: () => TableRowSelection<Recordable>;
   getCacheColumns: () => BasicColumn[];
-  emit?: EmitType;
+  emit?: Pick<SetupContext, 'emit'>;
   updateTableData: (index: number, key: string, value: any) => Recordable;
   setShowPagination: (show: boolean) => Promise<void>;
   getShowPagination: () => boolean;
@@ -333,7 +306,7 @@ export interface BasicTableProps<T = any> {
    * Set props on per header row
    * @type Function
    */
-  customHeaderRow?: (column: ColumnProps, index: number) => object;
+  customHeaderRow?: (column: ColumnType, index: number) => object;
 
   /**
    * Set props on per row
@@ -410,7 +383,7 @@ export type CellFormat =
   | Map<string | number, any>;
 
 // @ts-ignore
-export interface BasicColumn extends ColumnProps {
+export interface BasicColumn extends ColumnType {
   children?: BasicColumn[];
   filters?: {
     text: string;
@@ -422,7 +395,7 @@ export interface BasicColumn extends ColumnProps {
 
   //
   flag?: 'INDEX' | 'DEFAULT' | 'CHECKBOX' | 'RADIO' | 'ACTION';
-  customTitle?: VueNode;
+  customTitle?: ColumnTitle<any>;
 
   slots?: Recordable;
 

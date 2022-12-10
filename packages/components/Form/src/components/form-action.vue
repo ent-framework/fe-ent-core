@@ -40,8 +40,7 @@
   </a-col>
 </template>
 <script lang="ts">
-  import type { ColEx } from '../types/index';
-  //import type { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
+  import type { ColEx } from '../types';
   import { defineComponent, computed, PropType } from 'vue';
   import { Form, Col } from 'ant-design-vue';
   import { EntButton, ButtonProps } from '@ent-core/components/button';

@@ -1,4 +1,4 @@
-import type { ComputedRef, Ref } from 'vue';
+import type { ComputedRef, Ref, SetupContext } from 'vue';
 import type { FormProps, FormSchema, FormActionType } from '../types/form';
 import type { NamePath } from 'ant-design-vue/lib/form/interface';
 import { unref, toRaw } from 'vue';
@@ -9,8 +9,9 @@ import { dateUtil } from '@ent-core/utils/date-util';
 import { cloneDeep, uniqBy } from 'lodash';
 import { error } from '@ent-core/utils/log';
 
-interface UseFormActionContext {
-  emit: EmitType;
+interface UseFormActionContext
+  extends SetupContext<['advanced-change', 'reset', 'submit', 'register']> {
+  //emit: EmitType;
   getProps: ComputedRef<FormProps>;
   getSchema: ComputedRef<FormSchema[]>;
   formModel: Recordable;

@@ -9,7 +9,7 @@ export interface ModalMethods {
   redoModalHeight?: () => void;
 }
 
-export type RegisterModalFn = (modalMethods: ModalMethods, uuid?: string) => void;
+export type RegisterModalFn = (modalMethods: ModalMethods, uuid: string) => void;
 
 export interface ReturnModalMethods extends ModalMethods {
   openModal: <T = any>(props?: boolean, data?: T, openOnSet?: boolean) => void;

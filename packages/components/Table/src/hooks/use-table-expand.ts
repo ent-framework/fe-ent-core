@@ -1,12 +1,35 @@
-import type { ComputedRef, Ref } from 'vue';
+import type { ComputedRef, Ref, SetupContext } from 'vue';
 import type { BasicTableProps } from '../types/table';
 import { computed, unref, ref, toRaw } from 'vue';
 import { ROW_KEY } from '../const';
 
+interface TableExpandContext
+  extends SetupContext<
+    [
+      'fetch-success',
+      'fetch-error',
+      'selection-change',
+      'register',
+      'row-click',
+      'row-dbClick',
+      'row-contextmenu',
+      'row-mouseenter',
+      'row-mouseleave',
+      'edit-end',
+      'edit-cancel',
+      'edit-row-end',
+      'edit-change',
+      'expanded-rows-change',
+      'change',
+      'columns-change',
+    ]
+  > {
+  tableData: Ref<Recordable[]>;
+}
+
 export function useTableExpand(
   propsRef: ComputedRef<BasicTableProps>,
-  tableData: Ref<Recordable[]>,
-  emit: EmitType,
+  { tableData, emit }: TableExpandContext,
 ) {
   const expandedRowKeys = ref<string[]>([]);
 

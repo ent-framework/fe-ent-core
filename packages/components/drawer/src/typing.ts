@@ -135,6 +135,8 @@ export interface DrawerProps extends DrawerFooterProps {
    */
   wrapClassName?: string;
 
+  class?: string;
+
   /**
    * Style of wrapper element which **contains mask** compare to `drawerStyle`
    * @type object

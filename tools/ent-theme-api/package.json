@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/vbenjs/vite-plugin-theme/tree/master/#readme",
   "peerDependencies": {
-    "vite": ">=2.8.6"
+    "vite": ">=3.2.0"
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0",
@@ -56,26 +56,17 @@
     "@types/jest": "^26.0.23",
     "@types/less": "^3.0.2",
     "@types/node": "^14.17.1",
-    "@typescript-eslint/eslint-plugin": "^4.25.0",
-    "@typescript-eslint/parser": "^4.25.0",
     "@vue/compiler-sfc": "^3.0.11",
     "cross-env": "^7.0.3",
-    "eslint": "^7.27.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-jest": "^24.3.6",
     "fs-extra": "^9.1.0",
     "jest": "^26.6.3",
     "lint-staged": "^10.5.4",
     "pinst": "^2.1.6",
-    "prettier": "^2.3.0",
-    "pretty-quick": "^3.1.0",
     "rimraf": "^3.0.2",
-    "ts-jest": "^26.5.6",
-    "typescript": "^4.2.4",
-    "vite": "^2.8.6"
+    "vite": "3.2.5",
+    "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@types/node": "^14.17.1",
     "chalk": "^4.1.1",
     "clean-css": "^5.1.2",
     "debug": "^4.3.2",

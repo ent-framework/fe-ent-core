@@ -1,14 +1,34 @@
-import type { ComputedRef } from 'vue';
+import type { ComputedRef, SetupContext } from 'vue';
 import type { BasicTableProps } from '../types/table';
 import { unref } from 'vue';
 import { ROW_KEY } from '../const';
 import { isString, isFunction } from '@ent-core/utils/is';
 
-interface Options {
+interface CustomRowContext
+  extends SetupContext<
+    [
+      'fetch-success',
+      'fetch-error',
+      'selection-change',
+      'register',
+      'row-click',
+      'row-dbClick',
+      'row-contextmenu',
+      'row-mouseenter',
+      'row-mouseleave',
+      'edit-end',
+      'edit-cancel',
+      'edit-row-end',
+      'edit-change',
+      'expanded-rows-change',
+      'change',
+      'columns-change',
+    ]
+  > {
   setSelectedRowKeys: (keys: string[]) => void;
   getSelectRowKeys: () => string[];
   clearSelectedRowKeys: () => void;
-  emit: EmitType;
+  //emit: EmitType;
   getAutoCreateKey: ComputedRef<boolean | undefined>;
 }
 
@@ -31,7 +51,13 @@ function getKey(
 
 export function useCustomRow(
   propsRef: ComputedRef<BasicTableProps>,
-  { setSelectedRowKeys, getSelectRowKeys, getAutoCreateKey, clearSelectedRowKeys, emit }: Options,
+  {
+    setSelectedRowKeys,
+    getSelectRowKeys,
+    getAutoCreateKey,
+    clearSelectedRowKeys,
+    emit,
+  }: CustomRowContext,
 ) {
   const customRow = (record: Recordable, index: number) => {
     return {
@@ -49,7 +75,7 @@ export function useCustomRow(
             // 找到tr
             const tr: HTMLElement = (e as MouseEvent)
               .composedPath?.()
-              .find((dom: HTMLElement) => dom.tagName === 'TR') as HTMLElement;
+              .find((dom) => (dom as HTMLElement).tagName === 'TR') as HTMLElement;
             if (!tr) return;
             // 找到Checkbox，检查是否为disabled
             const checkBox = tr.querySelector('input[type=checkbox]');

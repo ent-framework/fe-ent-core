@@ -27,7 +27,7 @@ export function injectClientPlugin(
     colorPluginCssOutputName?: string;
     antdDarkExtractCss?: boolean;
     antdDarkLoadLink?: boolean;
-  }
+  },
 ): Plugin {
   let config: ResolvedConfig;
   let isServer: boolean;
@@ -46,7 +46,7 @@ export function injectClientPlugin(
   return {
     name: `vite:inject-vite-plugin-ent-theme-client-${type}`,
     enforce: 'pre',
-    configResolved(resolvedConfig) {
+    configResolved(resolvedConfig: ResolvedConfig) {
       config = resolvedConfig;
       isServer = resolvedConfig.command === 'serve';
       needSourcemap = !!resolvedConfig.build.sourcemap;
@@ -75,7 +75,7 @@ export function injectClientPlugin(
       },
     },
 
-    resolveId(id, importer, resolveOpts) {
+    resolveId(id: string, importer: any, resolveOpts: any) {
       if (id === 'vite-plugin-ent-theme/es/client') {
         // this is passed by @rollup/plugin-commonjs
         const isRequire: boolean = resolveOpts?.custom?.['node-resolve']?.isRequire ?? false;
@@ -88,7 +88,7 @@ export function injectClientPlugin(
       return null;
     },
 
-    async transform(code, id) {
+    async transform(code: string, id: string) {
       const getMap = () => (needSourcemap ? this.getCombinedSourcemap() : null);
       if (needProcessId(id)) {
         debug('transform client file:', id, code);
@@ -98,9 +98,9 @@ export function injectClientPlugin(
         };
       }
     },
-
-    async load(id) {
-      const nid = normalizePath(id);
+    async load(id: string) {
+      const npath = normalizePath(id);
+      const nid = npath.indexOf('?') > 0 ? npath.substring(0, npath.indexOf('?')) : npath;
       if (needProcessId(id)) {
         debug('load client file:', id);
         let code = readFileSync(nid).toString();
@@ -123,18 +123,18 @@ export function injectClientPlugin(
         if (type === 'antdDarkPlugin') {
           code = code.replace(
             '__ANTD_DARK_PLUGIN_OUTPUT_FILE_NAME__',
-            getOutputFile(antdDarkCssOutputName)
+            getOutputFile(antdDarkCssOutputName),
           );
           if (typeof antdDarkExtractCss === 'boolean') {
             code = code.replace(
               '__ANTD_DARK_PLUGIN_EXTRACT_CSS__',
-              JSON.stringify(antdDarkExtractCss)
+              JSON.stringify(antdDarkExtractCss),
             );
           }
           if (typeof antdDarkLoadLink === 'boolean') {
             code = code.replace(
               '__ANTD_DARK_PLUGIN_LOAD_LINK__',
-              JSON.stringify(antdDarkExtractCss)
+              JSON.stringify(antdDarkExtractCss),
             );
           }
         }

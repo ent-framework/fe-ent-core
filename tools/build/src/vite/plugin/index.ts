@@ -1,7 +1,6 @@
 import type { Plugin } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import legacy from '@vitejs/plugin-legacy';
 import purgeIcons from 'vite-plugin-purge-icons';
 import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import { configHtmlPlugin } from './html';
@@ -51,7 +50,7 @@ export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) 
   //!isBuild && vitePlugins.push(configHmrPlugin());
 
   // @vitejs/plugin-legacy
-  VITE_LEGACY && isBuild && vitePlugins.push(legacy());
+  //VITE_LEGACY && isBuild && vitePlugins.push(legacy());
 
   // vite-plugin-html
   configEnv.runMode != 'lib' && vitePlugins.push(configHtmlPlugin(viteEnv, isBuild));
@@ -107,6 +106,7 @@ export function createBuildTarget(viteEnv: ViteEnv, runMode: string): BuildOptio
           drop_console: VITE_DROP_CONSOLE,
         },
       },
+      minify: 'terser',
       // Turning off brotliSize display can slightly reduce packaging time
       brotliSize: false,
       chunkSizeWarningLimit: 2000,

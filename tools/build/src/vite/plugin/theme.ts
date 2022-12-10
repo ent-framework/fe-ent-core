@@ -53,9 +53,6 @@ export function configThemePlugin(configEnv: CustomConfigEnv): Plugin[] {
         preLoadFile,
       ],
       filter: (id) => {
-        console.log(
-          `${id} id: ${configEnv.runMode == 'package' ? !id.endsWith('antd.less') : true}`,
-        );
         return configEnv.runMode == 'package' ? !id.endsWith('antd.less') : true;
       },
 

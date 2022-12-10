@@ -120,7 +120,7 @@ export async function loadDarkThemeCss() {
 export async function replaceCssColors(
   css: string,
   colors: string[],
-  customCssHandler?: (css: string) => string
+  customCssHandler?: (css: string) => string,
 ) {
   let retCss: string = css;
   const defaultOptions = getGlobalOptions('defaultOptions');
@@ -130,7 +130,7 @@ export async function replaceCssColors(
     const reg = new RegExp(
       color.replace(/,/g, ',\\s*').replace(/\s/g, '').replace('(', `\\(`).replace(')', `\\)`) +
         '([\\da-f]{2})?(\\b|\\)|,|\\s)?',
-      'ig'
+      'ig',
     );
     retCss = retCss.replace(reg, colors[index] + '$1$2').replace('$1$2', '');
     if (customCssHandler && typeof customCssHandler === 'function') {
@@ -142,7 +142,7 @@ export async function replaceCssColors(
 
 export function setGlobalOptions<T extends keyof GlobalConfig = any>(
   key: T,
-  value: GlobalConfig[T]
+  value: GlobalConfig[T],
 ) {
   window[globalField][key] = value;
 }
@@ -159,7 +159,7 @@ export function getStyleDom(id: string) {
 export async function appendCssToDom(
   styleDom: HTMLElement,
   cssText: string,
-  appendTo: InjectTo = 'body'
+  appendTo: InjectTo = 'body',
 ) {
   styleDom.innerHTML = cssText;
   if (appendTo === 'head') {

@@ -1,5 +1,4 @@
-import type { ValidationRule } from 'ant-design-vue/lib/form/Form';
-import type { RuleObject } from 'ant-design-vue/lib/form/interface';
+import type { RuleObject, Rule } from 'ant-design-vue/lib/form/interface';
 import { ref, computed, unref, Ref } from 'vue';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 
@@ -11,7 +10,7 @@ export enum LoginStateEnum {
   QR_CODE,
 }
 
-const currentState = ref(LoginStateEnum.LOGIN);
+const currentState = ref<LoginStateEnum>(LoginStateEnum.LOGIN);
 
 export function useLoginState() {
   function setLoginState(state: LoginStateEnum) {
@@ -62,7 +61,7 @@ export function useFormRules(formData?: Recordable) {
     };
   };
 
-  const getFormRules = computed((): { [k: string]: ValidationRule | ValidationRule[] } => {
+  const getFormRules = computed((): { [k: string]: Rule | Rule[] } => {
     const accountFormRule = unref(getAccountFormRule);
     const passwordFormRule = unref(getPasswordFormRule);
     const smsFormRule = unref(getSmsFormRule);
@@ -72,6 +71,8 @@ export function useFormRules(formData?: Recordable) {
       sms: smsFormRule,
       mobile: mobileFormRule,
     };
+    console.log(`1111:` + currentState.value);
+
     switch (unref(currentState)) {
       // register form rules
       case LoginStateEnum.REGISTER:
@@ -107,7 +108,7 @@ export function useFormRules(formData?: Recordable) {
   return { getFormRules };
 }
 
-function createRule(message: string) {
+function createRule(message: string): RuleObject[] {
   return [
     {
       required: true,

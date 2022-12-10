@@ -14,8 +14,9 @@
     "module": "ESNext",
     "lib": ["ESNext","dom"],
     "typeRoots": ["./node_modules/@types"],
-    "sourceMap": true
+    "sourceMap": true,
+    "skipLibCheck": true
   },
   "include": ["./src"],
-  "exclude": ["**/__tests__"],
+  "exclude": ["**/__tests__"]
 }

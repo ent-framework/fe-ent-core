@@ -49,12 +49,17 @@
 
       const [registerForm, { validateFields, resetFields }] = useForm({
         showActionButtonGroup: false,
+        labelWidth: '40%',
+        labelAlign: 'left',
         schemas: [
           {
             field: 'password',
             label: t('layout.header.lockScreenPassword'),
             component: 'InputPassword',
             required: true,
+            colProps: {
+              span: 12,
+            },
           },
         ],
       });

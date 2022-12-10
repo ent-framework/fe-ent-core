@@ -1,4 +1,7 @@
-import type { TreeDataItem, CheckEvent as CheckEventOrigin } from 'ant-design-vue/es/tree/Tree';
+import type {
+  TreeDataItem,
+  AntTreeNodeCheckedEvent as CheckEventOrigin,
+} from 'ant-design-vue/es/tree/Tree';
 import { ContextMenuItem } from '@ent-core/components/context-menu';
 
 export interface TreeActionItem {

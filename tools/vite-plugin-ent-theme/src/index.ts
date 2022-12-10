@@ -6,7 +6,12 @@ import { extractVariable, minifyCSS } from './utils';
 
 export { antdDarkThemePlugin } from './antdDarkThemePlugin';
 
-import { VITE_CLIENT_ENTRY, cssLangRE, cssVariableString, CLIENT_PUBLIC_ESM_PATH } from './constants';
+import {
+  VITE_CLIENT_ENTRY,
+  cssLangRE,
+  cssVariableString,
+  CLIENT_PUBLIC_ESM_PATH,
+} from './constants';
 
 export type ResolveSelector = (selector: string) => string;
 
@@ -48,7 +53,7 @@ export function viteThemePlugin(opt: ViteThemeOptions): Plugin[] {
       injectTo: 'body',
       verbose: true,
     },
-    opt
+    opt,
   );
 
   debug('plugin options:', options);
@@ -80,7 +85,7 @@ export function viteThemePlugin(opt: ViteThemeOptions): Plugin[] {
     {
       ...emptyPlugin,
       enforce: 'post',
-      configResolved(resolvedConfig) {
+      configResolved(resolvedConfig: ResolvedConfig) {
         config = resolvedConfig;
         isServer = resolvedConfig.command === 'serve';
         clientPath = JSON.stringify(path.posix.join(config.base, CLIENT_PUBLIC_ESM_PATH));
@@ -88,7 +93,7 @@ export function viteThemePlugin(opt: ViteThemeOptions): Plugin[] {
         debug('plugin config:', resolvedConfig);
       },
 
-      async transform(code, id) {
+      async transform(code: string, id: string) {
         if (!cssLangRE.test(id)) {
           return null;
         }
@@ -158,7 +163,8 @@ export function viteThemePlugin(opt: ViteThemeOptions): Plugin[] {
             build: { outDir, assetsDir },
           } = config;
           console.log(
-            chalk.cyan('\n✨ [vite-plugin-ent-theme]') + ` - extract css code file is successfully:`
+            chalk.cyan('\n✨ [vite-plugin-ent-theme]') +
+              ` - extract css code file is successfully:`,
           );
           try {
             const { size } = fs.statSync(path.join(outDir, assetsDir, cssOutputName));
@@ -166,7 +172,7 @@ export function viteThemePlugin(opt: ViteThemeOptions): Plugin[] {
               chalk.dim(outDir + '/') +
                 chalk.magentaBright(`${assetsDir}/${cssOutputName}`) +
                 `\t\t${chalk.dim((size / 1024).toFixed(2) + 'kb')}` +
-                '\n'
+                '\n',
             );
           } catch (error) {}
         }

@@ -12,9 +12,9 @@ export function getVariablesReg(colors: string[]) {
             .replace(/\s/g, ' ?')
             .replace(/\(/g, `\\(`)
             .replace(/\)/g, `\\)`)
-            .replace(/0?\./g, `0?\\.`)})`
+            .replace(/0?\./g, `0?\\.`)})`,
       )
-      .join('|')
+      .join('|'),
   );
 }
 
@@ -48,7 +48,7 @@ export function createFileHash() {
 export async function minifyCSS(css: string, config: ResolvedConfig) {
   const res = await new CleanCSS({
     rebase: false,
-    ...config.build.cleanCssOptions,
+    //    ...config.build.cleanCssOptions,
   }).minify(css);
 
   if (res.errors && res.errors.length) {
@@ -68,7 +68,7 @@ export function extractVariable(
   code: string,
   colorVariables: string[],
   resolveSelector?: ResolveSelector,
-  colorRE?: RegExp
+  colorRE?: RegExp,
 ) {
   colorVariables = Array.from(new Set(colorVariables));
   code = code.replace(commentRE, '');
@@ -98,7 +98,7 @@ export function extractVariable(
         cssBlock.replace(/[^{]*\{/, '').replace(/}$/, ''),
         colorVariables,
         resolveSelector,
-        colorRE
+        colorRE,
       )}}`;
       continue;
     }
@@ -110,7 +110,7 @@ export function extractVariable(
       cssValueRE,
       safeEmptyRE,
       variableReg,
-      importSafeRE
+      importSafeRE,
     );
 
     const colorReplaceTemplates = cssBlock.match(colorRE || colorReg);

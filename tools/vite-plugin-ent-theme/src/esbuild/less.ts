@@ -11,7 +11,7 @@ export const lessLoader = (content: string, options: Less.Options = {}): Plugin 
         const filePath = path.resolve(
           process.cwd(),
           path.relative(process.cwd(), args.resolveDir),
-          args.path
+          args.path,
         );
         return {
           path: filePath,

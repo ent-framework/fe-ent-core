@@ -13,8 +13,8 @@ export interface Props {
 }
 
 export interface SubMenuProvider {
-  addSubMenu: (name: string | number, update?: boolean) => void;
-  removeSubMenu: (name: string | number, update?: boolean) => void;
+  addSubMenu: (name: string, update?: boolean) => void;
+  removeSubMenu: (name: string, update?: boolean) => void;
   removeAll: () => void;
   sliceIndex: (index: number) => void;
   isRemoveAllPopup: Ref<boolean>;

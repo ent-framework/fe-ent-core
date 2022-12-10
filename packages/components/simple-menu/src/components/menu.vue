@@ -130,7 +130,7 @@
       onMounted(() => {
         openedNames.value = !props.collapse ? [...props.openNames] : [];
         updateOpened();
-        rootMenuEmitter.on('on-menu-item-select', (name: string) => {
+        rootMenuEmitter.on('on-menu-item-select', (name) => {
           currentActiveName.value = name;
 
           nextTick(() => {

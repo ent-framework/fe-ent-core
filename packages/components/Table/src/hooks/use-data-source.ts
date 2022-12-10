@@ -10,6 +10,7 @@ import {
   reactive,
   Ref,
   watchEffect,
+  SetupContext,
 } from 'vue';
 import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
 import { buildUUID } from '@ent-core/utils/uuid';
@@ -17,7 +18,27 @@ import { isFunction, isBoolean } from '@ent-core/utils/is';
 import { get, cloneDeep } from 'lodash';
 import { FETCH_SETTING, ROW_KEY, PAGE_SIZE } from '../const';
 
-interface ActionType {
+interface ActionType
+  extends SetupContext<
+    [
+      'fetch-success',
+      'fetch-error',
+      'selection-change',
+      'register',
+      'row-click',
+      'row-dbClick',
+      'row-contextmenu',
+      'row-mouseenter',
+      'row-mouseleave',
+      'edit-end',
+      'edit-cancel',
+      'edit-row-end',
+      'edit-change',
+      'expanded-rows-change',
+      'change',
+      'columns-change',
+    ]
+  > {
   getPaginationInfo: ComputedRef<boolean | PaginationProps>;
   setPagination: (info: Partial<PaginationProps>) => void;
   setLoading: (loading: boolean) => void;
@@ -39,8 +60,8 @@ export function useDataSource(
     getFieldsValue,
     clearSelectedRowKeys,
     tableData,
+    emit,
   }: ActionType,
-  emit: EmitType,
 ) {
   const searchState = reactive<SearchState>({
     sortInfo: {},

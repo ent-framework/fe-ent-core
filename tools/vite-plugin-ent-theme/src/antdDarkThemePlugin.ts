@@ -76,7 +76,7 @@ export function antdDarkThemePlugin(options: AntdDarkThemeOption): Plugin[] {
     {
       name: 'vite:antd-dark-theme',
       enforce: 'pre',
-      configResolved(resolvedConfig) {
+      configResolved(resolvedConfig: ResolvedConfig) {
         config = resolvedConfig;
         isServer = resolvedConfig.command === 'serve';
         needSourcemap = !!resolvedConfig.build.sourcemap;
@@ -103,7 +103,7 @@ export function antdDarkThemePlugin(options: AntdDarkThemeOption): Plugin[] {
         };
       },
 
-      async transform(code, id) {
+      async transform(code: string, id: string) {
         if (!id.endsWith('.less') || !code.includes('@')) {
           return null;
         }
@@ -181,7 +181,7 @@ export function antdDarkThemePlugin(options: AntdDarkThemeOption): Plugin[] {
           } = config;
           console.log(
             chalk.cyan('\n✨ [vite-plugin-ent-theme:antd-dark]') +
-              ` - extract antd dark css code file is successfully:`
+              ` - extract antd dark css code file is successfully:`,
           );
           try {
             const { size } = fs.statSync(path.join(outDir, assetsDir, cssOutputName));
@@ -189,7 +189,7 @@ export function antdDarkThemePlugin(options: AntdDarkThemeOption): Plugin[] {
               chalk.dim(outDir + '/') +
                 chalk.magentaBright(`${assetsDir}/${cssOutputName}`) +
                 `\t\t${chalk.dim((size / 1024).toFixed(2) + 'kb')}` +
-                '\n'
+                '\n',
             );
           } catch (error) {}
         }

@@ -6,7 +6,7 @@ import less from 'less';
 export type ResolveFn = (
   id: string,
   importer?: string,
-  aliasOnly?: boolean
+  aliasOnly?: boolean,
 ) => Promise<string | undefined>;
 
 type CssUrlReplacer = (url: string, importer?: string) => string | Promise<string>;
@@ -27,7 +27,7 @@ interface ImportResolvers {
 function createViteLessPlugin(
   rootFile: string,
   alias: Alias[],
-  resolvers: ImportResolvers
+  resolvers: ImportResolvers,
 ): Less.Plugin {
   if (!ViteLessManager) {
     ViteLessManager = class ViteManager extends less.FileManager {
@@ -50,7 +50,7 @@ function createViteLessPlugin(
         filename: string,
         dir: string,
         opts: any,
-        env: any
+        env: any,
       ): Promise<Less.FileLoadResult> {
         const resolved = await this.resolvers.less(filename, path.join(dir, '*'));
         if (resolved) {
@@ -148,7 +148,7 @@ function rewriteCssUrls(css: string, replacer: CssUrlReplacer): Promise<string> 
 export async function asyncReplace(
   input: string,
   re: RegExp,
-  replacer: (match: RegExpExecArray) => string | Promise<string>
+  replacer: (match: RegExpExecArray) => string | Promise<string>,
 ) {
   let match: RegExpExecArray | null;
   let remaining = input;

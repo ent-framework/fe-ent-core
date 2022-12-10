@@ -67,7 +67,7 @@
     components: { FormItem, Form, Row, FormAction },
     props: basicProps,
     emits: ['advanced-change', 'reset', 'submit', 'register'],
-    setup(props, { emit, attrs }) {
+    setup(props, context) {
       const formModel = reactive<Recordable>({});
       const modalFn = useModalContext();
 
@@ -110,7 +110,7 @@
       });
 
       const getBindValue = computed(
-        () => ({ ...attrs, ...props, ...unref(getProps) } as Recordable),
+        () => ({ ...context.attrs, ...props, ...unref(getProps) } as Recordable),
       );
 
       const getSchema = computed((): FormSchema[] => {
@@ -139,11 +139,11 @@
 
       const { handleToggleAdvanced } = useAdvanced({
         advanceState,
-        emit,
         getProps,
         getSchema,
         formModel,
         defaultValueRef,
+        ...context,
       });
 
       const { handleFormValues, initDefault } = useFormValues({
@@ -174,7 +174,6 @@
         resetFields,
         scrollToField,
       } = useFormEvents({
-        emit,
         getProps,
         formModel,
         getSchema,
@@ -182,6 +181,7 @@
         formElRef: formElRef as Ref<FormActionType>,
         schemaRef: schemaRef as Ref<FormSchema[]>,
         handleFormValues,
+        ...context,
       });
 
       createFormContext({
@@ -266,7 +266,7 @@
 
       onMounted(() => {
         initDefault();
-        emit('register', formActionType);
+        context.emit('register', formActionType);
       });
 
       return {
