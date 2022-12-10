@@ -7,6 +7,7 @@ import { formatToDateTime } from '@ent-core/utils/date-util';
 import projectSetting from '@ent-core/logics/settings/project-setting';
 
 import { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
+import { AxiosError } from 'axios';
 
 export interface ErrorLogState {
   errorLogInfoList: Nullable<ErrorLogInfo[]>;
@@ -46,7 +47,7 @@ export const useErrorLogStore = defineStore({
      * @param error
      * @returns
      */
-    addAjaxErrorInfo(error) {
+    addAjaxErrorInfo(error: AxiosError) {
       const { useErrorHandle } = projectSetting;
       if (!useErrorHandle) {
         return;

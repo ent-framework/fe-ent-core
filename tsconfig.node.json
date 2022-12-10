@@ -13,8 +13,8 @@
     "tools/**/*.json",
     "scripts/**/*",
     "packages/theme-chalk/*",
-    "packages/element-plus/version.ts",
-    "packages/element-plus/package.json"
+    "packages/fe-ent-core/version.ts",
+    "packages/fe-ent-core/package.json"
   ],
   "exclude": ["**/__tests__/**", "**/tests/**", "**/dist"]
 }

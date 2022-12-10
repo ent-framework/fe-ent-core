@@ -1,20 +1,23 @@
 import fs from 'fs';
-import { epPackage, projRoot } from './utils';
-import { cyan, red, yellow, green } from './utils';
-import { getPackageManifest } from './utils';
+import consola from 'consola';
+import chalk from 'chalk';
+import { epPackage, projRoot } from '@ent-core/build-utils';
+import { getPackageManifest } from '@ent-core/build-utils';
 import glob from 'fast-glob';
 
 const tagVersion = process.env.TAG_VERSION;
 if (!tagVersion) {
-  red(
-    'No tag version or git head were found, make sure that you set the environment variable $TAG_VERSION \n',
+  consola.log(
+    chalk.red(
+      'No tag version or git head were found, make sure that you set the environment variable $TAG_VERSION \n',
+    ),
   );
   process.exit(1);
 }
 
-cyan('Start updating version');
+consola.log(chalk.cyan('Start updating version'));
 
-cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n'));
+consola.log(chalk.cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n')));
 (async () => {
   if (!(process.argv.includes('-d') || process.argv.includes('--dry-run'))) {
     try {
@@ -30,7 +33,7 @@ cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n'));
         await fs.promises.writeFile(pkg, JSON.stringify(json, null, 2), {
           encoding: 'utf-8',
         });
-        yellow(`Updating ${pkg} version to ${tagVersion}`);
+        consola.log(chalk.yellow(`Updating ${pkg} version to ${tagVersion}`));
       });
     } catch (e) {
       console.error(e);
@@ -38,5 +41,5 @@ cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n'));
     }
   }
 
-  green(`Version updated to ${tagVersion}`);
+  consola.log(chalk.green(`Version updated to ${tagVersion}`));
 })();

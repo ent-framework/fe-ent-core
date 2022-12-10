@@ -11,7 +11,7 @@ import { useMessage } from '@ent-core/hooks/web/use-message';
 import { RequestEnum, ResultEnum, ContentTypeEnum } from '@ent-core/logics/enums/http-enum';
 import { isString } from '@ent-core/utils/is';
 import { getToken } from '@ent-core/utils/auth';
-import { setObjToUrlParams, deepMerge } from '@ent-core/utils';
+import { setObjToUrlParams, deepMerge } from '@ent-core/utils/base';
 import { useErrorLogStoreWithOut } from '@ent-core/store/modules/error-log';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { joinTimestamp, formatRequestDate } from './helper';
