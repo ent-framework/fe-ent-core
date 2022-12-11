@@ -5,9 +5,10 @@
     "jsx": "preserve",
     "lib": ["ES2018", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-    "types": ["unplugin-vue-macros/macros-global", "typings/global.d.ts", "typings/support.d.ts"]
+    "types": ["./typings/global", "./typings/support"],
+    "typeRoots": ["./node_modules/@types"]
   },
-  "include": ["packages", "typings/global.d.ts", "typings/support.d.ts"],
+  "include": ["packages/**", "typings/global.d.ts", "typings/support.d.ts"],
   "exclude": [
     "node_modules",
     "**/dist",

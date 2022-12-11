@@ -77,7 +77,6 @@ importers:
       eslint-plugin-vue: ^8.0.3
       esno: ^0.10.1
       fe-ent-build: workspace:*
-      fe-ent-cli: workspace:*
       fe-ent-theme-api: workspace:*
       fs-extra: ^10.0.0
       husky: ^7.0.4
@@ -126,7 +125,6 @@ importers:
       '@fe-ent-extension/qrcode': link:extensions/qrcode
       '@fe-ent-extension/tinymce': link:extensions/tinymce
       fe-ent-build: link:tools/build
-      fe-ent-cli: link:tools/cli
       fe-ent-theme-api: link:tools/ent-theme-api
       vite-plugin-ent-theme: link:tools/vite-plugin-ent-theme
     devDependencies:
@@ -353,6 +351,7 @@ importers:
       consola: ^2.15.3
       esbuild: ^0.14.47
       fast-glob: ^3.2.11
+      fe-ent-theme-util: ^1.0.1
       fs-extra: ^10.1.0
       gulp: 4.0.2
       gulp-autoprefixer: 8.0.0
@@ -394,6 +393,7 @@ importers:
       consola: 2.15.3
       esbuild: 0.14.54
       fast-glob: 3.2.11
+      fe-ent-theme-util: link:../../tools/ent-theme-util
       fs-extra: 10.1.0
       gulp: 4.0.2
       gulp-autoprefixer: 8.0.0_gulp@4.0.2
@@ -480,6 +480,7 @@ importers:
       vue-demi: ^0.12.1
       vue-i18n: ^9.1.9
       vue-router: ^4.1.6
+      vue-types: ^3.0.2
       xlsx: ^0.17.5
     dependencies:
       '@ant-design/colors': registry.npmmirror.com/@ant-design/colors/6.0.0
@@ -506,6 +507,7 @@ importers:
       tinycolor2: registry.npmmirror.com/tinycolor2/1.4.2
       vue-i18n: registry.npmmirror.com/vue-i18n/9.1.9_vue@3.2.45
       vue-router: 4.1.6_vue@3.2.45
+      vue-types: 3.0.2_vue@3.2.45
       xlsx: registry.npmmirror.com/xlsx/0.17.5
     devDependencies:
       '@types/tinycolor2': 1.4.3
@@ -578,6 +580,7 @@ importers:
       dotenv: ^10.0.0
       esno: ^0.10.1
       fast-glob: 3.2.11
+      fe-ent-theme-util: ^1.0.1
       fs-extra: ^10.0.0
       inquirer: ^8.2.0
       less: 4.1.3
@@ -601,7 +604,9 @@ importers:
       vite-plugin-compression: 0.3.5
       vite-plugin-ent-theme: workspace:*
       vite-plugin-html: 2.1.1
+      vite-plugin-http2-proxy: ^0.3.2
       vite-plugin-imagemin: 0.4.6
+      vite-plugin-mkcert: 1.10.1
       vite-plugin-mock: 2.9.6
       vite-plugin-purge-icons: 0.9.1
       vite-plugin-pwa: 0.13.3
@@ -623,6 +628,7 @@ importers:
       cross-env: 7.0.3
       dotenv: 10.0.0
       esno: 0.10.1
+      fe-ent-theme-util: link:../ent-theme-util
       inquirer: 8.2.0
       less: 4.1.3
       micromatch: 4.0.4
@@ -638,7 +644,9 @@ importers:
       vite: 3.2.5_less@4.1.3
       vite-plugin-compression: 0.3.5_vite@3.2.5
       vite-plugin-html: 2.1.1_vite@3.2.5
+      vite-plugin-http2-proxy: 0.3.2_vite@3.2.5
       vite-plugin-imagemin: 0.4.6_vite@3.2.5
+      vite-plugin-mkcert: 1.10.1_vite@3.2.5
       vite-plugin-mock: 2.9.6_umj7dnwtpamrulvvz5fh6e7doq
       vite-plugin-purge-icons: 0.9.1_vite@3.2.5
       vite-plugin-pwa: 0.13.3_vite@3.2.5
@@ -663,48 +671,9 @@ importers:
       vite-plugin-ent-theme: link:../vite-plugin-ent-theme
       vue: 3.2.31
 
-  tools/cli:
-    specifiers:
-      '@rollup/plugin-commonjs': 21.0.1
-      '@rollup/plugin-json': ^4.1.0
-      '@rollup/plugin-node-resolve': 13.1.3
-      '@rollup/plugin-typescript': ^8.3.0
-      '@types/ejs': ^3.1.0
-      '@types/node': ^17.0.18
-      cac: 6.7.9
-      chalk: ^4.1.2
-      debug: ^4.3.3
-      ejs: ^3.1.6
-      fast-glob: 3.2.11
-      fs-extra: ^10.0.0
-      npm-run-all: ^4.1.5
-      pinst: ^2.1.6
-      rimraf: ^3.0.2
-      rollup: 2.79.1
-      tslib: ^2.3.1
-      typescript: ^4.7.4
-    devDependencies:
-      '@rollup/plugin-commonjs': 21.0.1_rollup@2.79.1
-      '@rollup/plugin-json': 4.1.0_rollup@2.79.1
-      '@rollup/plugin-node-resolve': 13.1.3_rollup@2.79.1
-      '@rollup/plugin-typescript': 8.3.1_sbiskyiysxhldmns7rmnvoiszu
-      '@types/ejs': 3.1.0
-      '@types/node': 17.0.18
-      cac: 6.7.9
-      chalk: 4.1.2
-      debug: 4.3.3
-      ejs: 3.1.6
-      fast-glob: 3.2.11
-      fs-extra: 10.0.0
-      npm-run-all: 4.1.5
-      pinst: 2.1.6
-      rimraf: 3.0.2
-      rollup: 2.79.1
-      tslib: 2.4.1
-      typescript: 4.9.4
-
   tools/ent-theme-api:
     specifiers:
+      '@ant-design/colors': ^6.0.0
       '@rollup/plugin-commonjs': 21.0.1
       '@rollup/plugin-json': ^4.1.0
       '@rollup/plugin-node-resolve': 13.1.3
@@ -716,6 +685,7 @@ importers:
       '@types/less': ^3.0.2
       '@types/node': ^14.17.1
       '@vue/compiler-sfc': ^3.0.11
+      ant-design-vue: ^3.2.0
       chalk: ^4.1.1
       clean-css: ^5.1.2
       cross-env: ^7.0.3
@@ -732,6 +702,7 @@ importers:
       tslib: ^2.3.1
       typescript: ^4.7.4
       vite: 3.2.5
+      vue: ^3.2.0
     dependencies:
       chalk: 4.1.2
       clean-css: 5.2.4
@@ -740,6 +711,7 @@ importers:
       esbuild-plugin-alias: 0.1.2
       less: 4.1.2
     devDependencies:
+      '@ant-design/colors': 6.0.0
       '@rollup/plugin-commonjs': 21.0.1_rollup@2.79.1
       '@rollup/plugin-json': 4.1.0_rollup@2.79.1
       '@rollup/plugin-node-resolve': 13.1.3_rollup@2.79.1
@@ -751,6 +723,7 @@ importers:
       '@types/less': 3.0.3
       '@types/node': 14.18.12
       '@vue/compiler-sfc': 3.2.31
+      ant-design-vue: 3.2.15_vue@3.2.45
       cross-env: 7.0.3
       fs-extra: 9.1.0
       jest: 26.6.3
@@ -761,6 +734,72 @@ importers:
       tslib: 2.4.1
       typescript: 4.9.4
       vite: 3.2.5_36od3jgrvxqymgayuq4f67tl2m
+      vue: 3.2.45
+
+  tools/ent-theme-util:
+    specifiers:
+      '@ant-design/colors': ^6.0.0
+      '@rollup/plugin-commonjs': 21.0.1
+      '@rollup/plugin-json': ^4.1.0
+      '@rollup/plugin-node-resolve': 13.1.3
+      '@rollup/plugin-typescript': ^8.3.0
+      '@types/chalk': ^2.2.0
+      '@types/debug': ^4.1.5
+      '@types/fs-extra': ^9.0.11
+      '@types/jest': ^26.0.23
+      '@types/less': ^3.0.2
+      '@types/node': ^14.17.1
+      '@vue/compiler-sfc': ^3.0.11
+      ant-design-vue: ^3.2.0
+      chalk: ^4.1.1
+      clean-css: ^5.1.2
+      cross-env: ^7.0.3
+      debug: ^4.3.2
+      esbuild: ^0.11.23
+      esbuild-plugin-alias: ^0.1.2
+      fs-extra: ^9.1.0
+      jest: ^26.6.3
+      less: ^4.1.1
+      lint-staged: ^10.5.4
+      pinst: ^2.1.6
+      rimraf: ^3.0.2
+      rollup: 2.79.1
+      tslib: ^2.3.1
+      typescript: ^4.7.4
+      vite: 3.2.5
+      vue: ^3.2.0
+    dependencies:
+      chalk: 4.1.2
+      clean-css: 5.2.4
+      debug: 4.3.4
+      esbuild: 0.11.23
+      esbuild-plugin-alias: 0.1.2
+      less: 4.1.3
+    devDependencies:
+      '@ant-design/colors': 6.0.0
+      '@rollup/plugin-commonjs': 21.0.1_rollup@2.79.1
+      '@rollup/plugin-json': 4.1.0_rollup@2.79.1
+      '@rollup/plugin-node-resolve': 13.1.3_rollup@2.79.1
+      '@rollup/plugin-typescript': 8.3.1_sbiskyiysxhldmns7rmnvoiszu
+      '@types/chalk': 2.2.0
+      '@types/debug': 4.1.7
+      '@types/fs-extra': 9.0.13
+      '@types/jest': 26.0.24
+      '@types/less': 3.0.3
+      '@types/node': 14.18.12
+      '@vue/compiler-sfc': 3.2.45
+      ant-design-vue: 3.2.15_vue@3.2.45
+      cross-env: 7.0.3
+      fs-extra: 9.1.0
+      jest: 26.6.3
+      lint-staged: 10.5.4
+      pinst: 2.1.6
+      rimraf: 3.0.2
+      rollup: 2.79.1
+      tslib: 2.4.1
+      typescript: 4.9.4
+      vite: 3.2.5_3z3uenakrdj65y35jqnv5krvnq
+      vue: 3.2.45
 
   tools/vite-plugin-ent-theme:
     specifiers:
@@ -2442,6 +2481,122 @@ packages:
       read-package-json-fast: 2.0.3
     dev: false
 
+  /@octokit/auth-token/3.0.2:
+    resolution: {integrity: sha512-pq7CwIMV1kmzkFTimdwjAINCXKTajZErLB4wMLYapR2nuB/Jpr66+05wOTZMSCBXP6n4DdDWT2W19Bm17vU69Q==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/types': 8.0.0
+    dev: false
+
+  /@octokit/core/4.1.0:
+    resolution: {integrity: sha512-Czz/59VefU+kKDy+ZfDwtOIYIkFjExOKf+HA92aiTZJ6EfWpFzYQWw0l54ji8bVmyhc+mGaLUbSUmXazG7z5OQ==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/auth-token': 3.0.2
+      '@octokit/graphql': 5.0.4
+      '@octokit/request': 6.2.2
+      '@octokit/request-error': 3.0.2
+      '@octokit/types': 8.0.0
+      before-after-hook: 2.2.3
+      universal-user-agent: 6.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@octokit/endpoint/7.0.3:
+    resolution: {integrity: sha512-57gRlb28bwTsdNXq+O3JTQ7ERmBTuik9+LelgcLIVfYwf235VHbN9QNo4kXExtp/h8T423cR5iJThKtFYxC7Lw==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/types': 8.0.0
+      is-plain-object: 5.0.0
+      universal-user-agent: 6.0.0
+    dev: false
+
+  /@octokit/graphql/5.0.4:
+    resolution: {integrity: sha512-amO1M5QUQgYQo09aStR/XO7KAl13xpigcy/kI8/N1PnZYSS69fgte+xA4+c2DISKqUZfsh0wwjc2FaCt99L41A==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/request': 6.2.2
+      '@octokit/types': 8.0.0
+      universal-user-agent: 6.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@octokit/openapi-types/14.0.0:
+    resolution: {integrity: sha512-HNWisMYlR8VCnNurDU6os2ikx0s0VyEjDYHNS/h4cgb8DeOxQ0n72HyinUtdDVxJhFy3FWLGl0DJhfEWk3P5Iw==}
+    dev: false
+
+  /@octokit/plugin-paginate-rest/5.0.1_@octokit+core@4.1.0:
+    resolution: {integrity: sha512-7A+rEkS70pH36Z6JivSlR7Zqepz3KVucEFVDnSrgHXzG7WLAzYwcHZbKdfTXHwuTHbkT1vKvz7dHl1+HNf6Qyw==}
+    engines: {node: '>= 14'}
+    peerDependencies:
+      '@octokit/core': '>=4'
+    dependencies:
+      '@octokit/core': 4.1.0
+      '@octokit/types': 8.0.0
+    dev: false
+
+  /@octokit/plugin-request-log/1.0.4_@octokit+core@4.1.0:
+    resolution: {integrity: sha512-mLUsMkgP7K/cnFEw07kWqXGF5LKrOkD+lhCrKvPHXWDywAwuDUeDwWBpc69XK3pNX0uKiVt8g5z96PJ6z9xCFA==}
+    peerDependencies:
+      '@octokit/core': '>=3'
+    dependencies:
+      '@octokit/core': 4.1.0
+    dev: false
+
+  /@octokit/plugin-rest-endpoint-methods/6.7.0_@octokit+core@4.1.0:
+    resolution: {integrity: sha512-orxQ0fAHA7IpYhG2flD2AygztPlGYNAdlzYz8yrD8NDgelPfOYoRPROfEyIe035PlxvbYrgkfUZIhSBKju/Cvw==}
+    engines: {node: '>= 14'}
+    peerDependencies:
+      '@octokit/core': '>=3'
+    dependencies:
+      '@octokit/core': 4.1.0
+      '@octokit/types': 8.0.0
+      deprecation: 2.3.1
+    dev: false
+
+  /@octokit/request-error/3.0.2:
+    resolution: {integrity: sha512-WMNOFYrSaX8zXWoJg9u/pKgWPo94JXilMLb2VManNOby9EZxrQaBe/QSC4a1TzpAlpxofg2X/jMnCyZgL6y7eg==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/types': 8.0.0
+      deprecation: 2.3.1
+      once: 1.4.0
+    dev: false
+
+  /@octokit/request/6.2.2:
+    resolution: {integrity: sha512-6VDqgj0HMc2FUX2awIs+sM6OwLgwHvAi4KCK3mT2H2IKRt6oH9d0fej5LluF5mck1lRR/rFWN0YIDSYXYSylbw==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/endpoint': 7.0.3
+      '@octokit/request-error': 3.0.2
+      '@octokit/types': 8.0.0
+      is-plain-object: 5.0.0
+      node-fetch: 2.6.7
+      universal-user-agent: 6.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@octokit/rest/19.0.5:
+    resolution: {integrity: sha512-+4qdrUFq2lk7Va+Qff3ofREQWGBeoTKNqlJO+FGjFP35ZahP+nBenhZiGdu8USSgmq4Ky3IJ/i4u0xbLqHaeow==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/core': 4.1.0
+      '@octokit/plugin-paginate-rest': 5.0.1_@octokit+core@4.1.0
+      '@octokit/plugin-request-log': 1.0.4_@octokit+core@4.1.0
+      '@octokit/plugin-rest-endpoint-methods': 6.7.0_@octokit+core@4.1.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@octokit/types/8.0.0:
+    resolution: {integrity: sha512-65/TPpOJP1i3K4lBJMnWqPUJ6zuOtzhtagDvydAWbEXpbFYA0oMKKyLb95NFZZP0lSh/4b6K+DQlzvYQJQQePg==}
+    dependencies:
+      '@octokit/openapi-types': 14.0.0
+    dev: false
+
   /@pnpm/cli-meta/2.0.3:
     resolution: {integrity: sha512-VPekfwCV39lF2dShE2+eHFrzU8Qxbqo+TEevU5BEoZG0K1zXxhfw6VyBbIC2+C1YbutJXQPYDVJQCGPhyRtNqA==}
     engines: {node: '>=12.17'}
@@ -3021,10 +3176,6 @@ packages:
     resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
     dependencies:
       '@types/ms': 0.7.31
-    dev: true
-
-  /@types/ejs/3.1.0:
-    resolution: {integrity: sha512-DCg+Ka+uDQ31lJ/UtEXVlaeV3d6t81gifaVWKJy4MYVVgvJttyX/viREy+If7fz+tK/gVxTGMtyrFPnm4gjrVA==}
     dev: true
 
   /@types/estree/0.0.39:
@@ -4004,6 +4155,7 @@ packages:
 
   /async/0.9.2:
     resolution: {integrity: sha1-rqdNXmHB+JlhO/ZL2mbUx48v0X0=}
+    dev: false
 
   /asynckit/0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
@@ -4225,6 +4377,10 @@ packages:
     resolution: {integrity: sha512-qeFIXtP4MSoi6NLqO12WfqARWWuCKi2Rn/9hJLEmtB5yTNr9DqFWkJRCf2qShWzPeAMRnOgCrq0sg/KLv5ES9w==}
     dependencies:
       tweetnacl: 0.14.5
+    dev: false
+
+  /before-after-hook/2.2.3:
+    resolution: {integrity: sha512-NzUnlZexiaH/46WDhANlyR2bXRopNg4F/zuSA3OpZnllCUgRaOF2znDioDWrmbNVsuZk6l9pMquQB38cfBZwkQ==}
     dev: false
 
   /better-path-resolve/1.0.0:
@@ -4475,11 +4631,6 @@ packages:
   /builtins/1.0.3:
     resolution: {integrity: sha512-uYBjakWipfaO/bXI7E8rq6kpwHRZK5cNYrUv2OzZSI/FvmdMyXJ2tG9dKcjEC5YHmHpUAwsargWIZNWdxb/bnQ==}
     dev: false
-
-  /cac/6.7.9:
-    resolution: {integrity: sha512-XN5qEpfNQCJ8jRaZgitSkkukjMRCGio+X3Ks5KUbGGlPbV+pSem1l9VuzooCBXOiMFshUZgyYqg6rgN8rjkb/w==}
-    engines: {node: '>=8'}
-    dev: true
 
   /cacache/15.3.0:
     resolution: {integrity: sha512-VVdYzXEn+cnbXpFgWs5hTT7OScegHVmLhJIR8Ufqk3iFD6A6j5iSX1KuBTfNEv4tdJWE2PzA6IVFtcLC7fN9wQ==}
@@ -5381,6 +5532,19 @@ packages:
     dependencies:
       ms: 2.1.2
 
+  /debug/4.3.4_supports-color@8.1.1:
+    resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+    dependencies:
+      ms: 2.1.2
+      supports-color: registry.npmmirror.com/supports-color/8.1.1
+    dev: true
+
   /decamelize/1.2.0:
     resolution: {integrity: sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA==}
     engines: {node: '>=0.10.0'}
@@ -5537,6 +5701,10 @@ packages:
   /depd/1.1.2:
     resolution: {integrity: sha512-7emPTl6Dpo6JRXOXjLRxck+FlLRX5847cLKEn00PLAgc3g2hTZZgr+e4c2v6QpSmLeFP3n5yUo7ft6avBK/5jQ==}
     engines: {node: '>= 0.6'}
+    dev: false
+
+  /deprecation/2.3.1:
+    resolution: {integrity: sha512-xmHIy4F3scKVwMsQ4WnVaS8bHOx0DmVwRywosKhaILI0ywMDWPtBSku2HNxRvF7jtwDRsoEwYQSfbxj8b7RlJQ==}
     dev: false
 
   /detect-file/1.0.0:
@@ -5735,6 +5903,7 @@ packages:
     hasBin: true
     dependencies:
       jake: 10.8.2
+    dev: false
 
   /electron-to-chromium/1.4.284:
     resolution: {integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==}
@@ -6999,6 +7168,7 @@ packages:
     resolution: {integrity: sha512-z7O0IS8Plc39rTCq6i6iHxk43duYOn8uFJiWSewIq0Bww1RNybVHSCjahmcC87ZqAm4OTvFzlzeGu3XAzG1ctQ==}
     dependencies:
       minimatch: 3.1.2
+    dev: false
 
   /filename-reserved-regex/2.0.0:
     resolution: {integrity: sha512-lc1bnsSr4L4Bdif8Xb/qrtokGbq5zlsms/CYH8PP+WtCkGNF65DPiQY8vG3SakEdRn8Dlnm+gW/qWKKjS5sZzQ==}
@@ -7935,6 +8105,10 @@ packages:
       sshpk: 1.17.0
     dev: false
 
+  /http2-proxy/5.0.53:
+    resolution: {integrity: sha512-k9OUKrPWau/YeViJGv5peEFgSGPE2n8CDyk/G3f+JfaaJzbFMPAK5PJTd99QYSUvgUwVBGNbZJCY/BEb+kUZNQ==}
+    dev: false
+
   /https-proxy-agent/5.0.0:
     resolution: {integrity: sha512-EkYm5BcKUGiduxzSt3Eppko+PiNWNEpa4ySk9vTC6wDsQJW9rHSa+UhGNJoRYp7bz6Ht1eaRIa6QaJqO5rCFbA==}
     engines: {node: '>= 6'}
@@ -8704,6 +8878,7 @@ packages:
       chalk: 2.4.2
       filelist: 1.0.2
       minimatch: 3.1.2
+    dev: false
 
   /jest-changed-files/26.6.2:
     resolution: {integrity: sha512-fDS7szLcY9sCtIip8Fjry9oGf3I2ht/QT21bAHm5Dmf0mD4X3ReNUf17y+bO6fR8WgbIZTlbyG1ak/53cbRzKQ==}
@@ -13464,6 +13639,10 @@ packages:
       crypto-random-string: 2.0.0
     dev: false
 
+  /universal-user-agent/6.0.0:
+    resolution: {integrity: sha512-isyNax3wXoKaulPDZWHQqbmIx1k2tb9fb3GGDBRxCscfYV2Ch7WxPArBsFEG8s/safwXTT7H4QGhaIkTp9447w==}
+    dev: false
+
   /universalify/0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
     engines: {node: '>= 4.0.0'}
@@ -13836,6 +14015,15 @@ packages:
       vite: 3.2.5_less@4.1.3
     dev: false
 
+  /vite-plugin-http2-proxy/0.3.2_vite@3.2.5:
+    resolution: {integrity: sha512-RI0BnnlM1wlQ3gUtpwcw8/qjhvH5L3cw4+vfOV+3k+/26pARqIezNxCEFlCGI3qRDYx4Mtr7+hUmDTRH9Fs9pQ==}
+    peerDependencies:
+      vite: ^2.9.12 || ^3.0.0
+    dependencies:
+      http2-proxy: 5.0.53
+      vite: 3.2.5_less@4.1.3
+    dev: false
+
   /vite-plugin-imagemin/0.4.6_vite@3.2.5:
     resolution: {integrity: sha512-4dE7E77MM2ywFW5KOM6PTwgFZCh+OqlBufhpH07k81a4Ao2/Orvrido7JhLE3TWbWY2K1ZkiZ1E4buIPWtHQRA==}
     peerDependencies:
@@ -13863,6 +14051,22 @@ packages:
       imagemin-webp: 6.0.0
       vite: 3.2.5_less@4.1.3
     transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /vite-plugin-mkcert/1.10.1_vite@3.2.5:
+    resolution: {integrity: sha512-fNNC0z+AcBZExKedjWC7bWlDMf4+WZJqO/4aYf7C/vYY1dqYVOM+zowwTYV0xSx5ZQgplfangPkZk+RwdUlpBg==}
+    engines: {node: '>=v16.0.0'}
+    peerDependencies:
+      vite: '>=3'
+    dependencies:
+      '@octokit/rest': 19.0.5
+      axios: 0.21.4_debug@4.3.4
+      debug: 4.3.4
+      picocolors: 1.0.0
+      vite: 3.2.5_less@4.1.3
+    transitivePeerDependencies:
+      - encoding
       - supports-color
     dev: false
 
@@ -14074,6 +14278,41 @@ packages:
       '@types/node': 14.18.12
       esbuild: 0.15.18
       less: 4.1.2
+      postcss: 8.4.19
+      resolve: 1.22.1
+      rollup: 2.79.1
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /vite/3.2.5_3z3uenakrdj65y35jqnv5krvnq:
+    resolution: {integrity: sha512-4mVEpXpSOgrssFZAOmGIr85wPHKvaDAcXqxVxVRZhljkJOMZi1ibLibzjLHzJvcok8BMguLc7g1W6W/GqZbLdQ==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>= 14'
+      less: '*'
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      '@types/node': 14.18.12
+      esbuild: 0.15.18
+      less: 4.1.3
       postcss: 8.4.19
       resolve: 1.22.1
       rollup: 2.79.1
@@ -15210,7 +15449,7 @@ packages:
       jest-validate: registry.npmmirror.com/jest-validate/27.5.1
       jest-watcher: registry.npmmirror.com/jest-watcher/27.5.1
       micromatch: 4.0.5
-      rimraf: registry.npmmirror.com/rimraf/3.0.2
+      rimraf: 3.0.2
       slash: 3.0.0
       strip-ansi: 6.0.1
     transitivePeerDependencies:
@@ -15818,7 +16057,7 @@ packages:
       '@typescript-eslint/scope-manager': registry.npmmirror.com/@typescript-eslint/scope-manager/5.12.0
       '@typescript-eslint/type-utils': registry.npmmirror.com/@typescript-eslint/type-utils/5.12.0_xywrqa67ra57pymd4gxil4xydq
       '@typescript-eslint/utils': registry.npmmirror.com/@typescript-eslint/utils/5.12.0_xywrqa67ra57pymd4gxil4xydq
-      debug: registry.npmmirror.com/debug/4.3.3
+      debug: 4.3.4
       eslint: registry.npmmirror.com/eslint/8.9.0
       functional-red-black-tree: registry.npmmirror.com/functional-red-black-tree/1.0.1
       ignore: registry.npmmirror.com/ignore/5.2.0
@@ -15862,7 +16101,7 @@ packages:
       '@typescript-eslint/scope-manager': registry.npmmirror.com/@typescript-eslint/scope-manager/5.12.0
       '@typescript-eslint/types': registry.npmmirror.com/@typescript-eslint/types/5.12.0
       '@typescript-eslint/typescript-estree': registry.npmmirror.com/@typescript-eslint/typescript-estree/5.12.0_typescript@4.9.4
-      debug: registry.npmmirror.com/debug/4.3.3
+      debug: 4.3.4
       eslint: registry.npmmirror.com/eslint/8.9.0
       typescript: 4.9.4
     transitivePeerDependencies:
@@ -17192,36 +17431,6 @@ packages:
     version: 1.10.7
     dev: false
 
-  registry.npmmirror.com/debug/4.3.3:
-    resolution: {integrity: sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/debug/-/debug-4.3.3.tgz}
-    name: debug
-    version: 4.3.3
-    engines: {node: '>=6.0'}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-    dependencies:
-      ms: 2.1.2
-    dev: true
-
-  registry.npmmirror.com/debug/4.3.3_supports-color@8.1.1:
-    resolution: {integrity: sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/debug/-/debug-4.3.3.tgz}
-    id: registry.npmmirror.com/debug/4.3.3
-    name: debug
-    version: 4.3.3
-    engines: {node: '>=6.0'}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-    dependencies:
-      ms: 2.1.2
-      supports-color: registry.npmmirror.com/supports-color/8.1.1
-    dev: true
-
   registry.npmmirror.com/decamelize-keys/1.1.0:
     resolution: {integrity: sha512-ocLWuYzRPoS9bfiSdDd3cxvrzovVMZnRDVEzAs+hWIVXGDbHxWMECij2OBuyB/An0FFW/nLuq6Kv1i/YC5Qfzg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/decamelize-keys/-/decamelize-keys-1.1.0.tgz}
     name: decamelize-keys
@@ -17587,7 +17796,7 @@ packages:
       ajv: registry.npmmirror.com/ajv/6.12.6
       chalk: 4.1.2
       cross-spawn: registry.npmmirror.com/cross-spawn/7.0.3
-      debug: registry.npmmirror.com/debug/4.3.3
+      debug: 4.3.4
       doctrine: registry.npmmirror.com/doctrine/3.0.0
       escape-string-regexp: registry.npmmirror.com/escape-string-regexp/4.0.0
       eslint-scope: registry.npmmirror.com/eslint-scope/7.1.1
@@ -19124,7 +19333,7 @@ packages:
       colorette: registry.npmmirror.com/colorette/1.4.0
       commander: registry.npmmirror.com/commander/8.3.0
       cosmiconfig: registry.npmmirror.com/cosmiconfig/7.0.1
-      debug: registry.npmmirror.com/debug/4.3.3_supports-color@8.1.1
+      debug: 4.3.4_supports-color@8.1.1
       enquirer: registry.npmmirror.com/enquirer/2.3.6
       execa: registry.npmmirror.com/execa/5.1.1
       listr2: registry.npmmirror.com/listr2/3.14.0_enquirer@2.3.6
@@ -20955,7 +21164,7 @@ packages:
       colord: registry.npmmirror.com/colord/2.9.2
       cosmiconfig: registry.npmmirror.com/cosmiconfig/7.0.1
       css-functions-list: registry.npmmirror.com/css-functions-list/3.0.1
-      debug: registry.npmmirror.com/debug/4.3.3
+      debug: 4.3.4
       execall: registry.npmmirror.com/execall/2.0.0
       fast-glob: 3.2.11
       fastest-levenshtein: registry.npmmirror.com/fastest-levenshtein/1.0.12

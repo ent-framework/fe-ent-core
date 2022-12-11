@@ -1,11 +1,9 @@
 import { generateAntColors, primaryColor } from './themeConfig';
 const { getThemeVariables } = require('ant-design-vue/dist/theme');
-import path from 'path';
-import { themeRoot } from '@ent-core/build-utils';
 /**
  * less global variable
  */
-export function generateModifyVars(dark = false) {
+export function generateModifyVars(dark = false, preLoadFile: string) {
   const palettes = generateAntColors(primaryColor);
   const primary = palettes[5];
 
@@ -16,7 +14,6 @@ export function generateModifyVars(dark = false) {
   }
 
   const modifyVars = getThemeVariables({ dark });
-  const preLoadFile = path.resolve(themeRoot, 'config.less');
 
   return {
     ...modifyVars,

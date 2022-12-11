@@ -2,7 +2,7 @@ import type { ConfigEnv, UserConfig, Alias } from 'vite';
 import vite, { loadEnv } from 'vite';
 import { resolve } from 'path';
 import moment from 'moment';
-import { generateModifyVars } from '../generate/generateModifyVars';
+import { generateModifyVars } from 'fe-ent-theme-util';
 import { createProxy } from './proxy';
 import { wrapperEnv, getPackageManifest, green } from '../utils';
 import { createBuildTarget, createVitePlugins } from './plugin';

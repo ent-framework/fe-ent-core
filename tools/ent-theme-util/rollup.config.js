@@ -4,6 +4,39 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
+/**
+ * @type { import('rollup').RollupOptions }
+ */
+
+const clientInput = {
+  input: path.resolve(__dirname, './src/index.ts'),
+  plugins: [
+    typescript({
+      target: 'es2018',
+      include: ['./src/*.ts'],
+      baseUrl: path.resolve(__dirname, 'src'),
+    }),
+  ],
+};
+
+const clientConfigs = [
+  {
+    ...clientInput,
+    output: {
+      format: 'esm',
+      file: path.resolve(__dirname, 'dist', 'index.mjs'),
+      sourcemap: true,
+    },
+  },
+  {
+    ...clientInput,
+    output: {
+      format: 'cjs',
+      file: path.resolve(__dirname, 'dist', 'index.js'),
+      sourcemap: true,
+    },
+  },
+];
 
 /**
  * @type { import('rollup').RollupOptions }
@@ -48,27 +81,31 @@ const createNodeConfig = (isProduction) => {
   /**
    * @type {*[]}
    */
+  const dependencies = [
+    ...Object.keys(require('./package.json').dependencies),
+    ...(isProduction ? [] : Object.keys(require('./package.json').devDependencies)),
+  ];
+
+  const peerDependencies = [...Object.keys(require('./package.json').peerDependencies)];
+
+  const external = dependencies.filter((s) => !peerDependencies.includes(s));
   const nodeConfig = {
     ...sharedNodeOptions,
     input: {
-      cli: path.resolve(__dirname, 'src/cli.ts'),
+      index: path.resolve(__dirname, 'src/index.ts'),
     },
     output: {
       ...sharedNodeOptions.output,
       sourcemap: !isProduction,
     },
-    external: [
-      'fsevents',
-      ...Object.keys(require('./package.json').dependencies),
-      ...(isProduction ? [] : Object.keys(require('./package.json').devDependencies)),
-    ],
+    external: ['rollup', 'vite', ...external],
     plugins: [
       nodeResolve({ preferBuiltins: true }),
       typescript({
-        tsconfig: './tsconfig.json',
+        tsconfig: 'src/tsconfig.json',
         module: 'esnext',
         target: 'es2019',
-        include: ['src/**/*.ts', './types/**'],
+        include: ['src/**/*.ts', 'types/**'],
         exclude: ['src/**/__tests__/**'],
         esModuleInterop: true,
         // in production we use api-extractor for dts generation
@@ -85,7 +122,6 @@ const createNodeConfig = (isProduction) => {
       }),
       commonjs({
         extensions: ['.js'],
-        ignoreDynamicRequires: true,
         // Optional peer deps of ws. Native deps that are mostly for performance.
         // Since ws is not that perf critical for us, just ignore these deps.
         ignore: ['bufferutil', 'utf-8-validate'],
@@ -117,11 +153,8 @@ const terserConfig = {
   plugins: [nodeResolve(), commonjs()],
 };
 
-export default (commandLineArgs) => {
-  const isDev = commandLineArgs.watch;
-  const isProduction = !isDev;
-
-  console.log(`Build tools/cli in production mode:  ${isProduction}`);
-
-  return [createNodeConfig(isProduction), ...(isProduction ? [terserConfig] : [])];
+export default () => {
+  return [
+    ...clientConfigs,
+  ];
 };

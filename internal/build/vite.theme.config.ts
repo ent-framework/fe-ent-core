@@ -3,7 +3,7 @@ import path from 'path';
 
 export default (): UserConfig => {
   const root = process.cwd();
-  const workspace = path.resolve(root, '../');
+  const workspace = path.resolve(root, '../../');
   return {
     base: '/',
     root: `${workspace}`,

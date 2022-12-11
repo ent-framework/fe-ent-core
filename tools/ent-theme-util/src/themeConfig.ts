@@ -4,9 +4,9 @@ export const primaryColor = '#0960bd';
 
 export const darkMode = 'light';
 
-export type Fn = (...arg: any) => any;
+type Fn = (...arg: any) => any;
 
-export type GenerateTheme = 'default' | 'dark';
+type GenerateTheme = 'default' | 'dark';
 
 export interface GenerateColorsParams {
   mixLighten: Fn;

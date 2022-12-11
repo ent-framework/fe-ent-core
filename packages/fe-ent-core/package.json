@@ -30,6 +30,7 @@
     "cropperjs": "^1.5.12",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.10.7",
+    "fe-ent-theme-api": "^1.0.1",
     "intro.js": "^4.3.0",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
@@ -43,8 +44,8 @@
     "tinycolor2": "^1.4.2",
     "vue-i18n": "^9.1.9",
     "vue-router": "^4.1.6",
-    "xlsx": "^0.17.5",
-    "fe-ent-theme-api": "^1.0.1"
+    "vue-types": "^3.0.2",
+    "xlsx": "^0.17.5"
   },
   "devDependencies": {
     "rimraf": "^3.0.2",

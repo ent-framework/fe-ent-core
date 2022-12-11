@@ -75,7 +75,6 @@
     "@fe-ent-extension/markdown": "workspace:*",
     "@fe-ent-extension/qrcode": "workspace:*",
     "@fe-ent-extension/tinymce": "workspace:*",
-    "fe-ent-cli": "workspace:*",
     "fe-ent-build": "workspace:*",
     "vite-plugin-ent-theme": "workspace:*",
     "fe-ent-theme-api": "workspace:*"

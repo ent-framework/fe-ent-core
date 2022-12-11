@@ -3,8 +3,8 @@
   "compilerOptions": {
     "composite": true,
     "lib": ["ESNext"],
-    "types": ["node"],
-    "skipLibCheck": true
+    "types": ["node", "typings/global.d.ts", "typings/support.d.ts"],
+    "skipLibCheck": true,
   },
   "include": [
     "internal/**/*",
@@ -14,7 +14,9 @@
     "scripts/**/*",
     "packages/theme-chalk/*",
     "packages/fe-ent-core/version.ts",
-    "packages/fe-ent-core/package.json"
+    "packages/fe-ent-core/package.json",
+    "typings/global.d.ts",
+    "typings/support.d.ts"
   ],
   "exclude": ["**/__tests__/**", "**/tests/**", "**/dist"]
 }

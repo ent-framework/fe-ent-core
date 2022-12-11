@@ -73,6 +73,8 @@ export const generateTypesDefinitions = async () => {
 };
 
 async function addSourceFiles(project: Project) {
+  project.addSourceFileAtPath(path.resolve(projRoot, 'typings/support.d.ts'));
+
   const filePaths = excludeFiles(
     await glob(['**/*.{tsx,ts,vue}', '!fe-ent-core/**/*'], {
       cwd: pkgRoot,
@@ -84,14 +86,6 @@ async function addSourceFiles(project: Project) {
     await glob('**/*.{tsx,ts,vue}', {
       cwd: epRoot,
       onlyFiles: true,
-    }),
-  );
-
-  const typingPaths = excludeFiles(
-    await glob('**/*.{tsx,ts}', {
-      cwd: `${projRoot}/typings/`,
-      onlyFiles: true,
-      absolute: true,
     }),
   );
 
@@ -136,11 +130,6 @@ async function addSourceFiles(project: Project) {
     ...epPaths.map(async (file) => {
       const content = await fs.readFile(path.resolve(epRoot, file), 'utf-8');
       sourceFiles.push(project.createSourceFile(path.resolve(pkgRoot, file), content));
-    }),
-
-    ...typingPaths.map(async (file) => {
-      const sourceFile = project.addSourceFileAtPath(file);
-      sourceFiles.push(sourceFile);
     }),
   ]);
   return sourceFiles;

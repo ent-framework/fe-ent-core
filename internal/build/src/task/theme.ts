@@ -3,7 +3,7 @@ import gulp from 'gulp';
 import chalk from 'chalk';
 import through2 from 'through2';
 import { epOutput, pkgRoot, themeRoot } from '@ent-core/build-utils';
-import { generateModifyVars } from './generateModifyVars';
+import { generateModifyVars } from 'fe-ent-theme-util';
 import Less from 'gulp-less';
 import { lessPlugin } from '../plugins/less';
 import { resolveConfig, ResolvedConfig } from 'vite';
@@ -52,15 +52,16 @@ export const buildTheme = async () => {
 };
 
 export async function compileLess(options: CompileLessOption) {
-  const { cwd = process.cwd(), resolvedConfig } = options;
+  const { cwd, resolvedConfig } = options;
   const { src, out, dest, dark } = options;
   const resolvedLessFile = path.resolve(cwd, src);
   // Do less compile
+  const preLoadFile = path.resolve(themeRoot, 'config.less');
   const lessOpts: Less.Options = {
     sourceMap: true,
     inline: true,
     filename: resolvedLessFile,
-    modifyVars: generateModifyVars(dark),
+    modifyVars: generateModifyVars(dark, preLoadFile),
     plugins: [lessPlugin(resolvedLessFile, resolvedConfig)],
     javascriptEnabled: true,
   };

@@ -3,13 +3,16 @@
  * https://github.com/anncwb/vite-plugin-theme
  */
 import type { Plugin } from 'vite';
-import path from 'path';
 import { viteThemePlugin, antdDarkThemePlugin } from 'vite-plugin-ent-theme';
 import { mixLighten, mixDarken, tinycolor } from '../../utils/color';
 
 import { getThemeColors, generateColors } from '../../config/themeConfig';
-import { generateModifyVars } from '../../generate/generateModifyVars';
-import { getThemePluginPreLoadFile, getVitePreLoadFile, getAntdPreLoadFile } from '../../utils/less';
+import { generateModifyVars } from 'fe-ent-theme-util';
+import {
+  getThemePluginPreLoadFile,
+  getVitePreLoadFile,
+  getAntdPreLoadFile,
+} from '../../utils/less';
 import { CustomConfigEnv } from '../createConfig';
 
 export function configThemePlugin(configEnv: CustomConfigEnv): Plugin[] {
@@ -48,10 +51,7 @@ export function configThemePlugin(configEnv: CustomConfigEnv): Plugin[] {
       colorVariables: [...getThemeColors(), ...colors],
     }),
     antdDarkThemePlugin({
-      preloadFiles: [
-        getAntdPreLoadFile(),
-        preLoadFile,
-      ],
+      preloadFiles: [getAntdPreLoadFile(), preLoadFile],
       filter: (id) => {
         return configEnv.runMode == 'package' ? !id.endsWith('antd.less') : true;
       },
