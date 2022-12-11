@@ -18,7 +18,6 @@ import { importMenuModules } from 'fe-ent-core/lib/router/menus';
 import { getBasicRoutes } from 'fe-ent-core/lib/router/routes';
 import { initApplication } from '/@/init-application';
 import EntCore from 'fe-ent-core';
-//import AntD from 'ant-design-vue';
 
 // Importing on demand in local development will increase the number of browser requests by around 20%.
 // This may slow down the browser refresh speed.
@@ -49,9 +48,7 @@ async function bootstrap() {
   registerGlobComp(app);
 
   //register components
-  //app.use(AntD);
   app.use(EntCore);
-  //app.use(QrCode);
 
   // Multilingual configuration
   // Asynchronous case: language files may be obtained from the server side

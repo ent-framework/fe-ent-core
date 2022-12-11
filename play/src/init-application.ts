@@ -1,6 +1,8 @@
-import { useUserStoreWithout } from 'fe-ent-core/lib/store/user';
-import { useI18n } from 'fe-ent-core/lib/locale';
-import { initRequest } from 'fe-ent-core/lib/utils/http';
+import { useUserStoreWithOut } from 'fe-ent-core/lib/store/modules/user';
+import { useI18n } from 'fe-ent-core/lib/hooks/web';
+import { initHttpBridge, initUserBridge } from 'fe-ent-core/lib/logics/bridge';
+import { loginApi, getUserInfo, getPermCode, doLogout } from 'fe-ent-core/lib/logics/api/user';
+import { getMenuList } from 'fe-ent-core/lib/logics/api/menu';
 // 为了解耦 `packages/*` 下面各模块，不再相互依赖
 // 如果模块相互依赖严重，则需要对外提供解耦方式，由调用方去进行参数传递
 // 各个模块需要提供 `bridge` 文件作为解耦方式
@@ -8,24 +10,24 @@ async function initPackages() {
   const _initRequest = async () => {
     const apiUrl = '';
     const { t } = useI18n();
-    await initRequest(() => {
+    await initHttpBridge(() => {
       return {
         apiUrl,
         getTokenFunction: () => {
-          const userStore = useUserStoreWithout();
-          return userStore.getAccessToken;
+          const userStore = useUserStoreWithOut();
+          return userStore.getToken;
         },
         errorFunction: null,
         noticeFunction: null,
         errorModalFunction: null,
         timeoutFunction: () => {
-          const userStore = useUserStoreWithout();
-          userStore.setAccessToken(undefined);
+          const userStore = useUserStoreWithOut();
+          userStore.setToken(undefined);
           userStore.logout(true);
         },
         unauthorized: (msg?: string) => {
-          const userStore = useUserStoreWithout();
-          userStore.setAccessToken(undefined);
+          const userStore = useUserStoreWithOut();
+          userStore.setToken(undefined);
           userStore.logout(true);
           return msg || t('sys.api.errMsg401');
         },
@@ -34,7 +36,19 @@ async function initPackages() {
     });
   };
 
-  await Promise.all([_initRequest()]);
+  const _initUser = async () => {
+    await initUserBridge(() => {
+      return {
+        loginApi: loginApi,
+        getUserInfo: getUserInfo,
+        getPermCode: getPermCode,
+        doLogout: doLogout,
+        getMenuList: getMenuList,
+      };
+    });
+  };
+
+  await Promise.all([_initRequest(), _initUser()]);
 }
 
 export async function initApplication() {

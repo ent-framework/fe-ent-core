@@ -2,8 +2,6 @@ import { createAxios } from './factory';
 
 export const defHttp = createAxios();
 
-export { initRequest } from './bridge';
-
 export const replaceUrlWithVariables = (url: any, options: Record<string, string>): string => {
   if (Object.keys(options).length == 0 || !url) return url;
   let result = url.toString();

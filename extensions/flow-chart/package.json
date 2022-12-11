@@ -30,7 +30,7 @@
   },
   "peerDependencies": {
     "vue": "3.2.31",
-    "ant-design-vue": "2.2.8",
+    "ant-design-vue": "^3.2.0",
     "fe-ent-core": "^1.0.7",
     "@fe-ent-extension/code-editor": "^1.0.4"
   },

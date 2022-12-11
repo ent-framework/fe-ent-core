@@ -1,8 +1,9 @@
 import { rollup } from 'rollup';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import vueSetupExtend from 'vite-plugin-vue-setup-extend';
+// import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import VueMacros from 'unplugin-vue-macros/rollup';
 import commonjs from '@rollup/plugin-commonjs';
 import esbuild from 'rollup-plugin-esbuild';
 import filesize from 'rollup-plugin-filesize';
@@ -32,20 +33,31 @@ export const buildModules = async () => {
       EntCoreAlias(),
       PurgeIcons({}),
       image({ dom: false }),
-      rollupPluginInjectProcessViteEnv({
-        baseDir: `${pkgRoot}`,
-        exclude: ['**/*.css', '**/*.less', '**/*.svg', '**/*.jpg', '**/*.jpeg', '**/*.png'],
-        verbose: false,
+      // rollupPluginInjectProcessViteEnv({
+      //   baseDir: `${pkgRoot}`,
+      //   exclude: ['**/*.css', '**/*.less', '**/*.svg', '**/*.jpg', '**/*.jpeg', '**/*.png'],
+      //   verbose: false,
+      // }),
+      VueMacros({
+        setupComponent: false,
+        setupSFC: false,
+        plugins: {
+          vue: vue({
+            isProduction: false,
+            reactivityTransform: true,
+          }),
+          vueJsx: vueJsx(),
+        },
       }),
       nodeResolve({
         extensions: ['.mjs', '.js', '.ts', '.tsx'],
       }),
-      vue({
-        isProduction: false,
-        reactivityTransform: true,
-      }),
-      vueJsx(),
-      vueSetupExtend(),
+      // vue({
+      //   isProduction: false,
+      //   reactivityTransform: true,
+      // }),
+      // vueJsx(),
+      // vueSetupExtend(),
       commonjs(),
       esbuild({
         sourceMap: true,

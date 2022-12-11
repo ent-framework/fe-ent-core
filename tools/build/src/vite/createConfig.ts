@@ -125,11 +125,15 @@ export function createViteConfig(
     optimizeDeps: {
       // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly
       include: [
+        'vue',
+        'vue-router',
+        'vue-i18n',
+        'axios',
+        'ant-design-vue',
+        'dayjs',
         '@iconify/iconify',
         'ant-design-vue/es/locale/zh_CN',
-        'moment/dist/locale/zh-cn',
         'ant-design-vue/es/locale/en_US',
-        'moment/dist/locale/eu',
       ],
       exclude: ['vue-demi'],
     },

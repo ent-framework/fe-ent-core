@@ -42,7 +42,7 @@
     "sortablejs": "^1.14.0",
     "tinycolor2": "^1.4.2",
     "vue-i18n": "^9.1.9",
-    "vue-router": "^4.0.12",
+    "vue-router": "^4.1.6",
     "xlsx": "^0.17.5",
     "fe-ent-theme-api": "^1.0.1"
   },
@@ -51,8 +51,7 @@
     "@types/tinycolor2": "^1.4.2",
     "@vue/compiler-sfc": "3.2.31",
     "vue-demi": "^0.12.1",
-    "vue": "3.2.31",
-    "ant-design-vue": "3.2.15"
+    "vue": "^3.2.31"
   },
   "repository": {
     "type": "git",

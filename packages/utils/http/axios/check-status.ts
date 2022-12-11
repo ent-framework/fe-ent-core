@@ -1,7 +1,7 @@
 import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
-import { context } from './bridge';
+import { httpBridge } from '@ent-core/logics/bridge';
 // import router from '@ent-core/router';
 // import { PageEnum } from '@ent-core/logics/enums/page-enum';
 
@@ -31,7 +31,7 @@ export function checkStatus(
       // } else {
       //   userStore.logout(true);
       // }
-      context.unauthorized();
+      httpBridge.unauthorized();
       break;
     case 403:
       errMessage = msg || t('sys.api.errMsg403');

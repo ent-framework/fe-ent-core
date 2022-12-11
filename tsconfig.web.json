@@ -5,9 +5,7 @@
     "jsx": "preserve",
     "lib": ["ES2018", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-    "types": [
-      "vite/client", "./typings/support", "@types/node"
-    ]
+    "types": ["unplugin-vue-macros/macros-global", "typings/global.d.ts", "typings/support.d.ts"]
   },
   "include": ["packages", "typings/global.d.ts", "typings/support.d.ts"],
   "exclude": [

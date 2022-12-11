@@ -7,13 +7,13 @@ import { PageEnum } from '@ent-core/logics/enums/page-enum';
 import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '@ent-core/logics/enums/cache-enum';
 import { getAuthCache, setAuthCache } from '@ent-core/utils/auth';
 import { GetUserInfoModel, LoginParams } from '@ent-core/logics/model/user-model';
-import { doLogout, getUserInfo, loginApi } from '@ent-core/logics/api/user';
+import { userBridge } from '@ent-core/logics/bridge';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { useMessage } from '@ent-core/hooks/web/use-message';
-import { router } from '@ent-core/router';
-import { usePermissionStore } from '@ent-core/store/modules/permission';
-import { RouteRecordRaw } from 'vue-router';
-import { registerPageNotFoundRoute } from '@ent-core/router/routes/basic';
+// import { router } from '@ent-core/router';
+// import { usePermissionStore } from '@ent-core/store/modules/permission';
+// import { RouteRecordRaw } from 'vue-router';
+// import { registerPageNotFoundRoute } from '@ent-core/router/routes/basic';
 import { isArray } from '@ent-core/utils/is';
 import { h } from 'vue';
 
@@ -90,7 +90,7 @@ export const useUserStore = defineStore({
     ): Promise<GetUserInfoModel | null> {
       try {
         const { goHome = true, mode, ...loginParams } = params;
-        const data = await loginApi(loginParams, mode);
+        const data = await userBridge.loginApi(loginParams, mode);
         const { token } = data;
 
         // save token
@@ -109,22 +109,23 @@ export const useUserStore = defineStore({
       if (sessionTimeout) {
         this.setSessionTimeout(false);
       } else {
-        const permissionStore = usePermissionStore();
-        if (!permissionStore.isDynamicAddedRoute) {
-          const routes = await permissionStore.buildRoutesAction();
-          routes.forEach((route) => {
-            router.addRoute(route as unknown as RouteRecordRaw);
-          });
-          router.addRoute(registerPageNotFoundRoute() as unknown as RouteRecordRaw);
-          permissionStore.setDynamicAddedRoute(true);
-        }
+        // TODO fix
+        // const permissionStore = usePermissionStore();
+        // if (!permissionStore.isDynamicAddedRoute) {
+        //   const routes = await permissionStore.buildRoutesAction();
+        //   routes.forEach((route) => {
+        //     router.addRoute(route as unknown as RouteRecordRaw);
+        //   });
+        //   router.addRoute(registerPageNotFoundRoute() as unknown as RouteRecordRaw);
+        //   permissionStore.setDynamicAddedRoute(true);
+        // }
         goHome && (window.location.href = PageEnum.BASE_INDEX as string);
       }
       return userInfo;
     },
     async getUserInfoAction(): Promise<UserInfo | null> {
       if (!this.getToken) return null;
-      const userInfo = await getUserInfo();
+      const userInfo = await userBridge.getUserInfo();
       const { roles = [] } = userInfo;
       if (isArray(roles)) {
         const roleList = roles.map((item) => item.value) as RoleEnum[];
@@ -142,7 +143,7 @@ export const useUserStore = defineStore({
     async logout(goLogin = false) {
       if (this.getToken) {
         try {
-          await doLogout();
+          await userBridge.doLogout();
         } catch {
           console.log('注销Token失败');
         }

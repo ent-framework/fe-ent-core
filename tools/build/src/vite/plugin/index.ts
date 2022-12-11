@@ -46,8 +46,8 @@ export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) 
   vitePlugins.push(configWindiPlugin(configEnv));
 
   const isBuild = configEnv.runMode == 'package' || configEnv.runMode == 'lib';
-  // TODO
-  //!isBuild && vitePlugins.push(configHmrPlugin());
+
+  !isBuild && vitePlugins.push(configHmrPlugin());
 
   // @vitejs/plugin-legacy
   //VITE_LEGACY && isBuild && vitePlugins.push(legacy());

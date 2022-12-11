@@ -8,7 +8,7 @@
     "url": "https://github.com/anncwb"
   },
   "scripts": {
-    "dev": "vite --mode=development",
+    "dev": "vite --mode=development --debug",
     "build": "cross-env NODE_ENV=production vite build",
     "build:no-cache": "yarn clean:cache && npm run build",
     "clean": "rimraf dist",
@@ -35,10 +35,10 @@
     "ant-design-vue": "^3.2.15"
   },
   "devDependencies": {
-    "@iconify/json": "^1.1.422",
     "@purge-icons/generated": "^0.7.0",
     "vite-plugin-ent-theme": "^1.0.1",
-    "vite": "3.2.5"
+    "vite": "3.2.5",
+    "@iconify/json": "^1.1.422"
   },
   "repository": {
     "type": "git",

@@ -53,8 +53,8 @@
     "gen:icon": "esno ./build/generate/icon/index.ts"
   },
   "peerDependencies": {
-    "ant-design-vue": "^3.2.0",
-    "vue": "^3.2.0"
+    "vue": "^3.2.0",
+    "ant-design-vue": "^3.2.0"
   },
   "dependencies": {
     "@ent-core/assets": "workspace:*",
@@ -83,11 +83,11 @@
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
+    "@ent-core/build": "workspace:*",
+    "@ent-core/build-utils": "workspace:*",
     "@iconify/json": "^1.1.422",
     "@pnpm/logger": "4.0.0",
     "@pnpm/types": "7.9.0",
-    "@ent-core/build": "workspace:*",
-    "@ent-core/build-utils": "workspace:*",
     "@purge-icons/generated": "^0.7.0",
     "@types/codemirror": "^5.60.5",
     "@types/crypto-js": "^4.0.2",
@@ -152,6 +152,7 @@
     "ts-morph": "13.0.3",
     "tslib": "^2.3.1",
     "typescript": "^4.7.4",
+    "unplugin-vue-macros": "^0.11.2",
     "vite": "3.2.5",
     "vue": "^3.2.31",
     "ant-design-vue": "^3.2.15"
