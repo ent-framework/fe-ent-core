@@ -1,31 +1,8 @@
 {
-  "compilerOptions": {
-    "allowJs": true,
-    "strict": true,
-    "module": "esnext",
-    "target": "esnext",
-    "noImplicitAny": false,
-    "declaration": true,
-    "moduleResolution": "Node",
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "baseUrl": ".",
-    "sourceMap": true,
-    "lib": ["esnext", "DOM"],
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "preserveSymlinks": true,
-    "types": ["vite/client", "./typings/global"],
-    "typeRoots": ["node_modules/@types", "./typings"]
-  },
-  "include": [
-    "build/",
-    "gulpfile.ts",
-    "packages",
-    "extensions",
-    "typings/*.d.ts"
-  ],
-  "exclude": ["node_modules", "tests/server/**/*.ts", "dist"]
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.web.json" },
+    { "path": "./tsconfig.play.json" },
+    { "path": "./tsconfig.node.json" },
+  ]
 }

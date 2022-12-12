@@ -37,7 +37,7 @@ export const basicProps = {
   },
   defaultExpandAll: propTypes.bool.def(false),
 
-  replaceFields: {
+  fieldNames: {
     type: Object as PropType<ReplaceFields>,
   },
 

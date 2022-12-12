@@ -6,7 +6,10 @@ import type { ProjectConfig } from '@ent-core/logics/types/config';
 import { PROJ_CFG_KEY } from '@ent-core/logics/enums/cache-enum';
 import projectSetting from '@ent-core/logics/settings/project-setting';
 
-import { updateHeaderBgColor, updateSidebarBgColor } from '@ent-core/logics/theme/update-background';
+import {
+  updateHeaderBgColor,
+  updateSidebarBgColor,
+} from '@ent-core/logics/theme/update-background';
 import { updateColorWeak } from '@ent-core/logics/theme/update-color-weak';
 import { updateGrayMode } from '@ent-core/logics/theme/update-gray-mode';
 import { updateDarkTheme } from '@ent-core/logics/theme/dark';

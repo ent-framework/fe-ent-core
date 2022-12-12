@@ -26,7 +26,11 @@ function createSearchReg(key: string) {
   return new RegExp(str);
 }
 
-export function useMenuSearch(refs: Ref<HTMLElement[]>, scrollWrap: Ref<ElRef>, emit: EmitType) {
+export function useMenuSearch(
+  refs: Ref<HTMLElement[]>,
+  scrollWrap: Ref<ElRef>,
+  callback: () => void,
+) {
   const searchResult = ref<SearchResult[]>([]);
   const keyword = ref('');
   const activeIndex = ref(-1);
@@ -151,7 +155,7 @@ export function useMenuSearch(refs: Ref<HTMLElement[]>, scrollWrap: Ref<ElRef>, 
   // close search modal
   function handleClose() {
     searchResult.value = [];
-    emit('close');
+    callback();
   }
 
   // enter search

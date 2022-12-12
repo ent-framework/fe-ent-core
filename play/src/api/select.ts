@@ -1,7 +1,7 @@
 import { defHttp } from '@ent-core/utils/http/axios';
 import { DemoOptionsItem, selectParams } from '../model/options-model';
 enum Api {
-  OPTIONS_LIST = '/api/select/getDemoOptions',
+  OPTIONS_LIST = '/select/getDemoOptions',
 }
 
 /**

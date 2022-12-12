@@ -1,15 +1,12 @@
 import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import { httpBridge } from '@ent-core/logics/bridge';
 // import router from '@ent-core/router';
 // import { PageEnum } from '@ent-core/logics/enums/page-enum';
-import { useUserStoreWithOut } from '@ent-core/store/modules/user';
-import projectSetting from '@ent-core/logics/settings/project-setting';
-import { SessionTimeoutProcessingEnum } from '@ent-core/logics/enums/app-enum';
 
 const { createMessage, createErrorModal } = useMessage();
 const error = createMessage.error!;
-const stp = projectSetting.sessionTimeoutProcessing;
 
 export function checkStatus(
   status: number,
@@ -17,7 +14,6 @@ export function checkStatus(
   errorMessageMode: ErrorMessageMode = 'message',
 ): void {
   const { t } = useI18n();
-  const userStore = useUserStoreWithOut();
   let errMessage = '';
 
   switch (status) {
@@ -28,13 +24,14 @@ export function checkStatus(
     // Jump to the login page if not logged in, and carry the path of the current page
     // Return to the current page after successful login. This step needs to be operated on the login page.
     case 401:
-      userStore.setToken(undefined);
-      errMessage = msg || t('sys.api.errMsg401');
-      if (stp === SessionTimeoutProcessingEnum.PAGE_COVERAGE) {
-        userStore.setSessionTimeout(true);
-      } else {
-        userStore.logout(true);
-      }
+      // userStore.setToken(undefined);
+      // errMessage = msg || t('sys.api.errMsg401');
+      // if (stp === SessionTimeoutProcessingEnum.PAGE_COVERAGE) {
+      //   userStore.setSessionTimeout(true);
+      // } else {
+      //   userStore.logout(true);
+      // }
+      httpBridge.unauthorized();
       break;
     case 403:
       errMessage = msg || t('sys.api.errMsg403');

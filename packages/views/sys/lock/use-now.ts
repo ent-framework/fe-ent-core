@@ -1,11 +1,13 @@
-import { dateUtil } from '@ent-core/utils/date-util';
+import dayjs from 'dayjs';
+import weekday from 'dayjs/plugin/weekday';
 import { reactive, toRefs } from 'vue';
 import { useLocaleStore } from '@ent-core/store/modules/locale';
 import { tryOnMounted, tryOnUnmounted } from '@vueuse/core';
 
 export function useNow(immediate = true) {
   const localeStore = useLocaleStore();
-  const localData = dateUtil.localeData(localeStore.getLocale);
+  console.log('localeStore.getLocale:' + localeStore.getLocale);
+  dayjs.extend(weekday);
   let timer: IntervalHandle;
 
   const state = reactive({
@@ -20,21 +22,20 @@ export function useNow(immediate = true) {
   });
 
   const update = () => {
-    const now = dateUtil();
+    const now = dayjs();
 
     const h = now.format('HH');
     const m = now.format('mm');
-    const s = now.get('s');
 
-    state.year = now.get('y');
-    state.month = now.get('M') + 1;
-    state.week = localData.weekdays()[now.day()];
-    state.day = now.get('D');
+    state.year = now.year();
+    state.month = now.month() + 1;
+    state.week = '';
+    state.day = now.date();
     state.hour = h;
     state.minute = m;
-    state.second = s;
+    state.second = now.second();
 
-    state.meridiem = localData.meridiem(Number(h), Number(h), true);
+    //state.meridiem = localData.meridiem(Number(h), Number(h), true);
   };
 
   function start() {

@@ -1,6 +1,6 @@
 import { on } from '@ent-core/utils/dom-utils';
 import { isServer } from '@ent-core/utils/is';
-import type { ComponentPublicInstance, DirectiveBinding, ObjectDirective, App } from 'vue';
+import type { App, ComponentPublicInstance, DirectiveBinding, ObjectDirective } from "vue";
 
 type DocumentHandler = <T extends MouseEvent>(mouseup: T, mousedown: T) => void;
 
@@ -17,10 +17,12 @@ const nodeList: FlushList = new Map();
 let startClick: MouseEvent;
 
 if (!isServer) {
-  on(document, 'mousedown', (e: MouseEvent) => (startClick = e));
-  on(document, 'mouseup', (e: MouseEvent) => {
+  on(document, 'mousedown', (e) => {
+    startClick = e as MouseEvent;
+  });
+  on(document, 'mouseup', (e) => {
     for (const { documentHandler } of nodeList.values()) {
-      documentHandler(e, startClick);
+      documentHandler(e as MouseEvent, startClick);
     }
   });
 }

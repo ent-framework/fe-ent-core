@@ -1,15 +1,39 @@
 import { isFunction } from '@ent-core/utils/is';
-import type { BasicTableProps, TableRowSelection } from '../types/table';
-import { computed, ComputedRef, nextTick, Ref, ref, toRaw, unref, watch } from 'vue';
+import type { BasicTableProps } from '../types/table';
+import { TableRowSelection } from 'ant-design-vue/lib/table/interface';
+import { computed, ComputedRef, nextTick, Ref, ref, SetupContext, toRaw, unref, watch } from 'vue';
 import { ROW_KEY } from '../const';
 import { omit } from 'lodash';
 import { findNodeAll } from '@ent-core/utils/helper/tree-helper';
+
+interface RowSelectionContext
+  extends SetupContext<
+    [
+      'fetch-success',
+      'fetch-error',
+      'selection-change',
+      'register',
+      'row-click',
+      'row-dbClick',
+      'row-contextmenu',
+      'row-mouseenter',
+      'row-mouseleave',
+      'edit-end',
+      'edit-cancel',
+      'edit-row-end',
+      'edit-change',
+      'expanded-rows-change',
+      'change',
+      'columns-change',
+    ]
+  > {
+  tableData: Ref<Recordable[]>;
+}
 export function useRowSelection(
   propsRef: ComputedRef<BasicTableProps>,
-  tableData: Ref<Recordable[]>,
-  emit: EmitType,
+  { tableData, emit }: RowSelectionContext,
 ) {
-  const selectedRowKeysRef = ref<string[] | number[]>([]);
+  const selectedRowKeysRef = ref<string[]>([]);
   const selectedRowRef = ref<Recordable[]>([]);
 
   const getRowSelectionRef = computed((): TableRowSelection | null => {
@@ -20,8 +44,8 @@ export function useRowSelection(
 
     return {
       selectedRowKeys: unref(selectedRowKeysRef),
-      hideDefaultSelections: false,
-      onChange: (selectedRowKeys: string[] | number[]) => {
+      //hideDefaultSelections: false,
+      onChange: (selectedRowKeys, _) => {
         setSelectedRowKeys(selectedRowKeys);
         // selectedRowKeysRef.value = selectedRowKeys;
         // selectedRowRef.value = selectedRows;
@@ -64,7 +88,7 @@ export function useRowSelection(
     return unref(getAutoCreateKey) ? ROW_KEY : rowKey;
   });
 
-  function setSelectedRowKeys(rowKeys: string[] | number[]) {
+  function setSelectedRowKeys(rowKeys) {
     selectedRowKeysRef.value = rowKeys;
     const allSelectedRows = findNodeAll(
       toRaw(unref(tableData)).concat(toRaw(unref(selectedRowRef))),

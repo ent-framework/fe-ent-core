@@ -14,14 +14,16 @@ import projectSetting from '@ent-core/logics/settings/project-setting';
 import { createParamMenuGuard } from './param-menu-guard';
 
 // Don't change the order of creation
-export function setupRouterGuard(router: Router) {
+export function setupRouterGuard(router: Router, isLogin: boolean) {
   createPageGuard(router);
   createPageLoadingGuard(router);
   createHttpGuard(router);
   createScrollGuard(router);
   createMessageGuard(router);
   createProgressGuard(router);
-  createPermissionGuard(router);
+  if (!isLogin) {
+    createPermissionGuard(router);
+  }
   createParamMenuGuard(router); // must after createPermissionGuard (menu has been built.)
   createStateGuard(router);
 }

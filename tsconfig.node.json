@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "lib": ["ESNext"],
+    "types": ["node", "typings/global.d.ts", "typings/support.d.ts"],
+    "skipLibCheck": true,
+  },
+  "include": [
+    "internal/**/*",
+    "internal/**/*.json",
+    "support/**/*",
+    "support/**/*.json",
+    "scripts/**/*",
+    "packages/theme-chalk/*",
+    "packages/fe-ent-core/version.ts",
+    "packages/fe-ent-core/package.json",
+    "typings/global.d.ts",
+    "typings/support.d.ts"
+  ],
+  "exclude": ["**/__tests__/**", "**/tests/**", "**/dist"]
+}

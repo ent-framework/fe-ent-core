@@ -1,4 +1,5 @@
-import type { BasicTableProps, TableRowSelection, BasicColumn } from '../types/table';
+import type { BasicTableProps, BasicColumn } from '../types/table';
+import { TableRowSelection } from 'ant-design-vue/lib/table/interface';
 import type { Ref, ComputedRef } from 'vue';
 import { computed, unref, ref, nextTick, watch } from 'vue';
 import { getViewportOffset } from '@ent-core/utils/dom-utils';

@@ -1,5 +1,4 @@
 import antdLocale from 'ant-design-vue/es/locale/zh_CN';
-import momentLocale from 'moment/dist/locale/zh-cn';
 
 import sys from './zh-CN/sys';
 import layout from './zh-CN/layout';
@@ -25,6 +24,5 @@ export default {
     ...modules,
     antdLocale,
   },
-  momentLocale,
   momentLocaleName: 'zh-cn',
 };

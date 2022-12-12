@@ -132,7 +132,7 @@
         getSelectRowKeys,
         deleteSelectRowByKey,
         setSelectedRowKeys,
-      } = useRowSelection(getProps, tableData, emit);
+      } = useRowSelection(getProps, { tableData, emit, slots, expose, attrs });
 
       const {
         handleTableChange: onTableChange,
@@ -149,18 +149,18 @@
         reload,
         getAutoCreateKey,
         updateTableData,
-      } = useDataSource(
-        getProps,
-        {
-          tableData,
-          getPaginationInfo,
-          setLoading,
-          setPagination,
-          getFieldsValue: formActions.getFieldsValue,
-          clearSelectedRowKeys,
-        },
+      } = useDataSource(getProps, {
+        tableData,
+        getPaginationInfo,
+        setLoading,
+        setPagination,
+        getFieldsValue: formActions.getFieldsValue,
+        clearSelectedRowKeys,
         emit,
-      );
+        slots,
+        expose,
+        attrs,
+      });
 
       function handleTableChange(...args) {
         onTableChange.call(undefined, ...args);
@@ -193,11 +193,20 @@
         clearSelectedRowKeys,
         getAutoCreateKey,
         emit,
+        slots,
+        expose,
+        attrs,
       });
 
       const { getRowClassName } = useTableStyle(getProps, prefixCls);
 
-      const { getExpandOption, expandAll, collapseAll } = useTableExpand(getProps, tableData, emit);
+      const { getExpandOption, expandAll, collapseAll } = useTableExpand(getProps, {
+        tableData,
+        emit,
+        slots,
+        expose,
+        attrs,
+      });
 
       const handlers: InnerHandlers = {
         onColumnsChange: (data: ColumnChangeParam[]) => {

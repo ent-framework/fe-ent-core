@@ -70,12 +70,12 @@
       const { prefixCls } = useDesign('basic-tree');
 
       const getReplaceFields = computed((): Required<ReplaceFields> => {
-        const { replaceFields } = props;
+        const { fieldNames } = props;
         return {
           children: 'children',
           title: 'title',
           key: 'key',
-          ...replaceFields,
+          ...fieldNames,
         };
       });
 

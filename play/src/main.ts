@@ -7,7 +7,7 @@ import App from './app.vue';
 import { createApp } from 'vue';
 import { initAppConfigStore } from 'fe-ent-core/lib/logics/init-app-config';
 import { setupErrorHandle } from 'fe-ent-core/lib/logics/error-handle';
-import { setupRouter } from 'fe-ent-core/lib/router';
+import { setupRouter, router } from 'fe-ent-core/lib/router';
 import { setupRouterGuard } from 'fe-ent-core/lib/router/guard';
 import { setupStore } from 'fe-ent-core/lib/store';
 import { setupGlobDirectives } from 'fe-ent-core/lib/directives';
@@ -16,8 +16,8 @@ import { registerGlobComp } from 'fe-ent-core/lib/components/register-glob-comp'
 import { useLayout } from 'fe-ent-core/lib/router/helper/layout-helper';
 import { importMenuModules } from 'fe-ent-core/lib/router/menus';
 import { getBasicRoutes } from 'fe-ent-core/lib/router/routes';
+import { initApplication } from '/@/init-application';
 import EntCore from 'fe-ent-core';
-//import AntD from 'ant-design-vue';
 
 // Importing on demand in local development will increase the number of browser requests by around 20%.
 // This may slow down the browser refresh speed.
@@ -36,7 +36,7 @@ async function bootstrap() {
   const app = createApp(App);
 
   //初始化全局变量
-  //init(app);
+  await initApplication();
 
   // Configure store
   setupStore(app);
@@ -48,9 +48,7 @@ async function bootstrap() {
   registerGlobComp(app);
 
   //register components
-  //app.use(AntD);
   app.use(EntCore);
-  //app.use(QrCode);
 
   // Multilingual configuration
   // Asynchronous case: language files may be obtained from the server side
@@ -63,15 +61,14 @@ async function bootstrap() {
   layoutMgt.use('IFRAME', IFRAME);
 
   // Configure routing
-  const router = setupRouter(app);
-
   router.addBasicRoutes(getBasicRoutes());
   router.addExtraRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
+  setupRouter(app);
 
   importMenuModules(import.meta.globEager('./modules/**/*.ts'));
 
   // router-guard
-  setupRouterGuard(router);
+  setupRouterGuard(router, false);
 
   // Register global directive
   setupGlobDirectives(app);

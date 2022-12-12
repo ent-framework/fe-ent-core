@@ -1,6 +1,6 @@
 import type { ColEx } from '../types';
 import type { AdvanceState } from '../types/hooks';
-import type { ComputedRef, Ref } from 'vue';
+import type { ComputedRef, Ref, SetupContext } from 'vue';
 import type { FormProps, FormSchema } from '../types/form';
 import { computed, unref, watch } from 'vue';
 import { isBoolean, isFunction, isNumber, isObject } from '@ent-core/utils/is';
@@ -9,9 +9,10 @@ import { useDebounceFn } from '@vueuse/core';
 
 const BASIC_COL_LEN = 24;
 
-interface UseAdvancedContext {
+interface UseAdvancedContext
+  extends SetupContext<['advanced-change', 'reset', 'submit', 'register']> {
   advanceState: AdvanceState;
-  emit: EmitType;
+  //emit: EmitType;
   getProps: ComputedRef<FormProps>;
   getSchema: ComputedRef<FormSchema[]>;
   formModel: Recordable;

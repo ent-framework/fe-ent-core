@@ -136,7 +136,7 @@ const menuList = (() => {
 
 export default [
   {
-    url: '/getAccountList',
+    url: '/api/getAccountList',
     timeout: 100,
     method: 'get',
     response: ({ query }) => {
@@ -145,7 +145,7 @@ export default [
     },
   },
   {
-    url: '/getRoleListByPage',
+    url: '/api/getRoleListByPage',
     timeout: 100,
     method: 'get',
     response: ({ query }) => {
@@ -154,7 +154,7 @@ export default [
     },
   },
   {
-    url: '/setRoleStatus',
+    url: '/api/setRoleStatus',
     timeout: 500,
     method: 'post',
     response: ({ query }) => {
@@ -163,7 +163,7 @@ export default [
     },
   },
   {
-    url: '/getAllRoleList',
+    url: '/api/getAllRoleList',
     timeout: 100,
     method: 'get',
     response: () => {
@@ -171,7 +171,7 @@ export default [
     },
   },
   {
-    url: '/getDeptList',
+    url: '/api/getDeptList',
     timeout: 100,
     method: 'get',
     response: () => {
@@ -179,7 +179,7 @@ export default [
     },
   },
   {
-    url: '/getMenuList',
+    url: '/api/getMenuList',
     timeout: 100,
     method: 'get',
     response: () => {
@@ -187,7 +187,7 @@ export default [
     },
   },
   {
-    url: '/accountExist',
+    url: '/api/accountExist',
     timeout: 500,
     method: 'post',
     response: ({ body }) => {

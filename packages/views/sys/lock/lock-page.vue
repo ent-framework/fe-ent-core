@@ -33,11 +33,13 @@
               {{ userinfo.realName }}
             </p>
           </div>
-          <InputPassword
-            :placeholder="t('sys.lock.placeholder')"
-            class="enter-x"
-            v-model:value="password"
-          />
+          <div style="width: 100%">
+            <InputPassword
+              :placeholder="t('sys.lock.placeholder')"
+              class="enter-x"
+              v-model:value="password"
+            />
+          </div>
           <span :class="`${prefixCls}-entry__err-msg enter-x`" v-if="errMsg">
             {{ t('sys.lock.alert') }}
           </span>
@@ -79,6 +81,7 @@
 <script lang="ts" setup>
   import { ref, computed } from 'vue';
   import { Input } from 'ant-design-vue';
+  import type { UserInfo } from '@ent-core/logics/types/store';
   import { useUserStore } from '@ent-core/store/modules/user';
   import { useLockStore } from '@ent-core/store/modules/lock';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
@@ -102,7 +105,7 @@
 
   const { t } = useI18n();
 
-  const userinfo = computed(() => {
+  const userinfo = computed((): UserInfo => {
     return userStore.getUserInfo || {};
   });
   /**

@@ -30,6 +30,8 @@ declare global {
     -readonly [P in keyof T]: T[P];
   };
 
+  type AnyFunction<T> = (...args: any[]) => T;
+
   declare type Nullable<T> = T | null;
   declare type NonNullable<T> = T extends null | undefined ? never : T;
   declare type Recordable<T = any> = Record<string, T>;
@@ -72,29 +74,6 @@ declare global {
     VITE_USE_IMAGEMIN: boolean;
     VITE_GENERATE_UI: string;
   }
-
-  // declare interface EntInstance {
-  //   init(app: App);
-  // }
-  //
-  // declare const Ent: Ent = Ent.getInstance();
-  //
-  // // 全局实例
-  // class Ent implements EntInstance {
-  //   static instance: Ent;
-  //   _app: App;
-  //   static getInstance() {
-  //     if (!Ent.instance) {
-  //       Ent.instance = new Ent();
-  //     }
-  //     return Ent.instance;
-  //   }
-  //   init(app: App) {
-  //     const _this = Ent.getInstance();
-  //     _this._app = app;
-  //   }
-  // }
-
   declare function parseInt(s: string | number, radix?: number): number;
 
   declare function parseFloat(string: string | number): number;
@@ -115,10 +94,7 @@ declare global {
     [key: string]: string | number | boolean;
   }[];
 
-  declare type EmitType = (event: string, ...args: any[]) => void;
-
   declare type TargetContext = '_self' | '_blank';
-
   declare interface ComponentElRef<T extends HTMLElement = HTMLDivElement> {
     $el: T;
   }

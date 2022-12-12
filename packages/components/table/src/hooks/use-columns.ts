@@ -15,7 +15,7 @@ function handleItem(item: BasicColumn, ellipsis: boolean) {
   item.align = item.align || DEFAULT_ALIGN;
   if (ellipsis) {
     if (!key) {
-      item.key = dataIndex;
+      item.key = dataIndex as string;
     }
     if (!isBoolean(item.ellipsis)) {
       Object.assign(item, {
@@ -216,7 +216,7 @@ export function useColumns(
       const columnKeys = columns as string[];
       const newColumns: BasicColumn[] = [];
       cacheColumns.forEach((item) => {
-        if (columnKeys.includes(item.dataIndex! || (item.key as string))) {
+        if (columnKeys.includes((item.dataIndex as string)! || (item.key as string))) {
           newColumns.push({
             ...item,
             defaultHidden: false,
