@@ -71,7 +71,6 @@ export function useFormRules(formData?: Recordable) {
       sms: smsFormRule,
       mobile: mobileFormRule,
     };
-    console.log(`1111:` + currentState.value);
 
     switch (unref(currentState)) {
       // register form rules

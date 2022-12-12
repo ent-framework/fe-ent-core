@@ -58,7 +58,7 @@ export function createViteConfig(
   // The boolean type read by loadEnv is a string. This function can be converted to boolean type
   const viteEnv = wrapperEnv(env, mode);
 
-  const { VITE_PORT = 3100, VITE_PUBLIC_PATH = '/', VITE_PROXY } = viteEnv;
+  const { VITE_PORT = 3100, VITE_PUBLIC_PATH = '/', VITE_PROXY, VITE_USE_HTTPS } = viteEnv;
 
   green(`Run in folder: ${cwd}, run mode: ${runMode}, public path: ${VITE_PUBLIC_PATH}`);
 
@@ -151,10 +151,11 @@ export function createViteConfig(
       ...config,
       server: {
         // Listening on all local IPs
+        https: VITE_USE_HTTPS,
         host: true,
         port: VITE_PORT,
         // Load proxy configuration from .env
-        proxy: createProxy(VITE_PROXY),
+        proxy: !VITE_USE_HTTPS ? createProxy(VITE_PROXY) : undefined,
       },
     };
   }

@@ -9,8 +9,8 @@
   "include": [
     "internal/**/*",
     "internal/**/*.json",
-    "tools/**/*",
-    "tools/**/*.json",
+    "support/**/*",
+    "support/**/*.json",
     "scripts/**/*",
     "packages/theme-chalk/*",
     "packages/fe-ent-core/version.ts",

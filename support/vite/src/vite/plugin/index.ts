@@ -1,4 +1,4 @@
-import type { Plugin } from 'vite';
+import type { BuildOptions, Plugin, PluginOption } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import purgeIcons from 'vite-plugin-purge-icons';
@@ -15,8 +15,8 @@ import { configSvgIconsPlugin } from './svgSprite';
 import { configHmrPlugin } from './hmr';
 import { generateEnvFilePlugin } from './env-file';
 import { configWindiPlugin } from './windi';
-import { getCurrExecPath, OUTPUT_DIR, findWorkspaceRoot } from '../../utils';
-import type { BuildOptions } from 'vite';
+import { configHttpsPlugin } from './https';
+import { findWorkspaceRoot, getCurrExecPath, OUTPUT_DIR } from '../../utils';
 import { CustomConfigEnv } from '../createConfig';
 import { ViteEnv } from '../../type';
 
@@ -29,7 +29,7 @@ export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) 
     VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE,
   } = viteEnv;
 
-  const defaultPlugins: Plugin[] = [
+  const vitePlugins: (PluginOption | PluginOption[])[] = [
     // have to
     vue(),
     // have to
@@ -37,10 +37,6 @@ export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) 
     // support name
     vueSetupExtend(),
   ];
-
-  const vitePlugins: (Plugin | Plugin[])[] = [];
-
-  vitePlugins.push(defaultPlugins);
 
   // vite-plugin-windicss
   vitePlugins.push(configWindiPlugin(configEnv));
@@ -71,6 +67,9 @@ export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) 
 
   // rollup-plugin-visualizer
   vitePlugins.push(configVisualizerConfig());
+
+  // http2
+  vitePlugins.push(configHttpsPlugin(viteEnv));
 
   //vite-plugin-theme
   vitePlugins.push(configThemePlugin(configEnv));
@@ -116,7 +115,7 @@ export function createBuildTarget(viteEnv: ViteEnv, runMode: string): BuildOptio
     const outDir = `${workspaceRoot}/dist/fe-ent-core`;
     //检查库模式下输出目录styles是否存在，否则vite-plugin-theme会报错
     //vite-plugin-theme 默认输出到dist目录的assets目录，库模式更改为dist目录
-    const buildLibTarget: BuildOptions = {
+    return {
       //target: 'es2015',
       outDir,
       sourcemap: false,
@@ -141,6 +140,5 @@ export function createBuildTarget(viteEnv: ViteEnv, runMode: string): BuildOptio
         },
       },
     };
-    return buildLibTarget;
   }
 }

@@ -16,6 +16,7 @@ import { registerGlobComp } from 'fe-ent-core/lib/components/register-glob-comp'
 import { useLayout } from 'fe-ent-core/lib/router/helper/layout-helper';
 //import { importMenuModules } from 'fe-ent-core/lib/router/menus';
 import { LoginRoute } from 'fe-ent-core/lib/router/routes';
+import { initApplication } from '/@/init-application';
 import EntCore from 'fe-ent-core';
 //import AntD from 'ant-design-vue';
 
@@ -36,7 +37,7 @@ async function bootstrap() {
   const app = createApp(App);
 
   //初始化全局变量
-  //init(app);
+  await initApplication();
 
   // Configure store
   setupStore(app);

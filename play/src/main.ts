@@ -65,7 +65,7 @@ async function bootstrap() {
   router.addExtraRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
   setupRouter(app);
 
- // importMenuModules(import.meta.globEager('./modules/**/*.ts'));
+  importMenuModules(import.meta.globEager('./modules/**/*.ts'));
 
   // router-guard
   setupRouterGuard(router, false);

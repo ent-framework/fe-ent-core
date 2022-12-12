@@ -22,7 +22,7 @@
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
     "@ant-design/icons-vue": "^6.0.1",
-    "@iconify/iconify": "^2.1.1",
+    "@iconify/iconify": "^3.0.0",
     "@vueuse/core": "^7.5.4",
     "@vueuse/shared": "^7.5.4",
     "@zxcvbn-ts/core": "^1.2.0",
@@ -48,9 +48,11 @@
     "xlsx": "^0.17.5"
   },
   "devDependencies": {
-    "rimraf": "^3.0.2",
+    "@iconify/json": "^2.1.138",
+    "@purge-icons/generated": "^0.9.0",
     "@types/tinycolor2": "^1.4.2",
     "@vue/compiler-sfc": "3.2.31",
+    "rimraf": "^3.0.2",
     "vue-demi": "^0.12.1",
     "vue": "^3.2.31"
   },
