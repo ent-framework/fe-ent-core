@@ -1,7 +1,7 @@
 import { rollup } from 'rollup';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-// import vueSetupExtend from 'vite-plugin-vue-setup-extend';
+import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import VueMacros from 'unplugin-vue-macros/rollup';
 import commonjs from '@rollup/plugin-commonjs';
@@ -57,7 +57,7 @@ export const buildModules = async () => {
       //   reactivityTransform: true,
       // }),
       // vueJsx(),
-      // vueSetupExtend(),
+      vueSetupExtend(),
       commonjs(),
       esbuild({
         sourceMap: true,

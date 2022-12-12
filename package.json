@@ -20,7 +20,6 @@
     "build:all": "pnpm build:support && pnpm build:lib",
     "build:lib": "pnpm run -C internal/build start",
     "build:support": "pnpm --filter './support/**' --stream build",
-    "build:stub": "pnpm run -r --parallel stub",
     "build:internal": "pnpm run -r --parallel stub",
     "build:play": "pnpm -C play --stream build",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
@@ -50,7 +49,9 @@
     "prepare": "husky install",
     "prepublish": "pnpm run build:libs",
     "remote": "sucrase-node ./build/publish.ts",
-    "gen:icon": "esno ./build/generate/icon/index.ts"
+    "gen:icon": "esno ./build/generate/icon/index.ts",
+    "stub": "pnpm run -r --parallel stub",
+    "postinstall": "pnpm stub && pnpm gen:version"
   },
   "peerDependencies": {
     "vue": "^3.2.0",

@@ -4,10 +4,7 @@
     <BasicHelp :class="`${prefixCls}-help`" v-if="helpMessage" :text="helpMessage" />
   </span>
 </template>
-<script lang="ts">
-  export default { name: 'EntTitle' };
-</script>
-<script lang="ts" setup>
+<script lang="ts" setup name="EntTitle">
   import type { PropType } from 'vue';
   import { useSlots, computed } from 'vue';
   import BasicHelp from './basic-help.vue';
