@@ -6,7 +6,7 @@
         <span :class="`${prefixCls}-toolbar__icon`" v-if="item.icon" @click="onControl(item)">
           <EntIcon
             :icon="item.icon"
-            :class="item.disabled ? 'cursor-not-allowed disabeld' : 'cursor-pointer'"
+            :class="item.disabled ? 'cursor-not-allowed disabled' : 'cursor-pointer'"
           />
         </span>
       </Tooltip>

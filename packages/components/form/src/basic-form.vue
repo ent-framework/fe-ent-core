@@ -61,6 +61,7 @@
 
   import { basicProps } from './props';
   import { useDesign } from '@ent-core/hooks/web/use-design';
+  import dayjs from 'dayjs';
 
   export default defineComponent({
     name: 'EntForm',
@@ -122,7 +123,7 @@
             if (!Array.isArray(defaultValue)) {
               schema.defaultValue = dateUtil(defaultValue);
             } else {
-              const def: moment.Moment[] = [];
+              const def: dayjs.Dayjs[] = [];
               defaultValue.forEach((item) => {
                 def.push(dateUtil(item));
               });

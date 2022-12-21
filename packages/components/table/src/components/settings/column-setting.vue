@@ -121,6 +121,7 @@
   import { isFunction, isNullAndUnDef } from '@ent-core/utils/is';
   import { getPopupContainer as getParentContainer } from '@ent-core/utils';
   import { omit } from 'lodash';
+  import { isIfShow } from '../../utils';
 
   interface State {
     checkAll: boolean;
@@ -195,10 +196,12 @@
       function getColumns() {
         const ret: Options[] = [];
         table.getColumns({ ignoreIndex: true, ignoreAction: true }).forEach((item) => {
+          const { fixed } = item;
           ret.push({
             label: (item.title as string) || (item.customTitle as string),
             value: (item.dataIndex || item.title) as string,
-            ...item,
+            ifShow: isIfShow(item),
+            fixed,
           });
         });
         return ret;
@@ -342,7 +345,7 @@
         if (isFixed && !item.width) {
           item.width = 100;
         }
-        table.setCacheColumnsByField?.(item.dataIndex, { fixed: isFixed });
+        table.setCacheColumnsByField?.(item.dataIndex as string, { fixed: isFixed });
         setColumns(columns);
       }
 

@@ -46,7 +46,7 @@ export function useECharts(
     });
     removeResizeFn = removeEvent;
     const { widthRef, screenEnum } = useBreakpoint();
-    if (unref(widthRef) <= screenEnum.MD || el.offsetHeight === 0) {
+    if (unref(widthRef).value <= screenEnum.MD || el.offsetHeight === 0) {
       useTimeoutFn(() => {
         resizeFn();
       }, 30);

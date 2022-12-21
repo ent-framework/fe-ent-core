@@ -24,5 +24,4 @@ export default {
     ...modules,
     antdLocale,
   },
-  momentLocaleName: 'zh-cn',
 };

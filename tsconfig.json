@@ -1,8 +1,61 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.web.json" },
-    { "path": "./tsconfig.play.json" },
-    { "path": "./tsconfig.node.json" },
+  "compilerOptions": {
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictFunctionTypes": false,
+    "target": "esnext",
+    "paths": {
+      "/#/*": [
+        "types/*"
+      ],
+      "@ent-core/*": [
+        "packages/*"
+      ]
+    },
+    "typeRoots": [
+      "./node_modules/@types/",
+      "./typings"
+    ],
+    "types": [
+      "jest",
+      "vite/client"
+    ]
+  },
+  "include": [
+    "tests/**/*.ts",
+    "packages/**/*.ts",
+    "packages/**/*.d.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.vue",
+    "play/**/*.ts",
+    "play/**/*.d.ts",
+    "play/**/*.tsx",
+    "play/**/*.vue",
+    "typings/**/*.d.ts",
+    "typings/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "tests/server/**/*.ts",
+    "dist",
+    "**/*.js"
   ]
 }

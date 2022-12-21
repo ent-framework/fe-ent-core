@@ -9,12 +9,6 @@ import { unref, computed } from 'vue';
 import { loadLocalePool, setHtmlPageLang } from './helper';
 import dayjs from 'dayjs';
 
-interface LangModule {
-  message: Recordable;
-  momentLocale: Recordable;
-  momentLocaleName: string;
-}
-
 function setI18nLanguage(locale: LocaleType) {
   const localeStore = useLocaleStoreWithOut();
 

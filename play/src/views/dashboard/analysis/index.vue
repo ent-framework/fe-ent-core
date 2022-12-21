@@ -18,7 +18,6 @@
   import SalesProductPie from './components/sales-product-pie.vue';
 
   const loading = ref(true);
-
   setTimeout(() => {
     loading.value = false;
   }, 1500);

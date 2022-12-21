@@ -5,6 +5,6 @@ import iconPicker from './src/icon-picker.vue';
 
 export const EntSvgIcon = withInstall(svgIcon);
 export const EntIcon = withInstall(icon);
-export const EntIconPicker = withInstall(iconPicker, 'EntIconPicker');
+export const EntIconPicker = withInstall(iconPicker);
 
 export default EntIcon;

@@ -51,8 +51,7 @@ export const generateTypesDefinitions = async () => {
     const emitOutput = sourceFile.getEmitOutput();
     const emitFiles = emitOutput.getOutputFiles();
     if (emitFiles.length === 0) {
-      //errorAndExit(new Error(`Emit no file: ${bold(relativePath)}`));
-      consola.error(`Emit no file: ${chalk.bold(relativePath)}`);
+      consola.warn(`Emit no file: ${chalk.bold(relativePath)}`);
     }
 
     const tasks = emitFiles.map(async (outputFile) => {

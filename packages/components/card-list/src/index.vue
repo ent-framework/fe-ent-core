@@ -15,13 +15,13 @@
             ><slot name="header"></slot>
             <Tooltip>
               <template #title>
-                <div class="w-50">每行显示数量</div
-                ><Slider
-                  id="slider"
-                  v-bind="sliderProp"
-                  v-model:value="grid"
-                  @change="sliderChange"
-              /></template>
+                <div class="w-50">每行显示数量</div>
+                <Select v-model:value="grid" @change="sliderChange">
+                  <SelectOption value="4">4</SelectOption>
+                  <SelectOption value="8">8</SelectOption>
+                  <SelectOption value="12">12</SelectOption>
+                </Select>
+              </template>
               <EntButton><TableOutlined /></EntButton>
             </Tooltip>
             <Tooltip @click="fetch">
@@ -40,7 +40,6 @@
                 </div>
               </template>
               <template class="ant-card-actions" #actions>
-                <!--              <SettingOutlined key="setting" />-->
                 <EditOutlined key="edit" />
                 <EntDropdown
                   :trigger="['hover']"
@@ -85,7 +84,16 @@
     RedoOutlined,
     TableOutlined,
   } from '@ant-design/icons-vue';
-  import { List, Card, Image, Typography, Tooltip, Slider, Avatar } from 'ant-design-vue';
+  import {
+    List,
+    Card,
+    Image,
+    Typography,
+    Tooltip,
+    Avatar,
+    Select,
+    SelectOption,
+  } from 'ant-design-vue';
   import { EntDropdown } from '@ent-core/components/dropdown';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { propTypes } from '@ent-core/utils/prop-types';
@@ -118,8 +126,9 @@
       EntButton,
       Image,
       Tooltip,
-      Slider,
       Avatar,
+      Select,
+      SelectOption,
     },
   });
   //数据

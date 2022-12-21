@@ -303,7 +303,6 @@
         getPaginationRef: getPagination,
         getColumns,
         getCacheColumns,
-        emit,
         updateTableData,
         setShowPagination,
         getShowPagination,
@@ -313,6 +312,10 @@
         getSize: () => {
           return unref(getBindValues).size as SizeType;
         },
+        emit,
+        slots,
+        expose,
+        attrs,
       };
       createTableContext({ ...tableAction, wrapRef, getBindValues });
 

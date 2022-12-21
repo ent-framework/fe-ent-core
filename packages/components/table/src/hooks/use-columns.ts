@@ -8,6 +8,7 @@ import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { isArray, isBoolean, isFunction, isMap, isString } from '@ent-core/utils/is';
 import { cloneDeep, isEqual } from 'lodash';
 import { formatToDate } from '@ent-core/utils/date-util';
+import { isIfShow } from '../utils';
 import { ACTION_COLUMN_FLAG, DEFAULT_ALIGN, INDEX_COLUMN_FLAG, PAGE_SIZE } from '../const';
 
 function handleItem(item: BasicColumn, ellipsis: boolean) {
@@ -128,19 +129,6 @@ export function useColumns(
     return columns;
   });
 
-  function isIfShow(column: BasicColumn): boolean {
-    const ifShow = column.ifShow;
-
-    let isIfShow = true;
-
-    if (isBoolean(ifShow)) {
-      isIfShow = ifShow;
-    }
-    if (isFunction(ifShow)) {
-      isIfShow = ifShow(column);
-    }
-    return isIfShow;
-  }
   const { hasPermission } = usePermission();
 
   const getViewColumns = computed(() => {

@@ -34,10 +34,12 @@ export class AesEncryption {
   }
 
   encryptByAES(cipherText: string) {
+    // @ts-ignore
     return encrypt(cipherText, this.key, this.getOptions).toString();
   }
 
   decryptByAES(cipherText: string) {
+    // @ts-ignore
     return decrypt(cipherText, this.key, this.getOptions).toString(UTF8);
   }
 }

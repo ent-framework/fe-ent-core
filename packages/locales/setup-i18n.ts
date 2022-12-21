@@ -9,6 +9,7 @@ import zhCN from './lang/zh-CN';
 import en from './lang/en';
 import 'dayjs/locale/zh-cn';
 import 'dayjs/locale/en';
+import dayjs from 'dayjs';
 
 const { fallback, availableLocales } = localeSetting;
 
@@ -18,6 +19,9 @@ async function createI18nOptions(): Promise<I18nOptions> {
   const localeStore = useLocaleStoreWithOut();
   //default locale
   const locale = localeStore.getLocale;
+  if (locale) {
+    dayjs.locale(locale);
+  }
   setHtmlPageLang(locale);
   setLoadLocalePool((loadLocalePool) => {
     loadLocalePool.push(locale);
@@ -27,14 +31,17 @@ async function createI18nOptions(): Promise<I18nOptions> {
     locale,
     fallbackLocale: fallback,
     messages: {
+      //TODO 修复类型不正确的问题
+      //@ts-ignore
       zh_CN: zhCN.message,
+      //@ts-ignore
       en: en.message,
     },
     globalInjection: true,
     availableLocales: availableLocales,
     sync: true, //If you don’t want to inherit locale from global scope, you need to set sync of i18n component option to false.
     silentTranslationWarn: true, // true - warning off
-    missingWarn: false,
+    missingWarn: true,
     silentFallbackWarn: true,
   };
 }

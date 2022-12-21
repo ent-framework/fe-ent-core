@@ -89,7 +89,7 @@
     },
     props: {
       name: {
-        type: [String, Number] as PropType<string | number>,
+        type: String as PropType<string>,
         required: true,
       },
       disabled: propTypes.bool,

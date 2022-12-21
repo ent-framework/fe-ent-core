@@ -1,4 +1,4 @@
-import type { BuildOptions, Plugin, PluginOption } from 'vite';
+import type { BuildOptions, PluginOption } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import purgeIcons from 'vite-plugin-purge-icons';

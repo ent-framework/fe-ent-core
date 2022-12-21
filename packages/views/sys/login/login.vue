@@ -41,7 +41,7 @@
     </div>
   </div>
 </template>
-<script lang="ts" setup>
+<script lang="ts" setup name="Login">
   import { computed } from 'vue';
   import AppLogo from '@ent-core/layouts/default/components/app-logo.vue';
   import { EntAppLocalePicker, EntAppDarkModeToggle } from '@ent-core/components/application';

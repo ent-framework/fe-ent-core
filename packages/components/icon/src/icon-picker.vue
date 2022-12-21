@@ -127,6 +127,7 @@
   });
 
   defineComponent({
+    name: 'EnIconPicker',
     components: { EntScrollContainer },
   });
 

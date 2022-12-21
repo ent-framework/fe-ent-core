@@ -57,7 +57,27 @@ export interface GetColumnsParams {
 
 export type SizeType = 'default' | 'middle' | 'small' | 'large';
 
-export interface TableActionType {
+export interface TableActionType
+  extends SetupContext<
+    [
+      'fetch-success',
+      'fetch-error',
+      'selection-change',
+      'register',
+      'row-click',
+      'row-dbClick',
+      'row-contextmenu',
+      'row-mouseenter',
+      'row-mouseleave',
+      'edit-end',
+      'edit-cancel',
+      'edit-row-end',
+      'edit-change',
+      'expanded-rows-change',
+      'change',
+      'columns-change',
+    ]
+  > {
   reload: (opt?: FetchParams) => Promise<void>;
   getSelectRows: <T = Recordable>() => T[];
   clearSelectedRowKeys: () => void;
@@ -83,7 +103,6 @@ export interface TableActionType {
   getSize: () => SizeType;
   getRowSelection: () => TableRowSelection<Recordable>;
   getCacheColumns: () => BasicColumn[];
-  emit?: Pick<SetupContext, 'emit'>;
   updateTableData: (index: number, key: string, value: any) => Recordable;
   setShowPagination: (show: boolean) => Promise<void>;
   getShowPagination: () => boolean;

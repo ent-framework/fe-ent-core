@@ -29,7 +29,7 @@
     "clean": "rimraf dist"
   },
   "peerDependencies": {
-    "vue": "3.2.31",
+    "vue": "^3.2.31",
     "ant-design-vue": "^3.2.0",
     "fe-ent-core": "^1.0.7"
   },
@@ -39,9 +39,8 @@
   "devDependencies": {
     "@types/codemirror": "^5.60.5",
     "rimraf": "^3.0.2",
-    "@vue/compiler-sfc": "3.2.31",
     "fe-ent-core": "^1.0.7",
-    "vue": "3.2.31"
+    "vue": "^3.2.31"
   },
   "repository": {
     "type": "git",

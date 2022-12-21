@@ -29,7 +29,7 @@
     "clean": "rimraf dist"
   },
   "peerDependencies": {
-    "vue": "3.2.31",
+    "vue": "^3.2.31",
     "ant-design-vue": "^3.2.0",
     "fe-ent-core": "^1.0.7",
     "lodash": "^4.17.21"
@@ -41,8 +41,7 @@
   "devDependencies": {
     "rimraf": "^3.0.2",
     "@types/tinycolor2": "^1.4.2",
-    "@vue/compiler-sfc": "3.2.31",
-    "vue": "3.2.31",
+    "vue": "^3.2.31",
     "vue-demi": "^0.12.1",
     "fe-ent-core": "^1.0.7"
   },
