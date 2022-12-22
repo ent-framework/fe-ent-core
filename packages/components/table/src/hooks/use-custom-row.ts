@@ -1,34 +1,14 @@
-import type { ComputedRef, SetupContext } from 'vue';
+import type { ComputedRef } from 'vue';
 import type { BasicTableProps } from '../types/table';
 import { unref } from 'vue';
 import { ROW_KEY } from '../const';
 import { isString, isFunction } from '@ent-core/utils/is';
 
-interface CustomRowContext
-  extends SetupContext<
-    [
-      'fetch-success',
-      'fetch-error',
-      'selection-change',
-      'register',
-      'row-click',
-      'row-dbClick',
-      'row-contextmenu',
-      'row-mouseenter',
-      'row-mouseleave',
-      'edit-end',
-      'edit-cancel',
-      'edit-row-end',
-      'edit-change',
-      'expanded-rows-change',
-      'change',
-      'columns-change',
-    ]
-  > {
+interface CustomRowContext {
   setSelectedRowKeys: (keys: string[]) => void;
   getSelectRowKeys: () => string[];
   clearSelectedRowKeys: () => void;
-  //emit: EmitType;
+  emit: EmitType;
   getAutoCreateKey: ComputedRef<boolean | undefined>;
 }
 

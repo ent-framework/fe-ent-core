@@ -1,5 +1,5 @@
 <template>
-  <a-input
+  <Input
     disabled
     :style="{ width }"
     :placeholder="t('component.icon.placeholder')"
@@ -7,7 +7,7 @@
     v-model:value="currentSelect"
   >
     <template #addonAfter>
-      <a-popover
+      <Popover
         placement="bottomLeft"
         trigger="click"
         v-model="visible"
@@ -15,7 +15,7 @@
       >
         <template #title>
           <div class="flex justify-between">
-            <a-input
+            <Input
               :placeholder="t('component.icon.search')"
               @change="debounceHandleSearchChange"
               allowClear
@@ -42,7 +42,7 @@
               </ul>
             </EntScrollContainer>
             <div class="flex py-2 items-center justify-center" v-if="getTotal >= pageSize">
-              <a-pagination
+              <Pagination
                 showLessItems
                 size="small"
                 :pageSize="pageSize"
@@ -52,7 +52,7 @@
             </div>
           </div>
           <template v-else
-            ><div class="p-5"><a-empty /></div>
+            ><div class="p-5"><Empty /></div>
           </template>
         </template>
 
@@ -60,12 +60,12 @@
           <SvgIcon :name="currentSelect" />
         </span>
         <Icon :icon="currentSelect || 'ion:apps-outline'" class="cursor-pointer px-2 py-1" v-else />
-      </a-popover>
+      </Popover>
     </template>
-  </a-input>
+  </Input>
 </template>
-<script lang="ts" setup>
-  import { ref, watchEffect, watch, unref, defineComponent } from 'vue';
+<script lang="ts" setup name="EntIconPicker">
+  import { ref, watchEffect, watch, unref } from 'vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { EntScrollContainer } from '@ent-core/components/container';
   import { Input, Popover, Pagination, Empty } from 'ant-design-vue';
@@ -81,11 +81,6 @@
   import { useMessage } from '@ent-core/hooks/web/use-message';
   //import svgIcons from 'virtual:svg-icons-names';
 
-  // 没有使用别名引入，是因为WebStorm当前版本还不能正确识别，会报unused警告
-  const AInput = Input;
-  const APopover = Popover;
-  const APagination = Pagination;
-  const AEmpty = Empty;
   const svgIcons = [
     'icon-download-count',
     'icon-dynamic-avatar-1',
@@ -124,11 +119,6 @@
     pageSize: propTypes.number.def(140),
     copy: propTypes.bool.def(false),
     mode: propTypes.oneOf<('svg' | 'iconify')[]>(['svg', 'iconify']).def('iconify'),
-  });
-
-  defineComponent({
-    name: 'EnIconPicker',
-    components: { EntScrollContainer },
   });
 
   const emit = defineEmits(['change', 'update:value']);

@@ -354,7 +354,7 @@
 
         if (props.column.dataIndex) {
           if (!props.record.editValueRefs) props.record.editValueRefs = {};
-          props.record.editValueRefs[props.column.dataIndex] = currentValueRef;
+          props.record.editValueRefs[props.column.dataIndex as string] = currentValueRef;
         }
         /* eslint-disable  */
         props.record.onCancelEdit = () => {

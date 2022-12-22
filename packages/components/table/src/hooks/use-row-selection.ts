@@ -1,37 +1,15 @@
 import { isFunction } from '@ent-core/utils/is';
 import type { BasicTableProps } from '../types/table';
 import { TableRowSelection } from 'ant-design-vue/lib/table/interface';
-import { computed, ComputedRef, nextTick, Ref, ref, SetupContext, toRaw, unref, watch } from 'vue';
+import { computed, ComputedRef, nextTick, Ref, ref, toRaw, unref, watch } from 'vue';
 import { ROW_KEY } from '../const';
 import { omit } from 'lodash';
 import { findNodeAll } from '@ent-core/utils/helper/tree-helper';
 
-interface RowSelectionContext
-  extends SetupContext<
-    [
-      'fetch-success',
-      'fetch-error',
-      'selection-change',
-      'register',
-      'row-click',
-      'row-dbClick',
-      'row-contextmenu',
-      'row-mouseenter',
-      'row-mouseleave',
-      'edit-end',
-      'edit-cancel',
-      'edit-row-end',
-      'edit-change',
-      'expanded-rows-change',
-      'change',
-      'columns-change',
-    ]
-  > {
-  tableData: Ref<Recordable[]>;
-}
 export function useRowSelection(
   propsRef: ComputedRef<BasicTableProps>,
-  { tableData, emit }: RowSelectionContext,
+  tableData: Ref<Recordable[]>,
+  emit: EmitType,
 ) {
   const selectedRowKeysRef = ref<string[]>([]);
   const selectedRowRef = ref<Recordable[]>([]);
