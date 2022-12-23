@@ -6,8 +6,8 @@
   import { ref, onMounted, onUnmounted, watchEffect, watch, unref, nextTick } from 'vue';
   import { useDebounceFn } from '@vueuse/core';
   import { useAppStore, useWindowSizeFn } from 'fe-ent-core';
-  import { CodeMirror } from './codeMirror';
-  import { MODE } from './../typing';
+  import { CodeMirror } from './codemirror';
+  import { MODE } from '../typing';
 
   const props = defineProps({
     mode: {

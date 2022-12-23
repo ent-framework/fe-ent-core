@@ -1,12 +1,45 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "composite": true,
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
-    "lib": ["ES2018", "DOM", "DOM.Iterable"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
-    "types": ["unplugin-vue-macros/macros-global", "./typings/global", "./typings/support"],
-    "typeRoots": ["./node_modules/@types"]
+    "sourceMap": true,
+    "strict": false,
+    "strictFunctionTypes": false,
+    "target": "esnext",
+    "paths": {
+      "/#/*": [
+        "types/*"
+      ],
+      "@ent-core/*": [
+        "packages/*"
+      ]
+    },
+    "typeRoots": [
+      "./node_modules/@types/",
+      "./typings"
+    ],
+    "types": [
+      "node",
+      "jest",
+      "vite/client"
+    ]
   },
   "include": ["packages", "typings/global.d.ts", "typings/support.d.ts"],
   "exclude": [

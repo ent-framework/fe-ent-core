@@ -9,10 +9,6 @@ import type { RowProps } from 'ant-design-vue/lib/grid/Row';
 
 export type FieldMapToTime = [string, [string, string], string?][];
 
-export type Rule = RuleObject & {
-  trigger?: 'blur' | 'change' | ['change', 'blur'];
-};
-
 export interface RenderCallbackParams {
   schema: FormSchema;
   values: Recordable;
@@ -26,7 +22,7 @@ export interface AntdButtonProps extends ButtonProps {
 
 export interface FormActionType {
   submit: () => Promise<void>;
-  setFieldsValue: <T>(values: T) => Promise<void>;
+  setFieldsValue: (values: Recordable) => Promise<void>;
   resetFields: () => Promise<void>;
   getFieldsValue: () => Recordable;
   clearValidate: (name?: string | string[]) => Promise<void>;
@@ -160,7 +156,7 @@ export interface FormSchema {
   suffix?: string | number | ((values: RenderCallbackParams) => string | number);
 
   // Validation rules
-  rules?: Rule[];
+  rules?: RuleObject[];
   // Check whether the information is added to the label
   rulesMessageJoinLabel?: boolean;
 
@@ -201,7 +197,7 @@ export interface FormSchema {
 
   dynamicDisabled?: boolean | ((renderCallbackParams: RenderCallbackParams) => boolean);
 
-  dynamicRules?: (renderCallbackParams: RenderCallbackParams) => Rule[];
+  dynamicRules?: (renderCallbackParams: RenderCallbackParams) => RuleObject[];
 }
 export interface HelpComponentProps {
   maxWidth: string;

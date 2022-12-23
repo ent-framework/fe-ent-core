@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
-    "tinymce": "^5.10.2"
+    "tinymce": "5.10.0"
   },
   "devDependencies": {
     "rimraf": "^3.0.2",

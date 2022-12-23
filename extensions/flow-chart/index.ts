@@ -1,4 +1,4 @@
 import { withInstall } from 'fe-ent-core';
-import flowChart from './src/FlowChart.vue';
+import flowChart from './src/flow-chart.vue';
 
 export const FlowChart = withInstall(flowChart);

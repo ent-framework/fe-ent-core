@@ -4,7 +4,7 @@
 <script lang="ts">
   import { defineComponent, PropType, ref, Ref, onMounted } from 'vue';
 
-  import { useECharts } from '@fe-ent-extension/echarts';
+  import { useEcharts } from '@fe-ent-extension/echarts';
 
   export default defineComponent({
     props: {
@@ -19,7 +19,7 @@
     },
     setup() {
       const chartRef = ref<HTMLDivElement | null>(null);
-      const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>);
+      const { setOptions } = useEcharts(chartRef as Ref<HTMLDivElement>);
       const dataAll = [389, 259, 262, 324, 232, 176, 196, 214, 133, 370];
       const yAxisData = [
         '原因1',

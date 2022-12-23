@@ -4,7 +4,7 @@
 <script lang="ts">
   import { defineComponent, PropType, ref, Ref, onMounted } from 'vue';
 
-  import { useECharts } from '@fe-ent-extension/echarts';
+  import { useEcharts } from '@fe-ent-extension/echarts';
   import { getLineData } from './data';
 
   export default defineComponent({
@@ -20,7 +20,7 @@
     },
     setup() {
       const chartRef = ref<HTMLDivElement | null>(null);
-      const { setOptions, echarts } = useECharts(chartRef as Ref<HTMLDivElement>);
+      const { setOptions, echarts } = useEcharts(chartRef as Ref<HTMLDivElement>);
       const { barData, lineData, category } = getLineData;
       onMounted(() => {
         setOptions({

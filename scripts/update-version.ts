@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import { epPackage, projRoot } from '@ent-core/build-utils';
 import { getPackageManifest } from '@ent-core/build-utils';
 import glob from 'fast-glob';
-import path from "path";
+import path from 'path';
 
 const tagVersion = process.env.TAG_VERSION;
 if (!tagVersion) {
@@ -22,7 +22,7 @@ consola.log(chalk.cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n')));
 (async () => {
   if (!(process.argv.includes('-d') || process.argv.includes('--dry-run'))) {
     try {
-      const packages = await glob('{extensions,tools}/*/package.json', {
+      const packages = await glob('{extensions,support}/*/package.json', {
         cwd: projRoot,
         absolute: true,
         onlyFiles: true,

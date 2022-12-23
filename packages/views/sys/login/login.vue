@@ -41,8 +41,8 @@
     </div>
   </div>
 </template>
-<script lang="ts" setup name="Login">
-  import { computed } from 'vue';
+<script lang="ts">
+  import { computed, defineComponent } from 'vue';
   import AppLogo from '@ent-core/layouts/default/components/app-logo.vue';
   import { EntAppLocalePicker, EntAppDarkModeToggle } from '@ent-core/components/application';
   import LoginForm from './login-form.vue';
@@ -56,16 +56,37 @@
   import { useLocaleStore } from '@ent-core/store/modules/locale';
   import loginImg from '@ent-core/assets/svg/login-box-bg.svg';
 
-  defineProps({
-    sessionTimeout: {
-      type: Boolean,
+  export default defineComponent({
+    components: {
+      AppLogo,
+      EntAppLocalePicker,
+      EntAppDarkModeToggle,
+      LoginForm,
+      ForgetPasswordForm,
+      RegisterForm,
+      MobileForm,
+      QrCodeForm,
+    },
+    props: {
+      sessionTimeout: {
+        type: Boolean,
+      },
+    },
+    setup() {
+      const globSetting = useGlobSetting();
+      const { prefixCls } = useDesign('login');
+      const { t } = useI18n();
+      const localeStore = useLocaleStore();
+      const showLocale = localeStore.getShowPicker;
+      const title = computed(() => globSetting?.title ?? '');
+
+      return {
+        prefixCls,
+        showLocale,
+        title,
+        loginImg,
+        t,
+      };
     },
   });
-
-  const globSetting = useGlobSetting();
-  const { prefixCls } = useDesign('login');
-  const { t } = useI18n();
-  const localeStore = useLocaleStore();
-  const showLocale = localeStore.getShowPicker;
-  const title = computed(() => globSetting?.title ?? '');
 </script>

@@ -4,7 +4,7 @@
 <script lang="ts">
   import { defineComponent, PropType, ref, Ref, onMounted } from 'vue';
 
-  import { useECharts } from '@fe-ent-extension/echarts';
+  import { useEcharts } from '@fe-ent-extension/echarts';
   import { mapData } from './data';
   import { registerMap } from 'echarts';
 
@@ -21,7 +21,7 @@
     },
     setup() {
       const chartRef = ref<HTMLDivElement | null>(null);
-      const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>);
+      const { setOptions } = useEcharts(chartRef as Ref<HTMLDivElement>);
 
       onMounted(async () => {
         const json = (await (await import('./china.json')).default) as any;

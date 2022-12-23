@@ -11,12 +11,12 @@
   import type { Ref, PropType } from 'vue';
   import type { Definition } from '@logicflow/core';
   import { defineComponent, ref, onMounted, unref, nextTick, computed, watch } from 'vue';
-  import FlowChartToolbar from './FlowChartToolbar.vue';
+  import FlowChartToolbar from './flow-chart-toolbar.vue';
   import LogicFlow from '@logicflow/core';
   import { Snapshot, BpmnElement, Menu, DndPanel, SelectionSelect } from '@logicflow/extension';
   import { useDesign, useAppStore, useModal, EntModal } from 'fe-ent-core';
-  import { createFlowChartContext } from './useFlowContext';
-  import { toLogicFlowData } from './adpterForTurbo';
+  import { createFlowChartContext } from './use-flow-context';
+  import { toLogicFlowData } from './adpter-for-turbo';
   import { JsonPreview } from '@fe-ent-extension/code-editor';
   import { configDefaultDndPanel } from './config';
   export default defineComponent({

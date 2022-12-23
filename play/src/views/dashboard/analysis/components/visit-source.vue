@@ -6,7 +6,7 @@
 <script lang="ts" setup>
   import { Ref, ref, watch } from 'vue';
   import { Card } from 'ant-design-vue';
-  import { useECharts } from '@fe-ent-extension/echarts';
+  import { useEcharts } from '@fe-ent-extension/echarts';
   const props = defineProps({
     loading: Boolean,
     width: {
@@ -19,7 +19,7 @@
     },
   });
   const chartRef = ref<HTMLDivElement | null>(null);
-  const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>);
+  const { setOptions } = useEcharts(chartRef as Ref<HTMLDivElement>);
   watch(
     () => props.loading,
     () => {

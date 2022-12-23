@@ -13,7 +13,7 @@ export interface EncryptionParams {
 
 export class AesEncryption {
   private key;
-  private iv;
+  private readonly iv;
 
   constructor(opt: Partial<EncryptionParams> = {}) {
     const { key, iv } = opt;
@@ -25,7 +25,7 @@ export class AesEncryption {
     }
   }
 
-  get getOptions() {
+  private get _getOptions() {
     return {
       mode: ECB,
       padding: pkcs7,
@@ -34,13 +34,11 @@ export class AesEncryption {
   }
 
   encryptByAES(cipherText: string) {
-    // @ts-ignore
-    return encrypt(cipherText, this.key, this.getOptions).toString();
+    return encrypt(cipherText, this.key, this._getOptions).toString();
   }
 
   decryptByAES(cipherText: string) {
-    // @ts-ignore
-    return decrypt(cipherText, this.key, this.getOptions).toString(UTF8);
+    return decrypt(cipherText, this.key, this._getOptions).toString(UTF8);
   }
 }
 

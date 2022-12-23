@@ -64,7 +64,7 @@
     onDeactivated,
     onBeforeUnmount,
   } from 'vue';
-  import ImgUpload from './ImgUpload.vue';
+  import ImgUpload from './img-upload.vue';
   import { toolbar, plugins } from './tinymce';
   import {
     buildShortUUID,
@@ -114,7 +114,7 @@
   };
 
   export default defineComponent({
-    name: 'Tinymce',
+    name: 'EntTinymce',
     components: { ImgUpload },
     inheritAttrs: false,
     props: tinymceProps,

@@ -6,7 +6,7 @@ import { useDebounceFn } from '@vueuse/core';
 import echarts from '../lib/echarts';
 import { useRootSetting, useBreakpoint, useEventListener, useTimeoutFn } from 'fe-ent-core';
 
-export function useECharts(
+export function useEcharts(
   elRef: Ref<HTMLDivElement>,
   theme: 'light' | 'dark' | 'default' = 'default',
 ) {
@@ -46,7 +46,7 @@ export function useECharts(
     });
     removeResizeFn = removeEvent;
     const { widthRef, screenEnum } = useBreakpoint();
-    if (unref(widthRef).value <= screenEnum.MD || el.offsetHeight === 0) {
+    if (unref(widthRef) <= screenEnum.MD || el.offsetHeight === 0) {
       useTimeoutFn(() => {
         resizeFn();
       }, 30);

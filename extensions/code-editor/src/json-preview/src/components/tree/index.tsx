@@ -1,5 +1,5 @@
 import { defineComponent, reactive, computed, watchEffect, ref, PropType } from 'vue';
-import TreeNode, { treeNodePropsPass, NodeDataType } from '../TreeNode';
+import TreeNode, { treeNodePropsPass, NodeDataType } from '../tree-node';
 import { emitError, jsonFlatten, JSONDataType } from '../../utils';
 
 type FlatDataType = NodeDataType[];
