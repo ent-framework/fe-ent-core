@@ -1,10 +1,9 @@
 {
-  "name": "@fe-ent-extension/flow-chart",
-  "version": "1.2.20",
+  "name": "fe-ent-flow-chart",
+  "version": "1.3.4",
   "author": {
     "name": "jeff qian",
-    "email": "baojian.qian@accenture.com",
-    "url": "https://github.com/anncwb"
+    "email": "qbaojian@163.com"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -32,7 +31,7 @@
     "vue": "^3.2.31",
     "ant-design-vue": "^3.2.0",
     "fe-ent-core": "^1.0.7",
-    "@fe-ent-extension/code-editor": "^1.0.4"
+    "fe-ent-code-editor": "^1.0.4"
   },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",

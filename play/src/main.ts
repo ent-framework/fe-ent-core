@@ -3,7 +3,7 @@ import 'virtual:windi-components.css';
 import 'virtual:windi-utilities.css';
 // Register icon sprite
 import 'virtual:svg-icons-register';
-import App from './app.vue';
+import App from './App.vue';
 import { createApp } from 'vue';
 import { initAppConfigStore } from 'fe-ent-core/lib/logics/init-app-config';
 import { setupErrorHandle } from 'fe-ent-core/lib/logics/error-handle';
@@ -57,8 +57,8 @@ async function bootstrap() {
   const layoutMgt = useLayout();
 
   //initial layout
-  layoutMgt.use('LAYOUT', LAYOUT);
-  layoutMgt.use('IFRAME', IFRAME);
+  //layoutMgt.use('LAYOUT', LAYOUT);
+  //layoutMgt.use('IFRAME', IFRAME);
 
   // Configure routing
   router.addBasicRoutes(getBasicRoutes());

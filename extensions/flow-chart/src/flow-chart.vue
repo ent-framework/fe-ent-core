@@ -17,7 +17,7 @@
   import { useDesign, useAppStore, useModal, EntModal } from 'fe-ent-core';
   import { createFlowChartContext } from './use-flow-context';
   import { toLogicFlowData } from './adpter-for-turbo';
-  import { JsonPreview } from '@fe-ent-extension/code-editor';
+  import { JsonPreview } from 'fe-ent-code-editor';
   import { configDefaultDndPanel } from './config';
   export default defineComponent({
     name: 'FlowChart',

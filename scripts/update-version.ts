@@ -22,7 +22,7 @@ consola.log(chalk.cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n')));
 (async () => {
   if (!(process.argv.includes('-d') || process.argv.includes('--dry-run'))) {
     try {
-      const packages = await glob('{extensions,support}/*/package.json', {
+      const packages = await glob('{dist,extensions,support}/*/package.json', {
         cwd: projRoot,
         absolute: true,
         onlyFiles: true,

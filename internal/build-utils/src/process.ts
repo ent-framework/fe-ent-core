@@ -1,7 +1,7 @@
 import { spawn } from 'child_process';
 import chalk from 'chalk';
 import consola from 'consola';
-import { projRoot } from '@ent-core/build-utils';
+import { projRoot } from './paths';
 
 export const run = async (command: string, cwd: string = projRoot) =>
   new Promise<void>((resolve, reject) => {
@@ -12,7 +12,6 @@ export const run = async (command: string, cwd: string = projRoot) =>
       stdio: 'inherit',
       shell: process.platform === 'win32',
     });
-
     const onProcessExit = () => app.kill('SIGHUP');
 
     app.on('close', (code) => {

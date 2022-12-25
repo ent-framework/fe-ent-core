@@ -2,7 +2,7 @@ import path from 'path';
 import { mkdir } from 'fs/promises';
 import { copy, copyFile } from 'fs-extra';
 import { src, dest, series, parallel } from 'gulp';
-import { run } from './src/utils';
+import { run } from '@ent-core/build-utils';
 import { runTask, withTaskName } from './src/utils';
 import { buildOutput, epOutput, epRoot, pkgRoot, projRoot } from '@ent-core/build-utils';
 import { buildConfig } from './src/build-info';

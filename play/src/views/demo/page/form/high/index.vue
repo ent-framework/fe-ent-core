@@ -37,6 +37,12 @@
         baseColProps: {
           span: 6,
         },
+        labelCol: {
+          style: { 'text-align': 'left' },
+        },
+        wrapperCol: {
+          style: { 'min-width': '100%' },
+        },
         schemas: schemas,
         showActionButtonGroup: false,
       });
@@ -44,6 +50,12 @@
       const [registerTask, { validate: validateTaskForm }] = useForm({
         baseColProps: {
           span: 6,
+        },
+        labelCol: {
+          style: { 'text-align': 'left' },
+        },
+        wrapperCol: {
+          style: { 'min-width': '100%' },
         },
         schemas: taskSchemas,
         showActionButtonGroup: false,
