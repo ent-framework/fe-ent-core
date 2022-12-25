@@ -7,7 +7,6 @@ import { useUserStore } from '@ent-core/store/modules/user';
 import { useTabs } from './use-tabs';
 
 import { router, resetRouter } from '@ent-core/router';
-// import { RootRoute } from '@ent-core/router/routes';
 
 import projectSetting from '@ent-core/logics/settings/project-setting';
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
@@ -35,6 +34,12 @@ export function usePermission() {
           : PermissionModeEnum.BACK,
     });
     location.reload();
+  }
+
+  async function changePermissionMode(mode: string) {
+    appStore.setProjectConfig({
+      permissionMode: mode as PermissionModeEnum,
+    });
   }
 
   /**
@@ -106,5 +111,5 @@ export function usePermission() {
     resume();
   }
 
-  return { changeRole, hasPermission, togglePermissionMode, refreshMenu };
+  return { changeRole, hasPermission, togglePermissionMode, changePermissionMode, refreshMenu };
 }

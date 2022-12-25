@@ -4,7 +4,7 @@
     v-bind="$attrs"
     @change="handleChange"
     :options="getOptions"
-    v-model="state"
+    v-model:value="state"
   >
     <template #[item]="data" v-for="item in Object.keys($slots)">
       <slot :name="item" v-bind="data || {}"></slot>
@@ -133,6 +133,7 @@
       }
 
       function handleChange(_, ...args) {
+        console.log(args);
         emitData.value = args;
       }
 

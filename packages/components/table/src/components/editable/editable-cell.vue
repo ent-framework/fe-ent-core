@@ -321,10 +321,10 @@
 
       // only ApiSelect or TreeSelect
       function handleOptionsChange(options: LabelValueOptions) {
-        const { replaceFields } = props.column?.editComponentProps ?? {};
+        const { fieldNames } = props.column?.editComponentProps ?? {};
         const component = unref(getComponent);
         if (component === 'ApiTreeSelect') {
-          const { title = 'title', value = 'value', children = 'children' } = replaceFields || {};
+          const { title = 'title', value = 'value', children = 'children' } = fieldNames || {};
           let listOptions: Recordable[] = treeToList(options, { children });
           listOptions = listOptions.map((item) => {
             return {

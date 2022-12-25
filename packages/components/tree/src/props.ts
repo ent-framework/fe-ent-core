@@ -92,17 +92,3 @@ export const basicProps = {
   // 搜索完成自动select所有结果
   selectedOnSearch: propTypes.bool.def(false),
 };
-
-export const treeNodeProps = {
-  actionList: {
-    type: Array as PropType<TreeActionItem[]>,
-    default: () => [],
-  },
-  replaceFields: {
-    type: Object as PropType<ReplaceFields>,
-  },
-  treeData: {
-    type: Array as PropType<TreeDataItem[]>,
-    default: () => [],
-  },
-};

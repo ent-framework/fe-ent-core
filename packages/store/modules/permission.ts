@@ -6,17 +6,18 @@ import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { useUserStore } from './user';
 import { useAppStoreWithOut } from './app';
 import { toRaw } from 'vue';
-import { transformObjToRoute, flatMultiLevelRoutes } from '@ent-core/router/helper/route-helper';
+import {
+  transformObjToRoute,
+  backendRouteFilter,
+  flatMultiLevelRoutes,
+  normalizeRoutePath,
+} from '@ent-core/router/helper/route-helper';
 import { transformRouteToMenu } from '@ent-core/router/helper/menu-helper';
 
 import projectSetting from '@ent-core/logics/settings/project-setting';
-
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
-
 import { registerErrorLogRoute, registerPageNotFoundRoute } from '@ent-core/router/routes/basic';
-
 import { filter } from '@ent-core/utils/helper/tree-helper';
-
 import { userBridge } from '@ent-core/logics/bridge';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { PageEnum } from '@ent-core/logics/enums/page-enum';
@@ -162,14 +163,14 @@ export const usePermissionStore = defineStore({
 
       switch (permissionMode) {
         case PermissionModeEnum.ROLE:
-          routes = filter(router.extraRoutes, routeFilter);
+          routes = filter(router.bizRoutes, routeFilter);
           routes = routes.filter(routeFilter);
           // Convert multi-level routing to level 2 routing
           routes = flatMultiLevelRoutes(routes);
           break;
 
         case PermissionModeEnum.ROUTE_MAPPING:
-          routes = filter(router.extraRoutes, routeFilter);
+          routes = filter(router.bizRoutes, routeFilter);
           routes = routes.filter(routeFilter);
           const menuList = transformRouteToMenu(routes, true);
           routes = filter(routes, routeRemoveIgnoreFilter);
@@ -196,14 +197,20 @@ export const usePermissionStore = defineStore({
           // this function may only need to be executed once, and the actual project can be put at the right time by itself
           let routeList: AppRouteRecordRaw[] = [];
           try {
-            this.changePermissionCode();
+            await this.changePermissionCode();
             routeList = (await userBridge.getMenuList()) as AppRouteRecordRaw[];
           } catch (error) {
             console.error(error);
           }
-
           // Dynamically introduce components
-          routeList = transformObjToRoute(routeList);
+          if (routeList) {
+            routeList.forEach((c) => {
+              normalizeRoutePath(c);
+            });
+          }
+          // 用服务器返回routeList去过滤router.bizRoutes，返回匹配的路由信息
+          routeList = backendRouteFilter(router.bizRoutes, routeList);
+          console.log(routeList);
 
           //  Background routing to menu structure
           const backMenuList = transformRouteToMenu(routeList);

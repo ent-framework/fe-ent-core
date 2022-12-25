@@ -4,15 +4,17 @@ import type { App } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { AppRouteModule, AppRouteRecordRaw } from './types';
 import { getAppEnvConfig } from '@ent-core/utils/env';
+import { normalizeRoutePath } from '@ent-core/router/helper/route-helper';
 
 export interface EntRouter extends Router {
   parent: Router;
   basicRoutes: AppRouteRecordRaw[];
   addBasicRoute: (route: AppRouteRecordRaw) => void;
   addBasicRoutes: (routes: AppRouteRecordRaw[]) => void;
-  extraRoutes: AppRouteRecordRaw[];
-  addExtraRoute: (route: AppRouteRecordRaw) => void;
-  addExtraRoutes: (routes: Record<string, Record<string, any>>) => void;
+  bizRoutes: AppRouteRecordRaw[];
+  addBizRoute: (route: AppRouteRecordRaw) => void;
+  // 导入业务路由
+  addBizRoutes: (routes: Record<string, Record<string, any>>) => void;
   _whiteRouteList: string[];
 }
 const appEnv = getAppEnvConfig();
@@ -31,20 +33,24 @@ export const router: EntRouter = {
   parent,
   ...parent,
   basicRoutes: [],
-  extraRoutes: [],
-  addExtraRoute: function (route: AppRouteRecordRaw): () => void {
-    router.extraRoutes.push(route);
+  bizRoutes: [],
+  addBizRoute: function (route: AppRouteRecordRaw): () => void {
+    normalizeRoutePath(route);
+    router.bizRoutes.push(route);
     return parent.addRoute(route as RouteRecordRaw);
   },
-  addExtraRoutes: function (modules: Record<string, Record<string, any>>): () => void {
+  addBizRoutes: function (modules: Record<string, Record<string, any>>): () => void {
     const routeModuleList: AppRouteModule[] = [];
 
     Object.keys(modules).forEach((key) => {
       const mod = modules[key].default || {};
       const modList = Array.isArray(mod) ? [...mod] : [mod];
+      modList.forEach((c) => {
+        normalizeRoutePath(c);
+      });
       routeModuleList.push(...modList);
     });
-    router.extraRoutes.push(...routeModuleList);
+    router.bizRoutes.push(...routeModuleList);
     return noop;
   },
   addBasicRoute: function (route: AppRouteRecordRaw): () => void {

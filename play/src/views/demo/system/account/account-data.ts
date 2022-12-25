@@ -1,7 +1,7 @@
 import { getAllRoleList, isAccountExist } from '/@/api/system';
 import { BasicColumn } from 'fe-ent-core/lib/components/table';
 import { FormSchema } from 'fe-ent-core/lib/components/form';
-
+import { getDeptList } from '/@/api/system';
 export const columns: BasicColumn[] = [
   {
     title: '用户名',
@@ -87,19 +87,20 @@ export const accountFormSchema: FormSchema[] = [
     componentProps: {
       api: getAllRoleList,
       labelField: 'roleName',
-      valueField: 'roleValue',
+      valueField: 'id',
     },
     required: true,
   },
   {
     field: 'dept',
     label: '所属部门',
-    component: 'TreeSelect',
+    component: 'ApiTreeSelect',
     componentProps: {
-      replaceFields: {
-        title: 'deptName',
-        key: 'id',
+      api: getDeptList,
+      fieldNames: {
+        label: 'deptName',
         value: 'id',
+        children: 'children',
       },
       getPopupContainer: () => document.body,
     },

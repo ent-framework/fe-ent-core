@@ -35,11 +35,11 @@ import { default as IFRAME } from 'fe-ent-core/lib/views/sys/iframe/frame-blank'
 async function bootstrap() {
   const app = createApp(App);
 
-  //初始化全局变量
-  await initApplication();
-
   // Configure store
   setupStore(app);
+
+  //初始化全局变量
+  await initApplication();
 
   // Initialize internal system configuration
   initAppConfigStore();
@@ -62,10 +62,11 @@ async function bootstrap() {
 
   // Configure routing
   router.addBasicRoutes(getBasicRoutes());
-  router.addExtraRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
+  router.addBizRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
+  //router.addBizRoutes(import.meta.globEager(`./modules/**/*.ts`));
   setupRouter(app);
 
-  importMenuModules(import.meta.globEager('./modules/**/*.ts'));
+  //importMenuModules(import.meta.globEager('./modules/**/*.ts'));
 
   // router-guard
   setupRouterGuard(router, false);

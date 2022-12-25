@@ -88,7 +88,7 @@
           selectedKeys: state.selectedKeys,
           checkedKeys: state.checkedKeys,
           checkStrictly: state.checkStrictly,
-          replaceFields: unref(getReplaceFields),
+          fieldNames: unref(getReplaceFields),
           'onUpdate:expandedKeys': (v: Keys) => {
             state.expandedKeys = v;
             emit('update:expandedKeys', v);

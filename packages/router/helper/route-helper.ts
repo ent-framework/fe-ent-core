@@ -1,93 +1,7 @@
 import type { AppRouteModule, AppRouteRecordRaw } from '@ent-core/router/types';
 import type { Router, RouteRecordNormalized } from 'vue-router';
-import { getParentLayout, EXCEPTION_COMPONENT } from '@ent-core/router/constant';
 import { cloneDeep, omit } from 'lodash';
-import { warn } from '@ent-core/utils/log';
 import { createRouter, createWebHashHistory } from 'vue-router';
-
-import { useLayout } from './layout-helper';
-
-let dynamicViewsModules: Record<string, () => Promise<Recordable>>;
-
-// Dynamic introduction
-function asyncImportRoute(routes: AppRouteRecordRaw[] | undefined) {
-  dynamicViewsModules = dynamicViewsModules || {}; //import.meta.glob('/src/views/**/*.{vue,tsx}');
-  const layoutMgt = useLayout();
-  if (!routes) return;
-  routes.forEach((item) => {
-    if (!item.component && item.meta?.frameSrc) {
-      item.component = 'IFRAME';
-    }
-    const { component, name } = item;
-    const { children } = item;
-    if (component) {
-      const layoutFound = layoutMgt.getLayout(component.toUpperCase());
-      if (layoutFound) {
-        item.component = layoutFound;
-      } else {
-        item.component = dynamicImport(dynamicViewsModules, component as string);
-      }
-    } else if (name) {
-      item.component = getParentLayout();
-    }
-    children && asyncImportRoute(children);
-  });
-}
-
-function dynamicImport(
-  dynamicViewsModules: Record<string, () => Promise<Recordable>>,
-  component: string,
-) {
-  const keys = Object.keys(dynamicViewsModules);
-  const matchKeys = keys.filter((key) => {
-    const k = key.replace('/src/views', '');
-    const startFlag = component.startsWith('/');
-    const endFlag = component.endsWith('.vue') || component.endsWith('.tsx');
-    const startIndex = startFlag ? 0 : 1;
-    const lastIndex = endFlag ? k.length : k.lastIndexOf('.');
-    return k.substring(startIndex, lastIndex) === component;
-  });
-  if (matchKeys?.length === 1) {
-    const matchKey = matchKeys[0];
-    return dynamicViewsModules[matchKey];
-  } else if (matchKeys?.length > 1) {
-    warn(
-      'Please do not create `.vue` and `.TSX` files with the same file name in the same hierarchical directory under the views folder. This will cause dynamic introduction failure',
-    );
-    return;
-  } else {
-    warn('在src/views/下找不到`' + component + '.vue` 或 `' + component + '.tsx`, 请自行创建!');
-    return EXCEPTION_COMPONENT;
-  }
-}
-
-// Turn background objects into routing objects
-// 解耦
-export function transformObjToRoute<T = AppRouteModule>(routeList: AppRouteModule[]): T[] {
-  const layoutMgt = useLayout();
-  routeList.forEach((route) => {
-    const component = route.component as string;
-    if (component) {
-      if (component.toUpperCase() === 'LAYOUT') {
-        route.component = layoutMgt.getLayout('LAYOUT');
-      } else {
-        route.children = [cloneDeep(route)];
-        //TODO FIX
-        route.component = layoutMgt.getLayout('LAYOUT');
-        route.name = `${route.name}Parent`;
-        route.path = '';
-        const meta = route.meta || {};
-        meta.single = true;
-        meta.affix = false;
-        route.meta = meta;
-      }
-    } else {
-      warn('请正确配置路由：' + route?.name + '的component属性');
-    }
-    route.children && asyncImportRoute(route.children);
-  });
-  return routeList as unknown as T[];
-}
 
 /**
  * Convert multi-level routing to level 2 routing
@@ -119,6 +33,22 @@ function promoteRouteLevel(routeModule: AppRouteModule) {
   routeModule.children = routeModule.children?.map((item) => omit(item, 'children'));
 }
 
+export function normalizeRoutePath(route: AppRouteRecordRaw) {
+  if (hasChildren(route)) {
+    const path = route.path;
+    route.children?.forEach((c) => {
+      const childPath = c.path;
+      if (!c.path.startsWith('/')) {
+        c.path = path + '/' + childPath;
+      }
+    });
+  }
+}
+
+function hasChildren(route: AppRouteRecordRaw) {
+  return !!(route && Reflect.has(route, 'children') && route.children?.length);
+}
+
 // Add all sub-routes to the secondary route
 function addToChildren(
   routes: RouteRecordNormalized[],
@@ -139,6 +69,40 @@ function addToChildren(
       addToChildren(routes, child.children, routeModule);
     }
   }
+}
+
+function existInFilter(
+  filters: AppRouteRecordRaw[],
+  target: AppRouteRecordRaw,
+): AppRouteRecordRaw | undefined {
+  for (let index = 0; index < filters.length; index++) {
+    if (filters[index].path === target.path) {
+      return filters[index];
+    }
+    const c = filters[index];
+    if (hasChildren(c) && c.children?.length) {
+      const exist = existInFilter(c.children, target);
+      if (exist) {
+        return exist;
+      }
+    }
+  }
+  return undefined;
+}
+
+export function backendRouteFilter(bizRoutes: AppRouteRecordRaw[], filters: AppRouteRecordRaw[]) {
+  if (!filters) {
+    return [];
+  }
+  const results: AppRouteRecordRaw[] = [];
+  bizRoutes.forEach((route) => {
+    const hc = hasChildren(route);
+    const filtered = existInFilter(filters, route);
+    if (filtered) {
+      results.push(route);
+    }
+  });
+  return results;
 }
 
 // Determine whether the level exceeds 2 levels
