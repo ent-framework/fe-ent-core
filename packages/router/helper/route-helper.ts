@@ -1,6 +1,6 @@
 import type { AppRouteModule, AppRouteRecordRaw } from '@ent-core/router/types';
 import type { Router, RouteRecordNormalized } from 'vue-router';
-import { cloneDeep, omit } from 'lodash';
+import { cloneDeep, omit, set } from 'lodash';
 import { createRouter, createWebHashHistory } from 'vue-router';
 
 /**
@@ -35,10 +35,10 @@ function promoteRouteLevel(routeModule: AppRouteModule) {
 
 export function normalizeRoutePath(route: AppRouteRecordRaw) {
   if (hasChildren(route)) {
-    const path = route.path;
+    const { path = '' } = route;
     route.children?.forEach((c) => {
-      const childPath = c.path;
-      if (!c.path.startsWith('/')) {
+      const { path: childPath = '' } = c;
+      if (path.length > 0 && childPath.length > 0 && !childPath.startsWith('/')) {
         c.path = path + '/' + childPath;
       }
     });
@@ -90,16 +90,22 @@ function existInFilter(
   return undefined;
 }
 
-export function backendRouteFilter(bizRoutes: AppRouteRecordRaw[], filters: AppRouteRecordRaw[]) {
+export function backendRouteFilter(bizRoutes?: AppRouteRecordRaw[], filters?: AppRouteRecordRaw[]) {
   if (!filters) {
     return [];
   }
   const results: AppRouteRecordRaw[] = [];
-  bizRoutes.forEach((route) => {
+  bizRoutes?.forEach((route) => {
     const hc = hasChildren(route);
+    const target = omit(route, 'children');
     const filtered = existInFilter(filters, route);
-    if (filtered) {
-      results.push(route);
+    const children: AppRouteRecordRaw[] = [];
+    if (hc) {
+      children.push(...backendRouteFilter(route.children, filters));
+    }
+    if (filtered || children.length > 0) {
+      set(target, 'children', children);
+      results.push({ ...filtered, ...target });
     }
   });
   return results;

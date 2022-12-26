@@ -4,6 +4,7 @@ import type {
   TreeActionItem,
   Keys,
   CheckKeys,
+  Key,
   ContextMenuOptions,
   TreeItem,
 } from './typing';
@@ -61,7 +62,7 @@ export const basicProps = {
   },
 
   checkedKeys: {
-    type: Array as PropType<CheckKeys>,
+    type: [Array, Object] as PropType<Key[] | { checked: Key[]; halfChecked: Key[] }>,
     default: () => [],
   },
 

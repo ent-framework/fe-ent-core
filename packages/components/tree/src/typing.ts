@@ -19,6 +19,8 @@ export interface ReplaceFields {
   key?: string;
 }
 
+export type Key = string | number;
+
 export type Keys = (string | number)[];
 export type CheckKeys =
   | (string | number)[]

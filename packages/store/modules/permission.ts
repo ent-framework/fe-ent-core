@@ -7,7 +7,6 @@ import { useUserStore } from './user';
 import { useAppStoreWithOut } from './app';
 import { toRaw } from 'vue';
 import {
-  transformObjToRoute,
   backendRouteFilter,
   flatMultiLevelRoutes,
   normalizeRoutePath,
