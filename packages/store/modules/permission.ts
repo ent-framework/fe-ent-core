@@ -209,7 +209,6 @@ export const usePermissionStore = defineStore({
           }
           // 用服务器返回routeList去过滤router.bizRoutes，返回匹配的路由信息
           routeList = backendRouteFilter(router.bizRoutes, routeList);
-          console.log(routeList);
 
           //  Background routing to menu structure
           const backMenuList = transformRouteToMenu(routeList);

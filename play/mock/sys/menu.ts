@@ -6,7 +6,6 @@ import { createFakeUserList } from './user';
 const dashboardRoute = {
   path: '/dashboard',
   name: 'Dashboard',
-  component: 'LAYOUT',
   redirect: '/dashboard/analysis',
   meta: {
     title: 'routes.dashboard.dashboard',
@@ -17,7 +16,6 @@ const dashboardRoute = {
     {
       path: 'analysis',
       name: 'Analysis',
-      component: '/dashboard/analysis/index',
       meta: {
         hideMenu: true,
         hideBreadcrumb: true,
@@ -29,7 +27,6 @@ const dashboardRoute = {
     {
       path: 'workbench',
       name: 'Workbench',
-      component: '/dashboard/workbench/index',
       meta: {
         hideMenu: true,
         hideBreadcrumb: true,
@@ -52,7 +49,6 @@ const backRoute = {
     {
       path: 'page',
       name: 'BackAuthPage',
-      component: '/demo/permission/back/index',
       meta: {
         title: 'routes.demo.permission.backPage',
       },
@@ -60,7 +56,6 @@ const backRoute = {
     {
       path: 'btn',
       name: 'BackAuthBtn',
-      component: '/demo/permission/back/Btn',
       meta: {
         title: 'routes.demo.permission.backBtn',
       },
@@ -71,9 +66,9 @@ const backRoute = {
 const authRoute = {
   path: '/permission',
   name: 'Permission',
-  component: 'LAYOUT',
   redirect: '/permission/front/page',
   meta: {
+    orderNo: 5000,
     icon: 'carbon:user-role',
     title: 'routes.demo.permission.permission',
   },
@@ -83,7 +78,6 @@ const authRoute = {
 const levelRoute = {
   path: '/level',
   name: 'Level',
-  component: 'LAYOUT',
   redirect: '/level/menu1/menu1-1',
   meta: {
     icon: 'carbon:user-role',
@@ -108,7 +102,6 @@ const levelRoute = {
             {
               path: 'menu1-1-1',
               name: 'Menu111Demo',
-              component: '/demo/level/Menu111',
               meta: {
                 title: 'Menu111',
               },
@@ -118,7 +111,6 @@ const levelRoute = {
         {
           path: 'menu1-2',
           name: 'Menu12Demo',
-          component: '/demo/level/Menu12',
           meta: {
             title: 'Menu1-2',
           },
@@ -128,7 +120,6 @@ const levelRoute = {
     {
       path: 'menu2',
       name: 'Menu2Demo',
-      component: '/demo/level/Menu2',
       meta: {
         title: 'Menu2',
       },
@@ -139,9 +130,9 @@ const levelRoute = {
 const sysRoute = {
   path: '/system',
   name: 'System',
-  component: 'LAYOUT',
   redirect: '/system/account',
   meta: {
+    orderNo: 2000,
     icon: 'ion:settings-outline',
     title: 'routes.demo.system.moduleName',
   },
@@ -153,7 +144,6 @@ const sysRoute = {
         title: 'routes.demo.system.account',
         ignoreKeepAlive: true,
       },
-      component: '/demo/system/account/index',
     },
     {
       path: 'account_detail/:id',
@@ -165,7 +155,6 @@ const sysRoute = {
         showMenu: false,
         currentActiveMenu: '/system/account',
       },
-      component: '/demo/system/account/AccountDetail',
     },
     {
       path: 'role',
@@ -174,7 +163,6 @@ const sysRoute = {
         title: 'routes.demo.system.role',
         ignoreKeepAlive: true,
       },
-      component: '/demo/system/role/index',
     },
 
     {
@@ -184,7 +172,6 @@ const sysRoute = {
         title: 'routes.demo.system.menu',
         ignoreKeepAlive: true,
       },
-      component: '/demo/system/menu/index',
     },
     {
       path: 'dept',
@@ -193,7 +180,6 @@ const sysRoute = {
         //title: 'routes.demo.system.dept',
         ignoreKeepAlive: true,
       },
-      component: '/demo/system/dept/index',
     },
     // {
     //   path: 'changePassword',
@@ -202,7 +188,6 @@ const sysRoute = {
     //     title: 'routes.demo.system.password',
     //     ignoreKeepAlive: true,
     //   },
-    //   component: '/demo/system/password/index',
     // },
   ],
 };
@@ -210,7 +195,6 @@ const sysRoute = {
 const linkRoute = {
   path: '/link',
   name: 'Link',
-  component: 'LAYOUT',
   meta: {
     icon: 'ion:tv-outline',
     title: 'routes.demo.iframe.frame',
@@ -227,7 +211,6 @@ const linkRoute = {
     {
       path: 'https://vvbin.cn/doc-next/',
       name: 'DocExternal',
-      component: 'LAYOUT',
       meta: {
         title: 'routes.demo.iframe.docExternal',
       },
@@ -239,7 +222,6 @@ const appRoutes = [
   {
     path: '/link',
     name: 'Link',
-    component: 'LAYOUT',
     meta: {
       icon: 'ion:tv-outline',
       title: 'routes.demo.iframe.frame',
@@ -256,7 +238,6 @@ const appRoutes = [
       {
         path: 'https://vvbin.cn/doc-next/',
         name: 'DocExternal',
-        component: 'LAYOUT',
         meta: {
           title: 'routes.demo.iframe.docExternal',
         },
@@ -266,7 +247,6 @@ const appRoutes = [
   {
     path: '/link',
     name: 'Link',
-    component: 'LAYOUT',
     meta: {
       icon: 'ion:tv-outline',
       title: 'routes.demo.iframe.frame',
@@ -283,7 +263,6 @@ const appRoutes = [
       {
         path: 'https://vvbin.cn/doc-next/',
         name: 'DocExternal',
-        component: 'LAYOUT',
         meta: {
           title: 'routes.demo.iframe.docExternal',
         },

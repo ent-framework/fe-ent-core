@@ -40,7 +40,7 @@ const getStaticMenus = (): Menu[] => {
   const menuModules = permissionStore.getMenuModules;
   const staticMenus: Menu[] = [];
   menuModules.sort((a, b) => {
-    return (a.orderNo || 0) - (b.orderNo || 0);
+    return (b.orderNo || 0) - (a.orderNo || 0);
   });
 
   for (const menu of menuModules) {
@@ -52,7 +52,11 @@ const getStaticMenus = (): Menu[] => {
 async function getAsyncMenus() {
   const permissionStore = usePermissionStore();
   if (isBackMode()) {
-    return permissionStore.getBackMenuList.filter((item) => !item.meta?.hideMenu && !item.hideMenu);
+    return permissionStore.getBackMenuList
+      .filter((item) => !item.meta?.hideMenu && !item.hideMenu)
+      .sort((a, b) => {
+        return (b.orderNo || 0) - (a.orderNo || 0);
+      });
   }
   if (isRouteMappingMode()) {
     return permissionStore.getFrontMenuList.filter((item) => !item.hideMenu);
