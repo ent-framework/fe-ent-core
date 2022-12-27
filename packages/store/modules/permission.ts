@@ -195,9 +195,13 @@ export const usePermissionStore = defineStore({
           // !Simulate to obtain permission codes from the background,
           // this function may only need to be executed once, and the actual project can be put at the right time by itself
           let routeList: AppRouteRecordRaw[] = [];
+          let path = window.location.pathname || '/';
+          if (path === '/') {
+            path = 'index.html';
+          }
           try {
             await this.changePermissionCode();
-            routeList = (await userBridge.getMenuList()) as AppRouteRecordRaw[];
+            routeList = (await userBridge.getMenuList({ path })) as AppRouteRecordRaw[];
           } catch (error) {
             console.error(error);
           }
@@ -209,6 +213,7 @@ export const usePermissionStore = defineStore({
           }
           // 用服务器返回routeList去过滤router.bizRoutes，返回匹配的路由信息
           routeList = backendRouteFilter(router.bizRoutes, routeList);
+          console.log(routeList);
 
           //  Background routing to menu structure
           const backMenuList = transformRouteToMenu(routeList);

@@ -8,7 +8,7 @@
     "url": "https://github.com/anncwb"
   },
   "scripts": {
-    "dev": "vite --mode=development",
+    "dev": "vite --mode=development --debug",
     "build": "cross-env NODE_ENV=production vite build",
     "build:no-cache": "yarn clean:cache && npm run build",
     "clean": "rimraf dist",

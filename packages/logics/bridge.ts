@@ -1,13 +1,13 @@
-import { LoginParams, LoginResultModel } from "./model";
+import { LoginParams, LoginResultModel } from './model';
 import { ErrorMessageMode } from './types/axios';
+import { AppRouteRecordRaw } from '@ent-core/router/types';
 
 export interface UserBridgeOptions {
   loginApi: (params: LoginParams, mode: ErrorMessageMode) => Promise<LoginResultModel>;
   getUserInfo: AnyFunction<any>;
   getPermCode: AnyFunction<any>;
   doLogout: AnyFunction<any>;
-
-  getMenuList: AnyFunction<any>;
+  getMenuList: (params: Recordable) => Promise<AppRouteRecordRaw[]>;
 }
 export let userBridge: UserBridgeOptions = {
   loginApi: () => {
@@ -16,7 +16,9 @@ export let userBridge: UserBridgeOptions = {
   getUserInfo: () => {},
   getPermCode: () => {},
   doLogout: () => {},
-  getMenuList: () => {},
+  getMenuList: () => {
+    return new Promise<AppRouteRecordRaw[]>(() => {});
+  },
 };
 
 export interface HttpBridgeOptions {

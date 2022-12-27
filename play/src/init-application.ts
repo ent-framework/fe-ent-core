@@ -7,7 +7,7 @@ import { usePermission } from 'fe-ent-core/lib/hooks/web/use-permission';
 // 为了解耦 `packages/*` 下面各模块，不再相互依赖
 // 如果模块相互依赖严重，则需要对外提供解耦方式，由调用方去进行参数传递
 // 各个模块需要提供 `bridge` 文件作为解耦方式
-async function initPackages() {
+export async function initPackages() {
   const _initRequest = async () => {
     const apiUrl = '';
     const { t } = useI18n();
@@ -40,11 +40,11 @@ async function initPackages() {
   const _initUser = async () => {
     await initUserBridge(() => {
       return {
-        loginApi: loginApi,
-        getUserInfo: getUserInfo,
-        getPermCode: getPermCode,
-        doLogout: doLogout,
-        getMenuList: getMenuList,
+        loginApi,
+        getUserInfo,
+        getPermCode,
+        doLogout,
+        getMenuList,
       };
     });
   };

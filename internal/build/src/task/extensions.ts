@@ -14,6 +14,7 @@ import { version } from '../../../../packages/fe-ent-core/version';
 import { EntExtAlias } from '../plugins/ent-ext-alias';
 import { extRoot, pkgRoot } from '@ent-core/build-utils';
 import { EP_BRAND_NAME } from '@ent-core/build-constants';
+import nodePolyfills from 'rollup-plugin-polyfill-node';
 import {
   formatBundleFilename,
   generateExtensionExternal,
@@ -51,6 +52,7 @@ async function buildExtensions(ext: string, minify: boolean) {
           extensions: ['.mjs', '.js', '.ts', '.tsx'],
         }),
         commonjs(),
+        nodePolyfills(),
         esbuild({
           minify,
           sourceMap: minify,

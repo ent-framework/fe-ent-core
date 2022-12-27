@@ -8,8 +8,9 @@ const dashboardRoute = {
   name: 'Dashboard',
   redirect: '/dashboard/analysis',
   meta: {
+    orderNo: 5000,
     title: 'routes.dashboard.dashboard',
-    hideChildrenInMenu: true,
+    hideChildrenInMenu: false,
     icon: 'bx:bx-home',
   },
   children: [
@@ -17,20 +18,9 @@ const dashboardRoute = {
       path: 'analysis',
       name: 'Analysis',
       meta: {
-        hideMenu: true,
+        hideMenu: false,
         hideBreadcrumb: true,
         title: 'routes.dashboard.analysis',
-        currentActiveMenu: '/dashboard',
-        icon: 'bx:bx-home',
-      },
-    },
-    {
-      path: 'workbench',
-      name: 'Workbench',
-      meta: {
-        hideMenu: true,
-        hideBreadcrumb: true,
-        title: 'routes.dashboard.workbench',
         currentActiveMenu: '/dashboard',
         icon: 'bx:bx-home',
       },
@@ -44,8 +34,17 @@ const backRoute = {
   meta: {
     title: 'routes.demo.permission.back',
   },
-
   children: [
+    {
+      path: '/dashboard/workbench',
+      name: 'Workbench',
+      meta: {
+        hideMenu: false,
+        hideBreadcrumb: true,
+        title: 'routes.dashboard.workbench',
+        icon: 'bx:bx-home',
+      },
+    },
     {
       path: 'page',
       name: 'BackAuthPage',
@@ -68,7 +67,7 @@ const authRoute = {
   name: 'Permission',
   redirect: '/permission/front/page',
   meta: {
-    orderNo: 5000,
+    orderNo: 1000,
     icon: 'carbon:user-role',
     title: 'routes.demo.permission.permission',
   },

@@ -78,12 +78,15 @@ function addToChildren(
 }
 
 function existInFilter(
-  filters: AppRouteRecordRaw[],
-  target: AppRouteRecordRaw,
+  filters?: AppRouteRecordRaw[],
+  target?: AppRouteRecordRaw,
 ): AppRouteRecordRaw | undefined {
-  for (let index = 0; index < filters.length; index++) {
+  if (!filters || !target) {
+    return undefined;
+  }
+  for (let index = 0; index < filters?.length; index++) {
     const c = filters[index];
-    if (c.path === target.path) {
+    if (c.path === target?.path) {
       return omit(c, 'children');
     }
     if (hasChildren(c) && c.children?.length) {
@@ -101,23 +104,20 @@ export function backendRouteFilter(bizRoutes?: AppRouteRecordRaw[], filters?: Ap
     return [];
   }
   const results: AppRouteRecordRaw[] = [];
-  bizRoutes?.forEach((route) => {
-    const hc = hasChildren(route);
-    const target = omit(route, 'children');
-    const filtered = existInFilter(filters, route);
-    const children: AppRouteRecordRaw[] = [];
-    if (hc) {
-      children.push(...backendRouteFilter(route.children, filters));
-    }
-    if (filtered || children.length > 0) {
-      set(target, 'children', children);
+  filters?.forEach((route) => {
+    const children: AppRouteRecordRaw[] = backendRouteFilter(bizRoutes, route?.children);
+    const filtered = existInFilter(bizRoutes, route);
+    if (filtered) {
       if (filtered && Reflect.has(filtered, 'meta')) {
-        target.meta = merge(target.meta, filtered.meta);
+        filtered.meta = merge(filtered.meta, route.meta);
       }
-
-      results.push(target);
+      if (children.length > 0) {
+        set(filtered, 'children', children);
+      }
+      results.push(filtered);
     }
   });
+
   return results;
 }
 
