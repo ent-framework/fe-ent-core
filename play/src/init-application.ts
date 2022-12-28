@@ -59,6 +59,6 @@ export async function initApplication() {
   // Initialize internal system configuration
   //initAppConfigStore()
 
-  const { changePermissionMode } = usePermission();
-  await changePermissionMode('BACK');
+  // const { changePermissionMode } = usePermission();
+  // await changePermissionMode('BACK');
 }

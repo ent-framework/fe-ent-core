@@ -397,7 +397,7 @@ export interface BasicColumn extends ColumnType {
   flag?: 'INDEX' | 'DEFAULT' | 'CHECKBOX' | 'RADIO' | 'ACTION';
   customTitle?: ColumnTitle<any>;
 
-  slots?: Recordable;
+  //slots?: Recordable;
 
   // Whether to hide the column by default, it can be displayed in the column configuration
   defaultHidden?: boolean;

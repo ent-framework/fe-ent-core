@@ -15,7 +15,8 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, PropType } from 'vue';
+  import { defineComponent } from 'vue';
+  import type { PropType } from 'vue';
   import { EntArrow, EntTitle } from '@ent-core/components/basic';
 
   const props = {

@@ -39,6 +39,10 @@ export function useFormValues({
       // Remove spaces
       if (isString(value)) {
         value = value.trim();
+        //如果字符串没有长度，默认没有输入
+        if (value.length === 0) {
+          value = undefined;
+        }
       }
       set(res, key, value);
     }

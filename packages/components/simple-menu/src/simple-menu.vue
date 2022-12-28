@@ -21,6 +21,7 @@
   import type { MenuState } from './types';
   import type { Menu as MenuType } from '@ent-core/router/types';
   import type { RouteLocationNormalizedLoaded } from 'vue-router';
+  import type { PropType } from 'vue';
   import { defineComponent, computed, ref, unref, reactive, toRefs, watch } from 'vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import Menu from './components/menu.vue';

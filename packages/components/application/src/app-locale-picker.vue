@@ -17,7 +17,7 @@
     </span>
   </EntDropdown>
 </template>
-<script lang="ts" setup name="AppLocalePicker">
+<script lang="ts" setup name="EntAppLocalePicker">
   import type { LocaleType } from '@ent-core/logics/types/config';
   import type { DropMenu } from '@ent-core/components/dropdown';
   import { ref, watchEffect, unref, computed, defineComponent } from 'vue';

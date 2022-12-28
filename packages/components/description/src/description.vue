@@ -1,7 +1,7 @@
 <script lang="tsx">
   import type { DescriptionProps, DescInstance, DescItem } from './typing';
   import type { DescriptionsProps } from 'ant-design-vue/es';
-  import type { CSSProperties } from 'vue';
+  import type { CSSProperties, PropType } from 'vue';
   import type { CollapseContainerOptions } from '@ent-core/components/container';
   import { defineComponent, computed, ref, unref } from 'vue';
   import { get } from 'lodash';

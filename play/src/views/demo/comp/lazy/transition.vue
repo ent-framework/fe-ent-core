@@ -14,7 +14,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import TargetContent from './target-content.vue';
-  import { EntLazyContainer } from 'fe-ent-core/lib/components/container/index';
+  import { EntLazyContainer } from 'fe-ent-core/lib/components/container';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({

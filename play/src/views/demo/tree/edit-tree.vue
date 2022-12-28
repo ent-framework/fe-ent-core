@@ -29,7 +29,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { BasicTree, ActionItem, ContextMenuItem } from 'fe-ent-core/lib/components/tree';
+  import { BasicTree, TreeActionItem } from 'fe-ent-core/lib/components/tree';
+  import { ContextMenuItem } from 'fe-ent-core/lib/components/context-menu';
   import { treeData } from './data';
   import { PlusOutlined, DeleteOutlined } from '@ant-design/icons-vue';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
@@ -59,7 +60,7 @@
           },
         ];
       }
-      const actionList: ActionItem[] = [
+      const actionList: TreeActionItem[] = [
         {
           // show:()=>boolean;
           render: (node) => {

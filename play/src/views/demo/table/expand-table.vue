@@ -53,7 +53,7 @@
         actionColumn: {
           width: 160,
           title: 'Action',
-          slots: { customRender: 'action' },
+          dataIndex: 'action',
         },
       });
       function handleDelete(record: Recordable) {

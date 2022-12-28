@@ -11,7 +11,7 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, onMounted, ref, Ref, unref } from 'vue';
+  import { defineComponent, onMounted, ref, Ref } from 'vue';
   import {
     EntTable,
     useTable,
@@ -183,7 +183,6 @@
           width: 160,
           title: 'Action',
           dataIndex: 'action',
-          slots: { customRender: 'action' },
         },
       });
 

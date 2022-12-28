@@ -96,7 +96,6 @@ export function getMultipleHeaderColumns(): BasicColumn[] {
             { text: 'Female', value: 'female', children: [] },
           ],
         },
-
         {
           title: '开始时间',
           dataIndex: 'beginTime',
@@ -120,19 +119,16 @@ export function getCustomHeaderColumns(): BasicColumn[] {
       width: 200,
     },
     {
-      // title: '姓名',
+      title: '姓名',
       dataIndex: 'name',
       width: 120,
-      slots: { title: 'customTitle' },
     },
     {
-      // title: '地址',
+      title: '地址',
       dataIndex: 'address',
       width: 120,
-      slots: { title: 'customAddress' },
       sorter: true,
     },
-
     {
       title: '编号',
       dataIndex: 'no',
@@ -170,13 +166,13 @@ export function getMergeHeaderColumns(): BasicColumn[] {
       title: 'ID',
       dataIndex: 'id',
       width: 300,
-      customRender: renderContent,
+      customCell: renderContent,
     },
     {
       title: '姓名',
       dataIndex: 'name',
       width: 300,
-      customRender: renderContent,
+      customCell: renderContent,
     },
     {
       title: '地址',
@@ -184,7 +180,7 @@ export function getMergeHeaderColumns(): BasicColumn[] {
       colSpan: 2,
       width: 120,
       sorter: true,
-      customRender: ({ text, index }: { text: any; index: number }) => {
+      customCell: ({ text, index }: { text: any; index: number }) => {
         const obj: any = {
           children: text,
           attrs: {},
@@ -206,19 +202,19 @@ export function getMergeHeaderColumns(): BasicColumn[] {
         { text: 'Male', value: 'male', children: [] },
         { text: 'Female', value: 'female', children: [] },
       ],
-      customRender: renderContent,
+      customCell: renderContent,
     },
     {
       title: '开始时间',
       dataIndex: 'beginTime',
       width: 200,
-      customRender: renderContent,
+      customCell: renderContent,
     },
     {
       title: '结束时间',
       dataIndex: 'endTime',
       width: 200,
-      customRender: renderContent,
+      customCell: renderContent,
     },
   ];
 }

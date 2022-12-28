@@ -4,7 +4,6 @@ import type {
   VNodeChild,
   ComponentPublicInstance,
   FunctionalComponent,
-  PropType as VuePropType,
 } from 'vue';
 
 declare global {
@@ -23,7 +22,6 @@ declare global {
   // }
 
   // vue
-  declare type PropType<T> = VuePropType<T>;
   declare type VueNode = VNodeChild | JSX.Element;
   declare type EmitType = (event: string, ...args: any[]) => void;
   export type Writable<T> = {

@@ -22,7 +22,7 @@
     </div>
   </div>
 </template>
-<script lang="ts" setup>
+<script lang="ts" setup name="EntCollapseContainer">
   import type { PropType } from 'vue';
   import { defineComponent, ref } from 'vue';
   // component
@@ -60,7 +60,6 @@
   });
 
   defineComponent({
-    name: 'EntCollapseContainer',
     components: { Skeleton },
   });
 

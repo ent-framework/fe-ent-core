@@ -28,6 +28,15 @@
       <template #[`header-${column.dataIndex}`] v-for="column in columns" :key="column.dataIndex">
         <HeaderCell :column="column" />
       </template>
+
+      <template #headerCell="{ column }">
+        <HeaderCell :column="column" />
+      </template>
+      <template #bodyCell="data">
+        <template v-if="$slots[data.column.dataIndex]">
+          <slot :name="data.column.dataIndex" v-bind="data"></slot>
+        </template>
+      </template>
     </Table>
   </div>
 </template>

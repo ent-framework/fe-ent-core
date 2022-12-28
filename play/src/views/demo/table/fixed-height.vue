@@ -1,13 +1,13 @@
 <template>
   <div class="p-4">
     <EntTable @register="registerTable">
-      <template #customTitle>
+      <template #name>
         <span>
           姓名
           <EntHelp class="ml-2" text="姓名" />
         </span>
       </template>
-      <template #customAddress>
+      <template #address>
         地址
         <FormOutlined class="ml-2" />
       </template>

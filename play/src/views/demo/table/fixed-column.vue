@@ -26,7 +26,12 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable, BasicColumn, EntTableAction } from 'fe-ent-core/lib/components/table';
+  import {
+    EntTable,
+    useTable,
+    BasicColumn,
+    EntTableAction,
+  } from 'fe-ent-core/lib/components/table';
 
   import { demoListApi } from '/@/api/table';
   const columns: BasicColumn[] = [
@@ -74,7 +79,6 @@
           width: 160,
           title: 'Action',
           dataIndex: 'action',
-          slots: { customRender: 'action' },
         },
       });
       function handleDelete(record: Recordable) {

@@ -5,6 +5,7 @@
   import type { Menu } from '@ent-core/router/types';
 
   import { defineComponent, computed } from 'vue';
+  import type { PropType } from 'vue';
 
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { propTypes } from '@ent-core/utils/prop-types';
