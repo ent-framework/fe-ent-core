@@ -1,7 +1,4 @@
 import type { App } from 'vue';
-import { EntButton } from './button';
-import { EntModal } from './modal';
-import { EntDescription } from './description';
 import {
   // Need
   Button as AntButton,
@@ -16,5 +13,5 @@ export function registerGlobComp(app: App) {
     app.component(comp.name || comp.displayName, comp);
   });
 
-  app.use(Input).use(EntButton).use(EntModal).use(EntDescription).use(Layout).use(AntButton);
+  app.use(Input).use(Layout).use(AntButton);
 }

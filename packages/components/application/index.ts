@@ -7,7 +7,7 @@ import appDarkModeToggle from './src/app-dark-mode-toggle.vue';
 export { useAppProviderContext } from './src/use-app-context';
 
 export const EntAppProvider = withInstall(appProvider);
-export const EntAppLocalePicker = withInstall(appLocalePicker);
-export const EntAppDarkModeToggle = withInstall(appDarkModeToggle);
+export const EntAppLocalePicker = withInstall(appLocalePicker, 'EntAppLocalePicker');
+export const EntAppDarkModeToggle = withInstall(appDarkModeToggle, 'EntAppDarkModeToggle');
 
 export default EntAppProvider;
