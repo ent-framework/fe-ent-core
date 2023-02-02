@@ -9,10 +9,9 @@ import TableAction from '@ent-core/components/table/src/components/table-action.
 import ThumbUrl from './thumb-url.vue';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 
-const { t } = useI18n();
-
 // 文件上传列表
 export function createTableColumns(): BasicColumn[] {
+  const { t } = useI18n();
   return [
     {
       dataIndex: 'thumbUrl',
@@ -79,6 +78,7 @@ export function createTableColumns(): BasicColumn[] {
   ];
 }
 export function createActionColumn(handleRemove: Function): BasicColumn {
+  const { t } = useI18n();
   return {
     width: 120,
     title: t('component.upload.operating'),
@@ -104,6 +104,7 @@ export function createActionColumn(handleRemove: Function): BasicColumn {
 }
 // 文件预览列表
 export function createPreviewColumns(): BasicColumn[] {
+  const { t } = useI18n();
   return [
     {
       dataIndex: 'url',
@@ -129,6 +130,7 @@ export function createPreviewActionColumn({
   handleRemove: Fn;
   handleDownload: Fn;
 }): BasicColumn {
+  const { t } = useI18n();
   return {
     width: 160,
     title: t('component.upload.operating'),

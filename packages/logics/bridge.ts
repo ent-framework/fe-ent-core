@@ -8,6 +8,10 @@ export interface UserBridgeOptions {
   getPermCode: AnyFunction<any>;
   doLogout: AnyFunction<any>;
   getMenuList: (params: Recordable) => Promise<AppRouteRecordRaw[]>;
+
+  getThemeSetting: () => Promise<Recordable>;
+
+  saveThemeSetting: (params: Recordable) => Promise<void>;
 }
 export let userBridge: UserBridgeOptions = {
   loginApi: () => {
@@ -19,28 +23,34 @@ export let userBridge: UserBridgeOptions = {
   getMenuList: () => {
     return new Promise<AppRouteRecordRaw[]>(() => {});
   },
+  getThemeSetting: () => {
+    return new Promise<{}>(() => {});
+  },
+  saveThemeSetting: () => {
+    return new Promise<void>(() => {});
+  },
 };
 
 export interface HttpBridgeOptions {
-  errorFunction: AnyFunction<any>;
-  msgFunction: AnyFunction<any>;
-  errorModalFunction: AnyFunction<any>;
-  noticeFunction: AnyFunction<any>;
-  getTokenFunction: () => unknown;
+  error: AnyFunction<any>;
+  msg: AnyFunction<any>;
+  errorModal: AnyFunction<any>;
+  notice: AnyFunction<any>;
+  getToken: () => unknown;
   unauthorized: (msg?: string) => void;
-  timeoutFunction: () => void;
-  handleErrorFunction: (message?: string, mode?: string) => void;
+  timeout: () => void;
+  handleError: (message?: string, mode?: string) => void;
   apiUrl?: string;
 }
 export let httpBridge: HttpBridgeOptions = {
-  getTokenFunction: () => undefined,
+  getToken: () => undefined,
   unauthorized: () => {},
-  errorFunction: () => {},
-  msgFunction: () => {},
-  noticeFunction: () => {},
-  errorModalFunction: () => {},
-  handleErrorFunction: () => {},
-  timeoutFunction: () => {},
+  error: () => {},
+  msg: () => {},
+  notice: () => {},
+  errorModal: () => {},
+  handleError: () => {},
+  timeout: () => {},
   apiUrl: '',
 };
 

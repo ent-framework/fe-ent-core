@@ -3,6 +3,7 @@ import { useI18n } from 'fe-ent-core/lib/hooks/web';
 import { initHttpBridge, initUserBridge } from 'fe-ent-core/lib/logics/bridge';
 import { loginApi, getUserInfo, getPermCode, doLogout } from 'fe-ent-core/lib/logics/api/user';
 import { getMenuList } from 'fe-ent-core/lib/logics/api/menu';
+import { getThemeSetting, saveThemeSetting } from 'fe-ent-core/lib/logics/api/theme';
 import { usePermission } from 'fe-ent-core/lib/hooks/web/use-permission';
 // 为了解耦 `packages/*` 下面各模块，不再相互依赖
 // 如果模块相互依赖严重，则需要对外提供解耦方式，由调用方去进行参数传递
@@ -14,14 +15,14 @@ export async function initPackages() {
     await initHttpBridge(() => {
       return {
         apiUrl,
-        getTokenFunction: () => {
+        getToken: () => {
           const userStore = useUserStoreWithOut();
           return userStore.getToken;
         },
-        errorFunction: null,
-        noticeFunction: null,
-        errorModalFunction: null,
-        timeoutFunction: () => {
+        error: () => {},
+        notice: () => {},
+        errorModal: () => {},
+        timeout: () => {
           const userStore = useUserStoreWithOut();
           userStore.setToken(undefined);
           userStore.logout(true);
@@ -32,7 +33,7 @@ export async function initPackages() {
           userStore.logout(true);
           return msg || t('sys.api.errMsg401');
         },
-        handleErrorFunction: (msg, mode) => {},
+        handleError: (msg, mode) => {},
       };
     });
   };
@@ -45,6 +46,8 @@ export async function initPackages() {
         getPermCode,
         doLogout,
         getMenuList,
+        getThemeSetting,
+        saveThemeSetting,
       };
     });
   };

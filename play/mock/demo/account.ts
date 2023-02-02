@@ -1,6 +1,5 @@
 import { MockMethod } from 'vite-plugin-mock';
 import { resultSuccess, resultError } from '../_util';
-import { ResultEnum } from 'fe-ent-core/lib/logics/enums/http-enum';
 
 const userInfo = {
   name: 'Vben',
@@ -65,7 +64,7 @@ export default [
     method: 'post',
     statusCode: 200,
     response: () => {
-      return resultError('Token Expired!', { code: ResultEnum.TIMEOUT as number });
+      return resultError('Token Expired!', { code: 401 });
     },
   },
 ] as MockMethod[];

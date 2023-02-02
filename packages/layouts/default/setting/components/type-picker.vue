@@ -24,13 +24,13 @@
   import { Tooltip } from 'ant-design-vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
 
-  import { menuTypeList } from '../enum';
+  import type { MenuType } from '../enum';
   export default defineComponent({
     name: 'MenuTypePicker',
     components: { Tooltip },
     props: {
       menuTypeList: {
-        type: Array as PropType<typeof menuTypeList>,
+        type: Array as PropType<MenuType[]>,
         default: () => [],
       },
       handler: {

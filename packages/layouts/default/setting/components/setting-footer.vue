@@ -29,12 +29,11 @@
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useMessage } from '@ent-core/hooks/web/use-message';
-  import { useCopyToClipboard } from '@ent-core/hooks/web/use-copy-to-clipboard';
 
   import { updateColorWeak } from '@ent-core/logics/theme/update-color-weak';
   import { updateGrayMode } from '@ent-core/logics/theme/update-gray-mode';
   import defaultSetting from '@ent-core/logics/settings/project-setting';
-
+  import { userBridge } from '@ent-core/logics/bridge';
   export default defineComponent({
     name: 'SettingFooter',
     components: { CopyOutlined, RedoOutlined },
@@ -42,20 +41,28 @@
       const permissionStore = usePermissionStore();
       const { prefixCls } = useDesign('setting-footer');
       const { t } = useI18n();
-      const { createSuccessModal, createMessage } = useMessage();
+      const { createMessage } = useMessage();
       const tabStore = useMultipleTabStore();
       const userStore = useUserStore();
       const appStore = useAppStore();
 
       function handleCopy() {
-        const { isSuccessRef } = useCopyToClipboard(
-          JSON.stringify(unref(appStore.getProjectConfig), null, 2),
-        );
-        unref(isSuccessRef) &&
-          createSuccessModal({
-            title: t('layout.setting.operatingTitle'),
-            content: t('layout.setting.operatingContent'),
-          });
+        // const { isSuccessRef } = useCopyToClipboard(
+        //   JSON.stringify(unref(appStore.getProjectConfig), null, 2),
+        // );
+        console.log(JSON.stringify(unref(appStore.getProjectConfig), null, 2));
+        // unref(isSuccessRef) &&
+        //   createSuccessModal({
+        //     title: t('layout.setting.operatingTitle'),
+        //     content: t('layout.setting.operatingContent'),
+        //   });
+
+        userBridge
+          .saveThemeSetting({ settings: unref(appStore.getProjectConfig) })
+          .then(() => {
+            createMessage.success(t('layout.setting.operatingContent'));
+          })
+          .catch(() => {});
       }
       function handleResetSetting() {
         try {

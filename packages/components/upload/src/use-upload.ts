@@ -1,6 +1,6 @@
 import { Ref, unref, computed } from 'vue';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
-const { t } = useI18n();
+
 export function useUploadType({
   acceptRef,
   helpTextRef,
@@ -12,6 +12,7 @@ export function useUploadType({
   maxNumberRef: Ref<number>;
   maxSizeRef: Ref<number>;
 }) {
+  const { t } = useI18n();
   // 文件类型限制
   const getAccept = computed(() => {
     const accept = unref(acceptRef);

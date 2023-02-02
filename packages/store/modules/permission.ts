@@ -187,7 +187,7 @@ export const usePermissionStore = defineStore({
         case PermissionModeEnum.BACK:
           const { createMessage } = useMessage();
 
-          createMessage.loading({
+          createMessage.info({
             content: t('sys.app.menuLoading'),
             duration: 1,
           });

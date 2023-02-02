@@ -107,6 +107,10 @@ notification.config({
   duration: 3,
 });
 
+Message.config({
+  maxCount: 5,
+});
+
 /**
  * @description: message
  */

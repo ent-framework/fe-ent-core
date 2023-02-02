@@ -6,6 +6,7 @@
   import { basicProps } from './props';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { CheckOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
+  import { useI18n } from '@ent-core/hooks/web/use-i18n';
 
   export default defineComponent({
     name: 'EntDragVerify',
@@ -20,7 +21,7 @@
         startTime: 0,
         endTime: 0,
       });
-
+      const { t } = useI18n();
       const wrapElRef = ref<HTMLDivElement | null>(null);
       const barElRef = ref<HTMLDivElement | null>(null);
       const contentElRef = ref<HTMLDivElement | null>(null);
@@ -236,7 +237,10 @@
 
           return (
             <div class={cls} ref={contentElRef} style={unref(getContentStyleRef)}>
-              {getSlot(slots, 'text', isPassing) || (isPassing ? successText : text)}
+              {getSlot(slots, 'text', isPassing) ||
+                (isPassing
+                  ? successText || t('component.verify.successText')
+                  : text || t('component.verify.dragText'))}
             </div>
           );
         };

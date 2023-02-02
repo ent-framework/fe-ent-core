@@ -20,17 +20,49 @@ import { useLocaleStore } from '@ent-core/store/modules/locale';
 
 import { getCommonStoragePrefix, getStorageShortName } from '@ent-core/utils/env';
 
-import { primaryColor } from '../utils/theme-config';
+import { primaryColor } from '@ent-core/utils';
 import { Persistent } from '@ent-core/utils/cache/persistent';
 import { deepMerge } from '@ent-core/utils';
 import { ThemeEnum } from '@ent-core/logics/enums/app-enum';
+import { useI18n, useMessage } from '@ent-core/hooks';
+import { userBridge } from '@ent-core/logics/bridge';
+import { useUserStoreWithOut } from '@ent-core/store';
 
 // Initial project configuration
-export function initAppConfigStore() {
+export async function initAppConfigStore() {
   const localeStore = useLocaleStore();
   const appStore = useAppStore();
+  const { createMessage } = useMessage();
+  const { t } = useI18n();
   let projCfg: ProjectConfig = Persistent.getLocal(PROJ_CFG_KEY) as ProjectConfig;
-  projCfg = deepMerge(projectSetting, projCfg || {});
+  const userStore = useUserStoreWithOut();
+  //如果用户已登录,状态后台保存的设置
+  if (userStore.getToken) {
+    createMessage.loading({
+      content: t('sys.app.themeLoading'),
+      duration: 1,
+    });
+    try {
+      const themeSetting = await userBridge.getThemeSetting();
+      if (Object.keys(themeSetting).length > 0) {
+        if (Reflect.has(themeSetting, 'permissionMode')) {
+          Reflect.deleteProperty(themeSetting, 'permissionMode');
+        }
+        console.log(themeSetting);
+        console.log(projCfg);
+        projCfg = deepMerge(themeSetting, projCfg || {});
+        console.log(projCfg);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    projCfg = deepMerge(projectSetting, projCfg || {});
+  }
+  if (!projCfg) {
+    projCfg = projectSetting;
+  }
+
   const darkMode = appStore.getDarkMode;
   const {
     colorWeak,

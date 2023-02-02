@@ -42,9 +42,6 @@ export async function bootstrap(login: boolean) {
   //初始化全局变量
   await initApplication();
 
-  // Initialize internal system configuration
-  initAppConfigStore();
-
   // Register global components
   registerGlobComp(app);
 
@@ -55,6 +52,9 @@ export async function bootstrap(login: boolean) {
   // Multilingual configuration
   // Asynchronous case: language files may be obtained from the server side
   await setupI18n(app);
+
+  // Initialize internal system configuration
+  await initAppConfigStore();
 
   const layoutMgt = useLayout();
 

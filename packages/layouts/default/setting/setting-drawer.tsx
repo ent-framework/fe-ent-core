@@ -96,11 +96,12 @@ export default defineComponent({
     });
 
     function renderSidebar() {
+      const menuTypes = menuTypeList();
       return (
         <>
           <TypePicker
-            menuTypeList={menuTypeList}
-            handler={(item: typeof menuTypeList[0]) => {
+            menuTypeList={menuTypes}
+            handler={(item: typeof menuTypes[0]) => {
               baseHandler(HandlerEnum.CHANGE_LAYOUT, {
                 mode: item.mode,
                 type: item.type,
@@ -225,14 +226,14 @@ export default defineComponent({
             title={t('layout.setting.mixSidebarTrigger')}
             event={HandlerEnum.MENU_TRIGGER_MIX_SIDEBAR}
             def={unref(getMixSideTrigger)}
-            options={mixSidebarTriggerOptions}
+            options={mixSidebarTriggerOptions()}
             disabled={!unref(getIsMixSidebar)}
           />
           <SelectItem
             title={t('layout.setting.topMenuLayout')}
             event={HandlerEnum.MENU_TOP_ALIGN}
             def={unref(getTopMenuAlign)}
-            options={topMenuAlignOptions}
+            options={topMenuAlignOptions()}
             disabled={
               !unref(getShowHeader) ||
               unref(getSplit) ||
@@ -251,7 +252,7 @@ export default defineComponent({
             title={t('layout.setting.contentMode')}
             event={HandlerEnum.CONTENT_MODE}
             def={unref(getContentMode)}
-            options={contentModeOptions}
+            options={contentModeOptions()}
           />
           <InputNumberItem
             title={t('layout.setting.autoScreenLock')}

@@ -28,7 +28,7 @@
   import type { CSSProperties } from 'vue';
   import { defineComponent, computed } from 'vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-
+  import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { footerProps } from '../props';
   export default defineComponent({
     name: 'BasicDrawerFooter',
@@ -41,6 +41,13 @@
     },
     emits: ['ok', 'close'],
     setup(props, { emit }) {
+      const { t } = useI18n();
+      const cancelText =
+        !props.cancelText || props.cancelText.length == 0
+          ? t('common.cancelText')
+          : props.cancelText;
+      const okText = !props.okText || props.okText.length == 0 ? t('common.okText') : props.okText;
+
       const { prefixCls } = useDesign('basic-drawer-footer');
 
       const getStyle = computed((): CSSProperties => {
@@ -58,7 +65,7 @@
       function handleClose() {
         emit('close');
       }
-      return { handleOk, prefixCls, handleClose, getStyle };
+      return { handleOk, prefixCls, handleClose, getStyle, okText, cancelText };
     },
   });
 </script>

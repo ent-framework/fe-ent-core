@@ -9,16 +9,19 @@ import { PAGE_NOT_FOUND_NAME } from '@ent-core/router/constant';
 
 import { RootRoute } from '@ent-core/router/routes';
 
-const LOGIN_PATH = PageEnum.BASE_LOGIN;
+const LOGIN_PATH = PageEnum.BASE_LOGIN as string;
 
 const ROOT_PATH = RootRoute.path;
 
-const whitePathList: PageEnum[] = [LOGIN_PATH];
+const whitePathList: PageEnum[] = [PageEnum.BASE_LOGIN];
 
 export function createPermissionGuard(router: Router) {
   const userStore = useUserStoreWithOut();
   const permissionStore = usePermissionStoreWithOut();
   router.beforeEach(async (to, from, next) => {
+    console.log(to);
+    console.log(from);
+    const path = window.location.pathname;
     if (
       from.path === ROOT_PATH &&
       to.path === PageEnum.BASE_HOME &&
@@ -66,7 +69,7 @@ export function createPermissionGuard(router: Router) {
           redirect: to.path,
         };
       }
-      next(redirectData);
+     // next(redirectData);
       window.location.href = LOGIN_PATH as string;
       return;
     }
@@ -89,7 +92,8 @@ export function createPermissionGuard(router: Router) {
           await userStore.getUserInfoAction();
         } catch (err) {
           if (from.path !== LOGIN_PATH) {
-            next(LOGIN_PATH);
+            //next(LOGIN_PATH);
+            window.location.href = LOGIN_PATH as string;
           } else {
             next();
           }
@@ -108,8 +112,6 @@ export function createPermissionGuard(router: Router) {
     routes.forEach((route) => {
       router.addRoute(route as unknown as RouteRecordRaw);
     });
-
-    //router.addRoute(PAGE_NOT_FOUND_ROUTE as unknown as RouteRecordRaw);
 
     permissionStore.setDynamicAddedRoute(true);
 
