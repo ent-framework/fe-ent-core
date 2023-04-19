@@ -82,9 +82,7 @@ export const withInstall = <T>(component: T, name?: string) => {
   const comp = component as any;
   comp.install = (app: App) => {
     const compName = name || comp.name || comp.displayName;
-    if (!compName) {
-      console.log(comp);
-    } else {
+    if (compName) {
       app.component(compName, component);
     }
   };

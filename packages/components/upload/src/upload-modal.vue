@@ -205,7 +205,6 @@
             error: null,
           };
         } catch (e) {
-          console.log(e);
           item.status = UploadResultStatus.ERROR;
           return {
             success: false,

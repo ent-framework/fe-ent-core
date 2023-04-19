@@ -48,10 +48,7 @@ export async function initAppConfigStore() {
         if (Reflect.has(themeSetting, 'permissionMode')) {
           Reflect.deleteProperty(themeSetting, 'permissionMode');
         }
-        console.log(themeSetting);
-        console.log(projCfg);
         projCfg = deepMerge(themeSetting, projCfg || {});
-        console.log(projCfg);
       }
     } catch (error) {
       console.log(error);

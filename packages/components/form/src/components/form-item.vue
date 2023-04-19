@@ -2,7 +2,7 @@
   import type { PropType, Ref } from 'vue';
   import type { FormActionType, FormProps } from '../types/form';
   import type { FormSchema } from '../types/form';
-  import type { ValidationRule } from 'ant-design-vue/lib/form/Form';
+  import type { Rule } from 'ant-design-vue/lib/form';
   import type { TableActionType } from '@ent-core/components/table';
   import { defineComponent, computed, unref, toRefs } from 'vue';
   import { Form, Col, Divider } from 'ant-design-vue';
@@ -128,7 +128,7 @@
         return { isShow, isIfShow };
       }
 
-      function handleRules(): ValidationRule[] {
+      function handleRules(): Rule[] {
         const {
           rules: defRules = [],
           component,
@@ -139,10 +139,10 @@
         } = props.schema;
 
         if (isFunction(dynamicRules)) {
-          return dynamicRules(unref(getValues)) as ValidationRule[];
+          return dynamicRules(unref(getValues)) as Rule[];
         }
 
-        let rules: ValidationRule[] = cloneDeep(defRules) as ValidationRule[];
+        let rules: Rule[] = cloneDeep(defRules) as Rule[];
         const { rulesMessageJoinLabel: globalRulesMessageJoinLabel } = props.formProps;
 
         const joinLabel = Reflect.has(props.schema, 'rulesMessageJoinLabel')

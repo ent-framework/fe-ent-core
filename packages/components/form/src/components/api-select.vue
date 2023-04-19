@@ -133,7 +133,6 @@
       }
 
       function handleChange(_, ...args) {
-        console.log(args);
         emitData.value = args;
       }
 
