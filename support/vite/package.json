@@ -25,7 +25,7 @@
   "author": "",
   "license": "ISC",
   "peerDependencies": {
-    "ant-design-vue": "^3.2.15",
+    "ant-design-vue": "^3.2.0",
     "vite-plugin-ent-theme": "^1.0.1"
   },
   "dependencies": {

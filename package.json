@@ -152,7 +152,7 @@
     "vite": "3.2.5",
     "vue": "^3.2.31",
     "vite-plugin-ent-theme": "workspace:*",
-    "ant-design-vue": "^3.2.15"
+    "ant-design-vue": "^3.2.16"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china",

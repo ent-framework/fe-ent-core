@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "vue": "^3.2.31",
-    "ant-design-vue": "^3.2.15"
+    "ant-design-vue": "^3.2.0"
   },
   "devDependencies": {
     "vite-plugin-ent-theme": "^1.0.1",
