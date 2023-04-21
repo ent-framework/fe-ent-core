@@ -4,8 +4,8 @@
   "private": true,
   "author": {
     "name": "jeff qian",
-    "email": "baojian.qian@accenture.com",
-    "url": "https://github.com/anncwb"
+    "email": "qbaojian@163.com",
+    "url": "https://github.com/dancewing"
   },
   "scripts": {
     "dev": "vite --mode=development",
@@ -35,8 +35,9 @@
     "ant-design-vue": "^3.2.0"
   },
   "devDependencies": {
-    "vite-plugin-ent-theme": "^1.0.1",
-    "vite": "3.2.5",
+    "fe-vite-plugin-ent-theme": "^1.0.1",
+    "fe-ent-vite": "workspace:*",
+    "vite": "4.2.2",
     "@iconify/json": "^1.1.422"
   },
   "repository": {

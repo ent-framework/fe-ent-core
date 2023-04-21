@@ -23,8 +23,9 @@ export default (): UserConfig => {
           keep_infinity: true,
         },
       },
+      minify: 'terser',
       // Turning off brotliSize display can slightly reduce packaging time
-      brotliSize: false,
+      //brotliSize: false,
       chunkSizeWarningLimit: 2000,
     },
     define: {

@@ -1,13 +1,13 @@
 {
-  "name": "vite-plugin-ent-theme",
-  "version": "1.3.13",
+  "name": "fe-vite-plugin-ent-theme",
+  "version": "1.3.14",
   "description": "Vite plugin for dynamically changing the theme color of the interface",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/index.js",
-      "import": "./dist/index.js"
+      "import": "./dist/index.d.ts"
     },
     "./es/client": {
       "require": "./es/client/index.js",
@@ -26,7 +26,7 @@
     "dev": " tsup src/index.ts --dts --format cjs,esm --watch",
     "dev:client": "tsc -w --p tsconfig.client.json",
     "build": "npm run clean  && npm run build:bundle",
-    "build:bundle": "rollup -c",
+    "build:bundle": "rollup -c --bundleConfigAsCjs",
     "build:types": "tsc --emitDeclarationOnly --outDir dist/ -p src/",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "example:dev": "npm -C example run serve",
@@ -40,24 +40,23 @@
   "keywords": [
     "vite"
   ],
-  "author": "Vben",
-  "license": "MIT",
+  "author": "dancewing",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vbenjs/vite-plugin-theme"
+    "url": "https://github.com/dancewing/fe-ent-core"
   },
   "bugs": {
-    "url": "https://github.com/vbenjs/vite-plugin-theme/issues"
+    "url": "https://github.com/dancewing/fe-ent-core/issues"
   },
-  "homepage": "https://github.com/vbenjs/vite-plugin-theme/tree/master/#readme",
+  "homepage": "https://github.com/dancewing/fe-ent-core/tree/main/#readme",
   "peerDependencies": {
-    "vite": ">=3.2.0"
+    "vite": ">=4.2.2"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "21.0.1",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "13.1.3",
-    "@rollup/plugin-typescript": "^8.3.0",
+    "@rollup/plugin-commonjs": "24.1.0",
+    "@rollup/plugin-json": "6.0.0",
+    "@rollup/plugin-node-resolve": "15.0.2",
+    "@rollup/plugin-typescript": "11.1.0",
     "@types/node": "^14.17.1",
     "cross-env": "^7.0.3",
     "fs-extra": "^9.1.0",
@@ -65,17 +64,16 @@
     "lint-staged": "^10.5.4",
     "pinst": "^2.1.6",
     "rimraf": "^3.0.2",
-    "rollup": "2.79.1",
-    "vite": "3.2.5",
+    "vite": "4.2.2",
     "fe-ent-theme-api": "^1.0.1",
     "tslib": "^2.3.1",
-    "typescript": "^4.9.4"
+    "typescript": "^5.0.3"
   },
   "dependencies": {
     "chalk": "^4.1.1",
     "clean-css": "^5.1.2",
     "debug": "^4.3.2",
-    "esbuild": "^0.11.23",
+    "esbuild": "0.17.17",
     "less": "^4.1.1",
     "esbuild-plugin-alias": "^0.1.2"
   }

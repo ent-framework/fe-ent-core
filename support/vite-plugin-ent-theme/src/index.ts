@@ -31,7 +31,7 @@ import { createFileHash, formatCss } from './utils';
 import chalk from 'chalk';
 import { injectClientPlugin } from './injectClientPlugin';
 
-const debug = Debug('vite-plugin-ent-theme');
+const debug = Debug('fe-vite-plugin-ent-theme');
 
 export function viteThemePlugin(opt: ViteThemeOptions): Plugin[] {
   let isServer = false;
@@ -163,7 +163,7 @@ export function viteThemePlugin(opt: ViteThemeOptions): Plugin[] {
             build: { outDir, assetsDir },
           } = config;
           console.log(
-            chalk.cyan('\n✨ [vite-plugin-ent-theme]') +
+            chalk.cyan('\n✨ [fe-vite-plugin-ent-theme]') +
               ` - extract css code file is successfully:`,
           );
           try {

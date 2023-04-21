@@ -20,7 +20,7 @@ const sharedNodeOptions = {
     chunkFileNames: 'chunks/dep-[hash].js',
     exports: 'named',
     format: 'cjs',
-    externalLiveBindings: false,
+    externalLiveBindings: true,
     freeze: false,
   },
   onwarn(warning, warn) {
@@ -52,7 +52,6 @@ const createNodeConfig = (isProduction) => {
     ...Object.keys(require('./package.json').dependencies),
     ...(isProduction ? [] : Object.keys(require('./package.json').devDependencies)),
   ];
-
   const peerDependencies = [...Object.keys(require('./package.json').peerDependencies)];
 
   const external = dependencies.filter((s) => !peerDependencies.includes(s));
@@ -65,7 +64,13 @@ const createNodeConfig = (isProduction) => {
       ...sharedNodeOptions.output,
       sourcemap: !isProduction,
     },
-    external: ['rollup', 'vite', 'ant-design-vue', 'vite-plugin-ent-theme', ...external],
+    external: [
+      'rollup',
+      'vite',
+      'ant-design-vue',
+      'fe-vite-plugin-ent-theme',
+      'fsevents',
+    ],
     plugins: [
       nodeResolve({ preferBuiltins: true }),
       typescript({
@@ -87,13 +92,7 @@ const createNodeConfig = (isProduction) => {
               declarationDir: path.resolve(__dirname, 'dist/'),
             }),
       }),
-      commonjs({
-        extensions: ['.js'],
-        ignoreDynamicRequires: true,
-        // Optional peer deps of ws. Native deps that are mostly for performance.
-        // Since ws is not that perf critical for us, just ignore these deps.
-        ignore: ['bufferutil', 'utf-8-validate'],
-      }),
+      commonjs(),
       json(),
     ],
   };
@@ -101,25 +100,6 @@ const createNodeConfig = (isProduction) => {
   return nodeConfig;
 };
 
-/**
- * Terser needs to be run inside a worker, so it cannot be part of the main
- * bundle. We produce a separate bundle for it and shims plugin/terser.ts to
- * use the production path during build.
- *
- * @type { import('rollup').RollupOptions }
- */
-const terserConfig = {
-  ...sharedNodeOptions,
-  output: {
-    ...sharedNodeOptions.output,
-    exports: 'default',
-    sourcemap: false,
-  },
-  input: {
-    terser: require.resolve('terser'),
-  },
-  plugins: [nodeResolve(), commonjs()],
-};
 
 export default (commandLineArgs) => {
   const isDev = commandLineArgs.watch;
@@ -127,5 +107,5 @@ export default (commandLineArgs) => {
 
   console.log(`Build tools/build in production mode:  ${isProduction}`);
 
-  return [createNodeConfig(isProduction), ...(isProduction ? [terserConfig] : [])];
+  return [createNodeConfig(isProduction)];
 };

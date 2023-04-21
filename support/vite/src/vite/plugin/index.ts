@@ -39,7 +39,7 @@ export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) 
   ];
 
   // vite-plugin-windicss
-  vitePlugins.push(configWindiPlugin(configEnv));
+  //vitePlugins.push(configWindiPlugin(configEnv));
 
   const isBuild = configEnv.runMode == 'package' || configEnv.runMode == 'lib';
 
@@ -128,8 +128,8 @@ export function createBuildTarget(viteEnv: ViteEnv, runMode: string): BuildOptio
       },
       rollupOptions: {
         // 确保外部化处理那些你不想打包进库的依赖
-        //external: ['vue', 'vue-router', 'vue-i18n', 'ant-design-vue'],
-        external: ['vue'],
+        external: ['vue', 'vue-router', 'vue-i18n', 'ant-design-vue'],
+        //external: ['vue'],
         input: getCurrExecPath('index.ts'),
         output: {
           inlineDynamicImports: true,

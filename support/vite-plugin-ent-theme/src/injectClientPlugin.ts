@@ -34,7 +34,7 @@ export function injectClientPlugin(
   let needSourcemap = false;
   const needProcessId = (id: string) => {
     const nid = normalizePath(id);
-    const path = normalizePath('vite-plugin-ent-theme/es/client');
+    const path = normalizePath('fe-vite-plugin-ent-theme/es/client');
     return (
       nid === CLIENT_PUBLIC_ABSOLUTE_PATH ||
       nid.indexOf(path) >= 0 ||
@@ -76,7 +76,7 @@ export function injectClientPlugin(
     },
 
     resolveId(id: string, importer: any, resolveOpts: any) {
-      if (id === 'vite-plugin-ent-theme/es/client') {
+      if (id === 'fe-vite-plugin-ent-theme/es/client') {
         // this is passed by @rollup/plugin-commonjs
         const isRequire: boolean = resolveOpts?.custom?.['node-resolve']?.isRequire ?? false;
         if (isRequire) {

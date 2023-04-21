@@ -7,7 +7,7 @@ import { createProxy } from './proxy';
 import { wrapperEnv, getPackageManifest, green } from '../utils';
 import { createBuildTarget, createVitePlugins } from './plugin';
 import url from 'postcss-url';
-import type { Plugin } from 'postcss';
+import type { AcceptedPlugin } from 'postcss';
 import { getVitePreLoadFile } from '../utils/less';
 import { default as _ } from 'lodash';
 
@@ -76,7 +76,7 @@ export function createViteConfig(
 
   const vitePreLoadFile = getVitePreLoadFile(configEnv);
 
-  const postCssPlugins: Plugin[] = [];
+  const postCssPlugins: AcceptedPlugin[] = [];
 
   if (configEnv.libDev) {
     postCssPlugins.push(

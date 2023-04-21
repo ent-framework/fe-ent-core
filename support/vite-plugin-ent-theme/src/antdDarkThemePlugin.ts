@@ -180,7 +180,7 @@ export function antdDarkThemePlugin(options: AntdDarkThemeOption): Plugin[] {
             build: { outDir, assetsDir },
           } = config;
           console.log(
-            chalk.cyan('\n✨ [vite-plugin-ent-theme:antd-dark]') +
+            chalk.cyan('\n✨ [fe-vite-plugin-ent-theme:antd-dark]') +
               ` - extract antd dark css code file is successfully:`,
           );
           try {

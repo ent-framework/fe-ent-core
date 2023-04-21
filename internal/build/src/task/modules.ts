@@ -10,7 +10,6 @@ import filesize from 'rollup-plugin-filesize';
 import glob from 'fast-glob';
 import { epRoot, pkgRoot } from '@ent-core/build-utils';
 import { EntCoreAlias } from '../plugins/ent-core-alias';
-import { rollupPluginInjectProcessViteEnv } from '../plugins/vite-env';
 import { generateExternal, writeBundles } from '../utils';
 import { excludeFiles } from '../utils';
 import { reporter } from '../plugins/size-reporter';

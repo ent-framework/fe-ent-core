@@ -13,14 +13,11 @@ sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
 
 ##### 发布到snapshots
 
-- 添加用户
+- 用户登录
 
 ```bash
-npm adduser -registry http://npm.36cpc.com/repository/npm-snapshots/
+npm login
 ```
-登录账号 npm-deploy deploy@20120
-根据提示输入用户、密码，邮箱，登录成功后会把授权信息，保存在npmrc文件
-
 
 - 确认要发布的版本，TAG_VERSION，比如1.0.3，修改版本
 ```bash

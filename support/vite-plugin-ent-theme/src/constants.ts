@@ -4,7 +4,7 @@ import path from 'path';
 export const VITE_CLIENT_ENTRY = '/@vite/client';
 
 export const VITE_PLUGIN_THEME_CLIENT_ENTRY = normalizePath(
-  path.resolve(process.cwd(), 'node_modules/vite-plugin-ent-theme/es/client'),
+  path.resolve(process.cwd(), 'node_modules/fe-vite-plugin-ent-theme/es/client'),
 );
 
 export const CLIENT_PUBLIC_ABSOLUTE_PATH = normalizePath(

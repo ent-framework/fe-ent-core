@@ -3,7 +3,7 @@
  * https://github.com/anncwb/vite-plugin-theme
  */
 import type { Plugin } from 'vite';
-import { viteThemePlugin, antdDarkThemePlugin } from 'vite-plugin-ent-theme';
+import { viteThemePlugin, antdDarkThemePlugin } from 'fe-vite-plugin-ent-theme';
 import { mixLighten, mixDarken, tinycolor } from '../../utils/color';
 
 import { getThemeColors, generateColors } from '../../config/themeConfig';
