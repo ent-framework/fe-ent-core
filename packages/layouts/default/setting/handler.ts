@@ -8,7 +8,6 @@ import { updateGrayMode } from '@ent-core/logics/theme/update-gray-mode';
 
 import { useAppStore } from '@ent-core/store/modules/app';
 import type { ProjectConfig } from '@ent-core/logics/types/config';
-import { changeTheme } from '@ent-core/logics/theme';
 import { updateDarkTheme } from '@ent-core/logics/theme/dark';
 import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
 
@@ -46,8 +45,6 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
       if (getThemeColor.value === value) {
         return {};
       }
-      changeTheme(value);
-
       return { themeColor: value };
 
     case HandlerEnum.CHANGE_THEME:
@@ -55,7 +52,6 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
         return {};
       }
       updateDarkTheme(value);
-
       return {};
 
     case HandlerEnum.MENU_HAS_DRAG:

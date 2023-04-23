@@ -56,13 +56,6 @@
         //     title: t('layout.setting.operatingTitle'),
         //     content: t('layout.setting.operatingContent'),
         //   });
-
-        userBridge
-          .saveThemeSetting({ settings: unref(appStore.getProjectConfig) })
-          .then(() => {
-            createMessage.success(t('layout.setting.operatingContent'));
-          })
-          .catch(() => {});
       }
       function handleResetSetting() {
         try {

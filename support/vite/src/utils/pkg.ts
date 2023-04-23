@@ -52,12 +52,12 @@ export function findWorkspaceRoot(): string {
   return '';
 }
 
-function extractWorkspaces(manifest) {
+function extractWorkspaces(manifest: any) {
   const workspaces = (manifest || {}).workspaces;
   return (workspaces && workspaces.packages) || (Array.isArray(workspaces) ? workspaces : null);
 }
 
-function readPackageJSON(dir) {
+function readPackageJSON(dir: string) {
   const file = path.join(dir, 'package.json');
   if (fs.existsSync(file)) {
     return JSON.parse(fs.readFileSync(file, 'utf8'));

@@ -8,10 +8,6 @@ export interface UserBridgeOptions {
   getPermCode: AnyFunction<any>;
   doLogout: AnyFunction<any>;
   getMenuList: (params: Recordable) => Promise<AppRouteRecordRaw[]>;
-
-  getThemeSetting: () => Promise<Recordable>;
-
-  saveThemeSetting: (params: Recordable) => Promise<void>;
 }
 export let userBridge: UserBridgeOptions = {
   loginApi: () => {
@@ -22,12 +18,6 @@ export let userBridge: UserBridgeOptions = {
   doLogout: () => {},
   getMenuList: () => {
     return new Promise<AppRouteRecordRaw[]>(() => {});
-  },
-  getThemeSetting: () => {
-    return new Promise<{}>(() => {});
-  },
-  saveThemeSetting: () => {
-    return new Promise<void>(() => {});
   },
 };
 

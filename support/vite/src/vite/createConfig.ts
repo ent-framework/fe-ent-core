@@ -18,7 +18,7 @@ export type CustomConfigEnv = {
   runMode?: string;
 };
 
-function pathResolve(dir) {
+function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);
 }
 const { dependencies, devDependencies, name, version } = getPackageManifest(

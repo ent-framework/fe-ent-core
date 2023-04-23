@@ -8,7 +8,7 @@
     "url": "https://github.com/dancewing"
   },
   "scripts": {
-    "dev": "vite --mode=development",
+    "dev": "vite -c ./vite2.config.ts --port 3000 --mode=development",
     "build": "cross-env NODE_ENV=production vite build",
     "build:no-cache": "yarn clean:cache && npm run build",
     "clean": "rimraf dist",
@@ -35,8 +35,8 @@
     "ant-design-vue": "^3.2.0"
   },
   "devDependencies": {
-    "fe-vite-plugin-ent-theme": "^1.0.1",
     "fe-ent-vite": "workspace:*",
+    "fe-ent-build": "workspace:*",
     "vite": "4.2.2",
     "@iconify/json": "^1.1.422"
   },

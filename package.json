@@ -75,9 +75,7 @@
     "fe-ent-flow-chart": "workspace:*",
     "fe-ent-markdown": "workspace:*",
     "fe-ent-qrcode": "workspace:*",
-    "fe-ent-tinymce": "workspace:*",
-    "fe-ent-theme-api": "workspace:*",
-    "fe-ent-theme-util": "workspace:*"
+    "fe-ent-tinymce": "workspace:*"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
@@ -146,12 +144,11 @@
     "ts-morph": "13.0.3",
     "tsx": "^3.6.0",
     "tslib": "^2.3.1",
-    "typescript": "^5.0.3",
+    "typescript": "^4.9.4",
     "unplugin-vue-macros": "2.0.0",
     "vite": "4.2.2",
     "rollup": "3.18.0",
     "vue": "^3.2.31",
-    "fe-vite-plugin-ent-theme": "workspace:*",
     "ant-design-vue": "^3.2.16"
   },
   "resolutions": {

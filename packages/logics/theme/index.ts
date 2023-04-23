@@ -1,17 +1,4 @@
-import { getThemeColors, generateColors } from '../../utils/theme-config';
-
-import { replaceStyleVariables } from 'fe-ent-theme-api';
-import { mixLighten, mixDarken, tinycolor } from '../../utils/tiny';
-
-export async function changeTheme(color: string) {
-  const colors = generateColors({
-    mixDarken,
-    mixLighten,
-    tinycolor,
-    color,
-  });
-
-  return await replaceStyleVariables({
-    colorVariables: [...getThemeColors(color), ...colors],
-  });
-}
+export * from './update-background';
+export * from './update-color-weak';
+export * from './update-gray-mode';
+export * from './util';

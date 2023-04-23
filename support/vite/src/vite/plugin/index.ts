@@ -9,12 +9,12 @@ import { configMockPlugin } from './mock';
 import { configCompressPlugin } from './compress';
 import { configStyleImportPlugin } from './styleImport';
 import { configVisualizerConfig } from './visualizer';
-import { configThemePlugin } from './theme';
+//import { configThemePlugin } from './theme';
 import { configImageminPlugin } from './imagemin';
 import { configSvgIconsPlugin } from './svgSprite';
 import { configHmrPlugin } from './hmr';
+import { UnoCSSPlugin } from './unocss';
 import { generateEnvFilePlugin } from './env-file';
-import { configWindiPlugin } from './windi';
 import { configHttpsPlugin } from './https';
 import { findWorkspaceRoot, getCurrExecPath, OUTPUT_DIR } from '../../utils';
 import { CustomConfigEnv } from '../createConfig';
@@ -24,7 +24,6 @@ export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) 
   const {
     VITE_USE_IMAGEMIN,
     VITE_USE_MOCK,
-    VITE_LEGACY,
     VITE_BUILD_COMPRESS,
     VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE,
   } = viteEnv;
@@ -62,6 +61,9 @@ export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) 
   // vite-plugin-purge-icons
   vitePlugins.push(purgeIcons());
 
+  // unocss
+  vitePlugins.push(UnoCSSPlugin());
+
   // vite-plugin-style-import
   vitePlugins.push(configStyleImportPlugin(isBuild));
 
@@ -72,7 +74,7 @@ export function createVitePlugins(viteEnv: ViteEnv, configEnv: CustomConfigEnv) 
   vitePlugins.push(configHttpsPlugin(viteEnv));
 
   //vite-plugin-theme
-  vitePlugins.push(configThemePlugin(configEnv));
+  //vitePlugins.push(configThemePlugin(configEnv));
 
   // The following plugins only work in the production environment
   if (isBuild) {

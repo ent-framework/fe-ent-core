@@ -1,6 +1,5 @@
 import path from 'path';
 import { Recordable, ViteEnv } from '../type';
-import { searchForWorkspaceRoot } from 'vite';
 
 export function isDevFn(mode: string): boolean {
   return mode === 'development';

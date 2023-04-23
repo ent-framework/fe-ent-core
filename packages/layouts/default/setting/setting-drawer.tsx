@@ -1,14 +1,7 @@
 import { defineComponent, computed, unref } from 'vue';
 import { default as BasicDrawer } from '@ent-core/components/drawer/src/basic-drawer.vue';
 import { Divider } from 'ant-design-vue';
-import {
-  TypePicker,
-  ThemeColorPicker,
-  SettingFooter,
-  SwitchItem,
-  SelectItem,
-  InputNumberItem,
-} from './components';
+import { TypePicker, SettingFooter, SwitchItem, SelectItem, InputNumberItem } from './components';
 
 import { EntAppDarkModeToggle } from '@ent-core/components/application';
 
@@ -33,12 +26,6 @@ import {
   mixSidebarTriggerOptions,
 } from './enum';
 
-import {
-  HEADER_PRESET_BG_COLOR_LIST,
-  SIDE_BAR_BG_COLOR_LIST,
-  APP_PRESET_COLOR_LIST,
-} from '@ent-core/logics/settings/design-setting';
-
 export default defineComponent({
   name: 'SettingDrawer',
   setup(_, { attrs }) {
@@ -53,7 +40,6 @@ export default defineComponent({
       getGrayMode,
       getLockTime,
       getShowDarkModeToggle,
-      getThemeColor,
     } = useRootSetting();
 
     const { getOpenPageLoading, getBasicTransition, getEnableTransition, getOpenNProgress } =
@@ -71,7 +57,6 @@ export default defineComponent({
       getTopMenuAlign,
       getAccordion,
       getMenuWidth,
-      getMenuBgColor,
       getIsTopMenu,
       getSplit,
       getIsMixSidebar,
@@ -80,12 +65,7 @@ export default defineComponent({
       getMixSideFixed,
     } = useMenuSetting();
 
-    const {
-      getShowHeader,
-      getFixed: getHeaderFixed,
-      getHeaderBgColor,
-      getShowSearch,
-    } = useHeaderSetting();
+    const { getShowHeader, getFixed: getHeaderFixed, getShowSearch } = useHeaderSetting();
 
     const { t } = useI18n();
 
@@ -111,36 +91,6 @@ export default defineComponent({
             def={unref(getMenuType)}
           />
         </>
-      );
-    }
-
-    function renderHeaderTheme() {
-      return (
-        <ThemeColorPicker
-          colorList={HEADER_PRESET_BG_COLOR_LIST}
-          def={unref(getHeaderBgColor)}
-          event={HandlerEnum.HEADER_THEME}
-        />
-      );
-    }
-
-    function renderSiderTheme() {
-      return (
-        <ThemeColorPicker
-          colorList={SIDE_BAR_BG_COLOR_LIST}
-          def={unref(getMenuBgColor)}
-          event={HandlerEnum.MENU_THEME}
-        />
-      );
-    }
-
-    function renderMainTheme() {
-      return (
-        <ThemeColorPicker
-          colorList={APP_PRESET_COLOR_LIST}
-          def={unref(getThemeColor)}
-          event={HandlerEnum.CHANGE_THEME_COLOR}
-        />
       );
     }
 
@@ -408,12 +358,6 @@ export default defineComponent({
         {unref(getShowDarkModeToggle) && <EntAppDarkModeToggle class="mx-auto" />}
         <Divider>{() => t('layout.setting.navMode')}</Divider>
         {renderSidebar()}
-        <Divider>{() => t('layout.setting.sysTheme')}</Divider>
-        {renderMainTheme()}
-        <Divider>{() => t('layout.setting.headerTheme')}</Divider>
-        {renderHeaderTheme()}
-        <Divider>{() => t('layout.setting.sidebarTheme')}</Divider>
-        {renderSiderTheme()}
         <Divider>{() => t('layout.setting.interfaceFunction')}</Divider>
         {renderFeatures()}
         <Divider>{() => t('layout.setting.interfaceDisplay')}</Divider>
