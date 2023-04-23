@@ -33,7 +33,6 @@
   import { updateColorWeak } from '@ent-core/logics/theme/update-color-weak';
   import { updateGrayMode } from '@ent-core/logics/theme/update-gray-mode';
   import defaultSetting from '@ent-core/logics/settings/project-setting';
-  import { userBridge } from '@ent-core/logics/bridge';
   export default defineComponent({
     name: 'SettingFooter',
     components: { CopyOutlined, RedoOutlined },

@@ -69,13 +69,7 @@
     "@ent-core/store": "workspace:*",
     "@ent-core/theme": "workspace:*",
     "@ent-core/utils": "workspace:*",
-    "@ent-core/views": "workspace:*",
-    "fe-ent-code-editor": "workspace:*",
-    "fe-ent-echarts": "workspace:*",
-    "fe-ent-flow-chart": "workspace:*",
-    "fe-ent-markdown": "workspace:*",
-    "fe-ent-qrcode": "workspace:*",
-    "fe-ent-tinymce": "workspace:*"
+    "@ent-core/views": "workspace:*"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",

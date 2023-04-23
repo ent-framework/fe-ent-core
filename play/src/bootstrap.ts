@@ -1,6 +1,3 @@
-// import 'virtual:windi-base.css';
-// import 'virtual:windi-components.css';
-// import 'virtual:windi-utilities.css';
 import 'uno.css';
 // Register icon sprite
 import 'virtual:svg-icons-register';
@@ -20,17 +17,10 @@ import { initApplication } from '/@/init-application';
 import EntCore from 'fe-ent-core';
 import { QrCode } from '@fe-ent-extension/qrcode';
 
-// Importing on demand in local development will increase the number of browser requests by around 20%.
-// This may slow down the browser refresh speed.
-// Therefore, only enable on-demand importing in production environments .
-if (import.meta.env.DEV) {
-  // bug of import order;
-  //import('ant-design-vue/dist/antd.less');
-}
 import 'ant-design-vue/dist/antd.less';
 import 'fe-ent-core/lib/theme/index.less';
 
-export async function bootstrap(login: boolean) {
+export async function bootstrap(needLogin: boolean) {
   const app = createApp(App);
 
   // Configure store
@@ -59,12 +49,12 @@ export async function bootstrap(login: boolean) {
   //layoutMgt.use('LAYOUT', LAYOUT);
   //layoutMgt.use('IFRAME', IFRAME);
 
-  if (login) {
-    router.addBasicRoutes([LoginRoute]);
-  } else {
+  if (needLogin) {
     // Configure routing
     router.addBasicRoutes(getBasicRoutes());
     router.addBizRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
+  } else {
+    router.addBasicRoutes([LoginRoute]);
   }
 
   setupRouter(app);
@@ -72,7 +62,7 @@ export async function bootstrap(login: boolean) {
   //importMenuModules(import.meta.globEager('./modules/**/*.ts'));
 
   // router-guard
-  setupRouterGuard(router, login);
+  setupRouterGuard(router, needLogin);
 
   // Register global directive
   setupGlobDirectives(app);

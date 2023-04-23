@@ -7,6 +7,7 @@ import { defineConfig, loadEnv, mergeConfig, type UserConfig } from 'vite';
 import { createPlugins } from '../plugins';
 import { generateModifyVars } from '../utils/modifyVars';
 import { commonConfig } from './common';
+import { ViteEnv, wrapperEnv } from '../utils/env';
 
 interface DefineOptions {
   overrides?: UserConfig;
@@ -21,9 +22,10 @@ function defineApplicationConfig(defineOptions: DefineOptions = {}) {
   return defineConfig(async ({ command, mode }) => {
     const root = process.cwd();
     const isBuild = command === 'build';
-    const { VITE_USE_MOCK, VITE_BUILD_COMPRESS, VITE_ENABLE_ANALYZE } = loadEnv(mode, root);
-
-    const defineData = await createDefineData(root);
+    const env: Record<string, string> = loadEnv(mode, root);
+    const { VITE_USE_MOCK, VITE_BUILD_COMPRESS, VITE_ENABLE_ANALYZE } = env;
+    const viteEnv = wrapperEnv(env, mode);
+    const defineData = await createDefineData(root, viteEnv);
     const plugins = await createPlugins({
       isBuild,
       root,
@@ -93,7 +95,7 @@ function defineApplicationConfig(defineOptions: DefineOptions = {}) {
   });
 }
 
-async function createDefineData(root: string) {
+async function createDefineData(root: string, viteEnv: ViteEnv) {
   try {
     const pkgJson = await readPackageJSON(root);
     const { dependencies, devDependencies, name, version } = pkgJson;
@@ -103,6 +105,7 @@ async function createDefineData(root: string) {
       lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
     };
     return {
+      'process.env': viteEnv,
       __APP_INFO__: JSON.stringify(__APP_INFO__),
     };
   } catch (error) {

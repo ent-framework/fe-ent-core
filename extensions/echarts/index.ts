@@ -1,2 +1,2 @@
-export * from './src/hooks/use-echarts';
-export * from './src/lib/echarts';
+export * from './hooks/use-echarts';
+export * from './lib/echarts';

@@ -19,8 +19,6 @@ export function createPermissionGuard(router: Router) {
   const userStore = useUserStoreWithOut();
   const permissionStore = usePermissionStoreWithOut();
   router.beforeEach(async (to, from, next) => {
-    console.log(to);
-    console.log(from);
     if (
       from.path === ROOT_PATH &&
       to.path === PageEnum.BASE_HOME &&
@@ -68,7 +66,7 @@ export function createPermissionGuard(router: Router) {
           redirect: to.path,
         };
       }
-     // next(redirectData);
+      // next(redirectData);
       window.location.href = LOGIN_PATH as string;
       return;
     }

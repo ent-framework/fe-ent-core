@@ -10,7 +10,7 @@
 </template>
 <script lang="ts" setup>
   import { computed, defineComponent, PropType } from 'vue';
-  import CodeMirrorEditor from './codemirror/index.vue';
+  import CodeMirrorEditor from './code-mirror/index.vue';
   import { isString } from 'fe-ent-core/lib/utils';
   import { MODE } from './typing';
 
