@@ -152,13 +152,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/acn_abg/fe-core.git"
+    "url": "git+https://github.com/dancewing/fe-ent-core.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/acn_abg/fe-core/issues"
+    "url": "https://github.com/dancewing/fe-ent-core/issues"
   },
-  "homepage": "https://gitlab.com/acn_abg/fe-core",
+  "homepage": "https://github.com/dancewing/fe-ent-core",
   "engines": {
     "node": ">=16.15.1",
     "pnpm": ">=8.1.0"

@@ -71,7 +71,7 @@
   import { deepMerge } from '@ent-core/utils';
   import { basicProps } from './props';
   import { useFullScreen } from './hooks/use-modal-full-screen';
-  import { omit } from 'lodash';
+  import { omit } from 'lodash-es';
   import { useDesign } from '@ent-core/hooks/web/use-design';
 
   export default defineComponent({

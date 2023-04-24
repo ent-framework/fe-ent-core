@@ -4,7 +4,12 @@ import { tryOnUnmounted } from '@vueuse/core';
 import { unref, nextTick, watch, computed, ref } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
 import echarts from '../lib/echarts';
-import { useRootSetting, useBreakpoint, useEventListener, useTimeoutFn } from 'fe-ent-core/lib/hooks';
+import {
+  useRootSetting,
+  useBreakpoint,
+  useEventListener,
+  useTimeoutFn,
+} from 'fe-ent-core/lib/hooks';
 
 export function useEcharts(
   elRef: Ref<HTMLDivElement>,

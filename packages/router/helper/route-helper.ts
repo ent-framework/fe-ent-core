@@ -1,6 +1,6 @@
 import type { AppRouteModule, AppRouteRecordRaw } from '@ent-core/router/types';
 import type { Router, RouteRecordNormalized } from 'vue-router';
-import { cloneDeep, omit, set, merge } from 'lodash';
+import { cloneDeep, omit, set, merge } from 'lodash-es';
 import { createRouter, createWebHashHistory } from 'vue-router';
 
 /**

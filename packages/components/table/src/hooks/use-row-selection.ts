@@ -3,7 +3,7 @@ import type { BasicTableProps } from '../types/table';
 import { TableRowSelection } from 'ant-design-vue/lib/table/interface';
 import { computed, ComputedRef, nextTick, Ref, ref, toRaw, unref, watch } from 'vue';
 import { ROW_KEY } from '../const';
-import { omit } from 'lodash';
+import { omit } from 'lodash-es';
 import { findNodeAll } from '@ent-core/utils/helper/tree-helper';
 
 export function useRowSelection(

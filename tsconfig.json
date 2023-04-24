@@ -52,6 +52,7 @@
     "extensions/**/*.d.ts",
     "extensions/**/*.tsx",
     "extensions/**/*.vue",
+    "internal/**/*.ts",
     "scripts/*.ts",
     "play/**/*.ts",
     "play/**/*.d.ts",

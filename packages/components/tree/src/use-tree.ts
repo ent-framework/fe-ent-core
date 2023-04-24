@@ -2,7 +2,7 @@ import type { InsertNodeParams, Keys, ReplaceFields } from './typing';
 import type { Ref, ComputedRef } from 'vue';
 import type { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 import { unref } from 'vue';
 import { forEach } from '@ent-core/utils/helper/tree-helper';
 

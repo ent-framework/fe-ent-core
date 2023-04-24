@@ -1,5 +1,5 @@
 import through2 from 'through2';
-import { trim } from 'lodash';
+import { trim } from 'lodash-es';
 import { ResolvedConfig } from 'vite';
 import path from 'path';
 import { readFileSync } from 'fs-extra';

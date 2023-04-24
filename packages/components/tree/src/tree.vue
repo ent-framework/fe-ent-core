@@ -17,7 +17,7 @@
   import TreeHeader from './tree-header.vue';
   import { EntScrollContainer } from '@ent-core/components/container';
 
-  import { omit, get, difference } from 'lodash';
+  import { omit, get, difference } from 'lodash-es';
   import { isArray, isBoolean, isEmpty, isFunction } from '@ent-core/utils/is';
   import { extendSlots, getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { filter, treeToList } from '@ent-core/utils/helper/tree-helper';

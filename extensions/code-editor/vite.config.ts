@@ -1,15 +1,12 @@
-import { defineApplicationConfig } from 'fe-ent-build';
+import { definePackageConfig } from 'fe-ent-build';
 import { searchForWorkspaceRoot } from 'vite';
 const workspace = searchForWorkspaceRoot(process.cwd());
 
-export default defineApplicationConfig({
+export default definePackageConfig({
   overrides: {
     build: {
-      rollupOptions: {
-        input: {
-          index: 'index.html',
-          login: 'login.html',
-        },
+      lib: {
+        entry: 'index.ts',
       },
     },
     optimizeDeps: {
@@ -49,25 +46,6 @@ export default defineApplicationConfig({
           replacement: `${workspace}/packages/$1`,
         },
       ],
-    },
-    server: {
-      port: 3000,
-      proxy: {
-        '/api': {
-          target: 'http://localhost:3000',
-          changeOrigin: true,
-          ws: true,
-          // rewrite: (path) => path.replace(new RegExp(`^/api`), ''),
-          // only https
-          // secure: false
-        },
-        '/upload': {
-          target: 'http://localhost:3300/upload',
-          changeOrigin: true,
-          ws: true,
-          rewrite: (path) => path.replace(new RegExp(`^/upload`), ''),
-        },
-      },
     },
   },
 });

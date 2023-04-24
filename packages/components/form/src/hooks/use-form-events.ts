@@ -6,7 +6,7 @@ import { isArray, isFunction, isObject, isString } from '@ent-core/utils/is';
 import { deepMerge } from '@ent-core/utils';
 import { dateItemType, handleInputNumberValue } from '../helper';
 import { dateUtil } from '@ent-core/utils/date-util';
-import { cloneDeep, uniqBy } from 'lodash';
+import { cloneDeep, uniqBy } from 'lodash-es';
 import { error } from '@ent-core/utils/log';
 
 interface UseFormActionContext

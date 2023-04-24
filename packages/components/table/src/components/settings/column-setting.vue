@@ -120,7 +120,7 @@
   import { useSortable } from '@ent-core/hooks/web/use-sortable';
   import { isFunction, isNullAndUnDef } from '@ent-core/utils/is';
   import { getPopupContainer as getParentContainer } from '@ent-core/utils';
-  import { omit } from 'lodash';
+  import { omit } from 'lodash-es';
   import { isIfShow } from '../../utils';
 
   interface State {

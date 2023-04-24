@@ -1,5 +1,5 @@
 import type { FunctionArgs } from '@vueuse/core';
-import { upperFirst } from 'lodash';
+import { upperFirst } from 'lodash-es';
 
 export interface ViewportOffsetResult {
   left: number;

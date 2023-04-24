@@ -4,7 +4,7 @@ import type { MenuState } from './types';
 import { computed, Ref, toRaw } from 'vue';
 
 import { unref } from 'vue';
-import { uniq } from 'lodash';
+import { uniq } from 'lodash-es';
 import { getAllParentPath } from '@ent-core/router/helper/menu-helper';
 
 import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';

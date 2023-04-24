@@ -48,7 +48,7 @@
     ColumnChangeParam,
   } from './types/table';
   import { defineComponent, ref, computed, unref, toRaw, inject, watchEffect } from 'vue';
-  import Table from 'ant-design-vue/lib/table';
+  import { Table } from 'ant-design-vue';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { PageWrapperFixedHeightKey } from '@ent-core/components/page';
   import expandIcon from './components/expand-icon';
@@ -70,7 +70,7 @@
   import { useTableForm } from './hooks/use-table-form';
   import { useDesign } from '@ent-core/hooks/web/use-design';
 
-  import { omit } from 'lodash';
+  import { omit } from 'lodash-es';
   import { basicProps } from './props';
   import { isFunction } from '@ent-core/utils/is';
   import { warn } from '@ent-core/utils/log';

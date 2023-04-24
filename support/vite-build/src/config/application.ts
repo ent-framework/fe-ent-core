@@ -28,6 +28,7 @@ function defineApplicationConfig(defineOptions: DefineOptions = {}) {
     const defineData = await createDefineData(root, viteEnv);
     const plugins = await createPlugins({
       isBuild,
+      mode: isBuild ? 'build' : 'dev',
       root,
       enableAnalyze: VITE_ENABLE_ANALYZE === 'true',
       enableMock: VITE_USE_MOCK === 'true',

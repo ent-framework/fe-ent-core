@@ -8,7 +8,7 @@
     "url": "https://github.com/dancewing"
   },
   "scripts": {
-    "dev": "vite -d --port 3000 --mode=development",
+    "dev": "vite --mode=development",
     "build": "cross-env NODE_ENV=production vite build",
     "build:no-cache": "yarn clean:cache && npm run build",
     "clean": "rimraf dist",
@@ -48,13 +48,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/acn_abg/fe-core.git"
+    "url": "git+https://github.com/dancewing/fe-ent-core.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/acn_abg/fe-core/issues"
+    "url": "https://github.com/dancewing/fe-ent-core/issues"
   },
-  "homepage": "https://gitlab.com/acn_abg/fe-core",
+  "homepage": "https://github.com/dancewing/fe-ent-core",
   "engines": {
     "node": "^12 || >=14"
   }

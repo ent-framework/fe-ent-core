@@ -49,7 +49,7 @@
   import { propTypes } from '@ent-core/utils/prop-types';
   import { isArray, isBoolean, isFunction, isNumber, isString } from '@ent-core/utils/is';
   import { createPlaceholderMessage } from './helper';
-  import { omit, pick, set } from 'lodash';
+  import { omit, pick, set } from 'lodash-es';
   import { treeToList } from '@ent-core/utils/helper/tree-helper';
   import { Spin } from 'ant-design-vue';
 

@@ -14,17 +14,27 @@ import { configVisualizerConfig } from './visualizer';
 
 interface Options {
   isBuild: boolean;
+  mode: 'build' | 'lib' | 'dev';
   root: string;
   compress: string;
   enableMock?: boolean;
   enableAnalyze?: boolean;
 }
 
-async function createPlugins({ isBuild, root, enableMock, compress, enableAnalyze }: Options) {
+async function createPlugins({
+  isBuild,
+  mode,
+  root,
+  enableMock,
+  compress,
+  enableAnalyze,
+}: Options) {
   const vitePlugins: (PluginOption | PluginOption[])[] = [vue(), vueJsx(), DefineOptions()];
 
   const appConfigPlugin = await createAppConfigPlugin({ root, isBuild });
-  vitePlugins.push(appConfigPlugin);
+  if (mode != 'lib') {
+    vitePlugins.push(appConfigPlugin);
+  }
 
   // vite-plugin-html
   vitePlugins.push(configHtmlPlugin({ isBuild }));

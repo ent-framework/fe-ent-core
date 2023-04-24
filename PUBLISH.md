@@ -5,7 +5,7 @@
 请注意node的版本，在用户目录增加 .npmrc文件并添加以下内容
 
 ```
-registry=http://npm.36cpc.com/repository/npm-public/
+registry=http://localhost:8081/repository/npm-private/
 sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
 ```
 

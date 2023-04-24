@@ -33,7 +33,7 @@
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useErrorLogStore } from '@ent-core/store/modules/error-log';
   import { getColumns } from './data';
-  import { cloneDeep } from 'lodash';
+  import { cloneDeep } from 'lodash-es';
   import { isDevMode } from '@ent-core/utils/env';
 
   const rowInfo = ref<ErrorLogInfo>();

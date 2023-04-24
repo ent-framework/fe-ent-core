@@ -16,7 +16,7 @@ import {
 } from '@ent-core/logics/enums/cache-enum';
 import { DEFAULT_CACHE_TIME } from '@ent-core/logics/settings/encryption-setting';
 import { toRaw } from 'vue';
-import { pick, omit } from 'lodash';
+import { pick, omit } from 'lodash-es';
 
 interface BasicStore {
   [TOKEN_KEY]: string | number | null | undefined;

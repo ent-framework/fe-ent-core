@@ -23,7 +23,7 @@
   import { Cascader } from 'ant-design-vue';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { isFunction } from '@ent-core/utils/is';
-  import { get, omit } from 'lodash';
+  import { get, omit } from 'lodash-es';
   import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
   import { LoadingOutlined } from '@ant-design/icons-vue';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';

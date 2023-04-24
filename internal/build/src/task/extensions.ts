@@ -33,7 +33,7 @@ const banner = `/*! ${EP_BRAND_NAME} v${version} */\n`;
 async function buildExtensions(ext: string, minify: boolean) {
   const buildExt = async (ext: string) => {
     const bundle = await rollup({
-      input: path.resolve(extRoot, ext, 'src', 'index.ts'),
+      input: path.resolve(extRoot, ext, 'index.ts'),
       plugins: [
         EntExtAlias(),
         PurgeIcons({}),
@@ -102,7 +102,7 @@ async function buildExtensions(ext: string, minify: boolean) {
   );
   const buildStyle = (ext: string) =>
     compileLess({
-      cwd: `${path.resolve(extRoot, ext, 'src')}`,
+      cwd: `${path.resolve(extRoot, ext)}`,
       src: `index.less`,
       out: `index${minify ? '.min' : ''}`,
       dest: `${path.resolve(extRoot, ext)}/dist`,

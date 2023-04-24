@@ -9,7 +9,7 @@ import esbuild from 'rollup-plugin-esbuild';
 import filesize from 'rollup-plugin-filesize';
 import { parallel } from 'gulp';
 import glob from 'fast-glob';
-import { camelCase, upperFirst } from 'lodash';
+import { camelCase, upperFirst } from 'lodash-es';
 import { version } from '../../../../packages/fe-ent-core/version';
 import { reporter } from '../plugins/size-reporter';
 import { EntCoreAlias } from '../plugins/ent-core-alias';
@@ -36,6 +36,7 @@ async function buildFullEntry(minify: boolean) {
       image({ dom: false }),
       vue({
         isProduction: true,
+        reactivityTransform: true,
       }) as Plugin,
       vueJsx(),
       vueSetupExtend(),
@@ -60,12 +61,12 @@ async function buildFullEntry(minify: boolean) {
           include: [
             //'@iconify/iconify',
             'ant-design-vue/es/locale/zh_CN',
-            'moment/dist/locale/zh-cn',
             'ant-design-vue/es/locale/en_US',
-            'moment/dist/locale/eu',
           ],
           exclude: ['vue-demi'],
         },
+        treeShaking: true,
+        legalComments: 'eof',
       }),
       filesize(),
     ],

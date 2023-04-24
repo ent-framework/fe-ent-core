@@ -40,7 +40,7 @@
 
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { propTypes } from '@ent-core/utils/prop-types';
-  import { omit } from 'lodash';
+  import { omit } from 'lodash-es';
   import { PageHeader } from 'ant-design-vue';
   import { useContentHeight } from '@ent-core/hooks/web/use-content-height';
   import { PageWrapperFixedHeightKey } from '../constant';

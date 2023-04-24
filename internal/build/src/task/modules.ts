@@ -1,9 +1,8 @@
-import { rollup } from 'rollup';
+import { Plugin, rollup } from 'rollup';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import VueMacros from 'unplugin-vue-macros/rollup';
 import commonjs from '@rollup/plugin-commonjs';
 import esbuild from 'rollup-plugin-esbuild';
 import filesize from 'rollup-plugin-filesize';
@@ -37,26 +36,15 @@ export const buildModules = async () => {
       //   exclude: ['**/*.css', '**/*.less', '**/*.svg', '**/*.jpg', '**/*.jpeg', '**/*.png'],
       //   verbose: false,
       // }),
-      VueMacros({
-        setupComponent: false,
-        setupSFC: false,
-        plugins: {
-          vue: vue({
-            isProduction: false,
-            reactivityTransform: true,
-          }),
-          vueJsx: vueJsx(),
-        },
-      }),
+      vue({
+        isProduction: true,
+        reactivityTransform: true,
+      }) as Plugin,
+      vueJsx(),
+      vueSetupExtend(),
       nodeResolve({
         extensions: ['.mjs', '.js', '.ts', '.tsx'],
       }),
-      // vue({
-      //   isProduction: false,
-      //   reactivityTransform: true,
-      // }),
-      // vueJsx(),
-      vueSetupExtend(),
       commonjs(),
       esbuild({
         sourceMap: true,
