@@ -5,7 +5,7 @@
     <EntSvgIcon size="14" name="moon" />
   </div>
 </template>
-<script lang="ts" setup name="AppDarkModeToggle">
+<script lang="ts" setup>
   import { computed, unref } from 'vue';
   import { EntSvgIcon } from '@ent-core/components/icon';
   import { useDesign } from '@ent-core/hooks/web/use-design';

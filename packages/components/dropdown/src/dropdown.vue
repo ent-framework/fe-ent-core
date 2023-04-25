@@ -35,7 +35,7 @@
   </a-dropdown>
 </template>
 
-<script lang="ts" setup name="EntDropdown">
+<script lang="ts" setup>
   import { computed } from 'vue';
   import type { PropType } from 'vue';
   import type { DropMenu } from './typing';

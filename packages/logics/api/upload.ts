@@ -1,5 +1,6 @@
 import { UploadApiResult } from '../model';
 import { defHttp } from '@ent-core/utils/http/axios';
+import { type AxiosProgressEvent } from 'axios';
 import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
 import type { UploadFileParams } from '@ent-core/logics/types/axios';
 const { uploadUrl = '' } = useGlobSetting();
@@ -9,7 +10,7 @@ const { uploadUrl = '' } = useGlobSetting();
  */
 export function uploadApi(
   params: UploadFileParams,
-  onUploadProgress: (progressEvent: ProgressEvent) => void,
+  onUploadProgress: (progressEvent: AxiosProgressEvent) => void,
 ) {
   return defHttp.uploadFile<UploadApiResult>(
     {

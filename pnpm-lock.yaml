@@ -97,9 +97,9 @@ importers:
       '@types/less':
         specifier: ^3.0.3
         version: registry.npmmirror.com/@types/less@3.0.3
-      '@types/lodash':
-        specifier: 4.14.178
-        version: registry.npmmirror.com/@types/lodash@4.14.178
+      '@types/lodash-es':
+        specifier: ^4.14.17
+        version: 4.17.0
       '@types/mockjs':
         specifier: ^1.0.4
         version: registry.npmmirror.com/@types/mockjs@1.0.6
@@ -496,6 +496,9 @@ importers:
       fast-glob:
         specifier: ^3.2.11
         version: 3.2.11
+      fe-ent-build:
+        specifier: ^1.0.1
+        version: link:../../support/vite-build
       fe-ent-theme-util:
         specifier: ^1.0.1
         version: link:../../support/ent-theme-util
@@ -544,6 +547,9 @@ importers:
       rollup-plugin-visualizer:
         specifier: 5.9.0
         version: 5.9.0(rollup@3.18.0)
+      rollup-plugin-windicss:
+        specifier: 1.8.10
+        version: 1.8.10(rollup@3.18.0)
       through2:
         specifier: 3.0.2
         version: 3.0.2
@@ -560,6 +566,9 @@ importers:
       '@types/through2':
         specifier: ^2.0.38
         version: 2.0.38
+      pkg-types:
+        specifier: ^1.0.2
+        version: 1.0.2
       tslib:
         specifier: ^2.3.1
         version: 2.4.1
@@ -602,6 +611,9 @@ importers:
 
   packages/components:
     dependencies:
+      lodash-es:
+        specifier: ^4.17.21
+        version: 4.17.21
       vue:
         specifier: ^3.2.0
         version: 3.2.45
@@ -639,8 +651,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.17(vue@3.2.45)
       axios:
-        specifier: ^0.25.0
-        version: registry.npmmirror.com/axios@0.25.0
+        specifier: ^1.3.5
+        version: 1.3.5
       cropperjs:
         specifier: ^1.5.12
         version: registry.npmmirror.com/cropperjs@1.5.12
@@ -991,6 +1003,9 @@ importers:
       vite-plugin-vue-setup-extend:
         specifier: 0.4.0
         version: 0.4.0(vite@4.2.2)
+      vite-plugin-windicss:
+        specifier: 1.8.10
+        version: 1.8.10(vite@4.2.2)
       vue:
         specifier: ^3.2.31
         version: 3.2.45
@@ -4075,10 +4090,6 @@ packages:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
     dev: false
 
-  /@types/estree@0.0.51:
-    resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
-    dev: true
-
   /@types/estree@1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
 
@@ -4218,6 +4229,16 @@ packages:
     resolution: {integrity: sha512-1YXyYH83h6We1djyoUEqTlVyQtCfJAFXELSKW2ZRtjHD4hQ82CC4lvrv5D0l0FLcKBaiPbXyi3MpMsI9ZRgKsw==}
     dev: true
 
+  /@types/lodash-es@4.17.0:
+    resolution: {integrity: sha512-h8lkWQSgT4qjs9PcIhcL2nWubZeXRVzjZxYlRFmcX9BW1PIk5qRc0djtRWZqtM+GDDFhwBt0ztRu72D/YxIcEw==}
+    dependencies:
+      '@types/lodash': 4.14.178
+    dev: true
+
+  /@types/lodash@4.14.178:
+    resolution: {integrity: sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==}
+    dev: true
+
   /@types/micromatch@4.0.2:
     resolution: {integrity: sha512-oqXqVb0ci19GtH0vOA/U2TmHTcRY9kuZl4mqUxe0QmJAlIW13kzhuK5pi1i9+ngav8FjpSb9FVS/GE00GLX1VA==}
     dependencies:
@@ -4297,7 +4318,7 @@ packages:
   /@types/tern@0.23.4:
     resolution: {integrity: sha512-JAUw1iXGO1qaWwEOzxTKJZ/5JxVeON9kvGZ/osgZaJImBnyjyn0cjovPsf6FNLmyGY8Vw9DoXZCMlfMkMwHRWg==}
     dependencies:
-      '@types/estree': 0.0.51
+      '@types/estree': 1.0.0
     dev: true
 
   /@types/through2@2.0.38:
@@ -5127,7 +5148,7 @@ packages:
   /@vue/reactivity-transform@3.2.45:
     resolution: {integrity: sha512-BHVmzYAvM7vcU5WmuYqXpwaBHjsS8T63jlKGWVtHxAHIoMIlmaMyurUSEs1Zcg46M4AYT5MtB1U274/2aNzjJQ==}
     dependencies:
-      '@babel/parser': 7.20.5
+      '@babel/parser': 7.21.4
       '@vue/compiler-core': 3.2.45
       '@vue/shared': 3.2.45
       estree-walker: 2.0.2
@@ -5239,14 +5260,38 @@ packages:
       - vue
     dev: false
 
+  /@windicss/config@1.8.10:
+    resolution: {integrity: sha512-O9SsC110b1Ik3YYa4Ck/0TWuCo7YFfA9KDrwD5sAeqscT5COIGK1HszdCT3oh0MJFej2wNrvpfyW9h6yQaW6PA==}
+    dependencies:
+      debug: 4.3.4(supports-color@8.1.1)
+      jiti: 1.18.2
+      windicss: 3.5.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@windicss/plugin-utils@0.16.7:
     resolution: {integrity: sha512-mxgTj/MkemN8JlyfaS20OAJ0BqTUoUlDT9wD/m5U+nUa5SN/r0kPlg1IW9SbmRTrYjNXWEENf9F0Fjb/X4zn6g==}
     dependencies:
       '@antfu/utils': 0.1.7
       debug: 4.3.4(supports-color@8.1.1)
       fast-glob: 3.2.11
-      jiti: 1.16.0
+      jiti: 1.18.2
       magic-string: 0.25.7
+      micromatch: 4.0.5
+      windicss: 3.5.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@windicss/plugin-utils@1.8.10:
+    resolution: {integrity: sha512-Phqk5OW1w+Mv+ry6t7BzAeDq3aMhbI94gR49j9vQCufFfDGCHndhhjtMK0sBv+NPJUsIAIh6qayb1iwBCXUGrw==}
+    dependencies:
+      '@antfu/utils': 0.7.2
+      '@windicss/config': 1.8.10
+      debug: 4.3.4(supports-color@8.1.1)
+      fast-glob: 3.2.12
+      magic-string: 0.27.0
       micromatch: 4.0.5
       windicss: 3.5.6
     transitivePeerDependencies:
@@ -5809,7 +5854,7 @@ packages:
   /axios@0.21.4(debug@4.3.4):
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
-      follow-redirects: 1.14.9(debug@4.3.4)
+      follow-redirects: 1.15.2(debug@4.3.4)
     transitivePeerDependencies:
       - debug
     dev: false
@@ -5817,7 +5862,17 @@ packages:
   /axios@0.26.1(debug@4.3.4):
     resolution: {integrity: sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==}
     dependencies:
-      follow-redirects: 1.14.9(debug@4.3.4)
+      follow-redirects: 1.15.2(debug@4.3.4)
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
+  /axios@1.3.5:
+    resolution: {integrity: sha512-glL/PvG/E+xCWwV8S6nCHcrfg1exGx7vxyUIivIA1iL7BIh6bePylCfVHwp6k13ao7SATxB6imau2kqY+I67kw==}
+    dependencies:
+      follow-redirects: 1.15.2(debug@4.3.4)
+      form-data: 4.0.0
+      proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
     dev: false
@@ -9074,8 +9129,8 @@ packages:
       readable-stream: 2.3.7
     dev: false
 
-  /follow-redirects@1.14.9(debug@4.3.4):
-    resolution: {integrity: sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==}
+  /follow-redirects@1.15.2(debug@4.3.4):
+    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -9118,6 +9173,15 @@ packages:
       combined-stream: 1.0.8
       mime-types: 2.1.34
     dev: true
+
+  /form-data@4.0.0:
+    resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
+    engines: {node: '>= 6'}
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      mime-types: 2.1.34
+    dev: false
 
   /fraction.js@4.1.3:
     resolution: {integrity: sha512-pUHWWt6vHzZZiQJcM6S/0PXfS+g6FM4BF5rj9wZyreivhQPdsh5PpE25VtSNxq80wHS5RfY51Ii+8Z0Zl/pmzg==}
@@ -9209,7 +9273,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
@@ -11547,11 +11611,6 @@ packages:
       - supports-color
       - ts-node
     dev: true
-
-  /jiti@1.16.0:
-    resolution: {integrity: sha512-L3BJStEf5NAqNuzrpfbN71dp43mYIcBUlCRea/vdyv5dW/AYa1d4bpelko4SHdY3I6eN9Wzyasxirj1/vv5kmg==}
-    hasBin: true
-    dev: false
 
   /jiti@1.18.2:
     resolution: {integrity: sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==}
@@ -14099,6 +14158,10 @@ packages:
     resolution: {integrity: sha512-vtK/94akxsTMhe0/cbfpR+syPuszcuwhqVjJq26CuNDgFGj682oRBXOP5MJpv2r7JtE8MsiepGIqvvOTBwn2vA==}
     dev: false
 
+  /proxy-from-env@1.1.0:
+    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
+    dev: false
+
   /prr@1.0.1:
     resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}
     optional: true
@@ -14729,6 +14792,19 @@ packages:
       rollup: 3.18.0
       source-map: 0.7.4
       yargs: 17.7.1
+    dev: false
+
+  /rollup-plugin-windicss@1.8.10(rollup@3.18.0):
+    resolution: {integrity: sha512-6YlDzFYLL5HYyzKkFQTLMCf01PssAVXlbQ2vfqTo27z2lx6kTSv4ibjVs5NxMbSstGDn+Z+rBTA89ESCJ8bhtw==}
+    peerDependencies:
+      rollup: ^2.0.0
+    dependencies:
+      '@windicss/plugin-utils': 1.8.10
+      debug: 4.3.4(supports-color@8.1.1)
+      rollup: 3.18.0
+      windicss: 3.5.6
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /rollup@3.18.0:
@@ -16824,6 +16900,20 @@ packages:
       vite: 4.2.2(@types/node@16.11.25)(less@4.1.3)(sass@1.60.0)
     dev: false
 
+  /vite-plugin-windicss@1.8.10(vite@4.2.2):
+    resolution: {integrity: sha512-scywsuzo46lcTBohspmF0WiwhWEte6p+OUVrX4yr7VMRvLHMHVfLtJReyD5pppjijG7YOwVsZn7XBWWZtF658Q==}
+    peerDependencies:
+      vite: ^2.0.1 || ^3.0.0 || ^4.0.0
+    dependencies:
+      '@windicss/plugin-utils': 1.8.10
+      debug: 4.3.4(supports-color@8.1.1)
+      kolorist: 1.7.0
+      vite: 4.2.2(@types/node@16.11.25)(less@4.1.3)(sass@1.60.0)
+      windicss: 3.5.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /vite@4.2.2(@types/node@16.11.25)(less@4.1.3)(sass@1.60.0):
     resolution: {integrity: sha512-PcNtT5HeDxb3QaSqFYkEum8f5sCVe0R3WK20qxgIvNBZPXU/Obxs/+ubBMeE7nLWeCo2LDzv+8hRYSlcaSehig==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -17973,12 +18063,6 @@ packages:
     version: 3.0.3
     dev: true
 
-  registry.npmmirror.com/@types/lodash@4.14.178:
-    resolution: {integrity: sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==, registry: http://localhost:8081/repository/npm-public/, tarball: https://registry.npmmirror.com/@types/lodash/-/lodash-4.14.178.tgz}
-    name: '@types/lodash'
-    version: 4.14.178
-    dev: true
-
   registry.npmmirror.com/@types/minimatch@3.0.5:
     resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==, registry: http://localhost:8081/repository/npm-public/, tarball: https://registry.npmmirror.com/@types/minimatch/-/minimatch-3.0.5.tgz}
     name: '@types/minimatch'
@@ -18290,16 +18374,6 @@ packages:
       postcss: 8.4.22
       postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
     dev: true
-
-  registry.npmmirror.com/axios@0.25.0:
-    resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==, registry: http://localhost:8081/repository/npm-public/, tarball: https://registry.npmmirror.com/axios/-/axios-0.25.0.tgz}
-    name: axios
-    version: 0.25.0
-    dependencies:
-      follow-redirects: registry.npmmirror.com/follow-redirects@1.14.9
-    transitivePeerDependencies:
-      - debug
-    dev: false
 
   registry.npmmirror.com/balanced-match@2.0.0:
     resolution: {integrity: sha512-1ugUSr8BHXRnK23KfuYS+gVMC3LB8QGH9W1iGtDPsNWoQbgtXSExkBu2aDR4epiGWZOjZsj6lDl/N/AqqTC3UA==, registry: http://localhost:8081/repository/npm-public/, tarball: https://registry.npmmirror.com/balanced-match/-/balanced-match-2.0.0.tgz}
@@ -19265,18 +19339,6 @@ packages:
       flatted: 3.2.5
       rimraf: 3.0.2
     dev: true
-
-  registry.npmmirror.com/follow-redirects@1.14.9:
-    resolution: {integrity: sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==, registry: http://localhost:8081/repository/npm-public/, tarball: https://registry.npmmirror.com/follow-redirects/-/follow-redirects-1.14.9.tgz}
-    name: follow-redirects
-    version: 1.14.9
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dev: false
 
   registry.npmmirror.com/frac@1.1.2:
     resolution: {integrity: sha512-w/XBfkibaTl3YDqASwfDUqkna4Z2p9cFSr1aHDt0WoMTECnRfBOv2WArlZILlqgWlmdIlALXGpM2AOhEk5W3IA==, registry: http://localhost:8081/repository/npm-public/, tarball: https://registry.npmmirror.com/frac/-/frac-1.1.2.tgz}

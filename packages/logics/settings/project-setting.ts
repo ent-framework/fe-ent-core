@@ -15,7 +15,8 @@ import {
   SessionTimeoutProcessingEnum,
 } from '@ent-core/logics/enums/app-enum';
 import { SIDE_BAR_BG_COLOR_LIST, HEADER_PRESET_BG_COLOR_LIST } from './design-setting';
-import { primaryColor } from '@ent-core/utils/theme-config';
+
+const primaryColor = '#0960bd';
 
 // ! You need to clear the browser cache after the change
 const setting: ProjectConfig = {

@@ -22,7 +22,7 @@
     </div>
   </div>
 </template>
-<script lang="ts" setup name="EntCollapseContainer">
+<script lang="ts" setup>
   import type { PropType } from 'vue';
   import { defineComponent, ref } from 'vue';
   // component
