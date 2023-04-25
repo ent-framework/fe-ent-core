@@ -27,10 +27,10 @@
         "types/*"
       ],
       "@ent-core/*": [
-        "packages/*"
+        "packages/core/*"
       ],
-      "fe-ent-core": ["./packages/fe-ent-core/index.ts"],
-      "fe-ent-core/lib/*": ["./packages/*"]
+      "fe-ent-core": ["./packages/core/index.ts"],
+      "fe-ent-core/lib/*": ["./packages/core/*"]
     },
     "typeRoots": [
       "./node_modules/@types/",
@@ -44,14 +44,14 @@
   },
   "include": [
     "tests/**/*.ts",
-    "packages/**/*.ts",
-    "packages/**/*.d.ts",
-    "packages/**/*.tsx",
-    "packages/**/*.vue",
-    "extensions/**/*.ts",
-    "extensions/**/*.d.ts",
-    "extensions/**/*.tsx",
-    "extensions/**/*.vue",
+    "packages/core/**/*.ts",
+    "packages/core/**/*.d.ts",
+    "packages/core/**/*.tsx",
+    "packages/core/**/*.vue",
+    "packages/extensions/**/*.ts",
+    "packages/extensions/**/*.d.ts",
+    "packages/extensions/**/*.tsx",
+    "packages/extensions/**/*.vue",
     "internal/**/*.ts",
     "scripts/*.ts",
     "play/**/*.ts",

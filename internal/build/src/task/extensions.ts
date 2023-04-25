@@ -10,7 +10,7 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import esbuild from 'rollup-plugin-esbuild';
 import filesize from 'rollup-plugin-filesize';
 import { series } from 'gulp';
-import { version } from '../../../../packages/fe-ent-core/version';
+import { version } from '../../../../packages/core/version';
 import { EntExtAlias } from '../plugins/ent-ext-alias';
 import { extRoot, pkgRoot } from '@ent-core/build-utils';
 import { EP_BRAND_NAME } from '@ent-core/build-constants';

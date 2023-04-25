@@ -2,7 +2,7 @@ import path from 'path';
 import gulp from 'gulp';
 import chalk from 'chalk';
 import through2 from 'through2';
-import { epOutput, pkgRoot, themeRoot } from '@ent-core/build-utils';
+import { epOutput, pkgRoot, themeRoot, epRoot } from '@ent-core/build-utils';
 import { generateModifyVars } from 'fe-ent-theme-util';
 import Less from 'gulp-less';
 import { lessPlugin } from '../plugins/less';
@@ -91,7 +91,7 @@ export async function compileLess(options: CompileLessOption) {
 
 export function copyThemeSource() {
   return gulp
-    .src(`${pkgRoot}/theme/**/*.less`)
+    .src(`${epRoot}/theme/**/*.less`)
     .pipe(
       // 修改文件的别名
       through2.obj(function (file, encoding, next) {
@@ -111,7 +111,7 @@ export function copyThemeSource() {
 
 export function copyThemeExceptSource() {
   return gulp
-    .src(`${pkgRoot}/{components,directives,layouts,views}/**/*.{less,css}`)
+    .src(`${epRoot}/{components,directives,layouts,views}/**/*.{less,css}`)
     .pipe(
       // 修改文件的别名
       through2.obj(function (file, encoding, next) {

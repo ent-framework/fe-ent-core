@@ -1,15 +1,15 @@
 import { readPackageJSON } from 'pkg-types';
-import { defineConfig, LibraryFormats, searchForWorkspaceRoot, UserConfig } from 'vite';
+import { LibraryFormats, searchForWorkspaceRoot, UserConfig } from 'vite';
 import { InputOption, ModuleFormat } from 'rollup';
 import { createPlugins } from 'fe-ent-build';
-import { excludeFiles } from './src/utils';
-import glob from 'fast-glob';
-import { pkgRoot } from '@ent-core/build-utils';
-
+import { presetTypography, presetUno } from 'unocss';
+import UnoCSS from 'unocss/vite';
+import commonjs from '@rollup/plugin-commonjs';
 interface DefineOptions {
   formats: LibraryFormats[];
   input: InputOption;
   root?: string;
+  output?: string;
 }
 
 async function defineModulesConfig(options: DefineOptions) {
@@ -23,21 +23,29 @@ async function defineModulesConfig(options: DefineOptions) {
     enableMock: false,
     compress: 'none',
   });
+
+  const unoCss = UnoCSS({
+    mode: 'dist-chunk',
+    presets: [presetUno(), presetTypography()],
+    postcss: true,
+  });
+
   const { dependencies = {}, peerDependencies = {} } = await readPackageJSON(
-    `${workspace}/packages/fe-ent-core`,
+    `${workspace}/packages/core`,
   );
+  // console.log([...Object.keys(dependencies), ...Object.keys(peerDependencies)]);
   const packageConfig: UserConfig = {
-    root: `${workspace}/`,
+    root: `${workspace}`,
     resolve: {
       alias: [
         {
           find: /^@ent-core\/(.*)$/,
-          replacement: `${workspace}/packages/$1`,
+          replacement: `${workspace}/packages/core/$1`,
         },
       ],
     },
     build: {
-      outDir: `${workspace}/dist/fe-ent-core/es`,
+      outDir: `${workspace}/dist/fe-ent-core/${options.output}`,
       lib: {
         entry: options.input,
         formats: options.formats,
@@ -50,15 +58,25 @@ async function defineModulesConfig(options: DefineOptions) {
       rollupOptions: {
         //input: options.input,
         maxParallelFileOps: 3,
-        external: [...Object.keys(dependencies), ...Object.keys(peerDependencies)],
+        external: [
+          ...Object.keys(dependencies),
+          ...Object.keys(peerDependencies),
+          'ant-design-vue/es/locale/zh_CN',
+          'ant-design-vue/es/locale/en_US',
+          'dayjs/locale/zh-cn',
+          'dayjs/locale/en',
+          'dayjs/plugin/weekday',
+        ],
         output: {
-          dir: `${workspace}/dist/fe-ent-core/es`,
+          dir: `${workspace}/dist/fe-ent-core/${options.output}`,
           preserveModules: true,
           preserveModulesRoot: options.root,
           sourcemap: false,
+          exports: 'named',
         },
+        //plugins: [commonjs()],
       },
-      emptyOutDir: true,
+      minify: false,
     },
     esbuild: {
       drop: ['console', 'debugger'],
@@ -73,13 +91,14 @@ async function defineModulesConfig(options: DefineOptions) {
     optimizeDeps: {
       // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly
       include: [
-        '@iconify/iconify',
-        'ant-design-vue/es/locale/zh_CN',
-        'ant-design-vue/es/locale/en_US',
+        // '@iconify/iconify',
+        // 'ant-design-vue/es/locale/zh_CN',
+        // 'ant-design-vue/es/locale/en_US',
+        // 'crypto-js',
       ],
       exclude: ['vue-demi'],
     },
-    plugins: [...plugins],
+    plugins: [...plugins, unoCss],
   };
 
   return packageConfig;

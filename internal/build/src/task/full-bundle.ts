@@ -9,7 +9,7 @@ import filesize from 'rollup-plugin-filesize';
 import { parallel } from 'gulp';
 import glob from 'fast-glob';
 import { camelCase, upperFirst } from 'lodash-es';
-import { version } from '../../../../packages/fe-ent-core/version';
+import { version } from '../../../../packages/core/version';
 import { reporter } from '../plugins/size-reporter';
 import { EntCoreAlias } from '../plugins/ent-core-alias';
 import { epRoot, epOutput, localeRoot, pkgRoot } from '@ent-core/build-utils';

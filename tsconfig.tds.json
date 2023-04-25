@@ -23,7 +23,7 @@
     "outDir": "./dist/types",
     "paths": {
       "@ent-core/*": [
-        "packages/*"
+        "packages/core/*"
       ]
     },
     "preserveSymlinks": true,
@@ -45,10 +45,10 @@
     ]
   },
   "include": [
-    "./packages/**/*.ts",
-    "./packages/**/*.d.ts",
-    "./packages/**/*.tsx",
-    "./packages/**/*.vue"
+    "./packages/core/**/*.ts",
+    "./packages/core/**/*.d.ts",
+    "./packages/core/**/*.tsx",
+    "./packages/core/**/*.vue"
   ],
   "exclude": [
     "node_modules"

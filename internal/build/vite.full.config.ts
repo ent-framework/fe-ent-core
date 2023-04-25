@@ -1,7 +1,6 @@
 import { readPackageJSON } from 'pkg-types';
 import { defineConfig, searchForWorkspaceRoot, UserConfig } from 'vite';
 import { ModuleFormat } from 'rollup';
-import dts from 'vite-plugin-dts';
 import { createPlugins } from 'fe-ent-build';
 
 export default defineConfig(async () => {
@@ -17,7 +16,7 @@ export default defineConfig(async () => {
   });
 
   const { dependencies = {}, peerDependencies = {} } = await readPackageJSON(
-    `${workspace}/packages/fe-ent-core`,
+    `${workspace}/packages/core`,
   );
   const packageConfig: UserConfig = {
     root: `${workspace}/`,
@@ -25,14 +24,14 @@ export default defineConfig(async () => {
       alias: [
         {
           find: /^@ent-core\/(.*)$/,
-          replacement: `${workspace}/packages/$1`,
+          replacement: `${workspace}/packages/core/$1`,
         },
       ],
     },
     build: {
       outDir: `${workspace}/dist/fe-ent-core/dist`,
       lib: {
-        entry: `${workspace}/packages/fe-ent-core/index.ts`,
+        entry: `${workspace}/packages/core/index.ts`,
         formats: ['es', 'cjs'],
         fileName: (format: ModuleFormat, entryName: string) => {
           return `${entryName}.${format === 'cjs' ? 'js' : 'mjs'}`;
@@ -43,7 +42,11 @@ export default defineConfig(async () => {
       rollupOptions: {
         maxParallelFileOps: 3,
         external: [...Object.keys(dependencies), ...Object.keys(peerDependencies)],
+        output: {
+          exports: 'named',
+        },
       },
+      minify: false,
     },
     esbuild: {
       drop: ['console', 'debugger'],
@@ -66,13 +69,17 @@ export default defineConfig(async () => {
     },
     plugins: [
       ...plugins,
-      dts({
-        tsConfigFilePath: `${workspace}/tsconfig.tds.json`,
-        entryRoot: `${workspace}/packages`,
-        exclude: 'fe-ent-core/index.ts',
-        logLevel: 'error',
-        outputDir: [`${workspace}/dist/fe-ent-core/lib`, `${workspace}/dist/fe-ent-core/es`],
-      }),
+      // dts({
+      //   tsConfigFilePath: `${workspace}/tsconfig.tds.json`,
+      //   entryRoot: `${workspace}/packages/core`,
+      //   logLevel: 'error',
+      //   afterDiagnostic: (diagnostics) => {
+      //     diagnostics.forEach((diagnostic) => {
+      //       console.log(diagnostic);
+      //     });
+      //   },
+      //   outputDir: [`${workspace}/dist/fe-ent-core/lib`, `${workspace}/dist/fe-ent-core/es`],
+      // }),
     ],
   };
 
