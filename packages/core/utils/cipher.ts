@@ -1,4 +1,4 @@
-import CryptoES from 'crypto-es';
+import CryptoJS from 'crypto-js';
 
 export interface EncryptionParams {
   key: string;
@@ -7,43 +7,43 @@ export interface EncryptionParams {
 
 export class AesEncryption {
   private key;
-  private readonly iv;
+  private iv;
 
   constructor(opt: Partial<EncryptionParams> = {}) {
     const { key, iv } = opt;
     if (key) {
-      this.key = CryptoES.enc.Utf8.parse(key);
+      this.key = CryptoJS.enc.Utf8.parse(key);
     }
     if (iv) {
-      this.iv = CryptoES.enc.Utf8.parse(iv);
+      this.iv = CryptoJS.enc.Utf8.parse(iv);
     }
   }
 
-  private get _getOptions() {
+  get getOptions() {
     return {
-      mode: CryptoES.mode.ECB,
-      padding: CryptoES.pad.Pkcs7,
+      mode: CryptoJS.mode.ECB,
+      padding: CryptoJS.pad.Pkcs7,
       iv: this.iv,
     };
   }
 
   encryptByAES(cipherText: string) {
-    return CryptoES.AES.encrypt(cipherText, this.key, this._getOptions).toString();
+    return CryptoJS.AES.encrypt(cipherText, this.key, this.getOptions).toString();
   }
 
   decryptByAES(cipherText: string) {
-    return CryptoES.AES.decrypt(cipherText, this.key, this._getOptions).toString(CryptoES.enc.Utf8);
+    return CryptoJS.AES.decrypt(cipherText, this.key, this.getOptions).toString(CryptoJS.enc.Utf8);
   }
 }
 
 export function encryptByBase64(cipherText: string) {
-  return CryptoES.enc.Base64.stringify(CryptoES.enc.Utf8.parse(cipherText));
+  return CryptoJS.enc.Utf8.parse(cipherText).toString(CryptoJS.enc.Base64);
 }
 
 export function decodeByBase64(cipherText: string) {
-  return CryptoES.enc.Base64.parse(cipherText);
+  return CryptoJS.enc.Base64.parse(cipherText).toString(CryptoJS.enc.Utf8);
 }
 
 export function encryptByMd5(password: string) {
-  return CryptoES.MD5(password).toString();
+  return CryptoJS.MD5(password).toString();
 }

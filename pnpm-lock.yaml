@@ -422,9 +422,6 @@ importers:
       cropperjs:
         specifier: ^1.5.12
         version: 1.5.12
-      crypto-es:
-        specifier: ^1.2.7
-        version: 1.2.7
       crypto-js:
         specifier: ^4.1.1
         version: 4.1.1
@@ -7106,10 +7103,6 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
-
-  /crypto-es@1.2.7:
-    resolution: {integrity: sha512-UUqiVJ2gUuZFmbFsKmud3uuLcNP2+Opt+5ysmljycFCyhA0+T16XJmo1ev/t5kMChMqWh7IEvURNCqsg+SjZGQ==}
-    dev: false
 
   /crypto-js@4.1.1:
     resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
