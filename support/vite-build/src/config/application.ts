@@ -1,3 +1,5 @@
+import { resolve } from 'node:path';
+
 import dayjs from 'dayjs';
 import { readPackageJSON } from 'pkg-types';
 import { defineConfig, loadEnv, mergeConfig, type UserConfig } from 'vite';
@@ -33,12 +35,24 @@ function defineApplicationConfig(defineOptions: DefineOptions = {}) {
       compress: VITE_BUILD_COMPRESS,
     });
 
+    const pathResolve = (pathname: string) => resolve(root, '.', pathname);
+
     const applicationConfig: UserConfig = {
       resolve: {
         alias: [
           {
             find: 'vue-i18n',
             replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
+          },
+          // /@/xxxx => src/xxxx
+          {
+            find: /\/@\//,
+            replacement: pathResolve('src') + '/',
+          },
+          // @/xxxx => src/xxxx
+          {
+            find: /@\//,
+            replacement: pathResolve('src') + '/',
           },
         ],
       },
