@@ -171,7 +171,7 @@ export const usePermissionStore = defineStore({
         case PermissionModeEnum.ROUTE_MAPPING:
           routes = filter(router.bizRoutes, routeFilter);
           routes = routes.filter(routeFilter);
-          const menuList = transformRouteToMenu(routes, true);
+          const menuList: AppRouteRecordRaw[] = transformRouteToMenu(routes, true);
           routes = filter(routes, routeRemoveIgnoreFilter);
           routes = routes.filter(routeRemoveIgnoreFilter);
           menuList.sort((a, b) => {

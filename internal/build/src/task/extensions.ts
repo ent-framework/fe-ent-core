@@ -6,7 +6,6 @@ import { rollup } from 'rollup';
 import commonjs from '@rollup/plugin-commonjs';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import esbuild from 'rollup-plugin-esbuild';
 import filesize from 'rollup-plugin-filesize';
 import { series } from 'gulp';
@@ -42,7 +41,6 @@ async function buildExtensions(ext: string, minify: boolean) {
           isProduction: true,
         }) as Plugin,
         vueJsx(),
-        vueSetupExtend(),
         rollupPluginInjectProcessViteEnv({
           baseDir: `${pkgRoot}`,
           exclude: ['**/*.css', '**/*.less', '**/*.svg', '**/*.jpg', '**/*.jpeg', '**/*.png'],

@@ -21,7 +21,6 @@
   "dependencies": {
     "@ent-core/build-constants": "^0.0.1",
     "@ent-core/build-utils": "^0.0.1",
-    "fe-ent-theme-util": "^1.0.1",
     "fe-ent-build": "^1.0.1",
     "@pnpm/logger": "^4.0.0",
     "@rollup/plugin-alias": "5.0.0",
@@ -59,6 +58,8 @@
     "unocss": "^0.50.6"
   },
   "devDependencies": {
+    "@ant-design/colors": "^6.0.0",
+    "ant-design-vue": "^3.2.0",
     "@esbuild-kit/cjs-loader": "^2.2.1",
     "@types/through2": "^2.0.38",
     "@pnpm/types": "^8.4.0",

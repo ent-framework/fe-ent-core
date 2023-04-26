@@ -57,8 +57,6 @@
     "vue": "^3.2.0",
     "ant-design-vue": "^3.2.0"
   },
-  "dependencies": {
-  },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",

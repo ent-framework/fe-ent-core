@@ -4,7 +4,6 @@ import { InputOption, ModuleFormat } from 'rollup';
 import { createPlugins } from 'fe-ent-build';
 import { presetTypography, presetUno } from 'unocss';
 import UnoCSS from 'unocss/vite';
-import commonjs from '@rollup/plugin-commonjs';
 interface DefineOptions {
   formats: LibraryFormats[];
   input: InputOption;

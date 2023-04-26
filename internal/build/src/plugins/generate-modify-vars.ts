@@ -1,5 +1,5 @@
-import { generateAntColors, primaryColor } from './themeConfig';
-const { getThemeVariables } = require('ant-design-vue/dist/theme');
+import { generateAntColors, primaryColor } from './theme-config';
+import { getThemeVariables } from 'ant-design-vue/dist/theme';
 /**
  * less global variable
  */

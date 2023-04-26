@@ -41,7 +41,6 @@
     "fe-ent-tinymce": "workspace:*"
   },
   "devDependencies": {
-    "fe-ent-vite": "workspace:*",
     "fe-ent-build": "workspace:*",
     "vite": "4.2.2",
     "@iconify/json": "^1.1.422"

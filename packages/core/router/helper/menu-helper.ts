@@ -37,7 +37,10 @@ export function transformMenuModule(menuModule: MenuModule): Menu {
   return menuList[0];
 }
 
-export function transformRouteToMenu(routeModList: AppRouteModule[], routerMapping = false) {
+export function transformRouteToMenu(
+  routeModList: AppRouteModule[],
+  routerMapping = false,
+): AppRouteRecordRaw[] {
   const cloneRouteModList = cloneDeep(routeModList);
   const routeList: AppRouteRecordRaw[] = [];
 

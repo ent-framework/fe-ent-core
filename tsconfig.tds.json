@@ -21,11 +21,6 @@
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "outDir": "./dist/types",
-    "paths": {
-      "@ent-core/*": [
-        "packages/core/*"
-      ]
-    },
     "preserveSymlinks": true,
     "removeComments": false,
     "resolveJsonModule": true,
@@ -35,6 +30,11 @@
     "strict": true,
     "strictFunctionTypes": false,
     "target": "esnext",
+    "paths": {
+      "@ent-core/*": [
+        "packages/core/*"
+      ]
+    },
     "typeRoots": [
       "./node_modules/@types",
       "./typings"

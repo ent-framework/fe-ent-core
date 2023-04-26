@@ -11,7 +11,7 @@ import { buildOutput, epRoot, pkgRoot, projRoot } from '@ent-core/build-utils';
 import { excludeFiles, pathRewriter } from '../utils';
 import type { SourceFile } from 'ts-morph';
 
-const TSCONFIG_PATH = path.resolve(projRoot, 'tsconfig.tds.json');
+const TSCONFIG_PATH = path.resolve(projRoot, 'tsconfig.json');
 const outDir = path.resolve(buildOutput, 'types');
 
 /**
@@ -132,14 +132,4 @@ async function addSourceFiles(project: Project) {
     // }),
   ]);
   return sourceFiles;
-}
-
-function typeCheck(project: Project) {
-  const diagnostics = project.getPreEmitDiagnostics();
-  if (diagnostics.length > 0) {
-    consola.error(project.formatDiagnosticsWithColorAndContext(diagnostics));
-    const err = new Error('Failed to generate dts.');
-    consola.error(err);
-    throw err;
-  }
 }
