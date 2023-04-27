@@ -4,13 +4,15 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import DefineOptions from 'unplugin-vue-define-options/vite';
 import { type PluginOption } from 'vite';
 import purgeIcons from 'vite-plugin-purge-icons';
-
 import { createAppConfigPlugin } from './appConfig';
 import { configCompressPlugin } from './compress';
 import { configHtmlPlugin } from './html';
 import { configMockPlugin } from './mock';
 import { configSvgIconsPlugin } from './svgSprite';
 import { configVisualizerConfig } from './visualizer';
+import { presetTypography, presetUno } from 'unocss';
+import UnoCSS from 'unocss/vite';
+import type { Theme } from 'unocss/preset-uno';
 
 interface Options {
   isBuild: boolean;
@@ -32,18 +34,48 @@ async function createPlugins({
   const vitePlugins: (PluginOption | PluginOption[])[] = [vue(), vueJsx(), DefineOptions()];
 
   const appConfigPlugin = await createAppConfigPlugin({ root, isBuild });
-  if (mode != 'lib') {
+  if (mode !== 'lib') {
     vitePlugins.push(appConfigPlugin);
   }
 
-  // vite-plugin-html
-  vitePlugins.push(configHtmlPlugin({ isBuild }));
+  if (mode !== 'lib') {
+    // vite-plugin-html
+    vitePlugins.push(configHtmlPlugin({ isBuild }));
+  }
 
   // vite-plugin-svg-icons
   vitePlugins.push(configSvgIconsPlugin({ isBuild }));
 
   // vite-plugin-purge-icons
   vitePlugins.push(purgeIcons());
+
+  const theme = {
+    breakpoints: {
+      sm: '576px',
+      md: '768px',
+      lg: '992px',
+      xl: '1200px',
+      '2xl': '1600px',
+    },
+  };
+
+  if (mode === 'lib') {
+    vitePlugins.push(
+      UnoCSS<Theme>({
+        mode: 'dist-chunk',
+        presets: [presetUno({ preflight: false }), presetTypography()],
+        postcss: true,
+        theme,
+      }),
+    );
+  } else {
+    vitePlugins.push(
+      UnoCSS<Theme>({
+        presets: [presetUno(), presetTypography()],
+        theme,
+      }),
+    );
+  }
 
   // The following plugins only work in the production environment
   if (isBuild) {
@@ -56,12 +88,12 @@ async function createPlugins({
   }
 
   // rollup-plugin-visualizer
-  if (enableAnalyze) {
+  if (mode !== 'lib' && enableAnalyze) {
     vitePlugins.push(configVisualizerConfig());
   }
 
   // vite-plugin-mock
-  if (enableMock) {
+  if (mode !== 'lib' && enableMock) {
     vitePlugins.push(configMockPlugin({ isBuild }));
   }
 

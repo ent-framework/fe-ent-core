@@ -85,7 +85,7 @@
           if (parent.includes(item.path)) {
             metched.push({
               ...item,
-              name: item.meta?.title || item.name,
+              name: (item.meta?.title || item.name) as string,
             });
           }
           if (item.children?.length) {

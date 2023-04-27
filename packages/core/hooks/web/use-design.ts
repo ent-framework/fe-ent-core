@@ -1,21 +1,10 @@
-import { useAppProviderContext } from '@ent-core/components/application/src/use-app-context';
-// import { computed } from 'vue';
-// import { lowerFirst } from 'lodash-es';
+import { useAppProviderContext } from '@ent-core/components/application';
 export function useDesign(scope: string) {
   const values = useAppProviderContext();
-  // const $style = cssModule ? useCssModule() : {};
-
-  // const style: Record<string, string> = {};
-  // if (cssModule) {
-  //   Object.keys($style).forEach((key) => {
-  //     // const moduleCls = $style[key];
-  //     const k = key.replace(new RegExp(`^${values.prefixCls}-?`, 'ig'), '');
-  //     style[lowerFirst(k)] = $style[key];
-  //   });
-  // }
+  const prefixCls = values.prefixCls ? values.prefixCls : 'vben';
   return {
     // prefixCls: computed(() => `${values.prefixCls}-${scope}`),
-    prefixCls: `${values.prefixCls}-${scope}`,
+    prefixCls: `${prefixCls}-${scope}`,
     prefixVar: values.prefixCls,
     // style,
   };

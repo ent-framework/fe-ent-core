@@ -19,7 +19,7 @@ export class AesEncryption {
     }
   }
 
-  get getOptions() {
+  private get getOptions() {
     return {
       mode: CryptoJS.mode.ECB,
       padding: CryptoJS.pad.Pkcs7,
@@ -28,7 +28,8 @@ export class AesEncryption {
   }
 
   encryptByAES(cipherText: string) {
-    return CryptoJS.AES.encrypt(cipherText, this.key, this.getOptions).toString();
+    const source = CryptoJS.enc.Utf8.parse(cipherText);
+    return CryptoJS.AES.encrypt(source, this.key, this.getOptions).toString();
   }
 
   decryptByAES(cipherText: string) {

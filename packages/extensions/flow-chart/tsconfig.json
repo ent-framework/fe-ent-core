@@ -22,21 +22,15 @@
     "noImplicitAny": false,
     "skipLibCheck": true,
     "paths": {
-      "/@/*": ["src/*"],
-      "fe-ent-core": ["../packages/fe-ent-core/index.ts"],
-      "fe-ent-core/lib/*": ["../packages/*"],
+      "fe-ent-core": ["../../core/index.ts"],
+      "fe-ent-core/lib/*": ["../../core/*"],
       "@fe-ent-extension/*": ["../extensions/*"]
     }
   },
   "include": [
-    "tests/**/*.ts",
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "src/*.vue",
-    "../typings/",
-    "mock/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.vue",
     "vite.config.ts"
   ],
   "exclude": ["node_modules", "tests/server/**/*.ts", "dist", "**/*.js"]

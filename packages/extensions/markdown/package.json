@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-markdown",
-  "version": "1.4.1",
+  "version": "1.4.11",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -25,23 +25,24 @@
     "README.md"
   ],
   "scripts": {
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "build": "cross-env NODE_ENV=production vite build"
   },
   "peerDependencies": {
     "vue": "^3.2.31",
     "ant-design-vue": "^3.2.0",
-    "fe-ent-core": "^1.0.7"
+    "fe-ent-core": "workspace:*"
   },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
     "vditor": "^3.8.11"
   },
   "devDependencies": {
+    "fe-ent-build": "workspace:*",
     "rimraf": "^3.0.2",
     "@types/tinycolor2": "^1.4.2",
     "vue": "^3.2.31",
-    "vue-demi": "^0.12.1",
-    "fe-ent-core": "^1.0.7"
+    "vue-demi": "^0.12.1"
   },
   "repository": {
     "type": "git",

@@ -14,12 +14,12 @@
   import FlowChartToolbar from './flow-chart-toolbar.vue';
   import LogicFlow from '@logicflow/core';
   import { Snapshot, BpmnElement, Menu, DndPanel, SelectionSelect } from '@logicflow/extension';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useAppStore } from 'fe-ent-core/lib/store';
-  import { useModal, EntModal } from 'fe-ent-core/lib/components/modal';
+  import { useDesign } from 'fe-ent-core';
+  import { useAppStore } from 'fe-ent-core';
+  import { useModal, EntModal } from 'fe-ent-core';
   import { createFlowChartContext } from './use-flow-context';
   import { toLogicFlowData } from './adpter-for-turbo';
-  import { JsonPreview } from '@fe-ent-extension/code-editor';
+  import { JsonPreview } from 'fe-ent-code-editor';
   import { configDefaultDndPanel } from './config';
   export default defineComponent({
     name: 'FlowChart',

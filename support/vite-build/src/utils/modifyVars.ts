@@ -5,7 +5,7 @@ import { searchForWorkspaceRoot } from 'vite';
 import path from 'path';
 import fs from 'fs';
 
-const primaryColor = '#0960bd';
+export const primaryColor = '#0960bd';
 
 function generateAntColors(color: string, theme: 'default' | 'dark' = 'default') {
   return generate(color, {

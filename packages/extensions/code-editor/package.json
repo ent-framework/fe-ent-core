@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-code-editor",
-  "version": "1.4.1",
+  "version": "1.4.11",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -31,7 +31,7 @@
   "peerDependencies": {
     "vue": "^3.2.31",
     "ant-design-vue": "^3.2.0",
-    "fe-ent-core": "^1.0.7"
+    "fe-ent-core": "workspace:*"
   },
   "dependencies": {
     "codemirror": "^5.65.1"
@@ -40,7 +40,6 @@
     "fe-ent-build": "workspace:*",
     "@types/codemirror": "^5.60.5",
     "rimraf": "^3.0.2",
-    "fe-ent-core": "^1.0.7",
     "vue": "^3.2.31",
     "vite": "4.2.2"
   },

@@ -17,7 +17,7 @@ import { initApplication } from '/@/init-application';
 import EntCore from 'fe-ent-core';
 import { QrCode } from '@fe-ent-extension/qrcode';
 
-import 'ant-design-vue/dist/antd.less';
+import 'ant-design-vue/dist/antd.css';
 import 'fe-ent-core/lib/theme/index.less';
 
 export async function bootstrap(needLogin: boolean) {

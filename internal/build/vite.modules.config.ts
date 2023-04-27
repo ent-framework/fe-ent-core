@@ -2,8 +2,6 @@ import { readPackageJSON } from 'pkg-types';
 import { LibraryFormats, searchForWorkspaceRoot, UserConfig } from 'vite';
 import { InputOption, ModuleFormat } from 'rollup';
 import { createPlugins } from 'fe-ent-build';
-import { presetTypography, presetUno } from 'unocss';
-import UnoCSS from 'unocss/vite';
 interface DefineOptions {
   formats: LibraryFormats[];
   input: InputOption;
@@ -21,12 +19,6 @@ async function defineModulesConfig(options: DefineOptions) {
     enableAnalyze: false,
     enableMock: false,
     compress: 'none',
-  });
-
-  const unoCss = UnoCSS({
-    mode: 'dist-chunk',
-    presets: [presetUno(), presetTypography()],
-    postcss: true,
   });
 
   const { dependencies = {}, peerDependencies = {} } = await readPackageJSON(
@@ -97,7 +89,7 @@ async function defineModulesConfig(options: DefineOptions) {
       ],
       exclude: ['vue-demi'],
     },
-    plugins: [...plugins, unoCss],
+    plugins: [...plugins],
   };
 
   return packageConfig;

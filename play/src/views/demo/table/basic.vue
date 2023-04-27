@@ -12,6 +12,7 @@
       showTableSetting
       :pagination="pagination"
       @columns-change="handleColumnChange"
+      class="w-2/3 xl:w-3/4"
     >
       <template #toolbar>
         <a-button type="primary" @click="toggleCanResize">

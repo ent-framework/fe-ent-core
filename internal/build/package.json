@@ -48,14 +48,12 @@
     "lodash-es": "^4.17.21",
     "rollup": "3.18.0",
     "rollup-plugin-esbuild": "5.0.0",
-    "rollup-plugin-windicss": "1.8.10",
     "rollup-plugin-filesize": "9.1.2",
     "rollup-plugin-purge-icons": "0.9.1",
     "rollup-plugin-visualizer": "5.9.0",
     "rollup-plugin-polyfill-node": "^0.11.0",
     "through2": "3.0.2",
-    "ts-morph": "^14.0.0",
-    "unocss": "^0.50.6"
+    "ts-morph": "^14.0.0"
   },
   "devDependencies": {
     "@ant-design/colors": "^6.0.0",

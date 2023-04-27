@@ -34,11 +34,15 @@
       "/#/*": [
         "types/*"
       ],
+      "/@/*": [
+        "play/src/*"
+      ],
       "@ent-core/*": [
-        "packages/core/*"
+        "./packages/core/*"
       ],
       "fe-ent-core": ["./packages/core/index.ts"],
-      "fe-ent-core/lib/*": ["./packages/core/*"]
+      "fe-ent-core/lib/*": ["./packages/core/*"],
+      "@fe-ent-extension/*": ["./packages/extensions/*"]
     },
     "typeRoots": [
       "./node_modules/@types/",
@@ -62,10 +66,6 @@
     "packages/extensions/**/*.vue",
     "internal/**/*.ts",
     "scripts/*.ts",
-    "play/**/*.ts",
-    "play/**/*.d.ts",
-    "play/**/*.tsx",
-    "play/**/*.vue",
     "typings/**/*.d.ts",
     "typings/**/*.ts"
   ],

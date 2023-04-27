@@ -2,7 +2,7 @@
   import { defineComponent, toRefs, ref, unref } from 'vue';
   import { createAppProviderContext } from './use-app-context';
   import { createBreakpointListen } from '@ent-core/hooks/event/use-breakpoint';
-  import { prefixCls } from '@ent-core/logics/settings/design-setting';
+  import { prefixCls as defaultPrixCls } from '@ent-core/logics/settings/design-setting';
   import { useAppStore } from '@ent-core/store/modules/app';
   import { MenuModeEnum, MenuTypeEnum } from '@ent-core/logics/enums/menu-enum';
 
@@ -10,7 +10,7 @@
     /**
      * class style prefix
      */
-    prefixCls: { type: String, default: prefixCls },
+    prefixCls: { type: String, default: defaultPrixCls },
   };
 
   export default defineComponent({

@@ -11,6 +11,7 @@ export default defineApplicationConfig({
           login: 'login.html',
         },
       },
+      cssCodeSplit: true,
     },
     optimizeDeps: {
       include: [
@@ -37,12 +38,8 @@ export default defineApplicationConfig({
         },
         // 别名，转发 fe-ent-extension 文件请求
         {
-          find: /^@fe-ent-extension\/(.*\.less)$/,
-          replacement: `${workspace}/packages/extensions/$1`,
-        },
-        {
           find: /^@fe-ent-extension\/(.*)$/,
-          replacement: `${workspace}/packages/extensions/$1/index.ts`,
+          replacement: `${workspace}/packages/extensions/$1/src/index.ts`,
         },
         {
           find: /^@ent-core\/(.*)$/,

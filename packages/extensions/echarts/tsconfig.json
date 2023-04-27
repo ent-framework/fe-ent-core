@@ -17,14 +17,14 @@
     "noUnusedParameters": true,
     "experimentalDecorators": true,
     "lib": ["dom", "esnext"],
-    "types": ["vite/client", "jest", "../typings/global"],
-    "typeRoots": ["./node_modules/@types", "../typings"],
+    "types": ["vite/client", "jest", "../../typings/global"],
+    "typeRoots": ["./node_modules/@types", "../../typings"],
     "noImplicitAny": false,
     "skipLibCheck": true,
     "paths": {
-      "fe-ent-core": ["../../packages/fe-ent-core/index.ts"],
-      "fe-ent-core/lib/*": ["../../packages/*"],
-      "@fe-ent-extension/*": ["../../extensions/*"]
+      "fe-ent-core": ["../../core/index.ts"],
+      "fe-ent-core/lib/*": ["../../core/*"],
+      "@fe-ent-extension/*": ["../extensions/*"]
     }
   },
   "include": [

@@ -1,5 +1,3 @@
-import { presetTypography, presetUno } from 'unocss';
-import UnoCSS from 'unocss/vite';
 import { type UserConfig } from 'vite';
 
 const commonConfig: UserConfig = {
@@ -17,11 +15,6 @@ const commonConfig: UserConfig = {
       maxParallelFileOps: 3,
     },
   },
-  plugins: [
-    UnoCSS({
-      presets: [presetUno(), presetTypography()],
-    }),
-  ],
 };
 
 export { commonConfig };

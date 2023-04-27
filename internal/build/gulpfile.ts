@@ -64,6 +64,7 @@ export default series(
   withTaskName('buildByVite', () => run('pnpm run -C internal/build build')),
   parallel(
     //runTask('buildFullExtensions'),
+    withTaskName('buildFullExtensions', () => run('pnpm -w run build:extensions')),
     runTask('generateTypesDefinitions'),
     runTask('buildHelper'),
     series(copyFullStyle, runTask('buildTheme')),

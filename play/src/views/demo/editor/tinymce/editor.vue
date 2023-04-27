@@ -17,7 +17,6 @@
   import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
   import { Tinymce } from '@fe-ent-extension/tinymce';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
-  import '@fe-ent-extension/tinymce/index.less';
 
   const schemas: FormSchema[] = [
     {

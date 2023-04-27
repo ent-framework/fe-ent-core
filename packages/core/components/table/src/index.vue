@@ -260,7 +260,7 @@
         const values = unref(getBindValues);
         return [
           prefixCls,
-          attrs.class,
+          //attrs.class, maybe bug here, will duplicate class
           {
             [`${prefixCls}-form-container`]: values.useSearchForm,
             [`${prefixCls}--inset`]: values.inset,

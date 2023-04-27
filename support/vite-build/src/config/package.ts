@@ -1,7 +1,6 @@
 import { readPackageJSON } from 'pkg-types';
 import { defineConfig, mergeConfig, type UserConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-
 import { commonConfig } from './common';
 import { createPlugins } from '../plugins';
 import { ModuleFormat } from 'rollup';
@@ -16,7 +15,7 @@ interface DefineOptions {
 function definePackageConfig(defineOptions: DefineOptions = {}) {
   const { overrides = {} } = defineOptions;
 
-  return defineConfig(async () => {
+  return defineConfig(async ({ command }) => {
     const root = process.cwd();
     const plugins = await createPlugins({
       isBuild: true,

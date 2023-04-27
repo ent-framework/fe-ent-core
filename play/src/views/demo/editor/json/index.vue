@@ -18,7 +18,6 @@
   import { CodeEditor, JsonPreview, MODE } from 'fe-ent-code-editor';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { Radio, Space, Modal } from 'ant-design-vue';
-  import 'fe-ent-code-editor/index.less';
 
   const jsonData =
     '{"name":"BeJson","url":"http://www.xxx.com","page":88,"isNonProfit":true,"address":{"street":"科技园路.","city":"江苏苏州","country":"中国"},"links":[{"name":"Google","url":"http://www.xxx.com"},{"name":"Baidu","url":"http://www.xxx.com"},{"name":"SoSo","url":"http://www.xxx.com"}]}';

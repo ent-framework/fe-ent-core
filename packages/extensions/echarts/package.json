@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-echarts",
-  "version": "1.4.1",
+  "version": "1.4.11",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -29,10 +29,11 @@
     "build": "cross-env NODE_ENV=production vite build"
   },
   "peerDependencies": {
+    "@vueuse/core": "^9.13.0",
     "vue": "^3.2.31",
     "ant-design-vue": "^3.2.0",
-    "fe-ent-core": "^1.0.7",
-    "echarts": "^5.2.2"
+    "echarts": "^5.2.2",
+    "fe-ent-core": "workspace:*"
   },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
