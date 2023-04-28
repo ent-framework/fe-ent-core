@@ -4,7 +4,7 @@ import { copy, copyFile } from 'fs-extra';
 import { src, dest, series, parallel } from 'gulp';
 import { run } from '@ent-build/build-utils';
 import { runTask, withTaskName } from './src/utils';
-import { buildOutput, epOutput, epRoot, projRoot } from '@ent-build/build-utils';
+import { buildOutput, epOutput, epRoot, projRoot, pkgRoot } from '@ent-build/build-utils';
 import { buildConfig } from './src/build-info';
 import type { TaskFunction } from 'gulp';
 import type { Module } from './src/build-info';
@@ -16,7 +16,7 @@ const copyReadmeFile = () =>
   ]);
 
 export const copyFiles: TaskFunction = (done) => {
-  const assetSrc = path.resolve(epRoot, 'assets');
+  const assetSrc = path.resolve(pkgRoot, 'assets');
   const assetDest = path.resolve(epOutput, 'assets');
   const copyAssets = () =>
     withTaskName('copyAssets', () => {
@@ -27,7 +27,7 @@ export const copyFiles: TaskFunction = (done) => {
 };
 
 export const copyTypesDefinitions: TaskFunction = (done) => {
-  const src = path.resolve(buildOutput, 'types', 'packages', 'core');
+  const src = path.resolve(buildOutput, 'types', 'packages');
   const copyTypes = (module: Module) =>
     withTaskName(`copyTypes:${module}`, () =>
       copy(src, buildConfig[module].output.path, { recursive: true }),
@@ -62,7 +62,8 @@ export default series(
 
   parallel(runTask('buildModules'), runTask('buildFullBundle')),
   parallel(
-    runTask('buildFullExtensions'),
+    //runTask('buildFullExtensions'),
+    withTaskName('buildFullExtensions', () => run('pnpm -w run build:extensions')),
     runTask('generateTypesDefinitions'),
     runTask('buildHelper'),
     series(copyFullStyle, runTask('buildTheme')),

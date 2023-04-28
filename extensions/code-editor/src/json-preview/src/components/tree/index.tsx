@@ -5,7 +5,7 @@ import { emitError, jsonFlatten, JSONDataType } from '../../utils';
 type FlatDataType = NodeDataType[];
 
 export default defineComponent({
-  name: 'Tree',
+  name: 'EntJsonTree',
 
   props: {
     ...treeNodePropsPass,

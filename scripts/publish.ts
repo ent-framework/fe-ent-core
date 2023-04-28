@@ -1,10 +1,10 @@
-import { run } from '@ent-core/build-utils';
-import { epOutput, pkgRoot, projRoot } from '@ent-core/build-utils';
+import { run } from '@ent-build/build-utils';
+import { epOutput, projRoot } from '@ent-build/build-utils';
 import glob from 'fast-glob';
 
 const publish = async () => {
   const extensions = await glob('extensions/*', {
-    cwd: pkgRoot,
+    cwd: projRoot,
     absolute: true,
     onlyDirectories: true,
   });

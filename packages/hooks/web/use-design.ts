@@ -1,4 +1,4 @@
-import { useAppProviderContext } from '@ent-core/components/application';
+import { useAppProviderContext } from '@ent-core/components/application/src/use-app-context';
 export function useDesign(scope: string) {
   const values = useAppProviderContext();
   //const prefixCls = values.prefixCls ? values.prefixCls : 'vben';

@@ -10,11 +10,7 @@ export default definePackageConfig({
       },
     },
     optimizeDeps: {
-      include: [
-        '@iconify/iconify',
-        'ant-design-vue/es/locale/zh_CN',
-        'ant-design-vue/es/locale/en_US',
-      ],
+      include: ['echarts/core', 'echarts/charts', 'echarts/components', 'echarts/renderers'],
     },
     resolve: {
       alias: [

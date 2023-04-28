@@ -14,9 +14,9 @@
     onDeactivated,
   } from 'vue';
   import Vditor from 'vditor';
-  import { useRootSetting, onMountedOrActivated } from '../../../packages/core';
-  import { useModalContext } from '../../../packages/core';
-  import { useLocale } from '../../../packages/core';
+  import { useRootSetting, onMountedOrActivated } from 'fe-ent-core';
+  import { useModalContext } from 'fe-ent-core';
+  import { useLocale } from 'fe-ent-core';
   type Lang = 'zh_CN' | 'en_US' | 'ja_JP' | 'ko_KR' | undefined;
 
   export default defineComponent({

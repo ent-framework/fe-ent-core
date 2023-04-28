@@ -1,8 +1,8 @@
 import fs from 'fs';
 import consola from 'consola';
 import chalk from 'chalk';
-import { epPackage, projRoot, pkgRoot } from '@ent-core/build-utils';
-import { getPackageManifest } from '@ent-core/build-utils';
+import { epPackage, projRoot } from '@ent-build/build-utils';
+import { getPackageManifest } from '@ent-build/build-utils';
 import glob from 'fast-glob';
 import path from 'path';
 
@@ -29,7 +29,7 @@ consola.log(chalk.cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n')));
       });
 
       const extensions = await glob('extensions/*/package.json', {
-        cwd: pkgRoot,
+        cwd: projRoot,
         absolute: true,
         onlyFiles: true,
       });
@@ -46,7 +46,7 @@ consola.log(chalk.cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n')));
       });
 
       fs.writeFileSync(
-        path.resolve(__dirname, '../packages/core/version.ts'),
+        path.resolve(__dirname, '../packages/fe-ent-core/version.ts'),
         `export const version = '${tagVersion}';
 `,
       );

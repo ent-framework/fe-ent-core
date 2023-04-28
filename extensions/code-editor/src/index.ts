@@ -1,4 +1,4 @@
-import { withInstall } from '../../../packages/core';
+import { withInstall } from 'fe-ent-core';
 import codeEditor from './code-editor.vue';
 import jsonPreview from './json-preview/json-preview.vue';
 export const CodeEditor = withInstall(codeEditor);

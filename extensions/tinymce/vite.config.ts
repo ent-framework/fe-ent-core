@@ -1,4 +1,4 @@
-import { definePackageConfig, generateModifyVars } from "fe-ent-build";
+import { definePackageConfig, generateModifyVars } from 'fe-ent-build';
 export default definePackageConfig({
   overrides: {
     build: {
@@ -7,11 +7,7 @@ export default definePackageConfig({
       },
     },
     optimizeDeps: {
-      include: [
-        '@iconify/iconify',
-        'ant-design-vue/es/locale/zh_CN',
-        'ant-design-vue/es/locale/en_US',
-      ],
+      include: ['fe-ent-core'],
     },
     css: {
       preprocessorOptions: {

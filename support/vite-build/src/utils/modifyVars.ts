@@ -20,7 +20,7 @@ export function generateModifyVars() {
   const cwd = process.cwd();
   const workspace = searchForWorkspaceRoot(cwd);
   let preLoadFile = '';
-  preLoadFile = path.resolve(workspace, `packages/core/theme/config.less`);
+  preLoadFile = path.resolve(workspace, `packages/theme/config.less`);
   if (!fs.existsSync(preLoadFile)) {
     preLoadFile = path.resolve(cwd, `node_modules/fe-ent-core/theme/config.less`);
   }

@@ -11,7 +11,7 @@ export const localeRoot = resolve(pkgRoot, 'locales');
 export const directiveRoot = resolve(pkgRoot, 'directives');
 export const utilRoot = resolve(pkgRoot, 'utils');
 export const docRoot = resolve(projRoot, 'docs');
-
+export const buildRoot = resolve(projRoot, 'internal', 'build');
 /** dist */
 export const buildOutput = resolve(projRoot, 'dist');
 /** dist/element-plus */

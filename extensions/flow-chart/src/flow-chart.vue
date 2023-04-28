@@ -14,9 +14,9 @@
   import FlowChartToolbar from './flow-chart-toolbar.vue';
   import LogicFlow from '@logicflow/core';
   import { Snapshot, BpmnElement, Menu, DndPanel, SelectionSelect } from '@logicflow/extension';
-  import { useDesign } from '../../../packages/core';
-  import { useAppStore } from '../../../packages/core';
-  import { useModal, EntModal } from '../../../packages/core';
+  import { useDesign } from 'fe-ent-core';
+  import { useAppStore } from 'fe-ent-core';
+  import { useModal, EntModal } from 'fe-ent-core';
   import { createFlowChartContext } from './use-flow-context';
   import { toLogicFlowData } from './adpter-for-turbo';
   import { JsonPreview } from 'fe-ent-code-editor';

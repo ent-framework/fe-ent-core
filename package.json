@@ -19,7 +19,7 @@
     "build": "cross-env NODE_OPTIONS=--max-old-space-size=8192 pnpm build:support && pnpm build:lib",
     "build:lib": "pnpm run -C internal/build start",
     "build:support": "pnpm --filter './support/**' --stream build",
-    "build:extensions": "pnpm --filter 'extensions/**' --stream build",
+    "build:extensions": "pnpm --filter './extensions/**' --stream build",
     "build:internal": "pnpm run -r --parallel stub",
     "build:play": "pnpm -C play --stream build",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",

@@ -66,10 +66,10 @@
   } from 'vue';
   import ImgUpload from './img-upload.vue';
   import { toolbar, plugins } from './tinymce';
-  import { buildShortUUID, isNumber, getAppEnvConfig } from '../../../packages/core';
-  import { onMountedOrActivated } from '../../../packages/core';
-  import { useAppStore } from '../../../packages/core';
-  import { useLocale } from '../../../packages/core';
+  import { buildShortUUID, isNumber, getAppEnvConfig } from 'fe-ent-core';
+  import { onMountedOrActivated } from 'fe-ent-core';
+  import { useAppStore } from 'fe-ent-core';
+  import { useLocale } from 'fe-ent-core';
   import { bindHandlers } from './helper';
 
   const tinymceProps = {
