@@ -11,7 +11,7 @@ export default (): UserConfig => {
       alias: [
         {
           find: /^@ent-core\/(.*)$/,
-          replacement: `${workspace}/packages/core/$1`,
+          replacement: `${workspace}/packages/$1`,
         },
       ],
     },

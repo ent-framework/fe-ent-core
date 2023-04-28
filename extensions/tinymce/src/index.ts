@@ -1,0 +1,5 @@
+import { withInstall } from '../../../packages/core';
+import tinymce from './editor.vue';
+
+import './index.less';
+export const Tinymce = withInstall(tinymce);

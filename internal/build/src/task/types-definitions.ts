@@ -75,17 +75,17 @@ async function addSourceFiles(project: Project) {
 
   const filePaths = excludeFiles(
     await glob(['**/*.{tsx,ts,vue}', '!fe-ent-core/**/*'], {
-      cwd: epRoot,
+      cwd: pkgRoot,
       absolute: true,
       onlyFiles: true,
     }),
   );
-  // const epPaths = excludeFiles(
-  //   await glob('**/*.{tsx,ts,vue}', {
-  //     cwd: epRoot,
-  //     onlyFiles: true,
-  //   }),
-  // );
+  const epPaths = excludeFiles(
+    await glob('**/*.{tsx,ts,vue}', {
+      cwd: epRoot,
+      onlyFiles: true,
+    }),
+  );
 
   const sourceFiles: SourceFile[] = [];
   await Promise.all([
@@ -125,10 +125,10 @@ async function addSourceFiles(project: Project) {
         sourceFiles.push(sourceFile);
       }
     }),
-    // ...epPaths.map(async (file) => {
-    //   const content = await fs.readFile(path.resolve(epRoot, file), 'utf-8');
-    //   sourceFiles.push(project.createSourceFile(path.resolve(pkgRoot, file), content));
-    // }),
+    ...epPaths.map(async (file) => {
+      const content = await fs.readFile(path.resolve(epRoot, file), 'utf-8');
+      sourceFiles.push(project.createSourceFile(path.resolve(pkgRoot, file), content));
+    }),
   ]);
   return sourceFiles;
 }

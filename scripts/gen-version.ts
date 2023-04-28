@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import pkg from '../packages/core/package.json'; // need to be checked
+import pkg from '../packages/fe-ent-core/package.json'; // need to be checked
 const tagVer = process.env.TAG_VERSION;
 let version = '';
 
@@ -11,7 +11,7 @@ if (tagVer) {
 }
 
 fs.writeFileSync(
-  path.resolve(__dirname, '../packages/core/version.ts'),
+  path.resolve(__dirname, '../packages/fe-ent-core/version.ts'),
   `export const version = '${version}'
 `,
 );

@@ -60,15 +60,9 @@ export default series(
   withTaskName('clean', () => run('pnpm -w run clean')),
   withTaskName('createOutput', () => mkdir(epOutput, { recursive: true })),
 
-  //parallel(runTask('buildModules'), runTask('buildFullBundle')),
-  //withTaskName('buildByVite', () => run('pnpm run -C internal/build build')),
+  parallel(runTask('buildModules'), runTask('buildFullBundle')),
   parallel(
-    withTaskName('buildByVite', () => run('pnpm run -C internal/build build')),
-    runTask('buildFullBundle'),
-  ),
-  parallel(
-    //runTask('buildFullExtensions'),
-    withTaskName('buildFullExtensions', () => run('pnpm -w run build:extensions')),
+    runTask('buildFullExtensions'),
     runTask('generateTypesDefinitions'),
     runTask('buildHelper'),
     series(copyFullStyle, runTask('buildTheme')),

@@ -16,7 +16,7 @@
     "rootDir": ".",
     "types": [],
     "paths": {
-      "@ent-core/*": ["./packages/core/*"]
+      "@ent-core/*": ["packages/*"]
     }
   }
 }

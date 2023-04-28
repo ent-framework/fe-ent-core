@@ -9,7 +9,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import esbuild from 'rollup-plugin-esbuild';
 import filesize from 'rollup-plugin-filesize';
 import { series } from 'gulp';
-import { version } from '../../../../packages/core/version';
+import { version } from '../../../../packages/fe-ent-core/version';
 import { EntExtAlias } from '../plugins/ent-ext-alias';
 import { extRoot, pkgRoot } from '@ent-build/build-utils';
 import { EP_BRAND_NAME } from '@ent-build/build-constants';
@@ -32,7 +32,7 @@ const banner = `/*! ${EP_BRAND_NAME} v${version} */\n`;
 async function buildExtensions(ext: string, minify: boolean) {
   const buildExt = async (ext: string) => {
     const bundle = await rollup({
-      input: path.resolve(extRoot, ext, 'index.ts'),
+      input: path.resolve(extRoot, ext, 'src', 'index.ts'),
       plugins: [
         EntExtAlias(),
         PurgeIcons({}),
@@ -100,14 +100,14 @@ async function buildExtensions(ext: string, minify: boolean) {
   );
   const buildStyle = (ext: string) =>
     compileLess({
-      cwd: `${path.resolve(extRoot, ext)}`,
+      cwd: `${path.resolve(extRoot, ext, 'src')}`,
       src: `index.less`,
       out: `index${minify ? '.min' : ''}`,
       dest: `${path.resolve(extRoot, ext)}/dist`,
       dark: false,
       resolvedConfig,
     });
-  if (fs.existsSync(path.resolve(extRoot, ext, 'index.less'))) {
+  if (fs.existsSync(path.resolve(extRoot, ext, 'src', 'index.less'))) {
     return Promise.all([buildExt(ext), buildStyle(ext)]);
   }
   return Promise.all([buildExt(ext)]);

@@ -9,8 +9,10 @@
     "strictFunctionTypes": false,
   },
   "include": [
-    "packages/core",
-    "packages/core/**/*.svg",
+    "packages/**/*.ts",
+    "packages/**/*.d.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.vue",
     "typings/support.d.ts",
     "typings/global.d.ts"
   ],

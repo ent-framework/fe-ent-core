@@ -9,7 +9,7 @@ import filesize from 'rollup-plugin-filesize';
 import { parallel } from 'gulp';
 import glob from 'fast-glob';
 import { camelCase, upperFirst } from 'lodash-es';
-import { version } from '../../../../packages/core/version';
+import { version } from '../../../../packages/fe-ent-core/version';
 import { reporter } from '../plugins/size-reporter';
 import { EntCoreAlias } from '../plugins/ent-core-alias';
 import { epRoot, epOutput, localeRoot, pkgRoot } from '@ent-build/build-utils';
@@ -26,8 +26,6 @@ import { rollupPluginInjectProcessViteEnv } from '../plugins/vite-env';
 const banner = `/*! ${EP_BRAND_NAME} v${version} */\n`;
 
 async function buildFullEntry(minify: boolean) {
-  const deps = await generateExternal({ full: true });
-  console.log(deps);
   const bundle = await rollup({
     input: path.resolve(epRoot, 'index.ts'),
     plugins: [
