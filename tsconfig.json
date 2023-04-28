@@ -1,78 +1,10 @@
 {
-  "compilerOptions": {
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
-    "composite": false,
-    "declaration": true,
-    "declarationMap": false,
-    "disableSizeLimit": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "preserve",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ES2018"
-    ],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noImplicitAny": false,
-    "noUnusedLocals": true,
-    "outDir": "./dist/types",
-    "preserveSymlinks": true,
-    "removeComments": false,
-    "resolveJsonModule": true,
-    "rootDir": ".",
-    "skipLibCheck": true,
-    "sourceMap": false,
-    "strict": true,
-    "strictFunctionTypes": false,
-    "target": "esnext",
-    "paths": {
-      "/#/*": [
-        "types/*"
-      ],
-      "/@/*": [
-        "play/src/*"
-      ],
-      "@ent-core/*": [
-        "./packages/core/*"
-      ],
-      "fe-ent-core": ["./packages/core/index.ts"],
-      "fe-ent-core/lib/*": ["./packages/core/*"],
-      "@fe-ent-extension/*": ["./packages/extensions/*"]
-    },
-    "typeRoots": [
-      "./node_modules/@types/",
-      "./typings"
-    ],
-    "types": [
-      "node",
-      "jest",
-      "vite/client",
-    ]
-  },
-  "include": [
-    "tests/**/*.ts",
-    "packages/core/**/*.ts",
-    "packages/core/**/*.d.ts",
-    "packages/core/**/*.tsx",
-    "packages/core/**/*.vue",
-    "packages/extensions/**/*.ts",
-    "packages/extensions/**/*.d.ts",
-    "packages/extensions/**/*.tsx",
-    "packages/extensions/**/*.vue",
-    "internal/**/*.ts",
-    "scripts/*.ts",
-    "typings/**/*.d.ts",
-    "typings/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "tests/server/**/*.ts",
-    "dist",
-    "**/*.js"
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.web.json" },
+    { "path": "./tsconfig.play.json" },
+    { "path": "./tsconfig.node.json" },
+    { "path": "./tsconfig.vite-config.json" },
+    { "path": "./tsconfig.vitest.json" }
   ]
 }

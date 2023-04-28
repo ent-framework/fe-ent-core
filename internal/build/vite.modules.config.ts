@@ -62,7 +62,7 @@ async function defineModulesConfig(options: DefineOptions) {
           dir: `${workspace}/dist/fe-ent-core/${options.output}`,
           preserveModules: true,
           preserveModulesRoot: options.root,
-          sourcemap: false,
+          sourcemap: true,
           exports: 'named',
         },
         //plugins: [commonjs()],
@@ -82,10 +82,13 @@ async function defineModulesConfig(options: DefineOptions) {
     optimizeDeps: {
       // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly
       include: [
-        // '@iconify/iconify',
-        // 'ant-design-vue/es/locale/zh_CN',
-        // 'ant-design-vue/es/locale/en_US',
-        // 'crypto-js',
+        'ant-design-vue',
+        'ant-design-vue/es/locale/zh_CN',
+        'ant-design-vue/es/locale/en_US',
+        'dayjs',
+        'dayjs/locale/zh-cn',
+        'dayjs/locale/en',
+        'dayjs/plugin/weekday',
       ],
       exclude: ['vue-demi'],
     },

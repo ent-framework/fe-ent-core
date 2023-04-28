@@ -1,5 +1,5 @@
 import { buildConfig } from '../build-info';
-import { EP_PREFIX } from '@ent-core/build-constants';
+import { EP_PREFIX } from '@ent-build/build-constants';
 import type { Module } from '../build-info';
 /** used for type generator */
 export const pathRewriter = (module: Module) => {

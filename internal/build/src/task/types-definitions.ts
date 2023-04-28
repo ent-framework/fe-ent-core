@@ -6,12 +6,12 @@ import { Project } from 'ts-morph';
 import glob from 'fast-glob';
 import chalk from 'chalk';
 
-import { buildOutput, epRoot, pkgRoot, projRoot } from '@ent-core/build-utils';
+import { buildOutput, epRoot, pkgRoot, projRoot } from '@ent-build/build-utils';
 
 import { excludeFiles, pathRewriter } from '../utils';
 import type { SourceFile } from 'ts-morph';
 
-const TSCONFIG_PATH = path.resolve(projRoot, 'tsconfig.json');
+const TSCONFIG_PATH = path.resolve(projRoot, 'tsconfig.web.json');
 const outDir = path.resolve(buildOutput, 'types');
 
 /**
@@ -24,11 +24,10 @@ export const generateTypesDefinitions = async () => {
     compilerOptions: {
       emitDeclarationOnly: true,
       outDir,
-      baseUrl: epRoot,
+      baseUrl: projRoot,
       skipLibCheck: true,
-      paths: {
-        '@ent-core/*': [`${epRoot}/*`],
-      },
+      preserveSymlinks: true,
+      noImplicitAny: false,
     },
     tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true,

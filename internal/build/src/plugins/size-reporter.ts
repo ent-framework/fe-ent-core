@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { command } from '@ent-core/build-utils';
+import { command } from '@ent-build/build-utils';
 import type { FileSizeReporter } from 'rollup-plugin-filesize';
 
 export const reporter: FileSizeReporter = (opt, outputOptions, info) => {

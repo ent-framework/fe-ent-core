@@ -6,6 +6,14 @@ import type {
   FunctionalComponent,
 } from 'vue';
 
+declare module '*.svg';
+declare module '*.png';
+declare module '*.jpg';
+declare module '*.jpeg';
+declare module '*.gif';
+declare module '*.bmp';
+declare module '*.tiff';
+
 declare global {
   const __APP_INFO__: {
     pkg: {
@@ -16,6 +24,12 @@ declare global {
     };
     lastBuildTime: string;
   };
+  const process: {
+    env: {
+      NODE_ENV: string;
+    };
+  };
+
   // declare interface Window {
   //   // Global vue app instance
   //   __APP__: App<Element>;

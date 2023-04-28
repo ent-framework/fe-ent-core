@@ -11,8 +11,8 @@ import filesize from 'rollup-plugin-filesize';
 import { series } from 'gulp';
 import { version } from '../../../../packages/core/version';
 import { EntExtAlias } from '../plugins/ent-ext-alias';
-import { extRoot, pkgRoot } from '@ent-core/build-utils';
-import { EP_BRAND_NAME } from '@ent-core/build-constants';
+import { extRoot, pkgRoot } from '@ent-build/build-utils';
+import { EP_BRAND_NAME } from '@ent-build/build-constants';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
 import {
   formatBundleFilename,

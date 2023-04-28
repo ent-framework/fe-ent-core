@@ -6,6 +6,9 @@ import { createPlugins } from '../plugins';
 import { generateModifyVars } from '../utils/modifyVars';
 import { commonConfig } from './common';
 import { ViteEnv, wrapperEnv } from '../utils/env';
+import glob from 'fast-glob';
+import path from 'path';
+import { searchForWorkspaceRoot } from 'vite';
 
 interface DefineOptions {
   overrides?: UserConfig;
@@ -32,6 +35,12 @@ function defineApplicationConfig(defineOptions: DefineOptions = {}) {
       enableMock: VITE_USE_MOCK === 'true',
       compress: VITE_BUILD_COMPRESS,
     });
+    const workspace = searchForWorkspaceRoot(root);
+    const optimizeDeps = (
+      await glob(['dayjs/(locale|plugin)/*.js'], {
+        cwd: path.resolve(workspace, 'node_modules'),
+      })
+    ).map((dep) => dep.replace(/\.js$/, ''));
 
     const pathResolve = (pathname: string) => resolve(root, '.', pathname);
 
@@ -57,7 +66,7 @@ function defineApplicationConfig(defineOptions: DefineOptions = {}) {
       define: defineData,
       build: {
         target: 'es2015',
-        cssTarget: 'chrome80',
+        cssTarget: 'chrome61',
         rollupOptions: {
           output: {
             manualChunks: {
@@ -74,6 +83,9 @@ function defineApplicationConfig(defineOptions: DefineOptions = {}) {
             javascriptEnabled: true,
           },
         },
+      },
+      optimizeDeps: {
+        include: [...optimizeDeps],
       },
       plugins,
     };

@@ -7,7 +7,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import esbuild from 'rollup-plugin-esbuild';
 import filesize from 'rollup-plugin-filesize';
 import glob from 'fast-glob';
-import { epRoot, pkgRoot } from '@ent-core/build-utils';
+import { epRoot, pkgRoot } from '@ent-build/build-utils';
 import { EntCoreAlias } from '../plugins/ent-core-alias';
 import { generateExternal, writeBundles } from '../utils';
 import { excludeFiles } from '../utils';

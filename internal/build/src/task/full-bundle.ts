@@ -12,10 +12,10 @@ import { camelCase, upperFirst } from 'lodash-es';
 import { version } from '../../../../packages/core/version';
 import { reporter } from '../plugins/size-reporter';
 import { EntCoreAlias } from '../plugins/ent-core-alias';
-import { epRoot, epOutput, localeRoot, pkgRoot } from '@ent-core/build-utils';
+import { epRoot, epOutput, localeRoot, pkgRoot } from '@ent-build/build-utils';
 import { formatBundleFilename, generateExternal, writeBundles } from '../utils';
 import { withTaskName } from '../utils';
-import { EP_BRAND_NAME } from '@ent-core/build-constants';
+import { EP_BRAND_NAME } from '@ent-build/build-constants';
 import { target } from '../build-info';
 import type { Plugin } from 'rollup';
 import json from '@rollup/plugin-json';
@@ -26,6 +26,8 @@ import { rollupPluginInjectProcessViteEnv } from '../plugins/vite-env';
 const banner = `/*! ${EP_BRAND_NAME} v${version} */\n`;
 
 async function buildFullEntry(minify: boolean) {
+  const deps = await generateExternal({ full: true });
+  console.log(deps);
   const bundle = await rollup({
     input: path.resolve(epRoot, 'index.ts'),
     plugins: [

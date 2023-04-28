@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import { excludeFiles } from './src/utils';
 import glob from 'fast-glob';
-import { epRoot } from '@ent-core/build-utils';
+import { epRoot } from '@ent-build/build-utils';
 import { defineModulesConfig } from './vite.modules.config';
 
 export default defineConfig(async () => {

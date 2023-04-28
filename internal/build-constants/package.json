@@ -1,10 +1,8 @@
 {
-  "name": "@ent-core/build-constants",
+  "name": "@ent-build/build-constants",
+  "private": true,
   "version": "0.0.1",
   "description": "Build constants for ent-core",
-  "keywords": [
-    "element-plus"
-  ],
   "license": "MIT",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",

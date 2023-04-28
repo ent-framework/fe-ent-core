@@ -1,4 +1,5 @@
-import { EP_PKG, EP_PREFIX } from '@ent-core/build-constants';
+import { EP_PKG, EP_PREFIX } from '@ent-build/build-constants';
+import { epRoot } from '@ent-build/build-utils';
 import type { Plugin } from 'rollup';
 
 export function EntCoreAlias(): Plugin {
@@ -16,7 +17,12 @@ export function EntCoreAlias(): Plugin {
         };
       }
 
-      return this.resolve(id, importer, { skipSelf: true, ...options });
+      return {
+        id: id.replaceAll(EP_PREFIX, `${EP_PREFIX}`),
+        external: 'absolute',
+      };
+
+      //return this.resolve(id, importer, { skipSelf: true, ...options });
     },
   };
 }

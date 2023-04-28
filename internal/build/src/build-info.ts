@@ -1,6 +1,6 @@
 import path from 'path';
-import { epOutput } from '@ent-core/build-utils';
-import { EP_PKG } from '@ent-core/build-constants';
+import { epOutput } from '@ent-build/build-utils';
+import { EP_PKG } from '@ent-build/build-constants';
 import type { ModuleFormat } from 'rollup';
 
 export const modules = ['esm', 'cjs'] as const;

@@ -1,5 +1,5 @@
 {
-  "name": "@ent-core/build",
+  "name": "@ent-build/build",
   "version": "0.0.1",
   "private": true,
   "description": "Build Toolchain for ent-core",
@@ -9,7 +9,7 @@
   "scripts": {
     "start": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts",
     "dev": "pnpm run stub",
-    "build": "npm run build:module:es && npm run build:module:lib && npm run build:full",
+    "build": "npm run build:module:es && npm run build:module:lib",
     "build:full": "vite -c vite.full.config.ts build",
     "build:module:es": "vite -c vite.module.es.config.ts build",
     "build:module:lib": "vite -c vite.module.lib.config.ts build",
@@ -19,8 +19,8 @@
     "vue": "^3.2.25"
   },
   "dependencies": {
-    "@ent-core/build-constants": "^0.0.1",
-    "@ent-core/build-utils": "^0.0.1",
+    "@ent-build/build-constants": "^0.0.1",
+    "@ent-build/build-utils": "^0.0.1",
     "fe-ent-build": "^1.0.1",
     "@pnpm/logger": "^4.0.0",
     "@rollup/plugin-alias": "5.0.0",

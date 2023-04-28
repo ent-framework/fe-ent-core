@@ -1,4 +1,4 @@
-import { EP_PKG, EP_PREFIX } from '@ent-core/build-constants';
+import { EP_PKG, EP_PREFIX } from '@ent-build/build-constants';
 import type { Plugin } from 'rollup';
 
 export function EntExtAlias(): Plugin {

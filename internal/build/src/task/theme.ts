@@ -2,7 +2,7 @@ import path from 'path';
 import gulp from 'gulp';
 import chalk from 'chalk';
 import through2 from 'through2';
-import { epOutput, themeRoot, epRoot } from '@ent-core/build-utils';
+import { epOutput, themeRoot, epRoot } from '@ent-build/build-utils';
 import { generateModifyVars } from '../plugins/generate-modify-vars';
 import Less from 'gulp-less';
 import { lessPlugin } from '../plugins/less';

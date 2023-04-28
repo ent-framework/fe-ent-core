@@ -1,4 +1,4 @@
-import { epPackage, getPackageDependencies } from '@ent-core/build-utils';
+import { epPackage, getPackageDependencies } from '@ent-build/build-utils';
 import type { OutputOptions, RollupBuild } from 'rollup';
 
 export const generateExternal = async (options: { full: boolean }) => {

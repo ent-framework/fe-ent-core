@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "1.4.11",
+  "version": "1.4.13",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
@@ -46,6 +46,7 @@
     "xlsx": "^0.17.5"
   },
   "devDependencies": {
+    "@types/node": "^17.0.40",
     "@iconify/json": "^2.1.138",
     "@purge-icons/generated": "^0.9.0",
     "@types/tinycolor2": "^1.4.2",

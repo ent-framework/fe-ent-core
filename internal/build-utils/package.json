@@ -1,5 +1,5 @@
 {
-  "name": "@ent-core/build-utils",
+  "name": "@ent-build/build-utils",
   "version": "0.0.1",
   "private": true,
   "description": "Build utils for ent-core",

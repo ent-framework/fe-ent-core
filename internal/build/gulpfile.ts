@@ -2,9 +2,9 @@ import path from 'path';
 import { mkdir } from 'fs/promises';
 import { copy, copyFile } from 'fs-extra';
 import { src, dest, series, parallel } from 'gulp';
-import { run } from '@ent-core/build-utils';
+import { run } from '@ent-build/build-utils';
 import { runTask, withTaskName } from './src/utils';
-import { buildOutput, epOutput, epRoot, projRoot } from '@ent-core/build-utils';
+import { buildOutput, epOutput, epRoot, projRoot } from '@ent-build/build-utils';
 import { buildConfig } from './src/build-info';
 import type { TaskFunction } from 'gulp';
 import type { Module } from './src/build-info';
@@ -61,7 +61,11 @@ export default series(
   withTaskName('createOutput', () => mkdir(epOutput, { recursive: true })),
 
   //parallel(runTask('buildModules'), runTask('buildFullBundle')),
-  withTaskName('buildByVite', () => run('pnpm run -C internal/build build')),
+  //withTaskName('buildByVite', () => run('pnpm run -C internal/build build')),
+  parallel(
+    withTaskName('buildByVite', () => run('pnpm run -C internal/build build')),
+    runTask('buildFullBundle'),
+  ),
   parallel(
     //runTask('buildFullExtensions'),
     withTaskName('buildFullExtensions', () => run('pnpm -w run build:extensions')),

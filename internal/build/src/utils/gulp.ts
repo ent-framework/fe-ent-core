@@ -1,4 +1,4 @@
-import { buildRoot, run } from '@ent-core/build-utils';
+import { buildRoot, run } from '@ent-build/build-utils';
 import type { TaskFunction } from 'gulp';
 
 export const withTaskName = <T extends TaskFunction>(name: string, fn: T) =>

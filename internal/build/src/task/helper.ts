@@ -1,7 +1,7 @@
 import path from 'path';
 import helper from 'components-helper';
-import { epPackage, epOutput, projRoot } from '@ent-core/build-utils';
-import { getPackageManifest } from '@ent-core/build-utils';
+import { epPackage, epOutput, projRoot } from '@ent-build/build-utils';
+import { getPackageManifest } from '@ent-build/build-utils';
 import type { TaskFunction } from 'gulp';
 import type { InstallOptions } from 'components-helper/lib/type';
 
