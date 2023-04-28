@@ -18,6 +18,7 @@
     "gen:version": "tsx ./scripts/gen-version.ts",
     "build": "cross-env NODE_OPTIONS=--max-old-space-size=8192 pnpm build:support && pnpm build:lib",
     "build:lib": "pnpm run -C internal/build start",
+    "build:uno:css": "pnpm run -C internal/build build:uno:css",
     "build:support": "pnpm --filter './support/**' --stream build",
     "build:extensions": "pnpm --filter './extensions/**' --stream build",
     "build:internal": "pnpm run -r --parallel stub",

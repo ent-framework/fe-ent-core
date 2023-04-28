@@ -9,10 +9,7 @@
   "scripts": {
     "start": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts",
     "dev": "pnpm run stub",
-    "build": "npm run build:module:es && npm run build:module:lib",
-    "build:full": "vite -c vite.full.config.ts build",
-    "build:module:es": "vite -c vite.module.es.config.ts build",
-    "build:module:lib": "vite -c vite.module.lib.config.ts build",
+    "build:uno:css": "vite -c vite.uno.css.config.ts build",
     "stub": "unbuild --stub"
   },
   "peerDependencies": {

@@ -26,6 +26,17 @@ export const copyFiles: TaskFunction = (done) => {
   return parallel(copyReadmeFile, copyAssets())(done);
 };
 
+export const copyUnoFiles: TaskFunction = (done) => {
+  const assetSrc = path.resolve(pkgRoot, 'assets');
+  const assetDest = path.resolve(epOutput, 'assets');
+  const copyAssets = () =>
+    withTaskName('copyAssets', () => {
+      return src(`${assetSrc}/**/*.{jpg,svg,png}`).pipe(dest(assetDest));
+    });
+
+  return parallel(copyReadmeFile, copyAssets())(done);
+};
+
 export const copyTypesDefinitions: TaskFunction = (done) => {
   const src = path.resolve(buildOutput, 'types', 'packages');
   const copyTypes = (module: Module) =>
@@ -65,6 +76,15 @@ export default series(
     //runTask('buildFullExtensions'),
     withTaskName('buildFullExtensions', () => run('pnpm -w run build:extensions')),
     runTask('generateTypesDefinitions'),
+    series(
+      withTaskName('buildUnoCSS', () => run('pnpm -w run build:uno:css')),
+      withTaskName('copyUnoFiles', () =>
+        copyFile(
+          path.resolve(buildOutput, 'unocss', 'style.css'),
+          path.resolve(buildOutput, 'fe-ent-core', 'dist', 'ent-uno.css'),
+        ),
+      )
+    ),
     runTask('buildHelper'),
     series(copyFullStyle, runTask('buildTheme')),
   ),

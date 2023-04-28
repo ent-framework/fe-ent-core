@@ -1,11 +1,21 @@
-import { readPackageJSON } from 'pkg-types';
 import { defineConfig, searchForWorkspaceRoot, UserConfig } from 'vite';
-import { ModuleFormat } from 'rollup';
-import dts from 'vite-plugin-dts';
+import { excludeFiles } from './src/utils';
+import glob from 'fast-glob';
+import { pkgRoot, epRoot } from '@ent-build/build-utils';
 import { createPlugins } from 'fe-ent-build';
+import { readPackageJSON } from 'pkg-types';
+import { ModuleFormat } from 'rollup';
 
 export default defineConfig(async () => {
-  const workspace = searchForWorkspaceRoot(process.cwd());
+  const input = excludeFiles(
+    await glob('**/*.{js,ts,tsx,vue}', {
+      cwd: pkgRoot,
+      absolute: true,
+      onlyFiles: true,
+    }),
+  );
+  const cwd = process.cwd();
+  const workspace = searchForWorkspaceRoot(cwd);
 
   const plugins = await createPlugins({
     isBuild: true,
@@ -19,8 +29,9 @@ export default defineConfig(async () => {
   const { dependencies = {}, peerDependencies = {} } = await readPackageJSON(
     `${workspace}/packages/fe-ent-core`,
   );
+  // console.log([...Object.keys(dependencies), ...Object.keys(peerDependencies)]);
   const packageConfig: UserConfig = {
-    root: `${workspace}/`,
+    root: `${workspace}`,
     resolve: {
       alias: [
         {
@@ -30,10 +41,10 @@ export default defineConfig(async () => {
       ],
     },
     build: {
-      outDir: `${workspace}/dist/`,
+      outDir: `${workspace}/dist/unocss/`,
       lib: {
-        entry: `${workspace}/packages/fe-ent-core/index.ts`,
-        formats: ['es', 'cjs'],
+        entry: input,
+        formats: ['es'],
         fileName: (format: ModuleFormat, entryName: string) => {
           return `${entryName}.${format === 'cjs' ? 'js' : 'mjs'}`;
         },
@@ -41,9 +52,27 @@ export default defineConfig(async () => {
       reportCompressedSize: false,
       chunkSizeWarningLimit: 1500,
       rollupOptions: {
+        //input: options.input,
         maxParallelFileOps: 3,
-        external: [...Object.keys(dependencies), ...Object.keys(peerDependencies)],
+        external: [
+          ...Object.keys(dependencies),
+          ...Object.keys(peerDependencies),
+          'ant-design-vue/es/locale/zh_CN',
+          'ant-design-vue/es/locale/en_US',
+          'dayjs/locale/zh-cn',
+          'dayjs/locale/en',
+          'dayjs/plugin/weekday',
+        ],
+        output: {
+          dir: `${workspace}/dist/unocss/`,
+          preserveModules: true,
+          preserveModulesRoot: epRoot,
+          sourcemap: false,
+          exports: 'named',
+        },
+        //plugins: [commonjs()],
       },
+      minify: false,
     },
     esbuild: {
       drop: ['console', 'debugger'],
@@ -58,21 +87,17 @@ export default defineConfig(async () => {
     optimizeDeps: {
       // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly
       include: [
-        '@iconify/iconify',
+        'ant-design-vue',
         'ant-design-vue/es/locale/zh_CN',
         'ant-design-vue/es/locale/en_US',
+        'dayjs',
+        'dayjs/locale/zh-cn',
+        'dayjs/locale/en',
+        'dayjs/plugin/weekday',
       ],
       exclude: ['vue-demi'],
     },
-    plugins: [
-      ...plugins,
-      dts({
-        tsConfigFilePath: `${workspace}/tsconfig.tds.json`,
-        entryRoot: `${workspace}/packages`,
-        logLevel: 'error',
-        outputDir: `${workspace}/dist/fe-ent-core`,
-      }),
-    ],
+    plugins: [...plugins],
   };
 
   return packageConfig;
