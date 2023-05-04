@@ -39,7 +39,7 @@
   import { propTypes } from '@ent-core/utils/prop-types';
 
   export default defineComponent({
-    name: 'EntTableImage',
+    name: 'EntTableImg',
     components: { Image, PreviewGroup: Image.PreviewGroup, Badge },
     props: {
       imgList: propTypes.arrayOf(propTypes.string),

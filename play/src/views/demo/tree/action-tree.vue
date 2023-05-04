@@ -23,18 +23,18 @@
       <a-button @click="deleteNodeByKey('2-2')" class="mr-2"> 删除parent3节点 </a-button>
       <a-button @click="updateNodeByKey('1-1')" class="mr-2"> 更新parent2节点 </a-button>
     </div>
-    <BasicTree :treeData="treeData" title="函数操作" ref="treeRef" :checkable="true" />
+    <EntTree :treeData="treeData" title="函数操作" ref="treeRef" :checkable="true" />
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { BasicTree, TreeActionType } from 'fe-ent-core/lib/components/tree';
+  import { EntTree, TreeActionType } from 'fe-ent-core/lib/components/tree';
   import { treeData } from './data';
   import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({
-    components: { BasicTree, EntPageWrapper },
+    components: { EntTree, EntPageWrapper },
     setup() {
       const treeRef = ref<Nullable<TreeActionType>>(null);
       const { createMessage } = useMessage();

@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "1.4.16",
+  "version": "1.4.19",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
@@ -11,9 +11,9 @@
   "typings": "lib/index.d.ts",
   "unpkg": "dist/index.full.min.js",
   "sideEffects": [
-    "dist",
-    "es",
-    "lib"
+    "dist/*",
+    "*.less",
+    "assets/*"
   ],
   "peerDependencies": {
     "vue": "^3.2.0",

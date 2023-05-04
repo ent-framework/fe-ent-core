@@ -81,6 +81,7 @@ export function getRawRoute(route: RouteLocationNormalized): RouteLocationNormal
 export const withInstall = <T>(component: T, name?: string) => {
   const comp = component as any;
   comp.install = (app: App) => {
+    console.log('install components');
     const compName = name || comp.name || comp.displayName;
     if (compName) {
       app.component(compName, component);

@@ -73,6 +73,10 @@
     },
   });
 
+  defineOptions({
+    name: 'EntDropdown',
+  });
+
   const emit = defineEmits(['menuEvent']);
 
   function handleClickMenu(item: DropMenu) {

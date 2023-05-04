@@ -14,7 +14,6 @@ import { setupI18n } from 'fe-ent-core/lib/locales/setup-i18n';
 import { registerGlobComp } from 'fe-ent-core/lib/components/register-glob-comp';
 import { getBasicRoutes } from 'fe-ent-core/lib/router/routes';
 import { initApplication } from '/@/init-application';
-import EntCore from 'fe-ent-core';
 import { QrCode } from '@fe-ent-extension/qrcode';
 
 import 'ant-design-vue/dist/antd.css';
@@ -33,7 +32,6 @@ export async function bootstrap(needLogin: boolean) {
   registerGlobComp(app);
 
   //register components
-  app.use(EntCore);
   app.use(QrCode);
 
   // Multilingual configuration

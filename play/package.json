@@ -30,18 +30,9 @@
     "reinstall": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
     "gen:icon": "esno ./build/generate/icon/index.ts"
   },
-  "peerDependencies": {
+  "dependencies": {
     "vue": "^3.2.31",
     "ant-design-vue": "^3.2.0"
-  },
-  "dependencies": {
-    "fe-ent-core": "workspace:*",
-    "fe-ent-code-editor": "workspace:*",
-    "fe-ent-echarts": "workspace:*",
-    "fe-ent-flow-chart": "workspace:*",
-    "fe-ent-markdown": "workspace:*",
-    "fe-ent-qrcode": "workspace:*",
-    "fe-ent-tinymce": "workspace:*"
   },
   "devDependencies": {
     "fe-ent-build": "workspace:*",

@@ -1,17 +1,11 @@
 import type { App } from 'vue';
-import {
-  // Need
-  Button as AntButton,
-  Input,
-  Layout,
-} from 'ant-design-vue';
+import { EntButton } from './button';
+import Input from 'ant-design-vue/lib/input';
+import Layout from 'ant-design-vue/lib/layout';
+import Button from 'ant-design-vue/lib/button';
 
-const compList = [AntButton.Group];
+const AButton = Button;
 
 export function registerGlobComp(app: App) {
-  compList.forEach((comp) => {
-    app.component(comp.name || comp.displayName, comp);
-  });
-
-  app.use(Input).use(Layout).use(AntButton);
+  app.use(Input).use(Layout).use(EntButton).use(AButton);
 }

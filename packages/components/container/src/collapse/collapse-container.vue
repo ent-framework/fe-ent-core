@@ -63,6 +63,10 @@
     components: { Skeleton },
   });
 
+  defineOptions({
+    name: 'EntCollapseContainer',
+  });
+
   const show = ref(true);
 
   const { prefixCls } = useDesign('collapse-container');

@@ -34,11 +34,9 @@ export const generateTypesDefinitions = async () => {
   });
 
   const sourceFiles = await addSourceFiles(project);
-
-  const diagnostics = project.getPreEmitDiagnostics();
-  console.log(project.formatDiagnosticsWithColorAndContext(diagnostics));
-  consola.error(`Diagnostics count: ${chalk.bold(diagnostics.length)}`);
-
+  consola.success('Added source files');
+  typeCheck(project);
+  consola.success('Type check passed!');
   await project.emit({
     emitOnlyDtsFiles: true,
   });
@@ -131,4 +129,14 @@ async function addSourceFiles(project: Project) {
     }),
   ]);
   return sourceFiles;
+}
+
+function typeCheck(project: Project) {
+  const diagnostics = project.getPreEmitDiagnostics();
+  if (diagnostics.length > 0) {
+    consola.error(project.formatDiagnosticsWithColorAndContext(diagnostics));
+    const err = new Error('Failed to generate dts.');
+    consola.error(err);
+    throw err;
+  }
 }

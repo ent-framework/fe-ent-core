@@ -5,6 +5,7 @@ export default definePackageConfig({
       lib: {
         entry: 'src/index.ts',
       },
+      sourcemap: true,
     },
     optimizeDeps: {
       include: [

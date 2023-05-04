@@ -8,6 +8,7 @@ export default definePackageConfig({
       lib: {
         entry: 'src/index.ts',
       },
+      sourcemap: true,
     },
     optimizeDeps: {
       include: ['echarts/core', 'echarts/charts', 'echarts/components', 'echarts/renderers'],

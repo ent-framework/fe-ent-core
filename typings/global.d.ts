@@ -1,8 +1,8 @@
-import '@vue/runtime-core'
+import '@vue/runtime-core';
+
 // GlobalComponents for Volar
 declare module 'vue' {
   export interface GlobalComponents {
-    BasicTree: typeof import('fe-ent-core')['BasicTree'];
     EntAppDarkModeToggle: typeof import('fe-ent-core')['EntAppDarkModeToggle'];
     EntAppLocalePicker: typeof import('fe-ent-core')['EntAppLocalePicker'];
     EntAppProvider: typeof import('fe-ent-core')['EntAppProvider'];
@@ -44,7 +44,6 @@ declare module 'vue' {
     EntUpload: typeof import('fe-ent-core')['EntUpload'];
     EntVirtualScroll: typeof import('fe-ent-core')['EntVirtualScroll'];
     ExtImportExcel: typeof import('fe-ent-core')['ExtImportExcel'];
-    Loading: typeof import('fe-ent-core')['Loading'];
   }
 }
 

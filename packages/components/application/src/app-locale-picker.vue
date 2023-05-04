@@ -40,6 +40,10 @@
     components: { EntDropdown },
   });
 
+  defineOptions({
+    name: 'EntAppLocalePicker',
+  });
+
   const selectedKeys = ref<string[]>([]);
 
   const { changeLocale, getLocale } = useLocale();

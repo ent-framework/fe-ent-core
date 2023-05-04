@@ -29,6 +29,10 @@
     },
   ]);
 
+  defineOptions({
+    name: 'EntAppDarkModeToggle',
+  });
+
   function toggleDarkMode() {
     const darkMode = getDarkMode.value === ThemeEnum.DARK ? ThemeEnum.LIGHT : ThemeEnum.DARK;
     setDarkMode(darkMode);

@@ -2,10 +2,10 @@
   <EntPageWrapper title="Tree基础示例">
     <Row :gutter="[16, 16]">
       <Col :span="8">
-        <BasicTree title="基础示例，默认展开第一层" :treeData="treeData" defaultExpandLevel="1" />
+        <EntTree title="基础示例，默认展开第一层" :treeData="treeData" defaultExpandLevel="1" />
       </Col>
       <Col :span="8">
-        <BasicTree
+        <EntTree
           title="可勾选，默认全部展开"
           :treeData="treeData"
           :checkable="true"
@@ -14,7 +14,7 @@
         />
       </Col>
       <Col :span="8">
-        <BasicTree
+        <EntTree
           title="指定默认展开/勾选示例"
           :treeData="treeData"
           :checkable="true"
@@ -23,7 +23,7 @@
         />
       </Col>
       <Col :span="8">
-        <BasicTree
+        <EntTree
           title="懒加载异步树"
           ref="asyncTreeRef"
           :treeData="tree"
@@ -36,7 +36,7 @@
             <a-button @click="loadTreeData" :loading="treeLoading">加载数据</a-button>
           </template>
           <Spin :spinning="treeLoading">
-            <BasicTree ref="asyncExpandTreeRef" :treeData="tree2" />
+            <EntTree ref="asyncExpandTreeRef" :treeData="tree2" />
           </Spin>
         </Card>
       </Col>
@@ -45,14 +45,14 @@
 </template>
 <script lang="ts">
   import { defineComponent, nextTick, ref, unref } from 'vue';
-  import { BasicTree, TreeActionType, TreeItem } from 'fe-ent-core/lib/components/tree';
+  import { EntTree, TreeActionType, TreeItem } from 'fe-ent-core/lib/components/tree';
   import { treeData } from './data';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { Card, Row, Col, Spin } from 'ant-design-vue';
   import { cloneDeep } from 'lodash';
 
   export default defineComponent({
-    components: { BasicTree, EntPageWrapper, Card, Row, Col, Spin },
+    components: { EntTree, EntPageWrapper, Card, Row, Col, Spin },
     setup() {
       const asyncTreeRef = ref<Nullable<TreeActionType>>(null);
       const asyncExpandTreeRef = ref<Nullable<TreeActionType>>(null);

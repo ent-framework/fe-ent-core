@@ -31,6 +31,10 @@
     normal: { type: Boolean },
   });
 
+  defineOptions({
+    name: 'EntTitle',
+  });
+
   const { prefixCls } = useDesign('basic-title');
   const slots = useSlots();
   const getClass = computed(() => [

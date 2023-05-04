@@ -15,7 +15,7 @@ interface DefineOptions {
 function definePackageConfig(defineOptions: DefineOptions = {}) {
   const { overrides = {} } = defineOptions;
 
-  return defineConfig(async ({ command }) => {
+  return defineConfig(async ({ command, mode }) => {
     const root = process.cwd();
     const plugins = await createPlugins({
       isBuild: true,
@@ -48,7 +48,7 @@ function definePackageConfig(defineOptions: DefineOptions = {}) {
         }),
       ],
     };
-    const mergedConfig = mergeConfig(commonConfig, packageConfig);
+    const mergedConfig = mergeConfig(commonConfig({ command, mode }), packageConfig);
 
     return mergeConfig(mergedConfig, overrides);
   });

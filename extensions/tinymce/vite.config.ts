@@ -5,9 +5,7 @@ export default definePackageConfig({
       lib: {
         entry: 'src/index.ts',
       },
-    },
-    optimizeDeps: {
-      include: ['fe-ent-core'],
+      sourcemap: true,
     },
     css: {
       preprocessorOptions: {

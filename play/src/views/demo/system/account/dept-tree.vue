@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white m-4 mr-0 overflow-hidden">
-    <BasicTree
+    <EntTree
       title="部门列表"
       toolbar
       search
@@ -14,12 +14,12 @@
 <script lang="ts">
   import { defineComponent, onMounted, ref } from 'vue';
 
-  import { BasicTree, TreeItem } from 'fe-ent-core/lib/components/tree';
+  import { EntTree, TreeItem } from 'fe-ent-core/lib/components/tree';
   import { getDeptList } from '/@/api/system';
 
   export default defineComponent({
     name: 'DeptTree',
-    components: { BasicTree },
+    components: { EntTree },
 
     emits: ['select'],
     setup(_, { emit }) {

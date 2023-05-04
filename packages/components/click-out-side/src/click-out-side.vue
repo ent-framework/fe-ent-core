@@ -9,6 +9,10 @@
   const emit = defineEmits(['mounted', 'clickOutside']);
   const wrap = ref<ElRef>(null);
 
+  defineOptions({
+    name: 'EntClickOutSide',
+  });
+
   onClickOutside(wrap, () => {
     emit('clickOutside');
   });

@@ -35,7 +35,7 @@
   import { getAllParentPath } from '@ent-core/router/helper/menu-helper';
 
   export default defineComponent({
-    name: 'BasicMenu',
+    name: 'EntMenu',
     components: {
       Menu,
       BasicSubMenuItem,

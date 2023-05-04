@@ -1,13 +1,13 @@
 {
   "name": "fe-ent-code-editor",
-  "version": "1.4.16",
+  "version": "1.4.19",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "typings": "dist/index.d.ts",
+  "typings": "dist/src/index.d.ts",
   "unpkg": "dist/index.min.js",
   "exports": {
     ".": {

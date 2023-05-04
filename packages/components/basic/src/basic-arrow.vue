@@ -31,6 +31,10 @@
     inset: { type: Boolean },
   });
 
+  defineOptions({
+    name: 'EntArrow',
+  });
+
   const { prefixCls } = useDesign('basic-arrow');
 
   // get component class

@@ -4,7 +4,7 @@
     "composite": true,
     "jsx": "preserve",
     "lib": ["ES2018", "DOM", "DOM.Iterable"],
-    "types": ["unplugin-vue-macros/macros-global"],
+    "types": ["unplugin-vue-macros/macros-global", "unplugin-vue-define-options/macros-global", "vite/client"],
     "skipLibCheck": true,
     "strictFunctionTypes": false,
   },
@@ -21,6 +21,7 @@
   ],
   "exclude": [
     "node_modules",
+    "dist",
     "**/dist",
     "**/__tests__/**/*",
     "**/gulpfile.ts",

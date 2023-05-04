@@ -90,7 +90,7 @@ function defineApplicationConfig(defineOptions: DefineOptions = {}) {
       plugins,
     };
 
-    const mergedConfig = mergeConfig(commonConfig, applicationConfig);
+    const mergedConfig = mergeConfig(commonConfig({ command, mode }), applicationConfig);
 
     return mergeConfig(mergedConfig, overrides);
   });
