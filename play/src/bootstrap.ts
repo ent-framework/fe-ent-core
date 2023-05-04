@@ -12,12 +12,17 @@ import { setupStore } from 'fe-ent-core/lib/store';
 import { setupGlobDirectives } from 'fe-ent-core/lib/directives';
 import { setupI18n } from 'fe-ent-core/lib/locales/setup-i18n';
 import { registerGlobComp } from 'fe-ent-core/lib/components/register-glob-comp';
+import { useLayout } from 'fe-ent-core/lib/router/helper/layout-helper';
 import { getBasicRoutes } from 'fe-ent-core/lib/router/routes';
 import { initApplication } from '/@/init-application';
+import EntCore from 'fe-ent-core';
 import { QrCode } from '@fe-ent-extension/qrcode';
 
 import 'ant-design-vue/dist/antd.css';
 import 'fe-ent-core/lib/theme/index.less';
+
+import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default';
+import { default as IFRAME } from 'fe-ent-core/lib/views/sys/iframe/frame-blank';
 
 export async function bootstrap(needLogin: boolean) {
   const app = createApp(App);
@@ -32,6 +37,7 @@ export async function bootstrap(needLogin: boolean) {
   registerGlobComp(app);
 
   //register components
+  app.use(EntCore);
   app.use(QrCode);
 
   // Multilingual configuration
@@ -41,11 +47,11 @@ export async function bootstrap(needLogin: boolean) {
   // Initialize internal system configuration
   await initAppConfigStore();
 
-  //const layoutMgt = useLayout();
+  const layoutMgt = useLayout();
 
   //initial layout
-  //layoutMgt.use('LAYOUT', LAYOUT);
-  //layoutMgt.use('IFRAME', IFRAME);
+  layoutMgt.use('LAYOUT', LAYOUT);
+  layoutMgt.use('IFRAME', IFRAME);
 
   if (needLogin) {
     // Configure routing
@@ -56,8 +62,6 @@ export async function bootstrap(needLogin: boolean) {
   }
 
   setupRouter(app);
-
-  //importMenuModules(import.meta.globEager('./modules/**/*.ts'));
 
   // router-guard
   setupRouterGuard(router, needLogin);

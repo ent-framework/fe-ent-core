@@ -22,6 +22,11 @@
     </div>
   </div>
 </template>
+<script lang="ts">
+  export default {
+    name: 'EntCollapseContainer',
+  };
+</script>
 <script lang="ts" setup>
   import type { PropType } from 'vue';
   import { defineComponent, ref } from 'vue';
@@ -61,10 +66,6 @@
 
   defineComponent({
     components: { Skeleton },
-  });
-
-  defineOptions({
-    name: 'EntCollapseContainer',
   });
 
   const show = ref(true);

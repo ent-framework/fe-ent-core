@@ -34,7 +34,11 @@
     </template>
   </a-dropdown>
 </template>
-
+<script lang="ts">
+  export default {
+    name: 'EntDropdown',
+  };
+</script>
 <script lang="ts" setup>
   import { computed } from 'vue';
   import type { PropType } from 'vue';
@@ -71,10 +75,6 @@
       type: Array as PropType<string[]>,
       default: () => [],
     },
-  });
-
-  defineOptions({
-    name: 'EntDropdown',
   });
 
   const emit = defineEmits(['menuEvent']);

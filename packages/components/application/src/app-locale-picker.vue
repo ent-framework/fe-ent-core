@@ -17,6 +17,11 @@
     </span>
   </EntDropdown>
 </template>
+<script lang="ts">
+  export default {
+    name: 'EntAppLocalePicker',
+  };
+</script>
 <script lang="ts" setup>
   import type { LocaleType } from '@ent-core/logics/types/config';
   import type { DropMenu } from '@ent-core/components/dropdown';
@@ -38,10 +43,6 @@
 
   defineComponent({
     components: { EntDropdown },
-  });
-
-  defineOptions({
-    name: 'EntAppLocalePicker',
   });
 
   const selectedKeys = ref<string[]>([]);

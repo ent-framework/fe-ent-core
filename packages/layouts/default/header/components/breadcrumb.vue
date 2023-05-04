@@ -53,19 +53,23 @@
       watchEffect(async () => {
         if (currentRoute.value.name === REDIRECT_NAME) return;
         const menus = await getMenus();
-
+        console.log(menus);
         const routeMatched = currentRoute.value.matched;
+        console.log(routeMatched);
         const cur = routeMatched?.[routeMatched.length - 1];
         let path = currentRoute.value.path;
+
 
         if (cur && cur?.meta?.currentActiveMenu) {
           path = cur.meta.currentActiveMenu as string;
         }
-
+        console.log(path);
         const parent = getAllParentPath(menus, path);
+        console.log(parent);
         const filterMenus = menus.filter((item) => item.path === parent[0]);
+        console.log(filterMenus);
         const matched = getMatched(filterMenus, parent) as any;
-
+        console.log(matched);
         if (!matched || matched.length === 0) return;
 
         const breadcrumbList = filterItem(matched);
@@ -76,23 +80,24 @@
             name: currentRoute.value.meta?.title || currentRoute.value.name,
           } as unknown as RouteLocationMatched);
         }
+        console.log(breadcrumbList);
         routes.value = breadcrumbList;
       });
 
       function getMatched(menus: Menu[], parent: string[]) {
-        const metched: Menu[] = [];
+        const matched: Menu[] = [];
         menus.forEach((item) => {
           if (parent.includes(item.path)) {
-            metched.push({
+            matched.push({
               ...item,
               name: (item.meta?.title || item.name) as string,
             });
           }
           if (item.children?.length) {
-            metched.push(...getMatched(item.children, parent));
+            matched.push(...getMatched(item.children, parent));
           }
         });
-        return metched;
+        return matched;
       }
 
       function filterItem(list: RouteLocationMatched[]) {

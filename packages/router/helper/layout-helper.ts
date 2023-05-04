@@ -12,8 +12,12 @@ export interface LayoutManagement {
 //const LayoutManagementKey: InjectionKey<LayoutManagement> = Symbol('layout-management');
 
 const LayoutMap = new Map<string, Plugin | Function>();
+
 const layoutMgt: LayoutManagement = {
   use(name: string, layout: Plugin | Function) {
+    if (LayoutMap.has(name)) {
+      console.log(`${name} has been registered.`);
+    }
     LayoutMap.set(name, layout);
     return layoutMgt;
   },

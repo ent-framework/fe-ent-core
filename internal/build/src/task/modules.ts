@@ -1,7 +1,6 @@
 import { Plugin, rollup } from 'rollup';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import DefineOptions from 'unplugin-vue-define-options/rollup';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import esbuild from 'rollup-plugin-esbuild';
@@ -41,7 +40,6 @@ export const buildModules = async () => {
         reactivityTransform: true,
       }) as Plugin,
       vueJsx(),
-      DefineOptions(),
       nodeResolve({
         extensions: ['.mjs', '.js', '.ts', '.tsx'],
       }),

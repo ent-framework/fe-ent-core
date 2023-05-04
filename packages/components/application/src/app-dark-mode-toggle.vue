@@ -5,6 +5,11 @@
     <EntSvgIcon size="14" name="moon" />
   </div>
 </template>
+<script lang="ts">
+  export default {
+    name: 'EntAppDarkModeToggle',
+  };
+</script>
 <script lang="ts" setup>
   import { computed, unref } from 'vue';
   import { EntSvgIcon } from '@ent-core/components/icon';
@@ -28,10 +33,6 @@
       [`${prefixCls}--dark`]: unref(isDark),
     },
   ]);
-
-  defineOptions({
-    name: 'EntAppDarkModeToggle',
-  });
 
   function toggleDarkMode() {
     const darkMode = getDarkMode.value === ThemeEnum.DARK ? ThemeEnum.LIGHT : ThemeEnum.DARK;

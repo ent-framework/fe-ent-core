@@ -4,6 +4,7 @@
     "allowJs": true,
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "paths": {
+      "@ent-core/*": ["packages/*"],
       "/#/*": [
         "types/*"
       ],

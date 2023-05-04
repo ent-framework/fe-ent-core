@@ -7,6 +7,11 @@
     <Icon icon="ion:chevron-forward" :style="$attrs.iconStyle" />
   </span>
 </template>
+<script lang="ts">
+  export default {
+    name: 'EntArrow',
+  };
+</script>
 <script lang="ts" setup>
   import { computed } from 'vue';
   import Icon from '@ent-core/components/icon/src/icon.vue';
@@ -29,10 +34,6 @@
      * Cancel padding/margin for inline
      */
     inset: { type: Boolean },
-  });
-
-  defineOptions({
-    name: 'EntArrow',
   });
 
   const { prefixCls } = useDesign('basic-arrow');

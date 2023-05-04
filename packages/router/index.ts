@@ -5,6 +5,8 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import { AppRouteModule, AppRouteRecordRaw } from './types';
 import { getAppEnvConfig } from '@ent-core/utils/env';
 import { normalizeRoutePath } from '@ent-core/router/helper/route-helper';
+import { useLayout } from '@ent-core/router/helper/layout-helper';
+import { isString } from '@ent-core/utils/is';
 
 export interface EntRouter extends Router {
   parent: Router;
@@ -40,16 +42,22 @@ export const router: EntRouter = {
     return parent.addRoute(route as RouteRecordRaw);
   },
   addBizRoutes: function (modules: Record<string, Record<string, any>>): () => void {
+    console.log(modules);
     const routeModuleList: AppRouteModule[] = [];
-
+    const layoutMgt = useLayout();
     Object.keys(modules).forEach((key) => {
       const mod = modules[key].default || {};
       const modList = Array.isArray(mod) ? [...mod] : [mod];
       modList.forEach((c) => {
         normalizeRoutePath(c);
+        if (isString(c.component)) {
+          console.log('lookup component');
+          c.component = layoutMgt.getLayout(c.component as string);
+        }
       });
       routeModuleList.push(...modList);
     });
+    console.log(routeModuleList);
     router.bizRoutes.push(...routeModuleList);
     return noop;
   },

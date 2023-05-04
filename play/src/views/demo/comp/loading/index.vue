@@ -6,7 +6,7 @@
         全屏 Loading
       </a-button>
       <a-button class="my-4" type="primary" @click="openCompAbsolute"> 容器内 Loading </a-button>
-      <Loading
+      <EntLoading
         :loading="loading"
         :absolute="absolute"
         :theme="theme"
@@ -30,12 +30,12 @@
 </template>
 <script lang="ts">
   import { defineComponent, reactive, toRefs, ref } from 'vue';
-  import { Loading, useLoading } from 'fe-ent-core/lib/components/loading';
+  import { EntLoading, useLoading } from 'fe-ent-core/lib/components/loading';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { Alert } from 'ant-design-vue';
 
   export default defineComponent({
-    components: { Loading, EntPageWrapper, [Alert.name]: Alert },
+    components: { EntLoading, EntPageWrapper, [Alert.name]: Alert },
     setup() {
       const wrapEl = ref<ElRef>(null);
 
