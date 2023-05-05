@@ -1,30 +1,31 @@
 <template>
-  <a-tree-select v-bind="getAttrs" @change="handleChange">
+  <a-tree v-bind="getAttrs" @change="handleChange">
     <template #[item]="data" v-for="item in Object.keys($slots)">
       <slot :name="item" v-bind="data || {}"></slot>
     </template>
     <template #suffixIcon v-if="loading">
       <LoadingOutlined spin />
     </template>
-  </a-tree-select>
+  </a-tree>
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, watch, ref, onMounted, unref, PropType } from 'vue';
-  import { TreeSelect } from 'ant-design-vue';
+  import { type PropType, computed, defineComponent, watch, ref, onMounted, unref } from 'vue';
+  import { Tree } from 'ant-design-vue';
   import { isArray, isFunction } from '@ent-core/utils/is';
   import { get } from 'lodash-es';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { LoadingOutlined } from '@ant-design/icons-vue';
 
   export default defineComponent({
-    name: 'ApiTreeSelect',
-    components: { ATreeSelect: TreeSelect, LoadingOutlined },
+    name: 'ApiTree',
+    components: { ATree: Tree, LoadingOutlined },
     props: {
       api: { type: Function as PropType<(arg?: Recordable<any>) => Promise<Recordable<any>>> },
       params: { type: Object },
       immediate: { type: Boolean, default: true },
       resultField: propTypes.string.def(''),
+      afterFetch: { type: Function as PropType<AnyFunction> },
     },
     emits: ['options-change', 'change'],
     setup(props, { attrs, emit }) {
@@ -62,7 +63,7 @@
       });
 
       async function fetch() {
-        const { api } = props;
+        const { api, afterFetch } = props;
         if (!api || !isFunction(api)) return;
         loading.value = true;
         treeData.value = [];
@@ -71,6 +72,9 @@
           result = await api(props.params);
         } catch (e) {
           console.error(e);
+        }
+        if (afterFetch && isFunction(afterFetch)) {
+          result = afterFetch(result);
         }
         loading.value = false;
         if (!result) return;

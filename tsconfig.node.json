@@ -12,7 +12,6 @@
     "support/**/*",
     "support/**/*.json",
     "scripts/**/*",
-    "packages/theme-chalk/*",
     "packages/fe-ent-core/version.ts",
     "packages/fe-ent-core/package.json"
   ],

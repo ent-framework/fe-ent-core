@@ -51,26 +51,26 @@ export function useForm(props?: Props): UseFormReturnType {
   const methods: FormActionType = {
     scrollToField: async (name: NamePath, options?: ScrollOptions | undefined) => {
       const form = await getForm();
-      await form.scrollToField(name, options);
+      form.scrollToField(name, options);
     },
     setProps: async (formProps: Partial<FormProps>) => {
       const form = await getForm();
-      await form.setProps(formProps);
+      form.setProps(formProps);
     },
 
     updateSchema: async (data: Partial<FormSchema> | Partial<FormSchema>[]) => {
       const form = await getForm();
-      await form.updateSchema(data);
+      form.updateSchema(data);
     },
 
     resetSchema: async (data: Partial<FormSchema> | Partial<FormSchema>[]) => {
       const form = await getForm();
-      await form.resetSchema(data);
+      form.resetSchema(data);
     },
 
     clearValidate: async (name?: string | string[]) => {
       const form = await getForm();
-      await form.clearValidate(name);
+      form.clearValidate(name);
     },
 
     resetFields: async () => {
@@ -79,8 +79,8 @@ export function useForm(props?: Props): UseFormReturnType {
       });
     },
 
-    removeSchemaByFiled: async (field: string | string[]) => {
-      unref(formRef)?.removeSchemaByFiled(field);
+    removeSchemaByField: async (field: string | string[]) => {
+      unref(formRef)?.removeSchemaByField(field);
     },
 
     // TODO promisify
@@ -90,16 +90,16 @@ export function useForm(props?: Props): UseFormReturnType {
 
     setFieldsValue: async (values: Recordable) => {
       const form = await getForm();
-      await form.setFieldsValue(values);
+      form.setFieldsValue(values);
     },
 
     appendSchemaByField: async (
-      schema: FormSchema,
+      schema: FormSchema | FormSchema[],
       prefixField: string | undefined,
-      first?: boolean,
+      first: boolean,
     ) => {
       const form = await getForm();
-      await form.appendSchemaByField(schema, prefixField, first);
+      form.appendSchemaByField(schema, prefixField, first);
     },
 
     submit: async (): Promise<any> => {

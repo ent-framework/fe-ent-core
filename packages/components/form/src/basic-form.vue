@@ -37,7 +37,7 @@
   </Form>
 </template>
 <script lang="ts">
-  import type { FormActionType, FormProps, FormSchema } from './types/form';
+  import type { FormActionType, FormSchema } from './types/form';
   import type { AdvanceState } from './types/hooks';
   import type { Ref } from 'vue';
 
@@ -55,17 +55,19 @@
   import { createFormContext } from './hooks/use-form-context';
   import { useAutoFocus } from './hooks/use-auto-focus';
   import { useModalContext } from '@ent-core/components/modal';
+  import { useDebounceFn } from '@vueuse/core';
   import { basicProps } from './props';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import dayjs from 'dayjs';
+  import type { FormProps } from './types/form';
+  import { cloneDeep } from 'lodash-es';
 
   export default defineComponent({
     name: 'EntForm',
     components: { FormItem, Form, Row, FormAction },
     props: basicProps,
-    emits: ['advanced-change', 'reset', 'submit', 'register'],
-    setup(props, context) {
-      const formModel = reactive<Recordable>({});
+    emits: ['advanced-change', 'reset', 'submit', 'register', 'field-value-change'],
+    setup(props, { emit, attrs }) {
+      const formModel = reactive({});
       const modalFn = useModalContext();
 
       const advanceState = reactive<AdvanceState>({
@@ -75,7 +77,7 @@
         actionSpan: 6,
       });
 
-      const defaultValueRef = ref<Recordable>({});
+      const defaultValueRef = ref({});
       const isInitedDefaultRef = ref(false);
       const propsRef = ref<Partial<FormProps>>({});
       const schemaRef = ref<Nullable<FormSchema[]>>(null);
@@ -99,7 +101,7 @@
       });
 
       // Get uniform row style and Row configuration for the entire form
-      const getRow = computed((): Recordable => {
+      const getRow = computed(() => {
         const { baseRowStyle = {}, rowProps } = unref(getProps);
         return {
           style: baseRowStyle,
@@ -107,20 +109,18 @@
         };
       });
 
-      const getBindValue = computed(
-        () => ({ ...context.attrs, ...props, ...unref(getProps) } as Recordable),
-      );
+      const getBindValue = computed(() => ({ ...attrs, ...props, ...unref(getProps) }));
 
       const getSchema = computed((): FormSchema[] => {
         const schemas: FormSchema[] = unref(schemaRef) || (unref(getProps).schemas as any);
         for (const schema of schemas) {
-          const { defaultValue, component } = schema;
+          const { defaultValue, component, isHandleDateDefaultValue = true } = schema;
           // handle date type
-          if (defaultValue && dateItemType.includes(component)) {
+          if (isHandleDateDefaultValue && defaultValue && dateItemType.includes(component)) {
             if (!Array.isArray(defaultValue)) {
               schema.defaultValue = dateUtil(defaultValue);
             } else {
-              const def: dayjs.Dayjs[] = [];
+              const def: any[] = [];
               defaultValue.forEach((item) => {
                 def.push(dateUtil(item));
               });
@@ -129,19 +129,21 @@
           }
         }
         if (unref(getProps).showAdvancedButton) {
-          return schemas.filter((schema) => schema.component !== 'Divider') as FormSchema[];
+          return cloneDeep(
+            schemas.filter((schema) => schema.component !== 'Divider') as FormSchema[],
+          );
         } else {
-          return schemas as FormSchema[];
+          return cloneDeep(schemas as FormSchema[]);
         }
       });
 
-      const { handleToggleAdvanced } = useAdvanced({
+      const { handleToggleAdvanced, fieldsIsAdvancedMap } = useAdvanced({
         advanceState,
+        emit,
         getProps,
         getSchema,
         formModel,
         defaultValueRef,
-        ...context,
       });
 
       const { handleFormValues, initDefault } = useFormValues({
@@ -168,10 +170,11 @@
         updateSchema,
         resetSchema,
         appendSchemaByField,
-        removeSchemaByFiled,
+        removeSchemaByField,
         resetFields,
         scrollToField,
       } = useFormEvents({
+        emit,
         getProps,
         formModel,
         getSchema,
@@ -179,7 +182,6 @@
         formElRef: formElRef as Ref<FormActionType>,
         schemaRef: schemaRef as Ref<FormSchema[]>,
         handleFormValues,
-        ...context,
       });
 
       createFormContext({
@@ -223,14 +225,23 @@
         },
       );
 
+      watch(
+        () => formModel,
+        useDebounceFn(() => {
+          unref(getProps).submitOnChange && handleSubmit();
+        }, 300),
+        { deep: true },
+      );
+
       async function setProps(formProps: Partial<FormProps>): Promise<void> {
         propsRef.value = deepMerge(unref(propsRef) || {}, formProps);
       }
 
-      function setFormModel(key: string, value: any) {
+      function setFormModel(key: string, value: any, schema: FormSchema) {
         formModel[key] = value;
-        const { validateTrigger } = unref(getBindValue);
-        if (!validateTrigger || validateTrigger === 'change') {
+        emit('field-value-change', key, value);
+        // TODO 优化验证，这里如果是autoLink=false手动关联的情况下才会再次触发此函数
+        if (schema && schema.itemProps && !schema.itemProps.autoLink) {
           validateFields([key]).catch((_) => {});
         }
       }
@@ -253,7 +264,7 @@
         updateSchema,
         resetSchema,
         setProps,
-        removeSchemaByFiled,
+        removeSchemaByField,
         appendSchemaByField,
         clearValidate,
         validateFields,
@@ -264,7 +275,7 @@
 
       onMounted(() => {
         initDefault();
-        context.emit('register', formActionType);
+        emit('register', formActionType);
       });
 
       return {
@@ -281,9 +292,8 @@
         formActionType: formActionType as any,
         setFormModel,
         getFormClass,
-        getFormActionBindProps: computed(
-          (): Recordable => ({ ...getProps.value, ...advanceState }),
-        ),
+        getFormActionBindProps: computed(() => ({ ...getProps.value, ...advanceState })),
+        fieldsIsAdvancedMap,
         ...formActionType,
       };
     },

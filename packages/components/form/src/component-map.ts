@@ -24,8 +24,10 @@ import {
 import ApiRadioGroup from './components/api-radio-group.vue';
 import RadioButtonGroup from './components/radio-button-group.vue';
 import ApiSelect from './components/api-select.vue';
+import ApiTree from './components/api-tree.vue';
 import ApiTreeSelect from './components/api-tree-select.vue';
 import ApiCascader from './components/api-cascader.vue';
+import ApiTransfer from './components/api-transfer.vue';
 import { EntUpload } from '@ent-core/components/upload';
 import { EntStrengthMeter } from '@ent-core/components/strength-meter';
 import { EntIconPicker } from '@ent-core/components/icon';
@@ -43,6 +45,7 @@ componentMap.set('AutoComplete', AutoComplete);
 
 componentMap.set('Select', Select);
 componentMap.set('ApiSelect', ApiSelect);
+componentMap.set('ApiTree', ApiTree);
 componentMap.set('TreeSelect', TreeSelect);
 componentMap.set('ApiTreeSelect', ApiTreeSelect);
 componentMap.set('ApiRadioGroup', ApiRadioGroup);
@@ -55,6 +58,7 @@ componentMap.set('ApiCascader', ApiCascader);
 componentMap.set('Cascader', Cascader);
 componentMap.set('Slider', Slider);
 componentMap.set('Rate', Rate);
+componentMap.set('ApiTransfer', ApiTransfer);
 
 componentMap.set('DatePicker', DatePicker);
 componentMap.set('MonthPicker', DatePicker.MonthPicker);

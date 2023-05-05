@@ -1,23 +1,23 @@
 import type { NamePath, RuleObject } from 'ant-design-vue/lib/form/interface';
-import type { VNode } from 'vue';
+import type { VNode, CSSProperties, ExtractPropTypes } from 'vue';
 import type { ButtonProps } from '@ent-core/components/button';
 import type { FormItem } from './form-item';
 import type { ColEx, ComponentType } from './index';
 import type { TableActionType } from '@ent-core/components/table/src/types/table';
-import type { CSSProperties } from 'vue';
 import type { RowProps } from 'ant-design-vue/lib/grid/Row';
+import { basicProps } from '../props';
 
-export type FieldMapToTime = [string, [string, string], string?][];
+export type FieldMapToTime = [string, [string, string], (string | [string, string])?][];
+
+export type Rule = RuleObject & {
+  trigger?: 'blur' | 'change' | ['change', 'blur'];
+};
 
 export interface RenderCallbackParams {
   schema: FormSchema;
   values: Recordable;
   model: Recordable;
   field: string;
-}
-
-export interface AntdButtonProps extends ButtonProps {
-  text?: string;
 }
 
 export interface FormActionType {
@@ -29,9 +29,9 @@ export interface FormActionType {
   updateSchema: (data: Partial<FormSchema> | Partial<FormSchema>[]) => Promise<void>;
   resetSchema: (data: Partial<FormSchema> | Partial<FormSchema>[]) => Promise<void>;
   setProps: (formProps: Partial<FormProps>) => Promise<void>;
-  removeSchemaByFiled: (field: string | string[]) => Promise<void>;
+  removeSchemaByField: (field: string | string[]) => Promise<void>;
   appendSchemaByField: (
-    schema: FormSchema,
+    schema: FormSchema | FormSchema[],
     prefixField: string | undefined,
     first?: boolean | undefined,
   ) => Promise<void>;
@@ -44,18 +44,23 @@ export type FormRegisterFn = (formInstance: FormActionType) => void;
 
 export type UseFormReturnType = [FormRegisterFn, FormActionType];
 
-export interface FormProps {
+export type FormProps = Partial<ExtractPropTypes<typeof basicProps>>;
+
+export interface FormProps22 {
+  name?: string;
   layout?: 'vertical' | 'inline' | 'horizontal';
   // Form value
   model?: Recordable;
   // The width of all items in the entire form
   labelWidth?: number | string;
-  //alignment
+  // alignment
   labelAlign?: 'left' | 'right';
-  //Row configuration for the entire form
+  // Row configuration for the entire form
   rowProps?: RowProps;
   // Submit form on reset
   submitOnReset?: boolean;
+  // Submit form on form changing
+  submitOnChange?: boolean;
   // Col configuration for the entire form
   labelCol?: Partial<ColEx>;
   // Col configuration for the entire form
@@ -99,10 +104,10 @@ export interface FormProps {
   showActionButtonGroup?: boolean;
 
   // Reset button configuration
-  resetButtonOptions?: Partial<AntdButtonProps>;
+  resetButtonOptions?: Partial<ButtonProps>;
 
   // Confirm button configuration
-  submitButtonOptions?: Partial<AntdButtonProps>;
+  submitButtonOptions?: Partial<ButtonProps>;
 
   // Operation column configuration
   actionColOptions?: Partial<ColEx>;
@@ -156,7 +161,7 @@ export interface FormSchema {
   suffix?: string | number | ((values: RenderCallbackParams) => string | number);
 
   // Validation rules
-  rules?: RuleObject[];
+  rules?: Rule[];
   // Check whether the information is added to the label
   rulesMessageJoinLabel?: boolean;
 
@@ -168,6 +173,10 @@ export interface FormSchema {
 
   // 默认值
   defaultValue?: any;
+
+  // 是否自动处理与时间相关组件的默认值
+  isHandleDateDefaultValue?: boolean;
+
   isAdvanced?: boolean;
 
   // Matching details components
@@ -197,7 +206,7 @@ export interface FormSchema {
 
   dynamicDisabled?: boolean | ((renderCallbackParams: RenderCallbackParams) => boolean);
 
-  dynamicRules?: (renderCallbackParams: RenderCallbackParams) => RuleObject[];
+  dynamicRules?: (renderCallbackParams: RenderCallbackParams) => Rule[];
 }
 export interface HelpComponentProps {
   maxWidth: string;

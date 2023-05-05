@@ -3,7 +3,7 @@
   "compilerOptions": {
     "composite": true,
     "jsx": "preserve",
-    "lib": ["ES2018", "DOM", "DOM.Iterable"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "strictFunctionTypes": false,
     "types": ["unplugin-vue-macros/macros-global", "vite/client"],

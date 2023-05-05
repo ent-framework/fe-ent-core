@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-code-editor",
-  "version": "1.4.25",
+  "version": "1.4.26",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -29,8 +29,8 @@
     "build": "cross-env NODE_ENV=production vite build"
   },
   "peerDependencies": {
-    "vue": "^3.2.31",
-    "ant-design-vue": "^3.2.0",
+    "vue": "^3.2.47",
+    "ant-design-vue": "^3.2.17",
     "fe-ent-core": "workspace:*"
   },
   "dependencies": {
@@ -40,7 +40,7 @@
     "fe-ent-build": "workspace:*",
     "@types/codemirror": "^5.60.5",
     "rimraf": "^3.0.2",
-    "vue": "^3.2.31",
+    "vue": "^3.2.47",
     "vite": "4.2.2"
   },
   "repository": {

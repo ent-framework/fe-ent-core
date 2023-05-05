@@ -44,21 +44,19 @@
       value: [Array, Object, String, Number],
       numberToString: propTypes.bool,
       api: {
-        type: Function as PropType<(arg?: Recordable) => Promise<OptionsItem[]>>,
+        type: Function as PropType<(arg?: any) => Promise<OptionsItem[]>>,
         default: null,
       },
       // api params
-      params: {
-        type: Object as PropType<Recordable>,
-        default: () => ({}),
-      },
+      params: propTypes.any.def({}),
       // support xxx.xxx.xx
       resultField: propTypes.string.def(''),
       labelField: propTypes.string.def('label'),
       valueField: propTypes.string.def('value'),
       immediate: propTypes.bool.def(true),
+      alwaysLoad: propTypes.bool.def(false),
     },
-    emits: ['options-change', 'change'],
+    emits: ['options-change', 'change', 'update:value'],
     setup(props, { emit }) {
       const options = ref<OptionsItem[]>([]);
       const loading = ref(false);
@@ -73,12 +71,12 @@
       const getOptions = computed(() => {
         const { labelField, valueField, numberToString } = props;
 
-        return unref(options).reduce((prev, next: Recordable) => {
+        return unref(options).reduce((prev, next: any) => {
           if (next) {
-            const value = next[valueField];
+            const value = get(next, valueField);
             prev.push({
               ...omit(next, [labelField, valueField]),
-              label: next[labelField],
+              label: get(next, labelField),
               value: numberToString ? `${value}` : value,
             });
           }
@@ -87,8 +85,15 @@
       });
 
       watchEffect(() => {
-        props.immediate && fetch();
+        props.immediate && !props.alwaysLoad && fetch();
       });
+
+      watch(
+        () => state.value,
+        (v) => {
+          emit('update:value', v);
+        },
+      );
 
       watch(
         () => props.params,
@@ -121,10 +126,14 @@
         }
       }
 
-      async function handleFetch() {
-        if (!props.immediate && unref(isFirstLoad)) {
-          await fetch();
-          isFirstLoad.value = false;
+      async function handleFetch(visible) {
+        if (visible) {
+          if (props.alwaysLoad) {
+            await fetch();
+          } else if (!props.immediate && unref(isFirstLoad)) {
+            await fetch();
+            isFirstLoad.value = false;
+          }
         }
       }
 
