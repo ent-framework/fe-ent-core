@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-code-editor",
-  "version": "1.4.23",
+  "version": "1.4.25",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -34,7 +34,7 @@
     "fe-ent-core": "workspace:*"
   },
   "dependencies": {
-    "codemirror": "^5.65.1"
+    "codemirror": "^5.65.12"
   },
   "devDependencies": {
     "fe-ent-build": "workspace:*",

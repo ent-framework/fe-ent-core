@@ -169,12 +169,11 @@ export function useContentHeight(
       calcContentHeight();
     });
   });
-  useWindowSizeFn<void>(
+  useWindowSizeFn(
     () => {
       calcContentHeight();
     },
-    50,
-    { immediate: true },
+    { wait: 50, immediate: true },
   );
   watch(
     () => [layoutFooterHeightRef.value],

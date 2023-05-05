@@ -4,9 +4,9 @@ import { AppRouteRecordRaw } from '@ent-core/router/types';
 
 export interface UserBridgeOptions {
   loginApi: (params: LoginParams, mode: ErrorMessageMode) => Promise<LoginResultModel>;
-  getUserInfo: AnyFunction<any>;
-  getPermCode: AnyFunction<any>;
-  doLogout: AnyFunction<any>;
+  getUserInfo: AnyFunction;
+  getPermCode: AnyFunction;
+  doLogout: AnyFunction;
   getMenuList: (params: Recordable) => Promise<AppRouteRecordRaw[]>;
 }
 export let userBridge: UserBridgeOptions = {
@@ -22,10 +22,10 @@ export let userBridge: UserBridgeOptions = {
 };
 
 export interface HttpBridgeOptions {
-  error: AnyFunction<any>;
-  msg: AnyFunction<any>;
-  errorModal: AnyFunction<any>;
-  notice: AnyFunction<any>;
+  error: AnyFunction;
+  msg: AnyFunction;
+  errorModal: AnyFunction;
+  notice: AnyFunction;
   getToken: () => unknown;
   unauthorized: (msg?: string) => void;
   timeout: () => void;
@@ -44,10 +44,10 @@ export let httpBridge: HttpBridgeOptions = {
   apiUrl: '',
 };
 
-export const initHttpBridge = async (func: AnyFunction<any>) => {
+export const initHttpBridge = async (func: AnyFunction) => {
   httpBridge = func();
 };
 
-export const initUserBridge = async (func: AnyFunction<any>) => {
+export const initUserBridge = async (func: AnyFunction) => {
   userBridge = func();
 };

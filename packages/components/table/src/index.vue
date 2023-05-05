@@ -1,6 +1,7 @@
 <template>
   <div ref="wrapRef" :class="getWrapperClass">
     <EntForm
+      ref="formRef"
       submitOnReset
       v-bind="getFormProps"
       v-if="getBindValues.useSearchForm"
@@ -24,19 +25,16 @@
       <template #[item]="data" v-for="item in Object.keys($slots)" :key="item">
         <slot :name="item" v-bind="data || {}"></slot>
       </template>
-
-      <template #[`header-${column.dataIndex}`] v-for="column in columns" :key="column.dataIndex">
-        <HeaderCell :column="column" />
-      </template>
-
       <template #headerCell="{ column }">
         <HeaderCell :column="column" />
       </template>
+      <!-- 增加对antdv3.x兼容 -->
       <template #bodyCell="data">
-        <template v-if="$slots[data.column.dataIndex]">
-          <slot :name="data.column.dataIndex" v-bind="data"></slot>
-        </template>
+        <slot name="bodyCell" v-bind="data || {}"></slot>
       </template>
+      <!--      <template #[`header-${column.dataIndex}`] v-for="(column, index) in columns" :key="index">-->
+      <!--        <HeaderCell :column="column" />-->
+      <!--      </template>-->
     </Table>
   </div>
 </template>
@@ -51,16 +49,15 @@
   import { Table } from 'ant-design-vue';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { PageWrapperFixedHeightKey } from '@ent-core/components/page';
-  import expandIcon from './components/expand-icon';
   import HeaderCell from './components/header-cell.vue';
   import { InnerHandlers } from './types/table';
-
   import { usePagination } from './hooks/use-pagination';
   import { useColumns } from './hooks/use-columns';
   import { useDataSource } from './hooks/use-data-source';
   import { useLoading } from './hooks/use-loading';
   import { useRowSelection } from './hooks/use-row-selection';
   import { useTableScroll } from './hooks/use-table-scroll';
+  import { useTableScrollTo } from './hooks/use-scroll-to';
   import { useCustomRow } from './hooks/use-custom-row';
   import { useTableStyle } from './hooks/use-table-style';
   import { useTableHeader } from './hooks/use-table-header';
@@ -103,9 +100,10 @@
     ],
     setup(props, { attrs, emit, slots, expose }) {
       const tableElRef = ref(null);
-      const tableData = ref<Recordable[]>([]);
+      const tableData = ref([]);
 
       const wrapRef = ref(null);
+      const formRef = ref(null);
       const innerPropsRef = ref<Partial<BasicTableProps>>();
 
       const { prefixCls } = useDesign('basic-table');
@@ -137,6 +135,7 @@
         getRowSelection,
         getRowSelectionRef,
         getSelectRows,
+        setSelectedRows,
         clearSelectedRowKeys,
         getSelectRowKeys,
         deleteSelectRowByKey,
@@ -183,6 +182,7 @@
         getViewColumns,
         getColumns,
         setCacheColumnsByField,
+        setCacheColumns,
         setColumns,
         getColumnsRef,
         getCacheColumns,
@@ -194,7 +194,11 @@
         getColumnsRef,
         getRowSelectionRef,
         getDataSourceRef,
+        wrapRef,
+        formRef,
       );
+
+      const { scrollTo } = useTableScrollTo(tableElRef, getDataSourceRef);
 
       const { customRow } = useCustomRow(getProps, {
         setSelectedRowKeys,
@@ -206,7 +210,11 @@
 
       const { getRowClassName } = useTableStyle(getProps, prefixCls);
 
-      const { getExpandOption, expandAll, collapseAll } = useTableExpand(getProps, tableData, emit);
+      const { getExpandOption, expandAll, expandRows, collapseAll } = useTableExpand(
+        getProps,
+        tableData,
+        emit,
+      );
 
       const handlers: InnerHandlers = {
         onColumnsChange: (data: ColumnChangeParam[]) => {
@@ -230,11 +238,9 @@
 
       const getBindValues = computed(() => {
         const dataSource = unref(getDataSourceRef);
-        let propsData: Recordable = {
-          // ...(dataSource.length === 0 ? { getPopupContainer: () => document.body } : {}),
+        let propsData: any = {
           ...attrs,
           customRow,
-          expandIcon: slots.expandIcon ? null : expandIcon(),
           ...unref(getProps),
           ...unref(getHeaderProps),
           scroll: unref(getScrollRef),
@@ -248,9 +254,9 @@
           footer: unref(getFooterProps),
           ...unref(getExpandOption),
         };
-        if (slots.expandedRowRender) {
-          propsData = omit(propsData, 'scroll');
-        }
+        // if (slots.expandedRowRender) {
+        //   propsData = omit(propsData, 'scroll');
+        // }
 
         propsData = omit(propsData, ['class', 'onChange']);
         return propsData;
@@ -283,6 +289,7 @@
       const tableAction: TableActionType = {
         reload,
         getSelectRows,
+        setSelectedRows,
         clearSelectedRowKeys,
         getSelectRowKeys,
         deleteSelectRowByKey,
@@ -303,16 +310,19 @@
         getPaginationRef: getPagination,
         getColumns,
         getCacheColumns,
+        emit,
         updateTableData,
         setShowPagination,
         getShowPagination,
         setCacheColumnsByField,
         expandAll,
+        expandRows,
         collapseAll,
+        scrollTo,
         getSize: () => {
           return unref(getBindValues).size as SizeType;
         },
-        emit,
+        setCacheColumns,
       };
       createTableContext({ ...tableAction, wrapRef, getBindValues });
 
@@ -321,6 +331,7 @@
       emit('register', tableAction, formActions);
 
       return {
+        formRef,
         tableElRef,
         getBindValues,
         getLoading,

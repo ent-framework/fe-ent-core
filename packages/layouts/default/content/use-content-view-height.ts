@@ -22,12 +22,11 @@ export function useContentViewHeight() {
     return unref(contentHeight) - unref(headerHeightRef) - unref(footerHeightRef) || 0;
   });
 
-  useWindowSizeFn<void>(
+  useWindowSizeFn(
     () => {
       contentHeight.value = window.innerHeight;
     },
-    100,
-    { immediate: true },
+    { wait: 100, immediate: true },
   );
 
   async function setPageHeight(height: number) {

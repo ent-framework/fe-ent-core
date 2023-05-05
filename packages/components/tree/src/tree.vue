@@ -1,5 +1,5 @@
 <script lang="tsx">
-  import type { ReplaceFields, Keys, CheckKeys, TreeActionType, TreeItem } from './typing';
+  import type { ReplaceFields, Keys, CheckKeys, TreeActionType, TreeItem } from './types/typing';
   import {
     defineComponent,
     reactive,
@@ -14,7 +14,7 @@
   } from 'vue';
   import { Tree, Empty } from 'ant-design-vue';
   import { TreeIcon } from './tree-icon';
-  import TreeHeader from './tree-header.vue';
+  import TreeHeader from './components/tree-header.vue';
   import { EntScrollContainer } from '@ent-core/components/container';
 
   import { omit, get, difference } from 'lodash-es';
@@ -22,14 +22,14 @@
   import { extendSlots, getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { filter, treeToList } from '@ent-core/utils/helper/tree-helper';
 
-  import { useTree } from './use-tree';
+  import { useTree } from './hooks/use-tree';
   import { useContextMenu } from '@ent-core/hooks/web/use-context-menu';
   import { useDesign } from '@ent-core/hooks/web/use-design';
 
-  import { basicProps } from './props';
+  import { basicProps } from './types/props';
   import { CreateContextMenuOptions } from '@ent-core/components/context-menu';
 
-  import { CheckEvent } from './typing';
+  import { CheckEvent } from './types/typing';
 
   interface State {
     expandedKeys: Keys;

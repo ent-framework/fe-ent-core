@@ -7,7 +7,6 @@ export * from './env';
 export * from './is';
 export * from './mitt';
 export * from './prop-types';
-export * from './tiny';
 export * from './uuid';
 
 export * from './auth';

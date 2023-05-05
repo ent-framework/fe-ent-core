@@ -81,7 +81,7 @@
 
       const getUpwardSpace = computed(() => props.upwardSpace);
       const { redoHeight, setCompensation, contentHeight } = useContentHeight(
-        getIsContentFullHeight,
+        getIsContentFullHeight as any,
         wrapperRef,
         [headerRef, footerRef],
         [contentRef],

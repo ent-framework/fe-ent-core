@@ -51,7 +51,7 @@ html[data-theme='light'] {
 
         &:hover {
           .ant-tabs-tab-remove {
-            opacity: 100%;
+            opacity: 1;
           }
         }
 
@@ -130,7 +130,6 @@ html[data-theme='light'] {
   }
 
   .ant-tabs-extra-content {
-    margin-top: -12px;
     line-height: @multiple-height !important;
   }
 
@@ -139,8 +138,8 @@ html[data-theme='light'] {
   }
 
   &--hide-close {
-    .ant-tabs-close-x {
-      opacity: 0% !important;
+    .ant-tabs-tab-remove {
+      opacity: 0 !important;
     }
   }
 

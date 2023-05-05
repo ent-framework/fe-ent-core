@@ -4,6 +4,7 @@ import { h, Ref } from 'vue';
 
 import EditableCell from './editable-cell.vue';
 import { isArray } from '@ent-core/utils/is';
+
 interface Params {
   text: string;
   record: Recordable;

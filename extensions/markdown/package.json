@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-markdown",
-  "version": "1.4.23",
+  "version": "1.4.25",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
-    "vditor": "^3.8.11"
+    "vditor": "^3.9.1"
   },
   "devDependencies": {
     "fe-ent-build": "workspace:*",

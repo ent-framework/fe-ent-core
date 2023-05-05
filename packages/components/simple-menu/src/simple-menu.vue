@@ -75,8 +75,8 @@
         menuState,
         items,
         accordion,
-        mixSider,
-        collapse,
+        mixSider as any,
+        collapse as any,
       );
 
       const getBindValues = computed(() => ({ ...attrs, ...props }));

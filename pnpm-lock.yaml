@@ -125,8 +125,8 @@ importers:
         specifier: ^1.9.4
         version: registry.npmmirror.com/@types/showdown@1.9.4
       '@types/sortablejs':
-        specifier: ^1.10.7
-        version: registry.npmmirror.com/@types/sortablejs@1.10.7
+        specifier: ^1.15.1
+        version: 1.15.1
       '@types/tinycolor2':
         specifier: ^1.4.2
         version: registry.npmmirror.com/@types/tinycolor2@1.4.3
@@ -278,8 +278,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.17(vue@3.2.45)
       codemirror:
-        specifier: ^5.65.1
-        version: 5.65.1
+        specifier: ^5.65.12
+        version: 5.65.12
       fe-ent-core:
         specifier: workspace:*
         version: link:../../packages/fe-ent-core
@@ -340,11 +340,11 @@ importers:
         specifier: ^6.0.0
         version: 6.0.0
       '@logicflow/core':
-        specifier: ^1.0.7
-        version: 1.1.3
+        specifier: ^1.2.1
+        version: 1.2.1
       '@logicflow/extension':
-        specifier: ^1.0.7
-        version: 1.1.3
+        specifier: ^1.2.1
+        version: 1.2.1
       ant-design-vue:
         specifier: ^3.2.0
         version: 3.2.17(vue@3.2.45)
@@ -383,8 +383,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/fe-ent-core
       vditor:
-        specifier: ^3.8.11
-        version: 3.8.11
+        specifier: ^3.9.1
+        version: 3.9.1
     devDependencies:
       '@types/tinycolor2':
         specifier: ^1.4.2
@@ -448,8 +448,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/fe-ent-core
       tinymce:
-        specifier: 5.10.0
-        version: 5.10.0
+        specifier: ^5.10.7
+        version: 5.10.7
     devDependencies:
       '@types/tinycolor2':
         specifier: ^1.4.2
@@ -574,9 +574,6 @@ importers:
       ts-morph:
         specifier: ^14.0.0
         version: 14.0.0
-      unplugin-vue-define-options:
-        specifier: ^1.3.4
-        version: 1.3.4(rollup@3.18.0)(vue@3.2.45)
     devDependencies:
       '@ant-design/colors':
         specifier: ^6.0.0
@@ -673,13 +670,13 @@ importers:
         specifier: ^1.3.5
         version: 1.3.5(debug@4.3.4)
       cropperjs:
-        specifier: ^1.5.12
-        version: 1.5.12
+        specifier: ^1.5.13
+        version: 1.5.13
       crypto-js:
         specifier: ^4.1.1
         version: 4.1.1
       dayjs:
-        specifier: ^1.10.5
+        specifier: ^1.11.7
         version: 1.11.7
       intro.js:
         specifier: ^4.3.0
@@ -694,8 +691,8 @@ importers:
         specifier: ^6.2.0
         version: 6.2.0
       pinia:
-        specifier: 2.0.9
-        version: 2.0.9(typescript@4.9.4)(vue@3.2.45)
+        specifier: 2.0.33
+        version: 2.0.33(typescript@4.9.4)(vue@3.2.45)
       print-js:
         specifier: ^1.6.0
         version: 1.6.0
@@ -711,21 +708,18 @@ importers:
       sortablejs:
         specifier: ^1.15.0
         version: 1.15.0
-      tinycolor2:
-        specifier: ^1.4.2
-        version: 1.4.2
       vue-i18n:
-        specifier: ^9.1.9
-        version: 9.1.9(vue@3.2.45)
+        specifier: ^9.2.2
+        version: 9.2.2(vue@3.2.45)
       vue-router:
         specifier: ^4.1.6
         version: 4.1.6(vue@3.2.45)
       vue-types:
-        specifier: ^3.0.2
-        version: 3.0.2(vue@3.2.45)
+        specifier: ^5.0.2
+        version: 5.0.2(vue@3.2.45)
       xlsx:
-        specifier: ^0.17.5
-        version: 0.17.5
+        specifier: ^0.18.5
+        version: 0.18.5
     devDependencies:
       '@iconify/json':
         specifier: ^2.1.138
@@ -1690,60 +1684,42 @@ packages:
       - supports-color
     dev: false
 
-  /@intlify/core-base@9.1.9:
-    resolution: {integrity: sha512-x5T0p/Ja0S8hs5xs+ImKyYckVkL4CzcEXykVYYV6rcbXxJTe2o58IquSqX9bdncVKbRZP7GlBU1EcRaQEEJ+vw==}
-    engines: {node: '>= 10'}
+  /@intlify/core-base@9.2.2:
+    resolution: {integrity: sha512-JjUpQtNfn+joMbrXvpR4hTF8iJQ2sEFzzK3KIESOx+f+uwIjgw20igOyaIdhfsVVBCds8ZM64MoeNSx+PHQMkA==}
+    engines: {node: '>= 14'}
     dependencies:
-      '@intlify/devtools-if': 9.1.9
-      '@intlify/message-compiler': 9.1.9
-      '@intlify/message-resolver': 9.1.9
-      '@intlify/runtime': 9.1.9
-      '@intlify/shared': 9.1.9
-      '@intlify/vue-devtools': 9.1.9
+      '@intlify/devtools-if': 9.2.2
+      '@intlify/message-compiler': 9.2.2
+      '@intlify/shared': 9.2.2
+      '@intlify/vue-devtools': 9.2.2
     dev: false
 
-  /@intlify/devtools-if@9.1.9:
-    resolution: {integrity: sha512-oKSMKjttG3Ut/1UGEZjSdghuP3fwA15zpDPcjkf/1FjlOIm6uIBGMNS5jXzsZy593u+P/YcnrZD6cD3IVFz9vQ==}
-    engines: {node: '>= 10'}
+  /@intlify/devtools-if@9.2.2:
+    resolution: {integrity: sha512-4ttr/FNO29w+kBbU7HZ/U0Lzuh2cRDhP8UlWOtV9ERcjHzuyXVZmjyleESK6eVP60tGC9QtQW9yZE+JeRhDHkg==}
+    engines: {node: '>= 14'}
     dependencies:
-      '@intlify/shared': 9.1.9
+      '@intlify/shared': 9.2.2
     dev: false
 
-  /@intlify/message-compiler@9.1.9:
-    resolution: {integrity: sha512-6YgCMF46Xd0IH2hMRLCssZI3gFG4aywidoWQ3QP4RGYQXQYYfFC54DxhSgfIPpVoPLQ+4AD29eoYmhiHZ+qLFQ==}
-    engines: {node: '>= 10'}
+  /@intlify/message-compiler@9.2.2:
+    resolution: {integrity: sha512-IUrQW7byAKN2fMBe8z6sK6riG1pue95e5jfokn8hA5Q3Bqy4MBJ5lJAofUsawQJYHeoPJ7svMDyBaVJ4d0GTtA==}
+    engines: {node: '>= 14'}
     dependencies:
-      '@intlify/message-resolver': 9.1.9
-      '@intlify/shared': 9.1.9
+      '@intlify/shared': 9.2.2
       source-map: 0.6.1
     dev: false
 
-  /@intlify/message-resolver@9.1.9:
-    resolution: {integrity: sha512-Lx/DBpigeK0sz2BBbzv5mu9/dAlt98HxwbG7xLawC3O2xMF9MNWU5FtOziwYG6TDIjNq0O/3ZbOJAxwITIWXEA==}
-    engines: {node: '>= 10'}
+  /@intlify/shared@9.2.2:
+    resolution: {integrity: sha512-wRwTpsslgZS5HNyM7uDQYZtxnbI12aGiBZURX3BTR9RFIKKRWpllTsgzHWvj3HKm3Y2Sh5LPC1r0PDCKEhVn9Q==}
+    engines: {node: '>= 14'}
     dev: false
 
-  /@intlify/runtime@9.1.9:
-    resolution: {integrity: sha512-XgPw8+UlHCiie3fI41HPVa/VDJb3/aSH7bLhY1hJvlvNV713PFtb4p4Jo+rlE0gAoMsMCGcsiT982fImolSltg==}
-    engines: {node: '>= 10'}
+  /@intlify/vue-devtools@9.2.2:
+    resolution: {integrity: sha512-+dUyqyCHWHb/UcvY1MlIpO87munedm3Gn6E9WWYdWrMuYLcoIoOEVDWSS8xSwtlPU+kA+MEQTP6Q1iI/ocusJg==}
+    engines: {node: '>= 14'}
     dependencies:
-      '@intlify/message-compiler': 9.1.9
-      '@intlify/message-resolver': 9.1.9
-      '@intlify/shared': 9.1.9
-    dev: false
-
-  /@intlify/shared@9.1.9:
-    resolution: {integrity: sha512-xKGM1d0EAxdDFCWedcYXOm6V5Pfw/TMudd6/qCdEb4tv0hk9EKeg7lwQF1azE0dP2phvx0yXxrt7UQK+IZjNdw==}
-    engines: {node: '>= 10'}
-    dev: false
-
-  /@intlify/vue-devtools@9.1.9:
-    resolution: {integrity: sha512-YPehH9uL4vZcGXky4Ev5qQIITnHKIvsD2GKGXgqf+05osMUI6WSEQHaN9USRa318Rs8RyyPCiDfmA0hRu3k7og==}
-    engines: {node: '>= 10'}
-    dependencies:
-      '@intlify/message-resolver': 9.1.9
-      '@intlify/runtime': 9.1.9
-      '@intlify/shared': 9.1.9
+      '@intlify/core-base': 9.2.2
+      '@intlify/shared': 9.2.2
     dev: false
 
   /@istanbuljs/load-nyc-config@1.1.0:
@@ -2000,19 +1976,20 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
 
-  /@logicflow/core@1.1.3:
-    resolution: {integrity: sha512-XejAORMjCmyCUQ/MJZiWgXqWDm2hcNMU3hY8dnJ2xlsrr6ZQOqZS9NkwlP74IYp7Inkl3x6rzZYSbWrGq22qfQ==}
+  /@logicflow/core@1.2.1:
+    resolution: {integrity: sha512-m6/K7I85jFfCWcrNEQQpchomUWM4ZUjcOhHjsVhejnfpoEx7jke3tSJlh41LyT9hIUEIy7nxnphp5L4YB+InCA==}
     dependencies:
       '@types/mousetrap': 1.6.9
       mousetrap: 1.6.5
       preact: 10.6.6
     dev: false
 
-  /@logicflow/extension@1.1.3:
-    resolution: {integrity: sha512-E1e70f4hVLr2B4H7nmpub3MsLblywiquP4LYeXJcGpYMQOeFzKU3rzpUNSUD2rILmuuh0TuVkL1/bom1Rzm6zA==}
+  /@logicflow/extension@1.2.1:
+    resolution: {integrity: sha512-C006Y73sqe0x5ArWzTWc2YglhDNs+Ck/eXJnnaZ89uYqyVDdLgr/6RBjL8JAV41Lg7EQMB1yqmfUW53tCPTRtw==}
     dependencies:
-      '@logicflow/core': 1.1.3
+      '@logicflow/core': 1.2.1
       ids: 1.0.0
+      lodash-es: 4.17.21
       preact: 10.6.6
     dev: false
 
@@ -2891,6 +2868,10 @@ packages:
     resolution: {integrity: sha512-JYM8x9EGF163bEyhdJBpR2QX1R5naCJHC8ucJylJ3w9/CVBaskdQ8WqBf8MmQrd1kRvp/a4TS8HJ+bxzR7ZJYQ==}
     dev: true
 
+  /@types/sortablejs@1.15.1:
+    resolution: {integrity: sha512-g/JwBNToh6oCTAwNS8UGVmjO7NLDKsejVhvE4x1eWiPTC3uCuNsa/TD4ssvX3du+MLiM+SHPNDuijp8y76JzLQ==}
+    dev: true
+
   /@types/stack-utils@2.0.1:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
     dev: true
@@ -3712,6 +3693,10 @@ packages:
     resolution: {integrity: sha512-JD5fcdIuFxU4fQyXUu3w2KpAJHzTVdN+p4iOX2lMWSHMOoQdMAcpFLZzm9Z/2nmsoZ1a96QEhZ26e50xLBsgOQ==}
     dev: false
 
+  /@vue/devtools-api@6.5.0:
+    resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
+    dev: false
+
   /@vue/reactivity-transform@3.2.45:
     resolution: {integrity: sha512-BHVmzYAvM7vcU5WmuYqXpwaBHjsS8T63jlKGWVtHxAHIoMIlmaMyurUSEs1Zcg46M4AYT5MtB1U274/2aNzjJQ==}
     dependencies:
@@ -3862,15 +3847,6 @@ packages:
     resolution: {integrity: sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==}
     engines: {node: '>=0.4.0'}
     hasBin: true
-
-  /adler-32@1.2.0:
-    resolution: {integrity: sha512-/vUqU/UY4MVeFsg+SsK6c+/05RZXIHZMGJA+PX5JyWI0ZRcBpupnRuPLU/NXXoFwMYCPCoxIfElM2eS+DUXCqQ==}
-    engines: {node: '>=0.8'}
-    hasBin: true
-    dependencies:
-      exit-on-epipe: 1.0.1
-      printj: 1.1.2
-    dev: false
 
   /adler-32@1.3.0:
     resolution: {integrity: sha512-f5nltvjl+PRUh6YNfUstRaXwJxtfnKEWhAWWlmKvh+Y3J2+98a0KKVYDEhz6NdKGqswLhjNGznxfSsZGOvOd9g==}
@@ -4982,8 +4958,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /codemirror@5.65.1:
-    resolution: {integrity: sha512-s6aac+DD+4O2u1aBmdxhB7yz2XU7tG3snOyQ05Kxifahz7hoxnfxIRHxiCSEv3TUC38dIVH8G+lZH9UWSfGQxA==}
+  /codemirror@5.65.12:
+    resolution: {integrity: sha512-z2jlHBocElRnPYysN2HAuhXbO3DNB0bcSKmNz3hcWR2Js2Dkhc1bEOxG93Z3DeUrnm+qx56XOY5wQmbP5KY0sw==}
     dev: false
 
   /codepage@1.15.0:
@@ -5238,8 +5214,8 @@ packages:
       printj: 1.3.1
     dev: false
 
-  /cropperjs@1.5.12:
-    resolution: {integrity: sha512-re7UdjE5UnwdrovyhNzZ6gathI4Rs3KGCBSc8HCIjUo5hO42CtzyblmWLj6QWVw7huHyDMfpKxhiO2II77nhDw==}
+  /cropperjs@1.5.13:
+    resolution: {integrity: sha512-by7jKAo73y5/Do0K6sxdTKHgndY0NMjG2bEdgeJxycbcmHuCiMXqw8sxy5C5Y5WTOTcDGmbT7Sr5CgKOXR06OA==}
     dev: false
 
   /cross-fetch@3.1.5:
@@ -10023,8 +9999,8 @@ packages:
     engines: {node: '>=6'}
     optional: true
 
-  /pinia@2.0.9(typescript@4.9.4)(vue@3.2.45):
-    resolution: {integrity: sha512-iuYdxLJKQ07YPyOHYH05wNG9eKWqkP/4y4GE8+RqEYtz5fwHgPA5kr6zQbg/DoEJGnR2XCm1w1vdt6ppzL9ATg==}
+  /pinia@2.0.33(typescript@4.9.4)(vue@3.2.45):
+    resolution: {integrity: sha512-HOj1yVV2itw6rNIrR2f7+MirGNxhORjrULL8GWgRwXsGSvEqIQ+SE0MYt6cwtpegzCda3i+rVTZM+AM7CG+kRg==}
     peerDependencies:
       '@vue/composition-api': ^1.4.0
       typescript: '>=4.4.4'
@@ -10035,7 +10011,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@vue/devtools-api': 6.4.5
+      '@vue/devtools-api': 6.5.0
       typescript: 4.9.4
       vue: 3.2.45
       vue-demi: 0.12.1(vue@3.2.45)
@@ -10431,12 +10407,6 @@ packages:
 
   /printable-characters@1.0.42:
     resolution: {integrity: sha512-dKp+C4iXWK4vVYZmYSd0KBH5F/h1HoZRsbJ82AVKRO3PEo8L4lBS/vLwhVtpwwuYcoIsVY+1JYKR268yn480uQ==}
-    dev: false
-
-  /printj@1.1.2:
-    resolution: {integrity: sha512-zA2SmoLaxZyArQTOPj5LXecR+RagfPSU5Kw1qP+jkWeNlrq+eJZyY2oS68SU1Z/7/myXM4lo9716laOFAVStCQ==}
-    engines: {node: '>=0.8'}
-    hasBin: true
     dev: false
 
   /printj@1.2.3:
@@ -11749,12 +11719,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /tinycolor2@1.4.2:
-    resolution: {integrity: sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==}
-    dev: false
-
-  /tinymce@5.10.0:
-    resolution: {integrity: sha512-SaqBK8GtTKYSsTfhKdN0+NrZRgmVWO+j3fvgzLjt0t/g0osNzRH5os8icm2Rv5HvaeTd4TpxetUuLE+R9yg/yg==}
+  /tinymce@5.10.7:
+    resolution: {integrity: sha512-9UUjaO0R7FxcFo0oxnd1lMs7H+D0Eh+dDVo5hKbVe1a+VB0nit97vOqlinj+YwgoBDt6/DSCUoWqAYlLI8BLYA==}
     dev: false
 
   /tmp@0.0.33:
@@ -12446,8 +12412,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /vditor@3.8.11:
-    resolution: {integrity: sha512-nwS2TLgu3DnHdfxcjnUESg/qbnYU0YR9YAvn2IKBK/F36h4k1BMqjsfEQqE4TL2RH5RGIapcQfAdJ9xF1iQNWw==}
+  /vditor@3.9.1:
+    resolution: {integrity: sha512-pu9+4duq/RPftiGas9QCxy8FwwFx2jPEZd2/xKIsI8BMUzwKL5M65LH0cAkmrSUwZSXACLBWGM3RYahK5n1CUA==}
     dependencies:
       diff-match-patch: 1.0.5
     dev: false
@@ -12712,15 +12678,15 @@ packages:
     dependencies:
       vue: 3.2.45
 
-  /vue-i18n@9.1.9(vue@3.2.45):
-    resolution: {integrity: sha512-JeRdNVxS2OGp1E+pye5XB6+M6BBkHwAv9C80Q7+kzoMdUDGRna06tjC0vCB/jDX9aWrl5swxOMFcyAr7or8XTA==}
-    engines: {node: '>= 10'}
+  /vue-i18n@9.2.2(vue@3.2.45):
+    resolution: {integrity: sha512-yswpwtj89rTBhegUAv9Mu37LNznyu3NpyLQmozF3i1hYOhwpG8RjcjIFIIfnu+2MDZJGSZPXaKWvnQA71Yv9TQ==}
+    engines: {node: '>= 14'}
     peerDependencies:
       vue: ^3.0.0
     dependencies:
-      '@intlify/core-base': 9.1.9
-      '@intlify/shared': 9.1.9
-      '@intlify/vue-devtools': 9.1.9
+      '@intlify/core-base': 9.2.2
+      '@intlify/shared': 9.2.2
+      '@intlify/vue-devtools': 9.2.2
       '@vue/devtools-api': 6.4.5
       vue: 3.2.45
     dev: false
@@ -12742,6 +12708,19 @@ packages:
     dependencies:
       is-plain-object: 3.0.1
       vue: 3.2.45
+
+  /vue-types@5.0.2(vue@3.2.45):
+    resolution: {integrity: sha512-+/5hnQ65XOYqPs+tEUF8GGTJX95UFVH0wPQo71IJJYh5TKMfik2tGKTLkZ42JqAczANA9hGu5FrZmPgxn20nnA==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      vue: ^2.0.0 || ^3.0.0
+    peerDependenciesMeta:
+      vue:
+        optional: true
+    dependencies:
+      is-plain-object: 5.0.0
+      vue: 3.2.45
+    dev: false
 
   /vue@3.2.45:
     resolution: {integrity: sha512-9Nx/Mg2b2xWlXykmCwiTUCWHbWIj53bnkizBxKai1g61f2Xit700A1ljowpTIM11e3uipOeiPcSqnmBg6gyiaA==}
@@ -12927,12 +12906,12 @@ packages:
       write-file-atomic: 3.0.3
     dev: false
 
-  /xlsx@0.17.5:
-    resolution: {integrity: sha512-lXNU0TuYsvElzvtI6O7WIVb9Zar1XYw7Xb3VAx2wn8N/n0whBYrCnHMxtFyIiUU1Wjf09WzmLALDfBO5PqTb1g==}
+  /xlsx@0.18.5:
+    resolution: {integrity: sha512-dmg3LCjBPHZnQp5/F/+nnTa+miPJxUXB6vtk42YjBBKayDNagxGEeIdWApkYPOf3Z3pm3k62Knjzp7lMeTEtFQ==}
     engines: {node: '>=0.8'}
     hasBin: true
     dependencies:
-      adler-32: 1.2.0
+      adler-32: 1.3.0
       cfb: 1.2.1
       codepage: 1.15.0
       crc-32: 1.2.1
@@ -13582,12 +13561,6 @@ packages:
     resolution: {integrity: sha512-50ehC3IAijfkvoNqmQ+VL73S7orOxmAK8ljQAFBv8o7G66lAZyxQj1L3BAv2dD86myLXI+sgKP1kcxAaxW356w==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@types/showdown/-/showdown-1.9.4.tgz}
     name: '@types/showdown'
     version: 1.9.4
-    dev: true
-
-  registry.npmmirror.com/@types/sortablejs@1.10.7:
-    resolution: {integrity: sha512-lGCwwgpj8zW/ZmaueoPVSP7nnc9t8VqVWXS+ASX3eoUUENmiazv0rlXyTRludXzuX9ALjPsMqBu85TgJNWbTOg==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@types/sortablejs/-/sortablejs-1.10.7.tgz}
-    name: '@types/sortablejs'
-    version: 1.10.7
     dev: true
 
   registry.npmmirror.com/@types/tern@0.23.4:

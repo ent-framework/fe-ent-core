@@ -14,7 +14,7 @@
     components: { EntTitle },
     props: {
       title: {
-        type: [Function, String] as PropType<string | ((data: Recordable) => string)>,
+        type: [Function, String] as PropType<string | ((data) => string)>,
       },
       getSelectRows: {
         type: Function as PropType<() => Recordable[]>,

@@ -40,7 +40,7 @@
     },
     props: {
       title: {
-        type: [Function, String] as PropType<string | ((data: Recordable) => string)>,
+        type: [Function, String] as PropType<string | ((data) => string)>,
       },
       tableSetting: {
         type: Object as PropType<TableSetting>,

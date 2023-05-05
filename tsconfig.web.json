@@ -4,17 +4,27 @@
     "composite": true,
     "jsx": "preserve",
     "lib": ["ES2018", "DOM", "DOM.Iterable"],
-    "types": ["unplugin-vue-macros/macros-global", "vite/client"],
     "skipLibCheck": true,
     "strictFunctionTypes": false,
+    "types": ["unplugin-vue-macros/macros-global", "vite/client"],
+    "paths": {
+      "@ent-core/*": ["packages/*"],
+      "/@/*": [
+        "./play/src/*"
+      ],
+      "fe-ent-core": ["./packages/fe-ent-core/index.ts"],
+      "fe-ent-core/lib/*": ["./packages/*"],
+      "@fe-ent-extension/*": ["./extensions/*"]
+    }
   },
   "include": [
     "packages/**/*.ts",
     "packages/**/*.d.ts",
     "packages/**/*.tsx",
     "packages/**/*.vue",
-    "typings/support.d.ts",
-    "typings/global.d.ts"
+    "typings/**/*.d.ts",
+    "play/src/**/.ts",
+    "play/src/**/.vue"
   ],
   "exclude": [
     "node_modules",

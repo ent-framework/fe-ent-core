@@ -1,12 +1,9 @@
 import dayjs from 'dayjs';
 import weekday from 'dayjs/plugin/weekday';
 import { reactive, toRefs } from 'vue';
-import { useLocaleStore } from '@ent-core/store/modules/locale';
 import { tryOnMounted, tryOnUnmounted } from '@vueuse/core';
 
 export function useNow(immediate = true) {
-  const localeStore = useLocaleStore();
-  console.log('localeStore.getLocale:' + localeStore.getLocale);
   dayjs.extend(weekday);
   let timer: IntervalHandle;
 
