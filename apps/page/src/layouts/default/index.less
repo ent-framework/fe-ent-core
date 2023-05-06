@@ -1,0 +1,46 @@
+@import './content/index.less';
+@import './feature/index.less';
+@import './footer/index.less';
+@import './header/multiple-header.less';
+@import './header/index.less';
+@import './header/components/breadcrumb.less';
+@import './header/components/lock/lock-modal.less';
+@import './header/components/notify/index.less';
+@import './header/components/notify/notice-list.less';
+@import './header/components/user-dropdown/index.less';
+
+@import './menu/index.less';
+@import './setting/components/input-number-item.less';
+@import './setting/components/select-item.less';
+@import './setting/components/setting-footer.less';
+@import './setting/components/switch-item.less';
+@import './setting/components/theme-color-picker.less';
+@import './setting/components/type-picker.less';
+@import './sider/drag-bar.less';
+@import './sider/layout-sider.less';
+@import './sider/mix-sider.less';
+@import './sider/index.less';
+@import './tabs/index.less';
+
+@import './components/app-search-footer.less';
+@import './components/app-search-modal.less';
+@import './components/app-logo.less';
+
+@default-layout-prefix-cls: ~'@{vben-prefix}-default-layout';
+
+.@{default-layout-prefix-cls} {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  background-color: @content-bg;
+  flex-direction: column;
+
+  > .ant-layout {
+    min-height: 100%;
+  }
+
+  &-main {
+    width: 100%;
+    margin-left: 1px;
+  }
+}

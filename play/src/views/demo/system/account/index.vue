@@ -5,7 +5,8 @@
       <template #toolbar>
         <a-button type="primary" @click="handleCreate">新增账号</a-button>
       </template>
-      <template #action="{ record }">
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.key === 'action'">
         <EntTableAction
           :actions="[
             {
@@ -24,11 +25,13 @@
               tooltip: '删除此账号',
               popConfirm: {
                 title: '是否确认删除',
+               placement: 'left',
                 confirm: handleDelete.bind(null, record),
               },
             },
           ]"
         />
+        </template>
       </template>
     </EntTable>
     <AccountModal @register="registerModal" @success="handleSuccess" />

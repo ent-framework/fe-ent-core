@@ -15,7 +15,7 @@ const { fallback, availableLocales } = localeSetting;
 
 export let i18n: ReturnType<typeof createI18n>;
 
-function createI18nOptions(): I18nOptions {
+async function createI18nOptions(): Promise<I18nOptions> {
   const localeStore = useLocaleStoreWithOut();
   //default locale
   const locale = localeStore.getLocale;
@@ -37,7 +37,6 @@ function createI18nOptions(): I18nOptions {
       //@ts-ignore
       en: en.message,
     },
-    globalInjection: true,
     availableLocales: availableLocales,
     sync: true, //If you don’t want to inherit locale from global scope, you need to set sync of i18n component option to false.
     silentTranslationWarn: true, // true - warning off
@@ -47,8 +46,8 @@ function createI18nOptions(): I18nOptions {
 }
 
 // setup i18n instance with glob
-export function setupI18n(app: App) {
-  const options = createI18nOptions();
+export async function setupI18n(app: App) {
+  const options = await createI18nOptions();
   i18n = createI18n(options) as I18n;
   app.use(i18n);
 }

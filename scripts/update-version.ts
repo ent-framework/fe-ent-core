@@ -34,7 +34,13 @@ consola.log(chalk.cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n')));
         onlyFiles: true,
       });
 
-      const allPackages = [epPackage, ...packages, ...extensions];
+      const apps = await glob('apps/*/package.json', {
+        cwd: projRoot,
+        absolute: true,
+        onlyFiles: true,
+      });
+
+      const allPackages = [epPackage, ...packages, ...extensions, ...apps];
 
       allPackages.map(async (pkg) => {
         const json: Record<string, any> = getPackageManifest(pkg);

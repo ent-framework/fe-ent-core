@@ -22,7 +22,7 @@
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
 
   const { t } = useI18n();
-
+  console.log(t('component.excel.fileName'));
   const schemas: FormSchema[] = [
     {
       field: 'filename',

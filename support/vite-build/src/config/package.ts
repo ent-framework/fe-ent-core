@@ -4,11 +4,13 @@ import dts from 'vite-plugin-dts';
 import { commonConfig } from './common';
 import { createPlugins } from '../plugins';
 import { ModuleFormat } from 'rollup';
+import { generateModifyVars } from '../utils/modifyVars';
 
 interface DefineOptions {
   overrides?: UserConfig;
   options?: {
-    //
+    dtsEntryRoot?: string;
+    dtsOutput?: string;
   };
 }
 
@@ -40,10 +42,19 @@ function definePackageConfig(defineOptions: DefineOptions = {}) {
           external: [...Object.keys(dependencies), ...Object.keys(peerDependencies)],
         },
       },
+      css: {
+        preprocessorOptions: {
+          less: {
+            modifyVars: generateModifyVars(),
+            javascriptEnabled: true,
+          },
+        },
+      },
       plugins: [
         ...plugins,
         dts({
-          entryRoot: `${root}`,
+          entryRoot: `${defineOptions?.options?.dtsEntryRoot || root}`,
+          outputDir: `${defineOptions?.options?.dtsOutput || 'dist'}`,
           logLevel: 'error',
         }),
       ],

@@ -10,11 +10,12 @@
     "paths": {
       "@ent-core/*": ["packages/*"],
       "/@/*": [
-        "./play/src/*"
+        "play/src/*"
       ],
       "fe-ent-core": ["./packages/fe-ent-core/index.ts"],
       "fe-ent-core/lib/*": ["./packages/*"],
-      "@fe-ent-extension/*": ["./extensions/*"]
+      "@fe-ent-extension/*": ["./extensions/*"],
+      "@fe-ent-app/*": ["./app/*"]
     }
   },
   "include": [
@@ -22,9 +23,12 @@
     "packages/**/*.d.ts",
     "packages/**/*.tsx",
     "packages/**/*.vue",
+    "extensions/**/*.ts",
+    "extensions/**/*.d.ts",
+    "extensions/**/*.tsx",
+    "extensions/**/*.vue",
     "typings/**/*.d.ts",
-    "play/src/**/.ts",
-    "play/src/**/.vue"
+    "play/src",
   ],
   "exclude": [
     "node_modules",
@@ -33,7 +37,6 @@
     "**/__tests__/**/*",
     "**/gulpfile.ts",
     "**/test-helper",
-    "packages/test-utils",
     "**/*.md"
   ]
 }

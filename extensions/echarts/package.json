@@ -1,13 +1,13 @@
 {
   "name": "fe-ent-echarts",
-  "version": "1.4.26",
+  "version": "1.4.27",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "typings": "dist/src/index.d.ts",
+  "typings": "dist/types/index.d.ts",
   "unpkg": "dist/index.min.js",
   "exports": {
     ".": {
@@ -32,12 +32,11 @@
     "@vueuse/core": "^9.13.0",
     "vue": "^3.2.47",
     "ant-design-vue": "^3.2.17",
-    "echarts": "^5.4.2",
     "fe-ent-core": "workspace:*"
   },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
-    "echarts": "^5.2.2"
+    "echarts": "^5.4.2"
   },
   "devDependencies": {
     "fe-ent-build": "workspace:*",

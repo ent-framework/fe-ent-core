@@ -6,7 +6,7 @@ import { uniq } from 'lodash-es';
 import { getAllParentPath } from '@ent-core/router/helper/menu-helper';
 
 import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
-import { useDebounceFn } from '@vueuse/core';
+import { useDebounceFn } from '@vueuse/shared';
 
 export function useOpenKeys(
   menuState: MenuState,

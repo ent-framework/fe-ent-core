@@ -3,9 +3,6 @@ import { registerRedirectRoute } from '@ent-core/router/routes/basic';
 import { mainOutRoutes } from '@ent-core/router/routes/main-out';
 import { PageEnum } from '@ent-core/logics/enums/page-enum';
 import type { AppRouteRecordRaw } from '@ent-core/router/types';
-import Login from '@ent-core/views/sys/login/login.vue';
-
-import { t } from '@ent-core/hooks/web/use-i18n';
 
 export const RootRoute: AppRouteRecordRaw = {
   path: '/',
@@ -13,15 +10,6 @@ export const RootRoute: AppRouteRecordRaw = {
   redirect: PageEnum.BASE_HOME,
   meta: {
     title: 'Root',
-  },
-};
-
-export const LoginRoute: AppRouteRecordRaw = {
-  path: '/',
-  name: 'Login',
-  component: Login,
-  meta: {
-    title: t('routes.basic.login'),
   },
 };
 

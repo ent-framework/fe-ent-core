@@ -14,6 +14,7 @@
 
   // support Multi-language
   const { getAntdLocale } = useLocale();
+  console.log('app vue');
   // Listening to page changes and dynamically changing site titles
   useTitle();
 </script>

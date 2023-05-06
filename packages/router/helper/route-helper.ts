@@ -2,6 +2,7 @@ import type { AppRouteModule, AppRouteRecordRaw } from '@ent-core/router/types';
 import type { Router, RouteRecordNormalized } from 'vue-router';
 import { cloneDeep, omit, set, merge } from 'lodash-es';
 import { createRouter, createWebHashHistory } from 'vue-router';
+import { isUrl } from '@ent-core/utils/is';
 
 /**
  * Convert multi-level routing to level 2 routing
@@ -43,7 +44,8 @@ export function normalizeRoutePath(route: AppRouteRecordRaw) {
         path.length > 0 &&
         childPath &&
         childPath.length > 0 &&
-        !childPath.startsWith('/')
+        !childPath.startsWith('/') &&
+        !isUrl(childPath)
       ) {
         c.path = path + '/' + childPath;
       }

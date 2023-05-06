@@ -1,10 +1,11 @@
 import type { ColEx } from '../types';
 import type { AdvanceState } from '../types/hooks';
-import { ComputedRef, getCurrentInstance, Ref, shallowReactive, computed, unref, watch } from 'vue';
+import { ComputedRef, getCurrentInstance, Ref, computed, unref, watch } from 'vue';
+import { shallowReactive, type ShallowReactive } from '@vue/reactivity';
 import type { FormProps, FormSchema } from '../types/form';
 import { isBoolean, isFunction, isNumber, isObject } from '@ent-core/utils/is';
 import { useBreakpoint } from '@ent-core/hooks/event/use-breakpoint';
-import { useDebounceFn } from '@vueuse/core';
+import { useDebounceFn } from '@vueuse/shared';
 
 const BASIC_COL_LEN = 24;
 
@@ -112,7 +113,7 @@ export default function ({
     }
   }
 
-  const fieldsIsAdvancedMap = shallowReactive({});
+  const fieldsIsAdvancedMap: ShallowReactive<Record<string, boolean>> = shallowReactive({});
 
   function updateAdvanced() {
     let itemColSum = 0;

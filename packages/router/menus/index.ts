@@ -51,23 +51,31 @@ const getStaticMenus = (): Menu[] => {
 
 async function getAsyncMenus() {
   const permissionStore = usePermissionStore();
+  //递归过滤所有隐藏的菜单
+  const menuFilter = (items) => {
+    return items.filter((item) => {
+      const show = !item.meta?.hideMenu && !item.hideMenu;
+      if (show && item.children) {
+        item.children = menuFilter(item.children);
+      }
+      return show;
+    });
+  };
   if (isBackMode()) {
-    return permissionStore.getBackMenuList
-      .filter((item) => !item.meta?.hideMenu && !item.hideMenu)
-      .sort((a, b) => {
-        return (b.orderNo || 0) - (a.orderNo || 0);
-      });
+    return menuFilter(permissionStore.getBackMenuList);
   }
   if (isRouteMappingMode()) {
-    return permissionStore.getFrontMenuList.filter((item) => !item.hideMenu);
+    return menuFilter(permissionStore.getFrontMenuList);
   }
   return getStaticMenus();
 }
 
 export const getMenus = async (): Promise<Menu[]> => {
   const menus = await getAsyncMenus();
+  console.log(menus);
   if (isRoleMode()) {
     const routes = router.getRoutes();
+    console.log(routes);
     return filter(menus, basicFilter(routes));
   }
   return menus;

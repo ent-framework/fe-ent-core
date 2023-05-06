@@ -11,4 +11,8 @@ export default definePackageConfig({
       include: ['qrcode'],
     },
   },
+  options: {
+    dtsEntryRoot: `${process.cwd()}/src`,
+    dtsOutput: `${process.cwd()}/dist/types`,
+  },
 });

@@ -16,7 +16,7 @@
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
 
   export default defineComponent({
-    name: 'EntButton',
+    name: 'AButton',
     components: {
       Button,
       Icon,

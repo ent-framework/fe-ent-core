@@ -2,6 +2,7 @@
 packages:
   - 'packages/**'
   - 'extensions/**'
+  - 'apps/**'
   - play
   - 'support/**'
   - 'internal/**'

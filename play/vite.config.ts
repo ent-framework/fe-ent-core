@@ -31,6 +31,10 @@ export default defineApplicationConfig({
           replacement: `${workspace}/extensions/$1/src/index.ts`,
         },
         {
+          find: /^@fe-ent-app\/(.*)$/,
+          replacement: `${workspace}/apps/$1/src/index.ts`,
+        },
+        {
           find: /^@ent-core\/(.*)$/,
           replacement: `${workspace}/packages/$1`,
         },

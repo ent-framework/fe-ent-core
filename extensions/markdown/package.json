@@ -1,13 +1,13 @@
 {
   "name": "fe-ent-markdown",
-  "version": "1.4.26",
+  "version": "1.4.27",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "typings": "dist/src/index.d.ts",
+  "typings": "dist/types/index.d.ts",
   "unpkg": "dist/index.min.js",
   "exports": {
     ".": {

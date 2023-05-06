@@ -122,7 +122,7 @@
   import { isFunction, isNullAndUnDef } from '@ent-core/utils/is';
   import { getPopupContainer as getParentContainer } from '@ent-core/utils';
   import { cloneDeep, omit } from 'lodash-es';
-  import Sortablejs from 'sortablejs';
+  import sortablejs from 'sortablejs';
   import type Sortable from 'sortablejs';
 
   interface State {
@@ -315,7 +315,7 @@
           const el = (columnListEl as any).$el;
           if (!el) return;
           // Drag and drop sort
-          sortable = Sortablejs.create(unref(el), {
+          sortable = new sortablejs(unref(el), {
             animation: 500,
             delay: 400,
             delayOnTouchOnly: true,

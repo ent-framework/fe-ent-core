@@ -4,13 +4,20 @@ import { tryOnUnmounted } from '@vueuse/core';
 import { unref, nextTick, watch, computed, ref } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
 import echarts from '../lib/echarts';
-import { useRootSetting, useBreakpoint, useEventListener, useTimeoutFn } from 'fe-ent-core';
+import {
+  useRootSetting,
+  useBreakpoint,
+  useEventListener,
+  useTimeoutFn,
+  useMenuSetting,
+} from 'fe-ent-core';
 
 export function useEcharts(
   elRef: Ref<HTMLDivElement>,
   theme: 'light' | 'dark' | 'default' = 'default',
 ) {
   const { getDarkMode: getSysDarkMode } = useRootSetting();
+  const { getCollapsed } = useMenuSetting();
 
   const getDarkMode = computed(() => {
     return theme === 'default' ? getSysDarkMode.value : theme;
@@ -55,28 +62,36 @@ export function useEcharts(
 
   function setOptions(options: EChartsOption, clear = true) {
     cacheOptions.value = options;
-    if (unref(elRef)?.offsetHeight === 0) {
-      useTimeoutFn(() => {
-        setOptions(unref(getOptions));
-      }, 30);
-      return;
-    }
-    nextTick(() => {
-      useTimeoutFn(() => {
-        if (!chartInstance) {
-          initCharts(getDarkMode.value as 'default');
+    return new Promise((resolve) => {
+      if (unref(elRef)?.offsetHeight === 0) {
+        useTimeoutFn(() => {
+          setOptions(unref(getOptions));
+          resolve(null);
+        }, 30);
+      }
+      nextTick(() => {
+        useTimeoutFn(() => {
+          if (!chartInstance) {
+            initCharts(getDarkMode.value as 'default');
 
-          if (!chartInstance) return;
-        }
-        clear && chartInstance?.clear();
+            if (!chartInstance) return;
+          }
+          clear && chartInstance?.clear();
 
-        chartInstance?.setOption(unref(getOptions));
-      }, 30);
+          chartInstance?.setOption(unref(getOptions));
+          resolve(null);
+        }, 30);
+      });
     });
   }
 
   function resize() {
-    chartInstance?.resize();
+    chartInstance?.resize({
+      animation: {
+        duration: 300,
+        easing: 'quadraticIn',
+      },
+    });
   }
 
   watch(
@@ -89,6 +104,12 @@ export function useEcharts(
       }
     },
   );
+
+  watch(getCollapsed, (_) => {
+    useTimeoutFn(() => {
+      resizeFn();
+    }, 300);
+  });
 
   tryOnUnmounted(() => {
     if (!chartInstance) return;

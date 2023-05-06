@@ -8,6 +8,8 @@ import { normalizeRoutePath } from '@ent-core/router/helper/route-helper';
 import { useLayout } from '@ent-core/router/helper/layout-helper';
 import { isString } from '@ent-core/utils/is';
 
+export * from './types';
+
 export interface EntRouter extends Router {
   parent: Router;
   basicRoutes: AppRouteRecordRaw[];
@@ -42,7 +44,6 @@ export const router: EntRouter = {
     return parent.addRoute(route as RouteRecordRaw);
   },
   addBizRoutes: function (modules: Record<string, Record<string, any>>): () => void {
-    console.log(modules);
     const routeModuleList: AppRouteModule[] = [];
     const layoutMgt = useLayout();
     Object.keys(modules).forEach((key) => {
@@ -57,7 +58,6 @@ export const router: EntRouter = {
       });
       routeModuleList.push(...modList);
     });
-    console.log(routeModuleList);
     router.bizRoutes.push(...routeModuleList);
     return noop;
   },

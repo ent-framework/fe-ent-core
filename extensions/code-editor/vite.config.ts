@@ -31,4 +31,8 @@ export default definePackageConfig({
       ],
     },
   },
+  options: {
+    dtsEntryRoot: `${process.cwd()}/src`,
+    dtsOutput: `${process.cwd()}/dist/types`,
+  },
 });

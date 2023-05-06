@@ -44,7 +44,7 @@
   import { propTypes } from '@ent-core/utils/prop-types';
 
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useDebounceFn } from '@vueuse/core';
+  import { useDebounceFn } from '@vueuse/shared';
 
   enum ToolbarEnum {
     SELECT_ALL,

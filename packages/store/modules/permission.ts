@@ -65,19 +65,8 @@ export const usePermissionStore = defineStore({
     getIsDynamicAddedRoute(): boolean {
       return this.isDynamicAddedRoute;
     },
-    getMenuModules(): MenuModule[] {
-      return this.menuModules;
-    },
   },
   actions: {
-    importMenuModules(modules: Record<string, { [key: string]: any }>) {
-      Object.keys(modules).forEach((key) => {
-        const mod = modules[key].default || {};
-        const modList = Array.isArray(mod) ? [...mod] : [mod];
-        this.menuModules.push(...modList);
-      });
-    },
-
     setPermCodeList(codeList: string[]) {
       this.permCodeList = codeList;
     },
@@ -166,6 +155,7 @@ export const usePermissionStore = defineStore({
           routes = routes.filter(routeFilter);
           // Convert multi-level routing to level 2 routing
           routes = flatMultiLevelRoutes(routes);
+          console.log(routes);
           break;
 
         case PermissionModeEnum.ROUTE_MAPPING:
@@ -213,7 +203,7 @@ export const usePermissionStore = defineStore({
           }
           // 用服务器返回routeList去过滤router.bizRoutes，返回匹配的路由信息
           routeList = backendRouteFilter(router.bizRoutes, routeList);
-
+          console.log(routeList);
           //  Background routing to menu structure
           const backMenuList = transformRouteToMenu(routeList);
           this.setBackMenuList(backMenuList);

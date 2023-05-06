@@ -1,5 +1,4 @@
-import { tryOnMounted, tryOnUnmounted } from '@vueuse/core';
-import { useDebounceFn } from '@vueuse/core';
+import { tryOnMounted, tryOnUnmounted, useDebounceFn } from '@vueuse/shared';
 
 interface WindowSizeOptions {
   wait?: number;

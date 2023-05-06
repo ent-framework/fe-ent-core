@@ -6,7 +6,7 @@
     :openKeys="getOpenKeys"
     :inlineIndent="inlineIndent"
     :theme="theme"
-    @openChange="handleOpenChange"
+    @open-change="handleOpenChange"
     :class="getMenuClass"
     @click="handleMenuClick"
     :subMenuOpenDelay="0.2"
@@ -143,7 +143,8 @@
           const parentPath = await getCurrentParentPath(path as string);
           menuState.selectedKeys = [parentPath];
         } else {
-          menuState.selectedKeys = await getAllParentPath(props.items, path as string);
+          const parentPaths = await getAllParentPath(props.items, path);
+          menuState.selectedKeys = parentPaths;
         }
       }
 

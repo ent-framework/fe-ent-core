@@ -5,5 +5,6 @@ import popConfirmButton from './src/pop-confirm-button.vue';
 import { buttonProps } from './src/props';
 
 export const EntButton = withInstall(BasicButton);
+export const AButton = withInstall(BasicButton);
 export const EntPopButton = withInstall(popConfirmButton);
 export declare type ButtonProps = Partial<ExtractPropTypes<typeof buttonProps>>;

@@ -1,7 +1,7 @@
 import 'uno.css';
 // Register icon sprite
 import 'virtual:svg-icons-register';
-import App from './App.vue';
+
 import { createApp } from 'vue';
 import { initAppConfigStore } from 'fe-ent-core/lib/logics/init-app-config';
 import { setupErrorHandle } from 'fe-ent-core/lib/logics/error-handle';
@@ -15,7 +15,6 @@ import { registerGlobComp } from 'fe-ent-core/lib/components/register-glob-comp'
 import { useLayout } from 'fe-ent-core/lib/router/helper/layout-helper';
 import { getBasicRoutes } from 'fe-ent-core/lib/router/routes';
 import { initApplication } from '/@/init-application';
-import EntCore from 'fe-ent-core';
 import { QrCode } from '@fe-ent-extension/qrcode';
 
 import 'ant-design-vue/dist/antd.css';
@@ -24,6 +23,7 @@ import 'fe-ent-core/lib/theme/index.less';
 import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default';
 import { default as IFRAME } from 'fe-ent-core/lib/views/sys/iframe/frame-blank';
 
+import App from './App.vue';
 export async function bootstrap(needLogin: boolean) {
   const app = createApp(App);
 
@@ -33,16 +33,15 @@ export async function bootstrap(needLogin: boolean) {
   //初始化全局变量
   await initApplication();
 
+  // Multilingual configuration
+  // Asynchronous case: language files may be obtained from the server side
+  await setupI18n(app);
+
   // Register global components
   registerGlobComp(app);
 
   //register components
-  app.use(EntCore);
   app.use(QrCode);
-
-  // Multilingual configuration
-  // Asynchronous case: language files may be obtained from the server side
-  await setupI18n(app);
 
   // Initialize internal system configuration
   await initAppConfigStore();

@@ -55,7 +55,7 @@
   import { createFormContext } from './hooks/use-form-context';
   import { useAutoFocus } from './hooks/use-auto-focus';
   import { useModalContext } from '@ent-core/components/modal';
-  import { useDebounceFn } from '@vueuse/core';
+  import { useDebounceFn } from '@vueuse/shared';
   import { basicProps } from './props';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import type { FormProps } from './types/form';

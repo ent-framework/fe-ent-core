@@ -13,7 +13,13 @@ const publish = async () => {
     absolute: true,
     onlyDirectories: true,
   });
-  const publishDir = [...extensions, ...support, epOutput];
+  const apps = await glob('apps/*', {
+    cwd: projRoot,
+    absolute: true,
+    onlyDirectories: true,
+  });
+
+  const publishDir = [...extensions, ...support, ...apps, epOutput];
 
   console.log(publishDir);
   publishDir.map((pkg) => run('npm publish --access public', pkg));

@@ -75,7 +75,7 @@
   import iconsData from '../data/icons-data';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { usePagination } from '@ent-core/hooks/web/use-pagination';
-  import { useDebounceFn } from '@vueuse/core';
+  import { useDebounceFn } from '@vueuse/shared';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useCopyToClipboard } from '@ent-core/hooks/web/use-copy-to-clipboard';
   import { useMessage } from '@ent-core/hooks/web/use-message';
