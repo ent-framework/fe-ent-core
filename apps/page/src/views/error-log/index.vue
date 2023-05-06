@@ -24,17 +24,17 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import type { ErrorLogInfo } from '@ent-core/logics/types/store';
+  import type { ErrorLogInfo } from 'fe-ent-core/lib/logics';
   import { watch, ref, nextTick } from 'vue';
   import DetailModal from './detail-modal.vue';
-  import { useTable } from '@ent-core/components/table/src/hooks/use-table';
-  import { useModal } from '@ent-core/components/modal/src/hooks/use-modal';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useErrorLogStore } from '@ent-core/store/modules/error-log';
+  import { useTable } from 'fe-ent-core/lib/components';
+  import { useModal } from 'fe-ent-core/lib/components';
+  import { useMessage } from 'fe-ent-core/lib/hooks';
+  import { useI18n } from 'fe-ent-core/lib/hooks';
+  import { useErrorLogStore } from 'fe-ent-core/lib/store';
   import { getColumns } from './data';
   import { cloneDeep } from 'lodash-es';
-  import { isDevMode } from '@ent-core/utils/env';
+  import { isDevMode } from 'fe-ent-core/lib/utils';
 
   const rowInfo = ref<ErrorLogInfo>();
   const imgList = ref<string[]>([]);

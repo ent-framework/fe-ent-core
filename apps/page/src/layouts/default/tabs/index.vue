@@ -36,17 +36,17 @@
   import FoldButton from './components/fold-button.vue';
   import TabRedo from './components/tab-redo.vue';
 
-  import { useGo } from '@ent-core/hooks/web/use-page';
+  import { useGo } from 'fe-ent-core/lib/hooks';
 
-  import { useMultipleTabStore } from '@ent-core/store/modules/multiple-tab';
-  import { useUserStore } from '@ent-core/store/modules/user';
+  import { useMultipleTabStore } from 'fe-ent-core/lib/store';
+  import { useUserStore } from 'fe-ent-core/lib/store';
 
   import { initAffixTabs, useTabsDrag } from './use-multiple-tabs';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useMultipleTabSetting } from '@ent-core/hooks/setting/use-multiple-tab-setting';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useMultipleTabSetting } from 'fe-ent-core/lib/hooks';
 
-  import { REDIRECT_NAME } from '@ent-core/router/constant';
-  import { listenerRouteChange } from '@ent-core/logics/mitt/route-change';
+  import { REDIRECT_NAME } from 'fe-ent-core/lib/router';
+  import { listenerRouteChange } from 'fe-ent-core/lib/logics';
 
   import { useRouter } from 'vue-router';
 

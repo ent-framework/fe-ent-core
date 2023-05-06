@@ -4,7 +4,7 @@ import { defineStore } from 'pinia';
 import { store } from '@ent-core/store/pinia';
 
 import { formatToDateTime } from '@ent-core/utils/date-util';
-import projectSetting from '@ent-core/logics/settings/project-setting';
+import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 
 import { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
 import { AxiosError } from 'axios';
@@ -48,7 +48,7 @@ export const useErrorLogStore = defineStore({
      * @returns
      */
     addAjaxErrorInfo(error: AxiosError) {
-      const { useErrorHandle } = projectSetting;
+      const { useErrorHandle } = defaultProjectSetting;
       if (!useErrorHandle) {
         return;
       }

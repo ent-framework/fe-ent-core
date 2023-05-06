@@ -1,5 +1,6 @@
 export * from './use-app-inject';
 export * from './use-content-height';
+export * from './use-content-view-height';
 export * from './use-context-menu';
 export * from './use-copy-to-clipboard';
 export * from './use-design';

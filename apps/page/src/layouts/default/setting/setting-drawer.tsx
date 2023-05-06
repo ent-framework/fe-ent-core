@@ -1,18 +1,18 @@
 import { defineComponent, computed, unref } from 'vue';
-import { default as BasicDrawer } from '@ent-core/components/drawer/src/basic-drawer.vue';
+import { EntDrawer } from 'fe-ent-core/lib/components';
 import { Divider } from 'ant-design-vue';
 import { TypePicker, SettingFooter, SwitchItem, SelectItem, InputNumberItem } from './components';
 
-import { EntAppDarkModeToggle } from '@ent-core/components/application';
+import { EntAppDarkModeToggle } from 'fe-ent-core/lib/components';
 
-import { MenuTypeEnum, TriggerEnum } from '@ent-core/logics/enums/menu-enum';
+import { MenuTypeEnum, TriggerEnum } from 'fe-ent-core/lib/logics';
 
-import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
-import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
-import { useHeaderSetting } from '@ent-core/hooks/setting/use-header-setting';
-import { useMultipleTabSetting } from '@ent-core/hooks/setting/use-multiple-tab-setting';
-import { useTransitionSetting } from '@ent-core/hooks/setting/use-transition-setting';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import { useRootSetting } from 'fe-ent-core/lib/hooks';
+import { useMenuSetting } from 'fe-ent-core/lib/hooks';
+import { useHeaderSetting } from 'fe-ent-core/lib/hooks';
+import { useMultipleTabSetting } from 'fe-ent-core/lib/hooks';
+import { useTransitionSetting } from 'fe-ent-core/lib/hooks';
+import { useI18n } from 'fe-ent-core/lib/hooks';
 
 import { baseHandler } from './handler';
 
@@ -348,7 +348,7 @@ export default defineComponent({
     }
 
     return () => (
-      <BasicDrawer
+      <EntDrawer
         {...attrs}
         title={t('layout.setting.drawerTitle')}
         width={330}
@@ -366,7 +366,7 @@ export default defineComponent({
         {renderTransition()}
         <Divider />
         <SettingFooter />
-      </BasicDrawer>
+      </EntDrawer>
     );
   },
 });

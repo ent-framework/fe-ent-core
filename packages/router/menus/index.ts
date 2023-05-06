@@ -6,7 +6,7 @@ import { usePermissionStore } from '@ent-core/store/modules/permission';
 import { transformMenuModule, getAllParentPath } from '@ent-core/router/helper/menu-helper';
 import { filter } from '@ent-core/utils/helper/tree-helper';
 import { isUrl } from '@ent-core/utils/is';
-import { router } from '@ent-core/router';
+import { router } from '@ent-core/router/base';
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
 import { pathToRegexp } from 'path-to-regexp';
 
@@ -72,10 +72,8 @@ async function getAsyncMenus() {
 
 export const getMenus = async (): Promise<Menu[]> => {
   const menus = await getAsyncMenus();
-  console.log(menus);
   if (isRoleMode()) {
     const routes = router.getRoutes();
-    console.log(routes);
     return filter(menus, basicFilter(routes));
   }
   return menus;

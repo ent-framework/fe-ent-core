@@ -11,14 +11,14 @@
 
     <div class="mt-4">
       权限切换(请先切换权限模式为后台权限模式):
-      <a-button-group>
+      <Space>
         <a-button @click="switchToken(1)" :disabled="!isBackPremissionMode">
           获取用户id为1的菜单
         </a-button>
         <a-button @click="switchToken(2)" :disabled="!isBackPremissionMode">
           获取用户id为2的菜单
         </a-button>
-      </a-button-group>
+      </Space>
     </div>
   </EntPageWrapper>
 </template>
@@ -31,9 +31,9 @@
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
   import { PermissionModeEnum } from 'fe-ent-core/lib/logics/enums/app-enum';
   import { useAppStore } from 'fe-ent-core/lib/store/modules/app';
-  import { Alert } from 'ant-design-vue';
+  import { Alert, Space } from 'ant-design-vue';
   export default defineComponent({
-    components: { Alert, CurrentPermissionMode, EntPageWrapper },
+    components: { Space, Alert, CurrentPermissionMode, EntPageWrapper },
     setup() {
       const { refreshMenu } = usePermission();
       const userStore = useUserStore();

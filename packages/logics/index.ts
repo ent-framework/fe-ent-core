@@ -7,3 +7,5 @@ export * from './settings';
 export * from './theme';
 export * from './bridge';
 export * from './init-app-config';
+export * from './types/config';
+export * from './types/store';

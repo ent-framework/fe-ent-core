@@ -81,14 +81,14 @@
 <script lang="ts" setup>
   import { ref, computed } from 'vue';
   import { Input } from 'ant-design-vue';
-  import type { UserInfo } from '@ent-core/logics/types/store';
-  import { useUserStore } from '@ent-core/store/modules/user';
-  import { useLockStore } from '@ent-core/store/modules/lock';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import type { UserInfo } from 'fe-ent-core/lib/logics';
+  import { useUserStore } from 'fe-ent-core/lib/store';
+  import { useLockStore } from 'fe-ent-core/lib/store';
+  import { useI18n } from 'fe-ent-core/lib/hooks';
   import { useNow } from './use-now';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
   import { LockOutlined } from '@ant-design/icons-vue';
-  import headerImg from '@ent-core/assets/images/header.jpg';
+  import headerImg from '../../images/header.jpg';
 
   const InputPassword = Input.Password;
 

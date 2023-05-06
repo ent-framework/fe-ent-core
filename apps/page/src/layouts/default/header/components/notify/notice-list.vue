@@ -56,9 +56,9 @@
 <script lang="ts">
   import { computed, defineComponent, PropType, ref, watch, unref } from 'vue';
   import { ListItem } from './data';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
   import { List, Avatar, Tag, Typography } from 'ant-design-vue';
-  import { isNumber } from '@ent-core/utils/is';
+  import { isNumber } from 'fe-ent-core/lib/utils';
   export default defineComponent({
     components: {
       [Avatar.name]: Avatar,

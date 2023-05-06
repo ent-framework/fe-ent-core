@@ -2,7 +2,7 @@
   <div :class="[prefixCls, `${prefixCls}--${theme}`]">
     <a-breadcrumb :routes="routes">
       <template #itemRender="{ route, routes: routesMatched, paths }">
-        <Icon :icon="getIcon(route)" v-if="getShowBreadCrumbIcon && getIcon(route)" />
+        <EntIcon :icon="getIcon(route)" v-if="getShowBreadCrumbIcon && getIcon(route)" />
         <span v-if="!hasRedirect(routesMatched, route)">
           {{ t(route.name || route.meta.title) }}
         </span>
@@ -16,29 +16,29 @@
 <script lang="ts">
   import type { RouteLocationMatched } from 'vue-router';
   import { useRouter } from 'vue-router';
-  import type { Menu } from '@ent-core/router/types';
+  import type { Menu } from 'fe-ent-core/lib/router';
 
   import { defineComponent, ref, watchEffect } from 'vue';
 
   import { Breadcrumb } from 'ant-design-vue';
-  import Icon from '@ent-core/components/icon';
+  import { EntIcon } from 'fe-ent-core/lib/components';
 
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
-  import { useGo } from '@ent-core/hooks/web/use-page';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useRootSetting } from 'fe-ent-core/lib/hooks';
+  import { useGo } from 'fe-ent-core/lib/hooks';
+  import { useI18n } from 'fe-ent-core/lib/hooks';
 
-  import { propTypes } from '@ent-core/utils/prop-types';
-  import { isString } from '@ent-core/utils/is';
-  import { filter } from '@ent-core/utils/helper/tree-helper';
-  import { getMenus } from '@ent-core/router/menus';
+  import { propTypes } from 'fe-ent-core/lib/utils';
+  import { isString } from 'fe-ent-core/lib/utils';
+  import { filter } from 'fe-ent-core/lib/utils';
+  import { getMenus } from 'fe-ent-core/lib/router';
 
-  import { REDIRECT_NAME } from '@ent-core/router/constant';
-  import { getAllParentPath } from '@ent-core/router/helper/menu-helper';
+  import { REDIRECT_NAME } from 'fe-ent-core/lib/router';
+  import { getAllParentPath } from 'fe-ent-core/lib/router';
 
   export default defineComponent({
     name: 'LayoutBreadcrumb',
-    components: { Icon, [Breadcrumb.name]: Breadcrumb },
+    components: { EntIcon, [Breadcrumb.name]: Breadcrumb },
     props: {
       theme: propTypes.oneOf(['dark', 'light']),
     },
@@ -56,7 +56,6 @@
         const routeMatched = currentRoute.value.matched;
         const cur = routeMatched?.[routeMatched.length - 1];
         let path = currentRoute.value.path;
-
 
         if (cur && cur?.meta?.currentActiveMenu) {
           path = cur.meta.currentActiveMenu as string;

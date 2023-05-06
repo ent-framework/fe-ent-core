@@ -5,7 +5,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import SiderTrigger from './sider-trigger.vue';
-  import { propTypes } from '@ent-core/utils/prop-types';
+  import { propTypes } from 'fe-ent-core/lib/utils';
   import HeaderTrigger from './header-trigger.vue';
 
   export default defineComponent({

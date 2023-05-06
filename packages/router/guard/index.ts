@@ -10,7 +10,7 @@ import { setRouteChange } from '@ent-core/logics/mitt/route-change';
 import { createPermissionGuard } from './permission-guard';
 import { createStateGuard } from './state-guard';
 import nProgress from 'nprogress';
-import projectSetting from '@ent-core/logics/settings/project-setting';
+import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { createParamMenuGuard } from './param-menu-guard';
 
 // Don't change the order of creation
@@ -86,7 +86,7 @@ export function createPageLoadingGuard(router: Router) {
  * @param router
  */
 export function createHttpGuard(router: Router) {
-  const { removeAllHttpPending } = projectSetting;
+  const { removeAllHttpPending } = defaultProjectSetting;
   let axiosCanceler: Nullable<AxiosCanceler>;
   if (removeAllHttpPending) {
     axiosCanceler = new AxiosCanceler();
@@ -118,7 +118,7 @@ export function createScrollGuard(router: Router) {
  * @param router
  */
 export function createMessageGuard(router: Router) {
-  const { closeMessageOnSwitch } = projectSetting;
+  const { closeMessageOnSwitch } = defaultProjectSetting;
 
   router.beforeEach(async () => {
     try {

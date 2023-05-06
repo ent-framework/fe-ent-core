@@ -13,13 +13,13 @@
   import type { RouteLocationNormalized } from 'vue-router';
 
   import { defineComponent, computed, unref } from 'vue';
-  import { EntDropdown } from '@ent-core/components/dropdown';
-  import { EntIcon } from '@ent-core/components/icon';
+  import { EntDropdown } from 'fe-ent-core/lib/components';
+  import { EntIcon } from 'fe-ent-core/lib/components';
 
   import { TabContentProps } from '../types';
 
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useI18n } from 'fe-ent-core/lib/hooks';
   import { useTabDropdown } from '../use-tab-dropdown';
 
   export default defineComponent({

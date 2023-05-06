@@ -1,16 +1,13 @@
 import type { AppRouteModule } from 'fe-ent-core/lib/router/types';
 
 import { getParentLayout } from 'fe-ent-core/lib/router/constant';
-import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default';
 import { ExceptionEnum } from 'fe-ent-core/lib/logics/enums/exception-enum';
 import { t } from 'fe-ent-core/lib/hooks/web/use-i18n';
-
-const ExceptionPage = () => import('fe-ent-core/lib/views/sys/exception');
 
 const page: AppRouteModule = {
   path: '/page-demo',
   name: 'PageDemo',
-  component: LAYOUT,
+  component: 'LAYOUT',
   redirect: '/page-demo/form/basic',
   meta: {
     orderNo: 20,
@@ -158,7 +155,7 @@ const page: AppRouteModule = {
         {
           path: '403',
           name: 'PageNotAccess',
-          component: ExceptionPage,
+          component: 'ExceptionPage',
           props: {
             status: ExceptionEnum.PAGE_NOT_ACCESS,
           },
@@ -169,7 +166,7 @@ const page: AppRouteModule = {
         {
           path: '404',
           name: 'PageNotFound',
-          component: ExceptionPage,
+          component: 'ExceptionPage',
           props: {
             status: ExceptionEnum.PAGE_NOT_FOUND,
           },
@@ -180,7 +177,7 @@ const page: AppRouteModule = {
         {
           path: '500',
           name: 'ServiceError',
-          component: ExceptionPage,
+          component: 'ExceptionPage',
           props: {
             status: ExceptionEnum.ERROR,
           },
@@ -191,7 +188,7 @@ const page: AppRouteModule = {
         {
           path: 'net-work-error',
           name: 'NetWorkError',
-          component: ExceptionPage,
+          component: 'ExceptionPage',
           props: {
             status: ExceptionEnum.NET_WORK_ERROR,
           },
@@ -202,7 +199,7 @@ const page: AppRouteModule = {
         {
           path: 'not-data',
           name: 'NotData',
-          component: ExceptionPage,
+          component: 'ExceptionPage',
           props: {
             status: ExceptionEnum.PAGE_NOT_DATA,
           },

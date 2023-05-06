@@ -2,7 +2,8 @@ import type { AppRouteModule, AppRouteRecordRaw } from '@ent-core/router/types';
 import type { Router, RouteRecordNormalized } from 'vue-router';
 import { cloneDeep, omit, set, merge } from 'lodash-es';
 import { createRouter, createWebHashHistory } from 'vue-router';
-import { isUrl } from '@ent-core/utils/is';
+import { isString, isUrl } from '@ent-core/utils/is';
+import { useLayout } from '@ent-core/router/helper/layout-helper';
 
 /**
  * Convert multi-level routing to level 2 routing
@@ -34,9 +35,13 @@ function promoteRouteLevel(routeModule: AppRouteModule) {
   routeModule.children = routeModule.children?.map((item) => omit(item, 'children'));
 }
 
-export function normalizeRoutePath(route: AppRouteRecordRaw) {
+export function normalizeRoutePath(route: AppRouteRecordRaw, parentPath?: string) {
+  const layoutMgt = useLayout();
+  if (isString(route.component)) {
+    route.component = layoutMgt.getLayout(route.component as string);
+  }
   if (hasChildren(route)) {
-    const { path } = route;
+    const path = parentPath || route.path;
     route.children?.forEach((c) => {
       const { path: childPath } = c;
       if (
@@ -48,6 +53,12 @@ export function normalizeRoutePath(route: AppRouteRecordRaw) {
         !isUrl(childPath)
       ) {
         c.path = path + '/' + childPath;
+      }
+      if (isString(c.component)) {
+        c.component = layoutMgt.getLayout(c.component as string);
+      }
+      if (hasChildren(c)) {
+        normalizeRoutePath(c, c.path);
       }
     });
   }

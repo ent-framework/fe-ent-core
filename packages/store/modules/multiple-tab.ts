@@ -8,11 +8,11 @@ import { useGo, useRedo } from '@ent-core/hooks/web/use-page';
 import { Persistent } from '@ent-core/utils/cache/persistent';
 
 import { PageEnum } from '@ent-core/logics/enums/page-enum';
-import { registerPageNotFoundRoute, registerRedirectRoute } from '@ent-core/router/routes/basic';
-import { getRawRoute } from '@ent-core/utils';
+import { routeBridge } from '@ent-core/router/bridge';
+import { getRawRoute } from '@ent-core/utils/base';
 import { MULTIPLE_TABS_KEY } from '@ent-core/logics/enums/cache-enum';
 
-import projectSetting from '@ent-core/logics/settings/project-setting';
+import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { useUserStore } from '@ent-core/store/modules/user';
 
 export interface MultipleTabState {
@@ -35,7 +35,7 @@ const getToTarget = (tabItem: RouteLocationNormalized) => {
   };
 };
 
-const cacheTab = projectSetting.multiTabsSetting.cache;
+const cacheTab = defaultProjectSetting.multiTabsSetting.cache;
 
 export const useMultipleTabStore = defineStore({
   id: 'app-multiple-tab',
@@ -119,8 +119,8 @@ export const useMultipleTabStore = defineStore({
     },
 
     async addTab(route: RouteLocationNormalized) {
-      const redirectRoute = registerRedirectRoute();
-      const pageNotFoundRoute = registerPageNotFoundRoute();
+      const redirectRoute = routeBridge.getRedirectRoute();
+      const pageNotFoundRoute = routeBridge.getPageNotFoundRoute();
       const { path, name, fullPath, params, query, meta } = getRawRoute(route);
       // 404  The page does not need to add a tab
       if (

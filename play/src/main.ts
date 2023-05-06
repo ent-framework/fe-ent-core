@@ -11,15 +11,13 @@ import { setupStore } from 'fe-ent-core/lib/store';
 import { setupGlobDirectives } from 'fe-ent-core/lib/directives';
 import { setupI18n } from 'fe-ent-core/lib/locales/setup-i18n';
 import { registerGlobComp } from 'fe-ent-core/lib/components/register-glob-comp';
-import { useLayout } from 'fe-ent-core/lib/router/helper/layout-helper';
-import { getBasicRoutes } from 'fe-ent-core/lib/router/routes';
 import { initApplication } from '/@/init-application';
+import EntCore from 'fe-ent-core';
 
 import 'ant-design-vue/dist/antd.css';
 import 'fe-ent-core/lib/theme/index.less';
 
-import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default';
-import { default as IFRAME } from 'fe-ent-core/lib/views/sys/iframe/frame-blank';
+import { setupPages, getBasicRoutes } from '@fe-ent-app/page';
 
 import App from './App.vue';
 async function bootstrap() {
@@ -27,6 +25,9 @@ async function bootstrap() {
 
   // Configure store
   setupStore(app);
+
+  // Initialize internal system configuration
+  await initAppConfigStore();
 
   //初始化全局变量
   await initApplication();
@@ -38,14 +39,9 @@ async function bootstrap() {
   // Register global components
   registerGlobComp(app);
 
-  // Initialize internal system configuration
-  await initAppConfigStore();
+  setupPages();
 
-  const layoutMgt = useLayout();
-
-  //initial layout
-  layoutMgt.use('LAYOUT', LAYOUT);
-  layoutMgt.use('IFRAME', IFRAME);
+  app.use(EntCore);
 
   router.addBasicRoutes(getBasicRoutes());
   router.addBizRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));

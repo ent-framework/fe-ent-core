@@ -9,7 +9,7 @@
 <script lang="ts">
   import { defineComponent, computed, unref } from 'vue';
   import { Tooltip } from 'ant-design-vue';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { useI18n } from 'fe-ent-core/lib/hooks';
   import { useFullscreen } from '@vueuse/core';
 
   import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons-vue';

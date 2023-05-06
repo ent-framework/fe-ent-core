@@ -8,7 +8,7 @@ import { useErrorLogStoreWithOut } from '@ent-core/store/modules/error-log';
 
 import { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
 import { App } from 'vue';
-import projectSetting from '@ent-core/logics/settings/project-setting';
+import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 
 /**
  * Handling error stack information
@@ -166,7 +166,7 @@ function registerResourceErrorHandler() {
  * @param app
  */
 export function setupErrorHandle(app: App) {
-  const { useErrorHandle } = projectSetting;
+  const { useErrorHandle } = defaultProjectSetting;
   if (!useErrorHandle) {
     return;
   }

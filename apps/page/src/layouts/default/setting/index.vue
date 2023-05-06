@@ -1,19 +1,19 @@
 <template>
   <div @click="openDrawer(true)">
-    <Icon icon="ion:settings-outline" />
+    <EntIcon icon="ion:settings-outline" />
     <SettingDrawer @register="register" />
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import SettingDrawer from './setting-drawer';
-  import Icon from '@ent-core/components/icon';
+  import { EntIcon } from 'fe-ent-core/lib/components';
 
-  import { useDrawer } from '@ent-core/components/drawer';
+  import { useDrawer } from 'fe-ent-core/lib/components';
 
   export default defineComponent({
     name: 'SettingButton',
-    components: { SettingDrawer, Icon },
+    components: { SettingDrawer, EntIcon },
     setup() {
       const [register, { openDrawer }] = useDrawer();
 

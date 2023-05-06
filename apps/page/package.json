@@ -1,13 +1,13 @@
 {
   "name": "fe-ent-page",
-  "version": "1.4.27",
+  "version": "1.4.31",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "typings": "dist/src/index.d.ts",
+  "typings": "dist/types/index.d.ts",
   "unpkg": "dist/index.min.js",
   "exports": {
     ".": {
@@ -33,8 +33,7 @@
     "ant-design-vue": "^3.2.17",
     "fe-ent-core": "workspace:*"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "fe-ent-build": "workspace:*",
     "@types/codemirror": "^5.60.5",

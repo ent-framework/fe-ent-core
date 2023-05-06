@@ -11,13 +11,13 @@
   import LayoutHeader from './index.vue';
   import MultipleTabs from '../tabs/index.vue';
 
-  import { useHeaderSetting } from '@ent-core/hooks/setting/use-header-setting';
-  import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
-  import { useFullContent } from '@ent-core/hooks/web/use-full-content';
-  import { useMultipleTabSetting } from '@ent-core/hooks/setting/use-multiple-tab-setting';
-  import { useAppInject } from '@ent-core/hooks/web/use-app-inject';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useLayoutHeight } from '../content/use-content-view-height';
+  import { useHeaderSetting } from 'fe-ent-core/lib/hooks';
+  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
+  import { useFullContent } from 'fe-ent-core/lib/hooks';
+  import { useMultipleTabSetting } from 'fe-ent-core/lib/hooks';
+  import { useAppInject } from 'fe-ent-core/lib/hooks';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useLayoutHeight } from 'fe-ent-core/lib/hooks';
 
   const HEADER_HEIGHT = 48;
 

@@ -8,7 +8,7 @@ import { useTabs } from './use-tabs';
 
 import { router, resetRouter } from '@ent-core/router';
 
-import projectSetting from '@ent-core/logics/settings/project-setting';
+import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
 import { RoleEnum } from '@ent-core/logics/enums/role-enum';
 
@@ -29,7 +29,7 @@ export function usePermission() {
   async function togglePermissionMode() {
     appStore.setProjectConfig({
       permissionMode:
-        projectSetting.permissionMode === PermissionModeEnum.BACK
+        defaultProjectSetting.permissionMode === PermissionModeEnum.BACK
           ? PermissionModeEnum.ROUTE_MAPPING
           : PermissionModeEnum.BACK,
     });
@@ -67,7 +67,7 @@ export function usePermission() {
       return def;
     }
 
-    const permMode = projectSetting.permissionMode;
+    const permMode = defaultProjectSetting.permissionMode;
 
     if ([PermissionModeEnum.ROUTE_MAPPING, PermissionModeEnum.ROLE].includes(permMode)) {
       if (!isArray(value)) {
@@ -91,7 +91,7 @@ export function usePermission() {
    * @param roles
    */
   async function changeRole(roles: RoleEnum | RoleEnum[]): Promise<void> {
-    if (projectSetting.permissionMode !== PermissionModeEnum.ROUTE_MAPPING) {
+    if (defaultProjectSetting.permissionMode !== PermissionModeEnum.ROUTE_MAPPING) {
       throw new Error(
         'Please switch PermissionModeEnum to ROUTE_MAPPING mode in the configuration to operate!',
       );

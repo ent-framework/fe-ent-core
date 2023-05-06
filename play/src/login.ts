@@ -11,15 +11,13 @@ import { setupStore } from 'fe-ent-core/lib/store';
 import { setupGlobDirectives } from 'fe-ent-core/lib/directives';
 import { setupI18n } from 'fe-ent-core/lib/locales/setup-i18n';
 import { registerGlobComp } from 'fe-ent-core/lib/components/register-glob-comp';
-import { useLayout } from 'fe-ent-core/lib/router/helper/layout-helper';
 import { initApplication } from '/@/init-application';
 
 import 'ant-design-vue/dist/antd.css';
 import 'fe-ent-core/lib/theme/index.less';
 
-import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default';
-import { default as IFRAME } from 'fe-ent-core/lib/views/sys/iframe/frame-blank';
 import { LoginRoute } from '@fe-ent-app/login';
+import { setupPages } from '@fe-ent-app/page';
 
 import App from './App.vue';
 
@@ -42,11 +40,7 @@ async function bootstrap() {
   // Initialize internal system configuration
   await initAppConfigStore();
 
-  const layoutMgt = useLayout();
-
-  //initial layout
-  layoutMgt.use('LAYOUT', LAYOUT);
-  layoutMgt.use('IFRAME', IFRAME);
+  setupPages();
 
   router.addBasicRoutes([LoginRoute]);
 

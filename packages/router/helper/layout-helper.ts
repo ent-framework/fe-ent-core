@@ -22,6 +22,9 @@ const layoutMgt: LayoutManagement = {
     return layoutMgt;
   },
   getLayout(name: string): Plugin | Function {
+    if (!LayoutMap.has(name)) {
+      console.log(`${name} is not found.`);
+    }
     return LayoutMap.get(name) as Plugin;
   },
 };

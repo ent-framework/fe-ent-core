@@ -2,26 +2,27 @@
   import type { PropType, CSSProperties } from 'vue';
 
   import { computed, defineComponent, unref, toRef } from 'vue';
-  import { BasicMenu } from '@ent-core/components/menu';
-  import { SimpleMenu } from '@ent-core/components/simple-menu';
-  import AppLogo from '@ent-core/layouts/default/components/app-logo.vue';
+  import { BasicMenu } from 'fe-ent-core/lib/components';
+  import { SimpleMenu } from 'fe-ent-core/lib/components';
+  import AppLogo from '../components/app-logo.vue';
 
-  import { MenuModeEnum, MenuSplitTyeEnum } from '@ent-core/logics/enums/menu-enum';
+  import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/lib/logics';
 
-  import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
-  import { EntScrollContainer } from '@ent-core/components/container';
+  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
+  import { EntScrollContainer } from 'fe-ent-core/lib/components';
 
-  import { useGo } from '@ent-core/hooks/web/use-page';
+  import { useGo } from 'fe-ent-core/lib/hooks';
   import { useSplitMenu } from './use-layout-menu';
-  import { openWindow } from '@ent-core/utils';
-  import { propTypes } from '@ent-core/utils/prop-types';
-  import { isUrl } from '@ent-core/utils/is';
-  import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
-  import { useAppInject } from '@ent-core/hooks/web/use-app-inject';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { openWindow } from 'fe-ent-core/lib/utils';
+  import { propTypes } from 'fe-ent-core/lib/utils';
+  import { isUrl } from 'fe-ent-core/lib/utils';
+  import { useRootSetting } from 'fe-ent-core/lib/hooks';
+  import { useAppInject } from 'fe-ent-core/lib/hooks';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
 
   export default defineComponent({
     name: 'LayoutMenu',
+    components: { EntScrollContainer },
     props: {
       theme: propTypes.oneOf(['light', 'dark']),
 
@@ -37,7 +38,6 @@
         default: '',
       },
     },
-    components: { EntScrollContainer },
     setup(props) {
       const go = useGo();
 
@@ -162,7 +162,9 @@
           <>
             {renderHeader()}
             {unref(getUseScroll) ? (
-              <EntScrollContainer style={unref(getWrapperStyle)}>{() => renderMenu()}</EntScrollContainer>
+              <EntScrollContainer style={unref(getWrapperStyle)}>
+                {() => renderMenu()}
+              </EntScrollContainer>
             ) : (
               renderMenu()
             )}

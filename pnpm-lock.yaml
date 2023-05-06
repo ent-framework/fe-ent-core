@@ -21,9 +21,6 @@ importers:
       '@ent-core/hooks':
         specifier: workspace:*
         version: link:packages/hooks
-      '@ent-core/layouts':
-        specifier: workspace:*
-        version: link:packages/layouts
       '@ent-core/locales':
         specifier: workspace:*
         version: link:packages/locales
@@ -42,9 +39,6 @@ importers:
       '@ent-core/utils':
         specifier: workspace:*
         version: link:packages/utils
-      '@ent-core/views':
-        specifier: workspace:*
-        version: link:packages/views
       '@vueuse/core':
         specifier: ^9.13.0
         version: 9.13.0(vue@3.2.47)
@@ -280,9 +274,6 @@ importers:
       fe-ent-core:
         specifier: workspace:*
         version: link:../../packages/fe-ent-core
-      fe-ent-qrcode:
-        specifier: workspace:*
-        version: link:../../extensions/qrcode
     devDependencies:
       '@types/codemirror':
         specifier: ^5.60.5
@@ -790,12 +781,6 @@ importers:
         specifier: ^3.2.0
         version: 3.2.45
 
-  packages/layouts:
-    dependencies:
-      vue:
-        specifier: ^3.2.0
-        version: 3.2.45
-
   packages/locales:
     dependencies:
       vue:
@@ -827,12 +812,6 @@ importers:
         version: 3.2.45
 
   packages/utils:
-    dependencies:
-      vue:
-        specifier: ^3.2.0
-        version: 3.2.45
-
-  packages/views:
     dependencies:
       vue:
         specifier: ^3.2.0

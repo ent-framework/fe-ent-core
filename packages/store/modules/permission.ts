@@ -13,14 +13,14 @@ import {
 } from '@ent-core/router/helper/route-helper';
 import { transformRouteToMenu } from '@ent-core/router/helper/menu-helper';
 
-import projectSetting from '@ent-core/logics/settings/project-setting';
+import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
-import { registerErrorLogRoute, registerPageNotFoundRoute } from '@ent-core/router/routes/basic';
+import { routeBridge } from '@ent-core/router/bridge';
 import { filter } from '@ent-core/utils/helper/tree-helper';
 import { userBridge } from '@ent-core/logics/bridge';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { PageEnum } from '@ent-core/logics/enums/page-enum';
-import { router } from '@ent-core/router';
+import { router } from '@ent-core/router/base';
 
 export interface PermissionState {
   // Permission code list
@@ -65,8 +65,19 @@ export const usePermissionStore = defineStore({
     getIsDynamicAddedRoute(): boolean {
       return this.isDynamicAddedRoute;
     },
+    getMenuModules(): MenuModule[] {
+      return this.menuModules;
+    },
   },
   actions: {
+    importMenuModules(modules: Record<string, { [key: string]: any }>) {
+      Object.keys(modules).forEach((key) => {
+        const mod = modules[key].default || {};
+        const modList = Array.isArray(mod) ? [...mod] : [mod];
+        this.menuModules.push(...modList);
+      });
+    },
+
     setPermCodeList(codeList: string[]) {
       this.permCodeList = codeList;
     },
@@ -104,7 +115,7 @@ export const usePermissionStore = defineStore({
 
       let routes: AppRouteRecordRaw[] = [];
       const roleList = toRaw(userStore.getRoleList) || [];
-      const { permissionMode = projectSetting.permissionMode } = appStore.getProjectConfig;
+      const { permissionMode = defaultProjectSetting.permissionMode } = appStore.getProjectConfig;
 
       const routeFilter = (route: AppRouteRecordRaw) => {
         const { meta } = route;
@@ -203,7 +214,6 @@ export const usePermissionStore = defineStore({
           }
           // 用服务器返回routeList去过滤router.bizRoutes，返回匹配的路由信息
           routeList = backendRouteFilter(router.bizRoutes, routeList);
-          console.log(routeList);
           //  Background routing to menu structure
           const backMenuList = transformRouteToMenu(routeList);
           this.setBackMenuList(backMenuList);
@@ -213,11 +223,12 @@ export const usePermissionStore = defineStore({
           routeList = routeList.filter(routeRemoveIgnoreFilter);
 
           routeList = flatMultiLevelRoutes(routeList);
-          routes = [registerPageNotFoundRoute(), ...routeList];
+          console.log(routeList);
+          routes = [routeBridge.getPageNotFoundRoute(), ...routeList];
           break;
       }
 
-      routes.push(registerErrorLogRoute());
+      routes.push(routeBridge.getErrorLogRoute());
       patchHomeAffix(routes);
       return routes;
     },

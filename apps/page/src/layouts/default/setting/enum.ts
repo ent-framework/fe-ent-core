@@ -1,13 +1,13 @@
-import { ContentEnum, RouterTransitionEnum } from '@ent-core/logics/enums/app-enum';
+import { ContentEnum, RouterTransitionEnum } from 'fe-ent-core/lib/logics';
 import {
   MenuModeEnum,
   MenuTypeEnum,
   TopMenuAlignEnum,
   TriggerEnum,
   MixSidebarTriggerEnum,
-} from '@ent-core/logics/enums/menu-enum';
+} from 'fe-ent-core/lib/logics';
 
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import { useI18n } from 'fe-ent-core/lib/hooks';
 
 export enum HandlerEnum {
   CHANGE_LAYOUT,

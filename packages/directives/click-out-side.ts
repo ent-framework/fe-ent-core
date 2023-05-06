@@ -88,5 +88,4 @@ const ClickOutside: ObjectDirective = {
 export function setClickOutsideDirective(app: App) {
   app.directive('click-outside', ClickOutside);
 }
-
-export default ClickOutside;
+export { ClickOutside };

@@ -57,29 +57,28 @@
 <script lang="ts">
   import { defineComponent, unref, computed } from 'vue';
 
-  import { propTypes } from '@ent-core/utils/prop-types';
+  import { propTypes } from 'fe-ent-core/lib/utils';
 
   import { Layout } from 'ant-design-vue';
-  import AppLogo from '@ent-core/layouts/default/components/app-logo.vue';
+  import AppLogo from '../components/app-logo.vue';
   import LayoutMenu from '../menu/index.vue';
   import LayoutTrigger from '../trigger/index.vue';
 
-  import AppSearch from '@ent-core/layouts/default/components/app-search.vue';
+  import AppSearch from '../components/app-search.vue';
 
-  import { useHeaderSetting } from '@ent-core/hooks/setting/use-header-setting';
-  import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
-  import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
+  import { useHeaderSetting } from 'fe-ent-core/lib/hooks';
+  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
+  import { useRootSetting } from 'fe-ent-core/lib/hooks';
 
-  import { MenuModeEnum, MenuSplitTyeEnum } from '@ent-core/logics/enums/menu-enum';
-  import { SettingButtonPositionEnum } from '@ent-core/logics/enums/app-enum';
-  import { EntAppLocalePicker } from '@ent-core/components/application';
+  import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/lib/logics';
+  import { SettingButtonPositionEnum } from 'fe-ent-core/lib/logics';
+  import { EntAppLocalePicker } from 'fe-ent-core/lib/components';
 
   import { UserDropDown, LayoutBreadcrumb, FullScreen, Notify, ErrorAction } from './components';
-  import { useAppInject } from '@ent-core/hooks/web/use-app-inject';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-
-  import { useLocale } from '@ent-core/locales/use-locale';
-  import SettingDrawer from '@ent-core/layouts/default/setting/index.vue';
+  import { useAppInject } from 'fe-ent-core/lib/hooks';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useLocale } from 'fe-ent-core/lib/locales';
+  import SettingDrawer from '../setting/index.vue';
 
   export default defineComponent({
     name: 'LayoutHeader',

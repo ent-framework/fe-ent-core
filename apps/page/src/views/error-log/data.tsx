@@ -1,7 +1,7 @@
 import { Tag } from 'ant-design-vue';
-import { BasicColumn } from '@ent-core/components/table';
-import { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import { BasicColumn } from 'fe-ent-core/lib/components';
+import { ErrorTypeEnum } from 'fe-ent-core/lib/logics';
+import { useI18n } from 'fe-ent-core/lib/hooks';
 
 export function getColumns(): BasicColumn[] {
   const { t } = useI18n();

@@ -1,13 +1,12 @@
 import type { AppRouteModule } from 'fe-ent-core/lib/router/types';
 
 import { getParentLayout } from 'fe-ent-core/lib/router/constant';
-import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default';
 import { t } from 'fe-ent-core/lib/hooks/web/use-i18n';
 
 const charts: AppRouteModule = {
   path: '/charts',
   name: 'Charts',
-  component: LAYOUT,
+  component: 'LAYOUT',
   redirect: '/charts/echarts/map',
   meta: {
     orderNo: 500,

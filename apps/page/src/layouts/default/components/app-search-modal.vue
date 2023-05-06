@@ -40,13 +40,13 @@
               ]"
             >
               <div :class="`${prefixCls}-list__item-icon`">
-                <Icon :icon="item.icon || 'mdi:form-select'" :size="20" />
+                <EntIcon :icon="item.icon || 'mdi:form-select'" :size="20" />
               </div>
               <div :class="`${prefixCls}-list__item-text`">
                 {{ item.name }}
               </div>
               <div :class="`${prefixCls}-list__item-enter`">
-                <Icon icon="ant-design:enter-outlined" :size="20" />
+                <EntIcon icon="ant-design:enter-outlined" :size="20" />
               </div>
             </li>
           </ul>
@@ -61,14 +61,14 @@
   import { computed, unref, ref, watch, nextTick } from 'vue';
   import { SearchOutlined } from '@ant-design/icons-vue';
   import AppSearchFooter from './app-search-footer.vue';
-  import Icon from '@ent-core/components/icon';
+  import { EntIcon } from 'fe-ent-core/lib/components';
   // @ts-ignore
-  import vClickOutside from '@ent-core/directives/click-out-side';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useRefs } from '@ent-core/hooks/core/use-refs';
+  import { ClickOutside } from 'fe-ent-core/lib/directives';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useRefs } from 'fe-ent-core/lib/hooks';
   import { useMenuSearch } from './use-menu-search';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useAppInject } from '@ent-core/hooks/web/use-app-inject';
+  import { useI18n } from 'fe-ent-core/lib/hooks';
+  import { useAppInject } from 'fe-ent-core/lib/hooks';
 
   const props = defineProps({
     visible: { type: Boolean },

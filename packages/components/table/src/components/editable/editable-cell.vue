@@ -8,7 +8,7 @@
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useTableContext } from '../../hooks/use-table-context';
 
-  import clickOutside from '@ent-core/directives/click-out-side';
+  import { ClickOutside } from '@ent-core/directives/click-out-side';
 
   import { propTypes } from '@ent-core/utils/prop-types';
   import { isArray, isBoolean, isFunction, isNumber, isString } from '@ent-core/utils/is';
@@ -21,7 +21,7 @@
     name: 'EditableCell',
     components: { FormOutlined, CloseOutlined, CheckOutlined, CellComponent, Spin },
     directives: {
-      clickOutside,
+      ClickOutside,
     },
     props: {
       value: {

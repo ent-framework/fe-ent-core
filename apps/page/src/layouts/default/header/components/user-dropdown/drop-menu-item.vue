@@ -1,7 +1,7 @@
 <template>
   <MenuItem :key="itemKey">
     <span class="flex items-center">
-      <Icon :icon="icon" class="mr-1" />
+      <EntIcon :icon="icon" class="mr-1" />
       <span>{{ text }}</span>
     </span>
   </MenuItem>
@@ -11,12 +11,12 @@
 
   import { computed, defineComponent, getCurrentInstance } from 'vue';
 
-  import Icon from '@ent-core/components/icon';
-  import { propTypes } from '@ent-core/utils/prop-types';
+  import { EntIcon } from 'fe-ent-core/lib/components';
+  import { propTypes } from 'fe-ent-core/lib/utils';
 
   export default defineComponent({
     name: 'DropdownMenuItem',
-    components: { MenuItem: Menu.Item, Icon },
+    components: { MenuItem: Menu.Item, EntIcon },
     props: {
       key: propTypes.string,
       text: propTypes.string,

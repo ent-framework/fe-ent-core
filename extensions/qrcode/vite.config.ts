@@ -6,6 +6,9 @@ export default definePackageConfig({
         entry: 'src/index.ts',
       },
       sourcemap: true,
+      rollupOptions: {
+        external: ['fe-ent-core/lib/utils'],
+      },
     },
     optimizeDeps: {
       include: ['qrcode'],

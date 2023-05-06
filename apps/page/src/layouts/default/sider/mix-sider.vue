@@ -78,25 +78,25 @@
   </div>
 </template>
 <script lang="ts">
-  import type { Menu } from '@ent-core/router/types';
+  import type { Menu } from 'fe-ent-core/lib/router';
   import type { CSSProperties } from 'vue';
   import { computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
   import type { RouteLocationNormalized } from 'vue-router';
-  import { EntScrollContainer } from '@ent-core/components/container';
-  import { SimpleMenu, SimpleMenuTag } from '@ent-core/components/simple-menu';
-  import { EntIcon } from '@ent-core/components/icon';
-  import AppLogo from '@ent-core/layouts/default/components/app-logo.vue';
-  import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
-  import { usePermissionStore } from '@ent-core/store/modules/permission';
+  import { EntScrollContainer } from 'fe-ent-core/lib/components';
+  import { SimpleMenu, SimpleMenuTag } from 'fe-ent-core/lib/components';
+  import { EntIcon } from 'fe-ent-core/lib/components';
+  import AppLogo from '../components/app-logo.vue';
+  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
+  import { usePermissionStore } from 'fe-ent-core/lib/store';
   import { useDragLine } from './use-layout-sider';
-  import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useGo } from '@ent-core/hooks/web/use-page';
-  import { SIDE_BAR_MINI_WIDTH, SIDE_BAR_SHOW_TIT_MINI_WIDTH } from '@ent-core/logics/enums/app-enum';
-  import clickOutside from '@ent-core/directives/click-out-side';
-  import { getChildrenMenus, getCurrentParentPath, getShallowMenus } from '@ent-core/router/menus';
-  import { listenerRouteChange } from '@ent-core/logics/mitt/route-change';
+  import { useGlobSetting } from 'fe-ent-core/lib/hooks';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useI18n } from 'fe-ent-core/lib/hooks';
+  import { useGo } from 'fe-ent-core/lib/hooks';
+  import { SIDE_BAR_MINI_WIDTH, SIDE_BAR_SHOW_TIT_MINI_WIDTH } from 'fe-ent-core/lib/logics';
+  import { ClickOutside } from 'fe-ent-core/lib/directives';
+  import { getChildrenMenus, getCurrentParentPath, getShallowMenus } from 'fe-ent-core/lib/router';
+  import { listenerRouteChange } from 'fe-ent-core/lib/logics';
   import LayoutTrigger from '../trigger/index.vue';
 
   export default defineComponent({
@@ -110,7 +110,7 @@
       SimpleMenuTag,
     },
     directives: {
-      clickOutside,
+      ClickOutside,
     },
     setup() {
       let menuModules = ref<Menu[]>([]);

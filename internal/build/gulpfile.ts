@@ -74,7 +74,8 @@ export default series(
   parallel(runTask('buildModules'), runTask('buildFullBundle')),
   parallel(
     //runTask('buildFullExtensions'),
-    withTaskName('buildFullExtensions', () => run('pnpm -w run build:extensions')),
+    withTaskName('buildExtensions', () => run('pnpm -w run build:extensions')),
+    withTaskName('buildApps', () => run('pnpm -w run build:apps')),
     runTask('generateTypesDefinitions'),
     series(
       withTaskName('buildUnoCSS', () => run('pnpm -w run build:uno:css')),
@@ -83,7 +84,7 @@ export default series(
           path.resolve(buildOutput, 'unocss', 'style.css'),
           path.resolve(buildOutput, 'fe-ent-core', 'dist', 'ent-uno.css'),
         ),
-      )
+      ),
     ),
     runTask('buildHelper'),
     series(copyFullStyle, runTask('buildTheme')),

@@ -1,7 +1,7 @@
 import { ComputedRef, isRef, nextTick, Ref, ref, unref, watch } from 'vue';
 import { onMountedOrActivated } from '@ent-core/hooks/core/on-mounted-or-activated';
 import { useWindowSizeFn } from '@ent-core/hooks/event/use-window-size-fn';
-import { useLayoutHeight } from '@ent-core/layouts/default/content/use-content-view-height';
+import { useLayoutHeight } from './use-content-view-height';
 import { getViewportOffset } from '@ent-core/utils/dom-utils';
 import { isNumber, isString } from '@ent-core/utils/is';
 

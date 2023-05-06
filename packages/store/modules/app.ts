@@ -14,8 +14,8 @@ import { ThemeEnum } from '@ent-core/logics/enums/app-enum';
 import { APP_DARK_MODE_KEY_, PROJ_CFG_KEY } from '@ent-core/logics/enums/cache-enum';
 import { Persistent } from '@ent-core/utils/cache/persistent';
 import { darkMode } from '@ent-core/logics/settings/design-setting';
-import { resetRouter } from '@ent-core/router';
-import { deepMerge } from '@ent-core/utils';
+import { resetRouter } from '@ent-core/router/base';
+import { deepMerge } from '@ent-core/utils/base';
 
 export interface AppState {
   darkMode?: ThemeEnum;

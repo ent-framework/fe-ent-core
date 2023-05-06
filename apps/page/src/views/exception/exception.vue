@@ -2,14 +2,14 @@
   import type { PropType } from 'vue';
   import { Result, Button } from 'ant-design-vue';
   import { defineComponent, ref, computed, unref } from 'vue';
-  import { ExceptionEnum } from '@ent-core/logics/enums/exception-enum';
-  import notDataSvg from '@ent-core/assets/svg/no-data.svg';
-  import netWorkSvg from '@ent-core/assets/svg/net-error.svg';
+  import { ExceptionEnum } from 'fe-ent-core/lib/logics';
+  import notDataSvg from '../../svg/no-data.svg';
+  import netWorkSvg from '../../svg/net-error.svg';
   import { useRoute } from 'vue-router';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useGo, useRedo } from '@ent-core/hooks/web/use-page';
-  import { PageEnum } from '@ent-core/logics/enums/page-enum';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useI18n } from 'fe-ent-core/lib/hooks';
+  import { useGo, useRedo } from 'fe-ent-core/lib/hooks';
+  import { PageEnum } from 'fe-ent-core/lib/logics';
 
   interface MapValue {
     title: string;

@@ -7,15 +7,14 @@ import { useUserStoreWithOut } from '@ent-core/store/modules/user';
 
 import { PAGE_NOT_FOUND_NAME } from '@ent-core/router/constant';
 
-import { RootRoute } from '@ent-core/router/routes';
+import { routeBridge } from '@ent-core/router/bridge';
 
 const LOGIN_PATH = PageEnum.BASE_LOGIN as string;
-
-const ROOT_PATH = RootRoute.path;
 
 const whitePathList: PageEnum[] = [PageEnum.BASE_LOGIN];
 
 export function createPermissionGuard(router: Router) {
+  const ROOT_PATH = routeBridge.getRootRoute().path;
   const userStore = useUserStoreWithOut();
   const permissionStore = usePermissionStoreWithOut();
   router.beforeEach(async (to, from, next) => {
@@ -105,7 +104,6 @@ export function createPermissionGuard(router: Router) {
     }
 
     const routes = await permissionStore.buildRoutesAction();
-
     routes.forEach((route) => {
       router.addRoute(route as unknown as RouteRecordRaw);
     });

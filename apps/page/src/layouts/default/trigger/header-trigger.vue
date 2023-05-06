@@ -6,9 +6,9 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue';
-  import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { propTypes } from '@ent-core/utils/prop-types';
+  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { propTypes } from 'fe-ent-core/lib/utils';
 
   export default defineComponent({
     name: 'HeaderTrigger',

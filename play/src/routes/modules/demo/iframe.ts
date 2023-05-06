@@ -1,13 +1,10 @@
 import type { AppRouteModule } from 'fe-ent-core/lib/router/types';
-
-import { default as LAYOUT } from 'fe-ent-core/lib/layouts/default';
-const IFrame = () => import('fe-ent-core/lib/views/sys/iframe/frame-blank');
 import { t } from 'fe-ent-core/lib/hooks/web/use-i18n';
 
 const iframe: AppRouteModule = {
   path: '/frame',
   name: 'Frame',
-  component: LAYOUT,
+  component: 'LAYOUT',
   redirect: '/frame/doc',
   meta: {
     orderNo: 1000,
@@ -19,7 +16,7 @@ const iframe: AppRouteModule = {
     {
       path: 'doc',
       name: 'Doc',
-      component: IFrame,
+      component: 'IFrame',
       meta: {
         frameSrc: 'https://vvbin.cn/doc-next/',
         title: t('routes.demo.iframe.doc'),
@@ -28,7 +25,7 @@ const iframe: AppRouteModule = {
     {
       path: 'antv',
       name: 'Antv',
-      component: IFrame,
+      component: 'IFrame',
       meta: {
         frameSrc: 'https://2x.antdv.com/docs/vue/introduce-cn/',
         title: t('routes.demo.iframe.antv'),
@@ -37,7 +34,7 @@ const iframe: AppRouteModule = {
     {
       path: 'https://vvbin.cn/doc-next/',
       name: 'DocExternal',
-      component: IFrame,
+      component: 'IFrame',
       meta: {
         title: t('routes.demo.iframe.docExternal'),
       },

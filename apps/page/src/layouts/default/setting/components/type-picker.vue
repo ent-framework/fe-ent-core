@@ -22,7 +22,7 @@
   import { defineComponent, PropType } from 'vue';
 
   import { Tooltip } from 'ant-design-vue';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
 
   import type { MenuType } from '../enum';
   export default defineComponent({

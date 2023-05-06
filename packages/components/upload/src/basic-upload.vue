@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-button-group>
+    <Space>
       <a-button type="primary" @click="openUploadModal" preIcon="carbon:cloud-upload">
         {{ t('component.upload.upload') }}
       </a-button>
@@ -18,7 +18,7 @@
           </template>
         </a-button>
       </Tooltip>
-    </a-button-group>
+    </Space>
 
     <UploadModal
       v-bind="bindValue"
@@ -41,7 +41,7 @@
   import UploadModal from './upload-modal.vue';
   import UploadPreviewModal from './upload-preview-modal.vue';
   import { EntIcon } from '@ent-core/components/icon';
-  import { Tooltip } from 'ant-design-vue';
+  import { Tooltip, Space } from 'ant-design-vue';
   import { useModal } from '@ent-core/components/modal';
   import { uploadContainerProps } from './props';
   import { omit } from 'lodash-es';
@@ -49,7 +49,7 @@
   import { isArray } from '@ent-core/utils/is';
   export default defineComponent({
     name: 'EntUpload',
-    components: { UploadModal, UploadPreviewModal, EntIcon, Tooltip },
+    components: { UploadModal, UploadPreviewModal, EntIcon, Tooltip, Space },
     props: uploadContainerProps,
     emits: ['change', 'delete', 'preview-delete', 'update:value'],
 

@@ -40,17 +40,17 @@
 
   import { defineComponent, computed } from 'vue';
 
-  import { DOC_URL } from '@ent-core/logics/settings/site-setting';
+  import { DOC_URL } from 'fe-ent-core/lib/logics';
 
-  import { useUserStore } from '@ent-core/store/modules/user';
-  import { useHeaderSetting } from '@ent-core/hooks/setting/use-header-setting';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useModal } from '@ent-core/components/modal';
+  import { useUserStore } from 'fe-ent-core/lib/store';
+  import { useHeaderSetting } from 'fe-ent-core/lib/hooks';
+  import { useI18n } from 'fe-ent-core/lib/hooks';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useModal } from 'fe-ent-core/lib/components';
 
-  import headerImg from '@ent-core/assets/images/header.jpg';
-  import { propTypes } from '@ent-core/utils/prop-types';
-  import { openWindow } from '@ent-core/utils';
+  import headerImg from '../../../../../images/header.jpg';
+  import { propTypes } from 'fe-ent-core/lib/utils';
+  import { openWindow } from 'fe-ent-core/lib/utils';
 
   import MenuItem from './drop-menu-item.vue';
   import LockAction from '../lock/lock-modal.vue';

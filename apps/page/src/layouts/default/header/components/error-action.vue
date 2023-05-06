@@ -6,24 +6,24 @@
     @click="handleToErrorList"
   >
     <Badge :count="getCount" :offset="[0, 10]" :overflowCount="99">
-      <Icon icon="ion:bug-outline" />
+      <EntIcon icon="ion:bug-outline" />
     </Badge>
   </Tooltip>
 </template>
 <script lang="ts">
   import { defineComponent, computed } from 'vue';
   import { Tooltip, Badge } from 'ant-design-vue';
-  import Icon from '@ent-core/components/icon';
+  import { EntIcon } from 'fe-ent-core/lib/components';
 
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useErrorLogStore } from '@ent-core/store/modules/error-log';
-  import { PageEnum } from '@ent-core/logics/enums/page-enum';
+  import { useI18n } from 'fe-ent-core/lib/hooks';
+  import { useErrorLogStore } from 'fe-ent-core/lib/store';
+  import { PageEnum } from 'fe-ent-core/lib/logics';
 
   import { useRouter } from 'vue-router';
 
   export default defineComponent({
     name: 'ErrorAction',
-    components: { Icon, Tooltip, Badge },
+    components: { EntIcon, Tooltip, Badge },
 
     setup() {
       const { t } = useI18n();

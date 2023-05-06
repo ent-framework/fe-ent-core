@@ -22,14 +22,14 @@
   import LayoutSideBar from './sider/index.vue';
   import LayoutMultipleHeader from './header/multiple-header.vue';
 
-  import { useHeaderSetting } from '@ent-core/hooks/setting/use-header-setting';
-  import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useLockPage } from '@ent-core/hooks/web/use-lock-page';
+  import { useHeaderSetting } from 'fe-ent-core/lib/hooks';
+  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useLockPage } from 'fe-ent-core/lib/hooks';
 
-  import { useAppInject } from '@ent-core/hooks/web/use-app-inject';
-  import LayoutFeatures from '@ent-core/layouts/default/feature/index.vue';
-  import LayoutFooter from '@ent-core/layouts/default/footer/index.vue';
+  import { useAppInject } from 'fe-ent-core/lib/hooks';
+  import LayoutFeatures from './feature/index.vue';
+  import LayoutFooter from './footer/index.vue';
 
   export default defineComponent({
     name: 'DefaultLayout',

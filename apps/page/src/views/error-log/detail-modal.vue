@@ -6,9 +6,9 @@
 </template>
 <script lang="ts" setup>
   import type { PropType } from 'vue';
-  import type { ErrorLogInfo } from '@ent-core/logics/types/store';
-  import { useDescription } from '@ent-core/components/description/src/use-description';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import type { ErrorLogInfo } from 'fe-ent-core/lib/logics';
+  import { useDescription } from 'fe-ent-core/lib/components';
+  import { useI18n } from 'fe-ent-core/lib/hooks';
   import { getDescSchema } from './data';
 
   defineProps({

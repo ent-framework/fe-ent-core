@@ -35,6 +35,10 @@ export default defineApplicationConfig({
           replacement: `${workspace}/apps/$1/src/index.ts`,
         },
         {
+          find: /^fe-ent-qrcode$/,
+          replacement: `${workspace}/extensions/qrcode/src/index.ts`,
+        },
+        {
           find: /^@ent-core\/(.*)$/,
           replacement: `${workspace}/packages/$1`,
         },

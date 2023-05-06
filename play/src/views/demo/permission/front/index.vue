@@ -14,20 +14,20 @@
 
     <div class="mt-4">
       权限切换(请先切换权限模式为前端角色权限模式):
-      <a-button-group>
+      <Space>
         <a-button @click="changeRole(RoleEnum.SUPER)" :type="isSuper ? 'primary' : 'default'">
           {{ RoleEnum.SUPER }}
         </a-button>
         <a-button @click="changeRole(RoleEnum.TEST)" :type="isTest ? 'primary' : 'default'">
           {{ RoleEnum.TEST }}
         </a-button>
-      </a-button-group>
+      </Space>
     </div>
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { Alert } from 'ant-design-vue';
+  import { Alert, Space } from 'ant-design-vue';
   import CurrentPermissionMode from '../current-permission-mode.vue';
   import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
   import { RoleEnum } from 'fe-ent-core/lib/logics/enums/role-enum';
@@ -35,7 +35,7 @@
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
 
   export default defineComponent({
-    components: { Alert, CurrentPermissionMode, EntPageWrapper },
+    components: { Space, Alert, CurrentPermissionMode, EntPageWrapper },
     setup() {
       const { changeRole } = usePermission();
       const userStore = useUserStore();

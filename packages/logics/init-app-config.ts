@@ -4,7 +4,7 @@
 import type { ProjectConfig } from '@ent-core/logics/types/config';
 
 import { PROJ_CFG_KEY } from '@ent-core/logics/enums/cache-enum';
-import projectSetting from '@ent-core/logics/settings/project-setting';
+import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 
 import {
   updateHeaderBgColor,
@@ -28,7 +28,7 @@ export async function initAppConfigStore() {
   const localeStore = useLocaleStore();
   const appStore = useAppStore();
   let projCfg: ProjectConfig = Persistent.getLocal(PROJ_CFG_KEY) as ProjectConfig;
-  projCfg = deepMerge(projectSetting, projCfg || {});
+  projCfg = deepMerge(defaultProjectSetting, projCfg || {});
 
   const darkMode = appStore.getDarkMode;
   const {

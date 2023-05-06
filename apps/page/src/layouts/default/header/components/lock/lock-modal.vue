@@ -26,14 +26,14 @@
 </template>
 <script lang="ts">
   import { defineComponent, computed } from 'vue';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { EntModal, useModalInner } from '@ent-core/components/modal';
-  import { EntForm, useForm } from '@ent-core/components/form';
+  import { useI18n } from 'fe-ent-core/lib/hooks';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { EntModal, useModalInner } from 'fe-ent-core/lib/components';
+  import { EntForm, useForm } from 'fe-ent-core/lib/components';
 
-  import { useUserStore } from '@ent-core/store/modules/user';
-  import { useLockStore } from '@ent-core/store/modules/lock';
-  import headerImg from '@ent-core/assets/images/header.jpg';
+  import { useUserStore } from 'fe-ent-core/lib/store';
+  import { useLockStore } from 'fe-ent-core/lib/store';
+  import headerImg from '../../../../../images/header.jpg';
   export default defineComponent({
     name: 'LockModal',
     components: { EntModal, EntForm },

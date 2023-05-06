@@ -21,18 +21,18 @@
 
   import { CopyOutlined, RedoOutlined } from '@ant-design/icons-vue';
 
-  import { useAppStore } from '@ent-core/store/modules/app';
-  import { usePermissionStore } from '@ent-core/store/modules/permission';
-  import { useMultipleTabStore } from '@ent-core/store/modules/multiple-tab';
-  import { useUserStore } from '@ent-core/store/modules/user';
+  import { useAppStore } from 'fe-ent-core/lib/store';
+  import { usePermissionStore } from 'fe-ent-core/lib/store';
+  import { useMultipleTabStore } from 'fe-ent-core/lib/store';
+  import { useUserStore } from 'fe-ent-core/lib/store';
 
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useI18n } from 'fe-ent-core/lib/hooks';
+  import { useMessage } from 'fe-ent-core/lib/hooks';
 
-  import { updateColorWeak } from '@ent-core/logics/theme/update-color-weak';
-  import { updateGrayMode } from '@ent-core/logics/theme/update-gray-mode';
-  import defaultSetting from '@ent-core/logics/settings/project-setting';
+  import { updateColorWeak } from 'fe-ent-core/lib/logics';
+  import { updateGrayMode } from 'fe-ent-core/lib/logics';
+  import { defaultProjectSetting } from 'fe-ent-core/lib/logics';
   export default defineComponent({
     name: 'SettingFooter',
     components: { CopyOutlined, RedoOutlined },
@@ -58,8 +58,8 @@
       }
       function handleResetSetting() {
         try {
-          appStore.setProjectConfig(defaultSetting);
-          const { colorWeak, grayMode } = defaultSetting;
+          appStore.setProjectConfig(defaultProjectSetting);
+          const { colorWeak, grayMode } = defaultProjectSetting;
           // updateTheme(themeColor);
           updateColorWeak(colorWeak);
           updateGrayMode(grayMode);

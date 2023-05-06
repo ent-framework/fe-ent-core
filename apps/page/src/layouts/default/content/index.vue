@@ -5,11 +5,11 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import PageLayout from '@ent-core/layouts/page/index.vue';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
-  import { useTransitionSetting } from '@ent-core/hooks/setting/use-transition-setting';
-  import { useContentViewHeight } from './use-content-view-height';
+  import PageLayout from '../../page/index.vue';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useRootSetting } from 'fe-ent-core/lib/hooks';
+  import { useTransitionSetting } from 'fe-ent-core/lib/hooks';
+  import { useContentViewHeight } from 'fe-ent-core/lib/hooks';
 
   export default defineComponent({
     name: 'LayoutContent',

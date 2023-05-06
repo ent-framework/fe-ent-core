@@ -1,10 +1,10 @@
 import { toRaw, ref, nextTick } from 'vue';
 import type { RouteLocationNormalized } from 'vue-router';
-import { useDesign } from '@ent-core/hooks/web/use-design';
-import { useSortable } from '@ent-core/hooks/web/use-sortable';
-import { useMultipleTabStore } from '@ent-core/store/modules/multiple-tab';
-import { isNullAndUnDef } from '@ent-core/utils/is';
-import projectSetting from '@ent-core/logics/settings/project-setting';
+import { useDesign } from 'fe-ent-core/lib/hooks';
+import { useSortable } from 'fe-ent-core/lib/hooks';
+import { useMultipleTabStore } from 'fe-ent-core/lib/store';
+import { isNullAndUnDef } from 'fe-ent-core/lib/utils';
+import { defaultProjectSetting } from 'fe-ent-core/lib/logics';
 import { useRouter } from 'vue-router';
 
 export function initAffixTabs(): string[] {
@@ -52,7 +52,7 @@ export function initAffixTabs(): string[] {
 
 export function useTabsDrag(affixTextList: string[]) {
   const tabStore = useMultipleTabStore();
-  const { multiTabsSetting } = projectSetting;
+  const { multiTabsSetting } = defaultProjectSetting;
   const { prefixCls } = useDesign('multiple-tabs');
   nextTick(() => {
     if (!multiTabsSetting.canDrag) return;

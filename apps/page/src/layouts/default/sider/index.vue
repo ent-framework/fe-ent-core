@@ -20,9 +20,9 @@
   import MixSider from './mix-sider.vue';
   import { Drawer } from 'ant-design-vue';
 
-  import { useAppInject } from '@ent-core/hooks/web/use-app-inject';
-  import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useAppInject } from 'fe-ent-core/lib/hooks';
+  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
+  import { useDesign } from 'fe-ent-core/lib/hooks';
   export default defineComponent({
     name: 'SiderWrapper',
     components: { Sider, Drawer, MixSider },

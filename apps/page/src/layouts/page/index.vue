@@ -27,15 +27,15 @@
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
 
-  import FrameLayout from '@ent-core/layouts/iframe/index.vue';
+  import FrameLayout from '../iframe/index.vue';
 
-  import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
+  import { useRootSetting } from 'fe-ent-core/lib/hooks';
 
-  import { useTransitionSetting } from '@ent-core/hooks/setting/use-transition-setting';
-  import { useMultipleTabSetting } from '@ent-core/hooks/setting/use-multiple-tab-setting';
+  import { useTransitionSetting } from 'fe-ent-core/lib/hooks';
+  import { useMultipleTabSetting } from 'fe-ent-core/lib/hooks';
   import { getTransitionName } from './transition';
 
-  import { useMultipleTabStore } from '@ent-core/store/modules/multiple-tab';
+  import { useMultipleTabStore } from 'fe-ent-core/lib/store';
 
   export default defineComponent({
     name: 'PageLayout',

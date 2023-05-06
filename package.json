@@ -27,7 +27,7 @@
     "build:play": "pnpm -C play --stream build",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
     "build:no-cache": "yarn clean:cache && pnpm run build",
-    "clean": "pnpm run clean:dist && pnpm run clean:ext",
+    "clean": "pnpm run clean:dist && pnpm run clean:extensions",
     "clean:all": "pnpm run clean:dist && pnpm run clean:support && pnpm run clean:extensions && pnpm run clean:apps",
     "clean:extensions": "pnpm --filter './extensions/**' --stream clean",
     "clean:apps": "pnpm --filter './apps/**' --stream clean",
@@ -67,14 +67,12 @@
     "@ent-core/components": "workspace:*",
     "@ent-core/directives": "workspace:*",
     "@ent-core/hooks": "workspace:*",
-    "@ent-core/layouts": "workspace:*",
     "@ent-core/locales": "workspace:*",
     "@ent-core/logics": "workspace:*",
     "@ent-core/router": "workspace:*",
     "@ent-core/store": "workspace:*",
     "@ent-core/theme": "workspace:*",
-    "@ent-core/utils": "workspace:*",
-    "@ent-core/views": "workspace:*"
+    "@ent-core/utils": "workspace:*"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
