@@ -56,7 +56,7 @@ export interface FormItem {
 
   /**
    * The layout for input controls, same as labelCol
-   * @type ColProps
+   * @type Col
    */
   wrapperCol?: ColProps;
   /**

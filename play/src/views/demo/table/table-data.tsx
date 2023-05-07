@@ -96,6 +96,7 @@ export function getMultipleHeaderColumns(): BasicColumn[] {
             { text: 'Female', value: 'female', children: [] },
           ],
         },
+
         {
           title: '开始时间',
           dataIndex: 'beginTime',
@@ -116,19 +117,23 @@ export function getCustomHeaderColumns(): BasicColumn[] {
     {
       title: 'ID',
       dataIndex: 'id',
+      helpMessage: 'headerHelpMessage方式1',
       width: 200,
     },
     {
-      title: '姓名',
+      // title: '姓名',
       dataIndex: 'name',
       width: 120,
+      // slots: { title: 'customTitle' },
     },
     {
-      title: '地址',
+      // title: '地址',
       dataIndex: 'address',
       width: 120,
+      // slots: { title: 'customAddress' },
       sorter: true,
     },
+
     {
       title: '编号',
       dataIndex: 'no',
@@ -150,29 +155,26 @@ export function getCustomHeaderColumns(): BasicColumn[] {
     },
   ];
 }
-const renderContent = ({ text, index }: { text: any; index: number }) => {
-  const obj: any = {
-    children: text,
-    attrs: {},
-  };
-  if (index === 9) {
-    obj.attrs.colSpan = 0;
-  }
-  return obj;
-};
+
+const cellContent = (_, index) => ({
+  colSpan: index === 9 ? 0 : 1,
+});
+
 export function getMergeHeaderColumns(): BasicColumn[] {
   return [
     {
       title: 'ID',
       dataIndex: 'id',
       width: 300,
-      customCell: renderContent,
+      customCell: (_, index) => ({
+        colSpan: index === 9 ? 6 : 1,
+      }),
     },
     {
       title: '姓名',
       dataIndex: 'name',
       width: 300,
-      customCell: renderContent,
+      customCell: cellContent,
     },
     {
       title: '地址',
@@ -180,19 +182,10 @@ export function getMergeHeaderColumns(): BasicColumn[] {
       colSpan: 2,
       width: 120,
       sorter: true,
-      customCell: ({ text, index }: { text: any; index: number }) => {
-        const obj: any = {
-          children: text,
-          attrs: {},
-        };
-        if (index === 2) {
-          obj.attrs.rowSpan = 2;
-        }
-        if (index === 3) {
-          obj.attrs.colSpan = 0;
-        }
-        return obj;
-      },
+      customCell: (_, index) => ({
+        rowSpan: index === 2 ? 2 : 1,
+        colSpan: index === 3 || index === 9 ? 0 : 1,
+      }),
     },
     {
       title: '编号',
@@ -202,19 +195,19 @@ export function getMergeHeaderColumns(): BasicColumn[] {
         { text: 'Male', value: 'male', children: [] },
         { text: 'Female', value: 'female', children: [] },
       ],
-      customCell: renderContent,
+      customCell: cellContent,
     },
     {
       title: '开始时间',
       dataIndex: 'beginTime',
       width: 200,
-      customCell: renderContent,
+      customCell: cellContent,
     },
     {
       title: '结束时间',
       dataIndex: 'endTime',
       width: 200,
-      customCell: renderContent,
+      customCell: cellContent,
     },
   ];
 }
@@ -252,7 +245,7 @@ export function getFormConfig(): Partial<FormProps> {
   };
 }
 export function getBasicData() {
-  const data: any = (() => {
+  return (() => {
     const arr: any = [];
     for (let index = 0; index < 40; index++) {
       arr.push({
@@ -267,11 +260,10 @@ export function getBasicData() {
     }
     return arr;
   })();
-  return data;
 }
 
 export function getTreeTableData() {
-  const data: any = (() => {
+  return (() => {
     const arr: any = [];
     for (let index = 0; index < 40; index++) {
       arr.push({
@@ -297,6 +289,4 @@ export function getTreeTableData() {
     }
     return arr;
   })();
-
-  return data;
 }

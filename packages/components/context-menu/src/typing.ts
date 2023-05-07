@@ -6,12 +6,13 @@ export interface Axis {
 export interface ContextMenuItem {
   label: string;
   icon?: string;
+  hidden?: boolean;
   disabled?: boolean;
   handler?: Fn;
   divider?: boolean;
   children?: ContextMenuItem[];
 }
-export interface CreateContextMenuOptions {
+export interface CreateContextOptions {
   event: MouseEvent;
   icon?: string;
   styles?: any;

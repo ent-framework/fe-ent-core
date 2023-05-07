@@ -1,9 +1,10 @@
 <template>
-  <div class="bg-white m-4 mr-0 overflow-hidden">
+  <div class="m-4 mr-0 overflow-hidden bg-white">
     <EntTree
       title="部门列表"
       toolbar
       search
+      treeWrapperClassName="h-[calc(100%-35px)] overflow-auto"
       :clickRowToExpand="false"
       :treeData="treeData"
       :fieldNames="{ key: 'id', title: 'deptName' }"

@@ -10,6 +10,7 @@
       <slot name="formHeader"></slot>
       <template v-for="schema in getSchema" :key="schema.field">
         <FormItem
+          :isAdvanced="fieldsIsAdvancedMap[schema.field]"
           :tableAction="tableAction"
           :formActionType="formActionType"
           :schema="schema"
@@ -37,7 +38,7 @@
   </Form>
 </template>
 <script lang="ts">
-  import type { FormActionType, FormSchema } from './types/form';
+  import type { FormActionType, FormProps, FormSchema } from './types/form';
   import type { AdvanceState } from './types/hooks';
   import type { Ref } from 'vue';
 
@@ -58,7 +59,6 @@
   import { useDebounceFn } from '@vueuse/shared';
   import { basicProps } from './props';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import type { FormProps } from './types/form';
   import { cloneDeep } from 'lodash-es';
 
   export default defineComponent({
@@ -80,8 +80,8 @@
       const defaultValueRef = ref({});
       const isInitedDefaultRef = ref(false);
       const propsRef = ref<Partial<FormProps>>({});
-      const schemaRef = ref<Nullable<FormSchema[]>>(null);
-      const formElRef = ref<Nullable<FormActionType>>(null);
+      const schemaRef = ref<FormSchema[] | null>(null);
+      const formElRef = ref<FormActionType | null>(null);
 
       const { prefixCls } = useDesign('basic-form');
 

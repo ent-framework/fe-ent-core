@@ -2,7 +2,7 @@
   import type { ContextMenuItem, ItemContentProps, Axis } from './typing';
   import type { FunctionalComponent, CSSProperties, PropType } from 'vue';
   import { defineComponent, nextTick, onMounted, computed, ref, unref, onUnmounted } from 'vue';
-  import Icon from '@ent-core/components/icon';
+  import { EntIcon } from '@ent-core/components/icon';
   import { Menu, Divider } from 'ant-design-vue';
 
   const prefixCls = 'context-menu';
@@ -36,7 +36,7 @@
         class="px-4"
         onClick={props.handler.bind(null, item)}
       >
-        {props.showIcon && item.icon && <Icon class="mr-2" icon={item.icon} />}
+        {props.showIcon && item.icon && <EntIcon class="mr-2" icon={item.icon} />}
         <span>{item.label}</span>
       </span>
     );
@@ -60,9 +60,11 @@
         const top = body.clientHeight < y + menuHeight ? y - menuHeight : y;
         return {
           ...styles,
+          position: 'absolute',
           width: `${width}px`,
           left: `${left + 1}px`,
           top: `${top + 1}px`,
+          zIndex: 9999,
         };
       });
 
@@ -87,7 +89,8 @@
       }
 
       function renderMenuItem(items: ContextMenuItem[]) {
-        return items.map((item) => {
+        const visibleItems = items.filter((item) => !item.hidden);
+        return visibleItems.map((item) => {
           const { disabled, label, children, divider = false } = item;
 
           const contentProps = {
@@ -124,15 +127,11 @@
         }
         const { items } = props;
         return (
-          <Menu
-            inlineIndent={12}
-            mode="vertical"
-            class={prefixCls}
-            ref={wrapRef}
-            style={unref(getStyle)}
-          >
-            {renderMenuItem(items)}
-          </Menu>
+          <div class={prefixCls}>
+            <Menu inlineIndent={12} mode="vertical" ref={wrapRef} style={unref(getStyle)}>
+              {renderMenuItem(items)}
+            </Menu>
+          </div>
         );
       };
     },

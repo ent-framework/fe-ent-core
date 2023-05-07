@@ -4,19 +4,19 @@
 
 ## 简介
 
-- Frontend Enterprise Core (fe-ent-core)是一个免费开源的中后台模版。使用了最新的`vue3`,`vite2`,`TypeScript`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
+- Frontend Enterprise Core (fe-ent-core)是一个免费开源的中后台模版。使用了最新的`vue3`,`vite4`,`TypeScript`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
 - fe-ent-core是基于`Vue Vben Admin`为基础封装套的一套组件库。
 
 ## 特性
 
-- **最新技术栈**：使用 Vue3/vite2 等前端前沿技术开发
+- **最新技术栈**：使用 Vue3/vite4 等前端前沿技术开发
 - **TypeScript**: 应用程序级 JavaScript 的语言
 - **主题**：可配置的主题
 - **国际化**：内置完善的国际化方案
 - **Mock 数据** 内置 Mock 数据方案
 - **权限** 内置完善的动态路由权限生成方案
 - **组件** 二次封装了多个常用的组件，使用rolllup打包成组件
-- **工具支持** 独立的build工具方便快速构建项目，cli工具可以快速新增项目模板
+- **工具支持** 独立的build工具方便快速构建项目
 
 ## 文档
 
@@ -37,7 +37,7 @@
 - 获取项目代码
 
 ```bash
-git clone https://gitlab.com/acn_abg/fe-ent-core.git
+git clone https://github.com/dancewing/fe-ent-core.git
 ```
 
 - 安装依赖
@@ -51,7 +51,7 @@ pnpm install
 - 构建tools & cli
 
 ```bash
-pnpm build:tools
+pnpm build:support
 
 ```
 
@@ -71,7 +71,7 @@ pnpm dev
 
 ## 项目地址
 
-- [fe-ent-core](https://gitlab.com/acn_abg/fe-ent-core.git) - 完整版
+- [fe-ent-core](https://github.com/dancewing/fe-ent-core.git) - 完整版
 
 ## 浏览器支持
 
@@ -84,13 +84,16 @@ pnpm dev
 - **packages** - 核心组件库
 - **docs** - 文档库
 - **play** - 在线样例，方便调试
-- **tools/build** - 构建工具，将vite需要配置做了封装，降低使用vite的学习成本
-- **tools/cli** - 命令行工具，可以基于核心组件库，快速创建项目模板
-- **tools/ent-theme-api** - 主题切换的API库，方便核心组件库引用
-- **tools/vite-plugin-ent-theme** - vite插件，用于在线切换主题色等颜色相关配置
+- **support/vite-build** - 构建工具，将vite需要配置做了封装，降低使用vite的学习成本
+- **extensions** - 基于核心组件开发的扩展库
+- **apps/login** - 基础应用-登录
+- **apps/page** - 基础应用-默认layout
 
 ## 后台整合示例
 
-- TODO
+- **集成Admin前端** https://github.com/dancewing/fe-app-admin.git
+- **集成Spring Boot后端** https://github.com/dancewing/ent-framework.git
+
+使用方法请参考项目内的README
 
 ## 维护者

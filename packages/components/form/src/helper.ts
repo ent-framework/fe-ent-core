@@ -1,5 +1,5 @@
 import type { Rule } from 'ant-design-vue/lib/form';
-import type { ComponentType } from './types/index';
+import type { ComponentType } from './types';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { isNumber } from '@ent-core/utils/is';
 
@@ -42,15 +42,6 @@ export function setComponentRuleType(rule: Rule, component: ComponentType, value
     rule.type = 'number';
   }
 }
-
-// export function processDateValue(attr: Recordable, component: string) {
-//   const { valueFormat, value } = attr;
-//   if (valueFormat) {
-//     attr.value = isObject(value) ? dateUtil(value).format(valueFormat) : value;
-//   } else if (DATE_TYPE.includes(component) && value) {
-//     attr.value = dateUtil(attr.value);
-//   }
-// }
 
 export function handleInputNumberValue(component?: ComponentType, val?: any) {
   if (!component) return val;

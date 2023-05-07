@@ -15,7 +15,7 @@
     NO_AUTO_LINK_COMPONENTS,
     setComponentRuleType,
   } from '../helper';
-  import { upperFirst, cloneDeep } from 'lodash-es';
+  import { cloneDeep, upperFirst } from 'lodash-es';
   import { useItemLabelWidth } from '../hooks/use-label-width';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
 

@@ -1,7 +1,5 @@
-import type { BasicTableProps, BasicColumn } from '../types/table';
-import { TableRowSelection } from 'ant-design-vue/lib/table/interface';
-import type { Ref, ComputedRef } from 'vue';
-import { computed, unref, ref, nextTick, watch } from 'vue';
+import type { BasicTableProps, TableRowSelection, BasicColumn } from '../types/table';
+import { Ref, ComputedRef, ref, computed, unref, nextTick, watch } from 'vue';
 import { getViewportOffset } from '@ent-core/utils/dom-utils';
 import { isBoolean } from '@ent-core/utils/is';
 import { useWindowSizeFn } from '@ent-core/hooks/event/use-window-size-fn';
@@ -13,7 +11,7 @@ export function useTableScroll(
   propsRef: ComputedRef<BasicTableProps>,
   tableElRef: Ref<ComponentRef>,
   columnsRef: ComputedRef<BasicColumn[]>,
-  rowSelectionRef: ComputedRef<TableRowSelection<any> | null>,
+  rowSelectionRef: ComputedRef<TableRowSelection | null>,
   getDataSourceRef: ComputedRef<Recordable[]>,
   wrapRef: Ref<HTMLElement | null>,
   formRef: Ref<ComponentRef>,
@@ -57,7 +55,8 @@ export function useTableScroll(
   let bodyEl: HTMLElement | null;
 
   async function calcTableHeight() {
-    const { resizeHeightOffset, pagination, maxHeight, isCanResizeParent, useSearchForm } = unref(propsRef);
+    const { resizeHeightOffset, pagination, maxHeight, isCanResizeParent, useSearchForm } =
+      unref(propsRef);
     const tableData = unref(getDataSourceRef);
 
     const table = unref(tableElRef);
@@ -167,7 +166,6 @@ export function useTableScroll(
       paginationHeight -
       footerHeight -
       headerHeight;
-
     height = (height > maxHeight! ? (maxHeight as number) : height) ?? height;
     setHeight(height);
 

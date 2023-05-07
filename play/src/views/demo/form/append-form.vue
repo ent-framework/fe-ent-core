@@ -27,7 +27,7 @@
       EntButton,
     },
     setup() {
-      const [register, { appendSchemaByField, removeSchemaByFiled, validate }] = useForm({
+      const [register, { appendSchemaByField, removeSchemaByField, validate }] = useForm({
         schemas: [
           {
             field: 'field0a',
@@ -114,7 +114,7 @@
       }
 
       function del(field) {
-        removeSchemaByFiled([`field${field}a`, `field${field}b`, `${field}`]);
+        removeSchemaByField([`field${field}a`, `field${field}b`, `${field}`]);
         n.value--;
       }
 

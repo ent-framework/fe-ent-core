@@ -92,7 +92,7 @@ export function useTable(tableProps?: Props): [
       const columns = getTableInstance().getColumns({ ignoreIndex }) || [];
       return toRaw(columns);
     },
-    setColumns: (columns: BasicColumn[] | string[]) => {
+    setColumns: (columns: BasicColumn[]) => {
       getTableInstance().setColumns(columns);
     },
     setTableData: (values: any[]) => {

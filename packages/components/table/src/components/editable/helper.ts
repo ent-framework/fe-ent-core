@@ -6,7 +6,7 @@ import { useI18n } from '@ent-core/hooks/web/use-i18n';
  */
 export function createPlaceholderMessage(component: ComponentType) {
   const { t } = useI18n();
-  if (component.includes('Input')) {
+  if (component.includes('Input') || component.includes('AutoComplete')) {
     return t('common.inputText');
   }
   if (component.includes('Picker')) {

@@ -21,6 +21,7 @@
       Button,
       Icon,
     },
+    extends: Button,
     inheritAttrs: false,
     props: buttonProps,
     setup(props) {

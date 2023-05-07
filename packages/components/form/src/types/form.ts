@@ -1,11 +1,10 @@
 import type { NamePath, RuleObject } from 'ant-design-vue/lib/form/interface';
-import type { VNode, CSSProperties, ExtractPropTypes } from 'vue';
+import type { VNode, CSSProperties } from 'vue';
 import type { ButtonProps } from '@ent-core/components/button';
 import type { FormItem } from './form-item';
 import type { ColEx, ComponentType } from './index';
 import type { TableActionType } from '@ent-core/components/table/src/types/table';
 import type { RowProps } from 'ant-design-vue/lib/grid/Row';
-import { basicProps } from '../props';
 
 export type FieldMapToTime = [string, [string, string], (string | [string, string])?][];
 
@@ -44,9 +43,7 @@ export type FormRegisterFn = (formInstance: FormActionType) => void;
 
 export type UseFormReturnType = [FormRegisterFn, FormActionType];
 
-export type FormProps = Partial<ExtractPropTypes<typeof basicProps>>;
-
-export interface FormProps22 {
+export interface FormProps {
   name?: string;
   layout?: 'vertical' | 'inline' | 'horizontal';
   // Form value

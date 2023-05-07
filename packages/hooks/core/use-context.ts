@@ -8,7 +8,7 @@ import {
   UnwrapRef,
 } from 'vue';
 
-export interface CreateContextOptions {
+interface CreateContextOptions {
   readonly?: boolean;
   createProvider?: boolean;
   native?: boolean;

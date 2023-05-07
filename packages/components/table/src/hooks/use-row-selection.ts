@@ -1,6 +1,5 @@
 import { isFunction } from '@ent-core/utils/is';
-import type { BasicTableProps } from '../types/table';
-import { TableRowSelection } from 'ant-design-vue/lib/table/interface';
+import type { BasicTableProps, TableRowSelection } from '../types/table';
 import { computed, ComputedRef, nextTick, Ref, ref, toRaw, unref, watch } from 'vue';
 import { ROW_KEY } from '../const';
 import { omit } from 'lodash-es';
@@ -30,9 +29,9 @@ export function useRowSelection(
   });
 
   watch(
-    () => unref(propsRef)?.rowSelection?.selectedRowKeys as unknown as string[] | number[],
-    (v: string[] | number[]) => {
-      setSelectedRowKeys(v as string[]);
+    () => unref(propsRef).rowSelection?.selectedRowKeys,
+    (v: string[]) => {
+      setSelectedRowKeys(v);
     },
   );
 
@@ -67,13 +66,13 @@ export function useRowSelection(
     selectedRowKeysRef.value = rowKeys;
     const allSelectedRows = findNodeAll(
       toRaw(unref(tableData)).concat(toRaw(unref(selectedRowRef))),
-      (item) => rowKeys.includes(item[unref(getRowKey) as string]),
+      (item) => rowKeys?.includes(item[unref(getRowKey) as string]),
       {
         children: propsRef.value.childrenColumnName ?? 'children',
       },
     );
     const trueSelectedRows: any[] = [];
-    rowKeys.forEach((key: string | number) => {
+    rowKeys?.forEach((key: string) => {
       const found = allSelectedRows.find((item) => item[unref(getRowKey) as string] === key);
       found && trueSelectedRows.push(found);
     });

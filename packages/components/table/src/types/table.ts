@@ -1,7 +1,7 @@
 import type { VNodeChild } from 'vue';
 import type { PaginationProps } from './pagination';
 import type { FormProps } from '@ent-core/components/form';
-import type { TableRowSelection } from 'ant-design-vue/lib/table/interface';
+import type { TableRowSelection as ITableRowSelection } from 'ant-design-vue/lib/table/interface';
 import type { ColumnProps } from 'ant-design-vue/lib/table';
 
 import { ComponentType } from './component-type';
@@ -12,6 +12,32 @@ export declare type SortOrder = 'ascend' | 'descend';
 
 export interface TableCurrentDataSource<T = Recordable> {
   currentDataSource: T[];
+}
+
+export interface TableRowSelection<T = any> extends ITableRowSelection {
+  /**
+   * Callback executed when selected rows change
+   * @type Function
+   */
+  onChange?: (selectedRowKeys: string[] | number[], selectedRows: T[]) => any;
+
+  /**
+   * Callback executed when select/deselect one row
+   * @type Function
+   */
+  onSelect?: (record: T, selected: boolean, selectedRows: Object[], nativeEvent: Event) => any;
+
+  /**
+   * Callback executed when select/deselect all rows
+   * @type Function
+   */
+  onSelectAll?: (selected: boolean, selectedRows: T[], changeRows: T[]) => any;
+
+  /**
+   * Callback executed when row selection is inverted
+   * @type Function
+   */
+  onSelectInvert?: (selectedRows: string[] | number[]) => any;
 }
 
 export interface TableCustomRecord<T> {

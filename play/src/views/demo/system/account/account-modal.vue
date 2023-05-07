@@ -8,6 +8,7 @@
   import { EntModal, useModalInner } from 'fe-ent-core/lib/components/modal';
   import { EntForm, useForm } from 'fe-ent-core/lib/components/form';
   import { accountFormSchema } from './account-data';
+  import { getDeptList } from '/@/api/system';
 
   export default defineComponent({
     name: 'AccountModal',
@@ -19,6 +20,7 @@
 
       const [registerForm, { setFieldsValue, updateSchema, resetFields, validate }] = useForm({
         labelWidth: 100,
+        baseColProps: { span: 24 },
         schemas: accountFormSchema,
         showActionButtonGroup: false,
         actionColOptions: {
@@ -38,10 +40,15 @@
           });
         }
 
+        const treeData = await getDeptList();
         updateSchema([
           {
             field: 'pwd',
             show: !unref(isUpdate),
+          },
+          {
+            field: 'dept',
+            componentProps: { treeData },
           },
         ]);
       });
