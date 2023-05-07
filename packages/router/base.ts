@@ -28,7 +28,7 @@ const parent = createRouter({
 
 const noop = () => {};
 
-export const router: EntRouter = {
+const entRouter: EntRouter = {
   _whiteRouteList: [],
   parent,
   ...parent,
@@ -36,7 +36,7 @@ export const router: EntRouter = {
   bizRoutes: [],
   addBizRoute: function (route: AppRouteRecordRaw): () => void {
     normalizeRoutePath(route);
-    router.bizRoutes.push(route);
+    entRouter.bizRoutes.push(route);
     return parent.addRoute(route as RouteRecordRaw);
   },
   addBizRoutes: function (modules: Record<string, Record<string, any>>): () => void {
@@ -49,32 +49,36 @@ export const router: EntRouter = {
       });
       routeModuleList.push(...modList);
     });
-    router.bizRoutes.push(...routeModuleList);
+    entRouter.bizRoutes.push(...routeModuleList);
     return noop;
   },
   addBasicRoute: function (route: AppRouteRecordRaw): () => void {
-    router.basicRoutes.push(route);
+    entRouter.basicRoutes.push(route);
     return parent.addRoute(route as RouteRecordRaw);
   },
   addBasicRoutes: function (basicRoutes: AppRouteRecordRaw[]): () => void {
     basicRoutes.forEach((route) => {
-      router.addBasicRoute(route);
+      entRouter.addBasicRoute(route);
       parent.addRoute(route as RouteRecordRaw);
     });
     const whiteList: string[] = [];
     getRouteNames(basicRoutes, whiteList);
-    router._whiteRouteList = whiteList;
+    entRouter._whiteRouteList = whiteList;
     return noop;
   },
 };
 
+export function useEntRouter() {
+  return entRouter;
+}
+
 // reset router
 export function resetRouter() {
-  const _whiteRouteList = router._whiteRouteList;
-  router.getRoutes().forEach((route) => {
+  const _whiteRouteList = entRouter._whiteRouteList;
+  entRouter.getRoutes().forEach((route) => {
     const { name } = route;
     if (name && !_whiteRouteList.includes(name as string)) {
-      router.hasRoute(name) && router.removeRoute(name);
+      entRouter.hasRoute(name) && entRouter.removeRoute(name);
     }
   });
 }
@@ -87,5 +91,5 @@ const getRouteNames = (array: any[], whiteList: string[]) => {
 };
 // config router
 export function setupRouter(app: App<Element>): void {
-  app.use(router);
+  app.use(entRouter);
 }

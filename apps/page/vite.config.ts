@@ -21,6 +21,7 @@ export default definePackageConfig({
           'fe-ent-core/lib/directives',
         ],
       },
+      minify: false,
     },
     optimizeDeps: {
       include: [

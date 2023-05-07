@@ -15,8 +15,10 @@ export default definePackageConfig({
           'fe-ent-core/lib/hooks',
           'fe-ent-core/lib/logics',
           'fe-ent-core/lib/store',
+          'fe-ent-core/lib/router',
         ],
       },
+      minify: false,
     },
     optimizeDeps: {
       include: [

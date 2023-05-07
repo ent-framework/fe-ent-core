@@ -27,6 +27,7 @@
     "extensions/**/*.d.ts",
     "extensions/**/*.tsx",
     "extensions/**/*.vue",
+    "apps",
     "typings/**/*.d.ts",
     "play/src",
   ],

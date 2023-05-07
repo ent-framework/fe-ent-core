@@ -6,7 +6,7 @@ import { useUserStore } from '@ent-core/store/modules/user';
 
 import { useTabs } from './use-tabs';
 
-import { router, resetRouter } from '@ent-core/router';
+import { useEntRouter, resetRouter } from '@ent-core/router';
 
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
@@ -21,7 +21,8 @@ export function usePermission() {
   const userStore = useUserStore();
   const appStore = useAppStore();
   const permissionStore = usePermissionStore();
-  const { closeAll } = useTabs(router);
+  const entRouter = useEntRouter();
+  const { closeAll } = useTabs(entRouter);
 
   /**
    * Change permission mode
@@ -52,7 +53,7 @@ export function usePermission() {
     resetRouter();
     const routes = await permissionStore.buildRoutesAction();
     routes.forEach((route) => {
-      router.addRoute(route as unknown as RouteRecordRaw);
+      entRouter.addRoute(route as unknown as RouteRecordRaw);
     });
     permissionStore.setLastBuildMenuTime();
     closeAll();

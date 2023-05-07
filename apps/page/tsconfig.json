@@ -17,8 +17,8 @@
     "noUnusedParameters": true,
     "experimentalDecorators": true,
     "lib": ["dom", "esnext"],
-    "types": ["vite/client", "jest", "../typings/global"],
-    "typeRoots": ["./node_modules/@types", "../typings"],
+    "types": ["vite/client", "jest", "../../typings/support"],
+    "typeRoots": ["./node_modules/@types", "../../typings"],
     "noImplicitAny": false,
     "skipLibCheck": true,
     "paths": {

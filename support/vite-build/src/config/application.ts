@@ -51,6 +51,8 @@ function defineApplicationConfig(defineOptions: DefineOptions = {}) {
             find: 'vue-i18n',
             replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
           },
+          { find: 'vue-router', replacement: 'vue-router/dist/vue-router.cjs' },
+          { find: 'pinia', replacement: 'pinia/dist/pinia.cjs' },
           // /@/xxxx => src/xxxx
           {
             find: /\/@\//,

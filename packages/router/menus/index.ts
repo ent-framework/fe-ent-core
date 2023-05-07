@@ -6,7 +6,7 @@ import { usePermissionStore } from '@ent-core/store/modules/permission';
 import { transformMenuModule, getAllParentPath } from '@ent-core/router/helper/menu-helper';
 import { filter } from '@ent-core/utils/helper/tree-helper';
 import { isUrl } from '@ent-core/utils/is';
-import { router } from '@ent-core/router/base';
+import { useEntRouter } from '@ent-core/router/base';
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
 import { pathToRegexp } from 'path-to-regexp';
 
@@ -73,7 +73,8 @@ async function getAsyncMenus() {
 export const getMenus = async (): Promise<Menu[]> => {
   const menus = await getAsyncMenus();
   if (isRoleMode()) {
-    const routes = router.getRoutes();
+    const entRouter = useEntRouter();
+    const routes = entRouter.getRoutes();
     return filter(menus, basicFilter(routes));
   }
   return menus;
@@ -90,7 +91,8 @@ export async function getShallowMenus(): Promise<Menu[]> {
   const menus = await getAsyncMenus();
   const shallowMenuList = menus.map((item) => ({ ...item, children: undefined }));
   if (isRoleMode()) {
-    const routes = router.getRoutes();
+    const entRouter = useEntRouter();
+    const routes = entRouter.getRoutes();
     return shallowMenuList.filter(basicFilter(routes));
   }
   return shallowMenuList;
@@ -104,7 +106,8 @@ export async function getChildrenMenus(parentPath: string) {
     return [] as Menu[];
   }
   if (isRoleMode()) {
-    const routes = router.getRoutes();
+    const entRouter = useEntRouter();
+    const routes = entRouter.getRoutes();
     return filter(parent.children, basicFilter(routes));
   }
   return parent.children;

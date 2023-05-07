@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "vite --mode=development",
-    "build": "cross-env NODE_ENV=production vite build -d",
+    "build": "cross-env NODE_ENV=production vite build",
     "build:no-cache": "yarn clean:cache && npm run build",
     "clean": "rimraf dist",
     "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",

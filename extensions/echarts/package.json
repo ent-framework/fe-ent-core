@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-echarts",
-  "version": "1.4.31",
+  "version": "1.4.40",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -9,13 +9,6 @@
   "module": "dist/index.mjs",
   "typings": "dist/types/index.d.ts",
   "unpkg": "dist/index.min.js",
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
-    },
-    "./*": "./*"
-  },
   "sideEffects": [
     "dist"
   ],
@@ -29,20 +22,16 @@
     "build": "cross-env NODE_ENV=production vite build"
   },
   "peerDependencies": {
-    "@vueuse/core": "^9.13.0",
-    "vue": "^3.2.47",
-    "ant-design-vue": "^3.2.17",
-    "fe-ent-core": "workspace:*"
+    "fe-ent-core": "^1.4.36"
   },
   "dependencies": {
-    "@ant-design/colors": "^6.0.0",
     "echarts": "^5.4.2"
   },
   "devDependencies": {
     "fe-ent-build": "workspace:*",
     "rimraf": "^3.0.2",
     "@types/tinycolor2": "^1.4.2",
-    "vue": "^3.2.47"
+    "vite": "4.2.2"
   },
   "repository": {
     "type": "git",

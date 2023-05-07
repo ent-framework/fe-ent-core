@@ -29,6 +29,13 @@ function definePackageConfig(defineOptions: DefineOptions = {}) {
     });
 
     const { dependencies = {}, peerDependencies = {} } = await readPackageJSON(root);
+    const deps = [...Object.keys(dependencies), ...Object.keys(peerDependencies)];
+    let entDeps: string[] = [];
+    if (deps.includes('fe-ent-core')) {
+      const { dependencies: entDependencies = {}, peerDependencies: entPeerDependencies = {} } =
+        await readPackageJSON(`${root}/node_modules/fe-ent-core`);
+      entDeps = [...Object.keys(entDependencies), ...Object.keys(entPeerDependencies)];
+    }
     const packageConfig: UserConfig = {
       build: {
         lib: {
@@ -39,7 +46,7 @@ function definePackageConfig(defineOptions: DefineOptions = {}) {
           },
         },
         rollupOptions: {
-          external: [...Object.keys(dependencies), ...Object.keys(peerDependencies)],
+          external: [...deps, ...entDeps],
         },
       },
       css: {

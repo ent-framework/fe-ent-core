@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-login",
-  "version": "1.4.31",
+  "version": "1.4.40",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -9,13 +9,6 @@
   "module": "dist/index.mjs",
   "typings": "dist/types/index.d.ts",
   "unpkg": "dist/index.min.js",
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
-    },
-    "./*": "./*"
-  },
   "files": [
     "dist",
     "index.less",
@@ -29,17 +22,15 @@
     "build": "cross-env NODE_ENV=production vite build"
   },
   "peerDependencies": {
-    "vue": "^3.2.47",
-    "ant-design-vue": "^3.2.17",
-    "fe-ent-core": "workspace:*",
-    "fe-ent-qrcode": "workspace:*"
+    "fe-ent-core": "^1.4.33",
+    "fe-ent-qrcode": "^1.4.33"
   },
   "devDependencies": {
     "fe-ent-build": "workspace:*",
     "@types/codemirror": "^5.60.5",
     "rimraf": "^3.0.2",
-    "vue": "^3.2.47",
-    "vite": "4.2.2"
+    "vite": "4.2.2",
+    "vue": "^3.2.0"
   },
   "repository": {
     "type": "git",

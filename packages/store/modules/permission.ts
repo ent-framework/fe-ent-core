@@ -20,7 +20,7 @@ import { filter } from '@ent-core/utils/helper/tree-helper';
 import { userBridge } from '@ent-core/logics/bridge';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { PageEnum } from '@ent-core/logics/enums/page-enum';
-import { router } from '@ent-core/router/base';
+import { useEntRouter } from '@ent-core/router/base';
 
 export interface PermissionState {
   // Permission code list
@@ -110,6 +110,7 @@ export const usePermissionStore = defineStore({
     },
     async buildRoutesAction(): Promise<AppRouteRecordRaw[]> {
       const { t } = useI18n();
+      const entRouter = useEntRouter();
       const userStore = useUserStore();
       const appStore = useAppStoreWithOut();
 
@@ -162,7 +163,7 @@ export const usePermissionStore = defineStore({
 
       switch (permissionMode) {
         case PermissionModeEnum.ROLE:
-          routes = filter(router.bizRoutes, routeFilter);
+          routes = filter(entRouter.bizRoutes, routeFilter);
           routes = routes.filter(routeFilter);
           // Convert multi-level routing to level 2 routing
           routes = flatMultiLevelRoutes(routes);
@@ -170,7 +171,7 @@ export const usePermissionStore = defineStore({
           break;
 
         case PermissionModeEnum.ROUTE_MAPPING:
-          routes = filter(router.bizRoutes, routeFilter);
+          routes = filter(entRouter.bizRoutes, routeFilter);
           routes = routes.filter(routeFilter);
           const menuList: AppRouteRecordRaw[] = transformRouteToMenu(routes, true);
           routes = filter(routes, routeRemoveIgnoreFilter);
@@ -213,7 +214,7 @@ export const usePermissionStore = defineStore({
             });
           }
           // 用服务器返回routeList去过滤router.bizRoutes，返回匹配的路由信息
-          routeList = backendRouteFilter(router.bizRoutes, routeList);
+          routeList = backendRouteFilter(entRouter.bizRoutes, routeList);
           //  Background routing to menu structure
           const backMenuList = transformRouteToMenu(routeList);
           this.setBackMenuList(backMenuList);

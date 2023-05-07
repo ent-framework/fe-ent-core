@@ -11,7 +11,7 @@ export default defineApplicationConfig({
           login: 'login.html',
         },
       },
-      minify: true,
+      minify: false,
       cssCodeSplit: true,
     },
     resolve: {
