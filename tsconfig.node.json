@@ -13,6 +13,7 @@
     "support/**/*.json",
     "scripts/**/*",
     "packages/fe-ent-core/version.ts",
+    ".eslintrc.js",
     "packages/fe-ent-core/package.json"
   ],
   "exclude": ["**/__tests__/**", "**/tests/**", "**/dist"]
