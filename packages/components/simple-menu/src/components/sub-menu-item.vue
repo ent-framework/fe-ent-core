@@ -21,7 +21,7 @@
       :overlayClassName="`${prefixCls}-menu-popover`"
       v-else
       :visible="getIsOpend"
-      @visibleChange="handleVisibleChange"
+      @visible-change="handleVisibleChange"
       :overlayStyle="getOverlayStyle"
       :align="{ offset: [0, 0] }"
     >
@@ -78,6 +78,7 @@
   import { Popover } from 'ant-design-vue';
   import { isBoolean, isObject } from '@ent-core/utils/is';
   import mitt from '@ent-core/utils/mitt';
+  import type { Recordable, TimeoutHandle } from '@ent-core/types';
 
   const DELAY = 200;
   export default defineComponent({

@@ -1,4 +1,5 @@
 import { Ref, watchEffect, ref } from 'vue';
+import type { Nullable } from '@ent-core/types';
 
 interface IntersectionObserverProps {
   target: Ref<Element | null | undefined>;

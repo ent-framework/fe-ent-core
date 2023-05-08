@@ -1,11 +1,12 @@
 import type { ColEx } from '../types';
 import type { AdvanceState } from '../types/hooks';
 import { ComputedRef, getCurrentInstance, Ref, computed, unref, watch } from 'vue';
-import { shallowReactive, type ShallowReactive } from '@vue/reactivity';
+import { shallowReactive, type ShallowReactive } from 'vue';
 import type { FormProps, FormSchema } from '../types/form';
 import { isBoolean, isFunction, isNumber, isObject } from '@ent-core/utils/is';
 import { useBreakpoint } from '@ent-core/hooks/event/use-breakpoint';
 import { useDebounceFn } from '@vueuse/shared';
+import { type Recordable, EmitType } from '@ent-core/types';
 
 const BASIC_COL_LEN = 24;
 

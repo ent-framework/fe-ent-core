@@ -1,4 +1,5 @@
 import type { ExtractPropTypes, PropType } from 'vue';
+import type { Recordable } from '@ent-core/types';
 import type { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
 import { ContextMenuItem, CreateContextOptions } from '@ent-core/components/context-menu';
 import { buildProps } from '@ent-core/utils/props';

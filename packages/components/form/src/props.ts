@@ -5,6 +5,8 @@ import type { TableActionType } from '@ent-core/components/table';
 import type { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
 import type { RowProps } from 'ant-design-vue/lib/grid/Row';
 import { propTypes } from '@ent-core/utils/prop-types';
+import { type Recordable } from '@ent-core/types';
+import { Fn } from '@ent-core/types';
 
 export const basicProps = {
   model: {

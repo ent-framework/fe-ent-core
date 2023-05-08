@@ -3,10 +3,11 @@ import type { PaginationProps } from './pagination';
 import type { FormProps } from '@ent-core/components/form';
 import type { TableRowSelection as ITableRowSelection } from 'ant-design-vue/lib/table/interface';
 import type { ColumnProps } from 'ant-design-vue/lib/table';
-
+import type { Recordable, EmitType } from '@ent-core/types';
 import { ComponentType } from './component-type';
 import { VueNode } from '@ent-core/utils/prop-types';
 import { RoleEnum } from '@ent-core/logics/enums/role-enum';
+import { Fn } from '@ent-core/types';
 
 export declare type SortOrder = 'ascend' | 'descend';
 

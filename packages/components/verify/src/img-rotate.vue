@@ -6,6 +6,8 @@
   import { hackCss } from '@ent-core/utils/dom-utils';
   import { rotateProps } from './props';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import type { Nullable } from '@ent-core/types';
+
   export default defineComponent({
     name: 'EntRotateDragVerify',
     inheritAttrs: false,

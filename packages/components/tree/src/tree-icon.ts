@@ -1,12 +1,32 @@
-import type { VNode, FunctionalComponent } from 'vue';
-import { h } from 'vue';
+import { h, defineComponent } from 'vue';
 import { isString } from 'lodash-es';
 import Icon from '@ent-core/components/icon/src/icon.vue';
 
-export const TreeIcon: FunctionalComponent = ({ icon }: { icon: VNode | string }) => {
-  if (!icon) return null;
-  if (isString(icon)) {
-    return h(Icon, { icon, class: 'mr-1' });
-  }
-  return Icon;
-};
+// export type TreeIconProps = {
+//   icon: VueNode | String;
+// };
+//
+// export const TreeIcon: FunctionalComponent = (props: TreeIconProps) => {
+//   if (!props.icon) return null;
+//   if (isString(props.icon)) {
+//     return h(Icon, { icon: props.icon, class: 'mr-1' });
+//   }
+//   return Icon;
+// };
+
+export const TreeIcon = defineComponent({
+  props: {
+    icon: {
+      type: String,
+    },
+  },
+  setup(props) {
+    return () => {
+      if (!props.icon) return null;
+      if (isString(props.icon)) {
+        return h(Icon, { icon: props.icon, class: 'mr-1' });
+      }
+      return Icon;
+    };
+  },
+});

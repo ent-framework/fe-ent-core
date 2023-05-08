@@ -11,6 +11,8 @@
 <script lang="ts" setup>
   import { ref, onMounted } from 'vue';
   import { onClickOutside } from '@vueuse/core';
+  import type { ElRef } from '@ent-core/types';
+
   const emit = defineEmits(['mounted', 'clickOutside']);
   const wrap = ref<ElRef>(null);
 

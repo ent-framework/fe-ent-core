@@ -3,7 +3,7 @@ import type { BasicTableProps } from '../types/table';
 import { unref } from 'vue';
 import { ROW_KEY } from '../const';
 import { isString, isFunction } from '@ent-core/utils/is';
-
+import type { Recordable, EmitType } from '@ent-core/types';
 interface CustomRowContext {
   setSelectedRowKeys: (keys: string[]) => void;
   getSelectRowKeys: () => string[];

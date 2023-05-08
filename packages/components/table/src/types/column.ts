@@ -1,5 +1,5 @@
 import { VNodeChild } from 'vue';
-
+import type { Recordable } from '@ent-core/types';
 export interface ColumnFilterItem {
   text?: string;
   value?: string;

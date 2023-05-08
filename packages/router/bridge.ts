@@ -1,4 +1,6 @@
 import type { AppRouteRecordRaw } from '@ent-core/router/types';
+import type { AnyFunction } from '@ent-core/types';
+
 export interface RouteBridgeOptions {
   getRootRoute: () => AppRouteRecordRaw;
   getPageNotFoundRoute: () => AppRouteRecordRaw;

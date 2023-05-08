@@ -7,6 +7,7 @@ import { getDynamicProps } from '@ent-core/utils/base';
 import { ref, onUnmounted, unref, watch, toRaw } from 'vue';
 import { isProdMode } from '@ent-core/utils/env';
 import { error } from '@ent-core/utils/log';
+import type { Recordable, Nullable } from '@ent-core/types';
 
 type Props = Partial<DynamicProps<BasicTableProps>>;
 

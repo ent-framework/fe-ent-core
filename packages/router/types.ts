@@ -1,6 +1,7 @@
 import type { RouteRecordRaw, RouteMeta } from 'vue-router';
 import { RoleEnum } from '@ent-core/logics/enums/role-enum';
 import { defineComponent } from 'vue';
+import type { Recordable } from '@ent-core/types';
 
 export type Component<T = any> =
   | ReturnType<typeof defineComponent>

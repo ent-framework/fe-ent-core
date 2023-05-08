@@ -59,7 +59,6 @@ export const treeNodePropsPass = {
 
 export default defineComponent({
   name: 'TreeNode',
-
   props: {
     ...treeNodePropsPass,
     // Current node data.
@@ -81,7 +80,7 @@ export default defineComponent({
       type: Function as PropType<(node: NodeDataType) => void>,
     },
   },
-
+  emits: ['brackets-click', 'selected-change', 'tree-node-click'],
   setup(props, { emit }) {
     const dataType = computed(() => getDataType(props.node.content));
 

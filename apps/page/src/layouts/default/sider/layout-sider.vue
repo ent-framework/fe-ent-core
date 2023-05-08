@@ -38,7 +38,7 @@
   import { useTrigger, useDragLine, useSiderEvent } from './use-layout-sider';
   import { useAppInject } from 'fe-ent-core/lib/hooks';
   import { useDesign } from 'fe-ent-core/lib/hooks';
-
+  import type { ElRef } from 'fe-ent-core/lib/types';
   import DragBar from './drag-bar.vue';
   export default defineComponent({
     name: 'LayoutSideBar',

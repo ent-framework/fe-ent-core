@@ -1,6 +1,4 @@
 import { definePackageConfig } from 'fe-ent-build';
-import { searchForWorkspaceRoot } from 'vite';
-const workspace = searchForWorkspaceRoot(process.cwd());
 
 export default definePackageConfig({
   overrides: {
@@ -8,23 +6,23 @@ export default definePackageConfig({
       lib: {
         entry: 'src/index.ts',
       },
+      rollupOptions: {
+        external: [
+          'fe-ent-core/lib/components',
+          'fe-ent-core/lib/hooks',
+          'fe-ent-core/lib/logics',
+          'fe-ent-core/lib/store',
+          'fe-ent-core/lib/utils',
+          'fe-ent-core/lib/router',
+          'fe-ent-core/lib/locales',
+          'fe-ent-core/lib/directives',
+          'echarts/core',
+          'echarts/charts',
+          'echarts/components',
+          'echarts/renderers',
+        ],
+      },
       sourcemap: true,
-    },
-    optimizeDeps: {
-      include: ['echarts/core', 'echarts/charts', 'echarts/components', 'echarts/renderers'],
-    },
-    resolve: {
-      alias: [
-        // 别名，转发 fe-ent-extension 文件请求
-        {
-          find: /^@fe-ent-extension\/(.*\.less)$/,
-          replacement: `${workspace}/extensions/$1`,
-        },
-        {
-          find: /^@fe-ent-extension\/(.*)$/,
-          replacement: `${workspace}/extensions/$1/index.ts`,
-        },
-      ],
     },
   },
   options: {

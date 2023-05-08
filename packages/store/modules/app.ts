@@ -16,6 +16,7 @@ import { Persistent } from '@ent-core/utils/cache/persistent';
 import { darkMode } from '@ent-core/logics/settings/design-setting';
 import { resetRouter } from '@ent-core/router/base';
 import { deepMerge } from '@ent-core/utils/base';
+import type { DeepPartial, TimeoutHandle } from '@ent-core/types';
 
 export interface AppState {
   darkMode?: ThemeEnum;

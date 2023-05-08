@@ -11,7 +11,7 @@
   import { isFunction } from '@ent-core/utils/is';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
-
+  import { type Recordable } from '@ent-core/types';
   const props = {
     useCollapse: { type: Boolean, default: true },
     title: { type: String, default: '' },

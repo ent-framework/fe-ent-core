@@ -1,10 +1,8 @@
 import { cacheCipher } from '@ent-core/logics/settings/encryption-setting';
-
 import type { EncryptionParams } from '@ent-core/utils/cipher';
-
 import { AesEncryption } from '@ent-core/utils/cipher';
-
 import { isNullOrUnDef } from '@ent-core/utils/is';
+import type { Nullable } from '@ent-core/types';
 
 export interface CreateStorageParams extends EncryptionParams {
   prefixKey: string;

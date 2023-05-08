@@ -22,7 +22,7 @@
     "packages",
     "extensions",
     "apps",
-    "typings/*.d.ts",
+    "typings/support.d.ts",
     "play/src",
   ],
   "exclude": [

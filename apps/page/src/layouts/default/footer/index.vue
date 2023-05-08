@@ -25,6 +25,7 @@
   import { useRouter } from 'vue-router';
   import { useDesign } from 'fe-ent-core/lib/hooks';
   import { useLayoutHeight } from 'fe-ent-core/lib/hooks';
+  import { ComponentRef } from 'fe-ent-core/lib/types';
 
   export default defineComponent({
     name: 'LayoutFooter',

@@ -10,6 +10,7 @@
   import { useI18n } from 'fe-ent-core/lib/hooks';
   import { useGo, useRedo } from 'fe-ent-core/lib/hooks';
   import { PageEnum } from 'fe-ent-core/lib/logics';
+  import { Fn } from 'fe-ent-core/lib/types';
 
   interface MapValue {
     title: string;

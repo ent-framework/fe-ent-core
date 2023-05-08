@@ -4,7 +4,7 @@
   </Card>
 </template>
 <script lang="ts">
-  import type { Ref } from 'vue';
+  import type { Ref, PropType } from 'vue';
 
   import { defineComponent, ref, watch } from 'vue';
   import { Card } from 'ant-design-vue';

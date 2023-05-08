@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-
+import type { Recordable } from '@ent-core/types';
 import { defineComponent, Transition, TransitionGroup } from 'vue';
 import { getSlot } from '@ent-core/utils/helper/tsx-helper';
 

@@ -21,6 +21,8 @@ import { isEqual } from 'lodash-es';
 import { tryOnUnmounted } from '@vueuse/core';
 import { error } from '@ent-core/utils/log';
 import { computed } from 'vue';
+import { Fn } from '@ent-core/types';
+import type { Nullable } from '@ent-core/types';
 
 const dataTransfer = reactive<any>({});
 

@@ -49,7 +49,7 @@ const getStaticMenus = (): Menu[] => {
   return staticMenus;
 };
 
-async function getAsyncMenus() {
+function getAsyncMenus() {
   const permissionStore = usePermissionStore();
   //递归过滤所有隐藏的菜单
   const menuFilter = (items) => {
@@ -71,7 +71,7 @@ async function getAsyncMenus() {
 }
 
 export const getMenus = async (): Promise<Menu[]> => {
-  const menus = await getAsyncMenus();
+  const menus = getAsyncMenus();
   if (isRoleMode()) {
     const entRouter = useEntRouter();
     const routes = entRouter.getRoutes();
@@ -80,9 +80,9 @@ export const getMenus = async (): Promise<Menu[]> => {
   return menus;
 };
 
-export async function getCurrentParentPath(currentPath: string) {
-  const menus = await getAsyncMenus();
-  const allParentPath = await getAllParentPath(menus, currentPath);
+export function getCurrentParentPath(currentPath: string) {
+  const menus = getAsyncMenus();
+  const allParentPath = getAllParentPath(menus, currentPath);
   return allParentPath?.[0];
 }
 

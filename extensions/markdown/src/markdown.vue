@@ -17,6 +17,8 @@
   import { useRootSetting, onMountedOrActivated } from 'fe-ent-core';
   import { useModalContext } from 'fe-ent-core';
   import { useLocale } from 'fe-ent-core';
+  import type { Nullable, ElRef } from 'fe-ent-core/lib/types';
+
   type Lang = 'zh_CN' | 'en_US' | 'ja_JP' | 'ko_KR' | undefined;
 
   export default defineComponent({

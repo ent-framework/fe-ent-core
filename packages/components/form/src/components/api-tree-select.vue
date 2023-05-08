@@ -16,7 +16,7 @@
   import { get } from 'lodash-es';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { LoadingOutlined } from '@ant-design/icons-vue';
-
+  import { type Recordable } from '@ent-core/types';
   export default defineComponent({
     name: 'ApiTreeSelect',
     components: { ATreeSelect: TreeSelect, LoadingOutlined },

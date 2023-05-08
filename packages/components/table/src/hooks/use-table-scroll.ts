@@ -6,6 +6,7 @@ import { useWindowSizeFn } from '@ent-core/hooks/event/use-window-size-fn';
 import { useModalContext } from '@ent-core/components/modal';
 import { onMountedOrActivated } from '@ent-core/hooks/core/on-mounted-or-activated';
 import { useDebounceFn } from '@vueuse/shared';
+import type { Recordable, Nullable, ComponentRef } from '@ent-core/types';
 
 export function useTableScroll(
   propsRef: ComputedRef<BasicTableProps>,

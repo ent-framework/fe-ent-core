@@ -5,6 +5,7 @@ import type {
   DrawerProps,
   UseDrawerInnerReturnType,
 } from './typing';
+import { Fn } from '@ent-core/types';
 import {
   ref,
   getCurrentInstance,
@@ -20,6 +21,8 @@ import { isFunction } from '@ent-core/utils/is';
 import { tryOnUnmounted } from '@vueuse/core';
 import { isEqual } from 'lodash-es';
 import { error } from '@ent-core/utils/log';
+import type { Nullable } from '@ent-core/types';
+
 const dataTransferRef = reactive<any>({});
 
 const visibleData = reactive<{ [key: number]: boolean }>({});

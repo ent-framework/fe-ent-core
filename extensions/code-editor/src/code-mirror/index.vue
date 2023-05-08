@@ -4,11 +4,13 @@
 
 <script lang="ts" setup>
   import { ref, onMounted, onUnmounted, watchEffect, watch, unref, nextTick } from 'vue';
+  import type { PropType } from 'vue';
   import { useDebounceFn } from '@vueuse/core';
   import { useWindowSizeFn } from 'fe-ent-core';
   import { useAppStore } from 'fe-ent-core';
   import { CodeMirror } from './codemirror';
   import { MODE } from '../typing';
+  import type { Nullable } from 'fe-ent-core/lib/types';
 
   const props = defineProps({
     mode: {

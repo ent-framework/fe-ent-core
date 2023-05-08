@@ -12,6 +12,7 @@ import { createStateGuard } from './state-guard';
 import nProgress from 'nprogress';
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { createParamMenuGuard } from './param-menu-guard';
+import type { Nullable } from '@ent-core/types';
 
 // Don't change the order of creation
 export function setupRouterGuard(router: Router, needLogin: boolean) {

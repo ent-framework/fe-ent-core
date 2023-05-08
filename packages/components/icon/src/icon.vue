@@ -29,6 +29,7 @@
   import Iconify from '@iconify/iconify';
   import { isString } from '@ent-core/utils/is';
   import { propTypes } from '@ent-core/utils/prop-types';
+  import type { ElRef } from '@ent-core/types';
 
   const SVG_END_WITH_FLAG = '|svg';
   export default defineComponent({

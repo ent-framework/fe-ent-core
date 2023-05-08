@@ -27,7 +27,7 @@
   import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
   import { LoadingOutlined } from '@ant-design/icons-vue';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
-
+  import { type Recordable } from '@ent-core/types';
   interface Option {
     value: string;
     label: string;

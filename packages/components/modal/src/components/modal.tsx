@@ -4,6 +4,7 @@ import { basicProps } from '../props';
 import { useModalDragMove } from '../hooks/use-modal-drag';
 import { useAttrs } from '@ent-core/hooks/core/use-attrs';
 import { extendSlots } from '@ent-core/utils/helper/tsx-helper';
+import type { Recordable } from '@ent-core/types';
 
 const EntModal = defineComponent({
   name: 'EntModal',

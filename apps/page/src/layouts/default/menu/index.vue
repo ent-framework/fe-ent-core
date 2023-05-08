@@ -19,6 +19,7 @@
   import { useRootSetting } from 'fe-ent-core/lib/hooks';
   import { useAppInject } from 'fe-ent-core/lib/hooks';
   import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { Nullable } from 'fe-ent-core/lib/types';
 
   export default defineComponent({
     name: 'LayoutMenu',

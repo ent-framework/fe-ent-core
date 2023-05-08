@@ -16,6 +16,7 @@
   import { pick, set } from 'lodash-es';
   import { treeToList } from '@ent-core/utils/helper/tree-helper';
   import { Spin } from 'ant-design-vue';
+  import type { Recordable } from '@ent-core/types';
 
   export default defineComponent({
     name: 'EditableCell',

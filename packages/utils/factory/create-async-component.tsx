@@ -4,6 +4,7 @@ import {
 } from 'vue';
 import { Spin } from 'ant-design-vue';
 import { noop } from '@ent-core/utils/base';
+import { Fn } from '@ent-core/types';
 
 // const Loading: FunctionalComponent<{ size: 'small' | 'default' | 'large' }> = (props) => {
 //   const style: CSSProperties = {

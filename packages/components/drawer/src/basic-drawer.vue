@@ -53,7 +53,7 @@
   import { basicProps } from './props';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
-
+  import { type Recordable, Nullable } from '@ent-core/types';
   export default defineComponent({
     name: 'EntDrawer',
     components: { Drawer, EntScrollContainer, DrawerFooter, DrawerHeader },

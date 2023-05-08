@@ -79,6 +79,7 @@
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useCopyToClipboard } from '@ent-core/hooks/web/use-copy-to-clipboard';
   import { useMessage } from '@ent-core/hooks/web/use-message';
+  import type { ChangeEvent } from '@ent-core/types';
   //import svgIcons from 'virtual:svg-icons-names';
 
   const svgIcons = [

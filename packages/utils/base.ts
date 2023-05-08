@@ -2,7 +2,7 @@ import type { RouteLocationNormalized, RouteRecordNormalized } from 'vue-router'
 import type { App, Plugin } from 'vue';
 import { unref } from 'vue';
 import { isObject } from './is';
-
+import type { Recordable, TargetContext } from '@ent-core/types';
 export const noop = () => {};
 
 /**

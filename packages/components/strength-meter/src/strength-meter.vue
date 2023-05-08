@@ -24,6 +24,8 @@
   import { zxcvbn, ZxcvbnResult } from '@zxcvbn-ts/core';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { propTypes } from '@ent-core/utils/prop-types';
+  import { ChangeEvent } from '@ent-core/types';
+
   export default defineComponent({
     name: 'EntStrengthMeter',
     components: { InputPassword: Input.Password },

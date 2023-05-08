@@ -8,6 +8,7 @@ import { useUserStoreWithOut } from '@ent-core/store/modules/user';
 import { PAGE_NOT_FOUND_NAME } from '@ent-core/router/constant';
 
 import { routeBridge } from '@ent-core/router/bridge';
+import type { Recordable } from '@ent-core/types';
 
 const LOGIN_PATH = PageEnum.BASE_LOGIN as string;
 
@@ -40,7 +41,9 @@ export function createPermissionGuard(router: Router) {
             next((to.query?.redirect as string) || '/');
             return;
           }
-        } catch {}
+        } catch {
+          //
+        }
       }
       next();
       return;

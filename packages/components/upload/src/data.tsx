@@ -8,6 +8,7 @@ import { Progress, Tag } from 'ant-design-vue';
 import TableAction from '@ent-core/components/table/src/components/table-action.vue';
 import ThumbUrl from './thumb-url.vue';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import { Fn } from '@ent-core/types';
 
 // 文件上传列表
 export function createTableColumns(): BasicColumn[] {

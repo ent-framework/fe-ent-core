@@ -3,7 +3,7 @@ import type { BasicTableProps } from '../types/table';
 import { unref, computed, h, nextTick, watchEffect } from 'vue';
 import TableFooter from '../components/table-footer.vue';
 import { useEventListener } from '@ent-core/hooks/event/use-event-listener';
-
+import type { Recordable, ComponentRef } from '@ent-core/types';
 export function useTableFooter(
   propsRef: ComputedRef<BasicTableProps>,
   scrollRef: ComputedRef<{

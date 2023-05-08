@@ -1,3 +1,4 @@
+import type { Nullable } from '@ent-core/types';
 /**
  * @description: base64 to blob
  */

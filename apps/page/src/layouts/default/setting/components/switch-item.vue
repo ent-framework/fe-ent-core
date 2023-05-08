@@ -18,6 +18,7 @@
   import { useI18n } from 'fe-ent-core/lib/hooks';
   import { baseHandler } from '../handler';
   import { HandlerEnum } from '../enum';
+  import { ChangeEvent } from 'fe-ent-core/lib/types';
 
   export default defineComponent({
     name: 'SwitchItem',

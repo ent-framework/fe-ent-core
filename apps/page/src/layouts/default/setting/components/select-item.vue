@@ -18,7 +18,12 @@
   import { useDesign } from 'fe-ent-core/lib/hooks';
   import { baseHandler } from '../handler';
   import { HandlerEnum } from '../enum';
-
+  import { ChangeEvent } from 'fe-ent-core/lib/types';
+  type LabelValueOptions = {
+    label: string;
+    value: any;
+    [key: string]: string | number | boolean;
+  }[];
   export default defineComponent({
     name: 'SelectItem',
     components: { Select },

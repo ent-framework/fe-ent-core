@@ -4,6 +4,7 @@
  */
 import { on, once } from '@ent-core/utils/dom-utils';
 import type { Directive, DirectiveBinding } from 'vue';
+import type { Nullable, IntervalHandle } from '@ent-core/types';
 
 const repeatDirective: Directive = {
   beforeMount(el: Element, binding: DirectiveBinding<any>) {

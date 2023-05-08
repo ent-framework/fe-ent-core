@@ -5,6 +5,7 @@
   import { useAppStore } from 'fe-ent-core/lib/store';
   import { PermissionModeEnum } from 'fe-ent-core/lib/logics';
   import { PageEnum } from 'fe-ent-core/lib/logics';
+  import type { Nullable } from 'fe-ent-core/lib/types';
 
   export default defineComponent({
     setup() {

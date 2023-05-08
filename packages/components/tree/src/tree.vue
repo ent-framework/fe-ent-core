@@ -1,5 +1,6 @@
 <script lang="tsx">
   import type { CSSProperties } from 'vue';
+  import type { Recordable } from '@ent-core/types';
   import type {
     FieldNames,
     TreeState,
@@ -39,7 +40,7 @@
 
   export default defineComponent({
     name: 'EntTree',
-    components: { EntScrollContainer },
+    components: { EntScrollContainer, TreeIcon },
     inheritAttrs: false,
     props: treeProps,
     emits: treeEmits,
@@ -433,7 +434,7 @@
                 search={search}
                 toolbar={toolbar}
                 helpMessage={helpMessage}
-                onStrictlyChange={onStrictlyChange}
+                onChange={onStrictlyChange}
                 onSearch={handleSearch}
                 searchText={searchState.searchText}
               >

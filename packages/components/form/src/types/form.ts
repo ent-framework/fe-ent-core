@@ -5,6 +5,7 @@ import type { FormItem } from './form-item';
 import type { ColEx, ComponentType } from './index';
 import type { TableActionType } from '@ent-core/components/table/src/types/table';
 import type { RowProps } from 'ant-design-vue/lib/grid/Row';
+import type { Recordable } from '@ent-core/types';
 
 export type FieldMapToTime = [string, [string, string], (string | [string, string])?][];
 

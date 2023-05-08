@@ -70,8 +70,9 @@
   import { onMountedOrActivated } from 'fe-ent-core';
   import { useAppStore } from 'fe-ent-core';
   import { useLocale } from 'fe-ent-core';
+  import { useDesign } from 'fe-ent-core';
   import { bindHandlers } from './helper';
-
+  import type { Nullable, Recordable } from 'fe-ent-core/lib/types';
   const tinymceProps = {
     options: {
       type: Object as PropType<Partial<RawEditorSettings>>,

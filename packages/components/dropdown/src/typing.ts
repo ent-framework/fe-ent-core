@@ -1,3 +1,5 @@
+import { Fn } from '@ent-core/types';
+
 export interface DropMenu {
   onClick?: Fn;
   to?: string;

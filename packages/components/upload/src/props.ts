@@ -1,5 +1,6 @@
 import type { PropType } from 'vue';
 import { FileBasicColumn } from './typing';
+import type { PromiseFn } from '@ent-core/types';
 
 export const basicProps = {
   helpText: {

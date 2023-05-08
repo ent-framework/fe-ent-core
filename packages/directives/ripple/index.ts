@@ -1,4 +1,5 @@
 import type { Directive } from 'vue';
+import type { Recordable } from '@ent-core/types';
 export interface RippleOptions {
   event: string;
   transition: number;

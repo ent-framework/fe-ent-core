@@ -6,7 +6,7 @@
   import { omit } from 'lodash-es';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
-
+  import { type Recordable } from '@ent-core/types';
   const props = {
     /**
      * Whether to enable the drop-down menu

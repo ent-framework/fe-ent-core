@@ -1,4 +1,5 @@
 export type ErrorMessageMode = 'none' | 'modal' | 'message' | undefined;
+import type { Recordable } from '@ent-core/types';
 
 export interface RequestOptions {
   // Splicing request parameters to url

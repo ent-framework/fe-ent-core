@@ -6,6 +6,7 @@ import { useLockStore } from '@ent-core/store/modules/lock';
 
 import { useUserStore } from '@ent-core/store/modules/user';
 import { useRootSetting } from '../setting/use-root-setting';
+import type { TimeoutHandle } from '@ent-core/types';
 
 export function useLockPage() {
   const { getLockTime } = useRootSetting();

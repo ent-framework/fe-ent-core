@@ -1,6 +1,7 @@
 import { LoginParams, LoginResultModel } from './model';
 import { ErrorMessageMode } from './types/axios';
 import { AppRouteRecordRaw } from '@ent-core/router/types';
+import type { Recordable, AnyFunction } from '@ent-core/types';
 
 export interface UserBridgeOptions {
   loginApi: (params: LoginParams, mode: ErrorMessageMode) => Promise<LoginResultModel>;

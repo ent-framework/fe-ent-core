@@ -8,6 +8,7 @@
   import { EntTitle } from '@ent-core/components/basic';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { isFunction } from '@ent-core/utils/is';
+  import type { Recordable } from '@ent-core/types';
 
   export default defineComponent({
     name: 'BasicTableTitle',

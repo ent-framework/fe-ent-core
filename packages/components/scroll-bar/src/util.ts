@@ -1,4 +1,6 @@
 import type { BarMap } from './types';
+import type { Recordable } from '@ent-core/types';
+
 export const BAR_MAP: BarMap = {
   vertical: {
     offset: 'offsetHeight',

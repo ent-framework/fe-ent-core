@@ -5,6 +5,7 @@ import { ref, onUnmounted, unref, nextTick, watch } from 'vue';
 import { isProdMode } from '@ent-core/utils/env';
 import { error } from '@ent-core/utils/log';
 import { getDynamicProps } from '@ent-core/utils';
+import type { Recordable, Nullable } from '@ent-core/types';
 
 export declare type ValidateFields = (nameList?: NamePath[]) => Promise<Recordable>;
 

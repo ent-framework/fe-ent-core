@@ -140,10 +140,10 @@
         setOpenKeys(path as string);
         if (unref(currentActiveMenu)) return;
         if (props.isHorizontal && unref(getSplit)) {
-          const parentPath = await getCurrentParentPath(path as string);
+          const parentPath = getCurrentParentPath(path as string);
           menuState.selectedKeys = [parentPath];
         } else {
-          const parentPaths = await getAllParentPath(props.items, path);
+          const parentPaths = getAllParentPath(props.items, path as string);
           menuState.selectedKeys = parentPaths;
         }
       }

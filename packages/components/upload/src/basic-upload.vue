@@ -47,6 +47,7 @@
   import { omit } from 'lodash-es';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { isArray } from '@ent-core/utils/is';
+  import type { Recordable } from '@ent-core/types';
   export default defineComponent({
     name: 'EntUpload',
     components: { UploadModal, UploadPreviewModal, EntIcon, Tooltip, Space },

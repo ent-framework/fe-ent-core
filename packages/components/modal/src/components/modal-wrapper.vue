@@ -22,7 +22,8 @@
   import { EntScrollContainer } from '@ent-core/components/container';
   import { createModalContext } from '../hooks/use-modal-context';
   import { useMutationObserver } from '@vueuse/core';
-
+  import { Fn } from '@ent-core/types';
+  import type { ComponentRef, ElRef } from '@ent-core/types';
   const props = {
     loading: { type: Boolean },
     useWrapper: { type: Boolean, default: true },

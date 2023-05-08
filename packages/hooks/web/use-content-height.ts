@@ -4,6 +4,7 @@ import { useWindowSizeFn } from '@ent-core/hooks/event/use-window-size-fn';
 import { useLayoutHeight } from './use-content-view-height';
 import { getViewportOffset } from '@ent-core/utils/dom-utils';
 import { isNumber, isString } from '@ent-core/utils/is';
+import type { Nullable } from '@ent-core/types';
 
 export interface CompensationHeight {
   // 使用 layout Footer 高度作为判断补偿高度的条件

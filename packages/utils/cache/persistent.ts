@@ -17,6 +17,7 @@ import {
 import { DEFAULT_CACHE_TIME } from '@ent-core/logics/settings/encryption-setting';
 import { toRaw } from 'vue';
 import { pick, omit } from 'lodash-es';
+import type { Nullable } from '@ent-core/types';
 
 interface BasicStore {
   [TOKEN_KEY]: string | number | null | undefined;

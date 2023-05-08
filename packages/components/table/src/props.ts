@@ -12,6 +12,8 @@ import { TableRowSelection } from 'ant-design-vue/lib/table/interface';
 import type { FormProps } from '@ent-core/components/form';
 import { DEFAULT_FILTER_FN, DEFAULT_SORT_FN, FETCH_SETTING, DEFAULT_SIZE } from './const';
 import { propTypes } from '@ent-core/utils/prop-types';
+import { Fn } from '@ent-core/types';
+import type { Recordable } from '@ent-core/types';
 
 export const basicProps = {
   clickToRowSelect: propTypes.bool.def(true),

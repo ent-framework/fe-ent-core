@@ -4,7 +4,7 @@
   </Card>
 </template>
 <script lang="ts" setup>
-  import { defineComponent, Ref, ref, watch } from 'vue';
+  import { defineComponent, Ref, ref, watch, type PropType } from 'vue';
   import { Card } from 'ant-design-vue';
   import { useEcharts } from '@fe-ent-extension/echarts';
 

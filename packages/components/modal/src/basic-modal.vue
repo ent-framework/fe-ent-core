@@ -73,6 +73,7 @@
   import { useFullScreen } from './hooks/use-modal-full-screen';
   import { omit } from 'lodash-es';
   import { useDesign } from '@ent-core/hooks/web/use-design';
+  import type { Recordable } from '@ent-core/types';
 
   export default defineComponent({
     name: 'EntModal',

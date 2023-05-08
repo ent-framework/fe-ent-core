@@ -1,8 +1,6 @@
 import { defineComponent, computed, PropType } from 'vue';
 
 export default defineComponent({
-  emits: ['change', 'update:modelValue'],
-
   props: {
     checked: {
       type: Boolean,
@@ -11,6 +9,7 @@ export default defineComponent({
     isMultiple: Boolean,
     onChange: Function as PropType<(state: boolean) => void>,
   },
+  emits: ['change', 'update:modelValue'],
 
   setup(props, { emit }) {
     const uiType = computed(() => (props.isMultiple ? 'checkbox' : 'radio'));

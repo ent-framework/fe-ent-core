@@ -1,6 +1,6 @@
 // axios配置  可自行根据项目进行更改，只需更改该文件即可，其他文件可以不动
 // The axios configuration can be changed according to the project, just change the file, other files can be left unchanged
-
+import type { Recordable } from '@ent-core/types';
 import type { AxiosResponse } from 'axios';
 import type { RequestOptions, Result } from '@ent-core/logics/types/axios';
 import type { AxiosTransform, CreateAxiosOptions } from './axios-transform';

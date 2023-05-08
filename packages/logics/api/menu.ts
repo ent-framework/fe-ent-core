@@ -1,7 +1,7 @@
 import { defHttp } from '@ent-core/utils/http/axios';
 import { getMenuListResultModel } from '../model';
 import { AppRouteRecordRaw } from '@ent-core/router/types';
-
+import type { Recordable } from '@ent-core/types';
 enum Api {
   GetMenuList = '/menu-list',
   GetAppList = '/app-list',

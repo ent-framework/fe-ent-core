@@ -16,6 +16,7 @@ import { useMessage } from '@ent-core/hooks/web/use-message';
 // import { registerPageNotFoundRoute } from '@ent-core/router/routes/basic';
 import { isArray } from '@ent-core/utils/is';
 import { h } from 'vue';
+import type { Nullable } from '@ent-core/types';
 
 export interface UserState {
   userInfo: Nullable<UserInfo>;

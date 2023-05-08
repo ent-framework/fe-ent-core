@@ -1,3 +1,5 @@
+import type { ElRef } from '@ent-core/types';
+
 export interface BarMapItem {
   offset: string;
   scroll: string;

@@ -4,7 +4,7 @@ import { unref, computed, h } from 'vue';
 import TableHeader from '../components/table-header.vue';
 import { isString } from '@ent-core/utils/is';
 import { getSlot } from '@ent-core/utils/helper/tsx-helper';
-
+import type { Recordable } from '@ent-core/types';
 export function useTableHeader(
   propsRef: ComputedRef<BasicTableProps>,
   slots: Slots,

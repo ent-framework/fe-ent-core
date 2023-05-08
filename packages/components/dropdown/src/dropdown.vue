@@ -47,7 +47,7 @@
   import { EntIcon } from '@ent-core/components/icon';
   import { omit } from 'lodash-es';
   import { isFunction } from '@ent-core/utils/is';
-
+  import { type Recordable } from '@ent-core/types';
   const ADropdown = Dropdown;
   const AMenu = Menu;
   const AMenuItem = Menu.Item;

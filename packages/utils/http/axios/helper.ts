@@ -1,5 +1,5 @@
 import { isObject, isString } from '@ent-core/utils/is';
-
+import type { Recordable } from '@ent-core/types';
 const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';
 
 export function joinTimestamp<T extends boolean>(

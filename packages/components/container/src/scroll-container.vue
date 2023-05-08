@@ -8,6 +8,7 @@
   import { defineComponent, ref, unref, nextTick } from 'vue';
   import { Scrollbar, ScrollbarType } from '@ent-core/components/scroll-bar';
   import { useScrollTo } from '@ent-core/hooks/event/use-scroll-to';
+  import type { Nullable } from '@ent-core/types';
 
   export default defineComponent({
     name: 'EntScrollContainer',

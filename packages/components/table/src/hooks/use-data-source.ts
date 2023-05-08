@@ -16,7 +16,7 @@ import { buildUUID } from '@ent-core/utils/uuid';
 import { isFunction, isBoolean, isObject } from '@ent-core/utils/is';
 import { get, cloneDeep, merge } from 'lodash-es';
 import { FETCH_SETTING, ROW_KEY, PAGE_SIZE } from '../const';
-
+import type { Recordable, EmitType } from '@ent-core/types';
 interface ActionType {
   getPaginationInfo: ComputedRef<boolean | PaginationProps>;
   setPagination: (info: Partial<PaginationProps>) => void;

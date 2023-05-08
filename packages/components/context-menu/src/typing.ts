@@ -1,3 +1,5 @@
+import { Fn } from '@ent-core/types';
+
 export interface Axis {
   x: number;
   y: number;

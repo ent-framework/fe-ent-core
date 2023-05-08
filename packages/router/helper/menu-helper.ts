@@ -5,6 +5,7 @@ import { cloneDeep } from 'lodash-es';
 import { isUrl } from '@ent-core/utils/is';
 import { RouteParams } from 'vue-router';
 import { toRaw } from 'vue';
+import type { Recordable } from '@ent-core/types';
 
 export function getAllParentPath<T = Recordable>(treeData: T[], path: string) {
   const menuList = findPath(treeData, (n) => n.path === path) as Menu[];

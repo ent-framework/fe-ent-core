@@ -9,8 +9,9 @@ import {
   Ref,
 } from 'vue';
 import { on, off } from '@ent-core/utils/dom-utils';
-
+import type { Recordable } from '@ent-core/types';
 import { renderThumbStyle, BAR_MAP } from './util';
+import type { Nullable } from '@ent-core/types';
 
 export default defineComponent({
   name: 'EntScrollBar',

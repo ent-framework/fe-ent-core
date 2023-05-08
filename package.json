@@ -41,6 +41,7 @@
     "preview:dist": "vite preview",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "update:version": "tsx ./scripts/update-version.ts",
+    "lint:test": "eslint --max-warnings 0  \"{packages,apps,extensions,play}/**/*.{vue,ts,tsx}\"",
     "lint:eslint": "eslint --cache --max-warnings 0  \"packages/**/*.{vue,ts,tsx}\" --fix",
     "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
     "lint:stylelint": "stylelint --cache --fix \"packages/**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
@@ -72,6 +73,7 @@
     "@ent-core/router": "workspace:*",
     "@ent-core/store": "workspace:*",
     "@ent-core/theme": "workspace:*",
+    "@ent-core/types": "workspace:*",
     "@ent-core/utils": "workspace:*"
   },
   "devDependencies": {

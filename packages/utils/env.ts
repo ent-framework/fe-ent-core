@@ -1,4 +1,5 @@
 import type { GlobEnvConfig } from '@ent-core/logics/types/config';
+import { ViteEnv } from '@ent-core/types';
 
 const _ViteEnv = process.env;
 
@@ -43,7 +44,7 @@ export function getAppEnvConfig(): AppEnv {
     ...REST
   } = ENV;
 
-  if (!/^[a-zA-Z\_]*$/.test(VITE_GLOB_APP_SHORT_NAME)) {
+  if (!/^[a-zA-Z_]*$/.test(VITE_GLOB_APP_SHORT_NAME)) {
     console &&
       console.warn(
         `VITE_GLOB_APP_SHORT_NAME Variables can only be characters/underscores, please modify in the environment variables and re-running.`,

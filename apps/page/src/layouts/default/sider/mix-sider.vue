@@ -66,7 +66,7 @@
           :items="childrenMenus"
           :theme="getMenuTheme"
           mixSider
-          @menuClick="handleMenuClick"
+          @menu-click="handleMenuClick"
         />
       </EntScrollContainer>
       <div
@@ -98,6 +98,7 @@
   import { getChildrenMenus, getCurrentParentPath, getShallowMenus } from 'fe-ent-core/lib/router';
   import { listenerRouteChange } from 'fe-ent-core/lib/logics';
   import LayoutTrigger from '../trigger/index.vue';
+  import type { ElRef, Nullable } from 'fe-ent-core/lib/types';
 
   export default defineComponent({
     name: 'LayoutMixSider',
