@@ -1,13 +1,15 @@
 import { nextTick, unref } from 'vue';
 import type { Ref } from 'vue';
-import type { Options } from 'sortablejs';
+import sortablejs from 'sortablejs';
+import type Sortable from 'sortablejs';
 
-export function useSortable(el: HTMLElement | Ref<HTMLElement>, options?: Options) {
+export function useSortable(el: HTMLElement | Ref<HTMLElement>, options?: Sortable.Options) {
   function initSortable() {
     nextTick(async () => {
       if (!el) return;
-      const Sortable = (await import('sortablejs')).default;
-      new Sortable(unref(el), {
+      //防止生成dts时报错
+      //@ts-ignore
+      (sortablejs.default || sortablejs).create(unref(el), {
         animation: 500,
         delay: 400,
         delayOnTouchOnly: true,
