@@ -18,50 +18,52 @@
   import { defineComponent } from 'vue';
   import { EntModal, useModalInner } from '@ent-core/components/modal';
   import { EntForm, FormSchema, useForm } from '@ent-core/components/form';
-
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
-
   const { t } = useI18n();
-  console.log(t('component.excel.fileName'));
-  const schemas: FormSchema[] = [
-    {
-      field: 'filename',
-      component: 'Input',
-      label: t('component.excel.fileName'),
-      rules: [{ required: true }],
-    },
-    {
-      field: 'bookType',
-      component: 'Select',
-      label: t('component.excel.fileType'),
-      defaultValue: 'xlsx',
-      rules: [{ required: true }],
-      componentProps: {
-        options: [
-          {
-            label: 'xlsx',
-            value: 'xlsx',
-            key: 'xlsx',
-          },
-          {
-            label: 'html',
-            value: 'html',
-            key: 'html',
-          },
-          {
-            label: 'csv',
-            value: 'csv',
-            key: 'csv',
-          },
-          {
-            label: 'txt',
-            value: 'txt',
-            key: 'txt',
-          },
-        ],
+
+  function getSchema() {
+    const schemas: FormSchema[] = [
+      {
+        field: 'filename',
+        component: 'Input',
+        label: t('component.excel.fileName'),
+        rules: [{ required: true }],
       },
-    },
-  ];
+      {
+        field: 'bookType',
+        component: 'Select',
+        label: t('component.excel.fileType'),
+        defaultValue: 'xlsx',
+        rules: [{ required: true }],
+        componentProps: {
+          options: [
+            {
+              label: 'xlsx',
+              value: 'xlsx',
+              key: 'xlsx',
+            },
+            {
+              label: 'html',
+              value: 'html',
+              key: 'html',
+            },
+            {
+              label: 'csv',
+              value: 'csv',
+              key: 'csv',
+            },
+            {
+              label: 'txt',
+              value: 'txt',
+              key: 'txt',
+            },
+          ],
+        },
+      },
+    ];
+    return schemas;
+  }
+
   export default defineComponent({
     name: 'EntExportExcelModal',
     components: { EntModal, EntForm },
@@ -69,6 +71,8 @@
     setup(_, { emit }) {
       const [registerForm, { validateFields }] = useForm();
       const [registerModal, { closeModal }] = useModalInner();
+
+      const schemas = getSchema();
 
       async function handleOk() {
         const res = (await validateFields()) as ExportModalResult;

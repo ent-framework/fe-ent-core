@@ -17,16 +17,19 @@ module.exports = defineConfig({
     ecmaFeatures: {
       jsx: true,
     },
+    createDefaultProgram: false,
+    extraFileExtensions: ['.vue'],
   },
+  plugins: ['vue', '@typescript-eslint', 'import'],
   extends: [
+    'eslint:recommended',
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier',
     'plugin:prettier/recommended',
-    'plugin:jest/recommended',
   ],
   rules: {
     'vue/script-setup-uses-vars': 'error',
+    'vue/multi-word-component-names': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',

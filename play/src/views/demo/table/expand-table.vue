@@ -7,26 +7,28 @@
       <template #expandedRowRender="{ record }">
         <span>No: {{ record.no }} </span>
       </template>
-      <template #action="{ record }">
-        <EntTableAction
-          stopButtonPropagation
-          :actions="[
-            {
-              label: '删除',
-              icon: 'ic:outline-delete-outline',
-              onClick: handleDelete.bind(null, record),
-            },
-          ]"
-          :dropDownActions="[
-            {
-              label: '启用',
-              popConfirm: {
-                title: '是否启用？',
-                confirm: handleOpen.bind(null, record),
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.key === 'action'">
+          <EntTableAction
+            stopButtonPropagation
+            :actions="[
+              {
+                label: '删除',
+                icon: 'ic:outline-delete-outline',
+                onClick: handleDelete.bind(null, record),
               },
-            },
-          ]"
-        />
+            ]"
+            :dropDownActions="[
+              {
+                label: '启用',
+                popConfirm: {
+                  title: '是否启用？',
+                  confirm: handleOpen.bind(null, record),
+                },
+              },
+            ]"
+          />
+        </template>
       </template>
     </EntTable>
   </EntPageWrapper>

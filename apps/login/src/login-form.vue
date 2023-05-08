@@ -53,26 +53,30 @@
       </Button> -->
     </FormItem>
     <ARow class="enter-x">
-      <ACol :md="8" :xs="24">
+      <ACol :md="8" :xs="24" class="!my-2 !md:my-0 xs:mx-0 md:mr-2" v-if="mobileLoginEnable">
         <Button block @click="setLoginState(LoginStateEnum.MOBILE)">
           {{ t('sys.login.mobileSignInFormTitle') }}
         </Button>
       </ACol>
-      <ACol :md="8" :xs="24" class="!my-2 !md:my-0 xs:mx-0 md:mx-2">
+      <ACol :md="8" :xs="24" class="!my-2 !md:my-0 xs:mx-0 md:mr-2" v-if="qrLoginEnable">
         <Button block @click="setLoginState(LoginStateEnum.QR_CODE)">
           {{ t('sys.login.qrSignInFormTitle') }}
         </Button>
       </ACol>
-      <ACol :md="7" :xs="24">
+      <ACol :md="7" :xs="24" v-if="registerEnable">
         <Button block @click="setLoginState(LoginStateEnum.REGISTER)">
           {{ t('sys.login.registerButton') }}
         </Button>
       </ACol>
     </ARow>
 
-    <Divider class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider>
+    <Divider class="enter-x" v-if="false">{{ t('sys.login.otherSignIn') }}</Divider>
 
-    <div class="flex justify-evenly enter-x" :class="`${prefixCls}-sign-in-way`">
+    <div
+      v-if="false"
+      class="flex justify-evenly enter-x hidden"
+      :class="`${prefixCls}-sign-in-way`"
+    >
       <GithubFilled />
       <WechatFilled />
       <AlipayCircleFilled />
@@ -101,6 +105,20 @@
   import { LoginStateEnum, useLoginState, useFormRules, useFormValid } from './use-login';
   import { useDesign } from 'fe-ent-core/lib/hooks';
 
+  defineProps({
+    mobileLoginEnable: {
+      type: Boolean,
+      default: true,
+    },
+    qrLoginEnable: {
+      type: Boolean,
+      default: true,
+    },
+    registerEnable: {
+      type: Boolean,
+      default: true,
+    },
+  });
   const ACol = Col;
   const ARow = Row;
   const FormItem = Form.Item;

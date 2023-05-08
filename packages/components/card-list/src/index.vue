@@ -3,10 +3,9 @@
     <div class="p-4 mb-2 bg-white">
       <EntForm @register="registerForm" />
     </div>
-    {{ sliderProp.width }}
     <div class="p-2 bg-white">
       <List
-        :grid="{ gutter: 5, xs: 1, sm: 2, md: 4, lg: 4, xl: 6, xxl: grid, column: 4 }"
+        :grid="{ gutter: 5, xs: 1, sm: 2, md: 4, lg: 4, xl: 6, xxl: grid }"
         :data-source="data"
         :pagination="paginationProp"
       >
@@ -40,7 +39,7 @@
                   <Image :src="item.imgs[0]" />
                 </div>
               </template>
-              <template class="ant-card-actions" #actions>
+              <template #actions>
                 <EditOutlined key="edit" />
                 <EntDropdown
                   :trigger="['hover']"
@@ -85,15 +84,7 @@
     RedoOutlined,
     TableOutlined,
   } from '@ant-design/icons-vue';
-  import {
-    List,
-    Card,
-    Image,
-    Typography,
-    Tooltip,
-    Avatar,
-    Slider,
-  } from 'ant-design-vue';
+  import { List, Card, Image, Typography, Tooltip, Avatar, Slider } from 'ant-design-vue';
   import { EntDropdown } from '@ent-core/components/dropdown';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { propTypes } from '@ent-core/utils/prop-types';
@@ -122,6 +113,8 @@
       CardMeta,
       TypographyText,
       Slider,
+      Card,
+      List,
     },
     props: {
       params: propTypes.object.def({}),
@@ -211,6 +204,7 @@
         handleDelete,
         height,
         grid,
+        fetch,
       };
     },
   });

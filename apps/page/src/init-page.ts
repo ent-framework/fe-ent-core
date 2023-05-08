@@ -1,8 +1,15 @@
-import { useLayout } from 'fe-ent-core/lib/router';
+import { useLayout, initRouteBridge } from 'fe-ent-core/lib/router';
 
 import { default as LAYOUT } from './layouts/default';
 import { default as IFRAME } from './views/iframe/frame-blank';
 import { default as ExceptionPage } from './views/exception/exception.vue';
+
+import {
+  getRootRoute,
+  getPageNotFoundRoute,
+  getRedirectRoute,
+  getErrorLogRoute,
+} from './routes/basic';
 
 const setupPages = function () {
   const layoutMgt = useLayout();
@@ -11,6 +18,15 @@ const setupPages = function () {
   layoutMgt.use('LAYOUT', LAYOUT);
   layoutMgt.use('IFrame', IFRAME);
   layoutMgt.use('ExceptionPage', ExceptionPage);
+
+  initRouteBridge(() => {
+    return {
+      getRootRoute,
+      getPageNotFoundRoute,
+      getRedirectRoute,
+      getErrorLogRoute,
+    };
+  });
 };
 
 export { setupPages };

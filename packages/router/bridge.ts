@@ -18,6 +18,6 @@ export let routeBridge: RouteBridgeOptions = {
   getErrorLogRoute: () => emptyRoute,
 };
 
-export const initRouteBridge = async (func: AnyFunction) => {
+export const initRouteBridge = (func: AnyFunction) => {
   routeBridge = func();
 };

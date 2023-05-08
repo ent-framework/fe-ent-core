@@ -13,3 +13,5 @@ export const LoginRoute: AppRouteRecordRaw = {
     title: t('routes.basic.login'),
   },
 };
+
+export { Login };

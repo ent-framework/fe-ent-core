@@ -5,7 +5,7 @@
       :showText="false"
       v-if="!sessionTimeout && showLocale"
     />
-    <EntAppDarkModeToggle class="absolute top-3 right-7 enter-x" v-if="!sessionTimeout" />
+    <EntAppDarkModeToggle class="top-3 right-7 enter-x" v-if="!sessionTimeout" />
 
     <span class="-enter-x xl:hidden">
       <AppLogo :alwaysShowTitle="true" />
@@ -70,6 +70,18 @@
     props: {
       sessionTimeout: {
         type: Boolean,
+      },
+      mobileLoginEnable: {
+        type: Boolean,
+        default: true,
+      },
+      qrLoginEnable: {
+        type: Boolean,
+        default: true,
+      },
+      registerEnable: {
+        type: Boolean,
+        default: true,
       },
     },
     setup() {
