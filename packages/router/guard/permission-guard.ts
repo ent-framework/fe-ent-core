@@ -6,13 +6,9 @@ import { PageEnum } from '@ent-core/logics/enums/page-enum';
 import { useUserStoreWithOut } from '@ent-core/store/modules/user';
 
 import { PAGE_NOT_FOUND_NAME } from '@ent-core/router/constant';
-
 import { routeBridge } from '@ent-core/router/bridge';
-import type { Recordable } from '@ent-core/types';
 
-const LOGIN_PATH = PageEnum.BASE_LOGIN as string;
-
-const whitePathList: PageEnum[] = [PageEnum.BASE_LOGIN];
+const LOGIN_PATH = PageEnum.BASE_LOGIN_PAGE as string;
 
 export function createPermissionGuard(router: Router) {
   const ROOT_PATH = routeBridge.getRootRoute().path;
@@ -31,24 +27,6 @@ export function createPermissionGuard(router: Router) {
 
     const token = userStore.getToken;
 
-    // Whitelist can be directly entered
-    if (whitePathList.includes(to.path as PageEnum)) {
-      if (to.path === LOGIN_PATH && token) {
-        const isSessionTimeout = userStore.getSessionTimeout;
-        try {
-          await userStore.afterLoginAction();
-          if (!isSessionTimeout) {
-            next((to.query?.redirect as string) || '/');
-            return;
-          }
-        } catch {
-          //
-        }
-      }
-      next();
-      return;
-    }
-
     // token does not exist
     if (!token) {
       // You can access without permission. You need to set the routing meta.ignoreAuth to true
@@ -58,18 +36,13 @@ export function createPermissionGuard(router: Router) {
       }
 
       // redirect login page
-      const redirectData: { path: string; replace: boolean; query?: Recordable<string> } = {
-        path: LOGIN_PATH,
-        replace: true,
-      };
+      let loinPage = LOGIN_PATH;
+      let currentPath = window.location.pathname;
       if (to.path) {
-        redirectData.query = {
-          ...redirectData.query,
-          redirect: to.path,
-        };
+        currentPath += '#' + to.path;
+        loinPage += '#/?redirect=' + encodeURIComponent(`${currentPath}`);
       }
-      // next(redirectData);
-      window.location.href = LOGIN_PATH as string;
+      window.location.href = loinPage;
       return;
     }
 
@@ -107,10 +80,11 @@ export function createPermissionGuard(router: Router) {
     }
 
     const routes = await permissionStore.buildRoutesAction();
+    //console.log(router.getRoutes());
     routes.forEach((route) => {
       router.addRoute(route as unknown as RouteRecordRaw);
     });
-
+    //console.log(router.getRoutes());
     permissionStore.setDynamicAddedRoute(true);
 
     if (to.name === PAGE_NOT_FOUND_NAME) {

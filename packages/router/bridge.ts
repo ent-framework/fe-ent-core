@@ -3,9 +3,8 @@ import type { AnyFunction } from '@ent-core/types';
 
 export interface RouteBridgeOptions {
   getRootRoute: () => AppRouteRecordRaw;
-  getPageNotFoundRoute: () => AppRouteRecordRaw;
   getRedirectRoute: () => AppRouteRecordRaw;
-  getErrorLogRoute: () => AppRouteRecordRaw;
+  getPageNotFoundRoute: () => AppRouteRecordRaw;
 }
 
 const emptyRoute: AppRouteRecordRaw = {
@@ -15,9 +14,8 @@ const emptyRoute: AppRouteRecordRaw = {
 };
 export let routeBridge: RouteBridgeOptions = {
   getRootRoute: () => emptyRoute,
-  getPageNotFoundRoute: () => emptyRoute,
   getRedirectRoute: () => emptyRoute,
-  getErrorLogRoute: () => emptyRoute,
+  getPageNotFoundRoute: () => emptyRoute,
 };
 
 export const initRouteBridge = (func: AnyFunction) => {

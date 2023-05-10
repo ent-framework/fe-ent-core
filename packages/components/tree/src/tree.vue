@@ -398,7 +398,7 @@
           );
           item[titleField] = (
             <span
-              class={`${prefixCls}-title pl-2`}
+              class={`${prefixCls}-title`}
               onClick={handleClickNode.bind(null, item[keyField], item[childrenField])}
             >
               {slots?.title ? (

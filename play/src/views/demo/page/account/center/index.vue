@@ -61,7 +61,7 @@
   import Application from './application.vue';
   import Project from './project.vue';
 
-  import headerImg from 'fe-ent-core/lib/assets/images/header.jpg';
+  import headerImg from '/@/assets/images/header.jpg';
   import { tags, teams, details, achieveList } from './data';
   import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
 

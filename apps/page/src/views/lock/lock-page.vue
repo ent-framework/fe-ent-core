@@ -88,7 +88,7 @@
   import { useNow } from './use-now';
   import { useDesign } from 'fe-ent-core/lib/hooks';
   import { LockOutlined } from '@ant-design/icons-vue';
-  import headerImg from '../../images/header.jpg';
+  import headerImg from '../../assets/header.jpg';
 
   const InputPassword = Input.Password;
 

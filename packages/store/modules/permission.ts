@@ -20,7 +20,7 @@ import { filter } from '@ent-core/utils/helper/tree-helper';
 import { userBridge } from '@ent-core/logics/bridge';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { PageEnum } from '@ent-core/logics/enums/page-enum';
-import { useEntRouter } from '@ent-core/router/base';
+import { entRouter } from '@ent-core/router/base';
 
 export interface PermissionState {
   // Permission code list
@@ -108,9 +108,9 @@ export const usePermissionStore = defineStore({
       const codeList = await userBridge.getPermCode();
       this.setPermCodeList(codeList);
     },
+    // 构建路由信息
     async buildRoutesAction(): Promise<AppRouteRecordRaw[]> {
       const { t } = useI18n();
-      const entRouter = useEntRouter();
       const userStore = useUserStore();
       const appStore = useAppStoreWithOut();
 
@@ -163,16 +163,17 @@ export const usePermissionStore = defineStore({
 
       switch (permissionMode) {
         case PermissionModeEnum.ROLE:
-          routes = filter(entRouter.bizRoutes, routeFilter);
+          routes = filter(entRouter.getBizRoutes(), routeFilter);
           routes = routes.filter(routeFilter);
           // Convert multi-level routing to level 2 routing
           routes = flatMultiLevelRoutes(routes);
-          console.log(routes);
+
           break;
 
         case PermissionModeEnum.ROUTE_MAPPING:
-          routes = filter(entRouter.bizRoutes, routeFilter);
+          routes = filter(entRouter.getBizRoutes(), routeFilter);
           routes = routes.filter(routeFilter);
+          // 根据已有的树状路由提取Menu
           const menuList: AppRouteRecordRaw[] = transformRouteToMenu(routes, true);
           routes = filter(routes, routeRemoveIgnoreFilter);
           routes = routes.filter(routeRemoveIgnoreFilter);
@@ -201,20 +202,23 @@ export const usePermissionStore = defineStore({
           if (entryPath === '/') {
             entryPath = 'index.html';
           }
+          //获取登录人的PermissionCode
           try {
             await this.changePermissionCode();
+            // 从后端获取Menu
             routeList = (await userBridge.getMenuList({ entryPath })) as AppRouteRecordRaw[];
           } catch (error) {
             console.error(error);
           }
           // Dynamically introduce components
           if (routeList) {
+            // 处理菜单信息
             routeList.forEach((c) => {
               normalizeRoutePath(c);
             });
           }
           // 用服务器返回routeList去过滤router.bizRoutes，返回匹配的路由信息
-          routeList = backendRouteFilter(entRouter.bizRoutes, routeList);
+          routeList = backendRouteFilter(entRouter.getBizRoutes(), routeList);
           //  Background routing to menu structure
           const backMenuList = transformRouteToMenu(routeList);
           this.setBackMenuList(backMenuList);
@@ -224,11 +228,11 @@ export const usePermissionStore = defineStore({
           routeList = routeList.filter(routeRemoveIgnoreFilter);
 
           routeList = flatMultiLevelRoutes(routeList);
-          routes = [routeBridge.getPageNotFoundRoute(), ...routeList];
+          routes = [...routeList];
           break;
       }
-
-      routes.push(routeBridge.getErrorLogRoute());
+      // 404 路由一定要放最后面
+      routes.push(routeBridge.getPageNotFoundRoute());
       patchHomeAffix(routes);
       return routes;
     },

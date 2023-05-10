@@ -33,6 +33,7 @@
         () => props.value,
         () => {
           setTime();
+          console.log('11111');
         },
         { immediate: true },
       );

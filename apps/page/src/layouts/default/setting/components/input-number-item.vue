@@ -20,6 +20,7 @@
   export default defineComponent({
     name: 'InputNumberItem',
     components: { InputNumber },
+    extends: InputNumber,
     props: {
       event: {
         type: Number as PropType<HandlerEnum>,

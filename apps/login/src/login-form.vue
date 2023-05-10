@@ -100,7 +100,7 @@
 
   import { useI18n } from 'fe-ent-core/lib/hooks';
   import { useMessage } from 'fe-ent-core/lib/hooks';
-
+  import { useRouter } from 'vue-router';
   import { useUserStore } from 'fe-ent-core/lib/store';
   import { LoginStateEnum, useLoginState, useFormRules, useFormValid } from './use-login';
   import { useDesign } from 'fe-ent-core/lib/hooks';
@@ -127,7 +127,7 @@
   const { notification, createErrorModal } = useMessage();
   const { prefixCls } = useDesign('login');
   const userStore = useUserStore();
-
+  const router = useRouter();
   const { setLoginState, getLoginState } = useLoginState();
   const { getFormRules } = useFormRules();
 
@@ -142,12 +142,12 @@
 
   const { validForm } = useFormValid(formRef);
 
-  //onKeyStroke('Enter', handleLogin);
-
   const getShow = computed(() => unref(getLoginState) === LoginStateEnum.LOGIN);
-
   async function handleLogin() {
     const data = await validForm();
+
+    const redirect = router.currentRoute.value.query.redirect;
+
     if (!data) return;
     try {
       loading.value = true;
@@ -155,6 +155,7 @@
         password: data.password,
         username: data.account,
         mode: 'none', //不要默认的错误提示
+        redirect,
       });
       if (userInfo) {
         notification.success({

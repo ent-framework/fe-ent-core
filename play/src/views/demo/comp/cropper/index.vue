@@ -37,7 +37,7 @@
   import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
   import { EntCropperImage, EntCropperAvatar } from 'fe-ent-core/lib/components/cropper';
   import { uploadApi } from 'fe-ent-core/lib/logics/api/upload';
-  import img from 'fe-ent-core/lib/assets/images/header.jpg';
+  import img from '/@/assets/images/header.jpg';
   import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
 
   export default defineComponent({

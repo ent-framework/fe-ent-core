@@ -58,7 +58,7 @@
   import { useI18n } from 'fe-ent-core/lib/hooks';
   import { useDesign } from 'fe-ent-core/lib/hooks';
   import { useLocaleStore } from 'fe-ent-core/lib/store';
-  import loginImg from './login-box-bg.svg';
+  import loginImg from './assets/login-box-bg.svg';
 
   export default defineComponent({
     components: {

@@ -27,7 +27,7 @@
   import QuickNav from './components/quick-nav.vue';
   import DynamicInfo from './components/dynamic-info.vue';
   import SaleRadar from './components/sale-radar.vue';
-  import img from 'fe-ent-core/lib/assets/svg/illustration.svg';
+  import img from '/@/assets/svg/illustration.svg';
   const loading = ref(true);
 
   setTimeout(() => {

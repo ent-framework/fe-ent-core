@@ -2,7 +2,6 @@
  * Layout 管理，主要为了解耦
  */
 import type { Plugin } from 'vue';
-//import { inject, InjectionKey } from 'vue';
 
 export interface LayoutManagement {
   use(name: string, layout: Plugin | Function): this;

@@ -1,40 +1,21 @@
 import path from 'path';
 import { mkdir } from 'fs/promises';
 import { copy, copyFile } from 'fs-extra';
-import { src, dest, series, parallel } from 'gulp';
+import { series, parallel } from 'gulp';
 import { run } from '@ent-build/build-utils';
 import { runTask, withTaskName } from './src/utils';
-import { buildOutput, epOutput, epRoot, projRoot, pkgRoot } from '@ent-build/build-utils';
+import { buildOutput, epOutput, epRoot, projRoot } from '@ent-build/build-utils';
 import { buildConfig } from './src/build-info';
 import type { TaskFunction } from 'gulp';
 import type { Module } from './src/build-info';
 
-const copyReadmeFile = () =>
-  Promise.all([
-    copyFile(path.resolve(projRoot, 'README.md'), path.resolve(epOutput, 'README.md')),
-    copyFile(path.resolve(epRoot, 'package.json'), path.resolve(epOutput, 'package.json')),
-  ]);
-
 export const copyFiles: TaskFunction = (done) => {
-  const assetSrc = path.resolve(pkgRoot, 'assets');
-  const assetDest = path.resolve(epOutput, 'assets');
-  const copyAssets = () =>
-    withTaskName('copyAssets', () => {
-      return src(`${assetSrc}/**/*.{jpg,svg,png}`).pipe(dest(assetDest));
-    });
-
-  return parallel(copyReadmeFile, copyAssets())(done);
-};
-
-export const copyUnoFiles: TaskFunction = (done) => {
-  const assetSrc = path.resolve(pkgRoot, 'assets');
-  const assetDest = path.resolve(epOutput, 'assets');
-  const copyAssets = () =>
-    withTaskName('copyAssets', () => {
-      return src(`${assetSrc}/**/*.{jpg,svg,png}`).pipe(dest(assetDest));
-    });
-
-  return parallel(copyReadmeFile, copyAssets())(done);
+  const copyReadmeFile = () =>
+    Promise.all([
+      copyFile(path.resolve(projRoot, 'README.md'), path.resolve(epOutput, 'README.md')),
+      copyFile(path.resolve(epRoot, 'package.json'), path.resolve(epOutput, 'package.json')),
+    ]);
+  return parallel(copyReadmeFile)(done);
 };
 
 export const copyTypesDefinitions: TaskFunction = (done) => {

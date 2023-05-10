@@ -9,7 +9,8 @@ import { removeTabChangeListener } from '@ent-core/logics/mitt/route-change';
 export function createStateGuard(router: Router) {
   router.afterEach((to) => {
     // Just enter the login page and clear the authentication information
-    if (to.path === PageEnum.BASE_LOGIN) {
+    const locationPath = window.location.pathname;
+    if (to.path === '/' && locationPath === PageEnum.BASE_LOGIN_PAGE) {
       const tabStore = useMultipleTabStore();
       const userStore = useUserStore();
       const appStore = useAppStore();

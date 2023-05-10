@@ -49,7 +49,6 @@
   import { listenerRouteChange } from 'fe-ent-core/lib/logics';
 
   import { useRouter } from 'vue-router';
-
   export default defineComponent({
     name: 'MultipleTabs',
     components: {

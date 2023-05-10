@@ -6,7 +6,7 @@ import { useUserStore } from '@ent-core/store/modules/user';
 
 import { useTabs } from './use-tabs';
 
-import { useEntRouter, resetRouter } from '@ent-core/router';
+import { entRouter, resetRouter } from '@ent-core/router';
 
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
@@ -21,7 +21,6 @@ export function usePermission() {
   const userStore = useUserStore();
   const appStore = useAppStore();
   const permissionStore = usePermissionStore();
-  const entRouter = useEntRouter();
   const { closeAll } = useTabs(entRouter);
 
   /**

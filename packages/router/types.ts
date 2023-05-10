@@ -1,4 +1,4 @@
-import type { RouteRecordRaw, RouteMeta } from 'vue-router';
+import type { RouteRecordRaw, RouteMeta, Router } from 'vue-router';
 import { RoleEnum } from '@ent-core/logics/enums/role-enum';
 import { defineComponent } from 'vue';
 import type { Recordable } from '@ent-core/types';
@@ -57,3 +57,14 @@ export type MenuModule = {
 
 // export type AppRouteModule = RouteModule | AppRouteRecordRaw;
 export type AppRouteModule = AppRouteRecordRaw;
+
+export interface EntRouter extends Router {
+  getBasicRoutes(): AppRouteRecordRaw[];
+  addBasicRoute(route: AppRouteRecordRaw): () => void;
+  addBasicRoutes(routes: AppRouteRecordRaw[]): () => void;
+  getBizRoutes(): AppRouteRecordRaw[];
+  addBizRoute(route: AppRouteRecordRaw): () => void;
+  // 导入业务路由
+  addBizRoutes(routes: Record<string, Record<string, any>>): () => void;
+  getWhiteRouteList(): string[];
+}

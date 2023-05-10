@@ -64,7 +64,6 @@
   },
   "dependencies": {
     "@vueuse/core": "^9.13.0",
-    "@ent-core/assets": "workspace:*",
     "@ent-core/components": "workspace:*",
     "@ent-core/directives": "workspace:*",
     "@ent-core/hooks": "workspace:*",

@@ -125,7 +125,6 @@ export const useMultipleTabStore = defineStore({
       // 404  The page does not need to add a tab
       if (
         path === PageEnum.ERROR_PAGE ||
-        path === PageEnum.BASE_LOGIN ||
         !name ||
         [redirectRoute.name, pageNotFoundRoute.name].includes(name as string)
       ) {

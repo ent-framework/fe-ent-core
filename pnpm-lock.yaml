@@ -9,9 +9,6 @@ importers:
 
   .:
     dependencies:
-      '@ent-core/assets':
-        specifier: workspace:*
-        version: link:packages/assets
       '@ent-core/components':
         specifier: workspace:*
         version: link:packages/components
@@ -629,12 +626,6 @@ importers:
       unbuild:
         specifier: 1.2.1
         version: 1.2.1
-
-  packages/assets:
-    dependencies:
-      vue:
-        specifier: ^3.2.0
-        version: 3.2.45
 
   packages/components:
     dependencies:

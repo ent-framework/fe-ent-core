@@ -10,10 +10,6 @@ import { GetUserInfoModel, LoginParams } from '@ent-core/logics/model/user-model
 import { userBridge } from '@ent-core/logics/bridge';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { useMessage } from '@ent-core/hooks/web/use-message';
-// import { router } from '@ent-core/router';
-// import { usePermissionStore } from '@ent-core/store/modules/permission';
-// import { RouteRecordRaw } from 'vue-router';
-// import { registerPageNotFoundRoute } from '@ent-core/router/routes/basic';
 import { isArray } from '@ent-core/utils/is';
 import { h } from 'vue';
 import type { Nullable } from '@ent-core/types';
@@ -87,21 +83,22 @@ export const useUserStore = defineStore({
       params: LoginParams & {
         goHome?: boolean;
         mode?: ErrorMessageMode;
+        redirect?: string | undefined;
       },
     ): Promise<GetUserInfoModel | null> {
       try {
-        const { goHome = true, mode, ...loginParams } = params;
+        const { goHome = true, mode, redirect, ...loginParams } = params;
         const data = await userBridge.loginApi(loginParams, mode);
         const { token } = data;
 
         // save token
         this.setToken(token);
-        return this.afterLoginAction(goHome);
+        return this.afterLoginAction(goHome, redirect);
       } catch (error) {
         return Promise.reject(error);
       }
     },
-    async afterLoginAction(goHome?: boolean): Promise<GetUserInfoModel | null> {
+    async afterLoginAction(goHome?: boolean, redirect?: string): Promise<GetUserInfoModel | null> {
       if (!this.getToken) return null;
       // get user info
       const userInfo = await this.getUserInfoAction();
@@ -110,17 +107,13 @@ export const useUserStore = defineStore({
       if (sessionTimeout) {
         this.setSessionTimeout(false);
       } else {
-        // TODO fix
-        // const permissionStore = usePermissionStore();
-        // if (!permissionStore.isDynamicAddedRoute) {
-        //   const routes = await permissionStore.buildRoutesAction();
-        //   routes.forEach((route) => {
-        //     router.addRoute(route as unknown as RouteRecordRaw);
-        //   });
-        //   router.addRoute(registerPageNotFoundRoute() as unknown as RouteRecordRaw);
-        //   permissionStore.setDynamicAddedRoute(true);
-        // }
-        goHome && (window.location.href = PageEnum.BASE_INDEX as string);
+        if (goHome) {
+          if (redirect && redirect.length > 0) {
+            window.location.href = redirect;
+          } else {
+            window.location.href = PageEnum.BASE_INDEX as string;
+          }
+        }
       }
       return userInfo;
     },
@@ -152,7 +145,7 @@ export const useUserStore = defineStore({
       this.setToken(undefined);
       this.setSessionTimeout(false);
       this.setUserInfo(null);
-      goLogin && (window.location.href = PageEnum.BASE_LOGIN as string);
+      goLogin && (window.location.href = PageEnum.BASE_LOGIN_PAGE as string);
     },
 
     /**

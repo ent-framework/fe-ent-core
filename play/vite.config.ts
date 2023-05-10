@@ -3,6 +3,11 @@ import { searchForWorkspaceRoot } from 'vite';
 const workspace = searchForWorkspaceRoot(process.cwd());
 
 export default defineApplicationConfig({
+  options: {
+    cssModify: {
+      primaryColor: '#1f883d',
+    },
+  },
   overrides: {
     build: {
       rollupOptions: {

@@ -278,7 +278,7 @@ const comp: AppRouteModule = {
       path: 'tree',
       name: 'TreeDemo',
       redirect: '/comp/tree/basic',
-      component: getParentLayout('TreeDemo'),
+      component: 'LAYOUT',
       meta: {
         // icon: 'clarity:tree-view-line',
         title: t('routes.demo.comp.tree'),

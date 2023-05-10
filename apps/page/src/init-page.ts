@@ -4,12 +4,7 @@ import { default as LAYOUT } from './layouts/default';
 import { default as IFRAME } from './views/iframe/frame-blank';
 import { default as ExceptionPage } from './views/exception/exception.vue';
 
-import {
-  getRootRoute,
-  getPageNotFoundRoute,
-  getRedirectRoute,
-  getErrorLogRoute,
-} from './routes/basic';
+import { getRootRoute, getPageNotFoundRoute, getRedirectRoute } from './routes/basic';
 
 const setupPages = function () {
   const layoutMgt = useLayout();
@@ -22,9 +17,8 @@ const setupPages = function () {
   initRouteBridge(() => {
     return {
       getRootRoute,
-      getPageNotFoundRoute,
       getRedirectRoute,
-      getErrorLogRoute,
+      getPageNotFoundRoute,
     };
   });
 };

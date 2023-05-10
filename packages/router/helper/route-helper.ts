@@ -1,15 +1,14 @@
-import type { AppRouteModule, AppRouteRecordRaw } from '@ent-core/router/types';
-import type { Router, RouteRecordNormalized } from 'vue-router';
+import type { AppRouteRecordRaw } from '@ent-core/router/types';
 import { cloneDeep, omit, set, merge } from 'lodash-es';
-import { createRouter, createWebHashHistory } from 'vue-router';
 import { isString, isUrl } from '@ent-core/utils/is';
 import { useLayout } from '@ent-core/router/helper/layout-helper';
 
 /**
  * Convert multi-level routing to level 2 routing
+ * 处理路由，将多级树状路由转成单行多条模式
  */
-export function flatMultiLevelRoutes(routeModules: AppRouteModule[]) {
-  const modules: AppRouteModule[] = cloneDeep(routeModules);
+export function flatMultiLevelRoutes(routeModules: AppRouteRecordRaw[]) {
+  const modules: AppRouteRecordRaw[] = cloneDeep(routeModules);
   for (let index = 0; index < modules.length; index++) {
     const routeModule = modules[index];
     if (!isMultipleRoute(routeModule)) {
@@ -21,20 +20,34 @@ export function flatMultiLevelRoutes(routeModules: AppRouteModule[]) {
 }
 
 // Routing level upgrade
-function promoteRouteLevel(routeModule: AppRouteModule) {
-  // Use vue-router to splice menus
-  let router: Router | null = createRouter({
-    routes: [routeModule as unknown as RouteRecordNormalized],
-    history: createWebHashHistory(),
-  });
-
-  const routes = router.getRoutes();
-  addToChildren(routes, routeModule.children || [], routeModule);
-  router = null;
-
+function promoteRouteLevel(routeModule: AppRouteRecordRaw) {
+  // 临时容器
+  const childrenContainer: AppRouteRecordRaw[] = [];
+  addToChildren(routeModule.children || [], childrenContainer);
+  if (childrenContainer.length > 0) {
+    routeModule.children?.push(...childrenContainer);
+  }
+  // omit lodash的函数 对传入的item对象的children进行删除
   routeModule.children = routeModule.children?.map((item) => omit(item, 'children'));
 }
 
+// Add all sub-routes to the secondary route
+// 将所有子路由添加到二级路由
+function addToChildren(children: AppRouteRecordRaw[], childrenContainer: AppRouteRecordRaw[]) {
+  for (let index = 0; index < children.length; index++) {
+    const child = children[index];
+    childrenContainer.push(child);
+    if (child.children?.length) {
+      addToChildren(child.children, childrenContainer);
+    }
+  }
+}
+
+/***
+ * 处理路由，将子路由path变成绝对path，并且设置component
+ * @param route
+ * @param parentPath
+ */
 export function normalizeRoutePath(route: AppRouteRecordRaw, parentPath?: string) {
   const layoutMgt = useLayout();
   if (isString(route.component)) {
@@ -66,28 +79,6 @@ export function normalizeRoutePath(route: AppRouteRecordRaw, parentPath?: string
 
 function hasChildren(route: AppRouteRecordRaw) {
   return !!(route && Reflect.has(route, 'children') && route.children?.length);
-}
-
-// Add all sub-routes to the secondary route
-function addToChildren(
-  routes: RouteRecordNormalized[],
-  children: AppRouteRecordRaw[],
-  routeModule: AppRouteModule,
-) {
-  for (let index = 0; index < children.length; index++) {
-    const child = children[index];
-    const route = routes.find((item) => item.name === child.name);
-    if (!route) {
-      continue;
-    }
-    routeModule.children = routeModule.children || [];
-    if (!routeModule.children.find((item) => item.name === route.name)) {
-      routeModule.children?.push(route as unknown as AppRouteModule);
-    }
-    if (child.children?.length) {
-      addToChildren(routes, child.children, routeModule);
-    }
-  }
 }
 
 function existInFilter(
@@ -135,7 +126,7 @@ export function backendRouteFilter(bizRoutes?: AppRouteRecordRaw[], filters?: Ap
 }
 
 // Determine whether the level exceeds 2 levels
-function isMultipleRoute(routeModule: AppRouteModule) {
+function isMultipleRoute(routeModule: AppRouteRecordRaw) {
   if (!routeModule || !Reflect.has(routeModule, 'children') || !routeModule.children?.length) {
     return false;
   }

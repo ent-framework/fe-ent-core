@@ -18,7 +18,7 @@
   import { useDesign } from 'fe-ent-core/lib/hooks';
   import { PageEnum } from 'fe-ent-core/lib/logics';
   import { useUserStore } from 'fe-ent-core/lib/store';
-  import LogoImg from '../../../images/logo.png';
+  import LogoImg from '../../../assets/logo.png';
   const props = defineProps({
     /**
      * The theme of the current parent component

@@ -48,7 +48,7 @@
   import { useDesign } from 'fe-ent-core/lib/hooks';
   import { useModal } from 'fe-ent-core/lib/components';
 
-  import headerImg from '../../../../../images/header.jpg';
+  import headerImg from '../../../../../assets/header.jpg';
   import { propTypes } from 'fe-ent-core/lib/utils';
   import { openWindow } from 'fe-ent-core/lib/utils';
 

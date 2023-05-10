@@ -13,10 +13,16 @@ function generateAntColors(color: string, theme: 'default' | 'dark' = 'default')
   });
 }
 
+export interface ModifyVarOptions {
+  primaryColor?: string;
+  theme?: 'default' | 'dark';
+  cssModifyVars?: Record<string, string>;
+}
+
 /**
  * less global variable
  */
-export function generateModifyVars() {
+export function generateModifyVars(cssModifyOptions?: ModifyVarOptions) {
   const cwd = process.cwd();
   const workspace = searchForWorkspaceRoot(cwd);
   let preLoadFile = '';
@@ -24,7 +30,8 @@ export function generateModifyVars() {
   if (!fs.existsSync(preLoadFile)) {
     preLoadFile = path.resolve(cwd, `node_modules/fe-ent-core/theme/config.less`);
   }
-  const palettes = generateAntColors(primaryColor);
+  const optionPrimaryColor = cssModifyOptions?.primaryColor || primaryColor;
+  const palettes = generateAntColors(optionPrimaryColor, cssModifyOptions?.theme);
   const primary = palettes[5];
 
   const primaryColorObj: Record<string, string> = {};
@@ -34,6 +41,7 @@ export function generateModifyVars() {
   }
 
   const modifyVars = getThemeVariables();
+  const cssModifyVars = cssModifyOptions?.cssModifyVars || {};
   return {
     ...modifyVars,
     // reference:  Avoid repeated references
@@ -49,5 +57,6 @@ export function generateModifyVars() {
     'border-radius-base': '2px', //  Component/float fillet
     'link-color': primary, //   Link color
     'app-content-background': '#fafafa', //   Link color
+    ...cssModifyVars,
   };
 }

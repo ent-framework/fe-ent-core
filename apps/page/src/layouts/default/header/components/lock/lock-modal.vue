@@ -33,7 +33,7 @@
 
   import { useUserStore } from 'fe-ent-core/lib/store';
   import { useLockStore } from 'fe-ent-core/lib/store';
-  import headerImg from '../../../../../images/header.jpg';
+  import headerImg from '../../../../../assets/header.jpg';
   export default defineComponent({
     name: 'LockModal',
     components: { EntModal, EntForm },

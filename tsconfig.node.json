@@ -13,6 +13,9 @@
     "support/**/*.json",
     "scripts/**/*",
     "packages/fe-ent-core/version.ts",
+    "apps/**/vite.config.ts",
+    "extensions/**/vite.config.ts",
+    "play/**/vite.config.ts",
     ".eslintrc.js",
     "packages/fe-ent-core/package.json"
   ],

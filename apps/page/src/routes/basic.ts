@@ -13,7 +13,7 @@ export function getPageNotFoundRoute(): AppRouteRecordRaw {
   return {
     path: '/:path(.*)*',
     name: PAGE_NOT_FOUND_NAME,
-    component: layoutMgt.getLayout('LAYOUT'),
+    component: layoutMgt.getLayout(''),
     meta: {
       title: 'ErrorPage',
       hideBreadcrumb: true,

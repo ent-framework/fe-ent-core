@@ -27,7 +27,6 @@ function definePackageConfig(defineOptions: DefineOptions = {}) {
       enableMock: false,
       compress: 'none',
     });
-
     const { dependencies = {}, peerDependencies = {} } = await readPackageJSON(root);
     const deps = [...Object.keys(dependencies), ...Object.keys(peerDependencies)];
     let entDeps: string[] = [];

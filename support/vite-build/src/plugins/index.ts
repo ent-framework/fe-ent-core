@@ -1,6 +1,5 @@
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-// @ts-ignore: type unless
 import DefineOptions from 'unplugin-vue-define-options/vite';
 import { type PluginOption } from 'vite';
 import purgeIcons from 'vite-plugin-purge-icons';
@@ -13,6 +12,8 @@ import { configVisualizerConfig } from './visualizer';
 import { presetTypography, presetUno } from 'unocss';
 import UnoCSS from 'unocss/vite';
 import type { Theme } from 'unocss/preset-uno';
+import Inspect from 'vite-plugin-inspect';
+import mkcert from 'vite-plugin-mkcert';
 
 interface Options {
   isBuild: boolean;
@@ -21,6 +22,8 @@ interface Options {
   compress: string;
   enableMock?: boolean;
   enableAnalyze?: boolean;
+  enableInspect?: boolean;
+  enableCert?: boolean;
 }
 
 async function createPlugins({
@@ -30,6 +33,8 @@ async function createPlugins({
   enableMock,
   compress,
   enableAnalyze,
+  enableInspect,
+  enableCert,
 }: Options) {
   const vitePlugins: (PluginOption | PluginOption[])[] = [vue(), vueJsx(), DefineOptions()];
 
@@ -85,6 +90,14 @@ async function createPlugins({
         compress,
       }),
     );
+  }
+
+  if (!isBuild && enableInspect) {
+    vitePlugins.push(Inspect());
+  }
+
+  if (!isBuild && enableCert) {
+    vitePlugins.push(mkcert());
   }
 
   // rollup-plugin-visualizer

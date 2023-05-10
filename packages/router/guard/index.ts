@@ -27,7 +27,9 @@ export function setupRouterGuard(router: Router, needLogin: boolean) {
   }
 
   createParamMenuGuard(router); // must after createPermissionGuard (menu has been built.)
-  createStateGuard(router);
+  if (!needLogin) {
+    createStateGuard(router);
+  }
 }
 
 /**

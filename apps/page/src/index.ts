@@ -1,14 +1,12 @@
-import { mainOutRoutes } from './routes/main-out';
-import { getRootRoute, getPageNotFoundRoute, getRedirectRoute } from './routes/basic';
+import { mainOutRoute } from './routes/main-out';
+import { getErrorLogRoute, getRedirectRoute, getRootRoute } from './routes/basic';
 import { setupPages } from './init-page';
-
+import type { AppRouteRecordRaw } from 'fe-ent-core/lib/router/types';
 import './index.less';
 
-// 绑定了component，需要优化
-// Basic routing without permission
-// TODO FIX, 分离会导致login界面刷新页面，页面空白
-function getBasicRoutes() {
-  return [getRootRoute(), ...mainOutRoutes, getRedirectRoute(), getPageNotFoundRoute()];
+// 导入基础路由，与业务无关
+function getBasicRoutes(): AppRouteRecordRaw[] {
+  return [mainOutRoute, getRedirectRoute(), getErrorLogRoute(), getRootRoute()];
 }
 
 export { setupPages, getBasicRoutes };

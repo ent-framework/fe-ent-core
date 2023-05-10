@@ -22,9 +22,9 @@
 
   import { useI18n } from 'fe-ent-core/lib/hooks';
   import { useRootSetting } from 'fe-ent-core/lib/hooks';
-  import { useRouter } from 'vue-router';
   import { useDesign } from 'fe-ent-core/lib/hooks';
   import { useLayoutHeight } from 'fe-ent-core/lib/hooks';
+  import { useRouter } from 'vue-router';
   import { ComponentRef } from 'fe-ent-core/lib/types';
 
   export default defineComponent({

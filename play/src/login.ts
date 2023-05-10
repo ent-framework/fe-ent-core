@@ -5,7 +5,7 @@ import 'virtual:svg-icons-register';
 import { createApp } from 'vue';
 import { initAppConfigStore } from 'fe-ent-core/lib/logics/init-app-config';
 import { setupErrorHandle } from 'fe-ent-core/lib/logics/error-handle';
-import { setupRouter, useEntRouter } from 'fe-ent-core/lib/router';
+import { entRouter } from 'fe-ent-core/lib/router';
 import { setupRouterGuard } from 'fe-ent-core/lib/router/guard';
 import { setupStore } from 'fe-ent-core/lib/store';
 import { setupGlobDirectives } from 'fe-ent-core/lib/directives';
@@ -41,10 +41,9 @@ async function bootstrap() {
   await initAppConfigStore();
 
   setupPages();
-  const entRouter = useEntRouter();
   entRouter.addBasicRoutes([LoginRoute]);
 
-  setupRouter(app);
+  app.use(entRouter);
 
   // router-guard
   setupRouterGuard(entRouter, false);
