@@ -1,0 +1,4 @@
+{
+  "root": true,
+  "extends": ["@ent-build/eslint-config"]
+}
