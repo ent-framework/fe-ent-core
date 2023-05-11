@@ -1,11 +1,12 @@
 <script lang="tsx">
-  import { defineComponent, ref, unref, computed, reactive, watchEffect, PropType } from 'vue';
+  import { computed, defineComponent, reactive, ref, unref, watchEffect } from 'vue';
   import { CloseOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
   import resumeSvg from '../svg/resume.svg';
   import rotateSvg from '../svg/p-rotate.svg';
   import scaleSvg from '../svg/scale.svg';
   import unScaleSvg from '../svg/unscale.svg';
   import unRotateSvg from '../svg/unrotate.svg';
+  import type { PropType } from 'vue';
 
   enum StatueEnum {
     LOADING,

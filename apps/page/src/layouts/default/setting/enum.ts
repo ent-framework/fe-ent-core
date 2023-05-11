@@ -1,10 +1,11 @@
-import { ContentEnum, RouterTransitionEnum } from 'fe-ent-core/lib/logics';
 import {
+  ContentEnum,
   MenuModeEnum,
   MenuTypeEnum,
+  MixSidebarTriggerEnum,
+  RouterTransitionEnum,
   TopMenuAlignEnum,
   TriggerEnum,
-  MixSidebarTriggerEnum,
 } from 'fe-ent-core/lib/logics';
 
 import { useI18n } from 'fe-ent-core/lib/hooks';

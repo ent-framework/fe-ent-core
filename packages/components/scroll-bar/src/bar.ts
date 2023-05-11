@@ -1,17 +1,8 @@
-import {
-  defineComponent,
-  h,
-  computed,
-  ref,
-  getCurrentInstance,
-  onUnmounted,
-  inject,
-  Ref,
-} from 'vue';
-import { on, off } from '@ent-core/utils/dom-utils';
-import type { Recordable } from '@ent-core/types';
-import { renderThumbStyle, BAR_MAP } from './util';
-import type { Nullable } from '@ent-core/types';
+import { computed, defineComponent, getCurrentInstance, h, inject, onUnmounted, ref } from 'vue';
+import { off, on } from '@ent-core/utils/dom-utils';
+import { BAR_MAP, renderThumbStyle } from './util';
+import type { Ref } from 'vue';
+import type { Nullable, Recordable } from '@ent-core/types';
 
 export default defineComponent({
   name: 'EntScrollBar',
@@ -93,7 +84,7 @@ export default defineComponent({
       h(
         'div',
         {
-          class: ['scrollbar__bar', 'is-' + bar.value.key],
+          class: ['scrollbar__bar', `is-${bar.value.key}`],
           onMousedown: clickTrackHandler,
         },
         h('div', {

@@ -1,7 +1,7 @@
 import { addClass, hasClass, removeClass } from '@ent-core/utils/dom-utils';
 
 export async function updateDarkTheme(mode: string | null = 'light') {
-  const htmlRoot = document.getElementById('htmlRoot');
+  const htmlRoot = document.querySelector('#htmlRoot');
   if (!htmlRoot) {
     return;
   }

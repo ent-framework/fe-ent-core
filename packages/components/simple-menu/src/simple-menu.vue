@@ -1,39 +1,39 @@
 <template>
   <Menu
     v-bind="getBindValues"
-    :activeName="activeName"
-    :openNames="getOpenKeys"
+    :active-name="activeName"
+    :open-names="getOpenKeys"
     :class="prefixCls"
-    :activeSubMenuNames="activeSubMenuNames"
+    :active-sub-menu-names="activeSubMenuNames"
     @select="handleSelect"
   >
     <template v-for="item in items" :key="item.path">
       <SimpleSubMenu
         :item="item"
         :parent="true"
-        :collapsedShowTitle="collapsedShowTitle"
+        :collapsed-show-title="collapsedShowTitle"
         :collapse="collapse"
       />
     </template>
   </Menu>
 </template>
 <script lang="ts">
-  import type { MenuState } from './types';
-  import type { Menu as MenuType } from '@ent-core/router/types';
-  import type { RouteLocationNormalizedLoaded } from 'vue-router';
-  import type { PropType } from 'vue';
-  import { defineComponent, computed, ref, unref, reactive, toRefs, watch } from 'vue';
+  import { computed, defineComponent, reactive, ref, toRefs, unref, watch } from 'vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import Menu from './components/menu.vue';
-  import SimpleSubMenu from './simple-sub-menu.vue';
   import { listenerRouteChange } from '@ent-core/logics/mitt/route-change';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { REDIRECT_NAME } from '@ent-core/router/constant';
   import { useRouter } from 'vue-router';
   import { isFunction, isUrl } from '@ent-core/utils/is';
   import { openWindow } from '@ent-core/utils';
+  import SimpleSubMenu from './simple-sub-menu.vue';
+  import Menu from './components/menu.vue';
 
   import { useOpenKeys } from './use-open-keys';
+  import type { PropType } from 'vue';
+  import type { RouteLocationNormalizedLoaded } from 'vue-router';
+  import type { Menu as MenuType } from '@ent-core/router/types';
+  import type { MenuState } from './types';
   export default defineComponent({
     name: 'SimpleMenu',
     components: {

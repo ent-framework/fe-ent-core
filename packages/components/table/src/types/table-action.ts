@@ -1,7 +1,7 @@
-import { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
-import { TooltipProps } from 'ant-design-vue/es/tooltip/Tooltip';
-import { RoleEnum } from '@ent-core/logics/enums/role-enum';
-import { Fn } from '@ent-core/types';
+import type { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
+import type { TooltipProps } from 'ant-design-vue/es/tooltip/Tooltip';
+import type { RoleEnum } from '@ent-core/logics/enums/role-enum';
+import type { Fn } from '@ent-core/types';
 
 export interface TableActionItem extends ButtonProps {
   onClick?: Fn;

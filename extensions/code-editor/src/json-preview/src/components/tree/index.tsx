@@ -1,6 +1,9 @@
-import { defineComponent, reactive, computed, watchEffect, ref, PropType } from 'vue';
-import TreeNode, { treeNodePropsPass, NodeDataType } from '../tree-node';
-import { emitError, jsonFlatten, JSONDataType } from '../../utils';
+import { computed, defineComponent, reactive, ref, watchEffect } from 'vue';
+import TreeNode, { treeNodePropsPass } from '../tree-node';
+import { emitError, jsonFlatten } from '../../utils';
+import type { PropType } from 'vue';
+import type { NodeDataType } from '../tree-node';
+import type { JSONDataType } from '../../utils';
 
 type FlatDataType = NodeDataType[];
 
@@ -17,7 +20,7 @@ export default defineComponent({
     // Define the depth of the tree, nodes greater than this depth will not be expanded.
     deep: {
       type: Number,
-      default: Infinity,
+      default: Number.POSITIVE_INFINITY,
     },
     deepCollapseChildren: {
       type: Boolean,
@@ -155,7 +158,7 @@ export default defineComponent({
     const onSelectedChange = ({ path }: NodeDataType) => {
       const type = props.selectableType;
       if (type === 'multiple') {
-        const index = selectedPaths.value.findIndex((item) => item === path);
+        const index = selectedPaths.value.indexOf(path);
         const newVal = [...selectedPaths.value];
         if (index !== -1) {
           newVal.splice(index, 1);

@@ -1,6 +1,6 @@
+import { ref, unref, watch } from 'vue';
+import { useDebounceFn, useThrottleFn } from '@vueuse/shared';
 import type { Ref } from 'vue';
-import { ref, watch, unref } from 'vue';
-import { useThrottleFn, useDebounceFn } from '@vueuse/shared';
 
 export type RemoveEventFn = () => void;
 export interface UseEventParams {

@@ -3,47 +3,49 @@
     <template v-for="(action, index) in getActions" :key="`${index}-${action.label}`">
       <Tooltip v-if="action.tooltip" v-bind="getTooltip(action.tooltip)">
         <EntPopButton v-bind="action">
-          <Icon :icon="action.icon" :class="{ 'mr-1': !!action.label }" v-if="action.icon" />
+          <Icon v-if="action.icon" :icon="action.icon" :class="{ 'mr-1': !!action.label }" />
           <template v-if="action.label">{{ action.label }}</template>
         </EntPopButton>
       </Tooltip>
       <EntPopButton v-else v-bind="action">
-        <Icon :icon="action.icon" :class="{ 'mr-1': !!action.label }" v-if="action.icon" />
+        <Icon v-if="action.icon" :icon="action.icon" :class="{ 'mr-1': !!action.label }" />
         <template v-if="action.label">{{ action.label }}</template>
       </EntPopButton>
       <Divider
+        v-if="divider && index < getActions.length - 1"
         type="vertical"
         class="action-divider"
-        v-if="divider && index < getActions.length - 1"
       />
     </template>
     <EntDropdown
-      :trigger="['hover']"
-      :dropMenuList="getDropdownList"
-      popconfirm
       v-if="dropDownActions && getDropdownList.length > 0"
+      :trigger="['hover']"
+      :drop-menu-list="getDropdownList"
+      popconfirm
     >
-      <slot name="more"></slot>
-      <a-button type="link" size="small" v-if="!$slots.more">
+      <slot name="more" />
+      <a-button v-if="!$slots.more" type="link" size="small">
         <MoreOutlined class="icon-more" />
       </a-button>
     </EntDropdown>
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, PropType, computed, toRaw, unref } from 'vue';
+  import { computed, defineComponent, toRaw, unref } from 'vue';
   import { MoreOutlined } from '@ant-design/icons-vue';
-  import { Divider, Tooltip, TooltipProps } from 'ant-design-vue';
+  import { Divider, Tooltip } from 'ant-design-vue';
   import Icon from '@ent-core/components/icon';
-  import { TableActionItem, TableActionType } from '@ent-core/components/table';
   import { EntPopButton } from '@ent-core/components/button';
   import { EntDropdown } from '@ent-core/components/dropdown';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useTableContext } from '../hooks/use-table-context';
   import { usePermission } from '@ent-core/hooks/web/use-permission';
   import { isBoolean, isFunction, isString } from '@ent-core/utils/is';
   import { propTypes } from '@ent-core/utils/prop-types';
+  import { useTableContext } from '../hooks/use-table-context';
   import { ACTION_COLUMN_FLAG } from '../const';
+  import type { TableActionItem, TableActionType } from '@ent-core/components/table';
+  import type { TooltipProps } from 'ant-design-vue';
+  import type { PropType } from 'vue';
 
   export default defineComponent({
     name: 'EntTableAction',

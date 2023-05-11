@@ -1,13 +1,12 @@
-import type { Menu } from 'fe-ent-core/lib/router';
-import { ref, onBeforeMount, unref, Ref, nextTick } from 'vue';
+import { nextTick, onBeforeMount, ref, unref } from 'vue';
 import { getMenus } from 'fe-ent-core/lib/router';
 import { cloneDeep } from 'lodash-es';
 import { filter, forEach } from 'fe-ent-core/lib/utils';
-import { useGo } from 'fe-ent-core/lib/hooks';
-import { useScrollTo } from 'fe-ent-core/lib/hooks';
+import { useGo, useI18n, useScrollTo } from 'fe-ent-core/lib/hooks';
 import { onKeyStroke } from '@vueuse/core';
 import { useDebounceFn } from '@vueuse/shared';
-import { useI18n } from 'fe-ent-core/lib/hooks';
+import type { Ref } from 'vue';
+import type { Menu } from 'fe-ent-core/lib/router';
 
 export interface SearchResult {
   name: string;

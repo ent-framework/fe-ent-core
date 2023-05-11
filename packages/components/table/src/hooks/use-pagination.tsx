@@ -1,10 +1,11 @@
-import type { PaginationProps } from '../types/pagination';
-import type { BasicTableProps } from '../types/table';
-import { computed, unref, ref, ComputedRef, watch } from 'vue';
+import { computed, ref, unref, watch } from 'vue';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
 import { isBoolean } from '@ent-core/utils/is';
-import { PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../const';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import { PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../const';
+import type { ComputedRef } from 'vue';
+import type { BasicTableProps } from '../types/table';
+import type { PaginationProps } from '../types/pagination';
 
 interface ItemRender {
   page: number;
@@ -54,7 +55,7 @@ export function usePagination(refProps: ComputedRef<BasicTableProps>) {
       showTotal: (total) => t('component.table.total', { total }),
       showSizeChanger: true,
       pageSizeOptions: PAGE_SIZE_OPTIONS,
-      itemRender: itemRender,
+      itemRender,
       showQuickJumper: true,
       ...(isBoolean(pagination) ? {} : pagination),
       ...unref(configRef),

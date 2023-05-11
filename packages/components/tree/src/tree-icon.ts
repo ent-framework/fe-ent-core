@@ -1,4 +1,4 @@
-import { h, defineComponent } from 'vue';
+import { defineComponent, h } from 'vue';
 import { isString } from 'lodash-es';
 import Icon from '@ent-core/components/icon/src/icon.vue';
 

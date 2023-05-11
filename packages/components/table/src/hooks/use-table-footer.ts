@@ -1,9 +1,9 @@
+import { computed, h, nextTick, unref, watchEffect } from 'vue';
+import { useEventListener } from '@ent-core/hooks/event/use-event-listener';
+import TableFooter from '../components/table-footer.vue';
 import type { ComputedRef, Ref } from 'vue';
 import type { BasicTableProps } from '../types/table';
-import { unref, computed, h, nextTick, watchEffect } from 'vue';
-import TableFooter from '../components/table-footer.vue';
-import { useEventListener } from '@ent-core/hooks/event/use-event-listener';
-import type { Recordable, ComponentRef } from '@ent-core/types';
+import type { ComponentRef, Recordable } from '@ent-core/types';
 export function useTableFooter(
   propsRef: ComputedRef<BasicTableProps>,
   scrollRef: ComputedRef<{

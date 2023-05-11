@@ -1,11 +1,10 @@
 <template>
-  <div :class="getClass" :style="getDragBarStyle"></div>
+  <div :class="getClass" :style="getDragBarStyle" />
 </template>
 <script lang="ts">
-  import { defineComponent, computed, unref } from 'vue';
+  import { computed, defineComponent, unref } from 'vue';
 
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
+  import { useDesign, useMenuSetting } from 'fe-ent-core/lib/hooks';
 
   export default defineComponent({
     name: 'DargBar',

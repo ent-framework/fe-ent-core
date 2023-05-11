@@ -1,9 +1,9 @@
+import { unref } from 'vue';
+import { isFunction, isString } from '@ent-core/utils/is';
+import { ROW_KEY } from '../const';
 import type { ComputedRef } from 'vue';
 import type { BasicTableProps } from '../types/table';
-import { unref } from 'vue';
-import { ROW_KEY } from '../const';
-import { isString, isFunction } from '@ent-core/utils/is';
-import type { Recordable, EmitType } from '@ent-core/types';
+import type { EmitType, Recordable } from '@ent-core/types';
 interface CustomRowContext {
   setSelectedRowKeys: (keys: string[]) => void;
   getSelectRowKeys: () => string[];
@@ -64,7 +64,7 @@ export function useCustomRow(
               setSelectedRowKeys([...keys, key]);
               return;
             }
-            const keyIndex = keys.findIndex((item) => item === key);
+            const keyIndex = keys.indexOf(key);
             keys.splice(keyIndex, 1);
             setSelectedRowKeys(keys);
             return;

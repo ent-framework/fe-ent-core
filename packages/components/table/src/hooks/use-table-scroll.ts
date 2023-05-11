@@ -1,12 +1,13 @@
-import type { BasicTableProps, TableRowSelection, BasicColumn } from '../types/table';
-import { Ref, ComputedRef, ref, computed, unref, nextTick, watch } from 'vue';
+import { computed, nextTick, ref, unref, watch } from 'vue';
 import { getViewportOffset } from '@ent-core/utils/dom-utils';
 import { isBoolean } from '@ent-core/utils/is';
 import { useWindowSizeFn } from '@ent-core/hooks/event/use-window-size-fn';
 import { useModalContext } from '@ent-core/components/modal';
 import { onMountedOrActivated } from '@ent-core/hooks/core/on-mounted-or-activated';
 import { useDebounceFn } from '@vueuse/shared';
-import type { Recordable, Nullable, ComponentRef } from '@ent-core/types';
+import type { ComputedRef, Ref } from 'vue';
+import type { BasicColumn, BasicTableProps, TableRowSelection } from '../types/table';
+import type { ComponentRef, Nullable, Recordable } from '@ent-core/types';
 
 export function useTableScroll(
   propsRef: ComputedRef<BasicTableProps>,

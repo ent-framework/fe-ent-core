@@ -1,26 +1,24 @@
 <template>
   <div class="h-full" :class="prefixCls">
-    <FlowChartToolbar :prefixCls="prefixCls" v-if="toolbar" @view-data="handlePreview" />
-    <div ref="lfElRef" class="h-full"></div>
-    <EntModal @register="register" title="流程数据" width="50%">
+    <FlowChartToolbar v-if="toolbar" :prefix-cls="prefixCls" @view-data="handlePreview" />
+    <div ref="lfElRef" class="h-full" />
+    <EntModal title="流程数据" width="50%" @register="register">
       <JsonPreview :data="graphData" />
     </EntModal>
   </div>
 </template>
 <script lang="ts">
-  import type { Ref, PropType } from 'vue';
-  import type { Definition } from '@logicflow/core';
-  import { defineComponent, ref, onMounted, unref, nextTick, computed, watch } from 'vue';
-  import FlowChartToolbar from './flow-chart-toolbar.vue';
+  import { computed, defineComponent, nextTick, onMounted, ref, unref, watch } from 'vue';
   import LogicFlow from '@logicflow/core';
-  import { Snapshot, BpmnElement, Menu, DndPanel, SelectionSelect } from '@logicflow/extension';
-  import { useDesign } from 'fe-ent-core';
-  import { useAppStore } from 'fe-ent-core';
-  import { useModal, EntModal } from 'fe-ent-core';
+  import { BpmnElement, DndPanel, Menu, SelectionSelect, Snapshot } from '@logicflow/extension';
+  import { EntModal, useAppStore, useDesign, useModal } from 'fe-ent-core';
+  import { JsonPreview } from 'fe-ent-code-editor';
   import { createFlowChartContext } from './use-flow-context';
   import { toLogicFlowData } from './adpter-for-turbo';
-  import { JsonPreview } from 'fe-ent-code-editor';
+  import FlowChartToolbar from './flow-chart-toolbar.vue';
   import { configDefaultDndPanel } from './config';
+  import type { Definition } from '@logicflow/core';
+  import type { PropType, Ref } from 'vue';
   export default defineComponent({
     name: 'FlowChart',
     components: { EntModal, FlowChartToolbar, JsonPreview },

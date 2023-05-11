@@ -1,7 +1,7 @@
+import { Transition, TransitionGroup, defineComponent } from 'vue';
+import { getSlot } from '@ent-core/utils/helper/tsx-helper';
 import type { PropType } from 'vue';
 import type { Recordable } from '@ent-core/types';
-import { defineComponent, Transition, TransitionGroup } from 'vue';
-import { getSlot } from '@ent-core/utils/helper/tsx-helper';
 
 type Mode = 'in-out' | 'out-in' | 'default' | undefined;
 

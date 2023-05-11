@@ -1,5 +1,5 @@
-import { Slots } from 'vue';
 import { isFunction } from '@ent-core/utils/is';
+import type { Slots } from 'vue';
 
 /**
  * @description:  Get slot to prevent empty error
@@ -25,7 +25,7 @@ export function getSlot(slots: Slots, slot = 'default', data?: any) {
 export function extendSlots(slots: Slots, excludeKeys: string[] = []) {
   const slotKeys = Object.keys(slots);
   const ret: any = {};
-  slotKeys.map((key) => {
+  slotKeys.forEach((key) => {
     if (excludeKeys.includes(key)) {
       return null;
     }

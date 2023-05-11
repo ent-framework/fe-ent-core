@@ -1,14 +1,14 @@
 <template>
   <div>
     <input
+      v-show="false"
       ref="inputRef"
       type="file"
-      v-show="false"
       accept=".xlsx, .xls"
       @change="handleInputClick"
     />
     <div @click="handleUpload">
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>
@@ -40,8 +40,8 @@
     emits: ['success', 'error', 'cancel'],
     setup(props, { emit }) {
       const inputRef = ref<HTMLInputElement | null>(null);
-      const loadingRef = ref<Boolean>(false);
-      const cancelRef = ref<Boolean>(true);
+      const loadingRef = ref<boolean>(false);
+      const cancelRef = ref<boolean>(true);
 
       function shapeWorkSheel(sheet: XLSX.WorkSheet, range: XLSX.Range) {
         let str = ' ',
@@ -92,7 +92,7 @@
           /* walk every column in the range */
           const cell = sheet[XLSX.utils.encode_cell({ c: C, r: R })];
           /* find the cell in the first row */
-          let hdr = 'UNKNOWN ' + C; // <-- replace with your desired default
+          let hdr = `UNKNOWN ${C}`; // <-- replace with your desired default
           if (cell && cell.t) hdr = XLSX.utils.format_cell(cell);
           headers.push(hdr);
         }
@@ -113,7 +113,7 @@
             dateNF: dateFormat, //Not worked
           }) as object[];
           results = results.map((row: object) => {
-            for (let field in row) {
+            for (const field in row) {
               if (row[field] instanceof Date) {
                 if (timeZone === 8) {
                   row[field].setSeconds(row[field].getSeconds() + 43);

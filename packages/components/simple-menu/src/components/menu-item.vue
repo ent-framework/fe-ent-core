@@ -1,29 +1,29 @@
 <template>
-  <li :class="getClass" @click.stop="handleClickItem" :style="getCollapse ? {} : getItemStyle">
-    <Tooltip placement="right" v-if="showTooltip">
+  <li :class="getClass" :style="getCollapse ? {} : getItemStyle" @click.stop="handleClickItem">
+    <Tooltip v-if="showTooltip" placement="right">
       <template #title>
-        <slot name="title"></slot>
+        <slot name="title" />
       </template>
       <div :class="`${prefixCls}-tooltip`">
-        <slot></slot>
+        <slot />
       </div>
     </Tooltip>
 
     <template v-else>
-      <slot></slot>
-      <slot name="title"></slot>
+      <slot />
+      <slot name="title" />
     </template>
   </li>
 </template>
 
 <script lang="ts">
-  import { PropType } from 'vue';
-  import { defineComponent, ref, computed, unref, getCurrentInstance, watch } from 'vue';
+  import { computed, defineComponent, getCurrentInstance, ref, unref, watch } from 'vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { propTypes } from '@ent-core/utils/prop-types';
-  import { useMenuItem } from './use-menu';
   import { Tooltip } from 'ant-design-vue';
+  import { useMenuItem } from './use-menu';
   import { useSimpleRootMenuContext } from './use-simple-menu-context';
+  import type { PropType } from 'vue';
   export default defineComponent({
     name: 'MenuItem',
     components: { Tooltip },
@@ -78,7 +78,7 @@
         rootMenuEmitter.emit('on-update-opened', {
           opend: false,
           parent: instance?.parent,
-          uidList: uidList,
+          uidList,
         });
       }
       watch(

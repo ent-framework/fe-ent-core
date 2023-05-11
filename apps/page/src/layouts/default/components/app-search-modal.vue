@@ -1,13 +1,13 @@
 <template>
   <Teleport to="body">
     <transition name="zoom-fade" mode="out-in">
-      <div :class="getClass" @click.stop v-if="visible">
-        <div :class="`${prefixCls}-content`" v-click-outside="handleClose">
+      <div v-if="visible" :class="getClass" @click.stop>
+        <div v-click-outside="handleClose" :class="`${prefixCls}-content`">
           <div :class="`${prefixCls}-input__wrapper`">
             <a-input
+              ref="inputRef"
               :class="`${prefixCls}-input`"
               :placeholder="t('common.searchText')"
-              ref="inputRef"
               allow-clear
               @change="handleSearch"
             >
@@ -20,24 +20,24 @@
             </span>
           </div>
 
-          <div :class="`${prefixCls}-not-data`" v-show="getIsNotData">
+          <div v-show="getIsNotData" :class="`${prefixCls}-not-data`">
             {{ t('component.app.searchNotData') }}
           </div>
 
-          <ul :class="`${prefixCls}-list`" v-show="!getIsNotData" ref="scrollWrap">
+          <ul v-show="!getIsNotData" ref="scrollWrap" :class="`${prefixCls}-list`">
             <li
-              :ref="setRefs(index)"
               v-for="(item, index) in searchResult"
+              :ref="setRefs(index)"
               :key="item.path"
               :data-index="index"
-              @mouseenter="handleMouseenter"
-              @click="handleEnter"
               :class="[
                 `${prefixCls}-list__item`,
                 {
                   [`${prefixCls}-list__item--active`]: activeIndex === index,
                 },
               ]"
+              @mouseenter="handleMouseenter"
+              @click="handleEnter"
             >
               <div :class="`${prefixCls}-list__item-icon`">
                 <EntIcon :icon="item.icon || 'mdi:form-select'" :size="20" />
@@ -58,17 +58,14 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed, unref, ref, watch, nextTick } from 'vue';
+  import { computed, nextTick, ref, unref, watch } from 'vue';
   import { SearchOutlined } from '@ant-design/icons-vue';
-  import AppSearchFooter from './app-search-footer.vue';
   import { EntIcon } from 'fe-ent-core/lib/components';
   // @ts-ignore
   import { ClickOutside } from 'fe-ent-core/lib/directives';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useRefs } from 'fe-ent-core/lib/hooks';
+  import { useAppInject, useDesign, useI18n, useRefs } from 'fe-ent-core/lib/hooks';
   import { useMenuSearch } from './use-menu-search';
-  import { useI18n } from 'fe-ent-core/lib/hooks';
-  import { useAppInject } from 'fe-ent-core/lib/hooks';
+  import AppSearchFooter from './app-search-footer.vue';
 
   const props = defineProps({
     visible: { type: Boolean },

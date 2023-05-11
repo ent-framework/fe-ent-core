@@ -192,6 +192,7 @@ module.exports = defineConfig({
     'vue/multi-word-component-names': 'off',
     'vue/prefer-import-from-vue': 'off',
     'vue/no-v-text-v-html-on-component': 'off',
+    'vue/no-reserved-component-names': 'warn',
     'vue/html-self-closing': [
       'error',
       {
@@ -212,7 +213,7 @@ module.exports = defineConfig({
     'import/first': 'error',
     'import/no-duplicates': 'error',
     'import/order': [
-      'error',
+      'warn',
       {
         groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
 
@@ -228,7 +229,7 @@ module.exports = defineConfig({
             position: 'before',
           },
           {
-            pattern: '@element-plus/**',
+            pattern: '@ent-core/**',
             group: 'internal',
           },
         ],
@@ -267,7 +268,7 @@ module.exports = defineConfig({
     'unicorn/prefer-array-index-of': 'error',
     'unicorn/prefer-array-some': 'error',
     'unicorn/prefer-date-now': 'error',
-    'unicorn/prefer-dom-node-dataset': 'error',
+    'unicorn/prefer-dom-node-dataset': 'off', //error-off
     'unicorn/prefer-includes': 'error',
     'unicorn/prefer-keyboard-event-key': 'error',
     'unicorn/prefer-math-trunc': 'error',

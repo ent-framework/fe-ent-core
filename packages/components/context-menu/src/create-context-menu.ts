@@ -1,8 +1,8 @@
-import contextMenuVue from './context-menu.vue';
-import { isClient } from '@ent-core/utils/is';
-import { CreateContextOptions, ContextMenuProps } from './typing';
 import { createVNode, render } from 'vue';
-import { Fn } from '@ent-core/types';
+import { isClient } from '@ent-core/utils/is';
+import contextMenuVue from './context-menu.vue';
+import type { ContextMenuProps, CreateContextOptions } from './typing';
+import type { Fn } from '@ent-core/types';
 
 const menuManager: {
   domList: Element[];
@@ -51,7 +51,7 @@ export const createContextMenu = function (options: CreateContextOptions) {
       menuManager.domList.forEach((dom: Element) => {
         try {
           dom && body.removeChild(dom);
-        } catch (error) {
+        } catch {
           //
         }
       });

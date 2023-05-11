@@ -2,7 +2,7 @@
   <div :class="[prefixCls, `${prefixCls}--${theme}`]">
     <a-breadcrumb :routes="routes">
       <template #itemRender="{ route, routes: routesMatched, paths }">
-        <EntIcon :icon="getIcon(route)" v-if="getShowBreadCrumbIcon && getIcon(route)" />
+        <EntIcon v-if="getShowBreadCrumbIcon && getIcon(route)" :icon="getIcon(route)" />
         <span v-if="!hasRedirect(routesMatched, route)">
           {{ t(route.name || route.meta.title) }}
         </span>
@@ -14,27 +14,19 @@
   </div>
 </template>
 <script lang="ts">
-  import type { RouteLocationMatched } from 'vue-router';
-  import { useRouter } from 'vue-router';
-  import type { Menu } from 'fe-ent-core/lib/router';
-
   import { defineComponent, ref, watchEffect } from 'vue';
+  import { useRouter } from 'vue-router';
 
   import { Breadcrumb } from 'ant-design-vue';
   import { EntIcon } from 'fe-ent-core/lib/components';
 
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useRootSetting } from 'fe-ent-core/lib/hooks';
-  import { useGo } from 'fe-ent-core/lib/hooks';
-  import { useI18n } from 'fe-ent-core/lib/hooks';
+  import { useDesign, useGo, useI18n, useRootSetting } from 'fe-ent-core/lib/hooks';
 
-  import { propTypes } from 'fe-ent-core/lib/utils';
-  import { isString } from 'fe-ent-core/lib/utils';
-  import { filter } from 'fe-ent-core/lib/utils';
-  import { getMenus } from 'fe-ent-core/lib/router';
+  import { filter, isString, propTypes } from 'fe-ent-core/lib/utils';
+  import { REDIRECT_NAME, getAllParentPath, getMenus } from 'fe-ent-core/lib/router';
+  import type { Menu } from 'fe-ent-core/lib/router';
 
-  import { REDIRECT_NAME } from 'fe-ent-core/lib/router';
-  import { getAllParentPath } from 'fe-ent-core/lib/router';
+  import type { RouteLocationMatched } from 'vue-router';
 
   export default defineComponent({
     name: 'LayoutBreadcrumb',

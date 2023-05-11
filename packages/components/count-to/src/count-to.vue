@@ -4,8 +4,8 @@
   </span>
 </template>
 <script lang="ts">
-  import { defineComponent, ref, computed, watchEffect, unref, onMounted, watch } from 'vue';
-  import { useTransition, TransitionPresets } from '@vueuse/core';
+  import { computed, defineComponent, onMounted, ref, unref, watch, watchEffect } from 'vue';
+  import { TransitionPresets, useTransition } from '@vueuse/core';
   import { isNumber } from '@ent-core/utils/is';
 
   const props = {
@@ -98,7 +98,7 @@
         const rgx = /(\d+)(\d{3})/;
         if (separator && !isNumber(separator)) {
           while (rgx.test(x1)) {
-            x1 = x1.replace(rgx, '$1' + separator + '$2');
+            x1 = x1.replace(rgx, `$1${separator}$2`);
           }
         }
         return prefix + x1 + x2 + suffix;

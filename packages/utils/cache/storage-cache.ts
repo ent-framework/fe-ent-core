@@ -1,7 +1,7 @@
 import { cacheCipher } from '@ent-core/logics/settings/encryption-setting';
-import type { EncryptionParams } from '@ent-core/utils/cipher';
 import { AesEncryption } from '@ent-core/utils/cipher';
 import { isNullOrUnDef } from '@ent-core/utils/is';
+import type { EncryptionParams } from '@ent-core/utils/cipher';
 import type { Nullable } from '@ent-core/types';
 
 export interface CreateStorageParams extends EncryptionParams {
@@ -60,7 +60,7 @@ export const createStorage = ({
       const stringData = JSON.stringify({
         value,
         time: Date.now(),
-        expire: !isNullOrUnDef(expire) ? new Date().getTime() + expire * 1000 : null,
+        expire: !isNullOrUnDef(expire) ? Date.now() + expire * 1000 : null,
       });
       const stringifyValue = this.hasEncrypt
         ? this.encryption.encryptByAES(stringData)
@@ -82,11 +82,11 @@ export const createStorage = ({
         const decVal = this.hasEncrypt ? this.encryption.decryptByAES(val) : val;
         const data = JSON.parse(decVal);
         const { value, expire } = data;
-        if (isNullOrUnDef(expire) || expire >= new Date().getTime()) {
+        if (isNullOrUnDef(expire) || expire >= Date.now()) {
           return value;
         }
         this.remove(key);
-      } catch (e) {
+      } catch {
         return def;
       }
     }

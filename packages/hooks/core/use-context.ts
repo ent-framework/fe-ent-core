@@ -1,9 +1,6 @@
-import {
+import { readonly as defineReadonly, inject, provide, reactive } from 'vue';
+import type {
   InjectionKey,
-  provide,
-  inject,
-  reactive,
-  readonly as defineReadonly,
   // defineComponent,
   UnwrapRef,
 } from 'vue';

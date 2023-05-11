@@ -1,6 +1,6 @@
+import { createContext, useContext } from '@ent-core/hooks/core/use-context';
 import type { InjectionKey, Ref } from 'vue';
 import type { Emitter } from '@ent-core/utils/mitt';
-import { createContext, useContext } from '@ent-core/hooks/core/use-context';
 
 export interface SimpleRootMenuContextProps {
   rootMenuEmitter: Emitter;

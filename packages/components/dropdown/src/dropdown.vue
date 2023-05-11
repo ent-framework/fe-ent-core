@@ -1,30 +1,30 @@
 <template>
   <a-dropdown :trigger="trigger" v-bind="$attrs">
     <span>
-      <slot></slot>
+      <slot />
     </span>
     <template #overlay>
-      <a-menu :selectedKeys="selectedKeys">
+      <a-menu :selected-keys="selectedKeys">
         <template v-for="item in dropMenuList" :key="`${item.event}`">
           <a-menu-item
             v-bind="getAttr(item.event)"
-            @click="handleClickMenu(item)"
             :disabled="item.disabled"
+            @click="handleClickMenu(item)"
           >
             <a-popconfirm
               v-if="popconfirm && item.popConfirm"
               v-bind="getPopConfirmAttrs(item.popConfirm)"
             >
-              <template #icon v-if="item.popConfirm.icon">
+              <template v-if="item.popConfirm.icon" #icon>
                 <EntIcon :icon="item.popConfirm.icon" />
               </template>
               <div>
-                <EntIcon :icon="item.icon" v-if="item.icon" />
+                <EntIcon v-if="item.icon" :icon="item.icon" />
                 <span class="ml-1">{{ item.text }}</span>
               </div>
             </a-popconfirm>
             <template v-else>
-              <EntIcon :icon="item.icon" v-if="item.icon" />
+              <EntIcon v-if="item.icon" :icon="item.icon" />
               <span class="ml-1">{{ item.text }}</span>
             </template>
           </a-menu-item>
@@ -36,13 +36,13 @@
 </template>
 <script lang="ts" setup>
   import { computed } from 'vue';
-  import type { PropType } from 'vue';
-  import type { DropMenu } from './typing';
   import { Dropdown, Menu, Popconfirm } from 'ant-design-vue';
   import { EntIcon } from '@ent-core/components/icon';
   import { omit } from 'lodash-es';
   import { isFunction } from '@ent-core/utils/is';
   import { type Recordable } from '@ent-core/types';
+  import type { DropMenu } from './typing';
+  import type { PropType } from 'vue';
   const ADropdown = Dropdown;
   const AMenu = Menu;
   const AMenuItem = Menu.Item;

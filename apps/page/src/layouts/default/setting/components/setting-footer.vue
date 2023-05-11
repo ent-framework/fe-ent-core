@@ -5,7 +5,7 @@
       {{ t('layout.setting.copyBtn') }}
     </a-button>
 
-    <a-button color="warning" block @click="handleResetSetting" class="my-3">
+    <a-button color="warning" block class="my-3" @click="handleResetSetting">
       <RedoOutlined class="mr-2" />
       {{ t('common.resetText') }}
     </a-button>
@@ -21,18 +21,16 @@
 
   import { CopyOutlined, RedoOutlined } from '@ant-design/icons-vue';
 
-  import { useAppStore } from 'fe-ent-core/lib/store';
-  import { usePermissionStore } from 'fe-ent-core/lib/store';
-  import { useMultipleTabStore } from 'fe-ent-core/lib/store';
-  import { useUserStore } from 'fe-ent-core/lib/store';
+  import {
+    useAppStore,
+    useMultipleTabStore,
+    usePermissionStore,
+    useUserStore,
+  } from 'fe-ent-core/lib/store';
 
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useI18n } from 'fe-ent-core/lib/hooks';
-  import { useMessage } from 'fe-ent-core/lib/hooks';
+  import { useDesign, useI18n, useMessage } from 'fe-ent-core/lib/hooks';
 
-  import { updateColorWeak } from 'fe-ent-core/lib/logics';
-  import { updateGrayMode } from 'fe-ent-core/lib/logics';
-  import { defaultProjectSetting } from 'fe-ent-core/lib/logics';
+  import { defaultProjectSetting, updateColorWeak, updateGrayMode } from 'fe-ent-core/lib/logics';
   export default defineComponent({
     name: 'SettingFooter',
     components: { CopyOutlined, RedoOutlined },

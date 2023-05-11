@@ -7,9 +7,8 @@
   </MenuItem>
 </template>
 <script lang="ts">
-  import { Menu } from 'ant-design-vue';
-
   import { computed, defineComponent, getCurrentInstance } from 'vue';
+  import { Menu } from 'ant-design-vue';
 
   import { EntIcon } from 'fe-ent-core/lib/components';
   import { propTypes } from 'fe-ent-core/lib/utils';

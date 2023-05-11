@@ -1,7 +1,6 @@
 import * as xlsx from 'xlsx';
+import type { AoAToSheet, AoaToMultipleSheet, JsonToMultipleSheet, JsonToSheet } from './typing';
 import type { WorkBook } from 'xlsx';
-import type { JsonToSheet, AoAToSheet } from './typing';
-import { AoaToMultipleSheet, JsonToMultipleSheet } from './typing';
 
 const { utils, writeFile } = xlsx;
 

@@ -1,15 +1,17 @@
 <template>
-  <div :class="[prefixCls, getLayoutContentMode]" v-loading="getOpenPageLoading && getPageLoading">
+  <div v-loading="getOpenPageLoading && getPageLoading" :class="[prefixCls, getLayoutContentMode]">
     <PageLayout />
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
+  import {
+    useContentViewHeight,
+    useDesign,
+    useRootSetting,
+    useTransitionSetting,
+  } from 'fe-ent-core/lib/hooks';
   import PageLayout from '../../page/index.vue';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useRootSetting } from 'fe-ent-core/lib/hooks';
-  import { useTransitionSetting } from 'fe-ent-core/lib/hooks';
-  import { useContentViewHeight } from 'fe-ent-core/lib/hooks';
 
   export default defineComponent({
     name: 'LayoutContent',

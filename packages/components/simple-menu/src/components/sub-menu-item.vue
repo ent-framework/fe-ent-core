@@ -1,8 +1,8 @@
 <template>
   <li :class="getClass">
     <template v-if="!getCollapse">
-      <div :class="`${prefixCls}-submenu-title`" @click.stop="handleClick" :style="getItemStyle">
-        <slot name="title"></slot>
+      <div :class="`${prefixCls}-submenu-title`" :style="getItemStyle" @click.stop="handleClick">
+        <slot name="title" />
         <Icon
           icon="eva:arrow-ios-downward-outline"
           :size="14"
@@ -10,20 +10,20 @@
         />
       </div>
       <CollapseTransition>
-        <ul :class="prefixCls" v-show="opened">
-          <slot></slot>
+        <ul v-show="opened" :class="prefixCls">
+          <slot />
         </ul>
       </CollapseTransition>
     </template>
 
     <Popover
-      placement="right"
-      :overlayClassName="`${prefixCls}-menu-popover`"
       v-else
+      placement="right"
+      :overlay-class-name="`${prefixCls}-menu-popover`"
       :visible="getIsOpend"
-      @visible-change="handleVisibleChange"
-      :overlayStyle="getOverlayStyle"
+      :overlay-style="getOverlayStyle"
       :align="{ offset: [0, 0] }"
+      @visible-change="handleVisibleChange"
     >
       <div :class="getSubClass" v-bind="getEvents(false)">
         <div
@@ -34,7 +34,7 @@
             },
           ]"
         >
-          <slot name="title"></slot>
+          <slot name="title" />
         </div>
         <Icon
           v-if="getParentSubMenu"
@@ -47,7 +47,7 @@
       <template #content v-show="opened">
         <div v-bind="getEvents(true)">
           <ul :class="[prefixCls, `${prefixCls}-${getTheme}`, `${prefixCls}-popup`]">
-            <slot></slot>
+            <slot />
           </ul>
         </div>
       </template>
@@ -56,28 +56,28 @@
 </template>
 
 <script lang="ts">
-  import type { CSSProperties, PropType } from 'vue';
-  import type { SubMenuProvider } from './types';
   import {
-    defineComponent,
     computed,
-    unref,
+    defineComponent,
     getCurrentInstance,
-    toRefs,
-    reactive,
-    provide,
-    onBeforeMount,
     inject,
+    onBeforeMount,
+    provide,
+    reactive,
+    toRefs,
+    unref,
   } from 'vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { propTypes } from '@ent-core/utils/prop-types';
-  import { useMenuItem } from './use-menu';
-  import { useSimpleRootMenuContext } from './use-simple-menu-context';
   import { CollapseTransition } from '@ent-core/components/transition';
   import Icon from '@ent-core/components/icon';
   import { Popover } from 'ant-design-vue';
   import { isBoolean, isObject } from '@ent-core/utils/is';
   import mitt from '@ent-core/utils/mitt';
+  import { useSimpleRootMenuContext } from './use-simple-menu-context';
+  import { useMenuItem } from './use-menu';
+  import type { SubMenuProvider } from './types';
+  import type { CSSProperties, PropType } from 'vue';
   import type { Recordable, TimeoutHandle } from '@ent-core/types';
 
   const DELAY = 200;
@@ -194,7 +194,7 @@
           rootMenuEmitter.emit('on-update-opened', {
             opend: false,
             parent: instance?.parent,
-            uidList: uidList,
+            uidList,
           });
         } else {
           rootMenuEmitter.emit('open-name-change', {
@@ -211,7 +211,7 @@
 
         subMenuEmitter.emit('submenu:mouse-enter-child');
 
-        const index = parentGetOpenNames().findIndex((item) => item === props.name);
+        const index = parentGetOpenNames().indexOf(props.name);
 
         sliceIndex(index);
 

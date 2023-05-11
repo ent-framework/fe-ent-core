@@ -1,12 +1,12 @@
 <script lang="tsx">
-  import type { Ref } from 'vue';
-  import { defineComponent, ref, computed, unref, reactive, watch, watchEffect } from 'vue';
+  import { computed, defineComponent, reactive, ref, unref, watch, watchEffect } from 'vue';
   import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
   import { useEventListener } from '@ent-core/hooks/event/use-event-listener';
-  import { basicProps } from './props';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { CheckOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { basicProps } from './props';
+  import type { Ref } from 'vue';
 
   export default defineComponent({
     name: 'EntDragVerify',
@@ -39,7 +39,7 @@
 
       const getActionStyleRef = computed(() => {
         const { height, actionStyle } = props;
-        const h = `${parseInt(height as string)}px`;
+        const h = `${Number.parseInt(height as string)}px`;
         return {
           left: 0,
           width: h,
@@ -50,31 +50,31 @@
 
       const getWrapStyleRef = computed(() => {
         const { height, width, circle, wrapStyle } = props;
-        const h = parseInt(height as string);
-        const w = `${parseInt(width as string)}px`;
+        const h = Number.parseInt(height as string);
+        const w = `${Number.parseInt(width as string)}px`;
         return {
           width: w,
           height: `${h}px`,
           lineHeight: `${h}px`,
-          borderRadius: circle ? h / 2 + 'px' : 0,
+          borderRadius: circle ? `${h / 2}px` : 0,
           ...wrapStyle,
         };
       });
 
       const getBarStyleRef = computed(() => {
         const { height, circle, barStyle } = props;
-        const h = parseInt(height as string);
+        const h = Number.parseInt(height as string);
         return {
           height: `${h}px`,
-          borderRadius: circle ? h / 2 + 'px 0 0 ' + h / 2 + 'px' : 0,
+          borderRadius: circle ? `${h / 2}px 0 0 ${h / 2}px` : 0,
           ...barStyle,
         };
       });
 
       const getContentStyleRef = computed(() => {
         const { height, width, contentStyle } = props;
-        const h = `${parseInt(height as string)}px`;
-        const w = `${parseInt(width as string)}px`;
+        const h = `${Number.parseInt(height as string)}px`;
+        const w = `${Number.parseInt(width as string)}px`;
 
         return {
           height: h,
@@ -111,15 +111,16 @@
         const actionEl = unref(actionElRef);
         if (!actionEl) return;
         emit('start', e);
-        state.moveDistance = getEventPageX(e) - parseInt(actionEl.style.left.replace('px', ''), 10);
-        state.startTime = new Date().getTime();
+        state.moveDistance =
+          getEventPageX(e) - Number.parseInt(actionEl.style.left.replace('px', ''), 10);
+        state.startTime = Date.now();
         state.isMoving = true;
       }
 
       function getOffset(el: HTMLDivElement) {
-        const actionWidth = parseInt(el.style.width);
+        const actionWidth = Number.parseInt(el.style.width);
         const { width } = props;
-        const widthNum = parseInt(width as string);
+        const widthNum = Number.parseInt(width as string);
         const offset = widthNum - actionWidth - 6;
         return { offset, widthNum, actionWidth };
       }
@@ -170,7 +171,7 @@
                 } else {
                   const contentEl = unref(contentElRef);
                   if (contentEl) {
-                    contentEl.style.width = `${parseInt(barEl.style.width)}px`;
+                    contentEl.style.width = `${Number.parseInt(barEl.style.width)}px`;
                   }
                 }
               }, 0);
@@ -189,7 +190,7 @@
           resume();
           return;
         }
-        state.endTime = new Date().getTime();
+        state.endTime = Date.now();
         state.isPassing = true;
         state.isMoving = false;
       }

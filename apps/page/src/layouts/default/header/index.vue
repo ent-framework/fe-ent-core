@@ -21,19 +21,19 @@
     <!-- left end -->
 
     <!-- menu start -->
-    <div :class="`${prefixCls}-menu`" v-if="getShowTopMenu && !getIsMobile">
+    <div v-if="getShowTopMenu && !getIsMobile" :class="`${prefixCls}-menu`">
       <LayoutMenu
-        :isHorizontal="true"
+        :is-horizontal="true"
         :theme="getHeaderTheme"
-        :splitType="getSplitType"
-        :menuMode="getMenuMode"
+        :split-type="getSplitType"
+        :menu-mode="getMenuMode"
       />
     </div>
     <!-- menu-end -->
 
     <!-- action  -->
     <div :class="`${prefixCls}-action`">
-      <AppSearch :class="`${prefixCls}-action__item `" v-if="getShowSearch" />
+      <AppSearch v-if="getShowSearch" :class="`${prefixCls}-action__item `" />
 
       <ErrorAction v-if="getUseErrorHandle" :class="`${prefixCls}-action__item error-action`" />
 
@@ -44,7 +44,7 @@
       <EntAppLocalePicker
         v-if="getShowLocalePicker"
         :reload="true"
-        :showText="false"
+        :show-text="false"
         :class="`${prefixCls}-action__item`"
       />
 
@@ -55,30 +55,34 @@
   </Header>
 </template>
 <script lang="ts">
-  import { defineComponent, unref, computed } from 'vue';
+  import { computed, defineComponent, unref } from 'vue';
 
   import { propTypes } from 'fe-ent-core/lib/utils';
 
   import { Layout } from 'ant-design-vue';
-  import AppLogo from '../components/app-logo.vue';
-  import LayoutMenu from '../menu/index.vue';
-  import LayoutTrigger from '../trigger/index.vue';
 
-  import AppSearch from '../components/app-search.vue';
+  import {
+    useAppInject,
+    useDesign,
+    useHeaderSetting,
+    useMenuSetting,
+    useRootSetting,
+  } from 'fe-ent-core/lib/hooks';
 
-  import { useHeaderSetting } from 'fe-ent-core/lib/hooks';
-  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
-  import { useRootSetting } from 'fe-ent-core/lib/hooks';
-
-  import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/lib/logics';
-  import { SettingButtonPositionEnum } from 'fe-ent-core/lib/logics';
+  import {
+    MenuModeEnum,
+    MenuSplitTyeEnum,
+    SettingButtonPositionEnum,
+  } from 'fe-ent-core/lib/logics';
   import { EntAppLocalePicker } from 'fe-ent-core/lib/components';
 
-  import { UserDropDown, LayoutBreadcrumb, FullScreen, Notify, ErrorAction } from './components';
-  import { useAppInject } from 'fe-ent-core/lib/hooks';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
   import { useLocale } from 'fe-ent-core/lib/locales';
+  import AppSearch from '../components/app-search.vue';
+  import LayoutTrigger from '../trigger/index.vue';
+  import LayoutMenu from '../menu/index.vue';
+  import AppLogo from '../components/app-logo.vue';
   import SettingDrawer from '../setting/index.vue';
+  import { ErrorAction, FullScreen, LayoutBreadcrumb, Notify, UserDropDown } from './components';
 
   export default defineComponent({
     name: 'LayoutHeader',

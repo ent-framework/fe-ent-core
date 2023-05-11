@@ -1,7 +1,7 @@
-import type { ComputedRef, Ref } from 'vue';
 import { nextTick, unref } from 'vue';
 import { warn } from '@ent-core/utils/log';
-import type { Recordable, ComponentRef } from '@ent-core/types';
+import type { ComputedRef, Ref } from 'vue';
+import type { ComponentRef, Recordable } from '@ent-core/types';
 
 export function useTableScrollTo(
   tableElRef: Ref<ComponentRef>,

@@ -1,11 +1,11 @@
 <template>
   <div :class="prefixCls" :style="{ width: getCalcContentWidth }">
     <div :class="`${prefixCls}__left`">
-      <slot name="left"></slot>
+      <slot name="left" />
     </div>
-    <slot></slot>
+    <slot />
     <div :class="`${prefixCls}__right`">
-      <slot name="right"></slot>
+      <slot name="right" />
     </div>
   </div>
 </template>

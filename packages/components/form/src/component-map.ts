@@ -1,26 +1,27 @@
-import type { Component } from 'vue';
-import type { ComponentType } from './types';
-
 /**
  * Component list, register here to setting it in the form
  */
 import {
-  Input,
-  Select,
-  Radio,
-  Checkbox,
   AutoComplete,
   Cascader,
+  Checkbox,
   DatePicker,
+  Divider,
+  Input,
   InputNumber,
+  Radio,
+  Rate,
+  Select,
+  Slider,
   Switch,
   TimePicker,
   TreeSelect,
-  Slider,
-  Rate,
-  Divider,
 } from 'ant-design-vue';
 
+import { EntUpload } from '@ent-core/components/upload';
+import { EntStrengthMeter } from '@ent-core/components/strength-meter';
+import { EntIconPicker } from '@ent-core/components/icon';
+import { EntCountdownInput } from '@ent-core/components/count-down';
 import ApiRadioGroup from './components/api-radio-group.vue';
 import RadioButtonGroup from './components/radio-button-group.vue';
 import ApiSelect from './components/api-select.vue';
@@ -28,10 +29,8 @@ import ApiTree from './components/api-tree.vue';
 import ApiTreeSelect from './components/api-tree-select.vue';
 import ApiCascader from './components/api-cascader.vue';
 import ApiTransfer from './components/api-transfer.vue';
-import { EntUpload } from '@ent-core/components/upload';
-import { EntStrengthMeter } from '@ent-core/components/strength-meter';
-import { EntIconPicker } from '@ent-core/components/icon';
-import { EntCountdownInput } from '@ent-core/components/count-down';
+import type { ComponentType } from './types';
+import type { Component } from 'vue';
 
 const componentMap = new Map<ComponentType, Component>();
 

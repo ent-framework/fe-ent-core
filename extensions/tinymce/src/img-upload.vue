@@ -3,10 +3,10 @@
     <Upload
       name="file"
       multiple
-      @change="handleChange"
       :action="uploadUrl"
-      :showUploadList="false"
+      :show-upload-list="false"
       accept=".jpg,.jpeg,.gif,.png,.webp"
+      @change="handleChange"
     >
       <a-button type="primary" v-bind="{ ...getButtonProps }">
         {{ t('component.upload.imgUpload') }}
@@ -15,7 +15,7 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, computed } from 'vue';
+  import { computed, defineComponent } from 'vue';
   import { Upload } from 'ant-design-vue';
   import { useDesign, useGlobSetting, useI18n } from 'fe-ent-core';
   import type { Recordable } from 'fe-ent-core/lib/types';

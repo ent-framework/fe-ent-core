@@ -1,5 +1,5 @@
-import { isFunction, isUnDef } from '@ent-core/utils/is';
 import { ref, unref } from 'vue';
+import { isFunction, isUnDef } from '@ent-core/utils/is';
 
 export interface ScrollToParams {
   el: any;

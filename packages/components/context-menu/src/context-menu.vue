@@ -1,9 +1,9 @@
 <script lang="tsx">
-  import type { ContextMenuItem, ItemContentProps, Axis } from './typing';
-  import type { FunctionalComponent, CSSProperties, PropType } from 'vue';
-  import { defineComponent, nextTick, onMounted, computed, ref, unref, onUnmounted } from 'vue';
+  import { computed, defineComponent, nextTick, onMounted, onUnmounted, ref, unref } from 'vue';
   import { EntIcon } from '@ent-core/components/icon';
-  import { Menu, Divider } from 'ant-design-vue';
+  import { Divider, Menu } from 'ant-design-vue';
+  import type { CSSProperties, FunctionalComponent, PropType } from 'vue';
+  import type { Axis, ContextMenuItem, ItemContentProps } from './typing';
 
   const prefixCls = 'context-menu';
 

@@ -1,6 +1,6 @@
 <template>
   <div v-if="getShowDarkModeToggle" :class="getClass" @click="toggleDarkMode">
-    <div :class="`${prefixCls}-inner`"></div>
+    <div :class="`${prefixCls}-inner`" />
     <EntSvgIcon size="14" name="sun" />
     <EntSvgIcon size="14" name="moon" />
   </div>

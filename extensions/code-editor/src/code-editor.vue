@@ -2,17 +2,18 @@
   <div class="h-full">
     <CodeMirrorEditor
       :value="getValue"
-      @change="handleValueChange"
       :mode="mode"
       :readonly="readonly"
+      @change="handleValueChange"
     />
   </div>
 </template>
 <script lang="ts" setup>
-  import { computed, defineComponent, PropType } from 'vue';
-  import CodeMirrorEditor from './code-mirror/index.vue';
+  import { computed, defineComponent } from 'vue';
   import { isString } from 'fe-ent-core';
+  import CodeMirrorEditor from './code-mirror/index.vue';
   import { MODE } from './typing';
+  import type { PropType } from 'vue';
 
   const props = defineProps({
     value: { type: [Object, String] as PropType<Record<string, any> | string> },
@@ -44,7 +45,7 @@
     if (isString(value)) {
       try {
         result = JSON.parse(value);
-      } catch (e) {
+      } catch {
         emit('format-error', value);
         return value as string;
       }

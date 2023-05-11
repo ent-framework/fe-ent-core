@@ -1,78 +1,77 @@
 <template>
   <Modal v-bind="getBindValue" @cancel="handleCancel">
-    <template #closeIcon v-if="!$slots.closeIcon">
+    <template v-if="!$slots.closeIcon" #closeIcon>
       <ModalClose
-        :canFullscreen="getProps.canFullscreen"
-        :fullScreen="fullScreenRef"
+        :can-fullscreen="getProps.canFullscreen"
+        :full-screen="fullScreenRef"
         @cancel="handleCancel"
         @fullscreen="handleFullScreen"
       />
     </template>
 
-    <template #title v-if="!$slots.title">
+    <template v-if="!$slots.title" #title>
       <ModalHeader
-        :helpMessage="getProps.helpMessage"
+        :help-message="getProps.helpMessage"
         :title="getMergeProps.title"
         @dblclick="handleTitleDbClick"
       />
     </template>
 
-    <template #footer v-if="!$slots.footer">
+    <template v-if="!$slots.footer" #footer>
       <ModalFooter v-bind="getBindValue" @ok="handleOk" @cancel="handleCancel">
-        <template #[item]="data" v-for="item in Object.keys($slots)">
-          <slot :name="item" v-bind="data || {}"></slot>
+        <template v-for="item in Object.keys($slots)" #[item]="data">
+          <slot :name="item" v-bind="data || {}" />
         </template>
       </ModalFooter>
     </template>
 
     <ModalWrapper
-      :useWrapper="getProps.useWrapper"
-      :footerOffset="wrapperFooterOffset"
-      :fullScreen="fullScreenRef"
       ref="modalWrapperRef"
+      :use-wrapper="getProps.useWrapper"
+      :footer-offset="wrapperFooterOffset"
+      :full-screen="fullScreenRef"
       :loading="getProps.loading"
       :loading-tip="getProps.loadingTip"
-      :minHeight="getProps.minHeight"
+      :min-height="getProps.minHeight"
       :height="getWrapperHeight"
       :visible="visibleRef"
-      :modalFooterHeight="footer !== undefined && !footer ? 0 : undefined"
+      :modal-footer-height="footer !== undefined && !footer ? 0 : undefined"
       v-bind="omit(getProps.wrapperProps, 'visible', 'height', 'modalFooterHeight')"
       @ext-height="handleExtHeight"
       @height-change="handleHeightChange"
     >
-      <slot></slot>
+      <slot />
     </ModalWrapper>
 
-    <template #[item]="data" v-for="item in Object.keys(omit($slots, 'default'))">
-      <slot :name="item" v-bind="data || {}"></slot>
+    <template v-for="item in Object.keys(omit($slots, 'default'))" #[item]="data">
+      <slot :name="item" v-bind="data || {}" />
     </template>
   </Modal>
 </template>
 <script lang="ts">
-  import type { ModalProps, ModalMethods } from './typing';
-
   import {
-    defineComponent,
     computed,
-    ref,
-    watch,
-    unref,
-    watchEffect,
-    toRef,
+    defineComponent,
     getCurrentInstance,
     nextTick,
+    ref,
+    toRef,
+    unref,
+    watch,
+    watchEffect,
   } from 'vue';
+  import { isFunction } from '@ent-core/utils/is';
+  import { deepMerge } from '@ent-core/utils';
+  import { omit } from 'lodash-es';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
   import Modal from './components/modal';
   import ModalWrapper from './components/modal-wrapper.vue';
   import ModalClose from './components/modal-close.vue';
   import ModalFooter from './components/modal-footer.vue';
   import ModalHeader from './components/modal-header.vue';
-  import { isFunction } from '@ent-core/utils/is';
-  import { deepMerge } from '@ent-core/utils';
   import { basicProps } from './props';
   import { useFullScreen } from './hooks/use-modal-full-screen';
-  import { omit } from 'lodash-es';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import type { ModalMethods, ModalProps } from './typing';
   import type { Recordable } from '@ent-core/types';
 
   export default defineComponent({
@@ -179,7 +178,7 @@
       async function handleCancel(e: Event) {
         e?.stopPropagation();
         // 过滤自定义关闭按钮的空白区域
-        if ((e.target as HTMLElement)?.classList?.contains(prefixCls + '-close--custom')) return;
+        if ((e.target as HTMLElement)?.classList?.contains(`${prefixCls}-close--custom`)) return;
         if (props.closeFunc && isFunction(props.closeFunc)) {
           const isClose: boolean = await props.closeFunc();
           visibleRef.value = !isClose;

@@ -1,19 +1,19 @@
-import {
-  MenuTypeEnum,
+import type {
   MenuModeEnum,
-  TriggerEnum,
+  MenuTypeEnum,
   MixSidebarTriggerEnum,
+  TriggerEnum,
 } from '@ent-core/logics/enums/menu-enum';
-import {
+import type {
   ContentEnum,
   PermissionModeEnum,
-  ThemeEnum,
   RouterTransitionEnum,
-  SettingButtonPositionEnum,
   SessionTimeoutProcessingEnum,
+  SettingButtonPositionEnum,
+  ThemeEnum,
 } from '@ent-core/logics/enums/app-enum';
 
-import { CacheTypeEnum } from '@ent-core/logics/enums/cache-enum';
+import type { CacheTypeEnum } from '@ent-core/logics/enums/cache-enum';
 
 export type LocaleType = 'zh_CN' | 'en' | 'ru' | 'ja' | 'ko';
 

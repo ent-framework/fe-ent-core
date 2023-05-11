@@ -1,19 +1,18 @@
-import type {
-  AxiosRequestConfig,
-  AxiosInstance,
-  AxiosResponse,
-  AxiosError,
-  InternalAxiosRequestConfig,
-} from 'axios';
-import type { RequestOptions, Result, UploadFileParams } from '@ent-core/logics/types/axios';
-import type { CreateAxiosOptions } from './axios-transform';
 import axios from 'axios';
 import qs from 'qs';
-import { AxiosCanceler } from './axios-cancel';
 import { isFunction } from '@ent-core/utils/is';
 import { cloneDeep } from 'lodash-es';
-import { ContentTypeEnum } from '@ent-core/logics/enums/http-enum';
-import { RequestEnum } from '@ent-core/logics/enums/http-enum';
+import { ContentTypeEnum, RequestEnum } from '@ent-core/logics/enums/http-enum';
+import { AxiosCanceler } from './axios-cancel';
+import type { CreateAxiosOptions } from './axios-transform';
+import type { RequestOptions, Result, UploadFileParams } from '@ent-core/logics/types/axios';
+import type {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from 'axios';
 
 export * from './axios-transform';
 

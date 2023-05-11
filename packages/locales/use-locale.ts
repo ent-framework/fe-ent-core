@@ -1,13 +1,13 @@
 /**
  * Multi-language related operations
  */
-import type { LocaleType } from '@ent-core/logics/types/config';
 
-import { i18n } from './setup-i18n';
+import { computed, unref } from 'vue';
 import { useLocaleStoreWithOut } from '@ent-core/store/modules/locale';
-import { unref, computed } from 'vue';
-import { loadLocalePool, setHtmlPageLang } from './helper';
 import dayjs from 'dayjs';
+import { i18n } from './setup-i18n';
+import { loadLocalePool, setHtmlPageLang } from './helper';
+import type { LocaleType } from '@ent-core/logics/types/config';
 
 function setI18nLanguage(locale: LocaleType) {
   const localeStore = useLocaleStoreWithOut();

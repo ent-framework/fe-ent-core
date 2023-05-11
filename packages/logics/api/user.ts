@@ -1,7 +1,7 @@
 import { defHttp } from '@ent-core/utils/http/axios';
-import { LoginParams, LoginResultModel, GetUserInfoModel } from '../model';
-import { ErrorMessageMode } from '@ent-core/logics/types/axios';
 import { useGlobSetting } from '@ent-core/hooks';
+import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
+import type { GetUserInfoModel, LoginParams, LoginResultModel } from '../model';
 enum Api {
   Login = '/login',
   Logout = '/logout',

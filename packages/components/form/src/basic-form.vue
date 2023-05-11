@@ -1,65 +1,64 @@
 <template>
   <Form
     v-bind="getBindValue"
-    :class="getFormClass"
     ref="formElRef"
+    :class="getFormClass"
     :model="formModel"
     @keypress.enter="handleEnterPress"
   >
     <Row v-bind="getRow">
-      <slot name="formHeader"></slot>
+      <slot name="formHeader" />
       <template v-for="schema in getSchema" :key="schema.field">
         <FormItem
-          :isAdvanced="fieldsIsAdvancedMap[schema.field]"
-          :tableAction="tableAction"
-          :formActionType="formActionType"
+          :is-advanced="fieldsIsAdvancedMap[schema.field]"
+          :table-action="tableAction"
+          :form-action-type="formActionType"
           :schema="schema"
-          :formProps="getProps"
-          :allDefaultValues="defaultValueRef"
-          :formModel="formModel"
-          :setFormModel="setFormModel"
+          :form-props="getProps"
+          :all-default-values="defaultValueRef"
+          :form-model="formModel"
+          :set-form-model="setFormModel"
         >
-          <template #[item]="data" v-for="item in Object.keys($slots)">
-            <slot :name="item" v-bind="data || {}"></slot>
+          <template v-for="item in Object.keys($slots)" #[item]="data">
+            <slot :name="item" v-bind="data || {}" />
           </template>
         </FormItem>
       </template>
 
       <FormAction v-bind="getFormActionBindProps" @toggle-advanced="handleToggleAdvanced">
         <template
-          #[item]="data"
           v-for="item in ['resetBefore', 'submitBefore', 'advanceBefore', 'advanceAfter']"
+          #[item]="data"
         >
-          <slot :name="item" v-bind="data || {}"></slot>
+          <slot :name="item" v-bind="data || {}" />
         </template>
       </FormAction>
-      <slot name="formFooter"></slot>
+      <slot name="formFooter" />
     </Row>
   </Form>
 </template>
 <script lang="ts">
-  import type { FormActionType, FormProps, FormSchema } from './types/form';
-  import type { AdvanceState } from './types/hooks';
-  import type { Ref } from 'vue';
-
-  import { defineComponent, reactive, ref, computed, unref, onMounted, watch, nextTick } from 'vue';
+  import { computed, defineComponent, nextTick, onMounted, reactive, ref, unref, watch } from 'vue';
   import { Form, Row } from 'ant-design-vue';
+  import { dateUtil } from '@ent-core/utils/date-util';
+  import { deepMerge } from '@ent-core/utils';
+  import { useModalContext } from '@ent-core/components/modal';
+  import { useDebounceFn } from '@vueuse/shared';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { cloneDeep } from 'lodash-es';
   import FormItem from './components/form-item.vue';
   import FormAction from './components/form-action.vue';
 
   import { dateItemType } from './helper';
-  import { dateUtil } from '@ent-core/utils/date-util';
-  import { deepMerge } from '@ent-core/utils';
   import { useFormValues } from './hooks/use-form-values';
   import useAdvanced from './hooks/use-advanced';
   import { useFormEvents } from './hooks/use-form-events';
   import { createFormContext } from './hooks/use-form-context';
   import { useAutoFocus } from './hooks/use-auto-focus';
-  import { useModalContext } from '@ent-core/components/modal';
-  import { useDebounceFn } from '@vueuse/shared';
   import { basicProps } from './props';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { cloneDeep } from 'lodash-es';
+  import type { Ref } from 'vue';
+  import type { AdvanceState } from './types/hooks';
+  import type { FormActionType, FormProps, FormSchema } from './types/form';
 
   export default defineComponent({
     name: 'EntForm',
@@ -270,7 +269,7 @@
         validateFields,
         validate,
         submit: handleSubmit,
-        scrollToField: scrollToField,
+        scrollToField,
       };
 
       onMounted(() => {

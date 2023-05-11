@@ -1,4 +1,4 @@
-import { watch, unref } from 'vue';
+import { unref, watch } from 'vue';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { useTitle as usePageTitle } from '@vueuse/core';
 import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';

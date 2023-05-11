@@ -1,26 +1,26 @@
 <template>
   <div :class="`${prefixCls}`">
-    <RedoSetting v-if="getSetting.redo" :getPopupContainer="getTableContainer" />
-    <SizeSetting v-if="getSetting.size" :getPopupContainer="getTableContainer" />
+    <RedoSetting v-if="getSetting.redo" :get-popup-container="getTableContainer" />
+    <SizeSetting v-if="getSetting.size" :get-popup-container="getTableContainer" />
     <ColumnSetting
       v-if="getSetting.setting"
+      :get-popup-container="getTableContainer"
       @columns-change="handleColumnChange"
-      :getPopupContainer="getTableContainer"
     />
-    <FullScreenSetting v-if="getSetting.fullScreen" :getPopupContainer="getTableContainer" />
+    <FullScreenSetting v-if="getSetting.fullScreen" :get-popup-container="getTableContainer" />
   </div>
 </template>
 <script lang="ts">
-  import type { PropType } from 'vue';
-  import type { TableSetting, ColumnChangeParam } from '../../types/table';
-  import { defineComponent, computed, unref } from 'vue';
+  import { computed, defineComponent, unref } from 'vue';
+  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { useDesign } from '@ent-core/hooks';
+  import { useTableContext } from '../../hooks/use-table-context';
   import ColumnSetting from './column-setting.vue';
   import SizeSetting from './size-setting.vue';
   import RedoSetting from './redo-setting.vue';
   import FullScreenSetting from './full-screen-setting.vue';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useTableContext } from '../../hooks/use-table-context';
-  import { useDesign } from '@ent-core/hooks';
+  import type { ColumnChangeParam, TableSetting } from '../../types/table';
+  import type { PropType } from 'vue';
 
   export default defineComponent({
     name: 'TableSetting',

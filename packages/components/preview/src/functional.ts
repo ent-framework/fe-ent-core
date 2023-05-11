@@ -1,7 +1,7 @@
-import type { Options, Props } from './typing';
-import ImgPreview from './functional.vue';
-import { isClient } from '@ent-core/utils/is';
 import { createVNode, render } from 'vue';
+import { isClient } from '@ent-core/utils/is';
+import ImgPreview from './functional.vue';
+import type { Options, Props } from './typing';
 
 let instance: ReturnType<typeof createVNode> | null = null;
 export function createImgPreview(options: Options) {

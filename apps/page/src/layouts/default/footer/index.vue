@@ -1,9 +1,9 @@
 <template>
-  <Footer :class="prefixCls" v-if="getShowLayoutFooter" ref="footerRef">
+  <Footer v-if="getShowLayoutFooter" ref="footerRef" :class="prefixCls">
     <div :class="`${prefixCls}__links`">
       <a @click="openWindow(SITE_URL)">{{ t('layout.footer.onlinePreview') }}</a>
 
-      <GithubFilled @click="openWindow(GITHUB_URL)" :class="`${prefixCls}__github`" />
+      <GithubFilled :class="`${prefixCls}__github`" @click="openWindow(GITHUB_URL)" />
 
       <a @click="openWindow(DOC_URL)">{{ t('layout.footer.onlineDocument') }}</a>
     </div>
@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, unref, ref } from 'vue';
+  import { computed, defineComponent, ref, unref } from 'vue';
   import { Layout } from 'ant-design-vue';
 
   import { GithubFilled } from '@ant-design/icons-vue';
@@ -20,12 +20,9 @@
   import { DOC_URL, GITHUB_URL, SITE_URL } from 'fe-ent-core/lib/logics';
   import { openWindow } from 'fe-ent-core/lib/utils';
 
-  import { useI18n } from 'fe-ent-core/lib/hooks';
-  import { useRootSetting } from 'fe-ent-core/lib/hooks';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useLayoutHeight } from 'fe-ent-core/lib/hooks';
+  import { useDesign, useI18n, useLayoutHeight, useRootSetting } from 'fe-ent-core/lib/hooks';
   import { useRouter } from 'vue-router';
-  import { ComponentRef } from 'fe-ent-core/lib/types';
+  import type { ComponentRef } from 'fe-ent-core/lib/types';
 
   export default defineComponent({
     name: 'LayoutFooter',

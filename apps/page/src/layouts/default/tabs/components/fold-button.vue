@@ -4,12 +4,10 @@
   </span>
 </template>
 <script lang="ts">
-  import { defineComponent, unref, computed } from 'vue';
+  import { computed, defineComponent, unref } from 'vue';
   import { EntIcon } from 'fe-ent-core/lib/components';
 
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useHeaderSetting } from 'fe-ent-core/lib/hooks';
-  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
+  import { useDesign, useHeaderSetting, useMenuSetting } from 'fe-ent-core/lib/hooks';
   import { triggerWindowResize } from 'fe-ent-core/lib/utils';
 
   export default defineComponent({

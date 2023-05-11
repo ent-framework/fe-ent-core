@@ -1,21 +1,21 @@
 <script lang="tsx">
-  import type { CSSProperties, PropType } from 'vue';
   import { computed, defineComponent, nextTick, ref, toRaw, unref, watchEffect } from 'vue';
-  import type { BasicColumn } from '../../types/table';
   import { CheckOutlined, CloseOutlined, FormOutlined } from '@ant-design/icons-vue';
-  import { CellComponent } from './cell-component';
 
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useTableContext } from '../../hooks/use-table-context';
 
   import { ClickOutside } from '@ent-core/directives/click-out-side';
 
   import { propTypes } from '@ent-core/utils/prop-types';
   import { isArray, isBoolean, isFunction, isNumber, isString } from '@ent-core/utils/is';
-  import { createPlaceholderMessage } from './helper';
   import { pick, set } from 'lodash-es';
   import { treeToList } from '@ent-core/utils/helper/tree-helper';
   import { Spin } from 'ant-design-vue';
+  import { useTableContext } from '../../hooks/use-table-context';
+  import { createPlaceholderMessage } from './helper';
+  import { CellComponent } from './cell-component';
+  import type { BasicColumn } from '../../types/table';
+  import type { CSSProperties, PropType } from 'vue';
   import type { Recordable } from '@ent-core/types';
 
   export default defineComponent({
@@ -264,7 +264,7 @@
                 key: dataKey as string,
                 value,
               });
-            } catch (e) {
+            } catch {
               result = false;
             } finally {
               spinning.value = false;

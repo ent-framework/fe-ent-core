@@ -1,59 +1,59 @@
 <template>
-  <Drawer :class="prefixCls" @close="onClose" v-bind="getBindValues">
-    <template #title v-if="!$slots.title">
+  <Drawer :class="prefixCls" v-bind="getBindValues" @close="onClose">
+    <template v-if="!$slots.title" #title>
       <DrawerHeader
         :title="getMergeProps.title"
-        :isDetail="isDetail"
-        :showDetailBack="showDetailBack"
+        :is-detail="isDetail"
+        :show-detail-back="showDetailBack"
         @close="onClose"
       >
         <template #titleToolbar>
-          <slot name="titleToolbar"></slot>
+          <slot name="titleToolbar" />
         </template>
       </DrawerHeader>
     </template>
     <template v-else #title>
-      <slot name="title"></slot>
+      <slot name="title" />
     </template>
 
     <EntScrollContainer
-      :style="getScrollContentStyle"
       v-loading="getLoading"
+      :style="getScrollContentStyle"
       :loading-tip="loadingText || t('common.loadingText')"
     >
-      <slot></slot>
+      <slot />
     </EntScrollContainer>
-    <DrawerFooter v-bind="getProps" @close="onClose" @ok="handleOk" :height="getFooterHeight">
-      <template #[item]="data" v-for="item in Object.keys($slots)">
-        <slot :name="item" v-bind="data || {}"></slot>
+    <DrawerFooter v-bind="getProps" :height="getFooterHeight" @close="onClose" @ok="handleOk">
+      <template v-for="item in Object.keys($slots)" #[item]="data">
+        <slot :name="item" v-bind="data || {}" />
       </template>
     </DrawerFooter>
   </Drawer>
 </template>
 <script lang="ts">
-  import type { DrawerInstance, DrawerProps } from './typing';
-  import type { CSSProperties } from 'vue';
   import {
-    defineComponent,
-    ref,
     computed,
-    watch,
-    unref,
-    nextTick,
-    toRaw,
+    defineComponent,
     getCurrentInstance,
+    nextTick,
+    ref,
+    toRaw,
+    unref,
+    watch,
   } from 'vue';
   import { Drawer } from 'ant-design-vue';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { isFunction, isNumber } from '@ent-core/utils/is';
   import { deepMerge } from '@ent-core/utils';
-  import DrawerFooter from './components/drawer-footer.vue';
-  import DrawerHeader from './components/drawer-header.vue';
   import { EntScrollContainer } from '@ent-core/components/container';
-  import { basicProps } from './props';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
-  import { type Recordable, Nullable } from '@ent-core/types';
+  import { basicProps } from './props';
+  import DrawerHeader from './components/drawer-header.vue';
+  import DrawerFooter from './components/drawer-footer.vue';
+  import type { Nullable, Recordable } from '@ent-core/types';
+  import type { CSSProperties } from 'vue';
+  import type { DrawerInstance, DrawerProps } from './typing';
   export default defineComponent({
     name: 'EntDrawer',
     components: { Drawer, EntScrollContainer, DrawerFooter, DrawerHeader },
@@ -69,7 +69,7 @@
       const { prefixVar, prefixCls } = useDesign('basic-drawer');
 
       const drawerInstance: DrawerInstance = {
-        setDrawerProps: setDrawerProps,
+        setDrawerProps,
         emitVisible: undefined,
       };
 

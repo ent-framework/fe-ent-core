@@ -1,35 +1,35 @@
 <template>
-  <div :class="prefixCls" :style="getStyle" v-if="showFooter || $slots.footer">
+  <div v-if="showFooter || $slots.footer" :class="prefixCls" :style="getStyle">
     <template v-if="!$slots.footer">
-      <slot name="insertFooter"></slot>
-      <a-button v-bind="cancelButtonProps" @click="handleClose" class="mr-2" v-if="showCancelBtn">
+      <slot name="insertFooter" />
+      <a-button v-if="showCancelBtn" v-bind="cancelButtonProps" class="mr-2" @click="handleClose">
         {{ cancelText }}
       </a-button>
-      <slot name="centerFooter"></slot>
+      <slot name="centerFooter" />
       <a-button
+        v-if="showOkBtn"
         :type="okType"
-        @click="handleOk"
         v-bind="okButtonProps"
         class="mr-2"
         :loading="confirmLoading"
-        v-if="showOkBtn"
+        @click="handleOk"
       >
         {{ okText }}
       </a-button>
-      <slot name="appendFooter"></slot>
+      <slot name="appendFooter" />
     </template>
 
     <template v-else>
-      <slot name="footer"></slot>
+      <slot name="footer" />
     </template>
   </div>
 </template>
 <script lang="ts">
-  import type { CSSProperties } from 'vue';
-  import { defineComponent, computed } from 'vue';
+  import { computed, defineComponent } from 'vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { footerProps } from '../props';
+  import type { CSSProperties } from 'vue';
   export default defineComponent({
     name: 'BasicDrawerFooter',
     props: {

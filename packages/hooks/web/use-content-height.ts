@@ -1,9 +1,10 @@
-import { ComputedRef, isRef, nextTick, Ref, ref, unref, watch } from 'vue';
+import { isRef, nextTick, ref, unref, watch } from 'vue';
 import { onMountedOrActivated } from '@ent-core/hooks/core/on-mounted-or-activated';
 import { useWindowSizeFn } from '@ent-core/hooks/event/use-window-size-fn';
-import { useLayoutHeight } from './use-content-view-height';
 import { getViewportOffset } from '@ent-core/utils/dom-utils';
 import { isNumber, isString } from '@ent-core/utils/is';
+import { useLayoutHeight } from './use-content-view-height';
+import type { ComputedRef, Ref } from 'vue';
 import type { Nullable } from '@ent-core/types';
 
 export interface CompensationHeight {
@@ -28,7 +29,7 @@ type Upward = number | string | null | undefined;
  * @returns 响应式高度
  */
 export function useContentHeight(
-  flag: ComputedRef<Boolean>,
+  flag: ComputedRef<boolean>,
   anchorRef: Ref,
   subtractHeightRefs: Ref[],
   substractSpaceRefs: Ref[],

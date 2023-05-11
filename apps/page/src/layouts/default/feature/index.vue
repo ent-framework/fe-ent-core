@@ -1,10 +1,8 @@
 <script lang="ts">
-  import { defineComponent, computed, unref } from 'vue';
+  import { computed, defineComponent, unref } from 'vue';
   import { BackTop } from 'ant-design-vue';
 
-  import { useRootSetting } from 'fe-ent-core/lib/hooks';
-  import { useHeaderSetting } from 'fe-ent-core/lib/hooks';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useDesign, useHeaderSetting, useRootSetting } from 'fe-ent-core/lib/hooks';
   import { useUserStoreWithOut } from 'fe-ent-core/lib/store';
 
   import { SettingButtonPositionEnum } from 'fe-ent-core/lib/logics';

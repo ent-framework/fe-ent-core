@@ -1,13 +1,14 @@
 <template>
-  <EntTitle :class="prefixCls" v-if="getTitle" :helpMessage="helpMessage">
+  <EntTitle v-if="getTitle" :class="prefixCls" :help-message="helpMessage">
     {{ getTitle }}
   </EntTitle>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, PropType } from 'vue';
+  import { computed, defineComponent } from 'vue';
   import { EntTitle } from '@ent-core/components/basic';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { isFunction } from '@ent-core/utils/is';
+  import type { PropType } from 'vue';
   import type { Recordable } from '@ent-core/types';
 
   export default defineComponent({

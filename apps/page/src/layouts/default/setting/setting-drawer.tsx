@@ -1,29 +1,29 @@
-import { defineComponent, computed, unref } from 'vue';
-import { EntDrawer } from 'fe-ent-core/lib/components';
+import { computed, defineComponent, unref } from 'vue';
+import { EntAppDarkModeToggle, EntDrawer } from 'fe-ent-core/lib/components';
 import { Divider } from 'ant-design-vue';
-import { TypePicker, SettingFooter, SwitchItem, SelectItem, InputNumberItem } from './components';
-
-import { EntAppDarkModeToggle } from 'fe-ent-core/lib/components';
 
 import { MenuTypeEnum, TriggerEnum } from 'fe-ent-core/lib/logics';
 
-import { useRootSetting } from 'fe-ent-core/lib/hooks';
-import { useMenuSetting } from 'fe-ent-core/lib/hooks';
-import { useHeaderSetting } from 'fe-ent-core/lib/hooks';
-import { useMultipleTabSetting } from 'fe-ent-core/lib/hooks';
-import { useTransitionSetting } from 'fe-ent-core/lib/hooks';
-import { useI18n } from 'fe-ent-core/lib/hooks';
+import {
+  useHeaderSetting,
+  useI18n,
+  useMenuSetting,
+  useMultipleTabSetting,
+  useRootSetting,
+  useTransitionSetting,
+} from 'fe-ent-core/lib/hooks';
+import { InputNumberItem, SelectItem, SettingFooter, SwitchItem, TypePicker } from './components';
 
 import { baseHandler } from './handler';
 
 import {
   HandlerEnum,
   contentModeOptions,
-  topMenuAlignOptions,
   getMenuTriggerOptions,
-  routerTransitionOptions,
   menuTypeList,
   mixSidebarTriggerOptions,
+  routerTransitionOptions,
+  topMenuAlignOptions,
 } from './enum';
 
 export default defineComponent({
@@ -210,7 +210,7 @@ export default defineComponent({
             event={HandlerEnum.LOCK_TIME}
             defaultValue={unref(getLockTime)}
             formatter={(value: string) => {
-              return parseInt(value) === 0
+              return Number.parseInt(value) === 0
                 ? `0(${t('layout.setting.notAutoScreenLock')})`
                 : `${value}${t('layout.setting.minute')}`;
             }}
@@ -223,7 +223,7 @@ export default defineComponent({
             event={HandlerEnum.MENU_WIDTH}
             disabled={!unref(getShowMenuRef)}
             defaultValue={unref(getMenuWidth)}
-            formatter={(value: string) => `${parseInt(value)}px`}
+            formatter={(value: string) => `${Number.parseInt(value)}px`}
           />
         </>
       );

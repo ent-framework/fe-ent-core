@@ -1,5 +1,3 @@
-import type { HeaderSetting } from '@ent-core/logics/types/config';
-
 import { computed, unref } from 'vue';
 
 import { useAppStore } from '@ent-core/store/modules/app';
@@ -8,6 +6,7 @@ import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
 import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
 import { useFullContent } from '@ent-core/hooks/web/use-full-content';
 import { MenuModeEnum } from '@ent-core/logics/enums/menu-enum';
+import type { HeaderSetting } from '@ent-core/logics/types/config';
 
 export function useHeaderSetting() {
   const { getFullContent } = useFullContent();

@@ -1,5 +1,5 @@
 import { isString } from 'fe-ent-core/lib/utils';
-import { RenderQrCodeParams, LogoType } from './typing';
+import type { LogoType, RenderQrCodeParams } from './typing';
 export const drawLogo = ({ canvas, logo }: RenderQrCodeParams) => {
   if (!logo) {
     return new Promise((resolve) => {

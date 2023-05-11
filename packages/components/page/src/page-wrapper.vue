@@ -1,42 +1,39 @@
 <template>
-  <div :class="getClass" ref="wrapperRef">
+  <div ref="wrapperRef" :class="getClass">
     <PageHeader
-      :ghost="ghost"
-      :title="title"
+      v-if="content || $slots.headerContent || title || getHeaderSlots.length"
       v-bind="omit($attrs, 'class')"
       ref="headerRef"
-      v-if="content || $slots.headerContent || title || getHeaderSlots.length"
+      :ghost="ghost"
+      :title="title"
     >
       <template #default>
         <template v-if="content">
           {{ content }}
         </template>
-        <slot name="headerContent" v-else></slot>
+        <slot v-else name="headerContent" />
       </template>
-      <template #[item]="data" v-for="item in getHeaderSlots">
-        <slot :name="item" v-bind="data || {}"></slot>
+      <template v-for="item in getHeaderSlots" #[item]="data">
+        <slot :name="item" v-bind="data || {}" />
       </template>
     </PageHeader>
 
-    <div class="overflow-hidden" :class="getContentClass" :style="getContentStyle" ref="contentRef">
-      <slot></slot>
+    <div ref="contentRef" class="overflow-hidden" :class="getContentClass" :style="getContentStyle">
+      <slot />
     </div>
 
     <PageFooter v-if="getShowFooter" ref="footerRef">
       <template #left>
-        <slot name="leftFooter"></slot>
+        <slot name="leftFooter" />
       </template>
       <template #right>
-        <slot name="rightFooter"></slot>
+        <slot name="rightFooter" />
       </template>
     </PageFooter>
   </div>
 </template>
 <script lang="ts">
-  import { CSSProperties, PropType, provide } from 'vue';
-
-  import { defineComponent, computed, watch, ref, unref } from 'vue';
-  import PageFooter from './page-footer.vue';
+  import { computed, defineComponent, provide, ref, unref, watch } from 'vue';
 
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { propTypes } from '@ent-core/utils/prop-types';
@@ -44,6 +41,8 @@
   import { PageHeader } from 'ant-design-vue';
   import { useContentHeight } from '@ent-core/hooks/web/use-content-height';
   import { PageWrapperFixedHeightKey } from '../constant';
+  import PageFooter from './page-footer.vue';
+  import type { CSSProperties, PropType } from 'vue';
 
   export default defineComponent({
     name: 'EntPageWrapper',

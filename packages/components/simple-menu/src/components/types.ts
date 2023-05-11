@@ -1,5 +1,5 @@
-import { Ref } from 'vue';
-import { Fn } from '@ent-core/types';
+import type { Ref } from 'vue';
+import type { Fn } from '@ent-core/types';
 
 export interface Props {
   theme: string;

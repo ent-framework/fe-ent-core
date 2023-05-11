@@ -1,11 +1,10 @@
-import { toRaw, ref, nextTick } from 'vue';
-import type { RouteLocationNormalized } from 'vue-router';
-import { useDesign } from 'fe-ent-core/lib/hooks';
-import { useSortable } from 'fe-ent-core/lib/hooks';
+import { nextTick, ref, toRaw } from 'vue';
+import { useDesign, useSortable } from 'fe-ent-core/lib/hooks';
 import { useMultipleTabStore } from 'fe-ent-core/lib/store';
 import { isNullAndUnDef } from 'fe-ent-core/lib/utils';
 import { defaultProjectSetting } from 'fe-ent-core/lib/logics';
 import { useRouter } from 'vue-router';
+import type { RouteLocationNormalized } from 'vue-router';
 
 export function initAffixTabs(): string[] {
   const affixList = ref<RouteLocationNormalized[]>([]);

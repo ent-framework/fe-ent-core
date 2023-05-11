@@ -1,11 +1,7 @@
-import type { AppRouteRecordRaw, Menu, MenuModule } from '@ent-core/router/types';
-
+import { toRaw } from 'vue';
+import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { defineStore } from 'pinia';
 import { store } from '@ent-core/store/pinia';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
-import { useUserStore } from './user';
-import { useAppStoreWithOut } from './app';
-import { toRaw } from 'vue';
 import {
   backendRouteFilter,
   flatMultiLevelRoutes,
@@ -21,6 +17,9 @@ import { userBridge } from '@ent-core/logics/bridge';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { PageEnum } from '@ent-core/logics/enums/page-enum';
 import { entRouter } from '@ent-core/router/base';
+import { useAppStoreWithOut } from './app';
+import { useUserStore } from './user';
+import type { AppRouteRecordRaw, Menu, MenuModule } from '@ent-core/router/types';
 
 export interface PermissionState {
   // Permission code list
@@ -92,7 +91,7 @@ export const usePermissionStore = defineStore({
     },
 
     setLastBuildMenuTime() {
-      this.lastBuildMenuTime = new Date().getTime();
+      this.lastBuildMenuTime = Date.now();
     },
 
     setDynamicAddedRoute(added: boolean) {
@@ -138,7 +137,7 @@ export const usePermissionStore = defineStore({
         if (!routes || routes.length === 0) return;
         let homePath: string = userStore.getUserInfo.homePath || PageEnum.BASE_HOME;
         function patcher(routes: AppRouteRecordRaw[], parentPath = '') {
-          if (parentPath) parentPath = parentPath + '/';
+          if (parentPath) parentPath = `${parentPath}/`;
           routes.forEach((route: AppRouteRecordRaw) => {
             const { path, children, redirect } = route;
             const currentPath = path.startsWith('/') ? path : parentPath + path;
@@ -155,7 +154,7 @@ export const usePermissionStore = defineStore({
         }
         try {
           patcher(routes);
-        } catch (e) {
+        } catch {
           // 已处理完毕跳出循环
         }
         return;

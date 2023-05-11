@@ -1,11 +1,11 @@
 <script lang="tsx">
-  import type { MoveData, DragVerifyActionType } from './typing';
-  import { defineComponent, computed, unref, reactive, watch, ref } from 'vue';
+  import { computed, defineComponent, reactive, ref, unref, watch } from 'vue';
   import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
-  import BasicDragVerify from './drag-verify.vue';
   import { hackCss } from '@ent-core/utils/dom-utils';
-  import { rotateProps } from './props';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import BasicDragVerify from './drag-verify.vue';
+  import { rotateProps } from './props';
+  import type { DragVerifyActionType, MoveData } from './typing';
   import type { Nullable } from '@ent-core/types';
 
   export default defineComponent({
@@ -58,7 +58,7 @@
         return 1;
       });
       function handleStart() {
-        state.startTime = new Date().getTime();
+        state.startTime = Date.now();
       }
 
       function handleDragBarMove(data: MoveData) {
@@ -66,7 +66,9 @@
         const { imgWidth, height, maxDegree } = props;
         const { moveX } = data;
         const currentRotate = Math.ceil(
-          (moveX / (imgWidth! - parseInt(height as string))) * maxDegree! * unref(getFactorRef),
+          (moveX / (imgWidth! - Number.parseInt(height as string))) *
+            maxDegree! *
+            unref(getFactorRef),
         );
         state.currentRotate = currentRotate;
         state.imgStyle = hackCss('transform', `rotateZ(${state.randomRotate - currentRotate}deg)`);
@@ -98,7 +100,7 @@
       }
       function checkPass() {
         state.isPassing = true;
-        state.endTime = new Date().getTime();
+        state.endTime = Date.now();
       }
 
       function resume() {
@@ -131,7 +133,7 @@
               <img
                 src={src}
                 onLoad={handleImgOnLoad}
-                width={parseInt(props.width as string)}
+                width={Number.parseInt(props.width as string)}
                 class={imgCls}
                 style={state.imgStyle}
                 onClick={() => {

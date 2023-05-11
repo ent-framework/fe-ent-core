@@ -1,19 +1,19 @@
 <template>
   <EntTitle v-if="!isDetail" :class="prefixCls">
-    <slot name="title"></slot>
+    <slot name="title" />
     {{ !$slots.title ? title : '' }}
   </EntTitle>
 
-  <div :class="[prefixCls, `${prefixCls}--detail`]" v-else>
+  <div v-else :class="[prefixCls, `${prefixCls}--detail`]">
     <span :class="`${prefixCls}__twrap`">
-      <span @click="handleClose" v-if="showDetailBack">
+      <span v-if="showDetailBack" @click="handleClose">
         <ArrowLeftOutlined :class="`${prefixCls}__back`" />
       </span>
       <span v-if="title">{{ title }}</span>
     </span>
 
     <span :class="`${prefixCls}__toolbar`">
-      <slot name="titleToolbar"></slot>
+      <slot name="titleToolbar" />
     </span>
   </div>
 </template>

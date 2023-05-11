@@ -5,9 +5,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue';
-  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue';
+  import { useDesign, useMenuSetting } from 'fe-ent-core/lib/hooks';
   import { propTypes } from 'fe-ent-core/lib/utils';
 
   export default defineComponent({

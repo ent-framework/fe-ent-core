@@ -9,43 +9,35 @@
           color="#d6d6d6"
         />
       </div>
-      <img :src="sourceValue" v-if="sourceValue" alt="avatar" />
+      <img v-if="sourceValue" :src="sourceValue" alt="avatar" />
     </div>
     <a-button
-      :class="`${prefixCls}-upload-btn`"
-      @click="openModal"
       v-if="showBtn"
+      :class="`${prefixCls}-upload-btn`"
       v-bind="btnProps"
+      @click="openModal"
     >
       {{ btnText ? btnText : t('component.cropper.selectImage') }}
     </a-button>
 
     <CopperModal
+      :upload-api="uploadApi"
+      :src="sourceValue"
       @register="register"
       @upload-success="handleUploadSuccess"
-      :uploadApi="uploadApi"
-      :src="sourceValue"
     />
   </div>
 </template>
 <script lang="ts">
-  import {
-    defineComponent,
-    computed,
-    CSSProperties,
-    unref,
-    ref,
-    watchEffect,
-    watch,
-    PropType,
-  } from 'vue';
-  import CopperModal from './copper-modal.vue';
+  import { computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useModal } from '@ent-core/components/modal';
   import { useMessage } from '@ent-core/hooks/web/use-message';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import type { ButtonProps } from '@ent-core/components/button';
   import Icon from '@ent-core/components/icon';
+  import CopperModal from './copper-modal.vue';
+  import type { ButtonProps } from '@ent-core/components/button';
+  import type { CSSProperties, PropType } from 'vue';
 
   const props = {
     width: { type: [String, Number], default: '200px' },
@@ -70,9 +62,11 @@
 
       const getClass = computed(() => [prefixCls]);
 
-      const getWidth = computed(() => `${props.width}`.replace(/px/, '') + 'px');
+      const getWidth = computed(() => `${`${props.width}`.replace(/px/, '')}px`);
 
-      const getIconWidth = computed(() => parseInt(`${props.width}`.replace(/px/, '')) / 2 + 'px');
+      const getIconWidth = computed(
+        () => `${Number.parseInt(`${props.width}`.replace(/px/, '')) / 2}px`,
+      );
 
       const getStyle = computed((): CSSProperties => ({ width: unref(getWidth) }));
 

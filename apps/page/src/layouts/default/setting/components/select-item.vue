@@ -4,21 +4,22 @@
     <Select
       v-bind="getBindValue"
       :class="`${prefixCls}-select`"
-      @change="handleChange"
       :disabled="disabled"
       size="small"
       :options="options"
+      @change="handleChange"
     />
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, PropType, computed } from 'vue';
+  import { computed, defineComponent } from 'vue';
 
   import { Select } from 'ant-design-vue';
   import { useDesign } from 'fe-ent-core/lib/hooks';
   import { baseHandler } from '../handler';
-  import { HandlerEnum } from '../enum';
-  import { ChangeEvent } from 'fe-ent-core/lib/types';
+  import type { ChangeEvent } from 'fe-ent-core/lib/types';
+  import type { HandlerEnum } from '../enum';
+  import type { PropType } from 'vue';
   type LabelValueOptions = {
     label: string;
     value: any;

@@ -1,14 +1,14 @@
-import type { BasicColumn, BasicTableProps, CellFormat, GetColumnsParams } from '../types/table';
-import type { PaginationProps } from '../types/pagination';
-import type { ComputedRef } from 'vue';
-import { computed, Ref, ref, reactive, toRaw, unref, watch } from 'vue';
-import { renderEditCell } from '../components/editable';
+import { computed, reactive, ref, toRaw, unref, watch } from 'vue';
 import { usePermission } from '@ent-core/hooks/web/use-permission';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { isArray, isBoolean, isFunction, isMap, isString } from '@ent-core/utils/is';
 import { cloneDeep, isEqual } from 'lodash-es';
 import { formatToDate } from '@ent-core/utils/date-util';
+import { renderEditCell } from '../components/editable';
 import { ACTION_COLUMN_FLAG, DEFAULT_ALIGN, INDEX_COLUMN_FLAG, PAGE_SIZE } from '../const';
+import type { ComputedRef, Ref } from 'vue';
+import type { PaginationProps } from '../types/pagination';
+import type { BasicColumn, BasicTableProps, CellFormat, GetColumnsParams } from '../types/table';
 import type { Recordable } from '@ent-core/types';
 
 function handleItem(item: BasicColumn, ellipsis: boolean) {
@@ -324,7 +324,7 @@ export function formatCell(text: string, format: CellFormat, record: Recordable,
     if (isMap(format)) {
       return format.get(text);
     }
-  } catch (error) {
+  } catch {
     return text;
   }
 }

@@ -1,7 +1,6 @@
-import type { AppRouteRecordRaw } from 'fe-ent-core/lib/router';
-import Login from './login.vue';
-
 import { t } from 'fe-ent-core/lib/hooks';
+import Login from './login.vue';
+import type { AppRouteRecordRaw } from 'fe-ent-core/lib/router';
 
 import './index.less';
 

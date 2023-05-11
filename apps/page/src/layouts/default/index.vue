@@ -1,7 +1,7 @@
 <template>
   <Layout :class="prefixCls" v-bind="lockEvents">
     <LayoutFeatures />
-    <LayoutHeader fixed v-if="getShowFullHeaderRef" />
+    <LayoutHeader v-if="getShowFullHeaderRef" fixed />
     <Layout :class="[layoutClass]">
       <LayoutSideBar v-if="getShowSidebar || getIsMobile" />
       <Layout :class="`${prefixCls}-main`">
@@ -14,20 +14,21 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, computed, unref } from 'vue';
+  import { computed, defineComponent, unref } from 'vue';
   import { Layout } from 'ant-design-vue';
 
-  import LayoutHeader from './header/index.vue';
-  import LayoutContent from './content/index.vue';
-  import LayoutSideBar from './sider/index.vue';
+  import {
+    useAppInject,
+    useDesign,
+    useHeaderSetting,
+    useLockPage,
+    useMenuSetting,
+  } from 'fe-ent-core/lib/hooks';
+
   import LayoutMultipleHeader from './header/multiple-header.vue';
-
-  import { useHeaderSetting } from 'fe-ent-core/lib/hooks';
-  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useLockPage } from 'fe-ent-core/lib/hooks';
-
-  import { useAppInject } from 'fe-ent-core/lib/hooks';
+  import LayoutSideBar from './sider/index.vue';
+  import LayoutContent from './content/index.vue';
+  import LayoutHeader from './header/index.vue';
   import LayoutFeatures from './feature/index.vue';
   import LayoutFooter from './footer/index.vue';
 
@@ -52,7 +53,7 @@
       const lockEvents = useLockPage();
 
       const layoutClass = computed(() => {
-        let cls: string[] = ['ant-layout'];
+        const cls: string[] = ['ant-layout'];
         if (unref(getIsMixSidebar) || unref(getShowMenu)) {
           cls.push('ant-layout-has-sider');
         }

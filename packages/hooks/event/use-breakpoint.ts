@@ -1,6 +1,7 @@
-import { ref, computed, ComputedRef, unref } from 'vue';
+import { computed, ref, unref } from 'vue';
 import { useEventListener } from '@ent-core/hooks/event/use-event-listener';
-import { screenMap, sizeEnum, screenEnum } from '@ent-core/logics/enums/breakpoint-enum';
+import { screenEnum, screenMap, sizeEnum } from '@ent-core/logics/enums/breakpoint-enum';
+import type { ComputedRef } from 'vue';
 
 let globalScreenRef: ComputedRef<sizeEnum | undefined>;
 let globalWidthRef: ComputedRef<number>;

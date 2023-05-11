@@ -1,10 +1,8 @@
-import type { Menu } from 'fe-ent-core/lib/router';
-import type { Ref } from 'vue';
-import { watch, unref, ref, computed } from 'vue';
+import { computed, ref, unref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { MenuSplitTyeEnum } from 'fe-ent-core/lib/logics';
 import { useThrottleFn } from '@vueuse/core';
-import { useMenuSetting } from 'fe-ent-core/lib/hooks';
+import { useAppInject, useMenuSetting } from 'fe-ent-core/lib/hooks';
 import {
   getChildrenMenus,
   getCurrentParentPath,
@@ -12,7 +10,8 @@ import {
   getShallowMenus,
 } from 'fe-ent-core/lib/router';
 import { usePermissionStore } from 'fe-ent-core/lib/store';
-import { useAppInject } from 'fe-ent-core/lib/hooks';
+import type { Ref } from 'vue';
+import type { Menu } from 'fe-ent-core/lib/router';
 
 export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
   // Menu array

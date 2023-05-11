@@ -1,5 +1,5 @@
-import { ComponentType } from '../../types/component-type';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import type { ComponentType } from '../../types/component-type';
 
 /**
  * @description: 生成placeholder

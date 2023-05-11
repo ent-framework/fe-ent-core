@@ -1,5 +1,5 @@
-import { BasicColumn } from '@ent-core/components';
 import { isBoolean, isFunction } from '@ent-core/utils';
+import type { BasicColumn } from '@ent-core/components';
 
 export function isIfShow(column: BasicColumn): boolean {
   const ifShow = column.ifShow;

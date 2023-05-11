@@ -1,7 +1,7 @@
-import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { httpBridge } from '@ent-core/logics/bridge';
+import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
 // import router from '@ent-core/router';
 // import { PageEnum } from '@ent-core/logics/enums/page-enum';
 

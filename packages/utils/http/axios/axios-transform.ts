@@ -2,9 +2,9 @@
  * Data processing class, can be configured according to the project
  */
 import type {
+  AxiosError,
   AxiosRequestConfig,
   AxiosResponse,
-  AxiosError,
   InternalAxiosRequestConfig,
 } from 'axios';
 import type { RequestOptions, Result } from '@ent-core/logics/types/axios';

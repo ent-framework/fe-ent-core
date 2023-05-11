@@ -57,7 +57,7 @@ export class Memory<T = any, V = any> {
     if (!expires) {
       return value;
     }
-    const now = new Date().getTime();
+    const now = Date.now();
     item.time = now + this.alive;
     item.timeoutId = setTimeout(
       () => {
@@ -83,7 +83,7 @@ export class Memory<T = any, V = any> {
       const k = key as any as keyof T;
       const item = cache[k];
       if (item && item.time) {
-        const now = new Date().getTime();
+        const now = Date.now();
         const expire = item.time;
         if (expire > now) {
           this.set(k, item.value, expire);

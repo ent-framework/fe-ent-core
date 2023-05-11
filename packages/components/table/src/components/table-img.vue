@@ -1,11 +1,11 @@
 <template>
   <div
+    v-if="imgList && imgList.length"
     :class="prefixCls"
     class="flex items-center mx-auto"
-    v-if="imgList && imgList.length"
     :style="getWrapStyle"
   >
-    <Badge :count="!showBadge || imgList.length == 1 ? 0 : imgList.length" v-if="simpleShow">
+    <Badge v-if="simpleShow" :count="!showBadge || imgList.length == 1 ? 0 : imgList.length">
       <div class="img-div">
         <PreviewGroup>
           <template v-for="(img, index) in imgList" :key="img">
@@ -32,11 +32,11 @@
   </div>
 </template>
 <script lang="ts">
-  import type { CSSProperties } from 'vue';
-  import { defineComponent, computed } from 'vue';
+  import { computed, defineComponent } from 'vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { Image, Badge } from 'ant-design-vue';
+  import { Badge, Image } from 'ant-design-vue';
   import { propTypes } from '@ent-core/utils/prop-types';
+  import type { CSSProperties } from 'vue';
 
   export default defineComponent({
     name: 'EntTableImg',

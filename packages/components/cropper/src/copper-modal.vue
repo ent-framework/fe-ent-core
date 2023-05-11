@@ -1,12 +1,12 @@
 <template>
   <EntModal
     v-bind="$attrs"
-    @register="register"
     :title="t('component.cropper.modalTitle')"
     width="800px"
-    :canFullscreen="false"
+    :can-fullscreen="false"
+    :ok-text="t('component.cropper.okText')"
+    @register="register"
     @ok="handleOk"
-    :okText="t('component.cropper.okText')"
   >
     <div :class="prefixCls">
       <div :class="`${prefixCls}-left`">
@@ -22,16 +22,16 @@
         </div>
 
         <div :class="`${prefixCls}-toolbar`">
-          <Upload :fileList="[]" accept="image/*" :beforeUpload="handleBeforeUpload">
+          <Upload :file-list="[]" accept="image/*" :before-upload="handleBeforeUpload">
             <Tooltip :title="t('component.cropper.selectImage')" placement="bottom">
-              <a-button size="small" preIcon="ant-design:upload-outlined" type="primary" />
+              <a-button size="small" pre-icon="ant-design:upload-outlined" type="primary" />
             </Tooltip>
           </Upload>
           <Space>
             <Tooltip :title="t('component.cropper.btn_reset')" placement="bottom">
               <a-button
                 type="primary"
-                preIcon="ant-design:reload-outlined"
+                pre-icon="ant-design:reload-outlined"
                 size="small"
                 :disabled="!src"
                 @click="handlerToolbar('reset')"
@@ -40,7 +40,7 @@
             <Tooltip :title="t('component.cropper.btn_rotate_left')" placement="bottom">
               <a-button
                 type="primary"
-                preIcon="ant-design:rotate-left-outlined"
+                pre-icon="ant-design:rotate-left-outlined"
                 size="small"
                 :disabled="!src"
                 @click="handlerToolbar('rotate', -45)"
@@ -49,7 +49,7 @@
             <Tooltip :title="t('component.cropper.btn_rotate_right')" placement="bottom">
               <a-button
                 type="primary"
-                preIcon="ant-design:rotate-right-outlined"
+                pre-icon="ant-design:rotate-right-outlined"
                 size="small"
                 :disabled="!src"
                 @click="handlerToolbar('rotate', 45)"
@@ -58,7 +58,7 @@
             <Tooltip :title="t('component.cropper.btn_scale_x')" placement="bottom">
               <a-button
                 type="primary"
-                preIcon="vaadin:arrows-long-h"
+                pre-icon="vaadin:arrows-long-h"
                 size="small"
                 :disabled="!src"
                 @click="handlerToolbar('scaleX')"
@@ -67,7 +67,7 @@
             <Tooltip :title="t('component.cropper.btn_scale_y')" placement="bottom">
               <a-button
                 type="primary"
-                preIcon="vaadin:arrows-long-v"
+                pre-icon="vaadin:arrows-long-v"
                 size="small"
                 :disabled="!src"
                 @click="handlerToolbar('scaleY')"
@@ -76,7 +76,7 @@
             <Tooltip :title="t('component.cropper.btn_zoom_in')" placement="bottom">
               <a-button
                 type="primary"
-                preIcon="ant-design:zoom-in-outlined"
+                pre-icon="ant-design:zoom-in-outlined"
                 size="small"
                 :disabled="!src"
                 @click="handlerToolbar('zoom', 0.1)"
@@ -85,7 +85,7 @@
             <Tooltip :title="t('component.cropper.btn_zoom_out')" placement="bottom">
               <a-button
                 type="primary"
-                preIcon="ant-design:zoom-out-outlined"
+                pre-icon="ant-design:zoom-out-outlined"
                 size="small"
                 :disabled="!src"
                 @click="handlerToolbar('zoom', -0.1)"
@@ -96,7 +96,7 @@
       </div>
       <div :class="`${prefixCls}-right`">
         <div :class="`${prefixCls}-preview`">
-          <img :src="previewSource" v-if="previewSource" :alt="t('component.cropper.preview')" />
+          <img v-if="previewSource" :src="previewSource" :alt="t('component.cropper.preview')" />
         </div>
         <template v-if="previewSource">
           <div :class="`${prefixCls}-group`">
@@ -111,16 +111,16 @@
   </EntModal>
 </template>
 <script lang="ts">
-  import type { CropendResult, Cropper } from './typing';
-
-  import { defineComponent, ref, PropType } from 'vue';
-  import CropperImage from './cropper.vue';
-  import { Space, Upload, Avatar, Tooltip } from 'ant-design-vue';
+  import { defineComponent, ref } from 'vue';
+  import { Avatar, Space, Tooltip, Upload } from 'ant-design-vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { EntModal, useModalInner } from '@ent-core/components/modal';
   import { dataURLtoBlob } from '@ent-core/utils/file/base64-convert';
   import { isFunction } from '@ent-core/utils/is';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import CropperImage from './cropper.vue';
+  import type { PropType } from 'vue';
+  import type { CropendResult, Cropper } from './typing';
 
   type apiFunParams = { file: Blob; name: string; filename: string };
 

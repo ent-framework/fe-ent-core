@@ -1,9 +1,9 @@
 <template>
   <Button v-bind="getBindValue" :class="getButtonClass" @click="onClick">
     <template #default="data">
-      <Icon :icon="preIcon" v-if="preIcon" :size="iconSize" />
-      <slot v-bind="data || {}"></slot>
-      <Icon :icon="postIcon" v-if="postIcon" :size="iconSize" />
+      <Icon v-if="preIcon" :icon="preIcon" :size="iconSize" />
+      <slot v-bind="data || {}" />
+      <Icon v-if="postIcon" :icon="postIcon" :size="iconSize" />
     </template>
   </Button>
 </template>
@@ -12,8 +12,8 @@
   import { computed, defineComponent, unref } from 'vue';
   import { Button } from 'ant-design-vue';
   import Icon from '@ent-core/components/icon/src/icon.vue';
-  import { buttonProps } from './props';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
+  import { buttonProps } from './props';
 
   export default defineComponent({
     name: 'AButton',

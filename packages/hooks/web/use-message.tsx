@@ -1,11 +1,10 @@
-import type { ModalFunc, ModalFuncProps } from 'ant-design-vue/lib/modal/Modal';
+import { message as Message, Modal, notification } from 'ant-design-vue';
+import { CheckCircleFilled, CloseCircleFilled, InfoCircleFilled } from '@ant-design/icons-vue';
 
-import { Modal, message as Message, notification } from 'ant-design-vue';
-import { InfoCircleFilled, CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons-vue';
-
-import type { NotificationArgsProps, ConfigProps } from 'ant-design-vue/lib/notification';
-import { useI18n } from './use-i18n';
 import { isString } from '@ent-core/utils/is';
+import { useI18n } from './use-i18n';
+import type { ConfigProps, NotificationArgsProps } from 'ant-design-vue/lib/notification';
+import type { ModalFunc, ModalFuncProps } from 'ant-design-vue/lib/modal/Modal';
 
 export interface NotifyApi {
   info(config: NotificationArgsProps): void;
@@ -14,7 +13,7 @@ export interface NotifyApi {
   warn(config: NotificationArgsProps): void;
   warning(config: NotificationArgsProps): void;
   open(args: NotificationArgsProps): void;
-  close(key: String): void;
+  close(key: string): void;
   config(options: ConfigProps): void;
   destroy(): void;
 }
@@ -118,7 +117,7 @@ export function useMessage() {
   return {
     createMessage: Message,
     notification: notification as NotifyApi,
-    createConfirm: createConfirm,
+    createConfirm,
     createSuccessModal,
     createErrorModal,
     createInfoModal,

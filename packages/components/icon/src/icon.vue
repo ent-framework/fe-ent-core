@@ -1,8 +1,8 @@
 <template>
   <SvgIcon
+    v-if="isSvgIcon"
     :size="size"
     :name="getSvgIcon"
-    v-if="isSvgIcon"
     :class="[$attrs.class, 'anticon']"
     :spin="spin"
   />
@@ -11,24 +11,15 @@
     ref="elRef"
     :class="[$attrs.class, 'app-iconify anticon', spin && 'app-iconify-spin']"
     :style="getWrapStyle"
-  ></span>
+  />
 </template>
 <script lang="ts">
-  import type { PropType } from 'vue';
-  import {
-    defineComponent,
-    ref,
-    watch,
-    onMounted,
-    nextTick,
-    unref,
-    computed,
-    CSSProperties,
-  } from 'vue';
-  import SvgIcon from './svg-icon.vue';
+  import { computed, defineComponent, nextTick, onMounted, ref, unref, watch } from 'vue';
   import Iconify from '@iconify/iconify';
   import { isString } from '@ent-core/utils/is';
   import { propTypes } from '@ent-core/utils/prop-types';
+  import SvgIcon from './svg-icon.vue';
+  import type { CSSProperties, PropType } from 'vue';
   import type { ElRef } from '@ent-core/types';
 
   const SVG_END_WITH_FLAG = '|svg';
@@ -53,7 +44,7 @@
 
       const isSvgIcon = computed(() => props.icon?.endsWith(SVG_END_WITH_FLAG));
       const getSvgIcon = computed(() => props.icon.replace(SVG_END_WITH_FLAG, ''));
-      const getIconRef = computed(() => `${props.prefix ? props.prefix + ':' : ''}${props.icon}`);
+      const getIconRef = computed(() => `${props.prefix ? `${props.prefix}:` : ''}${props.icon}`);
 
       const update = async () => {
         if (unref(isSvgIcon)) return;
@@ -82,12 +73,12 @@
         const { size, color } = props;
         let fs = size;
         if (isString(size)) {
-          fs = parseInt(size, 10);
+          fs = Number.parseInt(size, 10);
         }
 
         return {
           fontSize: `${fs}px`,
-          color: color,
+          color,
           display: 'inline-flex',
         };
       });

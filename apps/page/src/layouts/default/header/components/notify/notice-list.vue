@@ -6,7 +6,6 @@
           <template #title>
             <div class="title">
               <a-typography-paragraph
-                @click="handleTitleClick(item)"
                 style="width: 100%; margin-bottom: 0 !important"
                 :style="{ cursor: isTitleClickable ? 'pointer' : '' }"
                 :delete="!!item.titleDelete"
@@ -16,8 +15,9 @@
                     : false
                 "
                 :content="item.title"
+                @click="handleTitleClick(item)"
               />
-              <div class="extra" v-if="item.extra">
+              <div v-if="item.extra" class="extra">
                 <a-tag class="tag" :color="item.color">
                   {{ item.extra }}
                 </a-tag>
@@ -32,7 +32,7 @@
 
           <template #description>
             <div>
-              <div class="description" v-if="item.description">
+              <div v-if="item.description" class="description">
                 <a-typography-paragraph
                   style="width: 100%; margin-bottom: 0 !important"
                   :ellipsis="
@@ -54,11 +54,12 @@
   </a-list>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, PropType, ref, watch, unref } from 'vue';
-  import { ListItem } from './data';
+  import { computed, defineComponent, ref, unref, watch } from 'vue';
   import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { List, Avatar, Tag, Typography } from 'ant-design-vue';
+  import { Avatar, List, Tag, Typography } from 'ant-design-vue';
   import { isNumber } from 'fe-ent-core/lib/utils';
+  import type { ListItem } from './data';
+  import type { PropType } from 'vue';
   export default defineComponent({
     components: {
       [Avatar.name]: Avatar,
@@ -74,7 +75,7 @@
         default: () => [],
       },
       pageSize: {
-        type: [Boolean, Number] as PropType<Boolean | Number>,
+        type: [Boolean, Number] as PropType<boolean | number>,
         default: 5,
       },
       currentPage: {
@@ -100,7 +101,7 @@
       const getData = computed(() => {
         const { pageSize, list } = props;
         if (pageSize === false) return [];
-        let size = isNumber(pageSize) ? pageSize : 5;
+        const size = isNumber(pageSize) ? pageSize : 5;
         return list.slice(size * (unref(current) - 1), size * unref(current));
       });
       watch(

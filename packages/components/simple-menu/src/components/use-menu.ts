@@ -1,5 +1,5 @@
-import { computed, ComponentInternalInstance, unref } from 'vue';
-import type { CSSProperties } from 'vue';
+import { computed, unref } from 'vue';
+import type { CSSProperties, ComponentInternalInstance } from 'vue';
 
 export function useMenuItem(instance: ComponentInternalInstance | null) {
   const getParentMenu = computed(() => {
@@ -30,13 +30,13 @@ export function useMenuItem(instance: ComponentInternalInstance | null) {
         parent = parent.parent;
       }
     }
-    return { paddingLeft: padding + 'px' };
+    return { paddingLeft: `${padding}px` };
   });
 
   function findParentMenu(name: string[]) {
     let parent = instance?.parent;
     if (!parent) return null;
-    while (parent && name.indexOf(parent.type.name!) === -1) {
+    while (parent && !name.includes(parent.type.name!)) {
       parent = parent.parent;
     }
     return parent;

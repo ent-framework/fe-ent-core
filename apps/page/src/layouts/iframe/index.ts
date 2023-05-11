@@ -1,2 +1,2 @@
-import iframe_layout from './index.vue';
-export default iframe_layout;
+import iframeLayout from './index.vue';
+export default iframeLayout;

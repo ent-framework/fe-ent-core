@@ -1,17 +1,17 @@
-import type { UserInfo } from '@ent-core/logics/types/store';
-import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
+import { h } from 'vue';
 import { defineStore } from 'pinia';
 import { store } from '@ent-core/store/pinia';
-import { RoleEnum } from '@ent-core/logics/enums/role-enum';
 import { PageEnum } from '@ent-core/logics/enums/page-enum';
 import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '@ent-core/logics/enums/cache-enum';
 import { getAuthCache, setAuthCache } from '@ent-core/utils/auth';
-import { GetUserInfoModel, LoginParams } from '@ent-core/logics/model/user-model';
 import { userBridge } from '@ent-core/logics/bridge';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { isArray } from '@ent-core/utils/is';
-import { h } from 'vue';
+import type { GetUserInfoModel, LoginParams } from '@ent-core/logics/model/user-model';
+import type { RoleEnum } from '@ent-core/logics/enums/role-enum';
+import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
+import type { UserInfo } from '@ent-core/logics/types/store';
 import type { Nullable } from '@ent-core/types';
 
 export interface UserState {
@@ -64,7 +64,7 @@ export const useUserStore = defineStore({
     },
     setUserInfo(info: UserInfo | null) {
       this.userInfo = info;
-      this.lastUpdateTime = new Date().getTime();
+      this.lastUpdateTime = Date.now();
       setAuthCache(USER_INFO_KEY, info);
     },
     setSessionTimeout(flag: boolean) {

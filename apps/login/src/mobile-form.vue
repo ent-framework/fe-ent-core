@@ -1,26 +1,26 @@
 <template>
   <template v-if="getShow">
     <LoginFormTitle class="enter-x" />
-    <Form class="p-4 enter-x" :model="formData" :rules="getFormRules" ref="formRef">
+    <Form ref="formRef" class="p-4 enter-x" :model="formData" :rules="getFormRules">
       <FormItem name="mobile" class="enter-x">
         <Input
-          size="large"
           v-model:value="formData.mobile"
+          size="large"
           :placeholder="t('sys.login.mobile')"
           class="fix-auto-fill"
         />
       </FormItem>
       <FormItem name="sms" class="enter-x">
         <EntCountdownInput
+          v-model:value="formData.sms"
           size="large"
           class="fix-auto-fill"
-          v-model:value="formData.sms"
           :placeholder="t('sys.login.smsCode')"
         />
       </FormItem>
 
       <FormItem class="enter-x">
-        <Button type="primary" size="large" block @click="handleLogin" :loading="loading">
+        <Button type="primary" size="large" block :loading="loading" @click="handleLogin">
           {{ t('sys.login.loginButton') }}
         </Button>
         <Button size="large" block class="mt-4" @click="handleBackLogin">
@@ -31,12 +31,12 @@
   </template>
 </template>
 <script lang="ts" setup>
-  import { reactive, ref, computed, unref } from 'vue';
-  import { Form, Input, Button } from 'ant-design-vue';
+  import { computed, reactive, ref, unref } from 'vue';
+  import { Button, Form, Input } from 'ant-design-vue';
   import { EntCountdownInput } from 'fe-ent-core/lib/components';
-  import LoginFormTitle from './login-form-title.vue';
   import { useI18n } from 'fe-ent-core/lib/hooks';
-  import { useLoginState, useFormRules, useFormValid, LoginStateEnum } from './use-login';
+  import LoginFormTitle from './login-form-title.vue';
+  import { LoginStateEnum, useFormRules, useFormValid, useLoginState } from './use-login';
 
   const FormItem = Form.Item;
   const { t } = useI18n();

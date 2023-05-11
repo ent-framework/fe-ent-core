@@ -4,13 +4,13 @@
       <FramePage
         v-if="frame.meta.frameSrc && hasRenderFrame(frame.name)"
         v-show="showIframe(frame)"
-        :frameSrc="frame.meta.frameSrc"
+        :frame-src="frame.meta.frameSrc"
       />
     </template>
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, unref, computed } from 'vue';
+  import { computed, defineComponent, unref } from 'vue';
   import FramePage from '../../views/iframe/index.vue';
 
   import { useFrameKeepAlive } from './use-frame-keep-alive';

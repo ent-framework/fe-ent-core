@@ -1,14 +1,15 @@
-import type { BasicColumn, TableActionItem } from '@ent-core/components/table';
-import { FileItem, PreviewFileItem, UploadResultStatus } from './typing';
+import { Progress, Tag } from 'ant-design-vue';
+import TableAction from '@ent-core/components/table/src/components/table-action.vue';
+import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import ThumbUrl from './thumb-url.vue';
+import { UploadResultStatus } from './typing';
 import {
   // checkImgType,
   isImgTypeByName,
 } from './helper';
-import { Progress, Tag } from 'ant-design-vue';
-import TableAction from '@ent-core/components/table/src/components/table-action.vue';
-import ThumbUrl from './thumb-url.vue';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
-import { Fn } from '@ent-core/types';
+import type { Fn } from '@ent-core/types';
+import type { FileItem, PreviewFileItem } from './typing';
+import type { BasicColumn, TableActionItem } from '@ent-core/components/table';
 
 // 文件上传列表
 export function createTableColumns(): BasicColumn[] {
@@ -52,7 +53,7 @@ export function createTableColumns(): BasicColumn[] {
       title: t('component.upload.fileSize'),
       width: 100,
       customRender: ({ text = 0 }) => {
-        return text && (text / 1024).toFixed(2) + 'KB';
+        return text && `${(text / 1024).toFixed(2)}KB`;
       },
     },
     // {

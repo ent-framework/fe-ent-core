@@ -6,15 +6,15 @@
     <Popover
       placement="bottomLeft"
       trigger="click"
+      :overlay-class-name="`${prefixCls}__cloumn-list`"
+      :get-popup-container="getPopupContainer"
       @visible-change="handleVisibleChange"
-      :overlayClassName="`${prefixCls}__cloumn-list`"
-      :getPopupContainer="getPopupContainer"
     >
       <template #title>
         <div :class="`${prefixCls}__popover-title`">
           <Checkbox
-            :indeterminate="indeterminate"
             v-model:checked="checkAll"
+            :indeterminate="indeterminate"
             @change="onCheckAllChange"
           >
             {{ t('component.table.settingColumnShow') }}
@@ -26,8 +26,8 @@
 
           <Checkbox
             v-model:checked="checkSelect"
-            @change="handleSelectCheckChange"
             :disabled="!defaultRowSelection"
+            @change="handleSelectCheckChange"
           >
             {{ t('component.table.settingSelectColumnShow') }}
           </Checkbox>
@@ -40,9 +40,9 @@
 
       <template #content>
         <EntScrollContainer>
-          <CheckboxGroup v-model:value="checkedList" @change="onChange" ref="columnListRef">
+          <CheckboxGroup ref="columnListRef" v-model:value="checkedList" @change="onChange">
             <template v-for="item in plainOptions" :key="item.value">
-              <div :class="`${prefixCls}__check-item`" v-if="!('ifShow' in item && !item.ifShow)">
+              <div v-if="!('ifShow' in item && !item.ifShow)" :class="`${prefixCls}__check-item`">
                 <DragOutlined class="table-column-drag-icon" />
                 <Checkbox :value="item.value">
                   {{ item.label }}
@@ -50,8 +50,8 @@
 
                 <Tooltip
                   placement="bottomLeft"
-                  :mouseLeaveDelay="0.4"
-                  :getPopupContainer="getPopupContainer"
+                  :mouse-leave-delay="0.4"
+                  :get-popup-container="getPopupContainer"
                 >
                   <template #title>
                     {{ t('component.table.settingFixedLeft') }}
@@ -71,8 +71,8 @@
                 <Divider type="vertical" />
                 <Tooltip
                   placement="bottomLeft"
-                  :mouseLeaveDelay="0.4"
-                  :getPopupContainer="getPopupContainer"
+                  :mouse-leave-delay="0.4"
+                  :get-popup-container="getPopupContainer"
                 >
                   <template #title>
                     {{ t('component.table.settingFixedRight') }}
@@ -99,29 +99,29 @@
   </Tooltip>
 </template>
 <script lang="ts">
-  import type { BasicColumn, BasicTableProps, ColumnChangeParam } from '../../types/table';
   import {
-    defineComponent,
-    ref,
-    reactive,
-    toRefs,
-    watchEffect,
-    nextTick,
-    unref,
     computed,
+    defineComponent,
+    nextTick,
+    reactive,
+    ref,
+    toRefs,
+    unref,
+    watchEffect,
   } from 'vue';
-  import { Tooltip, Popover, Checkbox, Divider } from 'ant-design-vue';
-  import type { CheckboxChangeEvent } from 'ant-design-vue/lib/checkbox/interface';
-  import { SettingOutlined, DragOutlined } from '@ant-design/icons-vue';
+  import { Checkbox, Divider, Popover, Tooltip } from 'ant-design-vue';
+  import { DragOutlined, SettingOutlined } from '@ant-design/icons-vue';
   import { EntIcon } from '@ent-core/components/icon';
   import { EntScrollContainer } from '@ent-core/components/container';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useTableContext } from '../../hooks/use-table-context';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { isFunction, isNullAndUnDef } from '@ent-core/utils/is';
   import { getPopupContainer as getParentContainer } from '@ent-core/utils';
   import { cloneDeep, omit } from 'lodash-es';
   import sortablejs from 'sortablejs';
+  import { useTableContext } from '../../hooks/use-table-context';
+  import type { CheckboxChangeEvent } from 'ant-design-vue/lib/checkbox/interface';
+  import type { BasicColumn, BasicTableProps, ColumnChangeParam } from '../../types/table';
   import type Sortable from 'sortablejs';
 
   interface State {
@@ -271,7 +271,7 @@
 
       const indeterminate = computed(() => {
         const len = plainOptions.value.length;
-        let checkedLen = state.checkedList.length;
+        const checkedLen = state.checkedList.length;
         // unref(checkIndex) && checkedLen--;
         return checkedLen > 0 && checkedLen < len;
       });

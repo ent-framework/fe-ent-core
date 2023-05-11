@@ -4,51 +4,46 @@
       type="editable-card"
       size="small"
       :animated="false"
-      :hideAdd="true"
-      :tabBarGutter="3"
-      :activeKey="activeKeyRef"
+      :hide-add="true"
+      :tab-bar-gutter="3"
+      :active-key="activeKeyRef"
       @change="handleChange"
       @edit="handleEdit"
     >
       <template v-for="item in getTabsState" :key="item.query ? item.fullPath : item.path">
         <TabPane :closable="!(item && item.meta && item.meta.affix)">
           <template #tab>
-            <TabContent :tabItem="item" />
+            <TabContent :tab-item="item" />
           </template>
         </TabPane>
       </template>
 
-      <template #rightExtra v-if="getShowRedo || getShowQuick">
+      <template v-if="getShowRedo || getShowQuick" #rightExtra>
         <TabRedo v-if="getShowRedo" />
-        <TabContent isExtra :tabItem="$route" v-if="getShowQuick" />
+        <TabContent v-if="getShowQuick" is-extra :tab-item="$route" />
         <FoldButton v-if="getShowFold" />
       </template>
     </Tabs>
   </div>
 </template>
 <script lang="ts">
-  import type { RouteLocationNormalized, RouteMeta } from 'vue-router';
-
-  import { defineComponent, computed, unref, ref } from 'vue';
+  import { computed, defineComponent, ref, unref } from 'vue';
 
   import { Tabs } from 'ant-design-vue';
-  import TabContent from './components/tab-content.vue';
-  import FoldButton from './components/fold-button.vue';
-  import TabRedo from './components/tab-redo.vue';
 
-  import { useGo } from 'fe-ent-core/lib/hooks';
+  import { useDesign, useGo, useMultipleTabSetting } from 'fe-ent-core/lib/hooks';
 
-  import { useMultipleTabStore } from 'fe-ent-core/lib/store';
-  import { useUserStore } from 'fe-ent-core/lib/store';
-
-  import { initAffixTabs, useTabsDrag } from './use-multiple-tabs';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useMultipleTabSetting } from 'fe-ent-core/lib/hooks';
+  import { useMultipleTabStore, useUserStore } from 'fe-ent-core/lib/store';
 
   import { REDIRECT_NAME } from 'fe-ent-core/lib/router';
   import { listenerRouteChange } from 'fe-ent-core/lib/logics';
 
   import { useRouter } from 'vue-router';
+  import { initAffixTabs, useTabsDrag } from './use-multiple-tabs';
+  import TabRedo from './components/tab-redo.vue';
+  import FoldButton from './components/fold-button.vue';
+  import TabContent from './components/tab-content.vue';
+  import type { RouteLocationNormalized, RouteMeta } from 'vue-router';
   export default defineComponent({
     name: 'MultipleTabs',
     components: {

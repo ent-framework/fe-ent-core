@@ -1,14 +1,14 @@
 <template>
   <span :class="getClass">
-    <slot></slot>
-    <BasicHelp :class="`${prefixCls}-help`" v-if="helpMessage" :text="helpMessage" />
+    <slot />
+    <BasicHelp v-if="helpMessage" :class="`${prefixCls}-help`" :text="helpMessage" />
   </span>
 </template>
 <script lang="ts" setup>
-  import type { PropType } from 'vue';
-  import { useSlots, computed } from 'vue';
-  import BasicHelp from './basic-help.vue';
+  import { computed, useSlots } from 'vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
+  import BasicHelp from './basic-help.vue';
+  import type { PropType } from 'vue';
 
   defineOptions({
     name: 'EntTitle',

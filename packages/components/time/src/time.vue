@@ -5,7 +5,7 @@
   import { defineComponent, ref, watch } from 'vue';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useIntervalFn } from '@vueuse/core';
-  import { formatToDateTime, formatToDate, dateUtil } from '@ent-core/utils/date-util';
+  import { dateUtil, formatToDate, formatToDateTime } from '@ent-core/utils/date-util';
   import { isNumber, isObject, isString } from '@ent-core/utils/is';
   import { propTypes } from '@ent-core/utils/prop-types';
 
@@ -67,7 +67,7 @@
       }
 
       function getRelativeTime(timeStamp: number) {
-        const currentTime = new Date().getTime();
+        const currentTime = Date.now();
 
         // Determine whether the incoming timestamp is earlier than the current timestamp
         const isBefore = dateUtil(timeStamp).isBefore(currentTime);
@@ -78,13 +78,13 @@
         }
 
         let resStr = '';
-        let dirStr = isBefore ? t('component.time.before') : t('component.time.after');
+        const dirStr = isBefore ? t('component.time.before') : t('component.time.after');
 
         if (diff < ONE_SECONDS) {
           resStr = t('component.time.just');
           // Less than or equal to 59 seconds
         } else if (diff < ONE_MINUTES) {
-          resStr = parseInt(diff / ONE_SECONDS) + t('component.time.seconds') + dirStr;
+          resStr = Number.parseInt(String(diff / ONE_SECONDS)) + t('component.time.seconds') + dirStr;
           // More than 59 seconds, less than or equal to 59 minutes and 59 seconds
         } else if (diff >= ONE_MINUTES && diff < ONE_HOUR) {
           resStr = Math.floor(diff / ONE_MINUTES) + t('component.time.minutes') + dirStr;

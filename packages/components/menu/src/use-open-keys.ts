@@ -1,12 +1,12 @@
+import { computed, toRaw, unref } from 'vue';
 import { MenuModeEnum } from '@ent-core/logics/enums/menu-enum';
-import type { Menu as MenuType } from '@ent-core/router/types';
-import type { MenuState } from './types';
-import { computed, Ref, toRaw } from 'vue';
-import { unref } from 'vue';
 import { uniq } from 'lodash-es';
 import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
 import { getAllParentPath } from '@ent-core/router/helper/menu-helper';
 import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
+import type { Ref } from 'vue';
+import type { MenuState } from './types';
+import type { Menu as MenuType } from '@ent-core/router/types';
 
 export function useOpenKeys(
   menuState: MenuState,
@@ -67,8 +67,8 @@ export function useOpenKeys(
         }
       }
       if (!unref(getCollapsed)) {
-        const latestOpenKey = openKeys.find((key) => menuState.openKeys.indexOf(key) === -1);
-        if (rootSubMenuKeys.indexOf(latestOpenKey as string) === -1) {
+        const latestOpenKey = openKeys.find((key) => !menuState.openKeys.includes(key));
+        if (!rootSubMenuKeys.includes(latestOpenKey as string)) {
           menuState.openKeys = openKeys;
         } else {
           menuState.openKeys = latestOpenKey ? [latestOpenKey] : [];

@@ -25,14 +25,11 @@
   </EntModal>
 </template>
 <script lang="ts">
-  import { defineComponent, computed } from 'vue';
-  import { useI18n } from 'fe-ent-core/lib/hooks';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { EntModal, useModalInner } from 'fe-ent-core/lib/components';
-  import { EntForm, useForm } from 'fe-ent-core/lib/components';
+  import { computed, defineComponent } from 'vue';
+  import { useDesign, useI18n } from 'fe-ent-core/lib/hooks';
+  import { EntForm, EntModal, useForm, useModalInner } from 'fe-ent-core/lib/components';
 
-  import { useUserStore } from 'fe-ent-core/lib/store';
-  import { useLockStore } from 'fe-ent-core/lib/store';
+  import { useLockStore, useUserStore } from 'fe-ent-core/lib/store';
   import headerImg from '../../../../../assets/header.jpg';
   export default defineComponent({
     name: 'LockModal',

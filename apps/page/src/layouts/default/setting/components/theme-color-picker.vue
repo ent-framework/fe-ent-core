@@ -2,7 +2,6 @@
   <div :class="prefixCls">
     <template v-for="color in colorList || []" :key="color">
       <span
-        @click="handleClick(color)"
         :class="[
           `${prefixCls}__item`,
           {
@@ -10,6 +9,7 @@
           },
         ]"
         :style="{ background: color }"
+        @click="handleClick(color)"
       >
         <CheckOutlined />
       </span>
@@ -17,13 +17,14 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, PropType } from 'vue';
+  import { defineComponent } from 'vue';
   import { CheckOutlined } from '@ant-design/icons-vue';
 
   import { useDesign } from 'fe-ent-core/lib/hooks';
 
   import { baseHandler } from '../handler';
-  import { HandlerEnum } from '../enum';
+  import type { PropType } from 'vue';
+  import type { HandlerEnum } from '../enum';
 
   export default defineComponent({
     name: 'ThemeColorPicker',

@@ -1,53 +1,55 @@
 <template>
-  <a-col v-bind="actionColOpt" v-if="showActionButtonGroup">
+  <a-col v-if="showActionButtonGroup" v-bind="actionColOpt">
     <div style="width: 100%" :style="{ textAlign: actionColOpt.style.textAlign }">
       <FormItem>
-        <slot name="resetBefore"></slot>
+        <slot name="resetBefore" />
         <EntButton
+          v-if="showResetButton"
           type="default"
           class="mr-2"
           v-bind="getResetBtnOptions"
           @click="resetAction"
-          v-if="showResetButton"
         >
           {{ getResetBtnOptions.text }}
         </EntButton>
-        <slot name="submitBefore"></slot>
+        <slot name="submitBefore" />
 
         <EntButton
+          v-if="showSubmitButton"
           type="primary"
           class="mr-2"
           v-bind="getSubmitBtnOptions"
           @click="submitAction"
-          v-if="showSubmitButton"
         >
           {{ getSubmitBtnOptions.text }}
         </EntButton>
 
-        <slot name="advanceBefore"></slot>
+        <slot name="advanceBefore" />
         <EntButton
+          v-if="showAdvancedButton && !hideAdvanceBtn"
           type="link"
           size="small"
           @click="toggleAdvanced"
-          v-if="showAdvancedButton && !hideAdvanceBtn"
         >
           {{ isAdvanced ? t('component.form.putAway') : t('component.form.unfold') }}
           <EntArrow class="ml-1" :expand="!isAdvanced" up />
         </EntButton>
-        <slot name="advanceAfter"></slot>
+        <slot name="advanceAfter" />
       </FormItem>
     </div>
   </a-col>
 </template>
 <script lang="ts">
-  import type { ColEx } from '../types';
-  import { defineComponent, computed, PropType } from 'vue';
-  import { Form, Col } from 'ant-design-vue';
-  import { EntButton, ButtonProps } from '@ent-core/components/button';
+  import { computed, defineComponent } from 'vue';
+  import { Col, Form } from 'ant-design-vue';
+  import { EntButton } from '@ent-core/components/button';
   import { EntArrow } from '@ent-core/components/basic';
-  import { useFormContext } from '../hooks/use-form-context';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { propTypes } from '@ent-core/utils/prop-types';
+  import { useFormContext } from '../hooks/use-form-context';
+  import type { ButtonProps } from '@ent-core/components/button';
+  import type { PropType } from 'vue';
+  import type { ColEx } from '../types';
 
   type ButtonOptions = Partial<ButtonProps> & { text: string };
 

@@ -1,9 +1,9 @@
 <template>
   <div
     v-if="getMenuFixed && !getIsMobile"
-    :style="getHiddenDomStyle"
     v-show="showClassSideBarRef"
-  ></div>
+    :style="getHiddenDomStyle"
+  />
   <Sider
     v-show="showClassSideBarRef"
     ref="sideRef"
@@ -12,34 +12,33 @@
     :class="getSiderClass"
     :width="getMenuWidth"
     :collapsed="getCollapsed"
-    :collapsedWidth="getCollapsedWidth"
+    :collapsed-width="getCollapsedWidth"
     :theme="getMenuTheme"
-    @breakpoint="onBreakpointChange"
     :trigger="getTrigger"
     v-bind="getTriggerAttr"
+    @breakpoint="onBreakpointChange"
   >
-    <template #trigger v-if="getShowTrigger">
+    <template v-if="getShowTrigger" #trigger>
       <LayoutTrigger />
     </template>
-    <LayoutMenu :theme="getMenuTheme" :menuMode="getMode" :splitType="getSplitType" />
+    <LayoutMenu :theme="getMenuTheme" :menu-mode="getMode" :split-type="getSplitType" />
     <DragBar ref="dragBarRef" />
   </Sider>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, ref, unref, CSSProperties, h } from 'vue';
+  import { computed, defineComponent, h, ref, unref } from 'vue';
 
   import { Layout } from 'ant-design-vue';
-  import LayoutMenu from '../menu/index.vue';
-  import LayoutTrigger from '../trigger/index.vue';
 
   import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/lib/logics';
 
-  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
-  import { useTrigger, useDragLine, useSiderEvent } from './use-layout-sider';
-  import { useAppInject } from 'fe-ent-core/lib/hooks';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import type { ElRef } from 'fe-ent-core/lib/types';
+  import { useAppInject, useDesign, useMenuSetting } from 'fe-ent-core/lib/hooks';
+  import LayoutTrigger from '../trigger/index.vue';
+  import LayoutMenu from '../menu/index.vue';
+  import { useDragLine, useSiderEvent, useTrigger } from './use-layout-sider';
   import DragBar from './drag-bar.vue';
+  import type { ElRef } from 'fe-ent-core/lib/types';
+  import type { CSSProperties } from 'vue';
   export default defineComponent({
     name: 'LayoutSideBar',
     components: { Sider: Layout.Sider, LayoutMenu, DragBar, LayoutTrigger },
@@ -94,7 +93,7 @@
       const getHiddenDomStyle = computed((): CSSProperties => {
         const width = `${unref(getRealWidth)}px`;
         return {
-          width: width,
+          width,
           overflow: 'hidden',
           flex: `0 0 ${width}`,
           maxWidth: width,

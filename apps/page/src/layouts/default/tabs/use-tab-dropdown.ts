@@ -1,13 +1,12 @@
-import type { TabContentProps } from './types';
-import type { DropMenu } from 'fe-ent-core/lib/components';
-import type { ComputedRef } from 'vue';
-
-import { computed, unref, reactive } from 'vue';
-import { MenuEventEnum } from './types';
+import { computed, reactive, unref } from 'vue';
 import { useMultipleTabStore } from 'fe-ent-core/lib/store';
-import { RouteLocationNormalized, useRouter } from 'vue-router';
-import { useTabs } from 'fe-ent-core/lib/hooks';
-import { useI18n } from 'fe-ent-core/lib/hooks';
+import { useRouter } from 'vue-router';
+import { useI18n, useTabs } from 'fe-ent-core/lib/hooks';
+import { MenuEventEnum } from './types';
+import type { RouteLocationNormalized } from 'vue-router';
+import type { ComputedRef } from 'vue';
+import type { DropMenu } from 'fe-ent-core/lib/components';
+import type { TabContentProps } from './types';
 
 export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: ComputedRef<boolean>) {
   const state = reactive({
@@ -87,7 +86,7 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
         icon: 'clarity:minus-line',
         event: MenuEventEnum.CLOSE_ALL,
         text: t('layout.multipleTab.closeAll'),
-        disabled: disabled,
+        disabled,
       },
     ];
 

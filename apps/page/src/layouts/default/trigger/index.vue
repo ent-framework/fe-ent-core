@@ -4,15 +4,15 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import SiderTrigger from './sider-trigger.vue';
   import { propTypes } from 'fe-ent-core/lib/utils';
+  import SiderTrigger from './sider-trigger.vue';
   import HeaderTrigger from './header-trigger.vue';
 
   export default defineComponent({
     name: 'LayoutTrigger',
     components: {
       SiderTrigger,
-      HeaderTrigger: HeaderTrigger,
+      HeaderTrigger,
     },
     props: {
       sider: propTypes.bool.def(true),

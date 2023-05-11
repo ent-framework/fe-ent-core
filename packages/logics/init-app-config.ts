@@ -1,7 +1,6 @@
 /**
  * Application configuration
  */
-import type { ProjectConfig } from '@ent-core/logics/types/config';
 
 import { PROJ_CFG_KEY } from '@ent-core/logics/enums/cache-enum';
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
@@ -22,6 +21,7 @@ import { getCommonStoragePrefix, getStorageShortName } from '@ent-core/utils/env
 import { Persistent } from '@ent-core/utils/cache/persistent';
 import { deepMerge } from '@ent-core/utils';
 import { ThemeEnum } from '@ent-core/logics/enums/app-enum';
+import type { ProjectConfig } from '@ent-core/logics/types/config';
 
 // Initial project configuration
 export async function initAppConfigStore() {

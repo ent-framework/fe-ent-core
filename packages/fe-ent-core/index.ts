@@ -1,5 +1,5 @@
-import type { App } from 'vue';
 import * as components from '@ent-core/components';
+import type { App } from 'vue';
 
 export * from '@ent-core/components';
 export * from '@ent-core/directives';

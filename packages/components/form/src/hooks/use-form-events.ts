@@ -1,23 +1,22 @@
-import type { ComputedRef, Ref } from 'vue';
-import type { FormProps, FormSchema, FormActionType } from '../types/form';
-import type { NamePath } from 'ant-design-vue/lib/form/interface';
-import { unref, toRaw, nextTick } from 'vue';
+import { nextTick, toRaw, unref } from 'vue';
 import {
   isArray,
+  isDef,
+  isEmpty,
   isFunction,
+  isNullOrUnDef,
   isObject,
   isString,
-  isDef,
-  isNullOrUnDef,
-  isEmpty,
 } from '@ent-core/utils/is';
 import { deepMerge } from '@ent-core/utils';
-import { dateItemType, handleInputNumberValue, defaultValueComponents } from '../helper';
 import { dateUtil } from '@ent-core/utils/date-util';
-import { cloneDeep, set, uniqBy, get } from 'lodash-es';
+import { cloneDeep, get, set, uniqBy } from 'lodash-es';
 import { error } from '@ent-core/utils/log';
-import { Fn } from '@ent-core/types';
-import type { EmitType, Recordable } from '@ent-core/types';
+import { dateItemType, defaultValueComponents, handleInputNumberValue } from '../helper';
+import type { EmitType, Fn, Recordable } from '@ent-core/types';
+import type { NamePath } from 'ant-design-vue/lib/form/interface';
+import type { FormActionType, FormProps, FormSchema } from '../types/form';
+import type { ComputedRef, Ref } from 'vue';
 
 interface UseFormActionContext {
   emit: EmitType;
@@ -109,7 +108,7 @@ export function useFormEvents({
 
     // key 支持 a.b.c 的嵌套写法
     const delimiter = '.';
-    const nestKeyArray = fields.filter((item) => String(item).indexOf(delimiter) >= 0);
+    const nestKeyArray = fields.filter((item) => String(item).includes(delimiter));
 
     const validKeys: string[] = [];
     fields.forEach((key) => {
@@ -159,7 +158,7 @@ export function useFormEvents({
               unref(formModel)[nestKey] = unref(value);
               validKeys.push(nestKey);
             }
-          } catch (e) {
+          } catch {
             // key not exist
             if (isDef(defaultValueRef.value[nestKey])) {
               unref(formModel)[nestKey] = cloneDeep(unref(defaultValueRef.value[nestKey]));

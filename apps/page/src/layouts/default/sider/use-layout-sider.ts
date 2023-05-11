@@ -1,11 +1,10 @@
-import type { Ref } from 'vue';
-
-import { computed, unref, onMounted, nextTick, ref } from 'vue';
+import { computed, nextTick, onMounted, ref, unref } from 'vue';
 
 import { TriggerEnum } from 'fe-ent-core/lib/logics';
 
 import { useMenuSetting } from 'fe-ent-core/lib/hooks';
 import { useDebounceFn } from '@vueuse/shared';
+import type { Ref } from 'vue';
 
 /**
  * Handle related operations of menu events
@@ -87,7 +86,7 @@ export function useDragLine(siderRef: Ref<any>, dragBarRef: Ref<any>, mix = fals
       iT < 0 && (iT = 0);
       iT > maxT && (iT = maxT);
       iT < minT && (iT = minT);
-      ele.style.left = wrap.style.width = iT + 'px';
+      ele.style.left = wrap.style.width = `${iT}px`;
       return false;
     };
   }
@@ -99,7 +98,7 @@ export function useDragLine(siderRef: Ref<any>, dragBarRef: Ref<any>, mix = fals
       document.onmousemove = null;
       document.onmouseup = null;
       wrap.style.transition = 'width 0.2s';
-      const width = parseInt(wrap.style.width);
+      const width = Number.parseInt(wrap.style.width);
 
       if (!mix) {
         const miniWidth = unref(getMiniWidthNumber);

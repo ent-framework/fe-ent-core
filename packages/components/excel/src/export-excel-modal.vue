@@ -6,19 +6,20 @@
     @register="registerModal"
   >
     <EntForm
-      :labelWidth="100"
+      :label-width="100"
       :schemas="schemas"
-      :showActionButtonGroup="false"
+      :show-action-button-group="false"
       @register="registerForm"
     />
   </EntModal>
 </template>
 <script lang="ts">
-  import type { ExportModalResult } from './typing';
   import { defineComponent } from 'vue';
   import { EntModal, useModalInner } from '@ent-core/components/modal';
-  import { EntForm, FormSchema, useForm } from '@ent-core/components/form';
+  import { EntForm, useForm } from '@ent-core/components/form';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import type { FormSchema } from '@ent-core/components/form';
+  import type { ExportModalResult } from './typing';
   const { t } = useI18n();
 
   function getSchema() {

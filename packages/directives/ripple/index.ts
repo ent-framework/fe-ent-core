@@ -57,7 +57,7 @@ function rippler({
   zIndex,
   background,
 }: { event: EntRippleEventType; el: HTMLElement } & RippleProto) {
-  const targetBorder = parseInt(getComputedStyle(el).borderWidth.replace('px', ''));
+  const targetBorder = Number.parseInt(getComputedStyle(el).borderWidth.replace('px', ''));
   const target = isTouchEvent(event)
     ? event.touches[event.touches.length - 1]
     : (event as MouseEvent);

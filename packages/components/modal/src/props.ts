@@ -1,6 +1,6 @@
-import type { PropType, CSSProperties } from 'vue';
+import type { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
+import type { CSSProperties, PropType } from 'vue';
 import type { ModalWrapperProps } from './typing';
-import { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
 import type { VueNode } from '@ent-core/types';
 
 export const modalProps = {

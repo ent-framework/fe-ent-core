@@ -7,7 +7,7 @@
       @scroll="handleScroll"
     >
       <component :is="tag" ref="resize" :class="['scrollbar__view', viewClass]" :style="viewStyle">
-        <slot></slot>
+        <slot />
       </component>
     </div>
     <template v-if="!native">
@@ -17,21 +17,21 @@
   </div>
 </template>
 <script lang="ts">
-  import { addResizeListener, removeResizeListener } from '@ent-core/utils/event';
-  import componentSetting from '@ent-core/logics/settings/component-setting';
-  const { scrollbar } = componentSetting;
-  import { toObject } from './util';
   import {
-    defineComponent,
-    ref,
-    onMounted,
-    onBeforeUnmount,
-    nextTick,
-    provide,
     computed,
+    defineComponent,
+    nextTick,
+    onBeforeUnmount,
+    onMounted,
+    provide,
+    ref,
     unref,
   } from 'vue';
+  import { addResizeListener, removeResizeListener } from '@ent-core/utils/event';
+  import componentSetting from '@ent-core/logics/settings/component-setting';
+  import { toObject } from './util';
   import Bar from './bar';
+  const { scrollbar } = componentSetting;
 
   export default defineComponent({
     name: 'Scrollbar',
@@ -94,8 +94,8 @@
         const heightPercentage = (unref(wrap).clientHeight * 100) / unref(wrap).scrollHeight;
         const widthPercentage = (unref(wrap).clientWidth * 100) / unref(wrap).scrollWidth;
 
-        sizeHeight.value = heightPercentage < 100 ? heightPercentage + '%' : '';
-        sizeWidth.value = widthPercentage < 100 ? widthPercentage + '%' : '';
+        sizeHeight.value = heightPercentage < 100 ? `${heightPercentage}%` : '';
+        sizeWidth.value = widthPercentage < 100 ? `${widthPercentage}%` : '';
       };
 
       onMounted(() => {

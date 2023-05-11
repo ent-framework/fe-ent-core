@@ -1,5 +1,5 @@
+import type { FileBasicColumn } from './typing';
 import type { PropType } from 'vue';
-import { FileBasicColumn } from './typing';
 import type { PromiseFn } from '@ent-core/types';
 
 export const basicProps = {
@@ -15,7 +15,7 @@ export const basicProps = {
   // 最大数量的文件，Infinity不限制
   maxNumber: {
     type: Number as PropType<number>,
-    default: Infinity,
+    default: Number.POSITIVE_INFINITY,
   },
   // 根据后缀，或者其他
   accept: {

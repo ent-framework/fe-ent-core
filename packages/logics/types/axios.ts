@@ -1,5 +1,5 @@
-export type ErrorMessageMode = 'none' | 'modal' | 'message' | undefined;
 import type { Recordable } from '@ent-core/types';
+export type ErrorMessageMode = 'none' | 'modal' | 'message' | undefined;
 
 export interface RequestOptions {
   // Splicing request parameters to url

@@ -5,11 +5,11 @@
   </ent-modal>
 </template>
 <script lang="ts" setup>
-  import type { PropType } from 'vue';
-  import type { ErrorLogInfo } from 'fe-ent-core/lib/logics';
   import { useDescription } from 'fe-ent-core/lib/components';
   import { useI18n } from 'fe-ent-core/lib/hooks';
   import { getDescSchema } from './data';
+  import type { ErrorLogInfo } from 'fe-ent-core/lib/logics';
+  import type { PropType } from 'vue';
 
   defineProps({
     info: {

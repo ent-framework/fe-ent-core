@@ -4,11 +4,13 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, watch, PropType, ref, unref, onMounted } from 'vue';
-  import { toCanvas, QRCodeRenderersOptions, LogoType } from './qr-code-plus';
+  import { defineComponent, onMounted, ref, unref, watch } from 'vue';
   import { toDataURL } from 'qrcode';
   import { downloadByUrl } from 'fe-ent-core/lib/utils';
-  import { QrcodeDoneEventParams } from './typing';
+  import { toCanvas } from './qr-code-plus';
+  import type { LogoType, QRCodeRenderersOptions } from './qr-code-plus';
+  import type { PropType } from 'vue';
+  import type { QrcodeDoneEventParams } from './typing';
 
   export default defineComponent({
     name: 'QrCode',

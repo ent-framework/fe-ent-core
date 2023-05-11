@@ -1,14 +1,15 @@
 <template>
-  <Button v-bind="$attrs" :disabled="isStart" @click="handleStart" :loading="loading">
+  <Button v-bind="$attrs" :disabled="isStart" :loading="loading" @click="handleStart">
     {{ getButtonText }}
   </Button>
 </template>
 <script lang="ts">
-  import { defineComponent, ref, watchEffect, computed, unref, PropType } from 'vue';
+  import { computed, defineComponent, ref, unref, watchEffect } from 'vue';
   import { Button } from 'ant-design-vue';
-  import { useCountdown } from './use-countdown';
   import { isFunction } from '@ent-core/utils/is';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { useCountdown } from './use-countdown';
+  import type { PropType } from 'vue';
 
   const props = {
     value: { type: [Object, Number, String, Array] },

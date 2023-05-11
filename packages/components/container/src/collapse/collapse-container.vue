@@ -1,38 +1,38 @@
 <template>
   <div :class="prefixCls">
-    <CollapseHeader v-bind="$props" :prefixCls="prefixCls" :show="show" @expand="handleExpand">
+    <CollapseHeader v-bind="$props" :prefix-cls="prefixCls" :show="show" @expand="handleExpand">
       <template #title>
-        <slot name="title"></slot>
+        <slot name="title" />
       </template>
       <template #action>
-        <slot name="action"></slot>
+        <slot name="action" />
       </template>
     </CollapseHeader>
 
     <div class="p-2">
       <CollapseTransition :enable="canExpan">
         <Skeleton v-if="loading" :active="loading" />
-        <div :class="`${prefixCls}__body`" v-else v-show="show">
-          <slot></slot>
+        <div v-else v-show="show" :class="`${prefixCls}__body`">
+          <slot />
         </div>
       </CollapseTransition>
     </div>
-    <div :class="`${prefixCls}__footer`" v-if="$slots.footer">
-      <slot name="footer"></slot>
+    <div v-if="$slots.footer" :class="`${prefixCls}__footer`">
+      <slot name="footer" />
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-  import type { PropType } from 'vue';
   import { defineComponent, ref } from 'vue';
   // component
   import { Skeleton } from 'ant-design-vue';
   import { CollapseTransition } from '@ent-core/components/transition';
-  import CollapseHeader from './collapse-header.vue';
   import { triggerWindowResize } from '@ent-core/utils/event';
   // hook
   import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
   import { useDesign } from '@ent-core/hooks/web/use-design';
+  import CollapseHeader from './collapse-header.vue';
+  import type { PropType } from 'vue';
 
   defineOptions({
     name: 'EntCollapseContainer',

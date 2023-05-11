@@ -1,9 +1,8 @@
-import type { RouteLocationNormalized, RouteRecordNormalized } from 'vue-router';
-import type { App, Plugin } from 'vue';
 import { unref } from 'vue';
 import { isObject } from './is';
+import type { RouteLocationNormalized, RouteRecordNormalized } from 'vue-router';
+import type { App, Component, Plugin } from 'vue';
 import type { Recordable, TargetContext } from '@ent-core/types';
-export const noop = () => {};
 
 /**
  * @description:  Set ui mount node
@@ -25,7 +24,7 @@ export function getPopupContainer(node?: HTMLElement): HTMLElement {
 export function setObjToUrlParams(baseUrl: string, obj: any): string {
   let parameters = '';
   for (const key in obj) {
-    parameters += key + '=' + encodeURIComponent(obj[key]) + '&';
+    parameters += `${key}=${encodeURIComponent(obj[key])}&`;
   }
   parameters = parameters.replace(/&$/, '');
   return /\?$/.test(baseUrl) ? baseUrl + parameters : baseUrl.replace(/\/?$/, '?') + parameters;
@@ -53,10 +52,10 @@ export function openWindow(
 }
 
 // dynamic use hook props
-export function getDynamicProps<T, U>(props: T): Partial<U> {
+export function getDynamicProps<T extends Record<string, unknown>, U>(props: T): Partial<U> {
   const ret: Recordable = {};
 
-  Object.keys(props).map((key) => {
+  Object.keys(props).forEach((key) => {
     ret[key] = unref((props as Recordable)[key]);
   });
 
@@ -78,7 +77,7 @@ export function getRawRoute(route: RouteLocationNormalized): RouteLocationNormal
   };
 }
 
-export const withInstall = <T>(component: T, name?: string) => {
+export const withInstall = <T extends Component>(component: T, name?: string) => {
   const comp = component as any;
   comp.install = (app: App) => {
     const compName = name || comp.name || comp.displayName;

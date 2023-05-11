@@ -1,4 +1,5 @@
-import { defineComponent, computed, PropType } from 'vue';
+import { computed, defineComponent } from 'vue';
+import type { PropType } from 'vue';
 
 export default defineComponent({
   props: {

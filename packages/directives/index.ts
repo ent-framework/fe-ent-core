@@ -1,10 +1,10 @@
 /**
  * Configure and register global directives
  */
-import type { App } from 'vue';
 import { setupPermissionDirective } from './permission';
 import { setupLoadingDirective } from './loading';
 import { setClickOutsideDirective } from './click-out-side';
+import type { App } from 'vue';
 
 export function setupGlobDirectives(app: App) {
   setupPermissionDirective(app);

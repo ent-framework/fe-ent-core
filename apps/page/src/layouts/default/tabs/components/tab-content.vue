@@ -1,26 +1,26 @@
 <template>
-  <EntDropdown :dropMenuList="getDropMenuList" :trigger="getTrigger" @menu-event="handleMenuEvent">
-    <div :class="`${prefixCls}__info`" @contextmenu="handleContext" v-if="getIsTabs">
+  <EntDropdown
+    :drop-menu-list="getDropMenuList"
+    :trigger="getTrigger"
+    @menu-event="handleMenuEvent"
+  >
+    <div v-if="getIsTabs" :class="`${prefixCls}__info`" @contextmenu="handleContext">
       <span class="ml-1">{{ getTitle }}</span>
     </div>
-    <span :class="`${prefixCls}__extra-quick`" v-else @click="handleContext">
+    <span v-else :class="`${prefixCls}__extra-quick`" @click="handleContext">
       <EntIcon icon="ion:chevron-down" />
     </span>
   </EntDropdown>
 </template>
 <script lang="ts">
-  import type { PropType } from 'vue';
-  import type { RouteLocationNormalized } from 'vue-router';
+  import { computed, defineComponent, unref } from 'vue';
+  import { EntDropdown, EntIcon } from 'fe-ent-core/lib/components';
 
-  import { defineComponent, computed, unref } from 'vue';
-  import { EntDropdown } from 'fe-ent-core/lib/components';
-  import { EntIcon } from 'fe-ent-core/lib/components';
-
-  import { TabContentProps } from '../types';
-
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useI18n } from 'fe-ent-core/lib/hooks';
+  import { useDesign, useI18n } from 'fe-ent-core/lib/hooks';
   import { useTabDropdown } from '../use-tab-dropdown';
+  import type { TabContentProps } from '../types';
+  import type { RouteLocationNormalized } from 'vue-router';
+  import type { PropType } from 'vue';
 
   export default defineComponent({
     name: 'TabContent',

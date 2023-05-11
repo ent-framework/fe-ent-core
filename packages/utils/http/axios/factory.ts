@@ -1,21 +1,21 @@
 // axios配置  可自行根据项目进行更改，只需更改该文件即可，其他文件可以不动
 // The axios configuration can be changed according to the project, just change the file, other files can be left unchanged
-import type { Recordable } from '@ent-core/types';
-import type { AxiosResponse } from 'axios';
-import type { RequestOptions, Result } from '@ent-core/logics/types/axios';
-import type { AxiosTransform, CreateAxiosOptions } from './axios-transform';
-import { VAxios } from './axios';
-import { checkStatus } from './check-status';
 import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
 import { useMessage } from '@ent-core/hooks/web/use-message';
-import { RequestEnum, ResultEnum, ContentTypeEnum } from '@ent-core/logics/enums/http-enum';
+import { ContentTypeEnum, RequestEnum, ResultEnum } from '@ent-core/logics/enums/http-enum';
 import { isString } from '@ent-core/utils/is';
 import { getToken } from '@ent-core/utils/auth';
-import { setObjToUrlParams, deepMerge } from '@ent-core/utils/base';
+import { deepMerge, setObjToUrlParams } from '@ent-core/utils/base';
 import { useErrorLogStoreWithOut } from '@ent-core/store/modules/error-log';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
-import { joinTimestamp, formatRequestDate } from './helper';
 import { useUserStoreWithOut } from '@ent-core/store/modules/user';
+import { formatRequestDate, joinTimestamp } from './helper';
+import { checkStatus } from './check-status';
+import { VAxios } from './axios';
+import type { AxiosTransform, CreateAxiosOptions } from './axios-transform';
+import type { RequestOptions, Result } from '@ent-core/logics/types/axios';
+import type { AxiosResponse } from 'axios';
+import type { Recordable } from '@ent-core/types';
 
 const { createMessage, createErrorModal } = useMessage();
 
@@ -99,7 +99,7 @@ const transform: AxiosTransform = {
         config.params = Object.assign(params || {}, joinTimestamp(joinTime, false));
       } else {
         // 兼容restful风格
-        config.url = config.url + params + `${joinTimestamp(joinTime, true)}`;
+        config.url = `${config.url + params}${joinTimestamp(joinTime, true)}`;
         config.params = undefined;
       }
     } else {
@@ -168,7 +168,7 @@ const transform: AxiosTransform = {
     let errMessage = '';
 
     try {
-      if (code === 'ECONNABORTED' && message.indexOf('timeout') !== -1) {
+      if (code === 'ECONNABORTED' && message.includes('timeout')) {
         errMessage = t('sys.api.apiTimeoutMessage');
       }
       if (err?.includes('Network Error')) {

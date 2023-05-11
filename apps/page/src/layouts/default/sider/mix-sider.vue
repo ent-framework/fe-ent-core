@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${prefixCls}-dom`" :style="getDomStyle"></div>
+  <div :class="`${prefixCls}-dom`" :style="getDomStyle" />
   <div
     v-click-outside="handleClickOutside"
     :style="getWrapStyle"
@@ -13,24 +13,24 @@
     ]"
     v-bind="getMenuEvents"
   >
-    <AppLogo :showTitle="false" :class="`${prefixCls}-logo`" />
+    <AppLogo :show-title="false" :class="`${prefixCls}-logo`" />
 
     <LayoutTrigger :class="`${prefixCls}-trigger`" />
 
     <EntScrollContainer>
       <ul :class="`${prefixCls}-module`">
         <li
+          v-for="item in menuModules"
+          v-bind="getItemEvents(item)"
+          :key="item.path"
           :class="[
             `${prefixCls}-module__item `,
             {
               [`${prefixCls}-module__item--active`]: item.path === activePath,
             },
           ]"
-          v-bind="getItemEvents(item)"
-          v-for="item in menuModules"
-          :key="item.path"
         >
-          <SimpleMenuTag :item="item" collapseParent dot />
+          <SimpleMenuTag :item="item" collapse-parent dot />
           <EntIcon
             :class="`${prefixCls}-module__icon`"
             :size="getCollapsed ? 16 : 20"
@@ -43,7 +43,7 @@
       </ul>
     </EntScrollContainer>
 
-    <div :class="`${prefixCls}-menu-list`" ref="sideRef" :style="getMenuStyle">
+    <div ref="sideRef" :class="`${prefixCls}-menu-list`" :style="getMenuStyle">
       <div
         v-show="openMenu"
         :class="[
@@ -65,39 +65,37 @@
         <SimpleMenu
           :items="childrenMenus"
           :theme="getMenuTheme"
-          mixSider
+          mix-sider
           @menu-click="handleMenuClick"
         />
       </EntScrollContainer>
-      <div
-        v-show="getShowDragBar && openMenu"
-        :class="`${prefixCls}-drag-bar`"
-        ref="dragBarRef"
-      ></div>
+      <div v-show="getShowDragBar && openMenu" ref="dragBarRef" :class="`${prefixCls}-drag-bar`" />
     </div>
   </div>
 </template>
 <script lang="ts">
-  import type { Menu } from 'fe-ent-core/lib/router';
-  import type { CSSProperties } from 'vue';
   import { computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
-  import type { RouteLocationNormalized } from 'vue-router';
-  import { EntScrollContainer } from 'fe-ent-core/lib/components';
-  import { SimpleMenu, SimpleMenuTag } from 'fe-ent-core/lib/components';
-  import { EntIcon } from 'fe-ent-core/lib/components';
-  import AppLogo from '../components/app-logo.vue';
-  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
+  import {
+    EntIcon,
+    EntScrollContainer,
+    SimpleMenu,
+    SimpleMenuTag,
+  } from 'fe-ent-core/lib/components';
+  import { useDesign, useGlobSetting, useGo, useI18n, useMenuSetting } from 'fe-ent-core/lib/hooks';
   import { usePermissionStore } from 'fe-ent-core/lib/store';
-  import { useDragLine } from './use-layout-sider';
-  import { useGlobSetting } from 'fe-ent-core/lib/hooks';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useI18n } from 'fe-ent-core/lib/hooks';
-  import { useGo } from 'fe-ent-core/lib/hooks';
-  import { SIDE_BAR_MINI_WIDTH, SIDE_BAR_SHOW_TIT_MINI_WIDTH } from 'fe-ent-core/lib/logics';
+  import {
+    SIDE_BAR_MINI_WIDTH,
+    SIDE_BAR_SHOW_TIT_MINI_WIDTH,
+    listenerRouteChange,
+  } from 'fe-ent-core/lib/logics';
   import { ClickOutside } from 'fe-ent-core/lib/directives';
   import { getChildrenMenus, getCurrentParentPath, getShallowMenus } from 'fe-ent-core/lib/router';
-  import { listenerRouteChange } from 'fe-ent-core/lib/logics';
+  import AppLogo from '../components/app-logo.vue';
   import LayoutTrigger from '../trigger/index.vue';
+  import { useDragLine } from './use-layout-sider';
+  import type { RouteLocationNormalized } from 'vue-router';
+  import type { CSSProperties } from 'vue';
+  import type { Menu } from 'fe-ent-core/lib/router';
   import type { ElRef, Nullable } from 'fe-ent-core/lib/types';
 
   export default defineComponent({
@@ -114,7 +112,7 @@
       ClickOutside,
     },
     setup() {
-      let menuModules = ref<Menu[]>([]);
+      const menuModules = ref<Menu[]>([]);
       const activePath = ref('');
       const childrenMenus = ref<Menu[]>([]);
       const openMenu = ref(false);
@@ -320,9 +318,9 @@
         t,
         prefixCls,
         menuModules,
-        handleModuleClick: handleModuleClick,
+        handleModuleClick,
         activePath,
-        childrenMenus: childrenMenus,
+        childrenMenus,
         getShowDragBar,
         handleMenuClick,
         getMenuStyle,

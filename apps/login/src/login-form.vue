@@ -1,26 +1,26 @@
 <template>
   <LoginFormTitle v-show="getShow" class="enter-x" />
   <Form
+    v-show="getShow"
+    ref="formRef"
     class="p-4 enter-x"
     :model="formData"
     :rules="getFormRules"
-    ref="formRef"
-    v-show="getShow"
     @keypress.enter="handleLogin"
   >
     <FormItem name="account" class="enter-x">
       <Input
-        size="large"
         v-model:value="formData.account"
+        size="large"
         :placeholder="t('sys.login.userName')"
         class="fix-auto-fill"
       />
     </FormItem>
     <FormItem name="password" class="enter-x">
       <InputPassword
-        size="large"
-        visibilityToggle
         v-model:value="formData.password"
+        size="large"
+        visibility-toggle
         :placeholder="t('sys.login.password')"
       />
     </FormItem>
@@ -45,7 +45,7 @@
     </ARow>
 
     <FormItem class="enter-x">
-      <Button type="primary" size="large" block @click="handleLogin" :loading="loading">
+      <Button type="primary" size="large" block :loading="loading" @click="handleLogin">
         {{ t('sys.login.loginButton') }}
       </Button>
       <!-- <Button size="large" class="mt-4 enter-x" block @click="handleRegister">
@@ -53,24 +53,24 @@
       </Button> -->
     </FormItem>
     <ARow class="enter-x">
-      <ACol :md="8" :xs="24" class="!my-2 !md:my-0 xs:mx-0 md:mr-2" v-if="mobileLoginEnable">
+      <ACol v-if="mobileLoginEnable" :md="8" :xs="24" class="!my-2 !md:my-0 xs:mx-0 md:mr-2">
         <Button block @click="setLoginState(LoginStateEnum.MOBILE)">
           {{ t('sys.login.mobileSignInFormTitle') }}
         </Button>
       </ACol>
-      <ACol :md="8" :xs="24" class="!my-2 !md:my-0 xs:mx-0 md:mr-2" v-if="qrLoginEnable">
+      <ACol v-if="qrLoginEnable" :md="8" :xs="24" class="!my-2 !md:my-0 xs:mx-0 md:mr-2">
         <Button block @click="setLoginState(LoginStateEnum.QR_CODE)">
           {{ t('sys.login.qrSignInFormTitle') }}
         </Button>
       </ACol>
-      <ACol :md="7" :xs="24" v-if="registerEnable">
+      <ACol v-if="registerEnable" :md="7" :xs="24">
         <Button block @click="setLoginState(LoginStateEnum.REGISTER)">
           {{ t('sys.login.registerButton') }}
         </Button>
       </ACol>
     </ARow>
 
-    <Divider class="enter-x" v-if="false">{{ t('sys.login.otherSignIn') }}</Divider>
+    <Divider v-if="false" class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider>
 
     <div
       v-if="false"
@@ -86,24 +86,22 @@
   </Form>
 </template>
 <script lang="ts" setup>
-  import { reactive, ref, unref, computed } from 'vue';
+  import { computed, reactive, ref, unref } from 'vue';
 
-  import { Checkbox, Form, Input, Row, Col, Button, Divider } from 'ant-design-vue';
+  import { Button, Checkbox, Col, Divider, Form, Input, Row } from 'ant-design-vue';
   import {
-    GithubFilled,
-    WechatFilled,
     AlipayCircleFilled,
+    GithubFilled,
     GoogleCircleFilled,
     TwitterCircleFilled,
+    WechatFilled,
   } from '@ant-design/icons-vue';
-  import LoginFormTitle from './login-form-title.vue';
 
-  import { useI18n } from 'fe-ent-core/lib/hooks';
-  import { useMessage } from 'fe-ent-core/lib/hooks';
+  import { useDesign, useI18n, useMessage } from 'fe-ent-core/lib/hooks';
   import { useRouter } from 'vue-router';
   import { useUserStore } from 'fe-ent-core/lib/store';
-  import { LoginStateEnum, useLoginState, useFormRules, useFormValid } from './use-login';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { LoginStateEnum, useFormRules, useFormValid, useLoginState } from './use-login';
+  import LoginFormTitle from './login-form-title.vue';
 
   defineProps({
     mobileLoginEnable: {

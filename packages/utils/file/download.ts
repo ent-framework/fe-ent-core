@@ -65,8 +65,8 @@ export function downloadByUrl({
   target?: TargetContext;
   fileName?: string;
 }): boolean {
-  const isChrome = window.navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-  const isSafari = window.navigator.userAgent.toLowerCase().indexOf('safari') > -1;
+  const isChrome = window.navigator.userAgent.toLowerCase().includes('chrome');
+  const isSafari = window.navigator.userAgent.toLowerCase().includes('safari');
 
   if (/(iP)/g.test(window.navigator.userAgent)) {
     console.error('Your browser does not support download!');
@@ -78,7 +78,7 @@ export function downloadByUrl({
     link.target = target;
 
     if (link.download !== undefined) {
-      link.download = fileName || url.substring(url.lastIndexOf('/') + 1, url.length);
+      link.download = fileName || url.slice(url.lastIndexOf('/') + 1, url.length);
     }
 
     if (document.createEvent) {
@@ -88,7 +88,7 @@ export function downloadByUrl({
       return true;
     }
   }
-  if (url.indexOf('?') === -1) {
+  if (!url.includes('?')) {
     url += '?download';
   }
 

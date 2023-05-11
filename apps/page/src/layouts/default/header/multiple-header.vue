@@ -1,23 +1,25 @@
 <template>
-  <div :style="getPlaceholderDomStyle" v-if="getIsShowPlaceholderDom"></div>
+  <div v-if="getIsShowPlaceholderDom" :style="getPlaceholderDomStyle" />
   <div :style="getWrapStyle" :class="getClass">
     <LayoutHeader v-if="getShowInsetHeaderRef" />
     <MultipleTabs v-if="getShowTabs" />
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, unref, computed, CSSProperties } from 'vue';
+  import { computed, defineComponent, unref } from 'vue';
 
-  import LayoutHeader from './index.vue';
+  import {
+    useAppInject,
+    useDesign,
+    useFullContent,
+    useHeaderSetting,
+    useLayoutHeight,
+    useMenuSetting,
+    useMultipleTabSetting,
+  } from 'fe-ent-core/lib/hooks';
   import MultipleTabs from '../tabs/index.vue';
-
-  import { useHeaderSetting } from 'fe-ent-core/lib/hooks';
-  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
-  import { useFullContent } from 'fe-ent-core/lib/hooks';
-  import { useMultipleTabSetting } from 'fe-ent-core/lib/hooks';
-  import { useAppInject } from 'fe-ent-core/lib/hooks';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useLayoutHeight } from 'fe-ent-core/lib/hooks';
+  import LayoutHeader from './index.vue';
+  import type { CSSProperties } from 'vue';
 
   const HEADER_HEIGHT = 48;
 

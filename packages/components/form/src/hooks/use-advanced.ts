@@ -1,12 +1,14 @@
-import type { ColEx } from '../types';
-import type { AdvanceState } from '../types/hooks';
-import { ComputedRef, getCurrentInstance, Ref, computed, unref, watch } from 'vue';
-import { shallowReactive, type ShallowReactive } from 'vue';
-import type { FormProps, FormSchema } from '../types/form';
+import { computed, getCurrentInstance, unref, watch } from 'vue';
+import { type ShallowReactive, shallowReactive } from 'vue';
 import { isBoolean, isFunction, isNumber, isObject } from '@ent-core/utils/is';
 import { useBreakpoint } from '@ent-core/hooks/event/use-breakpoint';
 import { useDebounceFn } from '@vueuse/shared';
-import { type Recordable, EmitType } from '@ent-core/types';
+import { type Recordable } from '@ent-core/types';
+import type { ComputedRef, Ref} from 'vue';
+import type { EmitType } from '@ent-core/types';
+import type { FormProps, FormSchema } from '../types/form';
+import type { AdvanceState } from '../types/hooks';
+import type { ColEx } from '../types';
 
 const BASIC_COL_LEN = 24;
 
@@ -68,15 +70,15 @@ export default function ({
     const width = unref(realWidthRef);
 
     const mdWidth =
-      parseInt(itemCol.md as string) ||
-      parseInt(itemCol.xs as string) ||
-      parseInt(itemCol.sm as string) ||
+      Number.parseInt(itemCol.md as string) ||
+      Number.parseInt(itemCol.xs as string) ||
+      Number.parseInt(itemCol.sm as string) ||
       (itemCol.span as number) ||
       BASIC_COL_LEN;
 
-    const lgWidth = parseInt(itemCol.lg as string) || mdWidth;
-    const xlWidth = parseInt(itemCol.xl as string) || lgWidth;
-    const xxlWidth = parseInt(itemCol.xxl as string) || xlWidth;
+    const lgWidth = Number.parseInt(itemCol.lg as string) || mdWidth;
+    const xlWidth = Number.parseInt(itemCol.xl as string) || lgWidth;
+    const xxlWidth = Number.parseInt(itemCol.xxl as string) || xlWidth;
     if (width <= screenEnum.LG) {
       itemColSum += mdWidth;
     } else if (width < screenEnum.XL) {
@@ -131,7 +133,7 @@ export default function ({
 
       if (isFunction(show)) {
         isShow = show({
-          schema: schema,
+          schema,
           model: formModel,
           field: schema.field,
           values: {

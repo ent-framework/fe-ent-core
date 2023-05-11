@@ -3,8 +3,8 @@
  */
 
 import mitt from '@ent-core/utils/mitt';
-import type { RouteLocationNormalized } from 'vue-router';
 import { getRawRoute } from '@ent-core/utils';
+import type { RouteLocationNormalized } from 'vue-router';
 
 const emitter = mitt();
 

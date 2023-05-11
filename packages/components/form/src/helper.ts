@@ -1,7 +1,7 @@
-import type { Rule } from 'ant-design-vue/lib/form';
-import type { ComponentType } from './types';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { isNumber } from '@ent-core/utils/is';
+import type { Rule } from 'ant-design-vue/lib/form';
+import type { ComponentType } from './types';
 
 /**
  * @description: 生成placeholder

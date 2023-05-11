@@ -1,6 +1,5 @@
+import { inject, provide } from 'vue';
 import type LogicFlow from '@logicflow/core';
-
-import { provide, inject } from 'vue';
 
 const key = Symbol('flow-chart');
 

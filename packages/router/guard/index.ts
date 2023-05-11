@@ -1,17 +1,17 @@
-import type { Router, RouteLocationNormalized } from 'vue-router';
+import { unref } from 'vue';
 import { useAppStoreWithOut } from '@ent-core/store/modules/app';
 import { useUserStoreWithOut } from '@ent-core/store/modules/user';
 import { useTransitionSetting } from '@ent-core/hooks/setting/use-transition-setting';
 import { AxiosCanceler } from '@ent-core/utils/http/axios/axios-cancel';
 import { Modal, notification } from 'ant-design-vue';
 import { warn } from '@ent-core/utils/log';
-import { unref } from 'vue';
 import { setRouteChange } from '@ent-core/logics/mitt/route-change';
-import { createPermissionGuard } from './permission-guard';
-import { createStateGuard } from './state-guard';
 import nProgress from 'nprogress';
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
+import { createPermissionGuard } from './permission-guard';
+import { createStateGuard } from './state-guard';
 import { createParamMenuGuard } from './param-menu-guard';
+import type { RouteLocationNormalized, Router } from 'vue-router';
 import type { Nullable } from '@ent-core/types';
 
 // Don't change the order of creation
@@ -104,7 +104,7 @@ export function createHttpGuard(router: Router) {
 // Routing switch back to the top
 export function createScrollGuard(router: Router) {
   const isHash = (href: string) => {
-    return /^#/.test(href);
+    return href.startsWith('#');
   };
 
   const body = document.body;
@@ -130,7 +130,7 @@ export function createMessageGuard(router: Router) {
         notification.destroy();
       }
     } catch (error) {
-      warn('message guard error:' + error);
+      warn(`message guard error:${error}`);
     }
     return true;
   });

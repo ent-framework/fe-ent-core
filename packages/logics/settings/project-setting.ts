@@ -1,20 +1,20 @@
-import type { ProjectConfig } from '@ent-core/logics/types/config';
 import {
-  MenuTypeEnum,
   MenuModeEnum,
-  TriggerEnum,
+  MenuTypeEnum,
   MixSidebarTriggerEnum,
+  TriggerEnum,
 } from '@ent-core/logics/enums/menu-enum';
 import { CacheTypeEnum } from '@ent-core/logics/enums/cache-enum';
 import {
   ContentEnum,
   PermissionModeEnum,
-  ThemeEnum,
   RouterTransitionEnum,
-  SettingButtonPositionEnum,
   SessionTimeoutProcessingEnum,
+  SettingButtonPositionEnum,
+  ThemeEnum,
 } from '@ent-core/logics/enums/app-enum';
-import { SIDE_BAR_BG_COLOR_LIST, HEADER_PRESET_BG_COLOR_LIST } from './design-setting';
+import { HEADER_PRESET_BG_COLOR_LIST, SIDE_BAR_BG_COLOR_LIST } from './design-setting';
+import type { ProjectConfig } from '@ent-core/logics/types/config';
 
 const primaryColor = '#0960bd';
 

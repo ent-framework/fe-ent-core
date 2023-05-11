@@ -1,15 +1,14 @@
 <template>
-  <div class="relative !h-full w-full overflow-hidden" ref="el"></div>
+  <div ref="el" class="relative !h-full w-full overflow-hidden" />
 </template>
 
 <script lang="ts" setup>
-  import { ref, onMounted, onUnmounted, watchEffect, watch, unref, nextTick } from 'vue';
-  import type { PropType } from 'vue';
+  import { nextTick, onMounted, onUnmounted, ref, unref, watch, watchEffect } from 'vue';
   import { useDebounceFn } from '@vueuse/core';
-  import { useWindowSizeFn } from 'fe-ent-core';
-  import { useAppStore } from 'fe-ent-core';
-  import { CodeMirror } from './codemirror';
+  import { useAppStore, useWindowSizeFn } from 'fe-ent-core';
   import { MODE } from '../typing';
+  import { CodeMirror } from './codemirror';
+  import type { PropType } from 'vue';
   import type { Nullable } from 'fe-ent-core/lib/types';
 
   const props = defineProps({

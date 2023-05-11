@@ -1,5 +1,5 @@
-import { nextTick, onMounted, onActivated } from 'vue';
-import { Fn } from '@ent-core/types';
+import { nextTick, onActivated, onMounted } from 'vue';
+import type { Fn } from '@ent-core/types';
 
 export function onMountedOrActivated(hook: Fn) {
   let mounted: boolean;

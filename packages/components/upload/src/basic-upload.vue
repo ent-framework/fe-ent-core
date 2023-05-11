@@ -1,10 +1,10 @@
 <template>
   <div>
     <Space>
-      <a-button type="primary" @click="openUploadModal" preIcon="carbon:cloud-upload">
+      <a-button type="primary" pre-icon="carbon:cloud-upload" @click="openUploadModal">
         {{ t('component.upload.upload') }}
       </a-button>
-      <Tooltip placement="bottom" v-if="showPreview">
+      <Tooltip v-if="showPreview" placement="bottom">
         <template #title>
           {{ t('component.upload.uploaded') }}
           <template v-if="fileList.length">
@@ -22,7 +22,7 @@
 
     <UploadModal
       v-bind="bindValue"
-      :previewFileList="fileList"
+      :preview-file-list="fileList"
       @register="registerUploadModal"
       @change="handleChange"
       @delete="handleDelete"
@@ -37,16 +37,16 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, ref, watch, unref, computed } from 'vue';
-  import UploadModal from './upload-modal.vue';
-  import UploadPreviewModal from './upload-preview-modal.vue';
+  import { computed, defineComponent, ref, unref, watch } from 'vue';
   import { EntIcon } from '@ent-core/components/icon';
-  import { Tooltip, Space } from 'ant-design-vue';
+  import { Space, Tooltip } from 'ant-design-vue';
   import { useModal } from '@ent-core/components/modal';
-  import { uploadContainerProps } from './props';
   import { omit } from 'lodash-es';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { isArray } from '@ent-core/utils/is';
+  import { uploadContainerProps } from './props';
+  import UploadPreviewModal from './upload-preview-modal.vue';
+  import UploadModal from './upload-modal.vue';
   import type { Recordable } from '@ent-core/types';
   export default defineComponent({
     name: 'EntUpload',

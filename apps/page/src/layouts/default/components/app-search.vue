@@ -2,8 +2,8 @@
   import { defineComponent, ref, unref } from 'vue';
   import { Tooltip } from 'ant-design-vue';
   import { SearchOutlined } from '@ant-design/icons-vue';
-  import AppSearchModal from './app-search-modal.vue';
   import { useI18n } from 'fe-ent-core/lib/hooks';
+  import AppSearchModal from './app-search-modal.vue';
 
   export default defineComponent({
     name: 'AppSearch',

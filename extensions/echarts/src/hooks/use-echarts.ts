@@ -1,16 +1,15 @@
-import type { EChartsOption } from 'echarts';
-import type { Ref } from 'vue';
-import { tryOnUnmounted } from '@vueuse/core';
-import { unref, nextTick, watch, computed, ref } from 'vue';
-import { useDebounceFn } from '@vueuse/core';
-import echarts from '../lib/echarts';
+import { computed, nextTick, ref, unref, watch } from 'vue';
+import { tryOnUnmounted, useDebounceFn } from '@vueuse/core';
 import {
-  useRootSetting,
   useBreakpoint,
   useEventListener,
-  useTimeoutFn,
   useMenuSetting,
+  useRootSetting,
+  useTimeoutFn,
 } from 'fe-ent-core';
+import echarts from '../lib/echarts';
+import type { Ref } from 'vue';
+import type { EChartsOption } from 'echarts';
 
 export function useEcharts(
   elRef: Ref<HTMLDivElement>,

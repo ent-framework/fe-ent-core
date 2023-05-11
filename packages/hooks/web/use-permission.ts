@@ -1,20 +1,18 @@
-import type { RouteRecordRaw } from 'vue-router';
-
 import { useAppStore } from '@ent-core/store/modules/app';
 import { usePermissionStore } from '@ent-core/store/modules/permission';
 import { useUserStore } from '@ent-core/store/modules/user';
-
-import { useTabs } from './use-tabs';
 
 import { entRouter, resetRouter } from '@ent-core/router';
 
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
-import { RoleEnum } from '@ent-core/logics/enums/role-enum';
 
 import { intersection } from 'lodash-es';
 import { isArray } from '@ent-core/utils/is';
 import { useMultipleTabStore } from '@ent-core/store/modules/multiple-tab';
+import { useTabs } from './use-tabs';
+import type { RoleEnum } from '@ent-core/logics/enums/role-enum';
+import type { RouteRecordRaw } from 'vue-router';
 
 // User permissions related operations
 export function usePermission() {

@@ -1,11 +1,11 @@
 <template>
   <div :class="prefixCls">
     <PreviewGroup>
-      <slot v-if="!imageList || $slots.default"></slot>
+      <slot v-if="!imageList || $slots.default" />
       <template v-else>
         <template v-for="item in getImageList" :key="item.src">
           <Image v-bind="item">
-            <template #placeholder v-if="item.placeholder">
+            <template v-if="item.placeholder" #placeholder>
               <Image v-bind="item" :src="item.placeholder" :preview="false" />
             </template>
           </Image>
@@ -15,13 +15,13 @@
   </div>
 </template>
 <script lang="ts">
-  import type { PropType } from 'vue';
-  import { defineComponent, computed } from 'vue';
+  import { computed, defineComponent } from 'vue';
 
   import { Image } from 'ant-design-vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { isString } from '@ent-core/utils/is';
+  import type { PropType } from 'vue';
 
   interface ImageProps {
     alt?: string;

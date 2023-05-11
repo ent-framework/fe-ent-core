@@ -1,15 +1,15 @@
 <template>
   <div class="p-4">
     <template v-for="src in imgList" :key="src">
-      <img :src="src" v-show="false" />
+      <img v-show="false" :src="src" />
     </template>
     <DetailModal :info="rowInfo" @register="registerModal" />
-    <ent-table @register="register" class="error-handle-table">
+    <ent-table class="error-handle-table" @register="register">
       <template #toolbar>
-        <a-button @click="fireVueError" type="primary">
+        <a-button type="primary" @click="fireVueError">
           {{ t('sys.errorLog.fireVueError') }}
         </a-button>
-        <a-button @click="fireResourceError" type="primary">
+        <a-button type="primary" @click="fireResourceError">
           {{ t('sys.errorLog.fireResourceError') }}
         </a-button>
       </template>
@@ -29,18 +29,15 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import type { ErrorLogInfo } from 'fe-ent-core/lib/logics';
-  import { watch, ref, nextTick } from 'vue';
-  import DetailModal from './detail-modal.vue';
-  import { EntTable, EntTableAction } from 'fe-ent-core/lib/components';
-  import { useTable } from 'fe-ent-core/lib/components';
-  import { useModal } from 'fe-ent-core/lib/components';
-  import { useMessage } from 'fe-ent-core/lib/hooks';
-  import { useI18n } from 'fe-ent-core/lib/hooks';
+  import { nextTick, ref, watch } from 'vue';
+  import { EntTable, EntTableAction, useModal, useTable } from 'fe-ent-core/lib/components';
+  import { useI18n, useMessage } from 'fe-ent-core/lib/hooks';
   import { useErrorLogStore } from 'fe-ent-core/lib/store';
-  import { getColumns } from './data';
   import { cloneDeep } from 'lodash-es';
   import { isDevMode } from 'fe-ent-core/lib/utils';
+  import { getColumns } from './data';
+  import DetailModal from './detail-modal.vue';
+  import type { ErrorLogInfo } from 'fe-ent-core/lib/logics';
 
   const rowInfo = ref<ErrorLogInfo>();
   const imgList = ref<string[]>([]);
@@ -84,6 +81,6 @@
   }
 
   function fireResourceError() {
-    imgList.value.push(`${new Date().getTime()}.png`);
+    imgList.value.push(`${Date.now()}.png`);
   }
 </script>

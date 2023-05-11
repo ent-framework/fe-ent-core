@@ -1,18 +1,8 @@
 <script lang="tsx">
-  import {
-    defineComponent,
-    computed,
-    ref,
-    unref,
-    reactive,
-    onMounted,
-    watch,
-    nextTick,
-    CSSProperties,
-    PropType,
-  } from 'vue';
+  import { computed, defineComponent, nextTick, onMounted, reactive, ref, unref, watch } from 'vue';
   import { useEventListener } from '@ent-core/hooks/event/use-event-listener';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
+  import type { CSSProperties, PropType } from 'vue';
   import type { Recordable } from '@ent-core/types';
   type NumberOrNumberString = PropType<string | number | undefined>;
 
@@ -42,7 +32,7 @@
   function convertToUnit(str: string | number | null | undefined, unit = 'px'): string | undefined {
     if (str == null || str === '') {
       return undefined;
-    } else if (isNaN(+str!)) {
+    } else if (Number.isNaN(+str!)) {
       return String(str);
     } else {
       return `${Number(str)}${unit}`;
@@ -61,11 +51,11 @@
       });
 
       const getBenchRef = computed(() => {
-        return parseInt(props.bench as string, 10);
+        return Number.parseInt(props.bench as string, 10);
       });
 
       const getItemHeightRef = computed(() => {
-        return parseInt(props.itemHeight as string, 10);
+        return Number.parseInt(props.itemHeight as string, 10);
       });
 
       const getFirstToRenderRef = computed(() => {
@@ -109,7 +99,7 @@
         if (!wrapEl) {
           return 0;
         }
-        const height = parseInt(props.height || 0, 10) || wrapEl.clientHeight;
+        const height = Number.parseInt((props.height || 0) as string, 10) || wrapEl.clientHeight;
 
         return first + Math.ceil(height / unref(getItemHeightRef));
       }

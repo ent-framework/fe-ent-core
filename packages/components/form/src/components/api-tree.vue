@@ -1,22 +1,22 @@
 <template>
   <a-tree v-bind="getAttrs" @change="handleChange">
-    <template #[item]="data" v-for="item in Object.keys($slots)">
-      <slot :name="item" v-bind="data || {}"></slot>
+    <template v-for="item in Object.keys($slots)" #[item]="data">
+      <slot :name="item" v-bind="data || {}" />
     </template>
-    <template #suffixIcon v-if="loading">
+    <template v-if="loading" #suffixIcon>
       <LoadingOutlined spin />
     </template>
   </a-tree>
 </template>
 
 <script lang="ts">
-  import { type PropType, computed, defineComponent, watch, ref, onMounted, unref } from 'vue';
+  import { type PropType, computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
   import { Tree } from 'ant-design-vue';
   import { isArray, isFunction } from '@ent-core/utils/is';
   import { get } from 'lodash-es';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { LoadingOutlined } from '@ant-design/icons-vue';
-  import type { Recordable, AnyFunction } from '@ent-core/types';
+  import type { AnyFunction, Recordable } from '@ent-core/types';
   export default defineComponent({
     name: 'ApiTree',
     components: { ATree: Tree, LoadingOutlined },
@@ -30,7 +30,7 @@
     emits: ['options-change', 'change'],
     setup(props, { attrs, emit }) {
       const treeData = ref<Recordable<any>[]>([]);
-      const isFirstLoaded = ref<Boolean>(false);
+      const isFirstLoaded = ref<boolean>(false);
       const loading = ref(false);
       const getAttrs = computed(() => {
         return {

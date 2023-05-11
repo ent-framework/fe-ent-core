@@ -1,5 +1,5 @@
 import { createLoading } from '@ent-core/components/loading';
-import type { Directive, App } from 'vue';
+import type { App, Directive } from 'vue';
 
 const loadingDirective: Directive = {
   mounted(el, binding) {

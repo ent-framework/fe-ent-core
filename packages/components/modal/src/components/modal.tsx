@@ -1,9 +1,10 @@
+import { defineComponent, toRefs, unref } from 'vue';
 import { Modal } from 'ant-design-vue';
-import { defineComponent, toRefs, unref, Plugin } from 'vue';
-import { basicProps } from '../props';
-import { useModalDragMove } from '../hooks/use-modal-drag';
 import { useAttrs } from '@ent-core/hooks/core/use-attrs';
 import { extendSlots } from '@ent-core/utils/helper/tsx-helper';
+import { basicProps } from '../props';
+import { useModalDragMove } from '../hooks/use-modal-drag';
+import type { Plugin } from 'vue';
 import type { Recordable } from '@ent-core/types';
 
 const EntModal = defineComponent({

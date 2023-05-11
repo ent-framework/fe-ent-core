@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { defineComponent, toRefs, ref, unref } from 'vue';
-  import { createAppProviderContext } from './use-app-context';
+  import { defineComponent, ref, toRefs, unref } from 'vue';
   import { createBreakpointListen } from '@ent-core/hooks/event/use-breakpoint';
   import { prefixCls as defaultPrixCls } from '@ent-core/logics/settings/design-setting';
   import { useAppStore } from '@ent-core/store/modules/app';
   import { MenuModeEnum, MenuTypeEnum } from '@ent-core/logics/enums/menu-enum';
+  import { createAppProviderContext } from './use-app-context';
 
   const props = {
     /**

@@ -1,10 +1,11 @@
+import { computed, nextTick, ref, toRaw, unref, watch } from 'vue';
 import { isFunction } from '@ent-core/utils/is';
-import type { BasicTableProps, TableRowSelection } from '../types/table';
-import { computed, ComputedRef, nextTick, Ref, ref, toRaw, unref, watch } from 'vue';
-import { ROW_KEY } from '../const';
 import { omit } from 'lodash-es';
 import { findNodeAll } from '@ent-core/utils/helper/tree-helper';
-import type { Recordable, EmitType } from '@ent-core/types';
+import { ROW_KEY } from '../const';
+import type { ComputedRef, Ref } from 'vue';
+import type { BasicTableProps, TableRowSelection } from '../types/table';
+import type { EmitType, Recordable } from '@ent-core/types';
 export function useRowSelection(
   propsRef: ComputedRef<BasicTableProps>,
   tableData: Ref<Recordable[]>,
@@ -90,7 +91,7 @@ export function useRowSelection(
 
   function deleteSelectRowByKey(key: string) {
     const selectedRowKeys = unref(selectedRowKeysRef);
-    const index = selectedRowKeys.findIndex((item) => item === key);
+    const index = selectedRowKeys.indexOf(key);
     if (index !== -1) {
       unref(selectedRowKeysRef).splice(index, 1);
     }

@@ -1,5 +1,3 @@
-import type { Router, RouteRecordRaw } from 'vue-router';
-
 import { usePermissionStoreWithOut } from '@ent-core/store/modules/permission';
 
 import { PageEnum } from '@ent-core/logics/enums/page-enum';
@@ -7,6 +5,7 @@ import { useUserStoreWithOut } from '@ent-core/store/modules/user';
 
 import { PAGE_NOT_FOUND_NAME } from '@ent-core/router/constant';
 import { routeBridge } from '@ent-core/router/bridge';
+import type { RouteRecordRaw, Router } from 'vue-router';
 
 const LOGIN_PATH = PageEnum.BASE_LOGIN_PAGE as string;
 
@@ -39,8 +38,8 @@ export function createPermissionGuard(router: Router) {
       let loinPage = LOGIN_PATH;
       let currentPath = window.location.pathname;
       if (to.path) {
-        currentPath += '#' + to.path;
-        loinPage += '#/?redirect=' + encodeURIComponent(`${currentPath}`);
+        currentPath += `#${to.path}`;
+        loinPage += `#/?redirect=${encodeURIComponent(`${currentPath}`)}`;
       }
       window.location.href = loinPage;
       return;
@@ -62,7 +61,7 @@ export function createPermissionGuard(router: Router) {
       if (from.path !== LOGIN_PATH) {
         try {
           await userStore.getUserInfoAction();
-        } catch (err) {
+        } catch {
           if (from.path !== LOGIN_PATH) {
             //next(LOGIN_PATH);
             window.location.href = LOGIN_PATH as string;

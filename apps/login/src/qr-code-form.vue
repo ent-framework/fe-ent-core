@@ -16,11 +16,11 @@
 </template>
 <script lang="ts" setup>
   import { computed, unref } from 'vue';
-  import LoginFormTitle from './login-form-title.vue';
   import { Button, Divider } from 'ant-design-vue';
   import { useI18n } from 'fe-ent-core/lib/hooks';
   import { QrCode } from 'fe-ent-qrcode';
-  import { useLoginState, LoginStateEnum } from './use-login';
+  import LoginFormTitle from './login-form-title.vue';
+  import { LoginStateEnum, useLoginState } from './use-login';
 
   const qrCodeUrl = 'https://vvbin.cn/next/login';
 

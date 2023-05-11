@@ -1,42 +1,42 @@
 <script lang="tsx">
-  import type { CSSProperties } from 'vue';
-  import type { Recordable } from '@ent-core/types';
-  import type {
-    FieldNames,
-    TreeState,
-    TreeItem,
-    KeyType,
-    CheckKeys,
-    TreeActionType,
-  } from './types/tree';
-
   import {
-    defineComponent,
-    reactive,
     computed,
-    unref,
-    ref,
-    watchEffect,
-    toRaw,
-    watch,
+    defineComponent,
     onMounted,
+    reactive,
+    ref,
+    toRaw,
+    unref,
+    watch,
+    watchEffect,
   } from 'vue';
-  import TreeHeader from './components/tree-header.vue';
-  import { Tree, Spin, Empty } from 'ant-design-vue';
-  import { TreeIcon } from './tree-icon';
+  import { Empty, Spin, Tree } from 'ant-design-vue';
   import { EntScrollContainer } from '@ent-core/components/container';
 
-  import { omit, get, difference, cloneDeep } from 'lodash-es';
+  import { cloneDeep, difference, get, omit } from 'lodash-es';
   import { isArray, isBoolean, isEmpty, isFunction } from '@ent-core/utils/is';
   import { extendSlots, getSlot } from '@ent-core/utils/helper/tsx-helper';
-  import { filter, treeToList, eachTree } from '@ent-core/utils/helper/tree-helper';
+  import { eachTree, filter, treeToList } from '@ent-core/utils/helper/tree-helper';
 
-  import { useTree } from './hooks/use-tree';
   import { useContextMenu } from '@ent-core/hooks/web/use-context-menu';
   import { useDesign } from '@ent-core/hooks/web/use-design';
 
-  import { CreateContextOptions } from '@ent-core/components/context-menu';
+  import { useTree } from './hooks/use-tree';
+  import { TreeIcon } from './tree-icon';
+  import TreeHeader from './components/tree-header.vue';
   import { treeEmits, treeProps } from './types/tree';
+  import type { CreateContextOptions } from '@ent-core/components/context-menu';
+  import type {
+    CheckKeys,
+    FieldNames,
+    KeyType,
+    TreeActionType,
+    TreeItem,
+    TreeState,
+  } from './types/tree';
+  import { isNumber } from '@ent-core/utils/is';
+  import type { Recordable } from '@ent-core/types';
+  import type { CSSProperties } from 'vue';
 
   export default defineComponent({
     name: 'EntTree',
@@ -74,7 +74,7 @@
       });
 
       const getBindValues = computed(() => {
-        let propsData = {
+        const propsData = {
           blockNode: true,
           ...attrs,
           ...props,
@@ -144,10 +144,10 @@
 
       async function handleRightClick({ event, node }: Recordable) {
         const { rightMenuList: menuList = [], beforeRightClick } = props;
-        let contextMenuOptions: CreateContextOptions = { event, items: [] };
+        const contextMenuOptions: CreateContextOptions = { event, items: [] };
 
         if (beforeRightClick && isFunction(beforeRightClick)) {
-          let result = await beforeRightClick(node, event);
+          const result = await beforeRightClick(node, event);
           if (Array.isArray(result)) {
             contextMenuOptions.items = result;
           } else {
@@ -268,7 +268,7 @@
           setExpandedKeys([...state.expandedKeys, key]);
         } else {
           const keys = [...state.expandedKeys];
-          const index = keys.findIndex((item) => item === key);
+          const index = keys.indexOf(key);
           if (index !== -1) {
             keys.splice(index, 1);
           }
@@ -281,7 +281,9 @@
       });
 
       onMounted(() => {
-        const level = parseInt(props.defaultExpandLevel);
+        const level = isNumber(props.defaultExpandLevel)
+          ? props.defaultExpandLevel
+          : Number.parseInt(props.defaultExpandLevel);
         if (level > 0) {
           state.expandedKeys = filterByLevel(level);
         } else if (props.defaultExpandAll) {
@@ -389,9 +391,9 @@
 
           const titleDom = isHighlight ? (
             <span class={unref(getBindValues)?.blockNode ? `${prefixCls}__content` : ''}>
-              <span>{title.substr(0, searchIdx)}</span>
+              <span>{title.slice(0, Math.max(0, searchIdx))}</span>
               <span style={highlightStyle}>{searchText}</span>
-              <span>{title.substr(searchIdx + (searchText as string).length)}</span>
+              <span>{title.slice(searchIdx + (searchText as string).length)}</span>
             </span>
           ) : (
             title

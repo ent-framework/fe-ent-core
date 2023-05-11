@@ -11,12 +11,12 @@
   </div>
 </template>
 <script lang="ts">
-  import type { CSSProperties, PropType } from 'vue';
-  import { defineComponent, onMounted, ref, unref, computed, onUnmounted } from 'vue';
+  import { computed, defineComponent, onMounted, onUnmounted, ref, unref } from 'vue';
   import Cropper from 'cropperjs';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useDebounceFn } from '@vueuse/shared';
-  import type { Nullable, ElRef } from '@ent-core/types';
+  import type { CSSProperties, PropType } from 'vue';
+  import type { ElRef, Nullable } from '@ent-core/types';
 
   type Options = Cropper.Options;
 
@@ -88,7 +88,7 @@
       });
 
       const getWrapperStyle = computed((): CSSProperties => {
-        return { height: `${props.height}`.replace(/px/, '') + 'px' };
+        return { height: `${`${props.height}`.replace(/px/, '')}px` };
       });
 
       onMounted(init);
@@ -132,13 +132,13 @@
         if (!cropper.value) {
           return;
         }
-        let imgInfo = cropper.value.getData();
+        const imgInfo = cropper.value.getData();
         const canvas = props.circled ? getRoundedCanvas() : cropper.value.getCroppedCanvas();
         canvas.toBlob((blob) => {
           if (!blob) {
             return;
           }
-          let fileReader: FileReader = new FileReader();
+          const fileReader: FileReader = new FileReader();
           fileReader.readAsDataURL(blob);
           fileReader.onloadend = (e) => {
             emit('cropend', {

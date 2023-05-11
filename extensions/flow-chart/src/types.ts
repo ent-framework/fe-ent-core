@@ -1,5 +1,5 @@
-import { NodeConfig } from '@logicflow/core';
-import { ToolbarTypeEnum } from './enum';
+import type { NodeConfig } from '@logicflow/core';
+import type { ToolbarTypeEnum } from './enum';
 
 export interface NodeItem extends NodeConfig {
   icon: string;

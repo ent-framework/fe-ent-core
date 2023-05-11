@@ -1,11 +1,11 @@
-import type { RouteRecordRaw } from 'vue-router';
-import type { App } from 'vue';
 import { inject } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
-import { AppRouteModule, AppRouteRecordRaw, EntRouter } from './types';
 import { getAppEnvConfig } from '@ent-core/utils/env';
 import { normalizeRoutePath } from '@ent-core/router/helper/route-helper';
 import { routerKey } from './router_symbols';
+import type { AppRouteModule, AppRouteRecordRaw, EntRouter } from './types';
+import type { App } from 'vue';
+import type { RouteRecordRaw } from 'vue-router';
 
 const noop = () => {};
 
@@ -120,7 +120,7 @@ const getRouteNames = (array: any[], whiteList: string[]) => {
 };
 
 // 内存回收
-window.addEventListener('beforeunload', function () {
+window.addEventListener('beforeunload', () => {
   // @ts-ignore
   entRouter = null;
 });

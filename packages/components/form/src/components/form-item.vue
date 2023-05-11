@@ -1,24 +1,24 @@
 <script lang="tsx">
-  import type { PropType, Ref } from 'vue';
-  import type { FormActionType, FormProps } from '../types/form';
-  import type { FormSchema } from '../types/form';
-  import type { Rule } from 'ant-design-vue/lib/form';
-  import type { TableActionType } from '@ent-core/components/table';
-  import { defineComponent, computed, unref, toRefs } from 'vue';
-  import { Form, Col, Divider } from 'ant-design-vue';
-  import { componentMap } from '../component-map';
+  import { computed, defineComponent, toRefs, unref } from 'vue';
+  import { Col, Divider, Form } from 'ant-design-vue';
   import { EntHelp } from '@ent-core/components/basic';
   import { isBoolean, isFunction, isNull } from '@ent-core/utils/is';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
+  import { cloneDeep, upperFirst } from 'lodash-es';
+  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import { type Recordable } from '@ent-core/types';
+  import { useItemLabelWidth } from '../hooks/use-label-width';
   import {
-    createPlaceholderMessage,
     NO_AUTO_LINK_COMPONENTS,
+    createPlaceholderMessage,
     setComponentRuleType,
   } from '../helper';
-  import { cloneDeep, upperFirst } from 'lodash-es';
-  import { useItemLabelWidth } from '../hooks/use-label-width';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { type Recordable, Nullable } from '@ent-core/types';
+  import { componentMap } from '../component-map';
+  import type { Nullable } from '@ent-core/types';
+  import type { TableActionType } from '@ent-core/components/table';
+  import type { Rule } from 'ant-design-vue/lib/form';
+  import type { FormActionType, FormProps, FormSchema } from '../types/form';
+  import type { PropType, Ref } from 'vue';
 
   export default defineComponent({
     name: 'BasicFormItem',
@@ -75,7 +75,7 @@
             ...allDefaultValues,
             ...formModel,
           } as Recordable<any>,
-          schema: schema,
+          schema,
         };
       });
 
@@ -160,7 +160,7 @@
         const joinLabel = Reflect.has(props.schema, 'rulesMessageJoinLabel')
           ? rulesMessageJoinLabel
           : globalRulesMessageJoinLabel;
-        const defaultMsg = createPlaceholderMessage(component) + `${joinLabel ? label : ''}`;
+        const defaultMsg = `${createPlaceholderMessage(component)}${joinLabel ? label : ''}`;
 
         function validator(rule: any, value: any) {
           const msg = rule.message || defaultMsg;

@@ -1,23 +1,21 @@
 <template>
-  <div ref="wrapRef"></div>
+  <div ref="wrapRef" />
 </template>
 <script lang="ts">
-  import type { Ref } from 'vue';
   import {
-    defineComponent,
-    ref,
-    unref,
-    nextTick,
     computed,
-    watch,
+    defineComponent,
+    nextTick,
     onBeforeUnmount,
     onDeactivated,
+    ref,
+    unref,
+    watch,
   } from 'vue';
   import Vditor from 'vditor';
-  import { useRootSetting, onMountedOrActivated } from 'fe-ent-core';
-  import { useModalContext } from 'fe-ent-core';
-  import { useLocale } from 'fe-ent-core';
-  import type { Nullable, ElRef } from 'fe-ent-core/lib/types';
+  import { onMountedOrActivated, useLocale, useModalContext, useRootSetting } from 'fe-ent-core';
+  import type { Ref } from 'vue';
+  import type { ElRef, Nullable } from 'fe-ent-core/lib/types';
 
   type Lang = 'zh_CN' | 'en_US' | 'ja_JP' | 'ko_KR' | undefined;
 
@@ -129,7 +127,7 @@
         if (!vditorInstance) return;
         try {
           vditorInstance?.destroy?.();
-        } catch (error) {}
+        } catch {}
         vditorRef.value = null;
         initedRef.value = false;
       }

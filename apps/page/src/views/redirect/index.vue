@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div />
 </template>
 <script lang="ts" setup>
   import { unref } from 'vue';
@@ -23,7 +23,7 @@
     });
   } else {
     replace({
-      path: _path.startsWith('/') ? _path : '/' + _path,
+      path: _path.startsWith('/') ? _path : `/${_path}`,
       query,
     });
   }

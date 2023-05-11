@@ -1,9 +1,5 @@
 <script lang="tsx">
-  import type { DescriptionProps, DescInstance, DescItem } from './typing';
-  import type { DescriptionsProps } from 'ant-design-vue/es';
-  import type { CSSProperties, PropType } from 'vue';
-  import type { CollapseContainerOptions } from '@ent-core/components/container';
-  import { defineComponent, computed, ref, unref } from 'vue';
+  import { computed, defineComponent, ref, unref } from 'vue';
   import { get } from 'lodash-es';
   import { Descriptions } from 'ant-design-vue';
   import EntCollapseContainer from '@ent-core/components/container/src/collapse/collapse-container.vue';
@@ -12,6 +8,10 @@
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
   import { type Recordable } from '@ent-core/types';
+  import type { CollapseContainerOptions } from '@ent-core/components/container';
+  import type { CSSProperties, PropType } from 'vue';
+  import type { DescriptionsProps } from 'ant-design-vue/es';
+  import type { DescInstance, DescItem, DescriptionProps } from './typing';
   const props = {
     useCollapse: { type: Boolean, default: true },
     title: { type: String, default: '' },

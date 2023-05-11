@@ -6,12 +6,12 @@
   <BasicHelp v-if="getHelpMessage" :text="getHelpMessage" :class="`${prefixCls}__help`" />
 </template>
 <script lang="ts">
-  import type { PropType } from 'vue';
-  import type { BasicColumn } from '../types/table';
-  import { defineComponent, computed } from 'vue';
+  import { computed, defineComponent } from 'vue';
   import BasicHelp from '@ent-core/components/basic/src/basic-help.vue';
-  import EditTableHeaderCell from './edit-table-header-icon.vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
+  import EditTableHeaderCell from './edit-table-header-icon.vue';
+  import type { BasicColumn } from '../types/table';
+  import type { PropType } from 'vue';
 
   export default defineComponent({
     name: 'TableHeaderCell',

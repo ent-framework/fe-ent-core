@@ -2,17 +2,17 @@
   <Tooltip
     :title="t('layout.header.tooltipErrorLog')"
     placement="bottom"
-    :mouseEnterDelay="0.5"
+    :mouse-enter-delay="0.5"
     @click="handleToErrorList"
   >
-    <Badge :count="getCount" :offset="[0, 10]" :overflowCount="99">
+    <Badge :count="getCount" :offset="[0, 10]" :overflow-count="99">
       <EntIcon icon="ion:bug-outline" />
     </Badge>
   </Tooltip>
 </template>
 <script lang="ts">
-  import { defineComponent, computed } from 'vue';
-  import { Tooltip, Badge } from 'ant-design-vue';
+  import { computed, defineComponent } from 'vue';
+  import { Badge, Tooltip } from 'ant-design-vue';
   import { EntIcon } from 'fe-ent-core/lib/components';
 
   import { useI18n } from 'fe-ent-core/lib/hooks';

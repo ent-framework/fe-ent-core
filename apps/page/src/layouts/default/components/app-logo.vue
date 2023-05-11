@@ -5,17 +5,14 @@
 <template>
   <div class="anticon" :class="getAppLogoClass" @click="goHome">
     <img :src="LogoImg" />
-    <div class="ml-2 truncate md:opacity-100" :class="getTitleClass" v-show="$props.showTitle">
+    <div v-show="$props.showTitle" class="ml-2 truncate md:opacity-100" :class="getTitleClass">
       {{ title }}
     </div>
   </div>
 </template>
 <script lang="ts" setup>
   import { computed, unref } from 'vue';
-  import { useGlobSetting } from 'fe-ent-core/lib/hooks';
-  import { useGo } from 'fe-ent-core/lib/hooks';
-  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useDesign, useGlobSetting, useGo, useMenuSetting } from 'fe-ent-core/lib/hooks';
   import { PageEnum } from 'fe-ent-core/lib/logics';
   import { useUserStore } from 'fe-ent-core/lib/store';
   import LogoImg from '../../../assets/logo.png';

@@ -1,25 +1,22 @@
 <script lang="tsx">
-  import type { PropType, CSSProperties } from 'vue';
-
-  import { computed, defineComponent, unref, toRef } from 'vue';
-  import { BasicMenu } from 'fe-ent-core/lib/components';
-  import { SimpleMenu } from 'fe-ent-core/lib/components';
-  import AppLogo from '../components/app-logo.vue';
+  import { computed, defineComponent, toRef, unref } from 'vue';
+  import { BasicMenu, EntScrollContainer, SimpleMenu } from 'fe-ent-core/lib/components';
 
   import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/lib/logics';
 
-  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
-  import { EntScrollContainer } from 'fe-ent-core/lib/components';
+  import {
+    useAppInject,
+    useDesign,
+    useGo,
+    useMenuSetting,
+    useRootSetting,
+  } from 'fe-ent-core/lib/hooks';
 
-  import { useGo } from 'fe-ent-core/lib/hooks';
+  import { isUrl, openWindow, propTypes } from 'fe-ent-core/lib/utils';
+  import AppLogo from '../components/app-logo.vue';
   import { useSplitMenu } from './use-layout-menu';
-  import { openWindow } from 'fe-ent-core/lib/utils';
-  import { propTypes } from 'fe-ent-core/lib/utils';
-  import { isUrl } from 'fe-ent-core/lib/utils';
-  import { useRootSetting } from 'fe-ent-core/lib/hooks';
-  import { useAppInject } from 'fe-ent-core/lib/hooks';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { Nullable } from 'fe-ent-core/lib/types';
+  import type { Nullable } from 'fe-ent-core/lib/types';
+  import type { CSSProperties, PropType } from 'vue';
 
   export default defineComponent({
     name: 'LayoutMenu',

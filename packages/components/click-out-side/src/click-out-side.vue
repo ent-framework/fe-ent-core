@@ -1,10 +1,10 @@
 <template>
   <div ref="wrap">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 <script lang="ts" setup>
-  import { ref, onMounted } from 'vue';
+  import { onMounted, ref } from 'vue';
   import { onClickOutside } from '@vueuse/core';
   import type { ElRef } from '@ent-core/types';
 

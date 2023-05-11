@@ -1,27 +1,26 @@
-import type {
-  UseDrawerReturnType,
-  DrawerInstance,
-  ReturnDrawerMethods,
-  DrawerProps,
-  UseDrawerInnerReturnType,
-} from './typing';
-import { Fn } from '@ent-core/types';
 import {
-  ref,
-  getCurrentInstance,
-  unref,
-  reactive,
-  watchEffect,
-  nextTick,
-  toRaw,
   computed,
+  getCurrentInstance,
+  nextTick,
+  reactive,
+  ref,
+  toRaw,
+  unref,
+  watchEffect,
 } from 'vue';
+import { tryOnUnmounted } from '@vueuse/core';
 import { isProdMode } from '@ent-core/utils/env';
 import { isFunction } from '@ent-core/utils/is';
-import { tryOnUnmounted } from '@vueuse/core';
 import { isEqual } from 'lodash-es';
 import { error } from '@ent-core/utils/log';
-import type { Nullable } from '@ent-core/types';
+import type { Fn, Nullable } from '@ent-core/types';
+import type {
+  DrawerInstance,
+  DrawerProps,
+  ReturnDrawerMethods,
+  UseDrawerInnerReturnType,
+  UseDrawerReturnType,
+} from './typing';
 
 const dataTransferRef = reactive<any>({});
 
@@ -36,9 +35,9 @@ export function useDrawer(): UseDrawerReturnType {
   }
   const drawer = ref<DrawerInstance | null>(null);
   const loaded = ref<Nullable<boolean>>(false);
-  const uid = ref<string>('');
+  const uid = ref<number>(0);
 
-  function register(drawerInstance: DrawerInstance, uuid: string) {
+  function register(drawerInstance: DrawerInstance, uuid: number) {
     isProdMode() &&
       tryOnUnmounted(() => {
         drawer.value = null;
@@ -72,12 +71,12 @@ export function useDrawer(): UseDrawerReturnType {
     },
 
     getVisible: computed((): boolean => {
-      return visibleData[~~unref(uid)];
+      return visibleData[Math.trunc(unref(uid))];
     }),
 
     openDrawer: <T = any>(visible = true, data?: T, openOnSet = true): void => {
       getInstance()?.setDrawerProps({
-        visible: visible,
+        visible,
       });
       if (!data) return;
 
@@ -102,7 +101,7 @@ export function useDrawer(): UseDrawerReturnType {
 export const useDrawerInner = (callbackFn?: Fn): UseDrawerInnerReturnType => {
   const drawerInstanceRef = ref<Nullable<DrawerInstance>>(null);
   const currentInstance = getCurrentInstance();
-  const uidRef = ref<string>('');
+  const uidRef = ref<number>(-1);
 
   if (!getCurrentInstance()) {
     throw new Error('useDrawerInner() can only be used inside setup() or functional components!');
@@ -117,7 +116,7 @@ export const useDrawerInner = (callbackFn?: Fn): UseDrawerInnerReturnType => {
     return instance;
   };
 
-  const register = (modalInstance: DrawerInstance, uuid: string) => {
+  const register = (modalInstance: DrawerInstance, uuid: number) => {
     isProdMode() &&
       tryOnUnmounted(() => {
         drawerInstanceRef.value = null;
@@ -148,7 +147,7 @@ export const useDrawerInner = (callbackFn?: Fn): UseDrawerInnerReturnType => {
         getInstance()?.setDrawerProps({ confirmLoading: loading });
       },
       getVisible: computed((): boolean => {
-        return visibleData[~~unref(uidRef)];
+        return visibleData[Math.trunc(unref(uidRef))];
       }),
 
       closeDrawer: () => {

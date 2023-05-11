@@ -1,23 +1,23 @@
 <template>
   <div class="flex px-2 py-1.5 items-center basic-tree-header">
-    <slot name="headerTitle" v-if="slots.headerTitle"></slot>
-    <EntTitle :helpMessage="helpMessage" v-if="!$slots.headerTitle && title">
+    <slot v-if="slots.headerTitle" name="headerTitle" />
+    <EntTitle v-if="!$slots.headerTitle && title" :help-message="helpMessage">
       {{ title }}
     </EntTitle>
 
     <div
-      class="flex items-center flex-1 cursor-pointer justify-self-stretch"
       v-if="search || toolbar"
+      class="flex items-center flex-1 cursor-pointer justify-self-stretch"
     >
-      <div :class="getInputSearchCls" v-if="search">
+      <div v-if="search" :class="getInputSearchCls">
         <InputSearch
+          v-model:value="searchValue"
           :placeholder="t('common.searchText')"
           size="small"
-          allowClear
-          v-model:value="searchValue"
+          allow-clear
         />
       </div>
-      <Dropdown @click.prevent v-if="toolbar">
+      <Dropdown v-if="toolbar" @click.prevent>
         <EntIcon icon="ion:ellipsis-vertical" />
         <template #overlay>
           <Menu @click="handleMenuClick">
@@ -34,8 +34,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { type PropType, computed, ref, watch, useSlots } from 'vue';
-  import { Dropdown, Menu, MenuItem, MenuDivider, InputSearch } from 'ant-design-vue';
+  import { type PropType, computed, ref, useSlots, watch } from 'vue';
+  import { Dropdown, InputSearch, Menu, MenuDivider, MenuItem } from 'ant-design-vue';
   import { EntIcon } from '@ent-core/components/icon';
   import { EntTitle } from '@ent-core/components/basic';
   import { useI18n } from '@ent-core//hooks/web/use-i18n';

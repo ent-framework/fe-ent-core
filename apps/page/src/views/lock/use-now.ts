@@ -1,8 +1,8 @@
+import { reactive, toRefs } from 'vue';
 import dayjs from 'dayjs';
 import weekday from 'dayjs/plugin/weekday';
-import { reactive, toRefs } from 'vue';
 import { tryOnMounted, tryOnUnmounted } from '@vueuse/core';
-import { IntervalHandle } from 'fe-ent-core/lib/types';
+import type { IntervalHandle } from 'fe-ent-core/lib/types';
 
 export function useNow(immediate = true) {
   dayjs.extend(weekday);

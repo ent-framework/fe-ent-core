@@ -1,13 +1,14 @@
 <template>
   <Scrollbar ref="scrollbarRef" class="scroll-container" v-bind="$attrs">
-    <slot></slot>
+    <slot />
   </Scrollbar>
 </template>
 
 <script lang="ts">
-  import { defineComponent, ref, unref, nextTick } from 'vue';
-  import { Scrollbar, ScrollbarType } from '@ent-core/components/scroll-bar';
+  import { defineComponent, nextTick, ref, unref } from 'vue';
+  import { Scrollbar } from '@ent-core/components/scroll-bar';
   import { useScrollTo } from '@ent-core/hooks/event/use-scroll-to';
+  import type { ScrollbarType } from '@ent-core/components/scroll-bar';
   import type { Nullable } from '@ent-core/types';
 
   export default defineComponent({

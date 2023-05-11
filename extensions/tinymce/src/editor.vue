@@ -1,20 +1,20 @@
 <template>
   <div :class="prefixCls" :style="{ width: containerWidth }">
     <ImgUpload
-      :fullscreen="fullscreen"
-      @uploading="handleImageUploading"
-      @done="handleDone"
       v-if="showImageUpload"
       v-show="editorRef"
+      :fullscreen="fullscreen"
       :disabled="disabled"
+      @uploading="handleImageUploading"
+      @done="handleDone"
     />
     <textarea
+      v-if="!initOptions.inline"
       :id="tinymceId"
       ref="elRef"
       :style="{ visibility: 'hidden' }"
-      v-if="!initOptions.inline"
-    ></textarea>
-    <slot v-else></slot>
+    />
+    <slot v-else />
   </div>
 </template>
 
@@ -47,7 +47,6 @@
   import 'tinymce/plugins/searchreplace';
   import 'tinymce/plugins/spellchecker';
   import 'tinymce/plugins/tabfocus';
-  // import 'tinymce/plugins/table';
   import 'tinymce/plugins/template';
   import 'tinymce/plugins/textpattern';
   import 'tinymce/plugins/visualblocks';
@@ -55,22 +54,26 @@
   import 'tinymce/plugins/wordcount';
 
   import {
-    defineComponent,
     computed,
+    defineComponent,
     nextTick,
+    onBeforeUnmount,
+    onDeactivated,
     ref,
     unref,
     watch,
-    onDeactivated,
-    onBeforeUnmount,
   } from 'vue';
+  import {
+    buildShortUUID,
+    getAppEnvConfig,
+    isNumber,
+    onMountedOrActivated,
+    useAppStore,
+    useDesign,
+    useLocale,
+  } from 'fe-ent-core';
+  import { plugins, toolbar } from './tinymce';
   import ImgUpload from './img-upload.vue';
-  import { toolbar, plugins } from './tinymce';
-  import { buildShortUUID, isNumber, getAppEnvConfig } from 'fe-ent-core';
-  import { onMountedOrActivated } from 'fe-ent-core';
-  import { useAppStore } from 'fe-ent-core';
-  import { useLocale } from 'fe-ent-core';
-  import { useDesign } from 'fe-ent-core';
   import { bindHandlers } from './helper';
   import type { Nullable, Recordable } from 'fe-ent-core/lib/types';
   const tinymceProps = {
@@ -154,7 +157,7 @@
           toolbar,
           menubar: 'file edit insert view format table',
           plugins,
-          language_url: publicPath + 'resource/tinymce/langs/' + langName.value + '.js',
+          language_url: `${publicPath}resource/tinymce/langs/${langName.value}.js`,
           language: langName.value,
           branding: false,
           default_link_target: '_blank',
@@ -162,9 +165,8 @@
           object_resizing: false,
           auto_focus: true,
           skin: skinName.value,
-          skin_url: publicPath + 'resource/tinymce/skins/ui/' + skinName.value,
-          content_css:
-            publicPath + 'resource/tinymce/skins/ui/' + skinName.value + '/content.min.css',
+          skin_url: `${publicPath}resource/tinymce/skins/ui/${skinName.value}`,
+          content_css: `${publicPath}resource/tinymce/skins/ui/${skinName.value}/content.min.css`,
           ...options,
           setup: (editor: Editor) => {
             editorRef.value = editor;

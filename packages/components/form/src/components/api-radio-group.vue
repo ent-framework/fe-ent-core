@@ -19,7 +19,7 @@
   </RadioGroup>
 </template>
 <script lang="ts">
-  import { defineComponent, type PropType, ref, watchEffect, computed, unref, watch } from 'vue';
+  import { type PropType, computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { Radio } from 'ant-design-vue';
   import { isFunction } from '@ent-core/utils/is';
   import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';

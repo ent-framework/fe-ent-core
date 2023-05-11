@@ -3,7 +3,7 @@
     <template v-for="item in toolbarItemList" :key="item.type">
       <Tooltip placement="bottom" v-bind="item.disabled ? { visible: false } : {}">
         <template #title>{{ item.tooltip }}</template>
-        <span :class="`${prefixCls}-toolbar__icon`" v-if="item.icon" @click="onControl(item)">
+        <span v-if="item.icon" :class="`${prefixCls}-toolbar__icon`" @click="onControl(item)">
           <EntIcon
             :icon="item.icon"
             :class="item.disabled ? 'cursor-not-allowed disabled' : 'cursor-pointer'"
@@ -15,14 +15,13 @@
   </div>
 </template>
 <script lang="ts">
-  import type { ToolbarConfig } from './types';
-
-  import { defineComponent, ref, onUnmounted, unref, nextTick, watchEffect } from 'vue';
+  import { defineComponent, nextTick, onUnmounted, ref, unref, watchEffect } from 'vue';
   import { Divider, Tooltip } from 'ant-design-vue';
   import { EntIcon } from 'fe-ent-core';
 
   import { useFlowChartContext } from './use-flow-context';
   import { ToolbarTypeEnum } from './enum';
+  import type { ToolbarConfig } from './types';
 
   export default defineComponent({
     name: 'FlowChartToolbar',

@@ -1,5 +1,5 @@
 <template>
-  <Dropdown placement="bottomLeft" :overlayClassName="`${prefixCls}-dropdown-overlay`">
+  <Dropdown placement="bottomLeft" :overlay-class-name="`${prefixCls}-dropdown-overlay`">
     <span :class="[prefixCls, `${prefixCls}--${theme}`]" class="flex">
       <img :class="`${prefixCls}__header`" :src="getUserInfo.avatar" />
       <span :class="`${prefixCls}__info hidden md:block`">
@@ -12,10 +12,10 @@
     <template #overlay>
       <Menu @click="handleMenuClick">
         <MenuItem
+          v-if="getShowDoc"
           key="doc"
           :text="t('layout.header.dropdownItemDoc')"
           icon="ion:document-text-outline"
-          v-if="getShowDoc"
         />
         <MenuDivider v-if="getShowDoc" />
         <MenuItem
@@ -36,24 +36,21 @@
 </template>
 <script lang="ts">
   // components
-  import { Dropdown, Menu } from 'ant-design-vue';
 
-  import { defineComponent, computed } from 'vue';
+  import { computed, defineComponent } from 'vue';
+  import { Dropdown, Menu } from 'ant-design-vue';
 
   import { DOC_URL } from 'fe-ent-core/lib/logics';
 
   import { useUserStore } from 'fe-ent-core/lib/store';
-  import { useHeaderSetting } from 'fe-ent-core/lib/hooks';
-  import { useI18n } from 'fe-ent-core/lib/hooks';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useDesign, useHeaderSetting, useI18n } from 'fe-ent-core/lib/hooks';
   import { useModal } from 'fe-ent-core/lib/components';
 
+  import { openWindow, propTypes } from 'fe-ent-core/lib/utils';
   import headerImg from '../../../../../assets/header.jpg';
-  import { propTypes } from 'fe-ent-core/lib/utils';
-  import { openWindow } from 'fe-ent-core/lib/utils';
 
-  import MenuItem from './drop-menu-item.vue';
   import LockAction from '../lock/lock-modal.vue';
+  import MenuItem from './drop-menu-item.vue';
 
   type MenuEvent = 'logout' | 'doc' | 'lock';
 

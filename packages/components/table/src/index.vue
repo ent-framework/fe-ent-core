@@ -1,36 +1,36 @@
 <template>
   <div ref="wrapRef" :class="getWrapperClass">
     <EntForm
-      ref="formRef"
-      submitOnReset
-      v-bind="getFormProps"
       v-if="getBindValues.useSearchForm"
-      :tableAction="tableAction"
+      ref="formRef"
+      submit-on-reset
+      v-bind="getFormProps"
+      :table-action="tableAction"
       @register="registerForm"
       @submit="handleSearchInfoChange"
       @advanced-change="redoHeight"
     >
-      <template #[replaceFormSlotKey(item)]="data" v-for="item in getFormSlotKeys">
-        <slot :name="item" v-bind="data || {}"></slot>
+      <template v-for="item in getFormSlotKeys" #[replaceFormSlotKey(item)]="data">
+        <slot :name="item" v-bind="data || {}" />
       </template>
     </EntForm>
 
     <Table
+      v-show="getEmptyDataIsShowTable"
       ref="tableElRef"
       v-bind="getBindValues"
-      :rowClassName="getRowClassName"
-      v-show="getEmptyDataIsShowTable"
+      :row-class-name="getRowClassName"
       @change="handleTableChange"
     >
-      <template #[item]="data" v-for="item in Object.keys($slots)" :key="item">
-        <slot :name="item" v-bind="data || {}"></slot>
+      <template v-for="item in Object.keys($slots)" #[item]="data" :key="item">
+        <slot :name="item" v-bind="data || {}" />
       </template>
       <template #headerCell="{ column }">
         <HeaderCell :column="column" />
       </template>
       <!-- 增加对antdv3.x兼容 -->
       <template #bodyCell="data">
-        <slot name="bodyCell" v-bind="data || {}"></slot>
+        <slot name="bodyCell" v-bind="data || {}" />
       </template>
       <!--      <template #[`header-${column.dataIndex}`] v-for="(column, index) in columns" :key="index">-->
       <!--        <HeaderCell :column="column" />-->
@@ -39,18 +39,24 @@
   </div>
 </template>
 <script lang="ts">
-  import type {
-    BasicTableProps,
-    TableActionType,
-    SizeType,
-    ColumnChangeParam,
-  } from './types/table';
-  import { defineComponent, ref, computed, unref, toRaw, inject, watchEffect, shallowRef } from 'vue';
+  import {
+    computed,
+    defineComponent,
+    inject,
+    ref,
+    shallowRef,
+    toRaw,
+    unref,
+    watchEffect,
+  } from 'vue';
   import { Table } from 'ant-design-vue';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { PageWrapperFixedHeightKey } from '@ent-core/components/page';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { omit } from 'lodash-es';
+  import { isFunction } from '@ent-core/utils/is';
+  import { warn } from '@ent-core/utils/log';
   import HeaderCell from './components/header-cell.vue';
-  import { InnerHandlers } from './types/table';
   import { usePagination } from './hooks/use-pagination';
   import { useColumns } from './hooks/use-columns';
   import { useDataSource } from './hooks/use-data-source';
@@ -65,12 +71,15 @@
   import { createTableContext } from './hooks/use-table-context';
   import { useTableFooter } from './hooks/use-table-footer';
   import { useTableForm } from './hooks/use-table-form';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
 
-  import { omit } from 'lodash-es';
   import { basicProps } from './props';
-  import { isFunction } from '@ent-core/utils/is';
-  import { warn } from '@ent-core/utils/log';
+  import type {
+    BasicTableProps,
+    ColumnChangeParam,
+    InnerHandlers,
+    SizeType,
+    TableActionType,
+  } from './types/table';
 
   export default defineComponent({
     name: 'EntTable',

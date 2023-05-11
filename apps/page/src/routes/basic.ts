@@ -1,11 +1,10 @@
-import type { AppRouteRecordRaw } from 'fe-ent-core/lib/router';
 import { t } from 'fe-ent-core/lib/hooks';
-import { REDIRECT_NAME, PAGE_NOT_FOUND_NAME } from 'fe-ent-core/lib/router';
+import { PAGE_NOT_FOUND_NAME, REDIRECT_NAME, useLayout } from 'fe-ent-core/lib/router';
+import { PageEnum } from 'fe-ent-core/lib/logics';
 import redirect from '../views/redirect/index.vue';
 import errorLog from '../views/error-log/index.vue';
 import exceptionView from '../views/exception/exception.vue';
-import { useLayout } from 'fe-ent-core/lib/router';
-import { PageEnum } from 'fe-ent-core/lib/logics';
+import type { AppRouteRecordRaw } from 'fe-ent-core/lib/router';
 
 // 404 on a page
 export function getPageNotFoundRoute(): AppRouteRecordRaw {

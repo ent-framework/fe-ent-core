@@ -3,7 +3,6 @@
     <template v-for="item in menuTypeList || []" :key="item.title">
       <Tooltip :title="item.title" placement="bottom">
         <div
-          @click="handler(item)"
           :class="[
             `${prefixCls}__item`,
             `${prefixCls}__item--${item.type}`,
@@ -11,19 +10,21 @@
               [`${prefixCls}__item--active`]: def === item.type,
             },
           ]"
+          @click="handler(item)"
         >
-          <div class="mix-sidebar"></div>
+          <div class="mix-sidebar" />
         </div>
       </Tooltip>
     </template>
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, PropType } from 'vue';
+  import { defineComponent } from 'vue';
 
   import { Tooltip } from 'ant-design-vue';
   import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { Fn } from 'fe-ent-core/lib/types';
+  import type { PropType } from 'vue';
+  import type { Fn } from 'fe-ent-core/lib/types';
   import type { MenuType } from '../enum';
   export default defineComponent({
     name: 'MenuTypePicker',

@@ -3,22 +3,22 @@
     <span> {{ title }}</span>
     <Switch
       v-bind="getBindValue"
-      @change="handleChange"
       :disabled="disabled"
-      :checkedChildren="t('layout.setting.on')"
-      :unCheckedChildren="t('layout.setting.off')"
+      :checked-children="t('layout.setting.on')"
+      :un-checked-children="t('layout.setting.off')"
+      @change="handleChange"
     />
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, PropType, computed } from 'vue';
+  import { computed, defineComponent } from 'vue';
 
   import { Switch } from 'ant-design-vue';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useI18n } from 'fe-ent-core/lib/hooks';
+  import { useDesign, useI18n } from 'fe-ent-core/lib/hooks';
   import { baseHandler } from '../handler';
-  import { HandlerEnum } from '../enum';
-  import { ChangeEvent } from 'fe-ent-core/lib/types';
+  import type { PropType } from 'vue';
+  import type { HandlerEnum } from '../enum';
+  import type { ChangeEvent } from 'fe-ent-core/lib/types';
 
   export default defineComponent({
     name: 'SwitchItem',

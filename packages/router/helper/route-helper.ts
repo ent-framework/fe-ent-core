@@ -1,7 +1,7 @@
-import type { AppRouteRecordRaw } from '@ent-core/router/types';
-import { cloneDeep, omit, set, merge } from 'lodash-es';
+import { cloneDeep, merge, omit, set } from 'lodash-es';
 import { isString, isUrl } from '@ent-core/utils/is';
 import { useLayout } from '@ent-core/router/helper/layout-helper';
+import type { AppRouteRecordRaw } from '@ent-core/router/types';
 
 /**
  * Convert multi-level routing to level 2 routing
@@ -9,8 +9,7 @@ import { useLayout } from '@ent-core/router/helper/layout-helper';
  */
 export function flatMultiLevelRoutes(routeModules: AppRouteRecordRaw[]) {
   const modules: AppRouteRecordRaw[] = cloneDeep(routeModules);
-  for (let index = 0; index < modules.length; index++) {
-    const routeModule = modules[index];
+  for (const routeModule of modules) {
     if (!isMultipleRoute(routeModule)) {
       continue;
     }
@@ -34,8 +33,7 @@ function promoteRouteLevel(routeModule: AppRouteRecordRaw) {
 // Add all sub-routes to the secondary route
 // 将所有子路由添加到二级路由
 function addToChildren(children: AppRouteRecordRaw[], childrenContainer: AppRouteRecordRaw[]) {
-  for (let index = 0; index < children.length; index++) {
-    const child = children[index];
+  for (const child of children) {
     childrenContainer.push(child);
     if (child.children?.length) {
       addToChildren(child.children, childrenContainer);
@@ -65,7 +63,7 @@ export function normalizeRoutePath(route: AppRouteRecordRaw, parentPath?: string
         !childPath.startsWith('/') &&
         !isUrl(childPath)
       ) {
-        c.path = path + '/' + childPath;
+        c.path = `${path}/${childPath}`;
       }
       if (isString(c.component)) {
         c.component = layoutMgt.getLayout(c.component as string);
@@ -134,8 +132,7 @@ function isMultipleRoute(routeModule: AppRouteRecordRaw) {
   const children = routeModule.children;
 
   let flag = false;
-  for (let index = 0; index < children.length; index++) {
-    const child = children[index];
+  for (const child of children) {
     if (child.children?.length) {
       flag = true;
       break;

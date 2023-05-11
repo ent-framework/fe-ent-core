@@ -3,22 +3,23 @@
     :data-source="getdataSource"
     :filter-option="filterOption"
     :render="(item) => item.title"
-    :showSelectAll="showSelectAll"
-    :selectedKeys="selectedKeys"
-    :targetKeys="getTargetKeys"
-    :showSearch="showSearch"
+    :show-select-all="showSelectAll"
+    :selected-keys="selectedKeys"
+    :target-keys="getTargetKeys"
+    :show-search="showSearch"
     @change="handleChange"
   />
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, watch, ref, unref, watchEffect, PropType } from 'vue';
+  import { computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { Transfer } from 'ant-design-vue';
   import { isFunction } from '@ent-core/utils/is';
   import { get, omit } from 'lodash-es';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { TransferDirection, TransferItem } from 'ant-design-vue/lib/transfer';
+  import type { PropType } from 'vue';
+  import type { TransferDirection, TransferItem } from 'ant-design-vue/lib/transfer';
 
   export default defineComponent({
     name: 'ApiTransfer',

@@ -2,23 +2,23 @@
   <EntModal
     width="800px"
     :title="t('component.upload.upload')"
-    :okText="t('component.upload.save')"
+    :ok-text="t('component.upload.save')"
     v-bind="$attrs"
+    :close-func="handleCloseFunc"
+    :mask-closable="false"
+    :keyboard="false"
+    wrap-class-name="upload-modal"
+    :ok-button-props="getOkButtonProps"
+    :cancel-button-props="{ disabled: isUploadingRef }"
     @register="register"
     @ok="handleOk"
-    :closeFunc="handleCloseFunc"
-    :maskClosable="false"
-    :keyboard="false"
-    wrapClassName="upload-modal"
-    :okButtonProps="getOkButtonProps"
-    :cancelButtonProps="{ disabled: isUploadingRef }"
   >
     <template #centerFooter>
       <a-button
-        @click="handleStartUpload"
         color="success"
         :disabled="!getIsSelectFile"
         :loading="isUploadingRef"
+        @click="handleStartUpload"
       >
         {{ getUploadBtnText }}
       </a-button>
@@ -38,27 +38,29 @@
         </a-button>
       </Upload>
     </div>
-    <FileList :dataSource="fileListRef" :columns="columns" :actionColumn="actionColumn" />
+    <FileList :data-source="fileListRef" :columns="columns" :action-column="actionColumn" />
   </EntModal>
 </template>
 <script lang="ts">
-  import { defineComponent, reactive, ref, toRefs, unref, computed, PropType } from 'vue';
-  import { Upload, Alert } from 'ant-design-vue';
+  import { computed, defineComponent, reactive, ref, toRefs, unref } from 'vue';
+  import { Alert, Upload } from 'ant-design-vue';
   import { EntModal, useModalInner } from '@ent-core/components/modal';
   // hooks
-  import { useUploadType } from './use-upload';
   import { useMessage } from '@ent-core/hooks/web/use-message';
   //   types
-  import { FileItem, UploadResultStatus } from './typing';
-  import { basicProps } from './props';
-  import { createTableColumns, createActionColumn } from './data';
-  // utils
-  import { checkFileType, checkImgType, getBase64WithFile } from './helper';
   import { buildUUID } from '@ent-core/utils/uuid';
   import { isFunction } from '@ent-core/utils/is';
   import { warn } from '@ent-core/utils/log';
-  import FileList from './file-list.vue';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { UploadResultStatus } from './typing';
+  import { basicProps } from './props';
+  import { createActionColumn, createTableColumns } from './data';
+  // utils
+  import { checkFileType, checkImgType, getBase64WithFile } from './helper';
+  import FileList from './file-list.vue';
+  import { useUploadType } from './use-upload';
+  import type { FileItem } from './typing';
+  import type { PropType } from 'vue';
 
   export default defineComponent({
     components: { EntModal, Upload, Alert, FileList },
@@ -193,7 +195,7 @@
               name: props.name,
               filename: props.filename,
             },
-            function onUploadProgress(progressEvent: ProgressEvent) {
+            (progressEvent: ProgressEvent) => {
               const complete = ((progressEvent.loaded / progressEvent.total) * 100) | 0;
               item.percent = complete;
             },

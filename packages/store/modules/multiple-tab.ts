@@ -1,5 +1,3 @@
-import type { RouteLocationNormalized, RouteLocationRaw, Router } from 'vue-router';
-
 import { toRaw, unref } from 'vue';
 import { defineStore } from 'pinia';
 import { store } from '@ent-core/store/pinia';
@@ -14,6 +12,7 @@ import { MULTIPLE_TABS_KEY } from '@ent-core/logics/enums/cache-enum';
 
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { useUserStore } from '@ent-core/store/modules/user';
+import type { RouteLocationNormalized, RouteLocationRaw, Router } from 'vue-router';
 
 export interface MultipleTabState {
   cacheTabList: Set<string>;

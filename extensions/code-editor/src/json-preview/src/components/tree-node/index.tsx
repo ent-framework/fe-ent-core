@@ -1,7 +1,9 @@
-import { defineComponent, reactive, computed, PropType } from 'vue';
+import { computed, defineComponent, reactive } from 'vue';
 import Brackets from '../brackets';
 import CheckController from '../check-controller';
-import { getDataType, JSONFlattenReturnType } from '../../utils';
+import { getDataType } from '../../utils';
+import type { JSONFlattenReturnType } from '../../utils';
+import type { PropType } from 'vue';
 
 export interface NodeDataType extends JSONFlattenReturnType {
   id: number;
@@ -102,7 +104,7 @@ export default defineComponent({
     );
 
     const defaultFormatter = (data: string) => {
-      let text = data + '';
+      let text = `${data}`;
       if (dataType.value === 'string') text = `"${text}"`;
       return text;
     };
@@ -188,7 +190,7 @@ export default defineComponent({
             />
           )}
 
-        {Array.from(Array(node.level)).map((_item, index) => (
+        {Array.from([node.level]).map((_item, index) => (
           <div
             key={index}
             class={{

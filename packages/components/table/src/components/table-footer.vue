@@ -1,28 +1,27 @@
 <template>
   <Table
     v-if="summaryFunc || summaryData"
-    :showHeader="false"
+    :show-header="false"
     :bordered="false"
     :pagination="false"
-    :dataSource="getDataSource"
-    :rowKey="(r) => r[rowKey]"
+    :data-source="getDataSource"
+    :row-key="(r) => r[rowKey]"
     :columns="getColumns"
-    tableLayout="fixed"
+    table-layout="fixed"
     :scroll="scroll"
   />
 </template>
 <script lang="ts">
-  import type { PropType } from 'vue';
-  import { defineComponent, unref, computed, toRaw } from 'vue';
+  import { computed, defineComponent, toRaw, unref } from 'vue';
   import { Table } from 'ant-design-vue';
   import { cloneDeep } from 'lodash-es';
   import { isFunction } from '@ent-core/utils/is';
-  import type { BasicColumn } from '../types/table';
-  import { INDEX_COLUMN_FLAG } from '../const';
   import { propTypes } from '@ent-core/utils/prop-types';
+  import { INDEX_COLUMN_FLAG } from '../const';
   import { useTableContext } from '../hooks/use-table-context';
-  import { Fn } from '@ent-core/types';
-  import type { Recordable } from '@ent-core/types';
+  import type { Fn, Recordable } from '@ent-core/types';
+  import type { BasicColumn } from '../types/table';
+  import type { PropType } from 'vue';
 
   const SUMMARY_ROW_KEY = '_row';
   const SUMMARY_INDEX_KEY = '_index';

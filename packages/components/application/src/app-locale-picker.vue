@@ -6,10 +6,10 @@
   <EntDropdown
     placement="bottom"
     :trigger="['click']"
-    :dropMenuList="localeList"
-    :selectedKeys="selectedKeys"
+    :drop-menu-list="localeList"
+    :selected-keys="selectedKeys"
+    overlay-class-name="app-locale-picker-overlay"
     @menu-event="handleMenuEvent"
-    overlayClassName="app-locale-picker-overlay"
   >
     <span class="cursor-pointer flex items-center">
       <EntIcon icon="ion:language" />
@@ -18,13 +18,13 @@
   </EntDropdown>
 </template>
 <script lang="ts" setup>
-  import type { LocaleType } from '@ent-core/logics/types/config';
-  import type { DropMenu } from '@ent-core/components/dropdown';
-  import { ref, watchEffect, unref, computed, defineComponent } from 'vue';
+  import { computed, defineComponent, ref, unref, watchEffect } from 'vue';
   import { EntDropdown } from '@ent-core/components/dropdown';
   import { EntIcon } from '@ent-core/components/icon';
   import { useLocale } from '@ent-core/locales/use-locale';
   import { localeList } from '@ent-core/logics/settings/locale-setting';
+  import type { DropMenu } from '@ent-core/components/dropdown';
+  import type { LocaleType } from '@ent-core/logics/types/config';
 
   defineOptions({
     name: 'EntAppLocalePicker',

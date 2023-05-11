@@ -1,14 +1,14 @@
 <template>
   <div :class="prefixCls" class="relative w-full h-full px-4">
     <EntAppLocalePicker
-      class="absolute text-white top-4 right-4 enter-x xl:text-gray-600"
-      :showText="false"
       v-if="!sessionTimeout && showLocale"
+      class="absolute text-white top-4 right-4 enter-x xl:text-gray-600"
+      :show-text="false"
     />
-    <EntAppDarkModeToggle class="top-3 right-7 enter-x" v-if="!sessionTimeout" />
+    <EntAppDarkModeToggle v-if="!sessionTimeout" class="top-3 right-7 enter-x" />
 
     <span class="-enter-x xl:hidden">
-      <AppLogo :alwaysShowTitle="true" />
+      <AppLogo :always-show-title="true" />
     </span>
 
     <div class="container relative h-full py-2 mx-auto sm:px-10">
@@ -47,17 +47,15 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
+  import { EntAppDarkModeToggle, EntAppLocalePicker } from 'fe-ent-core/lib/components';
+  import { useDesign, useGlobSetting, useI18n } from 'fe-ent-core/lib/hooks';
+  import { useLocaleStore } from 'fe-ent-core/lib/store';
   import AppLogo from './app-logo.vue';
-  import { EntAppLocalePicker, EntAppDarkModeToggle } from 'fe-ent-core/lib/components';
   import LoginForm from './login-form.vue';
   import ForgetPasswordForm from './forget-password-form.vue';
   import RegisterForm from './register-form.vue';
   import MobileForm from './mobile-form.vue';
   import QrCodeForm from './qr-code-form.vue';
-  import { useGlobSetting } from 'fe-ent-core/lib/hooks';
-  import { useI18n } from 'fe-ent-core/lib/hooks';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useLocaleStore } from 'fe-ent-core/lib/store';
   import loginImg from './assets/login-box-bg.svg';
 
   export default defineComponent({

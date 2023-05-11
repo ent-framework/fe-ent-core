@@ -1,22 +1,20 @@
+import { toRaw } from 'vue';
+import { createLocalStorage, createSessionStorage } from '@ent-core/utils/cache';
+import {
+  APP_LOCAL_CACHE_KEY,
+  APP_SESSION_CACHE_KEY,
+  LOCK_INFO_KEY,
+  TOKEN_KEY,
+  USER_INFO_KEY,
+} from '@ent-core/logics/enums/cache-enum';
+import { DEFAULT_CACHE_TIME } from '@ent-core/logics/settings/encryption-setting';
+import { omit, pick } from 'lodash-es';
+import { Memory } from './memory';
 import type { LockInfo, UserInfo } from '@ent-core/logics/types/store';
 import type { ProjectConfig } from '@ent-core/logics/types/config';
 import type { RouteLocationNormalized } from 'vue-router';
 
-import { createLocalStorage, createSessionStorage } from '@ent-core/utils/cache';
-import { Memory } from './memory';
-import {
-  TOKEN_KEY,
-  USER_INFO_KEY,
-  ROLES_KEY,
-  LOCK_INFO_KEY,
-  PROJ_CFG_KEY,
-  APP_LOCAL_CACHE_KEY,
-  APP_SESSION_CACHE_KEY,
-  MULTIPLE_TABS_KEY,
-} from '@ent-core/logics/enums/cache-enum';
-import { DEFAULT_CACHE_TIME } from '@ent-core/logics/settings/encryption-setting';
-import { toRaw } from 'vue';
-import { pick, omit } from 'lodash-es';
+import type { MULTIPLE_TABS_KEY, PROJ_CFG_KEY, ROLES_KEY } from '@ent-core/logics/enums/cache-enum';
 import type { Nullable } from '@ent-core/types';
 
 interface BasicStore {
@@ -97,7 +95,7 @@ export class Persistent {
   }
 }
 
-window.addEventListener('beforeunload', function () {
+window.addEventListener('beforeunload', () => {
   // TOKEN_KEY 在登录或注销时已经写入到storage了，此处为了解决同时打开多个窗口时token不同步的问题
   // LOCK_INFO_KEY 在锁屏和解锁时写入，此处也不应修改
   ls.set(APP_LOCAL_CACHE_KEY, {

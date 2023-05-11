@@ -4,10 +4,10 @@
       <span>{{ t('component.table.settingDens') }}</span>
     </template>
 
-    <Dropdown placement="bottom" :trigger="['click']" :getPopupContainer="getPopupContainer">
+    <Dropdown placement="bottom" :trigger="['click']" :get-popup-container="getPopupContainer">
       <ColumnHeightOutlined />
       <template #overlay>
-        <Menu @click="handleTitleClick" selectable v-model:selectedKeys="selectedKeysRef">
+        <Menu v-model:selectedKeys="selectedKeysRef" selectable @click="handleTitleClick">
           <MenuItem key="default">
             <span>{{ t('component.table.settingDensDefault') }}</span>
           </MenuItem>
@@ -23,13 +23,13 @@
   </Tooltip>
 </template>
 <script lang="ts">
-  import type { SizeType } from '../../types/table';
   import { defineComponent, ref } from 'vue';
-  import { Tooltip, Dropdown, Menu } from 'ant-design-vue';
+  import { Dropdown, Menu, Tooltip } from 'ant-design-vue';
   import { ColumnHeightOutlined } from '@ant-design/icons-vue';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useTableContext } from '../../hooks/use-table-context';
   import { getPopupContainer } from '@ent-core/utils';
+  import { useTableContext } from '../../hooks/use-table-context';
+  import type { SizeType } from '../../types/table';
 
   export default defineComponent({
     name: 'SizeSetting',

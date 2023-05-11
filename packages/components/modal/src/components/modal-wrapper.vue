@@ -1,29 +1,28 @@
 <template>
   <EntScrollContainer ref="wrapperRef">
-    <div ref="spinRef" :style="spinStyle" v-loading="loading" :loading-tip="loadingTip">
-      <slot></slot>
+    <div ref="spinRef" v-loading="loading" :style="spinStyle" :loading-tip="loadingTip">
+      <slot />
     </div>
   </EntScrollContainer>
 </template>
 <script lang="ts">
-  import type { CSSProperties } from 'vue';
   import {
-    defineComponent,
     computed,
+    defineComponent,
+    nextTick,
+    onMounted,
+    onUnmounted,
     ref,
-    watchEffect,
     unref,
     watch,
-    onMounted,
-    nextTick,
-    onUnmounted,
+    watchEffect,
   } from 'vue';
   import { useWindowSizeFn } from '@ent-core/hooks/event/use-window-size-fn';
   import { EntScrollContainer } from '@ent-core/components/container';
-  import { createModalContext } from '../hooks/use-modal-context';
   import { useMutationObserver } from '@vueuse/core';
-  import { Fn } from '@ent-core/types';
-  import type { ComponentRef, ElRef } from '@ent-core/types';
+  import { createModalContext } from '../hooks/use-modal-context';
+  import type { ComponentRef, ElRef, Fn } from '@ent-core/types';
+  import type { CSSProperties } from 'vue';
   const props = {
     loading: { type: Boolean },
     useWrapper: { type: Boolean, default: true },
@@ -51,7 +50,7 @@
 
       let realHeight = 0;
 
-      let stopElResizeFn: Fn = () => {};
+      const stopElResizeFn: Fn = () => {};
 
       useWindowSizeFn(setModalHeight.bind(null, false));
 

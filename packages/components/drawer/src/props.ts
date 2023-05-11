@@ -1,5 +1,5 @@
-import type { PropType } from 'vue';
 import { type Recordable } from '@ent-core/types';
+import type { PropType } from 'vue';
 
 export const footerProps = {
   confirmLoading: { type: Boolean },

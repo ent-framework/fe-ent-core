@@ -1,18 +1,18 @@
 <template>
   <Select
-    @dropdown-visible-change="handleFetch"
     v-bind="$attrs"
-    @change="handleChange"
-    :options="getOptions"
     v-model:value="state"
+    :options="getOptions"
+    @dropdown-visible-change="handleFetch"
+    @change="handleChange"
   >
-    <template #[item]="data" v-for="item in Object.keys($slots)">
-      <slot :name="item" v-bind="data || {}"></slot>
+    <template v-for="item in Object.keys($slots)" #[item]="data">
+      <slot :name="item" v-bind="data || {}" />
     </template>
-    <template #suffixIcon v-if="loading">
+    <template v-if="loading" #suffixIcon>
       <LoadingOutlined spin />
     </template>
-    <template #notFoundContent v-if="loading">
+    <template v-if="loading" #notFoundContent>
       <span>
         <LoadingOutlined spin class="mr-1" />
         {{ t('component.form.apiSelectNotFound') }}
@@ -21,7 +21,7 @@
   </Select>
 </template>
 <script lang="ts">
-  import { defineComponent, PropType, ref, watchEffect, computed, unref, watch } from 'vue';
+  import { computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { Select } from 'ant-design-vue';
   import { isFunction } from '@ent-core/utils/is';
   import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
@@ -30,6 +30,7 @@
   import { LoadingOutlined } from '@ant-design/icons-vue';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { propTypes } from '@ent-core/utils/prop-types';
+  import type { PropType } from 'vue';
 
   type OptionsItem = { label: string; value: string; disabled?: boolean };
 

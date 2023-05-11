@@ -1,23 +1,16 @@
 <template>
   <div :class="prefixCls" :style="getWrapStyle">
     <Spin :spinning="loading" size="large" :style="getWrapStyle">
-      <iframe
-        :src="frameSrc"
-        :class="`${prefixCls}__main`"
-        ref="frameRef"
-        @load="hideLoading"
-      ></iframe>
+      <iframe ref="frameRef" :src="frameSrc" :class="`${prefixCls}__main`" @load="hideLoading" />
     </Spin>
   </div>
 </template>
 <script lang="ts" setup>
-  import type { CSSProperties } from 'vue';
-  import { ref, unref, computed } from 'vue';
+  import { computed, ref, unref } from 'vue';
   import { Spin } from 'ant-design-vue';
-  import { useWindowSizeFn } from 'fe-ent-core/lib/hooks';
+  import { useDesign, useLayoutHeight, useWindowSizeFn } from 'fe-ent-core/lib/hooks';
   import { propTypes } from 'fe-ent-core/lib/utils';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useLayoutHeight } from 'fe-ent-core/lib/hooks';
+  import type { CSSProperties } from 'vue';
 
   defineProps({
     frameSrc: propTypes.string.def(''),

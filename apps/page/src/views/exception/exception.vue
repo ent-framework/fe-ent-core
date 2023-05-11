@@ -1,16 +1,13 @@
 <script lang="tsx">
-  import type { PropType } from 'vue';
-  import { Result, Button } from 'ant-design-vue';
-  import { defineComponent, ref, computed, unref } from 'vue';
-  import { ExceptionEnum } from 'fe-ent-core/lib/logics';
-  import notDataSvg from '../../svg/no-data.svg';
-  import netWorkSvg from '../../svg/net-error.svg';
+  import { computed, defineComponent, ref, unref } from 'vue';
+  import { Button, Result } from 'ant-design-vue';
+  import { ExceptionEnum, PageEnum } from 'fe-ent-core/lib/logics';
   import { useRoute } from 'vue-router';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
-  import { useI18n } from 'fe-ent-core/lib/hooks';
-  import { useGo, useRedo } from 'fe-ent-core/lib/hooks';
-  import { PageEnum } from 'fe-ent-core/lib/logics';
-  import { Fn } from 'fe-ent-core/lib/types';
+  import { useDesign, useGo, useI18n, useRedo } from 'fe-ent-core/lib/hooks';
+  import netWorkSvg from '../../svg/net-error.svg';
+  import notDataSvg from '../../svg/no-data.svg';
+  import type { Fn } from 'fe-ent-core/lib/types';
+  import type { PropType } from 'vue';
 
   interface MapValue {
     title: string;

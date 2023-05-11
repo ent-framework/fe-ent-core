@@ -2,25 +2,25 @@
   <EntModal
     width="800px"
     :title="t('component.upload.preview')"
-    wrapClassName="upload-preview-modal"
+    wrap-class-name="upload-preview-modal"
     v-bind="$attrs"
+    :show-ok-btn="false"
     @register="register"
-    :showOkBtn="false"
   >
-    <FileList :dataSource="fileListRef" :columns="columns" :actionColumn="actionColumn" />
+    <FileList :data-source="fileListRef" :columns="columns" :action-column="actionColumn" />
   </EntModal>
 </template>
 <script lang="ts">
-  import { defineComponent, watch, ref } from 'vue';
+  import { defineComponent, ref, watch } from 'vue';
   //   import { BasicTable, useTable } from '@ent-core/components/Table';
-  import FileList from './file-list.vue';
   import { EntModal, useModalInner } from '@ent-core/components/modal';
-  import { previewProps } from './props';
-  import { PreviewFileItem } from './typing';
   import { downloadByUrl } from '@ent-core/utils/file/download';
-  import { createPreviewColumns, createPreviewActionColumn } from './data';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { isArray } from '@ent-core/utils/is';
+  import FileList from './file-list.vue';
+  import { previewProps } from './props';
+  import { createPreviewActionColumn, createPreviewColumns } from './data';
+  import type { PreviewFileItem } from './typing';
 
   export default defineComponent({
     components: { EntModal, FileList },

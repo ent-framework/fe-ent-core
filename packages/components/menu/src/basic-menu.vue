@@ -1,38 +1,39 @@
 <template>
   <Menu
-    :selectedKeys="selectedKeys"
-    :defaultSelectedKeys="defaultSelectedKeys"
+    :selected-keys="selectedKeys"
+    :default-selected-keys="defaultSelectedKeys"
     :mode="mode"
-    :openKeys="getOpenKeys"
-    :inlineIndent="inlineIndent"
+    :open-keys="getOpenKeys"
+    :inline-indent="inlineIndent"
     :theme="theme"
-    @open-change="handleOpenChange"
     :class="getMenuClass"
-    @click="handleMenuClick"
-    :subMenuOpenDelay="0.2"
+    :sub-menu-open-delay="0.2"
     v-bind="getInlineCollapseOptions"
+    @open-change="handleOpenChange"
+    @click="handleMenuClick"
   >
     <template v-for="item in items" :key="item.path">
-      <BasicSubMenuItem :item="item" :theme="theme" :isHorizontal="isHorizontal" />
+      <BasicSubMenuItem :item="item" :theme="theme" :is-horizontal="isHorizontal" />
     </template>
   </Menu>
 </template>
 <script lang="ts">
-  import type { MenuState } from './types';
-  import { computed, defineComponent, unref, reactive, watch, toRefs, ref } from 'vue';
+  import { computed, defineComponent, reactive, ref, toRefs, unref, watch } from 'vue';
   import { Menu } from 'ant-design-vue';
-  import BasicSubMenuItem from './components/basic-sub-menu-item.vue';
   import { MenuModeEnum, MenuTypeEnum } from '@ent-core/logics/enums/menu-enum';
-  import { useOpenKeys } from './use-open-keys';
-  import { RouteLocationNormalizedLoaded, useRouter } from 'vue-router';
+  import { useRouter } from 'vue-router';
   import { isFunction } from '@ent-core/utils/is';
-  import { basicProps } from './props';
   import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
   import { REDIRECT_NAME } from '@ent-core/router/constant';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { getCurrentParentPath } from '@ent-core/router/menus';
   import { listenerRouteChange } from '@ent-core/logics/mitt/route-change';
   import { getAllParentPath } from '@ent-core/router/helper/menu-helper';
+  import { basicProps } from './props';
+  import { useOpenKeys } from './use-open-keys';
+  import BasicSubMenuItem from './components/basic-sub-menu-item.vue';
+  import type { RouteLocationNormalizedLoaded } from 'vue-router';
+  import type { MenuState } from './types';
 
   export default defineComponent({
     name: 'EntMenu',

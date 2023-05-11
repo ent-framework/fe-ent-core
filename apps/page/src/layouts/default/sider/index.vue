@@ -4,7 +4,7 @@
     placement="left"
     :class="prefixCls"
     :width="getMenuWidth"
-    :getContainer="null"
+    :get-container="null"
     :visible="!getCollapsed"
     @close="handleClose"
   >
@@ -16,13 +16,11 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import Sider from './layout-sider.vue';
-  import MixSider from './mix-sider.vue';
   import { Drawer } from 'ant-design-vue';
 
-  import { useAppInject } from 'fe-ent-core/lib/hooks';
-  import { useMenuSetting } from 'fe-ent-core/lib/hooks';
-  import { useDesign } from 'fe-ent-core/lib/hooks';
+  import { useAppInject, useDesign, useMenuSetting } from 'fe-ent-core/lib/hooks';
+  import MixSider from './mix-sider.vue';
+  import Sider from './layout-sider.vue';
   export default defineComponent({
     name: 'SiderWrapper',
     components: { Sider, Drawer, MixSider },

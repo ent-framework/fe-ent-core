@@ -1,6 +1,6 @@
 <template>
   <!-- eslint-disable vue/no-v-html -->
-  <div v-html="getHtmlData" :class="$props.class" class="markdown-viewer"></div>
+  <div :class="$props.class" class="markdown-viewer" v-html="getHtmlData" />
 </template>
 
 <script lang="ts" setup>

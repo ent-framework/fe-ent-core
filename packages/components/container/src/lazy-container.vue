@@ -1,27 +1,27 @@
 <template>
   <transition-group
-    class="h-full w-full"
     v-bind="$attrs"
     ref="elRef"
+    class="h-full w-full"
     :name="transitionName"
     :tag="tag"
     mode="out-in"
   >
-    <div key="component" v-if="isInit">
-      <slot :loading="loading"></slot>
+    <div v-if="isInit" key="component">
+      <slot :loading="loading" />
     </div>
-    <div key="skeleton" v-else>
-      <slot name="skeleton" v-if="$slots.skeleton"></slot>
+    <div v-else key="skeleton">
+      <slot v-if="$slots.skeleton" name="skeleton" />
       <Skeleton v-else />
     </div>
   </transition-group>
 </template>
 <script lang="ts">
-  import type { PropType } from 'vue';
-  import { defineComponent, reactive, onMounted, ref, toRef, toRefs } from 'vue';
+  import { defineComponent, onMounted, reactive, ref, toRef, toRefs } from 'vue';
   import { Skeleton } from 'ant-design-vue';
   import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
   import { useIntersectionObserver } from '@ent-core/hooks/event/use-intersection-observer';
+  import type { PropType } from 'vue';
 
   interface State {
     isInit: boolean;
@@ -132,7 +132,7 @@
             },
             root: toRef(props, 'viewport'),
           });
-        } catch (e) {
+        } catch {
           init();
         }
       }

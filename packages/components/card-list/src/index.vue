@@ -11,7 +11,7 @@
       >
         <template #header>
           <div class="flex justify-end space-x-2"
-            ><slot name="header"></slot>
+            ><slot name="header" />
             <Tooltip>
               <template #title>
                 <div class="w-50">每行显示数量</div>
@@ -33,7 +33,7 @@
         <template #renderItem="{ item }">
           <ListItem>
             <Card>
-              <template #title></template>
+              <template #title />
               <template #cover>
                 <div :class="height">
                   <Image :src="item.imgs[0]" />
@@ -43,7 +43,7 @@
                 <EditOutlined key="edit" />
                 <EntDropdown
                   :trigger="['hover']"
-                  :dropMenuList="[
+                  :drop-menu-list="[
                     {
                       text: '删除',
                       event: '1',
@@ -84,13 +84,13 @@
     RedoOutlined,
     TableOutlined,
   } from '@ant-design/icons-vue';
-  import { List, Card, Image, Typography, Tooltip, Avatar, Slider } from 'ant-design-vue';
+  import { Avatar, Card, Image, List, Slider, Tooltip, Typography } from 'ant-design-vue';
   import { EntDropdown } from '@ent-core/components/dropdown';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { EntButton } from '@ent-core/components/button';
   import { isFunction } from '@ent-core/utils/is';
-  import { useSlider, grid } from './data';
+  import { grid, useSlider } from './data';
   const ListItem = List.Item;
   const CardMeta = Card.Meta;
   const TypographyText = Typography.Text;

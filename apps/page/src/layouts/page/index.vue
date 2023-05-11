@@ -17,7 +17,7 @@
         <keep-alive v-if="openCache" :include="getCaches">
           <component :is="Component" :key="route.fullPath" />
         </keep-alive>
-        <component v-else :is="Component" :key="route.fullPath" />
+        <component :is="Component" v-else :key="route.fullPath" />
       </transition>
     </template>
   </RouterView>
@@ -27,15 +27,15 @@
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
 
-  import FrameLayout from '../iframe/index.vue';
-
-  import { useRootSetting } from 'fe-ent-core/lib/hooks';
-
-  import { useTransitionSetting } from 'fe-ent-core/lib/hooks';
-  import { useMultipleTabSetting } from 'fe-ent-core/lib/hooks';
-  import { getTransitionName } from './transition';
+  import {
+    useMultipleTabSetting,
+    useRootSetting,
+    useTransitionSetting,
+  } from 'fe-ent-core/lib/hooks';
 
   import { useMultipleTabStore } from 'fe-ent-core/lib/store';
+  import FrameLayout from '../iframe/index.vue';
+  import { getTransitionName } from './transition';
 
   export default defineComponent({
     name: 'PageLayout',

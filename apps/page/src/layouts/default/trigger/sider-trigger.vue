@@ -6,7 +6,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { DoubleRightOutlined, DoubleLeftOutlined } from '@ant-design/icons-vue';
+  import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
   import { useMenuSetting } from 'fe-ent-core/lib/hooks';
 
   export default defineComponent({

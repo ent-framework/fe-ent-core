@@ -2,11 +2,11 @@
  Access control component for fine-grained access control.
 -->
 <script lang="ts">
-  import type { PropType } from 'vue';
   import { defineComponent } from 'vue';
-  import { RoleEnum } from '@ent-core/logics/enums/role-enum';
   import { usePermission } from '@ent-core/hooks/web/use-permission';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
+  import type { RoleEnum } from '@ent-core/logics/enums/role-enum';
+  import type { PropType } from 'vue';
 
   export default defineComponent({
     name: 'EntAuthority',

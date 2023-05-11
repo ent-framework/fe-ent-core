@@ -1,28 +1,28 @@
 <template>
   <ul :class="getClass">
-    <slot></slot>
+    <slot />
   </ul>
 </template>
 
 <script lang="ts">
-  import type { PropType } from 'vue';
-  import type { SubMenuProvider } from './types';
   import {
-    defineComponent,
-    ref,
     computed,
-    onMounted,
-    watchEffect,
-    watch,
-    nextTick,
+    defineComponent,
     getCurrentInstance,
+    nextTick,
+    onMounted,
     provide,
+    ref,
+    watch,
+    watchEffect,
   } from 'vue';
 
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { propTypes } from '@ent-core/utils/prop-types';
-  import { createSimpleRootMenuContext } from './use-simple-menu-context';
   import mitt from '@ent-core/utils/mitt';
+  import { createSimpleRootMenuContext } from './use-simple-menu-context';
+  import type { SubMenuProvider } from './types';
+  import type { PropType } from 'vue';
   export default defineComponent({
     name: 'Menu',
     props: {
@@ -55,7 +55,7 @@
       const isRemoveAllPopup = ref(false);
 
       createSimpleRootMenuContext({
-        rootMenuEmitter: rootMenuEmitter,
+        rootMenuEmitter,
         activeName: currentActiveName,
       });
 
@@ -143,7 +143,7 @@
           if (opened && !openedNames.value.includes(name)) {
             openedNames.value.push(name);
           } else if (!opened) {
-            const index = openedNames.value.findIndex((item) => item === name);
+            const index = openedNames.value.indexOf(name);
             index !== -1 && openedNames.value.splice(index, 1);
           }
         });
