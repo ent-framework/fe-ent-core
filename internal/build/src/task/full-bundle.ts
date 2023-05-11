@@ -4,6 +4,7 @@ import { rollup } from 'rollup';
 import commonjs from '@rollup/plugin-commonjs';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import DefineOptions from 'unplugin-vue-define-options/vite';
 import esbuild from 'rollup-plugin-esbuild';
 import filesize from 'rollup-plugin-filesize';
 import { parallel } from 'gulp';
@@ -20,7 +21,6 @@ import { target } from '../build-info';
 import type { Plugin } from 'rollup';
 import json from '@rollup/plugin-json';
 import image from '@rollup/plugin-image';
-import PurgeIcons from 'rollup-plugin-purge-icons';
 import { rollupPluginInjectProcessViteEnv } from '../plugins/vite-env';
 
 const banner = `/*! ${EP_BRAND_NAME} v${version} */\n`;
@@ -30,9 +30,9 @@ async function buildFullEntry(minify: boolean) {
     input: path.resolve(epRoot, 'index.ts'),
     plugins: [
       EntCoreAlias(),
-      PurgeIcons({}),
       json(),
       image({ dom: false }),
+      DefineOptions(),
       vue({
         isProduction: true,
         reactivityTransform: true,

@@ -6,7 +6,7 @@
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "strictFunctionTypes": false,
-    "types": ["unplugin-vue-macros/macros-global", "vite/client"],
+    "types": ["unplugin-vue-define-options/macros-global", "vite/client"],
     "paths": {
       "@ent-core/*": ["packages/*"],
       "/@/*": [

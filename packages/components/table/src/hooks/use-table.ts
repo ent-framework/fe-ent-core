@@ -4,10 +4,11 @@ import type { DynamicProps } from '@ent-core/logics/types/utils';
 import type { FormActionType } from '@ent-core/components/form';
 import type { WatchStopHandle } from 'vue';
 import { getDynamicProps } from '@ent-core/utils/base';
-import { ref, onUnmounted, unref, watch, toRaw } from 'vue';
+import { ref, unref, watch, toRaw, shallowRef } from 'vue';
 import { isProdMode } from '@ent-core/utils/env';
 import { error } from '@ent-core/utils/log';
 import type { Recordable, Nullable } from '@ent-core/types';
+import { tryOnUnmounted } from '@vueuse/core';
 
 type Props = Partial<DynamicProps<BasicTableProps>>;
 
@@ -21,15 +22,15 @@ export function useTable(tableProps?: Props): [
     getForm: () => FormActionType;
   },
 ] {
-  const tableRef = ref<Nullable<TableActionType>>(null);
+  const tableRef = shallowRef<Nullable<TableActionType>>(null);
   const loadedRef = ref<Nullable<boolean>>(false);
-  const formRef = ref<Nullable<UseTableMethod>>(null);
+  const formRef = shallowRef<Nullable<UseTableMethod>>(null);
 
   let stopWatch: WatchStopHandle;
 
   function register(instance: TableActionType, formInstance: UseTableMethod) {
     isProdMode() &&
-      onUnmounted(() => {
+      tryOnUnmounted(() => {
         tableRef.value = null;
         loadedRef.value = null;
       });

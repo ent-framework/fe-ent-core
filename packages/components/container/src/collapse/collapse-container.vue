@@ -22,11 +22,6 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-  export default {
-    name: 'EntCollapseContainer',
-  };
-</script>
 <script lang="ts" setup>
   import type { PropType } from 'vue';
   import { defineComponent, ref } from 'vue';
@@ -39,6 +34,9 @@
   import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
   import { useDesign } from '@ent-core/hooks/web/use-design';
 
+  defineOptions({
+    name: 'EntCollapseContainer',
+  });
   const props = defineProps({
     title: { type: String, default: '' },
     loading: { type: Boolean },

@@ -34,11 +34,6 @@
     </template>
   </a-dropdown>
 </template>
-<script lang="ts">
-  export default {
-    name: 'EntDropdown',
-  };
-</script>
 <script lang="ts" setup>
   import { computed } from 'vue';
   import type { PropType } from 'vue';
@@ -54,6 +49,9 @@
   const AMenuDivider = Menu.Divider;
   const APopconfirm = Popconfirm;
 
+  defineOptions({
+    name: 'EntDropdown',
+  });
   const props = defineProps({
     popconfirm: Boolean,
     /**

@@ -1,20 +1,19 @@
-import { Plugin, rollup } from 'rollup';
+import { rollup } from 'rollup';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import DefineOptions from 'unplugin-vue-define-options/rollup';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import esbuild from 'rollup-plugin-esbuild';
 import filesize from 'rollup-plugin-filesize';
 import glob from 'fast-glob';
 import { epRoot, pkgRoot } from '@ent-build/build-utils';
+import image from '@rollup/plugin-image';
 import { EntCoreAlias } from '../plugins/ent-core-alias';
-import { generateExternal, writeBundles } from '../utils';
-import { excludeFiles } from '../utils';
+import { generateExternal, writeBundles, excludeFiles } from '../utils';
 import { reporter } from '../plugins/size-reporter';
 import { buildConfigEntries, target } from '../build-info';
-import type { OutputOptions } from 'rollup';
-import PurgeIcons from 'rollup-plugin-purge-icons';
-import image from '@rollup/plugin-image';
+import type { OutputOptions, Plugin } from 'rollup';
 
 export const buildModules = async () => {
   const input = excludeFiles(
@@ -28,13 +27,8 @@ export const buildModules = async () => {
     input,
     plugins: [
       EntCoreAlias(),
-      PurgeIcons({}),
       image({ dom: false }),
-      // rollupPluginInjectProcessViteEnv({
-      //   baseDir: `${pkgRoot}`,
-      //   exclude: ['**/*.css', '**/*.less', '**/*.svg', '**/*.jpg', '**/*.jpeg', '**/*.png'],
-      //   verbose: false,
-      // }),
+      DefineOptions(),
       vue({
         isProduction: true,
         reactivityTransform: true,

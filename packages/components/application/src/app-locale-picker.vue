@@ -17,11 +17,6 @@
     </span>
   </EntDropdown>
 </template>
-<script lang="ts">
-  export default {
-    name: 'EntAppLocalePicker',
-  };
-</script>
 <script lang="ts" setup>
   import type { LocaleType } from '@ent-core/logics/types/config';
   import type { DropMenu } from '@ent-core/components/dropdown';
@@ -30,6 +25,10 @@
   import { EntIcon } from '@ent-core/components/icon';
   import { useLocale } from '@ent-core/locales/use-locale';
   import { localeList } from '@ent-core/logics/settings/locale-setting';
+
+  defineOptions({
+    name: 'EntAppLocalePicker',
+  });
   const props = defineProps({
     /**
      * Whether to display text

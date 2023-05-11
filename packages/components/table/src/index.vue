@@ -45,7 +45,7 @@
     SizeType,
     ColumnChangeParam,
   } from './types/table';
-  import { defineComponent, ref, computed, unref, toRaw, inject, watchEffect } from 'vue';
+  import { defineComponent, ref, computed, unref, toRaw, inject, watchEffect, shallowRef } from 'vue';
   import { Table } from 'ant-design-vue';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { PageWrapperFixedHeightKey } from '@ent-core/components/page';
@@ -100,7 +100,7 @@
     ],
     setup(props, { attrs, emit, slots, expose }) {
       const tableElRef = ref(null);
-      const tableData = ref([]);
+      const tableData = shallowRef([]);
 
       const wrapRef = ref(null);
       const formRef = ref(null);

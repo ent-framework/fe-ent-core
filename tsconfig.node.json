@@ -7,16 +7,12 @@
     "skipLibCheck": true
   },
   "include": [
-    "internal/**/*",
-    "internal/**/*.json",
-    "support/**/*",
-    "support/**/*.json",
-    "scripts/**/*",
-    "packages/fe-ent-core/version.ts",
+    "internal",
+    "support",
+    "scripts",
     "apps/**/vite.config.ts",
     "extensions/**/vite.config.ts",
     "play/**/vite.config.ts",
-    ".eslintrc.js",
     "packages/fe-ent-core/package.json"
   ],
   "exclude": ["**/__tests__/**", "**/tests/**", "**/dist"]

@@ -4,17 +4,15 @@
     <BasicHelp :class="`${prefixCls}-help`" v-if="helpMessage" :text="helpMessage" />
   </span>
 </template>
-<script lang="ts">
-  export default {
-    name: 'EntTitle',
-  };
-</script>
 <script lang="ts" setup>
   import type { PropType } from 'vue';
   import { useSlots, computed } from 'vue';
   import BasicHelp from './basic-help.vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
 
+  defineOptions({
+    name: 'EntTitle',
+  });
   const props = defineProps({
     /**
      * Help text list or string

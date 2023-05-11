@@ -1,7 +1,5 @@
 import { withInstall } from '@ent-core/utils';
 import BasicTable from './src/index.vue';
-// export { default as TableAction } from './src/components/table-action.vue';
-// export { default as TableImg } from './src/components/table-img.vue';
 import TableAction from './src/components/table-action.vue';
 import TableImg from './src/components/table-img.vue';
 export * from './src/types/table';
