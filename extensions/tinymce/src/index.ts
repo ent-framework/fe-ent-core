@@ -1,4 +1,4 @@
-import { withInstall } from 'fe-ent-core';
+import { withInstall } from 'fe-ent-core/lib/utils';
 import tinymce from './editor.vue';
 
 import './index.less';

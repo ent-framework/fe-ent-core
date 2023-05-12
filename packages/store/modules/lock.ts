@@ -52,7 +52,7 @@ export const useLockStore = defineStore({
           return false;
         }
       };
-      return await tryLogin();
+      return tryLogin();
     },
   },
 });

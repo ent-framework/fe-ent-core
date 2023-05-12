@@ -13,7 +13,9 @@
     watch,
   } from 'vue';
   import Vditor from 'vditor';
-  import { onMountedOrActivated, useLocale, useModalContext, useRootSetting } from 'fe-ent-core';
+  import { useModalContext } from 'fe-ent-core/lib/components';
+  import { onMountedOrActivated, useRootSetting } from 'fe-ent-core/lib/hooks';
+  import { useLocale } from 'fe-ent-core/lib/locales';
   import type { Ref } from 'vue';
   import type { ElRef, Nullable } from 'fe-ent-core/lib/types';
 
@@ -65,7 +67,7 @@
 
       const getCurrentLang = computed((): 'zh_CN' | 'en_US' | 'ja_JP' | 'ko_KR' => {
         let lang: Lang;
-        switch (unref(getLocale)) {
+        switch (unref(getLocale).value) {
           case 'en':
             lang = 'en_US';
             break;

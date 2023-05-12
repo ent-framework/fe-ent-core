@@ -1,8 +1,7 @@
 import { ref, shallowRef, toRaw, unref, watch } from 'vue';
-import { getDynamicProps } from '@ent-core/utils/base';
-import { isProdMode } from '@ent-core/utils/env';
-import { error } from '@ent-core/utils/log';
 import { tryOnUnmounted } from '@vueuse/core';
+import { getDynamicProps } from '@ent-core/utils/base';
+import { error } from '@ent-core/utils/log';
 import type { BasicColumn, BasicTableProps, FetchParams, TableActionType } from '../types/table';
 import type { PaginationProps } from '../types/pagination';
 import type { DynamicProps } from '@ent-core/logics/types/utils';
@@ -29,13 +28,12 @@ export function useTable(tableProps?: Props): [
   let stopWatch: WatchStopHandle;
 
   function register(instance: TableActionType, formInstance: UseTableMethod) {
-    isProdMode() &&
-      tryOnUnmounted(() => {
-        tableRef.value = null;
-        loadedRef.value = null;
-      });
+    tryOnUnmounted(() => {
+      tableRef.value = null;
+      loadedRef.value = null;
+    });
 
-    if (unref(loadedRef) && isProdMode() && instance === unref(tableRef)) return;
+    if (unref(loadedRef) && instance === unref(tableRef)) return;
 
     tableRef.value = instance;
     formRef.value = formInstance;
@@ -70,7 +68,7 @@ export function useTable(tableProps?: Props): [
     getForm: () => FormActionType;
   } = {
     reload: async (opt?: FetchParams) => {
-      return await getTableInstance().reload(opt);
+      return getTableInstance().reload(opt);
     },
     setProps: (props: Partial<BasicTableProps>) => {
       getTableInstance().setProps(props);

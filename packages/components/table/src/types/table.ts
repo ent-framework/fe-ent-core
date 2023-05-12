@@ -4,7 +4,7 @@ import type { PaginationProps } from './pagination';
 import type { FormProps } from '@ent-core/components/form';
 import type { TableRowSelection as ITableRowSelection } from 'ant-design-vue/lib/table/interface';
 import type { ColumnProps } from 'ant-design-vue/lib/table';
-import type { EmitType, Fn, Recordable } from '@ent-core/types';
+import type { AnyFunction, EmitType, Fn, Recordable } from '@ent-core/types';
 import type { VueNode } from '@ent-core/utils/prop-types';
 import type { RoleEnum } from '@ent-core/logics/enums/role-enum';
 
@@ -25,7 +25,7 @@ export interface TableRowSelection<T = any> extends ITableRowSelection {
    * Callback executed when select/deselect one row
    * @type Function
    */
-  onSelect?: (record: T, selected: boolean, selectedRows: Object[], nativeEvent: Event) => any;
+  onSelect?: (record: T, selected: boolean, selectedRows: any[], nativeEvent: Event) => any;
 
   /**
    * Callback executed when select/deselect all rows
@@ -38,11 +38,6 @@ export interface TableRowSelection<T = any> extends ITableRowSelection {
    * @type Function
    */
   onSelectInvert?: (selectedRows: string[] | number[]) => any;
-}
-
-export interface TableCustomRecord<T> {
-  record?: T;
-  index?: number;
 }
 
 export interface ExpandedRowRenderRecord<T> extends TableCustomRecord<T> {
@@ -259,7 +254,7 @@ export interface BasicTableProps<T = any> {
    * Customize row expand Icon.
    * @type Function | VNodeChild
    */
-  expandIcon?: Function | VNodeChild | JSX.Element;
+  expandIcon?: AnyFunction | VNodeChild | JSX.Element;
 
   /**
    * Whether to expand row by clicking anywhere in the whole row
@@ -277,7 +272,7 @@ export interface BasicTableProps<T = any> {
    * Table footer renderer
    * @type Function | VNodeChild
    */
-  footer?: Function | VNodeChild | JSX.Element;
+  footer?: AnyFunction | VNodeChild | JSX.Element;
 
   /**
    * Indent size in pixels of tree data
@@ -368,7 +363,7 @@ export interface BasicTableProps<T = any> {
    *
    * @version 1.5.4
    */
-  transformCellText?: Function;
+  transformCellText?: AnyFunction;
 
   /**
    * Callback executed before editable cell submit value, not for row-editor

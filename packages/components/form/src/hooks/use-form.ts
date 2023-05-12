@@ -1,13 +1,10 @@
 import { nextTick, onUnmounted, ref, unref, watch } from 'vue';
-import { isProdMode } from '@ent-core/utils/env';
 import { error } from '@ent-core/utils/log';
 import { getDynamicProps } from '@ent-core/utils';
 import type { DynamicProps } from '@ent-core/logics/types/utils';
 import type { NamePath } from 'ant-design-vue/lib/form/interface';
 import type { FormActionType, FormProps, FormSchema, UseFormReturnType } from '../types/form';
 import type { Nullable, Recordable } from '@ent-core/types';
-
-export declare type ValidateFields = (nameList?: NamePath[]) => Promise<Recordable>;
 
 type Props = Partial<DynamicProps<FormProps>>;
 
@@ -27,12 +24,11 @@ export function useForm(props?: Props): UseFormReturnType {
   }
 
   function register(instance: FormActionType) {
-    isProdMode() &&
-      onUnmounted(() => {
-        formRef.value = null;
-        loadedRef.value = null;
-      });
-    if (unref(loadedRef) && isProdMode() && instance === unref(formRef)) return;
+    onUnmounted(() => {
+      formRef.value = null;
+      loadedRef.value = null;
+    });
+    if (unref(loadedRef) && instance === unref(formRef)) return;
 
     formRef.value = instance;
     loadedRef.value = true;

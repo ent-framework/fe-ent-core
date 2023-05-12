@@ -1,4 +1,5 @@
 import type { UploadApiResult } from '@ent-core/logics/model/upload-model';
+import type { AnyFunction } from '@ent-core/types';
 
 export enum UploadResultStatus {
   SUCCESS = 'success',
@@ -29,7 +30,7 @@ export interface FileBasicColumn {
    * Renderer of the table cell. The return value should be a VNode, or an object for colSpan/rowSpan config
    * @type Function | ScopedSlot
    */
-  customRender?: Function;
+  customRender?: AnyFunction;
   /**
    * Title of this column
    * @type any (string | slot)

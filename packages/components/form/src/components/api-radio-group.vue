@@ -21,11 +21,11 @@
 <script lang="ts">
   import { type PropType, computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { Radio } from 'ant-design-vue';
+  import { get, omit } from 'lodash-es';
   import { isFunction } from '@ent-core/utils/is';
   import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
   import { propTypes } from '@ent-core/utils/prop-types';
-  import { get, omit } from 'lodash-es';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
 
   type OptionsItem = { label: string; value: string | number | boolean; disabled?: boolean };
@@ -116,7 +116,7 @@
           }
           emitChange();
         } catch (error) {
-          console.warn(error);
+          console.error(error);
         } finally {
           loading.value = false;
         }

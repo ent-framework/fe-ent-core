@@ -1,12 +1,11 @@
 <script lang="tsx">
   import { computed, defineComponent, toRefs, unref } from 'vue';
   import { Col, Divider, Form } from 'ant-design-vue';
+  import { cloneDeep, upperFirst } from 'lodash-es';
   import { EntHelp } from '@ent-core/components/basic';
   import { isBoolean, isFunction, isNull } from '@ent-core/utils/is';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
-  import { cloneDeep, upperFirst } from 'lodash-es';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
-import { type Recordable } from '@ent-core/types';
   import { useItemLabelWidth } from '../hooks/use-label-width';
   import {
     NO_AUTO_LINK_COMPONENTS,
@@ -14,7 +13,7 @@ import { type Recordable } from '@ent-core/types';
     setComponentRuleType,
   } from '../helper';
   import { componentMap } from '../component-map';
-  import type { Nullable } from '@ent-core/types';
+  import type { Nullable, Recordable } from '@ent-core/types';
   import type { TableActionType } from '@ent-core/components/table';
   import type { Rule } from 'ant-design-vue/lib/form';
   import type { FormActionType, FormProps, FormSchema } from '../types/form';

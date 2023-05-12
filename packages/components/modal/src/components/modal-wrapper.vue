@@ -17,9 +17,9 @@
     watch,
     watchEffect,
   } from 'vue';
+  import { useMutationObserver } from '@vueuse/core';
   import { useWindowSizeFn } from '@ent-core/hooks/event/use-window-size-fn';
   import { EntScrollContainer } from '@ent-core/components/container';
-  import { useMutationObserver } from '@vueuse/core';
   import { createModalContext } from '../hooks/use-modal-context';
   import type { ComponentRef, ElRef, Fn } from '@ent-core/types';
   import type { CSSProperties } from 'vue';
@@ -159,7 +159,7 @@
           }
           emit('height-change', unref(realHeightRef));
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       }
 

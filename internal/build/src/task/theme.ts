@@ -2,16 +2,18 @@ import path from 'path';
 import gulp from 'gulp';
 import chalk from 'chalk';
 import through2 from 'through2';
-import { epOutput, themeRoot, epRoot } from '@ent-build/build-utils';
-import { generateModifyVars } from '../plugins/generate-modify-vars';
+import { epOutput, pkgRoot, themeRoot } from '@ent-build/build-utils';
 import Less from 'gulp-less';
-import { lessPlugin } from '../plugins/less';
-import { resolveConfig, ResolvedConfig } from 'vite';
+import { resolveConfig } from 'vite';
 import cleanCSS from 'gulp-clean-css';
 import rename from 'gulp-rename';
 import autoprefixer from 'gulp-autoprefixer';
 import cssnano from 'gulp-cssnano';
+import consola from 'consola';
 import { cssImport } from '../plugins/css-import';
+import { lessPlugin } from '../plugins/less';
+import { generateModifyVars } from '../plugins/generate-modify-vars';
+import type { ResolvedConfig } from 'vite';
 
 type CompileLessOption = {
   src: string;
@@ -90,14 +92,15 @@ export async function compileLess(options: CompileLessOption) {
 }
 
 export function copyThemeSource() {
+  consola.info(`Copy source less files in ${pkgRoot}/theme`);
   return gulp
-    .src(`${epRoot}/theme/**/*.less`)
+    .src(`${pkgRoot}/theme/**/*.less`)
     .pipe(
       // 修改文件的别名
       through2.obj(function (file, encoding, next) {
         if (file.path.match(/\/app\.less$/)) {
           const content = file.contents.toString();
-          file.contents = Buffer.from(content.replaceAll('@ent-core', '../es'));
+          file.contents = Buffer.from(content.replaceAll('@ent-core', '../lib'));
         } else {
           const content = file.contents.toString();
           file.contents = Buffer.from(content.replaceAll('@ent-core', 'fe-ent-core'));
@@ -110,8 +113,9 @@ export function copyThemeSource() {
 }
 
 export function copyThemeExceptSource() {
+  consola.info(`Copy source less files in ${pkgRoot}/{components,directives}`);
   return gulp
-    .src(`${epRoot}/{components,directives,layouts,views}/**/*.{less,css}`)
+    .src(`${pkgRoot}/{components,directives}/**/*.{less,css}`)
     .pipe(
       // 修改文件的别名
       through2.obj(function (file, encoding, next) {
@@ -121,5 +125,5 @@ export function copyThemeExceptSource() {
         next();
       }),
     )
-    .pipe(gulp.dest(`${epOutput}/es`));
+    .pipe(gulp.dest(`${epOutput}/lib`));
 }

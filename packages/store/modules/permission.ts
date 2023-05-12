@@ -1,6 +1,6 @@
 import { toRaw } from 'vue';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { defineStore } from 'pinia';
+import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { store } from '@ent-core/store/pinia';
 import {
   backendRouteFilter,
@@ -169,7 +169,7 @@ export const usePermissionStore = defineStore({
 
           break;
 
-        case PermissionModeEnum.ROUTE_MAPPING:
+        case PermissionModeEnum.ROUTE_MAPPING: {
           routes = filter(entRouter.getBizRoutes(), routeFilter);
           routes = routes.filter(routeFilter);
           // 根据已有的树状路由提取Menu
@@ -184,9 +184,9 @@ export const usePermissionStore = defineStore({
           // Convert multi-level routing to level 2 routing
           routes = flatMultiLevelRoutes(routes);
           break;
-
+        }
         //  If you are sure that you do not need to do background dynamic permissions, please comment the entire judgment below
-        case PermissionModeEnum.BACK:
+        case PermissionModeEnum.BACK: {
           const { createMessage } = useMessage();
 
           createMessage.info({
@@ -229,6 +229,7 @@ export const usePermissionStore = defineStore({
           routeList = flatMultiLevelRoutes(routeList);
           routes = [...routeList];
           break;
+        }
       }
       // 404 路由一定要放最后面
       routes.push(routeBridge.getPageNotFoundRoute());

@@ -186,7 +186,7 @@
         }
         try {
           item.status = UploadResultStatus.UPLOADING;
-          const { data } = await props.api?.(
+          const { data } = await api?.(
             {
               data: {
                 ...(props.uploadParams || {}),
@@ -196,7 +196,7 @@
               filename: props.filename,
             },
             (progressEvent: ProgressEvent) => {
-              const complete = ((progressEvent.loaded / progressEvent.total) * 100) | 0;
+              const complete = Math.trunc((progressEvent.loaded / progressEvent.total) * 100);
               item.percent = complete;
             },
           );

@@ -22,8 +22,8 @@
     "noImplicitAny": false,
     "skipLibCheck": true,
     "paths": {
-      "fe-ent-core": ["../../core/index.ts"],
-      "fe-ent-core/lib/*": ["../../core/*"],
+      "fe-ent-core": ["../../packages/fe-ent-core/index.ts"],
+      "fe-ent-core/lib/*": ["../../packages/*"],
       "@fe-ent-extension/*": ["../extensions/*"]
     }
   },

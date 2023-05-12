@@ -9,7 +9,7 @@
 
   const { params, query } = unref(currentRoute);
   const { path, _redirect_type = 'path' } = params;
-
+  console.log(_redirect_type);
   Reflect.deleteProperty(params, '_redirect_type');
   Reflect.deleteProperty(params, 'path');
 

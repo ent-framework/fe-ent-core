@@ -40,12 +40,12 @@
 <script lang="ts">
   import { computed, defineComponent, nextTick, onMounted, reactive, ref, unref, watch } from 'vue';
   import { Form, Row } from 'ant-design-vue';
+  import { useDebounceFn } from '@vueuse/shared';
+  import { cloneDeep } from 'lodash-es';
   import { dateUtil } from '@ent-core/utils/date-util';
   import { deepMerge } from '@ent-core/utils';
   import { useModalContext } from '@ent-core/components/modal';
-  import { useDebounceFn } from '@vueuse/shared';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { cloneDeep } from 'lodash-es';
   import FormItem from './components/form-item.vue';
   import FormAction from './components/form-action.vue';
 
@@ -241,7 +241,7 @@
         emit('field-value-change', key, value);
         // TODO 优化验证，这里如果是autoLink=false手动关联的情况下才会再次触发此函数
         if (schema && schema.itemProps && !schema.itemProps.autoLink) {
-          validateFields([key]).catch((_) => {});
+          validateFields([key]);
         }
       }
 

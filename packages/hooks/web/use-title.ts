@@ -1,8 +1,8 @@
 import { unref, watch } from 'vue';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { useTitle as usePageTitle } from '@vueuse/core';
-import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
 import { useRouter } from 'vue-router';
+import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
 import { useLocaleStore } from '@ent-core/store/modules/locale';
 
 import { REDIRECT_NAME } from '@ent-core/router/constant';

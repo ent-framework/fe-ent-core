@@ -10,6 +10,7 @@ import { useAppStore } from 'fe-ent-core/lib/store';
 import { useRootSetting } from 'fe-ent-core/lib/hooks';
 import { HandlerEnum } from './enum';
 import type { ProjectConfig } from 'fe-ent-core/lib/logics';
+import type { DeepPartial } from 'fe-ent-core/lib/types';
 
 export function baseHandler(event: HandlerEnum, value: any) {
   const appStore = useAppStore();
@@ -26,7 +27,7 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
 
   const { getThemeColor, getDarkMode } = useRootSetting();
   switch (event) {
-    case HandlerEnum.CHANGE_LAYOUT:
+    case HandlerEnum.CHANGE_LAYOUT: {
       const { mode, type, split } = value;
       const splitOpt = split === undefined ? { split } : {};
 
@@ -40,7 +41,7 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
           ...splitOpt,
         },
       };
-
+    }
     case HandlerEnum.CHANGE_THEME_COLOR:
       if (getThemeColor.value === value) {
         return {};

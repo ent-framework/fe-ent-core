@@ -36,10 +36,10 @@
 <script lang="ts" setup>
   import { type PropType, computed, ref, useSlots, watch } from 'vue';
   import { Dropdown, InputSearch, Menu, MenuDivider, MenuItem } from 'ant-design-vue';
+  import { useDebounceFn } from '@vueuse/core';
   import { EntIcon } from '@ent-core/components/icon';
   import { EntTitle } from '@ent-core/components/basic';
   import { useI18n } from '@ent-core//hooks/web/use-i18n';
-  import { useDebounceFn } from '@vueuse/core';
   import { ToolbarEnum } from '../types/tree';
 
   const searchValue = ref('');

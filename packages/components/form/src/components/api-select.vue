@@ -23,11 +23,11 @@
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { Select } from 'ant-design-vue';
+  import { get, omit } from 'lodash-es';
+  import { LoadingOutlined } from '@ant-design/icons-vue';
   import { isFunction } from '@ent-core/utils/is';
   import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
-  import { get, omit } from 'lodash-es';
-  import { LoadingOutlined } from '@ant-design/icons-vue';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { propTypes } from '@ent-core/utils/prop-types';
   import type { PropType } from 'vue';

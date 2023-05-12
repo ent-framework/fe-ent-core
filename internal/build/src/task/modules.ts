@@ -10,7 +10,7 @@ import glob from 'fast-glob';
 import { epRoot, pkgRoot } from '@ent-build/build-utils';
 import image from '@rollup/plugin-image';
 import { EntCoreAlias } from '../plugins/ent-core-alias';
-import { generateExternal, writeBundles, excludeFiles } from '../utils';
+import { excludeFiles, generateExternal, writeBundles } from '../utils';
 import { reporter } from '../plugins/size-reporter';
 import { buildConfigEntries, target } from '../build-info';
 import type { OutputOptions, Plugin } from 'rollup';
@@ -55,6 +55,7 @@ export const buildModules = async () => {
     bundle,
     buildConfigEntries.map(([module, config]): OutputOptions => {
       return {
+        interop: module === 'cjs' ? 'auto' : 'default',
         format: config.format,
         dir: config.output.path,
         exports: module === 'cjs' ? 'named' : undefined,

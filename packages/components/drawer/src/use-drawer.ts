@@ -9,9 +9,8 @@ import {
   watchEffect,
 } from 'vue';
 import { tryOnUnmounted } from '@vueuse/core';
-import { isProdMode } from '@ent-core/utils/env';
-import { isFunction } from '@ent-core/utils/is';
 import { isEqual } from 'lodash-es';
+import { isFunction } from '@ent-core/utils/is';
 import { error } from '@ent-core/utils/log';
 import type { Fn, Nullable } from '@ent-core/types';
 import type {
@@ -38,14 +37,13 @@ export function useDrawer(): UseDrawerReturnType {
   const uid = ref<number>(0);
 
   function register(drawerInstance: DrawerInstance, uuid: number) {
-    isProdMode() &&
-      tryOnUnmounted(() => {
-        drawer.value = null;
-        loaded.value = null;
-        dataTransferRef[unref(uid)] = null;
-      });
+    tryOnUnmounted(() => {
+      drawer.value = null;
+      loaded.value = null;
+      dataTransferRef[unref(uid)] = null;
+    });
 
-    if (unref(loaded) && isProdMode() && drawerInstance === unref(drawer)) {
+    if (unref(loaded) && drawerInstance === unref(drawer)) {
       return;
     }
     uid.value = uuid;
@@ -117,10 +115,9 @@ export const useDrawerInner = (callbackFn?: Fn): UseDrawerInnerReturnType => {
   };
 
   const register = (modalInstance: DrawerInstance, uuid: number) => {
-    isProdMode() &&
-      tryOnUnmounted(() => {
-        drawerInstanceRef.value = null;
-      });
+    tryOnUnmounted(() => {
+      drawerInstanceRef.value = null;
+    });
 
     uidRef.value = uuid;
     drawerInstanceRef.value = modalInstance;

@@ -1,7 +1,7 @@
 <script lang="tsx">
   import { computed, defineComponent, nextTick, onMounted, onUnmounted, ref, unref } from 'vue';
-  import { EntIcon } from '@ent-core/components/icon';
   import { Divider, Menu } from 'ant-design-vue';
+  import { EntIcon } from '@ent-core/components/icon';
   import type { CSSProperties, FunctionalComponent, PropType } from 'vue';
   import type { Axis, ContextMenuItem, ItemContentProps } from './typing';
 

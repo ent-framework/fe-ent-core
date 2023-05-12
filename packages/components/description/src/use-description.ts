@@ -1,5 +1,4 @@
 import { getCurrentInstance, ref, unref } from 'vue';
-import { isProdMode } from '@ent-core/utils/env';
 import type { DescInstance, DescriptionProps, UseDescReturnType } from './typing';
 import type { Nullable } from '@ent-core/types';
 
@@ -11,7 +10,7 @@ export function useDescription(props?: Partial<DescriptionProps>): UseDescReturn
   const loaded = ref(false);
 
   function register(instance: DescInstance) {
-    if (unref(loaded) && isProdMode()) {
+    if (unref(loaded)) {
       return;
     }
     desc.value = instance;

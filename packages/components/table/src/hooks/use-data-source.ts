@@ -1,8 +1,8 @@
 import { computed, onMounted, reactive, ref, unref, watch, watchEffect } from 'vue';
+import { cloneDeep, get, merge } from 'lodash-es';
 import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
 import { buildUUID } from '@ent-core/utils/uuid';
 import { isBoolean, isFunction, isObject } from '@ent-core/utils/is';
-import { cloneDeep, get, merge } from 'lodash-es';
 import { FETCH_SETTING, PAGE_SIZE, ROW_KEY } from '../const';
 import type { ComputedRef, Ref } from 'vue';
 import type { PaginationProps } from '../types/pagination';
@@ -352,7 +352,7 @@ export function useDataSource(
   }
 
   async function reload(opt?: FetchParams) {
-    return await fetch(opt);
+    return fetch(opt);
   }
 
   onMounted(() => {

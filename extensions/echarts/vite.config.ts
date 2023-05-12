@@ -22,7 +22,7 @@ export default definePackageConfig({
           'echarts/renderers',
         ],
       },
-      sourcemap: true,
+      minify: false,
     },
   },
   options: {

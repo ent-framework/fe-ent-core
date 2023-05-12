@@ -1,15 +1,16 @@
 import { computed, nextTick, ref, unref, watch } from 'vue';
-import { tryOnUnmounted, useDebounceFn } from '@vueuse/core';
+import { noop, tryOnUnmounted, useDebounceFn } from '@vueuse/core';
 import {
   useBreakpoint,
   useEventListener,
   useMenuSetting,
   useRootSetting,
   useTimeoutFn,
-} from 'fe-ent-core';
+} from 'fe-ent-core/lib/hooks';
 import echarts from '../lib/echarts';
 import type { Ref } from 'vue';
 import type { EChartsOption } from 'echarts';
+import type { Fn } from 'fe-ent-core/lib/types';
 
 export function useEcharts(
   elRef: Ref<HTMLDivElement>,
@@ -24,7 +25,7 @@ export function useEcharts(
   let chartInstance: echarts.ECharts | null = null;
   let resizeFn: Fn = resize;
   const cacheOptions = ref({}) as Ref<EChartsOption>;
-  let removeResizeFn: Fn = () => {};
+  let removeResizeFn: Fn = noop;
 
   resizeFn = useDebounceFn(resize, 200);
 
@@ -52,7 +53,7 @@ export function useEcharts(
     });
     removeResizeFn = removeEvent;
     const { widthRef, screenEnum } = useBreakpoint();
-    if (unref(widthRef) <= screenEnum.MD || el.offsetHeight === 0) {
+    if (unref(widthRef).value <= (screenEnum.MD as number) || el.offsetHeight === 0) {
       useTimeoutFn(() => {
         resizeFn();
       }, 30);

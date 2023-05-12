@@ -54,6 +54,7 @@
     "prepare": "husky install",
     "prepublish": "pnpm run build:libs",
     "remote": "tsx ./scripts/publish.ts",
+    "link:global": "tsx ./scripts/pnpmlink.ts",
     "gen:icon": "esno ./build/generate/icon/index.ts",
     "stub": "pnpm run -r --parallel stub",
     "postinstall": "pnpm stub && pnpm gen:version"

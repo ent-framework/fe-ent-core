@@ -192,7 +192,7 @@ module.exports = defineConfig({
     'vue/multi-word-component-names': 'off',
     'vue/prefer-import-from-vue': 'off',
     'vue/no-v-text-v-html-on-component': 'off',
-    'vue/no-reserved-component-names': 'warn',
+    'vue/no-reserved-component-names': 'off', //error->off
     'vue/html-self-closing': [
       'error',
       {

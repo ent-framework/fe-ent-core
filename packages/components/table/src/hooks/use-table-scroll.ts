@@ -1,10 +1,10 @@
 import { computed, nextTick, ref, unref, watch } from 'vue';
+import { useDebounceFn } from '@vueuse/shared';
 import { getViewportOffset } from '@ent-core/utils/dom-utils';
 import { isBoolean } from '@ent-core/utils/is';
 import { useWindowSizeFn } from '@ent-core/hooks/event/use-window-size-fn';
 import { useModalContext } from '@ent-core/components/modal';
 import { onMountedOrActivated } from '@ent-core/hooks/core/on-mounted-or-activated';
-import { useDebounceFn } from '@vueuse/shared';
 import type { ComputedRef, Ref } from 'vue';
 import type { BasicColumn, BasicTableProps, TableRowSelection } from '../types/table';
 import type { ComponentRef, Nullable, Recordable } from '@ent-core/types';
@@ -153,7 +153,6 @@ export function useTableScroll(
       const headerCellHeight =
         (tableEl.querySelector('.ant-table-title') as HTMLElement)?.offsetHeight ?? 0;
 
-      console.log(wrapHeight - formHeight - headerCellHeight - tablePadding - paginationMargin);
       bottomIncludeBody =
         wrapHeight - formHeight - headerCellHeight - tablePadding - paginationMargin;
     } else {

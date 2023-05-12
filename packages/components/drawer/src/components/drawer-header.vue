@@ -19,8 +19,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTitle } from '@ent-core/components/basic';
   import { ArrowLeftOutlined } from '@ant-design/icons-vue';
+  import { EntTitle } from '@ent-core/components/basic';
 
   import { useDesign } from '@ent-core/hooks/web/use-design';
 

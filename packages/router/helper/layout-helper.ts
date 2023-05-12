@@ -4,23 +4,20 @@
 import type { Plugin } from 'vue';
 
 export interface LayoutManagement {
-  use(name: string, layout: Plugin | Function): this;
-  getLayout(name: string): Plugin | Function;
+  use(name: string, layout: Plugin): this;
+  getLayout(name: string): Plugin;
 }
 
 //const LayoutManagementKey: InjectionKey<LayoutManagement> = Symbol('layout-management');
 
-const LayoutMap = new Map<string, Plugin | Function>();
+const LayoutMap = new Map<string, Plugin>();
 
 const layoutMgt: LayoutManagement = {
-  use(name: string, layout: Plugin | Function) {
-    if (LayoutMap.has(name)) {
-      console.log(`${name} has been registered.`);
-    }
+  use(name: string, layout: Plugin) {
     LayoutMap.set(name, layout);
     return layoutMgt;
   },
-  getLayout(name: string): Plugin | Function {
+  getLayout(name: string): Plugin {
     return LayoutMap.get(name) as Plugin;
   },
 };

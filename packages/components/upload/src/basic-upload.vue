@@ -38,10 +38,10 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watch } from 'vue';
-  import { EntIcon } from '@ent-core/components/icon';
   import { Space, Tooltip } from 'ant-design-vue';
-  import { useModal } from '@ent-core/components/modal';
   import { omit } from 'lodash-es';
+  import { EntIcon } from '@ent-core/components/icon';
+  import { useModal } from '@ent-core/components/modal';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { isArray } from '@ent-core/utils/is';
   import { uploadContainerProps } from './props';

@@ -1,4 +1,5 @@
-import { createJavascriptTransition, createSimpleTransition } from './src/create-transition';
+import { createJavascriptTransition } from './src/create-javascript-transition';
+import { createSimpleTransition } from './src/create-simple-transition';
 
 import ExpandTransitionGenerator from './src/expand-transition';
 

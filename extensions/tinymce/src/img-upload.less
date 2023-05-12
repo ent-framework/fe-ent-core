@@ -1,14 +1,13 @@
+@tinymce-img-upload-prefix-cls: ~'@{vben-prefix}-tinymce-img-upload';
 
-  @tinymce-img-upload-prefix-cls: ~'@{vben-prefix}-tinymce-img-upload';
+.@{tinymce-img-upload-prefix-cls} {
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  z-index: 20;
 
-  .@{tinymce-img-upload-prefix-cls} {
-    position: absolute;
-    top: 4px;
-    right: 10px;
-    z-index: 20;
-
-    &.fullscreen {
-      position: fixed;
-      z-index: 10000;
-    }
+  &.fullscreen {
+    position: fixed;
+    z-index: 10000;
   }
+}

@@ -5,8 +5,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { propTypes } from '@ent-core/utils/prop-types';
   import { Image } from 'ant-design-vue';
+  import { propTypes } from '@ent-core/utils/prop-types';
 
   export default defineComponent({
     components: { Image },

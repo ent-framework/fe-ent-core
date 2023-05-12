@@ -19,8 +19,16 @@
 </template>
 
 <script lang="ts">
-  import type { Editor, RawEditorSettings } from 'tinymce';
-  import type { PropType } from 'vue';
+  import {
+    computed,
+    defineComponent,
+    nextTick,
+    onBeforeUnmount,
+    onDeactivated,
+    ref,
+    unref,
+    watch,
+  } from 'vue';
   import tinymce from 'tinymce/tinymce';
   import 'tinymce/themes/silver';
   import 'tinymce/icons/default/icons';
@@ -53,28 +61,15 @@
   import 'tinymce/plugins/visualchars';
   import 'tinymce/plugins/wordcount';
 
-  import {
-    computed,
-    defineComponent,
-    nextTick,
-    onBeforeUnmount,
-    onDeactivated,
-    ref,
-    unref,
-    watch,
-  } from 'vue';
-  import {
-    buildShortUUID,
-    getAppEnvConfig,
-    isNumber,
-    onMountedOrActivated,
-    useAppStore,
-    useDesign,
-    useLocale,
-  } from 'fe-ent-core';
+  import { onMountedOrActivated, useDesign } from 'fe-ent-core/lib/hooks';
+  import { buildShortUUID, getAppEnvConfig, isNumber } from 'fe-ent-core/lib/utils';
+  import { useAppStore } from 'fe-ent-core/lib/store';
+  import { useLocale } from 'fe-ent-core/lib/locales';
   import { plugins, toolbar } from './tinymce';
   import ImgUpload from './img-upload.vue';
   import { bindHandlers } from './helper';
+  import type { Editor, RawEditorSettings } from 'tinymce';
+  import type { PropType } from 'vue';
   import type { Nullable, Recordable } from 'fe-ent-core/lib/types';
   const tinymceProps = {
     options: {
@@ -312,7 +307,7 @@
       }
 
       function getUploadingImgName(name: string) {
-        return `[uploading:${name}]`;
+        return `[[uploading::${name}]]`;
       }
 
       return {

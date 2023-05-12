@@ -14,9 +14,8 @@ export const docRoot = resolve(projRoot, 'docs');
 export const buildRoot = resolve(projRoot, 'internal', 'build');
 /** dist */
 export const buildOutput = resolve(projRoot, 'dist');
-/** dist/element-plus */
-export const epOutput = resolve(buildOutput, 'fe-ent-core');
 
+export const epOutput = resolve(buildOutput, 'fe-ent-core');
 export const projPackage = resolve(projRoot, 'package.json');
 export const compPackage = resolve(compRoot, 'package.json');
 export const themePackage = resolve(themeRoot, 'package.json');

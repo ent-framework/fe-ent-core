@@ -66,6 +66,7 @@
   import { useAppInject, useDesign, useI18n, useRefs } from 'fe-ent-core/lib/hooks';
   import { useMenuSearch } from './use-menu-search';
   import AppSearchFooter from './app-search-footer.vue';
+  import type { Nullable } from '@ent-core/types';
 
   const props = defineProps({
     visible: { type: Boolean },

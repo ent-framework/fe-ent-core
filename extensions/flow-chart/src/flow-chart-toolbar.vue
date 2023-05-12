@@ -17,7 +17,7 @@
 <script lang="ts">
   import { defineComponent, nextTick, onUnmounted, ref, unref, watchEffect } from 'vue';
   import { Divider, Tooltip } from 'ant-design-vue';
-  import { EntIcon } from 'fe-ent-core';
+  import { EntIcon } from 'fe-ent-core/lib/components';
 
   import { useFlowChartContext } from './use-flow-context';
   import { ToolbarTypeEnum } from './enum';

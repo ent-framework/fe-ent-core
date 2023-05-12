@@ -21,11 +21,11 @@
 <script lang="ts">
   import { defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { Cascader } from 'ant-design-vue';
+  import { get, omit } from 'lodash-es';
+  import { LoadingOutlined } from '@ant-design/icons-vue';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { isFunction } from '@ent-core/utils/is';
-  import { get, omit } from 'lodash-es';
   import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
-  import { LoadingOutlined } from '@ant-design/icons-vue';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { type Recordable } from '@ent-core/types';
   import type { PropType } from 'vue';
@@ -127,7 +127,7 @@
             apiData.value = get(res, props.resultField) || [];
           }
         } catch (error) {
-          console.warn(error);
+          console.error(error);
         } finally {
           loading.value = false;
         }

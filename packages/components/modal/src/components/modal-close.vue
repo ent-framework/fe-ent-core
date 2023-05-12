@@ -16,8 +16,8 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { CloseOutlined, FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons-vue';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
   import { Tooltip } from 'ant-design-vue';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
 
   export default defineComponent({

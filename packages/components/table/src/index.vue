@@ -50,10 +50,10 @@
     watchEffect,
   } from 'vue';
   import { Table } from 'ant-design-vue';
+  import { omit } from 'lodash-es';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { PageWrapperFixedHeightKey } from '@ent-core/components/page';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { omit } from 'lodash-es';
   import { isFunction } from '@ent-core/utils/is';
   import { warn } from '@ent-core/utils/log';
   import HeaderCell from './components/header-cell.vue';

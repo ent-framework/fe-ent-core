@@ -17,10 +17,8 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, unref } from 'vue';
-
+  import { defineComponent } from 'vue';
   import { CopyOutlined, RedoOutlined } from '@ant-design/icons-vue';
-
   import {
     useAppStore,
     useMultipleTabStore,
@@ -47,7 +45,7 @@
         // const { isSuccessRef } = useCopyToClipboard(
         //   JSON.stringify(unref(appStore.getProjectConfig), null, 2),
         // );
-        console.log(JSON.stringify(unref(appStore.getProjectConfig), null, 2));
+        // console.log(JSON.stringify(unref(appStore.getProjectConfig), null, 2));
         // unref(isSuccessRef) &&
         //   createSuccessModal({
         //     title: t('layout.setting.operatingTitle'),

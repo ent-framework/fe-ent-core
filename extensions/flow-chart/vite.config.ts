@@ -6,14 +6,19 @@ export default definePackageConfig({
       lib: {
         entry: 'src/index.ts',
       },
+      rollupOptions: {
+        external: [
+          'fe-ent-core/lib/components',
+          'fe-ent-core/lib/hooks',
+          'fe-ent-core/lib/logics',
+          'fe-ent-core/lib/store',
+          'fe-ent-core/lib/utils',
+          'fe-ent-core/lib/router',
+          'fe-ent-core/lib/locales',
+          'fe-ent-core/lib/directives',
+        ],
+      },
       sourcemap: true,
-    },
-    optimizeDeps: {
-      include: [
-        '@iconify/iconify',
-        'ant-design-vue/es/locale/zh_CN',
-        'ant-design-vue/es/locale/en_US',
-      ],
     },
     css: {
       preprocessorOptions: {

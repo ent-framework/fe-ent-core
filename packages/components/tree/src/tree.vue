@@ -11,10 +11,10 @@
     watchEffect,
   } from 'vue';
   import { Empty, Spin, Tree } from 'ant-design-vue';
+  import { cloneDeep, difference, get, omit } from 'lodash-es';
   import { EntScrollContainer } from '@ent-core/components/container';
 
-  import { cloneDeep, difference, get, omit } from 'lodash-es';
-  import { isArray, isBoolean, isEmpty, isFunction } from '@ent-core/utils/is';
+  import { isArray, isBoolean, isEmpty, isFunction, isNumber } from '@ent-core/utils/is';
   import { extendSlots, getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { eachTree, filter, treeToList } from '@ent-core/utils/helper/tree-helper';
 
@@ -34,7 +34,6 @@
     TreeItem,
     TreeState,
   } from './types/tree';
-  import { isNumber } from '@ent-core/utils/is';
   import type { Recordable } from '@ent-core/types';
   import type { CSSProperties } from 'vue';
 

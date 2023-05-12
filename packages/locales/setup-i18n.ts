@@ -1,15 +1,15 @@
-import type { App } from 'vue';
-import type { I18n, I18nOptions } from 'vue-i18n';
-
 import { createI18n } from 'vue-i18n';
+import dayjs from 'dayjs';
 import { localeSetting } from '@ent-core/logics/settings/locale-setting';
 import { useLocaleStoreWithOut } from '@ent-core/store/modules/locale';
 import zhCN from './lang/zh-CN';
 import en from './lang/en';
 import 'dayjs/locale/zh-cn';
 import 'dayjs/locale/en';
-import dayjs from 'dayjs';
+
 import { setHtmlPageLang, setLoadLocalePool } from './helper';
+import type { App } from 'vue';
+import type { I18n, I18nOptions } from 'vue-i18n';
 
 const { fallback, availableLocales } = localeSetting;
 

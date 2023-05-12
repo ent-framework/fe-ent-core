@@ -1,13 +1,12 @@
 import { inject } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
+import { noop } from '@vueuse/core';
 import { getAppEnvConfig } from '@ent-core/utils/env';
 import { normalizeRoutePath } from '@ent-core/router/helper/route-helper';
 import { routerKey } from './router_symbols';
 import type { AppRouteModule, AppRouteRecordRaw, EntRouter } from './types';
 import type { App } from 'vue';
 import type { RouteRecordRaw } from 'vue-router';
-
-const noop = () => {};
 
 export function createEntRouter(): EntRouter {
   const appEnv = getAppEnvConfig();

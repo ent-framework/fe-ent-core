@@ -19,11 +19,11 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, reactive, ref, toRefs, unref, watch } from 'vue';
+  import { useRouter } from 'vue-router';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { listenerRouteChange } from '@ent-core/logics/mitt/route-change';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { REDIRECT_NAME } from '@ent-core/router/constant';
-  import { useRouter } from 'vue-router';
   import { isFunction, isUrl } from '@ent-core/utils/is';
   import { openWindow } from '@ent-core/utils';
   import SimpleSubMenu from './simple-sub-menu.vue';

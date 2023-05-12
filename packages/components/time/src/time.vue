@@ -3,8 +3,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, watch } from 'vue';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useIntervalFn } from '@vueuse/core';
+  import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { dateUtil, formatToDate, formatToDateTime } from '@ent-core/utils/date-util';
   import { isNumber, isObject, isString } from '@ent-core/utils/is';
   import { propTypes } from '@ent-core/utils/prop-types';
@@ -33,7 +33,6 @@
         () => props.value,
         () => {
           setTime();
-          console.log('11111');
         },
         { immediate: true },
       );
@@ -84,7 +83,8 @@
           resStr = t('component.time.just');
           // Less than or equal to 59 seconds
         } else if (diff < ONE_MINUTES) {
-          resStr = Number.parseInt(String(diff / ONE_SECONDS)) + t('component.time.seconds') + dirStr;
+          resStr =
+            Number.parseInt(String(diff / ONE_SECONDS)) + t('component.time.seconds') + dirStr;
           // More than 59 seconds, less than or equal to 59 minutes and 59 seconds
         } else if (diff >= ONE_MINUTES && diff < ONE_HOUR) {
           resStr = Math.floor(diff / ONE_MINUTES) + t('component.time.minutes') + dirStr;

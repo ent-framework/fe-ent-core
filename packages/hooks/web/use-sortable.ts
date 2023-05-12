@@ -9,7 +9,7 @@ export function useSortable(el: HTMLElement | Ref<HTMLElement>, options?: Sortab
       if (!el) return;
       //防止生成dts时报错
       //@ts-ignore
-      (sortablejs.default || sortablejs).create(unref(el), {
+      sortablejs.create(unref(el), {
         animation: 500,
         delay: 400,
         delayOnTouchOnly: true,

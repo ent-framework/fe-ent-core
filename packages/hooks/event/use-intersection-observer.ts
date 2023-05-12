@@ -1,4 +1,5 @@
 import { ref, watchEffect } from 'vue';
+import { noop } from '@vueuse/core';
 import type { Ref } from 'vue';
 import type { Nullable } from '@ent-core/types';
 
@@ -17,7 +18,7 @@ export function useIntersectionObserver({
   rootMargin = '0px',
   threshold = 0.1,
 }: IntersectionObserverProps) {
-  let cleanup = () => {};
+  let cleanup = noop;
   const observer: Ref<Nullable<IntersectionObserver>> = ref(null);
   const stopEffect = watchEffect(() => {
     cleanup();

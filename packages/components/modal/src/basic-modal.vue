@@ -60,9 +60,9 @@
     watch,
     watchEffect,
   } from 'vue';
+  import { omit } from 'lodash-es';
   import { isFunction } from '@ent-core/utils/is';
   import { deepMerge } from '@ent-core/utils';
-  import { omit } from 'lodash-es';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import Modal from './components/modal';
   import ModalWrapper from './components/modal-wrapper.vue';

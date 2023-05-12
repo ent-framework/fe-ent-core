@@ -111,14 +111,14 @@
   } from 'vue';
   import { Checkbox, Divider, Popover, Tooltip } from 'ant-design-vue';
   import { DragOutlined, SettingOutlined } from '@ant-design/icons-vue';
+  import { cloneDeep, omit } from 'lodash-es';
+  import sortablejs from 'sortablejs';
   import { EntIcon } from '@ent-core/components/icon';
   import { EntScrollContainer } from '@ent-core/components/container';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { isFunction, isNullAndUnDef } from '@ent-core/utils/is';
   import { getPopupContainer as getParentContainer } from '@ent-core/utils';
-  import { cloneDeep, omit } from 'lodash-es';
-  import sortablejs from 'sortablejs';
   import { useTableContext } from '../../hooks/use-table-context';
   import type { CheckboxChangeEvent } from 'ant-design-vue/lib/checkbox/interface';
   import type { BasicColumn, BasicTableProps, ColumnChangeParam } from '../../types/table';
@@ -316,7 +316,7 @@
           // Drag and drop sort
           //防止生成dts时报错
           //@ts-ignore
-          sortable = (sortablejs.default || sortablejs).create(unref(el), {
+          sortable = sortablejs.create(unref(el), {
             animation: 500,
             delay: 400,
             delayOnTouchOnly: true,

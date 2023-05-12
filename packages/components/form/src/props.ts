@@ -1,6 +1,5 @@
 import { propTypes } from '@ent-core/utils/prop-types';
-import { type Recordable } from '@ent-core/types';
-import type { Fn } from '@ent-core/types';
+import type { Fn, Recordable } from '@ent-core/types';
 import type { FieldMapToTime, FormSchema } from './types/form';
 import type { CSSProperties, PropType } from 'vue';
 import type { ColEx } from './types';

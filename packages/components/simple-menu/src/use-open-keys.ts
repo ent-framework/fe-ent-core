@@ -1,9 +1,9 @@
 import { computed, toRaw, unref } from 'vue';
 import { uniq } from 'lodash-es';
+import { useDebounceFn } from '@vueuse/shared';
 import { getAllParentPath } from '@ent-core/router/helper/menu-helper';
 
 import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
-import { useDebounceFn } from '@vueuse/shared';
 import type { Ref } from 'vue';
 import type { MenuState } from './types';
 import type { Menu as MenuType } from '@ent-core/router/types';

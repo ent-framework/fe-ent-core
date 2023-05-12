@@ -7,7 +7,7 @@ import {
   // checkImgType,
   isImgTypeByName,
 } from './helper';
-import type { Fn } from '@ent-core/types';
+import type { AnyFunction, Fn } from '@ent-core/types';
 import type { FileItem, PreviewFileItem } from './typing';
 import type { BasicColumn, TableActionItem } from '@ent-core/components/table';
 
@@ -79,7 +79,7 @@ export function createTableColumns(): BasicColumn[] {
     },
   ];
 }
-export function createActionColumn(handleRemove: Function): BasicColumn {
+export function createActionColumn(handleRemove: AnyFunction): BasicColumn {
   const { t } = useI18n();
   return {
     width: 120,

@@ -1,5 +1,5 @@
 import type { VNodeChild } from 'vue';
-import type { Recordable } from '@ent-core/types';
+import type { AnyFunction, Recordable } from '@ent-core/types';
 export interface ColumnFilterItem {
   text?: string;
   value?: string;
@@ -138,7 +138,7 @@ export interface ColumnProps<T> {
    * Sort function for local sort, see Array.sort's compareFunction. If you need sort buttons only, set to true
    * @type boolean | Function
    */
-  sorter?: boolean | Function;
+  sorter?: boolean | AnyFunction;
 
   /**
    * Order of sorted values: 'ascend' 'descend' false

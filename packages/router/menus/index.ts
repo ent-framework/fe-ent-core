@@ -1,3 +1,4 @@
+import { pathToRegexp } from 'path-to-regexp';
 import { useAppStoreWithOut } from '@ent-core/store/modules/app';
 import { usePermissionStore } from '@ent-core/store/modules/permission';
 import { getAllParentPath, transformMenuModule } from '@ent-core/router/helper/menu-helper';
@@ -5,7 +6,6 @@ import { filter } from '@ent-core/utils/helper/tree-helper';
 import { isUrl } from '@ent-core/utils/is';
 import { useEntRouter } from '@ent-core/router/base';
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
-import { pathToRegexp } from 'path-to-regexp';
 import type { RouteRecordNormalized } from 'vue-router';
 import type { Menu } from '@ent-core/router/types';
 
