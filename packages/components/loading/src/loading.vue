@@ -1,6 +1,6 @@
 <template>
   <section
-    v-show="loading"
+    v-if="loading"
     class="full-loading"
     :class="{ absolute, [theme]: !!theme }"
     :style="[background ? `background-color: ${background}` : '']"

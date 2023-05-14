@@ -1,6 +1,6 @@
 import { cloneDeep, merge, omit, set } from 'lodash-es';
 import { isString, isUrl } from '@ent-core/utils/is';
-import { useLayout } from '@ent-core/router/helper/layout-helper';
+import { wrapperRoute } from '../wrapper';
 import type { AppRouteRecordRaw } from '@ent-core/router/types';
 
 /**
@@ -47,9 +47,9 @@ function addToChildren(children: AppRouteRecordRaw[], childrenContainer: AppRout
  * @param parentPath
  */
 export function normalizeRoutePath(route: AppRouteRecordRaw, parentPath?: string) {
-  const layoutMgt = useLayout();
   if (isString(route.component)) {
-    route.component = layoutMgt.getLayout(route.component as string);
+    //只有一级路由需要对路由处理
+    route.component = wrapperRoute(route.component as string);
   }
   if (hasChildren(route)) {
     const path = parentPath || route.path;
@@ -65,11 +65,10 @@ export function normalizeRoutePath(route: AppRouteRecordRaw, parentPath?: string
       ) {
         c.path = `${path}/${childPath}`;
       }
-      if (isString(c.component)) {
-        c.component = layoutMgt.getLayout(c.component as string);
-      }
       if (hasChildren(c)) {
         normalizeRoutePath(c, c.path);
+      } else if (isString(c.component)) {
+        c.component = wrapperRoute(c.component as string);
       }
     });
   }

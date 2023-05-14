@@ -1,5 +1,6 @@
 export default {
   footer: { onlinePreview: 'Preview', onlineDocument: 'Document' },
+  notFound: '{0} is not found in vue components',
   header: {
     // user dropdown
     dropdownItemDoc: 'Document',

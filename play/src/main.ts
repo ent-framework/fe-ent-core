@@ -14,10 +14,10 @@ import { registerGlobComp } from 'fe-ent-core/lib/components/register-glob-comp'
 import { initApplication } from '/@/init-application';
 import EntCore from 'fe-ent-core';
 
-import 'ant-design-vue/dist/antd.css';
+import 'ant-design-vue/dist/antd.less';
 import 'fe-ent-core/lib/theme/index.less';
 
-import { setupPages, getBasicRoutes } from '@fe-ent-app/page';
+import { getBasicRoutes, initRouteAndLayout } from '@fe-ent-app/page';
 
 import App from './App.vue';
 async function bootstrap() {
@@ -39,7 +39,7 @@ async function bootstrap() {
   // Register global components
   registerGlobComp(app);
 
-  setupPages();
+  initRouteAndLayout(app);
 
   app.use(EntCore);
 

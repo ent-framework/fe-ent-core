@@ -167,7 +167,9 @@ export function useFormEvents({
         });
       }
     });
-    validateFields(validKeys).catch((_) => {});
+    validateFields(validKeys).catch((error) => {
+      console.log(error);
+    });
   }
 
   /**

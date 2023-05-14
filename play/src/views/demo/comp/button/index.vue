@@ -1,6 +1,6 @@
 <template>
   <EntPageWrapper
-    contentFullHeight
+    content-full-height
     title="基础组件"
     content=" 基础组件依赖于ant-design-vue,组件库已有的基础组件,项目中不会再次进行demo展示（二次封装组件除外）"
   >
@@ -53,9 +53,9 @@
         <a-card title="BasicButton Types">
           <div class="my-2">
             <h3>primary</h3>
-            <a-button type="primary" preIcon="mdi:page-next-outline"> 主按钮 </a-button>
+            <a-button type="primary" pre-icon="mdi:page-next-outline"> 主按钮 </a-button>
             <a-button type="primary" class="ml-2" disabled> 禁用 </a-button>
-            <a-button type="primary" class="ml-2" danger preIcon="mdi:page-next-outline">
+            <a-button type="primary" class="ml-2" danger pre-icon="mdi:page-next-outline">
               危险
             </a-button>
             <a-button type="primary" class="ml-2" loading> loading </a-button>
@@ -100,13 +100,65 @@
         </a-card>
       </a-col>
     </a-row>
+    <a-row :gutter="[20, 20]">
+      <a-col :xl="10" :lg="24">
+        <a-card title="PopConfirm Color">
+          <div class="my-2">
+            <h3>success</h3>
+            <div class="py-2">
+              <ent-pop-button
+                pre-icon="ant-design:delete-outlined"
+                color="error"
+                title="确认删除？"
+                @confirm="alert"
+              >
+                确认删除
+              </ent-pop-button>
+
+            </div>
+          </div>
+        </a-card>
+      </a-col>
+      <a-col :xl="14" :lg="24" >
+        <a-card>
+          <StatisticCountdown
+            title="Million Seconds"
+            :value="deadline"
+            format="HH:mm:ss:SSS"
+            style="margin-right: 50px"
+          />
+          <StatisticCountdown
+            title="Number"
+            :value="100000"
+            style="margin-right: 50px"
+          />
+        </a-card>
+      </a-col>
+    </a-row>
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
-  import { Card, Row, Col } from 'ant-design-vue';
+  import { EntPopButton } from 'fe-ent-core/lib/components/button';
+  import { Card, Col, Row, StatisticCountdown } from 'ant-design-vue';
   export default defineComponent({
-    components: { EntPageWrapper, ACard: Card, ARow: Row, ACol: Col },
+    components: {
+      EntPageWrapper,
+      EntPopButton,
+      ACard: Card,
+      ARow: Row,
+      ACol: Col,
+      StatisticCountdown,
+    },
+    setup(props) {
+      const alert = () => {
+        console.log('clicked');
+      };
+      return {
+        alert,
+        deadline: Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30,
+      };
+    },
   });
 </script>

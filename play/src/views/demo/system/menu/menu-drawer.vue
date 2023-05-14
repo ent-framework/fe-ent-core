@@ -1,17 +1,18 @@
 <template>
   <EntDrawer
     v-bind="$attrs"
-    @register="registerDrawer"
-    showFooter
+    show-footer
     :title="getTitle"
     width="50%"
+    @register="registerDrawer"
+    destroyOnClose
     @ok="handleSubmit"
   >
     <EntForm @register="registerForm" />
   </EntDrawer>
 </template>
 <script lang="ts">
-  import { defineComponent, ref, computed, unref } from 'vue';
+  import { computed, defineComponent, ref, unref } from 'vue';
   import { EntForm, useForm } from 'fe-ent-core/lib/components/form';
   import { formSchema } from './menu-data';
   import { EntDrawer, useDrawerInner } from 'fe-ent-core/lib/components/drawer';
@@ -47,7 +48,7 @@
         updateSchema({
           field: 'parentMenu',
           componentProps: {
-            treeData
+            treeData,
           },
         });
       });

@@ -1,5 +1,6 @@
 export default {
   footer: { onlinePreview: '在线预览', onlineDocument: '在线文档' },
+  notFound: '在Vue Components中未发现{0}',
   header: {
     // user dropdown
     dropdownItemDoc: '文档',

@@ -50,7 +50,7 @@
 
       let realHeight = 0;
 
-      const stopElResizeFn: Fn = () => {};
+      const stopElResizeFn: Fn = () => undefined;
 
       useWindowSizeFn(setModalHeight.bind(null, false));
 

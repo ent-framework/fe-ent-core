@@ -231,8 +231,10 @@ export const usePermissionStore = defineStore({
           break;
         }
       }
+      const pageNotFound = routeBridge.getPageNotFoundRoute();
+      normalizeRoutePath(pageNotFound);
       // 404 路由一定要放最后面
-      routes.push(routeBridge.getPageNotFoundRoute());
+      routes.push(pageNotFound);
       patchHomeAffix(routes);
       return routes;
     },

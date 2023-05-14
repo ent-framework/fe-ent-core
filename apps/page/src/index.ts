@@ -1,6 +1,6 @@
 import { mainOutRoute } from './routes/main-out';
 import { getErrorLogRoute, getRedirectRoute, getRootRoute } from './routes/basic';
-import { setupPages } from './init-page';
+import { initRouteAndLayout } from './init-page';
 import type { AppRouteRecordRaw } from 'fe-ent-core/lib/router/types';
 import './index.less';
 
@@ -9,4 +9,4 @@ function getBasicRoutes(): AppRouteRecordRaw[] {
   return [mainOutRoute, getRedirectRoute(), getErrorLogRoute(), getRootRoute()];
 }
 
-export { setupPages, getBasicRoutes };
+export { initRouteAndLayout, getBasicRoutes };

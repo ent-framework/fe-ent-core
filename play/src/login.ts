@@ -17,7 +17,7 @@ import 'ant-design-vue/dist/antd.css';
 import 'fe-ent-core/lib/theme/index.less';
 
 import { LoginRoute } from '@fe-ent-app/login';
-import { setupPages } from '@fe-ent-app/page';
+import { initRouteAndLayout } from '@fe-ent-app/page';
 
 import App from './App.vue';
 
@@ -40,7 +40,7 @@ async function bootstrap() {
   // Initialize internal system configuration
   await initAppConfigStore();
 
-  setupPages();
+  initRouteAndLayout(app);
   entRouter.addBasicRoutes([LoginRoute]);
 
   app.use(entRouter);

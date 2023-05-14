@@ -392,16 +392,6 @@
               onClick={handleMaskClick}
             >
               <div class={`${prefixCls}-content`}>
-                {/*<Spin*/}
-                {/*  indicator={<LoadingOutlined style="font-size: 24px" spin />}*/}
-                {/*  spinning={true}*/}
-                {/*  class={[*/}
-                {/*    `${prefixCls}-image`,*/}
-                {/*    {*/}
-                {/*      hidden: imgState.status !== StatueEnum.LOADING,*/}
-                {/*    },*/}
-                {/*  ]}*/}
-                {/*/>*/}
                 <img
                   style={unref(getImageStyle)}
                   class={[

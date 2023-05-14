@@ -32,9 +32,6 @@
       <template #bodyCell="data">
         <slot name="bodyCell" v-bind="data || {}" />
       </template>
-      <!--      <template #[`header-${column.dataIndex}`] v-for="(column, index) in columns" :key="index">-->
-      <!--        <HeaderCell :column="column" />-->
-      <!--      </template>-->
     </Table>
   </div>
 </template>

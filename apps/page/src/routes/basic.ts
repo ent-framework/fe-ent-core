@@ -1,5 +1,5 @@
 import { t } from 'fe-ent-core/lib/hooks';
-import { PAGE_NOT_FOUND_NAME, REDIRECT_NAME, useLayout } from 'fe-ent-core/lib/router';
+import { COMPONENT_LAYOUT_NAME, PAGE_NOT_FOUND_NAME, REDIRECT_NAME } from 'fe-ent-core/lib/router';
 import { PageEnum } from 'fe-ent-core/lib/logics';
 import redirect from '../views/redirect/index.vue';
 import errorLog from '../views/error-log/index.vue';
@@ -8,11 +8,10 @@ import type { AppRouteRecordRaw } from 'fe-ent-core/lib/router';
 
 // 404 on a page
 export function getPageNotFoundRoute(): AppRouteRecordRaw {
-  const layoutMgt = useLayout();
   return {
     path: '/:path(.*)*',
     name: PAGE_NOT_FOUND_NAME,
-    component: layoutMgt.getLayout(''),
+    component: COMPONENT_LAYOUT_NAME,
     meta: {
       title: 'ErrorPage',
       hideBreadcrumb: true,
@@ -34,10 +33,9 @@ export function getPageNotFoundRoute(): AppRouteRecordRaw {
 }
 
 export function getRedirectRoute(): AppRouteRecordRaw {
-  const layoutMgt = useLayout();
   return {
     path: '/redirect',
-    component: layoutMgt.getLayout('LAYOUT'),
+    component: COMPONENT_LAYOUT_NAME,
     name: 'RedirectTo',
     meta: {
       title: REDIRECT_NAME,
@@ -59,11 +57,10 @@ export function getRedirectRoute(): AppRouteRecordRaw {
 }
 
 export function getErrorLogRoute(): AppRouteRecordRaw {
-  const layoutMgt = useLayout();
   return {
     path: '/error-log',
     name: 'ErrorLog',
-    component: layoutMgt.getLayout('LAYOUT'),
+    component: COMPONENT_LAYOUT_NAME,
     redirect: '/error-log/list',
     meta: {
       title: 'ErrorLog',
