@@ -2,7 +2,7 @@
   <div>
     <EntTable @register="registerTable">
       <template #toolbar>
-        <a-button type="primary" @click="handleCreate"> 新增角色 </a-button>
+        <ent-button type="primary" @click="handleCreate"> 新增角色 </ent-button>
       </template>
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'action'">

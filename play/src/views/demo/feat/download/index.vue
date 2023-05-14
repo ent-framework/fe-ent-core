@@ -1,18 +1,18 @@
 <template>
   <EntPageWrapper title="文件下载示例">
     <a-alert message="根据后台接口文件流下载" />
-    <a-button type="primary" class="my-4" @click="handleDownByData"> 文件流下载 </a-button>
+    <ent-button type="primary" class="my-4" @click="handleDownByData"> 文件流下载 </ent-button>
 
     <a-alert message="根据文件地址下载文件" />
-    <a-button type="primary" class="my-4" @click="handleDownloadByUrl"> 文件地址下载 </a-button>
+    <ent-button type="primary" class="my-4" @click="handleDownloadByUrl"> 文件地址下载 </ent-button>
 
     <a-alert message="base64流下载" />
-    <a-button type="primary" class="my-4" @click="handleDownloadByBase64"> base64流下载 </a-button>
+    <ent-button type="primary" class="my-4" @click="handleDownloadByBase64"> base64流下载 </ent-button>
 
     <a-alert message="图片Url下载,如果有跨域问题，需要处理图片跨域" />
-    <a-button type="primary" class="my-4" @click="handleDownloadByOnlineUrl">
+    <ent-button type="primary" class="my-4" @click="handleDownloadByOnlineUrl">
       图片Url下载
-    </a-button>
+    </ent-button>
   </EntPageWrapper>
 </template>
 <script lang="ts">

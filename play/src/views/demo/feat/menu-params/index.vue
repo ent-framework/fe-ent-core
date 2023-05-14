@@ -4,7 +4,7 @@
     <br />
     输入参数切换路由：
     <Input v-model:value="value" placeholder="建议为url标准字符，输入后点击切换" />
-    <a-button type="primary" @click="handleClickGo">切换路由</a-button>
+    <ent-button type="primary" @click="handleClickGo">切换路由</ent-button>
     <br />
     切换路由后
     <ul>

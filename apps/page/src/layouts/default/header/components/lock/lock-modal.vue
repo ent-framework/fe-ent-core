@@ -17,9 +17,9 @@
       <EntForm @register="registerForm" />
 
       <div :class="`${prefixCls}__footer`">
-        <a-button type="primary" block class="mt-2" @click="handleLock">
+        <ent-button type="primary" block class="mt-2" @click="handleLock">
           {{ t('layout.header.lockScreenBtn') }}
-        </a-button>
+        </ent-button>
       </div>
     </div>
   </EntModal>

@@ -2,12 +2,12 @@
   <EntPageWrapper title="拖动校验示例">
     <div class="flex justify-center p-4 items-center bg-gray-700">
       <EntDragVerify ref="el1" @success="handleSuccess" />
-      <a-button type="primary" class="ml-2" @click="handleBtnClick(el1)"> 还原 </a-button>
+      <ent-button type="primary" class="ml-2" @click="handleBtnClick(el1)"> 还原 </ent-button>
     </div>
 
     <div class="flex justify-center p-4 items-center bg-gray-700">
       <EntDragVerify ref="el2" @success="handleSuccess" circle />
-      <a-button type="primary" class="ml-2" @click="handleBtnClick(el2)"> 还原 </a-button>
+      <ent-button type="primary" class="ml-2" @click="handleBtnClick(el2)"> 还原 </ent-button>
     </div>
 
     <div class="flex justify-center p-4 items-center bg-gray-700">
@@ -20,7 +20,7 @@
           backgroundColor: '#018ffb',
         }"
       />
-      <a-button type="primary" class="ml-2" @click="handleBtnClick(el3)"> 还原 </a-button>
+      <ent-button type="primary" class="ml-2" @click="handleBtnClick(el3)"> 还原 </ent-button>
     </div>
 
     <div class="flex justify-center p-4 items-center bg-gray-700">
@@ -30,7 +30,7 @@
           <RightOutlined v-else />
         </template>
       </EntDragVerify>
-      <a-button type="primary" class="ml-2" @click="handleBtnClick(el4)"> 还原 </a-button>
+      <ent-button type="primary" class="ml-2" @click="handleBtnClick(el4)"> 还原 </ent-button>
     </div>
 
     <div class="flex justify-center p-4 items-center bg-gray-700">
@@ -46,7 +46,7 @@
           </div>
         </template>
       </EntDragVerify>
-      <a-button type="primary" class="ml-2" @click="handleBtnClick(el5)"> 还原 </a-button>
+      <ent-button type="primary" class="ml-2" @click="handleBtnClick(el5)"> 还原 </ent-button>
     </div>
   </EntPageWrapper>
 </template>

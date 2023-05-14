@@ -6,7 +6,7 @@
         <template #message>
           <template v-if="checkedKeys.length > 0">
             <span>已选中{{ checkedKeys.length }}条记录(可跨页)</span>
-            <a-button type="link" @click="checkedKeys = []" size="small">清空</a-button>
+            <ent-button type="link" @click="checkedKeys = []" size="small">清空</ent-button>
           </template>
           <template v-else>
             <span>未选中任何项目</span>
@@ -15,7 +15,7 @@
       </a-alert>
     </template>
     <template #toolbar>
-      <a-button type="primary" @click="getFormValues">获取表单数据</a-button>
+      <ent-button type="primary" @click="getFormValues">获取表单数据</ent-button>
     </template>
   </EntTable>
 </template>

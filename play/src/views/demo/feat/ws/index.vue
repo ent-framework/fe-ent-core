@@ -12,9 +12,9 @@
           <a-input v-model:value="server" disabled>
             <template #addonBefore> 服务地址 </template>
           </a-input>
-          <a-button :type="getIsOpen ? 'danger' : 'primary'" @click="toggle">
+          <ent-button :type="getIsOpen ? 'danger' : 'primary'" @click="toggle">
             {{ getIsOpen ? '关闭连接' : '开启连接' }}
-          </a-button>
+          </ent-button>
         </div>
         <p class="text-lg font-medium mt-4">设置</p>
         <hr class="my-4" />
@@ -26,9 +26,9 @@
           allowClear
         />
 
-        <a-button type="primary" block class="mt-4" :disabled="!getIsOpen" @click="handlerSend">
+        <ent-button type="primary" block class="mt-4" :disabled="!getIsOpen" @click="handlerSend">
           发送
-        </a-button>
+        </ent-button>
       </div>
 
       <div class="w-2/3 bg-white ml-4 p-4">

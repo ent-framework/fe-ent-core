@@ -2,7 +2,7 @@
   <div>
     <EntTable @register="registerTable" @fetch-success="onFetchSuccess">
       <template #toolbar>
-        <a-button type="primary" @click="handleCreate"> 新增菜单 </a-button>
+        <ent-button type="primary" @click="handleCreate"> 新增菜单 </ent-button>
       </template>
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'action'">

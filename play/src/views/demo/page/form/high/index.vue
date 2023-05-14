@@ -15,7 +15,7 @@
     </a-card>
 
     <template #rightFooter>
-      <a-button type="primary" @click="submitAll"> 提交 </a-button>
+      <ent-button type="primary" @click="submitAll"> 提交 </ent-button>
     </template>
   </EntPageWrapper>
 </template>

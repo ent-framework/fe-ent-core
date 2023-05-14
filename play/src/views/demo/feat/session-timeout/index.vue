@@ -5,11 +5,11 @@
   >
     <a-card title="请点击下面的按钮访问测试接口" extra="所访问的接口会返回Token过期响应">
       <a-card-grid style="width: 50%; text-align: center">
-        <a-button type="primary" @click="test1">HttpStatus == 401</a-button>
+        <ent-button type="primary" @click="test1">HttpStatus == 401</ent-button>
       </a-card-grid>
       <a-card-grid style="width: 50%; text-align: center">
         <span></span>
-        <a-button class="ml-4" type="primary" @click="test2">Response.code == 401</a-button>
+        <ent-button class="ml-4" type="primary" @click="test2">Response.code == 401</ent-button>
       </a-card-grid>
     </a-card>
   </EntPageWrapper>

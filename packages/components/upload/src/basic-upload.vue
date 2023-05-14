@@ -1,9 +1,9 @@
 <template>
   <div>
     <Space>
-      <a-button type="primary" pre-icon="carbon:cloud-upload" @click="openUploadModal">
+      <ent-button type="primary" pre-icon="carbon:cloud-upload" @click="openUploadModal">
         {{ t('component.upload.upload') }}
-      </a-button>
+      </ent-button>
       <Tooltip v-if="showPreview" placement="bottom">
         <template #title>
           {{ t('component.upload.uploaded') }}
@@ -11,12 +11,12 @@
             {{ fileList.length }}
           </template>
         </template>
-        <a-button @click="openPreviewModal">
+        <ent-button @click="openPreviewModal">
           <EntIcon icon="bi:eye" />
           <template v-if="fileList.length && showPreviewNumber">
             {{ fileList.length }}
           </template>
-        </a-button>
+        </ent-button>
       </Tooltip>
     </Space>
 

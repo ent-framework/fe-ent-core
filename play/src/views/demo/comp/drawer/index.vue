@@ -1,17 +1,17 @@
 <template>
   <ent-page-wrapper title="抽屉组件使用示例">
     <Alert message="使用 useDrawer 进行抽屉操作" show-icon />
-    <a-button type="primary" class="my-4" @click="openDrawerLoading"> 打开Drawer </a-button>
+    <ent-button type="primary" class="my-4" @click="openDrawerLoading"> 打开Drawer </ent-button>
 
     <Alert message="内外同时控制显示隐藏" show-icon />
-    <a-button type="primary" class="my-4" @click="openDrawer2(true)"> 打开Drawer </a-button>
+    <ent-button type="primary" class="my-4" @click="openDrawer2(true)"> 打开Drawer </ent-button>
     <Alert message="自适应高度/显示footer" show-icon />
-    <a-button type="primary" class="my-4" @click="openDrawer3(true)"> 打开Drawer </a-button>
+    <ent-button type="primary" class="my-4" @click="openDrawer3(true)"> 打开Drawer </ent-button>
 
     <Alert message="内外数据交互" show-icon />
-    <a-button type="primary" class="my-4" @click="send"> 打开Drawer并传递数据 </a-button>
+    <ent-button type="primary" class="my-4" @click="send"> 打开Drawer并传递数据 </ent-button>
     <Alert message="详情页模式" show-icon />
-    <a-button type="primary" class="my-4" @click="openDrawer5(true)"> 打开详情Drawer </a-button>
+    <ent-button type="primary" class="my-4" @click="openDrawer5(true)"> 打开详情Drawer </ent-button>
     <Drawer1 @register="register1" />
     <Drawer2 @register="register2" />
     <Drawer3 @register="register3" />

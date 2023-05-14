@@ -1,7 +1,7 @@
 <template>
   <EntDrawer v-bind="$attrs" @register="register" title="Drawer Title" width="50%">
     Drawer Info.
-    <a-button type="primary" @click="closeDrawer"> 内部关闭drawer </a-button>
+    <ent-button type="primary" @click="closeDrawer"> 内部关闭drawer </ent-button>
   </EntDrawer>
 </template>
 <script lang="ts">

@@ -15,48 +15,48 @@
     <div class="mt-4">
       权限切换(请先切换权限模式为前端角色权限模式):
       <Space>
-        <a-button @click="changeRole(RoleEnum.SUPER)" :type="isSuper ? 'primary' : 'default'">
+        <ent-button @click="changeRole(RoleEnum.SUPER)" :type="isSuper ? 'primary' : 'default'">
           {{ RoleEnum.SUPER }}
-        </a-button>
-        <a-button @click="changeRole(RoleEnum.TEST)" :type="isTest ? 'primary' : 'default'">
+        </ent-button>
+        <ent-button @click="changeRole(RoleEnum.TEST)" :type="isTest ? 'primary' : 'default'">
           {{ RoleEnum.TEST }}
-        </a-button>
+        </ent-button>
       </Space>
     </div>
     <Divider>组件方式判断权限(有需要可以自行全局注册)</Divider>
     <Authority :value="RoleEnum.SUPER">
-      <a-button type="primary" class="mx-4"> 拥有super角色权限可见 </a-button>
+      <ent-button type="primary" class="mx-4"> 拥有super角色权限可见 </ent-button>
     </Authority>
 
     <Authority :value="RoleEnum.TEST">
-      <a-button color="success" class="mx-4"> 拥有test角色权限可见 </a-button>
+      <ent-button color="success" class="mx-4"> 拥有test角色权限可见 </ent-button>
     </Authority>
 
     <Authority :value="[RoleEnum.TEST, RoleEnum.SUPER]">
-      <a-button color="error" class="mx-4"> 拥有[test,super]角色权限可见 </a-button>
+      <ent-button color="error" class="mx-4"> 拥有[test,super]角色权限可见 </ent-button>
     </Authority>
 
     <Divider>函数方式方式判断权限(适用于函数内部过滤)</Divider>
-    <a-button v-if="hasPermission(RoleEnum.SUPER)" type="primary" class="mx-4">
+    <ent-button v-if="hasPermission(RoleEnum.SUPER)" type="primary" class="mx-4">
       拥有super角色权限可见
-    </a-button>
+    </ent-button>
 
-    <a-button v-if="hasPermission(RoleEnum.TEST)" color="success" class="mx-4">
+    <ent-button v-if="hasPermission(RoleEnum.TEST)" color="success" class="mx-4">
       拥有test角色权限可见
-    </a-button>
+    </ent-button>
 
-    <a-button v-if="hasPermission([RoleEnum.TEST, RoleEnum.SUPER])" color="error" class="mx-4">
+    <ent-button v-if="hasPermission([RoleEnum.TEST, RoleEnum.SUPER])" color="error" class="mx-4">
       拥有[test,super]角色权限可见
-    </a-button>
+    </ent-button>
 
     <Divider>指令方式方式判断权限(该方式不能动态修改权限.)</Divider>
-    <a-button v-auth="RoleEnum.SUPER" type="primary" class="mx-4"> 拥有super角色权限可见 </a-button>
+    <ent-button v-auth="RoleEnum.SUPER" type="primary" class="mx-4"> 拥有super角色权限可见 </ent-button>
 
-    <a-button v-auth="RoleEnum.TEST" color="success" class="mx-4"> 拥有test角色权限可见 </a-button>
+    <ent-button v-auth="RoleEnum.TEST" color="success" class="mx-4"> 拥有test角色权限可见 </ent-button>
 
-    <a-button v-auth="[RoleEnum.TEST, RoleEnum.SUPER]" color="error" class="mx-4">
+    <ent-button v-auth="[RoleEnum.TEST, RoleEnum.SUPER]" color="error" class="mx-4">
       拥有[test,super]角色权限可见
-    </a-button>
+    </ent-button>
   </EntPageWrapper>
 </template>
 <script lang="ts">

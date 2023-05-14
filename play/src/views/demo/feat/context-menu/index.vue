@@ -1,11 +1,11 @@
 <template>
   <EntPageWrapper title="右键菜单示例">
     <CollapseContainer title="Simple">
-      <a-button type="primary" @contextmenu="handleContext"> Right Click on me </a-button>
+      <ent-button type="primary" @contextmenu="handleContext"> Right Click on me </ent-button>
     </CollapseContainer>
 
     <CollapseContainer title="Multiple" class="mt-4">
-      <a-button type="primary" @contextmenu="handleMultipleContext"> Right Click on me </a-button>
+      <ent-button type="primary" @contextmenu="handleMultipleContext"> Right Click on me </ent-button>
     </CollapseContainer>
   </EntPageWrapper>
 </template>

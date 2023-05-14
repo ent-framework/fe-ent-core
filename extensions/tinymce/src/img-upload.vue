@@ -8,9 +8,9 @@
       accept=".jpg,.jpeg,.gif,.png,.webp"
       @change="handleChange"
     >
-      <a-button type="primary" v-bind="{ ...getButtonProps }">
+      <ent-button type="primary" v-bind="{ ...getButtonProps }">
         {{ t('component.upload.imgUpload') }}
-      </a-button>
+      </ent-button>
     </Upload>
   </div>
 </template>

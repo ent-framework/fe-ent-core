@@ -51,7 +51,7 @@
 
       <CollapseContainer title="下载示例" class="text-center qrcode-demo-item">
         <QrCode :value="qrCodeUrl" ref="qrRef" :logo="LogoImg" />
-        <a-button class="mb-2" type="primary" @click="download"> 下载 </a-button>
+        <ent-button class="mb-2" type="primary" @click="download"> 下载 </ent-button>
         <div class="msg">(在线logo会导致图片跨域，需要下载图片需要自行解决跨域问题)</div>
       </CollapseContainer>
 
@@ -68,7 +68,7 @@
           :logo="LogoImg"
           @done="onQrcodeDone"
         />
-        <a-button class="mb-2" type="primary" @click="downloadDiy"> 下载 </a-button>
+        <ent-button class="mb-2" type="primary" @click="downloadDiy"> 下载 </ent-button>
         <div class="msg">要进行扩展绘制则不能将tag设为img</div>
       </CollapseContainer>
     </div>

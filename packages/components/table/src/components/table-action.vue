@@ -24,9 +24,9 @@
       popconfirm
     >
       <slot name="more" />
-      <a-button v-if="!$slots.more" type="link" size="small">
+      <ent-button v-if="!$slots.more" type="link" size="small">
         <MoreOutlined class="icon-more" />
-      </a-button>
+      </ent-button>
     </EntDropdown>
   </div>
 </template>

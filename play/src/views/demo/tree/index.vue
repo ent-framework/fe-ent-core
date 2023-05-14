@@ -33,7 +33,7 @@
       <Col :span="16">
         <Card title="异步数据，默认展开">
           <template #extra>
-            <a-button @click="loadTreeData" :loading="treeLoading">加载数据</a-button>
+            <ent-button @click="loadTreeData" :loading="treeLoading">加载数据</ent-button>
           </template>
           <Spin :spinning="treeLoading">
             <EntTree ref="asyncExpandTreeRef" :treeData="tree2" />

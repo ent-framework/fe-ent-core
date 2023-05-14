@@ -7,7 +7,7 @@
         </template>
       </template>
     </EntTable>
-    <a-button block class="mt-5" type="ghost" @click="handleAdd"> 新增成员 </a-button>
+    <ent-button block class="mt-5" type="ghost" @click="handleAdd"> 新增成员 </ent-button>
   </div>
 </template>
 <script lang="ts">

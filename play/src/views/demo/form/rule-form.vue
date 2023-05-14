@@ -1,11 +1,11 @@
 <template>
   <EntPageWrapper title="表单校验示例">
     <div class="mb-4">
-      <a-button @click="validateForm" class="mr-2"> 手动校验表单 </a-button>
-      <a-button @click="resetValidate" class="mr-2"> 清空校验信息 </a-button>
-      <a-button @click="getFormValues" class="mr-2"> 获取表单值 </a-button>
-      <a-button @click="setFormValues" class="mr-2"> 设置表单值 </a-button>
-      <a-button @click="resetFields" class="mr-2"> 重置 </a-button>
+      <ent-button @click="validateForm" class="mr-2"> 手动校验表单 </ent-button>
+      <ent-button @click="resetValidate" class="mr-2"> 清空校验信息 </ent-button>
+      <ent-button @click="getFormValues" class="mr-2"> 获取表单值 </ent-button>
+      <ent-button @click="setFormValues" class="mr-2"> 设置表单值 </ent-button>
+      <ent-button @click="resetFields" class="mr-2"> 重置 </ent-button>
     </div>
     <CollapseContainer title="表单校验">
       <EntForm @register="register" @submit="handleSubmit" />

@@ -12,48 +12,48 @@
       show-icon
     />
     <Divider />
-    <a-button type="primary" class="mr-2" @click="switchToken(2)" :disabled="!isBackPremissionMode">
+    <ent-button type="primary" class="mr-2" @click="switchToken(2)" :disabled="!isBackPremissionMode">
       点击切换按钮权限(用户id为2)
-    </a-button>
-    <a-button type="primary" @click="switchToken(1)" :disabled="!isBackPremissionMode">
+    </ent-button>
+    <ent-button type="primary" @click="switchToken(1)" :disabled="!isBackPremissionMode">
       点击切换按钮权限(用户id为1,默认)
-    </a-button>
+    </ent-button>
 
     <template v-if="isBackPremissionMode">
       <Divider>组件方式判断权限</Divider>
       <Authority :value="'1000'">
-        <a-button type="primary" class="mx-4"> 拥有code ['1000']权限可见 </a-button>
+        <ent-button type="primary" class="mx-4"> 拥有code ['1000']权限可见 </ent-button>
       </Authority>
 
       <Authority :value="'2000'">
-        <a-button color="success" class="mx-4"> 拥有code ['2000']权限可见 </a-button>
+        <ent-button color="success" class="mx-4"> 拥有code ['2000']权限可见 </ent-button>
       </Authority>
 
       <Authority :value="['1000', '2000']">
-        <a-button color="error" class="mx-4"> 拥有code ['1000','2000']角色权限可见 </a-button>
+        <ent-button color="error" class="mx-4"> 拥有code ['1000','2000']角色权限可见 </ent-button>
       </Authority>
 
       <Divider>函数方式方式判断权限</Divider>
-      <a-button v-if="hasPermission('1000')" type="primary" class="mx-4">
+      <ent-button v-if="hasPermission('1000')" type="primary" class="mx-4">
         拥有code ['1000']权限可见
-      </a-button>
+      </ent-button>
 
-      <a-button v-if="hasPermission('2000')" color="success" class="mx-4">
+      <ent-button v-if="hasPermission('2000')" color="success" class="mx-4">
         拥有code ['2000']权限可见
-      </a-button>
+      </ent-button>
 
-      <a-button v-if="hasPermission(['1000', '2000'])" color="error" class="mx-4">
+      <ent-button v-if="hasPermission(['1000', '2000'])" color="error" class="mx-4">
         拥有code ['1000','2000']角色权限可见
-      </a-button>
+      </ent-button>
 
       <Divider>指令方式方式判断权限(该方式不能动态修改权限.)</Divider>
-      <a-button v-auth="'1000'" type="primary" class="mx-4"> 拥有code ['1000']权限可见 </a-button>
+      <ent-button v-auth="'1000'" type="primary" class="mx-4"> 拥有code ['1000']权限可见 </ent-button>
 
-      <a-button v-auth="'2000'" color="success" class="mx-4"> 拥有code ['2000']权限可见 </a-button>
+      <ent-button v-auth="'2000'" color="success" class="mx-4"> 拥有code ['2000']权限可见 </ent-button>
 
-      <a-button v-auth="['1000', '2000']" color="error" class="mx-4">
+      <ent-button v-auth="['1000', '2000']" color="error" class="mx-4">
         拥有code ['1000','2000']角色权限可见
-      </a-button>
+      </ent-button>
     </template>
   </EntPageWrapper>
 </template>

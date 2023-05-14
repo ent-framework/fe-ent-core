@@ -2,8 +2,8 @@
   <div class="p-4">
     <EntTable @register="register">
       <template #toolbar>
-        <a-button type="primary" @click="expandAll">展开全部</a-button>
-        <a-button type="primary" @click="collapseAll">折叠全部</a-button>
+        <ent-button type="primary" @click="expandAll">展开全部</ent-button>
+        <ent-button type="primary" @click="collapseAll">折叠全部</ent-button>
       </template>
     </EntTable>
   </div>

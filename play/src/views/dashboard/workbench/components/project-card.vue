@@ -1,7 +1,7 @@
 <template>
   <Card title="项目" v-bind="$attrs">
     <template #extra>
-      <a-button type="link" size="small">更多</a-button>
+      <ent-button type="link" size="small">更多</ent-button>
     </template>
 
     <template v-for="item in items" :key="item">

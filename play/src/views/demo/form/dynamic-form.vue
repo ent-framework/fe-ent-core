@@ -1,10 +1,10 @@
 <template>
   <EntPageWrapper title="动态表单示例">
     <div class="mb-4">
-      <a-button @click="changeLabel3" class="mr-2"> 更改字段3label </a-button>
-      <a-button @click="changeLabel34" class="mr-2"> 同时更改字段3,4label </a-button>
-      <a-button @click="appendField" class="mr-2"> 往字段3后面插入字段10 </a-button>
-      <a-button @click="deleteField" class="mr-2"> 删除字段11 </a-button>
+      <ent-button @click="changeLabel3" class="mr-2"> 更改字段3label </ent-button>
+      <ent-button @click="changeLabel34" class="mr-2"> 同时更改字段3,4label </ent-button>
+      <ent-button @click="appendField" class="mr-2"> 往字段3后面插入字段10 </ent-button>
+      <ent-button @click="deleteField" class="mr-2"> 删除字段11 </ent-button>
     </div>
     <CollapseContainer title="动态表单示例,动态根据表单内其他值改变">
       <EntForm @register="register" />

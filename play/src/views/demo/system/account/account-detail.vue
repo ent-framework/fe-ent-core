@@ -6,8 +6,8 @@
     @back="goBack"
   >
     <template #extra>
-      <a-button type="primary" danger> 禁用账号 </a-button>
-      <a-button type="primary"> 修改密码 </a-button>
+      <ent-button type="primary" danger> 禁用账号 </ent-button>
+      <ent-button type="primary"> 修改密码 </ent-button>
     </template>
     <template #footer>
       <a-tabs default-active-key="detail" v-model:activeKey="currentKey">

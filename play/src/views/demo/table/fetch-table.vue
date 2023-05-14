@@ -2,8 +2,8 @@
   <EntPageWrapper contentBackground contentClass="flex" dense contentFullHeight fixedHeight>
     <EntTable @register="registerTable">
       <template #toolbar>
-        <a-button type="primary" @click="handleReloadCurrent"> 刷新当前页 </a-button>
-        <a-button type="primary" @click="handleReload"> 刷新并返回第一页 </a-button>
+        <ent-button type="primary" @click="handleReloadCurrent"> 刷新当前页 </ent-button>
+        <ent-button type="primary" @click="handleReload"> 刷新并返回第一页 </ent-button>
       </template>
     </EntTable>
   </EntPageWrapper>

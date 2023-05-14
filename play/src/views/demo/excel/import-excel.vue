@@ -1,7 +1,7 @@
 <template>
   <EntPageWrapper title="excel数据导入示例">
     <ExtImportExcel @success="loadDataSuccess" dateFormat="YYYY-MM-DD">
-      <a-button class="m-3"> 导入Excel </a-button>
+      <ent-button class="m-3"> 导入Excel </ent-button>
     </ExtImportExcel>
     <EntTable
       v-for="(table, index) in tableListRef"

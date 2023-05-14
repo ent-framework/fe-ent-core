@@ -44,7 +44,7 @@
             {{ t('sys.lock.alert') }}
           </span>
           <div :class="`${prefixCls}-entry__footer enter-x`">
-            <a-button
+            <ent-button
               type="link"
               size="small"
               class="mt-2 mr-2 enter-x"
@@ -52,8 +52,8 @@
               @click="handleShowForm(true)"
             >
               {{ t('common.back') }}
-            </a-button>
-            <a-button
+            </ent-button>
+            <ent-button
               type="link"
               size="small"
               class="mt-2 mr-2 enter-x"
@@ -61,10 +61,10 @@
               @click="goLogin"
             >
               {{ t('sys.lock.backToLogin') }}
-            </a-button>
-            <a-button class="mt-2" type="link" size="small" :loading="loading" @click="unLock()">
+            </ent-button>
+            <ent-button class="mt-2" type="link" size="small" :loading="loading" @click="unLock()">
               {{ t('sys.lock.entry') }}
-            </a-button>
+            </ent-button>
           </div>
         </div>
       </div>

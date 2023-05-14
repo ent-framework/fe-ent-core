@@ -2,10 +2,10 @@
   <EntPageWrapper v-loading="loadingRef" loading-tip="加载中..." title="Loading组件示例">
     <div ref="wrapEl">
       <a-alert message="组件方式" />
-      <a-button class="my-4 mr-4" type="primary" @click="openCompFullLoading">
+      <ent-button class="my-4 mr-4" type="primary" @click="openCompFullLoading">
         全屏 Loading
-      </a-button>
-      <a-button class="my-4" type="primary" @click="openCompAbsolute"> 容器内 Loading </a-button>
+      </ent-button>
+      <ent-button class="my-4" type="primary" @click="openCompAbsolute"> 容器内 Loading </ent-button>
       <EntLoading
         :loading="loading"
         :absolute="absolute"
@@ -16,15 +16,15 @@
 
       <a-alert message="函数方式" />
 
-      <a-button class="my-4 mr-4" type="primary" @click="openFnFullLoading">
+      <ent-button class="my-4 mr-4" type="primary" @click="openFnFullLoading">
         全屏 Loading
-      </a-button>
-      <a-button class="my-4" type="primary" @click="openFnWrapLoading"> 容器内 Loading </a-button>
+      </ent-button>
+      <ent-button class="my-4" type="primary" @click="openFnWrapLoading"> 容器内 Loading </ent-button>
 
       <a-alert message="指令方式" />
-      <a-button class="my-4 mr-4" type="primary" @click="openDirectiveLoading">
+      <ent-button class="my-4 mr-4" type="primary" @click="openDirectiveLoading">
         打开指令Loading
-      </a-button>
+      </ent-button>
     </div>
   </EntPageWrapper>
 </template>

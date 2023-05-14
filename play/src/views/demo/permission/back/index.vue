@@ -12,12 +12,12 @@
     <div class="mt-4">
       权限切换(请先切换权限模式为后台权限模式):
       <Space>
-        <a-button @click="switchToken(1)" :disabled="!isBackPremissionMode">
+        <ent-button @click="switchToken(1)" :disabled="!isBackPremissionMode">
           获取用户id为1的菜单
-        </a-button>
-        <a-button @click="switchToken(2)" :disabled="!isBackPremissionMode">
+        </ent-button>
+        <ent-button @click="switchToken(2)" :disabled="!isBackPremissionMode">
           获取用户id为2的菜单
-        </a-button>
+        </ent-button>
       </Space>
     </div>
   </EntPageWrapper>

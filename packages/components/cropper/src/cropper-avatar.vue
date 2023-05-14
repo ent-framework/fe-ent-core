@@ -11,14 +11,14 @@
       </div>
       <img v-if="sourceValue" :src="sourceValue" alt="avatar" />
     </div>
-    <a-button
+    <ent-button
       v-if="showBtn"
       :class="`${prefixCls}-upload-btn`"
       v-bind="btnProps"
       @click="openModal"
     >
       {{ btnText ? btnText : t('component.cropper.selectImage') }}
-    </a-button>
+    </ent-button>
 
     <CopperModal
       :upload-api="uploadApi"

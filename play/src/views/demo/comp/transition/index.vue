@@ -7,7 +7,7 @@
         placeholder="选择动画"
         :style="{ width: '150px' }"
       />
-      <a-button type="primary" class="ml-4" @click="start"> start </a-button>
+      <ent-button type="primary" class="ml-4" @click="start"> start </ent-button>
     </div>
     <component :is="`${value}Transition`">
       <div class="box" v-show="show"></div>

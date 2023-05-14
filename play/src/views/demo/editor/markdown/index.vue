@@ -1,8 +1,8 @@
 <template>
   <ent-page-wrapper title="MarkDown组件示例">
     <div>
-      <a-button @click="toggleTheme" class="mb-2" type="primary"> 黑暗主题 </a-button>
-      <a-button @click="clearValue" class="mb-2" type="default"> 清空内容 </a-button>
+      <ent-button @click="toggleTheme" class="mb-2" type="primary"> 黑暗主题 </ent-button>
+      <ent-button @click="clearValue" class="mb-2" type="default"> 清空内容 </ent-button>
       <ent-mark-down
         v-model:value="value"
         @change="handleChange"

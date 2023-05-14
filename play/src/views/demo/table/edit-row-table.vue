@@ -2,7 +2,7 @@
   <div class="p-4">
     <EntTable @register="registerTable" @edit-change="onEditChange" :dataSource="dataSource">
       <template #toolbar>
-        <a-button type="primary" @click="addRecord">添加行</a-button>
+        <ent-button type="primary" @click="addRecord">添加行</ent-button>
       </template>
       <template #action="{ record, column }">
         <EntTableAction :actions="createActions(record, column)" />

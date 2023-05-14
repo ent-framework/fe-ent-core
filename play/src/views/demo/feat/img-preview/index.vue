@@ -1,7 +1,7 @@
 <template>
   <EntPageWrapper title="图片预览示例">
     <ImagePreview :imageList="imgList" />
-    <a-button @click="openImg" type="primary">无预览图</a-button>
+    <ent-button @click="openImg" type="primary">无预览图</ent-button>
   </EntPageWrapper>
 </template>
 <script lang="ts">

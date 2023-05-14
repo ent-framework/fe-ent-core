@@ -14,16 +14,16 @@
       @columns-change="handleColumnChange"
     >
       <template #toolbar>
-        <a-button type="primary" @click="toggleCanResize">
+        <ent-button type="primary" @click="toggleCanResize">
           {{ !canResize ? '自适应高度' : '取消自适应' }}
-        </a-button>
-        <a-button type="primary" @click="toggleBorder">
+        </ent-button>
+        <ent-button type="primary" @click="toggleBorder">
           {{ !border ? '显示边框' : '隐藏边框' }}
-        </a-button>
-        <a-button type="primary" @click="toggleLoading"> 开启loading </a-button>
-        <a-button type="primary" @click="toggleStriped">
+        </ent-button>
+        <ent-button type="primary" @click="toggleLoading"> 开启loading </ent-button>
+        <ent-button type="primary" @click="toggleStriped">
           {{ !striped ? '显示斑马纹' : '隐藏斑马纹' }}
-        </a-button>
+        </ent-button>
       </template>
     </EntTable>
   </div>

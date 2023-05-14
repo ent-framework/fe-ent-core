@@ -2,7 +2,7 @@
   <EntPageWrapper title="代码编辑器组件示例" contentFullHeight fixedHeight contentBackground>
     <template #extra>
       <a-space size="middle">
-        <a-button @click="showData" type="primary">获取数据</a-button>
+        <ent-button @click="showData" type="primary">获取数据</ent-button>
         <RadioGroup button-style="solid" v-model:value="modeValue" @change="handleModeChange">
           <RadioButton value="application/json"> json数据 </RadioButton>
           <RadioButton value="htmlmixed"> html代码 </RadioButton>

@@ -1,37 +1,37 @@
 <template>
   <EntPageWrapper title="消息示例">
     <CollapseContainer class="w-full h-32 bg-white rounded-md" title="Message">
-      <a-button @click="infoMsg('Info message')" class="mr-2"> Info </a-button>
-      <a-button @click="successMsg('Success message')" class="mr-2" color="success">
+      <ent-button @click="infoMsg('Info message')" class="mr-2"> Info </ent-button>
+      <ent-button @click="successMsg('Success message')" class="mr-2" color="success">
         Success
-      </a-button>
-      <a-button @click="warningMsg('Warning message')" class="mr-2" color="warning">
+      </ent-button>
+      <ent-button @click="warningMsg('Warning message')" class="mr-2" color="warning">
         Warning
-      </a-button>
-      <a-button @click="errorMsg('Error message')" class="mr-2" color="error"> Error </a-button>
-      <a-button @click="handleLoading" class="mr-2" type="primary"> Loading </a-button>
+      </ent-button>
+      <ent-button @click="errorMsg('Error message')" class="mr-2" color="error"> Error </ent-button>
+      <ent-button @click="handleLoading" class="mr-2" type="primary"> Loading </ent-button>
     </CollapseContainer>
 
     <CollapseContainer class="w-full h-32 mt-5 bg-white rounded-md" title="Comfirm">
-      <a-button @click="handleConfirm('info')" class="mr-2"> Info </a-button>
-      <a-button @click="handleConfirm('warning')" color="warning" class="mr-2"> Warning </a-button>
-      <a-button @click="handleConfirm('success')" color="success" class="mr-2"> Success </a-button>
-      <a-button @click="handleConfirm('error')" color="error" class="mr-2"> Error </a-button>
+      <ent-button @click="handleConfirm('info')" class="mr-2"> Info </ent-button>
+      <ent-button @click="handleConfirm('warning')" color="warning" class="mr-2"> Warning </ent-button>
+      <ent-button @click="handleConfirm('success')" color="success" class="mr-2"> Success </ent-button>
+      <ent-button @click="handleConfirm('error')" color="error" class="mr-2"> Error </ent-button>
     </CollapseContainer>
 
     <CollapseContainer class="w-full h-32 mt-5 bg-white rounded-md" title="Modal">
-      <a-button @click="handleInfoModal" class="mr-2"> Info </a-button>
-      <a-button @click="handleSuccessModal" color="success" class="mr-2"> Success </a-button>
-      <a-button @click="handleErrorModal" color="error" class="mr-2"> Error </a-button>
-      <a-button @click="handleWarningModal" color="warning" class="mr-2"> Warning </a-button>
-      <a-button @click="handleAjax" color="warning" class="mr-2"> test ajax error </a-button>
+      <ent-button @click="handleInfoModal" class="mr-2"> Info </ent-button>
+      <ent-button @click="handleSuccessModal" color="success" class="mr-2"> Success </ent-button>
+      <ent-button @click="handleErrorModal" color="error" class="mr-2"> Error </ent-button>
+      <ent-button @click="handleWarningModal" color="warning" class="mr-2"> Warning </ent-button>
+      <ent-button @click="handleAjax" color="warning" class="mr-2"> test ajax error </ent-button>
     </CollapseContainer>
 
     <CollapseContainer
       class="w-full h-32 mt-5 bg-white rounded-md"
       title="Notification 用法与上面一致"
     >
-      <a-button @click="handleNotify" color="success" class="mr-2"> Success </a-button>
+      <ent-button @click="handleNotify" color="success" class="mr-2"> Success </ent-button>
     </CollapseContainer>
   </EntPageWrapper>
 </template>

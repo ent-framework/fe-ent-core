@@ -16,7 +16,7 @@
   import { buttonProps } from './props';
 
   export default defineComponent({
-    name: 'AButton',
+    name: 'EntButton',
     components: {
       Button,
       Icon,

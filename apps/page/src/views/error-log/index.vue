@@ -6,12 +6,12 @@
     <DetailModal :info="rowInfo" @register="registerModal" />
     <ent-table class="error-handle-table" @register="register">
       <template #toolbar>
-        <a-button type="primary" @click="fireVueError">
+        <ent-button type="primary" @click="fireVueError">
           {{ t('sys.errorLog.fireVueError') }}
-        </a-button>
-        <a-button type="primary" @click="fireResourceError">
+        </ent-button>
+        <ent-button type="primary" @click="fireResourceError">
           {{ t('sys.errorLog.fireResourceError') }}
-        </a-button>
+        </ent-button>
       </template>
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'action'">

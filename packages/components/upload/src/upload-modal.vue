@@ -14,14 +14,14 @@
     @ok="handleOk"
   >
     <template #centerFooter>
-      <a-button
+      <ent-button
         color="success"
         :disabled="!getIsSelectFile"
         :loading="isUploadingRef"
         @click="handleStartUpload"
       >
         {{ getUploadBtnText }}
-      </a-button>
+      </ent-button>
     </template>
 
     <div class="upload-modal-toolbar">
@@ -33,9 +33,9 @@
         :before-upload="beforeUpload"
         class="upload-modal-toolbar__btn"
       >
-        <a-button type="primary">
+        <ent-button type="primary">
           {{ t('component.upload.choose') }}
-        </a-button>
+        </ent-button>
       </Upload>
     </div>
     <FileList :data-source="fileListRef" :columns="columns" :action-column="actionColumn" />

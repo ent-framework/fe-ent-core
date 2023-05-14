@@ -1,6 +1,6 @@
 <template>
   <EntPageWrapper title="引导页" content="用于给用户的指引操作">
-    <a-button type="primary" @click="handleStart">开始</a-button>
+    <ent-button type="primary" @click="handleStart">开始</ent-button>
   </EntPageWrapper>
 </template>
 <script lang="ts">

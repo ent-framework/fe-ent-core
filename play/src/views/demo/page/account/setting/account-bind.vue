@@ -9,9 +9,9 @@
             </template>
             <template #title>
               {{ item.title }}
-              <a-button type="link" size="small" v-if="item.extra" class="extra">
+              <ent-button type="link" size="small" v-if="item.extra" class="extra">
                 {{ item.extra }}
-              </a-button>
+              </ent-button>
             </template>
             <template #description>
               <div>{{ item.description }}</div>

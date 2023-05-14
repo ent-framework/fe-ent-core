@@ -1,10 +1,10 @@
 <template>
   <EntPageWrapper title="打印示例">
     <CollapseContainer title="json打印表格">
-      <a-button type="primary" @click="jsonPrint">打印</a-button>
+      <ent-button type="primary" @click="jsonPrint">打印</ent-button>
     </CollapseContainer>
 
-    <a-button type="primary" class="mt-5" @click="imagePrint">Image Print</a-button>
+    <ent-button type="primary" class="mt-5" @click="imagePrint">Image Print</ent-button>
   </EntPageWrapper>
 </template>
 <script lang="ts">

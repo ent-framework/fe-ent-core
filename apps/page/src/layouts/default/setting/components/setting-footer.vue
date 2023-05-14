@@ -1,19 +1,19 @@
 <template>
   <div :class="prefixCls">
-    <a-button type="primary" block @click="handleCopy">
+    <ent-button type="primary" block @click="handleCopy">
       <CopyOutlined class="mr-2" />
       {{ t('layout.setting.copyBtn') }}
-    </a-button>
+    </ent-button>
 
-    <a-button color="warning" block class="my-3" @click="handleResetSetting">
+    <ent-button color="warning" block class="my-3" @click="handleResetSetting">
       <RedoOutlined class="mr-2" />
       {{ t('common.resetText') }}
-    </a-button>
+    </ent-button>
 
-    <a-button color="error" block @click="handleClearAndRedo">
+    <ent-button color="error" block @click="handleClearAndRedo">
       <RedoOutlined class="mr-2" />
       {{ t('layout.setting.clearBtn') }}
-    </a-button>
+    </ent-button>
   </div>
 </template>
 <script lang="ts">

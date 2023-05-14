@@ -2,18 +2,18 @@
   <EntDrawer v-bind="$attrs" title="Modal Title" width="50%" showFooter @ok="handleOk">
     <p class="h-20" v-for="index in 40" :key="index">根据屏幕高度自适应</p>
     <template #insertFooter>
-      <a-button> btn</a-button>
+      <ent-button> btn</ent-button>
     </template>
     <template #centerFooter>
-      <a-button> btn2</a-button>
+      <ent-button> btn2</ent-button>
     </template>
 
     <template #appendFooter>
-      <a-button> btn3</a-button>
+      <ent-button> btn3</ent-button>
     </template>
 
     <!-- <template #footer>
-      <a-button> customerFooter</a-button>
+      <ent-button> customerFooter</ent-button>
     </template> -->
   </EntDrawer>
 </template>

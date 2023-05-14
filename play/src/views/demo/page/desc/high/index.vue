@@ -1,9 +1,9 @@
 <template>
   <EntPageWrapper title="单号：234231029431" contentBackground>
     <template #extra>
-      <a-button> 操作一 </a-button>
-      <a-button> 操作二 </a-button>
-      <a-button type="primary"> 主操作 </a-button>
+      <ent-button> 操作一 </ent-button>
+      <ent-button> 操作二 </ent-button>
+      <ent-button type="primary"> 主操作 </ent-button>
     </template>
 
     <template #footer>

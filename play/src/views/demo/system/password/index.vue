@@ -3,8 +3,8 @@
     <div class="py-8 bg-white flex flex-col justify-center items-center">
       <EntForm @register="register" />
       <div class="flex justify-center">
-        <a-button @click="resetFields"> 重置 </a-button>
-        <a-button class="!ml-4" type="primary" @click="handleSubmit"> 确认 </a-button>
+        <ent-button @click="resetFields"> 重置 </ent-button>
+        <ent-button class="!ml-4" type="primary" @click="handleSubmit"> 确认 </ent-button>
       </div>
     </div>
   </EntPageWrapper>

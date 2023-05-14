@@ -1,32 +1,32 @@
 <template>
   <EntPageWrapper title="Ref操作示例">
     <div class="mb-4">
-      <a-button @click="setProps({ labelWidth: 150 })" class="mr-2"> 更改labelWidth </a-button>
-      <a-button @click="setProps({ labelWidth: 120 })" class="mr-2"> 还原labelWidth </a-button>
-      <a-button @click="setProps({ size: 'large' })" class="mr-2"> 更改Size </a-button>
-      <a-button @click="setProps({ size: 'default' })" class="mr-2"> 还原Size </a-button>
-      <a-button @click="setProps({ disabled: true })" class="mr-2"> 禁用表单 </a-button>
-      <a-button @click="setProps({ disabled: false })" class="mr-2"> 解除禁用 </a-button>
-      <a-button @click="setProps({ compact: true })" class="mr-2"> 紧凑表单 </a-button>
-      <a-button @click="setProps({ compact: false })" class="mr-2"> 还原正常间距 </a-button>
-      <a-button @click="setProps({ actionColOptions: { span: 8 } })" class="mr-2">
+      <ent-button @click="setProps({ labelWidth: 150 })" class="mr-2"> 更改labelWidth </ent-button>
+      <ent-button @click="setProps({ labelWidth: 120 })" class="mr-2"> 还原labelWidth </ent-button>
+      <ent-button @click="setProps({ size: 'large' })" class="mr-2"> 更改Size </ent-button>
+      <ent-button @click="setProps({ size: 'default' })" class="mr-2"> 还原Size </ent-button>
+      <ent-button @click="setProps({ disabled: true })" class="mr-2"> 禁用表单 </ent-button>
+      <ent-button @click="setProps({ disabled: false })" class="mr-2"> 解除禁用 </ent-button>
+      <ent-button @click="setProps({ compact: true })" class="mr-2"> 紧凑表单 </ent-button>
+      <ent-button @click="setProps({ compact: false })" class="mr-2"> 还原正常间距 </ent-button>
+      <ent-button @click="setProps({ actionColOptions: { span: 8 } })" class="mr-2">
         操作按钮位置
-      </a-button>
+      </ent-button>
     </div>
     <div class="mb-4">
-      <a-button @click="setProps({ showActionButtonGroup: false })" class="mr-2">
+      <ent-button @click="setProps({ showActionButtonGroup: false })" class="mr-2">
         隐藏操作按钮
-      </a-button>
-      <a-button @click="setProps({ showActionButtonGroup: true })" class="mr-2">
+      </ent-button>
+      <ent-button @click="setProps({ showActionButtonGroup: true })" class="mr-2">
         显示操作按钮
-      </a-button>
-      <a-button @click="setProps({ showResetButton: false })" class="mr-2"> 隐藏重置按钮 </a-button>
-      <a-button @click="setProps({ showResetButton: true })" class="mr-2"> 显示重置按钮 </a-button>
-      <a-button @click="setProps({ showSubmitButton: false })" class="mr-2">
+      </ent-button>
+      <ent-button @click="setProps({ showResetButton: false })" class="mr-2"> 隐藏重置按钮 </ent-button>
+      <ent-button @click="setProps({ showResetButton: true })" class="mr-2"> 显示重置按钮 </ent-button>
+      <ent-button @click="setProps({ showSubmitButton: false })" class="mr-2">
         隐藏查询按钮
-      </a-button>
-      <a-button @click="setProps({ showSubmitButton: true })" class="mr-2"> 显示查询按钮 </a-button>
-      <a-button
+      </ent-button>
+      <ent-button @click="setProps({ showSubmitButton: true })" class="mr-2"> 显示查询按钮 </ent-button>
+      <ent-button
         @click="
           setProps({
             resetButtonOptions: {
@@ -38,8 +38,8 @@
         class="mr-2"
       >
         修改重置按钮
-      </a-button>
-      <a-button
+      </ent-button>
+      <ent-button
         @click="
           setProps({
             submitButtonOptions: {
@@ -51,7 +51,7 @@
         class="mr-2"
       >
         修改查询按钮
-      </a-button>
+      </ent-button>
     </div>
     <CollapseContainer title="使用ref调用表单内部函数示例">
       <EntForm

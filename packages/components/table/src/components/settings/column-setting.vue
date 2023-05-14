@@ -32,9 +32,9 @@
             {{ t('component.table.settingSelectColumnShow') }}
           </Checkbox>
 
-          <a-button size="small" type="link" @click="reset">
+          <ent-button size="small" type="link" @click="reset">
             {{ t('common.resetText') }}
-          </a-button>
+          </ent-button>
         </div>
       </template>
 

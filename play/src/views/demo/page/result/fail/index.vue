@@ -2,7 +2,7 @@
   <div class="m-5 result-error">
     <Result status="error" title="提交失败" sub-title="请核对并修改以下信息后，再重新提交。">
       <template #extra>
-        <a-button key="console" type="primary"> 返回修改 </a-button>
+        <ent-button key="console" type="primary"> 返回修改 </ent-button>
       </template>
     </Result>
     <div class="result-error__content">

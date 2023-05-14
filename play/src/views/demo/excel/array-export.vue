@@ -2,7 +2,7 @@
   <EntPageWrapper title="导出示例" content="根据数组格式的数据进行导出">
     <EntTable title="基础表格" :columns="columns" :dataSource="data">
       <template #toolbar>
-        <a-button @click="aoaToExcel"> 导出 </a-button>
+        <ent-button @click="aoaToExcel"> 导出 </ent-button>
       </template>
     </EntTable>
   </EntPageWrapper>
