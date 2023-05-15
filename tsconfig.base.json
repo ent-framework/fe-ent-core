@@ -21,7 +21,7 @@
     "target": "es2018",
     "types": [],
     "paths": {
-      "@ent-core/*": ["packages/*"]
+      "@ent-core/*": ["packages/fe-ent-core/*"]
     }
   }
 }

@@ -1,12 +1,11 @@
-import * as bt from '@babel/types';
-import { NodePath } from 'ast-types/lib/node-path';
-import { Documentation } from 'vue-docgen-api';
-import type { ParseOptions } from 'vue-docgen-api';
-import { describePropsFromValue } from 'vue-docgen-api/dist/script-handlers/propHandler';
 import * as nodePath from 'path';
 import fs from 'fs';
+import * as bt from '@babel/types';
+import { describePropsFromValue } from 'vue-docgen-api/dist/script-handlers/propHandler';
 import getMemberFilter from './getPropsFilter';
 import resolveImport from './resolveImport';
+import type { Documentation, ParseOptions } from 'vue-docgen-api';
+import type { NodePath } from 'ast-types/lib/node-path';
 import type { PropsValuePath } from './resolveImport';
 
 function resolveImportFile(
@@ -29,13 +28,12 @@ function resolveImportFile(
  * @param documentation
  * @param path
  */
-export default async function propFileHandler(
+export default async function propExtHandler(
   documentation: Documentation,
   path: NodePath,
   ast: bt.File,
   opt: ParseOptions
 ) {
-  console.log('run propFileHandler');
   if (bt.isObjectExpression(path.node)) {
     const propsPath = path
       .get('properties')
@@ -55,27 +53,43 @@ export default async function propFileHandler(
 
     if (bt.isIdentifier(propsValuePath.node)) {
       const varName = propsValuePath.node.name;
+      //从vue文件定义的变量查找props
+      const varDesc = ast.program.body
+        .filter((n) => n.type === 'VariableDeclaration')
+        .find((val) => {
+          const n = val as bt.VariableDeclaration;
+          return n.declarations
+            .map((m) => (m.id as bt.Identifier).name)
+            .includes(varName);
+        }) as bt.VariableDeclaration;
+
+      if (varDesc) {
+
+      }
+
+      //从import中查找定义的props
       const importDesc = ast.program.body
         .filter((n) => n.type === 'ImportDeclaration')
         .find((val) => {
           const n = val as bt.ImportDeclaration;
-          n.specifiers.map((m) => m.local.name);
           return n.specifiers.map((m) => m.local.name).includes(varName);
         }) as bt.ImportDeclaration;
-      const cwd = nodePath.dirname(opt.filePath);
-      const importFile = resolveImportFile(cwd, importDesc.source.value);
-      const nodePaths = resolveImport(importFile as string);
-      if (nodePaths.has(varName)) {
-        const p = nodePaths.get(varName) as PropsValuePath;
-        // @ts-ignore
-        await describePropsFromValue(
-          documentation,
+      if (importDesc) {
+        const cwd = nodePath.dirname(opt.filePath);
+        const importFile = resolveImportFile(cwd, importDesc.source.value);
+        const nodePaths = resolveImport(importFile as string);
+        if (nodePaths.has(varName)) {
+          const p = nodePaths.get(varName) as PropsValuePath;
           // @ts-ignore
-          p,
-          ast,
-          opt,
-          modelPropertyName
-        );
+          await describePropsFromValue(
+            documentation,
+            // @ts-ignore
+            p,
+            ast,
+            opt,
+            modelPropertyName
+          );
+        }
       }
     }
   }
@@ -90,27 +104,32 @@ export default async function propFileHandler(
 function getModelPropName(path: NodePath): string | null {
   const modelPath = path
     .get('properties')
-    .filter((p: NodePath) => bt.isObjectProperty(p.node) && getMemberFilter('model')(p))
+    .filter(
+      (p: NodePath) =>
+        bt.isObjectProperty(p.node) && getMemberFilter('model')(p)
+    );
 
   if (!modelPath.length) {
-    return null
+    return null;
   }
 
-  const modelValue = modelPath.length && modelPath[0].get('value')
+  const modelValue = modelPath.length && modelPath[0].get('value');
 
   if (!bt.isObjectExpression(modelValue.node)) {
-    return null
+    return null;
   }
 
   const modelPropertyNamePath = modelValue
     .get('properties')
-    .filter((p: NodePath) => bt.isObjectProperty(p.node) && getMemberFilter('prop')(p))
+    .filter(
+      (p: NodePath) => bt.isObjectProperty(p.node) && getMemberFilter('prop')(p)
+    );
 
   if (!modelPropertyNamePath.length) {
-    return null
+    return null;
   }
 
-  const valuePath = modelPropertyNamePath[0].get('value')
+  const valuePath = modelPropertyNamePath[0].get('value');
 
-  return bt.isStringLiteral(valuePath.node) ? valuePath.node.value : null
+  return bt.isStringLiteral(valuePath.node) ? valuePath.node.value : null;
 }

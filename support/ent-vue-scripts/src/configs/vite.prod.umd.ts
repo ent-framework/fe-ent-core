@@ -48,6 +48,14 @@ export default (type: 'component' | 'icon'): InlineConfig => {
         name,
       },
     },
+    resolve: {
+      alias: [
+        {
+          find: /^@ent-core\/(.*)$/,
+          replacement: `${process.cwd()}/$1`,
+        },
+      ],
+    },
     // @ts-ignore vite内部类型错误
     plugins: [vue(), vueJsx()],
   };

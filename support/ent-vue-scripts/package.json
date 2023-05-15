@@ -5,7 +5,9 @@
   "author": "ArcoDesign Team",
   "license": "MIT",
   "main": "dist/index.js",
-  "bin": "dist/index.js",
+  "bin": {
+    "ent-vue-scripts": "/dist/index.js"
+  },
   "files": [
     "dist"
   ],
@@ -46,8 +48,8 @@
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-typescript": "^7.14.5",
     "@rollup/plugin-terser": "^0.4.1",
-    "@vitejs/plugin-vue": "^1.6.2",
-    "@vitejs/plugin-vue-jsx": "^1.1.8",
+    "@vitejs/plugin-vue": "^4.2.1",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vue/babel-plugin-jsx": "^1.0.6",
     "axios": "^0.21.1",
     "babel-jest": "^26.6.3",

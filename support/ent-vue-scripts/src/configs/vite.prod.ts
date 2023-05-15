@@ -1,11 +1,32 @@
-import { InlineConfig } from 'vite';
-import glob from 'glob';
+import glob from 'fast-glob';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import external from '../plugins/vite-plugin-external';
 import vueExportHelper from '../plugins/vite-plugin-vue-export-helper';
+import type { InlineConfig } from 'vite';
 
-const langFiles = glob.sync('components/locale/lang/*.ts');
+export const excludeFiles = (files: string[]) => {
+  const excludes = [
+    '/node_modules',
+    '/test',
+    '/mock',
+    '/gulpfile',
+    '/dist',
+    '/es',
+    '/lib',
+  ];
+  return files.filter(
+    (path) => !excludes.some((exclude) => path.includes(exclude))
+  );
+};
+
+const input = excludeFiles(
+  glob.sync('**/*.{js,ts,tsx,vue}', {
+    cwd: process.cwd(),
+    absolute: true,
+    onlyFiles: true,
+  })
+);
 
 const config: InlineConfig = {
   mode: 'production',
@@ -14,23 +35,24 @@ const config: InlineConfig = {
     outDir: 'es',
     emptyOutDir: false,
     minify: false,
+    sourcemap: true,
     //brotliSize: false,
     rollupOptions: {
-      input: ['components/index.ts', 'components/icon/index.ts', ...langFiles],
+      input,
       output: [
         {
           format: 'es',
           dir: 'es',
-          entryFileNames: '[name].js',
+          entryFileNames: '[name].mjs',
           preserveModules: true,
-          preserveModulesRoot: 'components',
+          //preserveModulesRoot: 'components',
         },
         {
           format: 'commonjs',
           dir: 'lib',
           entryFileNames: '[name].js',
           preserveModules: true,
-          preserveModulesRoot: 'components',
+          //preserveModulesRoot: 'components',
         },
       ],
     },
@@ -39,6 +61,14 @@ const config: InlineConfig = {
       entry: 'components/index.ts',
       formats: ['es', 'cjs'],
     },
+  },
+  resolve: {
+    alias: [
+      {
+        find: /^@ent-core\/(.*)$/,
+        replacement: `${process.cwd()}/$1`,
+      },
+    ],
   },
   // @ts-ignore vite内部类型错误
   plugins: [external(), vue(), vueJsx(), vueExportHelper()],

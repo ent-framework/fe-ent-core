@@ -15,6 +15,12 @@
     "*.less",
     "assets/*"
   ],
+  "scripts": {
+    "docgen": "ent-vue-scripts docgen",
+    "build:component": "ent-vue-scripts build:component -u",
+    "build:module": "ent-vue-scripts build:component",
+    "build:style": "ent-vue-scripts build:style"
+  },
   "peerDependencies": {
     "vue": "^3.2.0",
     "ant-design-vue": "^3.2.17"
@@ -48,6 +54,7 @@
     "@iconify/json": "^2.1.138",
     "@purge-icons/generated": "^0.9.0",
     "@types/tinycolor2": "^1.4.2",
+    "fe-ent-vue-scripts": "^1.5.14",
     "rimraf": "^3.0.2",
     "vue-demi": "^0.12.1",
     "vue": "3.2.47",

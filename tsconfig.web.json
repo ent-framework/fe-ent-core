@@ -8,7 +8,7 @@
     "strictFunctionTypes": false,
     "types": ["unplugin-vue-define-options/macros-global", "vite/client"],
     "paths": {
-      "@ent-core/*": ["packages/*"],
+      "@ent-core/*": ["packages/fe-ent-core/*"],
       "/@/*": [
         "play/src/*"
       ],

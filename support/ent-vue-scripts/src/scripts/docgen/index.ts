@@ -10,7 +10,7 @@ import parseInterface from './utils/parse-interface';
 import { getTemplate, toKebabCase } from './utils';
 import parseMaterial from './utils/parse-material';
 import { slotTagHandler } from './slot-tag-handler';
-import propFileHandler from './propFileHandler';
+import propExtHandler from './propExtHandler';
 
 const MD_TEMPLATE = 'TEMPLATE.md';
 const MD_TARGET = 'README.zh-CN.md';
@@ -105,7 +105,7 @@ const replacePlaceholderToDoc = async ({
       // @ts-ignore
       // eslint-disable-next-line
       const componentDoc = await parser(path.resolve(dir, item[1]), {
-        addScriptHandlers: [propFileHandler, slotTagHandler],
+        addScriptHandlers: [propExtHandler, slotTagHandler],
       });
       result = result.replace(item[0], getApiTmpl(componentDoc, type, lang));
     } catch (err) {

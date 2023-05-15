@@ -57,24 +57,15 @@
     "link:global": "tsx ./scripts/pnpmlink.ts",
     "gen:icon": "esno ./build/generate/icon/index.ts",
     "stub": "pnpm run -r --parallel stub",
-    "postinstall": "pnpm stub && pnpm gen:version"
+    "postinstall": "pnpm stub && pnpm gen:version",
+    "docgen": "pnpm run -C packages/fe-ent-core docgen"
   },
   "peerDependencies": {
     "vue": "^3.2.0",
     "ant-design-vue": "^3.2.17"
   },
   "dependencies": {
-    "@vueuse/core": "^9.13.0",
-    "@ent-core/components": "workspace:*",
-    "@ent-core/directives": "workspace:*",
-    "@ent-core/hooks": "workspace:*",
-    "@ent-core/locales": "workspace:*",
-    "@ent-core/logics": "workspace:*",
-    "@ent-core/router": "workspace:*",
-    "@ent-core/store": "workspace:*",
-    "@ent-core/theme": "workspace:*",
-    "@ent-core/types": "workspace:*",
-    "@ent-core/utils": "workspace:*"
+    "@vueuse/core": "^9.13.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
