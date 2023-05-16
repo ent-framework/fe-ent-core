@@ -48,7 +48,7 @@
         :class="`${prefixCls}-action__item`"
       />
 
-      <UserDropDown :theme="getHeaderTheme" />
+      <UserDropDown v-if="isLogined" :theme="getHeaderTheme" />
 
       <SettingDrawer v-if="getShowSetting" :class="`${prefixCls}-action__item`" />
     </div>
@@ -56,9 +56,7 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
-
   import { propTypes } from 'fe-ent-core/lib/utils';
-
   import { Layout } from 'ant-design-vue';
 
   import {
@@ -77,6 +75,7 @@
   import { EntAppLocalePicker } from 'fe-ent-core/lib/components';
 
   import { useLocale } from 'fe-ent-core/lib/locales';
+  import { useUserStoreWithOut } from 'fe-ent-core/lib/store';
   import AppSearch from '../components/app-search.vue';
   import LayoutTrigger from '../trigger/index.vue';
   import LayoutMenu from '../menu/index.vue';
@@ -128,7 +127,7 @@
       } = useHeaderSetting();
 
       const { getShowLocalePicker } = useLocale();
-
+      const userStore = useUserStoreWithOut();
       const { getIsMobile } = useAppInject();
 
       const getHeaderClass = computed(() => {
@@ -171,6 +170,8 @@
         return unref(getSplit) ? MenuModeEnum.HORIZONTAL : null;
       });
 
+      const isLogined = !!userStore.getToken;
+
       return {
         prefixCls,
         getHeaderClass,
@@ -193,6 +194,7 @@
         getShowSettingButton,
         getShowSetting,
         getShowSearch,
+        isLogined,
       };
     },
   });

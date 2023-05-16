@@ -22,7 +22,7 @@ consola.log(chalk.cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n')));
 (async () => {
   if (!(process.argv.includes('-d') || process.argv.includes('--dry-run'))) {
     try {
-      const packages = await glob('{dist,support}/*/package.json', {
+      const packages = await glob('{packages,support}/*/package.json', {
         cwd: projRoot,
         absolute: true,
         onlyFiles: true,
@@ -40,7 +40,7 @@ consola.log(chalk.cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n')));
         onlyFiles: true,
       });
 
-      const allPackages = [epPackage, ...packages, ...extensions, ...apps];
+      const allPackages = [...packages, ...extensions, ...apps];
 
       allPackages.map(async (pkg) => {
         const json: Record<string, any> = getPackageManifest(pkg);

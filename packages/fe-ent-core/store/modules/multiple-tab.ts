@@ -150,7 +150,7 @@ export const useMultipleTabStore = defineStore({
       } else {
         // Add tab
         // 获取动态路由打开数，超过 0 即代表需要控制打开数
-        const dynamicLevel = meta?.dynamicLevel ?? -1;
+        const dynamicLevel = (meta?.dynamicLevel as number) ?? -1;
         if (dynamicLevel > 0) {
           // 如果动态路由层级大于 0 了，那么就要限制该路由的打开数限制了
           // 首先获取到真实的路由，使用配置方式减少计算开销.

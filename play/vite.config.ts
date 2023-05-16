@@ -28,7 +28,7 @@ export default defineApplicationConfig({
         },
         {
           find: /^fe-ent-core\/lib\/(.*)$/,
-          replacement: `${workspace}/packages/$1`,
+          replacement: `${workspace}/packages/fe-ent-core/$1`,
         },
         // 别名，转发 fe-ent-extension 文件请求
         {
@@ -45,7 +45,7 @@ export default defineApplicationConfig({
         },
         {
           find: /^@ent-core\/(.*)$/,
-          replacement: `${workspace}/packages/$1`,
+          replacement: `${workspace}/packages/fe-ent-core/$1`,
         },
       ],
     },

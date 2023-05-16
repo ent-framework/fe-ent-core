@@ -9,13 +9,9 @@ function ignore(): boolean {
   return false;
 }
 
-export type PropsValuePath =
-  | NodePath<bt.ObjectExpression, any>
-  | NodePath<bt.ArrayExpression, any>;
+export type PropsValuePath = NodePath<bt.ObjectExpression, any> | NodePath<bt.ArrayExpression, any>;
 
-export default function resolveImport(
-  file: string
-): Map<string, PropsValuePath> {
+export default function resolveImport(file: string): Map<string, PropsValuePath> {
   const source = fs.readFileSync(file, { encoding: 'utf-8' });
   const plugins: ParserPlugin[] = ['typescript'];
   const ast = parse(source, { parser: buildParser({ plugins }) });
@@ -46,11 +42,7 @@ export default function resolveImport(
       if (!varID || !bt.isIdentifier(varID)) {
         return false;
       }
-
-      nodePaths.set(
-        varID.name,
-        variablePath.get('declarations', 0).get('init')
-      );
+      nodePaths.set(varID.name, variablePath.get('declarations', 0).get('init'));
       return false;
     },
   });

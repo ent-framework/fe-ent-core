@@ -151,7 +151,7 @@ marked.use({
     heading(text: string, level: number, raw: string) {
       if (level === 2) {
         const anchor = raw.replace(/\s+/g, '-');
-        return `<anchor-head level="${level}" href="${anchor}">${text}</anchor-head>`;
+        return `<a-page-header level="${level}" href="${anchor}">${text}</a-page-header>`;
       }
       return `<h${level} id="${raw}">${text}</h${level}>`;
     },
@@ -198,21 +198,23 @@ marked.use({
       return `<pre class="code-content"><code class="${this.options.langPrefix}lang">${code}</code></pre>\n`;
     },
     table(header: string, body: string) {
-      return `<a-table class="component-api-table">
+      return `<div class="ant-table ant-table-bordered">
+<div class="ant-table-container"><div class="ant-table-content">
+<table class="component-api-table" style="table-layout: auto;">
   <colgroup>
     <col style="min-width: 120px"/>
   </colgroup>
-  <a-thead>${header}</a-thead><a-tbody>${body}</a-tbody>
-</a-table>`;
+  <thead class="ant-table-thead">${header}</thead><tbody class="ant-table-tbody">${body}</tbody>
+</table></div></div></div>`;
     },
     tablerow(content: string): string {
-      return `<a-tr>${content}</a-tr>`;
+      return `<tr>${content}</tr>`;
     },
     tablecell(content: string, { header, align }): string {
       if (header) {
-        return `<a-th>${content}</a-th>`;
+        return `<th class="ant-table-cell">${content}</th>`;
       }
-      return `<a-td>${content}</a-td>`;
+      return `<td class="ant-table-cell">${content}</td>`;
     },
   },
   // @ts-ignore @types/marked版本过低导致

@@ -17,15 +17,6 @@ description: Pin the page elements to the visible range. When the content area i
 ```
 ---
 
-@import ./__demo__/basic.md
-
-@import ./__demo__/top.md
-
-@import ./__demo__/bottom.md
-
-@import ./__demo__/fix-change.md
-
-@import ./__demo__/container.md
 
 ## API
 

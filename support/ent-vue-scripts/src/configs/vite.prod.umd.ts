@@ -3,14 +3,10 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 //import { terser } from 'rollup-plugin-terser';
 import terser from '@rollup/plugin-terser';
+import DefineOptions from 'unplugin-vue-define-options/vite';
 import type { OutputPlugin } from 'rollup';
-export default (type: 'component' | 'icon'): InlineConfig => {
-  const entry =
-    type === 'component'
-      ? 'components/arco-vue.ts'
-      : 'components/icon/arco-vue-icon.ts';
-  const entryFileName = type === 'component' ? 'arco-vue' : 'arco-vue-icon';
-  const name = type === 'component' ? 'ArcoVue' : 'ArcoVueIcon';
+export default (): InlineConfig => {
+  const entry = 'index.ts';
 
   return {
     mode: 'production',
@@ -26,17 +22,40 @@ export default (type: 'component' | 'icon'): InlineConfig => {
         output: [
           {
             format: 'umd',
-            entryFileNames: `${entryFileName}.js`,
+            entryFileNames: `index.full.js`,
             globals: {
               vue: 'Vue',
             },
+            name: 'EntCore',
+            exports: 'named',
           },
           {
             format: 'umd',
-            entryFileNames: `${entryFileName}.min.js`,
+            entryFileNames: `index.full.min.js`,
             globals: {
               vue: 'Vue',
             },
+            name: 'EntCore',
+            exports: 'named',
+            plugins: [terser() as OutputPlugin],
+          },
+          {
+            format: 'esm',
+            entryFileNames: `index.full.mjs`,
+            globals: {
+              vue: 'Vue',
+            },
+            name: 'EntCore',
+            exports: 'named',
+          },
+          {
+            format: 'esm',
+            entryFileNames: `index.full.min.mjs`,
+            globals: {
+              vue: 'Vue',
+            },
+            name: 'EntCore',
+            exports: 'named',
             plugins: [terser() as OutputPlugin],
           },
         ],
@@ -45,7 +64,7 @@ export default (type: 'component' | 'icon'): InlineConfig => {
       lib: {
         entry,
         formats: ['umd'],
-        name,
+        name: 'EntCore',
       },
     },
     resolve: {
@@ -57,6 +76,6 @@ export default (type: 'component' | 'icon'): InlineConfig => {
       ],
     },
     // @ts-ignore vite内部类型错误
-    plugins: [vue(), vueJsx()],
+    plugins: [DefineOptions(), vue(), vueJsx()],
   };
 };

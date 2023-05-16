@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-qrcode",
-  "version": "1.5.14",
+  "version": "1.5.17",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "fe-ent-build": "workspace:*",
-    "rimraf": "^3.0.2",
+    "rimraf": "^5.0.0",
     "@types/tinycolor2": "^1.4.2",
     "vite": "4.2.2"
   },

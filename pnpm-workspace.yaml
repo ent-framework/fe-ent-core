@@ -6,3 +6,4 @@ packages:
   - play
   - 'support/**'
   - 'internal/**'
+  - 'docs/**'

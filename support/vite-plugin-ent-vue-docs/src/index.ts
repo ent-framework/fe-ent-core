@@ -1,4 +1,3 @@
-import type { PluginOption } from 'vite';
 import { transformChangelog, transformDemo, transformMain } from './markdown';
 import { getDescriptor } from './descriptor';
 import {
@@ -8,11 +7,12 @@ import {
   isVirtualModule,
 } from './utils';
 import marked from './marked';
+import type { Plugin } from 'vite';
 
-export default function vueMdPlugin(): PluginOption {
-  let vuePlugin: PluginOption | undefined;
+export default function vueMdPlugin(): Plugin {
+  let vuePlugin: Plugin | undefined;
 
-  return {
+  const docPlugin = {
     name: 'vite:ent-vue-docs',
     enforce: 'pre',
     configResolved(resolvedConfig) {
@@ -40,8 +40,14 @@ export default function vueMdPlugin(): PluginOption {
       if (!vuePlugin) {
         return this.error('Not found plugin [vite:vue]');
       }
+
+      const transform =
+        'handler' in vuePlugin.transform!
+          ? vuePlugin.transform!.handler
+          : vuePlugin.transform!;
+
       if (isVirtualModule(id)) {
-        return vuePlugin.transform?.call(this, code, getVueId(id));
+        return transform?.call(this, code, getVueId(id));
       }
 
       const tokens = marked.lexer(code);
@@ -55,7 +61,7 @@ export default function vueMdPlugin(): PluginOption {
         ? transformDemo(tokens, id, frontMatter)
         : transformMain(tokens, id, frontMatter);
 
-      return vuePlugin.transform?.call(this, vueCode, getVueId(id));
+      return transform?.call(this, vueCode, getVueId(id));
     },
 
     async handleHotUpdate(ctx) {
@@ -83,12 +89,16 @@ export default function vueMdPlugin(): PluginOption {
         ? transformDemo(tokens, file, frontMatter)
         : transformMain(tokens, file, frontMatter);
 
+      const handleHotUpdate =
+        'handler' in vuePlugin.handleHotUpdate!
+          ? vuePlugin.handleHotUpdate!.handler
+          : vuePlugin.handleHotUpdate!;
       if (isDemo) {
         const virtualPath = `/@virtual${file}`;
 
         const mods = moduleGraph.getModulesByFile(virtualPath);
         if (mods) {
-          const ret = await vuePlugin.handleHotUpdate?.({
+          const ret = await handleHotUpdate!({
             file: getVueId(virtualPath),
             timestamp,
             modules: [...mods],
@@ -101,7 +111,7 @@ export default function vueMdPlugin(): PluginOption {
       }
 
       // reload the content component
-      const ret = await vuePlugin.handleHotUpdate?.({
+      const ret = await handleHotUpdate!({
         file: getVueId(file),
         timestamp,
         modules,
@@ -111,5 +121,6 @@ export default function vueMdPlugin(): PluginOption {
 
       return [...updated, ...(ret || [])];
     },
-  };
+  } as Plugin;
+  return docPlugin;
 }

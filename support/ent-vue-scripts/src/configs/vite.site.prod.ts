@@ -2,7 +2,7 @@ import path from 'path';
 import { defineConfig, InlineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-//import vueDocs from 'fe-ent-vite-plugin-docs';
+import vueDocs from 'fe-ent-vite-plugin-docs';
 import svgLoader from 'vite-svg-loader';
 import paths from '../utils/paths';
 
@@ -33,5 +33,5 @@ export default defineConfig({
   build: {
     target: 'es2015',
   },
-  plugins: [vue(), vueJsx(), svgLoader({ svgoConfig: {} })],
+  plugins: [vueDocs(), vue(), vueJsx(), svgLoader({ svgoConfig: {} })],
 }) as InlineConfig;

@@ -1,0 +1,43 @@
+{
+  "name": "vue-docs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Arco Design Vue 2.0 Docs",
+  "author": "wangchen <wangchen.flsion@bytedance.com>",
+  "homepage": "https://arco.design/vue",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ent-vue-scripts dev:site",
+    "build": "ent-vue-scripts build:site",
+    "lint-staged": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{less,css}": [
+      "stylelint --fix",
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "fe-ent-vue-scripts": "^1.5.14",
+    "@arco-design/web-vue": "^2.38.0",
+    "@stackblitz/sdk": "^1.6.0",
+    "@types/nprogress": "^0.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.12.0",
+    "axios": "^0.21.1",
+    "clipboard": "^2.0.6",
+    "codesandbox": "^2.2.3",
+    "nprogress": "^0.2.0",
+    "typescript": "^4.9.4",
+    "vue": "^3.2.2",
+    "vue-i18n": "^9.1.6",
+    "vue-router": "^4.0.10"
+  },
+  "dependencies": {
+    "@arco-design/arco-site-utils": "^1.0.2"
+  }
+}

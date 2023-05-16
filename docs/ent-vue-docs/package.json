@@ -1,0 +1,38 @@
+{
+  "name": "fe-ent-vue-docs",
+  "version": "1.0.0",
+  "private": true,
+  "author": {
+    "name": "jeff qian",
+    "email": "qbaojian@163.com",
+    "url": "https://github.com/dancewing"
+  },
+  "scripts": {
+    "dev": "vite --mode=development",
+    "build": "cross-env NODE_ENV=production vite build",
+    "build:no-cache": "yarn clean:cache && npm run build",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "vue": "^3.2.47",
+    "ant-design-vue": "^3.2.17"
+  },
+  "devDependencies": {
+    "fe-ent-build": "workspace:*",
+    "fe-ent-vite-plugin-docs": "^1.5.14",
+    "vite": "4.2.2",
+    "@iconify/json": "^1.1.422"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dancewing/fe-ent-core.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dancewing/fe-ent-core/issues"
+  },
+  "homepage": "https://github.com/dancewing/fe-ent-core",
+  "engines": {
+    "node": "^12 || >=14"
+  }
+}

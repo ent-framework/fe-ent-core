@@ -1,25 +1,33 @@
 {
   "name": "fe-ent-core",
-  "version": "1.5.14",
+  "version": "1.5.17",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
     "url": "https://github.com/dancewing/fe-ent-core"
   },
+  "files": [
+    "dist",
+    "es",
+    "lib",
+    "json"
+  ],
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "typings": "lib/index.d.ts",
   "unpkg": "dist/index.full.min.js",
   "sideEffects": [
     "dist/*",
-    "*.less",
-    "assets/*"
+    "*.less"
   ],
   "scripts": {
+    "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
     "docgen": "ent-vue-scripts docgen",
+    "build": "pnpm run build:component && pnpm run build:style && pnpm run dtsgen",
     "build:component": "ent-vue-scripts build:component -u",
     "build:module": "ent-vue-scripts build:component",
-    "build:style": "ent-vue-scripts build:style"
+    "build:style": "ent-vue-scripts build:style",
+    "dtsgen": "ent-vue-scripts dtsgen"
   },
   "peerDependencies": {
     "vue": "^3.2.0",
@@ -55,9 +63,11 @@
     "@purge-icons/generated": "^0.9.0",
     "@types/tinycolor2": "^1.4.2",
     "fe-ent-vue-scripts": "^1.5.14",
-    "rimraf": "^3.0.2",
+    "rimraf": "^5.0.0",
     "vue-demi": "^0.12.1",
     "vue": "3.2.47",
+    "vite": "4.2.2",
+    "unplugin-vue-define-options": "^1.3.5",
     "ant-design-vue": "3.2.17"
   },
   "repository": {

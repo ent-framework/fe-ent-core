@@ -8,18 +8,14 @@ description: Pin the page elements to the visible range. When the content area i
 
 *Auto translate by google.*
 
-@import ./__demo__/basic.md
-
-@import ./__demo__/top.md
-
-@import ./__demo__/bottom.md
-
-@import ./__demo__/fix-change.md
-
-@import ./__demo__/container.md
 
 ## API
 
 
+### `<ent-app-provider>` Props
+
+|Attribute|Description|Type|Default|
+|---|---|---|:---:|
+|prefix-cls|class style prefix|`string`|`defaultPrixCls`|
 
 

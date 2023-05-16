@@ -2,8 +2,8 @@ import path from 'path';
 import { mkdir } from 'fs/promises';
 import { copy, copyFile } from 'fs-extra';
 import { parallel, series } from 'gulp';
-import { runTask, withTaskName } from './src/utils';
 import { buildOutput, epOutput, epRoot, projRoot, run } from '@ent-build/build-utils';
+import { runTask, withTaskName } from './src/utils';
 import { buildConfig } from './src/build-info';
 import type { TaskFunction } from 'gulp';
 import type { Module } from './src/build-info';
@@ -49,28 +49,17 @@ export const copyFullStyle = async () => {
 
 export default series(
   withTaskName('clean', () => run('pnpm -w run clean')),
-  withTaskName('createOutput', () => mkdir(epOutput, { recursive: true })),
+  withTaskName('buildSupport', () => run('pnpm build:support')),
 
-  parallel(runTask('buildModules'), runTask('buildFullBundle')),
   parallel(
-    //runTask('buildFullExtensions'),
+    withTaskName('buildCoreComponent', () =>
+      run('pnpm run -C packages/fe-ent-core build:component'),
+    ),
+    withTaskName('buildCoreStyle', () => run('pnpm run -C packages/fe-ent-core build:style')),
+    withTaskName('buildCoreTypesDefinitions', () => run('pnpm run -C packages/fe-ent-core dtsgen')),
     withTaskName('buildExtensions', () => run('pnpm -w run build:extensions')),
     withTaskName('buildApps', () => run('pnpm -w run build:apps')),
-    runTask('generateTypesDefinitions'),
-    series(
-      withTaskName('buildUnoCSS', () => run('pnpm -w run build:uno:css')),
-      withTaskName('copyUnoFiles', () =>
-        copyFile(
-          path.resolve(buildOutput, 'unocss', 'style.css'),
-          path.resolve(buildOutput, 'fe-ent-core', 'dist', 'ent-uno.css'),
-        ),
-      ),
-    ),
-    runTask('buildHelper'),
-    series(copyFullStyle, runTask('buildTheme')),
   ),
-
-  parallel(copyTypesDefinitions, copyFiles),
 );
 
 export * from './src/task/types-definitions';

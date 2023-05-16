@@ -58,10 +58,15 @@ export function useLocale() {
     return locale;
   }
 
+  function addMessages(locale: LocaleType, messages: Record<string, any>) {
+    i18n.global.mergeLocaleMessage(locale, messages);
+  }
+
   return {
     getLocale,
     getShowLocalePicker,
     changeLocale,
     getAntdLocale,
+    addMessages,
   };
 }

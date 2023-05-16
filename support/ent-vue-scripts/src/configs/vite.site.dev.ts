@@ -1,14 +1,26 @@
 import path from 'path';
-import { defineConfig } from 'vite';
+import { defineConfig, searchForWorkspaceRoot } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-//import vueDocs from 'fe-ent-vite-plugin-docs';
+import vueDocs from 'fe-ent-vite-plugin-docs';
 import svgLoader from 'vite-svg-loader';
-import eslint from 'vite-plugin-eslint';
+import { presetTypography, presetUno } from 'unocss';
+import UnoCSS from 'unocss/vite';
 import paths from '../utils/paths';
 import type { InlineConfig } from 'vite';
+import type { Theme } from 'unocss/preset-uno';
 
-const root = process.cwd();
+const cwd = process.cwd();
+const root = searchForWorkspaceRoot(cwd);
+const theme = {
+  breakpoints: {
+    sm: '576px',
+    md: '768px',
+    lg: '992px',
+    xl: '1200px',
+    '2xl': '1600px',
+  },
+};
 
 export default defineConfig({
   mode: 'development',
@@ -31,21 +43,19 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: /^@web-vue\/(.*)/,
-        replacement: path.resolve(root, '../web-vue/$1'),
+        find: /^@ent-core\/(.*)/,
+        replacement: path.resolve(root, 'packages/fe-ent-core/$1'),
       },
     ],
   },
   plugins: [
-    //vueDocs(),
+    vueDocs(),
+    UnoCSS<Theme>({
+      presets: [presetUno(), presetTypography()],
+      theme,
+    }),
     vue(),
     vueJsx(),
     svgLoader({ svgoConfig: {} }),
-    eslint({
-      // hmr情况下cache存在问题
-      cache: false,
-      include: ['**/*.ts', '**/*.tsx', '**/*.vue'],
-      exclude: ['node_modules', '**/components/icon/**/*'],
-    }),
   ],
 }) as InlineConfig;

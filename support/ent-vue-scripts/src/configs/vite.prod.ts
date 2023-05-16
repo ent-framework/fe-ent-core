@@ -1,31 +1,18 @@
 import glob from 'fast-glob';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import DefineOptions from 'unplugin-vue-define-options/vite';
 import external from '../plugins/vite-plugin-external';
 import vueExportHelper from '../plugins/vite-plugin-vue-export-helper';
+import { excludeFiles } from '../utils/exclude-files';
 import type { InlineConfig } from 'vite';
-
-export const excludeFiles = (files: string[]) => {
-  const excludes = [
-    '/node_modules',
-    '/test',
-    '/mock',
-    '/gulpfile',
-    '/dist',
-    '/es',
-    '/lib',
-  ];
-  return files.filter(
-    (path) => !excludes.some((exclude) => path.includes(exclude))
-  );
-};
 
 const input = excludeFiles(
   glob.sync('**/*.{js,ts,tsx,vue}', {
     cwd: process.cwd(),
     absolute: true,
     onlyFiles: true,
-  })
+  }),
 );
 
 const config: InlineConfig = {
@@ -41,6 +28,7 @@ const config: InlineConfig = {
       input,
       output: [
         {
+          interop: 'default',
           format: 'es',
           dir: 'es',
           entryFileNames: '[name].mjs',
@@ -48,6 +36,7 @@ const config: InlineConfig = {
           //preserveModulesRoot: 'components',
         },
         {
+          interop: 'auto',
           format: 'commonjs',
           dir: 'lib',
           entryFileNames: '[name].js',
@@ -71,7 +60,7 @@ const config: InlineConfig = {
     ],
   },
   // @ts-ignore vite内部类型错误
-  plugins: [external(), vue(), vueJsx(), vueExportHelper()],
+  plugins: [external(), DefineOptions(), vue(), vueJsx(), vueExportHelper()],
 };
 
 export default config;

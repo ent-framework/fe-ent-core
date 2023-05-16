@@ -14,6 +14,7 @@ import UnoCSS from 'unocss/vite';
 import type { Theme } from 'unocss/preset-uno';
 import Inspect from 'vite-plugin-inspect';
 import mkcert from 'vite-plugin-mkcert';
+import svgLoader from 'vite-svg-loader';
 
 interface Options {
   isBuild: boolean;
@@ -36,7 +37,7 @@ async function createPlugins({
   enableInspect,
   enableCert,
 }: Options) {
-  const vitePlugins: (PluginOption | PluginOption[])[] = [vue(), vueJsx(), DefineOptions()];
+  const vitePlugins: (PluginOption | PluginOption[])[] = [vue(), vueJsx(), DefineOptions(), svgLoader({ svgoConfig: {} })];
 
   const appConfigPlugin = await createAppConfigPlugin({ root, isBuild });
   if (mode !== 'lib') {

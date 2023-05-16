@@ -6,8 +6,9 @@ function resolvePath(...relativePath: any[]) {
   return path.resolve(root, ...relativePath);
 }
 
-// components相关
 const components = resolvePath('./components');
+const directives = resolvePath('./directives');
+const theme = resolvePath('./theme');
 
 // icon相关
 const icon = resolvePath('./icon');
@@ -21,4 +22,6 @@ export default {
   iconSvgs,
   iconComponents,
   components,
+  directives,
+  theme,
 };
