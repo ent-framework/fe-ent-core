@@ -11,7 +11,7 @@ export default defineConfig(({ command, mode }) => {
         minify: true,
         cssCodeSplit: true,
         emptyOutDir: true,
-        outDir: `${root}/docs`,
+        outDir: `${root}/dist`,
       },
       base: '/fe-ent-core',
       server: {

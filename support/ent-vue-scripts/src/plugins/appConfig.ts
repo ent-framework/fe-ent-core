@@ -2,7 +2,7 @@ import colors from 'picocolors';
 import { readPackageJSON } from 'pkg-types';
 import { type PluginOption } from 'vite';
 
-import { getEnvConfig } from '../utils/env';
+import {getEnvConfig, wrapperEnv} from '../utils/env';
 import { createContentHash } from '../utils/hash';
 
 const GLOBAL_CONFIG_FILE_NAME = '_app.config.js';
@@ -78,7 +78,7 @@ const getVariableName = (title: string) => {
 };
 
 async function getConfigSource(appTitle: string) {
-  const config = await getEnvConfig();
+  const config = wrapperEnv(await getEnvConfig(), 'production');
   const variableName = getVariableName(appTitle);
   const windowVariable = `window.${variableName}`;
   // Ensure that the variable will not be modified

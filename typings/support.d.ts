@@ -1,6 +1,6 @@
 import type { ComponentPublicInstance, FunctionalComponent } from 'vue';
 import type { Recordable } from '@ent-core/types';
-import { RoleEnum } from '@ent-core/logics';
+import type { RoleEnum } from '@ent-core/logics';
 
 declare global {
   const __APP_INFO__: {
@@ -30,8 +30,8 @@ declare module 'vue' {
 }
 
 declare module '*.vue' {
-  import { DefineComponent } from 'vue';
-  const Component: DefineComponent<{}, {}, any>;
+  import type { DefineComponent } from 'vue';
+  const Component: DefineComponent<any, any, any>;
   export default Component;
 }
 

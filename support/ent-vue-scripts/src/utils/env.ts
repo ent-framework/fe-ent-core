@@ -22,7 +22,7 @@ function getConfFiles() {
  * @param match prefix
  * @param confFiles ext
  */
-export async function getEnvConfig(match = 'VITE_GLOB_', confFiles = getConfFiles()) {
+export async function getEnvConfig(match = 'VITE_', confFiles = getConfFiles()) {
   let envConfig = {};
 
   for (const confFile of confFiles) {
@@ -35,8 +35,9 @@ export async function getEnvConfig(match = 'VITE_GLOB_', confFiles = getConfFile
     }
   }
   const reg = new RegExp(`^(${match})`);
+  const buildReg = new RegExp('^VITE_BUILD_');
   Object.keys(envConfig).forEach((key) => {
-    if (!reg.test(key)) {
+    if (!reg.test(key) || buildReg.test(key)) {
       Reflect.deleteProperty(envConfig, key);
     }
   });
@@ -47,24 +48,18 @@ export function wrapperEnv(envConf: Record<any, any>, mode: string): ViteEnv {
   const ret: any = {};
 
   for (const envName of Object.keys(envConf)) {
-    let realName = envConf[envName].replace(/\\n/g, '\n');
-    realName = realName === 'true' ? true : realName === 'false' ? false : realName;
+    let realValue = envConf[envName].replace(/\\n/g, '\n');
+    realValue = realValue === 'true' ? true : realValue === 'false' ? false : realValue;
 
     if (envName === 'VITE_PORT') {
-      realName = Number(realName);
+      realValue = Number(realValue);
     }
-    if (envName === 'VITE_PROXY' && realName) {
-      try {
-        realName = JSON.parse(realName.replace(/'/g, '"'));
-      } catch (error) {
-        realName = '';
-      }
-    }
-    ret[envName] = realName;
-    if (typeof realName === 'string') {
-      process.env[envName] = realName;
-    } else if (typeof realName === 'object') {
-      process.env[envName] = JSON.stringify(realName);
+
+    ret[envName] = realValue;
+    if (typeof realValue === 'string') {
+      process.env[envName] = realValue;
+    } else if (typeof realValue === 'object') {
+      process.env[envName] = JSON.stringify(realValue);
     }
   }
   ret['NODE_ENV'] = mode;
@@ -72,19 +67,16 @@ export function wrapperEnv(envConf: Record<any, any>, mode: string): ViteEnv {
 }
 
 export interface ViteEnv {
-  VITE_PORT: number;
-  VITE_USE_MOCK: boolean;
+  VITE_BUILD_USE_MOCK: boolean;
   VITE_USE_PWA: boolean;
   VITE_PUBLIC_PATH: string;
-  VITE_PROXY: [string, string][];
   VITE_GLOB_APP_TITLE: string;
   VITE_GLOB_APP_SHORT_NAME: string;
   VITE_USE_CDN: boolean;
-  VITE_DROP_CONSOLE: boolean;
   VITE_BUILD_COMPRESS: 'gzip' | 'brotli' | 'none';
   VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE: boolean;
-  VITE_LEGACY: boolean;
-  VITE_USE_IMAGEMIN: boolean;
+  VITE_BUILD_LEGACY: boolean;
+  VITE_BUILD_USE_IMAGEMIN: boolean;
   VITE_GENERATE_UI: string;
-  VITE_USE_HTTPS: boolean;
+  VITE_BUILD_USE_HTTPS: boolean;
 }

@@ -19,10 +19,10 @@ async function defineApplicationConfig(defineOptions: DefineOptions) {
   const isBuild = command === 'build';
   const env: Record<string, string> = loadEnv(mode, root);
   const {
-    VITE_USE_MOCK,
+    VITE_BUILD_USE_MOCK,
     VITE_BUILD_COMPRESS,
     VITE_ENABLE_ANALYZE,
-    VITE_ENABLE_INSPECT,
+    VITE_BUILD_ENABLE_INSPECT,
     VITE_ENABLE_CERT,
   } = env;
   const viteEnv = wrapperEnv(env, mode);
@@ -32,8 +32,8 @@ async function defineApplicationConfig(defineOptions: DefineOptions) {
     mode: isBuild ? 'build' : 'dev',
     root,
     enableAnalyze: VITE_ENABLE_ANALYZE === 'true',
-    enableMock: VITE_USE_MOCK === 'true',
-    enableInspect: VITE_ENABLE_INSPECT === 'true',
+    enableMock: VITE_BUILD_USE_MOCK === 'true',
+    enableInspect: VITE_BUILD_ENABLE_INSPECT === 'true',
     enableCert: VITE_ENABLE_CERT === 'true',
     compress: VITE_BUILD_COMPRESS,
   });

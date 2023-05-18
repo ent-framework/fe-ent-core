@@ -5,8 +5,9 @@
     "jsx": "preserve",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-    "strictFunctionTypes": false,
+    "strictFunctionTypes": false
   },
+  "include": ["typings/support.d.ts"],
   "exclude": [
     "node_modules",
     "dist",
