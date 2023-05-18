@@ -22,7 +22,7 @@ import locales from './locale';
 
 import 'ant-design-vue/dist/antd.less';
 import '@ent-core/theme/index.less';
-import 'fe-ent-page/dist/style.css';
+import 'fe-ent-page/components/index.less';
 
 import 'prismjs/themes/prism.css';
 
