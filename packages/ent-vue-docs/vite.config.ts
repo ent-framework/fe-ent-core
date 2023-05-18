@@ -13,7 +13,6 @@ export default defineConfig(({ command, mode }) => {
         emptyOutDir: true,
         outDir: `${root}/dist`,
       },
-      base: '/fe-ent-core',
       server: {
         port: 5400,
       },
