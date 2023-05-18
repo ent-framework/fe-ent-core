@@ -8,11 +8,12 @@ export default defineConfig(({ command, mode }) => {
     mode,
     overrides: {
       build: {
-        minify: false,
+        minify: true,
         cssCodeSplit: true,
         emptyOutDir: true,
         outDir: `${root}/docs`,
       },
+      base: '/fe-ent-core',
       server: {
         port: 3000,
       },
