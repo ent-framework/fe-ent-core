@@ -1,8 +1,7 @@
 import { getDocSiteConfig } from 'fe-ent-vue-scripts';
 import { defineConfig } from 'vite';
 
-export default defineConfig(({command, mode} )=> {
-
+export default defineConfig(({ command, mode }) => {
   return getDocSiteConfig({
     command,
     mode,
@@ -15,6 +14,7 @@ export default defineConfig(({command, mode} )=> {
       build: {
         minify: false,
         cssCodeSplit: true,
+        emptyOutDir: true
       },
       server: {
         port: 3000,

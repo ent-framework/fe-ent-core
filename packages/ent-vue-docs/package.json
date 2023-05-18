@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "ent-vue-scripts dev:site -p 5400",
-    "build": "ent-vue-scripts build:site",
+    "build": "vite build",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -20,7 +20,8 @@
   },
   "devDependencies": {
     "fe-ent-vue-scripts": "^1.5.14",
-    "@iconify/json": "^1.1.422"
+    "@iconify/json": "^1.1.422",
+    "vite": "4.2.2"
   },
   "repository": {
     "type": "git",
