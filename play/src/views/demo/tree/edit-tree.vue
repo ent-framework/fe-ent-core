@@ -29,11 +29,11 @@
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { EntTree, TreeActionItem } from 'fe-ent-core/lib/components/tree';
-  import { ContextMenuItem } from 'fe-ent-core/lib/components/context-menu';
+  import { EntTree, TreeActionItem } from '@ent-core/components/tree';
+  import { ContextMenuItem } from '@ent-core/components/context-menu';
   import { treeData } from './data';
   import { PlusOutlined, DeleteOutlined } from '@ant-design/icons-vue';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: { EntTree, EntPageWrapper },

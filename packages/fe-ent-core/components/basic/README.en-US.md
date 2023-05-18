@@ -1,9 +1,5 @@
 ```yaml
-meta:
-  type: Component
-  category: Other
-title: Affix
-description: Pin the page elements to the visible range. When the content area is relatively long and the page needs to be scrolled, the fixed pin can fix the content on the screen. Often used for side menus and button combinations.
+
 ```
 
 *Auto translate by google.*
@@ -12,8 +8,11 @@ description: Pin the page elements to the visible range. When the content area i
 
 ## API
 
+### EntTitle
+用于显示标题，可以显示帮助按钮及文本
 
-### `<basic-title>` Props
+
+### `<ent-title>` Props
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
@@ -23,7 +22,11 @@ description: Pin the page elements to the visible range. When the content area i
 
 
 
-### `<basic-arrow>` Props
+### EntArrow
+带动画的箭头组件
+
+
+### `<ent-arrow>` Props
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
@@ -32,6 +35,10 @@ description: Pin the page elements to the visible range. When the content area i
 |down|Arrow down by default|`boolean`|`false`|
 |inset|Cancel padding/margin for inline|`boolean`|`false`|
 
+
+
+### EntHelp
+帮助按钮组件
 
 
 ### `<ent-help>` Props

@@ -6,6 +6,7 @@
     class="changelog-box"
     :visible="drawerVisible"
     :width="800"
+    :closable="false"
     :title="t('changelogBox.changelog')"
     @ok="drawerVisible = false"
     @cancel="drawerVisible = false"
@@ -14,9 +15,9 @@
       <div class="changelog-box-filter-title">
         {{ t('changelogBox.filter') }}:
       </div>
-      <Grid :cols="5" :col-gap="20">
-        <GridItem>
-          <Select :model-value="filterType" @change="onFilterChange">
+      <Row>
+        <Col :span="4">
+          <Select :model-value="filterType" @change="onFilterChange" style="width: 100px">
             <Option value="version">
               {{ t('changelogBox.version') }}
             </Option>
@@ -24,21 +25,21 @@
               {{ t('changelogBox.date') }}
             </Option>
           </Select>
-        </GridItem>
-        <GridItem :span="2">
+        </Col>
+        <Col :span="8">
           <Space v-if="filterType === 'version'" fill>
-            <Select v-model="start" :options="[...versions].reverse()" />
+            <Select v-model:value="start" :options="reverseVersions" style="width: 100px"/>
             {{ t('changelogBox.to') }}
-            <Select v-model="end" :options="versions" />
+            <Select v-model="end" :options="versions" style="width: 100px"/>
           </Space>
           <RangePicker
             v-else
             :model-value="[start, end]"
             @change="onRangePickerChange"
           />
-        </GridItem>
-        <GridItem :span="2">
-          <Select v-model="type" multiple :max-tag-count="2">
+        </Col>
+        <Col :span="12">
+          <Select v-model:value="type" mode="multiple" style="width: 100%">
             <Option value="feature" :tag-props="{ color: 'orangered' }">
               {{ t('changelogBox.feature') }}
             </Option>
@@ -58,8 +59,8 @@
               {{ t('changelogBox.attention') }}
             </Option>
           </Select>
-        </GridItem>
-      </Grid>
+        </Col>
+      </Row>
     </div>
     <div class="changelog-box-content">
       <Timeline v-if="filterChangelog.length > 0" class="arco-changelog">
@@ -93,25 +94,32 @@
       </Timeline>
       <Empty v-else></Empty>
     </div>
+    <footer>
+      <Button class="changelog-box-button" @click="drawerVisible = false" type="primary" style="margin-right: 50px;" >
+        {{ t('changelogBox.close') }}
+      </Button>
+    </footer>
   </Drawer>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, ref } from 'vue';
-import { useI18n } from 'vue-i18n';
+import {computed, defineComponent, PropType, ref} from 'vue';
+import {useI18n} from 'vue-i18n';
 import {
   Button,
   Drawer,
   Select,
   Timeline,
   TimelineItem,
-  Option,
+  SelectOption,
   Space,
   RangePicker,
   Empty,
   Grid,
-  GridItem,
-} from '@arco-design/web-vue';
+} from 'ant-design-vue';
+import {Col, Row} from 'ant-design-vue/lib/grid';
+
+const Option = SelectOption;
 
 const compareVersion = (v1: string, v2: string) => {
   const mainArray1 = v1.split('-');
@@ -139,7 +147,8 @@ export default defineComponent({
     Option,
     TimelineItem,
     Grid,
-    GridItem,
+    Col,
+    Row,
     Space,
     Empty,
     RangePicker,
@@ -151,7 +160,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { t } = useI18n();
+    const {t} = useI18n();
     const drawerVisible = ref(false);
     const filterType = ref('version');
     const start = ref('');
@@ -187,7 +196,10 @@ export default defineComponent({
     });
 
     const versions = computed(() =>
-      props.changelog.map((item: any) => item.version)
+      props.changelog.map((item: any) =>  {return {'value': item.version}})
+    );
+    const reverseVersions = computed(() =>
+      props.changelog.map((item: any) => item.version).reverse().map((item: any) =>  {return {'value': item}})
     );
 
     const onFilterChange = (value: string) => {
@@ -206,6 +218,7 @@ export default defineComponent({
       filterType,
       start,
       versions,
+      reverseVersions,
       end,
       onFilterChange,
       onRangePickerChange,

@@ -4,16 +4,13 @@
     <BasicHelp v-if="helpMessage" :class="`${prefixCls}-help`" :text="helpMessage" />
   </span>
 </template>
-<script lang="ts" setup>
-  import { computed, useSlots } from 'vue';
+<script lang="ts">
+  import { computed, defineComponent, useSlots } from 'vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import BasicHelp from './basic-help.vue';
   import type { PropType } from 'vue';
 
-  defineOptions({
-    name: 'EntTitle',
-  });
-  const props = defineProps({
+  const props = {
     /**
      * Help text list or string
      * @default: ''
@@ -32,13 +29,25 @@
      * @default: false
      */
     normal: { type: Boolean },
-  });
+  };
 
-  const { prefixCls } = useDesign('basic-title');
-  const slots = useSlots();
-  const getClass = computed(() => [
-    prefixCls,
-    { [`${prefixCls}-show-span`]: props.span && slots.default },
-    { [`${prefixCls}-normal`]: props.normal },
-  ]);
+  export default defineComponent({
+    name: 'EntTitle',
+    components: { BasicHelp },
+    inheritAttrs: false,
+    props,
+    setup(props) {
+      const { prefixCls } = useDesign('basic-title');
+      const slots = useSlots();
+      const getClass = computed(() => [
+        prefixCls,
+        { [`${prefixCls}-show-span`]: props.span && slots.default },
+        { [`${prefixCls}-normal`]: props.normal },
+      ]);
+      return {
+        prefixCls,
+        getClass,
+      };
+    },
+  });
 </script>

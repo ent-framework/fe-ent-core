@@ -13,9 +13,9 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref } from 'vue';
-  import { EntForm, useForm } from 'fe-ent-core/lib/components/form';
+  import { EntForm, useForm } from '@ent-core/components/form';
   import { formSchema } from './menu-data';
-  import { EntDrawer, useDrawerInner } from 'fe-ent-core/lib/components/drawer';
+  import { EntDrawer, useDrawerInner } from '@ent-core/components/drawer';
 
   import { getMenuList } from '/@/api/system';
 

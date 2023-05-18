@@ -15,9 +15,9 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
 
-  import { ExtImportExcel, ExcelData } from 'fe-ent-core/lib/components/excel';
-  import { EntTable, BasicColumn } from 'fe-ent-core/lib/components/table';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { ExtImportExcel, ExcelData } from '@ent-core/components/excel';
+  import { EntTable, BasicColumn } from '@ent-core/components/table';
+  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: { EntTable, ExtImportExcel, EntPageWrapper },

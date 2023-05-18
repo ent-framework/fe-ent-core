@@ -1,4 +1,7 @@
 export default {
+  page: {
+    index: 'Home'
+  },
   docs: {
     name: 'Developer Guide',
     start: 'Quick Start',
@@ -21,7 +24,9 @@ export default {
   component: {
     name: 'Component',
     // 组件名称
+    application: 'Skin/Locale/Configprovide',
     authority: 'Authority',
+    clickoutside: 'ClickOutSide',
     icon: 'Icon',
     button: 'Button',
     basic: 'Title/Help',
@@ -200,5 +205,6 @@ export default {
     chore: 'Chore',
     to: 'To',
     filter: 'Filter',
+    close: 'Close'
   },
 };

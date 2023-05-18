@@ -8,46 +8,29 @@
     "url": "https://github.com/dancewing"
   },
   "scripts": {
-    "dev": "vite --mode=development",
-    "build": "cross-env NODE_ENV=production vite build",
-    "build:no-cache": "yarn clean:cache && npm run build",
-    "clean": "rimraf dist",
-    "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
-    "report": "cross-env REPORT=true npm run build",
-    "type:check": "vue-tsc --noEmit --skipLibCheck",
-    "preview": "npm run build && vite preview",
-    "preview:dist": "vite preview",
-    "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "clean:lib": "rimraf node_modules",
-    "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
-    "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
-    "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
-    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
-    "test:unit": "jest",
-    "test:unit-coverage": "jest --coverage",
-    "test:gzip": "npx http-server dist --cors --gzip -c-1",
-    "test:br": "npx http-server dist --cors --brotli -c-1",
-    "reinstall": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
-    "gen:icon": "esno ./build/generate/icon/index.ts"
+    "dev": "ent-vue-scripts dev:app",
+    "build": "ent-vue-scripts build:app",
+    "clean": "rimraf dist"
   },
   "dependencies": {
     "vue": "^3.2.47",
     "ant-design-vue": "^3.2.17"
   },
   "devDependencies": {
-    "fe-ent-build": "workspace:*",
+    "fe-ent-vue-scripts": "^1.5.14",
     "vite": "4.2.2",
-    "@iconify/json": "^1.1.422"
+    "@iconify/json": "^1.1.422",
+    "rimraf": "^5.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dancewing/fe-ent-core.git"
+    "url": "git+https://github.com/ent-framework/fe-ent-core.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dancewing/fe-ent-core/issues"
+    "url": "https://github.com/ent-framework/fe-ent-core/issues"
   },
-  "homepage": "https://github.com/dancewing/fe-ent-core",
+  "homepage": "https://github.com/ent-framework/fe-ent-core",
   "engines": {
     "node": "^12 || >=14"
   }

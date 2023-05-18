@@ -18,8 +18,8 @@
   import { defineComponent } from 'vue';
   import { Skeleton } from 'ant-design-vue';
   import TargetContent from './target-Content.vue';
-  import { EntLazyContainer } from 'fe-ent-core/lib/components/container';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntLazyContainer } from '@ent-core/components/container';
+  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: { LazyContainer: EntLazyContainer, EntPageWrapper, TargetContent, Skeleton },

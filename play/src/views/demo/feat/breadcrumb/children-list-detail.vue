@@ -5,6 +5,6 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntPageWrapper } from '@ent-core/components/page';
   export default defineComponent({ components: { EntPageWrapper } });
 </script>

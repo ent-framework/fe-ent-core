@@ -141,16 +141,18 @@ function typeCheck(project: Project) {
   }
 }
 
-export default async function () {
+export default async function (library: boolean) {
   await build();
   rmSync(path.resolve(outDir, 'tsconfig.tsbuildinfo'));
-  ensureDirSync(path.resolve(cwd, 'es'));
-  copySync(outDir, path.resolve(cwd, 'es'), {
-    recursive: true,
-  });
-  ensureDirSync(path.resolve(cwd, 'lib'));
-  copySync(outDir, path.resolve(cwd, 'lib'), {
-    recursive: true,
-  });
-  rimraf.sync(outDir);
+  if (!library) {
+    ensureDirSync(path.resolve(cwd, 'es'));
+    copySync(outDir, path.resolve(cwd, 'es'), {
+      recursive: true,
+    });
+    ensureDirSync(path.resolve(cwd, 'lib'));
+    copySync(outDir, path.resolve(cwd, 'lib'), {
+      recursive: true,
+    });
+    rimraf.sync(outDir);
+  }
 }

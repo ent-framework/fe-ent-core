@@ -11,7 +11,7 @@
 
 <script lang="ts">
   import { FlowChart } from '@fe-ent-extension/flow-chart';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntPageWrapper } from '@ent-core/components/page';
   import demoData from './dataTurbo.json';
   export default {
     components: { FlowChart, EntPageWrapper },

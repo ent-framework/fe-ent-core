@@ -10,9 +10,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable } from 'fe-ent-core/lib/components/table';
+  import { EntTable, useTable } from '@ent-core/components/table';
   import { getBasicColumns } from './table-data';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntPageWrapper } from '@ent-core/components/page';
 
   import { demoListApi } from '/@/api/table';
   export default defineComponent({

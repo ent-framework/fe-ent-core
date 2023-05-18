@@ -22,7 +22,7 @@
     </div>
   </div>
 </template>
-<script lang="ts" setup>
+<script lang="ts">
   import { defineComponent, ref } from 'vue';
   // component
   import { Skeleton } from 'ant-design-vue';
@@ -34,10 +34,7 @@
   import CollapseHeader from './collapse-header.vue';
   import type { PropType } from 'vue';
 
-  defineOptions({
-    name: 'EntCollapseContainer',
-  });
-  const props = defineProps({
+  const props = {
     title: { type: String, default: '' },
     loading: { type: Boolean },
     /**
@@ -60,24 +57,33 @@
      * Delayed loading time
      */
     lazyTime: { type: Number, default: 0 },
+  };
+
+  export default defineComponent({
+    name: 'EntCollapseContainer',
+    components: { CollapseHeader, CollapseTransition, Skeleton },
+    inheritAttrs: false,
+    props,
+    setup(props) {
+      const show = ref(true);
+
+      const { prefixCls } = useDesign('collapse-container');
+
+      /**
+       * @description: Handling development events
+       */
+      function handleExpand() {
+        show.value = !show.value;
+        if (props.triggerWindowResize) {
+          // 200 milliseconds here is because the expansion has animation,
+          useTimeoutFn(triggerWindowResize, 200);
+        }
+      }
+      return {
+        prefixCls,
+        handleExpand,
+        show,
+      };
+    },
   });
-
-  defineComponent({
-    components: { Skeleton },
-  });
-
-  const show = ref(true);
-
-  const { prefixCls } = useDesign('collapse-container');
-
-  /**
-   * @description: Handling development events
-   */
-  function handleExpand() {
-    show.value = !show.value;
-    if (props.triggerWindowResize) {
-      // 200 milliseconds here is because the expansion has animation,
-      useTimeoutFn(triggerWindowResize, 200);
-    }
-  }
 </script>

@@ -3,7 +3,6 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 //import { terser } from 'rollup-plugin-terser';
 import terser from '@rollup/plugin-terser';
-import DefineOptions from 'unplugin-vue-define-options/vite';
 import type { OutputPlugin } from 'rollup';
 export default (): InlineConfig => {
   const entry = 'index.ts';
@@ -26,7 +25,7 @@ export default (): InlineConfig => {
             globals: {
               vue: 'Vue',
             },
-            name: 'EntCore',
+            name: 'Ent',
             exports: 'named',
           },
           {
@@ -35,26 +34,7 @@ export default (): InlineConfig => {
             globals: {
               vue: 'Vue',
             },
-            name: 'EntCore',
-            exports: 'named',
-            plugins: [terser() as OutputPlugin],
-          },
-          {
-            format: 'esm',
-            entryFileNames: `index.full.mjs`,
-            globals: {
-              vue: 'Vue',
-            },
-            name: 'EntCore',
-            exports: 'named',
-          },
-          {
-            format: 'esm',
-            entryFileNames: `index.full.min.mjs`,
-            globals: {
-              vue: 'Vue',
-            },
-            name: 'EntCore',
+            name: 'Ent',
             exports: 'named',
             plugins: [terser() as OutputPlugin],
           },
@@ -64,7 +44,7 @@ export default (): InlineConfig => {
       lib: {
         entry,
         formats: ['umd'],
-        name: 'EntCore',
+        name: 'Ent',
       },
     },
     resolve: {
@@ -76,6 +56,6 @@ export default (): InlineConfig => {
       ],
     },
     // @ts-ignore vite内部类型错误
-    plugins: [DefineOptions(), vue(), vueJsx()],
+    plugins: [vue(), vueJsx()],
   };
 };

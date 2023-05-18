@@ -1,11 +1,11 @@
-# Arco Vue Scripts
+# Ent Vue Scripts
 
-A collection of commands used in the Arco Design Vue component library
+A collection of commands used in the Ent frame work component library
 
 ## Installation
 
 ```
-npm install @arco-design/arco-vue-scripts
+npm install fe-ent-vue-scripts
 ```
 
 ## Commands
@@ -21,6 +21,4 @@ Run `arco-vue-scripts --help` to see all available commands and options.
 + `arco-vue-scripts build:component`: build production files.
 + `arco-vue-scripts build:style`: build style related files.
 + `arco-vue-scripts build:site`: build document site.
-+ `arco-vue-scripts build:material`: build vue material.
-+ `arco-vue-scripts test`: run test for component or material.
 + `arco-vue-scripts changelog`: Obtain and organize changelog information through the git repository.

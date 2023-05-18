@@ -1,8 +1,8 @@
-import type { AppRouteModule } from 'fe-ent-core/lib/router/types';
+import type { AppRouteModule } from '@ent-core/router/types';
 
-import { getParentLayout } from 'fe-ent-core/lib/router/constant';
-import { ExceptionEnum } from 'fe-ent-core/lib/logics/enums/exception-enum';
-import { t } from 'fe-ent-core/lib/hooks/web/use-i18n';
+import { getParentLayout } from '@ent-core/router/constant';
+import { ExceptionEnum } from '@ent-core/logics/enums/exception-enum';
+import { t } from '@ent-core/hooks/web/use-i18n';
 
 const page: AppRouteModule = {
   path: '/page-demo',

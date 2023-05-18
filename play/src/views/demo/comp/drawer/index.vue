@@ -22,13 +22,13 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Alert } from 'ant-design-vue';
-  import { useDrawer } from 'fe-ent-core/lib/components/drawer';
+  import { useDrawer } from '@ent-core/components/drawer';
   import Drawer1 from './drawer-1.vue';
   import Drawer2 from './drawer-2.vue';
   import Drawer3 from './drawer-3.vue';
   import Drawer4 from './drawer-4.vue';
   import Drawer5 from './drawer-5.vue';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: { Alert, EntPageWrapper, Drawer1, Drawer2, Drawer3, Drawer4, Drawer5 },

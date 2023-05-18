@@ -29,9 +29,9 @@
 <script>
   import { defineComponent, ref } from 'vue';
   import { useRoute } from 'vue-router';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
-  import { useGo } from 'fe-ent-core/lib/hooks/web/use-page';
-  import { useTabs } from 'fe-ent-core/lib/hooks/web/use-tabs';
+  import { EntPageWrapper } from '@ent-core/components/page';
+  import { useGo } from '@ent-core/hooks/web/use-page';
+  import { useTabs } from '@ent-core/hooks/web/use-tabs';
   import { Tabs } from 'ant-design-vue';
   export default defineComponent({
     name: 'AccountDetail',

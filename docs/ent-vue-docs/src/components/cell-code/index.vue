@@ -58,7 +58,7 @@
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { Message } from '@arco-design/web-vue';
+import { message } from 'ant-design-vue';
 import copy from '../../utils/clipboard';
 import { openStackblitz } from '../../utils/code-stackblitz';
 import { openCodeSandbox } from '../../utils/code-sandbox';
@@ -96,10 +96,10 @@ export default defineComponent({
       if (contentRef.value?.textContent) {
         copy(contentRef.value.textContent)
           .then(() => {
-            Message.success('Copy Success!');
+            message.success('Copy Success!');
           })
           .catch(() => {
-            Message.error('Copy Failed! Please try again.');
+            message.error('Copy Failed! Please try again.');
           });
       }
     };

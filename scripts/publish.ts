@@ -1,4 +1,4 @@
-import { run, projRoot } from '@ent-build/build-utils';
+import { run, projRoot } from '@ent-build/build/utils';
 import glob from 'fast-glob';
 
 const publish = async () => {

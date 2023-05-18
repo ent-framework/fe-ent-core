@@ -17,19 +17,16 @@
     </span>
   </EntDropdown>
 </template>
-<script lang="ts" setup>
+<script lang="ts">
   import { computed, defineComponent, ref, unref, watchEffect } from 'vue';
   import { EntDropdown } from '@ent-core/components/dropdown';
   import { EntIcon } from '@ent-core/components/icon';
   import { useLocale } from '@ent-core/locales/use-locale';
   import { localeList } from '@ent-core/logics/settings/locale-setting';
-  import type { DropMenu } from '@ent-core/components/dropdown';
+  import type { DropMenu } from '@ent-core/components/dropdown/interface';
   import type { LocaleType } from '@ent-core/logics/types/config';
 
-  defineOptions({
-    name: 'EntAppLocalePicker',
-  });
-  const props = defineProps({
+  const props = {
     /**
      * Whether to display text
      */
@@ -38,38 +35,48 @@
      * Whether to refresh the interface when changing
      */
     reload: { type: Boolean },
+  };
+
+  export default defineComponent({
+    name: 'EntAppLocalePicker',
+    components: { EntDropdown, EntIcon },
+    inheritAttrs: false,
+    props,
+    setup(props) {
+      const selectedKeys = ref<string[]>([]);
+
+      const { changeLocale, getLocale } = useLocale();
+
+      const getLocaleText = computed(() => {
+        const key = selectedKeys.value[0];
+        if (!key) {
+          return '';
+        }
+        return localeList.find((item) => item.event === key)?.text;
+      });
+
+      watchEffect(() => {
+        selectedKeys.value = [unref(getLocale)];
+      });
+
+      async function toggleLocale(lang: LocaleType | string) {
+        await changeLocale(lang as LocaleType);
+        selectedKeys.value = [lang as string];
+        props.reload && location.reload();
+      }
+
+      function handleMenuEvent(menu: DropMenu) {
+        if (unref(getLocale) === menu.event) {
+          return;
+        }
+        toggleLocale(menu.event as string);
+      }
+      return {
+        getLocaleText,
+        localeList,
+        handleMenuEvent,
+        selectedKeys,
+      };
+    },
   });
-
-  defineComponent({
-    components: { EntDropdown },
-  });
-
-  const selectedKeys = ref<string[]>([]);
-
-  const { changeLocale, getLocale } = useLocale();
-
-  const getLocaleText = computed(() => {
-    const key = selectedKeys.value[0];
-    if (!key) {
-      return '';
-    }
-    return localeList.find((item) => item.event === key)?.text;
-  });
-
-  watchEffect(() => {
-    selectedKeys.value = [unref(getLocale)];
-  });
-
-  async function toggleLocale(lang: LocaleType | string) {
-    await changeLocale(lang as LocaleType);
-    selectedKeys.value = [lang as string];
-    props.reload && location.reload();
-  }
-
-  function handleMenuEvent(menu: DropMenu) {
-    if (unref(getLocale) === menu.event) {
-      return;
-    }
-    toggleLocale(menu.event as string);
-  }
 </script>

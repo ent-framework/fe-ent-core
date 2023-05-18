@@ -139,8 +139,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
-  import { EntPopButton } from 'fe-ent-core/lib/components/button';
+  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntPopButton } from '@ent-core/components/button';
   import { Card, Col, Row, StatisticCountdown } from 'ant-design-vue';
   export default defineComponent({
     components: {

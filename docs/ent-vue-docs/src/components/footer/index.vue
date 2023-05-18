@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { Message } from '@arco-design/web-vue';
+import { message } from 'ant-design-vue';
 import joinChat from '../../utils/join-chart';
 import IconArco from '../../assets/footer/arco.svg';
 import IconArcoColor from '../../assets/footer/arco-color.svg';
@@ -96,7 +96,7 @@ export default defineComponent({
     ];
 
     const toBeOpen = () => {
-      Message.info('Opening soon');
+      message.success('Opening soon');
     };
 
     const latestYear = new Date().getFullYear();

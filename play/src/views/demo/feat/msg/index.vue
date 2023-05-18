@@ -37,10 +37,10 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
-  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
-  import { defHttp } from 'fe-ent-core/lib/utils/http/axios';
+  import { EntCollapseContainer } from '@ent-core/components/container';
+  import { useMessage } from '@ent-core/hooks/web/use-message';
+  import { EntPageWrapper } from '@ent-core/components/page';
+  import { defHttp } from '@ent-core/utils/http/axios';
 
   export default defineComponent({
     components: { CollapseContainer: EntCollapseContainer, EntPageWrapper },

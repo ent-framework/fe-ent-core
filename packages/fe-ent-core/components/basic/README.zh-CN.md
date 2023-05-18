@@ -1,17 +1,20 @@
 ```yaml
 meta:
   type: 组件
-  category: 其他
-title: 固钉 Affix
-description: 将页面元素钉在可视范围。当内容区域比较长，需要滚动页面时，固钉可以将内容固定在屏幕上。常用于侧边菜单和按钮组合。
+  category: basic
+title: 通用几个展示组件
+description: 一些比较基础的通用组件使用方式
 ```
 
 @import ./__demo__/basic.md
 
 ## API
 
+### EntTitle
+用于显示标题，可以显示帮助按钮及文本
 
-### `<basic-title>` Props
+
+### `<ent-title>` Props
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
@@ -21,7 +24,11 @@ description: 将页面元素钉在可视范围。当内容区域比较长，需�
 
 
 
-### `<basic-arrow>` Props
+### EntArrow
+带动画的箭头组件
+
+
+### `<ent-arrow>` Props
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
@@ -30,6 +37,10 @@ description: 将页面元素钉在可视范围。当内容区域比较长，需�
 |down|Arrow down by default|`boolean`|`false`|
 |inset|Cancel padding/margin for inline|`boolean`|`false`|
 
+
+
+### EntHelp
+帮助按钮组件
 
 
 ### `<ent-help>` Props

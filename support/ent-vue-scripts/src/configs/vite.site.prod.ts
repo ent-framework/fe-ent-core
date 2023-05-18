@@ -2,7 +2,7 @@ import path from 'path';
 import { defineConfig, InlineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import vueDocs from 'fe-ent-vite-plugin-docs';
+import vueDocs from '../plugins/vite-plugin-ent-vue-docs';
 import svgLoader from 'vite-svg-loader';
 import paths from '../utils/paths';
 

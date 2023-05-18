@@ -1,9 +1,9 @@
 ```yaml
 meta:
   type: 组件
-  category: 其他
-title: 固钉 Affix
-description: 将页面元素钉在可视范围。当内容区域比较长，需要滚动页面时，固钉可以将内容固定在屏幕上。常用于侧边菜单和按钮组合。
+  category: 通用
+title: 按钮
+description: 二次封装按钮组件，按钮不需要 import，已经全局注册，直接使用 ent-button 标签即可
 ```
 
 

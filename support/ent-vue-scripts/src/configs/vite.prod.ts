@@ -1,7 +1,6 @@
 import glob from 'fast-glob';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import DefineOptions from 'unplugin-vue-define-options/vite';
 import external from '../plugins/vite-plugin-external';
 import vueExportHelper from '../plugins/vite-plugin-vue-export-helper';
 import { excludeFiles } from '../utils/exclude-files';
@@ -33,6 +32,7 @@ const config: InlineConfig = {
           dir: 'es',
           entryFileNames: '[name].mjs',
           preserveModules: true,
+          exports: 'named',
           //preserveModulesRoot: 'components',
         },
         {
@@ -41,6 +41,7 @@ const config: InlineConfig = {
           dir: 'lib',
           entryFileNames: '[name].js',
           preserveModules: true,
+          exports: 'named',
           //preserveModulesRoot: 'components',
         },
       ],
@@ -60,7 +61,7 @@ const config: InlineConfig = {
     ],
   },
   // @ts-ignore vite内部类型错误
-  plugins: [external(), DefineOptions(), vue(), vueJsx(), vueExportHelper()],
+  plugins: [external(), vue(), vueJsx(), vueExportHelper()],
 };
 
 export default config;

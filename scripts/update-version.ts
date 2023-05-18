@@ -1,10 +1,10 @@
 import fs from 'fs';
+import path from 'path';
 import consola from 'consola';
 import chalk from 'chalk';
-import { epPackage, projRoot } from '@ent-build/build-utils';
-import { getPackageManifest } from '@ent-build/build-utils';
+import { projRoot } from '@ent-build/build/utils';
+import { readPackageJSON } from 'pkg-types';
 import glob from 'fast-glob';
-import path from 'path';
 
 const tagVersion = process.env.TAG_VERSION;
 if (!tagVersion) {
@@ -43,19 +43,14 @@ consola.log(chalk.cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n')));
       const allPackages = [...packages, ...extensions, ...apps];
 
       allPackages.map(async (pkg) => {
-        const json: Record<string, any> = getPackageManifest(pkg);
+
+        const json: Record<string, any> = readPackageJSON(        path.dirname(pkg));
         json.version = tagVersion;
         await fs.promises.writeFile(pkg, JSON.stringify(json, null, 2), {
           encoding: 'utf-8',
         });
         consola.log(chalk.yellow(`Updating ${pkg} version to ${tagVersion}`));
       });
-
-      fs.writeFileSync(
-        path.resolve(__dirname, '../packages/fe-ent-core/version.ts'),
-        `export const version = '${tagVersion}';
-`,
-      );
     } catch (e) {
       console.error(e);
       process.exit(1);

@@ -10,7 +10,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable } from 'fe-ent-core/lib/components/table';
+  import { EntTable, useTable } from '@ent-core/components/table';
   import { getBasicColumns, getTreeTableData } from './table-data';
 
   export default defineComponent({

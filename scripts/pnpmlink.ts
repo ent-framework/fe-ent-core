@@ -1,8 +1,7 @@
-import { run } from '@ent-build/build-utils';
-import { epOutput, projRoot } from '@ent-build/build-utils';
+import { run, projRoot } from '@ent-build/build/utils';
 import glob from 'fast-glob';
 
-const publish = async () => {
+const link = async () => {
   const extensions = await glob('extensions/*', {
     cwd: projRoot,
     absolute: true,
@@ -13,16 +12,16 @@ const publish = async () => {
     absolute: true,
     onlyDirectories: true,
   });
+
   const apps = await glob('apps/*', {
     cwd: projRoot,
     absolute: true,
     onlyDirectories: true,
   });
 
-  const publishDir = [...extensions, ...support, ...apps, epOutput];
+  const publishDir = [...extensions, ...support, ...apps, `${projRoot}/packages/fe-ent-core`];
 
-  console.log(publishDir);
   publishDir.map((pkg) => run(`pnpm link --global --dir ${pkg}`, process.cwd()));
 };
 
-publish();
+link();

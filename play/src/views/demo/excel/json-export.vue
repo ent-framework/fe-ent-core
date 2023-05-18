@@ -11,10 +11,10 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable } from 'fe-ent-core/lib/components/table';
-  import { jsonToSheetXlsx } from 'fe-ent-core/lib/components/excel';
+  import { EntTable } from '@ent-core/components/table';
+  import { jsonToSheetXlsx } from '@ent-core/components/excel';
   import { columns, data } from './data';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: { EntTable, EntPageWrapper },

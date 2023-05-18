@@ -1,4 +1,7 @@
 export default {
+  page: {
+    index: '首页'
+  },
   docs: {
     name: '开发指南',
     start: '快速上手',
@@ -21,8 +24,10 @@ export default {
   component: {
     name: '组件',
     // 组件名称
+    application: '皮肤/语言/配置',
     calendar: '日历 Calendar',
     authority: '权限 authority',
+    clickoutside: 'ClickOutSide',
     icon: '图标 Icon',
     button: '按钮 Button',
     basic: '展示 Title/Help',
@@ -199,5 +204,6 @@ export default {
     chore: '架构改动',
     to: '到',
     filter: '筛选选项',
+    close: '关闭'
   },
 };

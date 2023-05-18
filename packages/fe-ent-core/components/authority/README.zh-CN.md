@@ -2,8 +2,8 @@
 meta:
   type: 组件
   category: 其他
-title: 固钉 Affix
-description: 将页面元素钉在可视范围。当内容区域比较长，需要滚动页面时，固钉可以将内容固定在屏幕上。常用于侧边菜单和按钮组合。
+title: 权限
+description: 用于项目权限的组件，一般用于按钮级等细粒度权限管理。
 ```
 
 

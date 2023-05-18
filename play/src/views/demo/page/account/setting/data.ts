@@ -1,4 +1,4 @@
-import { FormSchema } from 'fe-ent-core/lib/components/form/index';
+import { FormSchema } from '@ent-core/components/form/index';
 
 export interface ListItem {
   key: string;

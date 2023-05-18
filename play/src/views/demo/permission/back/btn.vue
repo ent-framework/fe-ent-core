@@ -61,13 +61,13 @@
   import { defineComponent, computed } from 'vue';
   import { Alert, Divider } from 'ant-design-vue';
   import CurrentPermissionMode from '../current-permission-mode.vue';
-  import { usePermission } from 'fe-ent-core/lib/hooks/web/use-permission';
-  import { EntAuthority as Authority } from 'fe-ent-core/lib/components/authority';
-  import { usePermissionStore } from 'fe-ent-core/lib/store/modules/permission';
-  import { PermissionModeEnum } from 'fe-ent-core/lib/logics/enums/app-enum';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
-  import { useAppStore } from 'fe-ent-core/lib/store/modules/app';
-  import { useUserStore } from 'fe-ent-core/lib/store/modules/user';
+  import { usePermission } from '@ent-core/hooks/web/use-permission';
+  import { EntAuthority as Authority } from '@ent-core/components/authority';
+  import { usePermissionStore } from '@ent-core/store/modules/permission';
+  import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
+  import { EntPageWrapper } from '@ent-core/components/page';
+  import { useAppStore } from '@ent-core/store/modules/app';
+  import { useUserStore } from '@ent-core/store/modules/user';
 
   export default defineComponent({
     components: { Alert, EntPageWrapper, CurrentPermissionMode, Divider, Authority },

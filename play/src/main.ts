@@ -3,19 +3,19 @@ import 'uno.css';
 import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
-import { initAppConfigStore } from 'fe-ent-core/lib/logics/init-app-config';
-import { setupErrorHandle } from 'fe-ent-core/lib/logics/error-handle';
-import { entRouter } from 'fe-ent-core/lib/router';
-import { setupRouterGuard } from 'fe-ent-core/lib/router/guard';
-import { setupStore } from 'fe-ent-core/lib/store';
-import { setupGlobDirectives } from 'fe-ent-core/lib/directives';
-import { setupI18n } from 'fe-ent-core/lib/locales/setup-i18n';
-import { registerGlobComp } from 'fe-ent-core/lib/components/register-glob-comp';
+import { initAppConfigStore } from '@ent-core/logics/init-app-config';
+import { setupErrorHandle } from '@ent-core/logics/error-handle';
+import { entRouter } from '@ent-core/router';
+import { setupRouterGuard } from '@ent-core/router/guard';
+import { setupStore } from '@ent-core/store';
+import { setupGlobDirectives } from '@ent-core/directives';
+import { setupI18n } from '@ent-core/locales/setup-i18n';
+import { registerGlobComp } from '@ent-core/components/register-glob-comp';
 import { initApplication } from '/@/init-application';
 import EntCore from 'fe-ent-core';
 
 import 'ant-design-vue/dist/antd.less';
-import 'fe-ent-core/lib/theme/index.less';
+import '@ent-core/theme/index.less';
 
 import { getBasicRoutes, initRouteAndLayout } from '@fe-ent-app/page';
 

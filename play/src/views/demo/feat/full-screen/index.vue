@@ -23,10 +23,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
+  import { EntCollapseContainer } from '@ent-core/components/container';
   import { useFullscreen } from '@vueuse/core';
 
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: { CollapseContainer: EntCollapseContainer, EntPageWrapper },

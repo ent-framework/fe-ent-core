@@ -40,16 +40,16 @@
 <script lang="ts">
   import { defineComponent, reactive } from 'vue';
 
-  import { EntTable, useTable, EntTableAction } from 'fe-ent-core/lib/components/table';
+  import { EntTable, useTable, EntTableAction } from '@ent-core/components/table';
   import { getAccountList } from '/@/api/system';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntPageWrapper } from '@ent-core/components/page';
   import DeptTree from './dept-tree.vue';
 
-  import { useModal } from 'fe-ent-core/lib/components/modal';
+  import { useModal } from '@ent-core/components/modal';
   import AccountModal from './account-modal.vue';
 
   import { columns, searchFormSchema } from './account-data';
-  import { useGo } from 'fe-ent-core/lib/hooks/web/use-page';
+  import { useGo } from '@ent-core/hooks/web/use-page';
 
   export default defineComponent({
     name: 'AccountManagement',

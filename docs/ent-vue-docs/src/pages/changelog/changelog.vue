@@ -35,8 +35,8 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
-import changelogCN from '@web-vue/CHANGELOG.zh-CN.md';
-import changelogEN from '@web-vue/CHANGELOG.md';
+import changelogCN from '@ent-core/CHANGELOG.zh-CN.md';
+import changelogEN from '@ent-core/CHANGELOG.md';
 
 export default defineComponent({
   name: 'Changelog',

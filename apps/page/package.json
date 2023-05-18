@@ -8,38 +8,44 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "dist/types/index.d.ts",
-  "unpkg": "dist/index.min.js",
   "files": [
     "dist",
-    "index.less",
+    "json",
     "README.md"
   ],
   "sideEffects": [
     "dist"
   ],
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "cross-env NODE_ENV=production vite build"
+    "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
+    "build": "pnpm run build:library && pnpm run docgen && pnpm run jsongen",
+    "docgen": "ent-vue-scripts docgen",
+    "build:library": "ent-vue-scripts build:library",
+    "jsongen": "ent-vue-scripts jsongen",
+    "dtsgen": "ent-vue-scripts dtsgen --lib"
   },
   "peerDependencies": {
     "fe-ent-core": "^1.4.33"
   },
   "devDependencies": {
-    "fe-ent-build": "workspace:*",
-    "@types/codemirror": "^5.60.5",
-    "rimraf": "^5.0.0",
-    "vite": "4.2.2"
+    "fe-ent-vue-scripts": "^1.5.14",
+    "rimraf": "^5.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dancewing/fe-ent-core.git"
+    "url": "git+https://github.com/ent-framework/fe-ent-core.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dancewing/fe-ent-core/issues"
+    "url": "https://github.com/ent-framework/fe-ent-core/issues"
   },
-  "homepage": "https://github.com/dancewing/fe-ent-core",
+  "homepage": "https://github.com/ent-framework/fe-ent-core",
   "engines": {
     "node": "^12 || >=14"
-  }
+  },
+  "vetur": {
+    "tags": "json/vetur-tags.json",
+    "attributes": "json/vetur-attributes.json"
+  },
+  "web-types": "json/web-types.json"
 }

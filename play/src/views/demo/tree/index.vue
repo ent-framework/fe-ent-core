@@ -45,9 +45,9 @@
 </template>
 <script lang="ts">
   import { defineComponent, nextTick, ref, unref } from 'vue';
-  import { EntTree, TreeActionType, TreeItem } from 'fe-ent-core/lib/components/tree';
+  import { EntTree, TreeActionType, TreeItem } from '@ent-core/components/tree';
   import { treeData } from './data';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntPageWrapper } from '@ent-core/components/page';
   import { Card, Row, Col, Spin } from 'ant-design-vue';
   import { cloneDeep } from 'lodash';
 

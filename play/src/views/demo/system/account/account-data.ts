@@ -1,6 +1,6 @@
 import { getAllRoleList, isAccountExist } from '/@/api/system';
-import { BasicColumn } from 'fe-ent-core/lib/components/table';
-import { FormSchema } from 'fe-ent-core/lib/components/form';
+import { BasicColumn } from '@ent-core/components/table';
+import { FormSchema } from '@ent-core/components/form';
 import { getDeptList } from '/@/api/system';
 export const columns: BasicColumn[] = [
   {

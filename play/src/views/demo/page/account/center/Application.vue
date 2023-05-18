@@ -30,7 +30,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { List, Card, Row, Col } from 'ant-design-vue';
-  import EntIcon from 'fe-ent-core/lib/components/icon';
+  import EntIcon from '@ent-core/components/icon';
   import { applicationList } from './data';
 
   export default defineComponent({

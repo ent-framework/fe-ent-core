@@ -33,7 +33,7 @@
     useTable,
     BasicColumn,
     EntTableAction,
-  } from 'fe-ent-core/lib/components/table';
+  } from '@ent-core/components/table';
 
   import { demoListApi } from '/@/api/table';
   const columns: BasicColumn[] = [

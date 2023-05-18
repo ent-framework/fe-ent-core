@@ -8,30 +8,29 @@
     "url": "https://github.com/dancewing"
   },
   "scripts": {
-    "dev": "vite --mode=development",
-    "build": "cross-env NODE_ENV=production vite build",
-    "build:no-cache": "yarn clean:cache && npm run build",
+    "dev": "ent-vue-scripts dev:site -p 5400",
+    "build": "ent-vue-scripts build:site",
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "vue": "^3.2.47",
-    "ant-design-vue": "^3.2.17"
+    "@stackblitz/sdk": "^1.6.0",
+    "codesandbox": "^2.2.3",
+    "clipboard": "^2.0.6",
+    "fe-ent-page": "^1.4.33"
   },
   "devDependencies": {
-    "fe-ent-build": "workspace:*",
-    "fe-ent-vite-plugin-docs": "^1.5.14",
-    "vite": "4.2.2",
+    "fe-ent-vue-scripts": "^1.5.14",
     "@iconify/json": "^1.1.422"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dancewing/fe-ent-core.git"
+    "url": "git+https://github.com/ent-framework/fe-ent-core.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dancewing/fe-ent-core/issues"
+    "url": "https://github.com/ent-framework/fe-ent-core/issues"
   },
-  "homepage": "https://github.com/dancewing/fe-ent-core",
+  "homepage": "https://github.com/ent-framework/fe-ent-core",
   "engines": {
     "node": "^12 || >=14"
   }

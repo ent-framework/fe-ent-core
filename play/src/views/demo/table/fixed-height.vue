@@ -16,11 +16,11 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable } from 'fe-ent-core/lib/components/table';
+  import { EntTable, useTable } from '@ent-core/components/table';
   import { getCustomHeaderColumns } from './table-data';
   import { FormOutlined } from '@ant-design/icons-vue';
   import { demoListApi } from '/@/api/table';
-  import { EntHelp } from 'fe-ent-core/lib/components/basic';
+  import { EntHelp } from '@ent-core/components/basic';
 
   export default defineComponent({
     components: { EntTable, FormOutlined, EntHelp },

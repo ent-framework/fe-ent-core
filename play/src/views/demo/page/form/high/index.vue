@@ -20,10 +20,10 @@
   </EntPageWrapper>
 </template>
 <script lang="ts">
-  import { EntForm, useForm } from 'fe-ent-core/lib/components/form';
+  import { EntForm, useForm } from '@ent-core/components/form';
   import { defineComponent, ref } from 'vue';
   import PersonTable from './person-table.vue';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntPageWrapper } from '@ent-core/components/page';
   import { schemas, taskSchemas } from './data';
   import { Card } from 'ant-design-vue';
 

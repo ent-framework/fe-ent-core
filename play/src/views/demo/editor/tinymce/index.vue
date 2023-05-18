@@ -6,7 +6,7 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { Tinymce } from '@fe-ent-extension/tinymce';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: { Tinymce, EntPageWrapper },

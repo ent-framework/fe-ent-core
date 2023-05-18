@@ -66,10 +66,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntForm, FormSchema, FormActionType, FormProps } from 'fe-ent-core/lib/components/form';
-  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
-  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntForm, FormSchema, FormActionType, FormProps } from '@ent-core/components/form';
+  import { EntCollapseContainer } from '@ent-core/components/container';
+  import { useMessage } from '@ent-core/hooks/web/use-message';
+  import { EntPageWrapper } from '@ent-core/components/page';
 
   const schemas: FormSchema[] = [
     {

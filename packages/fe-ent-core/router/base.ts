@@ -1,5 +1,5 @@
 import { inject } from 'vue';
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
 import { noop } from '@vueuse/core';
 import { getAppEnvConfig } from '@ent-core/utils/env';
 import { normalizeRoutePath } from '@ent-core/router/helper/route-helper';
@@ -12,7 +12,9 @@ export function createEntRouter(): EntRouter {
   const appEnv = getAppEnvConfig();
   // app router
   const parent = createRouter({
-    history: createWebHashHistory(appEnv.VITE_PUBLIC_PATH || ''),
+    history: appEnv.VITE_HASH_ROUTER
+      ? createWebHashHistory(appEnv.VITE_PUBLIC_PATH || '')
+      : createWebHistory(appEnv.VITE_PUBLIC_PATH || ''),
     routes: [],
     strict: true,
     scrollBehavior: () => ({ left: 0, top: 0 }),

@@ -11,15 +11,15 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable } from 'fe-ent-core/lib/components/table';
+  import { EntTable } from '@ent-core/components/table';
   import {
     jsonToSheetXlsx,
     EntExportExcelModal,
     ExportModalResult,
-  } from 'fe-ent-core/lib/components/excel';
+  } from '@ent-core/components/excel';
   import { columns, data } from './data';
-  import { useModal } from 'fe-ent-core/lib/components/modal';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { useModal } from '@ent-core/components/modal';
+  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: { EntTable, EntExportExcelModal, EntPageWrapper },

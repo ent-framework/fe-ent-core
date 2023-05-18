@@ -1,4 +1,4 @@
-import type { DropMenu } from '@ent-core/components/dropdown';
+import type { DropMenu } from '@ent-core/components/dropdown/interface';
 import type { LocaleSetting, LocaleType } from '@ent-core/logics/types/config';
 
 export const LOCALE: { [key: string]: LocaleType } = {

@@ -3,25 +3,26 @@ import 'uno.css';
 import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
-import { initAppConfigStore } from 'fe-ent-core/lib/logics/init-app-config';
-import { setupErrorHandle } from 'fe-ent-core/lib/logics/error-handle';
-import { entRouter } from 'fe-ent-core/lib/router';
-import { setupRouterGuard } from 'fe-ent-core/lib/router/guard';
-import { setupStore } from 'fe-ent-core/lib/store';
-import { setupGlobDirectives } from 'fe-ent-core/lib/directives';
-import { setupI18n } from 'fe-ent-core/lib/locales/setup-i18n';
-import { registerGlobComp } from 'fe-ent-core/lib/components/register-glob-comp';
+import { initAppConfigStore } from '@ent-core/logics/init-app-config';
+import { setupErrorHandle } from '@ent-core/logics/error-handle';
+import { entRouter } from '@ent-core/router';
+import { setupRouterGuard } from '@ent-core/router/guard';
+import { setupStore } from '@ent-core/store';
+import { setupGlobDirectives } from '@ent-core/directives';
+import { setupI18n } from '@ent-core/locales/setup-i18n';
+import { registerGlobComp } from '@ent-core/components/register-glob-comp';
 import { initApplication } from './init-application';
 import getRoutes from './router';
-import EntCore from 'fe-ent-core';
-import { usePermissionStoreWithOut } from 'fe-ent-core/lib/store/modules/permission';
-import { transformRouteToMenu } from 'fe-ent-core/lib/router';
-import { useLocale } from 'fe-ent-core/lib/locales';
+import EntCore from '@ent-core/index';
+import { usePermissionStoreWithOut } from '@ent-core/store/modules/permission';
+import { transformRouteToMenu } from '@ent-core/router';
+import { useLocale } from '@ent-core/locales';
 import { PageHeader, Button, Tooltip } from 'ant-design-vue'
 import locales from './locale'
 
 import 'ant-design-vue/dist/antd.less';
-import 'fe-ent-core/lib/theme/index.less';
+import '@ent-core/theme/index.less';
+import 'fe-ent-page/dist/style.css';
 
 import 'prismjs/themes/prism.css';
 
@@ -31,7 +32,7 @@ import CodeBlock from './components/code-block/index.vue';
 import CellDemo from './components/cell-demo/index.vue';
 import CellCode from './components/cell-code/index.vue';
 
-import { initRouteAndLayout } from '@fe-ent-app/page';
+import { initRouteAndLayout } from 'fe-ent-page/index';
 
 import App from './App.vue';
 async function bootstrap() {
@@ -71,7 +72,6 @@ async function bootstrap() {
   addMessages('en', locales.en)
   addMessages('zh_CN', locales.zh_CN)
   const docsRoutes = getRoutes(getLocale.value);
-  console.log(docsRoutes);
   entRouter.addBasicRoutes(docsRoutes);
 
   const permissionStore = usePermissionStoreWithOut();

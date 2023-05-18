@@ -61,10 +61,10 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntForm, FormSchema, useForm } from 'fe-ent-core/lib/components/form';
-  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
-  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntForm, FormSchema, useForm } from '@ent-core/components/form';
+  import { EntCollapseContainer } from '@ent-core/components/container';
+  import { useMessage } from '@ent-core/hooks/web/use-message';
+  import { EntPageWrapper } from '@ent-core/components/page';
   import { areaRecord } from '/@/api/cascader';
 
   const schemas: FormSchema[] = [

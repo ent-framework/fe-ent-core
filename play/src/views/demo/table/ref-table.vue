@@ -30,9 +30,9 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { EntTable, TableActionType } from 'fe-ent-core/lib/components/table';
+  import { EntTable, TableActionType } from '@ent-core/components/table';
   import { getBasicColumns, getBasicShortColumns } from './table-data';
-  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
+  import { useMessage } from '@ent-core/hooks/web/use-message';
   import { demoListApi } from '/@/api/table';
   export default defineComponent({
     components: { EntTable },

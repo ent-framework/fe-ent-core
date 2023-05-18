@@ -19,13 +19,13 @@
     BasicColumn,
     TableActionItem,
     EditRecordRow,
-  } from 'fe-ent-core/lib/components/table';
+  } from '@ent-core/components/table';
   import { optionsListApi } from '/@/api/select';
 
   import { demoListApi } from '/@/api/table';
   import { treeOptionsListApi } from '/@/api/tree';
   import { cloneDeep } from 'lodash';
-  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
+  import { useMessage } from '@ent-core/hooks/web/use-message';
 
   const columns: BasicColumn[] = [
     {

@@ -28,7 +28,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntForm, useForm } from 'fe-ent-core/lib/components/form';
+  import { EntForm, useForm } from '@ent-core/components/form';
   import { step1Schemas } from './data';
 
   import { Select, Input, Divider } from 'ant-design-vue';

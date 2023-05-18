@@ -78,8 +78,8 @@
   import { defineComponent, ref, unref } from 'vue';
   import { QrCode, QrCodeActionType } from '@fe-ent-extension/qrcode';
   import LogoImg from '/@/assets/images/logo.png';
-  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntCollapseContainer } from '@ent-core/components/container';
+  import { EntPageWrapper } from '@ent-core/components/page';
 
   const qrCodeUrl = 'https://www.vvbin.cn';
   export default defineComponent({

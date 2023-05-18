@@ -1,8 +1,8 @@
-import { BasicColumn } from 'fe-ent-core/lib/components/table';
-import { FormSchema } from 'fe-ent-core/lib/components/form';
+import { BasicColumn } from '@ent-core/components/table';
+import { FormSchema } from '@ent-core/components/form';
 import { h } from 'vue';
 import { Tag } from 'ant-design-vue';
-import { EntIcon } from 'fe-ent-core/lib/components/icon';
+import { EntIcon } from '@ent-core/components/icon';
 
 export const columns: BasicColumn[] = [
   {

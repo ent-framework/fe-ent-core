@@ -37,7 +37,7 @@
 - 获取项目代码
 
 ```bash
-git clone https://github.com/dancewing/fe-ent-core.git
+git clone https://github.com/ent-framework/fe-ent-core.git
 ```
 
 - 安装依赖
@@ -71,7 +71,7 @@ pnpm dev
 
 ## 项目地址
 
-- [fe-ent-core](https://github.com/dancewing/fe-ent-core.git) - 完整版
+- [fe-ent-core](https://github.com/ent-framework/fe-ent-core.git) - 完整版
 
 ## 浏览器支持
 

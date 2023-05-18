@@ -17,12 +17,12 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntUpload } from 'fe-ent-core/lib/components/upload';
-  import { useMessage } from 'fe-ent-core/lib/hooks/web/use-message';
-  import { EntForm, FormSchema, useForm } from 'fe-ent-core/lib/components/form';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntUpload } from '@ent-core/components/upload';
+  import { useMessage } from '@ent-core/hooks/web/use-message';
+  import { EntForm, FormSchema, useForm } from '@ent-core/components/form';
+  import { EntPageWrapper } from '@ent-core/components/page';
   import { Alert } from 'ant-design-vue';
-  import { uploadApi } from 'fe-ent-core/lib/logics/api/upload';
+  import { uploadApi } from '@ent-core/logics/api/upload';
 
   const schemas: FormSchema[] = [
     {

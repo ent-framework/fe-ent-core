@@ -13,5 +13,5 @@
     "skipLibCheck": true,
     "lib": ["DOM", "es2021"]
   },
-  "include": ["src", "../web-vue/scripts/screentshot.ts"]
+  "include": ["src"]
 }

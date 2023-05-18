@@ -1,15 +1,13 @@
 import path from 'path';
+import fs from 'fs';
 import { generate } from '@ant-design/colors';
 // @ts-ignore: typo
 import { getThemeVariables } from 'ant-design-vue/dist/theme';
-import fs from 'fs';
+import { searchForWorkspaceRoot } from 'vite';
 
 export const primaryColor = '#0960bd';
 
-function generateAntColors(
-  color: string,
-  theme: 'default' | 'dark' = 'default'
-) {
+function generateAntColors(color: string, theme: 'default' | 'dark' = 'default') {
   return generate(color, {
     theme,
   });
@@ -29,16 +27,14 @@ export function generateModifyVars(cssModifyOptions?: ModifyVarOptions) {
   let preLoadFile = '';
   preLoadFile = path.resolve(cwd, `theme/config.less`);
   if (!fs.existsSync(preLoadFile)) {
-    preLoadFile = path.resolve(
-      cwd,
-      `node_modules/fe-ent-core/lib/theme/config.less`
-    );
+    preLoadFile = path.resolve(cwd, `node_modules/fe-ent-core/lib/theme/config.less`);
+  }
+  if (!fs.existsSync(preLoadFile)) {
+    const root = searchForWorkspaceRoot(cwd);
+    preLoadFile = path.resolve(root, `packages/fe-ent-core/theme/config.less`);
   }
   const optionPrimaryColor = cssModifyOptions?.primaryColor || primaryColor;
-  const palettes = generateAntColors(
-    optionPrimaryColor,
-    cssModifyOptions?.theme
-  );
+  const palettes = generateAntColors(optionPrimaryColor, cssModifyOptions?.theme);
   const primary = palettes[5];
 
   const primaryColorObj: Record<string, string> = {};
@@ -52,7 +48,7 @@ export function generateModifyVars(cssModifyOptions?: ModifyVarOptions) {
   return {
     ...modifyVars,
     // reference:  Avoid repeated references
-    'hack': `${modifyVars.hack} @import (reference) "${preLoadFile}";`,
+    hack: `${modifyVars.hack} @import (reference) "${preLoadFile}";`,
     'primary-color': primary,
     ...primaryColorObj,
     'info-color': primary,

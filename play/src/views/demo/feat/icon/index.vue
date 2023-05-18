@@ -52,7 +52,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntCollapseContainer } from 'fe-ent-core/lib/components/container';
+  import { EntCollapseContainer } from '@ent-core/components/container';
   import { Alert } from 'ant-design-vue';
   import {
     QqCircleFilled,
@@ -64,10 +64,10 @@
     CodepenCircleFilled,
   } from '@ant-design/icons-vue';
 
-  import { EntIcon, EntIconPicker, EntSvgIcon } from 'fe-ent-core/lib/components/icon';
+  import { EntIcon, EntIconPicker, EntSvgIcon } from '@ent-core/components/icon';
 
-  import { openWindow } from 'fe-ent-core/lib/utils';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { openWindow } from '@ent-core/utils';
+  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: {

@@ -1,9 +1,5 @@
 ```yaml
-meta:
-  type: Component
-  category: Other
-title: Affix
-description: Pin the page elements to the visible range. When the content area is relatively long and the page needs to be scrolled, the fixed pin can fix the content on the screen. Often used for side menus and button combinations.
+
 ```
 
 *Auto translate by google.*
@@ -11,6 +7,23 @@ description: Pin the page elements to the visible range. When the content area i
 
 ## API
 
+### 皮肤选择(暗黑模式切换)
+
+
+
+
+### 语言切换
+
+### `<ent-app-locale-picker>` Props
+
+|Attribute|Description|Type|Default|
+|---|---|---|:---:|
+|show-text|Whether to display text|`boolean`|`true`|
+|reload|Whether to refresh the interface when changing|`boolean`|`false`|
+
+
+
+### 应用配置
 
 ### `<ent-app-provider>` Props
 

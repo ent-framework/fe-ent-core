@@ -34,8 +34,8 @@
     </template>
   </a-dropdown>
 </template>
-<script lang="ts" setup>
-  import { computed } from 'vue';
+<script lang="ts">
+  import { computed, defineComponent } from 'vue';
   import { Dropdown, Menu, Popconfirm } from 'ant-design-vue';
   import { omit } from 'lodash-es';
   import { EntIcon } from '@ent-core/components/icon';
@@ -48,11 +48,7 @@
   const AMenuItem = Menu.Item;
   const AMenuDivider = Menu.Divider;
   const APopconfirm = Popconfirm;
-
-  defineOptions({
-    name: 'EntDropdown',
-  });
-  const props = defineProps({
+  const props = {
     popconfirm: Boolean,
     /**
      * the trigger mode which executes the drop-down action
@@ -73,27 +69,38 @@
       type: Array as PropType<string[]>,
       default: () => [],
     },
+  };
+  export default defineComponent({
+    name: 'EntDropdown',
+    components: { ADropdown, AMenu, AMenuItem, AMenuDivider, APopconfirm, EntIcon },
+    inheritAttrs: false,
+    props,
+    emits: ['menuEvent'],
+    setup(props, { emit }) {
+      function handleClickMenu(item: DropMenu) {
+        const { event } = item;
+        const menu = props.dropMenuList.find((item) => `${item.event}` === `${event}`);
+        emit('menuEvent', menu);
+        item.onClick?.();
+      }
+
+      const getPopConfirmAttrs = computed(() => {
+        return (attrs) => {
+          const originAttrs = omit(attrs, ['confirm', 'cancel', 'icon']);
+          if (!attrs.onConfirm && attrs.confirm && isFunction(attrs.confirm))
+            originAttrs['onConfirm'] = attrs.confirm;
+          if (!attrs.onCancel && attrs.cancel && isFunction(attrs.cancel))
+            originAttrs['onCancel'] = attrs.cancel;
+          return originAttrs;
+        };
+      });
+
+      const getAttr = (key: string | number) => ({ key });
+      return {
+        getAttr,
+        getPopConfirmAttrs,
+        handleClickMenu,
+      };
+    },
   });
-
-  const emit = defineEmits(['menuEvent']);
-
-  function handleClickMenu(item: DropMenu) {
-    const { event } = item;
-    const menu = props.dropMenuList.find((item) => `${item.event}` === `${event}`);
-    emit('menuEvent', menu);
-    item.onClick?.();
-  }
-
-  const getPopConfirmAttrs = computed(() => {
-    return (attrs) => {
-      const originAttrs = omit(attrs, ['confirm', 'cancel', 'icon']);
-      if (!attrs.onConfirm && attrs.confirm && isFunction(attrs.confirm))
-        originAttrs['onConfirm'] = attrs.confirm;
-      if (!attrs.onCancel && attrs.cancel && isFunction(attrs.cancel))
-        originAttrs['onCancel'] = attrs.cancel;
-      return originAttrs;
-    };
-  });
-
-  const getAttr = (key: string | number) => ({ key });
 </script>

@@ -1,4 +1,16 @@
 {
   "extends": "../tsconfig.web.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": ["unplugin-vue-define-options/macros-global", "vite/client"],
+    "paths": {
+      "@ent-core/*": ["../packages/fe-ent-core/*"],
+      "/@/*": [
+        "src/*"
+      ],
+      "@fe-ent-extension/*": ["../extensions/*"],
+      "@fe-ent-app/*": ["../apps/*/src/index.ts"]
+    }
+  },
   "include": ["src", "../packages", "../apps", "../extensions"]
 }

@@ -1,6 +1,6 @@
-import type { AppRouteModule } from 'fe-ent-core/lib/router/types';
+import type { AppRouteModule } from '@ent-core/router/types';
 
-import { t } from 'fe-ent-core/lib/hooks/web/use-i18n';
+import { t } from '@ent-core/hooks/web/use-i18n';
 
 const system: AppRouteModule = {
   path: '/system',

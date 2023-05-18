@@ -1,14 +1,12 @@
+import path from 'path';
 import fs from 'fs-extra';
 import fg from 'fast-glob';
-import path from 'path';
-import {
-  ComponentDoc,
-  ParamTag,
-  parse as parseComponent,
-} from 'vue-docgen-api';
+import { parse as parseComponent } from 'vue-docgen-api';
 import { toKebabCase } from '../../utils/convert-case';
 import { slotTagHandler } from '../docgen/slot-tag-handler';
+import propExtHandler from '../docgen/propExtHandler';
 import { getPackage } from '../../utils/get-package';
+import type { ComponentDoc, ParamTag, PropDescriptor } from 'vue-docgen-api';
 
 const getComponentsFromTemplates = async () => {
   const templates = await fg('components/**/TEMPLATE.md');
@@ -53,21 +51,29 @@ const isLanguageTag = (title: string): title is 'zh' | 'en' => {
 
 const resolveComponent = (doc: ComponentDoc) => {
   return {
-    name: toKebabCase(`a${doc.displayName}`),
+    name: toKebabCase(`${doc.displayName}`),
     props:
       doc.props
         ?.map((descriptor) => {
-          const description = Object.values(descriptor.tags ?? {}).reduce(
-            (pre, item) => {
-              item.forEach((tag) => {
-                if (isLanguageTag(tag.title)) {
-                  pre[tag.title] = (tag as ParamTag).description as string;
-                }
-              });
-              return pre;
-            },
-            { zh: '', en: '' }
-          );
+          let description;
+          if (descriptor.description) {
+            description = {
+              zh: descriptor.description,
+              en: descriptor.description,
+            };
+          } else {
+            description = Object.values(descriptor.tags ?? {}).reduce(
+              (pre, item) => {
+                item.forEach((tag) => {
+                  if (isLanguageTag(tag.title)) {
+                    pre[tag.title] = (tag as ParamTag).description as string;
+                  }
+                });
+                return pre;
+              },
+              { zh: '', en: '' },
+            );
+          }
 
           return {
             name: toKebabCase(descriptor.name),
@@ -79,39 +85,53 @@ const resolveComponent = (doc: ComponentDoc) => {
     events:
       doc.events
         ?.map((descriptor) => {
-          const description = (descriptor.tags ?? []).reduce(
-            (pre, item) => {
-              if (isLanguageTag(item.title)) {
-                // @ts-ignore
-                pre[item.title] = item.content;
-              }
-              return pre;
-            },
-            { zh: '', en: '' }
-          );
+          let description;
+          if (descriptor.description) {
+            description = {
+              zh: descriptor.description,
+              en: descriptor.description,
+            };
+          } else {
+            description = (descriptor.tags ?? []).reduce(
+              (pre, item) => {
+                if (isLanguageTag(item.title)) {
+                  // @ts-ignore
+                  pre[item.title] = item.content;
+                }
+                return pre;
+              },
+              { zh: '', en: '' },
+            );
+          }
 
           return {
             name: toKebabCase(descriptor.name),
             description,
           };
         })
-        .filter(
-          (item) => Boolean(item.description.en) && !/^update:/.test(item.name)
-        ) ?? [],
+        .filter((item) => Boolean(item.description.en) && !item.name.startsWith('update:')) ?? [],
     slots:
       doc.slots
         ?.map((descriptor) => {
-          const description = Object.values(descriptor.tags ?? {}).reduce(
-            (pre, item) => {
-              // @ts-ignore
-              if (isLanguageTag(item.title)) {
+          let description;
+          if (descriptor.description) {
+            description = {
+              zh: descriptor.description,
+              en: descriptor.description,
+            };
+          } else {
+            description = Object.values(descriptor.tags ?? {}).reduce(
+              (pre, item) => {
                 // @ts-ignore
-                pre[item.title] = item.content;
-              }
-              return pre;
-            },
-            { zh: '', en: '' }
-          );
+                if (isLanguageTag(item.title)) {
+                  // @ts-ignore
+                  pre[item.title] = item.content;
+                }
+                return pre;
+              },
+              { zh: '', en: '' },
+            );
+          }
 
           return {
             name: toKebabCase(descriptor.name),
@@ -165,21 +185,17 @@ const transformToVetur = (components: ComponentData[]) => {
   };
 };
 
-const transformToWebTypes = (
-  components: ComponentData[],
-  { version }: { version: string }
-) => {
+const transformToWebTypes = (components: ComponentData[], { version }: { version: string }) => {
   const json = {
-    $schema:
-      'https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json',
+    $schema: 'https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json',
     framework: 'vue',
-    name: '@arco-design/web-vue',
+    name: 'fe-ent-core',
     version,
     contributions: {
       html: {
         'types-syntax': 'typescript',
         'description-markup': 'markdown',
-        'tags': [],
+        tags: [],
       },
     },
   };
@@ -222,11 +238,10 @@ const jsongen = async () => {
   let typographyBase;
   let datePickerBase;
   for (const item of components) {
-    const doc = resolveComponent(
-      await parseComponent(item, {
-        addScriptHandlers: [slotTagHandler],
-      })
-    );
+    const componentDoc = await parseComponent(item, {
+      addScriptHandlers: [propExtHandler, slotTagHandler],
+    });
+    const doc = resolveComponent(componentDoc);
     if (/date-picker\/picker/.test(item)) {
       datePickerBase = doc;
       continue;
@@ -256,11 +271,11 @@ const jsongen = async () => {
 
   await fs.writeFile(
     path.resolve(process.cwd(), 'json/vetur-tags.json'),
-    JSON.stringify(tags, null, 2)
+    JSON.stringify(tags, null, 2),
   );
   await fs.writeFile(
     path.resolve(process.cwd(), 'json/vetur-attributes.json'),
-    JSON.stringify(attributes, null, 2)
+    JSON.stringify(attributes, null, 2),
   );
 
   // @ts-ignore
@@ -268,7 +283,7 @@ const jsongen = async () => {
 
   await fs.writeFile(
     path.resolve(process.cwd(), 'json/web-types.json'),
-    JSON.stringify(web, null, 2)
+    JSON.stringify(web, null, 2),
   );
 };
 

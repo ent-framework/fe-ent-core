@@ -1,4 +1,7 @@
-import {AppRouteRecordRaw} from 'fe-ent-core/lib/router';
+import {AppRouteRecordRaw} from '@ent-core/router';
+
+const Index = () => import('./docs/start.zh-CN.md');
+const IndexEn = () => import('./docs/start.en-US.md');
 
 const Start = () => import('./docs/start.zh-CN.md');
 const StartEn = () => import('./docs/start.en-US.md');
@@ -10,15 +13,20 @@ const I18n = () => import('./docs/i18n.zh-CN.md');
 const I18nEn = () => import('./docs/i18n.en-US.md');
 const Changelog = () => import('./pages/changelog/changelog.vue');
 
-const Button = () => import('fe-ent-core/lib/components/button/README.zh-CN.md');
-const ButtonEn = () => import('fe-ent-core/lib/components/button/README.en-US.md');
+const Application = () => import('@ent-core/components/application/README.zh-CN.md');
+const ApplicationEn = () => import('@ent-core/components/application/README.en-US.md');
 
-const Basic = () => import('fe-ent-core/lib/components/basic/README.zh-CN.md');
-const BasicEn = () => import('fe-ent-core/lib/components/basic/README.en-US.md');
+const Authority = () => import('@ent-core/components/authority/README.zh-CN.md');
+const AuthorityEn = () => import('@ent-core/components/authority/README.en-US.md');
 
+const Basic = () => import('@ent-core/components/basic/README.zh-CN.md');
+const BasicEn = () => import('@ent-core/components/basic/README.en-US.md');
 
-const Authority = () => import('fe-ent-core/lib/components/authority/README.zh-CN.md');
-const AuthorityEn = () => import('fe-ent-core/lib/components/authority/README.en-US.md');
+const Button = () => import('@ent-core/components/button/README.zh-CN.md');
+const ButtonEn = () => import('@ent-core/components/button/README.en-US.md');
+
+const ClickOutSide = () => import('@ent-core/components/click-out-side/README.zh-CN.md');
+const ClickOutSideEn = () => import('@ent-core/components/click-out-side/README.en-US.md');
 
 
 const docs = [
@@ -37,10 +45,10 @@ const docs = [
     component: Theme,
     componentEn: ThemeEn,
   },
-  {
-    name: 'token',
-    component: () => import('./pages/token/token.vue'),
-  },
+  // {
+  //   name: 'token',
+  //   component: () => import('./pages/token/token.vue'),
+  // },
   {
     name: 'i18n',
     component: I18n,
@@ -144,6 +152,16 @@ const components = [
         component: Authority,
         componentEn: AuthorityEn,
       },
+      {
+        name: 'application',
+        component: Application,
+        componentEn: ApplicationEn,
+      },
+      {
+        name: 'clickoutside',
+        component: ClickOutSide,
+        componentEn: ClickOutSideEn,
+      },
     ],
   },
 ];
@@ -167,7 +185,7 @@ const getRoutes = (locale: string) => {
         meta: {
           title: `docs.${item.name}`,
         },
-        component: locale == 'en' &&  item.componentEn ? item.componentEn : item.component,
+        component: locale == 'en' && item.componentEn ? item.componentEn : item.component,
       },
     );
   }
@@ -180,14 +198,14 @@ const getRoutes = (locale: string) => {
       menuGroup.push({
         name: `components_${group.name}_${item.name}`,
         path,
-        component: locale == 'en' &&  item.componentEn ? item.componentEn : item.component,
+        component: locale == 'en' && item.componentEn ? item.componentEn : item.component,
         meta: {
           title: `component.${item.name}`,
         }
       });
     }
 
-    if (group.list.length>0) {
+    if (group.list.length > 0) {
       componentMenu.push({
         name: `components_${group.name}`,
         path: `/components/${group.name}`,
@@ -208,7 +226,7 @@ const getRoutes = (locale: string) => {
       {
         name: `practices_${item.name}`,
         path,
-        component: locale == 'en' &&  item.componentEn ? item.componentEn : item.component,
+        component: locale == 'en' && item.componentEn ? item.componentEn : item.component,
         meta: {
           title: `practices.${item.name}`,
         }
@@ -216,8 +234,28 @@ const getRoutes = (locale: string) => {
     );
   });
 
+  routes.push(
+    {
+      path: '/', name: 'root',
+      redirect: '/home',
+      meta: {
+        title: 'page.index',
+      },
+      component: 'LAYOUT',
+      children: [
+        {
+          path: '/home', name: 'root',
+          meta: {
+            title: 'page.index',
+            hideMenu: true,
+          },
+          component: locale == 'en' ? IndexEn : Index,
+        }
+      ]
+    }
+  );
 
-  if (docs.length>0) {
+  if (docs.length > 0) {
     routes.push({
       component: 'LAYOUT',
       name: 'docs',
@@ -230,7 +268,7 @@ const getRoutes = (locale: string) => {
     })
   }
 
-  if (practicesDocsMenu.length>0 ) {
+  if (practicesDocsMenu.length > 0) {
     routes.push({
       component: 'LAYOUT',
       name: 'practices',
@@ -244,7 +282,7 @@ const getRoutes = (locale: string) => {
   }
 
 
-  if (componentMenu.length>0 ) {
+  if (componentMenu.length > 0) {
     routes.push({
       component: 'LAYOUT',
       name: 'components',
@@ -257,8 +295,7 @@ const getRoutes = (locale: string) => {
     })
   }
 
-  routes.push({ path: '/', redirect: 'docs', name: 'root', meta: {} });
-  routes.push({ path: '/:pathMatch(.*)*', redirect: '/docs/start', name: 'PageNotFound', meta: {} });
+  routes.push({path: '/:pathMatch(.*)*', redirect: '/docs/start', name: 'PageNotFound', meta: {}});
 
   return routes;
 }

@@ -4,7 +4,7 @@
 <script lang="ts">
   import { defineComponent, ref, nextTick, unref, onMounted } from 'vue';
 
-  import { useScript } from 'fe-ent-core/lib/hooks/web/use-script';
+  import { useScript } from '@ent-core/hooks/web/use-script';
 
   const MAP_URL =
     'https://maps.googleapis.com/maps/api/js?key=AIzaSyBQWrGwj4gAzKndcbwD5favT9K0wgty_0&signed_in=true';

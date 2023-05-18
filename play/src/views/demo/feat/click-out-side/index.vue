@@ -9,8 +9,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntClickOutSide } from 'fe-ent-core/lib/components/click-out-side';
-  import { EntPageWrapper } from 'fe-ent-core/lib/components/page';
+  import { EntClickOutSide } from '@ent-core/components/click-out-side';
+  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: { EntClickOutSide, EntPageWrapper },

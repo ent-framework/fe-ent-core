@@ -47,6 +47,7 @@ export interface ViteEnv {
   VITE_PORT: number;
   VITE_USE_MOCK: boolean;
   VITE_USE_PWA: boolean;
+  VITE_HASH_ROUTER: boolean;
   VITE_PUBLIC_PATH: string;
   VITE_GLOB_APP_TITLE: string;
   VITE_GLOB_APP_SHORT_NAME: string;

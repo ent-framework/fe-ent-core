@@ -1,29 +1,12 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.web.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "composite": true,
-    "jsx": "preserve",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-    "strictFunctionTypes": false,
     "types": ["unplugin-vue-define-options/macros-global", "vite/client"],
     "paths": {
       "@ent-core/*": ["./*"],
     }
   },
-  "include": [
-    "components",
-    "directives",
-    "hooks",
-    "locales",
-    "logics",
-    "router",
-    "store",
-    "types",
-    "utils",
-    "index.ts",
-  ],
   "exclude": [
     "node_modules",
     "dist",
