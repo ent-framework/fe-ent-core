@@ -17,7 +17,7 @@
   "scripts": {
     "bootstrap": "pnpm install",
     "dev": "pnpm -C play --stream dev",
-    "dev:doc": "pnpm run -C docs/ent-vue-docs dev",
+    "dev:docs": "pnpm run -C packages/ent-vue-docs dev",
     "build": "pnpm build:gulp",
     "build:gulp": "pnpm run -C internal/build start",
     "build:all": "pnpm --filter './{packages,extensions,apps}/**' --stream --parallel build",
@@ -27,7 +27,7 @@
     "build:extensions": "pnpm --filter './extensions/**' --stream build",
     "build:apps": "pnpm --filter './apps/**' --stream build",
     "build:internal": "pnpm run -r --parallel stub",
-    "build:docs": "pnpm run -C docs/ent-vue-docs --stream build",
+    "build:docs": "pnpm run -C packages/ent-vue-docs --stream build",
     "build:play": "pnpm -C play --stream build",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
     "build:no-cache": "yarn clean:cache && pnpm run build",

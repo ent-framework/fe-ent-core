@@ -1,9 +1,10 @@
-import { build, createServer } from 'vite';
+import { build, createServer, searchForWorkspaceRoot } from 'vite';
 import getSiteDevConfig from '../../configs/vite.site';
 import type { ConfigEnv } from 'vite';
 
 async function run(config: ConfigEnv, port: number) {
   const { command, mode } = config;
+  const root = searchForWorkspaceRoot(process.cwd());
   const siteConfig = await getSiteDevConfig({
     command,
     mode,
@@ -11,6 +12,13 @@ async function run(config: ConfigEnv, port: number) {
       overrides: {
         server: {
           port,
+        },
+      },
+    }),
+    ...(command === 'build' && {
+      overrides: {
+        build: {
+          outDir: `${root}/docs`,
         },
       },
     }),
