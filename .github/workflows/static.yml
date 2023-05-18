@@ -37,7 +37,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm install -g pnpm
       - run: pnpm install
-      - run: pnpm build:apps
+      - run: pnpm build
       - run: pnpm build:docs
       - name: Setup Pages
         uses: actions/configure-pages@v3

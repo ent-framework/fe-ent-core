@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "ent-vue-scripts dev:site -p 5400",
-    "build": "vite build",
+    "build": "ent-vue-scripts build:site",
     "clean": "rimraf dist"
   },
   "dependencies": {
