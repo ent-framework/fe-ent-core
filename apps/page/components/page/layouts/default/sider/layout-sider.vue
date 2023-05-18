@@ -27,11 +27,8 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, h, ref, unref } from 'vue';
-
   import { Layout } from 'ant-design-vue';
-
   import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/lib/logics';
-
   import { useAppInject, useDesign, useMenuSetting } from 'fe-ent-core/lib/hooks';
   import LayoutTrigger from '../trigger/index.vue';
   import LayoutMenu from '../menu/index.vue';

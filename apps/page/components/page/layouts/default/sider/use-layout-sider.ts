@@ -5,6 +5,7 @@ import { TriggerEnum } from 'fe-ent-core/lib/logics';
 import { useMenuSetting } from 'fe-ent-core/lib/hooks';
 import { useDebounceFn } from '@vueuse/shared';
 import type { Ref } from 'vue';
+import type { ComponentRef, ElRef } from 'fe-ent-core/lib/types';
 
 /**
  * Handle related operations of menu events

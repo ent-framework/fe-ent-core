@@ -41,7 +41,7 @@ export function getAppEnvConfig(): AppEnv {
     VITE_GLOB_UPLOAD_URL,
     VITE_GLOB_LAYOUT_NAME,
     VITE_GLOB_VBEN_VERSION,
-    VITE_HASH_ROUTER = true,
+    VITE_HASH_ROUTER,
     ...REST
   } = ENV;
 

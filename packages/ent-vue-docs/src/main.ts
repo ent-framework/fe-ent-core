@@ -4,7 +4,7 @@ import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
 import { Button, PageHeader, Tooltip } from 'ant-design-vue';
-import { initRouteAndLayout } from 'fe-ent-page/index';
+
 import { initAppConfigStore } from '@ent-core/logics/init-app-config';
 import { setupErrorHandle } from '@ent-core/logics/error-handle';
 import { entRouter, transformRouteToMenu } from '@ent-core/router';
@@ -22,10 +22,9 @@ import locales from './locale';
 
 import 'ant-design-vue/dist/antd.less';
 import '@ent-core/theme/index.less';
-import 'fe-ent-page/components/index.less';
-
 import 'prismjs/themes/prism.css';
 
+import { initRouteAndLayout } from 'fe-ent-page';
 import ArcoArticle from './components/article/index.vue';
 import AnchorHead from './components/anchor-head/index.vue';
 import CodeBlock from './components/code-block/index.vue';

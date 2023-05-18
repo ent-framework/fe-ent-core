@@ -6,7 +6,7 @@ import {
 } from 'fe-ent-core/lib/router';
 import { withInstall } from 'fe-ent-core/lib/utils';
 
-import { default as LAYOUT } from './page/layouts/default';
+import { DefaultLayout } from './page/layouts/default';
 import { default as IFRAME } from './page/views/iframe/frame-blank';
 import { default as ExceptionPage } from './page/views/exception/exception.vue';
 
@@ -15,7 +15,7 @@ import type { App } from 'vue';
 
 const initRouteAndLayout = function (app: App) {
   //initial layout
-  app.use(withInstall(LAYOUT, COMPONENT_LAYOUT_NAME));
+  app.use(withInstall(DefaultLayout, COMPONENT_LAYOUT_NAME));
   app.use(withInstall(IFRAME, COMPONENT_IFRAME_NAME));
   app.use(withInstall(ExceptionPage, COMPONENT_EXCEPTION_NAME));
 

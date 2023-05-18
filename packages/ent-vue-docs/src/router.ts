@@ -1,7 +1,6 @@
-import {AppRouteRecordRaw} from '@ent-core/router';
+import type { AppRouteRecordRaw } from '@ent-core/router';
 
-const Index = () => import('./docs/start.zh-CN.md');
-const IndexEn = () => import('./docs/start.en-US.md');
+const Index = () => import('./home.vue');
 
 const Start = () => import('./docs/start.zh-CN.md');
 const StartEn = () => import('./docs/start.en-US.md');
@@ -27,7 +26,6 @@ const ButtonEn = () => import('@ent-core/components/button/README.en-US.md');
 
 const ClickOutSide = () => import('@ent-core/components/click-out-side/README.zh-CN.md');
 const ClickOutSideEn = () => import('@ent-core/components/click-out-side/README.en-US.md');
-
 
 const docs = [
   {
@@ -178,21 +176,19 @@ const getRoutes = (locale: string) => {
   const docsMenu: AppRouteRecordRaw[] = [];
   for (const item of docs) {
     const path = `/docs/${toKebabCase(item.name)}`;
-    docsMenu.push(
-      {
-        name: `doc_${toKebabCase(item.name)}`,
-        path,
-        meta: {
-          title: `docs.${item.name}`,
-        },
-        component: locale == 'en' && item.componentEn ? item.componentEn : item.component,
+    docsMenu.push({
+      name: `doc_${toKebabCase(item.name)}`,
+      path,
+      meta: {
+        title: `docs.${item.name}`,
       },
-    );
+      component: locale == 'en' && item.componentEn ? item.componentEn : item.component,
+    });
   }
 
   const componentMenu: AppRouteRecordRaw[] = [];
   for (const group of components) {
-    const menuGroup: AppRouteRecordRaw[] = []
+    const menuGroup: AppRouteRecordRaw[] = [];
     for (const item of group.list) {
       const path = `/components/${group.name}/${toKebabCase(item.name)}`;
       menuGroup.push({
@@ -201,7 +197,7 @@ const getRoutes = (locale: string) => {
         component: locale == 'en' && item.componentEn ? item.componentEn : item.component,
         meta: {
           title: `component.${item.name}`,
-        }
+        },
       });
     }
 
@@ -213,47 +209,33 @@ const getRoutes = (locale: string) => {
         children: menuGroup,
         meta: {
           title: `group.${group.name}`,
-        }
-      })
+        },
+      });
     }
   }
-
 
   const practicesDocsMenu: AppRouteRecordRaw[] = [];
   practicesDocs.forEach((item) => {
     const path = `/practices/${toKebabCase(item.name)}`;
-    practicesDocsMenu.push(
-      {
-        name: `practices_${item.name}`,
-        path,
-        component: locale == 'en' && item.componentEn ? item.componentEn : item.component,
-        meta: {
-          title: `practices.${item.name}`,
-        }
+    practicesDocsMenu.push({
+      name: `practices_${item.name}`,
+      path,
+      component: locale == 'en' && item.componentEn ? item.componentEn : item.component,
+      meta: {
+        title: `practices.${item.name}`,
       },
-    );
+    });
   });
 
-  routes.push(
-    {
-      path: '/', name: 'root',
-      redirect: '/home',
-      meta: {
-        title: 'page.index',
-      },
-      component: 'LAYOUT',
-      children: [
-        {
-          path: '/home', name: 'root',
-          meta: {
-            title: 'page.index',
-            hideMenu: true,
-          },
-          component: locale == 'en' ? IndexEn : Index,
-        }
-      ]
-    }
-  );
+  routes.push({
+    path: '/home',
+    name: 'root',
+    //redirect: '/home/index',
+    meta: {
+      title: 'page.index',
+    },
+    component: Index,
+  });
 
   if (docs.length > 0) {
     routes.push({
@@ -264,8 +246,8 @@ const getRoutes = (locale: string) => {
       children: docsMenu,
       meta: {
         title: 'docs.name',
-      }
-    })
+      },
+    });
   }
 
   if (practicesDocsMenu.length > 0) {
@@ -277,10 +259,9 @@ const getRoutes = (locale: string) => {
       children: practicesDocsMenu,
       meta: {
         title: 'practices.name',
-      }
-    })
+      },
+    });
   }
-
 
   if (componentMenu.length > 0) {
     routes.push({
@@ -291,13 +272,21 @@ const getRoutes = (locale: string) => {
       children: componentMenu,
       meta: {
         title: 'component.name',
-      }
-    })
+      },
+    });
   }
 
-  routes.push({path: '/:pathMatch(.*)*', redirect: '/docs/start', name: 'PageNotFound', meta: {}});
+  routes.push({
+    path: '/:pathMatch(.*)*',
+    redirect: '/home',
+    name: 'PageNotFound',
+    meta: {
+      title: 'PageNotFound',
+      hideMenu: true,
+    },
+  });
 
   return routes;
-}
+};
 
 export default getRoutes;

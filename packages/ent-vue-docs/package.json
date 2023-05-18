@@ -8,7 +8,7 @@
     "url": "https://github.com/ent-framework"
   },
   "scripts": {
-    "dev": "ent-vue-scripts dev:site -p 5400",
+    "dev": "vite serve",
     "build": "vite build",
     "clean": "rimraf dist"
   },

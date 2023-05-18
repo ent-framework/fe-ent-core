@@ -12,7 +12,7 @@ import { setupGlobDirectives } from '@ent-core/directives';
 import { setupI18n } from '@ent-core/locales/setup-i18n';
 import { registerGlobComp } from '@ent-core/components/register-glob-comp';
 import { initApplication } from '/@/init-application';
-import EntCore from 'fe-ent-core';
+import EntCore from '@ent-core/index';
 
 import 'ant-design-vue/dist/antd.less';
 import '@ent-core/theme/index.less';

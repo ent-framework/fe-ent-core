@@ -8,8 +8,8 @@
     "url": "https://github.com/ent-framework"
   },
   "scripts": {
-    "dev": "ent-vue-scripts dev:app",
-    "build": "ent-vue-scripts build:app",
+    "dev": "vite serve",
+    "build": "vite build",
     "clean": "rimraf dist"
   },
   "dependencies": {

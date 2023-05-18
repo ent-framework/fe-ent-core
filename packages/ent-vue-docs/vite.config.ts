@@ -15,7 +15,7 @@ export default defineConfig(({ command, mode }) => {
       },
       base: '/fe-ent-core',
       server: {
-        port: 3000,
+        port: 5400,
       },
       resolve: {
         alias: [
