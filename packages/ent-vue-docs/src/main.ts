@@ -3,22 +3,22 @@ import 'uno.css';
 import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
+import { Button, PageHeader, Tooltip } from 'ant-design-vue';
+import { initRouteAndLayout } from 'fe-ent-page/index';
 import { initAppConfigStore } from '@ent-core/logics/init-app-config';
 import { setupErrorHandle } from '@ent-core/logics/error-handle';
-import { entRouter } from '@ent-core/router';
+import { entRouter, transformRouteToMenu } from '@ent-core/router';
 import { setupRouterGuard } from '@ent-core/router/guard';
 import { setupStore } from '@ent-core/store';
 import { setupGlobDirectives } from '@ent-core/directives';
 import { setupI18n } from '@ent-core/locales/setup-i18n';
 import { registerGlobComp } from '@ent-core/components/register-glob-comp';
-import { initApplication } from './init-application';
-import getRoutes from './router';
 import EntCore from '@ent-core/index';
 import { usePermissionStoreWithOut } from '@ent-core/store/modules/permission';
-import { transformRouteToMenu } from '@ent-core/router';
 import { useLocale } from '@ent-core/locales';
-import { PageHeader, Button, Tooltip } from 'ant-design-vue'
-import locales from './locale'
+import getRoutes from './router';
+import { initApplication } from './init-application';
+import locales from './locale';
 
 import 'ant-design-vue/dist/antd.less';
 import '@ent-core/theme/index.less';
@@ -31,8 +31,6 @@ import AnchorHead from './components/anchor-head/index.vue';
 import CodeBlock from './components/code-block/index.vue';
 import CellDemo from './components/cell-demo/index.vue';
 import CellCode from './components/cell-code/index.vue';
-
-import { initRouteAndLayout } from 'fe-ent-page/index';
 
 import App from './App.vue';
 async function bootstrap() {
@@ -68,14 +66,14 @@ async function bootstrap() {
   app.use(Button);
   app.use(Tooltip);
 
-  const {getLocale, addMessages} = useLocale();
-  addMessages('en', locales.en)
-  addMessages('zh_CN', locales.zh_CN)
+  const { getLocale, addMessages } = useLocale();
+  addMessages('en', locales.en);
+  addMessages('zh_CN', locales.zh_CN);
   const docsRoutes = getRoutes(getLocale.value);
   entRouter.addBasicRoutes(docsRoutes);
 
   const permissionStore = usePermissionStoreWithOut();
-  permissionStore.setFrontMenuList(transformRouteToMenu(docsRoutes))
+  permissionStore.setFrontMenuList(transformRouteToMenu(docsRoutes));
   app.use(entRouter);
 
   // router-guard
