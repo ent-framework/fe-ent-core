@@ -1,5 +1,5 @@
 import { getDocSiteConfig } from 'fe-ent-vue-scripts';
-import {defineConfig, searchForWorkspaceRoot} from 'vite';
+import { defineConfig } from 'vite';
 
 export default defineConfig(({command, mode} )=> {
 

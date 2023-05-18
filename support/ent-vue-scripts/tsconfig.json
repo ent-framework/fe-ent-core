@@ -5,6 +5,7 @@
     "module": "CommonJS",
     "target": "es2021",
     "allowJs": true,
+    "declaration": true,
     "moduleResolution": "node",
     "baseUrl": ".",
     "strict": true,

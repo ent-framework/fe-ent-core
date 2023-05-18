@@ -91,8 +91,8 @@ pnpm dev
 
 ## 后台整合示例
 
-- **集成Admin前端** https://github.com/dancewing/fe-app-admin.git
-- **集成Spring Boot后端** https://github.com/dancewing/ent-framework.git
+- **集成Admin前端** https://github.com/ent-framework/fe-app-admin.git
+- **集成Spring Boot后端** https://github.com/ent-framework/ent-framework.git
 
 使用方法请参考项目内的README
 

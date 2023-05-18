@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-vue-scripts",
-  "version": "1.5.17",
+  "version": "1.5.21",
   "description": "Ent Vue Scripts",
   "main": "dist/index.js",
   "bin": {
@@ -16,8 +16,10 @@
   "scripts": {
     "clean": "rimraf dist",
     "dev": "tsc --watch",
-    "build": "tsc && node copy-template.js",
-    "stub": "tsc && node copy-template.js",
+    "stub": "pnpm run build",
+    "build": "pnpm run build:lib && pnpm run build:types",
+    "build:lib": "tsc && node copy-template.js",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
     "lint-staged": "npx lint-staged"
   },
   "lint-staged": {

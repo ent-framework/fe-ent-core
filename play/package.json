@@ -5,7 +5,7 @@
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
-    "url": "https://github.com/dancewing"
+    "url": "https://github.com/ent-framework"
   },
   "scripts": {
     "dev": "ent-vue-scripts dev:app",

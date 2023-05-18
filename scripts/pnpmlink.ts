@@ -19,7 +19,7 @@ const link = async () => {
     onlyDirectories: true,
   });
 
-  const publishDir = [...extensions, ...support, ...apps, `${projRoot}/packages/fe-ent-core`];
+  const publishDir = [...support, `${projRoot}/packages/fe-ent-core`, ...extensions, ...apps];
 
   publishDir.map((pkg) => run(`pnpm link --global --dir ${pkg}`, process.cwd()));
 };

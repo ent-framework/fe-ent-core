@@ -1,9 +1,7 @@
 import fs from 'fs';
-import path from 'path';
 import consola from 'consola';
 import chalk from 'chalk';
-import { projRoot } from '@ent-build/build/utils';
-import { readPackageJSON } from 'pkg-types';
+import { getPackageManifest, projRoot } from '@ent-build/build/utils';
 import glob from 'fast-glob';
 
 const tagVersion = process.env.TAG_VERSION;
@@ -43,8 +41,7 @@ consola.log(chalk.cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n')));
       const allPackages = [...packages, ...extensions, ...apps];
 
       allPackages.map(async (pkg) => {
-
-        const json: Record<string, any> = readPackageJSON(        path.dirname(pkg));
+        const json: Record<string, any> = getPackageManifest(pkg);
         json.version = tagVersion;
         await fs.promises.writeFile(pkg, JSON.stringify(json, null, 2), {
           encoding: 'utf-8',
