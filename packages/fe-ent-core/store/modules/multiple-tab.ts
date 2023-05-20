@@ -1,15 +1,12 @@
 import { toRaw, unref } from 'vue';
 import { defineStore } from 'pinia';
 import { store } from '@ent-core/store/pinia';
-
 import { useGo, useRedo } from '@ent-core/hooks/web/use-page';
 import { Persistent } from '@ent-core/utils/cache/persistent';
-
-import { PageEnum } from '@ent-core/logics/enums/page-enum';
-import { routeBridge } from '@ent-core/router/bridge';
+import { PAGE_NOT_FOUND_NAME, REDIRECT_NAME } from '@ent-core/router/constant';
 import { getRawRoute } from '@ent-core/utils/base';
 import { MULTIPLE_TABS_KEY } from '@ent-core/logics/enums/cache-enum';
-
+import { useGlobalStoreWithOut } from '@ent-core/store';
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { useUserStore } from '@ent-core/store/modules/user';
 import type { RouteLocationNormalized, RouteLocationRaw, Router } from 'vue-router';
@@ -103,8 +100,8 @@ export const useMultipleTabStore = defineStore({
       const go = useGo(router);
       const len = this.tabList.length;
       const { path } = unref(router.currentRoute);
-
-      let toPath: PageEnum | string = PageEnum.BASE_HOME;
+      const globalStore = useGlobalStoreWithOut();
+      let toPath = globalStore.getBaseHomePath;
 
       if (len > 0) {
         const page = this.tabList[len - 1];
@@ -114,18 +111,17 @@ export const useMultipleTabStore = defineStore({
         }
       }
       // Jump to the current page and report an error
-      path !== toPath && go(toPath as PageEnum, true);
+      path !== toPath && go(toPath, true);
     },
 
     async addTab(route: RouteLocationNormalized) {
-      const redirectRoute = routeBridge.getRedirectRoute();
-      const pageNotFoundRoute = routeBridge.getPageNotFoundRoute();
       const { path, name, fullPath, params, query, meta } = getRawRoute(route);
       // 404  The page does not need to add a tab
+      const globalStore = useGlobalStoreWithOut();
       if (
-        path === PageEnum.ERROR_PAGE ||
+        path === globalStore.getErrorPagePath ||
         !name ||
-        [redirectRoute.name, pageNotFoundRoute.name].includes(name as string)
+        [REDIRECT_NAME, PAGE_NOT_FOUND_NAME].includes(name as string)
       ) {
         return;
       }
@@ -200,7 +196,8 @@ export const useMultipleTabStore = defineStore({
         // There is only one tab, then jump to the homepage, otherwise jump to the right tab
         if (this.tabList.length === 1) {
           const userStore = useUserStore();
-          toTarget = userStore.getUserInfo.homePath || PageEnum.BASE_HOME;
+          const globalStore = useGlobalStoreWithOut();
+          toTarget = userStore.getUserInfo.homePath || globalStore.getBaseHomePath;
         } else {
           //  Jump to the right tab
           const page = this.tabList[index + 1];

@@ -15,21 +15,16 @@ import type { RouteLocationNormalized, Router } from 'vue-router';
 import type { Nullable } from '@ent-core/types';
 
 // Don't change the order of creation
-export function setupRouterGuard(router: Router, needLogin: boolean) {
+export function setupRouterGuard(router: Router) {
   createPageGuard(router);
   createPageLoadingGuard(router);
   createHttpGuard(router);
   createScrollGuard(router);
   createMessageGuard(router);
   createProgressGuard(router);
-  if (needLogin) {
-    createPermissionGuard(router);
-  }
-
+  createPermissionGuard(router);
   createParamMenuGuard(router); // must after createPermissionGuard (menu has been built.)
-  if (!needLogin) {
-    createStateGuard(router);
-  }
+  createStateGuard(router);
 }
 
 /**

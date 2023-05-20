@@ -7,7 +7,7 @@ import { useErrorLogStoreWithOut } from '@ent-core/store/modules/error-log';
 import { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import type { App } from 'vue';
-import type { ErrorLogInfo } from '@ent-core/logics/types/store';
+import type { ErrorLogInfo } from '@ent-core/store/types/store';
 
 /**
  * Handling error stack information

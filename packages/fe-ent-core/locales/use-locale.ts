@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import { useLocaleStoreWithOut } from '@ent-core/store/modules/locale';
 import { i18n } from './setup-i18n';
 import { loadLocalePool, setHtmlPageLang } from './helper';
-import type { LocaleType } from '@ent-core/logics/types/config';
+import type { LocaleType } from '@ent-core/store/types/store';
 
 function setI18nLanguage(locale: LocaleType) {
   const localeStore = useLocaleStoreWithOut();
@@ -26,6 +26,9 @@ export function useLocale() {
   const getLocale = computed(() => localeStore.getLocale);
   const getShowLocalePicker = computed(() => localeStore.getShowPicker);
 
+  const setLocalePicker = (show: boolean) => {
+    localeStore.setShowPicker(show);
+  };
   const getAntdLocale = computed((): any => {
     // @ts-ignore
     return i18n.global.getLocaleMessage(unref(getLocale))?.antdLocale ?? {};
@@ -66,6 +69,7 @@ export function useLocale() {
     getLocale,
     getShowLocalePicker,
     changeLocale,
+    setLocalePicker,
     getAntdLocale,
     addMessages,
   };

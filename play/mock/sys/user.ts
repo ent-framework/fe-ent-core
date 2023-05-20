@@ -35,6 +35,21 @@ export function createFakeUserList() {
         },
       ],
     },
+    {
+      userId: '3',
+      username: 'developer',
+      password: '123456',
+      realName: 'develop user',
+      avatar: 'https://q1.qlogo.cn/g?b=qq&nk=339449197&s=640',
+      desc: 'developer',
+      token: 'fakeToken2',
+      roles: [
+        {
+          roleName: 'Tester',
+          value: 'test',
+        },
+      ],
+    },
   ];
 }
 

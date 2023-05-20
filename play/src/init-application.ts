@@ -1,9 +1,9 @@
-import { useUserStoreWithOut } from '@ent-core/store/modules/user';
+import { useUserStoreWithOut, useGlobalStoreWithOut } from '@ent-core/store';
 import { useI18n } from '@ent-core/hooks/web';
 import { initHttpBridge, initUserBridge } from '@ent-core/logics/bridge';
-import { loginApi, getUserInfo, getPermCode, doLogout } from '@ent-core/logics/api/user';
+import { doLogout, getPermCode, getUserInfo, loginApi } from '@ent-core/logics/api/user';
 import { getMenuList } from '@ent-core/logics/api/menu';
-import {useAppStoreWithOut} from "@ent-core/store";
+//import { useAppStoreWithOut } from '@ent-core/store';
 
 // 为了解耦 `packages/*` 下面各模块，不再相互依赖
 // 如果模块相互依赖严重，则需要对外提供解耦方式，由调用方去进行参数传递
@@ -58,16 +58,18 @@ export async function initApplication() {
   // ! 需要注意调用时机
   await initPackages();
 
+  const globalStore = useGlobalStoreWithOut();
+  globalStore.setBaseHomePath('/dashboard/workbench');
   // const { changePermissionMode } = usePermission();
   // await changePermissionMode('BACK');
   // 关闭multi-tab 和 keep-alive
-  const appStore = useAppStoreWithOut();
-  appStore.setProjectConfig({
-    multiTabsSetting: {
-      show: false,
-    },
-    openKeepAlive: false,
-  });
+  // const appStore = useAppStoreWithOut();
+  // appStore.setProjectConfig({
+  //   multiTabsSetting: {
+  //     show: false,
+  //   },
+  //   openKeepAlive: false,
+  // });
   // 内存回收
   window.addEventListener('beforeunload', function () {
     // @ts-ignore

@@ -1,12 +1,13 @@
 <template>
   <div :class="prefixCls" class="relative w-full h-full px-4">
-    <EntAppLocalePicker
-      v-if="!sessionTimeout && showLocale"
-      class="absolute text-white top-4 right-4 enter-x xl:text-gray-600"
-      :show-text="false"
-    />
-    <EntAppDarkModeToggle v-if="!sessionTimeout" class="top-3 right-7 enter-x" />
-
+    <div class="flex items-center absolute right-4 top-4">
+      <EntAppDarkModeToggle v-if="!sessionTimeout" class="enter-x mr-2" />
+      <EntAppLocalePicker
+        v-if="!sessionTimeout && showLocale"
+        class="text-white enter-x xl:text-gray-600"
+        :show-text="false"
+      />
+    </div>
     <span class="-enter-x xl:hidden">
       <AppLogo :always-show-title="true" />
     </span>

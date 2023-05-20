@@ -34,7 +34,6 @@
   export default defineComponent({
     name: 'EntTitle',
     components: { BasicHelp },
-    inheritAttrs: false,
     props,
     setup(props) {
       const { prefixCls } = useDesign('basic-title');

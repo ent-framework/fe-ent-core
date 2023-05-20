@@ -13,8 +13,7 @@
 <script lang="ts" setup>
   import { computed, unref } from 'vue';
   import { useDesign, useGlobSetting, useGo, useMenuSetting } from 'fe-ent-core/lib/hooks';
-  import { PageEnum } from 'fe-ent-core/lib/logics';
-  import { useUserStore } from 'fe-ent-core/lib/store';
+  import { useGlobalStore, useUserStore } from 'fe-ent-core/lib/store';
   import LogoImg from '../../../assets/logo.png';
   const props = defineProps({
     /**
@@ -35,6 +34,8 @@
   const { getCollapsedShowTitle } = useMenuSetting();
   const userStore = useUserStore();
   const { title } = useGlobSetting();
+  const globalStore = useGlobalStore();
+
   const go = useGo();
 
   const getAppLogoClass = computed(() => [
@@ -51,6 +52,6 @@
   ]);
 
   function goHome() {
-    go(userStore.getUserInfo.homePath || PageEnum.BASE_HOME);
+    go(userStore.getUserInfo.homePath || globalStore.getBaseHomePath);
   }
 </script>

@@ -32,7 +32,6 @@
 
   export default defineComponent({
     components: { EntArrow, EntTitle },
-    inheritAttrs: false,
     props,
     emits: ['expand'],
   });

@@ -1,17 +1,18 @@
 import { h } from 'vue';
 import { defineStore } from 'pinia';
 import { store } from '@ent-core/store/pinia';
-import { PageEnum } from '@ent-core/logics/enums/page-enum';
 import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '@ent-core/logics/enums/cache-enum';
 import { getAuthCache, setAuthCache } from '@ent-core/utils/auth';
 import { userBridge } from '@ent-core/logics/bridge';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { isArray } from '@ent-core/utils/is';
+import { useGlobalStore } from '@ent-core/store/modules/global';
+import { entRouter } from '@ent-core/router/base';
 import type { GetUserInfoModel, LoginParams } from '@ent-core/logics/model/user-model';
 import type { RoleEnum } from '@ent-core/logics/enums/role-enum';
 import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
-import type { UserInfo } from '@ent-core/logics/types/store';
+import type { UserInfo } from '@ent-core/store/types/store';
 import type { Nullable } from '@ent-core/types';
 
 export interface UserState {
@@ -109,9 +110,10 @@ export const useUserStore = defineStore({
       } else {
         if (goHome) {
           if (redirect && redirect.length > 0) {
-            window.location.href = redirect;
+            await entRouter.replace(redirect);
           } else {
-            window.location.href = PageEnum.BASE_INDEX as string;
+            const globalStore = useGlobalStore();
+            await entRouter.replace(userInfo?.homePath || globalStore.baseHomePath);
           }
         }
       }
@@ -145,7 +147,10 @@ export const useUserStore = defineStore({
       this.setToken(undefined);
       this.setSessionTimeout(false);
       this.setUserInfo(null);
-      goLogin && (window.location.href = PageEnum.BASE_LOGIN_PAGE as string);
+      if (goLogin) {
+        const globalStore = useGlobalStore();
+        await entRouter.push(globalStore.baseLoginPath);
+      }
     },
 
     /**

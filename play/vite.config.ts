@@ -13,12 +13,6 @@ export default defineConfig(({ command, mode }) => {
     },
     overrides: {
       build: {
-        rollupOptions: {
-          input: {
-            index: 'index.html',
-            login: 'login.html',
-          },
-        },
         minify: false,
         cssCodeSplit: true,
       },

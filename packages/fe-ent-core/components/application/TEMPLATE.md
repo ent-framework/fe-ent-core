@@ -21,6 +21,3 @@ description: 皮肤选择(暗黑模式切换)，语言切换，应用配置
 
 ### 语言切换
 %%API(src/app-locale-picker.vue)%%
-
-### 应用配置
-%%API(src/app-provider.vue)%%

@@ -20,7 +20,6 @@
   export default defineComponent({
     name: 'EntAppDarkModeToggle',
     components: { EntSvgIcon },
-    inheritAttrs: false,
     setup() {
       const { prefixCls } = useDesign('dark-switch');
       const { getDarkMode, setDarkMode, getShowDarkModeToggle } = useRootSetting();

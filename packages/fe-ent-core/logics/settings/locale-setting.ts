@@ -1,5 +1,5 @@
 import type { DropMenu } from '@ent-core/components/dropdown/interface';
-import type { LocaleSetting, LocaleType } from '@ent-core/logics/types/config';
+import type { LocaleSetting, LocaleType } from '@ent-core/store/types/store';
 
 export const LOCALE: { [key: string]: LocaleType } = {
   ZH_CN: 'zh_CN',

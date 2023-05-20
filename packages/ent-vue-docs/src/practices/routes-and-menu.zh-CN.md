@@ -1,6 +1,6 @@
 ```yaml
 meta:
-  type: Arco Pro 最佳实践
+  type: 最佳实践
 title: 路由与菜单
 description: 路由和菜单的生成
 ```

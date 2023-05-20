@@ -1,30 +1,49 @@
 import { usePermissionStoreWithOut } from '@ent-core/store/modules/permission';
-
-import { PageEnum } from '@ent-core/logics/enums/page-enum';
 import { useUserStoreWithOut } from '@ent-core/store/modules/user';
-
+import { useGlobalStoreWithOut } from '@ent-core/store/modules/global';
 import { PAGE_NOT_FOUND_NAME } from '@ent-core/router/constant';
-import { routeBridge } from '@ent-core/router/bridge';
+import { entRouter } from '@ent-core/router/base';
 import type { RouteRecordRaw, Router } from 'vue-router';
-
-const LOGIN_PATH = PageEnum.BASE_LOGIN_PAGE as string;
+import type { Recordable } from '@ent-core/types';
 
 export function createPermissionGuard(router: Router) {
-  const ROOT_PATH = routeBridge.getRootRoute().path;
+  const globalStore = useGlobalStoreWithOut();
   const userStore = useUserStoreWithOut();
   const permissionStore = usePermissionStoreWithOut();
+  const loginPath = globalStore.getBaseLoginPath;
+  const baseHome = globalStore.getBaseHomePath;
+
   router.beforeEach(async (to, from, next) => {
     if (
-      from.path === ROOT_PATH &&
-      to.path === PageEnum.BASE_HOME &&
+      from.path === '/' &&
+      to.path === baseHome &&
       userStore.getUserInfo.homePath &&
-      userStore.getUserInfo.homePath !== PageEnum.BASE_HOME
+      userStore.getUserInfo.homePath !== baseHome
     ) {
       next(userStore.getUserInfo.homePath);
       return;
     }
 
     const token = userStore.getToken;
+    const whitePathList = entRouter.getWhiteRouteList();
+    // Whitelist can be directly entered
+    if (whitePathList.includes(to.path)) {
+      //已登录
+      if (to.path === loginPath && token) {
+        const isSessionTimeout = userStore.getSessionTimeout;
+        try {
+          await userStore.afterLoginAction();
+          if (!isSessionTimeout) {
+            next((to.query?.redirect as string) || '/');
+            return;
+          }
+        } catch {
+          //
+        }
+      }
+      next();
+      return;
+    }
 
     // token does not exist
     if (!token) {
@@ -35,36 +54,39 @@ export function createPermissionGuard(router: Router) {
       }
 
       // redirect login page
-      let loinPage = LOGIN_PATH;
-      let currentPath = window.location.pathname;
+      const redirectData: { path: string; replace: boolean; query?: Recordable<string> } = {
+        path: loginPath,
+        replace: true,
+      };
       if (to.path) {
-        currentPath += `#${to.path}`;
-        loinPage += `#/?redirect=${encodeURIComponent(`${currentPath}`)}`;
+        redirectData.query = {
+          ...redirectData.query,
+          redirect: to.path,
+        };
       }
-      window.location.href = loinPage;
-      return;
+      console.log(redirectData);
+      next(redirectData);
     }
 
     // Jump to the 404 page after processing the login
     if (
-      from.path === LOGIN_PATH &&
+      from.path === loginPath &&
       to.name === PAGE_NOT_FOUND_NAME &&
-      to.fullPath !== (userStore.getUserInfo.homePath || PageEnum.BASE_HOME)
+      to.fullPath !== (userStore.getUserInfo.homePath || baseHome)
     ) {
-      next(userStore.getUserInfo.homePath || PageEnum.BASE_HOME);
+      next(userStore.getUserInfo.homePath || baseHome);
       return;
     }
 
     // get userinfo while last fetch time is empty
     if (userStore.getLastUpdateTime === 0) {
       //if from login path, won't load current inf again;
-      if (from.path !== LOGIN_PATH) {
+      if (from.path !== loginPath) {
         try {
           await userStore.getUserInfoAction();
         } catch {
-          if (from.path !== LOGIN_PATH) {
-            //next(LOGIN_PATH);
-            window.location.href = LOGIN_PATH as string;
+          if (from.path !== loginPath) {
+            next(loginPath);
           } else {
             next();
           }

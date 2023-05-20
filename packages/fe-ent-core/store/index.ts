@@ -6,3 +6,4 @@ export * from './modules/lock';
 export * from './modules/multiple-tab';
 export * from './modules/permission';
 export * from './modules/user';
+export * from './modules/global';

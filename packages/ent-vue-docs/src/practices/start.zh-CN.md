@@ -1,6 +1,6 @@
 ```yaml
 meta:
-  type: Arco Pro 最佳实践
+  type: 最佳实践
 title: 快速开始
 description: 请跟随以下步骤创建 Arco Design Pro
 ```

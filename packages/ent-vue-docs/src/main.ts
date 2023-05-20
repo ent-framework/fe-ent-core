@@ -4,7 +4,6 @@ import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
 import { Button, PageHeader, Tooltip } from 'ant-design-vue';
-
 import { initAppConfigStore } from '@ent-core/logics/init-app-config';
 import { setupErrorHandle } from '@ent-core/logics/error-handle';
 import { entRouter, transformRouteToMenu } from '@ent-core/router';
@@ -25,6 +24,7 @@ import '@ent-core/theme/index.less';
 import 'prismjs/themes/prism.css';
 
 import { initRouteAndLayout } from 'fe-ent-page';
+
 import ArcoArticle from './components/article/index.vue';
 import AnchorHead from './components/anchor-head/index.vue';
 import CodeBlock from './components/code-block/index.vue';
@@ -65,7 +65,8 @@ async function bootstrap() {
   app.use(Button);
   app.use(Tooltip);
 
-  const { getLocale, addMessages } = useLocale();
+  const { getLocale, addMessages, setLocalePicker } = useLocale();
+  setLocalePicker(false);
   addMessages('en', locales.en);
   addMessages('zh_CN', locales.zh_CN);
   const docsRoutes = getRoutes(getLocale.value);
@@ -76,7 +77,7 @@ async function bootstrap() {
   app.use(entRouter);
 
   // router-guard
-  setupRouterGuard(entRouter, false);
+  setupRouterGuard(entRouter);
 
   // Register global directive
   setupGlobDirectives(app);

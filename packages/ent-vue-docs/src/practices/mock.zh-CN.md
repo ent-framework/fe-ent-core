@@ -1,6 +1,6 @@
 ```yaml
 meta:
-  type: Arco Pro 最佳实践
+  type: 最佳实践
 title: 接口和数据模拟
 description: 网络请求、拦截器及模拟数据
 ```

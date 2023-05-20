@@ -8,7 +8,6 @@ import print from './utils/print';
 import templates from './templates';
 import parseInterface from './utils/parse-interface';
 import { getTemplate, toKebabCase } from './utils';
-import parseMaterial from './utils/parse-material';
 import { slotTagHandler } from './slot-tag-handler';
 import propExtHandler from './propExtHandler';
 import type { ComponentDoc } from 'vue-docgen-api';
@@ -130,6 +129,7 @@ const docgen = async ({ input, components }: { input?: string; components?: stri
     } else {
       files.push(...templates);
     }
+    //读取其他目录
   }
 
   print.info('Start to generate document...');
@@ -181,17 +181,6 @@ const docgen = async ({ input, components }: { input?: string; components?: stri
       /```yaml\n.+?```\n/s,
       (match) => `${match}\n*Auto translate by google.*\n`,
     );
-
-    zhResult = await parseMaterial(zhResult, {
-      matcher: /%%MATERIAL\((.+?)\)%%/,
-      dirname,
-    });
-
-    enResult = await parseMaterial(enResult, {
-      matcher: /%%MATERIAL\((.+?)\)%%/,
-      dirname,
-    });
-
     try {
       const outputPath = input
         ? path.resolve(process.cwd(), MD_MATERIAL_README)
@@ -209,7 +198,7 @@ const docgen = async ({ input, components }: { input?: string; components?: stri
         const componentName = getComponentNameFormDir(dirname);
 
         print.success(
-          `${chalk.black.bgGreen.bold(`Generate README of component ${componentName} Success!`)}`,
+          `Generate README of component ${chalk.black.bold(`${componentName}`)} Success!`,
         );
       }
     } catch (err) {

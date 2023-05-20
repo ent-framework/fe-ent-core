@@ -1,6 +1,6 @@
 ```yaml
 meta:
-  type: Arco Pro 最佳实践
+  type: 最佳实践
 title: 权限控制
 description: 权限控制是中后台场景非常常见的基础功能，在 v2.2.0 将权限控制功能集成至 Arco Design Pro
 ```

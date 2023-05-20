@@ -1,6 +1,11 @@
 export default {
   page: {
-    index: 'Home'
+    index: 'Home',
+  },
+  api: {
+    name: 'API',
+    router: 'Router',
+    store: 'Store',
   },
   docs: {
     name: 'Developer Guide',
@@ -27,6 +32,7 @@ export default {
     application: 'Skin/Locale/Configprovide',
     authority: 'Authority',
     clickoutside: 'ClickOutSide',
+    container: 'Container',
     icon: 'Icon',
     button: 'Button',
     basic: 'Title/Help',
@@ -169,8 +175,7 @@ export default {
     directory: 'Directory',
     layout: 'Layout',
     routesAndMenu: 'Routes and menu',
-    stateManagement: 'State management - Vuex',
-    stateManagementPinia: 'State management - Pinia',
+    stateManagement: 'State management - Pinia',
     i18n: 'Internationalization',
     mock: 'Interface and Mock',
     build: 'Build',

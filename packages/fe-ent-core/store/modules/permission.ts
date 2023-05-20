@@ -11,13 +11,12 @@ import { transformRouteToMenu } from '@ent-core/router/helper/menu-helper';
 
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
-import { routeBridge } from '@ent-core/router/bridge';
 import { filter } from '@ent-core/utils/helper/tree-helper';
 import { userBridge } from '@ent-core/logics/bridge';
 import { useMessage } from '@ent-core/hooks/web/use-message';
-import { PageEnum } from '@ent-core/logics/enums/page-enum';
 import { entRouter } from '@ent-core/router/base';
 import { useAppStoreWithOut } from './app';
+import { useGlobalStoreWithOut } from './global';
 import { useUserStore } from './user';
 import type { AppRouteRecordRaw, Menu, MenuModule } from '@ent-core/router/types';
 
@@ -112,6 +111,7 @@ export const usePermissionStore = defineStore({
       const { t } = useI18n();
       const userStore = useUserStore();
       const appStore = useAppStoreWithOut();
+      const globalStore = useGlobalStoreWithOut();
 
       let routes: AppRouteRecordRaw[] = [];
       const roleList = toRaw(userStore.getRoleList) || [];
@@ -135,7 +135,7 @@ export const usePermissionStore = defineStore({
        * */
       const patchHomeAffix = (routes: AppRouteRecordRaw[]) => {
         if (!routes || routes.length === 0) return;
-        let homePath: string = userStore.getUserInfo.homePath || PageEnum.BASE_HOME;
+        let homePath: string = userStore.getUserInfo.homePath || globalStore.getBaseHomePath;
         function patcher(routes: AppRouteRecordRaw[], parentPath = '') {
           if (parentPath) parentPath = `${parentPath}/`;
           routes.forEach((route: AppRouteRecordRaw) => {
@@ -162,7 +162,7 @@ export const usePermissionStore = defineStore({
 
       switch (permissionMode) {
         case PermissionModeEnum.ROLE:
-          routes = filter(entRouter.getBizRoutes(), routeFilter);
+          routes = filter(entRouter.getAuthRoutes(), routeFilter);
           routes = routes.filter(routeFilter);
           // Convert multi-level routing to level 2 routing
           routes = flatMultiLevelRoutes(routes);
@@ -170,7 +170,7 @@ export const usePermissionStore = defineStore({
           break;
 
         case PermissionModeEnum.ROUTE_MAPPING: {
-          routes = filter(entRouter.getBizRoutes(), routeFilter);
+          routes = filter(entRouter.getAuthRoutes(), routeFilter);
           routes = routes.filter(routeFilter);
           // 根据已有的树状路由提取Menu
           const menuList: AppRouteRecordRaw[] = transformRouteToMenu(routes, true);
@@ -217,7 +217,7 @@ export const usePermissionStore = defineStore({
             });
           }
           // 用服务器返回routeList去过滤router.bizRoutes，返回匹配的路由信息
-          routeList = backendRouteFilter(entRouter.getBizRoutes(), routeList);
+          routeList = backendRouteFilter(entRouter.getAuthRoutes(), routeList);
           //  Background routing to menu structure
           const backMenuList = transformRouteToMenu(routeList);
           this.setBackMenuList(backMenuList);
@@ -231,10 +231,15 @@ export const usePermissionStore = defineStore({
           break;
         }
       }
-      const pageNotFound = routeBridge.getPageNotFoundRoute();
-      normalizeRoutePath(pageNotFound);
-      // 404 路由一定要放最后面
-      routes.push(pageNotFound);
+      const pageNotFound = entRouter.getPageNotFoundRoute();
+      if (pageNotFound) {
+        normalizeRoutePath(pageNotFound);
+        // 404 路由一定要放最后面
+        routes.push(pageNotFound);
+      } else {
+        console.error('PageNotFound is not existing, please set it');
+      }
+
       patchHomeAffix(routes);
       return routes;
     },

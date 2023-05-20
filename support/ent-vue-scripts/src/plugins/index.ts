@@ -7,7 +7,6 @@ import { presetTypography, presetUno } from 'unocss';
 import UnoCSS from 'unocss/vite';
 import Inspect from 'vite-plugin-inspect';
 import mkcert from 'vite-plugin-mkcert';
-import svgLoader from 'vite-svg-loader';
 import { createAppConfigPlugin } from './appConfig';
 import { configCompressPlugin } from './compress';
 import { configHtmlPlugin } from './html';
@@ -41,7 +40,6 @@ async function createPlugins({
     vue(),
     vueJsx(),
     DefineOptions(),
-    svgLoader({ svgoConfig: {} }),
   ];
 
   const appConfigPlugin = await createAppConfigPlugin({ root, isBuild });

@@ -26,11 +26,4 @@ description: 皮肤选择(暗黑模式切换)，语言切换，应用配置
 
 
 ### 应用配置
-
-### `<ent-app-provider>` Props
-
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|prefix-cls|class style prefix|`string`|`defaultPrixCls`|
-
-
+%%API(src/app-provider.vue)%%

@@ -1,11 +1,6 @@
 import { transformChangelog, transformDemo, transformMain } from './markdown';
 import { getDescriptor } from './descriptor';
-import {
-  getFrontMatter,
-  getVueId,
-  isDemoMarkdown,
-  isVirtualModule,
-} from './utils';
+import { getFrontMatter, getVueId, isDemoMarkdown, isVirtualModule } from './utils';
 import marked from './marked';
 import type { Plugin } from 'vite';
 
@@ -42,9 +37,7 @@ export default function vueMdPlugin(): Plugin {
       }
 
       const transform =
-        'handler' in vuePlugin.transform!
-          ? vuePlugin.transform!.handler
-          : vuePlugin.transform!;
+        'handler' in vuePlugin.transform! ? vuePlugin.transform!.handler : vuePlugin.transform!;
 
       if (isVirtualModule(id)) {
         return transform?.call(this, code, getVueId(id));

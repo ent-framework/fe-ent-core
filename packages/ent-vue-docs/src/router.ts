@@ -27,6 +27,16 @@ const ButtonEn = () => import('@ent-core/components/button/README.en-US.md');
 const ClickOutSide = () => import('@ent-core/components/click-out-side/README.zh-CN.md');
 const ClickOutSideEn = () => import('@ent-core/components/click-out-side/README.en-US.md');
 
+const Container = () => import('@ent-core/components/container/README.zh-CN.md');
+const ContainerEn = () => import('@ent-core/components/container/README.en-US.md');
+
+const Router = () => import('@ent-core/router/README.zh-CN.md');
+const RouterEn = () => import('@ent-core/router/README.en-US.md');
+
+const Store = () => import('@ent-core/store/README.zh-CN.md');
+const StoreEn = () => import('@ent-core/store/README.en-US.md');
+
+
 const docs = [
   {
     name: 'start',
@@ -43,20 +53,16 @@ const docs = [
     component: Theme,
     componentEn: ThemeEn,
   },
-  // {
-  //   name: 'token',
-  //   component: () => import('./pages/token/token.vue'),
-  // },
   {
     name: 'i18n',
     component: I18n,
     componentEn: I18nEn,
   },
-  {
-    name: 'faq',
-    component: () => import('./docs/faq.zh-CN.md'),
-    componentEn: () => import('./docs/faq.en-US.md'),
-  },
+  // {
+  //   name: 'faq',
+  //   component: () => import('./docs/faq.zh-CN.md'),
+  //   componentEn: () => import('./docs/faq.en-US.md'),
+  // },
   {
     name: 'changelog',
     component: Changelog,
@@ -93,11 +99,6 @@ const practicesDocs = [
     name: 'permission',
     component: () => import('./practices/permission.zh-CN.md'),
     componentEn: () => import('./practices/permission.en-US.md'),
-  },
-  {
-    name: 'stateManagementPinia',
-    component: () => import('./practices/state-management-pinia.zh-CN.md'),
-    componentEn: () => import('./practices/state-management-pinia.en-US.md'),
   },
   {
     name: 'stateManagement',
@@ -140,6 +141,11 @@ const components = [
         component: Basic,
         componentEn: BasicEn,
       },
+      {
+        name: 'container',
+        component: Container,
+        componentEn: ContainerEn,
+      },
     ],
   },
   {
@@ -161,6 +167,19 @@ const components = [
         componentEn: ClickOutSideEn,
       },
     ],
+  },
+];
+
+const otherApis = [
+  {
+    name: 'router',
+    component: Router,
+    componentEn: RouterEn,
+  },
+  {
+    name: 'store',
+    component: Store,
+    componentEn: StoreEn,
   },
 ];
 
@@ -227,6 +246,19 @@ const getRoutes = (locale: string) => {
     });
   });
 
+  const apiMenu: AppRouteRecordRaw[] = [];
+  for (const item of otherApis) {
+    const path = `/api/${toKebabCase(item.name)}`;
+    apiMenu.push({
+      name: `api_${toKebabCase(item.name)}`,
+      path,
+      meta: {
+        title: `api.${item.name}`,
+      },
+      component: locale == 'en' && item.componentEn ? item.componentEn : item.component,
+    });
+  }
+
   routes.push({
     path: '/home',
     name: 'root',
@@ -275,7 +307,18 @@ const getRoutes = (locale: string) => {
       },
     });
   }
-
+  if (apiMenu.length > 0) {
+    routes.push({
+      component: 'LAYOUT',
+      name: 'api',
+      path: '/api',
+      redirect: `${apiMenu[0].path}`,
+      children: apiMenu,
+      meta: {
+        title: 'api.name',
+      },
+    });
+  }
   routes.push({
     path: '/:pathMatch(.*)*',
     redirect: '/home',

@@ -1,6 +1,5 @@
 import { t } from 'fe-ent-core/lib/hooks';
 import { COMPONENT_LAYOUT_NAME, PAGE_NOT_FOUND_NAME, REDIRECT_NAME } from 'fe-ent-core/lib/router';
-import { PageEnum } from 'fe-ent-core/lib/logics';
 import redirect from '../views/redirect/index.vue';
 import errorLog from '../views/error-log/index.vue';
 import exceptionView from '../views/exception/exception.vue';
@@ -82,11 +81,11 @@ export function getErrorLogRoute(): AppRouteRecordRaw {
   };
 }
 
-export function getRootRoute(): AppRouteRecordRaw {
+export function getRootRoute(rootPathRedirect?: string): AppRouteRecordRaw {
   return {
     path: '/',
     name: 'Root',
-    redirect: PageEnum.BASE_HOME,
+    redirect: `${rootPathRedirect || '/dashboard'}`,
     meta: {
       title: 'Root',
     },

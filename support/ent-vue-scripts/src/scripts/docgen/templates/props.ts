@@ -1,20 +1,14 @@
-import { ParamTag, PropDescriptor } from 'vue-docgen-api';
-import {
-  escapeCharacter,
-  toKebabCase,
-  unquote,
-  trimStr,
-  cleanStr,
-} from '../utils';
+import { cleanStr, escapeCharacter, toKebabCase, trimStr, unquote } from '../utils';
+import type { ParamTag, PropDescriptor } from 'vue-docgen-api';
 
 const tmpl = (
   props: PropDescriptor[],
   { isInterface = false }: { isInterface: boolean },
-  lang: string
+  lang: string,
 ) => {
   const displayableProps = props.filter(
     ({ name, description, tags }) =>
-      description || ['disabled'].includes(name) || lang in (tags ?? {})
+      description || ['disabled'].includes(name) || lang in (tags ?? {}),
   );
   const hasVersion = displayableProps.some((prop) => prop?.tags?.version);
   const content = displayableProps
@@ -29,15 +23,13 @@ const tmpl = (
       const fixedType = cleanStr(
         // tag 的 ts 类型有问题，所以忽略 ts 规则检查
         // @ts-ignore-next-line
-        trimStr(tags?.type?.[0]?.description || type?.name || '')
+        trimStr(tags?.type?.[0]?.description || type?.name || ''),
       );
 
       const getName = () =>
         `${isInterface ? name : toKebabCase(name)}${
           tags?.vModel || name === 'modelValue' ? ' **(v-model)**' : ''
-        }${
-          required ? (lang === 'zh' ? ' **(必填)**' : ' **(required)**') : ''
-        }`;
+        }${required ? (lang === 'zh' ? ' **(必填)**' : ' **(required)**') : ''}`;
 
       const getDescription = () => {
         if (!description && name === 'disabled') {
@@ -52,11 +44,10 @@ const tmpl = (
           return escapeCharacter(
             values
               .map((item) => {
-                const fixItem =
-                  fixedType === 'string' ? `'${unquote(item)}'` : item;
+                const fixItem = fixedType === 'string' ? `'${unquote(item)}'` : item;
                 return fixItem;
               })
-              .join(' | ')
+              .join(' | '),
           );
         }
         return escapeCharacter(fixedType);
@@ -80,9 +71,7 @@ const tmpl = (
           defaultValue?.func &&
           regForArrayDefaultValue.test(defaultValue.value)
         ) {
-          return cleanStr(
-            defaultValue.value.match(regForArrayDefaultValue)?.[1] || ''
-          );
+          return cleanStr(defaultValue.value.match(regForArrayDefaultValue)?.[1] || '');
         }
 
         if (fixedType === 'boolean') {
@@ -110,11 +99,7 @@ const tmpl = (
   };
 };
 
-export default (
-  props: PropDescriptor[],
-  options: { isInterface: boolean },
-  lang = 'zh'
-) => {
+export default (props: PropDescriptor[], options: { isInterface: boolean }, lang = 'zh') => {
   const { content, hasVersion } = tmpl(props, options, lang);
   if (!content) return '';
 

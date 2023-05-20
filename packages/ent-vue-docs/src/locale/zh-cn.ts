@@ -1,6 +1,11 @@
 export default {
   page: {
-    index: '首页'
+    index: '首页',
+  },
+  api: {
+    name: 'API',
+    router: '路由',
+    store: 'Store',
   },
   docs: {
     name: '开发指南',
@@ -28,6 +33,7 @@ export default {
     calendar: '日历 Calendar',
     authority: '权限 authority',
     clickoutside: 'ClickOutSide',
+    container: '容器 Container',
     icon: '图标 Icon',
     button: '按钮 Button',
     basic: '展示 Title/Help',
@@ -168,8 +174,7 @@ export default {
     directory: '目录结构',
     layout: '布局',
     routesAndMenu: '路由和菜单',
-    stateManagement: '状态管理-Vuex（已迁移）',
-    stateManagementPinia: '状态管理-Pinia',
+    stateManagement: '状态管理-Pinia',
     i18n: '国际化',
     mock: '接口和数据模拟',
     build: '打包构建',

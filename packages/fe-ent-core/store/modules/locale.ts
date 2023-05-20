@@ -1,10 +1,9 @@
 import { defineStore } from 'pinia';
 import { store } from '@ent-core/store/pinia';
-
 import { LOCALE_KEY } from '@ent-core/logics/enums/cache-enum';
 import { createLocalStorage } from '@ent-core/utils/cache';
 import { localeSetting } from '@ent-core/logics/settings/locale-setting';
-import type { LocaleSetting, LocaleType } from '@ent-core/logics/types/config';
+import type { LocaleSetting, LocaleType } from '@ent-core/store/types/store';
 
 const ls = createLocalStorage();
 
@@ -44,6 +43,9 @@ export const useLocaleStore = defineStore({
         ...localeSetting,
         ...this.localInfo,
       });
+    },
+    setShowPicker(show: boolean) {
+      this.localInfo = { ...this.localInfo, showPicker: show };
     },
   },
 });

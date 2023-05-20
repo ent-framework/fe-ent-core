@@ -14,7 +14,7 @@ import {
   ThemeEnum,
 } from '@ent-core/logics/enums/app-enum';
 import { HEADER_PRESET_BG_COLOR_LIST, SIDE_BAR_BG_COLOR_LIST } from './design-setting';
-import type { ProjectConfig } from '@ent-core/logics/types/config';
+import type { ProjectConfig } from '@ent-core/store/types/store';
 
 const primaryColor = '#0960bd';
 

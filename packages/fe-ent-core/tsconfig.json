@@ -4,9 +4,21 @@
     "baseUrl": ".",
     "types": ["unplugin-vue-define-options/macros-global", "vite/client"],
     "paths": {
-      "@ent-core/*": ["./*"],
+      "@ent-core/*": ["./*"]
     }
   },
+  "include": [
+    "components",
+    "directives",
+    "hooks",
+    "locales",
+    "logics",
+    "router",
+    "store",
+    "types",
+    "utils",
+    "index.ts",
+  ],
   "exclude": [
     "node_modules",
     "dist",

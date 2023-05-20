@@ -62,7 +62,6 @@
   export default defineComponent({
     name: 'EntCollapseContainer',
     components: { CollapseHeader, CollapseTransition, Skeleton },
-    inheritAttrs: false,
     props,
     setup(props) {
       const show = ref(true);

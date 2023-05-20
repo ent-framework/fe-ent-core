@@ -4,7 +4,7 @@ import { noop } from '@vueuse/core';
 import { getAppEnvConfig } from '@ent-core/utils/env';
 import { normalizeRoutePath } from '@ent-core/router/helper/route-helper';
 import { routerKey } from './router_symbols';
-import type { AppRouteModule, AppRouteRecordRaw, EntRouter } from './types';
+import type { AppRouteRecordRaw, EntRouter } from './types';
 import type { App } from 'vue';
 import type { RouteRecordRaw } from 'vue-router';
 
@@ -20,19 +20,19 @@ export function createEntRouter(): EntRouter {
     scrollBehavior: () => ({ left: 0, top: 0 }),
   });
 
-  const _whiteRouteList: string[] = [];
   const basicRoutes: AppRouteRecordRaw[] = [];
   const bizRoutes: AppRouteRecordRaw[] = [];
+  let pageNotFound: AppRouteRecordRaw;
 
   function getBasicRoutes() {
     return basicRoutes;
   }
 
-  function getBizRoutes() {
+  function getAuthRoutes() {
     return bizRoutes;
   }
 
-  function addBizRoute(route: AppRouteRecordRaw) {
+  function addAuthRoute(route: AppRouteRecordRaw) {
     normalizeRoutePath(route);
     bizRoutes.push(route);
     return noop;
@@ -43,8 +43,8 @@ export function createEntRouter(): EntRouter {
    * 可以通过addBizRoutes(import.meta.globEager("*.ts"))方式在启动类中批量导入
    * @param modules
    */
-  function addBizRoutes(modules: Record<string, Record<string, any>>) {
-    const routeModuleList: AppRouteModule[] = [];
+  function addAuthRoutes(modules: Record<string, Record<string, any>>) {
+    const routeModuleList: AppRouteRecordRaw[] = [];
     Object.keys(modules).forEach((key) => {
       const mod = modules[key].default || {};
       const modList = Array.isArray(mod) ? [...mod] : [mod];
@@ -66,23 +66,45 @@ export function createEntRouter(): EntRouter {
     basicRoutes.forEach((route) => {
       addBasicRoute(route);
     });
-    const whiteList: string[] = [];
-    getRouteNames(basicRoutes, whiteList);
-    _whiteRouteList.push(...whiteList);
     return noop;
   }
+  //所有的BasicRoutes的path抽出成白名单
   function getWhiteRouteList() {
-    return _whiteRouteList;
+    const paths: string[] = [];
+    basicRoutes.forEach((route) => {
+      getPathInner(route, paths);
+    });
+    return paths;
   }
+
+  function getPathInner(route: AppRouteRecordRaw, paths: string[]) {
+    paths.push(route.path);
+    const children = route.children || [];
+    children.forEach((child) => {
+      getPathInner(child, paths);
+    });
+  }
+
+  function getPageNotFoundRoute() {
+    return pageNotFound;
+  }
+
+  function setPageNotFoundRoute(route: AppRouteRecordRaw) {
+    pageNotFound = route;
+    return noop;
+  }
+
   const entRouter = {
     ...parent,
     getBasicRoutes,
     addBasicRoute,
     addBasicRoutes,
-    getBizRoutes,
-    addBizRoute,
-    addBizRoutes,
+    getAuthRoutes,
+    addAuthRoute,
+    addAuthRoutes,
     getWhiteRouteList,
+    getPageNotFoundRoute,
+    setPageNotFoundRoute,
     install(app: App) {
       parent.install(app);
       // @ts-ignore
@@ -102,23 +124,18 @@ export function useEntRouter(): EntRouter {
   return inject(routerKey) as EntRouter;
 }
 
-// reset router
+/**
+ * 重置路由，只保留基础路由，一般登出后需要调用
+ */
 export function resetRouter() {
   const _whiteRouteList = entRouter.getWhiteRouteList();
   entRouter.getRoutes().forEach((route) => {
-    const { name } = route;
-    if (name && !_whiteRouteList.includes(name as string)) {
+    const { name, path } = route;
+    if (name && !_whiteRouteList.includes(path as string)) {
       entRouter.hasRoute(name) && entRouter.removeRoute(name);
     }
   });
 }
-// 白名单应该包含基本静态路由
-const getRouteNames = (array: any[], whiteList: string[]) => {
-  array.forEach((item) => {
-    whiteList.push(item.name);
-    getRouteNames(item.children || [], whiteList);
-  });
-};
 
 // 内存回收
 window.addEventListener('beforeunload', () => {

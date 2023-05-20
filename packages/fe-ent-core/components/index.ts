@@ -1,3 +1,4 @@
+export * from './app-provider';
 export * from './application';
 export * from './authority';
 export * from './basic';

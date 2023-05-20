@@ -24,7 +24,7 @@
   import { useLocale } from '@ent-core/locales/use-locale';
   import { localeList } from '@ent-core/logics/settings/locale-setting';
   import type { DropMenu } from '@ent-core/components/dropdown/interface';
-  import type { LocaleType } from '@ent-core/logics/types/config';
+  import type { LocaleType } from '@ent-core/store/types/store';
 
   const props = {
     /**
@@ -40,7 +40,6 @@
   export default defineComponent({
     name: 'EntAppLocalePicker',
     components: { EntDropdown, EntIcon },
-    inheritAttrs: false,
     props,
     setup(props) {
       const selectedKeys = ref<string[]>([]);

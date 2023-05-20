@@ -3,7 +3,13 @@ import type { Nullable, RefType } from '@ent-core/types';
 export type ScrollType = 'default' | 'main';
 
 export interface CollapseContainerOptions {
+  /**
+   * 是否可折叠
+   */
   canExpand?: boolean;
+  /**
+   * 标题
+   */
   title?: string;
   helpMessage?: Array<any> | string;
 }

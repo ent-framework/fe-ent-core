@@ -34,7 +34,6 @@
   export default defineComponent({
     name: 'EntArrow',
     components: { Icon },
-    inheritAttrs: false,
     props,
     setup(props) {
       const { prefixCls } = useDesign('basic-arrow');

@@ -1,12 +1,12 @@
+import path from 'path';
+import { parse } from '@vue/compiler-sfc';
 import marked from 'marked';
 // @ts-ignore
 import { cleanUrl, escape } from 'marked/src/helpers';
 import yaml from 'js-yaml';
 import Prism from 'prismjs';
 import loadLanguages from 'prismjs/components/index';
-import { parse } from '@vue/compiler-sfc';
-import path from 'path';
-import { FileImportToken, I18nDescriptionToken } from './interface';
+import type { FileImportToken, I18nDescriptionToken } from './interface';
 
 const languages = ['shell', 'js', 'ts', 'jsx', 'tsx', 'less', 'diff'];
 loadLanguages(languages);
@@ -89,7 +89,7 @@ marked.setOptions({
   highlight(
     code: string,
     lang: string,
-    callback?: (error: any, code?: string) => void
+    callback?: (error: any, code?: string) => void,
   ): string | void {
     if (lang === 'vue') {
       const { descriptor, errors } = parse(code);
@@ -106,32 +106,17 @@ marked.setOptions({
         });
       }
 
-      let highlighted = Prism.highlight(
-        htmlContent,
-        Prism.languages.html,
-        'html'
-      );
+      let highlighted = Prism.highlight(htmlContent, Prism.languages.html, 'html');
       if (script?.content) {
         const lang = script.lang ?? 'js';
-        const highlightedScript = Prism.highlight(
-          script.content,
-          Prism.languages[lang],
-          lang
-        );
+        const highlightedScript = Prism.highlight(script.content, Prism.languages[lang], lang);
         highlighted = highlighted.replace('$script$', highlightedScript);
       }
       if (hasStyle) {
         styles.forEach((style, index) => {
           const lang = style.lang ?? 'css';
-          const highlightedStyle = Prism.highlight(
-            style.content,
-            Prism.languages[lang],
-            lang
-          );
-          highlighted = highlighted.replace(
-            `$style-${index}$`,
-            highlightedStyle
-          );
+          const highlightedStyle = Prism.highlight(style.content, Prism.languages[lang], lang);
+          highlighted = highlighted.replace(`$style-${index}$`, highlightedStyle);
         });
       }
 

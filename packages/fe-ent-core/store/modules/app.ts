@@ -7,14 +7,14 @@ import { darkMode } from '@ent-core/logics/settings/design-setting';
 import { resetRouter } from '@ent-core/router/base';
 import { deepMerge } from '@ent-core/utils/base';
 import type { ThemeEnum } from '@ent-core/logics/enums/app-enum';
-import type { BeforeMiniState } from '@ent-core/logics/types/store';
 import type {
+  BeforeMiniState,
   HeaderSetting,
   MenuSetting,
   MultiTabsSetting,
   ProjectConfig,
   TransitionSetting,
-} from '@ent-core/logics/types/config';
+} from '@ent-core/store/types/store';
 import type { DeepPartial, TimeoutHandle } from '@ent-core/types';
 
 export interface AppState {

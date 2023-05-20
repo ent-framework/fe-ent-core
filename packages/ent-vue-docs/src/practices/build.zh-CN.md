@@ -1,6 +1,6 @@
 ```yaml
 meta:
-  type: Arco Pro 最佳实践
+  type: 最佳实践
 title: 打包构建
 description: 打包代码
 ```

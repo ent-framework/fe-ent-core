@@ -1,6 +1,6 @@
 ```yaml
 meta:
-  type: Arco Pro 最佳实践
+  type: 最佳实践
 title: npm 命令
 description: package.json script 预置方便实用的命令
 ```

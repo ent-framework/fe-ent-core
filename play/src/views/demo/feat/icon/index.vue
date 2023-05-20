@@ -14,6 +14,7 @@
 
     <CollapseContainer title="IconIfy 组件使用" class="my-5">
       <div class="flex justify-around flex-wrap">
+        <EntIcon icon="ion:language" />
         <EntIcon icon="ion:layers-outline" :size="30" />
         <EntIcon icon="ion:bar-chart-outline" :size="30" />
         <EntIcon icon="ion:tv-outline" :size="30" />

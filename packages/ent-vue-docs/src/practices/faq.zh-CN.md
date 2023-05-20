@@ -1,6 +1,6 @@
 ```yaml
 meta:
-  type: Arco Pro 最佳实践
+  type: 最佳实践
 title: 常见问题
 description: Arco Design Pro Vue 常见问题合集
 ```

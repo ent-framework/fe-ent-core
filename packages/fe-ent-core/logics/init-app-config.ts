@@ -21,7 +21,7 @@ import { getCommonStoragePrefix, getStorageShortName } from '@ent-core/utils/env
 import { Persistent } from '@ent-core/utils/cache/persistent';
 import { deepMerge } from '@ent-core/utils';
 import { ThemeEnum } from '@ent-core/logics/enums/app-enum';
-import type { ProjectConfig } from '@ent-core/logics/types/config';
+import type { ProjectConfig } from '@ent-core/store/types/store';
 
 // Initial project configuration
 export async function initAppConfigStore() {

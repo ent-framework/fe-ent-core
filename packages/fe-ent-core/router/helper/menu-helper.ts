@@ -3,7 +3,7 @@ import { cloneDeep } from 'lodash-es';
 import { findPath, treeMap } from '@ent-core/utils/helper/tree-helper';
 import { isUrl } from '@ent-core/utils/is';
 import type { RouteParams } from 'vue-router';
-import type { AppRouteModule, AppRouteRecordRaw, Menu, MenuModule } from '@ent-core/router/types';
+import type { AppRouteRecordRaw, Menu, MenuModule } from '@ent-core/router/types';
 import type { Recordable } from '@ent-core/types';
 
 export function getAllParentPath<T = Recordable>(treeData: T[], path: string) {
@@ -41,7 +41,7 @@ export function transformMenuModule(menuModule: MenuModule): Menu {
 }
 
 // 将路由转换成菜单
-export function transformRouteToMenu(routeModList: AppRouteModule[], routerMapping = false) {
+export function transformRouteToMenu(routeModList: AppRouteRecordRaw[], routerMapping = false) {
   // 借助 lodash 深拷贝
   const cloneRouteModList = cloneDeep(routeModList);
   const routeList: AppRouteRecordRaw[] = [];

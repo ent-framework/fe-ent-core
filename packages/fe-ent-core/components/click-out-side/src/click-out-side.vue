@@ -10,7 +10,6 @@
 
   export default defineComponent({
     name: 'EntClickOutSide',
-    inheritAttrs: false,
     emits: [
       /**
        * 组件mounted是触发

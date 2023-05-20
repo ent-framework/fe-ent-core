@@ -8,7 +8,7 @@ export default defineConfig(({ command, mode }) => {
     mode,
     overrides: {
       build: {
-        minify: true,
+        minify: false,
         cssCodeSplit: true,
         emptyOutDir: true,
         outDir: `${root}/dist`,

@@ -5,7 +5,7 @@ import type { AppRouteRecordRaw } from 'fe-ent-core/lib/router';
 import './components/index.less';
 
 export const LoginRoute: AppRouteRecordRaw = {
-  path: '/',
+  path: '/login',
   name: 'Login',
   component: Login,
   meta: {

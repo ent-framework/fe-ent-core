@@ -15,7 +15,6 @@ function commonConfig({ command, mode }: ConfigEnv): UserConfig {
     server: {
       host: true,
     },
-
     build: {
       reportCompressedSize: false,
       chunkSizeWarningLimit: 1500,

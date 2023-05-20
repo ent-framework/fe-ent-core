@@ -1,6 +1,6 @@
-import { Token, Tokens } from 'marked';
 import path from 'path';
-import { FileImportToken, I18nDescriptionToken } from './interface';
+import type { Token, Tokens } from 'marked';
+import type { FileImportToken, I18nDescriptionToken } from './interface';
 
 export function isParagraph(token: Token): token is Tokens.Paragraph {
   return (token as Tokens.Paragraph).type === 'paragraph';
@@ -18,9 +18,7 @@ export const isFileImport = (token: any): token is FileImportToken => {
   return token.type === 'fileImport';
 };
 
-export const isI18nDescription = (
-  token: any
-): token is I18nDescriptionToken => {
+export const isI18nDescription = (token: any): token is I18nDescriptionToken => {
   return token.type === 'i18nDescription';
 };
 

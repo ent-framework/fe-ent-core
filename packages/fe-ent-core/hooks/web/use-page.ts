@@ -1,12 +1,9 @@
 import { unref } from 'vue';
 import { useRouter } from 'vue-router';
-import { PageEnum } from '@ent-core/logics/enums/page-enum';
 import { isString } from '@ent-core/utils/is';
-
+import { useGlobalStore } from '@ent-core/store';
 import { REDIRECT_NAME } from '@ent-core/router/constant';
 import type { RouteLocationRaw, Router } from 'vue-router';
-
-export type RouteLocationRawEx = Omit<RouteLocationRaw, 'path'> & { path: PageEnum };
 
 function handleError(e: Error) {
   console.error(e);
@@ -19,7 +16,8 @@ export function useGo(_router?: Router) {
     router = useRouter();
   }
   const { push, replace } = _router || router;
-  function go(opt: PageEnum | RouteLocationRawEx | string = PageEnum.BASE_HOME, isReplace = false) {
+  const globalStore = useGlobalStore();
+  function go(opt: RouteLocationRaw | string = globalStore.getBaseHomePath, isReplace = false) {
     if (!opt) {
       return;
     }

@@ -1,7 +1,8 @@
 <script lang="tsx">
   import { computed, defineComponent, ref, unref } from 'vue';
   import { Button, Result } from 'ant-design-vue';
-  import { ExceptionEnum, PageEnum } from 'fe-ent-core/lib/logics';
+  import { ExceptionEnum } from 'fe-ent-core/lib/logics';
+  import { useGlobalStore } from 'fe-ent-core/lib/store';
   import { useRoute } from 'vue-router';
   import { useDesign, useGo, useI18n, useRedo } from 'fe-ent-core/lib/hooks';
   import netWorkSvg from '../../svg/net-error.svg';
@@ -63,13 +64,13 @@
 
       const backLoginI18n = t('sys.exception.backLogin');
       const backHomeI18n = t('sys.exception.backHome');
-
+      const globalStore = useGlobalStore();
       unref(statusMapRef).set(ExceptionEnum.PAGE_NOT_ACCESS, {
         title: '403',
         status: `${ExceptionEnum.PAGE_NOT_ACCESS}`,
         subTitle: t('sys.exception.subTitle403'),
         btnText: props.full ? backLoginI18n : backHomeI18n,
-        handler: () => (props.full ? go(PageEnum.BASE_LOGIN) : go()),
+        handler: () => (props.full ? go(globalStore.getBaseLoginPath) : go()),
       });
 
       unref(statusMapRef).set(ExceptionEnum.PAGE_NOT_FOUND, {
@@ -77,7 +78,7 @@
         status: `${ExceptionEnum.PAGE_NOT_FOUND}`,
         subTitle: t('sys.exception.subTitle404'),
         btnText: props.full ? backLoginI18n : backHomeI18n,
-        handler: () => (props.full ? go(PageEnum.BASE_LOGIN) : go()),
+        handler: () => (props.full ? go(globalStore.getBaseLoginPath) : go()),
       });
 
       unref(statusMapRef).set(ExceptionEnum.ERROR, {

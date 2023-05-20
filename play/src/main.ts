@@ -18,6 +18,7 @@ import 'ant-design-vue/dist/antd.less';
 import '@ent-core/theme/index.less';
 
 import { getBasicRoutes, initRouteAndLayout } from '@fe-ent-app/page';
+import { LoginRoute } from '@fe-ent-app/login';
 
 import App from './App.vue';
 async function bootstrap() {
@@ -39,17 +40,18 @@ async function bootstrap() {
   // Register global components
   registerGlobComp(app);
 
-  initRouteAndLayout(app);
+  initRouteAndLayout(app, entRouter);
 
   app.use(EntCore);
 
+  entRouter.addBasicRoutes([LoginRoute]);
   entRouter.addBasicRoutes(getBasicRoutes());
-  entRouter.addBizRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
+  entRouter.addAuthRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
 
   app.use(entRouter);
 
   // router-guard
-  setupRouterGuard(entRouter, true);
+  setupRouterGuard(entRouter);
 
   // Register global directive
   setupGlobDirectives(app);
