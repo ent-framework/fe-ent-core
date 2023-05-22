@@ -3,13 +3,13 @@ import { defineStore } from 'pinia';
 import { store } from '@ent-core/store/pinia';
 import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '@ent-core/logics/enums/cache-enum';
 import { getAuthCache, setAuthCache } from '@ent-core/utils/auth';
-import { userBridge } from '@ent-core/logics/bridge';
+import { Factory } from '@ent-core/logics/factory';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { isArray } from '@ent-core/utils/is';
 import { useGlobalStore } from '@ent-core/store/modules/global';
 import { entRouter } from '@ent-core/router/base';
-import type { GetUserInfoModel, LoginParams } from '@ent-core/logics/model/user-model';
+import type { GetUserInfoModel, LoginParams } from '@ent-core/logics/types/user';
 import type { RoleEnum } from '@ent-core/logics/enums/role-enum';
 import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
 import type { UserInfo } from '@ent-core/store/types/store';
@@ -89,7 +89,7 @@ export const useUserStore = defineStore({
     ): Promise<GetUserInfoModel | null> {
       try {
         const { goHome = true, mode, redirect, ...loginParams } = params;
-        const data = await userBridge.loginApi(loginParams, mode);
+        const data = await Factory.getUserFactory().loginApi(loginParams, mode);
         const { token } = data;
 
         // save token
@@ -121,7 +121,7 @@ export const useUserStore = defineStore({
     },
     async getUserInfoAction(): Promise<UserInfo | null> {
       if (!this.getToken) return null;
-      const userInfo = await userBridge.getUserInfo();
+      const userInfo = await Factory.getUserFactory().getUserInfo();
       const { roles = [] } = userInfo;
       if (isArray(roles)) {
         const roleList = roles.map((item) => item.value) as RoleEnum[];
@@ -139,7 +139,7 @@ export const useUserStore = defineStore({
     async logout(goLogin = false) {
       if (this.getToken) {
         try {
-          await userBridge.doLogout();
+          await Factory.getUserFactory().doLogout();
         } catch {
           console.error('注销Token失败');
         }

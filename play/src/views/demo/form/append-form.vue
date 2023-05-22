@@ -12,11 +12,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntForm, useForm } from '@ent-core/components/form';
-  import { EntCollapseContainer } from '@ent-core/components/container';
+  import { EntButton, EntCollapseContainer, EntForm, EntPageWrapper, useForm } from 'fe-ent-core';
   import { Input } from 'ant-design-vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
-  import { EntButton } from '@ent-core/components/Button';
 
   export default defineComponent({
     components: {
@@ -77,7 +74,7 @@
           {
             field: `field${n.value}a`,
             component: 'Input',
-            label: '字段' + n.value,
+            label: `字段${n.value}`,
             colProps: {
               span: 8,
             },
@@ -89,7 +86,7 @@
           {
             field: `field${n.value}b`,
             component: 'Input',
-            label: '字段' + n.value,
+            label: `字段${n.value}`,
             colProps: {
               span: 8,
             },

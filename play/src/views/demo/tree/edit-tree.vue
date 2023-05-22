@@ -4,16 +4,16 @@
       <EntTree
         class="w-1/3"
         title="右侧操作按钮/自定义图标"
-        helpMessage="帮助信息"
-        :treeData="treeData"
-        :actionList="actionList"
-        :renderIcon="createIcon"
+        help-message="帮助信息"
+        :tree-data="treeData"
+        :action-list="actionList"
+        :render-icon="createIcon"
       />
       <EntTree
         class="w-1/3 mx-4"
         title="右键菜单"
-        :treeData="treeData"
-        :beforeRightClick="getRightMenuList"
+        :tree-data="treeData"
+        :before-right-click="getRightMenuList"
       />
       <EntTree
         class="w-1/3"
@@ -21,19 +21,18 @@
         toolbar
         checkable
         search
-        :treeData="treeData"
-        :beforeRightClick="getRightMenuList"
+        :tree-data="treeData"
+        :before-right-click="getRightMenuList"
       />
     </div>
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { EntTree, TreeActionItem } from '@ent-core/components/tree';
-  import { ContextMenuItem } from '@ent-core/components/context-menu';
+  import { EntPageWrapper, EntTree } from 'fe-ent-core';
+  import { DeleteOutlined, PlusOutlined } from '@ant-design/icons-vue';
   import { treeData } from './data';
-  import { PlusOutlined, DeleteOutlined } from '@ant-design/icons-vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import type { ContextMenuItem, TreeActionItem } from 'fe-ent-core';
 
   export default defineComponent({
     components: { EntTree, EntPageWrapper },

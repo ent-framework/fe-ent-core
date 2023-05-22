@@ -1,5 +1,5 @@
 import type { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
-import type { RoleInfo } from '@ent-core/logics/model/user-model';
+import type { RoleInfo } from '@ent-core/logics/types/user';
 import type {
   MenuModeEnum,
   MenuTypeEnum,

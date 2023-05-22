@@ -2,14 +2,14 @@
   <div class="p-4">
     <EntTable
       title="基础示例"
-      titleHelpMessage="温馨提醒"
+      title-help-message="温馨提醒"
       :columns="columns"
-      :dataSource="data"
-      :canResize="canResize"
+      :data-source="data"
+      :can-resize="canResize"
       :loading="loading"
       :striped="striped"
       :bordered="border"
-      showTableSetting
+      show-table-setting
       :pagination="pagination"
       @columns-change="handleColumnChange"
     >
@@ -30,8 +30,9 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntTable, ColumnChangeParam } from '@ent-core/components/table';
+  import { EntTable } from 'fe-ent-core';
   import { getBasicColumns, getBasicData } from './table-data';
+  import type { ColumnChangeParam } from 'fe-ent-core';
 
   export default defineComponent({
     components: { EntTable },

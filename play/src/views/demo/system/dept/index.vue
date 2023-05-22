@@ -32,10 +32,9 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import { EntTable, useTable, EntTableAction } from '@ent-core/components/table';
+  import { EntTable, EntTableAction, useModal, useTable } from 'fe-ent-core';
   import { getDeptList } from '/@/api/system';
 
-  import { useModal } from '@ent-core/components/modal';
   import DeptModal from './dept-modal.vue';
 
   import { columns, searchFormSchema } from './dept-data';

@@ -2,7 +2,7 @@
   <EntPageWrapper
     :title="`用户` + userId + `的资料`"
     content="这是用户资料详情页面。本页面仅用于演示相同路由在tab中打开多个页面并且显示不同的数据"
-    contentBackground
+    content-background
     @back="goBack"
   >
     <template #extra>
@@ -10,7 +10,7 @@
       <ent-button type="primary"> 修改密码 </ent-button>
     </template>
     <template #footer>
-      <a-tabs default-active-key="detail" v-model:activeKey="currentKey">
+      <a-tabs v-model:activeKey="currentKey" default-active-key="detail">
         <a-tab-pane key="detail" tab="用户资料" />
         <a-tab-pane key="logs" tab="操作日志" />
       </a-tabs>
@@ -29,9 +29,7 @@
 <script>
   import { defineComponent, ref } from 'vue';
   import { useRoute } from 'vue-router';
-  import { EntPageWrapper } from '@ent-core/components/page';
-  import { useGo } from '@ent-core/hooks/web/use-page';
-  import { useTabs } from '@ent-core/hooks/web/use-tabs';
+  import { EntPageWrapper, useGo, useTabs } from 'fe-ent-core';
   import { Tabs } from 'ant-design-vue';
   export default defineComponent({
     name: 'AccountDetail',
@@ -47,7 +45,7 @@
       // 本页代码仅作演示，实际应当通过userId从接口获得用户的相关资料
 
       // 设置Tab的标题（不会影响页面标题）
-      setTitle('详情：用户' + userId.value);
+      setTitle(`详情：用户${userId.value}`);
 
       // 页面左侧点击返回链接时的操作
       function goBack() {

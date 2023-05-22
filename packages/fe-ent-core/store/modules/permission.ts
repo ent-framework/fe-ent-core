@@ -12,7 +12,7 @@ import { transformRouteToMenu } from '@ent-core/router/helper/menu-helper';
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
 import { filter } from '@ent-core/utils/helper/tree-helper';
-import { userBridge } from '@ent-core/logics/bridge';
+import { Factory } from '@ent-core/logics/factory';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { entRouter } from '@ent-core/router/base';
 import { useAppStoreWithOut } from './app';
@@ -103,7 +103,7 @@ export const usePermissionStore = defineStore({
       this.lastBuildMenuTime = 0;
     },
     async changePermissionCode() {
-      const codeList = await userBridge.getPermCode();
+      const codeList = await Factory.getUserFactory().getPermCode();
       this.setPermCodeList(codeList);
     },
     // 构建路由信息
@@ -205,7 +205,9 @@ export const usePermissionStore = defineStore({
           try {
             await this.changePermissionCode();
             // 从后端获取Menu
-            routeList = (await userBridge.getMenuList({ entryPath })) as AppRouteRecordRaw[];
+            routeList = (await Factory.getMenuFactory().getMenuList({
+              entryPath,
+            })) as AppRouteRecordRaw[];
           } catch (error) {
             console.error(error);
           }

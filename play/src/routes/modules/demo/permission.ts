@@ -1,8 +1,5 @@
-import type { AppRouteModule } from '@ent-core/router/types';
-
-import { getParentLayout } from '@ent-core/router/constant';
-import { RoleEnum } from '@ent-core/logics/enums/role-enum';
-import { t } from '@ent-core/hooks/web/use-i18n';
+import { RoleEnum, getParentLayout, t } from 'fe-ent-core';
+import type { AppRouteModule } from 'fe-ent-core';
 
 const permission: AppRouteModule = {
   path: '/permission',

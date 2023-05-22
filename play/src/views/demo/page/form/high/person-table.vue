@@ -12,13 +12,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import {
-    EntTable,
-    useTable,
-    EntTableAction,
-    BasicColumn,
-    EditRecordRow,
-  } from '@ent-core/components/table';
+  import { EntTable, EntTableAction, useTable } from 'fe-ent-core';
+  import type { BasicColumn, EditRecordRow } from 'fe-ent-core';
 
   const columns: BasicColumn[] = [
     {
@@ -59,7 +54,7 @@
     components: { EntTable, EntTableAction },
     setup() {
       const [registerTable, { getDataSource }] = useTable({
-        columns: columns,
+        columns,
         showIndexColumn: false,
         dataSource: data,
         actionColumn: {

@@ -3,22 +3,22 @@ import 'uno.css';
 import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
-import { initAppConfigStore } from '@ent-core/logics/init-app-config';
-import { setupErrorHandle } from '@ent-core/logics/error-handle';
-import { entRouter } from '@ent-core/router';
-import { setupRouterGuard } from '@ent-core/router/guard';
-import { setupStore } from '@ent-core/store';
-import { setupGlobDirectives } from '@ent-core/directives';
-import { setupI18n } from '@ent-core/locales/setup-i18n';
-import { registerGlobComp } from '@ent-core/components/register-glob-comp';
+import EntCore, {
+  entRouter,
+  initAppConfigStore,
+  registerGlobComp,
+  setupErrorHandle,
+  setupGlobDirectives,
+  setupI18n,
+  setupRouterGuard,
+  setupStore,
+} from 'fe-ent-core';
 import { initApplication } from '/@/init-application';
-import EntCore from '@ent-core/index';
 
 import 'ant-design-vue/dist/antd.less';
-import '@ent-core/theme/index.less';
 
-import { getBasicRoutes, initRouteAndLayout } from '@fe-ent-app/page';
-import { LoginRoute } from '@fe-ent-app/login';
+import { getBasicRoutes, initRouteAndLayout } from 'fe-ent-page';
+import { LoginRoute } from 'fe-ent-login';
 
 import App from './App.vue';
 async function bootstrap() {

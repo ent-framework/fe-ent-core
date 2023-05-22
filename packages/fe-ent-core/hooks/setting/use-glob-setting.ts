@@ -12,6 +12,7 @@ export const useGlobSetting = (): Readonly<GlobConfig> => {
     VITE_GLOB_API_REQUEST_TIMEOUT,
     VITE_GLOB_UPLOAD_URL,
     VITE_GLOB_LAYOUT_NAME,
+    VITE_GLOB_LOGO_URL,
   } = getAppEnvConfig();
 
   if (!/[a-zA-Z_]*/.test(VITE_GLOB_APP_SHORT_NAME)) {
@@ -24,6 +25,7 @@ export const useGlobSetting = (): Readonly<GlobConfig> => {
   const glob: Readonly<GlobConfig> = {
     shortName: VITE_GLOB_APP_SHORT_NAME,
     title: VITE_GLOB_APP_TITLE,
+    logoUrl: VITE_GLOB_LOGO_URL,
     apiUrl: VITE_GLOB_API_URL,
     userApiPrefix: VITE_GLOB_API_USER_PREFIX,
     apiGlobalPrefix: VITE_GLOB_API_URL_PREFIX,

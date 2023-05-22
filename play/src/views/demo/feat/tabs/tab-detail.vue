@@ -6,8 +6,7 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
-  import { useTabs } from '@ent-core/hooks/web/use-tabs';
+  import { EntPageWrapper, useTabs } from 'fe-ent-core';
   import { useRoute } from 'vue-router';
 
   export default defineComponent({

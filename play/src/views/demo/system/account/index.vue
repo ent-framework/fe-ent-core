@@ -1,7 +1,7 @@
 <template>
-  <EntPageWrapper dense contentFullHeight fixedHeight contentClass="flex">
+  <EntPageWrapper dense content-full-height fixed-height content-class="flex">
     <DeptTree class="w-1/4 xl:w-1/5" @select="handleSelect" />
-    <EntTable @register="registerTable" class="w-3/4 xl:w-4/5" :searchInfo="searchInfo">
+    <EntTable class="w-3/4 xl:w-4/5" :search-info="searchInfo" @register="registerTable">
       <template #toolbar>
         <ent-button type="primary" @click="handleCreate">新增账号</ent-button>
       </template>
@@ -40,16 +40,13 @@
 <script lang="ts">
   import { defineComponent, reactive } from 'vue';
 
-  import { EntTable, useTable, EntTableAction } from '@ent-core/components/table';
+  import { EntPageWrapper, EntTable, EntTableAction, useGo, useModal, useTable } from 'fe-ent-core';
   import { getAccountList } from '/@/api/system';
-  import { EntPageWrapper } from '@ent-core/components/page';
   import DeptTree from './dept-tree.vue';
 
-  import { useModal } from '@ent-core/components/modal';
   import AccountModal from './account-modal.vue';
 
   import { columns, searchFormSchema } from './account-data';
-  import { useGo } from '@ent-core/hooks/web/use-page';
 
   export default defineComponent({
     name: 'AccountManagement',
@@ -117,7 +114,7 @@
       }
 
       function handleView(record: Recordable) {
-        go('/system/account_detail/' + record.id);
+        go(`/system/account_detail/${record.id}`);
       }
 
       return {

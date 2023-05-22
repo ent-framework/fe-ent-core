@@ -1,26 +1,28 @@
 {
   "name": "fe-ent-qrcode",
-  "version": "1.5.24",
+  "version": "1.5.36",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "typings": "dist/types/index.d.ts",
-  "sideEffects": [
-    "dist"
-  ],
   "files": [
     "dist",
-    "json",
-    "README.md"
+    "es",
+    "lib",
+    "json"
+  ],
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "typings": "lib/index.d.ts",
+  "unpkg": "dist/index.full.min.js",
+  "sideEffects": [
+    "dist/*"
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
     "build": "pnpm run build:library && pnpm run docgen && pnpm run jsongen",
     "docgen": "ent-vue-scripts docgen",
-    "build:library": "ent-vue-scripts build:library",
+    "build:library": "ent-vue-scripts build:library -u",
     "jsongen": "ent-vue-scripts jsongen",
     "dtsgen": "ent-vue-scripts dtsgen --lib"
   },
@@ -34,6 +36,7 @@
     "fe-ent-vue-scripts": "^1.5.14",
     "rimraf": "^5.0.0",
     "@types/tinycolor2": "^1.4.2",
+    "@types/qrcode": "^1.4.1",
     "vite": "4.2.2"
   },
   "repository": {

@@ -11,9 +11,9 @@
         <Avatar :size="60" :src="record.avatar" />
       </template>
       <template #img="{ text }">
-        <EntTableImg :size="60" :simpleShow="true" :imgList="text" />
+        <EntTableImg :size="60" :simple-show="true" :img-list="text" />
       </template>
-      <template #imgs="{ text }"> <EntTableImg :size="60" :imgList="text" /> </template>
+      <template #imgs="{ text }"> <EntTableImg :size="60" :img-list="text" /> </template>
 
       <template #category="{ record }">
         <Tag color="green">
@@ -25,8 +25,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable, BasicColumn, EntTableImg } from '@ent-core/components/table';
-  import { Tag, Avatar } from 'ant-design-vue';
+  import type { BasicColumn } from 'fe-ent-core';
+  import { EntTable, EntTableImg, useTable } from 'fe-ent-core';
+  import { Avatar, Tag } from 'ant-design-vue';
   import { demoListApi } from '/@/api/table';
   const columns: BasicColumn[] = [
     {
@@ -85,7 +86,7 @@
         title: '自定义列内容',
         titleHelpMessage: '表格中所有头像、图片均为mock生成，仅用于演示图片占位',
         api: demoListApi,
-        columns: columns,
+        columns,
         bordered: true,
         showTableSetting: true,
       });

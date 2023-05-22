@@ -11,9 +11,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntForm, FormSchema, useForm } from '@ent-core/components/form';
-  import { EntCollapseContainer } from '@ent-core/components/container';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntCollapseContainer, EntForm, EntPageWrapper, useForm } from 'fe-ent-core';
+  import type { FormSchema } from 'fe-ent-core';
 
   const getSchamas = (): FormSchema[] => {
     return [
@@ -163,9 +162,9 @@
       const extraSchemas: FormSchema[] = [];
       for (let i = 14; i < 30; i++) {
         extraSchemas.push({
-          field: 'field' + i,
+          field: `field${i}`,
           component: 'Input',
-          label: '字段' + i,
+          label: `字段${i}`,
           colProps: {
             span: 8,
           },

@@ -1,12 +1,13 @@
 <template>
   <Card title="成交占比" :loading="loading">
-    <div ref="chartRef" :style="{ width, height }"></div>
+    <div ref="chartRef" :style="{ width, height }" />
   </Card>
 </template>
 <script lang="ts" setup>
-  import { defineComponent, Ref, ref, watch, type PropType } from 'vue';
+  import type { Ref} from 'vue';
+import { type PropType, defineComponent, ref, watch } from 'vue';
   import { Card } from 'ant-design-vue';
-  import { useEcharts } from '@fe-ent-extension/echarts';
+  import { useEcharts } from 'fe-ent-echarts';
 
   const props = defineProps({
     loading: Boolean,
@@ -49,13 +50,13 @@
               { value: 310, name: '服装' },
               { value: 274, name: '化妆品' },
               { value: 400, name: '家居' },
-            ].sort(function (a, b) {
+            ].sort((a, b) => {
               return a.value - b.value;
             }),
             roseType: 'radius',
             animationType: 'scale',
             animationEasing: 'exponentialInOut',
-            animationDelay: function () {
+            animationDelay() {
               return Math.random() * 400;
             },
           },

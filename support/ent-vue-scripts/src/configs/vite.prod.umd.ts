@@ -1,9 +1,12 @@
-import { InlineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 //import { terser } from 'rollup-plugin-terser';
 import terser from '@rollup/plugin-terser';
+import { configUnoCSSPlugin } from '../plugins/unocss';
+import { generateModifyVars } from '../utils/modify-vars';
+import type { InlineConfig } from 'vite';
 import type { OutputPlugin } from 'rollup';
+
 export default (): InlineConfig => {
   const entry = 'index.ts';
 
@@ -15,9 +18,11 @@ export default (): InlineConfig => {
       emptyOutDir: false,
       sourcemap: true,
       minify: false,
+      cssMinify: true,
       //brotliSize: false,
       rollupOptions: {
-        external: 'vue',
+        //external: 'vue',
+        //treeshake: false,
         output: [
           {
             format: 'umd',
@@ -47,6 +52,14 @@ export default (): InlineConfig => {
         name: 'Ent',
       },
     },
+    css: {
+      preprocessorOptions: {
+        less: {
+          modifyVars: generateModifyVars(),
+          javascriptEnabled: true,
+        },
+      },
+    },
     resolve: {
       alias: [
         {
@@ -56,6 +69,6 @@ export default (): InlineConfig => {
       ],
     },
     // @ts-ignore vite内部类型错误
-    plugins: [vue(), vueJsx()],
+    plugins: [vue(), vueJsx(), configUnoCSSPlugin(true)],
   };
 };

@@ -1,7 +1,6 @@
-import { BasicColumn } from '@ent-core/components/table';
-import { FormSchema } from '@ent-core/components/form';
 import { h } from 'vue';
 import { Tag } from 'ant-design-vue';
+import type { BasicColumn, FormSchema } from 'fe-ent-core';
 
 export const columns: BasicColumn[] = [
   {
@@ -21,10 +20,10 @@ export const columns: BasicColumn[] = [
     width: 80,
     customRender: ({ record }) => {
       const status = record.status;
-      const enable = ~~status === 0;
+      const enable = Math.trunc(status) === 0;
       const color = enable ? 'green' : 'red';
       const text = enable ? '启用' : '停用';
-      return h(Tag, { color: color }, () => text);
+      return h(Tag, { color }, () => text);
     },
   },
   {

@@ -1,6 +1,6 @@
 <template>
   <EntPageWrapper title="导出示例" content="根据JSON格式的数据进行导出">
-    <EntTable title="基础表格" :columns="columns" :dataSource="data">
+    <EntTable title="基础表格" :columns="columns" :data-source="data">
       <template #toolbar>
         <ent-button @click="defaultHeader"> 导出：默认头部 </ent-button>
         <ent-button @click="customHeader"> 导出：自定义头部 </ent-button>
@@ -11,10 +11,8 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable } from '@ent-core/components/table';
-  import { jsonToSheetXlsx } from '@ent-core/components/excel';
+  import { EntPageWrapper, EntTable, jsonToSheetXlsx } from 'fe-ent-core';
   import { columns, data } from './data';
-  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: { EntTable, EntPageWrapper },

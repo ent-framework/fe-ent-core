@@ -1,4 +1,4 @@
-import { FormSchema } from '@ent-core/components/form';
+import type { FormSchema } from 'fe-ent-core';
 
 export const schemas: FormSchema[] = [
   {

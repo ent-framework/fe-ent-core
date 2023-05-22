@@ -1,17 +1,15 @@
 <template>
   <EntPageWrapper title="旋转校验示例">
     <div class="flex justify-center p-4 items-center bg-gray-700">
-      <EntRotateDragVerify :src="img" ref="el" @success="handleSuccess" />
+      <EntRotateDragVerify ref="el" :src="img" @success="handleSuccess" />
     </div>
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntRotateDragVerify } from '@ent-core/components/verify';
+  import { EntPageWrapper, EntRotateDragVerify } from 'fe-ent-core';
 
   import img from '/@/assets/images/header.jpg';
-
-  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: { EntRotateDragVerify, EntPageWrapper },

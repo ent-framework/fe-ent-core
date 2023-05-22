@@ -11,11 +11,9 @@
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { EntForm, FormSchema, useForm } from '@ent-core/components/form';
-  import { EntCollapseContainer } from '@ent-core/components/container';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
+  import { EntCollapseContainer, EntForm, EntPageWrapper, useForm, useMessage } from 'fe-ent-core';
   import { Input } from 'ant-design-vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import type { FormSchema } from 'fe-ent-core';
 
   const schemas: FormSchema[] = [
     {
@@ -62,7 +60,12 @@
     },
   ];
   export default defineComponent({
-    components: { EntForm, CollapseContainer: EntCollapseContainer, EntPageWrapper, [Input.name]: Input },
+    components: {
+      EntForm,
+      CollapseContainer: EntCollapseContainer,
+      EntPageWrapper,
+      [Input.name]: Input,
+    },
     setup() {
       const { createMessage } = useMessage();
       const [register, { setProps }] = useForm({
@@ -76,7 +79,7 @@
         register,
         schemas,
         handleSubmit: (values: any) => {
-          createMessage.success('click search,values:' + JSON.stringify(values));
+          createMessage.success(`click search,values:${JSON.stringify(values)}`);
         },
         setProps,
       };

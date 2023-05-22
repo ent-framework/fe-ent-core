@@ -14,8 +14,12 @@
               <ent-button color="success" class="ml-2" disabled> 禁用 </ent-button>
               <ent-button color="success" class="ml-2" loading> loading </ent-button>
               <ent-button color="success" type="link" class="ml-2"> link </ent-button>
-              <ent-button color="success" type="link" class="ml-2" loading> loading link </ent-button>
-              <ent-button color="success" type="link" class="ml-2" disabled> disabled link </ent-button>
+              <ent-button color="success" type="link" class="ml-2" loading>
+                loading link
+              </ent-button>
+              <ent-button color="success" type="link" class="ml-2" disabled>
+                disabled link
+              </ent-button>
             </div>
           </div>
 
@@ -26,7 +30,9 @@
             <ent-button color="warning" class="ml-2" loading> loading </ent-button>
             <ent-button color="warning" type="link" class="ml-2"> link </ent-button>
             <ent-button color="warning" type="link" class="ml-2" loading> loading link </ent-button>
-            <ent-button color="warning" type="link" class="ml-2" disabled> disabled link </ent-button>
+            <ent-button color="warning" type="link" class="ml-2" disabled>
+              disabled link
+            </ent-button>
           </div>
 
           <div class="my-2">
@@ -44,7 +50,9 @@
             <ent-button ghost color="success" class="ml-2"> 幽灵成功 </ent-button>
             <ent-button ghost color="warning" class="ml-2"> 幽灵警告 </ent-button>
             <ent-button ghost color="error" class="ml-2"> 幽灵错误 </ent-button>
-            <ent-button ghost type="dashed" color="warning" class="ml-2"> 幽灵警告dashed </ent-button>
+            <ent-button ghost type="dashed" color="warning" class="ml-2">
+              幽灵警告dashed
+            </ent-button>
             <ent-button ghost danger class="ml-2"> 幽灵危险 </ent-button>
           </div>
         </a-card>
@@ -114,12 +122,11 @@
               >
                 确认删除
               </ent-pop-button>
-
             </div>
           </div>
         </a-card>
       </a-col>
-      <a-col :xl="14" :lg="24" >
+      <a-col :xl="14" :lg="24">
         <a-card>
           <StatisticCountdown
             title="Million Seconds"
@@ -127,11 +134,7 @@
             format="HH:mm:ss:SSS"
             style="margin-right: 50px"
           />
-          <StatisticCountdown
-            title="Number"
-            :value="100000"
-            style="margin-right: 50px"
-          />
+          <StatisticCountdown title="Number" :value="100000" style="margin-right: 50px" />
         </a-card>
       </a-col>
     </a-row>
@@ -139,8 +142,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
-  import { EntPopButton } from '@ent-core/components/button';
+  import { EntPageWrapper, EntPopButton } from 'fe-ent-core';
   import { Card, Col, Row, StatisticCountdown } from 'ant-design-vue';
   export default defineComponent({
     components: {

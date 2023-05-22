@@ -5,7 +5,9 @@
       <ent-button class="my-4 mr-4" type="primary" @click="openCompFullLoading">
         全屏 Loading
       </ent-button>
-      <ent-button class="my-4" type="primary" @click="openCompAbsolute"> 容器内 Loading </ent-button>
+      <ent-button class="my-4" type="primary" @click="openCompAbsolute">
+        容器内 Loading
+      </ent-button>
       <EntLoading
         :loading="loading"
         :absolute="absolute"
@@ -19,7 +21,9 @@
       <ent-button class="my-4 mr-4" type="primary" @click="openFnFullLoading">
         全屏 Loading
       </ent-button>
-      <ent-button class="my-4" type="primary" @click="openFnWrapLoading"> 容器内 Loading </ent-button>
+      <ent-button class="my-4" type="primary" @click="openFnWrapLoading">
+        容器内 Loading
+      </ent-button>
 
       <a-alert message="指令方式" />
       <ent-button class="my-4 mr-4" type="primary" @click="openDirectiveLoading">
@@ -29,9 +33,8 @@
   </EntPageWrapper>
 </template>
 <script lang="ts">
-  import { defineComponent, reactive, toRefs, ref } from 'vue';
-  import { EntLoading, useLoading } from '@ent-core/components/loading';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { defineComponent, reactive, ref, toRefs } from 'vue';
+  import { EntLoading, EntPageWrapper, useLoading } from 'fe-ent-core';
   import { Alert } from 'ant-design-vue';
 
   export default defineComponent({

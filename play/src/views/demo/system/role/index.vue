@@ -32,10 +32,9 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import { EntTable, useTable, EntTableAction } from '@ent-core/components/table';
+  import { EntTable, EntTableAction, useDrawer, useTable } from 'fe-ent-core';
   import { getRoleListByPage } from '/@/api/system';
 
-  import { useDrawer } from '@ent-core/components/drawer';
   import RoleDrawer from './role-drawer.vue';
 
   import { columns, searchFormSchema } from './role-data';

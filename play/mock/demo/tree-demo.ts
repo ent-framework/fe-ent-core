@@ -1,5 +1,5 @@
-import { MockMethod } from 'vite-plugin-mock';
 import { resultSuccess } from '../_util';
+import type { MockMethod } from 'vite-plugin-mock';
 
 const demoTreeList = (keyword) => {
   const result = {

@@ -1,12 +1,12 @@
 <template>
   <EntPageWrapper title="富文本组件示例">
-    <Tinymce v-model="value" @change="handleChange" width="100%" />
+    <Tinymce v-model="value" width="100%" @change="handleChange" />
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { Tinymce } from '@fe-ent-extension/tinymce';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { Tinymce } from 'fe-ent-tinymce';
+  import { EntPageWrapper } from 'fe-ent-core';
 
   export default defineComponent({
     components: { Tinymce, EntPageWrapper },

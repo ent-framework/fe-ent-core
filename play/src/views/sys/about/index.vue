@@ -9,17 +9,23 @@
         </span>
       </div>
     </template>
-    <EntDescription @register="infoRegister" class="enter-y" />
-    <EntDescription @register="register" class="my-4 enter-y" />
-    <EntDescription @register="registerDev" class="enter-y" />
+    <EntDescription class="enter-y" @register="infoRegister" />
+    <EntDescription class="my-4 enter-y" @register="register" />
+    <EntDescription class="enter-y" @register="registerDev" />
   </EntPageWrapper>
 </template>
 <script lang="ts" setup>
   import { defineComponent, h } from 'vue';
   import { Tag } from 'ant-design-vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
-  import { EntDescription, DescItem, useDescription } from '@ent-core/components/description';
-  import { GITHUB_URL, SITE_URL, DOC_URL } from '@ent-core/logics/settings/site-setting';
+  import {
+    DOC_URL,
+    EntDescription,
+    EntPageWrapper,
+    GITHUB_URL,
+    SITE_URL,
+    useDescription,
+  } from 'fe-ent-core';
+  import type { DescItem } from 'fe-ent-core';
 
   const { pkg, lastBuildTime } = __APP_INFO__;
 
@@ -84,7 +90,7 @@
   const [register] = useDescription({
     title: '生产环境依赖',
     data: dependencies,
-    schema: schema,
+    schema,
     column: 3,
   });
 

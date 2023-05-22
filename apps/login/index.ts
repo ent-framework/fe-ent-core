@@ -1,15 +1,12 @@
-import { t } from 'fe-ent-core/lib/hooks';
-import Login from './components/login/login.vue';
-import type { AppRouteRecordRaw } from 'fe-ent-core/lib/router';
-
-import './components/index.less';
+import Login from './components/login.vue';
+import type { AppRouteRecordRaw } from 'fe-ent-core';
 
 export const LoginRoute: AppRouteRecordRaw = {
   path: '/login',
   name: 'Login',
   component: Login,
   meta: {
-    title: t('routes.basic.login'),
+    title: 'routes.basic.login',
   },
 };
 

@@ -1,4 +1,4 @@
-import { BasicColumn } from '@ent-core/components/table';
+import type { BasicColumn } from 'fe-ent-core';
 
 export const columns: BasicColumn[] = [
   {

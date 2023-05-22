@@ -2,15 +2,15 @@ import {
   COMPONENT_EXCEPTION_NAME,
   COMPONENT_IFRAME_NAME,
   COMPONENT_LAYOUT_NAME,
-} from 'fe-ent-core/lib/router';
-import { withInstall } from 'fe-ent-core/lib/utils';
-import { DefaultLayout } from './page/layouts/default';
-import { default as IFRAME } from './page/views/iframe/frame-blank';
-import { default as ExceptionPage } from './page/views/exception/exception.vue';
+} from 'fe-ent-core';
+import { withInstall } from 'fe-ent-core';
+import { DefaultLayout } from './layouts/default';
+import { default as IFRAME } from './views/iframe/frame-blank';
+import { default as ExceptionPage } from './views/exception/exception.vue';
 
-import { getPageNotFoundRoute } from './page/routes/basic';
+import { getPageNotFoundRoute } from './routes/basic';
 import type { App } from 'vue';
-import type { EntRouter } from 'fe-ent-core/lib/router';
+import type { EntRouter } from 'fe-ent-core';
 
 const initRouteAndLayout = function (app: App, entRouter?: EntRouter) {
   //initial layout

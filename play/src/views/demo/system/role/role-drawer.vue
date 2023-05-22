@@ -1,18 +1,18 @@
 <template>
   <EntDrawer
     v-bind="$attrs"
-    @register="registerDrawer"
-    showFooter
+    show-footer
     :title="getTitle"
     width="500px"
+    @register="registerDrawer"
     @ok="handleSubmit"
   >
     <EntForm @register="registerForm">
       <template #menu="{ model, field }">
         <EntTree
           v-model:value="model[field]"
-          :treeData="treeData"
-          :fieldNames="{ title: 'menuName', key: 'id' }"
+          :tree-data="treeData"
+          :field-names="{ title: 'menuName', key: 'id' }"
           checkable
           toolbar
           title="菜单分配"
@@ -22,11 +22,10 @@
   </EntDrawer>
 </template>
 <script lang="ts">
-  import { defineComponent, ref, computed, unref } from 'vue';
-  import { EntForm, useForm } from '@ent-core/components/form';
+  import { computed, defineComponent, ref, unref } from 'vue';
+  import type { TreeItem } from 'fe-ent-core';
+  import { EntDrawer, EntForm, EntTree, useDrawerInner, useForm } from 'fe-ent-core';
   import { formSchema } from './role-data';
-  import { EntDrawer, useDrawerInner } from '@ent-core/components/drawer';
-  import { EntTree, TreeItem } from '@ent-core/components/tree';
 
   import { getMenuList } from '/@/api/system';
 

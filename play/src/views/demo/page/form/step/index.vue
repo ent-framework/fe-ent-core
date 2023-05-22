@@ -1,9 +1,9 @@
 <template>
   <EntPageWrapper
     title="分步表单"
-    contentBackground
+    content-background
     content=" 将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。"
-    contentClass="p-4"
+    content-class="p-4"
   >
     <div class="step-form-form">
       <a-steps :current="current">
@@ -13,24 +13,24 @@
       </a-steps>
     </div>
     <div class="mt-5">
-      <Step1 @next="handleStep1Next" v-show="current === 0" />
+      <Step1 v-show="current === 0" @next="handleStep1Next" />
       <Step2
-        @prev="handleStepPrev"
-        @next="handleStep2Next"
         v-show="current === 1"
         v-if="initSetp2"
+        @prev="handleStepPrev"
+        @next="handleStep2Next"
       />
-      <Step3 v-show="current === 2" @redo="handleRedo" v-if="initSetp3" />
+      <Step3 v-show="current === 2" v-if="initSetp3" @redo="handleRedo" />
     </div>
   </EntPageWrapper>
 </template>
 <script lang="ts">
-  import { defineComponent, ref, reactive, toRefs } from 'vue';
+  import { defineComponent, reactive, ref, toRefs } from 'vue';
+  import { EntPageWrapper } from 'fe-ent-core';
+  import { Steps } from 'ant-design-vue';
   import Step1 from './step-1.vue';
   import Step2 from './step-2.vue';
   import Step3 from './step-3.vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
-  import { Steps } from 'ant-design-vue';
 
   export default defineComponent({
     name: 'FormStepPage',

@@ -1,4 +1,5 @@
-import { ConfigEnv, mergeConfig, type UserConfig } from 'vite';
+import { mergeConfig } from 'vite';
+import type { ConfigEnv, UserConfig } from 'vite';
 
 export const theme = {
   breakpoints: {

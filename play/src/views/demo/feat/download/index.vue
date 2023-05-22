@@ -7,7 +7,9 @@
     <ent-button type="primary" class="my-4" @click="handleDownloadByUrl"> 文件地址下载 </ent-button>
 
     <a-alert message="base64流下载" />
-    <ent-button type="primary" class="my-4" @click="handleDownloadByBase64"> base64流下载 </ent-button>
+    <ent-button type="primary" class="my-4" @click="handleDownloadByBase64">
+      base64流下载
+    </ent-button>
 
     <a-alert message="图片Url下载,如果有跨域问题，需要处理图片跨域" />
     <ent-button type="primary" class="my-4" @click="handleDownloadByOnlineUrl">
@@ -18,14 +20,14 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import {
-    downloadByUrl,
-    downloadByData,
+    EntPageWrapper,
     downloadByBase64,
+    downloadByData,
     downloadByOnlineUrl,
-  } from '@ent-core/utils/file/download';
-  import imgBase64 from './img-base-64';
-  import { EntPageWrapper } from '@ent-core/components/page';
+    downloadByUrl,
+  } from 'fe-ent-core';
   import { Alert } from 'ant-design-vue';
+  import imgBase64 from './img-base-64';
 
   export default defineComponent({
     components: { EntPageWrapper, [Alert.name]: Alert },

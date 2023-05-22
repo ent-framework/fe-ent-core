@@ -1,5 +1,5 @@
 <template>
-  <CollapseContainer title="账号绑定" :canExpan="false">
+  <CollapseContainer title="账号绑定" :can-expan="false">
     <List>
       <template v-for="item in list" :key="item.key">
         <ListItem>
@@ -9,7 +9,7 @@
             </template>
             <template #title>
               {{ item.title }}
-              <ent-button type="link" size="small" v-if="item.extra" class="extra">
+              <ent-button v-if="item.extra" type="link" size="small" class="extra">
                 {{ item.extra }}
               </ent-button>
             </template>
@@ -23,10 +23,9 @@
   </CollapseContainer>
 </template>
 <script lang="ts">
-  import { List } from 'ant-design-vue';
   import { defineComponent } from 'vue';
-  import { EntCollapseContainer } from '@ent-core/components/container';
-  import Icon from '@ent-core/components/icon';
+  import { List } from 'ant-design-vue';
+  import Icon, { EntCollapseContainer } from 'fe-ent-core';
 
   import { accountBindList } from './data';
 

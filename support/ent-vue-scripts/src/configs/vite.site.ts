@@ -1,12 +1,12 @@
 import { mergeConfig, searchForWorkspaceRoot } from 'vite';
 import vueDocs from '../plugins/vite-plugin-ent-vue-docs';
-import { defineApplicationConfig } from './application';
+import { defineProjectConfig } from './project';
 import type { DefineOptions } from './type';
 import type { InlineConfig } from 'vite';
 
 export default async function getDocSiteConfig(options: DefineOptions) {
   const workspace = searchForWorkspaceRoot(process.cwd());
-  const config = await defineApplicationConfig(options);
+  const config = await defineProjectConfig(options);
   return mergeConfig(config, {
     resolve: {
       alias: [

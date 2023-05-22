@@ -3,7 +3,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntDrawer } from '@ent-core/components/drawer';
+  import { EntDrawer } from 'fe-ent-core';
   export default defineComponent({
     components: { EntDrawer },
     setup() {

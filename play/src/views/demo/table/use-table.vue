@@ -21,9 +21,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, ColumnChangeParam, useTable } from '@ent-core/components/table';
+  import type { ColumnChangeParam } from 'fe-ent-core';
+  import { EntTable, useMessage, useTable } from 'fe-ent-core';
   import { getBasicColumns, getBasicShortColumns } from './table-data';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
   import { demoListApi } from '/@/api/table';
   export default defineComponent({
     components: { EntTable },

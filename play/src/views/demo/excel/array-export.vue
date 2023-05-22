@@ -1,6 +1,6 @@
 <template>
   <EntPageWrapper title="导出示例" content="根据数组格式的数据进行导出">
-    <EntTable title="基础表格" :columns="columns" :dataSource="data">
+    <EntTable title="基础表格" :columns="columns" :data-source="data">
       <template #toolbar>
         <ent-button @click="aoaToExcel"> 导出 </ent-button>
       </template>
@@ -10,10 +10,8 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable } from '@ent-core/components/table';
-  import { aoaToSheetXlsx } from '@ent-core/components/excel';
-  import { arrHeader, arrData, columns, data } from './data';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntPageWrapper, EntTable, aoaToSheetXlsx } from 'fe-ent-core';
+  import { arrData, arrHeader, columns, data } from './data';
 
   export default defineComponent({
     components: { EntTable, EntPageWrapper },

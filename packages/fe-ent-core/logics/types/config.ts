@@ -5,7 +5,7 @@ export interface GlobConfig {
   apiUrl: string;
   // Upload url
   uploadUrl?: string;
-
+  logoUrl?: string;
   userApiPrefix?: string;
   //  Service interface url prefix
   apiGlobalPrefix?: string;
@@ -21,6 +21,8 @@ export interface GlobEnvConfig {
   VITE_GLOB_APP_TITLE: string;
   // Project abbreviation
   VITE_GLOB_APP_SHORT_NAME: string;
+  // global log image url
+  VITE_GLOB_LOGO_URL: string;
   // Service interface url
   VITE_GLOB_API_URL: string;
   // Service interface url global prefix

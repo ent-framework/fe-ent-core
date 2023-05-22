@@ -3,9 +3,9 @@
     <template #headerContent>
       <EntForm
         :class="`${prefixCls}__header-form`"
-        :labelWidth="100"
+        :label-width="100"
         :schemas="schemas"
-        :showActionButtonGroup="false"
+        :show-action-button-group="false"
       />
     </template>
 
@@ -53,13 +53,10 @@
   </EntPageWrapper>
 </template>
 <script lang="ts">
-  import { Tag } from 'ant-design-vue';
   import { defineComponent } from 'vue';
-  import Icon from '@ent-core/components/icon';
-  import { EntForm } from '@ent-core/components/form';
-  import { actions, searchList, schemas } from './data';
-  import { EntPageWrapper } from '@ent-core/components/page';
-  import { List } from 'ant-design-vue';
+  import { List, Tag } from 'ant-design-vue';
+  import Icon, { EntForm, EntPageWrapper } from 'fe-ent-core';
+  import { actions, schemas, searchList } from './data';
 
   export default defineComponent({
     components: {

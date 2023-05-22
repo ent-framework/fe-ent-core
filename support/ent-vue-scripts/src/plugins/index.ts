@@ -3,17 +3,15 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import DefineOptions from 'unplugin-vue-define-options/vite';
 import { type PluginOption } from 'vite';
 import purgeIcons from 'vite-plugin-purge-icons';
-import { presetTypography, presetUno } from 'unocss';
-import UnoCSS from 'unocss/vite';
 import Inspect from 'vite-plugin-inspect';
 import mkcert from 'vite-plugin-mkcert';
-import { createAppConfigPlugin } from './appConfig';
+import { createAppConfigPlugin } from './vite-plugin-app-config';
 import { configCompressPlugin } from './compress';
 import { configHtmlPlugin } from './html';
 import { configMockPlugin } from './mock';
 import { configSvgIconsPlugin } from './svgSprite';
 import { configVisualizerConfig } from './visualizer';
-import type { Theme } from 'unocss/preset-uno';
+import { configUnoCSSPlugin } from './unocss';
 
 interface Options {
   isBuild: boolean;
@@ -36,11 +34,7 @@ async function createPlugins({
   enableInspect,
   enableCert,
 }: Options) {
-  const vitePlugins: (PluginOption | PluginOption[])[] = [
-    vue(),
-    vueJsx(),
-    DefineOptions(),
-  ];
+  const vitePlugins: (PluginOption | PluginOption[])[] = [vue(), vueJsx(), DefineOptions()];
 
   const appConfigPlugin = await createAppConfigPlugin({ root, isBuild });
   if (mode !== 'lib') {
@@ -58,33 +52,7 @@ async function createPlugins({
   // vite-plugin-purge-icons
   vitePlugins.push(purgeIcons());
 
-  const theme = {
-    breakpoints: {
-      sm: '576px',
-      md: '768px',
-      lg: '992px',
-      xl: '1200px',
-      '2xl': '1600px',
-    },
-  };
-
-  if (mode === 'lib') {
-    vitePlugins.push(
-      UnoCSS<Theme>({
-        mode: 'dist-chunk',
-        presets: [presetUno({ preflight: false }), presetTypography()],
-        postcss: true,
-        theme,
-      }),
-    );
-  } else {
-    vitePlugins.push(
-      UnoCSS<Theme>({
-        presets: [presetUno(), presetTypography()],
-        theme,
-      }),
-    );
-  }
+  vitePlugins.push(configUnoCSSPlugin(mode === 'lib'));
 
   // The following plugins only work in the production environment
   if (isBuild) {

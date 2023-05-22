@@ -2,18 +2,20 @@
   <EntPageWrapper title="文本复制示例">
     <CollapseContainer class="w-full h-32 bg-white rounded-md" title="Copy Example">
       <div class="flex justify-center">
-        <a-input placeholder="请输入" v-model:value="value" />
+        <a-input v-model:value="value" placeholder="请输入" />
         <ent-button type="primary" @click="handleCopy"> Copy </ent-button>
       </div>
     </CollapseContainer>
   </EntPageWrapper>
 </template>
 <script lang="ts">
-  import { defineComponent, unref, ref } from 'vue';
-  import { EntCollapseContainer } from '@ent-core/components/container';
-  import { useCopyToClipboard } from '@ent-core/hooks/web/use-copy-to-clipboard';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { defineComponent, ref, unref } from 'vue';
+  import {
+    EntCollapseContainer,
+    EntPageWrapper,
+    useCopyToClipboard,
+    useMessage,
+  } from 'fe-ent-core';
 
   export default defineComponent({
     name: 'Copy',

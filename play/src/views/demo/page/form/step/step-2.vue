@@ -13,9 +13,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntForm, useForm } from '@ent-core/components/form';
+  import { EntForm, useForm } from 'fe-ent-core';
+  import { Alert, Descriptions, Divider } from 'ant-design-vue';
   import { step2Schemas } from './data';
-  import { Alert, Divider, Descriptions } from 'ant-design-vue';
 
   export default defineComponent({
     components: {
@@ -63,7 +63,7 @@
             });
             emit('next', values);
           }, 1500);
-        } catch (error) {}
+        } catch {}
       }
 
       return { register };

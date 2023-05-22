@@ -53,22 +53,24 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntCollapseContainer } from '@ent-core/components/container';
+  import {
+    EntCollapseContainer,
+    EntIcon,
+    EntIconPicker,
+    EntPageWrapper,
+    EntSvgIcon,
+    openWindow,
+  } from 'fe-ent-core';
   import { Alert } from 'ant-design-vue';
   import {
-    QqCircleFilled,
-    GithubFilled,
-    WechatFilled,
     AlipayCircleFilled,
-    IeCircleFilled,
-    TaobaoCircleFilled,
     CodepenCircleFilled,
+    GithubFilled,
+    IeCircleFilled,
+    QqCircleFilled,
+    TaobaoCircleFilled,
+    WechatFilled,
   } from '@ant-design/icons-vue';
-
-  import { EntIcon, EntIconPicker, EntSvgIcon } from '@ent-core/components/icon';
-
-  import { openWindow } from '@ent-core/utils';
-  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: {

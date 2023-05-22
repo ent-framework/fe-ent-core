@@ -10,7 +10,7 @@
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'action'">
           <EntTableAction
-            stopButtonPropagation
+            stop-button-propagation
             :actions="[
               {
                 label: '删除',
@@ -18,7 +18,7 @@
                 onClick: handleDelete.bind(null, record),
               },
             ]"
-            :dropDownActions="[
+            :drop-down-actions="[
               {
                 label: '启用',
                 popConfirm: {
@@ -35,8 +35,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable, EntTableAction } from '@ent-core/components/table';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntPageWrapper, EntTable, EntTableAction, useTable } from 'fe-ent-core';
   import { getBasicColumns } from './table-data';
 
   import { demoListApi } from '/@/api/table';

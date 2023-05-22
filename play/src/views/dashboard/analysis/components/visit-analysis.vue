@@ -1,10 +1,11 @@
 <template>
-  <div ref="chartRef" :style="{ height, width }"></div>
+  <div ref="chartRef" :style="{ height, width }" />
 </template>
 <script lang="ts" setup>
-  import { onMounted, ref, Ref } from 'vue';
-  import { useEcharts } from '@fe-ent-extension/echarts';
+  import { onMounted, ref } from 'vue';
+  import { useEcharts } from 'fe-ent-echarts';
   import { basicProps } from './props';
+  import type { Ref } from 'vue';
 
   defineProps({
     ...basicProps,

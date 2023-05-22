@@ -1,10 +1,10 @@
 <template>
-  <div ref="wrapRef" :style="{ height, width }"></div>
+  <div ref="wrapRef" :style="{ height, width }" />
 </template>
 <script lang="ts">
-  import { defineComponent, ref, nextTick, unref, onMounted } from 'vue';
+  import { defineComponent, nextTick, onMounted, ref, unref } from 'vue';
 
-  import { useScript } from '@ent-core/hooks/web/use-script';
+  import { useScript } from 'fe-ent-core';
 
   const A_MAP_URL = 'https://webapi.amap.com/maps?v=2.0&key=d7bb98e7185300250dd5f918c12f484b';
 

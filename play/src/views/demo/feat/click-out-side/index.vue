@@ -1,7 +1,7 @@
 <template>
   <EntPageWrapper title="点内外部触发事件">
-    <EntClickOutSide @clickOutside="handleClickOutside" class="flex justify-center">
-      <div @click="innerClick" class="demo-box">
+    <EntClickOutSide class="flex justify-center" @clickOutside="handleClickOutside">
+      <div class="demo-box" @click="innerClick">
         {{ text }}
       </div>
     </EntClickOutSide>
@@ -9,8 +9,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntClickOutSide } from '@ent-core/components/click-out-side';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntClickOutSide, EntPageWrapper } from 'fe-ent-core';
 
   export default defineComponent({
     components: { EntClickOutSide, EntPageWrapper },

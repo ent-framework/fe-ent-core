@@ -20,10 +20,10 @@
         <hr class="my-4" />
 
         <InputTextArea
+          v-model:value="sendValue"
           placeholder="需要发送到服务器的内容"
           :disabled="!getIsOpen"
-          v-model:value="sendValue"
-          allowClear
+          allow-clear
         />
 
         <ent-button type="primary" block class="mt-4" :disabled="!getIsOpen" @click="handlerSend">
@@ -37,7 +37,7 @@
 
         <div class="max-h-80 overflow-auto">
           <ul>
-            <li v-for="item in getList" class="mt-2" :key="item.time">
+            <li v-for="item in getList" :key="item.time" class="mt-2">
               <div class="flex items-center">
                 <span class="mr-2 text-primary font-medium">收到消息:</span>
                 <span>{{ formatToDateTime(item.time) }}</span>
@@ -53,11 +53,10 @@
   </EntPageWrapper>
 </template>
 <script lang="ts">
-  import { defineComponent, reactive, watchEffect, computed, toRefs } from 'vue';
-  import { Tag, Input } from 'ant-design-vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { computed, defineComponent, reactive, toRefs, watchEffect } from 'vue';
+  import { Input, Tag } from 'ant-design-vue';
+  import { EntPageWrapper, formatToDateTime } from 'fe-ent-core';
   import { useWebSocket } from '@vueuse/core';
-  import { formatToDateTime } from '@ent-core/utils/date-util';
 
   export default defineComponent({
     components: {
@@ -83,11 +82,11 @@
           try {
             const res = JSON.parse(data.value);
             state.recordList.push(res);
-          } catch (error) {
+          } catch {
             state.recordList.push({
               res: data.value,
               id: Math.ceil(Math.random() * 1000),
-              time: new Date().getTime(),
+              time: Date.now(),
             });
           }
         }

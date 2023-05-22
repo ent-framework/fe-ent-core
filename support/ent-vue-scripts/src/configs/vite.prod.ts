@@ -4,16 +4,16 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import external from '../plugins/vite-plugin-external';
 import vueExportHelper from '../plugins/vite-plugin-vue-export-helper';
 import { excludeFiles } from '../utils/exclude-files';
+import { generateModifyVars } from '../utils/modify-vars';
 import type { InlineConfig } from 'vite';
 
 const input = excludeFiles(
-  glob.sync('**/*.{js,ts,tsx,vue}', {
+  glob.sync('*/**/index.ts', {
     cwd: process.cwd(),
-    absolute: true,
+    absolute: false,
     onlyFiles: true,
   }),
-);
-
+).map((file) => `${process.cwd()}/${file}`);
 const config: InlineConfig = {
   mode: 'production',
   build: {
@@ -21,10 +21,11 @@ const config: InlineConfig = {
     outDir: 'es',
     emptyOutDir: false,
     minify: false,
-    sourcemap: true,
+    sourcemap: false,
     //brotliSize: false,
     rollupOptions: {
-      input,
+      input: 'index.ts',
+      treeshake: false,
       output: [
         {
           interop: 'default',
@@ -50,6 +51,14 @@ const config: InlineConfig = {
     lib: {
       entry: 'components/index.ts',
       formats: ['es', 'cjs'],
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        modifyVars: generateModifyVars(),
+        javascriptEnabled: true,
+      },
     },
   },
   resolve: {

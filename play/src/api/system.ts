@@ -1,16 +1,16 @@
-import {
-  AccountParams,
-  DeptListItem,
-  MenuParams,
-  RoleParams,
-  RolePageParams,
-  MenuListGetResultModel,
-  DeptListGetResultModel,
+import { defHttp } from 'fe-ent-core';
+import type {
   AccountListGetResultModel,
-  RolePageListGetResultModel,
+  AccountParams,
+  DeptListGetResultModel,
+  DeptListItem,
+  MenuListGetResultModel,
+  MenuParams,
   RoleListGetResultModel,
+  RolePageListGetResultModel,
+  RolePageParams,
+  RoleParams,
 } from '../model/system-model';
-import { defHttp } from '@ent-core/utils/http/axios';
 
 enum Api {
   AccountList = '/getAccountList',

@@ -32,10 +32,9 @@
 <script lang="ts">
   import { defineComponent, nextTick } from 'vue';
 
-  import { EntTable, EntTableAction, useTable } from '@ent-core/components/table';
+  import { EntTable, EntTableAction, useDrawer, useTable } from 'fe-ent-core';
   import { getMenuList } from '/@/api/system';
 
-  import { useDrawer } from '@ent-core/components/drawer';
   import MenuDrawer from './menu-drawer.vue';
 
   import { columns, searchFormSchema } from './menu-data';

@@ -1,6 +1,6 @@
 <template>
-  <EntDrawer v-bind="$attrs" title="Modal Title" width="50%" showFooter @ok="handleOk">
-    <p class="h-20" v-for="index in 40" :key="index">根据屏幕高度自适应</p>
+  <EntDrawer v-bind="$attrs" title="Modal Title" width="50%" show-footer @ok="handleOk">
+    <p v-for="index in 40" :key="index" class="h-20">根据屏幕高度自适应</p>
     <template #insertFooter>
       <ent-button> btn</ent-button>
     </template>
@@ -19,7 +19,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntDrawer } from '@ent-core/components/drawer';
+  import { EntDrawer } from 'fe-ent-core';
   export default defineComponent({
     components: { EntDrawer },
     setup() {

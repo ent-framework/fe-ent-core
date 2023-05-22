@@ -6,6 +6,7 @@ module.exports = defineConfig({
     browser: true,
     node: true,
   },
+  ignorePatterns: ['**/lib/**/*.js', '**/lib/**/*.d.ts'],
   globals: { defineOptions: 'writable' },
   plugins: ['@typescript-eslint', 'prettier', 'unicorn'],
   extends: [

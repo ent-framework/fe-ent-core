@@ -15,8 +15,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntScrollContainer } from '@ent-core/components/container/index';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntPageWrapper, EntScrollContainer } from 'fe-ent-core';
 
   export default defineComponent({
     components: { ScrollContainer: EntScrollContainer, EntPageWrapper },

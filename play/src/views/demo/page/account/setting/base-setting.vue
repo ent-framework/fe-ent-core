@@ -1,5 +1,5 @@
 <template>
-  <ent-collapse-container title="基本设置" :canExpan="false">
+  <ent-collapse-container title="基本设置" :can-expan="false">
     <a-row :gutter="24">
       <a-col :span="14">
         <EntForm @register="register" />
@@ -8,12 +8,12 @@
         <div class="change-avatar">
           <div class="mb-2">头像</div>
           <ent-cropper-avatar
-            :uploadApi="uploadApi"
+            :upload-api="uploadApi"
             :value="avatar"
-            btnText="更换头像"
-            :btnProps="{ preIcon: 'ant-design:cloud-upload-outlined' }"
-            @change="updateAvatar"
+            btn-text="更换头像"
+            :btn-props="{ preIcon: 'ant-design:cloud-upload-outlined' }"
             width="150"
+            @change="updateAvatar"
           />
         </div>
       </a-col>
@@ -22,19 +22,20 @@
   </ent-collapse-container>
 </template>
 <script lang="ts">
-  import { Button, Row, Col } from 'ant-design-vue';
   import { computed, defineComponent, onMounted } from 'vue';
-  import { EntForm, useForm } from '@ent-core/components/form';
-  import { EntCollapseContainer } from '@ent-core/components/container';
-  import { EntCropperAvatar } from '@ent-core/components/cropper';
-
-  import { useMessage } from '@ent-core/hooks/web/use-message';
+  import { Button, Col, Row } from 'ant-design-vue';
+  import {
+    EntCollapseContainer,
+    EntCropperAvatar,
+    EntForm,
+    useForm,
+    useMessage,
+    useUserStore,
+  } from 'fe-ent-core';
 
   import headerImg from '/@/assets/images/header.jpg';
   import { accountInfoApi } from '/@/api/account';
   import { baseSetschemas } from './data';
-  import { useUserStore } from '@ent-core/store/modules/user';
-  import { uploadApi } from '@ent-core/logics/api/upload';
 
   export default defineComponent({
     components: {

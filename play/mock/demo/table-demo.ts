@@ -1,6 +1,6 @@
-import { MockMethod } from 'vite-plugin-mock';
 import { Random } from 'mockjs';
 import { resultPageSuccess } from '../_util';
+import type { MockMethod } from 'vite-plugin-mock';
 
 function getRandomPics(count = 10): string[] {
   const arr: string[] = [];

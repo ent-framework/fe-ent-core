@@ -1,4 +1,4 @@
-import { BasicFetchResult } from '@ent-core/logics/api';
+import type { BasicFetchResult } from 'fe-ent-core';
 
 export interface DemoOptionsItem {
   label: string;

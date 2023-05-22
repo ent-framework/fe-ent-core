@@ -17,7 +17,7 @@
               <a-list-item>
                 <a-card :hoverable="true" :class="`${prefixCls}__card`">
                   <div :class="`${prefixCls}__card-title`">
-                    <Icon class="icon" v-if="item.icon" :icon="item.icon" :color="item.color" />
+                    <Icon v-if="item.icon" class="icon" :icon="item.icon" :color="item.color" />
                     {{ item.title }}
                   </div>
                   <div :class="`${prefixCls}__card-detail`">
@@ -34,10 +34,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import Icon from '@ent-core/components/icon';
+  import Icon, { EntPageWrapper } from 'fe-ent-core';
+  import { Card, Col, List, Row } from 'ant-design-vue';
   import { cardList } from './data';
-  import { EntPageWrapper } from '@ent-core/components/page';
-  import { Card, Row, Col, List } from 'ant-design-vue';
 
   export default defineComponent({
     components: {

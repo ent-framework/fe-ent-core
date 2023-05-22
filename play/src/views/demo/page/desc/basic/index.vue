@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper title="基础详情页" contentBackground>
+  <EntPageWrapper title="基础详情页" content-background>
     <EntDescription
       size="middle"
       title="退款申请"
@@ -26,20 +26,18 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntDescription } from '@ent-core/components/description';
-  import { EntTable, useTable } from '@ent-core/components/table';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntDescription, EntPageWrapper, EntTable, useTable } from 'fe-ent-core';
   import { Divider } from 'ant-design-vue';
 
   import {
-    refundSchema,
-    refundData,
-    personSchema,
     personData,
-    refundTableSchema,
-    refundTimeTableSchema,
+    personSchema,
+    refundData,
+    refundSchema,
     refundTableData,
+    refundTableSchema,
     refundTimeTableData,
+    refundTimeTableSchema,
   } from './data';
   export default defineComponent({
     components: { EntDescription, EntTable, EntPageWrapper, [Divider.name]: Divider },

@@ -17,7 +17,7 @@
                 auth: 'super', // 根据权限控制是否显示: 有权限，会显示
               },
             ]"
-            :dropDownActions="[
+            :drop-down-actions="[
               {
                 label: '启用',
                 popConfirm: {
@@ -58,12 +58,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import {
-    EntTable,
-    useTable,
-    BasicColumn,
-    EntTableAction,
-  } from '@ent-core/components/table';
+  import type { BasicColumn } from 'fe-ent-core';
+  import { EntTable, EntTableAction, useTable } from 'fe-ent-core';
 
   import { demoListApi } from '/@/api/table';
   const columns: BasicColumn[] = [
@@ -105,7 +101,7 @@
       const [registerTable] = useTable({
         title: 'TableAction组件及固定列示例',
         api: demoListApi,
-        columns: columns,
+        columns,
         bordered: true,
         actionColumn: {
           width: 250,

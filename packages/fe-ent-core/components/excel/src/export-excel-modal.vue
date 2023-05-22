@@ -20,9 +20,9 @@
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import type { FormSchema } from '@ent-core/components/form';
   import type { ExportModalResult } from './typing';
-  const { t } = useI18n();
 
   function getSchema() {
+    const { t } = useI18n();
     const schemas: FormSchema[] = [
       {
         field: 'filename',
@@ -72,7 +72,7 @@
     setup(_, { emit }) {
       const [registerForm, { validateFields }] = useForm();
       const [registerModal, { closeModal }] = useModalInner();
-
+      const { t } = useI18n();
       const schemas = getSchema();
 
       async function handleOk() {

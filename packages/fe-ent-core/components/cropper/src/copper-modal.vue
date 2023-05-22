@@ -115,6 +115,7 @@
   import { Avatar, Space, Tooltip, Upload } from 'ant-design-vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { EntModal, useModalInner } from '@ent-core/components/modal';
+  import { Factory } from '@ent-core/logics/factory';
   import { dataURLtoBlob } from '@ent-core/utils/file/base64-convert';
   import { isFunction } from '@ent-core/utils/is';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
@@ -181,16 +182,23 @@
 
       async function handleOk() {
         const uploadApi = props.uploadApi;
-        if (uploadApi && isFunction(uploadApi)) {
+        try {
           const blob = dataURLtoBlob(previewSource.value);
-          try {
-            setModalProps({ confirmLoading: true });
-            const result = await uploadApi({ name: 'file', file: blob, filename });
-            emit('uploadSuccess', { source: previewSource.value, data: result.data });
-            closeModal();
-          } finally {
-            setModalProps({ confirmLoading: false });
+          setModalProps({ confirmLoading: true });
+          let result;
+          if (uploadApi && isFunction(uploadApi)) {
+            result = await uploadApi({ name: 'file', file: blob, filename });
+          } else {
+            result = await Factory.getHttpFactory().uploadApi({
+              name: 'file',
+              file: blob,
+              filename,
+            });
           }
+          emit('uploadSuccess', { source: previewSource.value, data: result.data });
+          closeModal();
+        } finally {
+          setModalProps({ confirmLoading: false });
         }
       }
 

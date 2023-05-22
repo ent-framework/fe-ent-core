@@ -1,26 +1,29 @@
 {
   "name": "fe-ent-login",
-  "version": "1.5.24",
+  "version": "1.5.36",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "typings": "dist/types/index.d.ts",
   "files": [
     "dist",
-    "json",
-    "README.md"
+    "es",
+    "lib",
+    "json"
   ],
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "typings": "lib/index.d.ts",
+  "unpkg": "dist/index.full.min.js",
   "sideEffects": [
-    "dist"
+    "dist/*"
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
     "build": "pnpm run build:library && pnpm run docgen && pnpm run jsongen",
     "docgen": "ent-vue-scripts docgen",
-    "build:library": "ent-vue-scripts build:library",
+    "build:library": "ent-vue-scripts build:library -u",
+    "build:app": "ent-vue-scripts build:app",
     "jsongen": "ent-vue-scripts jsongen",
     "dtsgen": "ent-vue-scripts dtsgen --lib"
   },

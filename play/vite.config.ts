@@ -23,26 +23,38 @@ export default defineConfig(({ command, mode }) => {
             find: /^fe-ent-core$/,
             replacement: `${workspace}/packages/fe-ent-core/index.ts`,
           },
-          {
-            find: /^fe-ent-core\/lib\/(.*)$/,
-            replacement: `${workspace}/packages/fe-ent-core/$1`,
-          },
           // 别名，转发 fe-ent-extension 文件请求
-          {
-            find: /^@fe-ent-extension\/(.*)$/,
-            replacement: `${workspace}/extensions/$1/index.ts`,
-          },
-          {
-            find: /^@fe-ent-app\/(.*)$/,
-            replacement: `${workspace}/apps/$1/index.ts`,
-          },
           {
             find: /^fe-ent-code-editor$/,
             replacement: `${workspace}/extensions/code-editor/index.ts`,
           },
           {
+            find: /^fe-ent-echarts$/,
+            replacement: `${workspace}/extensions/echarts/index.ts`,
+          },
+          {
+            find: /^fe-ent-flow-chart$/,
+            replacement: `${workspace}/extensions/flow-chart/index.ts`,
+          },
+          {
+            find: /^fe-ent-markdown$/,
+            replacement: `${workspace}/extensions/markdown/index.ts`,
+          },
+          {
             find: /^fe-ent-qrcode$/,
             replacement: `${workspace}/extensions/qrcode/index.ts`,
+          },
+          {
+            find: /^fe-ent-tinymce$/,
+            replacement: `${workspace}/extensions/tinymce/index.ts`,
+          },
+          {
+            find: /^fe-ent-login$/,
+            replacement: `${workspace}/apps/login/index.ts`,
+          },
+          {
+            find: /^fe-ent-page$/,
+            replacement: `${workspace}/apps/page/index.ts`,
           },
           {
             find: /^@ent-core\/(.*)$/,

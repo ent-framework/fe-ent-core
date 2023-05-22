@@ -1,37 +1,38 @@
 <template>
-  <EntPageWrapper title="Tree函数操作示例" contentBackground contentClass="p-4">
+  <EntPageWrapper title="Tree函数操作示例" content-background content-class="p-4">
     <div class="mb-4">
-      <ent-button @click="expandAll(true)" class="mr-2"> 展开全部 </ent-button>
-      <ent-button @click="expandAll(false)" class="mr-2"> 折叠全部 </ent-button>
-      <ent-button @click="checkAll(true)" class="mr-2"> 全选 </ent-button>
-      <ent-button @click="checkAll(false)" class="mr-2"> 全不选 </ent-button>
-      <ent-button @click="handleLevel(2)" class="mr-2"> 显示到第2级 </ent-button>
-      <ent-button @click="handleLevel(1)" class="mr-2"> 显示到第1级 </ent-button>
+      <ent-button class="mr-2" @click="expandAll(true)"> 展开全部 </ent-button>
+      <ent-button class="mr-2" @click="expandAll(false)"> 折叠全部 </ent-button>
+      <ent-button class="mr-2" @click="checkAll(true)"> 全选 </ent-button>
+      <ent-button class="mr-2" @click="checkAll(false)"> 全不选 </ent-button>
+      <ent-button class="mr-2" @click="handleLevel(2)"> 显示到第2级 </ent-button>
+      <ent-button class="mr-2" @click="handleLevel(1)"> 显示到第1级 </ent-button>
     </div>
     <div class="mb-4">
-      <ent-button @click="handleSetCheckData" class="mr-2"> 设置勾选数据 </ent-button>
-      <ent-button @click="handleGetCheckData" class="mr-2"> 获取勾选数据 </ent-button>
-      <ent-button @click="handleSetSelectData" class="mr-2"> 设置选中数据 </ent-button>
-      <ent-button @click="handleGetSelectData" class="mr-2"> 获取选中数据 </ent-button>
+      <ent-button class="mr-2" @click="handleSetCheckData"> 设置勾选数据 </ent-button>
+      <ent-button class="mr-2" @click="handleGetCheckData"> 获取勾选数据 </ent-button>
+      <ent-button class="mr-2" @click="handleSetSelectData"> 设置选中数据 </ent-button>
+      <ent-button class="mr-2" @click="handleGetSelectData"> 获取选中数据 </ent-button>
 
-      <ent-button @click="handleSetExpandData" class="mr-2"> 设置展开数据 </ent-button>
-      <ent-button @click="handleGetExpandData" class="mr-2"> 获取展开数据 </ent-button>
+      <ent-button class="mr-2" @click="handleSetExpandData"> 设置展开数据 </ent-button>
+      <ent-button class="mr-2" @click="handleGetExpandData"> 获取展开数据 </ent-button>
     </div>
     <div class="mb-4">
-      <ent-button @click="appendNodeByKey(null)" class="mr-2"> 添加根节点 </ent-button>
-      <ent-button @click="appendNodeByKey('2-2')" class="mr-2"> 添加在parent3内添加节点 </ent-button>
-      <ent-button @click="deleteNodeByKey('2-2')" class="mr-2"> 删除parent3节点 </ent-button>
-      <ent-button @click="updateNodeByKey('1-1')" class="mr-2"> 更新parent2节点 </ent-button>
+      <ent-button class="mr-2" @click="appendNodeByKey(null)"> 添加根节点 </ent-button>
+      <ent-button class="mr-2" @click="appendNodeByKey('2-2')">
+        添加在parent3内添加节点
+      </ent-button>
+      <ent-button class="mr-2" @click="deleteNodeByKey('2-2')"> 删除parent3节点 </ent-button>
+      <ent-button class="mr-2" @click="updateNodeByKey('1-1')"> 更新parent2节点 </ent-button>
     </div>
-    <EntTree :treeData="treeData" title="函数操作" ref="treeRef" :checkable="true" />
+    <EntTree ref="treeRef" :tree-data="treeData" title="函数操作" :checkable="true" />
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { EntTree, TreeActionType } from '@ent-core/components/tree';
+  import { EntPageWrapper, EntTree, useMessage } from 'fe-ent-core';
   import { treeData } from './data';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import type { TreeActionType } from 'fe-ent-core';
 
   export default defineComponent({
     components: { EntTree, EntPageWrapper },
@@ -88,7 +89,7 @@
 
       function appendNodeByKey(parentKey: string | null = null) {
         getTree().insertNodeByKey({
-          parentKey: parentKey,
+          parentKey,
           node: {
             title: '新增节点',
             key: '2-2-2',

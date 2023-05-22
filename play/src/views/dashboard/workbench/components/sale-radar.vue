@@ -1,12 +1,13 @@
 <template>
   <Card title="销售统计" :loading="loading">
-    <div ref="chartRef" :style="{ width, height }"></div>
+    <div ref="chartRef" :style="{ width, height }" />
   </Card>
 </template>
 <script lang="ts" setup>
-  import { Ref, ref, watch, type PropType } from 'vue';
+  import type { Ref} from 'vue';
+import { type PropType, ref, watch } from 'vue';
   import { Card } from 'ant-design-vue';
-  import { useEcharts } from '@fe-ent-extension/echarts';
+  import { useEcharts } from 'fe-ent-echarts';
 
   const props = defineProps({
     loading: Boolean,

@@ -17,7 +17,7 @@ const MD_TARGET = 'README.zh-CN.md';
 const MD_TARGET_EN = 'README.en-US.md';
 const MD_MATERIAL_README = 'docs/README.md';
 const MD_MATERIAL_README_EN = 'docs/README.en-US.md';
-const TEMPLATE_GLOB = `components/*/${MD_TEMPLATE}`;
+const TEMPLATE_GLOB = `components/**/${MD_TEMPLATE}`;
 
 type ComponentDocType = ComponentDoc | ComponentDoc[];
 type ApiType = 'component' | 'interface';

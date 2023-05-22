@@ -5,16 +5,15 @@
     </CollapseContainer>
 
     <CollapseContainer title="Multiple" class="mt-4">
-      <ent-button type="primary" @contextmenu="handleMultipleContext"> Right Click on me </ent-button>
+      <ent-button type="primary" @contextmenu="handleMultipleContext">
+        Right Click on me
+      </ent-button>
     </CollapseContainer>
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useContextMenu } from '@ent-core/hooks/web/use-context-menu';
-  import { EntCollapseContainer } from '@ent-core/components/container';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntCollapseContainer, EntPageWrapper, useContextMenu, useMessage } from 'fe-ent-core';
 
   export default defineComponent({
     components: { CollapseContainer: EntCollapseContainer, EntPageWrapper },

@@ -4,10 +4,10 @@
       title="部门列表"
       toolbar
       search
-      treeWrapperClassName="h-[calc(100%-35px)] overflow-auto"
-      :clickRowToExpand="false"
-      :treeData="treeData"
-      :fieldNames="{ key: 'id', title: 'deptName' }"
+      tree-wrapper-class-name="h-[calc(100%-35px)] overflow-auto"
+      :click-row-to-expand="false"
+      :tree-data="treeData"
+      :field-names="{ key: 'id', title: 'deptName' }"
       @select="handleSelect"
     />
   </div>
@@ -15,7 +15,8 @@
 <script lang="ts">
   import { defineComponent, onMounted, ref } from 'vue';
 
-  import { EntTree, TreeItem } from '@ent-core/components/tree';
+  import type { TreeItem } from 'fe-ent-core';
+  import { EntTree } from 'fe-ent-core';
   import { getDeptList } from '/@/api/system';
 
   export default defineComponent({

@@ -4,16 +4,16 @@
     <ent-button type="link">
       {{ permissionMode === PermissionModeEnum.BACK ? '后台权限模式' : '前端角色权限模式' }}
     </ent-button>
-    <ent-button class="ml-4" @click="togglePermissionMode" type="primary"> 切换权限模式 </ent-button>
+    <ent-button class="ml-4" type="primary" @click="togglePermissionMode">
+      切换权限模式
+    </ent-button>
     <Divider />
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, computed } from 'vue';
-  import { useAppStore } from '@ent-core/store/modules/app';
-  import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
+  import { computed, defineComponent } from 'vue';
+  import { PermissionModeEnum, useAppStore, usePermission } from 'fe-ent-core';
   import { Divider } from 'ant-design-vue';
-  import { usePermission } from '@ent-core/hooks/web/use-permission';
   export default defineComponent({
     name: 'CurrentPermissionMode',
     components: { Divider },

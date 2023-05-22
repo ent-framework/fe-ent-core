@@ -22,7 +22,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Card } from 'ant-design-vue';
-  import { EntIcon } from '@ent-core/components/icon';
+  import { EntIcon } from 'fe-ent-core';
   import { groupItems } from './data';
 
   export default defineComponent({

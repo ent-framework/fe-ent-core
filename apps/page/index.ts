@@ -1,10 +1,9 @@
-import { mainOutRoute } from './components/page/routes/main-out';
-import { getErrorLogRoute, getRedirectRoute, getRootRoute } from './components/page/routes/basic';
+import { mainOutRoute } from './components/routes/main-out';
+import { getErrorLogRoute, getRedirectRoute, getRootRoute } from './components/routes/basic';
 import { initRouteAndLayout } from './components/init-page';
 import type { AppRouteRecordRaw } from 'fe-ent-core/lib/router/types';
-import './components/index.less';
 
-export * from './components/page/layouts/default';
+export * from './components/layouts/default';
 
 // 导入基础路由，与业务无关
 function getBasicRoutes(rootPathRedirect?: string): AppRouteRecordRaw[] {

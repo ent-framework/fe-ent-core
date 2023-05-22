@@ -1,6 +1,6 @@
 <template>
   <EntPageWrapper title="excel数据导入示例">
-    <ExtImportExcel @success="loadDataSuccess" dateFormat="YYYY-MM-DD">
+    <ExtImportExcel date-format="YYYY-MM-DD" @success="loadDataSuccess">
       <ent-button class="m-3"> 导入Excel </ent-button>
     </ExtImportExcel>
     <EntTable
@@ -8,16 +8,15 @@
       :key="index"
       :title="table.title"
       :columns="table.columns"
-      :dataSource="table.dataSource"
+      :data-source="table.dataSource"
     />
   </EntPageWrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
 
-  import { ExtImportExcel, ExcelData } from '@ent-core/components/excel';
-  import { EntTable, BasicColumn } from '@ent-core/components/table';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntPageWrapper, EntTable, ExtImportExcel } from 'fe-ent-core';
+  import type { BasicColumn, ExcelData } from 'fe-ent-core';
 
   export default defineComponent({
     components: { EntTable, ExtImportExcel, EntPageWrapper },

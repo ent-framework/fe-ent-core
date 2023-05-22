@@ -4,7 +4,7 @@
       <h1>向下滚动</h1>
 
       <div class="lazy-base-demo-box">
-        <LazyContainer transitionName="custom">
+        <LazyContainer transition-name="custom">
           <TargetContent />
         </LazyContainer>
       </div>
@@ -13,9 +13,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
+  import { EntLazyContainer, EntPageWrapper } from 'fe-ent-core';
   import TargetContent from './target-content.vue';
-  import { EntLazyContainer } from '@ent-core/components/container';
-  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: { LazyContainer: EntLazyContainer, TargetContent, EntPageWrapper },

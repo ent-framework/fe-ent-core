@@ -5,8 +5,8 @@
         <ent-count-to
           prefix="$"
           :color="'#409EFF'"
-          :startVal="1"
-          :endVal="200000"
+          :start-val="1"
+          :end-val="200000"
           :duration="8000"
         />
       </CardGrid>
@@ -14,8 +14,8 @@
         <ent-count-to
           suffix="$"
           :color="'red'"
-          :startVal="1"
-          :endVal="300000"
+          :start-val="1"
+          :end-val="300000"
           :decimals="2"
           :duration="6000"
         />
@@ -24,8 +24,8 @@
         <ent-count-to
           suffix="$"
           :color="'rgb(0,238,0)'"
-          :startVal="1"
-          :endVal="400000"
+          :start-val="1"
+          :end-val="400000"
           :duration="7000"
         />
       </CardGrid>
@@ -33,8 +33,8 @@
         <ent-count-to
           separator="-"
           :color="'rgba(138,43,226,.6)'"
-          :startVal="10000"
-          :endVal="500000"
+          :start-val="10000"
+          :end-val="500000"
           :duration="8000"
         />
       </CardGrid>
@@ -44,8 +44,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Card } from 'ant-design-vue';
-  import { EntCountTo } from '@ent-core/components/count-to';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntCountTo, EntPageWrapper } from 'fe-ent-core';
 
   export default defineComponent({
     components: {

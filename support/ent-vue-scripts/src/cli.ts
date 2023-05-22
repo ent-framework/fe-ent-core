@@ -10,7 +10,8 @@ import apigen from './scripts/docgen/api';
 import dtsgen from './scripts/dtsgen';
 import devComponent from './scripts/dev-component';
 import viteSite from './scripts/site';
-import viteApp from './scripts/app';
+import viteProject from './scripts/build-project';
+import viteApp from './scripts/build-app';
 import buildComponent from './scripts/build-component';
 import buildStyle from './scripts/build-style';
 import buildLibrary from './scripts/build-library';
@@ -82,11 +83,11 @@ program
   });
 
 program
-  .command('dev:app')
-  .description('start vite server for app development.')
+  .command('dev:project')
+  .description('start vite server for project development.')
   .option('-p --port <port>', `[number] specify port`, '5500')
   .action(async ({ port }) => {
-    await viteApp({ command: 'serve', mode: 'development' }, port);
+    await viteProject({ command: 'serve', mode: 'development' }, port);
   });
 
 program
@@ -100,8 +101,9 @@ program
 program
   .command('build:library')
   .description('build library')
-  .action(async () => {
-    await buildLibrary();
+  .option('-u, --umd', 'build with UMD file')
+  .action(async ({ umd }) => {
+    await buildLibrary({ umd });
   });
 
 program
@@ -120,10 +122,17 @@ program
   });
 
 program
-  .command('build:app')
-  .description('build app.')
+  .command('build:project')
+  .description('build project.')
   .action(async () => {
-    await viteApp({ command: 'build', mode: 'production' }, -1);
+    await viteProject({ command: 'build', mode: 'production' }, -1);
+  });
+
+program
+  .command('build:app')
+  .description('package the app.')
+  .action(async () => {
+    await viteApp();
   });
 
 program

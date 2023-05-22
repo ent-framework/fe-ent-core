@@ -1,19 +1,19 @@
 <template>
   <EntModal
     v-bind="$attrs"
-    @register="register"
     title="Modal Title"
+    @register="register"
     @visible-change="handleVisibleChange"
   >
     <div class="pt-3px pr-3px">
-      <EntForm @register="registerForm" :model="model" />
+      <EntForm :model="model" @register="registerForm" />
     </div>
   </EntModal>
 </template>
 <script lang="ts">
-  import { defineComponent, ref, nextTick } from 'vue';
-  import { EntModal, useModalInner } from '@ent-core/components/modal';
-  import { EntForm, FormSchema, useForm } from '@ent-core/components/form';
+  import { defineComponent, nextTick, ref } from 'vue';
+  import { EntForm, EntModal, useForm, useModalInner } from 'fe-ent-core';
+  import type { FormSchema } from 'fe-ent-core';
   const schemas: FormSchema[] = [
     {
       field: 'field1',

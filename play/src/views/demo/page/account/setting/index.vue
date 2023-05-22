@@ -1,7 +1,7 @@
 <template>
   <ScrollContainer>
     <div ref="wrapperRef" :class="prefixCls">
-      <Tabs tab-position="left" :tabBarStyle="tabBarStyle">
+      <Tabs tab-position="left" :tab-bar-style="tabBarStyle">
         <template v-for="item in settingList" :key="item.key">
           <TabPane :tab="item.name">
             <component :is="item.component" />
@@ -16,7 +16,7 @@
   import { defineComponent } from 'vue';
   import { Tabs } from 'ant-design-vue';
 
-  import { EntScrollContainer } from '@ent-core/components/container';
+  import { EntScrollContainer } from 'fe-ent-core';
   import { settingList } from './data';
 
   import BaseSetting from './base-setting.vue';

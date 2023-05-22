@@ -1,6 +1,7 @@
-import { resultSuccess, resultError, getRequestToken, requestParams } from '../_util';
-import { MockMethod } from 'vite-plugin-mock';
+import { getRequestToken, resultError, resultSuccess } from '../_util';
 import { createFakeUserList } from './user';
+import type { requestParams } from '../_util';
+import type { MockMethod } from 'vite-plugin-mock';
 
 // single
 const dashboardRoute = {
@@ -288,11 +289,11 @@ export default [
       let menu: Object[];
       switch (id) {
         case '1':
-          dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[0].path;
+          dashboardRoute.redirect = `${dashboardRoute.path}/${dashboardRoute.children[0].path}`;
           menu = [dashboardRoute, authRoute, levelRoute, sysRoute, linkRoute];
           break;
         case '2':
-          dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[1].path;
+          dashboardRoute.redirect = `${dashboardRoute.path}/${dashboardRoute.children[1].path}`;
           menu = [dashboardRoute, authRoute, levelRoute, linkRoute];
           break;
         default:
@@ -319,11 +320,11 @@ export default [
       let menu: Object[];
       switch (id) {
         case '1':
-          dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[0].path;
+          dashboardRoute.redirect = `${dashboardRoute.path}/${dashboardRoute.children[0].path}`;
           menu = [dashboardRoute, authRoute, levelRoute, sysRoute, linkRoute];
           break;
         case '2':
-          dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[1].path;
+          dashboardRoute.redirect = `${dashboardRoute.path}/${dashboardRoute.children[1].path}`;
           menu = [dashboardRoute, authRoute, levelRoute, linkRoute];
           break;
         default:

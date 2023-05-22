@@ -20,12 +20,11 @@
   </EntPageWrapper>
 </template>
 <script lang="ts">
-  import { EntForm, useForm } from '@ent-core/components/form';
   import { defineComponent, ref } from 'vue';
-  import PersonTable from './person-table.vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
-  import { schemas, taskSchemas } from './data';
+  import { EntForm, EntPageWrapper, useForm } from 'fe-ent-core';
   import { Card } from 'ant-design-vue';
+  import PersonTable from './person-table.vue';
+  import { schemas, taskSchemas } from './data';
 
   export default defineComponent({
     name: 'FormHightPage',
@@ -43,7 +42,7 @@
         wrapperCol: {
           style: { 'min-width': '100%' },
         },
-        schemas: schemas,
+        schemas,
         showActionButtonGroup: false,
       });
 
@@ -69,7 +68,7 @@
 
           const [values, taskValues] = await Promise.all([validate(), validateTaskForm()]);
           console.log('form data:', values, taskValues);
-        } catch (error) {}
+        } catch {}
       }
 
       return { register, registerTask, submitAll, tableRef };

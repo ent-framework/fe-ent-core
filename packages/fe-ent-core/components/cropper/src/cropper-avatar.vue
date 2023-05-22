@@ -39,13 +39,15 @@
   import type { ButtonProps } from '@ent-core/components/button';
   import type { CSSProperties, PropType } from 'vue';
 
+  type apiFunParams = { file: Blob; name: string; filename: string };
+
   const props = {
     width: { type: [String, Number], default: '200px' },
     value: { type: String },
     showBtn: { type: Boolean, default: true },
     btnProps: { type: Object as PropType<ButtonProps> },
     btnText: { type: String, default: '' },
-    uploadApi: { type: Function as PropType<({ file: Blob, name: string }) => Promise<void>> },
+    uploadApi: { type: Function as PropType<(params: apiFunParams) => Promise<void>> },
   };
 
   export default defineComponent({

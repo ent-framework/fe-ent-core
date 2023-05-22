@@ -1,5 +1,6 @@
-import { MockMethod } from 'vite-plugin-mock';
-import { resultError, resultSuccess, getRequestToken, requestParams, deepMerge } from '../_util';
+import { deepMerge, getRequestToken, resultError, resultSuccess } from '../_util';
+import type { MockMethod } from 'vite-plugin-mock';
+import type { requestParams } from '../_util';
 
 let themeSettings = {
   showSettingButton: true,

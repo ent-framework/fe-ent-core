@@ -1,5 +1,5 @@
 import { withInstall } from 'fe-ent-core/lib/utils';
-import flowChart from './components/flow-chart/flow-chart.vue';
+import flowChart from './components/index.vue';
 import './components/index.less';
 
 import type { App } from 'vue';

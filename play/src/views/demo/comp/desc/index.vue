@@ -2,7 +2,7 @@
   <ent-page-wrapper title="详情组件示例">
     <ent-description
       title="基础示例"
-      :collapseOptions="{ canExpand: true, helpMessage: 'help me' }"
+      :collapse-options="{ canExpand: true, helpMessage: 'help me' }"
       :column="3"
       :data="mockData"
       :schema="schema"
@@ -12,24 +12,20 @@
       class="mt-4"
       title="垂直示例"
       layout="vertical"
-      :collapseOptions="{ canExpand: true, helpMessage: 'help me' }"
+      :collapse-options="{ canExpand: true, helpMessage: 'help me' }"
       :column="2"
       :data="mockData"
       :schema="schema"
     />
 
-    <ent-description @register="register" class="mt-4" />
-    <ent-description @register="register1" class="mt-4" />
+    <ent-description class="mt-4" @register="register" />
+    <ent-description class="mt-4" @register="register1" />
   </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import {
-    EntDescription,
-    DescItem,
-    useDescription,
-  } from '@ent-core/components/description';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntDescription, EntPageWrapper, useDescription } from 'fe-ent-core';
+  import type { DescItem } from 'fe-ent-core';
 
   const mockData: Recordable = {
     username: 'test',
@@ -73,14 +69,14 @@
       const [register] = useDescription({
         title: 'useDescription',
         data: mockData,
-        schema: schema,
+        schema,
       });
 
       const [register1] = useDescription({
         title: '无边框',
         bordered: false,
         data: mockData,
-        schema: schema,
+        schema,
       });
 
       return { mockData, schema, register, register1 };

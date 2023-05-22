@@ -1,5 +1,5 @@
 <template>
-  <EntDrawer v-bind="$attrs" @register="register" title="Drawer Title" width="50%">
+  <EntDrawer v-bind="$attrs" title="Drawer Title" width="50%" @register="register">
     <div>
       <EntForm @register="registerForm" />
     </div>
@@ -7,9 +7,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntDrawer, useDrawerInner } from '@ent-core/components/drawer';
+  import { EntDrawer, EntForm, useDrawerInner, useForm } from 'fe-ent-core';
+  import type { FormSchema } from 'fe-ent-core';
 
-  import { EntForm, FormSchema, useForm } from '@ent-core/components/form';
   const schemas: FormSchema[] = [
     {
       field: 'field1',

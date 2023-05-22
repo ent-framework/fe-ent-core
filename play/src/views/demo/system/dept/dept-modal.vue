@@ -1,12 +1,11 @@
 <template>
-  <EntModal v-bind="$attrs" @register="registerModal" :title="getTitle" @ok="handleSubmit">
+  <EntModal v-bind="$attrs" :title="getTitle" @register="registerModal" @ok="handleSubmit">
     <EntForm @register="registerForm" />
   </EntModal>
 </template>
 <script lang="ts">
-  import { defineComponent, ref, computed, unref } from 'vue';
-  import { EntModal, useModalInner } from '@ent-core/components/modal';
-  import { EntForm, useForm } from '@ent-core/components/form';
+  import { computed, defineComponent, ref, unref } from 'vue';
+  import { EntForm, EntModal, useForm, useModalInner } from 'fe-ent-core';
   import { formSchema } from './dept-data';
 
   import { getDeptList } from '/@/api/system';

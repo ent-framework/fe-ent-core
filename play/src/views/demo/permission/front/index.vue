@@ -1,8 +1,8 @@
 <template>
   <EntPageWrapper
     title="前端权限示例"
-    contentBackground
-    contentClass="p-4"
+    content-background
+    content-class="p-4"
     content="由于刷新的时候会请求用户信息接口，会根据接口重置角色信息，所以刷新后界面会恢复原样，如果不需要，可以注释 src/layout/default/index内的获取用户信息接口"
   >
     <CurrentPermissionMode />
@@ -15,10 +15,10 @@
     <div class="mt-4">
       权限切换(请先切换权限模式为前端角色权限模式):
       <Space>
-        <ent-button @click="changeRole(RoleEnum.SUPER)" :type="isSuper ? 'primary' : 'default'">
+        <ent-button :type="isSuper ? 'primary' : 'default'" @click="changeRole(RoleEnum.SUPER)">
           {{ RoleEnum.SUPER }}
         </ent-button>
-        <ent-button @click="changeRole(RoleEnum.TEST)" :type="isTest ? 'primary' : 'default'">
+        <ent-button :type="isTest ? 'primary' : 'default'" @click="changeRole(RoleEnum.TEST)">
           {{ RoleEnum.TEST }}
         </ent-button>
       </Space>
@@ -28,11 +28,8 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { Alert, Space } from 'ant-design-vue';
+  import { EntPageWrapper, RoleEnum, usePermission, useUserStore } from 'fe-ent-core';
   import CurrentPermissionMode from '../current-permission-mode.vue';
-  import { useUserStore } from '@ent-core/store/modules/user';
-  import { RoleEnum } from '@ent-core/logics/enums/role-enum';
-  import { usePermission } from '@ent-core/hooks/web/use-permission';
-  import { EntPageWrapper } from '@ent-core/components/page';
 
   export default defineComponent({
     components: { Space, Alert, CurrentPermissionMode, EntPageWrapper },

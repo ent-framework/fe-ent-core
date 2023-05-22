@@ -25,23 +25,23 @@
       <ent-button type="primary" class="my-4" @click="openTargetModal(4)"> 打开弹窗4 </ent-button>
     </a-space>
 
-    <component :is="currentModal" v-model:visible="modalVisible" :userData="userData" />
+    <component :is="currentModal" v-model:visible="modalVisible" :user-data="userData" />
 
-    <Modal1 @register="register1" :minHeight="100" />
+    <Modal1 :min-height="100" @register="register1" />
     <Modal2 @register="register2" />
     <Modal3 @register="register3" />
     <Modal4 @register="register4" />
   </EntPageWrapper>
 </template>
 <script lang="ts">
-  import { defineComponent, shallowRef, ComponentOptions, ref, nextTick } from 'vue';
+  import { defineComponent, nextTick, ref, shallowRef } from 'vue';
   import { Alert, Space } from 'ant-design-vue';
-  import { useModal } from '@ent-core/components/modal';
+  import { EntPageWrapper, useModal } from 'fe-ent-core';
   import Modal1 from './modal-1.vue';
   import Modal2 from './modal-2.vue';
   import Modal3 from './modal-3.vue';
   import Modal4 from './modal-4.vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import type { ComponentOptions } from 'vue';
 
   export default defineComponent({
     components: { Alert, Modal1, Modal2, Modal3, Modal4, EntPageWrapper, ASpace: Space },
@@ -51,7 +51,7 @@
       const [register2, { openModal: openModal2 }] = useModal();
       const [register3, { openModal: openModal3 }] = useModal();
       const [register4, { openModal: openModal4 }] = useModal();
-      const modalVisible = ref<Boolean>(false);
+      const modalVisible = ref<boolean>(false);
       const userData = ref<any>(null);
 
       function send() {

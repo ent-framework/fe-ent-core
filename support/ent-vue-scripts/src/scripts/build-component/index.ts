@@ -1,5 +1,5 @@
-import fs from 'fs-extra';
 import path from 'path';
+import fs from 'fs-extra';
 import { build } from 'vite';
 import config from '../../configs/vite.prod';
 import getUmdConfig from '../../configs/vite.prod.umd';

@@ -2,27 +2,24 @@
   <ent-page-wrapper title="上传组件示例">
     <a-alert message="基础示例" />
     <ent-upload
-      :maxSize="20"
-      :maxNumber="10"
-      @change="handleChange"
+      :max-size="20"
+      :max-number="10"
       :api="uploadApi"
       class="my-5"
       :accept="['image/*']"
+      @change="handleChange"
     />
 
     <a-alert message="嵌入表单,加入表单校验" />
 
-    <EntForm @register="register" class="my-5" />
+    <EntForm class="my-5" @register="register" />
   </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntUpload } from '@ent-core/components/upload';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
-  import { EntForm, FormSchema, useForm } from '@ent-core/components/form';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntForm, EntPageWrapper, EntUpload, Factory, useForm, useMessage } from 'fe-ent-core';
   import { Alert } from 'ant-design-vue';
-  import { uploadApi } from '@ent-core/logics/api/upload';
+  import type { FormSchema } from 'fe-ent-core';
 
   const schemas: FormSchema[] = [
     {
@@ -34,10 +31,13 @@
       },
       rules: [{ required: true, message: '请选择上传文件' }],
       componentProps: {
-        api: uploadApi,
+        api: Factory.getHttpFactory().uploadApi,
       },
     },
   ];
+
+  const uploadApi = Factory.getHttpFactory().uploadApi;
+
   export default defineComponent({
     components: { EntUpload, EntForm, EntPageWrapper, [Alert.name]: Alert },
     setup() {

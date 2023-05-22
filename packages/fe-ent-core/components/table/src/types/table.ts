@@ -4,8 +4,7 @@ import type { PaginationProps } from './pagination';
 import type { FormProps } from '@ent-core/components/form';
 import type { TableRowSelection as ITableRowSelection } from 'ant-design-vue/lib/table/interface';
 import type { ColumnProps } from 'ant-design-vue/lib/table';
-import type { AnyFunction, EmitType, Fn, Recordable } from '@ent-core/types';
-import type { VueNode } from '@ent-core/utils/prop-types';
+import type { AnyFunction, EmitType, Fn, Recordable, VueNode } from '@ent-core/types';
 import type { RoleEnum } from '@ent-core/logics/enums/role-enum';
 
 export declare type SortOrder = 'ascend' | 'descend';

@@ -23,8 +23,8 @@
 </template>
 <script lang="ts" setup>
   import { Card, List } from 'ant-design-vue';
+  import { EntIcon } from 'fe-ent-core';
   import { dynamicInfoItems } from './data';
-  import { EntIcon } from '@ent-core/components/icon';
 
   const ListItem = List.Item;
   const ListItemMeta = List.Item.Meta;

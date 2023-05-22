@@ -11,8 +11,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
-  import { EntForm, useForm } from '@ent-core/components/form';
+  import { EntForm, EntPageWrapper, useForm } from 'fe-ent-core';
 
   import { formSchema } from './pwd-data';
   export default defineComponent({
@@ -35,7 +34,7 @@
           console.log(passwordOld, passwordNew);
           // const { router } = useRouter();
           // router.push(pageEnum.BASE_LOGIN);
-        } catch (error) {}
+        } catch {}
       }
 
       return { register, resetFields, handleSubmit };

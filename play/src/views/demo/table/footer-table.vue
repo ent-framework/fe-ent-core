@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable } from '@ent-core/components/table';
+  import { EntTable, useTable } from 'fe-ent-core';
   import { getBasicColumns } from './table-data';
 
   import { demoListApi } from '/@/api/table';

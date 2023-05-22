@@ -20,26 +20,26 @@ const run = async () => {
 
   // 拷贝并编译less入口文件
   consola.log('build target css');
-  const indexLessPath = paths.resolvePath('theme/index.less');
-
-  const indexLess = fs.readFileSync(indexLessPath, 'utf8');
-  const result = await less.render(indexLess, {
-    paths: [paths.components, paths.directives, paths.theme],
-    modifyVars: generateModifyVars(),
-    javascriptEnabled: true,
-  });
-
-  fs.ensureDirSync(paths.resolvePath('dist'));
-
-  fs.writeFileSync(paths.resolvePath('dist/app.css'), result.css);
-
-  const compress = new CleanCSS().minify(result.css);
-
-  fs.writeFileSync(paths.resolvePath('dist/app.min.css'), compress.styles);
-
-  fs.copy(paths.theme, paths.resolvePath('lib/theme'), { recursive: true });
-
-  consola.success(`target build success`);
+  // const indexLessPath = paths.resolvePath('theme/index.less');
+  //
+  // const indexLess = fs.readFileSync(indexLessPath, 'utf8');
+  // const result = await less.render(indexLess, {
+  //   paths: [paths.components, paths.directives, paths.theme],
+  //   modifyVars: generateModifyVars(),
+  //   javascriptEnabled: true,
+  // });
+  //
+  // fs.ensureDirSync(paths.resolvePath('dist'));
+  //
+  // fs.writeFileSync(paths.resolvePath('dist/app.css'), result.css);
+  //
+  // const compress = new CleanCSS().minify(result.css);
+  //
+  // fs.writeFileSync(paths.resolvePath('dist/app.min.css'), compress.styles);
+  //
+  fs.copySync(paths.theme, paths.resolvePath('lib/theme'), { recursive: true });
+  //
+  // consola.success(`target build success`);
 };
 
 export default run;

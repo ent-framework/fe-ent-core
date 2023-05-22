@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <EntTable @register="registerTable" @edit-change="onEditChange" :dataSource="dataSource">
+    <EntTable :data-source="dataSource" @register="registerTable" @edit-change="onEditChange">
       <template #toolbar>
         <ent-button type="primary" @click="addRecord">添加行</ent-button>
       </template>
@@ -11,21 +11,15 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, onMounted, ref, Ref } from 'vue';
-  import {
-    EntTable,
-    useTable,
-    EntTableAction,
-    BasicColumn,
-    TableActionItem,
-    EditRecordRow,
-  } from '@ent-core/components/table';
+  import { defineComponent, onMounted, ref } from 'vue';
+  import { EntTable, EntTableAction, useMessage, useTable } from 'fe-ent-core';
   import { optionsListApi } from '/@/api/select';
 
   import { demoListApi } from '/@/api/table';
   import { treeOptionsListApi } from '/@/api/tree';
   import { cloneDeep } from 'lodash';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
+  import type { BasicColumn, EditRecordRow, TableActionItem } from 'fe-ent-core';
+  import type { Ref } from 'vue';
 
   const columns: BasicColumn[] = [
     {
@@ -175,7 +169,7 @@
         titleHelpMessage: [
           '本例中修改[数字输入框]这一列时，同一行的[远程下拉]列的当前编辑数据也会同步发生改变',
         ],
-        columns: columns,
+        columns,
         showIndexColumn: false,
         showTableSetting: true,
         tableSetting: { fullScreen: true },
@@ -223,7 +217,7 @@
               currentEditKeyRef.value = '';
             }
             msg.success({ content: '数据已保存', key: 'saving' });
-          } catch (error) {
+          } catch {
             msg.error({ content: '保存失败', key: 'saving' });
           }
         } else {

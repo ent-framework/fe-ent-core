@@ -1,5 +1,5 @@
-import { MockMethod } from 'vite-plugin-mock';
 import { resultError, resultPageSuccess, resultSuccess } from '../_util';
+import type { MockMethod } from 'vite-plugin-mock';
 
 const accountList = (() => {
   const result: any[] = [];
@@ -104,12 +104,11 @@ const menuList = (() => {
                 children.push({
                   id: `${index}-${j}-${k}`,
                   type: '2',
-                  menuName: '按钮' + (j + 1) + '-' + (k + 1),
+                  menuName: `按钮${j + 1}-${k + 1}`,
                   icon: '',
-                  permission:
-                    ['menu1:view', 'menu2:add', 'menu3:update', 'menu4:del'][index] +
-                    ':btn' +
-                    (k + 1),
+                  permission: `${
+                    ['menu1:view', 'menu2:add', 'menu3:update', 'menu4:del'][index]
+                  }:btn${k + 1}`,
                   component: [
                     '/dashboard/welcome/index',
                     '/dashboard/analysis/index',
@@ -192,7 +191,7 @@ export default [
     method: 'post',
     response: ({ body }) => {
       const { account } = body || {};
-      if (account && account.indexOf('admin') !== -1) {
+      if (account && account.includes('admin')) {
         return resultError('该字段不能包含admin');
       } else {
         return resultSuccess(`${account} can use`);

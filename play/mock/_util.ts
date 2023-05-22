@@ -58,7 +58,7 @@ export interface requestParams {
 export function getRequestToken({ headers }: requestParams): string | undefined {
   const auth = headers?.authorization;
   if (auth && auth.startsWith('Bearer')) {
-    return auth.substring(7);
+    return auth.slice(7);
   }
   return auth;
 }

@@ -4,8 +4,8 @@
     show-footer
     :title="getTitle"
     width="50%"
+    destroy-on-close
     @register="registerDrawer"
-    destroyOnClose
     @ok="handleSubmit"
   >
     <EntForm @register="registerForm" />
@@ -13,9 +13,8 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref } from 'vue';
-  import { EntForm, useForm } from '@ent-core/components/form';
+  import { EntDrawer, EntForm, useDrawerInner, useForm } from 'fe-ent-core';
   import { formSchema } from './menu-data';
-  import { EntDrawer, useDrawerInner } from '@ent-core/components/drawer';
 
   import { getMenuList } from '/@/api/system';
 

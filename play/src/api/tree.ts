@@ -1,4 +1,4 @@
-import { defHttp } from '@ent-core/utils/http/axios';
+import { defHttp } from 'fe-ent-core';
 enum Api {
   TREE_OPTIONS_LIST = '/tree/getDemoOptions',
 }

@@ -2,9 +2,9 @@
   <EntPageWrapper title="富文本嵌入表单示例">
     <CollapseContainer title="富文本表单">
       <EntForm
-        :labelWidth="100"
+        :label-width="100"
         :schemas="schemas"
-        :actionColOptions="{ span: 24 }"
+        :action-col-options="{ span: 24 }"
         @submit="handleSubmit"
       />
     </CollapseContainer>
@@ -12,11 +12,9 @@
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { EntForm, FormSchema } from '@ent-core/components/form';
-  import { EntCollapseContainer } from '@ent-core/components/container';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
-  import { Tinymce } from '@fe-ent-extension/tinymce';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntCollapseContainer, EntForm, EntPageWrapper, useMessage } from 'fe-ent-core';
+  import { Tinymce } from 'fe-ent-tinymce';
+  import type { FormSchema } from 'fe-ent-core';
 
   const schemas: FormSchema[] = [
     {
@@ -50,7 +48,7 @@
       return {
         schemas,
         handleSubmit: (values: any) => {
-          createMessage.success('click search,values:' + JSON.stringify(values));
+          createMessage.success(`click search,values:${JSON.stringify(values)}`);
         },
       };
     },

@@ -23,11 +23,11 @@
           <a-list-item class="list">
             <a-list-item-meta>
               <template #avatar>
-                <Icon class="icon" v-if="item.icon" :icon="item.icon" :color="item.color" />
+                <Icon v-if="item.icon" class="icon" :icon="item.icon" :color="item.color" />
               </template>
               <template #title>
                 <span>{{ item.title }}</span>
-                <div class="extra" v-if="item.extra">
+                <div v-if="item.extra" class="extra">
                   {{ item.extra }}
                 </div>
               </template>
@@ -51,12 +51,10 @@
   </EntPageWrapper>
 </template>
 <script lang="ts">
-  import { Progress, Row, Col } from 'ant-design-vue';
   import { defineComponent } from 'vue';
-  import Icon from '@ent-core/components/icon';
+  import { Col, List, Progress, Row } from 'ant-design-vue';
+  import Icon, { EntPageWrapper } from 'fe-ent-core';
   import { cardList } from './data';
-  import { EntPageWrapper } from '@ent-core/components/page';
-  import { List } from 'ant-design-vue';
 
   export default defineComponent({
     components: {

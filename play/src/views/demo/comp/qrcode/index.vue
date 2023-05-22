@@ -3,7 +3,7 @@
     <div class="flex flex-wrap">
       <CollapseContainer
         title="基础示例"
-        :canExpan="true"
+        :can-expan="true"
         class="text-center mb-6 qrcode-demo-item"
       >
         <QrCode :value="qrCodeUrl" />
@@ -50,7 +50,7 @@
       </CollapseContainer>
 
       <CollapseContainer title="下载示例" class="text-center qrcode-demo-item">
-        <QrCode :value="qrCodeUrl" ref="qrRef" :logo="LogoImg" />
+        <QrCode ref="qrRef" :value="qrCodeUrl" :logo="LogoImg" />
         <ent-button class="mb-2" type="primary" @click="download"> 下载 </ent-button>
         <div class="msg">(在线logo会导致图片跨域，需要下载图片需要自行解决跨域问题)</div>
       </CollapseContainer>
@@ -61,10 +61,10 @@
 
       <CollapseContainer title="扩展绘制示例" class="text-center qrcode-demo-item">
         <QrCode
+          ref="qrDiyRef"
           :value="qrCodeUrl"
           :width="200"
           :options="{ margin: 5 }"
-          ref="qrDiyRef"
           :logo="LogoImg"
           @done="onQrcodeDone"
         />
@@ -76,10 +76,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { QrCode, QrCodeActionType } from '@fe-ent-extension/qrcode';
+  import { QrCode } from 'fe-ent-qrcode';
   import LogoImg from '/@/assets/images/logo.png';
-  import { EntCollapseContainer } from '@ent-core/components/container';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntCollapseContainer, EntPageWrapper } from 'fe-ent-core';
+  import type { QrCodeActionType } from 'fe-ent-qrcode';
 
   const qrCodeUrl = 'https://www.vvbin.cn';
   export default defineComponent({

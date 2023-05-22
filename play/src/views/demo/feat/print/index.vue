@@ -9,8 +9,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
-  import { EntCollapseContainer } from '@ent-core/components/container';
+  import { EntCollapseContainer, EntPageWrapper } from 'fe-ent-core';
 
   import printJS from 'print-js';
 

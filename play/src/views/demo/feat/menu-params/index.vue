@@ -14,10 +14,10 @@
   </EntPageWrapper>
 </template>
 <script lang="ts">
-  import { Input } from 'ant-design-vue';
   import { computed, defineComponent, ref, unref } from 'vue';
+  import { Input } from 'ant-design-vue';
   import { useRouter } from 'vue-router';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntPageWrapper } from 'fe-ent-core';
 
   export default defineComponent({
     name: 'TestMenu',

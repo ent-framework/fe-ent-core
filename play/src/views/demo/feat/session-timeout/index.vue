@@ -8,7 +8,7 @@
         <ent-button type="primary" @click="test1">HttpStatus == 401</ent-button>
       </a-card-grid>
       <a-card-grid style="width: 50%; text-align: center">
-        <span></span>
+        <span />
         <ent-button class="ml-4" type="primary" @click="test2">Response.code == 401</ent-button>
       </a-card-grid>
     </a-card>
@@ -16,8 +16,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
-  import { useUserStore } from '@ent-core/store/modules/user';
+  import { EntPageWrapper, useUserStore } from 'fe-ent-core';
 
   import { sessionTimeoutApi, tokenExpiredApi } from '/@/api/account';
   import { Card } from 'ant-design-vue';

@@ -1,5 +1,5 @@
 import { withInstall } from 'fe-ent-core/lib/utils';
-import tinymce from './components/tinymce/editor.vue';
+import tinymce from './components/index.vue';
 import './components/index.less';
 import type { App } from 'vue';
 

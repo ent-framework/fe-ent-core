@@ -1,5 +1,5 @@
-import { defHttp } from '@ent-core/utils/http/axios';
-import { DemoParams, DemoListGetResultModel } from '../model/table-model';
+import { defHttp } from 'fe-ent-core';
+import type { DemoListGetResultModel, DemoParams } from '../model/table-model';
 
 enum Api {
   DEMO_LIST = '/table/getDemoList',

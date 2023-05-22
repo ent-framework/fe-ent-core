@@ -173,7 +173,7 @@ export const mapData: any = [
 
 export const getLineData = (() => {
   const category: any[] = [];
-  let dottedBase = +new Date();
+  let dottedBase = Date.now();
   const lineData: any[] = [];
   const barData: any[] = [];
 

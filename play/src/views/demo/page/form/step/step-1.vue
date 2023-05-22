@@ -8,7 +8,7 @@
               <a-select-option value="zfb"> 支付宝 </a-select-option>
               <a-select-option value="yl"> 银联 </a-select-option>
             </a-select>
-            <a-input class="pay-input" v-model:value="model[field]" />
+            <a-input v-model:value="model[field]" class="pay-input" />
           </a-input-group>
         </template>
       </EntForm>
@@ -28,10 +28,10 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntForm, useForm } from '@ent-core/components/form';
+  import { EntForm, useForm } from 'fe-ent-core';
+  import { Divider, Input, Select } from 'ant-design-vue';
   import { step1Schemas } from './data';
 
-  import { Select, Input, Divider } from 'ant-design-vue';
   export default defineComponent({
     components: {
       EntForm,
@@ -60,7 +60,7 @@
         try {
           const values = await validate();
           emit('next', values);
-        } catch (error) {}
+        } catch {}
       }
 
       return { register };

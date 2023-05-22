@@ -21,7 +21,7 @@
 <script lang="ts" setup>
   import { ref } from 'vue';
   import { Card } from 'ant-design-vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntPageWrapper } from 'fe-ent-core';
   import WorkbenchHeader from './components/workbench-header.vue';
   import ProjectCard from './components/project-card.vue';
   import QuickNav from './components/quick-nav.vue';

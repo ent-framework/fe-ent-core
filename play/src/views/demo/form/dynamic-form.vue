@@ -1,10 +1,10 @@
 <template>
   <EntPageWrapper title="动态表单示例">
     <div class="mb-4">
-      <ent-button @click="changeLabel3" class="mr-2"> 更改字段3label </ent-button>
-      <ent-button @click="changeLabel34" class="mr-2"> 同时更改字段3,4label </ent-button>
-      <ent-button @click="appendField" class="mr-2"> 往字段3后面插入字段10 </ent-button>
-      <ent-button @click="deleteField" class="mr-2"> 删除字段11 </ent-button>
+      <ent-button class="mr-2" @click="changeLabel3"> 更改字段3label </ent-button>
+      <ent-button class="mr-2" @click="changeLabel34"> 同时更改字段3,4label </ent-button>
+      <ent-button class="mr-2" @click="appendField"> 往字段3后面插入字段10 </ent-button>
+      <ent-button class="mr-2" @click="deleteField"> 删除字段11 </ent-button>
     </div>
     <CollapseContainer title="动态表单示例,动态根据表单内其他值改变">
       <EntForm @register="register" />
@@ -17,9 +17,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntForm, FormSchema, useForm } from '@ent-core/components/form';
-  import { EntCollapseContainer } from '@ent-core/components/container';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntCollapseContainer, EntForm, EntPageWrapper, useForm } from 'fe-ent-core';
+  import type { FormSchema } from 'fe-ent-core';
 
   const schemas: FormSchema[] = [
     {

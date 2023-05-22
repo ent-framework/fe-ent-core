@@ -6,17 +6,17 @@
     </div>
 
     <div class="flex justify-center p-4 items-center bg-gray-700">
-      <EntDragVerify ref="el2" @success="handleSuccess" circle />
+      <EntDragVerify ref="el2" circle @success="handleSuccess" />
       <ent-button type="primary" class="ml-2" @click="handleBtnClick(el2)"> 还原 </ent-button>
     </div>
 
     <div class="flex justify-center p-4 items-center bg-gray-700">
       <EntDragVerify
         ref="el3"
-        @success="handleSuccess"
         text="拖动以进行校验"
-        successText="校验成功"
-        :barStyle="{
+        @success="handleSuccess"
+        success-text="校验成功"
+        :bar-style="{
           backgroundColor: '#018ffb',
         }"
       />
@@ -52,14 +52,13 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import {
-    EntDragVerify,
+  import type {
     DragVerifyActionType,
-    PassingData,
-  } from '@ent-core/components/verify';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
-  import { BugOutlined, RightOutlined } from '@ant-design/icons-vue';
-  import { EntPageWrapper } from '@ent-core/components/page';
+    PassingData} from 'fe-ent-core';
+import {
+    EntDragVerify,
+   useMessage , EntPageWrapper } from 'fe-ent-core';
+    import { BugOutlined, RightOutlined } from '@ant-design/icons-vue';
 
   export default defineComponent({
     components: { EntDragVerify, BugOutlined, RightOutlined, EntPageWrapper },

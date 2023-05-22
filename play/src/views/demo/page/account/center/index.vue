@@ -23,7 +23,7 @@
         </a-row>
       </a-col>
       <a-col :span="7" :class="`${prefixCls}-col`">
-        <CollapseContainer title="标签" :canExpan="false">
+        <CollapseContainer title="标签" :can-expan="false">
           <template v-for="tag in tags" :key="tag">
             <Tag class="mb-2">
               {{ tag }}
@@ -32,7 +32,7 @@
         </CollapseContainer>
       </a-col>
       <a-col :span="8" :class="`${prefixCls}-col`">
-        <CollapseContainer :class="`${prefixCls}-top__team`" title="团队" :canExpan="false">
+        <CollapseContainer :class="`${prefixCls}-top__team`" title="团队" :can-expan="false">
           <div v-for="(team, index) in teams" :key="index" :class="`${prefixCls}-top__team-item`">
             <Icon :icon="team.icon" :color="team.color" />
             <span>{{ team.title }}</span>
@@ -53,17 +53,15 @@
 </template>
 
 <script lang="ts">
-  import { Tag, Tabs, Row, Col } from 'ant-design-vue';
-  import { defineComponent, computed } from 'vue';
-  import { EntCollapseContainer } from '@ent-core/components/container';
-  import Icon from '@ent-core/components/icon';
+  import { computed, defineComponent } from 'vue';
+  import { Col, Row, Tabs, Tag } from 'ant-design-vue';
+  import Icon, { EntCollapseContainer, useUserStore } from 'fe-ent-core';
   import Article from './article.vue';
   import Application from './application.vue';
   import Project from './project.vue';
 
   import headerImg from '/@/assets/images/header.jpg';
-  import { tags, teams, details, achieveList } from './data';
-  import { useUserStore } from '@ent-core/store/modules/user';
+  import { achieveList, details, tags, teams } from './data';
 
   export default defineComponent({
     components: {

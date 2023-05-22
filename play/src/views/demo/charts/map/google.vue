@@ -1,10 +1,10 @@
 <template>
-  <div ref="wrapRef" :style="{ height, width }"></div>
+  <div ref="wrapRef" :style="{ height, width }" />
 </template>
 <script lang="ts">
-  import { defineComponent, ref, nextTick, unref, onMounted } from 'vue';
+  import { defineComponent, nextTick, onMounted, ref, unref } from 'vue';
 
-  import { useScript } from '@ent-core/hooks/web/use-script';
+  import { useScript } from 'fe-ent-core';
 
   const MAP_URL =
     'https://maps.googleapis.com/maps/api/js?key=AIzaSyBQWrGwj4gAzKndcbwD5favT9K0wgty_0&signed_in=true';
@@ -38,7 +38,7 @@
         });
         new google.maps.Marker({
           position: latLng,
-          map: map,
+          map,
           title: 'Hello World!',
         });
       }

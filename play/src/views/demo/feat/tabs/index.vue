@@ -3,8 +3,8 @@
     <CollapseContainer title="在下面输入框输入文本,切换后回来内容会保存">
       <a-alert banner message="该操作不会影响页面标题，仅修改Tab标题" />
       <div class="mt-2 flex flex-grow-0">
-        <ent-button class="mr-2" @click="setTabTitle" type="primary"> 设置Tab标题 </ent-button>
-        <a-input placeholder="请输入" v-model:value="title" class="mr-4 w-12" />
+        <ent-button class="mr-2" type="primary" @click="setTabTitle"> 设置Tab标题 </ent-button>
+        <a-input v-model:value="title" placeholder="请输入" class="mr-4 w-12" />
       </div>
     </CollapseContainer>
 
@@ -26,12 +26,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntCollapseContainer } from '@ent-core/components/container';
-  import { useTabs } from '@ent-core/hooks/web/use-tabs';
-  import { EntPageWrapper } from '@ent-core/components/page';
-  import { Input, Alert } from 'ant-design-vue';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
-  import { useGo } from '@ent-core/hooks/web/use-page';
+  import { EntCollapseContainer, EntPageWrapper, useGo, useMessage, useTabs } from 'fe-ent-core';
+  import { Alert, Input } from 'ant-design-vue';
 
   export default defineComponent({
     name: 'TabsDemo',

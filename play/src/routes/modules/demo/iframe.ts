@@ -1,5 +1,5 @@
-import type { AppRouteModule } from '@ent-core/router/types';
-import { t } from '@ent-core/hooks/web/use-i18n';
+import { t } from 'fe-ent-core';
+import type { AppRouteModule } from 'fe-ent-core';
 
 const iframe: AppRouteModule = {
   path: '/frame',

@@ -1,13 +1,13 @@
 <template>
   <ent-page-wrapper title="MarkDown组件示例">
     <div>
-      <ent-button @click="toggleTheme" class="mb-2" type="primary"> 黑暗主题 </ent-button>
-      <ent-button @click="clearValue" class="mb-2" type="default"> 清空内容 </ent-button>
+      <ent-button class="mb-2" type="primary" @click="toggleTheme"> 黑暗主题 </ent-button>
+      <ent-button class="mb-2" type="default" @click="clearValue"> 清空内容 </ent-button>
       <ent-mark-down
-        v-model:value="value"
-        @change="handleChange"
         ref="markDownRef"
+        v-model:value="value"
         placeholder="这是占位文本"
+        @change="handleChange"
       />
     </div>
     <div class="mt-2">
@@ -19,9 +19,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { EntMarkDown, MarkDownActionType, EntMarkdownViewer } from '@fe-ent-extension/markdown';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import { EntMarkDown, EntMarkdownViewer } from 'fe-ent-markdown';
+  import { EntPageWrapper } from 'fe-ent-core';
   import { Card } from 'ant-design-vue';
+  import type { MarkDownActionType } from 'fe-ent-markdown';
 
   export default defineComponent({
     components: { EntMarkDown, EntPageWrapper, EntMarkdownViewer, ACard: Card },

@@ -17,22 +17,22 @@
       <ent-button class="mr-2" @click="getPagination"> 获取分页信息 </ent-button>
     </div>
     <EntTable
-      :canResize="false"
-      title="RefTable示例"
-      titleHelpMessage="使用Ref调用表格内方法"
       ref="tableRef"
+      :can-resize="false"
+      title="RefTable示例"
+      title-help-message="使用Ref调用表格内方法"
       :api="api"
       :columns="columns"
-      rowKey="id"
-      :rowSelection="{ type: 'checkbox' }"
+      row-key="id"
+      :row-selection="{ type: 'checkbox' }"
     />
   </div>
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { EntTable, TableActionType } from '@ent-core/components/table';
+  import type { TableActionType } from 'fe-ent-core';
+  import { EntTable, useMessage } from 'fe-ent-core';
   import { getBasicColumns, getBasicShortColumns } from './table-data';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
   import { demoListApi } from '/@/api/table';
   export default defineComponent({
     components: { EntTable },

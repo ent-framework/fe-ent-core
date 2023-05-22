@@ -1,11 +1,11 @@
 <template>
   <EntPageWrapper title="表单校验示例">
     <div class="mb-4">
-      <ent-button @click="validateForm" class="mr-2"> 手动校验表单 </ent-button>
-      <ent-button @click="resetValidate" class="mr-2"> 清空校验信息 </ent-button>
-      <ent-button @click="getFormValues" class="mr-2"> 获取表单值 </ent-button>
-      <ent-button @click="setFormValues" class="mr-2"> 设置表单值 </ent-button>
-      <ent-button @click="resetFields" class="mr-2"> 重置 </ent-button>
+      <ent-button class="mr-2" @click="validateForm"> 手动校验表单 </ent-button>
+      <ent-button class="mr-2" @click="resetValidate"> 清空校验信息 </ent-button>
+      <ent-button class="mr-2" @click="getFormValues"> 获取表单值 </ent-button>
+      <ent-button class="mr-2" @click="setFormValues"> 设置表单值 </ent-button>
+      <ent-button class="mr-2" @click="resetFields"> 重置 </ent-button>
     </div>
     <CollapseContainer title="表单校验">
       <EntForm @register="register" @submit="handleSubmit" />
@@ -14,10 +14,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntForm, FormSchema, useForm } from '@ent-core/components/form';
-  import { EntCollapseContainer } from '@ent-core/components/container';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
-  import { EntPageWrapper } from '@ent-core/components/page';
+  import type { FormSchema } from 'fe-ent-core';
+  import { EntCollapseContainer, EntForm, EntPageWrapper, useForm, useMessage } from 'fe-ent-core';
   import { isAccountExist } from '/@/api/system';
 
   const schemas: FormSchema[] = [
@@ -230,7 +228,7 @@
       }
       function getFormValues() {
         const values = getFieldsValue();
-        createMessage.success('values:' + JSON.stringify(values));
+        createMessage.success(`values:${JSON.stringify(values)}`);
       }
       function setFormValues() {
         setFieldsValue({
@@ -245,7 +243,7 @@
         register,
         schemas,
         handleSubmit: (values: any) => {
-          createMessage.success('click search,values:' + JSON.stringify(values));
+          createMessage.success(`click search,values:${JSON.stringify(values)}`);
         },
         getFormValues,
         setFormValues,

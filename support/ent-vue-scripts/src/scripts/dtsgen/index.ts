@@ -84,10 +84,10 @@ async function addSourceFiles(project: Project) {
   const filePaths = excludeFiles(
     await glob(['**/*.{tsx,ts,vue}'], {
       cwd,
-      absolute: true,
+      absolute: false,
       onlyFiles: true,
     }),
-  );
+  ).map((file) => `${process.cwd()}/${file}`);
 
   const sourceFiles: SourceFile[] = [];
   await Promise.all([

@@ -12,8 +12,8 @@
 </template>
 <script lang="ts" setup>
   import { Card } from 'ant-design-vue';
+  import { EntIcon } from 'fe-ent-core';
   import { navItems } from './data';
-  import { EntIcon } from '@ent-core/components/icon';
 
   const CardGrid = Card.Grid;
 </script>

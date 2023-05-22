@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper contentBackground contentClass="flex" dense contentFullHeight fixedHeight>
+  <EntPageWrapper content-background content-class="flex" dense content-full-height fixed-height>
     <EntTable @register="registerTable">
       <template #toolbar>
         <ent-button type="primary" @click="handleReloadCurrent"> 刷新当前页 </ent-button>
@@ -10,9 +10,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable } from '@ent-core/components/table';
+  import { EntPageWrapper, EntTable, useTable } from 'fe-ent-core';
   import { getBasicColumns } from './table-data';
-  import { EntPageWrapper } from '@ent-core/components/page';
 
   import { demoListApi } from '/@/api/table';
   export default defineComponent({

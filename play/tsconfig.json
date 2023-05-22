@@ -5,11 +5,19 @@
     "types": ["unplugin-vue-define-options/macros-global", "vite/client"],
     "paths": {
       "@ent-core/*": ["../packages/fe-ent-core/*"],
+      "fe-ent-core": ["../packages/fe-ent-core/index.ts"],
+      "fe-ent-core/lib/*": ["../packages/fe-ent-core/*"],
       "/@/*": [
         "src/*"
       ],
-      "@fe-ent-extension/*": ["../extensions/*"],
-      "@fe-ent-app/*": ["../apps/*/index.ts"]
+      "fe-ent-code-editor": ["../extensions/code-editor/index.ts"],
+      "fe-ent-echarts": ["../extensions/echarts/index.ts"],
+      "fe-ent-flow-chart": ["../extensions/flow-chart/index.ts"],
+      "fe-ent-markdown": ["../extensions/markdown/index.ts"],
+      "fe-ent-qrcode": ["../extensions/qrcode/index.ts"],
+      "fe-ent-tinymce": ["../extensions/tinymce/index.ts"],
+      "fe-ent-login": ["../apps/login/index.ts"],
+      "fe-ent-page": ["../apps/page/index.ts"]
     }
   },
   "include": ["src", "../packages", "../apps", "../extensions"]
