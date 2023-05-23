@@ -1,7 +1,6 @@
 import { computed, reactive, unref } from 'vue';
-import { useMultipleTabStore } from 'fe-ent-core';
+import { useI18n, useMultipleTabStore, useTabs } from 'fe-ent-core';
 import { useRouter } from 'vue-router';
-import { useI18n, useTabs } from 'fe-ent-core';
 import { MenuEventEnum } from './types';
 import type { RouteLocationNormalized } from 'vue-router';
 import type { ComputedRef } from 'vue';

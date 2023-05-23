@@ -1,4 +1,5 @@
-import { isBoolean, isFunction } from '@ent-core/utils';
+import { isFunction } from '@vueuse/shared';
+import { isBoolean } from '@ent-core/utils';
 import type { BasicColumn } from '@ent-core/components';
 
 export function isIfShow(column: BasicColumn): boolean {

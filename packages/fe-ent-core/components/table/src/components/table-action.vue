@@ -39,7 +39,8 @@
   import { EntDropdown } from '@ent-core/components/dropdown';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { usePermission } from '@ent-core/hooks/web/use-permission';
-  import { isBoolean, isFunction, isString } from '@ent-core/utils/is';
+  import { isBoolean, isString } from '@ent-core/utils/is';
+  import { isFunction } from '@vueuse/shared';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { useTableContext } from '../hooks/use-table-context';
   import { ACTION_COLUMN_FLAG } from '../const';

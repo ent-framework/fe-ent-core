@@ -11,8 +11,8 @@
 <script lang="ts" setup>
   import { computed, defineComponent } from 'vue';
   import { isString } from 'fe-ent-core';
-  import CodeMirrorEditor from './code-mirror-editor.vue';
   import { MODE } from '../typing';
+  import CodeMirrorEditor from './code-mirror-editor.vue';
   import type { PropType } from 'vue';
 
   const props = defineProps({

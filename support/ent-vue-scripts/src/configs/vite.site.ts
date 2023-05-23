@@ -14,10 +14,6 @@ export default async function getDocSiteConfig(options: DefineOptions) {
           find: /^@ent-core\/(.*)$/,
           replacement: `${workspace}/packages/fe-ent-core/$1`,
         },
-        {
-          find: /^fe-ent-core\/lib\/(.*)$/,
-          replacement: `${workspace}/packages/fe-ent-core/$1`,
-        },
       ],
     },
     plugins: [vueDocs()],

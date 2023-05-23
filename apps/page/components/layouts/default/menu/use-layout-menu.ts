@@ -1,15 +1,12 @@
 import { computed, ref, unref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { MenuSplitTyeEnum } from 'fe-ent-core';
-import { useThrottleFn } from '@vueuse/core';
-import { useAppInject, useMenuSetting } from 'fe-ent-core';
-import {
+import { MenuSplitTyeEnum , useAppInject, useMenuSetting ,
   getChildrenMenus,
   getCurrentParentPath,
   getMenus,
   getShallowMenus,
-} from 'fe-ent-core';
-import { usePermissionStore } from 'fe-ent-core';
+  usePermissionStore } from 'fe-ent-core';
+import { useThrottleFn } from '@vueuse/core';
 import type { Ref } from 'vue';
 import type { Menu } from 'fe-ent-core';
 

@@ -1,4 +1,4 @@
-import { withInstall } from 'fe-ent-core/lib/utils';
+import { withInstall } from 'fe-ent-core';
 import codeEditor from './components/code-mirror/index.vue';
 import jsonPreview from './components/json-preview/index.vue';
 import './components/index.less';

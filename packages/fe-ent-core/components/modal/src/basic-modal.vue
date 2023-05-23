@@ -61,7 +61,7 @@
     watchEffect,
   } from 'vue';
   import { omit } from 'lodash-es';
-  import { isFunction } from '@ent-core/utils/is';
+  import { isFunction } from '@vueuse/shared';
   import { deepMerge } from '@ent-core/utils';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import Modal from './components/modal';

@@ -61,10 +61,15 @@
   import 'tinymce/plugins/visualchars';
   import 'tinymce/plugins/wordcount';
 
-  import { onMountedOrActivated, useDesign } from 'fe-ent-core';
-  import { buildShortUUID, getAppEnvConfig, isNumber } from 'fe-ent-core';
-  import { useAppStore } from 'fe-ent-core';
-  import { useLocale } from 'fe-ent-core';
+  import {
+    buildShortUUID,
+    getAppEnvConfig,
+    isNumber,
+    onMountedOrActivated,
+    useAppStore,
+    useDesign,
+    useLocale,
+  } from 'fe-ent-core';
   import { plugins, toolbar } from './tinymce';
   import ImgUpload from './img-upload.vue';
   import { bindHandlers } from './helper';

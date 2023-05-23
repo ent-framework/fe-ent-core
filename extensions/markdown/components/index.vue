@@ -13,9 +13,7 @@
     watch,
   } from 'vue';
   import Vditor from 'vditor';
-  import { useModalContext } from 'fe-ent-core';
-  import { onMountedOrActivated, useRootSetting } from 'fe-ent-core';
-  import { useLocale } from 'fe-ent-core';
+  import { onMountedOrActivated, useLocale, useModalContext, useRootSetting } from 'fe-ent-core';
   import type { Ref } from 'vue';
   import type { ElRef, Nullable } from 'fe-ent-core';
 

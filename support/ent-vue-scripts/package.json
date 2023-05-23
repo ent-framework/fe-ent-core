@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-vue-scripts",
-  "version": "1.5.36",
+  "version": "1.5.43",
   "description": "Ent Vue Scripts",
   "main": "dist/index.js",
   "bin": {
@@ -86,11 +86,10 @@
     "vite": "4.2.2",
     "vue": "3.2.47",
     "vite-plugin-eslint": "^1.1.2",
-    "vite-svg-loader": "^2.1.0",
-    "vue-docgen-api": "4.64.0",
+    "vite-svg-loader": "^1.5.1",
+    "vue-docgen-api": "4.56.4",
     "vite-plugin-mkcert": "^1.14.1",
     "vite-plugin-inspect": "^0.7.24",
-    "unplugin-vue-define-options": "^1.3.5",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-dts": "^2.2.0",
     "vite-plugin-html": "^3.2.0",

@@ -1,8 +1,6 @@
 import { nextTick, onBeforeMount, ref, unref } from 'vue';
-import { getMenus } from 'fe-ent-core';
+import { filter, forEach, getMenus, useGo, useI18n, useScrollTo } from 'fe-ent-core';
 import { cloneDeep } from 'lodash-es';
-import { filter, forEach } from 'fe-ent-core';
-import { useGo, useI18n, useScrollTo } from 'fe-ent-core';
 import { onKeyStroke } from '@vueuse/core';
 import { useDebounceFn } from '@vueuse/shared';
 import type { Ref } from 'vue';

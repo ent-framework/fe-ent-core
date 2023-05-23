@@ -24,7 +24,7 @@
   import { get, omit } from 'lodash-es';
   import { LoadingOutlined } from '@ant-design/icons-vue';
   import { propTypes } from '@ent-core/utils/prop-types';
-  import { isFunction } from '@ent-core/utils/is';
+  import { isFunction } from '@vueuse/shared';
   import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { type Recordable } from '@ent-core/types';

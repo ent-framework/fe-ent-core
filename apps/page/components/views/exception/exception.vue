@@ -1,10 +1,8 @@
 <script lang="tsx">
   import { computed, defineComponent, ref, unref } from 'vue';
   import { Button, Result } from 'ant-design-vue';
-  import { ExceptionEnum } from 'fe-ent-core';
-  import { useGlobalStore } from 'fe-ent-core';
+  import { ExceptionEnum, useDesign, useGlobalStore, useGo, useI18n, useRedo } from 'fe-ent-core';
   import { useRoute } from 'vue-router';
-  import { useDesign, useGo, useI18n, useRedo } from 'fe-ent-core';
   import netWorkSvg from '../../svg/net-error.svg';
   import notDataSvg from '../../svg/no-data.svg';
   import type { Fn } from 'fe-ent-core';
@@ -129,19 +127,3 @@
     },
   });
 </script>
-<style lang="less">
-  @app-exception-page-prefix-cls: ~'@{vben-prefix}-app-exception-page';
-
-  .@{app-exception-page-prefix-cls} {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    .ant-result-icon {
-      img {
-        max-width: 400px;
-        max-height: 300px;
-      }
-    }
-  }
-</style>

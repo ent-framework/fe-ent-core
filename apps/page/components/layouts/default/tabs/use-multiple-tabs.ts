@@ -1,8 +1,11 @@
 import { nextTick, ref, toRaw } from 'vue';
-import { useDesign, useSortable } from 'fe-ent-core';
-import { useMultipleTabStore } from 'fe-ent-core';
-import { isNullAndUnDef } from 'fe-ent-core';
-import { defaultProjectSetting } from 'fe-ent-core';
+import {
+  defaultProjectSetting,
+  isNullAndUnDef,
+  useDesign,
+  useMultipleTabStore,
+  useSortable,
+} from 'fe-ent-core';
 import { useRouter } from 'vue-router';
 import type { RouteLocationNormalized } from 'vue-router';
 

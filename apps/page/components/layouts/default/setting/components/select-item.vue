@@ -66,16 +66,3 @@
     },
   });
 </script>
-<style lang="less">
-  @setting-select-item-prefix-cls: ~'@{vben-prefix}-setting-select-item';
-
-  .@{setting-select-item-prefix-cls} {
-    display: flex;
-    justify-content: space-between;
-    margin: 16px 0;
-
-    &-select {
-      width: 126px;
-    }
-  }
-</style>

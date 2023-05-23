@@ -4,7 +4,9 @@
     "baseUrl": ".",
     "types": ["vite/client"],
     "paths": {
-      "@ent-core/*": ["../fe-ent-core/*"]
+      "@ent-core/*": ["../fe-ent-core/*"],
+      "fe-ent-page": ["../../apps/page/index.ts"],
+      "fe-ent-core": ["../fe-ent-core/index.ts"]
     }
   },
   "include": ["src", "global.d.ts", "../../packages/"]

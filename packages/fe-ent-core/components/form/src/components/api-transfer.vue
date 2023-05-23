@@ -15,7 +15,7 @@
   import { computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { Transfer } from 'ant-design-vue';
   import { get, omit } from 'lodash-es';
-  import { isFunction } from '@ent-core/utils/is';
+  import { isFunction } from '@vueuse/shared';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import type { PropType } from 'vue';

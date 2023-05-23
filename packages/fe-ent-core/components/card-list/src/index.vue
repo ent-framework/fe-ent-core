@@ -89,7 +89,7 @@
   import { EntForm, useForm } from '@ent-core/components/form';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { EntButton } from '@ent-core/components/button';
-  import { isFunction } from '@ent-core/utils/is';
+  import { isFunction } from '@vueuse/shared';
   import { grid, useSlider } from './data';
   const ListItem = List.Item;
   const CardMeta = Card.Meta;

@@ -17,10 +17,17 @@
 
   import { GithubFilled } from '@ant-design/icons-vue';
 
-  import { DOC_URL, GITHUB_URL, SITE_URL } from 'fe-ent-core';
-  import { openWindow } from 'fe-ent-core';
+  import {
+    DOC_URL,
+    GITHUB_URL,
+    SITE_URL,
+    openWindow,
+    useDesign,
+    useI18n,
+    useLayoutHeight,
+    useRootSetting,
+  } from 'fe-ent-core';
 
-  import { useDesign, useI18n, useLayoutHeight, useRootSetting } from 'fe-ent-core';
   import { useRouter } from 'vue-router';
   import type { ComponentRef } from 'fe-ent-core';
 
@@ -59,35 +66,3 @@
     },
   });
 </script>
-<style lang="less">
-  @layout-footer-prefix-cls: ~'@{vben-prefix}-layout-footer';
-
-  @normal-color: rgba(0, 0, 0, 0.45);
-
-  @hover-color: rgba(0, 0, 0, 0.85);
-
-  .@{layout-footer-prefix-cls} {
-    color: @normal-color;
-    text-align: center;
-
-    &__links {
-      margin-bottom: 8px;
-
-      a {
-        color: @normal-color;
-
-        &:hover {
-          color: @hover-color;
-        }
-      }
-    }
-
-    &__github {
-      margin: 0 30px;
-
-      &:hover {
-        color: @hover-color;
-      }
-    }
-  }
-</style>

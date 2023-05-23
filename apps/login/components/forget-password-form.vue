@@ -35,8 +35,7 @@
 <script lang="ts" setup>
   import { computed, reactive, ref, unref } from 'vue';
   import { Button, Form, Input } from 'ant-design-vue';
-  import { EntCountdownInput } from 'fe-ent-core';
-  import { useI18n } from 'fe-ent-core';
+  import { EntCountdownInput, useI18n } from 'fe-ent-core';
   import LoginFormTitle from './login-form-title.vue';
   import { LoginStateEnum, useFormRules, useLoginState } from './use-login';
 

@@ -1,10 +1,15 @@
 <script lang="tsx">
   import { computed, defineComponent, toRef, unref } from 'vue';
-  import { BasicMenu, EntAppLogo, EntScrollContainer, SimpleMenu } from 'fe-ent-core';
-
-  import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core';
-
   import {
+    BasicMenu,
+    EntAppLogo,
+    EntScrollContainer,
+    MenuModeEnum,
+    MenuSplitTyeEnum,
+    SimpleMenu,
+    isUrl,
+    openWindow,
+    propTypes,
     useAppInject,
     useDesign,
     useGo,
@@ -12,7 +17,6 @@
     useRootSetting,
   } from 'fe-ent-core';
 
-  import { isUrl, openWindow, propTypes } from 'fe-ent-core';
   import { useSplitMenu } from './use-layout-menu';
   import type { Nullable } from 'fe-ent-core';
   import type { CSSProperties, PropType } from 'vue';
@@ -171,27 +175,3 @@
     },
   });
 </script>
-<style lang="less">
-  @layout-menu-prefix-cls: ~'@{vben-prefix}-layout-menu';
-  @menu-logo-prefix-cls: ~'@{vben-prefix}-app-logo';
-
-  .@{layout-menu-prefix-cls} {
-    &-logo {
-      height: @header-height;
-      padding: 10px 4px 10px 10px;
-
-      img {
-        width: @logo-width;
-        height: @logo-width;
-      }
-    }
-
-    &--mobile {
-      .@{menu-logo-prefix-cls} {
-        &__title {
-          opacity: 100%;
-        }
-      }
-    }
-  }
-</style>

@@ -2,8 +2,9 @@
   import { computed, defineComponent, toRefs, unref } from 'vue';
   import { Col, Divider, Form } from 'ant-design-vue';
   import { cloneDeep, upperFirst } from 'lodash-es';
+  import { isFunction } from '@vueuse/shared';
   import { EntHelp } from '@ent-core/components/basic';
-  import { isBoolean, isFunction, isNull } from '@ent-core/utils/is';
+  import { isBoolean, isNull } from '@ent-core/utils/is';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useItemLabelWidth } from '../hooks/use-label-width';

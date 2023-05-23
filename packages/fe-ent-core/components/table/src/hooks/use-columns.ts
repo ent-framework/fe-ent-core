@@ -1,8 +1,9 @@
 import { computed, reactive, ref, toRaw, unref, watch } from 'vue';
 import { cloneDeep, isEqual } from 'lodash-es';
+import { isFunction } from '@vueuse/shared';
 import { usePermission } from '@ent-core/hooks/web/use-permission';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
-import { isArray, isBoolean, isFunction, isMap, isString } from '@ent-core/utils/is';
+import { isArray, isBoolean, isMap, isString } from '@ent-core/utils/is';
 import { formatToDate } from '@ent-core/utils/date-util';
 import { renderEditCell } from '../components/editable';
 import { ACTION_COLUMN_FLAG, DEFAULT_ALIGN, INDEX_COLUMN_FLAG, PAGE_SIZE } from '../const';

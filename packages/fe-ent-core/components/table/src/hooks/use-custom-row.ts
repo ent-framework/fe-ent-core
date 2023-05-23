@@ -1,5 +1,6 @@
 import { unref } from 'vue';
-import { isFunction, isString } from '@ent-core/utils/is';
+import { isFunction } from '@vueuse/shared';
+import { isString } from '@ent-core/utils/is';
 import { ROW_KEY } from '../const';
 import type { ComputedRef } from 'vue';
 import type { BasicTableProps } from '../types/table';

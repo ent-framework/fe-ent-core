@@ -18,12 +18,20 @@
   import { useRouter } from 'vue-router';
 
   import { Breadcrumb } from 'ant-design-vue';
-  import { EntIcon } from 'fe-ent-core';
+  import {
+    EntIcon,
+    REDIRECT_NAME,
+    filter,
+    getAllParentPath,
+    getMenus,
+    isString,
+    propTypes,
+    useDesign,
+    useGo,
+    useI18n,
+    useRootSetting,
+  } from 'fe-ent-core';
 
-  import { useDesign, useGo, useI18n, useRootSetting } from 'fe-ent-core';
-
-  import { filter, isString, propTypes } from 'fe-ent-core';
-  import { REDIRECT_NAME, getAllParentPath, getMenus } from 'fe-ent-core';
   import type { Menu } from 'fe-ent-core';
 
   import type { RouteLocationMatched } from 'vue-router';
@@ -138,60 +146,3 @@
     },
   });
 </script>
-<style lang="less">
-  @layout-breadcrumb-prefix-cls: ~'@{vben-prefix}-layout-breadcrumb';
-
-  .@{layout-breadcrumb-prefix-cls} {
-    display: flex;
-    padding: 0 8px;
-    align-items: center;
-
-    .ant-breadcrumb-link {
-      .anticon {
-        margin-right: 4px;
-        margin-bottom: 2px;
-      }
-    }
-
-    span.anticon-down {
-      vertical-align: 0.125em !important;
-    }
-
-    &--light {
-      .ant-breadcrumb-link {
-        color: @breadcrumb-item-normal-color;
-
-        a {
-          color: rgb(0 0 0 / 65%);
-
-          &:hover {
-            color: @primary-color;
-          }
-        }
-      }
-
-      .ant-breadcrumb-separator {
-        color: @breadcrumb-item-normal-color;
-      }
-    }
-
-    &--dark {
-      .ant-breadcrumb-link {
-        color: rgb(255 255 255 / 60%);
-
-        a {
-          color: rgb(255 255 255 / 80%);
-
-          &:hover {
-            color: @white;
-          }
-        }
-      }
-
-      .ant-breadcrumb-separator,
-      .anticon {
-        color: rgb(255 255 255 / 80%);
-      }
-    }
-  }
-</style>

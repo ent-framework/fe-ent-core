@@ -1,10 +1,8 @@
 import { computed, toRaw, unref } from 'vue';
 
-import { useMultipleTabStore } from 'fe-ent-core';
+import { useMultipleTabSetting, useMultipleTabStore } from 'fe-ent-core';
 
 import { uniqBy } from 'lodash-es';
-
-import { useMultipleTabSetting } from 'fe-ent-core';
 
 import { useRouter } from 'vue-router';
 import type { AppRouteRecordRaw } from 'fe-ent-core';

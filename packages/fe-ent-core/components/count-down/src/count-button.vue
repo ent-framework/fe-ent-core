@@ -6,7 +6,7 @@
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watchEffect } from 'vue';
   import { Button } from 'ant-design-vue';
-  import { isFunction } from '@ent-core/utils/is';
+  import { isFunction } from '@vueuse/shared';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useCountdown } from './use-countdown';
   import type { PropType } from 'vue';

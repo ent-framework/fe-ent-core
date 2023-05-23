@@ -56,12 +56,3 @@
     },
   });
 </script>
-<style lang="less">
-  @setting-switch-item-prefix-cls: ~'@{vben-prefix}-setting-switch-item';
-
-  .@{setting-switch-item-prefix-cls} {
-    display: flex;
-    justify-content: space-between;
-    margin: 16px 0;
-  }
-</style>

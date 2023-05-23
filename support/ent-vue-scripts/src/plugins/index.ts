@@ -1,6 +1,5 @@
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import DefineOptions from 'unplugin-vue-define-options/vite';
 import { type PluginOption } from 'vite';
 import purgeIcons from 'vite-plugin-purge-icons';
 import Inspect from 'vite-plugin-inspect';
@@ -34,7 +33,7 @@ async function createPlugins({
   enableInspect,
   enableCert,
 }: Options) {
-  const vitePlugins: (PluginOption | PluginOption[])[] = [vue(), vueJsx(), DefineOptions()];
+  const vitePlugins: (PluginOption | PluginOption[])[] = [vue(), vueJsx()];
 
   const appConfigPlugin = await createAppConfigPlugin({ root, isBuild });
   if (mode !== 'lib') {

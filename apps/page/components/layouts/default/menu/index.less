@@ -1,0 +1,22 @@
+@layout-menu-prefix-cls: ~'@{vben-prefix}-layout-menu';
+@menu-logo-prefix-cls: ~'@{vben-prefix}-app-logo';
+
+.@{layout-menu-prefix-cls} {
+  &-logo {
+    height: @header-height;
+    padding: 10px 4px 10px 10px;
+
+    img {
+      width: @logo-width;
+      height: @logo-width;
+    }
+  }
+
+  &--mobile {
+    .@{menu-logo-prefix-cls} {
+      &__title {
+        opacity: 100%;
+      }
+    }
+  }
+}

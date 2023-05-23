@@ -28,13 +28,13 @@ const config: InlineConfig = {
       treeshake: false,
       output: [
         {
-          interop: 'default',
+          interop: 'auto',
           format: 'es',
           dir: 'es',
           entryFileNames: '[name].mjs',
           preserveModules: true,
           exports: 'named',
-          //preserveModulesRoot: 'components',
+          preserveModulesRoot: `${process.cwd()}`,
         },
         {
           interop: 'auto',
@@ -43,7 +43,7 @@ const config: InlineConfig = {
           entryFileNames: '[name].js',
           preserveModules: true,
           exports: 'named',
-          //preserveModulesRoot: 'components',
+          preserveModulesRoot: `${process.cwd()}`,
         },
       ],
     },
@@ -70,7 +70,15 @@ const config: InlineConfig = {
     ],
   },
   // @ts-ignore vite内部类型错误
-  plugins: [external(), vue(), vueJsx(), vueExportHelper()],
+  plugins: [
+    external(),
+    vue({
+      isProduction: true,
+      reactivityTransform: true,
+    }),
+    vueJsx(),
+    vueExportHelper(),
+  ],
 };
 
 export default config;

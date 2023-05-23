@@ -26,10 +26,17 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { useDesign, useI18n } from 'fe-ent-core';
-  import { EntForm, EntModal, useForm, useModalInner } from 'fe-ent-core';
+  import {
+    EntForm,
+    EntModal,
+    useDesign,
+    useForm,
+    useI18n,
+    useLockStore,
+    useModalInner,
+    useUserStore,
+  } from 'fe-ent-core';
 
-  import { useLockStore, useUserStore } from 'fe-ent-core';
   import headerImg from '../../../../../../assets/header.jpg';
   export default defineComponent({
     name: 'LockModal',
@@ -90,36 +97,3 @@
     },
   });
 </script>
-<style lang="less">
-  @header-lock-modal-prefix-cls: ~'@{vben-prefix}-header-lock-modal';
-
-  .@{header-lock-modal-prefix-cls} {
-    &__entry {
-      position: relative;
-      //height: 240px;
-      padding: 130px 30px 30px;
-      border-radius: 10px;
-    }
-
-    &__header {
-      position: absolute;
-      top: 0;
-      left: calc(50% - 45px);
-      width: auto;
-      text-align: center;
-
-      &-img {
-        width: 70px;
-        border-radius: 50%;
-      }
-
-      &-name {
-        margin-top: 5px;
-      }
-    }
-
-    &__footer {
-      text-align: center;
-    }
-  }
-</style>

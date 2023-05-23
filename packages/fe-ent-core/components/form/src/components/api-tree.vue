@@ -14,7 +14,8 @@
   import { Tree } from 'ant-design-vue';
   import { get } from 'lodash-es';
   import { LoadingOutlined } from '@ant-design/icons-vue';
-  import { isArray, isFunction } from '@ent-core/utils/is';
+  import { isFunction } from '@vueuse/shared';
+  import { isArray } from '@ent-core/utils/is';
   import { propTypes } from '@ent-core/utils/prop-types';
   import type { AnyFunction, Recordable } from '@ent-core/types';
   export default defineComponent({

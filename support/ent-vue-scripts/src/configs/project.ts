@@ -49,11 +49,11 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
   const alias: Alias[] = [];
   alias.push(
     ...[
-      {
-        find: 'vue-i18n',
-        replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
-      },
-      { find: 'pinia', replacement: 'pinia/dist/pinia.cjs' },
+      // {
+      //   find: 'vue-i18n',
+      //   replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
+      // },
+      //{ find: 'pinia', replacement: 'pinia/dist/pinia.cjs' },
       // /@/xxxx => src/xxxx
       {
         find: /\/@\//,
@@ -66,11 +66,11 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
       },
     ],
   );
-  if (isBuild) {
-    alias.push({ find: 'vue-router', replacement: 'vue-router/dist/vue-router.prod.cjs' });
-  } else {
-    alias.push({ find: 'vue-router', replacement: 'vue-router/dist/vue-router.cjs' });
-  }
+  // if (isBuild) {
+  //   alias.push({ find: 'vue-router', replacement: 'vue-router/dist/vue-router.prod.cjs' });
+  // } else {
+  //   alias.push({ find: 'vue-router', replacement: 'vue-router/dist/vue-router.cjs' });
+  // }
   const applicationConfig: UserConfig = {
     resolve: {
       alias,

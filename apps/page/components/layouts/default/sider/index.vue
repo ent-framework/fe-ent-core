@@ -37,17 +37,3 @@
     },
   });
 </script>
-<style lang="less">
-  @layout-sider-wrapper-prefix-cls: ~'@{vben-prefix}-layout-sider-wrapper';
-
-  .@{layout-sider-wrapper-prefix-cls} {
-    .ant-drawer-body {
-      height: 100vh;
-      padding: 0;
-    }
-
-    .ant-drawer-header-no-title {
-      display: none;
-    }
-  }
-</style>

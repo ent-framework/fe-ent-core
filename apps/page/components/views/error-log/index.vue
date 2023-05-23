@@ -30,11 +30,17 @@
 </template>
 <script lang="ts" setup>
   import { nextTick, ref, watch } from 'vue';
-  import { EntTable, EntTableAction, useModal, useTable } from 'fe-ent-core';
-  import { useI18n, useMessage } from 'fe-ent-core';
-  import { useErrorLogStore } from 'fe-ent-core';
+  import {
+    EntTable,
+    EntTableAction,
+    isDevMode,
+    useErrorLogStore,
+    useI18n,
+    useMessage,
+    useModal,
+    useTable,
+  } from 'fe-ent-core';
   import { cloneDeep } from 'lodash-es';
-  import { isDevMode } from 'fe-ent-core';
   import { getColumns } from './data';
   import DetailModal from './detail-modal.vue';
   import type { ErrorLogInfo } from 'fe-ent-core';

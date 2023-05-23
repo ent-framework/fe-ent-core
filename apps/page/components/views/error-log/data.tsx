@@ -1,6 +1,5 @@
 import { Tag } from 'ant-design-vue';
-import { ErrorTypeEnum } from 'fe-ent-core';
-import { useI18n } from 'fe-ent-core';
+import { ErrorTypeEnum, useI18n } from 'fe-ent-core';
 import type { BasicColumn } from 'fe-ent-core';
 
 export function getColumns(): BasicColumn[] {

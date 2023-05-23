@@ -5,8 +5,7 @@
   </ent-modal>
 </template>
 <script lang="ts" setup>
-  import { useDescription } from 'fe-ent-core';
-  import { useI18n } from 'fe-ent-core';
+  import { useDescription, useI18n } from 'fe-ent-core';
   import { getDescSchema } from './data';
   import type { ErrorLogInfo } from 'fe-ent-core';
   import type { PropType } from 'vue';

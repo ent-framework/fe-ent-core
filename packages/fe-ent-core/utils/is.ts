@@ -1,3 +1,5 @@
+import { isFunction } from '@vueuse/shared';
+
 const toString = Object.prototype.toString;
 
 export function is(val: unknown, type: string) {
@@ -58,10 +60,6 @@ export function isPromise<T = any>(val: unknown): val is Promise<T> {
 
 export function isString(val: unknown): val is string {
   return is(val, 'String');
-}
-
-export function isFunction(val: unknown): val is (...args: any[]) => any {
-  return typeof val === 'function';
 }
 
 export function isBoolean(val: unknown): val is boolean {

@@ -29,11 +29,11 @@
 
   import {
     useMultipleTabSetting,
+    useMultipleTabStore,
     useRootSetting,
     useTransitionSetting,
   } from 'fe-ent-core';
 
-  import { useMultipleTabStore } from 'fe-ent-core';
   import FrameLayout from '../iframe/index.vue';
   import { getTransitionName } from './transition';
 

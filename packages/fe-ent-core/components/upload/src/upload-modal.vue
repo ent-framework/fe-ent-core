@@ -49,7 +49,7 @@
   import { useMessage } from '@ent-core/hooks/web/use-message';
   //   types
   import { buildUUID } from '@ent-core/utils/uuid';
-  import { isFunction } from '@ent-core/utils/is';
+  import { isFunction } from '@vueuse/shared';
   import { warn } from '@ent-core/utils/log';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { UploadResultStatus } from './typing';

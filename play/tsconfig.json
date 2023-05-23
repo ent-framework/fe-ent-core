@@ -2,7 +2,7 @@
   "extends": "../tsconfig.web.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "types": ["unplugin-vue-define-options/macros-global", "vite/client"],
+    "types": ["vite/client"],
     "paths": {
       "@ent-core/*": ["../packages/fe-ent-core/*"],
       "fe-ent-core": ["../packages/fe-ent-core/index.ts"],

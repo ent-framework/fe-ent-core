@@ -39,27 +39,3 @@
     },
   });
 </script>
-<style lang="less">
-  @darg-bar-prefix-cls: ~'@{vben-prefix}-darg-bar';
-
-  .@{darg-bar-prefix-cls} {
-    position: absolute;
-    top: 0;
-    right: -2px;
-    z-index: @side-drag-z-index;
-    width: 2px;
-    height: 100%;
-    cursor: col-resize;
-    border-top: none;
-    border-bottom: none;
-
-    &--hide {
-      display: none;
-    }
-
-    &:hover {
-      background-color: @primary-color;
-      box-shadow: 0 0 4px 0 rgb(28 36 56 / 15%);
-    }
-  }
-</style>

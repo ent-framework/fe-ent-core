@@ -43,16 +43,3 @@
     },
   });
 </script>
-<style lang="less">
-  @setting-input-number-item-prefix-cls: ~'@{vben-prefix}-setting-input-number-item';
-
-  .@{setting-input-number-item-prefix-cls} {
-    display: flex;
-    justify-content: space-between;
-    margin: 16px 0;
-
-    &-input-number {
-      width: 126px;
-    }
-  }
-</style>

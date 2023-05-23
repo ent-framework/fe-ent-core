@@ -3,6 +3,8 @@ import { getErrorLogRoute, getRedirectRoute, getRootRoute } from './components/r
 import { initRouteAndLayout } from './components/init-page';
 import type { AppRouteRecordRaw } from 'fe-ent-core/lib/router/types';
 
+import './components/index.less';
+
 export * from './components/layouts/default';
 
 // 导入基础路由，与业务无关

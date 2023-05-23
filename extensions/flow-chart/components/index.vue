@@ -11,9 +11,7 @@
   import { computed, defineComponent, nextTick, onMounted, ref, unref, watch } from 'vue';
   import LogicFlow from '@logicflow/core';
   import { BpmnElement, DndPanel, Menu, SelectionSelect, Snapshot } from '@logicflow/extension';
-  import { EntModal, useModal } from 'fe-ent-core';
-  import { useDesign } from 'fe-ent-core';
-  import { useAppStore } from 'fe-ent-core';
+  import { EntModal, useAppStore, useDesign, useModal } from 'fe-ent-core';
   import { JsonPreview } from 'fe-ent-code-editor';
   import { createFlowChartContext } from './use-flow-context';
   import { toLogicFlowData } from './adpter-for-turbo';

@@ -13,8 +13,8 @@
   import { Empty, Spin, Tree } from 'ant-design-vue';
   import { cloneDeep, difference, get, omit } from 'lodash-es';
   import { EntScrollContainer } from '@ent-core/components/container';
-
-  import { isArray, isBoolean, isEmpty, isFunction, isNumber } from '@ent-core/utils/is';
+  import { isFunction } from '@vueuse/shared';
+  import { isArray, isBoolean, isEmpty, isNumber } from '@ent-core/utils/is';
   import { extendSlots, getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { eachTree, filter, treeToList } from '@ent-core/utils/helper/tree-helper';
 

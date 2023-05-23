@@ -15,7 +15,7 @@
   import { computed, defineComponent, toRaw, unref } from 'vue';
   import { Table } from 'ant-design-vue';
   import { cloneDeep } from 'lodash-es';
-  import { isFunction } from '@ent-core/utils/is';
+  import { isFunction } from '@vueuse/shared';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { INDEX_COLUMN_FLAG } from '../const';
   import { useTableContext } from '../hooks/use-table-context';

@@ -7,7 +7,7 @@
   import { computed, defineComponent } from 'vue';
   import { EntTitle } from '@ent-core/components/basic';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { isFunction } from '@ent-core/utils/is';
+  import { isFunction } from '@vueuse/shared';
   import type { PropType } from 'vue';
   import type { Recordable } from '@ent-core/types';
 

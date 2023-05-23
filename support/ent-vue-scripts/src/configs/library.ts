@@ -32,18 +32,6 @@ async function defineLibraryConfig() {
       await readPackageJSON(`${root}/node_modules/fe-ent-core`);
     entDeps = [...Object.keys(entDependencies), ...Object.keys(entPeerDependencies)];
   }
-  entDeps.push(
-    ...[
-      'fe-ent-core/lib/components',
-      'fe-ent-core/lib/directives',
-      'fe-ent-core/lib/hooks',
-      'fe-ent-core/lib/locales',
-      'fe-ent-core/lib/logics',
-      'fe-ent-core/lib/router',
-      'fe-ent-core/lib/store',
-      'fe-ent-core/lib/utils',
-    ],
-  );
   const input = excludeFiles(
     glob.sync('components/*.{js,ts,tsx,vue}', {
       cwd: process.cwd(),

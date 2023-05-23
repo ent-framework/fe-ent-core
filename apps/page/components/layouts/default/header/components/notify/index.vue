@@ -62,28 +62,3 @@
     },
   });
 </script>
-<style lang="less">
-  @header-notify-prefix-cls: ~'@{vben-prefix}-header-notify';
-
-  .@{header-notify-prefix-cls} {
-    &__overlay {
-      max-width: 360px;
-    }
-
-    .ant-tabs-content {
-      width: 300px;
-    }
-
-    .ant-badge {
-      font-size: 18px;
-
-      .ant-badge-multiple-words {
-        padding: 0 4px;
-      }
-
-      svg {
-        width: 0.9em;
-      }
-    }
-  }
-</style>

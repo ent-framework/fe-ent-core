@@ -1,5 +1,5 @@
 import { unref } from 'vue';
-import { isFunction } from '@ent-core/utils/is';
+import { isFunction } from '@vueuse/shared';
 import type { ComputedRef } from 'vue';
 import type { BasicTableProps, TableCustomRecord } from '../types/table';
 

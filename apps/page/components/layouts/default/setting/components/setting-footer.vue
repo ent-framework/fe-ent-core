@@ -20,15 +20,18 @@
   import { defineComponent } from 'vue';
   import { CopyOutlined, RedoOutlined } from '@ant-design/icons-vue';
   import {
+    defaultProjectSetting,
+    updateColorWeak,
+    updateGrayMode,
     useAppStore,
+    useDesign,
+    useI18n,
+    useMessage,
     useMultipleTabStore,
     usePermissionStore,
     useUserStore,
   } from 'fe-ent-core';
 
-  import { useDesign, useI18n, useMessage } from 'fe-ent-core';
-
-  import { defaultProjectSetting, updateColorWeak, updateGrayMode } from 'fe-ent-core';
   export default defineComponent({
     name: 'SettingFooter',
     components: { CopyOutlined, RedoOutlined },
@@ -83,12 +86,3 @@
     },
   });
 </script>
-<style lang="less">
-  @setting-footer-prefix-cls: ~'@{vben-prefix}-setting-footer';
-
-  .@{setting-footer-prefix-cls} {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-</style>

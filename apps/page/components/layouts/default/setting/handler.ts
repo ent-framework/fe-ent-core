@@ -4,13 +4,12 @@ import {
   updateGrayMode,
   updateHeaderBgColor,
   updateSidebarBgColor,
+  useAppStore,
+  useRootSetting,
 } from 'fe-ent-core';
 
-import { useAppStore } from 'fe-ent-core';
-import { useRootSetting } from 'fe-ent-core';
 import { HandlerEnum } from './enum';
-import type { ProjectConfig } from 'fe-ent-core';
-import type { DeepPartial } from 'fe-ent-core';
+import type { DeepPartial, ProjectConfig } from 'fe-ent-core';
 
 export function baseHandler(event: HandlerEnum, value: any) {
   const appStore = useAppStore();

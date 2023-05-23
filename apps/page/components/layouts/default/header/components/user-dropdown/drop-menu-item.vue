@@ -10,8 +10,7 @@
   import { computed, defineComponent, getCurrentInstance } from 'vue';
   import { Menu } from 'ant-design-vue';
 
-  import { EntIcon } from 'fe-ent-core';
-  import { propTypes } from 'fe-ent-core';
+  import { EntIcon, propTypes } from 'fe-ent-core';
 
   export default defineComponent({
     name: 'DropdownMenuItem',

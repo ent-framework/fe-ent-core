@@ -14,9 +14,8 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
-  import { EntDropdown, EntIcon } from 'fe-ent-core';
+  import { EntDropdown, EntIcon, useDesign, useI18n } from 'fe-ent-core';
 
-  import { useDesign, useI18n } from 'fe-ent-core';
   import { useTabDropdown } from '../use-tab-dropdown';
   import type { TabContentProps } from '../types';
   import type { RouteLocationNormalized } from 'vue-router';

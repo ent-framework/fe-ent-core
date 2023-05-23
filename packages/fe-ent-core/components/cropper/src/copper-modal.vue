@@ -117,7 +117,7 @@
   import { EntModal, useModalInner } from '@ent-core/components/modal';
   import { Factory } from '@ent-core/logics/factory';
   import { dataURLtoBlob } from '@ent-core/utils/file/base64-convert';
-  import { isFunction } from '@ent-core/utils/is';
+  import { isFunction } from '@vueuse/shared';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import CropperImage from './cropper.vue';
   import type { PropType } from 'vue';

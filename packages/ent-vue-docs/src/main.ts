@@ -4,6 +4,7 @@ import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
 import { Button, PageHeader, Tooltip } from 'ant-design-vue';
+
 import { initAppConfigStore } from '@ent-core/logics/init-app-config';
 import { setupErrorHandle } from '@ent-core/logics/error-handle';
 import { entRouter, transformRouteToMenu } from '@ent-core/router';
@@ -11,7 +12,6 @@ import { setupRouterGuard } from '@ent-core/router/guard';
 import { setupStore } from '@ent-core/store';
 import { setupGlobDirectives } from '@ent-core/directives';
 import { setupI18n } from '@ent-core/locales/setup-i18n';
-import { registerGlobComp } from '@ent-core/components/register-glob-comp';
 import EntCore from '@ent-core/index';
 import { usePermissionStoreWithOut } from '@ent-core/store/modules/permission';
 import { useLocale } from '@ent-core/locales';
@@ -22,7 +22,6 @@ import locales from './locale';
 import 'ant-design-vue/dist/antd.less';
 import '@ent-core/theme/index.less';
 import 'prismjs/themes/prism.css';
-
 import { initRouteAndLayout } from 'fe-ent-page';
 
 import ArcoArticle from './components/article/index.vue';
@@ -48,11 +47,11 @@ async function bootstrap() {
   // Asynchronous case: language files may be obtained from the server side
   await setupI18n(app);
 
-  // Register global components
-  registerGlobComp(app);
-
   initRouteAndLayout(app);
-
+  const { getLocale, addMessages, setLocalePicker } = useLocale();
+  setLocalePicker(false);
+  addMessages('en', locales.en);
+  addMessages('zh_CN', locales.zh_CN);
   app.use(EntCore);
 
   app.component(CodeBlock.name, CodeBlock);
@@ -65,10 +64,6 @@ async function bootstrap() {
   app.use(Button);
   app.use(Tooltip);
 
-  const { getLocale, addMessages, setLocalePicker } = useLocale();
-  setLocalePicker(false);
-  addMessages('en', locales.en);
-  addMessages('zh_CN', locales.zh_CN);
   const docsRoutes = getRoutes(getLocale.value);
   entRouter.addBasicRoutes(docsRoutes);
 

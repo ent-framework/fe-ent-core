@@ -40,13 +40,17 @@
   import { computed, defineComponent } from 'vue';
   import { Dropdown, Menu } from 'ant-design-vue';
 
-  import { DOC_URL } from 'fe-ent-core';
+  import {
+    DOC_URL,
+    openWindow,
+    propTypes,
+    useDesign,
+    useHeaderSetting,
+    useI18n,
+    useModal,
+    useUserStore,
+  } from 'fe-ent-core';
 
-  import { useUserStore } from 'fe-ent-core';
-  import { useDesign, useHeaderSetting, useI18n } from 'fe-ent-core';
-  import { useModal } from 'fe-ent-core';
-
-  import { openWindow, propTypes } from 'fe-ent-core';
   import headerImg from '../../../../../../assets/header.jpg';
 
   import LockAction from '../lock/lock-modal.vue';
@@ -119,56 +123,3 @@
     },
   });
 </script>
-<style lang="less">
-  @header-user-dropdown-prefix-cls: ~'@{vben-prefix}-header-user-dropdown';
-
-  .@{header-user-dropdown-prefix-cls} {
-    height: @header-height;
-    padding: 0 0 0 10px;
-    padding-right: 10px;
-    overflow: hidden;
-    font-size: 12px;
-    cursor: pointer;
-    align-items: center;
-
-    img {
-      width: 24px;
-      height: 24px;
-      margin-right: 12px;
-    }
-
-    &__header {
-      border-radius: 50%;
-    }
-
-    &__name {
-      font-size: 14px;
-    }
-
-    &--dark {
-      &:hover {
-        background-color: @header-dark-bg-hover-color;
-      }
-    }
-
-    &--light {
-      &:hover {
-        background-color: @header-light-bg-hover-color;
-      }
-
-      .@{header-user-dropdown-prefix-cls}__name {
-        color: @text-color-base;
-      }
-
-      .@{header-user-dropdown-prefix-cls}__desc {
-        color: @header-light-desc-color;
-      }
-    }
-
-    &-dropdown-overlay {
-      .ant-dropdown-menu-item {
-        min-width: 160px;
-      }
-    }
-  }
-</style>

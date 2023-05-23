@@ -8,8 +8,7 @@
 <script lang="ts" setup>
   import { computed, ref, unref } from 'vue';
   import { Spin } from 'ant-design-vue';
-  import { useDesign, useLayoutHeight, useWindowSizeFn } from 'fe-ent-core';
-  import { propTypes } from 'fe-ent-core';
+  import { propTypes, useDesign, useLayoutHeight, useWindowSizeFn } from 'fe-ent-core';
   import type { CSSProperties } from 'vue';
 
   defineProps({
@@ -48,36 +47,3 @@
     calcHeight();
   }
 </script>
-<style lang="less">
-  @iframe-page-prefix-cls: ~'@{vben-prefix}-iframe-page';
-
-  .@{iframe-page-prefix-cls} {
-    .ant-spin-nested-loading {
-      position: relative;
-      height: 100%;
-
-      .ant-spin-container {
-        width: 100%;
-        height: 100%;
-        padding: 10px;
-      }
-    }
-
-    &__mask {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    &__main {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background-color: @component-background;
-      border: 0;
-      box-sizing: border-box;
-    }
-  }
-</style>

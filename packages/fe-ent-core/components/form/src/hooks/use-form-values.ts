@@ -1,6 +1,7 @@
 import { unref } from 'vue';
 import { cloneDeep, set } from 'lodash-es';
-import { isArray, isFunction, isNullOrUnDef, isObject, isString } from '@ent-core/utils/is';
+import { isFunction } from '@vueuse/shared';
+import { isArray, isNullOrUnDef, isObject, isString } from '@ent-core/utils/is';
 import { dateUtil } from '@ent-core/utils/date-util';
 import type { ComputedRef, Ref } from 'vue';
 import type { FormProps, FormSchema } from '../types/form';

@@ -55,9 +55,8 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watch } from 'vue';
-  import { useDesign } from 'fe-ent-core';
+  import { isNumber, useDesign } from 'fe-ent-core';
   import { Avatar, List, Tag, Typography } from 'ant-design-vue';
-  import { isNumber } from 'fe-ent-core';
   import type { ListItem } from './data';
   import type { PropType } from 'vue';
   export default defineComponent({
@@ -137,54 +136,3 @@
     },
   });
 </script>
-<style lang="less">
-  @header-notify-list-prefix-cls: ~'@{vben-prefix}-header-notify-list';
-
-  .@{header-notify-list-prefix-cls} {
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    ::v-deep(.ant-pagination-disabled) {
-      display: inline-block !important;
-    }
-
-    &-item {
-      padding: 6px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.3s;
-
-      .title {
-        margin-bottom: 8px;
-        font-weight: normal;
-
-        .extra {
-          float: right;
-          margin-top: -1.5px;
-          margin-right: 0;
-          font-weight: normal;
-
-          .tag {
-            margin-right: 0;
-          }
-        }
-
-        .avatar {
-          margin-top: 4px;
-        }
-
-        .description {
-          font-size: 12px;
-          line-height: 18px;
-        }
-
-        .datetime {
-          margin-top: 4px;
-          font-size: 12px;
-          line-height: 18px;
-        }
-      }
-    }
-  }
-</style>

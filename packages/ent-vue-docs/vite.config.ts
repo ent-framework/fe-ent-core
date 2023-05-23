@@ -20,12 +20,12 @@ export default defineConfig(({ command, mode }) => {
         alias: [
           // 别名，转发 fe-ent-core 文件请求
           {
-            find: /^fe-ent-page$/,
-            replacement: `${root}/apps/page/index.ts`,
+            find: /^fe-ent-core$/,
+            replacement: `${root}/packages/fe-ent-core/index.ts`,
           },
           {
-            find: /^fe-ent-page\/(.*)$/,
-            replacement: `${root}/apps/page/$1`,
+            find: /^fe-ent-page$/,
+            replacement: `${root}/apps/page/index.ts`,
           },
         ],
       },

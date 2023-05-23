@@ -1,10 +1,9 @@
 import { computed, defineComponent, unref } from 'vue';
-import { EntAppDarkModeToggle, EntDrawer } from 'fe-ent-core';
-import { Divider } from 'ant-design-vue';
-
-import { MenuTypeEnum, TriggerEnum } from 'fe-ent-core';
-
 import {
+  EntAppDarkModeToggle,
+  EntDrawer,
+  MenuTypeEnum,
+  TriggerEnum,
   useHeaderSetting,
   useI18n,
   useMenuSetting,
@@ -12,6 +11,8 @@ import {
   useRootSetting,
   useTransitionSetting,
 } from 'fe-ent-core';
+import { Divider } from 'ant-design-vue';
+
 import { InputNumberItem, SelectItem, SettingFooter, SwitchItem, TypePicker } from './components';
 
 import { baseHandler } from './handler';

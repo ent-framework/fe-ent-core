@@ -4,7 +4,7 @@
   import { Descriptions } from 'ant-design-vue';
   import EntCollapseContainer from '@ent-core/components/container/src/collapse/collapse-container.vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { isFunction } from '@ent-core/utils/is';
+  import { isFunction } from '@vueuse/shared';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
   import { type Recordable } from '@ent-core/types';

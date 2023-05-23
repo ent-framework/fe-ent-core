@@ -2,8 +2,8 @@ import {
   COMPONENT_EXCEPTION_NAME,
   COMPONENT_IFRAME_NAME,
   COMPONENT_LAYOUT_NAME,
+  withInstall,
 } from 'fe-ent-core';
-import { withInstall } from 'fe-ent-core';
 import { DefaultLayout } from './layouts/default';
 import { default as IFRAME } from './views/iframe/frame-blank';
 import { default as ExceptionPage } from './views/exception/exception.vue';

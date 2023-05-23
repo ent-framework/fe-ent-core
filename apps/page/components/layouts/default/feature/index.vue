@@ -8,10 +8,13 @@
   import { computed, defineComponent, unref } from 'vue';
   import { BackTop } from 'ant-design-vue';
 
-  import { useDesign, useHeaderSetting, useRootSetting } from 'fe-ent-core';
-  import { useUserStoreWithOut } from 'fe-ent-core';
-
-  import { SettingButtonPositionEnum } from 'fe-ent-core';
+  import {
+    SettingButtonPositionEnum,
+    useDesign,
+    useHeaderSetting,
+    useRootSetting,
+    useUserStoreWithOut,
+  } from 'fe-ent-core';
 
   import SessionTimeoutLogin from '../../../views/login/session-timeout-login.vue';
   import LayoutLockPage from '../../../views/lock/index.vue';
@@ -55,26 +58,3 @@
     },
   });
 </script>
-<style lang="less">
-  @setting-drawer-feature-prefix-cls: ~'@{vben-prefix}-setting-drawer-feature';
-
-  .@{setting-drawer-feature-prefix-cls} {
-    position: absolute;
-    top: 45%;
-    right: 0;
-    z-index: 10;
-    display: flex;
-    padding: 10px;
-    color: @white;
-    cursor: pointer;
-    background-color: @primary-color;
-    border-radius: 6px 0 0 6px;
-    justify-content: center;
-    align-items: center;
-
-    svg {
-      width: 1em;
-      height: 1em;
-    }
-  }
-</style>
