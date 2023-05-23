@@ -24,6 +24,3 @@ description: 皮肤选择(暗黑模式切换)，语言切换，应用配置
 |reload|Whether to refresh the interface when changing|`boolean`|`false`|
 
 
-
-### 应用配置
-%%API(src/app-provider.vue)%%
