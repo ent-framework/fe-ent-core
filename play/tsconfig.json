@@ -17,7 +17,7 @@
       "fe-ent-qrcode": ["../extensions/qrcode/index.ts"],
       "fe-ent-tinymce": ["../extensions/tinymce/index.ts"],
       "fe-ent-login": ["../apps/login/index.ts"],
-      "fe-ent-page": ["../apps/page/index.ts"]
+      "fe-ent-layout": ["../apps/layout/index.ts"]
     }
   },
   "include": ["src", "../packages", "../apps", "../extensions"]

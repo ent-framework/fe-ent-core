@@ -26,8 +26,13 @@ export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
 }
 
 export interface AppRouteMeta extends RouteMeta {
+  /**
+   * 顺序
+   */
   orderNo?: number;
-  // title
+  /**
+   * 标题
+   */
   title: string;
   // dynamic router level.
   dynamicLevel?: number;

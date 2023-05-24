@@ -12,7 +12,7 @@ description: 页面通用布局
 默认布局来自fe-ent-page，需要在main.ts中初始化
 
 ```typescript
-import { initRouteAndLayout, getBasicRoutes } from 'fe-ent-page';
+import { initRouteAndLayout, getBasicRoutes } from 'fe-ent-layout';
 
 ```
 初始化

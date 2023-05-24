@@ -22,7 +22,7 @@ import locales from './locale';
 import 'ant-design-vue/dist/antd.less';
 import '@ent-core/theme/index.less';
 import 'prismjs/themes/prism.css';
-import { initRouteAndLayout } from 'fe-ent-page';
+import { initRouteAndLayout } from 'fe-ent-layout';
 
 import ArcoArticle from './components/article/index.vue';
 import AnchorHead from './components/anchor-head/index.vue';

@@ -5,7 +5,7 @@ import { store } from '@ent-core/store/pinia';
 import {
   backendRouteFilter,
   flatMultiLevelRoutes,
-  normalizeRoutePath,
+  routeWrapper,
 } from '@ent-core/router/helper/route-helper';
 import { transformRouteToMenu } from '@ent-core/router/helper/menu-helper';
 
@@ -173,7 +173,9 @@ export const usePermissionStore = defineStore({
           routes = filter(entRouter.getAuthRoutes(), routeFilter);
           routes = routes.filter(routeFilter);
           // 根据已有的树状路由提取Menu
+          console.log(routes);
           const menuList: AppRouteRecordRaw[] = transformRouteToMenu(routes, true);
+          console.log(menuList);
           routes = filter(routes, routeRemoveIgnoreFilter);
           routes = routes.filter(routeRemoveIgnoreFilter);
           menuList.sort((a, b) => {
@@ -183,6 +185,7 @@ export const usePermissionStore = defineStore({
           this.setFrontMenuList(menuList);
           // Convert multi-level routing to level 2 routing
           routes = flatMultiLevelRoutes(routes);
+          console.log(routes);
           break;
         }
         //  If you are sure that you do not need to do background dynamic permissions, please comment the entire judgment below
@@ -215,7 +218,7 @@ export const usePermissionStore = defineStore({
           if (routeList) {
             // 处理菜单信息
             routeList.forEach((c) => {
-              normalizeRoutePath(c);
+              routeWrapper(c);
             });
           }
           // 用服务器返回routeList去过滤router.bizRoutes，返回匹配的路由信息
@@ -235,7 +238,7 @@ export const usePermissionStore = defineStore({
       }
       const pageNotFound = entRouter.getPageNotFoundRoute();
       if (pageNotFound) {
-        normalizeRoutePath(pageNotFound);
+        routeWrapper(pageNotFound);
         // 404 路由一定要放最后面
         routes.push(pageNotFound);
       } else {

@@ -42,11 +42,11 @@ function addToChildren(children: AppRouteRecordRaw[], childrenContainer: AppRout
 }
 
 /***
- * 处理路由，将子路由path变成绝对path，并且设置component
+ * 处理路由，处理路由的component
  * @param route
  * @param parentPath
  */
-export function normalizeRoutePath(route: AppRouteRecordRaw, parentPath?: string) {
+export function routeWrapper(route: AppRouteRecordRaw, parentPath?: string) {
   if (isString(route.component)) {
     //只有一级路由需要对路由处理
     route.component = wrapperRoute(route.component as string);
@@ -66,7 +66,7 @@ export function normalizeRoutePath(route: AppRouteRecordRaw, parentPath?: string
         c.path = `${path}/${childPath}`;
       }
       if (hasChildren(c)) {
-        normalizeRoutePath(c, c.path);
+        routeWrapper(c, c.meta?.hidePathForChildren ? path : c.path);
       } else if (isString(c.component)) {
         c.component = wrapperRoute(c.component as string);
       }

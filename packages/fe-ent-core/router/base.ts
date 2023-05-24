@@ -2,7 +2,7 @@ import { inject } from 'vue';
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
 import { noop } from '@vueuse/core';
 import { getAppEnvConfig } from '@ent-core/utils/env';
-import { normalizeRoutePath } from '@ent-core/router/helper/route-helper';
+import { routeWrapper } from '@ent-core/router/helper/route-helper';
 import { routerKey } from './router_symbols';
 import type { AppRouteRecordRaw, EntRouter } from './types';
 import type { App } from 'vue';
@@ -33,7 +33,7 @@ export function createEntRouter(): EntRouter {
   }
 
   function addAuthRoute(route: AppRouteRecordRaw) {
-    normalizeRoutePath(route);
+    routeWrapper(route);
     bizRoutes.push(route);
     return noop;
   }
@@ -49,7 +49,7 @@ export function createEntRouter(): EntRouter {
       const mod = modules[key].default || {};
       const modList = Array.isArray(mod) ? [...mod] : [mod];
       modList.forEach((c) => {
-        normalizeRoutePath(c);
+        routeWrapper(c);
       });
       routeModuleList.push(...modList);
     });
@@ -58,7 +58,7 @@ export function createEntRouter(): EntRouter {
   }
 
   function addBasicRoute(route: AppRouteRecordRaw) {
-    normalizeRoutePath(route);
+    routeWrapper(route);
     basicRoutes.push(route);
     return parent.addRoute(route as RouteRecordRaw);
   }

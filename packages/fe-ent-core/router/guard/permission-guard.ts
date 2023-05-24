@@ -101,11 +101,9 @@ export function createPermissionGuard(router: Router) {
     }
 
     const routes = await permissionStore.buildRoutesAction();
-    //console.log(router.getRoutes());
     routes.forEach((route) => {
       router.addRoute(route as unknown as RouteRecordRaw);
     });
-    //console.log(router.getRoutes());
     permissionStore.setDynamicAddedRoute(true);
 
     if (to.name === PAGE_NOT_FOUND_NAME) {

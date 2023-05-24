@@ -1,16 +1,16 @@
 <template>
   <ent-page-wrapper title="上传组件示例">
-    <a-alert message="基础示例" />
+    <Alert message="基础示例" />
     <ent-upload
       :max-size="20"
       :max-number="10"
       :api="uploadApi"
       class="my-5"
-      :accept="['image/*']"
+      :accept="['jpg', 'jpeg']"
       @change="handleChange"
     />
 
-    <a-alert message="嵌入表单,加入表单校验" />
+    <Alert message="嵌入表单,加入表单校验" />
 
     <EntForm class="my-5" @register="register" />
   </ent-page-wrapper>
@@ -39,7 +39,7 @@
   const uploadApi = Factory.getHttpFactory().uploadApi;
 
   export default defineComponent({
-    components: { EntUpload, EntForm, EntPageWrapper, [Alert.name]: Alert },
+    components: { EntUpload, EntForm, EntPageWrapper, Alert },
     setup() {
       const { createMessage } = useMessage();
       const [register] = useForm({

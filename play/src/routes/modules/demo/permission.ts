@@ -1,7 +1,7 @@
 import { RoleEnum, getParentLayout, t } from 'fe-ent-core';
-import type { AppRouteModule } from 'fe-ent-core';
+import type { AppRouteRecordRaw } from 'fe-ent-core';
 
-const permission: AppRouteModule = {
+const permission: AppRouteRecordRaw = {
   path: '/permission',
   name: 'Permission',
   component: 'LAYOUT',

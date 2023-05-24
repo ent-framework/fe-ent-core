@@ -53,8 +53,8 @@ export default defineConfig(({ command, mode }) => {
             replacement: `${workspace}/apps/login/index.ts`,
           },
           {
-            find: /^fe-ent-page$/,
-            replacement: `${workspace}/apps/page/index.ts`,
+            find: /^fe-ent-layout$/,
+            replacement: `${workspace}/apps/layout/index.ts`,
           },
           {
             find: /^@ent-core\/(.*)$/,
@@ -72,12 +72,6 @@ export default defineConfig(({ command, mode }) => {
             // rewrite: (path) => path.replace(new RegExp(`^/api`), ''),
             // only https
             // secure: false
-          },
-          '/upload': {
-            target: 'http://localhost:3300/upload',
-            changeOrigin: true,
-            ws: true,
-            rewrite: (path) => path.replace(new RegExp(`^/upload`), ''),
           },
         },
       },

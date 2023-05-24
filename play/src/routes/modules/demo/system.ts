@@ -1,7 +1,7 @@
 import { t } from 'fe-ent-core';
-import type { AppRouteModule } from 'fe-ent-core';
+import type { AppRouteRecordRaw } from 'fe-ent-core';
 
-const system: AppRouteModule = {
+const system: AppRouteRecordRaw = {
   path: '/system',
   name: 'System',
   component: 'LAYOUT',

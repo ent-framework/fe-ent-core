@@ -1,7 +1,7 @@
 import { ExceptionEnum, getParentLayout, t } from 'fe-ent-core';
-import type { AppRouteModule } from 'fe-ent-core';
+import type { AppRouteRecordRaw } from 'fe-ent-core';
 
-const page: AppRouteModule = {
+const page: AppRouteRecordRaw = {
   path: '/page-demo',
   name: 'PageDemo',
   component: 'LAYOUT',

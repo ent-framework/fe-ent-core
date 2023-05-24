@@ -17,7 +17,7 @@ import { initApplication } from '/@/init-application';
 
 import 'ant-design-vue/dist/antd.less';
 
-import { getBasicRoutes, initRouteAndLayout } from 'fe-ent-page';
+import { getBasicRoutes, initRouteAndLayout } from 'fe-ent-layout';
 import { LoginRoute } from 'fe-ent-login';
 
 import App from './App.vue';

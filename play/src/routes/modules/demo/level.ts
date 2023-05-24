@@ -1,7 +1,7 @@
 import { getParentLayout, t } from 'fe-ent-core';
-import type { AppRouteModule } from 'fe-ent-core';
+import type { AppRouteRecordRaw } from 'fe-ent-core';
 
-const permission: AppRouteModule = {
+const permission: AppRouteRecordRaw = {
   path: '/level',
   name: 'Level',
   component: 'LAYOUT',

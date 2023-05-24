@@ -1,7 +1,7 @@
 import { t } from 'fe-ent-core';
-import type { AppRouteModule } from 'fe-ent-core';
+import type { AppRouteRecordRaw } from 'fe-ent-core';
 
-const charts: AppRouteModule = {
+const charts: AppRouteRecordRaw = {
   path: '/flow',
   name: 'FlowDemo',
   component: 'LAYOUT',

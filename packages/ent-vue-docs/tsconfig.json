@@ -5,7 +5,7 @@
     "types": ["vite/client"],
     "paths": {
       "@ent-core/*": ["../fe-ent-core/*"],
-      "fe-ent-page": ["../../apps/page/index.ts"],
+      "fe-ent-layout": ["../../apps/layout/index.ts"],
       "fe-ent-core": ["../fe-ent-core/index.ts"]
     }
   },

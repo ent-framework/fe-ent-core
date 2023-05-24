@@ -45,7 +45,7 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { LayoutFeature, LayoutHeader } from 'fe-ent-page';
+  import { LayoutFeature, LayoutHeader } from 'fe-ent-layout';
   import LogoImg from './assets/images/logo.png';
 </script>
 <style scoped lang="less">
