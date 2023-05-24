@@ -1,27 +1,26 @@
 <template>
-  <EntPageWrapper title="懒加载基础示例" content="向下滚动到可见区域才会加载组件">
+  <ent-page-wrapper title="懒加载基础示例" content="向下滚动到可见区域才会加载组件">
     <div class="lazy-base-demo-wrap">
       <h1>向下滚动</h1>
 
       <div class="lazy-base-demo-box">
-        <LazyContainer>
+        <ent-Lazy-Container>
           <TargetContent />
           <template #skeleton>
             <Skeleton :rows="10" />
           </template>
-        </LazyContainer>
+        </ent-Lazy-Container>
       </div>
     </div>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Skeleton } from 'ant-design-vue';
-  import { EntLazyContainer, EntPageWrapper } from 'fe-ent-core';
-  import TargetContent from './target-Content.vue';
+  import TargetContent from './target-content.vue';
 
   export default defineComponent({
-    components: { LazyContainer: EntLazyContainer, EntPageWrapper, TargetContent, Skeleton },
+    components: { TargetContent, Skeleton },
   });
 </script>
 <style lang="less">

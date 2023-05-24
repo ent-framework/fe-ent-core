@@ -1,10 +1,7 @@
 import fs from 'fs-extra';
-import less from 'less';
 import consola from 'consola';
-import CleanCSS from 'clean-css';
 import glob from 'glob';
 import paths from '../../utils/paths';
-import { generateModifyVars } from '../../utils/modify-vars';
 
 const run = async () => {
   const cwd = process.cwd();
@@ -15,6 +12,7 @@ const run = async () => {
 
   for (const filename of files) {
     const absolute = paths.resolvePath(`${filename}`);
+    fs.copySync(absolute, paths.resolvePath(`es/${filename}`));
     fs.copySync(absolute, paths.resolvePath(`lib/${filename}`));
   }
 
@@ -37,6 +35,7 @@ const run = async () => {
   //
   // fs.writeFileSync(paths.resolvePath('dist/app.min.css'), compress.styles);
   //
+  fs.copySync(paths.theme, paths.resolvePath('es/theme'), { recursive: true });
   fs.copySync(paths.theme, paths.resolvePath('lib/theme'), { recursive: true });
   //
   // consola.success(`target build success`);

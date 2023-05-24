@@ -1,18 +1,18 @@
 <template>
   <div>
-    <EntTable @register="registerTable" @edit-change="handleEditChange">
+    <ent-table @register="registerTable" @edit-change="handleEditChange">
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'action'">
-          <EntTableAction :actions="createActions(record, column)" />
+          <ent-table-action :actions="createActions(record, column)" />
         </template>
       </template>
-    </EntTable>
+    </ent-table>
     <ent-button block class="mt-5" type="ghost" @click="handleAdd"> 新增成员 </ent-button>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, EntTableAction, useTable } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core';
   import type { BasicColumn, EditRecordRow } from 'fe-ent-core';
 
   const columns: BasicColumn[] = [
@@ -51,7 +51,6 @@
     },
   ];
   export default defineComponent({
-    components: { EntTable, EntTableAction },
     setup() {
       const [registerTable, { getDataSource }] = useTable({
         columns,

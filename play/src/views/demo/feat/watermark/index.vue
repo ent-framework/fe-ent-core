@@ -1,6 +1,6 @@
 <template>
-  <EntPageWrapper title="水印示例">
-    <CollapseContainer class="w-full h-32 bg-white rounded-md" title="Global WaterMark">
+  <ent-page-wrapper title="水印示例">
+    <ent-collapse-container class="w-full h-32 bg-white rounded-md" title="Global WaterMark">
       <ent-button type="primary" class="mr-2" @click="setWatermark('WaterMark Info')">
         Create
       </ent-button>
@@ -8,15 +8,15 @@
       <ent-button color="warning" class="mr-2" @click="setWatermark('WaterMark Info New')">
         Reset
       </ent-button>
-    </CollapseContainer>
-  </EntPageWrapper>
+    </ent-collapse-container>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntCollapseContainer, EntPageWrapper, useWatermark } from 'fe-ent-core';
+  import { useWatermark } from 'fe-ent-core';
+  import type { Nullable } from 'fe-ent-core';
 
   export default defineComponent({
-    components: { CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const areaRef = ref<Nullable<HTMLElement>>(null);
       const { setWatermark, clear } = useWatermark();

@@ -1,16 +1,15 @@
 <template>
-  <EntPageWrapper title="引导页" content="用于给用户的指引操作">
+  <ent-page-wrapper title="引导页" content="用于给用户的指引操作">
     <ent-button type="primary" @click="handleStart">开始</ent-button>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper, useDesign } from 'fe-ent-core';
+  import { useDesign } from 'fe-ent-core';
   import intro from 'intro.js';
   import 'intro.js/minified/introjs.min.css';
 
   export default defineComponent({
-    components: { EntPageWrapper },
     setup() {
       const { prefixVar } = useDesign('');
 

@@ -18,6 +18,7 @@
     "types",
     "utils",
     "index.ts",
+    "global.ts"
   ],
   "exclude": [
     "node_modules",

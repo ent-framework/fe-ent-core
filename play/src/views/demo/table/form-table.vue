@@ -1,5 +1,5 @@
 <template>
-  <EntTable @register="registerTable">
+  <ent-table @register="registerTable">
     <template #form-custom> custom-slot </template>
     <template #headerTop>
       <a-alert type="info" show-icon>
@@ -17,18 +17,18 @@
     <template #toolbar>
       <ent-button type="primary" @click="getFormValues">获取表单数据</ent-button>
     </template>
-  </EntTable>
+  </ent-table>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntTable, useTable } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core';
   import { getBasicColumns, getFormConfig } from './table-data';
   import { Alert } from 'ant-design-vue';
 
   import { demoListApi } from '/@/api/table';
 
   export default defineComponent({
-    components: { EntTable, AAlert: Alert },
+    components: { AAlert: Alert },
     setup() {
       const checkedKeys = ref<Array<string | number>>([]);
       const [registerTable, { getForm }] = useTable({

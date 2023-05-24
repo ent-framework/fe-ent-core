@@ -1,23 +1,22 @@
 <template>
-  <EntPageWrapper title="懒加载自定义动画示例" content="懒加载组件显示动画">
+  <ent-page-wrapper title="懒加载自定义动画示例" content="懒加载组件显示动画">
     <div class="lazy-base-demo-wrap">
       <h1>向下滚动</h1>
 
       <div class="lazy-base-demo-box">
-        <LazyContainer transition-name="custom">
+        <ent-lazy-container transition-name="custom">
           <TargetContent />
-        </LazyContainer>
+        </ent-lazy-container>
       </div>
     </div>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntLazyContainer, EntPageWrapper } from 'fe-ent-core';
   import TargetContent from './target-content.vue';
 
   export default defineComponent({
-    components: { LazyContainer: EntLazyContainer, TargetContent, EntPageWrapper },
+    components: { TargetContent },
   });
 </script>
 <style lang="less">

@@ -1,7 +1,7 @@
 <template>
-  <EntPageWrapper title="滚动组件示例" content="基于el-scrollbar">
+  <ent-page-wrapper title="滚动组件示例" content="基于el-scrollbar">
     <div class="scroll-wrap">
-      <ScrollContainer class="mt-4">
+      <ent-scroll-container class="mt-4">
         <ul class="p-3">
           <template v-for="index in 100" :key="index">
             <li class="p-2" :style="{ border: '1px solid #eee' }">
@@ -9,18 +9,10 @@
             </li>
           </template>
         </ul>
-      </ScrollContainer>
+      </ent-scroll-container>
     </div>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import { EntPageWrapper, EntScrollContainer } from 'fe-ent-core';
-
-  export default defineComponent({
-    components: { ScrollContainer: EntScrollContainer, EntPageWrapper },
-  });
-</script>
 <style lang="less" scoped>
   .scroll-wrap {
     width: 50%;

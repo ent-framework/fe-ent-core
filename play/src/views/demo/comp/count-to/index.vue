@@ -44,14 +44,11 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Card } from 'ant-design-vue';
-  import { EntCountTo, EntPageWrapper } from 'fe-ent-core';
 
   export default defineComponent({
     components: {
       Card,
       CardGrid: Card.Grid,
-      EntCountTo,
-      EntPageWrapper,
     },
   });
 </script>

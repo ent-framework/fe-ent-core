@@ -7,5 +7,5 @@
       "fe-ent-core/*": ["../../packages/fe-ent-core/*"]
     }
   },
-  "include": ["components"],
+  "include": ["components", "../../packages"],
 }

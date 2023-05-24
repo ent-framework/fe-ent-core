@@ -196,4 +196,4 @@ function setProps(modifiers: Recordable, props: Recordable) {
   });
 }
 
-export default RippleDirective;
+export { RippleDirective };

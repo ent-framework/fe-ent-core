@@ -16,7 +16,7 @@
       <ent-button class="mr-2" @click="clearSelect"> 清空选中行 </ent-button>
       <ent-button class="mr-2" @click="getPagination"> 获取分页信息 </ent-button>
     </div>
-    <EntTable
+    <ent-table
       ref="tableRef"
       :can-resize="false"
       title="RefTable示例"
@@ -30,12 +30,11 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import type { TableActionType } from 'fe-ent-core';
-  import { EntTable, useMessage } from 'fe-ent-core';
+  import type { Nullable, TableActionType } from 'fe-ent-core';
+  import { useMessage } from 'fe-ent-core';
   import { getBasicColumns, getBasicShortColumns } from './table-data';
   import { demoListApi } from '/@/api/table';
   export default defineComponent({
-    components: { EntTable },
     setup() {
       const tableRef = ref<Nullable<TableActionType>>(null);
       const { createMessage } = useMessage();

@@ -1,27 +1,23 @@
 <template>
-  <EntPageWrapper title="表单增删示例">
-    <CollapseContainer title="表单增删">
-      <EntForm @register="register" @submit="handleSubmit">
+  <ent-page-wrapper title="表单增删示例">
+    <ent-collapse-container title="表单增删">
+      <ent-form @register="register" @submit="handleSubmit">
         <template #add="{ field }">
-          <EntButton v-if="Number(field) === 0" @click="add">+</EntButton>
-          <EntButton v-if="field > 0" @click="del(field)">-</EntButton>
+          <ent-button v-if="Number(field) === 0" @click="add">+</ent-button>
+          <ent-button v-if="field > 0" @click="del(field)">-</ent-button>
         </template>
-      </EntForm>
-    </CollapseContainer>
-  </EntPageWrapper>
+      </ent-form>
+    </ent-collapse-container>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntButton, EntCollapseContainer, EntForm, EntPageWrapper, useForm } from 'fe-ent-core';
+  import { useForm } from 'fe-ent-core';
   import { Input } from 'ant-design-vue';
 
   export default defineComponent({
     components: {
-      EntForm,
-      CollapseContainer: EntCollapseContainer,
-      EntPageWrapper,
       [Input.name]: Input,
-      EntButton,
     },
     setup() {
       const [register, { appendSchemaByField, removeSchemaByField, validate }] = useForm({

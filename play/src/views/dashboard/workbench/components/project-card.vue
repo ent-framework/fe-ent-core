@@ -7,7 +7,7 @@
     <template v-for="item in items" :key="item">
       <CardGrid class="!md:w-1/3 !w-full">
         <span class="flex">
-          <EntIcon :icon="item.icon" :color="item.color" size="30" />
+          <ent-icon :icon="item.icon" :color="item.color" size="30" />
           <span class="text-lg ml-4">{{ item.title }}</span>
         </span>
         <div class="flex mt-2 h-10 text-secondary">{{ item.desc }}</div>
@@ -22,11 +22,10 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Card } from 'ant-design-vue';
-  import { EntIcon } from 'fe-ent-core';
   import { groupItems } from './data';
 
   export default defineComponent({
-    components: { Card, CardGrid: Card.Grid, EntIcon },
+    components: { Card, CardGrid: Card.Grid },
     setup() {
       return { items: groupItems };
     },

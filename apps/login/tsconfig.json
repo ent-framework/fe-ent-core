@@ -8,4 +8,16 @@
     }
   },
   "include": ["components", "../../packages"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "es",
+    "lib",
+    "json",
+    "**/dist",
+    "**/__tests__/**/*",
+    "**/gulpfile.ts",
+    "**/test-helper",
+    "**/*.md"
+  ]
 }

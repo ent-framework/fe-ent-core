@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-layout",
-  "version": "1.5.43",
+  "version": "1.5.45",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -27,7 +27,8 @@
     "dtsgen": "ent-vue-scripts dtsgen --lib"
   },
   "peerDependencies": {
-    "fe-ent-core": "^1.4.33"
+    "fe-ent-core": "^1.4.33",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "fe-ent-vue-scripts": "^1.5.14",

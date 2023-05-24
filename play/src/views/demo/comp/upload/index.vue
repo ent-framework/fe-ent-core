@@ -12,12 +12,12 @@
 
     <Alert message="嵌入表单,加入表单校验" />
 
-    <EntForm class="my-5" @register="register" />
+    <ent-form class="my-5" @register="register" />
   </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntForm, EntPageWrapper, EntUpload, Factory, useForm, useMessage } from 'fe-ent-core';
+  import { Factory, useForm, useMessage } from 'fe-ent-core';
   import { Alert } from 'ant-design-vue';
   import type { FormSchema } from 'fe-ent-core';
 
@@ -39,7 +39,7 @@
   const uploadApi = Factory.getHttpFactory().uploadApi;
 
   export default defineComponent({
-    components: { EntUpload, EntForm, EntPageWrapper, Alert },
+    components: { Alert },
     setup() {
       const { createMessage } = useMessage();
       const [register] = useForm({

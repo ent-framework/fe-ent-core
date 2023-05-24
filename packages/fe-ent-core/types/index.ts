@@ -26,6 +26,12 @@ export interface ComponentElRef<T extends HTMLElement = HTMLDivElement> {
   $el: T;
 }
 
+export type LabelValueOptions = {
+  label: string;
+  value: any;
+  [key: string]: string | number | boolean;
+}[];
+
 export type ComponentRef<T extends HTMLElement = HTMLDivElement> = ComponentElRef<T> | null;
 
 export type ElRef<T extends HTMLElement = HTMLDivElement> = Nullable<T>;

@@ -24,8 +24,8 @@
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|orderNo|orderNo|`number`|`-`|
-|title|title|`string`|`-`|
+|orderNo|顺序|`number`|`-`|
+|title|标题|`string`|`-`|
 |dynamicLevel|dynamicLevel|`number`|`-`|
 |realPath|realPath|`string`|`-`|
 |ignoreAuth|ignoreAuth|`boolean`|`false`|

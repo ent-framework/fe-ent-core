@@ -1,12 +1,12 @@
 <template>
   <div>
-    <EntTable @register="registerTable" @fetch-success="onFetchSuccess">
+    <ent-table @register="registerTable" @fetch-success="onFetchSuccess">
       <template #toolbar>
         <ent-button type="primary" @click="handleCreate"> 新增菜单 </ent-button>
       </template>
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'action'">
-          <EntTableAction
+          <ent-table-action
             :actions="[
               {
                 icon: 'clarity:note-edit-line',
@@ -25,14 +25,14 @@
           />
         </template>
       </template>
-    </EntTable>
+    </ent-table>
     <MenuDrawer @register="registerDrawer" @success="handleSuccess" />
   </div>
 </template>
 <script lang="ts">
   import { defineComponent, nextTick } from 'vue';
 
-  import { EntTable, EntTableAction, useDrawer, useTable } from 'fe-ent-core';
+  import { useDrawer, useTable } from 'fe-ent-core';
   import { getMenuList } from '/@/api/system';
 
   import MenuDrawer from './menu-drawer.vue';
@@ -41,7 +41,7 @@
 
   export default defineComponent({
     name: 'MenuManagement',
-    components: { EntTable, MenuDrawer, EntTableAction },
+    components: { MenuDrawer },
     setup() {
       const [registerDrawer, { openDrawer }] = useDrawer();
       const [registerTable, { reload, expandAll }] = useTable({

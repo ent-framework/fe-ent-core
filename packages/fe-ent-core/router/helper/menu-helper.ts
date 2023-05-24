@@ -1,7 +1,6 @@
 import { toRaw } from 'vue';
 import { cloneDeep } from 'lodash-es';
 import { findPath, treeMap } from '@ent-core/utils/helper/tree-helper';
-import { isUrl } from '@ent-core/utils/is';
 import type { RouteParams } from 'vue-router';
 import type { AppRouteRecordRaw, Menu, MenuModule } from '@ent-core/router/types';
 import type { Recordable } from '@ent-core/types';
@@ -11,32 +10,10 @@ export function getAllParentPath<T = Recordable>(treeData: T[], path: string) {
   return (menuList || []).map((item) => item.path);
 }
 
-// 路径处理
-function joinParentPath(menus: Menu[], parentPath = '') {
-  for (const menu of menus) {
-    // https://next.router.vuejs.org/guide/essentials/nested-routes.html
-    // Note that nested paths that start with / will be treated as a root path.
-    // 请注意，以 / 开头的嵌套路径将被视为根路径。
-    // This allows you to leverage the component nesting without having to use a nested URL.
-    // 这允许你利用组件嵌套，而无需使用嵌套 URL。
-    if (!(menu.path.startsWith('/') || isUrl(menu.path))) {
-      // path doesn't start with /, nor is it a url, join parent path
-      // 路径不以 / 开头，也不是 url，加入父路径
-      menu.path = `${parentPath}/${menu.path}`;
-    }
-    if (menu?.children?.length) {
-      joinParentPath(menu.children, menu.meta?.hidePathForChildren ? parentPath : menu.path);
-    }
-  }
-}
-
 // Parsing the menu module
 export function transformMenuModule(menuModule: MenuModule): Menu {
   const { menu } = menuModule;
-
   const menuList = [menu];
-
-  joinParentPath(menuList);
   return menuList[0];
 }
 
@@ -48,7 +25,7 @@ export function transformRouteToMenu(routeModList: AppRouteRecordRaw[], routerMa
 
   // 对路由项进行修改
   cloneRouteModList.forEach((item) => {
-    if (routerMapping && item.meta.hideChildrenInMenu && typeof item.redirect === 'string') {
+    if (routerMapping && item.meta?.hideChildrenInMenu && typeof item.redirect === 'string') {
       item.path = item.redirect;
     }
 
@@ -74,8 +51,6 @@ export function transformRouteToMenu(routeModList: AppRouteRecordRaw[], routerMa
       };
     },
   });
-  // 路径处理
-  joinParentPath(list);
   return cloneDeep(list);
 }
 
@@ -99,6 +74,7 @@ export function configureDynamicParamsMenu(menu: Menu, params: RouteParams) {
   if (!paramPath && matchArr && matchArr.length > 0) {
     menu.paramPath = path;
   }
+  // TODO 这里可能引起面包屑bug
   menu.path = realPath;
   // children
   menu.children?.forEach((item) => configureDynamicParamsMenu(item, params));

@@ -25,7 +25,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper, EntVirtualScroll } from 'fe-ent-core';
+  import type { Recordable } from 'fe-ent-core';
 
   import { Divider } from 'ant-design-vue';
   const data: Recordable[] = (() => {
@@ -38,7 +38,7 @@
     return arr;
   })();
   export default defineComponent({
-    components: { EntVirtualScroll, Divider, EntPageWrapper },
+    components: { Divider },
     setup() {
       return { data };
     },

@@ -1,5 +1,7 @@
 import type { FunctionalComponent } from 'vue';
 import type { RouteLocation } from 'vue-router';
+import type { Recordable } from 'fe-ent-core';
+
 export interface DefaultContext {
   Component: FunctionalComponent & { type: Recordable };
   route: RouteLocation;

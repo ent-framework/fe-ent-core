@@ -1,22 +1,21 @@
 <template>
-  <EntPageWrapper title="右键菜单示例">
-    <CollapseContainer title="Simple">
+  <ent-page-wrapper title="右键菜单示例">
+    <ent-collapse-container title="Simple">
       <ent-button type="primary" @contextmenu="handleContext"> Right Click on me </ent-button>
-    </CollapseContainer>
+    </ent-collapse-container>
 
-    <CollapseContainer title="Multiple" class="mt-4">
+    <ent-collapse-container title="Multiple" class="mt-4">
       <ent-button type="primary" @contextmenu="handleMultipleContext">
         Right Click on me
       </ent-button>
-    </CollapseContainer>
-  </EntPageWrapper>
+    </ent-collapse-container>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntCollapseContainer, EntPageWrapper, useContextMenu, useMessage } from 'fe-ent-core';
+  import { useContextMenu, useMessage } from 'fe-ent-core';
 
   export default defineComponent({
-    components: { CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const [createContextMenu] = useContextMenu();
       const { createMessage } = useMessage();

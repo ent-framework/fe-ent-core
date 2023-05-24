@@ -1,5 +1,5 @@
 <template>
-  <ScrollContainer>
+  <ent-collapse-container>
     <div ref="wrapperRef" :class="prefixCls">
       <Tabs tab-position="left" :tab-bar-style="tabBarStyle">
         <template v-for="item in settingList" :key="item.key">
@@ -9,16 +9,13 @@
         </template>
       </Tabs>
     </div>
-  </ScrollContainer>
+  </ent-collapse-container>
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Tabs } from 'ant-design-vue';
-
-  import { EntScrollContainer } from 'fe-ent-core';
   import { settingList } from './data';
-
   import BaseSetting from './base-setting.vue';
   import SecureSetting from './secure-setting.vue';
   import AccountBind from './account-bind.vue';
@@ -26,7 +23,6 @@
 
   export default defineComponent({
     components: {
-      ScrollContainer: EntScrollContainer,
       Tabs,
       TabPane: Tabs.TabPane,
       BaseSetting,

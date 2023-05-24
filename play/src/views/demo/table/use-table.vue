@@ -16,17 +16,16 @@
       <ent-button class="mr-2" @click="clearSelect"> 清空选中行 </ent-button>
       <ent-button class="mr-2" @click="getPagination"> 获取分页信息 </ent-button>
     </div>
-    <EntTable @register="registerTable" />
+    <ent-table @register="registerTable" />
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import type { ColumnChangeParam } from 'fe-ent-core';
-  import { EntTable, useMessage, useTable } from 'fe-ent-core';
+  import { useMessage, useTable } from 'fe-ent-core';
   import { getBasicColumns, getBasicShortColumns } from './table-data';
   import { demoListApi } from '/@/api/table';
   export default defineComponent({
-    components: { EntTable },
     setup() {
       const { createMessage } = useMessage();
       function onChange() {

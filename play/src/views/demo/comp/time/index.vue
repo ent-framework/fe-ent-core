@@ -23,10 +23,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, reactive, toRefs } from 'vue';
-  import { EntCollapseContainer, EntPageWrapper, EntTime } from 'fe-ent-core';
 
   export default defineComponent({
-    components: { EntPageWrapper, EntTime, EntCollapseContainer },
     setup() {
       const now = Date.now();
       const state = reactive({

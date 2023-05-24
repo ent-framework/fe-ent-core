@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper title="单号：234231029431" content-background>
+  <ent-page-wrapper title="单号：234231029431" content-background>
     <template #extra>
       <ent-button> 操作一 </ent-button>
       <ent-button> 操作二 </ent-button>
@@ -88,20 +88,18 @@
       <a-card title="用户近半年来电记录" class="my-5">
         <Empty />
       </a-card>
-      <EntTable @register="registerTimeTable" />
+      <ent-table @register="registerTimeTable" />
     </div>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper, EntTable, useTable } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core';
   import { Card, Descriptions, Divider, Empty, Steps, Tabs } from 'ant-design-vue';
 
   import { refundTimeTableData, refundTimeTableSchema } from './data';
   export default defineComponent({
     components: {
-      EntTable,
-      EntPageWrapper,
       [Divider.name]: Divider,
       [Card.name]: Card,
       Empty,

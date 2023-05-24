@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper title="文件下载示例">
+  <ent-page-wrapper title="文件下载示例">
     <a-alert message="根据后台接口文件流下载" />
     <ent-button type="primary" class="my-4" @click="handleDownByData"> 文件流下载 </ent-button>
 
@@ -15,7 +15,7 @@
     <ent-button type="primary" class="my-4" @click="handleDownloadByOnlineUrl">
       图片Url下载
     </ent-button>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';

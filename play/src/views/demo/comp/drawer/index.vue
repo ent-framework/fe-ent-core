@@ -22,7 +22,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Alert } from 'ant-design-vue';
-  import { EntPageWrapper, useDrawer } from 'fe-ent-core';
+  import { useDrawer } from 'fe-ent-core';
   import Drawer1 from './drawer-1.vue';
   import Drawer2 from './drawer-2.vue';
   import Drawer3 from './drawer-3.vue';
@@ -30,7 +30,7 @@
   import Drawer5 from './drawer-5.vue';
 
   export default defineComponent({
-    components: { Alert, EntPageWrapper, Drawer1, Drawer2, Drawer3, Drawer4, Drawer5 },
+    components: { Alert, Drawer1, Drawer2, Drawer3, Drawer4, Drawer5 },
     setup() {
       const [register1, { openDrawer: openDrawer1, setDrawerProps }] = useDrawer();
       const [register2, { openDrawer: openDrawer2 }] = useDrawer();

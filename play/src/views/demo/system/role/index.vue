@@ -1,12 +1,12 @@
 <template>
   <div>
-    <EntTable @register="registerTable">
+    <ent-table @register="registerTable">
       <template #toolbar>
         <ent-button type="primary" @click="handleCreate"> 新增角色 </ent-button>
       </template>
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'action'">
-          <EntTableAction
+          <ent-table-action
             :actions="[
               {
                 icon: 'clarity:note-edit-line',
@@ -25,14 +25,14 @@
           />
         </template>
       </template>
-    </EntTable>
+    </ent-table>
     <RoleDrawer @register="registerDrawer" @success="handleSuccess" />
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import { EntTable, EntTableAction, useDrawer, useTable } from 'fe-ent-core';
+  import { useDrawer, useTable } from 'fe-ent-core';
   import { getRoleListByPage } from '/@/api/system';
 
   import RoleDrawer from './role-drawer.vue';
@@ -41,7 +41,7 @@
 
   export default defineComponent({
     name: 'RoleManagement',
-    components: { EntTable, RoleDrawer, EntTableAction },
+    components: { RoleDrawer },
     setup() {
       const [registerDrawer, { openDrawer }] = useDrawer();
       const [registerTable, { reload }] = useTable({

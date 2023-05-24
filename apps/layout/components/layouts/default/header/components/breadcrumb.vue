@@ -61,12 +61,9 @@
           path = cur.meta.currentActiveMenu as string;
         }
         const parent = getAllParentPath(menus, path);
-        console.log(parent);
         const filterMenus = menus.filter((item) => item.path === parent[0]);
-        console.log(filterMenus);
         const matched = getMatched(filterMenus, parent) as any;
         if (!matched || matched.length === 0) return;
-        console.log(matched);
         const breadcrumbList = filterItem(matched);
 
         if (currentRoute.value.meta?.currentActiveMenu) {
@@ -75,7 +72,6 @@
             name: currentRoute.value.meta?.title || currentRoute.value.name,
           } as unknown as RouteLocationMatched);
         }
-        console.log(breadcrumbList);
         routes.value = breadcrumbList;
       });
 

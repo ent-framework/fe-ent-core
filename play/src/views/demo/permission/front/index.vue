@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper
+  <ent-page-wrapper
     title="前端权限示例"
     content-background
     content-class="p-4"
@@ -23,16 +23,16 @@
         </ent-button>
       </Space>
     </div>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { Alert, Space } from 'ant-design-vue';
-  import { EntPageWrapper, RoleEnum, usePermission, useUserStore } from 'fe-ent-core';
+  import { RoleEnum, usePermission, useUserStore } from 'fe-ent-core';
   import CurrentPermissionMode from '../current-permission-mode.vue';
 
   export default defineComponent({
-    components: { Space, Alert, CurrentPermissionMode, EntPageWrapper },
+    components: { Space, Alert, CurrentPermissionMode },
     setup() {
       const { changeRole } = usePermission();
       const userStore = useUserStore();

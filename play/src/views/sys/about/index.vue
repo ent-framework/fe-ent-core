@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper title="关于">
+  <ent-page-wrapper title="关于">
     <template #headerContent>
       <div class="flex justify-between items-center">
         <span class="flex-1">
@@ -9,22 +9,15 @@
         </span>
       </div>
     </template>
-    <EntDescription class="enter-y" @register="infoRegister" />
-    <EntDescription class="my-4 enter-y" @register="register" />
-    <EntDescription class="enter-y" @register="registerDev" />
-  </EntPageWrapper>
+    <ent-description class="enter-y" @register="infoRegister" />
+    <ent-description class="my-4 enter-y" @register="register" />
+    <ent-description class="enter-y" @register="registerDev" />
+  </ent-page-wrapper>
 </template>
 <script lang="ts" setup>
-  import { defineComponent, h } from 'vue';
+  import { h } from 'vue';
   import { Tag } from 'ant-design-vue';
-  import {
-    DOC_URL,
-    EntDescription,
-    EntPageWrapper,
-    GITHUB_URL,
-    SITE_URL,
-    useDescription,
-  } from 'fe-ent-core';
+  import { DOC_URL, GITHUB_URL, SITE_URL, useDescription } from 'fe-ent-core';
   import type { DescItem } from 'fe-ent-core';
 
   const { pkg, lastBuildTime } = __APP_INFO__;
@@ -36,10 +29,6 @@
 
   const commonTagRender = (color: string) => (curVal) => h(Tag, { color }, () => curVal);
   const commonLinkRender = (text: string) => (href) => h('a', { href, target: '_blank' }, text);
-
-  defineComponent({
-    components: { EntPageWrapper, EntDescription },
-  });
 
   const infoSchema: DescItem[] = [
     {
@@ -76,8 +65,6 @@
     preview: SITE_URL,
     github: GITHUB_URL,
   };
-
-  console.log(infoData);
 
   Object.keys(dependencies).forEach((key) => {
     schema.push({ field: key, label: key });

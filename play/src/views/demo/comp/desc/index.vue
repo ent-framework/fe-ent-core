@@ -24,8 +24,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntDescription, EntPageWrapper, useDescription } from 'fe-ent-core';
-  import type { DescItem } from 'fe-ent-core';
+  import { useDescription } from 'fe-ent-core';
+  import type { DescItem, Recordable } from 'fe-ent-core';
 
   const mockData: Recordable = {
     username: 'test',
@@ -64,7 +64,6 @@
     },
   ];
   export default defineComponent({
-    components: { EntDescription, EntPageWrapper },
     setup() {
       const [register] = useDescription({
         title: 'useDescription',

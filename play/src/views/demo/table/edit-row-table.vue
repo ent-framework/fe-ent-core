@@ -1,18 +1,20 @@
 <template>
   <div class="p-4">
-    <EntTable :data-source="dataSource" @register="registerTable" @edit-change="onEditChange">
+    <ent-table :data-source="dataSource" @register="registerTable" @edit-change="onEditChange">
       <template #toolbar>
         <ent-button type="primary" @click="addRecord">添加行</ent-button>
       </template>
-      <template #action="{ record, column }">
-        <EntTableAction :actions="createActions(record, column)" />
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.key === 'action'">
+          <ent-table-action :actions="createActions(record, column)" />
+        </template>
       </template>
-    </EntTable>
+    </ent-table>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent, onMounted, ref } from 'vue';
-  import { EntTable, EntTableAction, useMessage, useTable } from 'fe-ent-core';
+  import { useMessage, useTable } from 'fe-ent-core';
   import { optionsListApi } from '/@/api/select';
 
   import { demoListApi } from '/@/api/table';
@@ -159,7 +161,6 @@
     },
   ];
   export default defineComponent({
-    components: { EntTable, EntTableAction },
     setup() {
       const { createMessage: msg } = useMessage();
       const currentEditKeyRef = ref('');

@@ -1,17 +1,17 @@
 <template>
-  <EntPageWrapper title="自定义组件示例">
-    <CollapseContainer title="自定义表单">
-      <EntForm @register="register" @submit="handleSubmit">
+  <ent-page-wrapper title="自定义组件示例">
+    <ent-collapse-container title="自定义表单">
+      <ent-form @register="register" @submit="handleSubmit">
         <template #f3="{ model, field }">
           <a-input v-model:value="model[field]" placeholder="自定义slot" />
         </template>
-      </EntForm>
-    </CollapseContainer>
-  </EntPageWrapper>
+      </ent-form>
+    </ent-collapse-container>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { EntCollapseContainer, EntForm, EntPageWrapper, useForm, useMessage } from 'fe-ent-core';
+  import { useForm, useMessage } from 'fe-ent-core';
   import { Input } from 'ant-design-vue';
   import type { FormSchema } from 'fe-ent-core';
 
@@ -61,9 +61,6 @@
   ];
   export default defineComponent({
     components: {
-      EntForm,
-      CollapseContainer: EntCollapseContainer,
-      EntPageWrapper,
       [Input.name]: Input,
     },
     setup() {

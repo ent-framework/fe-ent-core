@@ -13,7 +13,7 @@ import type { I18n, I18nOptions } from 'vue-i18n';
 
 const { fallback, availableLocales } = localeSetting;
 
-export let i18n: ReturnType<typeof createI18n>;
+export let i18n: I18n;
 
 async function createI18nOptions(): Promise<I18nOptions> {
   const localeStore = useLocaleStoreWithOut();

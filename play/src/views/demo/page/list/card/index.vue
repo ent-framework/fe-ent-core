@@ -1,11 +1,11 @@
 <template>
-  <EntPageWrapper :class="prefixCls" title="卡片列表">
+  <ent-page-wrapper :class="prefixCls" title="卡片列表">
     <template #headerContent>
       基于Vue Next, TypeScript, Ant Design Vue实现的一套完整的企业级后台管理系统。
       <div :class="`${prefixCls}__link`">
-        <a><Icon icon="bx:bx-paper-plane" color="#1890ff" /><span>开始</span></a>
-        <a><Icon icon="carbon:warning" color="#1890ff" /><span>简介</span></a>
-        <a><Icon icon="ion:document-text-outline" color="#1890ff" /><span>文档</span></a>
+        <a><ent-icon icon="bx:bx-paper-plane" color="#1890ff" /><span>开始</span></a>
+        <a><ent-icon icon="carbon:warning" color="#1890ff" /><span>简介</span></a>
+        <a><ent-icon icon="ion:document-text-outline" color="#1890ff" /><span>文档</span></a>
       </div>
     </template>
 
@@ -17,7 +17,7 @@
               <a-list-item>
                 <a-card :hoverable="true" :class="`${prefixCls}__card`">
                   <div :class="`${prefixCls}__card-title`">
-                    <Icon v-if="item.icon" class="icon" :icon="item.icon" :color="item.color" />
+                    <ent-icon v-if="item.icon" class="icon" :icon="item.icon" :color="item.color" />
                     {{ item.title }}
                   </div>
                   <div :class="`${prefixCls}__card-detail`">
@@ -30,18 +30,15 @@
         </a-row>
       </a-list>
     </div>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import Icon, { EntPageWrapper } from 'fe-ent-core';
   import { Card, Col, List, Row } from 'ant-design-vue';
   import { cardList } from './data';
 
   export default defineComponent({
     components: {
-      Icon,
-      EntPageWrapper,
       [Card.name]: Card,
       [List.name]: List,
       [List.Item.name]: List.Item,

@@ -1,16 +1,15 @@
 <template>
   <div class="p-4">
-    <EntTable @register="registerTable" />
+    <ent-table @register="registerTable" />
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core';
   import { getMultipleHeaderColumns } from './table-data';
 
   import { demoListApi } from '/@/api/table';
   export default defineComponent({
-    components: { EntTable },
     setup() {
       const [registerTable] = useTable({
         title: '多级表头示例',

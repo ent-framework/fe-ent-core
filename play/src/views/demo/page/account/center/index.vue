@@ -14,7 +14,7 @@
             <div :class="`${prefixCls}-top__detail`">
               <template v-for="detail in details" :key="detail.title">
                 <p>
-                  <Icon :icon="detail.icon" />
+                  <ent-icon :icon="detail.icon" />
                   {{ detail.title }}
                 </p>
               </template>
@@ -23,21 +23,21 @@
         </a-row>
       </a-col>
       <a-col :span="7" :class="`${prefixCls}-col`">
-        <CollapseContainer title="标签" :can-expan="false">
+        <ent-collapse-container title="标签" :can-expan="false">
           <template v-for="tag in tags" :key="tag">
             <Tag class="mb-2">
               {{ tag }}
             </Tag>
           </template>
-        </CollapseContainer>
+        </ent-collapse-container>
       </a-col>
       <a-col :span="8" :class="`${prefixCls}-col`">
-        <CollapseContainer :class="`${prefixCls}-top__team`" title="团队" :can-expan="false">
+        <ent-collapse-container :class="`${prefixCls}-top__team`" title="团队" :can-expan="false">
           <div v-for="(team, index) in teams" :key="index" :class="`${prefixCls}-top__team-item`">
-            <Icon :icon="team.icon" :color="team.color" />
+            <ent-icon :icon="team.icon" :color="team.color" />
             <span>{{ team.title }}</span>
           </div>
-        </CollapseContainer>
+        </ent-collapse-container>
       </a-col>
     </a-row>
     <div :class="`${prefixCls}-bottom`">
@@ -55,7 +55,7 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { Col, Row, Tabs, Tag } from 'ant-design-vue';
-  import Icon, { EntCollapseContainer, useUserStore } from 'fe-ent-core';
+  import { useUserStore } from 'fe-ent-core';
   import Article from './article.vue';
   import Application from './application.vue';
   import Project from './project.vue';
@@ -65,8 +65,6 @@
 
   export default defineComponent({
     components: {
-      CollapseContainer: EntCollapseContainer,
-      Icon,
       Tag,
       Tabs,
       TabPane: Tabs.TabPane,

@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper
+  <ent-page-wrapper
     title="前端权限按钮示例"
     content-background
     content-class="p-4"
@@ -61,7 +61,7 @@
     <ent-button v-auth="[RoleEnum.TEST, RoleEnum.SUPER]" color="error" class="mx-4">
       拥有[test,super]角色权限可见
     </ent-button>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';

@@ -1,6 +1,6 @@
 <template>
-  <EntPageWrapper title="基础详情页" content-background>
-    <EntDescription
+  <ent-page-wrapper title="基础详情页" content-background>
+    <ent-description
       size="middle"
       title="退款申请"
       :bordered="false"
@@ -9,7 +9,7 @@
       :schema="refundSchema"
     />
     <a-divider />
-    <EntDescription
+    <ent-description
       size="middle"
       title="用户信息"
       :bordered="false"
@@ -19,14 +19,14 @@
     />
     <a-divider />
 
-    <EntTable @register="registerRefundTable" />
+    <ent-table @register="registerRefundTable" />
     <a-divider />
-    <EntTable @register="registerTimeTable" />
-  </EntPageWrapper>
+    <ent-table @register="registerTimeTable" />
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntDescription, EntPageWrapper, EntTable, useTable } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core';
   import { Divider } from 'ant-design-vue';
 
   import {
@@ -40,7 +40,7 @@
     refundTimeTableSchema,
   } from './data';
   export default defineComponent({
-    components: { EntDescription, EntTable, EntPageWrapper, [Divider.name]: Divider },
+    components: { [Divider.name]: Divider },
     setup() {
       const [registerRefundTable] = useTable({
         title: '退货商品',

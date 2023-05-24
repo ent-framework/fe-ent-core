@@ -1,5 +1,5 @@
 <template>
-  <EntDrawer
+  <ent-drawer
     v-bind="$attrs"
     show-footer
     :title="getTitle"
@@ -7,9 +7,9 @@
     @register="registerDrawer"
     @ok="handleSubmit"
   >
-    <EntForm @register="registerForm">
+    <ent-form @register="registerForm">
       <template #menu="{ model, field }">
-        <EntTree
+        <ent-tree
           v-model:value="model[field]"
           :tree-data="treeData"
           :field-names="{ title: 'menuName', key: 'id' }"
@@ -18,20 +18,19 @@
           title="菜单分配"
         />
       </template>
-    </EntForm>
-  </EntDrawer>
+    </ent-form>
+  </ent-drawer>
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref } from 'vue';
   import type { TreeItem } from 'fe-ent-core';
-  import { EntDrawer, EntForm, EntTree, useDrawerInner, useForm } from 'fe-ent-core';
+  import { useDrawerInner, useForm } from 'fe-ent-core';
   import { formSchema } from './role-data';
 
   import { getMenuList } from '/@/api/system';
 
   export default defineComponent({
     name: 'RoleDrawer',
-    components: { EntDrawer, EntForm, EntTree },
     emits: ['success', 'register'],
     setup(_, { emit }) {
       const isUpdate = ref(true);

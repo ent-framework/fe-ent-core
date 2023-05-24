@@ -1,13 +1,13 @@
 <template>
-  <EntPageWrapper dense content-full-height fixed-height content-class="flex">
+  <ent-page-wrapper dense content-full-height fixed-height content-class="flex">
     <DeptTree class="w-1/4 xl:w-1/5" @select="handleSelect" />
-    <EntTable class="w-3/4 xl:w-4/5" :search-info="searchInfo" @register="registerTable">
+    <ent-table class="w-3/4 xl:w-4/5" :search-info="searchInfo" @register="registerTable">
       <template #toolbar>
         <ent-button type="primary" @click="handleCreate">新增账号</ent-button>
       </template>
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'action'">
-          <EntTableAction
+          <ent-table-action
             :actions="[
               {
                 icon: 'clarity:info-standard-line',
@@ -33,14 +33,14 @@
           />
         </template>
       </template>
-    </EntTable>
+    </ent-table>
     <AccountModal @register="registerModal" @success="handleSuccess" />
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, reactive } from 'vue';
 
-  import { EntPageWrapper, EntTable, EntTableAction, useGo, useModal, useTable } from 'fe-ent-core';
+  import { useGo, useModal, useTable } from 'fe-ent-core';
   import { getAccountList } from '/@/api/system';
   import DeptTree from './dept-tree.vue';
 
@@ -50,7 +50,7 @@
 
   export default defineComponent({
     name: 'AccountManagement',
-    components: { EntTable, EntPageWrapper, DeptTree, AccountModal, EntTableAction },
+    components: { DeptTree, AccountModal },
     setup() {
       const go = useGo();
       const [registerModal, { openModal }] = useModal();

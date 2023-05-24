@@ -1,18 +1,18 @@
 <template>
-  <EntModal
+  <ent-modal
     v-bind="$attrs"
     title="Modal Title"
     @register="register"
     @visible-change="handleVisibleChange"
   >
     <div class="pt-3px pr-3px">
-      <EntForm :model="model" @register="registerForm" />
+      <ent-form :model="model" @register="registerForm" />
     </div>
-  </EntModal>
+  </ent-modal>
 </template>
 <script lang="ts">
   import { defineComponent, nextTick, ref } from 'vue';
-  import { EntForm, EntModal, useForm, useModalInner } from 'fe-ent-core';
+  import { useForm, useModalInner } from 'fe-ent-core';
   import type { FormSchema } from 'fe-ent-core';
   const schemas: FormSchema[] = [
     {
@@ -34,7 +34,6 @@
     },
   ];
   export default defineComponent({
-    components: { EntModal, EntForm },
     props: {
       userData: { type: Object },
     },

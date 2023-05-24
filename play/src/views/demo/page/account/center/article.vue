@@ -24,7 +24,7 @@
         <div>
           <template v-for="action in actions" :key="action.text">
             <div :class="`${prefixCls}__action`">
-              <Icon
+              <ent-icon
                 v-if="action.icon"
                 :class="`${prefixCls}__action-icon`"
                 :icon="action.icon"
@@ -42,7 +42,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { List, Tag } from 'ant-design-vue';
-  import Icon from 'fe-ent-core';
   import { actions, articleList } from './data';
 
   export default defineComponent({
@@ -51,7 +50,6 @@
       ListItem: List.Item,
       ListItemMeta: List.Item.Meta,
       Tag,
-      Icon,
     },
     setup() {
       return {

@@ -1,17 +1,16 @@
 <template>
   <div class="p-4">
-    <EntTable @register="registerTable" />
+    <ent-table @register="registerTable" />
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTable, useTable } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core';
   import { getBasicColumns } from './table-data';
 
   import { demoListApi } from '/@/api/table';
 
   export default defineComponent({
-    components: { EntTable },
     setup() {
       function handleSummary(tableData: Recordable[]) {
         const totalNo = tableData.reduce((prev, next) => {

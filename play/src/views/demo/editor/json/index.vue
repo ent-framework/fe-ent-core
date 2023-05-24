@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper title="代码编辑器组件示例" content-full-height fixed-height content-background>
+  <ent-page-wrapper title="代码编辑器组件示例" content-full-height fixed-height content-background>
     <template #extra>
       <a-space size="middle">
         <ent-button type="primary" @click="showData">获取数据</ent-button>
@@ -11,7 +11,7 @@
       </a-space>
     </template>
     <CodeEditor v-model:value="value" :mode="modeValue" />
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, h, ref, unref } from 'vue';

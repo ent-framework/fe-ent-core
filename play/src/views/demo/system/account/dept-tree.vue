@@ -1,6 +1,6 @@
 <template>
   <div class="m-4 mr-0 overflow-hidden bg-white">
-    <EntTree
+    <ent-tree
       title="部门列表"
       toolbar
       search
@@ -16,13 +16,10 @@
   import { defineComponent, onMounted, ref } from 'vue';
 
   import type { TreeItem } from 'fe-ent-core';
-  import { EntTree } from 'fe-ent-core';
   import { getDeptList } from '/@/api/system';
 
   export default defineComponent({
     name: 'DeptTree',
-    components: { EntTree },
-
     emits: ['select'],
     setup(_, { emit }) {
       const treeData = ref<TreeItem[]>([]);

@@ -17,4 +17,4 @@ description: 应用配置
 ## API
 
 ### 应用配置
-%%API(src/app-provider.vue)%%
+%%API(src/index.vue)%%

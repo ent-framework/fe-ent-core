@@ -1,9 +1,9 @@
 <template>
   <div class="p-4">
-    <EntTable @register="registerTable">
+    <ent-table @register="registerTable">
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'action'">
-          <EntTableAction
+          <ent-table-action
             :actions="[
               {
                 label: '编辑',
@@ -53,13 +53,13 @@
           />
         </template>
       </template>
-    </EntTable>
+    </ent-table>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import type { BasicColumn } from 'fe-ent-core';
-  import { EntTable, EntTableAction, useTable } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core';
 
   import { demoListApi } from '/@/api/table';
   const columns: BasicColumn[] = [
@@ -96,7 +96,6 @@
     },
   ];
   export default defineComponent({
-    components: { EntTable, EntTableAction },
     setup() {
       const [registerTable] = useTable({
         title: 'TableAction组件及固定列示例',

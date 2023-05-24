@@ -10,7 +10,7 @@
 </template>
 <script lang="ts" setup>
   import { demoListApi } from '/@/api/table';
-  import { EntCardList, EntPageWrapper, useMessage } from 'fe-ent-core';
+  import { useMessage } from 'fe-ent-core';
   const { notification } = useMessage();
   // 请求api时附带参数
   const params = {};

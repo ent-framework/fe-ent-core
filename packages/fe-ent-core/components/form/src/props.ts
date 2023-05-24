@@ -5,7 +5,7 @@ import type { CSSProperties, PropType } from 'vue';
 import type { ColEx } from './types';
 import type { TableActionType } from '@ent-core/components/table';
 import type { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
-import type { RowProps } from 'ant-design-vue/lib/grid/Row';
+import type { RowProps } from 'ant-design-vue/es/grid/Row';
 
 export const basicProps = {
   model: {
@@ -22,7 +22,9 @@ export const basicProps = {
     default: () => [],
   },
   compact: propTypes.bool,
-  // 表单配置规则
+  /**
+   * 表单配置
+   */
   schemas: {
     type: Array as PropType<FormSchema[]>,
     default: () => [],
@@ -42,8 +44,13 @@ export const basicProps = {
   autoSubmitOnEnter: propTypes.bool.def(false),
   submitOnReset: propTypes.bool,
   submitOnChange: propTypes.bool,
+  /**
+   * Size
+   */
   size: propTypes.oneOf(['default', 'small', 'large']).def('default'),
-  // 禁用表单
+  /**
+   * 禁用表单
+   */
   disabled: propTypes.bool,
   emptySpan: {
     type: [Number, Object] as PropType<number | Recordable>,
@@ -75,9 +82,13 @@ export const basicProps = {
   // 重置按钮配置
   resetButtonOptions: Object as PropType<Partial<ButtonProps>>,
 
-  // 显示确认按钮
+  /**
+   * 是否显示确认按钮
+   */
   showSubmitButton: propTypes.bool.def(true),
-  // 确认按钮配置
+  /**
+   * 确认按钮配置
+   */
   submitButtonOptions: Object as PropType<Partial<ButtonProps>>,
 
   // 自定义重置函数

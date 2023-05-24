@@ -1,21 +1,19 @@
 <template>
-  <EntPageWrapper title="打印示例">
-    <CollapseContainer title="json打印表格">
+  <ent-page-wrapper title="打印示例">
+    <ent-collapse-container title="json打印表格">
       <ent-button type="primary" @click="jsonPrint">打印</ent-button>
-    </CollapseContainer>
+    </ent-collapse-container>
 
     <ent-button type="primary" class="mt-5" @click="imagePrint">Image Print</ent-button>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntCollapseContainer, EntPageWrapper } from 'fe-ent-core';
 
   import printJS from 'print-js';
 
   export default defineComponent({
     name: 'AppLogo',
-    components: { EntPageWrapper, CollapseContainer: EntCollapseContainer },
     setup() {
       function jsonPrint() {
         printJS({

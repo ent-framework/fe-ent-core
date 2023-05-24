@@ -1,5 +1,5 @@
 <template>
-  <CollapseContainer title="新消息通知" :can-expan="false">
+  <ent-collapse-container title="新消息通知" :can-expan="false">
     <List>
       <template v-for="item in list" :key="item.key">
         <ListItem>
@@ -20,18 +20,16 @@
         </ListItem>
       </template>
     </List>
-  </CollapseContainer>
+  </ent-collapse-container>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { List, Switch } from 'ant-design-vue';
-  import { EntCollapseContainer } from 'fe-ent-core';
 
   import { msgNotifyList } from './data';
 
   export default defineComponent({
     components: {
-      CollapseContainer: EntCollapseContainer,
       List,
       ListItem: List.Item,
       ListItemMeta: List.Item.Meta,

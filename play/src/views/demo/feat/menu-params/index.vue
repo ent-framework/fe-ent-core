@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper title="带参数菜单（路由）" content="支持多级参数">
+  <ent-page-wrapper title="带参数菜单（路由）" content="支持多级参数">
     当前参数：{{ params }}
     <br />
     输入参数切换路由：
@@ -11,17 +11,16 @@
       <li>可刷新页面测试路由参数情况是否正常。</li>
       <li>可于左侧菜单中展开子菜单，点击测试参数是否携带正常。</li>
     </ul>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref } from 'vue';
   import { Input } from 'ant-design-vue';
   import { useRouter } from 'vue-router';
-  import { EntPageWrapper } from 'fe-ent-core';
 
   export default defineComponent({
     name: 'TestMenu',
-    components: { EntPageWrapper, Input },
+    components: { Input },
     setup() {
       const { currentRoute, replace } = useRouter();
       const value = ref<string>('');

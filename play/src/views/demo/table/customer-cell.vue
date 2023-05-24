@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <EntTable @register="registerTable">
+    <ent-table @register="registerTable">
       <template #id="{ record }"> ID: {{ record.id }} </template>
       <template #no="{ record }">
         <Tag color="green">
@@ -11,22 +11,22 @@
         <Avatar :size="60" :src="record.avatar" />
       </template>
       <template #img="{ text }">
-        <EntTableImg :size="60" :simple-show="true" :img-list="text" />
+        <ent-table-img :size="60" :simple-show="true" :img-list="text" />
       </template>
-      <template #imgs="{ text }"> <EntTableImg :size="60" :img-list="text" /> </template>
+      <template #imgs="{ text }"> <ent-table-img :size="60" :img-list="text" /> </template>
 
       <template #category="{ record }">
         <Tag color="green">
           {{ record.no }}
         </Tag>
       </template>
-    </EntTable>
+    </ent-table>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import type { BasicColumn } from 'fe-ent-core';
-  import { EntTable, EntTableImg, useTable } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core';
   import { Avatar, Tag } from 'ant-design-vue';
   import { demoListApi } from '/@/api/table';
   const columns: BasicColumn[] = [
@@ -80,7 +80,7 @@
     },
   ];
   export default defineComponent({
-    components: { EntTable, EntTableImg, Tag, Avatar },
+    components: { Tag, Avatar },
     setup() {
       const [registerTable] = useTable({
         title: '自定义列内容',

@@ -1,22 +1,21 @@
 <template>
-  <EntPageWrapper title="修改当前用户密码" content="修改成功后会自动退出当前登录！">
+  <ent-page-wrapper title="修改当前用户密码" content="修改成功后会自动退出当前登录！">
     <div class="py-8 bg-white flex flex-col justify-center items-center">
-      <EntForm @register="register" />
+      <ent-form @register="register" />
       <div class="flex justify-center">
         <ent-button @click="resetFields"> 重置 </ent-button>
         <ent-button class="!ml-4" type="primary" @click="handleSubmit"> 确认 </ent-button>
       </div>
     </div>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntForm, EntPageWrapper, useForm } from 'fe-ent-core';
+  import { useForm } from 'fe-ent-core';
 
   import { formSchema } from './pwd-data';
   export default defineComponent({
     name: 'ChangePassword',
-    components: { EntForm, EntPageWrapper },
     setup() {
       const [register, { validate, resetFields }] = useForm({
         size: 'large',

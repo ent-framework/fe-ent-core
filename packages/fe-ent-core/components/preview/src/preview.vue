@@ -22,27 +22,10 @@
   import { propTypes } from '@ent-core/utils/prop-types';
   import { isString } from '@ent-core/utils/is';
   import type { PropType } from 'vue';
-
-  interface ImageProps {
-    alt?: string;
-    fallback?: string;
-    src: string;
-    width: string | number;
-    height?: string | number;
-    placeholder?: string | boolean;
-    preview?:
-      | boolean
-      | {
-          visible?: boolean;
-          onVisibleChange?: (visible: boolean, prevVisible: boolean) => void;
-          getContainer: string | HTMLElement | (() => HTMLElement);
-        };
-  }
-
-  type ImageItem = string | ImageProps;
+  import type { ImageItem } from './typing';
 
   export default defineComponent({
-    name: 'ImagePreview',
+    name: 'EntImagePreview',
     components: {
       Image,
       PreviewGroup: Image.PreviewGroup,

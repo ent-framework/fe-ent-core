@@ -3,7 +3,7 @@
     <template v-for="item in navItems" :key="item">
       <CardGrid>
         <span class="flex flex-col items-center">
-          <EntIcon :icon="item.icon" :color="item.color" size="20" />
+          <ent-icon :icon="item.icon" :color="item.color" size="20" />
           <span class="text-md mt-2">{{ item.title }}</span>
         </span>
       </CardGrid>
@@ -12,7 +12,6 @@
 </template>
 <script lang="ts" setup>
   import { Card } from 'ant-design-vue';
-  import { EntIcon } from 'fe-ent-core';
   import { navItems } from './data';
 
   const CardGrid = Card.Grid;

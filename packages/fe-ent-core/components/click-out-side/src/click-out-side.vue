@@ -13,16 +13,10 @@
     emits: [
       /**
        * 组件mounted是触发
-       * @param {Date | string | number | undefined} value
-       * @param {Date | undefined} date
-       * @param {string | undefined} dateString
        */
       'mounted',
       /**
        * 鼠标在元素外点击时触发
-       * @param {Date | string | number | undefined} value
-       * @param {Date | undefined} date
-       * @param {string | undefined} dateString
        */
       'clickOutside',
     ],
@@ -39,6 +33,7 @@
       onMounted(() => {
         emit('mounted');
       });
+      return { wrap }
     },
   });
 </script>

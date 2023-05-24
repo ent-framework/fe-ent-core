@@ -6,7 +6,7 @@
           <ListItem>
             <Card :hoverable="true" :class="`${prefixCls}__card`">
               <div :class="`${prefixCls}__card-title`">
-                <EntIcon v-if="item.icon" class="icon" :icon="item.icon" :color="item.color" />
+                <ent-icon v-if="item.icon" class="icon" :icon="item.icon" :color="item.color" />
                 {{ item.title }}
               </div>
               <div :class="`${prefixCls}__card-num`">
@@ -15,7 +15,7 @@
               <div :class="`${prefixCls}__card-num`">
                 新增用户：<span>{{ item.new }}</span>
               </div>
-              <Icon
+              <ent-icon
                 v-if="item.download"
                 :class="`${prefixCls}__card-download`"
                 :icon="item.download"
@@ -30,7 +30,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Card, Col, List, Row } from 'ant-design-vue';
-  import EntIcon from 'fe-ent-core';
+  import { EntIcon } from 'fe-ent-core';
   import { applicationList } from './data';
 
   export default defineComponent({

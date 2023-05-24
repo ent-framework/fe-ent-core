@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper title="动画组件示例">
+  <ent-page-wrapper title="动画组件示例">
     <div class="flex">
       <Select
         v-model:value="value"
@@ -12,7 +12,7 @@
     <component :is="`${value}Transition`">
       <div v-show="show" class="box" />
     </component>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';

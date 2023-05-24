@@ -1,12 +1,12 @@
 import 'uno.css';
 // Register icon sprite
-import 'virtual:svg-icons-register';
+//import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
 import EntCore, {
   entRouter,
   initAppConfigStore,
-  registerGlobComp,
+  registerAntGlobComp,
   setupErrorHandle,
   setupGlobDirectives,
   setupI18n,
@@ -37,8 +37,8 @@ async function bootstrap() {
   // Asynchronous case: language files may be obtained from the server side
   await setupI18n(app);
 
-  // Register global components
-  registerGlobComp(app);
+  // Register ant global components
+  registerAntGlobComp(app);
 
   initRouteAndLayout(app, entRouter);
 

@@ -28,8 +28,8 @@ description: 路由相关的Types
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|orderNo|orderNo|`number`|`-`|
-|title|title|`string`|`-`|
+|orderNo|顺序|`number`|`-`|
+|title|标题|`string`|`-`|
 |dynamicLevel|dynamicLevel|`number`|`-`|
 |realPath|realPath|`string`|`-`|
 |ignoreAuth|ignoreAuth|`boolean`|`false`|

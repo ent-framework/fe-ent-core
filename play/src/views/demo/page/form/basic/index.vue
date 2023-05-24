@@ -1,21 +1,20 @@
 <template>
-  <EntPageWrapper
+  <ent-page-wrapper
     title="基础表单"
     content-background
     content=" 表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。"
     content-class="p-4"
   >
-    <EntForm @register="register" />
-  </EntPageWrapper>
+    <ent-form @register="register" />
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntForm, EntPageWrapper, useForm, useMessage } from 'fe-ent-core';
+  import { useForm, useMessage } from 'fe-ent-core';
   import { schemas } from './data';
 
   export default defineComponent({
     name: 'FormBasicPage',
-    components: { EntForm, EntPageWrapper },
     setup() {
       const { createMessage } = useMessage();
       const [register, { validate, setProps }] = useForm({

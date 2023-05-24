@@ -1,7 +1,7 @@
 <template>
-  <EntPageWrapper :class="prefixCls" title="搜索列表">
+  <ent-page-wrapper :class="prefixCls" title="搜索列表">
     <template #headerContent>
-      <EntForm
+      <ent-form
         :class="`${prefixCls}__header-form`"
         :label-width="100"
         :schemas="schemas"
@@ -21,7 +21,7 @@
                 <div :class="`${prefixCls}__action`">
                   <template v-for="action in actions" :key="action.icon">
                     <div :class="`${prefixCls}__action-item`">
-                      <Icon
+                      <ent-icon
                         v-if="action.icon"
                         :class="`${prefixCls}__action-icon`"
                         :icon="action.icon"
@@ -50,20 +50,16 @@
         </template>
       </a-list>
     </div>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { List, Tag } from 'ant-design-vue';
-  import Icon, { EntForm, EntPageWrapper } from 'fe-ent-core';
   import { actions, schemas, searchList } from './data';
 
   export default defineComponent({
     components: {
-      Icon,
       Tag,
-      EntForm,
-      EntPageWrapper,
       [List.name]: List,
       [List.Item.name]: List.Item,
       AListItemMeta: List.Item.Meta,

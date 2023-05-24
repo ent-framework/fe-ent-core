@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper v-loading="loadingRef" loading-tip="加载中..." title="Loading组件示例">
+  <ent-page-wrapper v-loading="loadingRef" loading-tip="加载中..." title="Loading组件示例">
     <div ref="wrapEl">
       <a-alert message="组件方式" />
       <ent-button class="my-4 mr-4" type="primary" @click="openCompFullLoading">
@@ -8,7 +8,7 @@
       <ent-button class="my-4" type="primary" @click="openCompAbsolute">
         容器内 Loading
       </ent-button>
-      <EntLoading
+      <ent-loading
         :loading="loading"
         :absolute="absolute"
         :theme="theme"
@@ -30,15 +30,16 @@
         打开指令Loading
       </ent-button>
     </div>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, reactive, ref, toRefs } from 'vue';
-  import { EntLoading, EntPageWrapper, useLoading } from 'fe-ent-core';
+  import { useLoading } from 'fe-ent-core';
   import { Alert } from 'ant-design-vue';
+  import type { ElRef } from 'fe-ent-core';
 
   export default defineComponent({
-    components: { EntLoading, EntPageWrapper, [Alert.name]: Alert },
+    components: { [Alert.name]: Alert },
     setup() {
       const wrapEl = ref<ElRef>(null);
 

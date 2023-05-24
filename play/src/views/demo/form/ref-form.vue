@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper title="Ref操作示例">
+  <ent-page-wrapper title="Ref操作示例">
     <div class="mb-4">
       <ent-button class="mr-2" @click="setProps({ labelWidth: 150 })"> 更改labelWidth </ent-button>
       <ent-button class="mr-2" @click="setProps({ labelWidth: 120 })"> 还原labelWidth </ent-button>
@@ -59,21 +59,21 @@
         修改查询按钮
       </ent-button>
     </div>
-    <CollapseContainer title="使用ref调用表单内部函数示例">
-      <EntForm
+    <ent-collapse-container title="使用ref调用表单内部函数示例">
+      <ent-form
         ref="formElRef"
         :schemas="schemas"
         :label-width="100"
         :action-col-options="{ span: 24 }"
         @submit="handleSubmit"
       />
-    </CollapseContainer>
-  </EntPageWrapper>
+    </ent-collapse-container>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { EntCollapseContainer, EntForm, EntPageWrapper, useMessage } from 'fe-ent-core';
-  import type { FormActionType, FormProps, FormSchema } from 'fe-ent-core';
+  import { useMessage } from 'fe-ent-core';
+  import type { FormActionType, FormProps, FormSchema, Nullable } from 'fe-ent-core';
 
   const schemas: FormSchema[] = [
     {
@@ -171,7 +171,6 @@
   ];
 
   export default defineComponent({
-    components: { EntForm, CollapseContainer: EntCollapseContainer, EntPageWrapper },
     setup() {
       const formElRef = ref<Nullable<FormActionType>>(null);
       const { createMessage } = useMessage();

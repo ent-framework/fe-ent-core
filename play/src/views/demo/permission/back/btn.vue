@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper content-background title="按钮权限控制" content-class="p-4">
+  <ent-page-wrapper content-background title="按钮权限控制" content-class="p-4">
     <CurrentPermissionMode />
     <p>
       当前拥有的code列表: <a> {{ permissionStore.getPermCodeList }} </a>
@@ -64,7 +64,7 @@
         拥有code ['1000','2000']角色权限可见
       </ent-button>
     </template>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';

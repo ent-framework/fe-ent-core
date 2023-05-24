@@ -1,7 +1,7 @@
 <template>
   <ent-page-wrapper title="MarkDown组件嵌入Form示例">
     <ent-collapse-container title="MarkDown表单">
-      <EntForm
+      <ent-form
         :label-width="100"
         :schemas="schemas"
         :action-col-options="{ span: 24 }"
@@ -12,7 +12,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { EntCollapseContainer, EntForm, EntPageWrapper, useMessage } from 'fe-ent-core';
+  import { useMessage } from 'fe-ent-core';
   import { EntMarkDown } from 'fe-ent-markdown';
   import type { FormSchema } from 'fe-ent-core';
 
@@ -41,7 +41,6 @@
     },
   ];
   export default defineComponent({
-    components: { EntForm, EntCollapseContainer, EntPageWrapper },
     setup() {
       const { createMessage } = useMessage();
 

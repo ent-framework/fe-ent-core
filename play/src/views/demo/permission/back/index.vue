@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper
+  <ent-page-wrapper
     title="后台权限示例"
     content-background
     content-class="p-4"
@@ -20,7 +20,7 @@
         </ent-button>
       </Space>
     </div>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';

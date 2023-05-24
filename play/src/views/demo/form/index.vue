@@ -1,7 +1,7 @@
 <template>
-  <EntPageWrapper title="表单基础示例" content-full-height>
-    <CollapseContainer title="基础示例">
-      <EntForm
+  <ent-page-wrapper title="表单基础示例" content-full-height>
+    <ent-collapse-container title="基础示例">
+      <ent-form
         auto-focus-first-item
         :label-width="200"
         :schemas="schemas"
@@ -51,26 +51,20 @@
             @search="onSearch"
           />
         </template>
-      </EntForm>
-    </CollapseContainer>
-  </EntPageWrapper>
+      </ent-form>
+    </ent-collapse-container>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref } from 'vue';
-  import {
-    ApiSelect,
-    EntCollapseContainer,
-    EntForm,
-    EntPageWrapper,
-    useMessage,
-  } from 'fe-ent-core';
+  import { ApiSelect, useMessage } from 'fe-ent-core';
 
   import { optionsListApi } from '/@/api/select';
   import { useDebounceFn } from '@vueuse/core';
   import { treeOptionsListApi } from '/@/api/tree';
   import { Select } from 'ant-design-vue';
   import { cloneDeep } from 'lodash';
-  import type { FormSchema } from 'fe-ent-core';
+  import type { FormSchema, Recordable } from 'fe-ent-core';
 
   const valueSelectA = ref<string[]>([]);
   const valueSelectB = ref<string[]>([]);
@@ -582,9 +576,6 @@
 
   export default defineComponent({
     components: {
-      EntForm,
-      CollapseContainer: EntCollapseContainer,
-      EntPageWrapper,
       ApiSelect,
       ASelect: Select,
     },

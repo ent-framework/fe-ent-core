@@ -46,7 +46,7 @@ async function createPlugins({
   }
 
   // vite-plugin-svg-icons
-  vitePlugins.push(configSvgIconsPlugin({ isBuild }));
+  //vitePlugins.push(configSvgIconsPlugin({ isBuild }));
 
   // vite-plugin-purge-icons
   vitePlugins.push(purgeIcons());

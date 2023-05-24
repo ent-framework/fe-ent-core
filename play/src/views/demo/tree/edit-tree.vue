@@ -1,7 +1,7 @@
 <template>
-  <EntPageWrapper title="Tree函数操作示例">
+  <ent-page-wrapper title="Tree函数操作示例">
     <div class="flex">
-      <EntTree
+      <ent-tree
         class="w-1/3"
         title="右侧操作按钮/自定义图标"
         help-message="帮助信息"
@@ -9,13 +9,13 @@
         :action-list="actionList"
         :render-icon="createIcon"
       />
-      <EntTree
+      <ent-tree
         class="w-1/3 mx-4"
         title="右键菜单"
         :tree-data="treeData"
         :before-right-click="getRightMenuList"
       />
-      <EntTree
+      <ent-tree
         class="w-1/3"
         title="工具栏使用"
         toolbar
@@ -25,17 +25,15 @@
         :before-right-click="getRightMenuList"
       />
     </div>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { EntPageWrapper, EntTree } from 'fe-ent-core';
   import { DeleteOutlined, PlusOutlined } from '@ant-design/icons-vue';
   import { treeData } from './data';
   import type { ContextMenuItem, TreeActionItem } from 'fe-ent-core';
 
   export default defineComponent({
-    components: { EntTree, EntPageWrapper },
     setup() {
       function handlePlus(node: any) {
         console.log(node);

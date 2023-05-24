@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper title="Tree函数操作示例" content-background content-class="p-4">
+  <ent-page-wrapper title="Tree函数操作示例" content-background content-class="p-4">
     <div class="mb-4">
       <ent-button class="mr-2" @click="expandAll(true)"> 展开全部 </ent-button>
       <ent-button class="mr-2" @click="expandAll(false)"> 折叠全部 </ent-button>
@@ -25,17 +25,16 @@
       <ent-button class="mr-2" @click="deleteNodeByKey('2-2')"> 删除parent3节点 </ent-button>
       <ent-button class="mr-2" @click="updateNodeByKey('1-1')"> 更新parent2节点 </ent-button>
     </div>
-    <EntTree ref="treeRef" :tree-data="treeData" title="函数操作" :checkable="true" />
-  </EntPageWrapper>
+    <ent-tree ref="treeRef" :tree-data="treeData" title="函数操作" :checkable="true" />
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { EntPageWrapper, EntTree, useMessage } from 'fe-ent-core';
+  import { useMessage } from 'fe-ent-core';
   import { treeData } from './data';
-  import type { TreeActionType } from 'fe-ent-core';
+  import type { Nullable, TreeActionType } from 'fe-ent-core';
 
   export default defineComponent({
-    components: { EntTree, EntPageWrapper },
     setup() {
       const treeRef = ref<Nullable<TreeActionType>>(null);
       const { createMessage } = useMessage();

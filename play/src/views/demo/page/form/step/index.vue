@@ -1,5 +1,5 @@
 <template>
-  <EntPageWrapper
+  <ent-page-wrapper
     title="分步表单"
     content-background
     content=" 将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。"
@@ -22,11 +22,10 @@
       />
       <Step3 v-show="current === 2" v-if="initSetp3" @redo="handleRedo" />
     </div>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, reactive, ref, toRefs } from 'vue';
-  import { EntPageWrapper } from 'fe-ent-core';
   import { Steps } from 'ant-design-vue';
   import Step1 from './step-1.vue';
   import Step2 from './step-2.vue';
@@ -38,7 +37,6 @@
       Step1,
       Step2,
       Step3,
-      EntPageWrapper,
       [Steps.name]: Steps,
       [Steps.Step.name]: Steps.Step,
     },

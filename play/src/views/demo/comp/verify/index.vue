@@ -1,40 +1,40 @@
 <template>
-  <EntPageWrapper title="拖动校验示例">
+  <ent-page-wrapper title="拖动校验示例">
     <div class="flex justify-center p-4 items-center bg-gray-700">
-      <EntDragVerify ref="el1" @success="handleSuccess" />
+      <ent-drag-verify ref="el1" @success="handleSuccess" />
       <ent-button type="primary" class="ml-2" @click="handleBtnClick(el1)"> 还原 </ent-button>
     </div>
 
     <div class="flex justify-center p-4 items-center bg-gray-700">
-      <EntDragVerify ref="el2" circle @success="handleSuccess" />
+      <ent-drag-verify ref="el2" circle @success="handleSuccess" />
       <ent-button type="primary" class="ml-2" @click="handleBtnClick(el2)"> 还原 </ent-button>
     </div>
 
     <div class="flex justify-center p-4 items-center bg-gray-700">
-      <EntDragVerify
+      <ent-drag-verify
         ref="el3"
         text="拖动以进行校验"
-        @success="handleSuccess"
         success-text="校验成功"
         :bar-style="{
           backgroundColor: '#018ffb',
         }"
+        @success="handleSuccess"
       />
       <ent-button type="primary" class="ml-2" @click="handleBtnClick(el3)"> 还原 </ent-button>
     </div>
 
     <div class="flex justify-center p-4 items-center bg-gray-700">
-      <EntDragVerify ref="el4" @success="handleSuccess">
+      <ent-drag-verify ref="el4" @success="handleSuccess">
         <template #actionIcon="isPassing">
           <BugOutlined v-if="isPassing" />
           <RightOutlined v-else />
         </template>
-      </EntDragVerify>
+      </ent-drag-verify>
       <ent-button type="primary" class="ml-2" @click="handleBtnClick(el4)"> 还原 </ent-button>
     </div>
 
     <div class="flex justify-center p-4 items-center bg-gray-700">
-      <EntDragVerify ref="el5" @success="handleSuccess">
+      <ent-drag-verify ref="el5" @success="handleSuccess">
         <template #text="isPassing">
           <div v-if="isPassing">
             <BugOutlined />
@@ -45,23 +45,19 @@
             <RightOutlined />
           </div>
         </template>
-      </EntDragVerify>
+      </ent-drag-verify>
       <ent-button type="primary" class="ml-2" @click="handleBtnClick(el5)"> 还原 </ent-button>
     </div>
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import type {
-    DragVerifyActionType,
-    PassingData} from 'fe-ent-core';
-import {
-    EntDragVerify,
-   useMessage , EntPageWrapper } from 'fe-ent-core';
-    import { BugOutlined, RightOutlined } from '@ant-design/icons-vue';
+  import { useMessage } from 'fe-ent-core';
+  import { BugOutlined, RightOutlined } from '@ant-design/icons-vue';
+  import type { DragVerifyActionType, Nullable, PassingData } from 'fe-ent-core';
 
   export default defineComponent({
-    components: { EntDragVerify, BugOutlined, RightOutlined, EntPageWrapper },
+    components: { BugOutlined, RightOutlined },
     setup() {
       const { createMessage } = useMessage();
       const el1 = ref<Nullable<DragVerifyActionType>>(null);

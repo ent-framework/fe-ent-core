@@ -173,9 +173,7 @@ export const usePermissionStore = defineStore({
           routes = filter(entRouter.getAuthRoutes(), routeFilter);
           routes = routes.filter(routeFilter);
           // 根据已有的树状路由提取Menu
-          console.log(routes);
           const menuList: AppRouteRecordRaw[] = transformRouteToMenu(routes, true);
-          console.log(menuList);
           routes = filter(routes, routeRemoveIgnoreFilter);
           routes = routes.filter(routeRemoveIgnoreFilter);
           menuList.sort((a, b) => {
@@ -185,7 +183,6 @@ export const usePermissionStore = defineStore({
           this.setFrontMenuList(menuList);
           // Convert multi-level routing to level 2 routing
           routes = flatMultiLevelRoutes(routes);
-          console.log(routes);
           break;
         }
         //  If you are sure that you do not need to do background dynamic permissions, please comment the entire judgment below

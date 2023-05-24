@@ -1,7 +1,7 @@
 <template>
-  <EntPageWrapper title="富文本组件示例">
+  <ent-page-wrapper title="富文本组件示例">
     <Tinymce v-model="value" width="100%" @change="handleChange" />
-  </EntPageWrapper>
+  </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';

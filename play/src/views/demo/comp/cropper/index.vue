@@ -38,22 +38,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import {
-    EntCollapseContainer,
-    EntCropperAvatar,
-    EntCropperImage,
-    EntPageWrapper,
-    useUserStore,
-  } from 'fe-ent-core';
+  import { useUserStore } from 'fe-ent-core';
   import img from '/@/assets/images/header.jpg';
 
   export default defineComponent({
-    components: {
-      EntPageWrapper,
-      EntCropperImage,
-      EntCollapseContainer,
-      EntCropperAvatar,
-    },
     setup() {
       const info = ref('');
       const cropperImg = ref('');
