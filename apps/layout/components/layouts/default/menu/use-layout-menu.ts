@@ -1,6 +1,6 @@
 import { computed, ref, unref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { MenuSplitTyeEnum } from 'fe-ent-core/es/logics/enums';
+import { MenuSplitTyeEnum } from 'fe-ent-core/es/logics';
 import { useAppInject, useMenuSetting } from 'fe-ent-core/es/hooks';
 import {
   getChildrenMenus,

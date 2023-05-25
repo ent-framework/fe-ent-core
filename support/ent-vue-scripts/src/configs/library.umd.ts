@@ -1,6 +1,7 @@
 import { readPackageJSON } from 'pkg-types';
 import { mergeConfig } from 'vite';
 import terser from '@rollup/plugin-terser';
+import consola from 'consola';
 import { createPlugins } from '../plugins';
 import { generateModifyVars } from '../utils/modify-vars';
 import external from '../plugins/vite-plugin-external';
@@ -11,7 +12,7 @@ import type { ModuleFormat, OutputPlugin } from 'rollup';
 /***
  * Library 模式
  */
-async function defineUmdLibraryConfig() {
+async function defineUmdLibraryConfig(source: boolean) {
   const root = process.cwd();
   const packageJson = await readPackageJSON(root);
   const { name } = packageJson;
@@ -25,24 +26,6 @@ async function defineUmdLibraryConfig() {
   });
   const { dependencies = {}, peerDependencies = {} } = await readPackageJSON(root);
   const deps = [...Object.keys(dependencies), ...Object.keys(peerDependencies)];
-  let entDeps: string[] = [];
-  if (deps.includes('fe-ent-core')) {
-    const { dependencies: entDependencies = {}, peerDependencies: entPeerDependencies = {} } =
-      await readPackageJSON(`${root}/node_modules/fe-ent-core`);
-    entDeps = [...Object.keys(entDependencies), ...Object.keys(entPeerDependencies)];
-  }
-  entDeps.push(
-    ...[
-      'fe-ent-core/lib/components',
-      'fe-ent-core/lib/directives',
-      'fe-ent-core/lib/hooks',
-      'fe-ent-core/lib/locales',
-      'fe-ent-core/lib/logics',
-      'fe-ent-core/lib/router',
-      'fe-ent-core/lib/store',
-      'fe-ent-core/lib/utils',
-    ],
-  );
   const packageConfig: UserConfig = {
     build: {
       target: 'modules',
@@ -68,7 +51,7 @@ async function defineUmdLibraryConfig() {
             plugins: [terser() as OutputPlugin],
           },
         ],
-        external: [...deps, ...entDeps],
+        external: [...deps],
         // output: {
         //   exports: 'named',
         // },
@@ -89,7 +72,7 @@ async function defineUmdLibraryConfig() {
         },
       },
     },
-    plugins: [external(), ...plugins],
+    plugins: [external(source), ...plugins],
   };
   const mergedConfig = mergeConfig(
     commonConfig({ command: 'build', mode: 'production' }),

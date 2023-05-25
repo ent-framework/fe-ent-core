@@ -61,8 +61,6 @@ description: Store相关的Types
 
 ### MenuSetting
 
-菜单设置
-
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
 |bgColor|bgColor|`string`|`-`|
@@ -138,8 +136,6 @@ description: Store相关的Types
 
 
 ### ProjectConfig
-
-项目配置
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|

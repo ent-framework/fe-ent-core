@@ -1,7 +1,7 @@
 <script lang="tsx">
   import { computed, defineComponent, toRef, unref } from 'vue';
   import { EntAppLogo, EntMenu, EntScrollContainer, EntSimpleMenu } from 'fe-ent-core';
-  import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/es/logics/enums';
+  import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/es/logics';
   import { isUrl, openWindow, propTypes } from 'fe-ent-core/es/utils';
   import {
     useAppInject,

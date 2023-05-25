@@ -1,8 +1,5 @@
-import fs from 'fs';
 import * as bt from '@babel/types';
-import { parse, visit } from 'recast';
-import buildParser from './babel-parser';
-import type { ParserPlugin } from '@babel/parser';
+import { visit } from 'recast';
 import type { NodePath } from 'ast-types/lib/node-path';
 
 function ignore(): boolean {

@@ -1,7 +1,7 @@
 import { computed, nextTick, onMounted, ref, unref } from 'vue';
 
 import { useMenuSetting } from 'fe-ent-core/es/hooks';
-import { TriggerEnum } from 'fe-ent-core/es/logics/enums';
+import { TriggerEnum } from 'fe-ent-core/es/logics';
 
 import { useDebounceFn } from '@vueuse/shared';
 import type { Ref } from 'vue';

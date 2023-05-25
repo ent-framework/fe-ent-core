@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-qrcode",
-  "version": "1.5.45",
+  "version": "1.5.46",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -22,7 +22,7 @@
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
     "build": "pnpm run build:library && pnpm run docgen && pnpm run jsongen",
     "docgen": "ent-vue-scripts docgen",
-    "build:library": "ent-vue-scripts build:library -u",
+    "build:library": "ent-vue-scripts build:library -u -s",
     "jsongen": "ent-vue-scripts jsongen",
     "dtsgen": "ent-vue-scripts dtsgen --lib"
   },

@@ -1,5 +1,5 @@
 import Login from './components/login.vue';
-import type { AppRouteRecordRaw } from 'fe-ent-core';
+import type { AppRouteRecordRaw } from 'fe-ent-core/es/router';
 
 import './components/index.less';
 

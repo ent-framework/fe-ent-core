@@ -68,7 +68,7 @@
     MenuModeEnum,
     MenuSplitTyeEnum,
     SettingButtonPositionEnum,
-  } from 'fe-ent-core/es/logics/enums';
+  } from 'fe-ent-core/es/logics';
   import { propTypes } from 'fe-ent-core/es/utils';
   import { useLocale } from 'fe-ent-core/es/locales';
   import { useUserStoreWithOut } from 'fe-ent-core/es/store';

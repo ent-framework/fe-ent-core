@@ -16,4 +16,4 @@ description: 用于项目权限的组件，一般用于按钮级等细粒度权�
 
 ## API
 
-%%API(src/authority.vue)%%
+%%API(src/index.vue)%%

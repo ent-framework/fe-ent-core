@@ -6,7 +6,7 @@ import {
   RouterTransitionEnum,
   TopMenuAlignEnum,
   TriggerEnum,
-} from 'fe-ent-core/es/logics/enums';
+} from 'fe-ent-core/es/logics';
 import { useI18n } from 'fe-ent-core/es/hooks';
 
 export enum HandlerEnum {

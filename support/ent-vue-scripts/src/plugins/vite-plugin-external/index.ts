@@ -1,10 +1,13 @@
 import type { Plugin } from 'vite';
 
-export default function externalPlugin(): Plugin {
+export default function externalPlugin(fromSource = false): Plugin {
   return {
     name: 'vite:external-node_modules',
     enforce: 'pre',
     async resolveId(source: string, importer) {
+      if (source && source.startsWith('fe-ent-core') && fromSource) {
+        return false;
+      }
       const result = await this.resolve(source, importer, {
         skipSelf: true,
         custom: { 'node-resolve': {} },

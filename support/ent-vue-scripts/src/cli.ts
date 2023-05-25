@@ -6,7 +6,6 @@ import { Command } from 'commander';
 import icongen from './scripts/icongen';
 import lessgen from './scripts/lessgen';
 import docgen from './scripts/docgen';
-import apigen from './scripts/docgen/api';
 import dtsgen from './scripts/dtsgen';
 import devComponent from './scripts/dev-component';
 import viteSite from './scripts/site';
@@ -35,14 +34,6 @@ program
   .action(({ input, components }) => {
     components = typeof components === 'string' ? components.split(',') : [];
     docgen({ input, components });
-  });
-
-program
-  .command('apigen')
-  .description('generate document of api in hooks, router, store')
-  .option('-i, --input <filename>', 'specified input file')
-  .action(({ input }) => {
-    apigen({ input });
   });
 
 program
@@ -102,8 +93,9 @@ program
   .command('build:library')
   .description('build library')
   .option('-u, --umd', 'build with UMD file')
-  .action(async ({ umd }) => {
-    await buildLibrary({ umd });
+  .option('-s, --source', 'build with library source')
+  .action(async ({ umd, source }) => {
+    await buildLibrary({ umd, source });
   });
 
 program

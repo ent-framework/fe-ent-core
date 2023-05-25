@@ -2,7 +2,7 @@
   import { computed, defineComponent, ref, unref } from 'vue';
   import { Button, Result } from 'ant-design-vue';
   import { useDesign, useGo, useI18n, useRedo } from 'fe-ent-core/es/hooks';
-  import { ExceptionEnum } from 'fe-ent-core/es/logics/enums';
+  import { ExceptionEnum } from 'fe-ent-core/es/logics';
   import { useGlobalStore } from 'fe-ent-core/es/store';
   import { useRoute } from 'vue-router';
   import netWorkSvg from '../../svg/net-error.svg';

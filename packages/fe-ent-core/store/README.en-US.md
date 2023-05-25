@@ -2,6 +2,8 @@
 
 ```
 
+*Auto translate by google.*
+
 
 ## Type
 
@@ -56,8 +58,6 @@
 
 
 ### MenuSetting
-
-菜单设置
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
@@ -134,8 +134,6 @@
 
 
 ### ProjectConfig
-
-项目配置
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|

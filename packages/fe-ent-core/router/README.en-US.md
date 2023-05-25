@@ -2,6 +2,8 @@
 
 ```
 
+*Auto translate by google.*
+
 
 ## Type
 

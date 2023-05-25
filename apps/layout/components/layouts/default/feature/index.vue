@@ -9,7 +9,7 @@
   import { BackTop } from 'ant-design-vue';
 
   import { useDesign, useHeaderSetting, useRootSetting } from 'fe-ent-core/es/hooks';
-  import { SettingButtonPositionEnum } from 'fe-ent-core/es/logics/enums';
+  import { SettingButtonPositionEnum } from 'fe-ent-core/es/logics';
   import { useUserStoreWithOut } from 'fe-ent-core/es/store';
 
   import SessionTimeoutLogin from '../../../views/login/session-timeout-login.vue';

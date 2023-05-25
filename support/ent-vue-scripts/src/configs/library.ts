@@ -1,3 +1,4 @@
+import consola from 'consola';
 import { readPackageJSON } from 'pkg-types';
 import { mergeConfig } from 'vite';
 import dts from 'vite-plugin-dts';
@@ -14,7 +15,7 @@ import type { InlineConfig, UserConfig } from 'vite';
 /***
  * Library 模式
  */
-async function defineLibraryConfig() {
+async function defineLibraryConfig(source: boolean) {
   const root = process.cwd();
   const plugins = await createPlugins({
     isBuild: true,
@@ -84,7 +85,7 @@ async function defineLibraryConfig() {
       },
     },
     plugins: [
-      external(),
+      external(source),
       ...plugins,
       dts({
         entryRoot: `${root}`,

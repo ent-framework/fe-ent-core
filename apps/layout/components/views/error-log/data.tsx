@@ -1,5 +1,5 @@
 import { Tag } from 'ant-design-vue';
-import { ErrorTypeEnum } from 'fe-ent-core/es/logics/enums';
+import { ErrorTypeEnum } from 'fe-ent-core/es/logics';
 import { useI18n } from 'fe-ent-core/es/hooks';
 import type { BasicColumn } from 'fe-ent-core/es/components/table/interface';
 

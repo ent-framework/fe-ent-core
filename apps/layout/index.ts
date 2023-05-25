@@ -1,7 +1,7 @@
 import { mainOutRoute } from './components/routes/main-out';
 import { getErrorLogRoute, getRedirectRoute, getRootRoute } from './components/routes/basic';
 import { initRouteAndLayout } from './components/init-page';
-import type { AppRouteRecordRaw } from 'fe-ent-core/lib/router/types';
+import type { AppRouteRecordRaw } from 'fe-ent-core/es/router';
 
 import './components/index.less';
 

@@ -16,4 +16,4 @@ description: 用于监听包裹的元素点击外部触发事件
 
 ## API
 
-%%API(src/description.vue)%%
+%%API(src/index.vue)%%
