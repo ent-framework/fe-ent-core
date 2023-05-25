@@ -1,7 +1,6 @@
 import { readPackageJSON } from 'pkg-types';
 import { mergeConfig } from 'vite';
 import terser from '@rollup/plugin-terser';
-import consola from 'consola';
 import { createPlugins } from '../plugins';
 import { generateModifyVars } from '../utils/modify-vars';
 import external from '../plugins/vite-plugin-external';
@@ -52,9 +51,6 @@ async function defineUmdLibraryConfig(source: boolean) {
           },
         ],
         external: [...deps],
-        // output: {
-        //   exports: 'named',
-        // },
       },
       lib: {
         entry: 'index.ts',

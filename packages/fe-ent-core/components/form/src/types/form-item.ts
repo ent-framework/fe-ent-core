@@ -1,5 +1,5 @@
-import type { NamePath } from 'ant-design-vue/lib/form/interface';
-import type { ColProps } from 'ant-design-vue/lib/grid/Col';
+import type { NamePath } from 'ant-design-vue/es/form/interface';
+import type { ColProps } from 'ant-design-vue/es/grid/Col';
 import type { HTMLAttributes, VNodeChild } from 'vue';
 
 export interface FormItem {

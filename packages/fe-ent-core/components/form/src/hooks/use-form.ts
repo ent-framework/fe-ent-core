@@ -2,7 +2,7 @@ import { nextTick, onUnmounted, ref, unref, watch } from 'vue';
 import { error } from '@ent-core/utils/log';
 import { getDynamicProps } from '@ent-core/utils';
 import type { DynamicProps } from '@ent-core/logics/types/utils';
-import type { NamePath } from 'ant-design-vue/lib/form/interface';
+import type { NamePath } from 'ant-design-vue/es/form/interface';
 import type { FormActionType, FormProps, FormSchema, UseFormReturnType } from '../types/form';
 import type { Nullable, Recordable } from '@ent-core/types';
 

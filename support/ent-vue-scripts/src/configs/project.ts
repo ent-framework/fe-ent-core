@@ -37,24 +37,11 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
     enableCert: VITE_BUILD_ENABLE_CERT === 'true',
     compress: VITE_BUILD_COMPRESS,
   });
-  const workspace = searchForWorkspaceRoot(root);
-  const optimizeDeps = (
-    await glob(['dayjs/(locale|plugin)/*.js'], {
-      cwd: path.resolve(workspace, 'node_modules'),
-    })
-  ).map((dep) => dep.replace(/\.js$/, ''));
-
   const pathResolve = (pathname: string) => resolve(root, '.', pathname);
 
   const alias: Alias[] = [];
   alias.push(
     ...[
-      // {
-      //   find: 'vue-i18n',
-      //   replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
-      // },
-      //{ find: 'pinia', replacement: 'pinia/dist/pinia.cjs' },
-      // /@/xxxx => src/xxxx
       {
         find: /\/@\//,
         replacement: `${pathResolve('src')}/`,
@@ -96,9 +83,6 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
           javascriptEnabled: true,
         },
       },
-    },
-    optimizeDeps: {
-      include: [...optimizeDeps],
     },
     plugins,
   };

@@ -121,7 +121,7 @@
   import { isNullAndUnDef } from '@ent-core/utils/is';
   import { getPopupContainer as getParentContainer } from '@ent-core/utils';
   import { useTableContext } from '../../hooks/use-table-context';
-  import type { CheckboxChangeEvent } from 'ant-design-vue/lib/checkbox/interface';
+  import type { CheckboxChangeEvent } from 'ant-design-vue/es/checkbox/interface';
   import type { BasicColumn, BasicTableProps, ColumnChangeParam } from '../../types/table';
   import type Sortable from 'sortablejs';
 

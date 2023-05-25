@@ -1,4 +1,4 @@
-import Pagination from 'ant-design-vue/lib/pagination';
+import Pagination from 'ant-design-vue/es/pagination';
 import type { VNodeChild } from 'vue';
 
 interface PaginationRenderProps {

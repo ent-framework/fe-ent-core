@@ -19,7 +19,7 @@
   import { propTypes } from '@ent-core/utils/prop-types';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import type { PropType } from 'vue';
-  import type { TransferDirection, TransferItem } from 'ant-design-vue/lib/transfer';
+  import type { TransferDirection, TransferItem } from 'ant-design-vue/es/transfer';
 
   export default defineComponent({
     name: 'ApiTransfer',

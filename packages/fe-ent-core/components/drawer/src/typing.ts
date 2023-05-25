@@ -1,4 +1,4 @@
-import type { ButtonProps } from 'ant-design-vue/lib/button/buttonTypes';
+import type { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
 import type { CSSProperties, ComputedRef, VNodeChild } from 'vue';
 import type { ScrollContainerOptions } from '@ent-core/components/container/interface';
 

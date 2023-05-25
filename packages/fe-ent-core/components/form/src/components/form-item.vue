@@ -16,7 +16,7 @@
   import { componentMap } from '../component-map';
   import type { Nullable, Recordable } from '@ent-core/types';
   import type { TableActionType } from '@ent-core/components/table/interface';
-  import type { Rule } from 'ant-design-vue/lib/form';
+  import type { Rule } from 'ant-design-vue/es/form';
   import type { FormActionType, FormProps, FormSchema } from '../types/form';
   import type { PropType, Ref } from 'vue';
 
