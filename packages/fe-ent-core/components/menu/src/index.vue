@@ -21,8 +21,8 @@
   import { computed, defineComponent, reactive, ref, toRefs, unref, watch } from 'vue';
   import { Menu } from 'ant-design-vue';
   import { useRouter } from 'vue-router';
-  import { MenuModeEnum, MenuTypeEnum } from '@ent-core/logics/enums/menu-enum';
   import { isFunction } from '@vueuse/shared';
+  import { MenuModeEnum, MenuTypeEnum } from '@ent-core/logics/enums/menu-enum';
   import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
   import { REDIRECT_NAME } from '@ent-core/router/constant';
   import { useDesign } from '@ent-core/hooks/web/use-design';

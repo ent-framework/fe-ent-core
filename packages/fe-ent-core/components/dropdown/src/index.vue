@@ -38,8 +38,8 @@
   import { computed, defineComponent } from 'vue';
   import { Dropdown, Menu, Popconfirm } from 'ant-design-vue';
   import { omit } from 'lodash-es';
-  import { EntIcon } from '@ent-core/components/icon';
   import { isFunction } from '@vueuse/shared';
+  import { EntIcon } from '@ent-core/components/icon';
   import { type Recordable } from '@ent-core/types';
   import type { DropMenu } from './typing';
   import type { PropType } from 'vue';

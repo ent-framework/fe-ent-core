@@ -44,12 +44,12 @@
 <script lang="ts">
   import { computed, defineComponent, reactive, ref, toRefs, unref } from 'vue';
   import { Alert, Upload } from 'ant-design-vue';
+  import { isFunction } from '@vueuse/shared';
   import { EntModal, useModalInner } from '@ent-core/components/modal';
   // hooks
   import { useMessage } from '@ent-core/hooks/web/use-message';
   //   types
   import { buildUUID } from '@ent-core/utils/uuid';
-  import { isFunction } from '@vueuse/shared';
   import { warn } from '@ent-core/utils/log';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { UploadResultStatus } from './typing';

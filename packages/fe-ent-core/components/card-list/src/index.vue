@@ -85,11 +85,11 @@
     TableOutlined,
   } from '@ant-design/icons-vue';
   import { Avatar, Card, Image, List, Slider, Tooltip, Typography } from 'ant-design-vue';
+  import { isFunction } from '@vueuse/shared';
   import { EntDropdown } from '@ent-core/components/dropdown';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { EntButton } from '@ent-core/components/button';
-  import { isFunction } from '@vueuse/shared';
   import { grid, useSlider } from './data';
   const ListItem = List.Item;
   const CardMeta = Card.Meta;

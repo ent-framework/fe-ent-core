@@ -10,7 +10,7 @@ import {
 } from '@ent-core/logics/enums/cache-enum';
 import { DEFAULT_CACHE_TIME } from '@ent-core/logics/settings/encryption-setting';
 import { Memory } from './memory';
-import type { LockInfo, UserInfo, ProjectConfig } from '@ent-core/store/types/store';
+import type { LockInfo, ProjectConfig, UserInfo } from '@ent-core/store/types/store';
 import type { RouteLocationNormalized } from 'vue-router';
 
 import type { MULTIPLE_TABS_KEY, PROJ_CFG_KEY, ROLES_KEY } from '@ent-core/logics/enums/cache-enum';

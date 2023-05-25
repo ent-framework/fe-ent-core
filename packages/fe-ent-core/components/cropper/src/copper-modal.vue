@@ -113,11 +113,11 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { Avatar, Space, Tooltip, Upload } from 'ant-design-vue';
+  import { isFunction } from '@vueuse/shared';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { EntModal, useModalInner } from '@ent-core/components/modal';
   import { Factory } from '@ent-core/logics/factory';
   import { dataURLtoBlob } from '@ent-core/utils/file/base64-convert';
-  import { isFunction } from '@vueuse/shared';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import CropperImage from './cropper.vue';
   import type { PropType } from 'vue';

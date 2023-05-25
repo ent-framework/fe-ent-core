@@ -9,7 +9,7 @@ import { useI18n } from '@ent-core/hooks/web/use-i18n';
 export const wrapperRoute = (componentName: string) => {
   return defineComponent({
     name: 'RouteWrapperComponent',
-    setup(pr) {
+    setup() {
       const instance = getCurrentInstance();
       if (!instance) {
         return;
