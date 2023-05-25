@@ -21,7 +21,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { useForm } from 'fe-ent-core';
+  import { useForm } from 'fe-ent-core/es/components/form';
   import { Card } from 'ant-design-vue';
   import PersonTable from './person-table.vue';
   import { schemas, taskSchemas } from './data';

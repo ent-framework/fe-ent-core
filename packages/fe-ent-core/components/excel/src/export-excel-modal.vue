@@ -18,7 +18,7 @@
   import { EntModal, useModalInner } from '@ent-core/components/modal';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import type { FormSchema } from '@ent-core/components/form';
+  import type { FormSchema } from '@ent-core/components/form/interface';
   import type { ExportModalResult } from './typing';
 
   function getSchema() {

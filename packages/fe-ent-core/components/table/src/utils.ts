@@ -1,6 +1,6 @@
 import { isFunction } from '@vueuse/shared';
 import { isBoolean } from '@ent-core/utils';
-import type { BasicColumn } from '@ent-core/components';
+import type { BasicColumn } from '@ent-core/components/table/interface';
 
 export function isIfShow(column: BasicColumn): boolean {
   const ifShow = column.ifShow;

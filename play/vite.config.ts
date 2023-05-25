@@ -23,6 +23,10 @@ export default defineConfig(({ command, mode }) => {
             find: /^fe-ent-core$/,
             replacement: `${workspace}/packages/fe-ent-core/index.ts`,
           },
+          {
+            find: /^fe-ent-core\/es\/(.*)$/,
+            replacement: `${workspace}/packages/fe-ent-core/$1`,
+          },
           // 别名，转发 fe-ent-extension 文件请求
           {
             find: /^fe-ent-code-editor$/,

@@ -12,9 +12,9 @@
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { useMessage } from 'fe-ent-core';
+  import { useMessage } from 'fe-ent-core/es/hooks';
   import { Tinymce } from 'fe-ent-tinymce';
-  import type { FormSchema } from 'fe-ent-core';
+  import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
 
   const schemas: FormSchema[] = [
     {

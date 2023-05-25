@@ -30,8 +30,9 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import type { Nullable, TableActionType } from 'fe-ent-core';
-  import { useMessage } from 'fe-ent-core';
+  import type { Nullable } from 'fe-ent-core/es/types';
+  import type { TableActionType } from 'fe-ent-core/es/components/table/interface';
+  import { useMessage } from 'fe-ent-core/es/hooks';
   import { getBasicColumns, getBasicShortColumns } from './table-data';
   import { demoListApi } from '/@/api/table';
   export default defineComponent({

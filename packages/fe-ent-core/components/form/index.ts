@@ -1,8 +1,5 @@
 import { withInstall } from '@ent-core/utils';
-import BasicForm from './src/basic-form.vue';
-
-export * from './src/types/form';
-export * from './src/types/form-item';
+import BasicForm from './src/index.vue';
 
 export { useComponentRegister } from './src/hooks/use-component-register';
 export { useForm } from './src/hooks/use-form';
@@ -16,3 +13,4 @@ export { default as ApiCascader } from './src/components/api-cascader.vue';
 export { default as ApiTransfer } from './src/components/api-transfer.vue';
 
 export const EntForm = withInstall(BasicForm);
+export default BasicForm;

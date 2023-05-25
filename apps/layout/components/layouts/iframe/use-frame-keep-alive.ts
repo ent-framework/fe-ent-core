@@ -1,11 +1,12 @@
 import { computed, toRaw, unref } from 'vue';
 
-import { useMultipleTabSetting, useMultipleTabStore } from 'fe-ent-core';
+import { useMultipleTabStore } from 'fe-ent-core/es/store';
+import { useMultipleTabSetting } from 'fe-ent-core/es/hooks';
 
 import { uniqBy } from 'lodash-es';
 
 import { useRouter } from 'vue-router';
-import type { AppRouteRecordRaw } from 'fe-ent-core';
+import type { AppRouteRecordRaw } from 'fe-ent-core/es/router';
 
 export function useFrameKeepAlive() {
   const router = useRouter();

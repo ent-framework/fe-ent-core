@@ -13,8 +13,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { useWatermark } from 'fe-ent-core';
-  import type { Nullable } from 'fe-ent-core';
+  import { useWatermark } from 'fe-ent-core/es/hooks';
+  import type { Nullable } from 'fe-ent-core/es/types';
 
   export default defineComponent({
     setup() {

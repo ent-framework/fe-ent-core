@@ -6,11 +6,11 @@ import {
   useMenuSetting,
   useRootSetting,
   useTimeoutFn,
-} from 'fe-ent-core';
+} from 'fe-ent-core/es/hooks';
 import echarts from '../lib/echarts';
 import type { Ref } from 'vue';
 import type { EChartsOption } from 'echarts';
-import type { Fn } from 'fe-ent-core';
+import type { Fn } from 'fe-ent-core/es/types';
 
 export function useEcharts(
   elRef: Ref<HTMLDivElement>,

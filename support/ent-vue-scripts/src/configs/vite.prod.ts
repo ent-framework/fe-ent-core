@@ -8,7 +8,7 @@ import { generateModifyVars } from '../utils/modify-vars';
 import type { InlineConfig } from 'vite';
 
 const input = excludeFiles(
-  glob.sync('*/**/index.ts', {
+  glob.sync('**/*.{ts,tsx,vue}', {
     cwd: process.cwd(),
     absolute: false,
     onlyFiles: true,
@@ -24,7 +24,7 @@ const config: InlineConfig = {
     sourcemap: false,
     //brotliSize: false,
     rollupOptions: {
-      input: 'index.ts',
+      input: ['index.ts', ...input],
       treeshake: false,
       output: [
         {

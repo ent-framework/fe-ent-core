@@ -61,21 +61,16 @@
   import 'tinymce/plugins/visualchars';
   import 'tinymce/plugins/wordcount';
 
-  import {
-    buildShortUUID,
-    getAppEnvConfig,
-    isNumber,
-    onMountedOrActivated,
-    useAppStore,
-    useDesign,
-    useLocale,
-  } from 'fe-ent-core';
+  import { onMountedOrActivated, useDesign } from 'fe-ent-core/es/hooks';
+  import { useLocale } from 'fe-ent-core/es/locales';
+  import { useAppStore } from 'fe-ent-core/es/store';
+  import { buildShortUUID, getAppEnvConfig, isNumber } from 'fe-ent-core/es/utils';
   import { plugins, toolbar } from './tinymce';
   import ImgUpload from './img-upload.vue';
   import { bindHandlers } from './helper';
   import type { Editor, RawEditorSettings } from 'tinymce';
   import type { PropType } from 'vue';
-  import type { Nullable, Recordable } from 'fe-ent-core';
+  import type { Nullable, Recordable } from 'fe-ent-core/es/types';
   const tinymceProps = {
     options: {
       type: Object as PropType<Partial<RawEditorSettings>>,

@@ -1,4 +1,4 @@
-import type { FormSchema } from 'fe-ent-core';
+import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
 
 export const searchList = (() => {
   const result: any[] = [];

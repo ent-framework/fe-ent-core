@@ -40,7 +40,9 @@
 <script lang="ts">
   import { defineComponent, reactive } from 'vue';
 
-  import { useGo, useModal, useTable } from 'fe-ent-core';
+  import { useGo } from 'fe-ent-core/es/hooks';
+  import { useModal } from 'fe-ent-core/es/components/modal';
+  import { useTable } from 'fe-ent-core/es/components/table';
   import { getAccountList } from '/@/api/system';
   import DeptTree from './dept-tree.vue';
 

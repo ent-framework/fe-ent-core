@@ -15,7 +15,7 @@
 <script lang="ts">
   import { defineComponent, onMounted, ref } from 'vue';
 
-  import type { TreeItem } from 'fe-ent-core';
+  import type { TreeItem } from 'fe-ent-core/es/components/tree/interface';
   import { getDeptList } from '/@/api/system';
 
   export default defineComponent({

@@ -20,7 +20,7 @@
   import { defineComponent } from 'vue';
   import { CheckOutlined } from '@ant-design/icons-vue';
 
-  import { useDesign } from 'fe-ent-core';
+  import { useDesign } from 'fe-ent-core/es/hooks';
 
   import { baseHandler } from '../handler';
   import type { PropType } from 'vue';

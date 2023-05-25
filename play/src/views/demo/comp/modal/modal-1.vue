@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, watch } from 'vue';
-  import { useModalInner } from 'fe-ent-core';
+  import { useModalInner } from 'fe-ent-core/es/components/modal';
   export default defineComponent({
     setup() {
       const loading = ref(true);

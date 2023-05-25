@@ -16,8 +16,8 @@
 <script lang="ts">
   import { defineComponent, h, ref, unref } from 'vue';
   import { CodeEditor, JsonPreview, MODE } from 'fe-ent-code-editor';
-  import { EntPageWrapper } from 'fe-ent-core';
   import { Modal, Radio, Space } from 'ant-design-vue';
+  import type { ChangeEvent } from 'fe-ent-core/es/types';
 
   const jsonData =
     '{"name":"BeJson","url":"http://www.xxx.com","page":88,"isNonProfit":true,"address":{"street":"科技园路.","city":"江苏苏州","country":"中国"},"links":[{"name":"Google","url":"http://www.xxx.com"},{"name":"Baidu","url":"http://www.xxx.com"},{"name":"SoSo","url":"http://www.xxx.com"}]}';
@@ -56,7 +56,6 @@
   export default defineComponent({
     components: {
       CodeEditor,
-      EntPageWrapper,
       RadioButton: Radio.Button,
       RadioGroup: Radio.Group,
       ASpace: Space,

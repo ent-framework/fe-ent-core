@@ -1,8 +1,8 @@
 import { computed, ref, unref } from 'vue';
-import { useI18n } from 'fe-ent-core';
+import { useI18n } from 'fe-ent-core/es/hooks';
 import type { Ref } from 'vue';
-import type { Rule, RuleObject } from 'ant-design-vue/lib/form/interface';
-import type { Recordable } from 'fe-ent-core';
+import type { Rule, RuleObject } from 'ant-design-vue/es/form/interface';
+import type { Recordable } from 'fe-ent-core/es/types';
 
 export enum LoginStateEnum {
   LOGIN,

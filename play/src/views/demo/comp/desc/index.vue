@@ -24,8 +24,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useDescription } from 'fe-ent-core';
-  import type { DescItem, Recordable } from 'fe-ent-core';
+  import { useDescription } from 'fe-ent-core/es/components/description';
+  import type { DescItem } from 'fe-ent-core/es/components/description/interface';
+  import type { Recordable } from 'fe-ent-core/es/types';
 
   const mockData: Recordable = {
     username: 'test',

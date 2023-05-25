@@ -14,7 +14,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import type { BasicColumn, ExcelData } from 'fe-ent-core';
+  import type { BasicColumn } from 'fe-ent-core/es/components/table/interface';
+  import type { ExcelData } from 'fe-ent-core/es/components/excel/interface';
 
   export default defineComponent({
     setup() {

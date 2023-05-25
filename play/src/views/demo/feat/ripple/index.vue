@@ -5,10 +5,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntPageWrapper, RippleDirective } from 'fe-ent-core';
+  import { RippleDirective } from 'fe-ent-core/es/directives';
 
   export default defineComponent({
-    components: { EntPageWrapper },
     directives: {
       ripple: RippleDirective,
     },

@@ -17,8 +17,9 @@
 <script lang="ts" setup>
   import { h } from 'vue';
   import { Tag } from 'ant-design-vue';
-  import { DOC_URL, GITHUB_URL, SITE_URL, useDescription } from 'fe-ent-core';
-  import type { DescItem } from 'fe-ent-core';
+  import { DOC_URL, GITHUB_URL, SITE_URL } from 'fe-ent-core/es/logics';
+  import { useDescription } from 'fe-ent-core/es/components/description';
+  import type { DescItem } from 'fe-ent-core/es/components/description/interface';
 
   const { pkg, lastBuildTime } = __APP_INFO__;
 

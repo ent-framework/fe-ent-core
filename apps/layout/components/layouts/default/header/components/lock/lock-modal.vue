@@ -26,16 +26,11 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import {
-    EntForm,
-    EntModal,
-    useDesign,
-    useForm,
-    useI18n,
-    useLockStore,
-    useModalInner,
-    useUserStore,
-  } from 'fe-ent-core';
+  import { EntForm, EntModal } from 'fe-ent-core';
+  import { useDesign, useI18n } from 'fe-ent-core/es/hooks';
+  import { useForm } from 'fe-ent-core/es/components/form';
+  import { useModalInner } from 'fe-ent-core/es/components/modal';
+  import { useLockStore, useUserStore } from 'fe-ent-core/es/store';
 
   import headerImg from '../../../../../../assets/header.jpg';
   export default defineComponent({

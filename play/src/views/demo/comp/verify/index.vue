@@ -52,9 +52,13 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { useMessage } from 'fe-ent-core';
+  import { useMessage } from 'fe-ent-core/es/hooks';
   import { BugOutlined, RightOutlined } from '@ant-design/icons-vue';
-  import type { DragVerifyActionType, Nullable, PassingData } from 'fe-ent-core';
+  import type {
+    DragVerifyActionType,
+    PassingData,
+  } from 'fe-ent-core/es/components/verify/interface';
+  import type { Nullable } from 'fe-ent-core/es/types';
 
   export default defineComponent({
     components: { BugOutlined, RightOutlined },

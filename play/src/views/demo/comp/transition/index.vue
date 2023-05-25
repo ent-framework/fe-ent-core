@@ -18,7 +18,6 @@
   import { defineComponent, ref } from 'vue';
   import { Select } from 'ant-design-vue';
   import {
-    EntPageWrapper,
     ExpandTransition,
     ExpandXTransition,
     FadeTransition,
@@ -32,7 +31,7 @@
     SlideXTransition,
     SlideYReverseTransition,
     SlideYTransition,
-  } from 'fe-ent-core';
+  } from 'fe-ent-core/es/components/transition'
 
   const transitionList = [
     'Fade',
@@ -58,7 +57,6 @@
   export default defineComponent({
     components: {
       Select,
-      EntPageWrapper,
       FadeTransition,
       ScaleTransition,
       SlideYTransition,

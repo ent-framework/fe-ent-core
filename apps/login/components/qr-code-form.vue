@@ -17,7 +17,7 @@
 <script lang="ts" setup>
   import { computed, unref } from 'vue';
   import { Button, Divider } from 'ant-design-vue';
-  import { useI18n } from 'fe-ent-core';
+  import { useI18n } from 'fe-ent-core/es/hooks';
   import { QrCode } from 'fe-ent-qrcode';
   import LoginFormTitle from './login-form-title.vue';
   import { LoginStateEnum, useLoginState } from './use-login';

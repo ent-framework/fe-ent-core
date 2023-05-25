@@ -26,7 +26,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useTable } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core/es/components/table';
   import { Divider } from 'ant-design-vue';
 
   import {

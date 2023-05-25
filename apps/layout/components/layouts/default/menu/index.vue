@@ -1,29 +1,23 @@
 <script lang="tsx">
   import { computed, defineComponent, toRef, unref } from 'vue';
+  import { EntAppLogo, EntMenu, EntScrollContainer, EntSimpleMenu } from 'fe-ent-core';
+  import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/es/logics/enums';
+  import { isUrl, openWindow, propTypes } from 'fe-ent-core/es/utils';
   import {
-    BasicMenu,
-    EntAppLogo,
-    EntScrollContainer,
-    MenuModeEnum,
-    MenuSplitTyeEnum,
-    SimpleMenu,
-    isUrl,
-    openWindow,
-    propTypes,
     useAppInject,
     useDesign,
     useGo,
     useMenuSetting,
     useRootSetting,
-  } from 'fe-ent-core';
+  } from 'fe-ent-core/es/hooks';
 
   import { useSplitMenu } from './use-layout-menu';
-  import type { Nullable } from 'fe-ent-core';
+  import type { Nullable } from 'fe-ent-core/es/types';
   import type { CSSProperties, PropType } from 'vue';
 
   export default defineComponent({
     name: 'LayoutMenu',
-    components: { EntAppLogo, EntScrollContainer },
+    components: { EntAppLogo, EntMenu, EntScrollContainer },
     props: {
       theme: propTypes.oneOf(['light', 'dark']),
 
@@ -145,9 +139,9 @@
         // console.log(menus);
         if (!menus || !menus.length) return null;
         return !props.isHorizontal ? (
-          <SimpleMenu {...menuProps} isSplitMenu={unref(getSplit)} items={menus} />
+          <EntSimpleMenu {...menuProps} isSplitMenu={unref(getSplit)} items={menus} />
         ) : (
-          <BasicMenu
+          <EntMenu
             {...(menuProps as any)}
             isHorizontal={props.isHorizontal}
             type={unref(getMenuType)}

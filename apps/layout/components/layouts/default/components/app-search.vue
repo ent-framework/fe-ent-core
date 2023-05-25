@@ -2,7 +2,7 @@
   import { defineComponent, ref, unref } from 'vue';
   import { Tooltip } from 'ant-design-vue';
   import { SearchOutlined } from '@ant-design/icons-vue';
-  import { useI18n } from 'fe-ent-core';
+  import { useI18n } from 'fe-ent-core/es/hooks';
   import AppSearchModal from './app-search-modal.vue';
 
   export default defineComponent({

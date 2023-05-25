@@ -81,11 +81,12 @@
 <script lang="ts" setup>
   import { computed, ref } from 'vue';
   import { Input } from 'ant-design-vue';
-  import { useDesign, useI18n, useLockStore, useUserStore } from 'fe-ent-core';
+  import { useDesign, useI18n } from 'fe-ent-core/es/hooks';
+  import { useLockStore, useUserStore } from 'fe-ent-core/es/store';
   import { LockOutlined } from '@ant-design/icons-vue';
   import headerImg from '../../../assets/header.jpg';
   import { useNow } from './use-now';
-  import type { UserInfo } from 'fe-ent-core';
+  import type { UserInfo } from 'fe-ent-core/es/store/types/store';
 
   const InputPassword = Input.Password;
 

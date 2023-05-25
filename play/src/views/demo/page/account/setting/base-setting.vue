@@ -23,7 +23,9 @@
 <script lang="ts">
   import { computed, defineComponent, onMounted } from 'vue';
   import { Col, Row } from 'ant-design-vue';
-  import { useForm, useMessage, useUserStore } from 'fe-ent-core';
+  import { useUserStore } from 'fe-ent-core/es/store';
+  import { useMessage } from 'fe-ent-core/es/hooks';
+  import { useForm } from 'fe-ent-core/es/components/form';
 
   import headerImg from '/@/assets/images/header.jpg';
   import { accountInfoApi } from '/@/api/account';

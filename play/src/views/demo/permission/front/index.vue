@@ -28,7 +28,9 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { Alert, Space } from 'ant-design-vue';
-  import { RoleEnum, usePermission, useUserStore } from 'fe-ent-core';
+  import { RoleEnum } from 'fe-ent-core/es/logics/enums';
+  import { useUserStore } from 'fe-ent-core/es/store';
+  import { usePermission } from 'fe-ent-core/es/hooks';
   import CurrentPermissionMode from '../current-permission-mode.vue';
 
   export default defineComponent({

@@ -6,7 +6,7 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useTabs } from 'fe-ent-core';
+  import { useTabs } from 'fe-ent-core/es/hooks';
   import { useRoute } from 'vue-router';
 
   export default defineComponent({

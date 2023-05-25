@@ -23,7 +23,7 @@
     useHeaderSetting,
     useLockPage,
     useMenuSetting,
-  } from 'fe-ent-core';
+  } from 'fe-ent-core/es/hooks';
 
   import LayoutMultipleHeader from './header/multiple-header.vue';
   import LayoutSideBar from './sider/index.vue';

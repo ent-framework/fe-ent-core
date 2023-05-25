@@ -1,9 +1,9 @@
 import type { ComponentType } from './component-type';
 import type { VNodeChild } from 'vue';
 import type { PaginationProps } from './pagination';
-import type { FormProps } from '@ent-core/components/form';
-import type { TableRowSelection as ITableRowSelection } from 'ant-design-vue/lib/table/interface';
-import type { ColumnProps } from 'ant-design-vue/lib/table';
+import type { FormProps } from '@ent-core/components/form/interface';
+import type { TableRowSelection as ITableRowSelection } from 'ant-design-vue/es/table/interface';
+import type { ColumnProps } from 'ant-design-vue/es/table';
 import type { AnyFunction, EmitType, Fn, Recordable, VueNode } from '@ent-core/types';
 import type { RoleEnum } from '@ent-core/logics/enums/role-enum';
 

@@ -7,7 +7,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
-  import { useMenuSetting } from 'fe-ent-core';
+  import { useMenuSetting } from 'fe-ent-core/es/hooks';
 
   export default defineComponent({
     name: 'SiderTrigger',

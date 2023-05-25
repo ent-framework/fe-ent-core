@@ -1,15 +1,15 @@
+import { useRootSetting } from 'fe-ent-core/es/hooks';
+import { useAppStore } from 'fe-ent-core/es/store';
 import {
   updateColorWeak,
   updateDarkTheme,
   updateGrayMode,
   updateHeaderBgColor,
   updateSidebarBgColor,
-  useAppStore,
-  useRootSetting,
-} from 'fe-ent-core';
-
+} from 'fe-ent-core/es/logics';
 import { HandlerEnum } from './enum';
-import type { DeepPartial, ProjectConfig } from 'fe-ent-core';
+import type { DeepPartial } from 'fe-ent-core/es/types';
+import type { ProjectConfig } from 'fe-ent-core/es/store';
 
 export function baseHandler(event: HandlerEnum, value: any) {
   const appStore = useAppStore();

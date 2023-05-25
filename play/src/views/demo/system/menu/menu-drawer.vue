@@ -13,7 +13,8 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref } from 'vue';
-  import { useDrawerInner, useForm } from 'fe-ent-core';
+  import { useForm } from 'fe-ent-core/es/components/form';
+  import { useDrawerInner } from 'fe-ent-core/es/components/drawer';
   import { formSchema } from './menu-data';
 
   import { getMenuList } from '/@/api/system';

@@ -13,7 +13,9 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { Badge, Tooltip } from 'ant-design-vue';
-  import { EntIcon, useErrorLogStore, useGlobalStore, useI18n } from 'fe-ent-core';
+  import { EntIcon } from 'fe-ent-core';
+  import { useI18n } from 'fe-ent-core/es/hooks';
+  import { useErrorLogStore, useGlobalStore } from 'fe-ent-core/es/store';
 
   import { useRouter } from 'vue-router';
 

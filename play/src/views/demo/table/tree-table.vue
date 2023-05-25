@@ -10,9 +10,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useTable } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core/es/components/table';
   import { getBasicColumns, getTreeTableData } from './table-data';
-  import type { Recordable } from 'fe-ent-core';
+  import type { Recordable } from 'fe-ent-core/es/types';
 
   export default defineComponent({
     setup() {

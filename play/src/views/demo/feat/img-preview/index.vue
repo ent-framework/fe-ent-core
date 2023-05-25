@@ -6,7 +6,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { createImgPreview } from 'fe-ent-core';
+  import { createImgPreview } from 'fe-ent-core/es/components/preview';
 
   const imgList: string[] = [
     'https://picsum.photos/id/66/346/216',

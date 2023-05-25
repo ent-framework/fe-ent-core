@@ -17,19 +17,12 @@
 
   import { GithubFilled } from '@ant-design/icons-vue';
 
-  import {
-    DOC_URL,
-    GITHUB_URL,
-    SITE_URL,
-    openWindow,
-    useDesign,
-    useI18n,
-    useLayoutHeight,
-    useRootSetting,
-  } from 'fe-ent-core';
+  import { useDesign, useI18n, useLayoutHeight, useRootSetting } from 'fe-ent-core/es/hooks';
+  import { openWindow } from 'fe-ent-core/es/utils';
+  import { DOC_URL, GITHUB_URL, SITE_URL } from 'fe-ent-core/es/logics';
 
   import { useRouter } from 'vue-router';
-  import type { ComponentRef } from 'fe-ent-core';
+  import type { ComponentRef } from 'fe-ent-core/es/types';
 
   export default defineComponent({
     name: 'LayoutFooter',

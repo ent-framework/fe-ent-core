@@ -53,7 +53,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { openWindow } from 'fe-ent-core';
+  import { openWindow } from 'fe-ent-core/es/utils';
   import { Alert } from 'ant-design-vue';
   import {
     AlipayCircleFilled,

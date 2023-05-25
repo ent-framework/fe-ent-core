@@ -14,13 +14,18 @@
 </template>
 <script lang="ts">
   import { defineComponent, onMounted, ref } from 'vue';
-  import { useMessage, useTable } from 'fe-ent-core';
+  import { useMessage } from 'fe-ent-core/es/hooks';
+  import { useTable } from 'fe-ent-core/es/components/table';
   import { optionsListApi } from '/@/api/select';
 
   import { demoListApi } from '/@/api/table';
   import { treeOptionsListApi } from '/@/api/tree';
   import { cloneDeep } from 'lodash';
-  import type { BasicColumn, EditRecordRow, TableActionItem } from 'fe-ent-core';
+  import type {
+    BasicColumn,
+    EditRecordRow,
+    TableActionItem,
+  } from 'fe-ent-core/es/components/table/interface';
   import type { Ref } from 'vue';
 
   const columns: BasicColumn[] = [

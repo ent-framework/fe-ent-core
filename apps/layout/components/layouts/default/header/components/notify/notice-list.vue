@@ -55,7 +55,8 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watch } from 'vue';
-  import { isNumber, useDesign } from 'fe-ent-core';
+  import { useDesign } from 'fe-ent-core/es/hooks';
+  import { isNumber } from 'fe-ent-core/es/utils';
   import { Avatar, List, Tag, Typography } from 'ant-design-vue';
   import type { ListItem } from './data';
   import type { PropType } from 'vue';

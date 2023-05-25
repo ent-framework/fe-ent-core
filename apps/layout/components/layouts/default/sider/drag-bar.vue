@@ -4,7 +4,7 @@
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
 
-  import { useDesign, useMenuSetting } from 'fe-ent-core';
+  import { useDesign, useMenuSetting } from 'fe-ent-core/es/hooks';
 
   export default defineComponent({
     name: 'DargBar',

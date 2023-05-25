@@ -79,7 +79,7 @@
   import { QrCode } from 'fe-ent-qrcode';
   import LogoImg from '/@/assets/images/logo.png';
   import type { QrCodeActionType } from 'fe-ent-qrcode';
-  import type { Nullable } from 'fe-ent-core';
+  import type { Nullable } from 'fe-ent-core/es/types';
 
   const qrCodeUrl = 'https://www.vvbin.cn';
   export default defineComponent({

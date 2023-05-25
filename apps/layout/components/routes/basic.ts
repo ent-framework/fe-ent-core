@@ -1,8 +1,9 @@
-import { COMPONENT_LAYOUT_NAME, PAGE_NOT_FOUND_NAME, REDIRECT_NAME, t } from 'fe-ent-core';
+import { t } from 'fe-ent-core/es/hooks';
+import { COMPONENT_LAYOUT_NAME, PAGE_NOT_FOUND_NAME, REDIRECT_NAME} from 'fe-ent-core/es/router';
 import redirect from '../views/redirect/index.vue';
 import errorLog from '../views/error-log/index.vue';
 import exceptionView from '../views/exception/exception.vue';
-import type { AppRouteRecordRaw } from 'fe-ent-core';
+import type { AppRouteRecordRaw } from 'fe-ent-core/es/router';
 
 // 404 on a page
 export function getPageNotFoundRoute(): AppRouteRecordRaw {

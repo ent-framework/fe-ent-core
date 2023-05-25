@@ -36,13 +36,13 @@
 <script lang="ts">
   import { defineComponent, nextTick, ref, shallowRef } from 'vue';
   import { Alert, Space } from 'ant-design-vue';
-  import { useModal } from 'fe-ent-core';
+  import { useModal } from 'fe-ent-core/es/components/modal';
   import Modal1 from './modal-1.vue';
   import Modal2 from './modal-2.vue';
   import Modal3 from './modal-3.vue';
   import Modal4 from './modal-4.vue';
   import type { ComponentOptions } from 'vue';
-  import type { Nullable } from 'fe-ent-core';
+  import type { Nullable } from 'fe-ent-core/es/types';
 
   export default defineComponent({
     components: { Alert, Modal1, Modal2, Modal3, Modal4, ASpace: Space },

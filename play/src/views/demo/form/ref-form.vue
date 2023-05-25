@@ -72,8 +72,13 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { useMessage } from 'fe-ent-core';
-  import type { FormActionType, FormProps, FormSchema, Nullable } from 'fe-ent-core';
+  import { useMessage } from 'fe-ent-core/es/hooks';
+  import type {
+    FormActionType,
+    FormProps,
+    FormSchema,
+  } from 'fe-ent-core/es/components/form/interface';
+  import type { Nullable } from 'fe-ent-core/es/types';
 
   const schemas: FormSchema[] = [
     {

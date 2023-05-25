@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "fe-ent-core": ["../../packages/fe-ent-core/index.ts"],
-      "fe-ent-core/*": ["../../packages/fe-ent-core/*"]
+      "fe-ent-core/es/*": ["../../packages/fe-ent-core/*"]
     }
   },
   "include": ["components", "../../packages"],

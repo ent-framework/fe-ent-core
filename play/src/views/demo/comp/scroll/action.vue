@@ -21,7 +21,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import type { Nullable, ScrollActionType } from 'fe-ent-core';
+  import type { Nullable } from 'fe-ent-core/es/types';
+  import type { ScrollActionType } from 'fe-ent-core/es/components/container/interface';
 
   export default defineComponent({
     setup() {

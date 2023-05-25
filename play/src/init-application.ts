@@ -1,4 +1,4 @@
-import { useGlobalStoreWithOut } from 'fe-ent-core';
+import { useGlobalStoreWithOut } from 'fe-ent-core/es/store';
 
 export async function initApplication() {
   // ! Need to pay attention to the timing of execution

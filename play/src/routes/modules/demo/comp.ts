@@ -1,5 +1,6 @@
-import { getParentLayout, t } from 'fe-ent-core';
-import type { AppRouteRecordRaw } from 'fe-ent-core';
+import { getParentLayout } from 'fe-ent-core/es/router';
+import { t } from 'fe-ent-core/es/hooks';
+import type { AppRouteRecordRaw } from 'fe-ent-core/es/router';
 
 const comp: AppRouteRecordRaw = {
   path: '/comp',

@@ -12,7 +12,9 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { PermissionModeEnum, useAppStore, usePermission } from 'fe-ent-core';
+  import { PermissionModeEnum } from 'fe-ent-core/es/logics/enums';
+  import { useAppStore } from 'fe-ent-core/es/store';
+  import { usePermission } from 'fe-ent-core/es/hooks';
   import { Divider } from 'ant-design-vue';
   export default defineComponent({
     name: 'CurrentPermissionMode',

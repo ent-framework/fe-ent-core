@@ -1,6 +1,6 @@
 import type { ButtonProps } from 'ant-design-vue/lib/button/buttonTypes';
 import type { CSSProperties, ComputedRef, VNodeChild } from 'vue';
-import type { ScrollContainerOptions } from '@ent-core/components/container';
+import type { ScrollContainerOptions } from '@ent-core/components/container/interface';
 
 export interface DrawerInstance {
   setDrawerProps: (props: Partial<DrawerProps>) => void;

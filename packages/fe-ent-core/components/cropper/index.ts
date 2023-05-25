@@ -1,7 +1,10 @@
 import { withInstall } from '@ent-core/utils';
-import cropperImage from './src/cropper.vue';
-import avatarCropper from './src/cropper-avatar.vue';
+import CropperImage from './src/cropper.vue';
+import CropperAvatar from './src/cropper-avatar.vue';
 
-export * from './src/typing';
-export const EntCropperImage = withInstall(cropperImage);
-export const EntCropperAvatar = withInstall(avatarCropper);
+
+export const EntCropperImage = withInstall(CropperImage);
+export const EntCropperAvatar = withInstall(CropperAvatar);
+
+export default EntCropperImage;
+export { CropperAvatar };

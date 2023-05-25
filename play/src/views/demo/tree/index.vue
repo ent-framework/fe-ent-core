@@ -48,7 +48,8 @@
   import { Card, Col, Row, Spin } from 'ant-design-vue';
   import { cloneDeep } from 'lodash';
   import { treeData } from './data';
-  import type { Nullable, TreeActionType, TreeItem } from 'fe-ent-core';
+  import type { TreeActionType, TreeItem } from 'fe-ent-core/es/components/tree/interface';
+  import type { Nullable } from 'fe-ent-core/es/types';
 
   export default defineComponent({
     components: { Card, Row, Col, Spin },

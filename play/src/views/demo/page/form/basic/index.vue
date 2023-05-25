@@ -10,7 +10,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useForm, useMessage } from 'fe-ent-core';
+  import { useForm } from 'fe-ent-core/es/components/form';
+  import { useMessage } from 'fe-ent-core/es/hooks';
   import { schemas } from './data';
 
   export default defineComponent({

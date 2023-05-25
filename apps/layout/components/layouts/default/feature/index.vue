@@ -8,13 +8,9 @@
   import { computed, defineComponent, unref } from 'vue';
   import { BackTop } from 'ant-design-vue';
 
-  import {
-    SettingButtonPositionEnum,
-    useDesign,
-    useHeaderSetting,
-    useRootSetting,
-    useUserStoreWithOut,
-  } from 'fe-ent-core';
+  import { useDesign, useHeaderSetting, useRootSetting } from 'fe-ent-core/es/hooks';
+  import { SettingButtonPositionEnum } from 'fe-ent-core/es/logics/enums';
+  import { useUserStoreWithOut } from 'fe-ent-core/es/store';
 
   import SessionTimeoutLogin from '../../../views/login/session-timeout-login.vue';
   import LayoutLockPage from '../../../views/lock/index.vue';

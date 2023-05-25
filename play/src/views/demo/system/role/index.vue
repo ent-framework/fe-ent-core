@@ -32,7 +32,8 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import { useDrawer, useTable } from 'fe-ent-core';
+  import { useDrawer } from 'fe-ent-core/es/components/drawer';
+  import { useTable } from 'fe-ent-core/es/components/table';
   import { getRoleListByPage } from '/@/api/system';
 
   import RoleDrawer from './role-drawer.vue';

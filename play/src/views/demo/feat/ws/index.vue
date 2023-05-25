@@ -55,7 +55,7 @@
 <script lang="ts">
   import { computed, defineComponent, reactive, toRefs, watchEffect } from 'vue';
   import { Input, Tag } from 'ant-design-vue';
-  import { formatToDateTime } from 'fe-ent-core';
+  import { formatToDateTime } from 'fe-ent-core/es/utils';
   import { useWebSocket } from '@vueuse/core';
 
   export default defineComponent({

@@ -20,17 +20,16 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import {
-    EntPageWrapper,
     downloadByBase64,
     downloadByData,
     downloadByOnlineUrl,
     downloadByUrl,
-  } from 'fe-ent-core';
+  } from 'fe-ent-core/es/utils';
   import { Alert } from 'ant-design-vue';
   import imgBase64 from './img-base-64';
 
   export default defineComponent({
-    components: { EntPageWrapper, [Alert.name]: Alert },
+    components: { [Alert.name]: Alert },
     setup() {
       function handleDownByData() {
         downloadByData('text content', 'testName.txt');

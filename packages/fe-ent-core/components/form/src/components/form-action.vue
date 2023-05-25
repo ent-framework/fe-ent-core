@@ -47,7 +47,7 @@
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { useFormContext } from '../hooks/use-form-context';
-  import type { ButtonProps } from '@ent-core/components/button';
+  import type { ButtonProps } from '@ent-core/components/button/interface';
   import type { PropType } from 'vue';
   import type { ColEx } from '../types';
 

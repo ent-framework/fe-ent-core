@@ -1,4 +1,4 @@
-import { defHttp } from 'fe-ent-core';
+import { defHttp } from 'fe-ent-core/es/utils';
 import type { DemoOptionsItem, selectParams } from '../model/options-model';
 enum Api {
   OPTIONS_LIST = '/select/getDemoOptions',

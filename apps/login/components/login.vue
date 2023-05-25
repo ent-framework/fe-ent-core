@@ -1,8 +1,8 @@
 <template>
   <div :class="prefixCls" class="relative w-full h-full px-4">
     <div class="flex items-center absolute right-4 top-4">
-      <EntAppDarkModeToggle v-if="!sessionTimeout" class="enter-x mr-2" />
-      <EntAppLocalePicker
+      <EntDarkModeToggle v-if="!sessionTimeout" class="enter-x mr-2" />
+      <EntLocalePicker
         v-if="!sessionTimeout && showLocale"
         class="text-white enter-x xl:text-gray-600"
         :show-text="false"
@@ -48,15 +48,9 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import {
-    EntAppDarkModeToggle,
-    EntAppLocalePicker,
-    EntAppLogo,
-    useDesign,
-    useGlobSetting,
-    useI18n,
-    useLocaleStore,
-  } from 'fe-ent-core';
+  import { EntAppLogo, EntDarkModeToggle, EntLocalePicker } from 'fe-ent-core';
+  import { useDesign, useGlobSetting, useI18n } from 'fe-ent-core/es/hooks';
+  import { useLocaleStore } from 'fe-ent-core/es/store';
   import loginImg from '../assets/login-box-bg.svg';
   import LoginForm from './login-form.vue';
   import ForgetPasswordForm from './forget-password-form.vue';
@@ -67,8 +61,8 @@
   export default defineComponent({
     components: {
       EntAppLogo,
-      EntAppLocalePicker,
-      EntAppDarkModeToggle,
+      EntLocalePicker,
+      EntDarkModeToggle,
       LoginForm,
       ForgetPasswordForm,
       RegisterForm,

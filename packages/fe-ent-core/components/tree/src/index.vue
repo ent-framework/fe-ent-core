@@ -25,7 +25,7 @@
   import { TreeIcon } from './tree-icon';
   import TreeHeader from './components/tree-header.vue';
   import { treeEmits, treeProps } from './types/tree';
-  import type { CreateContextOptions } from '@ent-core/components/context-menu';
+  import type { CreateContextOptions } from '@ent-core/components/context-menu/interface';
   import type {
     CheckKeys,
     FieldNames,

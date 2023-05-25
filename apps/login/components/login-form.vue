@@ -97,7 +97,8 @@
     WechatFilled,
   } from '@ant-design/icons-vue';
 
-  import { useDesign, useI18n, useMessage, useUserStore } from 'fe-ent-core';
+  import { useDesign, useI18n, useMessage } from 'fe-ent-core/es/hooks';
+  import { useUserStore } from 'fe-ent-core/es/store';
   import { useRouter } from 'vue-router';
   import { LoginStateEnum, useFormRules, useFormValid, useLoginState } from './use-login';
   import LoginFormTitle from './login-form-title.vue';

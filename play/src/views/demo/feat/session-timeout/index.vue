@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useUserStore } from 'fe-ent-core';
+  import { useUserStore } from 'fe-ent-core/es/store';
 
   import { sessionTimeoutApi, tokenExpiredApi } from '/@/api/account';
   import { Card } from 'ant-design-vue';

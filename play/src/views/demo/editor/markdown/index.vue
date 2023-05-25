@@ -20,12 +20,12 @@
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
   import { EntMarkDown, EntMarkdownViewer } from 'fe-ent-markdown';
-  import { EntPageWrapper } from 'fe-ent-core';
   import { Card } from 'ant-design-vue';
   import type { MarkDownActionType } from 'fe-ent-markdown';
+  import type { Nullable } from 'fe-ent-core/es/types';
 
   export default defineComponent({
-    components: { EntMarkDown, EntPageWrapper, EntMarkdownViewer, ACard: Card },
+    components: { EntMarkDown, EntMarkdownViewer, ACard: Card },
     setup() {
       const markDownRef = ref<Nullable<MarkDownActionType>>(null);
       const valueRef = ref(`

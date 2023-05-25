@@ -10,7 +10,7 @@
     useDesign,
     useRootSetting,
     useTransitionSetting,
-  } from 'fe-ent-core';
+  } from 'fe-ent-core/es/hooks';
   import PageLayout from '../../page/index.vue';
 
   export default defineComponent({

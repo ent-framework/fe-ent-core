@@ -5,7 +5,7 @@
 </template>
 <script lang="ts" setup>
   import { computed, unref } from 'vue';
-  import { useI18n } from 'fe-ent-core';
+  import { useI18n } from 'fe-ent-core/es/hooks';
   import { LoginStateEnum, useLoginState } from './use-login';
 
   const { t } = useI18n();

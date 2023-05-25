@@ -1,4 +1,4 @@
-import { defHttp } from 'fe-ent-core';
+import { defHttp } from 'fe-ent-core/es/utils';
 import type { GetAccountInfoModel } from '../model/account-model';
 
 enum Api {

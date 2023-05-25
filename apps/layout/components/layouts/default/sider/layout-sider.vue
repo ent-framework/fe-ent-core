@@ -28,18 +28,13 @@
 <script lang="ts">
   import { computed, defineComponent, h, ref, unref } from 'vue';
   import { Layout } from 'ant-design-vue';
-  import {
-    MenuModeEnum,
-    MenuSplitTyeEnum,
-    useAppInject,
-    useDesign,
-    useMenuSetting,
-  } from 'fe-ent-core';
+  import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/es/logics';
+  import { useAppInject, useDesign, useMenuSetting } from 'fe-ent-core/es/hooks';
   import LayoutTrigger from '../trigger/index.vue';
   import LayoutMenu from '../menu/index.vue';
   import { useDragLine, useSiderEvent, useTrigger } from './use-layout-sider';
   import DragBar from './drag-bar.vue';
-  import type { ElRef } from 'fe-ent-core';
+  import type { ElRef } from 'fe-ent-core/es/types';
   import type { CSSProperties } from 'vue';
   export default defineComponent({
     name: 'LayoutSideBar',

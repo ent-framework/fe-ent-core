@@ -25,7 +25,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import type { Recordable } from 'fe-ent-core';
+  import type { Recordable } from 'fe-ent-core/es/types';
 
   import { Divider } from 'ant-design-vue';
   const data: Recordable[] = (() => {

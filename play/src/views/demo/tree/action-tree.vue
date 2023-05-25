@@ -30,9 +30,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { useMessage } from 'fe-ent-core';
+  import { useMessage } from 'fe-ent-core/es/hooks';
   import { treeData } from './data';
-  import type { Nullable, TreeActionType } from 'fe-ent-core';
+  import type { Nullable } from 'fe-ent-core/es/types';
+  import type { TreeActionType } from 'fe-ent-core/es/components/tree/interface';
 
   export default defineComponent({
     setup() {

@@ -26,14 +26,8 @@ async function defineLibraryConfig() {
   });
   const { dependencies = {}, peerDependencies = {} } = await readPackageJSON(root);
   const deps = [...Object.keys(dependencies), ...Object.keys(peerDependencies)];
-  let entDeps: string[] = [];
-  if (deps.includes('fe-ent-core')) {
-    const { dependencies: entDependencies = {}, peerDependencies: entPeerDependencies = {} } =
-      await readPackageJSON(`${root}/node_modules/fe-ent-core`);
-    entDeps = [...Object.keys(entDependencies), ...Object.keys(entPeerDependencies)];
-  }
   const input = excludeFiles(
-    glob.sync('components/*.{js,ts,tsx,vue}', {
+    glob.sync('**/*.{ts,tsx,vue}', {
       cwd: process.cwd(),
       absolute: false,
       onlyFiles: true,
@@ -54,7 +48,7 @@ async function defineLibraryConfig() {
         },
       },
       rollupOptions: {
-        input: ['index.ts', ...input],
+        input,
         output: [
           {
             interop: 'default',
@@ -75,7 +69,7 @@ async function defineLibraryConfig() {
             //preserveModulesRoot: 'components',
           },
         ],
-        external: [...deps, ...entDeps],
+        external: [...deps],
         // output: {
         //   exports: 'named',
         // },
@@ -94,7 +88,7 @@ async function defineLibraryConfig() {
       ...plugins,
       dts({
         entryRoot: `${root}`,
-        include: ['index.ts', 'components/**/*.{ts,tsx,vue}'],
+        include: ['**/*.{ts,tsx,vue}'],
         outputDir: [`${root}/es/`, `${root}/lib/`],
         logLevel: 'error',
       }),

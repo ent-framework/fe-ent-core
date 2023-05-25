@@ -6,7 +6,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntIcon, useDrawer } from 'fe-ent-core';
+  import { EntIcon } from 'fe-ent-core';
+  import { useDrawer } from 'fe-ent-core/es/components/drawer';
 
   import SettingDrawer from './setting-drawer';
 

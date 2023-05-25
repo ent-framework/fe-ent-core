@@ -1,9 +1,9 @@
 import { withInstall } from '@ent-core/utils';
 import BasicButton from './src/basic-button.vue';
-import popConfirmButton from './src/pop-confirm-button.vue';
-import type { buttonProps } from './src/props';
-import type { ExtractPropTypes } from 'vue';
+import PopConfirmButton from './src/pop-confirm-button.vue';
 
 export const EntButton = withInstall(BasicButton);
-export const EntPopButton = withInstall(popConfirmButton);
-export declare type ButtonProps = Partial<ExtractPropTypes<typeof buttonProps>>;
+export const EntPopButton = withInstall(PopConfirmButton);
+
+export default BasicButton;
+export { PopConfirmButton };

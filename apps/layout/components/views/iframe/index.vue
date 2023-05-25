@@ -8,7 +8,8 @@
 <script lang="ts" setup>
   import { computed, ref, unref } from 'vue';
   import { Spin } from 'ant-design-vue';
-  import { propTypes, useDesign, useLayoutHeight, useWindowSizeFn } from 'fe-ent-core';
+  import { useDesign, useLayoutHeight, useWindowSizeFn } from 'fe-ent-core/es/hooks';
+  import { propTypes } from 'fe-ent-core/es/utils';
   import type { CSSProperties } from 'vue';
 
   defineProps({

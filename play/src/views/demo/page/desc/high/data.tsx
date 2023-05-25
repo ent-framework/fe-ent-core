@@ -1,5 +1,5 @@
 import { Badge } from 'ant-design-vue';
-import type { BasicColumn } from 'fe-ent-core';
+import type { BasicColumn } from 'fe-ent-core/es/components/table/interface';
 
 export const refundTimeTableSchema: BasicColumn[] = [
   {

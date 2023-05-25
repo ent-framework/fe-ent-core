@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useDesign, useI18n } from 'fe-ent-core';
+  import { useDesign, useI18n } from 'fe-ent-core/es/hooks';
   import AppSearchKeyItem from './app-search-key-item.vue';
   const { prefixCls } = useDesign('app-search-footer');
   const { t } = useI18n();

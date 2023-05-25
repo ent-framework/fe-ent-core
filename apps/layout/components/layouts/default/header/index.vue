@@ -41,7 +41,7 @@
 
       <FullScreen v-if="getShowFullScreen" :class="`${prefixCls}-action__item fullscreen-item`" />
 
-      <EntAppLocalePicker
+      <EntLocalePicker
         v-if="getShowLocalePicker"
         :reload="true"
         :show-text="false"
@@ -57,20 +57,21 @@
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
   import {
-    EntAppLocalePicker,
-    EntAppLogo,
-    MenuModeEnum,
-    MenuSplitTyeEnum,
-    SettingButtonPositionEnum,
-    propTypes,
     useAppInject,
     useDesign,
     useHeaderSetting,
-    useLocale,
     useMenuSetting,
     useRootSetting,
-    useUserStoreWithOut,
-  } from 'fe-ent-core';
+  } from 'fe-ent-core/es/hooks';
+  import { EntAppLogo, EntLocalePicker } from 'fe-ent-core';
+  import {
+    MenuModeEnum,
+    MenuSplitTyeEnum,
+    SettingButtonPositionEnum,
+  } from 'fe-ent-core/es/logics/enums';
+  import { propTypes } from 'fe-ent-core/es/utils';
+  import { useLocale } from 'fe-ent-core/es/locales';
+  import { useUserStoreWithOut } from 'fe-ent-core/es/store';
   import { Layout } from 'ant-design-vue';
 
   import AppSearch from '../components/app-search.vue';
@@ -88,7 +89,7 @@
       LayoutBreadcrumb,
       LayoutMenu,
       UserDropDown,
-      EntAppLocalePicker,
+      EntLocalePicker,
       FullScreen,
       Notify,
       AppSearch,

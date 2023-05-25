@@ -6,8 +6,8 @@ import {
   RouterTransitionEnum,
   TopMenuAlignEnum,
   TriggerEnum,
-  useI18n,
-} from 'fe-ent-core';
+} from 'fe-ent-core/es/logics/enums';
+import { useI18n } from 'fe-ent-core/es/hooks';
 
 export enum HandlerEnum {
   CHANGE_LAYOUT,

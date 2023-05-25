@@ -30,7 +30,7 @@
             },
           ]"
         >
-          <SimpleMenuTag :item="item" collapse-parent dot />
+          <EntSimpleMenuTag :item="item" collapse-parent dot />
           <EntIcon
             :class="`${prefixCls}-module__icon`"
             :size="getCollapsed ? 16 : 20"
@@ -62,7 +62,7 @@
         />
       </div>
       <EntScrollContainer :class="`${prefixCls}-menu-list__content`">
-        <SimpleMenu
+        <EntSimpleMenu
           :items="childrenMenus"
           :theme="getMenuTheme"
           mix-sider
@@ -75,42 +75,39 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
+  import { ClickOutside } from 'fe-ent-core/es/directives';
   import {
-    ClickOutside,
     EntAppLogo,
     EntIcon,
     EntScrollContainer,
+    EntSimpleMenu,
+    EntSimpleMenuTag,
+  } from 'fe-ent-core';
+  import {
     SIDE_BAR_MINI_WIDTH,
     SIDE_BAR_SHOW_TIT_MINI_WIDTH,
-    SimpleMenu,
-    SimpleMenuTag,
-    getChildrenMenus,
-    getCurrentParentPath,
-    getShallowMenus,
     listenerRouteChange,
-    useDesign,
-    useGlobSetting,
-    useGo,
-    useI18n,
-    useMenuSetting,
-    usePermissionStore,
-  } from 'fe-ent-core';
-  import AppLogo from '../components/app-logo.vue';
+  } from 'fe-ent-core/es/logics';
+  import { getChildrenMenus, getCurrentParentPath, getShallowMenus } from 'fe-ent-core/es/router';
+  import { useDesign, useGlobSetting, useGo, useI18n, useMenuSetting } from 'fe-ent-core/es/hooks';
+  import { usePermissionStore } from 'fe-ent-core/es/store';
+
   import LayoutTrigger from '../trigger/index.vue';
   import { useDragLine } from './use-layout-sider';
   import type { RouteLocationNormalized } from 'vue-router';
   import type { CSSProperties } from 'vue';
-  import type { ElRef, Menu, Nullable } from 'fe-ent-core';
+  import type { ElRef, Nullable } from 'fe-ent-core/es/types';
+  import type { Menu } from 'fe-ent-core/es/router';
 
   export default defineComponent({
     name: 'LayoutMixSider',
     components: {
       EntScrollContainer,
       EntAppLogo,
-      SimpleMenu,
+      EntSimpleMenu,
       EntIcon,
       LayoutTrigger,
-      SimpleMenuTag,
+      EntSimpleMenuTag,
     },
     directives: {
       ClickOutside,

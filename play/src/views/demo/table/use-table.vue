@@ -21,8 +21,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import type { ColumnChangeParam } from 'fe-ent-core';
-  import { useMessage, useTable } from 'fe-ent-core';
+  import type { ColumnChangeParam } from 'fe-ent-core/es/components/table/interface';
+  import { useMessage } from 'fe-ent-core/es/hooks';
+  import { useTable } from 'fe-ent-core/es/components/table';
   import { getBasicColumns, getBasicShortColumns } from './table-data';
   import { demoListApi } from '/@/api/table';
   export default defineComponent({

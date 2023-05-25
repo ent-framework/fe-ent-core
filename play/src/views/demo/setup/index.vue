@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useDesign } from 'fe-ent-core';
+  import { useDesign } from 'fe-ent-core/es/hooks';
   import intro from 'intro.js';
   import 'intro.js/minified/introjs.min.css';
 

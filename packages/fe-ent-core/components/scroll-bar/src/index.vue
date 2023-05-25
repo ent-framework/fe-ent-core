@@ -34,7 +34,7 @@
   const { scrollbar } = componentSetting;
 
   export default defineComponent({
-    name: 'Scrollbar',
+    name: 'EntScrollbar',
     // inheritAttrs: false,
     components: { Bar },
     props: {

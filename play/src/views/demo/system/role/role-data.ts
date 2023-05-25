@@ -1,6 +1,7 @@
 import { h } from 'vue';
-import { useMessage } from 'fe-ent-core';
-import type { BasicColumn, FormSchema } from 'fe-ent-core';
+import { useMessage } from 'fe-ent-core/es/hooks';
+import type { BasicColumn } from 'fe-ent-core/es/components/table/interface';
+import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
 import { Switch } from 'ant-design-vue';
 import { setRoleStatus } from '/@/api/system';
 

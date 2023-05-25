@@ -1,11 +1,13 @@
 <script lang="tsx">
   import { computed, defineComponent, ref, unref } from 'vue';
   import { Button, Result } from 'ant-design-vue';
-  import { ExceptionEnum, useDesign, useGlobalStore, useGo, useI18n, useRedo } from 'fe-ent-core';
+  import { useDesign, useGo, useI18n, useRedo } from 'fe-ent-core/es/hooks';
+  import { ExceptionEnum } from 'fe-ent-core/es/logics/enums';
+  import { useGlobalStore } from 'fe-ent-core/es/store';
   import { useRoute } from 'vue-router';
   import netWorkSvg from '../../svg/net-error.svg';
   import notDataSvg from '../../svg/no-data.svg';
-  import type { Fn } from 'fe-ent-core';
+  import type { Fn } from 'fe-ent-core/es/types';
   import type { PropType } from 'vue';
 
   interface MapValue {

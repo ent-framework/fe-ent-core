@@ -1,8 +1,10 @@
 import { withInstall } from '@ent-core/utils';
-import basicArrow from './src/basic-arrow.vue';
-import basicTitle from './src/basic-title.vue';
-import basicHelp from './src/basic-help.vue';
+import BasicArrow from './src/basic-arrow.vue';
+import BasicTitle from './src/basic-title.vue';
+import BasicHelp from './src/basic-help.vue';
 
-export const EntArrow = withInstall(basicArrow);
-export const EntTitle = withInstall(basicTitle);
-export const EntHelp = withInstall(basicHelp);
+export const EntArrow = withInstall(BasicArrow);
+export const EntTitle = withInstall(BasicTitle);
+export const EntHelp = withInstall(BasicHelp);
+
+export { BasicArrow, BasicHelp, BasicTitle };

@@ -11,9 +11,10 @@
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { useForm, useMessage } from 'fe-ent-core';
+  import { useForm } from 'fe-ent-core/es/components/form';
+  import { useMessage } from 'fe-ent-core/es/hooks';
   import { Input } from 'ant-design-vue';
-  import type { FormSchema } from 'fe-ent-core';
+  import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
 
   const schemas: FormSchema[] = [
     {

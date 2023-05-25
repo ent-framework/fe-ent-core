@@ -31,15 +31,10 @@
 
   import { Tabs } from 'ant-design-vue';
 
-  import {
-    REDIRECT_NAME,
-    listenerRouteChange,
-    useDesign,
-    useGo,
-    useMultipleTabSetting,
-    useMultipleTabStore,
-    useUserStore,
-  } from 'fe-ent-core';
+  import { useDesign, useGo, useMultipleTabSetting } from 'fe-ent-core/es/hooks';
+  import { useMultipleTabStore, useUserStore } from 'fe-ent-core/es/store';
+  import { listenerRouteChange } from 'fe-ent-core/es/logics';
+  import { REDIRECT_NAME } from 'fe-ent-core/es/router';
 
   import { useRouter } from 'vue-router';
   import { initAffixTabs, useTabsDrag } from './use-multiple-tabs';

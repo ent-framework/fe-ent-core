@@ -3,16 +3,12 @@ import 'uno.css';
 //import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
-import EntCore, {
-  entRouter,
-  initAppConfigStore,
-  registerAntGlobComp,
-  setupErrorHandle,
-  setupGlobDirectives,
-  setupI18n,
-  setupRouterGuard,
-  setupStore,
-} from 'fe-ent-core';
+import EntCore, { registerAntGlobComp } from 'fe-ent-core';
+import { initAppConfigStore, setupErrorHandle } from 'fe-ent-core/es/logics';
+import { setupGlobDirectives } from 'fe-ent-core/es/directives';
+import { setupStore } from 'fe-ent-core/es/store';
+import { entRouter, setupRouterGuard } from 'fe-ent-core/es/router';
+import { setupI18n } from 'fe-ent-core/es/locales';
 import { initApplication } from '/@/init-application';
 
 import 'ant-design-vue/dist/antd.less';

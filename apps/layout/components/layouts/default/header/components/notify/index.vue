@@ -26,7 +26,7 @@
   import { computed, defineComponent, ref } from 'vue';
   import { Badge, Popover, Tabs } from 'ant-design-vue';
   import { BellOutlined } from '@ant-design/icons-vue';
-  import { useDesign, useMessage } from 'fe-ent-core';
+  import { useDesign, useMessage } from 'fe-ent-core/es/hooks';
   import { tabListData } from './data';
   import NoticeList from './notice-list.vue';
   import type { ListItem } from './data';

@@ -11,7 +11,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useModalInner } from 'fe-ent-core';
+  import { useModalInner } from 'fe-ent-core/es/components/modal';
   export default defineComponent({
     setup() {
       const [register, { closeModal, setModalProps }] = useModalInner();

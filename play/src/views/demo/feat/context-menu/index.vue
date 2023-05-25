@@ -13,7 +13,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useContextMenu, useMessage } from 'fe-ent-core';
+  import { useContextMenu, useMessage } from 'fe-ent-core/es/hooks';
 
   export default defineComponent({
     setup() {

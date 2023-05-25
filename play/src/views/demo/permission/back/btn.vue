@@ -26,17 +26,17 @@
 
     <template v-if="isBackPremissionMode">
       <Divider>组件方式判断权限</Divider>
-      <Authority :value="'1000'">
+      <ent-authority :value="'1000'">
         <ent-button type="primary" class="mx-4"> 拥有code ['1000']权限可见 </ent-button>
-      </Authority>
+      </ent-authority>
 
-      <Authority :value="'2000'">
+      <ent-authority :value="'2000'">
         <ent-button color="success" class="mx-4"> 拥有code ['2000']权限可见 </ent-button>
-      </Authority>
+      </ent-authority>
 
-      <Authority :value="['1000', '2000']">
+      <ent-authority :value="['1000', '2000']">
         <ent-button color="error" class="mx-4"> 拥有code ['1000','2000']角色权限可见 </ent-button>
-      </Authority>
+      </ent-authority>
 
       <Divider>函数方式方式判断权限</Divider>
       <ent-button v-if="hasPermission('1000')" type="primary" class="mx-4">
@@ -69,19 +69,13 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { Alert, Divider } from 'ant-design-vue';
-  import {
-    EntAuthority as Authority,
-    EntPageWrapper,
-    PermissionModeEnum,
-    useAppStore,
-    usePermission,
-    usePermissionStore,
-    useUserStore,
-  } from 'fe-ent-core';
+  import { PermissionModeEnum } from 'fe-ent-core/es/logics/enums';
+  import { useAppStore, usePermissionStore, useUserStore } from 'fe-ent-core/es/store';
+  import { usePermission } from 'fe-ent-core/es/hooks';
   import CurrentPermissionMode from '../current-permission-mode.vue';
 
   export default defineComponent({
-    components: { Alert, EntPageWrapper, CurrentPermissionMode, Divider, Authority },
+    components: { Alert, CurrentPermissionMode, Divider },
     setup() {
       const { hasPermission } = usePermission();
       const permissionStore = usePermissionStore();

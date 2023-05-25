@@ -15,9 +15,9 @@
   import { computed, defineComponent } from 'vue';
 
   import { Select } from 'ant-design-vue';
-  import { useDesign } from 'fe-ent-core';
+  import { useDesign } from 'fe-ent-core/es/hooks';
   import { baseHandler } from '../handler';
-  import type { ChangeEvent } from 'fe-ent-core';
+  import type { ChangeEvent } from 'fe-ent-core/es/types';
   import type { HandlerEnum } from '../enum';
   import type { PropType } from 'vue';
   type LabelValueOptions = {

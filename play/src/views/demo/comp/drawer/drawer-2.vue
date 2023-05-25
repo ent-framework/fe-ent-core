@@ -6,7 +6,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useDrawerInner } from 'fe-ent-core';
+  import { useDrawerInner } from 'fe-ent-core/es/components/drawer';
   export default defineComponent({
     setup() {
       const [register, { closeDrawer }] = useDrawerInner();

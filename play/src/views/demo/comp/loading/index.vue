@@ -34,9 +34,9 @@
 </template>
 <script lang="ts">
   import { defineComponent, reactive, ref, toRefs } from 'vue';
-  import { useLoading } from 'fe-ent-core';
+  import { useLoading } from 'fe-ent-core/es/components/loading';
   import { Alert } from 'ant-design-vue';
-  import type { ElRef } from 'fe-ent-core';
+  import type { ElRef } from 'fe-ent-core/es/types';
 
   export default defineComponent({
     components: { [Alert.name]: Alert },

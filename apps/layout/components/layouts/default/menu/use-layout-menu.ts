@@ -1,14 +1,18 @@
 import { computed, ref, unref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { MenuSplitTyeEnum , useAppInject, useMenuSetting ,
+import { MenuSplitTyeEnum } from 'fe-ent-core/es/logics/enums';
+import { useAppInject, useMenuSetting } from 'fe-ent-core/es/hooks';
+import {
   getChildrenMenus,
   getCurrentParentPath,
   getMenus,
   getShallowMenus,
-  usePermissionStore } from 'fe-ent-core';
+} from 'fe-ent-core/es/router';
+import { usePermissionStore } from 'fe-ent-core/es/store';
+
 import { useThrottleFn } from '@vueuse/core';
 import type { Ref } from 'vue';
-import type { Menu } from 'fe-ent-core';
+import type { Menu } from 'fe-ent-core/es/router';
 
 export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
   // Menu array

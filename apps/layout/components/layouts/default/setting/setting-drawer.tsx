@@ -1,16 +1,15 @@
 import { computed, defineComponent, unref } from 'vue';
+import { EntDarkModeToggle, EntDrawer } from 'fe-ent-core';
+import { MenuTypeEnum, TriggerEnum } from 'fe-ent-core/es/logics';
 import {
-  EntAppDarkModeToggle,
-  EntDrawer,
-  MenuTypeEnum,
-  TriggerEnum,
   useHeaderSetting,
   useI18n,
   useMenuSetting,
   useMultipleTabSetting,
   useRootSetting,
   useTransitionSetting,
-} from 'fe-ent-core';
+} from 'fe-ent-core/es/hooks';
+
 import { Divider } from 'ant-design-vue';
 
 import { InputNumberItem, SelectItem, SettingFooter, SwitchItem, TypePicker } from './components';
@@ -356,7 +355,7 @@ export default defineComponent({
         class="setting-drawer"
       >
         {unref(getShowDarkModeToggle) && <Divider>{() => t('layout.setting.darkMode')}</Divider>}
-        {unref(getShowDarkModeToggle) && <EntAppDarkModeToggle class="mx-auto" />}
+        {unref(getShowDarkModeToggle) && <EntDarkModeToggle class="mx-auto" />}
         <Divider>{() => t('layout.setting.navMode')}</Divider>
         {renderSidebar()}
         <Divider>{() => t('layout.setting.interfaceFunction')}</Divider>

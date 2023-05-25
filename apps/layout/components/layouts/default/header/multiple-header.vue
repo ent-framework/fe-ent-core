@@ -16,7 +16,7 @@
     useLayoutHeight,
     useMenuSetting,
     useMultipleTabSetting,
-  } from 'fe-ent-core';
+  } from 'fe-ent-core/es/hooks';
   import MultipleTabs from '../tabs/index.vue';
   import LayoutHeader from './index.vue';
   import type { CSSProperties } from 'vue';

@@ -1,4 +1,4 @@
-import type { BasicFetchResult, BasicPageParams } from 'fe-ent-core';
+import type { BasicFetchResult, BasicPageParams } from 'fe-ent-core/es/logics';
 /**
  * @description: Request list interface parameters
  */

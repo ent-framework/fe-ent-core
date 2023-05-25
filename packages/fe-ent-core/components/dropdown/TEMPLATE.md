@@ -20,4 +20,4 @@ description:
 
 ## API
 
-%%API(src/dropdown.vue)%%
+%%API(src/index.vue)%%

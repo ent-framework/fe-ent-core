@@ -2,13 +2,13 @@
   import { computed, defineComponent, ref, unref } from 'vue';
   import { get } from 'lodash-es';
   import { Descriptions } from 'ant-design-vue';
-  import EntCollapseContainer from '@ent-core/components/container/src/collapse/collapse-container.vue';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
   import { isFunction } from '@vueuse/shared';
+  import CollapseContainer from '@ent-core/components/container';
+  import { useDesign } from '@ent-core/hooks/web/use-design';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
   import { type Recordable } from '@ent-core/types';
-  import type { CollapseContainerOptions } from '@ent-core/components/container';
+  import type { CollapseContainerOptions } from '@ent-core/components/container/interface';
   import type { CSSProperties, PropType } from 'vue';
   import type { DescriptionsProps } from 'ant-design-vue/es';
   import type { DescInstance, DescItem, DescriptionProps } from './typing';
@@ -161,12 +161,12 @@
         const { title } = unref(getMergeProps);
 
         return (
-          <EntCollapseContainer title={title} canExpan={canExpand} helpMessage={helpMessage}>
+          <CollapseContainer title={title} canExpan={canExpand} helpMessage={helpMessage}>
             {{
               default: () => content,
               action: () => getSlot(slots, 'action'),
             }}
-          </EntCollapseContainer>
+          </CollapseContainer>
         );
       };
 

@@ -23,8 +23,9 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref } from 'vue';
-  import type { TreeItem } from 'fe-ent-core';
-  import { useDrawerInner, useForm } from 'fe-ent-core';
+  import type { TreeItem } from 'fe-ent-core/es/components/tree/interface';
+  import { useDrawerInner } from 'fe-ent-core/es/components/drawer';
+  import { useForm } from 'fe-ent-core/es/components/form';
   import { formSchema } from './role-data';
 
   import { getMenuList } from '/@/api/system';

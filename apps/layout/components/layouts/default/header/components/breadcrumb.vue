@@ -18,21 +18,11 @@
   import { useRouter } from 'vue-router';
 
   import { Breadcrumb } from 'ant-design-vue';
-  import {
-    EntIcon,
-    REDIRECT_NAME,
-    filter,
-    getAllParentPath,
-    getMenus,
-    isString,
-    propTypes,
-    useDesign,
-    useGo,
-    useI18n,
-    useRootSetting,
-  } from 'fe-ent-core';
-
-  import type { Menu } from 'fe-ent-core';
+  import { EntIcon } from 'fe-ent-core';
+  import { useDesign, useGo, useI18n, useRootSetting } from 'fe-ent-core/es/hooks';
+  import { filter, isString, propTypes } from 'fe-ent-core/es/utils';
+  import { REDIRECT_NAME, getAllParentPath, getMenus } from 'fe-ent-core/es/router';
+  import type { Menu } from 'fe-ent-core/es/router';
 
   import type { RouteLocationMatched } from 'vue-router';
 

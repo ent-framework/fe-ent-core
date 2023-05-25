@@ -30,7 +30,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Card, Col, List, Row } from 'ant-design-vue';
-  import { EntIcon } from 'fe-ent-core';
   import { applicationList } from './data';
 
   export default defineComponent({
@@ -39,7 +38,6 @@
       List,
       ListItem: List.Item,
       Card,
-      EntIcon,
       [Row.name]: Row,
       [Col.name]: Col,
     },

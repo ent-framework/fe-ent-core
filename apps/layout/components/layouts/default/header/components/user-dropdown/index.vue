@@ -40,17 +40,11 @@
   import { computed, defineComponent } from 'vue';
   import { Dropdown, Menu } from 'ant-design-vue';
 
-  import {
-    DOC_URL,
-    openWindow,
-    propTypes,
-    useDesign,
-    useHeaderSetting,
-    useI18n,
-    useModal,
-    useUserStore,
-  } from 'fe-ent-core';
-
+  import { DOC_URL } from 'fe-ent-core/es/logics';
+  import { openWindow, propTypes } from 'fe-ent-core/es/utils';
+  import { useDesign, useHeaderSetting, useI18n } from 'fe-ent-core/es/hooks';
+  import { useModal } from 'fe-ent-core/es/components/modal';
+  import { useUserStore } from 'fe-ent-core/es/store';
   import headerImg from '../../../../../../assets/header.jpg';
 
   import LockAction from '../lock/lock-modal.vue';

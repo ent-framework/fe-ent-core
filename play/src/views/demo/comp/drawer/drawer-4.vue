@@ -7,8 +7,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useDrawerInner, useForm } from 'fe-ent-core';
-  import type { FormSchema } from 'fe-ent-core';
+  import { useDrawerInner } from 'fe-ent-core/es/components/drawer';
+  import { useForm } from 'fe-ent-core/es/components/form';
+  import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
 
   const schemas: FormSchema[] = [
     {

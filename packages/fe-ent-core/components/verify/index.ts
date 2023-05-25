@@ -1,7 +1,8 @@
-import { withInstall } from '@ent-core/utils/index';
-import basicDragVerify from './src/drag-verify.vue';
-import rotateDragVerify from './src/img-rotate.vue';
+import { withInstall } from '@ent-core/utils';
+import BasicDragVerify from './src/drag-verify.vue';
+import RotateDragVerify from './src/img-rotate.vue';
 
-export const EntDragVerify = withInstall(basicDragVerify);
-export const EntRotateDragVerify = withInstall(rotateDragVerify);
-export * from './src/typing';
+export const EntDragVerify = withInstall(BasicDragVerify);
+export const EntRotateDragVerify = withInstall(RotateDragVerify);
+export default BasicDragVerify;
+export { RotateDragVerify };

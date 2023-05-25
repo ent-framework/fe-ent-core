@@ -1,2 +1,9 @@
-export { default as SimpleMenu } from './src/simple-menu.vue';
-export { default as SimpleMenuTag } from './src/simple-menu-tag.vue';
+import { withInstall } from '@ent-core/utils';
+
+import SimpleMenu from './src/simple-menu.vue';
+import SimpleMenuTag from './src/simple-menu-tag.vue';
+
+export const EntSimpleMenu = withInstall(SimpleMenu);
+export const EntSimpleMenuTag = withInstall(SimpleMenuTag);
+export default SimpleMenu;
+export { SimpleMenuTag };

@@ -1,4 +1,4 @@
-import { withInstall } from 'fe-ent-core';
+import { withInstall } from 'fe-ent-core/es/utils';
 import qrCode from './components/qr-code.vue';
 import type { App } from 'vue';
 

@@ -22,7 +22,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Alert } from 'ant-design-vue';
-  import { useDrawer } from 'fe-ent-core';
+  import { useDrawer } from 'fe-ent-core/es/components/drawer';
   import Drawer1 from './drawer-1.vue';
   import Drawer2 from './drawer-2.vue';
   import Drawer3 from './drawer-3.vue';

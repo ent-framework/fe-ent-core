@@ -14,11 +14,11 @@
   import { computed, defineComponent } from 'vue';
 
   import { Switch } from 'ant-design-vue';
-  import { useDesign, useI18n } from 'fe-ent-core';
+  import { useDesign, useI18n } from 'fe-ent-core/es/hooks';
   import { baseHandler } from '../handler';
   import type { PropType } from 'vue';
   import type { HandlerEnum } from '../enum';
-  import type { ChangeEvent } from 'fe-ent-core';
+  import type { ChangeEvent } from 'fe-ent-core/es/types';
 
   export default defineComponent({
     name: 'SwitchItem',

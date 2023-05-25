@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useTable } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core/es/components/table';
   import { getCustomHeaderColumns } from './table-data';
   import { FormOutlined } from '@ant-design/icons-vue';
   import { demoListApi } from '/@/api/table';

@@ -36,7 +36,7 @@
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import Icon from '@ent-core/components/icon';
   import CopperModal from './copper-modal.vue';
-  import type { ButtonProps } from '@ent-core/components/button';
+  import type { ButtonProps } from '@ent-core/components/button/interface';
   import type { CSSProperties, PropType } from 'vue';
 
   type apiFunParams = { file: Blob; name: string; filename: string };

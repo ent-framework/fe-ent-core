@@ -4,7 +4,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { propTypes } from 'fe-ent-core';
+  import { propTypes } from 'fe-ent-core/es/utils';
   import SiderTrigger from './sider-trigger.vue';
   import HeaderTrigger from './header-trigger.vue';
 

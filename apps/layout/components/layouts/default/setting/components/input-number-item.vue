@@ -13,7 +13,7 @@
   import { defineComponent } from 'vue';
 
   import { InputNumber } from 'ant-design-vue';
-  import { useDesign } from 'fe-ent-core';
+  import { useDesign } from 'fe-ent-core/es/hooks';
   import { baseHandler } from '../handler';
   import type { PropType } from 'vue';
   import type { HandlerEnum } from '../enum';

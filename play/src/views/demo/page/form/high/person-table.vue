@@ -12,8 +12,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useTable } from 'fe-ent-core';
-  import type { BasicColumn, EditRecordRow } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core/es/components/table';
+  import type { BasicColumn, EditRecordRow } from 'fe-ent-core/es/components/table/interface';
 
   const columns: BasicColumn[] = [
     {

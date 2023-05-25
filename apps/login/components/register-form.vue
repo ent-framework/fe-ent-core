@@ -68,7 +68,8 @@
 <script lang="ts" setup>
   import { computed, defineComponent, reactive, ref, unref } from 'vue';
   import { Button, Checkbox, Form, Input } from 'ant-design-vue';
-  import { EntCountdownInput, EntStrengthMeter, useI18n } from 'fe-ent-core';
+  import { EntCountdownInput, EntStrengthMeter } from 'fe-ent-core';
+  import { useI18n } from 'fe-ent-core/es/hooks';
   import LoginFormTitle from './login-form-title.vue';
   import { LoginStateEnum, useFormRules, useFormValid, useLoginState } from './use-login';
 

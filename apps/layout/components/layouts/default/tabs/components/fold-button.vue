@@ -5,13 +5,9 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
-  import {
-    EntIcon,
-    triggerWindowResize,
-    useDesign,
-    useHeaderSetting,
-    useMenuSetting,
-  } from 'fe-ent-core';
+  import { EntIcon } from 'fe-ent-core';
+  import { useDesign, useHeaderSetting, useMenuSetting } from 'fe-ent-core/es/hooks';
+  import { triggerWindowResize } from 'fe-ent-core/es/utils';
 
   export default defineComponent({
     name: 'FoldButton',

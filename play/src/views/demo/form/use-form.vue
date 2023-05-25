@@ -67,8 +67,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import type { FormSchema } from 'fe-ent-core';
-  import { useForm, useMessage } from 'fe-ent-core';
+  import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
+  import { useForm } from 'fe-ent-core/es/components/form';
+  import { useMessage } from 'fe-ent-core/es/hooks';
   import { areaRecord } from '/@/api/cascader';
 
   const schemas: FormSchema[] = [

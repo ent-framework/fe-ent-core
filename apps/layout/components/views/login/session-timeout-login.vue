@@ -1,7 +1,8 @@
 <script lang="ts">
   import { defineComponent, onBeforeUnmount, onMounted, ref } from 'vue';
-  import { PermissionModeEnum, useAppStore, usePermissionStore, useUserStore } from 'fe-ent-core';
-  import type { Nullable } from 'fe-ent-core';
+  import { PermissionModeEnum } from 'fe-ent-core/es/logics/enums';
+  import { useAppStore, usePermissionStore, useUserStore } from 'fe-ent-core/es/store';
+  import type { Nullable } from 'fe-ent-core/es/types';
 
   export default defineComponent({
     setup() {

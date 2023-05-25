@@ -57,14 +57,16 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref } from 'vue';
-  import { ApiSelect, useMessage } from 'fe-ent-core';
+  import { ApiSelect } from 'fe-ent-core';
+  import { useMessage } from 'fe-ent-core/es/hooks';
 
   import { optionsListApi } from '/@/api/select';
   import { useDebounceFn } from '@vueuse/core';
   import { treeOptionsListApi } from '/@/api/tree';
   import { Select } from 'ant-design-vue';
   import { cloneDeep } from 'lodash';
-  import type { FormSchema, Recordable } from 'fe-ent-core';
+  import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
+  import type { Recordable } from 'fe-ent-core/es/types';
 
   const valueSelectA = ref<string[]>([]);
   const valueSelectB = ref<string[]>([]);

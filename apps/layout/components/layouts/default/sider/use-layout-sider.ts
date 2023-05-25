@@ -1,10 +1,11 @@
 import { computed, nextTick, onMounted, ref, unref } from 'vue';
 
-import { TriggerEnum, useMenuSetting } from 'fe-ent-core';
+import { useMenuSetting } from 'fe-ent-core/es/hooks';
+import { TriggerEnum } from 'fe-ent-core/es/logics/enums';
 
 import { useDebounceFn } from '@vueuse/shared';
 import type { Ref } from 'vue';
-import type { ComponentRef, ElRef } from 'fe-ent-core';
+import type { ComponentRef, ElRef } from 'fe-ent-core/es/types';
 
 /**
  * Handle related operations of menu events

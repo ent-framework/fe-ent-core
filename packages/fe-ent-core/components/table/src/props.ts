@@ -1,6 +1,6 @@
 import { propTypes } from '@ent-core/utils/prop-types';
 import { DEFAULT_FILTER_FN, DEFAULT_SIZE, DEFAULT_SORT_FN, FETCH_SETTING } from './const';
-import type { TableRowSelection } from 'ant-design-vue/lib/table/interface';
+import type { TableRowSelection } from 'ant-design-vue/es/table/interface';
 import type { PropType } from 'vue';
 import type { PaginationProps } from './types/pagination';
 import type {
@@ -11,7 +11,7 @@ import type {
   TableCustomRecord,
   TableSetting,
 } from './types/table';
-import type { FormProps } from '@ent-core/components/form';
+import type { FormProps } from '@ent-core/components/form/interface';
 import type { Fn, Recordable } from '@ent-core/types';
 
 export const basicProps = {

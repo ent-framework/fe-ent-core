@@ -28,8 +28,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import type { BasicColumn, Recordable } from 'fe-ent-core';
-  import { useTable } from 'fe-ent-core';
+  import type { Recordable } from 'fe-ent-core/es/types';
+  import type { BasicColumn } from 'fe-ent-core/es/components/table/interface';
+  import { useTable } from 'fe-ent-core/es/components/table';
 
   import { demoListApi } from '/@/api/table';
   const columns: BasicColumn[] = [

@@ -5,7 +5,7 @@ import { error } from '@ent-core/utils/log';
 import type { BasicColumn, BasicTableProps, FetchParams, TableActionType } from '../types/table';
 import type { PaginationProps } from '../types/pagination';
 import type { DynamicProps } from '@ent-core/logics/types/utils';
-import type { FormActionType } from '@ent-core/components/form';
+import type { FormActionType } from '@ent-core/components/form/interface';
 import type { WatchStopHandle } from 'vue';
 import type { Nullable, Recordable } from '@ent-core/types';
 

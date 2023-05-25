@@ -55,7 +55,7 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { Col, Row, Tabs, Tag } from 'ant-design-vue';
-  import { useUserStore } from 'fe-ent-core';
+  import { useUserStore } from 'fe-ent-core/es/store';
   import Article from './article.vue';
   import Application from './application.vue';
   import Project from './project.vue';

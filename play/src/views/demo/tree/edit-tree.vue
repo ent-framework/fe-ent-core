@@ -31,7 +31,8 @@
   import { defineComponent, h } from 'vue';
   import { DeleteOutlined, PlusOutlined } from '@ant-design/icons-vue';
   import { treeData } from './data';
-  import type { ContextMenuItem, TreeActionItem } from 'fe-ent-core';
+  import type { TreeActionItem } from 'fe-ent-core/es/components/tree/interface';
+  import type { ContextMenuItem } from 'fe-ent-core/es/components/context-menu/interface';
 
   export default defineComponent({
     setup() {

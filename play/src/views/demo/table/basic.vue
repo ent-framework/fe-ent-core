@@ -31,7 +31,7 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { getBasicColumns, getBasicData } from './table-data';
-  import type { ColumnChangeParam } from 'fe-ent-core';
+  import type { ColumnChangeParam } from 'fe-ent-core/es/components/table/interface';
 
   export default defineComponent({
     setup() {

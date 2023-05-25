@@ -6,7 +6,7 @@
 <script lang="ts">
   import { defineComponent, onMounted, ref, unref, watch } from 'vue';
   import { toDataURL } from 'qrcode';
-  import { downloadByUrl } from 'fe-ent-core';
+  import { downloadByUrl } from 'fe-ent-core/es/utils';
   import { toCanvas } from './qr-code-plus';
   import type { LogoType, QRCodeRenderersOptions } from './qr-code-plus';
   import type { PropType } from 'vue';

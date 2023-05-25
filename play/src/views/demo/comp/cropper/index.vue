@@ -38,7 +38,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { useUserStore } from 'fe-ent-core';
+  import { useUserStore } from 'fe-ent-core/es/store';
   import img from '/@/assets/images/header.jpg';
 
   export default defineComponent({

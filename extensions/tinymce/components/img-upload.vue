@@ -17,8 +17,8 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { Upload } from 'ant-design-vue';
-  import { useDesign, useGlobSetting, useI18n } from 'fe-ent-core';
-  import type { Recordable } from 'fe-ent-core';
+  import { useDesign, useGlobSetting, useI18n } from 'fe-ent-core/es/hooks';
+  import type { Recordable } from 'fe-ent-core/es/types';
   export default defineComponent({
     name: 'TinymceImageUpload',
     components: { Upload },

@@ -3,7 +3,7 @@ import type { Fn, Recordable } from '@ent-core/types';
 import type { FieldMapToTime, FormSchema } from './types/form';
 import type { CSSProperties, PropType } from 'vue';
 import type { ColEx } from './types';
-import type { TableActionType } from '@ent-core/components/table';
+import type { TableActionType } from '@ent-core/components/table/interface';
 import type { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
 import type { RowProps } from 'ant-design-vue/es/grid/Row';
 

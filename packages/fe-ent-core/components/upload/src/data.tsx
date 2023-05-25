@@ -9,7 +9,7 @@ import {
 } from './helper';
 import type { AnyFunction, Fn } from '@ent-core/types';
 import type { FileItem, PreviewFileItem } from './typing';
-import type { BasicColumn, TableActionItem } from '@ent-core/components/table';
+import type { BasicColumn, TableActionItem } from '@ent-core/components/table/interface';
 
 // 文件上传列表
 export function createTableColumns(): BasicColumn[] {

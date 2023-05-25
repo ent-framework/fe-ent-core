@@ -1,8 +1,9 @@
 /**
  * copy from element-ui
  */
+import { withInstall } from '@ent-core/utils';
+import Scrollbar from './src/index.vue';
 
-import Scrollbar from './src/scrollbar.vue';
+export const EntScrollbar = withInstall(Scrollbar);
 
-export { Scrollbar };
-export type { ScrollbarType } from './src/types';
+export default Scrollbar;

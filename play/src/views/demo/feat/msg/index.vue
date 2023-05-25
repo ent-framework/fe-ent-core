@@ -41,7 +41,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { defHttp, useMessage } from 'fe-ent-core';
+  import { defHttp } from 'fe-ent-core/es/utils';
+  import { useMessage } from 'fe-ent-core/es/hooks';
 
   export default defineComponent({
     setup() {

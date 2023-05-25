@@ -1,5 +1,5 @@
-import { t } from 'fe-ent-core';
-import type { AppRouteRecordRaw } from 'fe-ent-core';
+import { t } from 'fe-ent-core/es/hooks';
+import type { AppRouteRecordRaw } from 'fe-ent-core/es/router';
 
 const setup: AppRouteRecordRaw = {
   path: '/setup',

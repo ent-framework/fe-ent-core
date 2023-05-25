@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'fe-ent-core';
+import { createContext, useContext } from 'fe-ent-core/es/hooks';
 import type { ComputedRef, InjectionKey } from 'vue';
 
 export interface ContentContextProps {

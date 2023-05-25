@@ -21,7 +21,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { useTable } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core/es/components/table';
   import { getBasicColumns, getFormConfig } from './table-data';
   import { Alert } from 'ant-design-vue';
 

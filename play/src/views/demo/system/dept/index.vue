@@ -31,7 +31,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useModal, useTable } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core/es/components/table';
+  import { useModal } from 'fe-ent-core/es/components/modal';
   import { getDeptList } from '/@/api/system';
 
   import DeptModal from './dept-modal.vue';

@@ -6,10 +6,9 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { Tinymce } from 'fe-ent-tinymce';
-  import { EntPageWrapper } from 'fe-ent-core';
 
   export default defineComponent({
-    components: { Tinymce, EntPageWrapper },
+    components: { Tinymce },
     setup() {
       const value = ref('hello world!');
       function handleChange(value: string) {

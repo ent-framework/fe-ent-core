@@ -32,7 +32,8 @@
 <script lang="ts">
   import { defineComponent, nextTick } from 'vue';
 
-  import { useDrawer, useTable } from 'fe-ent-core';
+  import { useTable } from 'fe-ent-core/es/components/table';
+  import { useDrawer } from 'fe-ent-core/es/components/drawer';
   import { getMenuList } from '/@/api/system';
 
   import MenuDrawer from './menu-drawer.vue';

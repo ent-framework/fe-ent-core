@@ -1,4 +1,5 @@
-import { withInstall } from '@ent-core/utils/index';
-import vScroll from './src/virtual-scroll.vue';
+import { withInstall } from '@ent-core/utils';
+import vScroll from './src/index.vue';
 
 export const EntVirtualScroll = withInstall(vScroll);
+export default vScroll;

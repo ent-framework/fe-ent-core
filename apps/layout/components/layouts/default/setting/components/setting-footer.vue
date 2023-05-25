@@ -19,18 +19,14 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { CopyOutlined, RedoOutlined } from '@ant-design/icons-vue';
+  import { defaultProjectSetting, updateColorWeak, updateGrayMode } from 'fe-ent-core/es/logics';
   import {
-    defaultProjectSetting,
-    updateColorWeak,
-    updateGrayMode,
     useAppStore,
-    useDesign,
-    useI18n,
-    useMessage,
     useMultipleTabStore,
     usePermissionStore,
     useUserStore,
-  } from 'fe-ent-core';
+  } from 'fe-ent-core/es/store';
+  import { useDesign, useI18n, useMessage } from 'fe-ent-core/es/hooks';
 
   export default defineComponent({
     name: 'SettingFooter',

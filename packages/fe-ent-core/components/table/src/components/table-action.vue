@@ -44,7 +44,7 @@
   import { propTypes } from '@ent-core/utils/prop-types';
   import { useTableContext } from '../hooks/use-table-context';
   import { ACTION_COLUMN_FLAG } from '../const';
-  import type { TableActionItem, TableActionType } from '@ent-core/components/table';
+  import type { TableActionItem, TableActionType } from '@ent-core/components/table/interface';
   import type { TooltipProps } from 'ant-design-vue';
   import type { PropType } from 'vue';
 

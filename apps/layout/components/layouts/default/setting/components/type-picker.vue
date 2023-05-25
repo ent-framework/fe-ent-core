@@ -22,9 +22,9 @@
   import { defineComponent } from 'vue';
 
   import { Tooltip } from 'ant-design-vue';
-  import { useDesign } from 'fe-ent-core';
+  import { useDesign } from 'fe-ent-core/es/hooks';
   import type { PropType } from 'vue';
-  import type { Fn } from 'fe-ent-core';
+  import type { Fn } from 'fe-ent-core/es/types';
   import type { MenuType } from '../enum';
   export default defineComponent({
     name: 'MenuTypePicker',

@@ -1,6 +1,6 @@
 import { createVNode, render } from 'vue';
 import { isClient } from '@ent-core/utils/is';
-import contextMenuVue from './context-menu.vue';
+import contextMenuVue from './index.vue';
 import type { ContextMenuProps, CreateContextOptions } from './typing';
 import type { Fn } from '@ent-core/types';
 

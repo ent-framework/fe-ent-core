@@ -12,7 +12,7 @@ async function run({ umd = false }) {
   await build(await defineLibraryConfig());
   consola.success(`build library successfully in path ${cwd}`);
   // 拷贝less文件到目标文件，index.less编译生成index.css
-  const files = glob.sync('components/**/*.less', {
+  const files = glob.sync('*/*.less', {
     cwd,
     absolute: false,
   });
