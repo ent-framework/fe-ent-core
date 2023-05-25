@@ -33,7 +33,7 @@
       onMounted(() => {
         emit('mounted');
       });
-      return { wrap }
+      return { wrap };
     },
   });
 </script>

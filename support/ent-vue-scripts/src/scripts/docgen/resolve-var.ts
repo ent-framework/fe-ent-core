@@ -9,7 +9,6 @@ function ignore(): boolean {
 export type PropsValuePath = NodePath<bt.ObjectExpression, any> | NodePath<bt.ArrayExpression, any>;
 
 export default function resolveVar(ast: bt.File): Map<string, PropsValuePath> {
-
   const nodePaths = new Map<string, PropsValuePath>();
 
   visit(ast.program, {

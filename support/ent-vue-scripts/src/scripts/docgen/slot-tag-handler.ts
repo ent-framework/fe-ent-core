@@ -1,8 +1,8 @@
 import * as bt from '@babel/types';
-import { Documentation } from 'vue-docgen-api';
 import getDoclets from 'vue-docgen-api/dist/utils/getDoclets';
 import getProperties from 'vue-docgen-api/dist/script-handlers/utils/getProperties';
 import getDocblock from 'vue-docgen-api/dist/utils/getDocblock';
+import type { Documentation } from 'vue-docgen-api';
 
 export function slotTagHandler(documentation: Documentation, path: any) {
   if (bt.isObjectExpression(path.node)) {
@@ -29,14 +29,12 @@ export function slotTagHandler(documentation: Documentation, path: any) {
             typeof slotTag.content === 'string' ? slotTag.content : 'default';
           const slotDescriptor = documentation.getSlotDescriptor(name);
           slotDescriptor.description = jsDoc.description;
-          const bindingsTag = jsDoc.tags.filter(
-            (t: any) => t.title === 'binding'
-          );
+          const bindingsTag = jsDoc.tags.filter((t: any) => t.title === 'binding');
           if (bindingsTag) {
             slotDescriptor.bindings = bindingsTag;
           }
           const customTags = jsDoc.tags.filter(
-            (t: any) => t.title !== 'binding' && t.title !== 'slot'
+            (t: any) => t.title !== 'binding' && t.title !== 'slot',
           );
           if (customTags.length) {
             const tags = customTags.reduce((pre, item) => {

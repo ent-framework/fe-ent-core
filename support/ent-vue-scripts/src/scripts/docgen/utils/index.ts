@@ -49,9 +49,7 @@ export function cleanStr(str: string) {
 }
 
 export const getTemplate = (src: string, lang: 'zh' | 'en') => {
-  const matches = Array.from(
-    src.matchAll(/##\s+(zh-CN|en-US)\n+(.+?)\n+---(?:\n|$)/gs)
-  );
+  const matches = Array.from(src.matchAll(/##\s+(zh-CN|en-US)\n+(.+?)\n+---(?:\n|$)/gs));
   for (const item of matches) {
     if (new RegExp(lang).test(item[1])) {
       src = src.replace(item[0], `${item[2]}\n`);

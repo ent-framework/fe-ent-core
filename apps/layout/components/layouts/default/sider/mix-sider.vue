@@ -75,7 +75,7 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
-  import { ClickOutside } from 'fe-ent-core/es/directives';
+  import { vClickOutside } from 'fe-ent-core/es/directives';
   import {
     EntAppLogo,
     EntIcon,
@@ -110,7 +110,7 @@
       EntSimpleMenuTag,
     },
     directives: {
-      ClickOutside,
+      ClickOutside: vClickOutside,
     },
     setup() {
       const menuModules = ref<Menu[]>([]);

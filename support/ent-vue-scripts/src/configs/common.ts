@@ -11,7 +11,7 @@ export const theme = {
   },
 };
 
-function commonConfig({ command, mode }: ConfigEnv): UserConfig {
+function commonConfig({ command }: ConfigEnv): UserConfig {
   const userConfig = {
     server: {
       host: true,

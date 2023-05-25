@@ -1,4 +1,4 @@
-import { OutputOptions, RollupBuild, RollupOutput } from 'rollup';
+import type { OutputOptions, RollupBuild, RollupOutput } from 'rollup';
 
 /**
  * 根据output类型输出打包文件
@@ -7,7 +7,7 @@ import { OutputOptions, RollupBuild, RollupOutput } from 'rollup';
  */
 export const outputBundle = async (
   output?: OutputOptions | OutputOptions[],
-  bundle?: RollupBuild
+  bundle?: RollupBuild,
 ) => {
   if (!output || !bundle) {
     return false;

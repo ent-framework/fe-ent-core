@@ -1,7 +1,3 @@
-<div>
-<h1>Frontend Enterprise Core</h1>
-</div>
-
 ## 简介
 
 - Frontend Enterprise Core (fe-ent-core)是一个免费开源的中后台模版。使用了最新的`vue3`,`vite4`,`TypeScript`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
@@ -61,10 +57,6 @@ pnpm build:support
 pnpm dev
 ```
 
-- 打包
-
-[Publish](./PUBLISH.md)
-
 ## 更新日志
 
 [CHANGELOG](./CHANGELOG.zh_CN.md)
@@ -81,10 +73,10 @@ pnpm dev
 
 ## 目录介绍
 
-- **packages** - 核心组件库
-- **docs** - 文档库
+- **packages/fe-ent-core** - 核心组件库
+- **packages/ent-vue-docs** - 文档库
 - **play** - 在线样例，方便调试
-- **support/vite-build** - 构建工具，将vite需要配置做了封装，降低使用vite的学习成本
+- **support/ent-vue-scripts** - 构建工具，将vite需要配置做了封装，降低使用vite的学习成本
 - **extensions** - 基于核心组件开发的扩展库
 - **apps/login** - 基础应用-登录
 - **apps/page** - 基础应用-默认layout

@@ -3,8 +3,8 @@ import inquirer from 'inquirer';
 import axios from 'axios';
 import moment from 'moment';
 import { configure } from 'nunjucks';
-import { compareVersion, isValidComponent } from './utils';
 import { toKebabCase } from '../../utils/convert-case';
+import { compareVersion, isValidComponent } from './utils';
 
 const nunjucksEnv = configure(__dirname, {
   autoescape: false,
@@ -28,9 +28,9 @@ const typeMap: Record<string, string> = {
   'New feature': 'feature',
   'Bug fix': 'bugfix',
   'Documentation change': 'docs',
-  'Refactoring': 'refactor',
+  Refactoring: 'refactor',
   'Component style change': 'style',
-  'Enhancement': 'enhancement',
+  Enhancement: 'enhancement',
   'Test cases': 'test',
   'Continuous integration': 'ci',
   'Typescript definition change': 'typescript',
@@ -42,10 +42,7 @@ const getRecords = (mr: any) => {
 
   const records: Array<Record<string, any>> = [];
 
-  const typeRule = new RegExp(
-    '##\\s+Types of changes.+?\\[[xX]]\\s+(.+?)\\n',
-    's'
-  );
+  const typeRule = new RegExp('##\\s+Types of changes.+?\\[[xX]]\\s+(.+?)\\n', 's');
 
   const typeString = content.match(typeRule)?.[1];
 
@@ -59,17 +56,13 @@ const getRecords = (mr: any) => {
       // Alignment info
       '\\s*\\|(?:[-: ]+[-| :]*)\\|\\s*\\n' +
       // Table content
-      '((?:\\s*\\|.*\\|\\s*(?:\\n|$))*)'
+      '((?:\\s*\\|.*\\|\\s*(?:\\n|$))*)',
   );
 
   const matchResult = content.match(rule);
   if (matchResult) {
-    const titles = matchResult[1]
-      .split('|')
-      .map((item: string) => item.toLowerCase().trim());
-    const lines = matchResult[2]
-      .split('\n')
-      .filter((value: string) => Boolean(value.trim()));
+    const titles = matchResult[1].split('|').map((item: string) => item.toLowerCase().trim());
+    const lines = matchResult[2].split('\n').filter((value: string) => Boolean(value.trim()));
     for (const line of lines) {
       const items = line
         .split('|')
@@ -105,7 +98,7 @@ const getRecords = (mr: any) => {
             mrId: mr.number,
             mrURL: mr.html_url,
             type,
-          } as Record<string, any>
+          } as Record<string, any>,
         );
         records.push(data);
       }
@@ -139,9 +132,7 @@ const addComponent = (data: any, changelog: any) => {
   changelog[data.component][data.type].push(data.content);
 };
 
-const getEmitsFromChangelog = async (
-  changelog: Changelog
-): Promise<EmitInfo[]> => {
+const getEmitsFromChangelog = async (changelog: Changelog): Promise<EmitInfo[]> => {
   const allCN = {};
   const addEN = {};
   const componentCN: Record<string, any> = {};
@@ -165,14 +156,7 @@ const getEmitsFromChangelog = async (
       const answer = await inquirer.prompt({
         type: 'list',
         name: 'type',
-        choices: [
-          'feature',
-          'bugfix',
-          'enhancement',
-          'style',
-          'typescript',
-          'attention',
-        ],
+        choices: ['feature', 'bugfix', 'enhancement', 'style', 'typescript', 'attention'],
         message: `Please select the type for '${item.component}'.[${item.mrId}]`,
       });
       item.type = answer.type;
@@ -257,21 +241,6 @@ const getLastVersion = (content: string) => {
   return match?.[1];
 };
 
-const getBetaVersions = (content: string) => {
-  const matches = Array.from(
-    content.matchAll(/## (\d+\.\d+\.\d+(-beta\.\d+)?)/g)
-  );
-  const versions = [];
-  for (const item of matches) {
-    if (/beta/.test(item[1])) {
-      versions.push(item[1]);
-    } else {
-      break;
-    }
-  }
-  return versions;
-};
-
 const run = async () => {
   let version = '2.0.0';
   if (fs.existsSync('package.json')) {
@@ -302,25 +271,20 @@ const run = async () => {
   const currentContent = fs.readFileSync('CHANGELOG.zh-CN.md', 'utf8');
   const lastVersion = getLastVersion(currentContent);
 
-  if (
-    lastVersion &&
-    (version === lastVersion || compareVersion(version, lastVersion) < 1)
-  ) {
+  if (lastVersion && (version === lastVersion || compareVersion(version, lastVersion) < 1)) {
     const answer = await inquirer.prompt({
       type: 'input',
       name: 'version',
       message: `This version is already existed or lower than last version, please reenter`,
       validate(input: any) {
-        return (
-          /\d+\.\d+\.\d+(-beta\.\d+)?/.test(input) && input !== lastVersion
-        );
+        return /\d+\.\d+\.\d+(-beta\.\d+)?/.test(input) && input !== lastVersion;
       },
     });
     version = answer.version;
   }
 
   const res = await axios.get(
-    `https://api.github.com/search/issues?accept=application/vnd.github.v3+json&q=repo:ent-framework/fe-ent-core+is:pr+is:merged+milestone:${version}`
+    `https://api.github.com/search/issues?accept=application/vnd.github.v3+json&q=repo:ent-framework/fe-ent-core+is:pr+is:merged+milestone:${version}`,
   );
 
   if (res.status === 200) {

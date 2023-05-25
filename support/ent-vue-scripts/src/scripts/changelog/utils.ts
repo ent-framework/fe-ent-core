@@ -88,7 +88,7 @@ const getVersionNumber = (version: string): number => {
     case 'rc':
       return -1;
     default:
-      return parseInt(version, 10);
+      return Number.parseInt(version, 10);
   }
 };
 

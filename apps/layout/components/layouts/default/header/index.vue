@@ -64,11 +64,7 @@
     useRootSetting,
   } from 'fe-ent-core/es/hooks';
   import { EntAppLogo, EntLocalePicker } from 'fe-ent-core';
-  import {
-    MenuModeEnum,
-    MenuSplitTyeEnum,
-    SettingButtonPositionEnum,
-  } from 'fe-ent-core/es/logics';
+  import { MenuModeEnum, MenuSplitTyeEnum, SettingButtonPositionEnum } from 'fe-ent-core/es/logics';
   import { propTypes } from 'fe-ent-core/es/utils';
   import { useLocale } from 'fe-ent-core/es/locales';
   import { useUserStoreWithOut } from 'fe-ent-core/es/store';

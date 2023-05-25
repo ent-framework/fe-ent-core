@@ -6,7 +6,7 @@ import { toKebabCase } from '../../utils/convert-case';
 import { slotTagHandler } from '../docgen/slot-tag-handler';
 import propExtHandler from '../docgen/propExtHandler';
 import { getPackage } from '../../utils/get-package';
-import type { ComponentDoc, ParamTag, PropDescriptor } from 'vue-docgen-api';
+import type { ComponentDoc, ParamTag } from 'vue-docgen-api';
 
 const getComponentsFromTemplates = async () => {
   const templates = await fg('components/**/TEMPLATE.md');

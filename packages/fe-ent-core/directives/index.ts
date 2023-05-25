@@ -12,8 +12,8 @@ export function setupGlobDirectives(app: App) {
   setClickOutsideDirective(app);
 }
 
-export * from './click-out-side';
-export * from './ripple';
-export * from './loading';
-export * from './permission';
-export * from './repeat-click';
+export { default as vClickOutside } from './click-out-side';
+export { default as vRipple } from './ripple';
+export { default as vLoading } from './loading';
+export { default as vAuth } from './permission';
+export { default as vRepeatClick } from './repeat-click';

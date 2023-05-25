@@ -1,7 +1,7 @@
+import path from 'path';
 import fs from 'fs-extra';
 import { parse } from 'comment-parser';
 import { parse as babelParse } from '@babel/parser';
-import path from 'path';
 
 function getMaterialData(content: string) {
   const blocks = parse(content);
@@ -36,11 +36,7 @@ function getMaterialData(content: string) {
 }
 
 const getMaterialMdContent = (materialData: Record<string, any>) => {
-  return `\`\`\`json type=description\n${JSON.stringify(
-    materialData,
-    null,
-    2
-  )}\n\`\`\`\n`;
+  return `\`\`\`json type=description\n${JSON.stringify(materialData, null, 2)}\n\`\`\`\n`;
 };
 
 async function getDemoMdContent(filename: string) {
@@ -50,7 +46,7 @@ async function getDemoMdContent(filename: string) {
 
 export default async function parseMaterial(
   content: string,
-  { matcher, dirname }: { matcher: RegExp; dirname: string }
+  { matcher, dirname }: { matcher: RegExp; dirname: string },
 ) {
   const match = content.match(matcher);
   if (match && match[1]) {

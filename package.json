@@ -52,6 +52,8 @@
     "lint:stylelint": "stylelint --cache --fix \"packages/**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
     "lint:play": "eslint --max-warnings 0  \"play/**/*.{vue,ts,tsx}\" --fix",
+    "lint:support": "eslint --max-warnings 0  \"support/**/*.{vue,ts,tsx}\" --fix",
+    "lint:lib": "eslint --max-warnings 0  \"packages/fe-ent-core/**/*.{vue,ts,tsx}\" --fix",
     "test:unit": "jest",
     "test:unit-coverage": "jest --coverage",
     "test:gzip": "npx http-server dist --cors --gzip -c-1",

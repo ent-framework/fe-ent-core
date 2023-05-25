@@ -1,113 +1,91 @@
-<div align="center">
-  <a href="https://arco.design" target="_blank">
-    <img alt="Arco Design Logo" width="200" src="https://avatars.githubusercontent.com/u/64576149?s=200&v=4"/>
-  </a>
-</div>
-<div align="center">
-  <h1>Arco Design</h1>
-</div>
+## 简介
 
-<div align="center">
+- Frontend Enterprise Core (fe-ent-core)是一个免费开源的中后台模版。使用了最新的`vue3`,`vite4`,`TypeScript`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
+- fe-ent-core是基于`Vue Vben Admin`为基础封装套的一套组件库。
 
-A comprehensive Vue UI components library based on the [Arco Design](https://arco.design/) system.
+## 特性
 
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/arco-design/arco-design-vue/blob/main/LICENSE)
+- **最新技术栈**：使用 Vue3/vite4 等前端前沿技术开发
+- **TypeScript**: 应用程序级 JavaScript 的语言
+- **主题**：可配置的主题
+- **国际化**：内置完善的国际化方案
+- **Mock 数据** 内置 Mock 数据方案
+- **权限** 内置完善的动态路由权限生成方案
+- **组件** 二次封装了多个常用的组件，使用rolllup打包成组件
+- **工具支持** 独立的build工具方便快速构建项目
 
-</div>
+## 文档
 
-<div align="center">
+## 准备
 
-English | [简体中文](./README.zh-CN.md)
+- [node](http://nodejs.org/) 和 [git](https://git-scm.com/) -项目开发环境
+- [Vite](https://vitejs.dev/) - 熟悉 vite 特性
+- [pnpm](https://www.pnpm.cn/) - 构建工具
+- [Vue3](https://v3.vuejs.org/) - 熟悉 Vue 基础语法
+- [TypeScript](https://www.typescriptlang.org/) - 熟悉`TypeScript`基本语法
+- [Es6+](http://es6.ruanyifeng.com/) - 熟悉 es6 基本语法
+- [Vue-Router-Next](https://next.router.vuejs.org/) - 熟悉 vue-router 基本使用
+- [Ant-Design-Vue](https://2x.antdv.com/docs/vue/introduce-cn/) - ui 基本使用
+- [Mock.js](https://github.com/nuysoft/Mock) - mockjs 基本语法
 
-</div>
+## 安装使用
 
-# Features
-
-## Comprehensive
-
-With more than 60 crafted components that you can use out of the box.
-
-## Customizable theme
-
-Extensive theme tokens can be customized to build your own theme. Two ways of customization are supported:
-
-* [With less-loader](https://arco.design/vue/docs/theme)
-* [Design Lab](https://arco.design/themes) - Recommended!
-
-## TypeScript friendly
-
-All components are written in TypeScript so it's type friendly.
-
-# Installation
-
-Available as an [npm package](https://www.npmjs.com/package/@arco-design/web-vue)
+- 获取项目代码
 
 ```bash
-// with npm
-npm install @arco-design/web-vue
-
-// with yarn
-yarn add @arco-design/web-vue
+git clone https://github.com/ent-framework/fe-ent-core.git
 ```
 
-# Examples
+- 安装依赖
 
-```typescript
-import { createApp } from 'vue'
-import ArcoVue from '@arco-design/web-vue';
-import App from './App.vue';
-import '@arco-design/web-vue/dist/arco.css';
+```bash
+cd fe-ent-core
 
-const app = createApp(App);
-app.use(ArcoVue);
-app.mount('#app');
+pnpm install
+
+```
+- 构建tools & cli
+
+```bash
+pnpm build:support
+
 ```
 
-## Development
+- 运行，登录账号: admin / 123456
 
-1. Use `npm install` to install basic packages such as `lerna` and `yarn`
+```bash
+pnpm dev
+```
 
-2. Use `yarn install` to install the dependencies of each package in `workspaces` (If you encounter a `YN0018` error, you can use `YARN_CHECKSUM_BEHAVIOR=update yarn` to install)
+## 更新日志
 
-3. Use `npm run init` to initialize the project
+[CHANGELOG](./CHANGELOG.zh_CN.md)
 
-# Useful Links
+## 项目地址
 
-* [Documentation website](https://arco.design/)
-* [Dark mode](https://arco.design/vue/docs/dark)
-* [Theme customization](https://arco.design/vue/docs/theme)
-* [Figma component library](https://www.figma.com/file/FVu1DydEeXvJqXrkOb90Oi/ArcoDesign%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1_2.0?node-id=5472%3A308)
-* [Awesome Arco](https://github.com/arco-design/awesome-arco)
+- [fe-ent-core](https://github.com/ent-framework/fe-ent-core.git) - 完整版
 
-# Ecosystems
+## 浏览器支持
 
-| Project               | Description                                             |
-| --------------------- | ------------------------------------------------------- |
-| [React Component Library] | A comprehensive React UI components library based on the Arco Design system |
-| [Design Lab] | A platform to create and manage your themes with ease. |
-| [Material Market] | A platform that provides massive high-quality customized materials to greatly boost development efficiency. |
-| [Icon Box] | One-stop platform to manage your icons. |
-| [Arco Pro] | A solution to quickly building applications from scratch. |
+本地开发推荐使用`Chrome 80+` 浏览器
 
-[React Component Library]: https://arco.design/react/docs/start
+支持现代浏览器, 不支持 IE
 
-[Design Lab]: https://arco.design/themes
+## 目录介绍
 
-[Material Market]: https://arco.design/material
+- **packages/fe-ent-core** - 核心组件库
+- **packages/ent-vue-docs** - 文档库
+- **play** - 在线样例，方便调试
+- **support/ent-vue-scripts** - 构建工具，将vite需要配置做了封装，降低使用vite的学习成本
+- **extensions** - 基于核心组件开发的扩展库
+- **apps/login** - 基础应用-登录
+- **apps/page** - 基础应用-默认layout
 
-[Icon Box]: https://arco.design/iconbox
+## 后台整合示例
 
-[Arco Pro]: https://arco.design/pro/
+- **集成Admin前端** https://github.com/ent-framework/fe-app-admin.git
+- **集成Spring Boot后端** https://github.com/ent-framework/ent-framework.git
 
-# Contributing
+使用方法请参考项目内的README
 
-Developers interested in contributing should read the [Code of Conduct](./CODE_OF_CONDUCT.md) and
-the [Contributing Guide](./CONTRIBUTING.md).
-
-Thank you to all the people who already contributed to ArcoDesign!
-
-<a href="https://github.com/arco-design/arco-design-vue/graphs/contributors"><img src="https://contrib.rocks/image?repo=arco-design/arco-design-vue" /></a>
-
-# License
-
-Ths project is [MIT licensed](./LICENSE).
+## 维护者

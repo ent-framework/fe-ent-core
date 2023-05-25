@@ -1,4 +1,5 @@
 import colors from 'picocolors';
+import consola from 'consola';
 import { readPackageJSON } from 'pkg-types';
 import { type PluginOption } from 'vite';
 
@@ -59,9 +60,9 @@ async function createAppConfigPlugin({
           source,
         });
 
-        console.log(colors.cyan(`✨configuration file is build successfully!`));
+        consola.log(colors.cyan(`✨configuration file is build successfully!`));
       } catch (error) {
-        console.log(
+        consola.log(
           colors.red(`configuration file configuration file failed to package:\n${error}`),
         );
       }

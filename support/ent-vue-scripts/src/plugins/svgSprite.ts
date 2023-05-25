@@ -12,7 +12,7 @@ export function configSvgIconsPlugin({ isBuild }: { isBuild: boolean }) {
   const cwd = process.cwd();
   const iconDirs: string[] = [];
 
-  if (fs.existsSync(cwd + '/src/assets/icons')) {
+  if (fs.existsSync(`${cwd}/src/assets/icons`)) {
     iconDirs.push(path.resolve(cwd, 'src/assets/icons'));
   }
   const svgIconsPlugin = createSvgIconsPlugin({

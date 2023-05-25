@@ -1,5 +1,5 @@
-import { Config } from '@jest/types';
 import path from 'path';
+import type { Config } from '@jest/types';
 
 const jestConfig = (collectCoverageFrom: string[]): Config.InitialOptions => ({
   transform: {

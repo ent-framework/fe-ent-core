@@ -46,12 +46,11 @@ async function createPlugins({
   }
 
   // vite-plugin-svg-icons
-  //vitePlugins.push(configSvgIconsPlugin({ isBuild }));
-
-  // vite-plugin-purge-icons
-  vitePlugins.push(purgeIcons());
-
-  vitePlugins.push(configUnoCSSPlugin(mode === 'lib'));
+  vitePlugins.push(
+    configSvgIconsPlugin({ isBuild }),
+    purgeIcons(),
+    configUnoCSSPlugin(mode === 'lib'),
+  );
 
   // The following plugins only work in the production environment
   if (isBuild) {

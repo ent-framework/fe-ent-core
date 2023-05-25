@@ -1,5 +1,5 @@
-import { InlineConfig } from 'vite';
 import cssjs from '../plugins/vite-plugin-cssjs';
+import type { InlineConfig } from 'vite';
 
 const config: InlineConfig = {
   mode: 'production',

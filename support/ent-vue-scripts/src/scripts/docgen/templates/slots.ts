@@ -1,5 +1,5 @@
-import { SlotDescriptor } from 'vue-docgen-api';
 import { escapeCharacter, toKebabCase } from '../utils';
+import type { SlotDescriptor } from 'vue-docgen-api';
 
 const bindingsTmpl = (bindings: SlotDescriptor['bindings']): string => {
   return (bindings || [])
@@ -18,9 +18,7 @@ const bindingsTmpl = (bindings: SlotDescriptor['bindings']): string => {
 };
 
 const tmpl = (slots: SlotDescriptor[], lang: string) => {
-  const displayableSlots = slots.filter(
-    (slot) => slot.description || lang in (slot.tags ?? {})
-  );
+  const displayableSlots = slots.filter((slot) => slot.description || lang in (slot.tags ?? {}));
   const hasVersion = displayableSlots.some((slot) => slot?.tags?.version);
   const content = displayableSlots
     .map((slot) => {
@@ -30,9 +28,9 @@ const tmpl = (slots: SlotDescriptor[], lang: string) => {
         description = (tags[lang] as any).content as string;
       }
 
-      let lineContent = `|${toKebabCase(name)}|${escapeCharacter(
-        description || ''
-      )}|${escapeCharacter(bindingsTmpl(bindings)) || '-'}|`;
+      let lineContent = `|${toKebabCase(name)}|${escapeCharacter(description || '')}|${
+        escapeCharacter(bindingsTmpl(bindings)) || '-'
+      }|`;
 
       if (hasVersion) {
         const version = (tags?.version as any)?.content as string;

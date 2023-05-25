@@ -13,3 +13,7 @@ dist
 .local
 /bin
 Dockerfile
+es
+lib
+json
+tests

@@ -1,5 +1,5 @@
-import { MethodDescriptor, ParamTag, ParamType } from 'vue-docgen-api';
 import { escapeCharacter } from '../utils';
+import type { MethodDescriptor, ParamTag, ParamType } from 'vue-docgen-api';
 
 const paramsTmpl = (params: MethodDescriptor['params']): string => {
   return (params || [])
@@ -37,16 +37,13 @@ const returnsTmpl = (returns: MethodDescriptor['returns']): string => {
     return `${name}\\<${names.join(',')}\\>`;
   };
 
-  const res = [
-    type.name ? `${getNames(type)}` : '',
-    description ? ` - ${description}` : '',
-  ];
+  const res = [type.name ? `${getNames(type)}` : '', description ? ` - ${description}` : ''];
   return res.join('');
 };
 
 const tmpl = (methods: MethodDescriptor[], lang: string) => {
   const displayableMethods = methods.filter(
-    (method) => method.description || lang in (method.tags ?? {})
+    (method) => method.description || lang in (method.tags ?? {}),
   );
   const hasVersion = displayableMethods.some((method) => method?.tags?.version);
   const content = displayableMethods
@@ -59,11 +56,9 @@ const tmpl = (methods: MethodDescriptor[], lang: string) => {
 
       const readableParams = paramsTmpl(method.params) || '-';
       const readableReturns = returnsTmpl(method.returns) || '-';
-      let lineContent = `|${name}|${escapeCharacter(
-        description || ''
-      )}|${escapeCharacter(readableParams)}|${escapeCharacter(
-        readableReturns
-      )}|`;
+      let lineContent = `|${name}|${escapeCharacter(description || '')}|${escapeCharacter(
+        readableParams,
+      )}|${escapeCharacter(readableReturns)}|`;
 
       if (hasVersion) {
         const version = (tags?.version?.[0] as ParamTag)?.description as string;

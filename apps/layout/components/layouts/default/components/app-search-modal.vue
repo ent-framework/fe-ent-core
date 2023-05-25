@@ -62,8 +62,7 @@
   import { SearchOutlined } from '@ant-design/icons-vue';
   import { EntIcon } from 'fe-ent-core';
   import { useAppInject, useDesign, useI18n, useRefs } from 'fe-ent-core/es/hooks';
-  // @ts-ignore
-  import { ClickOutside } from 'fe-ent-core/es/directives';
+  import { vClickOutside } from 'fe-ent-core/es/directives';
   import { useMenuSearch } from './use-menu-search';
   import AppSearchFooter from './app-search-footer.vue';
   import type { Nullable } from 'fe-ent-core/es/types';

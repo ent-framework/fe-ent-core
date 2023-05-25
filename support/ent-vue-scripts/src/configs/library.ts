@@ -1,4 +1,3 @@
-import consola from 'consola';
 import { readPackageJSON } from 'pkg-types';
 import { mergeConfig } from 'vite';
 import dts from 'vite-plugin-dts';

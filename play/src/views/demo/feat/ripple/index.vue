@@ -5,11 +5,11 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { RippleDirective } from 'fe-ent-core/es/directives';
+  import { vRipple } from 'fe-ent-core/es/directives';
 
   export default defineComponent({
     directives: {
-      ripple: RippleDirective,
+      ripple: vRipple,
     },
   });
 </script>

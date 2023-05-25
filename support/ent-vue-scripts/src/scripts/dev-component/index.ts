@@ -1,8 +1,9 @@
 import ora from 'ora';
 import chalk from 'chalk';
-import { build, InlineConfig } from 'vite';
-import { RollupWatcher } from 'rollup';
+import { build } from 'vite';
 import config from '../../configs/vite.dev';
+import type { InlineConfig } from 'vite';
+import type { RollupWatcher } from 'rollup';
 
 const run = async () => {
   const spinner = ora();

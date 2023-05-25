@@ -9,7 +9,6 @@ import type { Documentation, ParseOptions } from 'vue-docgen-api';
 import type { NodePath } from 'ast-types/lib/node-path';
 import type { PropsValuePath } from './resolveImport';
 
-
 function resolveImportFile(cwd: string, fileName: string, types: string[] = ['ts']) {
   // eslint-disable-next-line guard-for-in
   for (const ext in types) {

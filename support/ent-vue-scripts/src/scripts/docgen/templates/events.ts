@@ -1,5 +1,5 @@
-import { EventDescriptor, Tag } from 'vue-docgen-api';
 import { escapeCharacter, toKebabCase } from '../utils';
+import type { EventDescriptor, Tag } from 'vue-docgen-api';
 
 const propertiesTmpl = (properties: EventDescriptor['properties']): string => {
   return (properties || [])
@@ -18,11 +18,9 @@ const propertiesTmpl = (properties: EventDescriptor['properties']): string => {
 };
 
 const tmpl = (events: EventDescriptor[], lang: string) => {
-  const displayableEvents = events.filter(
-    (event) => event.description || event.tags?.length
-  );
+  const displayableEvents = events.filter((event) => event.description || event.tags?.length);
   const hasVersion = displayableEvents.some((event) =>
-    event?.tags?.some((tag) => tag.title === 'version')
+    event?.tags?.some((tag) => tag.title === 'version'),
   );
   const content = displayableEvents
     .map((event) => {
@@ -41,9 +39,9 @@ const tmpl = (events: EventDescriptor[], lang: string) => {
         }
       }
 
-      let lineContent = `|${toKebabCase(name)}|${escapeCharacter(
-        description || ''
-      )}|${escapeCharacter(propertiesTmpl(event.properties)) || '-'}|`;
+      let lineContent = `|${toKebabCase(name)}|${escapeCharacter(description || '')}|${
+        escapeCharacter(propertiesTmpl(event.properties)) || '-'
+      }|`;
 
       if (hasVersion) {
         lineContent += `${version}|`;

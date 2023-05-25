@@ -2,7 +2,7 @@ import * as bt from '@babel/types';
 import type { NodePath } from 'ast-types/lib/node-path';
 
 export default function getMemberFilter(
-  propName: string
+  propName: string,
 ): (propPath: NodePath<bt.ObjectProperty | bt.ObjectMethod>) => boolean {
   return (p) =>
     bt.isIdentifier(p.node.key)
