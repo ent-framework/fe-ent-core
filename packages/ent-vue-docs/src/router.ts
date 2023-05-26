@@ -12,9 +12,6 @@ const I18n = () => import('./docs/i18n.zh-CN.md');
 const I18nEn = () => import('./docs/i18n.en-US.md');
 const Changelog = () => import('./pages/changelog/changelog.vue');
 
-const Application = () => import('@ent-core/components/application/README.zh-CN.md');
-const ApplicationEn = () => import('@ent-core/components/application/README.en-US.md');
-
 const AppProvider = () => import('@ent-core/components/app-provider/README.zh-CN.md');
 const AppProviderEn = () => import('@ent-core/components/app-provider/README.en-US.md');
 
