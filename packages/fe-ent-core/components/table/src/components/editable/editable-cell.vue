@@ -7,7 +7,7 @@
   import { isFunction } from '@vueuse/shared';
   import { useDesign } from '@ent-core/hooks/web/use-design';
 
-  import { ClickOutside } from '@ent-core/directives/click-out-side';
+  import vClickOutside from '@ent-core/directives/click-out-side';
 
   import { propTypes } from '@ent-core/utils/prop-types';
   import { isArray, isBoolean, isNumber, isString } from '@ent-core/utils/is';
@@ -23,7 +23,7 @@
     name: 'EditableCell',
     components: { FormOutlined, CloseOutlined, CheckOutlined, CellComponent, Spin },
     directives: {
-      ClickOutside,
+      ClickOutside: vClickOutside,
     },
     props: {
       value: {

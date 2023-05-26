@@ -3,7 +3,6 @@
 import path from 'path';
 import fs from 'fs-extra';
 import { Command } from 'commander';
-import icongen from './scripts/icongen';
 import lessgen from './scripts/lessgen';
 import docgen from './scripts/docgen';
 import dtsgen from './scripts/dtsgen';
@@ -34,13 +33,6 @@ program
   .action(({ input, components }) => {
     components = typeof components === 'string' ? components.split(',') : [];
     docgen({ input, components });
-  });
-
-program
-  .command('icongen')
-  .description('generate icon components.')
-  .action(() => {
-    icongen();
   });
 
 program
@@ -94,8 +86,9 @@ program
   .description('build library')
   .option('-u, --umd', 'build with UMD file')
   .option('-s, --source', 'build with library source')
-  .action(async ({ umd, source }) => {
-    await buildLibrary({ umd, source });
+  .option('--base', 'build with library source')
+  .action(async ({ umd, source, base }) => {
+    await buildLibrary({ umd, source, base });
   });
 
 program

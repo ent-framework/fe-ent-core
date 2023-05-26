@@ -17,7 +17,7 @@
 
   export default defineComponent({
     name: 'LayoutMenu',
-    components: { EntAppLogo, EntMenu, EntScrollContainer },
+    components: { EntAppLogo, EntMenu, EntScrollContainer, EntSimpleMenu },
     props: {
       theme: propTypes.oneOf(['light', 'dark']),
 
@@ -103,7 +103,7 @@
       });
       /**
        * click menu
-       * @param menu
+       * @param path
        */
 
       function handleMenuClick(path: string) {
@@ -112,7 +112,7 @@
 
       /**
        * before click menu
-       * @param menu
+       * @param path
        */
       async function beforeMenuClickFn(path: string) {
         if (!isUrl(path)) {
@@ -136,7 +136,6 @@
 
       function renderMenu() {
         const { menus, ...menuProps } = unref(getCommonProps);
-        // console.log(menus);
         if (!menus || !menus.length) return null;
         return !props.isHorizontal ? (
           <EntSimpleMenu {...menuProps} isSplitMenu={unref(getSplit)} items={menus} />

@@ -8,38 +8,38 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { useMessage } from '@ent-core/hooks';
-import { LinkOutlined} from '@ant-design/icons-vue'
-import copy from '../../utils/clipboard';
+  import { defineComponent } from 'vue';
+  import { LinkOutlined } from '@ant-design/icons-vue';
+  import { useMessage } from '@ent-core/hooks';
+  import copy from '../../utils/clipboard';
 
-export default defineComponent({
-  name: 'AnchorHead',
-  props: {
-    level: [Number, String],
-    href: String,
-  },
-  components: {LinkOutlined},
-  setup() {
-    const { createMessage } = useMessage();
-    const handleClickCopy = (e: MouseEvent) => {
-      const copyLink = (e.currentTarget as HTMLAnchorElement).href;
-      if (copyLink) {
-        copy(copyLink)
-          .then(() => {
-            createMessage.success('Copy Success!');
-          })
-          .catch(() => {
-            createMessage.error('Copy Failed! Please try again.');
-          });
-      }
-    };
+  export default defineComponent({
+    name: 'AnchorHead',
+    components: { LinkOutlined },
+    props: {
+      level: [Number, String],
+      href: String,
+    },
+    setup() {
+      const { createMessage } = useMessage();
+      const handleClickCopy = (e: MouseEvent) => {
+        const copyLink = (e.currentTarget as HTMLAnchorElement).href;
+        if (copyLink) {
+          copy(copyLink)
+            .then(() => {
+              createMessage.success('Copy Success!');
+            })
+            .catch(() => {
+              createMessage.error('Copy Failed! Please try again.');
+            });
+        }
+      };
 
-    return {
-      handleClickCopy,
-    };
-  },
-});
+      return {
+        handleClickCopy,
+      };
+    },
+  });
 </script>
 
 <style scoped lang="less" src="./style.less" />

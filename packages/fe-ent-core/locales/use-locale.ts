@@ -47,13 +47,6 @@ export function useLocale() {
       setI18nLanguage(locale);
       return locale;
     }
-    // const langModule = ((await import(`./lang/${locale}.ts`)) as any).default as LangModule;
-    // if (!langModule) return;
-    //const { message, momentLocale, momentLocaleName } = langModule;
-    //不需要，因为i1n8是一次载入
-    //globalI18n.setLocaleMessage(locale, message);
-    //moment.locale()
-    //moment.updateLocale(momentLocaleName, momentLocale);
     dayjs.locale(locale);
     loadLocalePool.push(locale);
 

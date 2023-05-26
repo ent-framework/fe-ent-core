@@ -13,8 +13,8 @@ description: 语言切换
 ```
 ---
 
+@import ./__demo__/basic.md
 
 ## API
 
-### 语言切换
 %%API(src/index.vue)%%

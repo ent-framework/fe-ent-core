@@ -18,7 +18,7 @@ import { entRouter } from '@ent-core/router/base';
 import { useAppStoreWithOut } from './app';
 import { useGlobalStoreWithOut } from './global';
 import { useUserStore } from './user';
-import type { AppRouteRecordRaw, Menu, MenuModule } from '@ent-core/router/types';
+import type { AppRouteRecordRaw, Menu } from '@ent-core/router/types';
 
 export interface PermissionState {
   // Permission code list
@@ -30,7 +30,6 @@ export interface PermissionState {
   // Backstage menu list
   backMenuList: Menu[];
   frontMenuList: Menu[];
-  menuModules: MenuModule[];
 }
 export const usePermissionStore = defineStore({
   id: 'app-permission',
@@ -44,8 +43,6 @@ export const usePermissionStore = defineStore({
     backMenuList: [],
     // menu List
     frontMenuList: [],
-
-    menuModules: [],
   }),
   getters: {
     getPermCodeList(): string[] | number[] {
@@ -63,19 +60,8 @@ export const usePermissionStore = defineStore({
     getIsDynamicAddedRoute(): boolean {
       return this.isDynamicAddedRoute;
     },
-    getMenuModules(): MenuModule[] {
-      return this.menuModules;
-    },
   },
   actions: {
-    importMenuModules(modules: Record<string, { [key: string]: any }>) {
-      Object.keys(modules).forEach((key) => {
-        const mod = modules[key].default || {};
-        const modList = Array.isArray(mod) ? [...mod] : [mod];
-        this.menuModules.push(...modList);
-      });
-    },
-
     setPermCodeList(codeList: string[]) {
       this.permCodeList = codeList;
     },

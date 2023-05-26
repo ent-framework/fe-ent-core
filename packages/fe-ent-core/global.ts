@@ -1,8 +1,8 @@
 // @ts-nocheck
+import 'vue';
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    EntAppDarkModeToggle: typeof import('fe-ent-core')['EntAppDarkModeToggle'];
-    EntAppLocalePicker: typeof import('fe-ent-core')['EntAppLocalePicker'];
+    EntAppLogo: typeof import('fe-ent-core')['EntAppLogo'];
     EntAppProvider: typeof import('fe-ent-core')['EntAppProvider'];
     EntArrow: typeof import('fe-ent-core')['EntArrow'];
     EntAuthority: typeof import('fe-ent-core')['EntAuthority'];
@@ -11,10 +11,11 @@ declare module '@vue/runtime-core' {
     EntClickOutSide: typeof import('fe-ent-core')['EntClickOutSide'];
     EntCollapseContainer: typeof import('fe-ent-core')['EntCollapseContainer'];
     EntCountButton: typeof import('fe-ent-core')['EntCountButton'];
-    EntCountTo: typeof import('fe-ent-core')['EntCountTo'];
     EntCountdownInput: typeof import('fe-ent-core')['EntCountdownInput'];
+    EntCountTo: typeof import('fe-ent-core')['EntCountTo'];
     EntCropperAvatar: typeof import('fe-ent-core')['EntCropperAvatar'];
     EntCropperImage: typeof import('fe-ent-core')['EntCropperImage'];
+    EntDarkModeToggle: typeof import('fe-ent-core')['EntDarkModeToggle'];
     EntDescription: typeof import('fe-ent-core')['EntDescription'];
     EntDragVerify: typeof import('fe-ent-core')['EntDragVerify'];
     EntDrawer: typeof import('fe-ent-core')['EntDrawer'];
@@ -28,11 +29,16 @@ declare module '@vue/runtime-core' {
     EntImportExcel: typeof import('fe-ent-core')['EntImportExcel'];
     EntLazyContainer: typeof import('fe-ent-core')['EntLazyContainer'];
     EntLoading: typeof import('fe-ent-core')['EntLoading'];
+    EntLocalePicker: typeof import('fe-ent-core')['EntLocalePicker'];
+    EntMenu: typeof import('fe-ent-core')['EntMenu'];
     EntModal: typeof import('fe-ent-core')['EntModal'];
     EntPageWrapper: typeof import('fe-ent-core')['EntPageWrapper'];
     EntPopButton: typeof import('fe-ent-core')['EntPopButton'];
     EntRotateDragVerify: typeof import('fe-ent-core')['EntRotateDragVerify'];
+    EntScrollbar: typeof import('fe-ent-core')['EntScrollbar'];
     EntScrollContainer: typeof import('fe-ent-core')['EntScrollContainer'];
+    EntSimpleMenu: typeof import('fe-ent-core')['EntSimpleMenu'];
+    EntSimpleMenuTag: typeof import('fe-ent-core')['EntSimpleMenuTag'];
     EntStrengthMeter: typeof import('fe-ent-core')['EntStrengthMeter'];
     EntSvgIcon: typeof import('fe-ent-core')['EntSvgIcon'];
     EntTable: typeof import('fe-ent-core')['EntTable'];

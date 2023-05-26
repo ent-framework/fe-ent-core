@@ -11,7 +11,7 @@ import type { ModuleFormat, OutputPlugin } from 'rollup';
 /***
  * Library 模式
  */
-async function defineUmdLibraryConfig(source: boolean) {
+async function defineUmdLibraryConfig(source: boolean, base: string) {
   const root = process.cwd();
   const packageJson = await readPackageJSON(root);
   const { name } = packageJson;
@@ -26,6 +26,7 @@ async function defineUmdLibraryConfig(source: boolean) {
   const { dependencies = {}, peerDependencies = {} } = await readPackageJSON(root);
   const deps = [...Object.keys(dependencies), ...Object.keys(peerDependencies)];
   const packageConfig: UserConfig = {
+    base,
     build: {
       target: 'modules',
       outDir: 'dist',

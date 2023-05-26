@@ -6,12 +6,13 @@ title: 语言切换
 description: 语言切换
 ```
 
+@import ./__demo__/basic.md
 
 ## API
 
 ### 语言切换
 
-### `<ent-app-locale-picker>` Props
+### `<ent-locale-picker>` Props
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|

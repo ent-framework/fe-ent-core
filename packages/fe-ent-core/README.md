@@ -57,13 +57,10 @@ pnpm build:support
 pnpm dev
 ```
 
-## 更新日志
-
-[CHANGELOG](./CHANGELOG.zh_CN.md)
-
 ## 项目地址
 
 - [fe-ent-core](https://github.com/ent-framework/fe-ent-core.git) - 完整版
+- [fe-ent-paly](https://github.com/ent-framework/fe-ent-play.git) - 快速启动版
 
 ## 浏览器支持
 
@@ -87,5 +84,3 @@ pnpm dev
 - **集成Spring Boot后端** https://github.com/ent-framework/ent-framework.git
 
 使用方法请参考项目内的README
-
-## 维护者

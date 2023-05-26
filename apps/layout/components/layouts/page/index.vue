@@ -36,7 +36,6 @@
 
   import FrameLayout from '../iframe/index.vue';
   import { getTransitionName } from './transition';
-
   export default defineComponent({
     name: 'PageLayout',
     components: { FrameLayout },

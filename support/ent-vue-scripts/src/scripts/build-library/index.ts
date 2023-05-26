@@ -6,7 +6,7 @@ import { build } from 'vite';
 import { defineLibraryConfig } from '../../configs/library';
 import { defineUmdLibraryConfig } from '../../configs/library.umd';
 
-async function run({ umd = false, source = false }) {
+async function run({ umd = false, source = false, base = '' }) {
   const cwd = process.cwd();
   await fs.emptyDir(path.resolve(cwd, 'dist'));
   await build(await defineLibraryConfig(source));
@@ -22,7 +22,7 @@ async function run({ umd = false, source = false }) {
     fs.copySync(absolute, path.resolve(cwd, `es/${filename}`));
   }
   if (umd) {
-    await build(await defineUmdLibraryConfig(source));
+    await build(await defineUmdLibraryConfig(source, base));
     consola.success(`build library umd successfully in path ${cwd}`);
   }
 }

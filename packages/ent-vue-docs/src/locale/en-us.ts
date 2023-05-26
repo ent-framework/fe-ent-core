@@ -30,6 +30,8 @@ export default {
     name: 'Component',
     // 组件名称
     application: 'Skin/Locale/Configprovide',
+    'locale-picker': 'Language Switch',
+    'app-provider': 'Config Provider',
     authority: 'Authority',
     clickoutside: 'ClickOutSide',
     container: 'Container',
@@ -169,7 +171,7 @@ export default {
     general: 'Universal icon',
   },
   practices: {
-    name: 'Arco Pro',
+    name: 'Best Practices',
     start: 'Quick start',
     npmScripts: 'Npm Scripts',
     directory: 'Directory',

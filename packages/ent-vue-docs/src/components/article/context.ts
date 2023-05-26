@@ -1,5 +1,5 @@
-import { InjectionKey } from 'vue';
-import { AnchorData } from '../aside-anchor/interface';
+import type { InjectionKey } from 'vue';
+import type { AnchorData } from '../aside-anchor/interface';
 
 interface ArticleContext {
   anchors: AnchorData[];
@@ -7,5 +7,4 @@ interface ArticleContext {
   removeAnchor: (href: string) => void;
 }
 
-export const articleInjectionKey: InjectionKey<ArticleContext> =
-  Symbol('ArcoArticle');
+export const articleInjectionKey: InjectionKey<ArticleContext> = Symbol('ArcoArticle');

@@ -4,12 +4,13 @@
 
 *Auto translate by google.*
 
+@import ./__demo__/basic.md
 
 ## API
 
 ### 语言切换
 
-### `<ent-app-locale-picker>` Props
+### `<ent-locale-picker>` Props
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|

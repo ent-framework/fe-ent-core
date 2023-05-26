@@ -12,7 +12,7 @@ import { setupRouterGuard } from '@ent-core/router/guard';
 import { setupStore } from '@ent-core/store';
 import { setupGlobDirectives } from '@ent-core/directives';
 import { setupI18n } from '@ent-core/locales/setup-i18n';
-import EntCore from '@ent-core/index';
+import EntCore, { registerAntGlobComp } from '@ent-core/index';
 import { usePermissionStoreWithOut } from '@ent-core/store/modules/permission';
 import { useLocale } from '@ent-core/locales';
 import getRoutes from './router';
@@ -52,6 +52,8 @@ async function bootstrap() {
   setLocalePicker(false);
   addMessages('en', locales.en);
   addMessages('zh_CN', locales.zh_CN);
+
+  registerAntGlobComp(app);
   app.use(EntCore);
 
   app.component(CodeBlock.name, CodeBlock);
@@ -68,7 +70,7 @@ async function bootstrap() {
   entRouter.addBasicRoutes(docsRoutes);
 
   const permissionStore = usePermissionStoreWithOut();
-  permissionStore.setFrontMenuList(transformRouteToMenu(docsRoutes));
+  permissionStore.setFrontMenuList(transformRouteToMenu(docsRoutes, true));
   app.use(entRouter);
 
   // router-guard

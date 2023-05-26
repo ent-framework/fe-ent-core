@@ -38,7 +38,7 @@
   };
 
   export default defineComponent({
-    name: 'EntAppLocalePicker',
+    name: 'EntLocalePicker',
     components: { EntDropdown, EntIcon },
     props,
     setup(props) {

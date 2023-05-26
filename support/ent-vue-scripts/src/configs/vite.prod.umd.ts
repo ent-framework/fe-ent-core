@@ -60,6 +60,9 @@ export default (): InlineConfig => {
         },
       },
     },
+    // define: {
+    //   'process.env': JSON.stringify({ NODE_ENV: 'production' }),
+    // },
     resolve: {
       alias: [
         {

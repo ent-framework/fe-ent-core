@@ -30,6 +30,8 @@ export default {
     name: '组件',
     // 组件名称
     application: '皮肤/语言/配置',
+    'locale-picker': '语言切换',
+    'app-provider': '配置',
     calendar: '日历 Calendar',
     authority: '权限 authority',
     clickoutside: 'ClickOutSide',

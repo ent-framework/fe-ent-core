@@ -1,9 +1,7 @@
 <template>
   <div :class="cls">
     <div class="cell-code-operation">
-      <a-tooltip
-        :content="showCode ? t('tooltip.collapse') : t('tooltip.expand')"
-      >
+      <a-tooltip :content="showCode ? t('tooltip.collapse') : t('tooltip.expand')">
         <a-button
           :class="[
             'cell-code-operation-btn',
@@ -56,80 +54,86 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent, onMounted, ref } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { message } from 'ant-design-vue';
-import copy from '../../utils/clipboard';
-import { openStackblitz } from '../../utils/code-stackblitz';
-import { openCodeSandbox } from '../../utils/code-sandbox';
-import { CodepenCircleOutlined, CodeOutlined, CopyOutlined, ThunderboltOutlined } from '@ant-design/icons-vue'
+  import { computed, defineComponent, onMounted, ref } from 'vue';
+  import { useI18n } from 'vue-i18n';
+  import { message } from 'ant-design-vue';
+  import {
+    CodeOutlined,
+    CodepenCircleOutlined,
+    CopyOutlined,
+    ThunderboltOutlined,
+  } from '@ant-design/icons-vue';
+  import copy from '../../utils/clipboard';
+  import { openStackblitz } from '../../utils/code-stackblitz';
+  import { openCodeSandbox } from '../../utils/code-sandbox';
+  import type { CSSProperties } from 'vue';
 
-export default defineComponent({
-  name: 'CellCode',
-  components: {CodepenCircleOutlined, CodeOutlined, CopyOutlined, ThunderboltOutlined},
-  setup() {
-    const { t } = useI18n();
-    const showCode = ref(false);
-    const contentRef = ref<HTMLElement>();
-    const contentHeight = ref<number>(0);
+  export default defineComponent({
+    name: 'CellCode',
+    components: { CodepenCircleOutlined, CodeOutlined, CopyOutlined, ThunderboltOutlined },
+    setup() {
+      const { t } = useI18n();
+      const showCode = ref(false);
+      const contentRef = ref<HTMLElement>();
+      const contentHeight = ref<number>(0);
 
-    onMounted(() => {
-      if (contentRef.value) {
-        const { height } = contentRef.value.getBoundingClientRect();
-        contentHeight.value = height;
-      }
-    });
+      onMounted(() => {
+        if (contentRef.value) {
+          const { height } = contentRef.value.getBoundingClientRect();
+          contentHeight.value = height;
+        }
+      });
 
-    const style = computed<CSSProperties>(() => {
-      if (showCode.value) {
-        const height = contentRef?.value?.firstElementChild?.clientHeight;
-        return { height: height ? `${height}px` : 'auto' };
-      }
-      return { height: 0 };
-    });
+      const style = computed<CSSProperties>(() => {
+        if (showCode.value) {
+          const height = contentRef?.value?.firstElementChild?.clientHeight;
+          return { height: height ? `${height}px` : 'auto' };
+        }
+        return { height: 0 };
+      });
 
-    const handleClick = () => {
-      showCode.value = !showCode.value;
-    };
+      const handleClick = () => {
+        showCode.value = !showCode.value;
+      };
 
-    const handleClickCopy = () => {
-      if (contentRef.value?.textContent) {
-        copy(contentRef.value.textContent)
-          .then(() => {
-            message.success('Copy Success!');
-          })
-          .catch(() => {
-            message.error('Copy Failed! Please try again.');
-          });
-      }
-    };
+      const handleClickCopy = () => {
+        if (contentRef.value?.textContent) {
+          copy(contentRef.value.textContent)
+            .then(() => {
+              message.success('Copy Success!');
+            })
+            .catch(() => {
+              message.error('Copy Failed! Please try again.');
+            });
+        }
+      };
 
-    const handleClickStackblitz = () => {
-      if (contentRef.value?.textContent) {
-        openStackblitz(contentRef.value.textContent);
-      }
-    };
+      const handleClickStackblitz = () => {
+        if (contentRef.value?.textContent) {
+          openStackblitz(contentRef.value.textContent);
+        }
+      };
 
-    const handleClickCodeSandbox = () => {
-      if (contentRef.value?.textContent) {
-        openCodeSandbox(contentRef.value.textContent);
-      }
-    };
+      const handleClickCodeSandbox = () => {
+        if (contentRef.value?.textContent) {
+          openCodeSandbox(contentRef.value.textContent);
+        }
+      };
 
-    const cls = computed(() => ['cell-code']);
-    return {
-      cls,
-      showCode,
-      t,
-      handleClick,
-      handleClickCopy,
-      handleClickStackblitz,
-      handleClickCodeSandbox,
-      contentRef,
-      style,
-    };
-  },
-});
+      const cls = computed(() => ['cell-code']);
+      return {
+        cls,
+        showCode,
+        t,
+        handleClick,
+        handleClickCopy,
+        handleClickStackblitz,
+        handleClickCodeSandbox,
+        contentRef,
+        style,
+      };
+    },
+  });
 </script>
 
 <style scoped lang="less" src="./style.less" />

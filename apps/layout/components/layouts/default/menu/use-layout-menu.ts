@@ -49,7 +49,9 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
       if (!parentPath) {
         parentPath = await getCurrentParentPath(currentActiveMenu);
       }
-      parentPath && throttleHandleSplitLeftMenu(parentPath);
+      if (parentPath) {
+        await throttleHandleSplitLeftMenu(parentPath);
+      }
     },
     {
       immediate: true,
@@ -104,7 +106,6 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
     // split-top
     if (unref(getSpiltTop)) {
       const shallowMenus = await getShallowMenus();
-
       menusRef.value = shallowMenus;
       return;
     }

@@ -5,11 +5,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+  import { defineComponent } from 'vue';
 
-export default defineComponent({
-  name: 'CellDemo',
-});
+  export default defineComponent({
+    name: 'CellDemo',
+  });
 </script>
 
 <style scoped lang="less" src="./style.less" />

@@ -15,6 +15,14 @@ const Changelog = () => import('./pages/changelog/changelog.vue');
 const Application = () => import('@ent-core/components/application/README.zh-CN.md');
 const ApplicationEn = () => import('@ent-core/components/application/README.en-US.md');
 
+const AppProvider = () => import('@ent-core/components/app-provider/README.zh-CN.md');
+const AppProviderEn = () => import('@ent-core/components/app-provider/README.en-US.md');
+
+
+const LocalePicker = () => import('@ent-core/components/locale-picker/README.zh-CN.md');
+const LocalePickerEn = () => import('@ent-core/components/locale-picker/README.en-US.md');
+
+
 const Authority = () => import('@ent-core/components/authority/README.zh-CN.md');
 const AuthorityEn = () => import('@ent-core/components/authority/README.en-US.md');
 
@@ -35,7 +43,6 @@ const RouterEn = () => import('@ent-core/router/README.en-US.md');
 
 const Store = () => import('@ent-core/store/README.zh-CN.md');
 const StoreEn = () => import('@ent-core/store/README.en-US.md');
-
 
 const docs = [
   {
@@ -157,9 +164,14 @@ const components = [
         componentEn: AuthorityEn,
       },
       {
-        name: 'application',
-        component: Application,
-        componentEn: ApplicationEn,
+        name: 'app-provider',
+        component: AppProvider,
+        componentEn: AppProviderEn,
+      },
+      {
+        name: 'locale-picker',
+        component: LocalePicker,
+        componentEn: LocalePickerEn,
       },
       {
         name: 'clickoutside',

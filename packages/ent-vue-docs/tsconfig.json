@@ -6,7 +6,8 @@
     "paths": {
       "@ent-core/*": ["../fe-ent-core/*"],
       "fe-ent-layout": ["../../apps/layout/index.ts"],
-      "fe-ent-core": ["../fe-ent-core/index.ts"]
+      "fe-ent-core": ["../fe-ent-core/index.ts"],
+      "fe-ent-core/es/*": ["../fe-ent-core/*"]
     }
   },
   "include": ["src", "global.d.ts", "../../packages/"]

@@ -22,17 +22,17 @@ export const getMainVue = ({
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useI18n } from 'vue-i18n';
+import { useLocale } from '@ent-core/locales';
 ${imports.join('\n')};
 
 export default defineComponent({
   name: 'ArcoMain',
   components: { ${components.join(',')} },
   setup() {
-    const { locale } = useI18n();
+    const { getLocale: locale } = useLocale();
     const data = ${JSON.stringify(data)};
     const getMessage = (zh, en) => {
-      return locale.value === 'zh-CN' ? zh : en;
+      return locale.value === 'zh_CN' ? zh : en;
     };
     const changelog = typeof _changelog === 'undefined' ? undefined : _changelog;
 
@@ -63,7 +63,7 @@ export const getDemoVue = ({
   <code-block id="${id}" :title="getMessage(${getTemplateString(
   title['zh-CN'],
 )}, ${getTemplateString(title['en-US'])})">
-    <template v-if="locale === 'zh-CN'" #description>
+    <template v-if="locale === 'zh_CN'" #description>
       ${description['zh-CN'] ?? ''}
     </template>
     <template v-else #description>
@@ -79,16 +79,16 @@ export const getDemoVue = ({
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useI18n } from 'vue-i18n';
+import { useLocale } from '@ent-core/locales';
 import VirtualDemo from '${virtualPath}';
 
 export default defineComponent({
   name: 'ArcoDemo',
   components: { VirtualDemo },
   setup() {
-    const { locale } = useI18n();
+    const { getLocale: locale } = useLocale();
     const getMessage = (zh, en) => {
-      return locale.value === 'zh-CN' ? zh : en;
+      return {'zh_CN': zh, 'en': en};
     };
 
     return {

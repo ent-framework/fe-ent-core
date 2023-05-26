@@ -1,18 +1,13 @@
 import { pathToRegexp } from 'path-to-regexp';
 import { useAppStoreWithOut } from '@ent-core/store/modules/app';
 import { usePermissionStore } from '@ent-core/store/modules/permission';
-import { getAllParentPath, transformMenuModule } from '@ent-core/router/helper/menu-helper';
+import { getAllParentPath } from '@ent-core/router/helper/menu-helper';
 import { filter } from '@ent-core/utils/helper/tree-helper';
 import { isUrl } from '@ent-core/utils/is';
 import { useEntRouter } from '@ent-core/router/base';
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
 import type { RouteRecordNormalized } from 'vue-router';
 import type { Menu } from '@ent-core/router/types';
-
-export const importMenuModules = (modules: Record<string, { [key: string]: any }>) => {
-  const permissionStore = usePermissionStore();
-  permissionStore.importMenuModules(modules);
-};
 
 // ===========================
 // ==========Helper===========
@@ -34,20 +29,6 @@ const isRoleMode = () => {
   return getPermissionMode() === PermissionModeEnum.ROLE;
 };
 
-const getStaticMenus = (): Menu[] => {
-  const permissionStore = usePermissionStore();
-  const menuModules = permissionStore.getMenuModules;
-  const staticMenus: Menu[] = [];
-  menuModules.sort((a, b) => {
-    return (b.orderNo || 0) - (a.orderNo || 0);
-  });
-
-  for (const menu of menuModules) {
-    staticMenus.push(transformMenuModule(menu));
-  }
-  return staticMenus;
-};
-
 function getAsyncMenus() {
   const permissionStore = usePermissionStore();
   //递归过滤所有隐藏的菜单
@@ -66,7 +47,7 @@ function getAsyncMenus() {
   if (isRouteMappingMode()) {
     return menuFilter(permissionStore.getFrontMenuList);
   }
-  return getStaticMenus();
+  return [];
 }
 
 export const getMenus = async (): Promise<Menu[]> => {

@@ -1,4 +1,7 @@
-/dist/*
+dist
+es
+lib
+json
 .local
 .output.js
 /node_modules/**

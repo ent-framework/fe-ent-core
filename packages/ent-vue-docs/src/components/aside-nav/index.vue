@@ -8,31 +8,18 @@
       <div v-show="showNav" class="aside-nav-body">
         <template v-for="group in docsMenuList" :key="group.name">
           <div class="aside-nav-group">
-            <div class="aside-nav-group-name">{{
-              t(`${group.name}.name`)
-            }}</div>
+            <div class="aside-nav-group-name">{{ t(`${group.name}.name`) }}</div>
             <ul class="aside-nav-list">
               <router-link
                 v-for="item of group.menu"
                 :key="item.name"
                 v-slot="{ href, navigate, isActive }"
-                :to="
-                  locale === 'en-US'
-                    ? item.path.replace('vue/', 'vue/en-US/')
-                    : item.path
-                "
+                :to="locale === 'en-US' ? item.path.replace('vue/', 'vue/en-US/') : item.path"
                 custom
               >
-                <li
-                  :class="[
-                    'aside-nav-item',
-                    { 'aside-nav-item-active': isActive },
-                  ]"
-                >
+                <li :class="['aside-nav-item', { 'aside-nav-item-active': isActive }]">
                   <a
-                    :href="
-                      locale === 'en-US' ? href.replace('#', '#/en-US') : href
-                    "
+                    :href="locale === 'en-US' ? href.replace('#', '#/en-US') : href"
                     class="aside-nav-item-link"
                     @click="navigate"
                   >
@@ -46,11 +33,7 @@
 
         <div class="aside-nav-group">
           <div class="aside-nav-group-name">{{ t('component.name') }}</div>
-          <div
-            v-for="group of componentMenu"
-            :key="group.name"
-            class="aside-nav-group"
-          >
+          <div v-for="group of componentMenu" :key="group.name" class="aside-nav-group">
             <h4 class="aside-nav-component-group-name">
               {{ t(`group.${group.name}`) }}
             </h4>
@@ -59,23 +42,12 @@
                 v-for="item of group.list"
                 :key="item.name"
                 v-slot="{ href, navigate, isActive }"
-                :to="
-                  locale === 'en-US'
-                    ? item.path.replace('vue/', 'vue/en-US/')
-                    : item.path
-                "
+                :to="locale === 'en-US' ? item.path.replace('vue/', 'vue/en-US/') : item.path"
                 custom
               >
-                <li
-                  :class="[
-                    'aside-nav-item',
-                    { 'aside-nav-item-active': isActive },
-                  ]"
-                >
+                <li :class="['aside-nav-item', { 'aside-nav-item-active': isActive }]">
                   <a
-                    :href="
-                      locale === 'en-US' ? href.replace('#', '#/en-US') : href
-                    "
+                    :href="locale === 'en-US' ? href.replace('#', '#/en-US') : href"
                     class="aside-nav-item-link"
                     @click="navigate"
                   >
@@ -88,12 +60,7 @@
         </div>
       </div>
     </nav>
-    <a-button
-      class="aside-nav-btn"
-      shape="circle"
-      size="mini"
-      @click="$emit('buttonClick')"
-    >
+    <a-button class="aside-nav-btn" shape="circle" size="mini" @click="$emit('buttonClick')">
       <icon-left v-if="show" />
       <icon-right v-else />
     </a-button>
@@ -101,54 +68,54 @@
 </template>
 
 <script>
-import { computed, defineComponent, ref } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { componentMenu, docsMenuList } from '../../router';
+  import { computed, defineComponent, ref } from 'vue';
+  import { useI18n } from 'vue-i18n';
+  import { componentMenu, docsMenuList } from '../../router';
 
-export default defineComponent({
-  name: 'AsideNav',
-  props: {
-    show: {
-      type: Boolean,
-      default: true,
-    },
-  },
-  emits: ['buttonClick'],
-  setup(props) {
-    const { t, locale } = useI18n();
-    const showNav = ref(true);
-
-    const handleTranslationStart = () => {
-      if (props.show) {
-        showNav.value = true;
-      }
-    };
-
-    const handleTranslationEnd = () => {
-      if (!props.show) {
-        showNav.value = false;
-      }
-    };
-
-    const cls = computed(() => [
-      'arco-vue-aside-left',
-      {
-        'arco-vue-aside-left-collapse': !props.show,
+  export default defineComponent({
+    name: 'AsideNav',
+    props: {
+      show: {
+        type: Boolean,
+        default: true,
       },
-    ]);
+    },
+    emits: ['buttonClick'],
+    setup(props) {
+      const { t, locale } = useI18n();
+      const showNav = ref(true);
 
-    return {
-      showNav,
-      componentMenu,
-      docsMenuList,
-      t,
-      locale,
-      cls,
-      handleTranslationStart,
-      handleTranslationEnd,
-    };
-  },
-});
+      const handleTranslationStart = () => {
+        if (props.show) {
+          showNav.value = true;
+        }
+      };
+
+      const handleTranslationEnd = () => {
+        if (!props.show) {
+          showNav.value = false;
+        }
+      };
+
+      const cls = computed(() => [
+        'arco-vue-aside-left',
+        {
+          'arco-vue-aside-left-collapse': !props.show,
+        },
+      ]);
+
+      return {
+        showNav,
+        componentMenu,
+        docsMenuList,
+        t,
+        locale,
+        cls,
+        handleTranslationStart,
+        handleTranslationEnd,
+      };
+    },
+  });
 </script>
 
 <style scoped lang="less" src="./style.less" />

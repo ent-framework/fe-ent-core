@@ -18,7 +18,7 @@
   import { ThemeEnum } from '@ent-core/logics/enums/app-enum';
 
   export default defineComponent({
-    name: 'EntAppDarkModeToggle',
+    name: 'EntDarkModeToggle',
     components: { EntSvgIcon },
     setup() {
       const { prefixCls } = useDesign('dark-switch');
