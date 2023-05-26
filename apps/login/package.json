@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-login",
-  "version": "1.5.48",
+  "version": "2.0.0",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -28,11 +28,11 @@
     "dtsgen": "ent-vue-scripts dtsgen --lib"
   },
   "peerDependencies": {
-    "fe-ent-core": "^1.4.33",
-    "fe-ent-qrcode": "^1.4.33"
+    "fe-ent-core": "^2.0.0",
+    "fe-ent-qrcode": "^2.0.0"
   },
   "devDependencies": {
-    "fe-ent-vue-scripts": "^1.5.14",
+    "fe-ent-vue-scripts": "^2.0.0",
     "@types/codemirror": "^5.60.5",
     "rimraf": "^5.0.0",
     "vite": "4.2.2",
