@@ -1,6 +1,6 @@
 import 'uno.css';
 // Register icon sprite
-//import 'virtual:svg-icons-register';
+import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
 import EntCore, { registerAntGlobComp } from 'fe-ent-core';
@@ -12,6 +12,7 @@ import { setupI18n } from 'fe-ent-core/es/locales';
 import { initApplication } from '/@/init-application';
 
 import 'ant-design-vue/dist/antd.less';
+import 'fe-ent-core/es/theme/index.less';
 
 import { getBasicRoutes, initRouteAndLayout } from 'fe-ent-layout';
 import { LoginRoute } from 'fe-ent-login';

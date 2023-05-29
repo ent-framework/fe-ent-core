@@ -1,36 +1,48 @@
-import cssjs from '../plugins/vite-plugin-cssjs';
+import terser from '@rollup/plugin-terser';
+import { generateModifyVars } from '../utils/modify-vars';
+import cssOnlyPlugin from '../plugins/rollup-plugin-css-only';
+import { configUnoCSSPlugin } from '../plugins/unocss';
 import type { InlineConfig } from 'vite';
+import type { OutputPlugin } from 'rollup';
 
 const config: InlineConfig = {
   mode: 'production',
   build: {
     target: 'modules',
-    outDir: 'es',
+    outDir: 'dist',
     emptyOutDir: false,
     minify: false,
+    cssMinify: true,
+    write: false,
     //brotliSize: false,
     rollupOptions: {
-      external: /less$/,
+      input: 'style.ts',
       output: [
         {
           format: 'es',
-          dir: 'es',
+          dir: 'dist',
+          exports: 'named',
           entryFileNames: '[name].js',
-        },
-        {
-          format: 'commonjs',
-          dir: 'lib',
-          entryFileNames: '[name].js',
+          plugins: [terser() as OutputPlugin],
         },
       ],
+      plugins: [cssOnlyPlugin()],
     },
     // 开启lib模式，但不使用下面配置
     lib: {
       entry: '',
-      formats: ['es', 'cjs'],
+      formats: ['es'],
     },
   },
-  plugins: [cssjs()],
+  css: {
+    preprocessorOptions: {
+      less: {
+        modifyVars: generateModifyVars(),
+        javascriptEnabled: true,
+      },
+    },
+  },
+  plugins: [configUnoCSSPlugin(true)],
 };
 
 export default config;

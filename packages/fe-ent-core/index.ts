@@ -1,7 +1,6 @@
 import * as components from './components';
 import { registerAntGlobComp } from './components/register-glob-comp';
 import type { App } from 'vue';
-import './theme/index.less';
 
 export * from './components';
 

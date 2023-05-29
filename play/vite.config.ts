@@ -1,9 +1,9 @@
-import { getPlayViteConfig } from 'fe-ent-vue-scripts';
+import { defineProjectConfig } from 'fe-ent-vue-scripts';
 import { defineConfig, searchForWorkspaceRoot } from 'vite';
 const workspace = searchForWorkspaceRoot(process.cwd());
 
 export default defineConfig(({ command, mode }) => {
-  return getPlayViteConfig({
+  return defineProjectConfig({
     command,
     mode,
     options: {

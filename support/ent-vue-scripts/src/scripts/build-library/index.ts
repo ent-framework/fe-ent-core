@@ -4,6 +4,7 @@ import glob from 'fast-glob';
 import consola from 'consola';
 import { build } from 'vite';
 import { defineLibraryConfig } from '../../configs/library';
+//import styleConfig from '../../configs/vite.prod.style';
 import { defineUmdLibraryConfig } from '../../configs/library.umd';
 
 async function run({ umd = false, source = false, base = '' }) {
@@ -21,6 +22,12 @@ async function run({ umd = false, source = false, base = '' }) {
     const absolute = path.resolve(cwd, `${filename}`);
     fs.copySync(absolute, path.resolve(cwd, `es/${filename}`));
   }
+
+  // if (fs.existsSync(path.resolve(cwd, 'style.ts'))) {
+  //   await build(styleConfig);
+  //   consola.success(`build library style successfully.`);
+  // }
+
   if (umd) {
     await build(await defineUmdLibraryConfig(source, base));
     consola.success(`build library umd successfully in path ${cwd}`);

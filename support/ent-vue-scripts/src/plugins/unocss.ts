@@ -1,5 +1,6 @@
 import UnoCSS from 'unocss/vite';
 import { presetTypography, presetUno } from 'unocss';
+import transformerDirectives from '@unocss/transformer-directives';
 import type { Theme } from 'unocss/preset-uno';
 
 const theme = {
@@ -17,12 +18,14 @@ export function configUnoCSSPlugin(isLib: boolean) {
     return UnoCSS<Theme>({
       mode: 'dist-chunk',
       presets: [presetUno({ preflight: false }), presetTypography()],
+      transformers: [transformerDirectives()],
       postcss: true,
       theme,
     });
   } else {
     return UnoCSS<Theme>({
       presets: [presetUno(), presetTypography()],
+      transformers: [transformerDirectives()],
       theme,
     });
   }
