@@ -16,6 +16,7 @@ import type {
 } from '@ent-core/logics/enums/app-enum';
 
 import type { CacheTypeEnum } from '@ent-core/logics/enums/cache-enum';
+import type { SeedToken } from 'ant-design-vue/es/theme/interface';
 
 // Lock screen information
 export interface LockInfo {
@@ -68,7 +69,6 @@ export type LocaleType = 'zh_CN' | 'en' | 'ru' | 'ja' | 'ko';
  * 菜单设置
  */
 export interface MenuSetting {
-  bgColor: string;
   fixed: boolean;
   collapsed: boolean;
   canDrag: boolean;
@@ -78,7 +78,7 @@ export interface MenuSetting {
   menuWidth: number;
   mode: MenuModeEnum;
   type: MenuTypeEnum;
-  theme: ThemeEnum;
+  theme: ThemeEnum | 'none';
   topMenuAlign: 'start' | 'center' | 'end';
   trigger: TriggerEnum;
   accordion: boolean;
@@ -98,10 +98,9 @@ export interface MultiTabsSetting {
 }
 
 export interface HeaderSetting {
-  bgColor: string;
   fixed: boolean;
   show: boolean;
-  theme: ThemeEnum;
+  theme: ThemeEnum | 'none';
   // Turn on full screen
   showFullScreen: boolean;
   // Whether to show the lock screen
@@ -134,6 +133,12 @@ export interface TransitionSetting {
   openNProgress: boolean;
 }
 
+export interface ThemeSetting {
+  theme: ThemeEnum;
+  name: string;
+  token: Partial<SeedToken>;
+}
+
 /**
  * 项目配置
  */
@@ -152,10 +157,8 @@ export interface ProjectConfig {
   sessionTimeoutProcessing: SessionTimeoutProcessingEnum;
   // Website gray mode, open for possible mourning dates
   grayMode: boolean;
-  // Whether to turn on the color weak mode
-  colorWeak: boolean;
-  // Theme color
-  themeColor: string;
+
+  themeSetting: ThemeSetting;
 
   // The main interface is displayed in full screen, the menu is not displayed, and the top
   fullContent: boolean;

@@ -11,7 +11,6 @@ import { entRouter, setupRouterGuard } from 'fe-ent-core/es/router';
 import { setupI18n } from 'fe-ent-core/es/locales';
 import { initApplication } from '/@/init-application';
 
-import 'ant-design-vue/dist/antd.less';
 import 'fe-ent-core/es/theme/index.less';
 
 import { getBasicRoutes, initRouteAndLayout } from 'fe-ent-layout';
@@ -43,7 +42,7 @@ async function bootstrap() {
 
   entRouter.addBasicRoutes([LoginRoute]);
   entRouter.addBasicRoutes(getBasicRoutes());
-  entRouter.addAuthRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
+  entRouter.addAuthRoutes(import.meta.globEager(`/src/routes2/modules/**/*.ts`));
 
   app.use(entRouter);
 

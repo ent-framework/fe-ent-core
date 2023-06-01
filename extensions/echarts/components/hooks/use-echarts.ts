@@ -4,7 +4,7 @@ import {
   useBreakpoint,
   useEventListener,
   useMenuSetting,
-  useRootSetting,
+  useThemeSetting,
   useTimeoutFn,
 } from 'fe-ent-core/es/hooks';
 import echarts from '../lib/echarts';
@@ -16,11 +16,11 @@ export function useEcharts(
   elRef: Ref<HTMLDivElement>,
   theme: 'light' | 'dark' | 'default' = 'default',
 ) {
-  const { getDarkMode: getSysDarkMode } = useRootSetting();
+  const { getGlobalTheme } = useThemeSetting();
   const { getCollapsed } = useMenuSetting();
 
   const getDarkMode = computed(() => {
-    return theme === 'default' ? getSysDarkMode.value : theme;
+    return theme === 'default' ? getGlobalTheme.value : theme;
   });
   let chartInstance: echarts.ECharts | null = null;
   let resizeFn: Fn = resize;

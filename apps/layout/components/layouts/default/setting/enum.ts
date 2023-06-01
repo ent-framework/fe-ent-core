@@ -4,6 +4,7 @@ import {
   MenuTypeEnum,
   MixSidebarTriggerEnum,
   RouterTransitionEnum,
+  ThemeEnum,
   TopMenuAlignEnum,
   TriggerEnum,
 } from 'fe-ent-core/es/logics';
@@ -11,7 +12,7 @@ import { useI18n } from 'fe-ent-core/es/hooks';
 
 export enum HandlerEnum {
   CHANGE_LAYOUT,
-  CHANGE_THEME_COLOR,
+  CHANGE_THEME_TOKEN,
   CHANGE_THEME,
   // menu
   MENU_HAS_DRAG,
@@ -47,7 +48,6 @@ export enum HandlerEnum {
   SHOW_BREADCRUMB,
   SHOW_BREADCRUMB_ICON,
   GRAY_MODE,
-  COLOR_WEAK,
   SHOW_LOGO,
   SHOW_FOOTER,
 
@@ -168,6 +168,24 @@ export const mixSidebarTriggerOptions = () => {
     {
       value: MixSidebarTriggerEnum.CLICK,
       label: t('layout.setting.triggerClick'),
+    },
+  ];
+};
+
+export const getThemeOptions = () => {
+  const { t } = useI18n();
+  return [
+    {
+      value: ThemeEnum.LIGHT,
+      label: t('layout.setting.lightTheme'),
+    },
+    {
+      value: ThemeEnum.DARK,
+      label: t('layout.setting.darkTheme'),
+    },
+    {
+      value: 'none',
+      label: t('layout.setting.noneTheme'),
     },
   ];
 };

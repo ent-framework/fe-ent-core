@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "vue": "^3.2.47",
-    "ant-design-vue": "^3.2.17"
+    "ant-design-vue": "4.0.0-rc.5"
   },
   "devDependencies": {
     "fe-ent-vue-scripts": "^2.0.0",

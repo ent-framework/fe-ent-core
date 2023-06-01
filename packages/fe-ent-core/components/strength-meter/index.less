@@ -1,4 +1,3 @@
-
 @strength-meter-prefix-cls: ~'@{vben-prefix}-strength-meter';
 
 .@{strength-meter-prefix-cls} {
@@ -6,7 +5,7 @@
     position: relative;
     height: 6px;
     margin: 10px auto 6px;
-    background-color: @disabled-color;
+    //background-color: @disabled-color;
     border-radius: 6px;
 
     &::before,
@@ -17,7 +16,7 @@
       width: 20%;
       height: inherit;
       background-color: transparent;
-      border-color: @white;
+      //border-color: @white;
       border-style: solid;
       border-width: 0 5px;
       content: '';
@@ -41,27 +40,27 @@
 
       &[data-score='0'] {
         width: 20%;
-        background-color: darken(@error-color, 10%);
+        //background-color: darken(@error-color, 10%);
       }
 
       &[data-score='1'] {
         width: 40%;
-        background-color: @error-color;
+        //background-color: @error-color;
       }
 
       &[data-score='2'] {
         width: 60%;
-        background-color: @warning-color;
+        //background-color: @warning-color;
       }
 
       &[data-score='3'] {
         width: 80%;
-        background-color: fade(@success-color, 50%);
+        //background-color: fade(@success-color, 50%);
       }
 
       &[data-score='4'] {
         width: 100%;
-        background-color: @success-color;
+        //background-color: @success-color;
       }
     }
   }

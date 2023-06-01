@@ -1,15 +1,15 @@
 <template>
   <div :class="prefixCls">
-    <template v-for="color in colorList || []" :key="color">
+    <template v-for="theme in themeSettings || []" :key="theme.name">
       <span
         :class="[
           `${prefixCls}__item`,
           {
-            [`${prefixCls}__item--active`]: def === color,
+            [`${prefixCls}__item--active`]: def === theme.name,
           },
         ]"
-        :style="{ background: color }"
-        @click="handleClick(color)"
+        :style="{ background: theme.token.colorPrimary }"
+        @click="handleClick(theme)"
       >
         <CheckOutlined />
       </span>
@@ -21,8 +21,10 @@
   import { CheckOutlined } from '@ant-design/icons-vue';
 
   import { useDesign } from 'fe-ent-core/es/hooks';
-
+  import { Factory } from 'fe-ent-core/es/logics';
   import { baseHandler } from '../handler';
+  import type { ThemeSetting } from 'fe-ent-core/es/store/types/store';
+
   import type { PropType } from 'vue';
   import type { HandlerEnum } from '../enum';
 
@@ -30,10 +32,6 @@
     name: 'ThemeColorPicker',
     components: { CheckOutlined },
     props: {
-      colorList: {
-        type: Array as PropType<string[]>,
-        defualt: [],
-      },
       event: {
         type: Number as PropType<HandlerEnum>,
       },
@@ -43,13 +41,15 @@
     },
     setup(props) {
       const { prefixCls } = useDesign('setting-theme-picker');
+      const themeSettings = Factory.getLayoutFactory().getThemeSettings();
 
-      function handleClick(color: string) {
-        props.event && baseHandler(props.event, color);
+      function handleClick(theme: ThemeSetting) {
+        props.event && baseHandler(props.event, { name: theme.name, token: theme.token });
       }
       return {
         prefixCls,
         handleClick,
+        themeSettings,
       };
     },
   });

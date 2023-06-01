@@ -1,15 +1,22 @@
 import type { PropType } from 'vue';
+import type { ButtonType } from 'ant-design-vue/es/button';
+
 export const buttonProps = {
   color: { type: String, validator: (v) => ['error', 'warning', 'success', ''].includes(v) },
   loading: { type: Boolean },
   disabled: { type: Boolean },
+  type: {
+    type: String as PropType<ButtonType>,
+    default: 'default',
+  },
+  ghost: { type: Boolean, default: undefined },
   title: { type: String },
   /**
-   * Text before icon.
+   * Icon before text.
    */
   preIcon: { type: String },
   /**
-   * Text after icon.
+   * Icon after text.
    */
   postIcon: { type: String },
   /**

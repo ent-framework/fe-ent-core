@@ -44,6 +44,5 @@
   .desc-wrap {
     padding: 24px 40px;
     margin-top: 24px;
-    background-color: @background-color-light;
   }
 </style>

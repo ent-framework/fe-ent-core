@@ -1,11 +1,11 @@
 <template>
   <Layout :class="prefixCls" v-bind="lockEvents">
     <LayoutFeatures />
-    <LayoutHeader v-if="getShowFullHeaderRef" fixed />
+    <LayoutHeader v-if="getShowFullHeaderRef" fixed :theme="getComputedHeaderTheme" />
     <Layout :class="[layoutClass]">
       <LayoutSideBar v-if="getShowSidebar || getIsMobile" />
       <Layout :class="`${prefixCls}-main`">
-        <LayoutMultipleHeader />
+        <LayoutMultipleHeader :theme="getComputedHeaderTheme" />
         <LayoutContent />
         <LayoutFooter />
       </Layout>
@@ -23,6 +23,7 @@
     useHeaderSetting,
     useLockPage,
     useMenuSetting,
+    useThemeSetting,
   } from 'fe-ent-core/es/hooks';
 
   import LayoutMultipleHeader from './header/multiple-header.vue';
@@ -46,8 +47,15 @@
     setup() {
       const { prefixCls } = useDesign('default-layout');
       const { getIsMobile } = useAppInject();
-      const { getShowFullHeaderRef } = useHeaderSetting();
+      const { getShowFullHeaderRef, getHeaderTheme } = useHeaderSetting();
       const { getShowSidebar, getIsMixSidebar, getShowMenu } = useMenuSetting();
+
+      const { getGlobalTheme } = useThemeSetting();
+
+      const getComputedHeaderTheme = computed(() => {
+        if (getHeaderTheme.value === 'none') return getGlobalTheme.value;
+        return getHeaderTheme.value;
+      });
 
       // Create a lock screen monitor
       const lockEvents = useLockPage();
@@ -68,6 +76,7 @@
         getIsMixSidebar,
         layoutClass,
         lockEvents,
+        getComputedHeaderTheme,
       };
     },
   });

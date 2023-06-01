@@ -1,5 +1,5 @@
 <template>
-  <div :class="prefixCls">
+  <div :class="prefixCls" :style="getContentStyle">
     <CollapseHeader v-bind="$props" :prefix-cls="prefixCls" :show="show" @expand="handleExpand">
       <template #title>
         <slot name="title" />
@@ -23,7 +23,7 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, ref } from 'vue';
+import {computed, CSSProperties, defineComponent, ref} from 'vue';
   // component
   import { Skeleton } from 'ant-design-vue';
   import { CollapseTransition } from '@ent-core/components/transition';
@@ -33,6 +33,7 @@
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import CollapseHeader from './collapse-header.vue';
   import type { PropType } from 'vue';
+  import {useTheme} from "@ent-core/hooks";
 
   const props = {
     title: { type: String, default: '' },
@@ -67,7 +68,12 @@
       const show = ref(true);
 
       const { prefixCls } = useDesign('collapse-container');
-
+      const { token } = useTheme();
+      const getContentStyle = computed((): CSSProperties => {
+        return {
+          backgroundColor: token.value.colorBgContainer,
+        };
+      });
       /**
        * @description: Handling development events
        */
@@ -82,6 +88,7 @@
         prefixCls,
         handleExpand,
         show,
+        getContentStyle,
       };
     },
   });

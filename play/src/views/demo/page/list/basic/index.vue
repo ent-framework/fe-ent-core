@@ -81,25 +81,21 @@
     &__top {
       padding: 24px;
       text-align: center;
-      background-color: @component-background;
 
       &-col {
         &:not(:last-child) {
-          border-right: 1px dashed @border-color-base;
         }
 
         div {
           margin-bottom: 12px;
           font-size: 14px;
           line-height: 22px;
-          color: @text-color;
         }
 
         p {
           margin: 0;
           font-size: 24px;
           line-height: 32px;
-          color: @text-color;
         }
       }
     }
@@ -107,7 +103,6 @@
     &__content {
       padding: 24px;
       margin-top: 12px;
-      background-color: @component-background;
 
       .list {
         position: relative;
@@ -122,7 +117,6 @@
         top: 20px;
         right: 15px;
         font-weight: normal;
-        color: @primary-color;
         cursor: pointer;
       }
 

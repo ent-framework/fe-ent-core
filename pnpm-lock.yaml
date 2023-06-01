@@ -64,8 +64,8 @@ importers:
         specifier: ^5.57.1
         version: 5.57.1(eslint@8.37.0)(typescript@4.9.4)
       ant-design-vue:
-        specifier: 3.2.17
-        version: 3.2.17(vue@3.2.47)
+        specifier: 4.0.0-rc.5
+        version: 4.0.0-rc.5(vue@3.2.47)
       autoprefixer:
         specifier: ^10.4.0
         version: registry.npmmirror.com/autoprefixer@10.4.2(postcss@8.4.23)
@@ -204,8 +204,8 @@ importers:
   extensions/code-editor:
     dependencies:
       ant-design-vue:
-        specifier: ^3.2.17
-        version: 3.2.17(vue@3.2.47)
+        specifier: 4.0.0-rc.5
+        version: 4.0.0-rc.5(vue@3.2.47)
       codemirror:
         specifier: ^5.65.12
         version: 5.65.12
@@ -323,8 +323,8 @@ importers:
   extensions/tinymce:
     dependencies:
       ant-design-vue:
-        specifier: ^3.2.17
-        version: 3.2.17(vue@3.2.47)
+        specifier: 4.0.0-rc.5
+        version: 4.0.0-rc.5(vue@3.2.47)
       fe-ent-core:
         specifier: workspace:*
         version: link:../../packages/fe-ent-core
@@ -455,6 +455,9 @@ importers:
       '@iconify/iconify':
         specifier: ^3.0.0
         version: 3.0.1
+      '@iconify/vue':
+        specifier: 4.1.1
+        version: 4.1.1(vue@3.2.47)
       '@vueuse/core':
         specifier: ^9.13.0
         version: 9.13.0(vue@3.2.47)
@@ -538,8 +541,8 @@ importers:
         specifier: ^1.4.2
         version: 1.4.3
       ant-design-vue:
-        specifier: 3.2.17
-        version: 3.2.17(vue@3.2.47)
+        specifier: 4.0.0-rc.5
+        version: 4.0.0-rc.5(vue@3.2.47)
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -562,8 +565,8 @@ importers:
   play:
     dependencies:
       ant-design-vue:
-        specifier: ^3.2.17
-        version: 3.2.17(vue@3.2.47)
+        specifier: 4.0.0-rc.5
+        version: 4.0.0-rc.5(vue@3.2.47)
       vue:
         specifier: ^3.2.47
         version: 3.2.47
@@ -617,8 +620,8 @@ importers:
         specifier: ^1.0.6
         version: 1.1.1(@babel/core@7.21.4)
       ant-design-vue:
-        specifier: 3.2.17
-        version: 3.2.17(vue@3.2.47)
+        specifier: 4.0.0-rc.5
+        version: 4.0.0-rc.5(vue@3.2.47)
       axios:
         specifier: ^0.21.1
         version: 0.21.1
@@ -810,7 +813,7 @@ packages:
   /@ant-design/colors@6.0.0:
     resolution: {integrity: sha512-qAZRvPzfdWHtfameEGP2Qvuf838NhergR35o+EuVyB5XvSA98xod5r4utvi4TJ3ywmevm290g9nsCG5MryrdWQ==}
     dependencies:
-      '@ctrl/tinycolor': 3.4.0
+      '@ctrl/tinycolor': 3.6.0
 
   /@ant-design/icons-svg@4.2.1:
     resolution: {integrity: sha512-EB0iwlKDGpG93hW8f85CTJTs4SvMX7tt5ceupvhALp1IF44SeUFOMhKUOYqpsoYWQKAOuTRDMqn75rEaKDp0Xw==}
@@ -2095,9 +2098,15 @@ packages:
     dependencies:
       '@cspotcode/source-map-consumer': 0.8.0
 
-  /@ctrl/tinycolor@3.4.0:
-    resolution: {integrity: sha512-JZButFdZ1+/xAfpguQHoabIXkcqRRKpMrWKBkpEZZyxfY9C1DpADFB8PEqGSTeFr135SaTRfKqGKx5xSCLI7ZQ==}
+  /@ctrl/tinycolor@3.6.0:
+    resolution: {integrity: sha512-/Z3l6pXthq0JvMYdUFyX9j0MaCltlIn6mfh9jLyQwg5aPKxkyNa0PTHtU1AlFXLNk55ZuAeJRcpvq+tmLfKmaQ==}
     engines: {node: '>=10'}
+
+  /@emotion/hash@0.9.1:
+    resolution: {integrity: sha512-gJB6HLm5rYwSLI6PQa+X1t5CFGrv1J1TWG+sOyMCeKz2ojaj6Fnl/rZEspogG+cvqbt4AE/2eIyD2QfLKTBNlQ==}
+
+  /@emotion/unitless@0.8.1:
+    resolution: {integrity: sha512-KOEGMu6dmJZtpadb476IsZBclKvILjopjUii3V+7MnXIQCYh8W3NgNcgwo21n9LXZX6EDIKvqfjYxXebDwxKmQ==}
 
   /@esbuild-kit/cjs-loader@2.4.1:
     resolution: {integrity: sha512-lhc/XLith28QdW0HpHZvZKkorWgmCNT7sVelMHDj3HFdTfdqkwEKvT+aXVQtNAmCC39VJhunDkWhONWB7335mg==}
@@ -2411,6 +2420,15 @@ packages:
       local-pkg: 0.4.3
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@iconify/vue@4.1.1(vue@3.2.47):
+    resolution: {integrity: sha512-RL85Bm/DAe8y6rT6pux7D2FJSiUEM/TPfyK7GrbAOfTSwrhvwJW+S5yijdGcmtXouA8MtuH9C7l4hiSE4mLMjg==}
+    peerDependencies:
+      vue: '>=3'
+    dependencies:
+      '@iconify/types': 2.0.0
+      vue: 3.2.47
     dev: false
 
   /@intlify/core-base@9.2.2:
@@ -4489,8 +4507,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /ant-design-vue@3.2.17(vue@3.2.47):
-    resolution: {integrity: sha512-fUHC1PRF3/UTDu7WjaKq2awyqET2mGfEytNOjfbUrvq5Q4AzNghzJlCWh1saCuA+VjnRRBCYu34StZ44cDmbFg==}
+  /ant-design-vue@4.0.0-rc.5(vue@3.2.47):
+    resolution: {integrity: sha512-r1n64cXwQqpd9maxGvT1Oz5tWNeBArVvIvskl/f+7B39urM5l8C2IjmuvZuIDbKYwnUmOEtYlDxEzAws3956kA==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       vue: '>=3.2.0'
@@ -4498,10 +4516,13 @@ packages:
       '@ant-design/colors': 6.0.0
       '@ant-design/icons-vue': 6.1.0(vue@3.2.47)
       '@babel/runtime': 7.17.2
-      '@ctrl/tinycolor': 3.4.0
+      '@ctrl/tinycolor': 3.6.0
+      '@emotion/hash': 0.9.1
+      '@emotion/unitless': 0.8.1
       '@simonwep/pickr': 1.8.2
       array-tree-filter: 2.1.0
       async-validator: 4.2.5
+      csstype: 3.1.2
       dayjs: 1.11.7
       dom-align: 1.12.4
       dom-scroll-into-view: 2.0.1
@@ -4510,6 +4531,8 @@ packages:
       resize-observer-polyfill: 1.5.1
       scroll-into-view-if-needed: 2.2.31
       shallow-equal: 1.2.1
+      stylis: 4.2.0
+      throttle-debounce: 5.0.0
       vue: 3.2.47
       vue-types: 3.0.2(vue@3.2.47)
       warning: 4.0.3
@@ -5666,6 +5689,9 @@ packages:
     resolution: {integrity: sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==}
     dev: false
 
+  /compute-scroll-into-view@1.0.20:
+    resolution: {integrity: sha512-UCB0ioiyj8CRjtrvaceBLqqhZCVP+1B8+NWQhmdsm0VXOJtobBCf1dBQmebCCo34qZmUwZfIH2MZLqNHazrfjg==}
+
   /concat-map@0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
 
@@ -5759,7 +5785,7 @@ packages:
     resolution: {integrity: sha512-XBlx8HSqrT0ObQwmSzM7WE5k8FxTV75h1DX1Z3n6NhQ/UYYAvInWYmG06vFt7hQZArE2fuO62aihiWIVQwh1sw==}
     dependencies:
       each-props: 1.3.2
-      is-plain-object: registry.npmmirror.com/is-plain-object@5.0.0
+      is-plain-object: 5.0.0
     dev: false
 
   /core-js-compat@3.30.2:
@@ -5933,6 +5959,9 @@ packages:
 
   /csstype@2.6.19:
     resolution: {integrity: sha512-ZVxXaNy28/k3kJg0Fou5MiYpp88j7H9hLZp8PDC3jV0WFjfH5E9xHb56L0W59cPbKbcHXeP4qyT8PrHp8t6LcQ==}
+
+  /csstype@3.1.2:
+    resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
 
   /cwd@0.9.1:
     resolution: {integrity: sha512-4+0D+ojEasdLndYX4Cqff057I/Jp6ysXpwKkdLQLnZxV8f6IYZmZtTP5uqD91a/kWqejoc0sSqK4u8wpTKCh8A==}
@@ -10221,7 +10250,7 @@ packages:
       findup-sync: 3.0.0
       fined: 1.2.0
       flagged-respawn: 1.0.1
-      is-plain-object: registry.npmmirror.com/is-plain-object@2.0.4
+      is-plain-object: 2.0.4
       object.map: 1.0.1
       rechoir: 0.6.2
       resolve: 1.22.1
@@ -10340,7 +10369,7 @@ packages:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
     dependencies:
-      js-tokens: registry.npmmirror.com/js-tokens@4.0.0
+      js-tokens: 4.0.0
 
   /lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
@@ -12168,7 +12197,7 @@ packages:
   /regenerator-transform@0.15.1:
     resolution: {integrity: sha512-knzmNAcuyxV+gQCufkYcvOqX/qIIfHLv0u5x79kRxuGojfYVky1f15TzZEu2Avte8QGepvUNTnLskf8E6X6Vyg==}
     dependencies:
-      '@babel/runtime': registry.npmmirror.com/@babel/runtime@7.17.2
+      '@babel/runtime': 7.17.2
     dev: false
 
   /regex-not@1.0.2:
@@ -12518,7 +12547,7 @@ packages:
   /scroll-into-view-if-needed@2.2.31:
     resolution: {integrity: sha512-dGCXy99wZQivjmjIqihaBQNjryrz5rueJY7eHfTdyWEiR4ttYpsajb14rn9s5d4DY4EcY6+4+U/maARBXJedkA==}
     dependencies:
-      compute-scroll-into-view: registry.npmmirror.com/compute-scroll-into-view@1.0.20
+      compute-scroll-into-view: 1.0.20
 
   /select@1.1.2:
     resolution: {integrity: sha512-OwpTSOfy6xSs1+pwcNrv0RBMOzI39Lp3qQKUTPVVPRjCdNa5JH/oPRiqsesIskK8TVgmRiHwO4KXlV2Li9dANA==}
@@ -13034,6 +13063,9 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
+  /stylis@4.2.0:
+    resolution: {integrity: sha512-Orov6g6BB1sDfYgzWfTHDOxamtX1bE/zo104Dh9e6fqJ3PooipYyfJ0pUmrZO2wAvO8YbEyeFrkV91XTsGMSrw==}
+
   /supports-color@2.0.0:
     resolution: {integrity: sha512-KKNVtd6pCYgPIKU4cp2733HWYCpplQhddZLBUryaAHou723x+FRzQ5Df824Fj+IyyuiQTRoub4SnIFfIcrp70g==}
     engines: {node: '>=0.8.0'}
@@ -13198,6 +13230,10 @@ packages:
   /throat@5.0.0:
     resolution: {integrity: sha512-fcwX4mndzpLQKBS1DVYhGAcYaYt7vsHNIvQV+WXMvnow5cgjPphq5CaayLaGsjRdSCKZFNGt7/GYAuXaNOiYCA==}
     dev: false
+
+  /throttle-debounce@5.0.0:
+    resolution: {integrity: sha512-2iQTSgkkc1Zyk0MeVrt/3BvuOXYPl/R8Z0U2xxo9rjwNciaHDG3R+Lm6dh4EeUci49DanvBnuqI6jshoQQRGEg==}
+    engines: {node: '>=12.22'}
 
   /through2-filter@3.0.0:
     resolution: {integrity: sha512-jaRjI2WxN3W1V8/FMZ9HKIBXixtiqs3SQSX4/YGIiP3gL6djW48VoZq9tDqeCWs3MT8YY5wb/zli8VW8snY1CA==}
@@ -14721,7 +14757,7 @@ packages:
     name: '@ant-design/colors'
     version: 6.0.0
     dependencies:
-      '@ctrl/tinycolor': registry.npmmirror.com/@ctrl/tinycolor@3.4.0
+      '@ctrl/tinycolor': 3.6.0
 
   registry.npmmirror.com/@babel/code-frame@7.12.11:
     resolution: {integrity: sha512-Zt1yodBx1UcyiePMSkWnU4hPqhwq7hGi2nFL1LeA3EUl+q2LQx16MISgJ0+z7dnmgvP9QtIleuETGOiOH1RcIw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@babel/code-frame/-/code-frame-7.12.11.tgz}
@@ -14853,15 +14889,6 @@ packages:
       '@babel/types': 7.21.5
     transitivePeerDependencies:
       - supports-color
-
-  registry.npmmirror.com/@babel/runtime@7.17.2:
-    resolution: {integrity: sha512-hzeyJyMA1YGdJTuWU0e/j4wKXrU4OMFvY2MSlaI9B7VQb0r5cxTE3EAIS2Q7Tn2RIcDkRvTA/v2JsAEhxe99uw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@babel/runtime/-/runtime-7.17.2.tgz}
-    name: '@babel/runtime'
-    version: 7.17.2
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      regenerator-runtime: registry.npmmirror.com/regenerator-runtime@0.13.9
-    dev: false
 
   registry.npmmirror.com/@babel/template@7.20.7:
     resolution: {integrity: sha512-8SegXApWe6VoNw0r9JHpSteLKTpTiLZ4rMlGIm9JQ18KiCtyQiAMEazujAHrUS5flrcqYZa75ukev3P6QmUwUw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@babel/template/-/template-7.20.7.tgz}
@@ -15100,12 +15127,6 @@ packages:
       chalk: 4.1.2
     dev: true
     optional: true
-
-  registry.npmmirror.com/@ctrl/tinycolor@3.4.0:
-    resolution: {integrity: sha512-JZButFdZ1+/xAfpguQHoabIXkcqRRKpMrWKBkpEZZyxfY9C1DpADFB8PEqGSTeFr135SaTRfKqGKx5xSCLI7ZQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@ctrl/tinycolor/-/tinycolor-3.4.0.tgz}
-    name: '@ctrl/tinycolor'
-    version: 3.4.0
-    engines: {node: '>=10'}
 
   registry.npmmirror.com/@endemolshinegroup/cosmiconfig-typescript-loader@3.0.2(cosmiconfig@7.0.1)(typescript@4.9.4):
     resolution: {integrity: sha512-QRVtqJuS1mcT56oHpVegkKBlgtWjXw/gHNWO3eL9oyB5Sc7HBoc2OLG/nYpVfT/Jejvo3NUrD0Udk7XgoyDKkA==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@endemolshinegroup/cosmiconfig-typescript-loader/-/cosmiconfig-typescript-loader-3.0.2.tgz}
@@ -15673,11 +15694,6 @@ packages:
       array-ify: registry.npmmirror.com/array-ify@1.0.0
       dot-prop: 5.3.0
     dev: true
-
-  registry.npmmirror.com/compute-scroll-into-view@1.0.20:
-    resolution: {integrity: sha512-UCB0ioiyj8CRjtrvaceBLqqhZCVP+1B8+NWQhmdsm0VXOJtobBCf1dBQmebCCo34qZmUwZfIH2MZLqNHazrfjg==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/compute-scroll-into-view/-/compute-scroll-into-view-1.0.20.tgz}
-    name: compute-scroll-into-view
-    version: 1.0.20
 
   registry.npmmirror.com/conventional-changelog-angular@5.0.13:
     resolution: {integrity: sha512-i/gipMxs7s8L/QeuavPF2hLnJgH6pEZAttySB6aiQLWcX3puWDL3ACVmvBhJGxnAy52Qc15ua26BufY6KpmrVA==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/conventional-changelog-angular/-/conventional-changelog-angular-5.0.13.tgz}
@@ -16868,20 +16884,12 @@ packages:
       has-tostringtag: 1.0.0
     dev: false
 
-  registry.npmmirror.com/is-plain-object@2.0.4:
-    resolution: {integrity: sha512-h5PpgXkWitc38BBMYawTYMWJHFZJVnBquFE57xFpjB8pJFiF6gZ+bU+WyI/yqXiFR5mdLsgYNaPe8uao6Uv9Og==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/is-plain-object/-/is-plain-object-2.0.4.tgz}
-    name: is-plain-object
-    version: 2.0.4
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      isobject: 3.0.1
-    dev: false
-
   registry.npmmirror.com/is-plain-object@5.0.0:
     resolution: {integrity: sha512-VRSzKkbMm5jMDoKLbltAkFQ5Qr7VDiTFGXxYFXXowVj387GeGNOCsOH6Msy00SGZ3Fp84b1Naa1psqgcCIEP5Q==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/is-plain-object/-/is-plain-object-5.0.0.tgz}
     name: is-plain-object
     version: 5.0.0
     engines: {node: '>=0.10.0'}
+    dev: true
 
   registry.npmmirror.com/is-regexp@2.1.0:
     resolution: {integrity: sha512-OZ4IlER3zmRIoB9AqNhEggVxqIH4ofDns5nRrPS6yQxXE1TPCUpFznBfRQmQa8uC+pXqjMnukiJBxCisIxiLGA==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/is-regexp/-/is-regexp-2.1.0.tgz}
@@ -16971,11 +16979,6 @@ packages:
     version: 27.5.1
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dev: true
-
-  registry.npmmirror.com/js-tokens@4.0.0:
-    resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/js-tokens/-/js-tokens-4.0.0.tgz}
-    name: js-tokens
-    version: 4.0.0
 
   registry.npmmirror.com/jsesc@0.5.0:
     resolution: {integrity: sha512-uZz5UnB7u4T9LvwmFqXii7pZSouaRPorGs5who1Ip7VO0wxanFvBL7GkM6dTHlgX+jhBApRetaWpnDabOeTcnA==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/jsesc/-/jsesc-0.5.0.tgz}
@@ -17700,12 +17703,6 @@ packages:
       indent-string: registry.npmmirror.com/indent-string@4.0.0
       strip-indent: registry.npmmirror.com/strip-indent@3.0.0
     dev: true
-
-  registry.npmmirror.com/regenerator-runtime@0.13.9:
-    resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz}
-    name: regenerator-runtime
-    version: 0.13.9
-    dev: false
 
   registry.npmmirror.com/regexp.prototype.flags@1.5.0:
     resolution: {integrity: sha512-0SutC3pNudRKgquxGoRGIz946MZVHqbNfPjBdxeOhBrdgDKlRoXmYLQN9xRbrR09ZXWeGAdPuif7egofn6v5LA==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/regexp.prototype.flags/-/regexp.prototype.flags-1.5.0.tgz}

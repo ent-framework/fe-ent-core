@@ -38,7 +38,6 @@ declare module '@vue/runtime-core' {
     EntScrollbar: typeof import('fe-ent-core')['EntScrollbar'];
     EntScrollContainer: typeof import('fe-ent-core')['EntScrollContainer'];
     EntSimpleMenu: typeof import('fe-ent-core')['EntSimpleMenu'];
-    EntSimpleMenuTag: typeof import('fe-ent-core')['EntSimpleMenuTag'];
     EntStrengthMeter: typeof import('fe-ent-core')['EntStrengthMeter'];
     EntSvgIcon: typeof import('fe-ent-core')['EntSvgIcon'];
     EntTable: typeof import('fe-ent-core')['EntTable'];

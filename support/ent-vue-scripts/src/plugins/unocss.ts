@@ -24,7 +24,7 @@ export function configUnoCSSPlugin(isLib: boolean) {
     });
   } else {
     return UnoCSS<Theme>({
-      presets: [presetUno(), presetTypography()],
+      presets: [presetUno({ preflight: false }), presetTypography()],
       transformers: [transformerDirectives()],
       theme,
     });

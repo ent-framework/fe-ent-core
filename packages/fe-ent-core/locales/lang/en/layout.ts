@@ -112,5 +112,9 @@ export default {
     triggerClick: 'Click',
 
     mixSidebarFixed: 'Fixed expanded menu',
+
+    darkTheme: 'Dark',
+    lightTheme: 'Light',
+    noneTheme: 'Using System',
   },
 };

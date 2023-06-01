@@ -1,61 +1,60 @@
+@header-height: 60px;
+@detail-header-height: 40px;
+@basic-drawer-prefix-cls: ~'@{vben-prefix}-basic-drawer';
+@basic-drawer-prefix-cls-detail: ~'@{vben-prefix}-basic-drawer__detail';
 
-  @header-height: 60px;
-  @detail-header-height: 40px;
-  @basic-drawer-prefix-cls: ~'@{vben-prefix}-basic-drawer';
-  @basic-drawer-prefix-cls-detail: ~'@{vben-prefix}-basic-drawer__detail';
+.@{basic-drawer-prefix-cls} {
+  .ant-drawer-wrapper-body {
+    overflow: hidden;
+  }
 
-  .@{basic-drawer-prefix-cls} {
-    .ant-drawer-wrapper-body {
-      overflow: hidden;
-    }
-
-    .ant-drawer-close {
-      &:hover {
-        color: @error-color;
-      }
-    }
-
-    .ant-drawer-body {
-      height: calc(100% - @header-height);
-      padding: 0;
-      background-color: @component-background;
-
-      .scrollbar__wrap {
-        padding: 16px !important;
-        margin-bottom: 0 !important;
-      }
-
-      > .scrollbar > .scrollbar__bar.is-horizontal {
-        display: none;
-      }
+  .ant-drawer-close {
+    &:hover {
+      //color: @error-color;
     }
   }
 
-  .@{basic-drawer-prefix-cls-detail} {
-    position: absolute;
-
-    .ant-drawer-header {
-      width: 100%;
-      height: @detail-header-height;
-      padding: 0;
-      border-top: 1px solid @border-color-base;
-      box-sizing: border-box;
-    }
-
-    .ant-drawer-title {
-      height: 100%;
-    }
-
-    .ant-drawer-close {
-      height: @detail-header-height;
-      line-height: @detail-header-height;
-    }
+  .ant-drawer-body {
+    height: calc(100% - @header-height);
+    padding: 0;
+    //background-color: @component-background;
 
     .scrollbar__wrap {
-      padding: 0 !important;
+      padding: 16px !important;
+      margin-bottom: 0 !important;
     }
 
-    .ant-drawer-body {
-      height: calc(100% - @detail-header-height);
+    > .scrollbar > .scrollbar__bar.is-horizontal {
+      display: none;
     }
   }
+}
+
+.@{basic-drawer-prefix-cls-detail} {
+  position: absolute;
+
+  .ant-drawer-header {
+    width: 100%;
+    height: @detail-header-height;
+    padding: 0;
+    //border-top: 1px solid @border-color-base;
+    box-sizing: border-box;
+  }
+
+  .ant-drawer-title {
+    height: 100%;
+  }
+
+  .ant-drawer-close {
+    height: @detail-header-height;
+    line-height: @detail-header-height;
+  }
+
+  .scrollbar__wrap {
+    padding: 0 !important;
+  }
+
+  .ant-drawer-body {
+    height: calc(100% - @detail-header-height);
+  }
+}

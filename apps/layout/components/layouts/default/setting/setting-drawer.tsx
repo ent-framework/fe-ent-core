@@ -7,12 +7,20 @@ import {
   useMenuSetting,
   useMultipleTabSetting,
   useRootSetting,
+  useThemeSetting,
   useTransitionSetting,
 } from 'fe-ent-core/es/hooks';
 
 import { Divider } from 'ant-design-vue';
 
-import { InputNumberItem, SelectItem, SettingFooter, SwitchItem, TypePicker } from './components';
+import {
+  InputNumberItem,
+  SelectItem,
+  SettingFooter,
+  SwitchItem,
+  ThemeColorPicker,
+  TypePicker,
+} from './components';
 
 import { baseHandler } from './handler';
 
@@ -20,6 +28,7 @@ import {
   HandlerEnum,
   contentModeOptions,
   getMenuTriggerOptions,
+  getThemeOptions,
   menuTypeList,
   mixSidebarTriggerOptions,
   routerTransitionOptions,
@@ -36,7 +45,6 @@ export default defineComponent({
       getShowBreadCrumbIcon,
       getShowLogo,
       getFullContent,
-      getColorWeak,
       getGrayMode,
       getLockTime,
       getShowDarkModeToggle,
@@ -63,10 +71,17 @@ export default defineComponent({
       getCloseMixSidebarOnChange,
       getMixSideTrigger,
       getMixSideFixed,
+      getMenuTheme,
     } = useMenuSetting();
 
-    const { getShowHeader, getFixed: getHeaderFixed, getShowSearch } = useHeaderSetting();
+    const {
+      getShowHeader,
+      getFixed: getHeaderFixed,
+      getShowSearch,
+      getHeaderTheme,
+    } = useHeaderSetting();
 
+    const { getThemeName } = useThemeSetting();
     const { t } = useI18n();
 
     const { getShowMultipleTab, getShowQuick, getShowRedo, getShowFold } = useMultipleTabSetting();
@@ -94,6 +109,9 @@ export default defineComponent({
       );
     }
 
+    function renderMainTheme() {
+      return <ThemeColorPicker def={unref(getThemeName)} event={HandlerEnum.CHANGE_THEME_TOKEN} />;
+    }
     /**
      * @description:
      */
@@ -279,11 +297,28 @@ export default defineComponent({
             disabled={unref(getIsHorizontal)}
           />
 
+          <SelectItem
+            title={t('layout.setting.sidebarTheme')}
+            event={HandlerEnum.MENU_THEME}
+            def={unref(getMenuTheme)}
+            options={getThemeOptions()}
+            disabled={!unref(getShowMenu)}
+          />
+
           <SwitchItem
             title={t('layout.setting.header')}
             event={HandlerEnum.HEADER_SHOW}
             def={unref(getShowHeader)}
           />
+
+          <SelectItem
+            title={t('layout.setting.headerTheme')}
+            event={HandlerEnum.HEADER_THEME}
+            def={unref(getHeaderTheme)}
+            options={getThemeOptions()}
+            disabled={!unref(getShowHeader)}
+          />
+
           <SwitchItem
             title="Logo"
             event={HandlerEnum.SHOW_LOGO}
@@ -305,12 +340,6 @@ export default defineComponent({
             title={t('layout.setting.grayMode')}
             event={HandlerEnum.GRAY_MODE}
             def={unref(getGrayMode)}
-          />
-
-          <SwitchItem
-            title={t('layout.setting.colorWeak')}
-            event={HandlerEnum.COLOR_WEAK}
-            def={unref(getColorWeak)}
           />
         </>
       );
@@ -358,6 +387,8 @@ export default defineComponent({
         {unref(getShowDarkModeToggle) && <EntDarkModeToggle class="mx-auto" />}
         <Divider>{() => t('layout.setting.navMode')}</Divider>
         {renderSidebar()}
+        <Divider>{() => t('layout.setting.sysTheme')}</Divider>
+        {renderMainTheme()}
         <Divider>{() => t('layout.setting.interfaceFunction')}</Divider>
         {renderFeatures()}
         <Divider>{() => t('layout.setting.interfaceDisplay')}</Divider>

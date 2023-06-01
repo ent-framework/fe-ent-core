@@ -191,7 +191,7 @@ export const usePermissionStore = defineStore({
           try {
             await this.changePermissionCode();
             // 从后端获取Menu
-            routeList = (await Factory.getMenuFactory().getMenuList({
+            routeList = (await Factory.getLayoutFactory().getMenuList({
               entryPath,
             })) as AppRouteRecordRaw[];
           } catch (error) {

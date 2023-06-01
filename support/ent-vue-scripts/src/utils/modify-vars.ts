@@ -1,8 +1,6 @@
 import path from 'path';
 import fs from 'fs';
 import { generate } from '@ant-design/colors';
-// @ts-ignore: typo
-import { getThemeVariables } from 'ant-design-vue/dist/theme';
 import { searchForWorkspaceRoot } from 'vite';
 
 export const primaryColor = '#0960bd';
@@ -43,12 +41,13 @@ export function generateModifyVars(cssModifyOptions?: ModifyVarOptions) {
     primaryColorObj[`primary-${index + 1}`] = palettes[index];
   }
 
-  const modifyVars = getThemeVariables();
+  //const modifyVars = getThemeVariables();
   const cssModifyVars = cssModifyOptions?.cssModifyVars || {};
   return {
-    ...modifyVars,
+    //...modifyVars,
     // reference:  Avoid repeated references
-    hack: `${modifyVars.hack} @import (reference) "${preLoadFile}";`,
+    //hack: `${modifyVars.hack} @import (reference) "${preLoadFile}";`,
+    hack: `true;@import (reference) "${preLoadFile}";`,
     'primary-color': primary,
     ...primaryColorObj,
     'info-color': primary,

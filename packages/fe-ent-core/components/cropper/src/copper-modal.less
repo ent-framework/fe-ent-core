@@ -1,70 +1,69 @@
+@cropper-am-prefix-cls: ~'@{vben-prefix}-cropper-am';
 
-  @cropper-am-prefix-cls: ~'@{vben-prefix}-cropper-am';
+.@{cropper-am-prefix-cls} {
+  display: flex;
 
-  .@{cropper-am-prefix-cls} {
+  &-left,
+  &-right {
+    height: 340px;
+  }
+
+  &-left {
+    width: 55%;
+  }
+
+  &-right {
+    width: 45%;
+  }
+
+  &-cropper {
+    height: 300px;
+    background: #eee;
+    background-image: linear-gradient(
+        45deg,
+        rgb(0 0 0 / 25%) 25%,
+        transparent 0,
+        transparent 75%,
+        rgb(0 0 0 / 25%) 0
+      ),
+      linear-gradient(
+        45deg,
+        rgb(0 0 0 / 25%) 25%,
+        transparent 0,
+        transparent 75%,
+        rgb(0 0 0 / 25%) 0
+      );
+    background-position: 0 0, 12px 12px;
+    background-size: 24px 24px;
+  }
+
+  &-toolbar {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
 
-    &-left,
-    &-right {
-      height: 340px;
-    }
+  &-preview {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+    overflow: hidden;
+    //border: 1px solid @border-color-base;
+    border-radius: 50%;
 
-    &-left {
-      width: 55%;
-    }
-
-    &-right {
-      width: 45%;
-    }
-
-    &-cropper {
-      height: 300px;
-      background: #eee;
-      background-image: linear-gradient(
-          45deg,
-          rgb(0 0 0 / 25%) 25%,
-          transparent 0,
-          transparent 75%,
-          rgb(0 0 0 / 25%) 0
-        ),
-        linear-gradient(
-          45deg,
-          rgb(0 0 0 / 25%) 25%,
-          transparent 0,
-          transparent 75%,
-          rgb(0 0 0 / 25%) 0
-        );
-      background-position: 0 0, 12px 12px;
-      background-size: 24px 24px;
-    }
-
-    &-toolbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 10px;
-    }
-
-    &-preview {
-      width: 220px;
-      height: 220px;
-      margin: 0 auto;
-      overflow: hidden;
-      border: 1px solid @border-color-base;
-      border-radius: 50%;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    &-group {
-      display: flex;
-      padding-top: 8px;
-      margin-top: 8px;
-      border-top: 1px solid @border-color-base;
-      justify-content: space-around;
-      align-items: center;
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
+
+  &-group {
+    display: flex;
+    padding-top: 8px;
+    margin-top: 8px;
+    //border-top: 1px solid @border-color-base;
+    justify-content: space-around;
+    align-items: center;
+  }
+}

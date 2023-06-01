@@ -1,27 +1,11 @@
 @multiple-tabs-prefix-cls: ~'@{vben-prefix}-multiple-tabs';
 
-html[data-theme='dark'] {
-  .@{multiple-tabs-prefix-cls} {
-    .ant-tabs-tab {
-      border-bottom: 1px solid @border-color-base;
-    }
-  }
-}
-
-html[data-theme='light'] {
-  .@{multiple-tabs-prefix-cls} {
-    .ant-tabs-tab:not(.ant-tabs-tab-active) {
-      border: 1px solid #d9d9d9 !important;
-    }
-  }
-}
-
 .@{multiple-tabs-prefix-cls} {
   z-index: 10;
   height: @multiple-height + 2;
   line-height: @multiple-height + 2;
-  background-color: @component-background;
-  border-bottom: 1px solid @border-color-base;
+  //background-color: @component-background;
+  //border-bottom: 1px solid @border-color-base;
 
   .ant-tabs-small {
     height: @multiple-height;
@@ -32,7 +16,7 @@ html[data-theme='light'] {
       padding-top: 2px;
       height: @multiple-height;
       margin: 0;
-      background-color: @component-background;
+      //background-color: @component-background;
       border: 0;
       box-shadow: none;
 
@@ -45,8 +29,8 @@ html[data-theme='light'] {
         height: calc(@multiple-height - 2px);
         padding-right: 12px;
         line-height: calc(@multiple-height - 2px);
-        color: @text-color-base;
-        background-color: @component-background;
+        //color: @text-color-base;
+        //background-color: @component-background;
         transition: none;
 
         &:hover {
@@ -59,8 +43,8 @@ html[data-theme='light'] {
           width: 8px;
           height: 28px;
           font-size: 12px;
-          color: inherit;
-          opacity: 0;
+          //color: inherit;
+          //opacity: 0;
           transition: none;
           margin-left: 2px;
           margin-right: -4px;
@@ -77,25 +61,25 @@ html[data-theme='light'] {
         }
 
         svg {
-          fill: @text-color-base;
+          //fill: @text-color-base;
         }
       }
 
       .ant-tabs-tab:not(.ant-tabs-tab-active) {
         &:hover {
-          color: @primary-color;
+          //color: @primary-color;
         }
       }
 
       .ant-tabs-tab-active {
         position: relative;
         padding-left: 18px;
-        background: @primary-color;
-        border: 0;
+        //background: @primary-color;
+        //border: 0;
         transition: none;
 
         span {
-          color: @white !important;
+          //color: @white !important;
         }
 
         .ant-tabs-tab-remove {
@@ -104,7 +88,7 @@ html[data-theme='light'] {
 
         svg {
           width: 0.7em;
-          fill: @white;
+          //fill: @white;
         }
       }
     }
@@ -151,13 +135,13 @@ html[data-theme='light'] {
       width: 36px;
       height: @multiple-height;
       line-height: @multiple-height;
-      color: @text-color-secondary;
+      //color: @text-color-secondary;
       text-align: center;
       cursor: pointer;
-      border-left: 1px solid @border-color-base;
+      //border-left: 1px solid @border-color-base;
 
       &:hover {
-        color: @text-color-base;
+        //color: @text-color-base;
       }
 
       span[role='img'] {

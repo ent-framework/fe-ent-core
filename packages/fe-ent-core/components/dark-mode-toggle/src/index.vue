@@ -9,12 +9,7 @@
   import { computed, defineComponent, unref } from 'vue';
   import { EntSvgIcon } from '@ent-core/components/icon';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useRootSetting } from '@ent-core/hooks/setting/use-root-setting';
-  import {
-    updateHeaderBgColor,
-    updateSidebarBgColor,
-  } from '@ent-core/logics/theme/update-background';
-  import { updateDarkTheme } from '@ent-core/logics/theme/dark';
+  import { useRootSetting, useThemeSetting } from '@ent-core/hooks/setting';
   import { ThemeEnum } from '@ent-core/logics/enums/app-enum';
 
   export default defineComponent({
@@ -22,9 +17,10 @@
     components: { EntSvgIcon },
     setup() {
       const { prefixCls } = useDesign('dark-switch');
-      const { getDarkMode, setDarkMode, getShowDarkModeToggle } = useRootSetting();
+      const { getShowDarkModeToggle } = useRootSetting();
+      const { getGlobalTheme, setGlobalTheme } = useThemeSetting();
 
-      const isDark = computed(() => getDarkMode.value === ThemeEnum.DARK);
+      const isDark = computed(() => getGlobalTheme.value === ThemeEnum.DARK);
 
       const getClass = computed(() => [
         prefixCls,
@@ -34,11 +30,8 @@
       ]);
 
       function toggleDarkMode() {
-        const darkMode = getDarkMode.value === ThemeEnum.DARK ? ThemeEnum.LIGHT : ThemeEnum.DARK;
-        setDarkMode(darkMode);
-        updateDarkTheme(darkMode);
-        updateHeaderBgColor();
-        updateSidebarBgColor();
+        const darkMode = getGlobalTheme.value === ThemeEnum.DARK ? ThemeEnum.LIGHT : ThemeEnum.DARK;
+        setGlobalTheme(darkMode);
       }
       return {
         prefixCls,

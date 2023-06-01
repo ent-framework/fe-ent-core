@@ -68,7 +68,7 @@
   },
   "peerDependencies": {
     "vue": "^3.2.0",
-    "ant-design-vue": "^3.2.17"
+    "ant-design-vue": "4.0.0-rc.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
@@ -118,7 +118,7 @@
     "vite": "4.2.2",
     "rollup": "3.18.0",
     "vue": "3.2.47",
-    "ant-design-vue": "3.2.17"
+    "ant-design-vue": "4.0.0-rc.5"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china",

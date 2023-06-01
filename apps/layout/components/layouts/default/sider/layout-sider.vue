@@ -13,15 +13,15 @@
     :width="getMenuWidth"
     :collapsed="getCollapsed"
     :collapsed-width="getCollapsedWidth"
-    :theme="getMenuTheme"
     :trigger="getTrigger"
+    :theme="getComputedMenuTheme"
     v-bind="getTriggerAttr"
     @breakpoint="onBreakpointChange"
   >
     <template v-if="getShowTrigger" #trigger>
       <LayoutTrigger />
     </template>
-    <LayoutMenu :theme="getMenuTheme" :menu-mode="getMode" :split-type="getSplitType" />
+    <LayoutMenu :theme="getComputedMenuTheme" :menu-mode="getMode" :split-type="getSplitType" />
     <DragBar ref="dragBarRef" />
   </Sider>
 </template>
@@ -29,7 +29,7 @@
   import { computed, defineComponent, h, ref, unref } from 'vue';
   import { Layout } from 'ant-design-vue';
   import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/es/logics';
-  import { useAppInject, useDesign, useMenuSetting } from 'fe-ent-core/es/hooks';
+  import { useAppInject, useDesign, useMenuSetting, useThemeSetting } from 'fe-ent-core/es/hooks';
   import LayoutTrigger from '../trigger/index.vue';
   import LayoutMenu from '../menu/index.vue';
   import { useDragLine, useSiderEvent, useTrigger } from './use-layout-sider';
@@ -54,6 +54,13 @@
         getIsMixMode,
         toggleCollapsed,
       } = useMenuSetting();
+
+      const { getGlobalTheme } = useThemeSetting();
+
+      const getComputedMenuTheme = computed(() => {
+        if (getMenuTheme.value === 'none') return getGlobalTheme.value;
+        return getMenuTheme.value;
+      });
 
       const { prefixCls } = useDesign('layout-sideBar');
 
@@ -117,7 +124,7 @@
         showClassSideBarRef,
         getMenuWidth,
         getCollapsed,
-        getMenuTheme,
+        getComputedMenuTheme,
         onBreakpointChange,
         getMode,
         getSplitType,

@@ -1,9 +1,8 @@
+@import 'ant-design-vue/dist/reset.css';
+
 @import 'transition/index.less';
-@import 'var/index.less';
 @import 'public.less';
-@import 'ant/index.less';
-@import './theme.less';
-@import './app.less';
+@import 'app.less';
 
 input:-webkit-autofill {
   box-shadow: 0 0 0 1000px white inset !important;
@@ -24,6 +23,7 @@ body {
   height: 100%;
   overflow: visible !important;
   overflow-x: hidden !important;
+  margin: 0;
 
   &.color-weak {
     filter: invert(80%);

@@ -1,5 +1,5 @@
 <template>
-  <ent-page-wrapper content-background content-class="flex" dense content-full-height fixed-height>
+  <ent-page-wrapper content-background content-class="flex" dense content-full-height fixed-height class="p-4">
     <ent-table @register="registerTable">
       <template #toolbar>
         <ent-button type="primary" @click="handleReloadCurrent"> 刷新当前页 </ent-button>

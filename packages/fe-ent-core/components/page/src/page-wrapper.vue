@@ -38,6 +38,7 @@
   import { omit } from 'lodash-es';
   import { PageHeader } from 'ant-design-vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useTheme } from '@ent-core/hooks/web/use-theme';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { useContentHeight } from '@ent-core/hooks/web/use-content-height';
   import { PageWrapperFixedHeightKey } from '../constant';
@@ -98,6 +99,8 @@
         ];
       });
 
+      const { token } = useTheme();
+
       const getShowFooter = computed(() => slots?.leftFooter || slots?.rightFooter);
 
       const getHeaderSlots = computed(() => {
@@ -115,6 +118,7 @@
           ...contentStyle,
           minHeight: height,
           ...(fixedHeight ? { height } : {}),
+          backgroundColor: token.value.colorBgContainer,
         };
       });
 

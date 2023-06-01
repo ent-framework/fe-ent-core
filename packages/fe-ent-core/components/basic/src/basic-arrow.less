@@ -1,34 +1,33 @@
+@basic-arrow-prefix-cls: ~'@{vben-prefix}-basic-arrow';
 
-  @basic-arrow-prefix-cls: ~'@{vben-prefix}-basic-arrow';
+.@{basic-arrow-prefix-cls} {
+  display: inline-block;
+  cursor: pointer;
+  transform: rotate(0deg);
+  transition: all 0.3s ease 0.1s;
+  transform-origin: center center;
 
-  .@{basic-arrow-prefix-cls} {
-    display: inline-block;
-    cursor: pointer;
-    transform: rotate(0deg);
-    transition: all 0.3s ease 0.1s;
-    transform-origin: center center;
-
-    &--active {
-      transform: rotate(90deg);
-    }
-
-    &.inset {
-      line-height: 0px;
-    }
-
-    &.up {
-      transform: rotate(-90deg);
-    }
-
-    &.down {
-      transform: rotate(90deg);
-    }
-
-    &.up.@{basic-arrow-prefix-cls}--active {
-      transform: rotate(90deg);
-    }
-
-    &.down.@{basic-arrow-prefix-cls}--active {
-      transform: rotate(-90deg);
-    }
+  &--active {
+    transform: rotate(90deg);
   }
+
+  &.inset {
+    line-height: 0px;
+  }
+
+  &.up {
+    transform: rotate(-90deg);
+  }
+
+  &.down {
+    transform: rotate(90deg);
+  }
+
+  &.up.@{basic-arrow-prefix-cls}--active {
+    transform: rotate(90deg);
+  }
+
+  &.down.@{basic-arrow-prefix-cls}--active {
+    transform: rotate(-90deg);
+  }
+}

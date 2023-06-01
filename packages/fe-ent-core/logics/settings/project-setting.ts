@@ -13,10 +13,7 @@ import {
   SettingButtonPositionEnum,
   ThemeEnum,
 } from '@ent-core/logics/enums/app-enum';
-import { HEADER_PRESET_BG_COLOR_LIST, SIDE_BAR_BG_COLOR_LIST } from './design-setting';
 import type { ProjectConfig } from '@ent-core/store/types/store';
-
-const primaryColor = '#0960bd';
 
 // ! You need to clear the browser cache after the change
 const setting: ProjectConfig = {
@@ -38,14 +35,20 @@ const setting: ProjectConfig = {
   // Session timeout processing
   sessionTimeoutProcessing: SessionTimeoutProcessingEnum.ROUTE_JUMP,
 
-  // color
-  themeColor: primaryColor,
+  themeSetting: {
+    theme: ThemeEnum.LIGHT,
+    name: 'default',
+    token: {
+      colorPrimary: '#51b8f1',
+      colorSuccess: '#58a732',
+      colorWarning: '#f0a818',
+      colorError: '#e55c5c',
+      colorInfo: '#d9d9d9',
+    },
+  },
 
   // Website gray mode, open for possible mourning dates
   grayMode: false,
-
-  // Color Weakness Mode
-  colorWeak: false,
 
   // Whether to cancel the menu, the top, the multi-tab page display, for possible embedded in other systems
   fullContent: false,
@@ -61,8 +64,6 @@ const setting: ProjectConfig = {
 
   // Header configuration
   headerSetting: {
-    // header bg color
-    bgColor: HEADER_PRESET_BG_COLOR_LIST[0],
     // Fixed at the top
     fixed: true,
     // Whether to show top
@@ -83,8 +84,6 @@ const setting: ProjectConfig = {
 
   // Menu configuration
   menuSetting: {
-    // sidebar menu bg color
-    bgColor: SIDE_BAR_BG_COLOR_LIST[0],
     //  Whether to fix the left menu
     fixed: true,
     // Menu collapse

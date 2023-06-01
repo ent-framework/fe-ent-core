@@ -53,8 +53,6 @@ export function useHeaderSetting() {
 
   const getFixed = computed(() => appStore.getHeaderSetting.fixed);
 
-  const getHeaderBgColor = computed(() => appStore.getHeaderSetting.bgColor);
-
   const getShowSearch = computed(() => appStore.getHeaderSetting.showSearch);
 
   const getUseLockPage = computed(() => appStore.getHeaderSetting.useLockPage);
@@ -99,6 +97,5 @@ export function useHeaderSetting() {
     getShowFullHeaderRef,
     getShowInsetHeaderRef,
     getUnFixedAndFull,
-    getHeaderBgColor,
   };
 }

@@ -40,8 +40,6 @@ export function useMenuSetting() {
 
   const getSplit = computed(() => appStore.getMenuSetting.split);
 
-  const getMenuBgColor = computed(() => appStore.getMenuSetting.bgColor);
-
   const getMixSideTrigger = computed(() => appStore.getMenuSetting.mixSideTrigger);
 
   const getCanDrag = computed(() => appStore.getMenuSetting.canDrag);
@@ -153,7 +151,6 @@ export function useMenuSetting() {
     getTopMenuAlign,
     getMenuHidden,
     getIsTopMenu,
-    getMenuBgColor,
     getShowSidebar,
     getIsMixMode,
     getIsMixSidebar,

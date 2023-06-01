@@ -1,24 +1,22 @@
 import { defineStore } from 'pinia';
 import { store } from '@ent-core/store/pinia';
 
-import { APP_DARK_MODE_KEY_, PROJ_CFG_KEY } from '@ent-core/logics/enums/cache-enum';
+import { PROJ_CFG_KEY } from '@ent-core/logics/enums/cache-enum';
 import { Persistent } from '@ent-core/utils/cache/persistent';
-import { darkMode } from '@ent-core/logics/settings/design-setting';
 import { resetRouter } from '@ent-core/router/base';
 import { deepMerge } from '@ent-core/utils/base';
-import type { ThemeEnum } from '@ent-core/logics/enums/app-enum';
 import type {
   BeforeMiniState,
   HeaderSetting,
   MenuSetting,
   MultiTabsSetting,
   ProjectConfig,
+  ThemeSetting,
   TransitionSetting,
 } from '@ent-core/store/types/store';
 import type { DeepPartial, TimeoutHandle } from '@ent-core/types';
 
 export interface AppState {
-  darkMode?: ThemeEnum;
   // Page loading status
   pageLoading: boolean;
   // project config
@@ -30,7 +28,6 @@ let timeId: TimeoutHandle;
 export const useAppStore = defineStore({
   id: 'app',
   state: (): AppState => ({
-    darkMode: undefined,
     pageLoading: false,
     projectConfig: Persistent.getLocal(PROJ_CFG_KEY),
     beforeMiniInfo: {},
@@ -39,18 +36,15 @@ export const useAppStore = defineStore({
     getPageLoading(): boolean {
       return this.pageLoading;
     },
-    getDarkMode(): 'light' | 'dark' | string {
-      return this.darkMode || localStorage.getItem(APP_DARK_MODE_KEY_) || darkMode;
-    },
-
     getBeforeMiniInfo(): BeforeMiniState {
       return this.beforeMiniInfo;
     },
-
     getProjectConfig(): ProjectConfig {
       return this.projectConfig || ({} as ProjectConfig);
     },
-
+    getThemeSetting(): ThemeSetting {
+      return this.getProjectConfig.themeSetting;
+    },
     getHeaderSetting(): HeaderSetting {
       return this.getProjectConfig.headerSetting;
     },
@@ -69,18 +63,13 @@ export const useAppStore = defineStore({
       this.pageLoading = loading;
     },
 
-    setDarkMode(mode: ThemeEnum): void {
-      this.darkMode = mode;
-      localStorage.setItem(APP_DARK_MODE_KEY_, mode);
-    },
-
     setBeforeMiniInfo(state: BeforeMiniState): void {
       this.beforeMiniInfo = state;
     },
 
     setProjectConfig(config: DeepPartial<ProjectConfig>): void {
       this.projectConfig = deepMerge(this.projectConfig || {}, config);
-      Persistent.setLocal(PROJ_CFG_KEY, this.projectConfig);
+      Persistent.setLocal(PROJ_CFG_KEY, this.projectConfig, true);
     },
 
     async resetAllState() {

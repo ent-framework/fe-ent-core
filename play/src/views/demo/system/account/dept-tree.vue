@@ -1,5 +1,5 @@
 <template>
-  <div class="m-4 mr-0 overflow-hidden bg-white">
+  <div class="m-4 mr-0 overflow-hidden">
     <ent-tree
       title="部门列表"
       toolbar

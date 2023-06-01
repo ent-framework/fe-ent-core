@@ -7,7 +7,7 @@
   z-index: @layout-mix-sider-fixed-z-index;
   height: 100%;
   overflow: hidden;
-  background-color: @sider-dark-bg-color;
+  //background-color: @sider-dark-bg-color;
   transition: all 0.2s ease 0s;
 
   &-dom {
@@ -45,7 +45,7 @@
         color: rgb(0 0 0 / 65%);
 
         &--active {
-          color: @primary-color;
+          //color: @primary-color;
           background-color: unset;
         }
       }
@@ -68,7 +68,7 @@
     }
   }
 
-  @border-color: @sider-dark-lighten-bg-color;
+  //@border-color: @sider-dark-lighten-bg-color;
 
   &.dark {
     &.open {
@@ -77,17 +77,17 @@
       }
 
       > .scrollbar {
-        border-right: 1px solid @border-color;
+        //border-right: 1px solid @border-color;
       }
     }
 
     .@{layout-mix-sider-prefix-cls}-menu-list {
-      background-color: @sider-dark-bg-color;
+      //background-color: @sider-dark-bg-color;
 
       &__title {
-        color: @white;
+        //color: @white;
         border-bottom: none;
-        border-bottom: 1px solid @border-color;
+        //border-bottom: 1px solid @border-color;
       }
     }
   }
@@ -109,24 +109,26 @@
   &-module {
     position: relative;
     padding-top: 1px;
+    padding-left: 0;
+    list-style-type:none;
 
     &__item {
       position: relative;
       padding: 12px 0;
-      color: rgb(255 255 255 / 65%);
+      //color: rgb(255 255 255 / 65%);
       text-align: center;
       cursor: pointer;
       transition: all 0.3s ease;
 
       &:hover {
-        color: @white;
+        //color: @white;
       }
 
       // &:hover,
       &--active {
         font-weight: 700;
-        color: @white;
-        background-color: @sider-dark-darken-bg-color;
+        //color: @white;
+        //background-color: @sider-dark-darken-bg-color;
 
         &::before {
           position: absolute;
@@ -134,7 +136,7 @@
           left: 0;
           width: 3px;
           height: 100%;
-          background-color: @primary-color;
+          //background-color: @primary-color;
           content: '';
         }
       }
@@ -159,10 +161,10 @@
     left: 0;
     width: 100%;
     font-size: 14px;
-    color: rgb(255 255 255 / 65%);
+    //color: rgb(255 255 255 / 65%);
     text-align: center;
     cursor: pointer;
-    background-color: @trigger-dark-bg-color;
+    //background-color: @trigger-dark-bg-color;
     height: 36px;
     line-height: 36px;
   }
@@ -186,7 +188,7 @@
       height: @header-height;
       // margin-left: -6px;
       font-size: 18px;
-      color: @primary-color;
+      //color: @primary-color;
       border-bottom: 1px solid rgb(238 238 238);
       opacity: 0%;
       transition: unset;

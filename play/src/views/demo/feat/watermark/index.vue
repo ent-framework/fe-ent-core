@@ -1,6 +1,6 @@
 <template>
   <ent-page-wrapper title="水印示例">
-    <ent-collapse-container class="w-full h-32 bg-white rounded-md" title="Global WaterMark">
+    <ent-collapse-container class="w-full h-32 rounded-md" title="Global WaterMark">
       <ent-button type="primary" class="mr-2" @click="setWatermark('WaterMark Info')">
         Create
       </ent-button>

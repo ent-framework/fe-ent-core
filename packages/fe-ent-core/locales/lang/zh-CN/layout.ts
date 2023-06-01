@@ -70,7 +70,7 @@ export default {
 
     sysTheme: '系统主题',
     headerTheme: '顶栏主题',
-    sidebarTheme: '菜单主题',
+    sidebarTheme: '左侧菜单主题',
 
     menuDrag: '侧边菜单拖拽',
     menuSearch: '菜单搜索',
@@ -112,5 +112,9 @@ export default {
     triggerClick: '点击',
 
     mixSidebarFixed: '固定展开菜单',
+
+    darkTheme: '暗黑',
+    lightTheme: '明亮',
+    noneTheme: '使用系统主题',
   },
 };

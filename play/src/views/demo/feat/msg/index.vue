@@ -1,6 +1,6 @@
 <template>
   <ent-page-wrapper title="消息示例">
-    <ent-collapse-container class="w-full h-32 bg-white rounded-md" title="Message">
+    <ent-collapse-container class="w-full h-32 rounded-md" title="Message">
       <ent-button class="mr-2" @click="infoMsg('Info message')"> Info </ent-button>
       <ent-button class="mr-2" color="success" @click="successMsg('Success message')">
         Success
@@ -12,7 +12,7 @@
       <ent-button class="mr-2" type="primary" @click="handleLoading"> Loading </ent-button>
     </ent-collapse-container>
 
-    <ent-collapse-container class="w-full h-32 mt-5 bg-white rounded-md" title="Comfirm">
+    <ent-collapse-container class="w-full h-32 mt-5 rounded-md" title="Comfirm">
       <ent-button class="mr-2" @click="handleConfirm('info')"> Info </ent-button>
       <ent-button color="warning" class="mr-2" @click="handleConfirm('warning')">
         Warning
@@ -23,7 +23,7 @@
       <ent-button color="error" class="mr-2" @click="handleConfirm('error')"> Error </ent-button>
     </ent-collapse-container>
 
-    <ent-collapse-container class="w-full h-32 mt-5 bg-white rounded-md" title="Modal">
+    <ent-collapse-container class="w-full h-32 mt-5 rounded-md" title="Modal">
       <ent-button class="mr-2" @click="handleInfoModal"> Info </ent-button>
       <ent-button color="success" class="mr-2" @click="handleSuccessModal"> Success </ent-button>
       <ent-button color="error" class="mr-2" @click="handleErrorModal"> Error </ent-button>
@@ -32,7 +32,7 @@
     </ent-collapse-container>
 
     <ent-collapse-container
-      class="w-full h-32 mt-5 bg-white rounded-md"
+      class="w-full h-32 mt-5 rounded-md"
       title="Notification 用法与上面一致"
     >
       <ent-button color="success" class="mr-2" @click="handleNotify"> Success </ent-button>

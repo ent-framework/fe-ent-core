@@ -4,15 +4,18 @@
 @header-logo-prefix-cls: ~'@{vben-prefix}-app-logo';
 
 .@{header-prefix-cls} {
-  display: flex;
-  height: @header-height;
-  padding: 0;
-  margin-left: -1px;
-  line-height: @header-height;
-  color: @white;
-  background-color: @white;
-  align-items: center;
-  justify-content: space-between;
+  &.ant-layout-header {
+    display: flex;
+    height: @header-height;
+    padding: 0;
+    padding-inline: 0;
+    margin-left: -1px;
+    line-height: @header-height;
+    //color: @white;
+    //background-color: @white;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   &--mobile {
     .@{breadcrumb-prefix-cls},
@@ -77,7 +80,7 @@
 
       &.light {
         &:hover {
-          background-color: @header-light-bg-hover-color;
+          //background-color: @header-light-bg-hover-color;
         }
 
         svg {
@@ -87,7 +90,7 @@
 
       &.dark {
         &:hover {
-          background-color: @header-dark-bg-hover-color;
+          //background-color: @header-dark-bg-hover-color;
         }
       }
     }
@@ -131,21 +134,21 @@
   }
 
   &--light {
-    background-color: @white !important;
-    border-bottom: 1px solid @header-light-bottom-border-color;
-    border-left: 1px solid @header-light-bottom-border-color;
+    //background-color: @white !important;
+    //border-bottom: 1px solid @header-light-bottom-border-color;
+    //border-left: 1px solid @header-light-bottom-border-color;
 
     .@{header-prefix-cls}-logo {
-      color: @text-color-base;
+      //color: @text-color-base;
 
       &:hover {
-        background-color: @header-light-bg-hover-color;
+        //background-color: @header-light-bg-hover-color;
       }
     }
 
     .@{header-prefix-cls}-action {
       &__item {
-        color: @text-color-base;
+        //color: @text-color-base;
 
         .app-iconify {
           padding: 0 10px;
@@ -153,24 +156,24 @@
         }
 
         &:hover {
-          background-color: @header-light-bg-hover-color;
+          //background-color: @header-light-bg-hover-color;
         }
       }
 
       &-icon,
       span[role='img'] {
-        color: @text-color-base;
+        //color: @text-color-base;
       }
     }
   }
 
   &--dark {
-    background-color: @header-dark-bg-color !important;
+    //background-color: @header-dark-bg-color !important;
     // border-bottom: 1px solid @border-color-base;
-    border-left: 1px solid @border-color-base;
+    //border-left: 1px solid @border-color-base;
     .@{header-prefix-cls}-logo {
       &:hover {
-        background-color: @header-dark-bg-hover-color;
+        //background-color: @header-dark-bg-hover-color;
       }
     }
 
@@ -183,12 +186,12 @@
 
         .ant-badge {
           span {
-            color: @white;
+            //color: @white;
           }
         }
 
         &:hover {
-          background-color: @header-dark-bg-hover-color;
+          //background-color: @header-dark-bg-hover-color;
         }
       }
     }

@@ -1,22 +1,22 @@
 <template>
-  <Header :class="getHeaderClass">
+  <Header :class="getHeaderClass" :style="getHeaderStyle">
     <!-- left start -->
     <div :class="`${prefixCls}-left`">
       <!-- logo -->
       <EntAppLogo
         v-if="getShowHeaderLogo || getIsMobile"
         :class="`${prefixCls}-logo`"
-        :theme="getHeaderTheme"
+        :theme="getComputedHeaderTheme"
         :style="getLogoWidth"
       />
       <LayoutTrigger
         v-if="
           (getShowContent && getShowHeaderTrigger && !getSplit && !getIsMixSidebar) || getIsMobile
         "
-        :theme="getHeaderTheme"
+        :theme="getComputedHeaderTheme"
         :sider="false"
       />
-      <LayoutBreadcrumb v-if="getShowContent && getShowBread" :theme="getHeaderTheme" />
+      <LayoutBreadcrumb v-if="getShowContent && getShowBread" :theme="getComputedHeaderTheme" />
     </div>
     <!-- left end -->
 
@@ -24,7 +24,7 @@
     <div v-if="getShowTopMenu && !getIsMobile" :class="`${prefixCls}-menu`">
       <LayoutMenu
         :is-horizontal="true"
-        :theme="getHeaderTheme"
+        :theme="getComputedHeaderTheme"
         :split-type="getSplitType"
         :menu-mode="getMenuMode"
       />
@@ -48,7 +48,7 @@
         :class="`${prefixCls}-action__item`"
       />
 
-      <UserDropDown v-if="isLogined" :theme="getHeaderTheme" />
+      <UserDropDown v-if="isLogined" :theme="getComputedHeaderTheme" />
 
       <SettingDrawer v-if="getShowSetting" :class="`${prefixCls}-action__item`" />
     </div>
@@ -62,6 +62,8 @@
     useHeaderSetting,
     useMenuSetting,
     useRootSetting,
+    useTheme,
+    useThemeSetting,
   } from 'fe-ent-core/es/hooks';
   import { EntAppLogo, EntLocalePicker } from 'fe-ent-core';
   import { MenuModeEnum, MenuSplitTyeEnum, SettingButtonPositionEnum } from 'fe-ent-core/es/logics';
@@ -75,6 +77,7 @@
   import LayoutMenu from '../menu/index.vue';
   import SettingDrawer from '../setting/index.vue';
   import { ErrorAction, FullScreen, LayoutBreadcrumb, Notify, UserDropDown } from './components';
+  import type { CSSProperties } from 'vue';
 
   export default defineComponent({
     name: 'LayoutHeader',
@@ -94,6 +97,7 @@
     },
     props: {
       fixed: propTypes.bool,
+      theme: propTypes.oneOf(['light', 'dark']).def('light'),
     },
     setup(props) {
       const { prefixCls } = useDesign('layout-header');
@@ -109,7 +113,6 @@
         useRootSetting();
 
       const {
-        getHeaderTheme,
         getShowFullScreen,
         getShowNotice,
         getShowContent,
@@ -119,12 +122,17 @@
         getShowSearch,
       } = useHeaderSetting();
 
+      const { getGlobalTheme } = useThemeSetting();
+      const { token } = useTheme();
+
+      const getComputedHeaderTheme = computed(() => props.theme || getGlobalTheme.value);
+
       const { getShowLocalePicker } = useLocale();
       const userStore = useUserStoreWithOut();
       const { getIsMobile } = useAppInject();
 
       const getHeaderClass = computed(() => {
-        const theme = unref(getHeaderTheme);
+        const theme = unref(getComputedHeaderTheme);
         return [
           prefixCls,
           {
@@ -133,6 +141,12 @@
             [`${prefixCls}--${theme}`]: theme,
           },
         ];
+      });
+
+      const getHeaderStyle = computed((): CSSProperties => {
+        return {
+          backgroundColor: token.value.colorBgContainer,
+        };
       });
 
       const getShowSetting = computed(() => {
@@ -169,7 +183,7 @@
         prefixCls,
         getHeaderClass,
         getShowHeaderLogo,
-        getHeaderTheme,
+        getComputedHeaderTheme,
         getShowHeaderTrigger,
         getIsMobile,
         getShowBread,
@@ -187,6 +201,7 @@
         getShowSettingButton,
         getShowSetting,
         getShowSearch,
+        getHeaderStyle,
         isLogined,
       };
     },

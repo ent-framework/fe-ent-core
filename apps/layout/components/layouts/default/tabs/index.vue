@@ -1,5 +1,5 @@
 <template>
-  <div :class="getWrapClass">
+  <div :class="getWrapClass" :style="getContentStyle">
     <Tabs
       type="editable-card"
       size="small"
@@ -27,11 +27,11 @@
   </div>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, ref, unref } from 'vue';
+import {computed, CSSProperties, defineComponent, ref, unref} from 'vue';
 
   import { Tabs } from 'ant-design-vue';
 
-  import { useDesign, useGo, useMultipleTabSetting } from 'fe-ent-core/es/hooks';
+  import { useDesign, useGo, useMultipleTabSetting, useTheme } from 'fe-ent-core/es/hooks';
   import { useMultipleTabStore, useUserStore } from 'fe-ent-core/es/store';
   import { listenerRouteChange } from 'fe-ent-core/es/logics';
   import { REDIRECT_NAME } from 'fe-ent-core/es/router';
@@ -61,6 +61,7 @@
       const router = useRouter();
 
       const { prefixCls } = useDesign('multiple-tabs');
+      const { token } = useTheme();
       const go = useGo();
       const { getShowQuick, getShowRedo, getShowFold } = useMultipleTabSetting();
 
@@ -77,6 +78,13 @@
             [`${prefixCls}--hide-close`]: unref(unClose),
           },
         ];
+      });
+
+      const getContentStyle = computed((): CSSProperties => {
+        return {
+          backgroundColor: token.value.colorBgContainer,
+          borderBottom: `1px solid ${token.value.colorBorder}`,
+        };
       });
 
       listenerRouteChange((route) => {
@@ -122,6 +130,7 @@
         prefixCls,
         unClose,
         getWrapClass,
+        getContentStyle,
         handleEdit,
         handleChange,
         activeKeyRef,

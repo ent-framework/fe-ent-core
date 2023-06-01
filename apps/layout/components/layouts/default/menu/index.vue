@@ -9,6 +9,7 @@
     useGo,
     useMenuSetting,
     useRootSetting,
+    useThemeSetting,
   } from 'fe-ent-core/es/hooks';
 
   import { useSplitMenu } from './use-layout-menu';
@@ -39,7 +40,6 @@
       const {
         getMenuMode,
         getMenuType,
-        getMenuTheme,
         getCollapsed,
         getCollapsedShowTitle,
         getAccordion,
@@ -48,6 +48,8 @@
         getSplit,
       } = useMenuSetting();
       const { getShowLogo } = useRootSetting();
+
+      const { getGlobalTheme } = useThemeSetting();
 
       const { prefixCls } = useDesign('layout-menu');
 
@@ -59,7 +61,7 @@
         unref(getIsMobile) ? MenuModeEnum.INLINE : props.menuMode || unref(getMenuMode),
       );
 
-      const getComputedMenuTheme = computed(() => props.theme || unref(getMenuTheme));
+      const getComputedMenuTheme = computed(() => props.theme || unref(getGlobalTheme));
 
       const getIsShowLogo = computed(() => unref(getShowLogo) && unref(getIsSidebarType));
 
@@ -93,7 +95,6 @@
         return {
           menus,
           beforeClickFn: beforeMenuClickFn,
-          items: menus,
           theme: unref(getComputedMenuTheme),
           accordion: unref(getAccordion),
           collapse: unref(getCollapsed),
@@ -125,13 +126,7 @@
       function renderHeader() {
         if (!unref(getIsShowLogo) && !unref(getIsMobile)) return null;
 
-        return (
-          <EntAppLogo
-            showTitle={!unref(getCollapsed)}
-            class={unref(getLogoClass)}
-            theme={unref(getComputedMenuTheme)}
-          />
-        );
+        return <EntAppLogo showTitle={!unref(getCollapsed)} class={unref(getLogoClass)} />;
       }
 
       function renderMenu() {

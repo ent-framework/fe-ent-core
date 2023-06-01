@@ -361,7 +361,6 @@
                 ...props.schema.itemProps,
               });
           }
-
           return (
             <Form.Item
               name={field}

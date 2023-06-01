@@ -25,9 +25,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
+  import { Divider } from 'ant-design-vue';
   import type { Recordable } from 'fe-ent-core/es/types';
 
-  import { Divider } from 'ant-design-vue';
   const data: Recordable[] = (() => {
     const arr: Recordable[] = [];
     for (let index = 1; index < 20000; index++) {
@@ -49,7 +49,6 @@
     &-wrap {
       display: flex;
       margin: 0 30%;
-      background-color: @component-background;
       justify-content: center;
     }
 
@@ -57,7 +56,7 @@
       height: 40px;
       padding: 0 20px;
       line-height: 40px;
-      border-bottom: 1px solid @border-color-base;
+      //border-bottom: 1px solid @border-color-base;
     }
   }
 </style>

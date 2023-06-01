@@ -88,8 +88,3 @@
     },
   });
 </script>
-<style lang="less" scoped>
-  .demo {
-    background-color: @component-background;
-  }
-</style>

@@ -1,30 +1,19 @@
-import { useRootSetting } from 'fe-ent-core/es/hooks';
+import { useThemeSetting } from 'fe-ent-core/es/hooks';
 import { useAppStore } from 'fe-ent-core/es/store';
-import {
-  updateColorWeak,
-  updateDarkTheme,
-  updateGrayMode,
-  updateHeaderBgColor,
-  updateSidebarBgColor,
-} from 'fe-ent-core/es/logics';
 import { HandlerEnum } from './enum';
 import type { DeepPartial } from 'fe-ent-core/es/types';
-import type { ProjectConfig } from 'fe-ent-core/es/store';
+import type { ProjectConfig } from 'fe-ent-core/es/store/types/store';
 
 export function baseHandler(event: HandlerEnum, value: any) {
   const appStore = useAppStore();
   const config = handler(event, value);
   appStore.setProjectConfig(config);
-  if (event === HandlerEnum.CHANGE_THEME) {
-    updateHeaderBgColor();
-    updateSidebarBgColor();
-  }
 }
 
 export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConfig> {
   const appStore = useAppStore();
 
-  const { getThemeColor, getDarkMode } = useRootSetting();
+  const { getGlobalTheme } = useThemeSetting();
   switch (event) {
     case HandlerEnum.CHANGE_LAYOUT: {
       const { mode, type, split } = value;
@@ -41,17 +30,13 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
         },
       };
     }
-    case HandlerEnum.CHANGE_THEME_COLOR:
-      if (getThemeColor.value === value) {
-        return {};
-      }
-      return { themeColor: value };
+    case HandlerEnum.CHANGE_THEME_TOKEN:
+      return { themeSetting: value };
 
     case HandlerEnum.CHANGE_THEME:
-      if (getDarkMode.value === value) {
+      if (getGlobalTheme.value === value) {
         return {};
       }
-      updateDarkTheme(value);
       return {};
 
     case HandlerEnum.MENU_HAS_DRAG:
@@ -79,8 +64,7 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
       return { menuSetting: { collapsedShowTitle: value } };
 
     case HandlerEnum.MENU_THEME:
-      updateSidebarBgColor(value);
-      return { menuSetting: { bgColor: value } };
+      return { menuSetting: { theme: value } };
 
     case HandlerEnum.MENU_SPLIT:
       return { menuSetting: { split: value } };
@@ -128,15 +112,12 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
       return { showBreadCrumbIcon: value };
 
     case HandlerEnum.GRAY_MODE:
-      updateGrayMode(value);
+      //TODO
+      //updateGrayMode(value);
       return { grayMode: value };
 
     case HandlerEnum.SHOW_FOOTER:
       return { showFooter: value };
-
-    case HandlerEnum.COLOR_WEAK:
-      updateColorWeak(value);
-      return { colorWeak: value };
 
     case HandlerEnum.SHOW_LOGO:
       return { showLogo: value };
@@ -156,8 +137,7 @@ export function handler(event: HandlerEnum, value: any): DeepPartial<ProjectConf
 
     // ============header==================
     case HandlerEnum.HEADER_THEME:
-      updateHeaderBgColor(value);
-      return { headerSetting: { bgColor: value } };
+      return { headerSetting: { theme: value } };
 
     case HandlerEnum.HEADER_SEARCH:
       return { headerSetting: { showSearch: value } };

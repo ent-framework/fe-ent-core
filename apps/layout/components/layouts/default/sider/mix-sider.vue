@@ -5,7 +5,7 @@
     :style="getWrapStyle"
     :class="[
       prefixCls,
-      getMenuTheme,
+      getComputedMenuTheme,
       {
         open: openMenu,
         mini: getCollapsed,
@@ -17,7 +17,7 @@
 
     <LayoutTrigger :class="`${prefixCls}-trigger`" />
 
-    <EntScrollContainer>
+    <EntScrollContainer :theme="getComputedMenuTheme">
       <ul :class="`${prefixCls}-module`">
         <li
           v-for="item in menuModules"
@@ -36,7 +36,7 @@
             :size="getCollapsed ? 16 : 20"
             :icon="item.icon || (item.meta && item.meta.icon)"
           />
-          <p :class="`${prefixCls}-module__name`">
+          <p :class="`${prefixCls}-module__name`" :style="`color: ${token.colorText}`">
             {{ t(item.name) }}
           </p>
         </li>
@@ -61,10 +61,10 @@
           @click="handleFixedMenu"
         />
       </div>
-      <EntScrollContainer :class="`${prefixCls}-menu-list__content`">
+      <EntScrollContainer :class="`${prefixCls}-menu-list__content`" :theme="getComputedMenuTheme">
         <EntSimpleMenu
           :items="childrenMenus"
-          :theme="getMenuTheme"
+          :theme="getComputedMenuTheme"
           mix-sider
           @menu-click="handleMenuClick"
         />
@@ -89,7 +89,15 @@
     listenerRouteChange,
   } from 'fe-ent-core/es/logics';
   import { getChildrenMenus, getCurrentParentPath, getShallowMenus } from 'fe-ent-core/es/router';
-  import { useDesign, useGlobSetting, useGo, useI18n, useMenuSetting } from 'fe-ent-core/es/hooks';
+  import {
+    useDesign,
+    useGlobSetting,
+    useGo,
+    useI18n,
+    useMenuSetting,
+    useTheme,
+    useThemeSetting,
+  } from 'fe-ent-core/es/hooks';
   import { usePermissionStore } from 'fe-ent-core/es/store';
 
   import LayoutTrigger from '../trigger/index.vue';
@@ -137,6 +145,15 @@
         getIsMixSidebar,
         getCollapsed,
       } = useMenuSetting();
+
+      const { token } = useTheme();
+
+      const { getGlobalTheme } = useThemeSetting();
+
+      const getComputedMenuTheme = computed(() => {
+        if (getMenuTheme.value === 'none') return getGlobalTheme.value;
+        return getMenuTheme.value;
+      });
 
       const { title } = useGlobSetting();
       const permissionStore = usePermissionStore();
@@ -317,6 +334,7 @@
 
       return {
         t,
+        token,
         prefixCls,
         menuModules,
         handleModuleClick,
@@ -330,7 +348,7 @@
         dragBarRef,
         title,
         openMenu,
-        getMenuTheme,
+        getComputedMenuTheme,
         getItemEvents,
         getMenuEvents,
         getDomStyle,

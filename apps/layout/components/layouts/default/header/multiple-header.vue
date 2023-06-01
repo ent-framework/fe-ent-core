@@ -1,8 +1,8 @@
 <template>
   <div v-if="getIsShowPlaceholderDom" :style="getPlaceholderDomStyle" />
   <div :style="getWrapStyle" :class="getClass">
-    <LayoutHeader v-if="getShowInsetHeaderRef" />
-    <MultipleTabs v-if="getShowTabs" />
+    <LayoutHeader v-if="getShowInsetHeaderRef" :theme="getComputedHeaderTheme" />
+    <MultipleTabs v-if="getShowTabs" theme="getComputedHeaderTheme" />
   </div>
 </template>
 <script lang="ts">
@@ -16,7 +16,9 @@
     useLayoutHeight,
     useMenuSetting,
     useMultipleTabSetting,
+    useThemeSetting,
   } from 'fe-ent-core/es/hooks';
+  import { propTypes } from 'fe-ent-core/es/utils';
   import MultipleTabs from '../tabs/index.vue';
   import LayoutHeader from './index.vue';
   import type { CSSProperties } from 'vue';
@@ -27,19 +29,21 @@
   export default defineComponent({
     name: 'LayoutMultipleHeader',
     components: { LayoutHeader, MultipleTabs },
-    setup() {
+    props: {
+      theme: propTypes.oneOf(['light', 'dark']).def('light'),
+    },
+    setup(props) {
       const { setHeaderHeight } = useLayoutHeight();
       const { prefixCls } = useDesign('layout-multiple-header');
 
       const { getCalcContentWidth, getSplit } = useMenuSetting();
       const { getIsMobile } = useAppInject();
-      const {
-        getFixed,
-        getShowInsetHeaderRef,
-        getShowFullHeaderRef,
-        getHeaderTheme,
-        getShowHeader,
-      } = useHeaderSetting();
+      const { getFixed, getShowInsetHeaderRef, getShowFullHeaderRef, getShowHeader } =
+        useHeaderSetting();
+
+      const { getGlobalTheme } = useThemeSetting();
+
+      const getComputedHeaderTheme = computed(() => props.theme || getGlobalTheme.value);
 
       const { getFullContent } = useFullContent();
 
@@ -89,7 +93,7 @@
       const getClass = computed(() => {
         return [
           prefixCls,
-          `${prefixCls}--${unref(getHeaderTheme)}`,
+          `${prefixCls}--${unref(getComputedHeaderTheme)}`,
           { [`${prefixCls}--fixed`]: unref(getIsFixed) },
         ];
       });
@@ -103,6 +107,7 @@
         getIsShowPlaceholderDom,
         getShowTabs,
         getShowInsetHeaderRef,
+        getComputedHeaderTheme,
       };
     },
   });

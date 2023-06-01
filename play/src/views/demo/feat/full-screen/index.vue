@@ -1,6 +1,6 @@
 <template>
   <ent-page-wrapper title="全屏示例">
-    <ent-collapse-container class="w-full h-32 bg-white rounded-md" title="Window Full Screen">
+    <ent-collapse-container class="w-full h-32 rounded-md" title="Window Full Screen">
       <ent-button type="primary" class="mr-2" @click="enter"> Enter Window Full Screen </ent-button>
       <ent-button color="success" class="mr-2" @click="toggle">
         Toggle Window Full Screen
@@ -11,7 +11,7 @@
       Current State: {{ isFullscreen }}
     </ent-collapse-container>
 
-    <ent-collapse-container class="w-full mt-5 bg-white rounded-md" title="Dom Full Screen">
+    <ent-collapse-container class="w-full mt-5 rounded-md" title="Dom Full Screen">
       <ent-button type="primary" class="mr-2" @click="toggleDom">
         Enter Dom Full Screen
       </ent-button>
@@ -19,7 +19,7 @@
 
     <div
       ref="domRef"
-      class="flex items-center justify-center w-1/2 h-64 mx-auto mt-10 bg-white rounded-md"
+      class="flex items-center justify-center w-1/2 h-64 mx-auto mt-10 rounded-md"
     >
       <ent-button type="primary" class="mr-2" @click="toggleDom"> Exit Dom Full Screen </ent-button>
     </div>

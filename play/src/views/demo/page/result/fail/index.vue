@@ -34,11 +34,9 @@
 <style lang="less" scoped>
   .result-error {
     padding: 48px 32px;
-    background-color: @component-background;
 
     &__content {
       padding: 24px 40px;
-      background-color: @background-color-light;
 
       &-title {
         margin-bottom: 16px;

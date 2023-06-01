@@ -1,6 +1,6 @@
 <template>
   <ent-page-wrapper title="旋转校验示例">
-    <div class="flex justify-center p-4 items-center bg-gray-700">
+    <div class="flex justify-center p-4 items-center">
       <ent-rotate-drag-verify ref="el" :src="img" @success="handleSuccess" />
     </div>
   </ent-page-wrapper>
@@ -21,8 +21,3 @@
     },
   });
 </script>
-<style lang="less" scoped>
-  .bg-gray-700 {
-    background-color: #4a5568;
-  }
-</style>

@@ -47,7 +47,7 @@
     "@types/parse5": "^5.0.0"
   },
   "dependencies": {
-    "ant-design-vue": "3.2.17",
+    "ant-design-vue": "4.0.0-rc.5",
     "@babel/core": "^7.14.6",
     "@babel/parser": "^7.14.7",
     "@babel/plugin-proposal-class-properties": "^7.14.5",

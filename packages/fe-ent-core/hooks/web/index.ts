@@ -14,5 +14,6 @@ export * from './use-permission';
 export * from './use-script';
 export * from './use-sortable';
 export * from './use-tabs';
+export * from './use-theme';
 export * from './use-title';
 export * from './use-watermark';

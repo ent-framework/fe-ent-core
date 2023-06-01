@@ -1,6 +1,6 @@
 <template>
   <ent-page-wrapper title="文本复制示例">
-    <ent-collapse-container class="w-full h-32 bg-white rounded-md" title="Copy Example">
+    <ent-collapse-container class="w-full h-32 rounded-md" title="Copy Example">
       <div class="flex justify-center">
         <a-input v-model:value="value" placeholder="请输入" />
         <ent-button type="primary" @click="handleCopy"> Copy </ent-button>

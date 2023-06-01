@@ -19,7 +19,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { CopyOutlined, RedoOutlined } from '@ant-design/icons-vue';
-  import { defaultProjectSetting, updateColorWeak, updateGrayMode } from 'fe-ent-core/es/logics';
+  import { defaultProjectSetting } from 'fe-ent-core/es/logics';
   import {
     useAppStore,
     useMultipleTabStore,
@@ -54,10 +54,6 @@
       function handleResetSetting() {
         try {
           appStore.setProjectConfig(defaultProjectSetting);
-          const { colorWeak, grayMode } = defaultProjectSetting;
-          // updateTheme(themeColor);
-          updateColorWeak(colorWeak);
-          updateGrayMode(grayMode);
           createMessage.success(t('layout.setting.resetSuccess'));
         } catch (error: any) {
           createMessage.error(error);

@@ -80,7 +80,7 @@
         margin-bottom: 5px;
         font-size: 16px;
         font-weight: 500;
-        color: @text-color;
+        //color: @text-color;
 
         .icon {
           margin-top: -5px;
@@ -93,7 +93,7 @@
         padding-top: 10px;
         padding-left: 30px;
         font-size: 14px;
-        color: @text-color-secondary;
+        //color: @text-color-secondary;
       }
     }
   }

@@ -1,16 +1,16 @@
 <template>
   <ent-page-wrapper title="拖动校验示例">
-    <div class="flex justify-center p-4 items-center bg-gray-700">
+    <div class="flex justify-center p-4 items-center">
       <ent-drag-verify ref="el1" @success="handleSuccess" />
       <ent-button type="primary" class="ml-2" @click="handleBtnClick(el1)"> 还原 </ent-button>
     </div>
 
-    <div class="flex justify-center p-4 items-center bg-gray-700">
+    <div class="flex justify-center p-4 items-center">
       <ent-drag-verify ref="el2" circle @success="handleSuccess" />
       <ent-button type="primary" class="ml-2" @click="handleBtnClick(el2)"> 还原 </ent-button>
     </div>
 
-    <div class="flex justify-center p-4 items-center bg-gray-700">
+    <div class="flex justify-center p-4 items-center">
       <ent-drag-verify
         ref="el3"
         text="拖动以进行校验"
@@ -23,7 +23,7 @@
       <ent-button type="primary" class="ml-2" @click="handleBtnClick(el3)"> 还原 </ent-button>
     </div>
 
-    <div class="flex justify-center p-4 items-center bg-gray-700">
+    <div class="flex justify-center p-4 items-center">
       <ent-drag-verify ref="el4" @success="handleSuccess">
         <template #actionIcon="isPassing">
           <BugOutlined v-if="isPassing" />
@@ -33,7 +33,7 @@
       <ent-button type="primary" class="ml-2" @click="handleBtnClick(el4)"> 还原 </ent-button>
     </div>
 
-    <div class="flex justify-center p-4 items-center bg-gray-700">
+    <div class="flex justify-center p-4 items-center">
       <ent-drag-verify ref="el5" @success="handleSuccess">
         <template #text="isPassing">
           <div v-if="isPassing">
