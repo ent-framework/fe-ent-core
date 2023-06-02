@@ -156,6 +156,9 @@ importers:
 
   apps/layout:
     dependencies:
+      ant-design-vue:
+        specifier: 4.0.0-rc.5
+        version: 4.0.0-rc.5(vue@3.2.47)
       fe-ent-core:
         specifier: ^2.0.0
         version: link:../../packages/fe-ent-core
@@ -823,7 +826,7 @@ packages:
     peerDependencies:
       vue: '>=3.0.3'
     dependencies:
-      '@ant-design/colors': registry.npmmirror.com/@ant-design/colors@6.0.0
+      '@ant-design/colors': 6.0.0
       '@ant-design/icons-svg': 4.2.1
       vue: 3.2.47
 
@@ -14751,13 +14754,6 @@ packages:
     dependencies:
       tslib: registry.npmmirror.com/tslib@2.3.0
     dev: false
-
-  registry.npmmirror.com/@ant-design/colors@6.0.0:
-    resolution: {integrity: sha512-qAZRvPzfdWHtfameEGP2Qvuf838NhergR35o+EuVyB5XvSA98xod5r4utvi4TJ3ywmevm290g9nsCG5MryrdWQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@ant-design/colors/-/colors-6.0.0.tgz}
-    name: '@ant-design/colors'
-    version: 6.0.0
-    dependencies:
-      '@ctrl/tinycolor': 3.6.0
 
   registry.npmmirror.com/@babel/code-frame@7.12.11:
     resolution: {integrity: sha512-Zt1yodBx1UcyiePMSkWnU4hPqhwq7hGi2nFL1LeA3EUl+q2LQx16MISgJ0+z7dnmgvP9QtIleuETGOiOH1RcIw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@babel/code-frame/-/code-frame-7.12.11.tgz}

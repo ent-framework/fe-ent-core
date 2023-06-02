@@ -1,6 +1,6 @@
 <template>
   <div :class="prefixCls">
-    <span> {{ title }}</span>
+    <Text> {{ title }}</Text>
     <Switch
       v-bind="getBindValue"
       :disabled="disabled"
@@ -13,7 +13,7 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
 
-  import { Switch } from 'ant-design-vue';
+  import { Switch, Typography } from 'ant-design-vue';
   import { useDesign, useI18n } from 'fe-ent-core/es/hooks';
   import { baseHandler } from '../handler';
   import type { PropType } from 'vue';
@@ -22,7 +22,7 @@
 
   export default defineComponent({
     name: 'SwitchItem',
-    components: { Switch },
+    components: { Switch, Text: Typography.Text },
     props: {
       event: {
         type: Number as PropType<HandlerEnum>,

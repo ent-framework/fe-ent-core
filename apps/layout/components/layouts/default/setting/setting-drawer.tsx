@@ -1,5 +1,5 @@
 import { computed, defineComponent, unref } from 'vue';
-import { EntDarkModeToggle, EntDrawer } from 'fe-ent-core';
+import { EntDrawer } from 'fe-ent-core';
 import { MenuTypeEnum, TriggerEnum } from 'fe-ent-core/es/logics';
 import {
   useHeaderSetting,
@@ -47,7 +47,6 @@ export default defineComponent({
       getFullContent,
       getGrayMode,
       getLockTime,
-      getShowDarkModeToggle,
     } = useRootSetting();
 
     const { getOpenPageLoading, getBasicTransition, getEnableTransition, getOpenNProgress } =
@@ -383,8 +382,6 @@ export default defineComponent({
         width={330}
         class="setting-drawer"
       >
-        {unref(getShowDarkModeToggle) && <Divider>{() => t('layout.setting.darkMode')}</Divider>}
-        {unref(getShowDarkModeToggle) && <EntDarkModeToggle class="mx-auto" />}
         <Divider>{() => t('layout.setting.navMode')}</Divider>
         {renderSidebar()}
         <Divider>{() => t('layout.setting.sysTheme')}</Divider>

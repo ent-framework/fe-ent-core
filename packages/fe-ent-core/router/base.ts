@@ -115,7 +115,7 @@ export function createEntRouter(): EntRouter {
   return entRouter;
 }
 
-export let entRouter = createEntRouter();
+export const entRouter = createEntRouter();
 
 /**
  * 功能与vue-router的useRouter()类似，只是提供了更多的数据支持
@@ -136,9 +136,3 @@ export function resetRouter() {
     }
   });
 }
-
-// 内存回收
-window.addEventListener('beforeunload', () => {
-  // @ts-ignore
-  entRouter = null;
-});

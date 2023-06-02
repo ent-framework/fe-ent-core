@@ -28,47 +28,49 @@
     props: buttonProps,
     setup(props) {
       const attrs = useAttrs({ excludeDefaultKeys: false });
-      const { token } = useTheme();
+      const { useToken } = useTheme();
+      const { token } = useToken();
 
       const getButtonStyle = computed((): CSSProperties => {
         const { color, type, ghost } = props;
+        const tokenValues = unref(token);
         if (color && !ghost) {
           if (type === 'primary' || type === 'default') {
             switch (color) {
               case 'success':
                 return {
-                  color: token.value.colorTextLightSolid,
-                  backgroundColor: token.value.colorSuccess,
+                  color: tokenValues.colorTextLightSolid,
+                  backgroundColor: tokenValues.colorSuccess,
                 };
               case 'warning':
                 return {
-                  color: token.value.colorTextLightSolid,
-                  backgroundColor: token.value.colorWarning,
-                  borderColor: token.value.colorWarningBorderHover,
+                  color: tokenValues.colorTextLightSolid,
+                  backgroundColor: tokenValues.colorWarning,
+                  borderColor: tokenValues.colorWarningBorderHover,
                 };
               case 'error':
                 return {
-                  color: token.value.colorTextLightSolid,
-                  backgroundColor: token.value.colorError,
-                  borderColor: token.value.colorErrorBorderHover,
+                  color: tokenValues.colorTextLightSolid,
+                  backgroundColor: tokenValues.colorError,
+                  borderColor: tokenValues.colorErrorBorderHover,
                 };
               default:
                 return {
-                  color: token.value.colorTextLightSolid,
-                  backgroundColor: token.value.colorPrimary,
+                  color: tokenValues.colorTextLightSolid,
+                  backgroundColor: tokenValues.colorPrimary,
                 };
             }
           }
           if (type === 'link' || ghost) {
             switch (color) {
               case 'success':
-                return { color: token.value.colorSuccess };
+                return { color: tokenValues.colorSuccess };
               case 'warning':
-                return { color: token.value.colorWarning };
+                return { color: tokenValues.colorWarning };
               case 'error':
-                return { color: token.value.colorError };
+                return { color: tokenValues.colorError };
               default:
-                return { color: token.value.colorPrimary };
+                return { color: tokenValues.colorPrimary };
             }
           }
         }

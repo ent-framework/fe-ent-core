@@ -151,7 +151,10 @@
           <>
             {renderHeader()}
             {unref(getUseScroll) ? (
-              <EntScrollContainer style={unref(getWrapperStyle)}>
+              <EntScrollContainer
+                theme={unref(getComputedMenuTheme)}
+                style={unref(getWrapperStyle)}
+              >
                 {() => renderMenu()}
               </EntScrollContainer>
             ) : (

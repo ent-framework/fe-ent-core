@@ -1,11 +1,17 @@
 <template>
   <Layout :class="prefixCls" v-bind="lockEvents">
     <LayoutFeatures />
-    <LayoutHeader v-if="getShowFullHeaderRef" fixed :theme="getComputedHeaderTheme" />
+    <ConfigProvider v-if="getShowFullHeaderRef" :theme="getComputedHeaderTheme">
+      <LayoutHeader fixed />
+    </ConfigProvider>
     <Layout :class="[layoutClass]">
-      <LayoutSideBar v-if="getShowSidebar || getIsMobile" />
+      <ConfigProvider :theme="getComputedMenuTheme">
+        <LayoutSideBar v-if="getShowSidebar || getIsMobile" />
+      </ConfigProvider>
       <Layout :class="`${prefixCls}-main`">
-        <LayoutMultipleHeader :theme="getComputedHeaderTheme" />
+        <ConfigProvider :theme="getComputedHeaderTheme">
+          <LayoutMultipleHeader />
+        </ConfigProvider>
         <LayoutContent />
         <LayoutFooter />
       </Layout>
@@ -15,7 +21,7 @@
 
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
-  import { Layout } from 'ant-design-vue';
+  import { ConfigProvider, Layout } from 'ant-design-vue';
 
   import {
     useAppInject,
@@ -23,6 +29,7 @@
     useHeaderSetting,
     useLockPage,
     useMenuSetting,
+    useTheme,
     useThemeSetting,
   } from 'fe-ent-core/es/hooks';
 
@@ -33,6 +40,7 @@
   import LayoutFeatures from './feature/index.vue';
   import LayoutFooter from './footer/index.vue';
 
+  // @ts-nocheck
   export default defineComponent({
     name: 'DefaultLayout',
     components: {
@@ -43,18 +51,24 @@
       LayoutSideBar,
       LayoutMultipleHeader,
       Layout,
+      ConfigProvider,
     },
     setup() {
       const { prefixCls } = useDesign('default-layout');
       const { getIsMobile } = useAppInject();
-      const { getShowFullHeaderRef, getHeaderTheme } = useHeaderSetting();
+      const { getShowFullHeaderRef } = useHeaderSetting();
       const { getShowSidebar, getIsMixSidebar, getShowMenu } = useMenuSetting();
 
       const { getGlobalTheme } = useThemeSetting();
 
+      const { getTheme, getActualHeaderTheme, getActualMenuTheme } = useTheme();
+
       const getComputedHeaderTheme = computed(() => {
-        if (getHeaderTheme.value === 'none') return getGlobalTheme.value;
-        return getHeaderTheme.value;
+        return getTheme(unref(getActualHeaderTheme));
+      });
+
+      const getComputedMenuTheme = computed(() => {
+        return getTheme(unref(getActualMenuTheme));
       });
 
       // Create a lock screen monitor
@@ -77,6 +91,7 @@
         layoutClass,
         lockEvents,
         getComputedHeaderTheme,
+        getComputedMenuTheme,
       };
     },
   });

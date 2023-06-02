@@ -23,7 +23,7 @@
   </div>
 </template>
 <script lang="ts">
-import {computed, CSSProperties, defineComponent, ref} from 'vue';
+  import { computed, defineComponent, ref } from 'vue';
   // component
   import { Skeleton } from 'ant-design-vue';
   import { CollapseTransition } from '@ent-core/components/transition';
@@ -31,9 +31,9 @@ import {computed, CSSProperties, defineComponent, ref} from 'vue';
   // hook
   import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
   import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useTheme } from '@ent-core/hooks';
   import CollapseHeader from './collapse-header.vue';
-  import type { PropType } from 'vue';
-  import {useTheme} from "@ent-core/hooks";
+  import type { CSSProperties, PropType } from 'vue';
 
   const props = {
     title: { type: String, default: '' },
@@ -68,7 +68,8 @@ import {computed, CSSProperties, defineComponent, ref} from 'vue';
       const show = ref(true);
 
       const { prefixCls } = useDesign('collapse-container');
-      const { token } = useTheme();
+      const { useToken } = useTheme();
+      const { token } = useToken();
       const getContentStyle = computed((): CSSProperties => {
         return {
           backgroundColor: token.value.colorBgContainer,

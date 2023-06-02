@@ -1,6 +1,6 @@
 <template>
   <div :class="prefixCls">
-    <span> {{ title }}</span>
+    <Text> {{ title }}</Text>
     <InputNumber
       v-bind="$attrs"
       size="small"
@@ -12,7 +12,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
 
-  import { InputNumber } from 'ant-design-vue';
+  import { InputNumber, Typography } from 'ant-design-vue';
   import { useDesign } from 'fe-ent-core/es/hooks';
   import { baseHandler } from '../handler';
   import type { PropType } from 'vue';
@@ -20,7 +20,7 @@
 
   export default defineComponent({
     name: 'InputNumberItem',
-    components: { InputNumber },
+    components: { InputNumber, Text: Typography.Text },
     extends: InputNumber,
     props: {
       event: {

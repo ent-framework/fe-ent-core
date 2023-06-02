@@ -1,5 +1,5 @@
 <template>
-  <span :class="getClass" :style="getContentStyle">
+  <span :class="getClass">
     <slot />
     <BasicHelp v-if="helpMessage" :class="`${prefixCls}-help`" :text="helpMessage" />
   </span>
@@ -44,16 +44,17 @@
         { [`${prefixCls}-normal`]: props.normal },
       ]);
 
-      const { token } = useTheme();
-      const getContentStyle = computed((): CSSProperties => {
-        return {
-          color: token.value.colorText,
-        };
-      });
+      // const { getToken } = useTheme();
+      // const getContentStyle = computed((): CSSProperties => {
+      //   const token = getToken();
+      //   return {
+      //     color: token.colorText,
+      //   };
+      // });
       return {
         prefixCls,
         getClass,
-        getContentStyle,
+        //getContentStyle,
       };
     },
   });

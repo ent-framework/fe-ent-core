@@ -1,8 +1,8 @@
 <template>
   <div v-if="getIsShowPlaceholderDom" :style="getPlaceholderDomStyle" />
   <div :style="getWrapStyle" :class="getClass">
-    <LayoutHeader v-if="getShowInsetHeaderRef" :theme="getComputedHeaderTheme" />
-    <MultipleTabs v-if="getShowTabs" theme="getComputedHeaderTheme" />
+    <LayoutHeader v-if="getShowInsetHeaderRef" />
+    <MultipleTabs v-if="getShowTabs" />
   </div>
 </template>
 <script lang="ts">
@@ -16,9 +16,8 @@
     useLayoutHeight,
     useMenuSetting,
     useMultipleTabSetting,
-    useThemeSetting,
+    useTheme,
   } from 'fe-ent-core/es/hooks';
-  import { propTypes } from 'fe-ent-core/es/utils';
   import MultipleTabs from '../tabs/index.vue';
   import LayoutHeader from './index.vue';
   import type { CSSProperties } from 'vue';
@@ -29,10 +28,7 @@
   export default defineComponent({
     name: 'LayoutMultipleHeader',
     components: { LayoutHeader, MultipleTabs },
-    props: {
-      theme: propTypes.oneOf(['light', 'dark']).def('light'),
-    },
-    setup(props) {
+    setup() {
       const { setHeaderHeight } = useLayoutHeight();
       const { prefixCls } = useDesign('layout-multiple-header');
 
@@ -41,9 +37,7 @@
       const { getFixed, getShowInsetHeaderRef, getShowFullHeaderRef, getShowHeader } =
         useHeaderSetting();
 
-      const { getGlobalTheme } = useThemeSetting();
-
-      const getComputedHeaderTheme = computed(() => props.theme || getGlobalTheme.value);
+      const { getActualHeaderTheme } = useTheme();
 
       const { getFullContent } = useFullContent();
 
@@ -91,9 +85,10 @@
       });
 
       const getClass = computed(() => {
+        console.log(unref(getActualHeaderTheme));
         return [
           prefixCls,
-          `${prefixCls}--${unref(getComputedHeaderTheme)}`,
+          `${prefixCls}--${unref(getActualHeaderTheme)}`,
           { [`${prefixCls}--fixed`]: unref(getIsFixed) },
         ];
       });
@@ -107,7 +102,6 @@
         getIsShowPlaceholderDom,
         getShowTabs,
         getShowInsetHeaderRef,
-        getComputedHeaderTheme,
       };
     },
   });

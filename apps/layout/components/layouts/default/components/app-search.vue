@@ -1,7 +1,7 @@
 <script lang="tsx">
   import { defineComponent, ref, unref } from 'vue';
   import { Tooltip } from 'ant-design-vue';
-  import { SearchOutlined } from '@ant-design/icons-vue';
+  import { EntIcon } from 'fe-ent-core';
   import { useI18n } from 'fe-ent-core/es/hooks';
   import AppSearchModal from './app-search-modal.vue';
 
@@ -21,7 +21,7 @@
             <Tooltip>
               {{
                 title: () => t('common.searchText'),
-                default: () => <SearchOutlined />,
+                default: () => <EntIcon icon="ant-design:search-outlined" />,
               }}
             </Tooltip>
             <AppSearchModal onClose={changeModal.bind(null, false)} visible={unref(showModal)} />

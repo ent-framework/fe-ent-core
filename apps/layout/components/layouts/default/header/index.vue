@@ -6,28 +6,21 @@
       <EntAppLogo
         v-if="getShowHeaderLogo || getIsMobile"
         :class="`${prefixCls}-logo`"
-        :theme="getComputedHeaderTheme"
         :style="getLogoWidth"
       />
       <LayoutTrigger
         v-if="
           (getShowContent && getShowHeaderTrigger && !getSplit && !getIsMixSidebar) || getIsMobile
         "
-        :theme="getComputedHeaderTheme"
         :sider="false"
       />
-      <LayoutBreadcrumb v-if="getShowContent && getShowBread" :theme="getComputedHeaderTheme" />
+      <LayoutBreadcrumb v-if="getShowContent && getShowBread" />
     </div>
     <!-- left end -->
 
     <!-- menu start -->
     <div v-if="getShowTopMenu && !getIsMobile" :class="`${prefixCls}-menu`">
-      <LayoutMenu
-        :is-horizontal="true"
-        :theme="getComputedHeaderTheme"
-        :split-type="getSplitType"
-        :menu-mode="getMenuMode"
-      />
+      <LayoutMenu :is-horizontal="true" :split-type="getSplitType" :menu-mode="getMenuMode" />
     </div>
     <!-- menu-end -->
 
@@ -48,7 +41,9 @@
         :class="`${prefixCls}-action__item`"
       />
 
-      <UserDropDown v-if="isLogined" :theme="getComputedHeaderTheme" />
+      <EntDarkModeToggle v-if="getShowDarkModeToggle" class="mx-auto" />
+
+      <UserDropDown v-if="isLogined" />
 
       <SettingDrawer v-if="getShowSetting" :class="`${prefixCls}-action__item`" />
     </div>
@@ -63,9 +58,8 @@
     useMenuSetting,
     useRootSetting,
     useTheme,
-    useThemeSetting,
   } from 'fe-ent-core/es/hooks';
-  import { EntAppLogo, EntLocalePicker } from 'fe-ent-core';
+  import { EntAppLogo, EntDarkModeToggle, EntLocalePicker } from 'fe-ent-core';
   import { MenuModeEnum, MenuSplitTyeEnum, SettingButtonPositionEnum } from 'fe-ent-core/es/logics';
   import { propTypes } from 'fe-ent-core/es/utils';
   import { useLocale } from 'fe-ent-core/es/locales';
@@ -94,10 +88,10 @@
       AppSearch,
       ErrorAction,
       SettingDrawer,
+      EntDarkModeToggle,
     },
     props: {
       fixed: propTypes.bool,
-      theme: propTypes.oneOf(['light', 'dark']).def('light'),
     },
     setup(props) {
       const { prefixCls } = useDesign('layout-header');
@@ -109,8 +103,12 @@
         getMenuWidth,
         getIsMixSidebar,
       } = useMenuSetting();
-      const { getUseErrorHandle, getShowSettingButton, getSettingButtonPosition } =
-        useRootSetting();
+      const {
+        getUseErrorHandle,
+        getShowSettingButton,
+        getSettingButtonPosition,
+        getShowDarkModeToggle,
+      } = useRootSetting();
 
       const {
         getShowFullScreen,
@@ -122,17 +120,14 @@
         getShowSearch,
       } = useHeaderSetting();
 
-      const { getGlobalTheme } = useThemeSetting();
-      const { token } = useTheme();
-
-      const getComputedHeaderTheme = computed(() => props.theme || getGlobalTheme.value);
+      const { useToken, getActualHeaderTheme } = useTheme();
 
       const { getShowLocalePicker } = useLocale();
       const userStore = useUserStoreWithOut();
       const { getIsMobile } = useAppInject();
 
       const getHeaderClass = computed(() => {
-        const theme = unref(getComputedHeaderTheme);
+        const theme = unref(getActualHeaderTheme);
         return [
           prefixCls,
           {
@@ -142,10 +137,11 @@
           },
         ];
       });
-
+      const { token } = useToken();
       const getHeaderStyle = computed((): CSSProperties => {
+        const tokenValues = unref(token);
         return {
-          backgroundColor: token.value.colorBgContainer,
+          backgroundColor: tokenValues.colorBgContainer,
         };
       });
 
@@ -183,8 +179,8 @@
         prefixCls,
         getHeaderClass,
         getShowHeaderLogo,
-        getComputedHeaderTheme,
         getShowHeaderTrigger,
+        getShowDarkModeToggle,
         getIsMobile,
         getShowBread,
         getShowContent,

@@ -1,20 +1,19 @@
 <template>
-  <div v-if="getShowDarkModeToggle" :class="getClass" @click="toggleDarkMode">
-    <div :class="`${prefixCls}-inner`" />
-    <EntSvgIcon size="14" name="sun" />
-    <EntSvgIcon size="14" name="moon" />
+  <div v-if="getShowDarkModeToggle" :class="getClass">
+    <EntIcon v-if="getGlobalTheme === 'light'" icon="ph:sun" name="sun" @click="toggleDarkMode" />
+    <EntIcon v-if="getGlobalTheme === 'dark'" icon="ph:moon" name="moon" @click="toggleDarkMode" />
   </div>
 </template>
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
-  import { EntSvgIcon } from '@ent-core/components/icon';
+  import { EntIcon } from '@ent-core/components/icon';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useRootSetting, useThemeSetting } from '@ent-core/hooks/setting';
   import { ThemeEnum } from '@ent-core/logics/enums/app-enum';
 
   export default defineComponent({
     name: 'EntDarkModeToggle',
-    components: { EntSvgIcon },
+    components: { EntIcon },
     setup() {
       const { prefixCls } = useDesign('dark-switch');
       const { getShowDarkModeToggle } = useRootSetting();
@@ -34,6 +33,7 @@
         setGlobalTheme(darkMode);
       }
       return {
+        getGlobalTheme,
         prefixCls,
         getShowDarkModeToggle,
         getClass,

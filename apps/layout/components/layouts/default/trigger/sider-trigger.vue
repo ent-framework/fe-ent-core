@@ -1,17 +1,17 @@
 <template>
   <div @click.stop="toggleCollapsed">
-    <DoubleRightOutlined v-if="getCollapsed" />
-    <DoubleLeftOutlined v-else />
+    <EntIcon v-if="getCollapsed" icon="ant-design:double-right-outlined" />
+    <EntIcon v-else icon="ant-design:double-left-outlined" />
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
+  import { EntIcon } from 'fe-ent-core';
   import { useMenuSetting } from 'fe-ent-core/es/hooks';
 
   export default defineComponent({
     name: 'SiderTrigger',
-    components: { DoubleRightOutlined, DoubleLeftOutlined },
+    components: { EntIcon },
     setup() {
       const { getCollapsed, toggleCollapsed } = useMenuSetting();
 

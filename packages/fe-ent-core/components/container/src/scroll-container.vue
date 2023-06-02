@@ -18,7 +18,7 @@
     name: 'EntScrollContainer',
     components: { Scrollbar },
     props: {
-      theme: propTypes.oneOf(['light', 'dark']).def('light'),
+      theme: propTypes.oneOf(['light', 'dark', '']).def(''),
     },
     setup(props) {
       const scrollbarRef = ref<Nullable<ScrollbarType>>(null);
@@ -44,13 +44,13 @@
           start();
         });
       }
-      const { token } = useTheme();
-      //const calcedToken = calcToken(props.theme, { colorPrimary: token.value.colorBgContainer });
+      //const { getToken } = useTheme();
+      //const token = getToken(props.theme);
       const getContentStyle = computed((): CSSProperties => {
-        return {
-          backgroundColor:
-            props.theme == 'light' ? token.value.colorBgContainer : token.value.colorBgSpotlight,
-        };
+        // return {
+        //   backgroundColor: token.colorBgContainer,
+        // };
+        return {};
       });
 
       function getScrollWrap() {

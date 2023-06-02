@@ -18,7 +18,6 @@ export function useThemeSetting() {
 
   function setGlobalTheme(theme: ThemeEnum) {
     appStore.setProjectConfig({ themeSetting: { theme } });
-    console.log(appStore.getThemeSetting);
   }
 
   const getThemeSetting = computed(() => appStore.getThemeSetting);

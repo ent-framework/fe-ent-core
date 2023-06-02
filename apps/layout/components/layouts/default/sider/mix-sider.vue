@@ -17,8 +17,8 @@
 
     <LayoutTrigger :class="`${prefixCls}-trigger`" />
 
-    <EntScrollContainer :theme="getComputedMenuTheme">
-      <ul :class="`${prefixCls}-module`">
+    <EntScrollContainer>
+      <ul :class="`${prefixCls}-module`" :style="`background-color: ${token.colorBgContainer}`">
         <li
           v-for="item in menuModules"
           v-bind="getItemEvents(item)"
@@ -53,7 +53,7 @@
           },
         ]"
       >
-        <span class="text"> {{ title }}</span>
+        <Text class="text"> {{ title }}</Text>
         <EntIcon
           :size="16"
           :icon="getMixSideFixed ? 'ri:pushpin-2-fill' : 'ri:pushpin-2-line'"
@@ -61,7 +61,7 @@
           @click="handleFixedMenu"
         />
       </div>
-      <EntScrollContainer :class="`${prefixCls}-menu-list__content`" :theme="getComputedMenuTheme">
+      <EntScrollContainer :class="`${prefixCls}-menu-list__content`">
         <EntSimpleMenu
           :items="childrenMenus"
           :theme="getComputedMenuTheme"
@@ -99,7 +99,7 @@
     useThemeSetting,
   } from 'fe-ent-core/es/hooks';
   import { usePermissionStore } from 'fe-ent-core/es/store';
-
+  import { Typography } from 'ant-design-vue';
   import LayoutTrigger from '../trigger/index.vue';
   import { useDragLine } from './use-layout-sider';
   import type { RouteLocationNormalized } from 'vue-router';
@@ -116,6 +116,7 @@
       EntIcon,
       LayoutTrigger,
       EntSimpleMenuTag,
+      Text: Typography.Text,
     },
     directives: {
       ClickOutside: vClickOutside,
@@ -146,7 +147,8 @@
         getCollapsed,
       } = useMenuSetting();
 
-      const { token } = useTheme();
+      const { useToken } = useTheme();
+      const { token } = useToken();
 
       const { getGlobalTheme } = useThemeSetting();
 
@@ -161,9 +163,11 @@
       useDragLine(sideRef, dragBarRef, true);
 
       const getMenuStyle = computed((): CSSProperties => {
+        const tokenValues = unref(token);
         return {
           width: unref(openMenu) ? `${unref(getMenuWidth)}px` : 0,
           left: `${unref(getMixSideWidth)}px`,
+          backgroundColor: tokenValues.colorBgContainer,
         };
       });
 
@@ -230,11 +234,13 @@
       });
 
       function getWrapCommonStyle(width: string): CSSProperties {
+        const tokenValues = unref(token);
         return {
           width,
           maxWidth: width,
           minWidth: width,
           flex: `0 0 ${width}`,
+          backgroundColor: tokenValues.colorBgContainer,
         };
       }
 

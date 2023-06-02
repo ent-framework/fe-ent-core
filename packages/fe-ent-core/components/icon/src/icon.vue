@@ -17,7 +17,7 @@
     :class="[$attrs.class, 'app-iconify anticon', spin && 'app-iconify-spin']"
     :style="getWrapStyle"
   >
-    <IconifyIcon :icon="icon" />
+    <IconifyIcon :icon="icon" :width="width" :height="height" />
   </span>
 </template>
 <script lang="ts">
@@ -25,10 +25,10 @@
   //import Iconify from '@iconify/iconify';
   import { Icon } from '@iconify/vue';
   import { isString } from '@ent-core/utils/is';
+  import { useTheme } from '@ent-core/hooks';
   import { propTypes } from '@ent-core/utils/prop-types';
   import SvgIcon from './svg-icon.vue';
   import type { CSSProperties, PropType } from 'vue';
-  import type { ElRef } from '@ent-core/types';
 
   const SVG_END_WITH_FLAG = '|svg';
   const IconifyIcon = Icon;
@@ -40,6 +40,8 @@
       icon: propTypes.string,
       // icon color
       color: propTypes.string,
+      width: propTypes.string,
+      height: propTypes.string,
       // icon size
       size: {
         type: [String, Number] as PropType<string | number>,
@@ -53,41 +55,18 @@
 
       const isSvgIcon = computed(() => props.icon?.endsWith(SVG_END_WITH_FLAG));
       const getSvgIcon = computed(() => props.icon.replace(SVG_END_WITH_FLAG, ''));
-      // const getIconRef = computed(() => `${props.prefix ? `${props.prefix}:` : ''}${props.icon}`);
-
-      // const update = async () => {
-      //   if (unref(isSvgIcon)) return;
-
-      //   const el = unref(elRef);
-      //   if (!el) return;
-
-      //   await nextTick();
-      //   const icon = unref(getIconRef);
-      //   if (!icon) return;
-
-      //   const svg = Iconify.renderSVG(icon, {});
-      //   if (svg) {
-      //     el.textContent = '';
-      //     el.appendChild(svg);
-      //   } else {
-      //     const span = document.createElement('span');
-      //     span.className = 'iconify';
-      //     span.dataset.icon = icon;
-      //     el.textContent = '';
-      //     el.appendChild(span);
-      //   }
-      // };
-
+      const { useToken } = useTheme();
+      const { token } = useToken();
       const getWrapStyle = computed((): CSSProperties => {
         const { size, color } = props;
         let fs = size;
         if (isString(size)) {
           fs = Number.parseInt(size, 10);
         }
-
+        const tokenValue = unref(token);
         return {
           fontSize: `${fs}px`,
-          color,
+          color: color ? color : tokenValue.colorText,
           display: 'inline-flex',
         };
       });

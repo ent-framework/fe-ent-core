@@ -3,9 +3,9 @@
     <span :class="[prefixCls, `${prefixCls}--${theme}`]" class="flex">
       <img :class="`${prefixCls}__header`" :src="getUserInfo.avatar" />
       <span :class="`${prefixCls}__info hidden md:block`">
-        <span :class="`${prefixCls}__name  `" class="truncate">
+        <Text :class="`${prefixCls}__name  `" class="truncate">
           {{ getUserInfo.realName }}
-        </span>
+        </Text>
       </span>
     </span>
 
@@ -38,8 +38,7 @@
   // components
 
   import { computed, defineComponent } from 'vue';
-  import { Dropdown, Menu } from 'ant-design-vue';
-
+  import { Dropdown, Menu, Typography } from 'ant-design-vue';
   import { DOC_URL } from 'fe-ent-core/es/logics';
   import { openWindow, propTypes } from 'fe-ent-core/es/utils';
   import { useDesign, useHeaderSetting, useI18n } from 'fe-ent-core/es/hooks';
@@ -60,6 +59,7 @@
       MenuItem,
       MenuDivider: Menu.Divider,
       LockAction,
+      Text: Typography.Text,
     },
     props: {
       theme: propTypes.oneOf(['dark', 'light']),

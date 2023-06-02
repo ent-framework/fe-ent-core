@@ -28,7 +28,8 @@
   },
   "peerDependencies": {
     "fe-ent-core": "^2.0.0",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "ant-design-vue": "4.0.0-rc.5"
   },
   "devDependencies": {
     "fe-ent-vue-scripts": "^2.0.0",

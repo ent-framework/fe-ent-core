@@ -1,5 +1,5 @@
 <template>
-  <div :class="getWrapClass" :style="getContentStyle">
+  <div :class="getWrapClass" :style="getWrapStyle">
     <Tabs
       type="editable-card"
       size="small"
@@ -27,7 +27,7 @@
   </div>
 </template>
 <script lang="ts">
-import {computed, CSSProperties, defineComponent, ref, unref} from 'vue';
+  import { computed, defineComponent, ref, unref } from 'vue';
 
   import { Tabs } from 'ant-design-vue';
 
@@ -35,13 +35,13 @@ import {computed, CSSProperties, defineComponent, ref, unref} from 'vue';
   import { useMultipleTabStore, useUserStore } from 'fe-ent-core/es/store';
   import { listenerRouteChange } from 'fe-ent-core/es/logics';
   import { REDIRECT_NAME } from 'fe-ent-core/es/router';
-
   import { useRouter } from 'vue-router';
   import { initAffixTabs, useTabsDrag } from './use-multiple-tabs';
   import TabRedo from './components/tab-redo.vue';
   import FoldButton from './components/fold-button.vue';
   import TabContent from './components/tab-content.vue';
   import type { RouteLocationNormalized, RouteMeta } from 'vue-router';
+  import type { CSSProperties } from 'vue';
   export default defineComponent({
     name: 'MultipleTabs',
     components: {
@@ -61,7 +61,7 @@ import {computed, CSSProperties, defineComponent, ref, unref} from 'vue';
       const router = useRouter();
 
       const { prefixCls } = useDesign('multiple-tabs');
-      const { token } = useTheme();
+
       const go = useGo();
       const { getShowQuick, getShowRedo, getShowFold } = useMultipleTabSetting();
 
@@ -80,13 +80,14 @@ import {computed, CSSProperties, defineComponent, ref, unref} from 'vue';
         ];
       });
 
-      const getContentStyle = computed((): CSSProperties => {
+      const { useToken } = useTheme();
+      const { token } = useToken();
+      const getWrapStyle = computed((): CSSProperties => {
+        const tokenValues = unref(token);
         return {
-          backgroundColor: token.value.colorBgContainer,
-          borderBottom: `1px solid ${token.value.colorBorder}`,
+          backgroundColor: tokenValues.colorBgContainer,
         };
       });
-
       listenerRouteChange((route) => {
         const { name } = route;
         if (name === REDIRECT_NAME || !route || !userStore.getToken) {
@@ -130,7 +131,7 @@ import {computed, CSSProperties, defineComponent, ref, unref} from 'vue';
         prefixCls,
         unClose,
         getWrapClass,
-        getContentStyle,
+        getWrapStyle,
         handleEdit,
         handleChange,
         activeKeyRef,

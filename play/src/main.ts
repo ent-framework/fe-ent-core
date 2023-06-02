@@ -42,7 +42,7 @@ async function bootstrap() {
 
   entRouter.addBasicRoutes([LoginRoute]);
   entRouter.addBasicRoutes(getBasicRoutes());
-  entRouter.addAuthRoutes(import.meta.globEager(`/src/routes2/modules/**/*.ts`));
+  entRouter.addAuthRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
 
   app.use(entRouter);
 
