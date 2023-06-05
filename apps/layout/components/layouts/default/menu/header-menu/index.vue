@@ -18,17 +18,17 @@
   </Menu>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, reactive, ref, toRefs, unref, watch } from 'vue';
+  import { computed, defineComponent, onMounted, reactive, ref, toRefs, unref, watch } from 'vue';
   import { Menu } from 'ant-design-vue';
   import { useRouter } from 'vue-router';
   import { isFunction } from '@vueuse/shared';
-  import { MenuModeEnum, MenuTypeEnum } from '@ent-core/logics/enums/menu-enum';
-  import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
-  import { REDIRECT_NAME } from '@ent-core/router/constant';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { getCurrentParentPath } from '@ent-core/router/menus';
-  import { listenerRouteChange } from '@ent-core/logics/mitt/route-change';
-  import { getAllParentPath } from '@ent-core/router/helper/menu-helper';
+  import { MenuModeEnum, MenuTypeEnum } from 'fe-ent-core/es/logics/enums/menu-enum';
+  import { useMenuSetting } from 'fe-ent-core/es/hooks/setting/use-menu-setting';
+  import { REDIRECT_NAME } from 'fe-ent-core/es/router/constant';
+  import { useDesign } from 'fe-ent-core/es/hooks/web/use-design';
+  import { getCurrentParentPath } from 'fe-ent-core/es/router/menus';
+  import { listenerRouteChange } from 'fe-ent-core/es/logics/mitt/route-change';
+  import { getAllParentPath } from 'fe-ent-core/es/router/helper/menu-helper';
   import { basicProps } from './props';
   import { useOpenKeys } from './use-open-keys';
   import BasicSubMenuItem from './components/basic-sub-menu-item.vue';
@@ -99,15 +99,17 @@
         return inlineCollapseOptions;
       });
 
-      listenerRouteChange((route) => {
-        if (route.name === REDIRECT_NAME) return;
-        handleMenuChange(route);
-        currentActiveMenu.value = route.meta?.currentActiveMenu as string;
+      onMounted(() => {
+        listenerRouteChange((route) => {
+          if (route.name === REDIRECT_NAME) return;
+          handleMenuChange(route);
+          currentActiveMenu.value = route.meta?.currentActiveMenu as string;
 
-        if (unref(currentActiveMenu)) {
-          menuState.selectedKeys = [unref(currentActiveMenu)];
-          setOpenKeys(unref(currentActiveMenu));
-        }
+          if (unref(currentActiveMenu)) {
+            menuState.selectedKeys = [unref(currentActiveMenu)];
+            setOpenKeys(unref(currentActiveMenu));
+          }
+        });
       });
 
       !props.mixSider &&

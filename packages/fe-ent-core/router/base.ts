@@ -20,30 +20,32 @@ export function createEntRouter(): EntRouter {
     scrollBehavior: () => ({ left: 0, top: 0 }),
   });
 
-  const basicRoutes: AppRouteRecordRaw[] = [];
-  const bizRoutes: AppRouteRecordRaw[] = [];
+  const publicRoutes: AppRouteRecordRaw[] = [];
+  const authRoutes: AppRouteRecordRaw[] = [];
   let pageNotFound: AppRouteRecordRaw;
 
-  function getBasicRoutes() {
-    return basicRoutes;
+  function getPublicRoutes() {
+    return publicRoutes;
   }
 
   function getAuthRoutes() {
-    return bizRoutes;
+    return authRoutes;
   }
 
-  function addAuthRoute(route: AppRouteRecordRaw) {
-    routeWrapper(route);
-    bizRoutes.push(route);
+  function addAuthRoutes(routes: AppRouteRecordRaw[]) {
+    routes.forEach((c) => {
+      routeWrapper(c);
+      authRoutes.push(c);
+    });
     return noop;
   }
 
   /***
-   * 添加业务路由，将路由信息缓存起来
-   * 可以通过addBizRoutes(import.meta.globEager("*.ts"))方式在启动类中批量导入
+   * 添加需要授权的路由，将路由信息缓存起来
+   * 可以通过addAuthRoutes(import.meta.globEager("*.ts"))方式在启动类中批量导入
    * @param modules
    */
-  function addAuthRoutes(modules: Record<string, Record<string, any>>) {
+  function importAuthRoutes(modules: Record<string, Record<string, any>>) {
     const routeModuleList: AppRouteRecordRaw[] = [];
     Object.keys(modules).forEach((key) => {
       const mod = modules[key].default || {};
@@ -53,25 +55,25 @@ export function createEntRouter(): EntRouter {
       });
       routeModuleList.push(...modList);
     });
-    bizRoutes.push(...routeModuleList);
+    authRoutes.push(...routeModuleList);
     return noop;
   }
 
-  function addBasicRoute(route: AppRouteRecordRaw) {
+  function addPublicRoute(route: AppRouteRecordRaw) {
     routeWrapper(route);
-    basicRoutes.push(route);
+    publicRoutes.push(route);
     return parent.addRoute(route as RouteRecordRaw);
   }
-  function addBasicRoutes(basicRoutes: AppRouteRecordRaw[]) {
+  function addPublicRoutes(basicRoutes: AppRouteRecordRaw[]) {
     basicRoutes.forEach((route) => {
-      addBasicRoute(route);
+      addPublicRoute(route);
     });
     return noop;
   }
   //所有的BasicRoutes的path抽出成白名单
-  function getWhiteRouteList() {
+  function getPublicRoutePathList() {
     const paths: string[] = [];
-    basicRoutes.forEach((route) => {
+    publicRoutes.forEach((route) => {
       getPathInner(route, paths);
     });
     return paths;
@@ -94,15 +96,14 @@ export function createEntRouter(): EntRouter {
     return noop;
   }
 
-  const entRouter = {
+  const entRouter: EntRouter = {
     ...parent,
-    getBasicRoutes,
-    addBasicRoute,
-    addBasicRoutes,
+    getPublicRoutes,
+    addPublicRoutes,
     getAuthRoutes,
-    addAuthRoute,
     addAuthRoutes,
-    getWhiteRouteList,
+    importAuthRoutes,
+    getPublicRoutePathList,
     getPageNotFoundRoute,
     setPageNotFoundRoute,
     install(app: App) {
@@ -128,11 +129,9 @@ export function useEntRouter(): EntRouter {
  * 重置路由，只保留基础路由，一般登出后需要调用
  */
 export function resetRouter() {
-  const _whiteRouteList = entRouter.getWhiteRouteList();
-  entRouter.getRoutes().forEach((route) => {
-    const { name, path } = route;
-    if (name && !_whiteRouteList.includes(path as string)) {
-      entRouter.hasRoute(name) && entRouter.removeRoute(name);
+  entRouter.getAuthRoutes().forEach((route) => {
+    if (entRouter.hasRoute(route.name)) {
+      entRouter.removeRoute(route.name);
     }
   });
 }

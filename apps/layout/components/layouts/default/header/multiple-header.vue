@@ -85,7 +85,6 @@
       });
 
       const getClass = computed(() => {
-        console.log(unref(getActualHeaderTheme));
         return [
           prefixCls,
           `${prefixCls}--${unref(getActualHeaderTheme)}`,

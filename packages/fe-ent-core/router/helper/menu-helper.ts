@@ -76,6 +76,7 @@ export function configureDynamicParamsMenu(menu: Menu, params: RouteParams) {
   }
   // TODO 这里可能引起面包屑bug
   menu.path = realPath;
+
   // children
   menu.children?.forEach((item) => configureDynamicParamsMenu(item, params));
 }

@@ -7,27 +7,33 @@ import { useI18n } from '@ent-core/hooks/web/use-i18n';
  * @param componentName
  */
 export const wrapperRoute = (componentName: string) => {
-  return defineComponent({
-    name: 'RouteWrapperComponent',
-    setup() {
-      const instance = getCurrentInstance();
-      if (!instance) {
-        return;
-      }
-      const Component = instance.appContext.components[componentName] as ReturnType<
-        typeof defineComponent
-      >;
-      if (Component) {
-        return () => {
-          return <Component />;
-        };
-      } else {
-        const { t } = useI18n();
-        const description = t('layout.notFound', [componentName]);
-        return () => {
-          return <Empty description={description} />;
-        };
-      }
-    },
-  });
+  return <RouteWrapperComponent name={componentName} />;
 };
+
+const RouteWrapperComponent = defineComponent({
+  name: 'RouteWrapperComponent',
+  props: {
+    name: { type: String },
+  },
+  setup(props) {
+    const instance = getCurrentInstance();
+    if (!instance) {
+      return;
+    }
+    const componentName = props.name || '';
+    const Component = instance.appContext.components[componentName] as ReturnType<
+      typeof defineComponent
+    >;
+    if (Component) {
+      return () => {
+        return <Component />;
+      };
+    } else {
+      const { t } = useI18n();
+      const description = t('layout.notFound', [componentName]);
+      return () => {
+        return <Empty description={description} />;
+      };
+    }
+  }
+});

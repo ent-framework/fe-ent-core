@@ -21,7 +21,6 @@ export async function initAppConfigStore() {
   const localeStore = useLocaleStore();
   const appStore = useAppStore();
   let projCfg: ProjectConfig = Persistent.getLocal(PROJ_CFG_KEY) as ProjectConfig;
-  console.log(projCfg);
   const defaultThemeSetting = Factory.getLayoutFactory().getDefaultThemeSetting();
   projCfg = deepMerge(
     {

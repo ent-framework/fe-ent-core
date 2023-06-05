@@ -89,5 +89,9 @@ module.exports = {
         ],
       },
     },
+    {
+      files: ['*.less'],
+      extends: ['stylelint-config-recommended', 'stylelint-config-recommended-less'],
+    },
   ],
 };

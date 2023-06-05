@@ -1,46 +1,30 @@
-import { computed, ref, unref, watch } from 'vue';
+import { computed } from 'vue';
 import { theme as AntTheme } from 'ant-design-vue';
-import { generateNeutralColorPalettes as darkColorGenerate } from 'ant-design-vue/es/theme/themes/dark/colors';
-import { generateNeutralColorPalettes as lightColorGenerate } from 'ant-design-vue/es/theme/themes/default/colors';
 import { useAppStoreWithOut } from '@ent-core/store';
 import { ThemeEnum } from '@ent-core/logics';
 import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
 
-import type { GlobalToken } from 'ant-design-vue/es/theme';
-
 export function useTheme() {
   const { useToken } = AntTheme;
 
-  const appTheme = ref<ThemeConfig>({});
-
   const appStore = useAppStoreWithOut();
 
-  const loadFromStore = () => {
+  const appTheme = computed(() => {
     const { theme: gbloalTheme } = appStore.getThemeSetting;
+    let themeConfig: ThemeConfig = {};
     if (gbloalTheme) {
       if (gbloalTheme == ThemeEnum.DARK) {
-        appTheme.value = { ...appTheme.value, algorithm: AntTheme.darkAlgorithm };
+        themeConfig = { algorithm: AntTheme.darkAlgorithm };
       } else {
-        appTheme.value = { ...appTheme.value, algorithm: AntTheme.defaultAlgorithm };
+        themeConfig = { algorithm: AntTheme.defaultAlgorithm };
       }
     }
     const token = appStore.getThemeSetting.token;
     if (token) {
-      appTheme.value = { ...appTheme.value, token };
+      themeConfig = { ...themeConfig, token };
     }
-  };
-
-  loadFromStore();
-
-  watch(
-    () => appStore.getThemeSetting,
-    () => {
-      loadFromStore();
-    },
-    {
-      deep: true,
-    },
-  );
+    return themeConfig;
+  });
 
   const updateGrayMode = (gray: boolean) => {};
 

@@ -1,6 +1,6 @@
 <script lang="tsx">
-  import { computed, defineComponent, toRef, unref } from 'vue';
-  import { EntAppLogo, EntMenu, EntScrollContainer, EntSimpleMenu } from 'fe-ent-core';
+  import { computed, defineComponent, onDeactivated, onUnmounted, toRef, unref } from 'vue';
+  import { EntAppLogo, EntScrollContainer } from 'fe-ent-core';
   import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/es/logics';
   import { isUrl, openWindow, propTypes } from 'fe-ent-core/es/utils';
   import {
@@ -11,6 +11,8 @@
     useRootSetting,
     useThemeSetting,
   } from 'fe-ent-core/es/hooks';
+  import EntMenu from './header-menu/index.vue';
+  import EntSimpleMenu from './left-menu/index.vue';
 
   import { useSplitMenu } from './use-layout-menu';
   import type { Nullable } from 'fe-ent-core/es/types';
@@ -72,6 +74,14 @@
             props.splitType === MenuSplitTyeEnum.LEFT ||
             props.splitType === MenuSplitTyeEnum.NONE)
         );
+      });
+
+      onUnmounted(() => {
+        console.log('onUnmounted');
+      });
+
+      onDeactivated(() => {
+        console.log('onDeactivated');
       });
 
       const getWrapperStyle = computed((): CSSProperties => {
@@ -151,10 +161,7 @@
           <>
             {renderHeader()}
             {unref(getUseScroll) ? (
-              <EntScrollContainer
-                theme={unref(getComputedMenuTheme)}
-                style={unref(getWrapperStyle)}
-              >
+              <EntScrollContainer style={unref(getWrapperStyle)}>
                 {() => renderMenu()}
               </EntScrollContainer>
             ) : (

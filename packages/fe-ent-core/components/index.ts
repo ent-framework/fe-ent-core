@@ -27,12 +27,10 @@ export {
 export { EntIcon, EntSvgIcon, EntIconPicker } from './icon';
 export { EntLoading } from './loading';
 export { EntLocalePicker } from './locale-picker';
-export { EntMenu } from './menu';
 export { EntModal } from './modal';
 export { EntPageWrapper } from './page';
 export { EntImagePreview } from './preview';
 export { EntScrollbar } from './scroll-bar';
-export { EntSimpleMenu, EntSimpleMenuTag } from './simple-menu';
 export { EntStrengthMeter } from './strength-meter';
 export { EntTable, EntTableImg, EntTableAction } from './table';
 export { EntTime } from './time';

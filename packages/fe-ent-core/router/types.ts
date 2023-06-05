@@ -112,29 +112,25 @@ export type MenuModule = {
 
 export interface EntRouter extends Router {
   /**
-   * 获取基础路由
+   * 获取公共路由
    */
-  getBasicRoutes(): AppRouteRecordRaw[];
+  getPublicRoutes(): AppRouteRecordRaw[];
   /**
-   * 添加基础路由
+   * 批量添加公共路由
    */
-  addBasicRoute(route: AppRouteRecordRaw): () => void;
-  /**
-   * 批量添加基础路由
-   */
-  addBasicRoutes(routes: AppRouteRecordRaw[]): () => void;
+  addPublicRoutes(routes: AppRouteRecordRaw[]): () => void;
   /**
    * 获取认证路由
    */
   getAuthRoutes(): AppRouteRecordRaw[];
   /**
-   * 添加认证路由
+   * 批量添加认证路由
    */
-  addAuthRoute(route: AppRouteRecordRaw): () => void;
+  addAuthRoutes(routes: AppRouteRecordRaw[]): () => void;
   /**
    * 批量添加认证路由
    */
-  addAuthRoutes(routes: Record<string, Record<string, any>>): () => void;
+  importAuthRoutes(routes: Record<string, Record<string, any>>): () => void;
 
   /**
    * 获取404路由
@@ -146,7 +142,7 @@ export interface EntRouter extends Router {
   setPageNotFoundRoute(route: AppRouteRecordRaw): () => void;
 
   /**
-   * 获取白名单路由
+   * 获取公共路由的path[]
    */
-  getWhiteRouteList(): string[];
+  getPublicRoutePathList(): string[];
 }

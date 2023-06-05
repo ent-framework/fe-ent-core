@@ -1,45 +1,56 @@
 <template>
   <Menu
-    v-bind="getBindValues"
-    :active-name="activeName"
-    :open-names="getOpenKeys"
+    :theme="theme"
     :class="prefixCls"
-    :active-sub-menu-names="activeSubMenuNames"
-    @select="handleSelect"
+    :open-keys="getOpenKeys"
+    :selected-keys="selectedKeys"
+    :force-sub-menu-render="true"
+    mode="inline"
+    @click="handleSelect"
   >
     <template v-for="item in items" :key="item.path">
-      <SimpleSubMenu
+      <SimpleSubMenuItem
         :item="item"
         :parent="true"
         :collapsed-show-title="collapsedShowTitle"
         :collapse="collapse"
+        :theme="theme"
       />
     </template>
   </Menu>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, reactive, ref, toRefs, unref, watch } from 'vue';
+  import {
+    computed,
+    defineComponent,
+    onMounted,
+    reactive,
+    ref,
+    toRef,
+    toRefs,
+    unref,
+    watch,
+  } from 'vue';
   import { useRouter } from 'vue-router';
   import { isFunction } from '@vueuse/shared';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { listenerRouteChange } from '@ent-core/logics/mitt/route-change';
-  import { propTypes } from '@ent-core/utils/prop-types';
-  import { REDIRECT_NAME } from '@ent-core/router/constant';
-  import { isUrl } from '@ent-core/utils/is';
-  import { openWindow } from '@ent-core/utils';
-  import SimpleSubMenu from './simple-sub-menu.vue';
-  import Menu from './components/menu.vue';
-
+  import { Menu } from 'ant-design-vue';
+  import { useDesign } from 'fe-ent-core/es/hooks/web/use-design';
+  import { listenerRouteChange } from 'fe-ent-core/es/logics/mitt/route-change';
+  import { propTypes } from 'fe-ent-core/es/utils/prop-types';
+  import { REDIRECT_NAME } from 'fe-ent-core/es/router/constant';
+  import { isUrl } from 'fe-ent-core/es/utils/is';
+  import { openWindow } from 'fe-ent-core/es/utils';
+  import SimpleSubMenuItem from './components/simple-sub-menu-item.vue';
   import { useOpenKeys } from './use-open-keys';
   import type { PropType } from 'vue';
   import type { RouteLocationNormalizedLoaded } from 'vue-router';
-  import type { Menu as MenuType } from '@ent-core/router/types';
-  import type { MenuState } from './types';
+  import type { Menu as MenuType } from 'fe-ent-core/es/router/types';
+  import type { SimpleMenuState } from './types';
   export default defineComponent({
-    name: 'SimpleMenu',
+    name: 'EntSimpleMenu',
     components: {
       Menu,
-      SimpleSubMenu,
+      SimpleSubMenuItem,
     },
     inheritAttrs: false,
     props: {
@@ -62,16 +73,15 @@
       const currentActiveMenu = ref('');
       const isClickGo = ref(false);
 
-      const menuState = reactive<MenuState>({
-        activeName: '',
-        openNames: [],
-        activeSubMenuNames: [],
+      const menuState = reactive<SimpleMenuState>({
+        defaultSelectedKeys: [],
+        openKeys: [],
+        selectedKeys: [],
       });
 
       const { currentRoute } = useRouter();
       const { prefixCls } = useDesign('simple-menu');
       const { items, accordion, mixSider, collapse } = toRefs(props);
-
       const { setOpenKeys, getOpenKeys } = useOpenKeys(
         menuState,
         items,
@@ -86,7 +96,7 @@
         () => props.collapse,
         (collapse) => {
           if (collapse) {
-            menuState.openNames = [];
+            menuState.openKeys = [];
           } else {
             setOpenKeys(currentRoute.value.path);
           }
@@ -105,18 +115,6 @@
         { flush: 'post' },
       );
 
-      listenerRouteChange((route) => {
-        if (route.name === REDIRECT_NAME) return;
-
-        currentActiveMenu.value = route.meta?.currentActiveMenu as string;
-        handleMenuChange(route);
-
-        if (unref(currentActiveMenu)) {
-          menuState.activeName = unref(currentActiveMenu);
-          setOpenKeys(unref(currentActiveMenu));
-        }
-      });
-
       async function handleMenuChange(route?: RouteLocationNormalizedLoaded) {
         if (unref(isClickGo)) {
           isClickGo.value = false;
@@ -124,12 +122,12 @@
         }
         const path = (route || unref(currentRoute)).path;
 
-        menuState.activeName = path;
+        menuState.selectedKeys = [path];
 
         setOpenKeys(path);
       }
 
-      async function handleSelect(key: string) {
+      async function handleSelect({ key }: { key: string; keyPath: string[] }) {
         if (isUrl(key)) {
           openWindow(key);
           return;
@@ -140,13 +138,31 @@
           if (!flag) return;
         }
 
+        console.log('menu clicked');
         emit('menuClick', key);
 
         isClickGo.value = true;
         setOpenKeys(key);
-        menuState.activeName = key;
+        menuState.selectedKeys = [key];
       }
+      onMounted(() => {
+        console.log('实例挂载完成');
+        listenerRouteChange((route) => {
+          console.log(`route changed : ${route.path}`);
+          if (route.name === REDIRECT_NAME) return;
 
+          currentActiveMenu.value = route.meta?.currentActiveMenu as string;
+          handleMenuChange(route);
+
+          console.log('handleMenuChange');
+
+          if (unref(currentActiveMenu)) {
+            console.log('currentActiveMenu');
+            menuState.selectedKeys = [unref(currentActiveMenu)];
+            setOpenKeys(unref(currentActiveMenu));
+          }
+        });
+      });
       return {
         prefixCls,
         getBindValues,

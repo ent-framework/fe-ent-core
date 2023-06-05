@@ -18,7 +18,7 @@ const iframe: AppRouteRecordRaw = {
       name: 'Doc',
       component: 'IFrame',
       meta: {
-        frameSrc: 'https://vvbin.cn/doc-next/',
+        frameSrc: 'https://docs.ent-framework.tech/',
         title: t('routes.demo.iframe.doc'),
       },
     },
@@ -27,12 +27,12 @@ const iframe: AppRouteRecordRaw = {
       name: 'Antv',
       component: 'IFrame',
       meta: {
-        frameSrc: 'https://2x.antdv.com/docs/vue/introduce-cn/',
+        frameSrc: 'https://next.antdv.com/docs/vue/introduce-cn/',
         title: t('routes.demo.iframe.antv'),
       },
     },
     {
-      path: 'https://vvbin.cn/doc-next/',
+      path: 'https://docs.ent-framework.tech/',
       name: 'DocExternal',
       component: 'IFrame',
       meta: {

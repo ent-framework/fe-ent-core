@@ -30,14 +30,12 @@ declare module '@vue/runtime-core' {
     EntLazyContainer: typeof import('fe-ent-core')['EntLazyContainer'];
     EntLoading: typeof import('fe-ent-core')['EntLoading'];
     EntLocalePicker: typeof import('fe-ent-core')['EntLocalePicker'];
-    EntMenu: typeof import('fe-ent-core')['EntMenu'];
     EntModal: typeof import('fe-ent-core')['EntModal'];
     EntPageWrapper: typeof import('fe-ent-core')['EntPageWrapper'];
     EntPopButton: typeof import('fe-ent-core')['EntPopButton'];
     EntRotateDragVerify: typeof import('fe-ent-core')['EntRotateDragVerify'];
     EntScrollbar: typeof import('fe-ent-core')['EntScrollbar'];
     EntScrollContainer: typeof import('fe-ent-core')['EntScrollContainer'];
-    EntSimpleMenu: typeof import('fe-ent-core')['EntSimpleMenu'];
     EntStrengthMeter: typeof import('fe-ent-core')['EntStrengthMeter'];
     EntSvgIcon: typeof import('fe-ent-core')['EntSvgIcon'];
     EntTable: typeof import('fe-ent-core')['EntTable'];

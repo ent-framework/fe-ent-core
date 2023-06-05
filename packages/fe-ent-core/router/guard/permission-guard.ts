@@ -25,7 +25,7 @@ export function createPermissionGuard(router: Router) {
     }
 
     const token = userStore.getToken;
-    const whitePathList = entRouter.getWhiteRouteList();
+    const whitePathList = entRouter.getPublicRoutePathList();
     // Whitelist can be directly entered
     if (whitePathList.includes(to.path)) {
       //已登录

@@ -1,41 +1,40 @@
 <template>
-  <SimpleMenuItem v-if="!menuHasChildren(item) && getShowMenu" v-bind="$props" />
+  <BasicMenuItem v-if="!menuHasChildren(item) && getShowMenu" v-bind="$props" />
   <SubMenu
     v-if="menuHasChildren(item) && getShowMenu"
-    :key="`${item.path}`"
+    :key="`submenu-${item.path}`"
     :class="[theme]"
-    :theme="theme"
     popup-class-name="app-top-menu-popup"
   >
     <template #title>
-      <SimpleMenuItemContent v-bind="$props" :item="item" />
+      <MenuItemContent v-bind="$props" :item="item" />
     </template>
 
     <template v-for="childrenItem in item.children || []" :key="childrenItem.path">
-      <SimpleSubMenuItem v-bind="$props" :parent="false" :item="childrenItem" />
+      <BasicSubMenuItem v-bind="$props" :item="childrenItem" />
     </template>
   </SubMenu>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { Menu } from 'ant-design-vue';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useDesign } from 'fe-ent-core/es/hooks/web/use-design';
   import { itemProps } from '../props';
-  import SimpleMenuItem from './simple-menu-item.vue';
-  import SimpleMenuItemContent from './simple-menu-item-content.vue';
-  import type { Menu as MenuType } from '@ent-core/router/types';
+  import BasicMenuItem from './basic-menu-item.vue';
+  import MenuItemContent from './menu-item-content.vue';
+  import type { Menu as MenuType } from 'fe-ent-core/es/router/types';
 
   export default defineComponent({
-    name: 'SimpleSubMenuItem',
+    name: 'BasicSubMenuItem',
     isSubMenu: true,
     components: {
-      SimpleMenuItem,
+      BasicMenuItem,
       SubMenu: Menu.SubMenu,
-      SimpleMenuItemContent,
+      MenuItemContent,
     },
     props: itemProps,
     setup(props) {
-      const { prefixCls } = useDesign('simple-menu-item');
+      const { prefixCls } = useDesign('basic-menu-item');
 
       const getShowMenu = computed(() => !props.item.meta?.hideMenu);
       function menuHasChildren(menuTreeItem: MenuType): boolean {

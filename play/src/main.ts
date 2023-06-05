@@ -13,7 +13,7 @@ import { initApplication } from '/@/init-application';
 
 import 'fe-ent-core/es/theme/index.less';
 
-import { getBasicRoutes, initRouteAndLayout } from 'fe-ent-layout';
+import { getPublicRoutes, initRouteAndLayout } from 'fe-ent-layout';
 import { LoginRoute } from 'fe-ent-login';
 
 import App from './App.vue';
@@ -40,9 +40,9 @@ async function bootstrap() {
 
   app.use(EntCore);
 
-  entRouter.addBasicRoutes([LoginRoute]);
-  entRouter.addBasicRoutes(getBasicRoutes());
-  entRouter.addAuthRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
+  entRouter.addPublicRoutes([LoginRoute]);
+  entRouter.addPublicRoutes(getPublicRoutes());
+  entRouter.importAuthRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
 
   app.use(entRouter);
 

@@ -9,7 +9,6 @@ import {
   getShallowMenus,
 } from 'fe-ent-core/es/router';
 import { usePermissionStore } from 'fe-ent-core/es/store';
-
 import { useThrottleFn } from '@vueuse/core';
 import type { Ref } from 'vue';
 import type { Menu } from 'fe-ent-core/es/router';
@@ -66,6 +65,7 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
     },
     {
       immediate: true,
+      deep: true,
     },
   );
 

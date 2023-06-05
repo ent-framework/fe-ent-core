@@ -20,7 +20,6 @@ export function createParamMenuGuard(router: Router) {
       next();
       return;
     }
-
     let menus: Menu[] = [];
     if (isBackMode()) {
       menus = permissionStore.getBackMenuList;

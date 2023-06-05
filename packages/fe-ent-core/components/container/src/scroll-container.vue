@@ -7,8 +7,6 @@
 <script lang="ts">
   import { computed, defineComponent, nextTick, ref, unref } from 'vue';
   import Scrollbar from '@ent-core/components/scroll-bar';
-  import { propTypes } from '@ent-core/es/utils';
-  import { useTheme } from '@ent-core/hooks/web/use-theme';
   import { useScrollTo } from '@ent-core/hooks/event/use-scroll-to';
   import type { ScrollbarType } from '@ent-core/components/scroll-bar/interface';
   import type { Nullable } from '@ent-core/types';
@@ -17,10 +15,7 @@
   export default defineComponent({
     name: 'EntScrollContainer',
     components: { Scrollbar },
-    props: {
-      theme: propTypes.oneOf(['light', 'dark', '']).def(''),
-    },
-    setup(props) {
+    setup() {
       const scrollbarRef = ref<Nullable<ScrollbarType>>(null);
 
       /**

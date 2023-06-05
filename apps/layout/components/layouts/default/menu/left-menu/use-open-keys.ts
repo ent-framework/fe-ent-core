@@ -1,12 +1,12 @@
 import { computed, toRaw, unref } from 'vue';
 import { uniq } from 'lodash-es';
 import { useDebounceFn } from '@vueuse/shared';
-import { getAllParentPath } from '@ent-core/router/helper/menu-helper';
+import { getAllParentPath } from 'fe-ent-core/es/router/helper/menu-helper';
 
-import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
+import { useTimeoutFn } from 'fe-ent-core/es/hooks/core/use-timeout';
 import type { Ref } from 'vue';
 import type { SimpleMenuState } from './types';
-import type { Menu as MenuType } from '@ent-core/router/types';
+import type { Menu as MenuType } from 'fe-ent-core/es/router/types';
 
 export function useOpenKeys(
   menuState: SimpleMenuState,

@@ -6,7 +6,7 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { Menu } from 'ant-design-vue';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { useI18n } from 'fe-ent-core/es/hooks/web/use-i18n';
   import { itemProps } from '../props';
 
   import SimpleMenuItemContent from './simple-menu-item-content.vue';

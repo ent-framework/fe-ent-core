@@ -6,23 +6,16 @@
     :class="[$attrs.class, 'anticon']"
     :spin="spin"
   />
-  <!-- <span
-    v-else
-    ref="elRef"
-    :class="[$attrs.class, 'app-iconify anticon', spin && 'app-iconify-spin']"
-    :style="getWrapStyle"
-  /> -->
   <span
     v-else
     :class="[$attrs.class, 'app-iconify anticon', spin && 'app-iconify-spin']"
     :style="getWrapStyle"
   >
-    <IconifyIcon :icon="icon" :width="width" :height="height" />
+    <IconifyIcon v-bind="getBindValue" />
   </span>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, nextTick, onMounted, ref, unref, watch } from 'vue';
-  //import Iconify from '@iconify/iconify';
+  import { computed, defineComponent, unref } from 'vue';
   import { Icon } from '@iconify/vue';
   import { isString } from '@ent-core/utils/is';
   import { useTheme } from '@ent-core/hooks';
@@ -57,6 +50,11 @@
       const getSvgIcon = computed(() => props.icon.replace(SVG_END_WITH_FLAG, ''));
       const { useToken } = useTheme();
       const { token } = useToken();
+      const getBindValue = computed(() => {
+        return {
+          ...props,
+        };
+      });
       const getWrapStyle = computed((): CSSProperties => {
         const { size, color } = props;
         let fs = size;
@@ -71,11 +69,7 @@
         };
       });
 
-      //watch(() => props.icon, update, { flush: 'post' });
-
-      //onMounted(update);
-
-      return { getWrapStyle, isSvgIcon, getSvgIcon };
+      return { getBindValue, getWrapStyle, isSvgIcon, getSvgIcon };
     },
   });
 </script>

@@ -11,11 +11,7 @@ function handleError(e: Error) {
 
 // page switch
 export function useGo(_router?: Router) {
-  let router;
-  if (!_router) {
-    router = useRouter();
-  }
-  const { push, replace } = _router || router;
+  const { push, replace } = _router || useRouter();
   const globalStore = useGlobalStore();
   function go(opt: RouteLocationRaw | string = globalStore.getBaseHomePath, isReplace = false) {
     if (!opt) {

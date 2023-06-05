@@ -7,9 +7,9 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
 
-  import Icon from '@ent-core/components/icon';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import Icon from 'fe-ent-core/es/components/icon';
+  import { useI18n } from 'fe-ent-core/es/hooks/web/use-i18n';
+  import { useDesign } from 'fe-ent-core/es/hooks/web/use-design';
   import { contentProps } from '../props';
 
   export default defineComponent({

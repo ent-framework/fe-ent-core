@@ -99,7 +99,8 @@
         ];
       });
 
-      const { token } = useTheme();
+      const { useToken } = useTheme();
+      const { token } = useToken();
 
       const getShowFooter = computed(() => slots?.leftFooter || slots?.rightFooter);
 
@@ -109,6 +110,7 @@
 
       const getContentStyle = computed((): CSSProperties => {
         const { contentFullHeight, contentStyle, fixedHeight } = props;
+        const tokenValues = unref(token);
         if (!contentFullHeight) {
           return { ...contentStyle };
         }
@@ -118,7 +120,7 @@
           ...contentStyle,
           minHeight: height,
           ...(fixedHeight ? { height } : {}),
-          backgroundColor: token.value.colorBgContainer,
+          backgroundColor: tokenValues.colorBgContainer,
         };
       });
 

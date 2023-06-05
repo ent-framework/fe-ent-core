@@ -7,9 +7,8 @@
 <script lang="ts">
   import { computed, defineComponent, useSlots } from 'vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useTheme } from '@ent-core/hooks';
   import BasicHelp from './basic-help.vue';
-  import type { CSSProperties, PropType } from 'vue';
+  import type { PropType } from 'vue';
   const props = {
     /**
      * Help text list or string
@@ -43,14 +42,6 @@
         { [`${prefixCls}-show-span`]: props.span && slots.default },
         { [`${prefixCls}-normal`]: props.normal },
       ]);
-
-      // const { getToken } = useTheme();
-      // const getContentStyle = computed((): CSSProperties => {
-      //   const token = getToken();
-      //   return {
-      //     color: token.colorText,
-      //   };
-      // });
       return {
         prefixCls,
         getClass,

@@ -27,7 +27,7 @@
   </div>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, ref, unref } from 'vue';
+  import { computed, defineComponent, onMounted, ref, unref } from 'vue';
 
   import { Tabs } from 'ant-design-vue';
 
@@ -88,29 +88,33 @@
           backgroundColor: tokenValues.colorBgContainer,
         };
       });
-      listenerRouteChange((route) => {
-        const { name } = route;
-        if (name === REDIRECT_NAME || !route || !userStore.getToken) {
-          return;
-        }
 
-        const { path, fullPath, meta = {} } = route;
-        const { currentActiveMenu, hideTab } = meta as RouteMeta;
-        const isHide = !hideTab ? null : currentActiveMenu;
-        const p = isHide || fullPath || path;
-        if (activeKeyRef.value !== p) {
-          activeKeyRef.value = p as string;
-        }
+      onMounted(() => {
+        listenerRouteChange((route) => {
+          const { name } = route;
+          if (name === REDIRECT_NAME || !route || !userStore.getToken) {
+            return;
+          }
 
-        if (isHide) {
-          const findParentRoute = router
-            .getRoutes()
-            .find((item) => item.path === currentActiveMenu);
+          const { path, fullPath, meta = {} } = route;
+          const { currentActiveMenu, hideTab } = meta as RouteMeta;
+          const isHide = !hideTab ? null : currentActiveMenu;
+          const p = isHide || fullPath || path;
+          if (activeKeyRef.value !== p) {
+            activeKeyRef.value = p as string;
+          }
 
-          findParentRoute && tabStore.addTab(findParentRoute as unknown as RouteLocationNormalized);
-        } else {
-          tabStore.addTab(unref(route));
-        }
+          if (isHide) {
+            const findParentRoute = router
+              .getRoutes()
+              .find((item) => item.path === currentActiveMenu);
+
+            findParentRoute &&
+              tabStore.addTab(findParentRoute as unknown as RouteLocationNormalized);
+          } else {
+            tabStore.addTab(unref(route));
+          }
+        });
       });
 
       function handleChange(activeKey: any) {

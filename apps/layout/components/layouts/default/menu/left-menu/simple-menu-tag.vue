@@ -4,10 +4,10 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
 
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { propTypes } from '@ent-core/utils/prop-types';
+  import { useDesign } from 'fe-ent-core/es/hooks/web/use-design';
+  import { propTypes } from 'fe-ent-core/es/utils/prop-types';
   import type { PropType } from 'vue';
-  import type { Menu } from '@ent-core/router/types';
+  import type { Menu } from 'fe-ent-core/es/router/types';
 
   export default defineComponent({
     name: 'SimpleMenuTag',

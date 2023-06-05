@@ -76,13 +76,7 @@
 <script lang="ts">
   import { computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
   import { vClickOutside } from 'fe-ent-core/es/directives';
-  import {
-    EntAppLogo,
-    EntIcon,
-    EntScrollContainer,
-    EntSimpleMenu,
-    EntSimpleMenuTag,
-  } from 'fe-ent-core';
+  import { EntAppLogo, EntIcon, EntScrollContainer } from 'fe-ent-core';
   import {
     SIDE_BAR_MINI_WIDTH,
     SIDE_BAR_SHOW_TIT_MINI_WIDTH,
@@ -101,6 +95,8 @@
   import { usePermissionStore } from 'fe-ent-core/es/store';
   import { Typography } from 'ant-design-vue';
   import LayoutTrigger from '../trigger/index.vue';
+  import EntSimpleMenu from '../menu/left-menu/index.vue';
+  import EntSimpleMenuTag from '../menu/left-menu/simple-menu-tag.vue';
   import { useDragLine } from './use-layout-sider';
   import type { RouteLocationNormalized } from 'vue-router';
   import type { CSSProperties } from 'vue';
@@ -212,6 +208,13 @@
 
       onMounted(async () => {
         menuModules.value = await getShallowMenus();
+        listenerRouteChange((route) => {
+          currentRoute.value = route;
+          setActive(true);
+          if (unref(getCloseMixSidebarOnChange)) {
+            closeMenu();
+          }
+        });
       });
 
       // Menu changes
@@ -222,16 +225,9 @@
         },
         {
           immediate: true,
+          deep: true,
         },
       );
-
-      listenerRouteChange((route) => {
-        currentRoute.value = route;
-        setActive(true);
-        if (unref(getCloseMixSidebarOnChange)) {
-          closeMenu();
-        }
-      });
 
       function getWrapCommonStyle(width: string): CSSProperties {
         const tokenValues = unref(token);

@@ -30,7 +30,6 @@
     useLockPage,
     useMenuSetting,
     useTheme,
-    useThemeSetting,
   } from 'fe-ent-core/es/hooks';
 
   import LayoutMultipleHeader from './header/multiple-header.vue';
@@ -58,8 +57,6 @@
       const { getIsMobile } = useAppInject();
       const { getShowFullHeaderRef } = useHeaderSetting();
       const { getShowSidebar, getIsMixSidebar, getShowMenu } = useMenuSetting();
-
-      const { getGlobalTheme } = useThemeSetting();
 
       const { getTheme, getActualHeaderTheme, getActualMenuTheme } = useTheme();
 

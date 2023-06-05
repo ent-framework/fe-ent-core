@@ -8,8 +8,8 @@ import './components/index.less';
 export * from './components/layouts/default';
 
 // 导入基础路由，与业务无关
-function getBasicRoutes(rootPathRedirect?: string): AppRouteRecordRaw[] {
+function getPublicRoutes(rootPathRedirect?: string): AppRouteRecordRaw[] {
   return [mainOutRoute, getRedirectRoute(), getErrorLogRoute(), getRootRoute(rootPathRedirect)];
 }
 
-export { initRouteAndLayout, getBasicRoutes };
+export { initRouteAndLayout, getPublicRoutes };

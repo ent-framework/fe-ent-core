@@ -12,11 +12,11 @@ const defaultThemeSetting: ThemeSetting = {
   theme: ThemeEnum.LIGHT,
   name: 'default',
   token: {
-    colorPrimary: '#51b8f1',
-    colorSuccess: '#58a732',
-    colorWarning: '#f0a818',
-    colorError: '#e55c5c',
-    colorInfo: '#d9d9d9',
+    colorPrimary: '#1677ff',
+    colorSuccess: '#52c41a',
+    colorWarning: '#faad14',
+    colorError: '#ff4d4f',
+    colorInfo: '#1677ff',
   },
 };
 
@@ -36,6 +36,17 @@ export class LayoutService implements LayoutFactory {
   getThemeSettings = () => {
     return [
       defaultThemeSetting,
+      {
+        theme: ThemeEnum.LIGHT,
+        name: 'Kola',
+        token: {
+          colorPrimary: '#51b8f1',
+          colorSuccess: '#58a732',
+          colorWarning: '#f0a818',
+          colorError: '#e55c5c',
+          colorInfo: '#d9d9d9',
+        },
+      },
       {
         theme: ThemeEnum.LIGHT,
         name: 'Moody Sunset',
