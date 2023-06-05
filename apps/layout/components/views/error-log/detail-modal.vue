@@ -8,7 +8,7 @@
   import { useI18n } from 'fe-ent-core/es/hooks';
   import { useDescription } from 'fe-ent-core/es/components/description';
   import { getDescSchema } from './data';
-  import type { ErrorLogInfo } from 'fe-ent-core/es/store/types/store';
+  import type { ErrorLogInfo } from 'fe-ent-core/es/store/types';
   import type { PropType } from 'vue';
 
   defineProps({

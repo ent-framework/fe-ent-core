@@ -13,7 +13,7 @@ import {
   SettingButtonPositionEnum,
   ThemeEnum,
 } from '@ent-core/logics/enums/app-enum';
-import type { ProjectConfig } from '@ent-core/store/types/store';
+import type { ProjectConfig } from '@ent-core/store/types';
 
 // ! You need to clear the browser cache after the change
 const setting: ProjectConfig = {

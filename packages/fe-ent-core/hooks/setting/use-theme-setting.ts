@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useAppStore } from '@ent-core/store/modules/app';
 
 import type { ThemeEnum } from '@ent-core/logics';
-import type { ThemeSetting } from '@ent-core/store/types/store';
+import type { ThemeSetting } from '@ent-core/store/types';
 
 export function useThemeSetting() {
   const appStore = useAppStore();

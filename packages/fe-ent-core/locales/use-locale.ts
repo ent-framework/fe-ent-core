@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import { useLocaleStoreWithOut } from '@ent-core/store/modules/locale';
 import { i18n } from './setup-i18n';
 import { loadLocalePool, setHtmlPageLang } from './helper';
-import type { LocaleType } from '@ent-core/store/types/store';
+import type { LocaleType } from '@ent-core/store/types';
 
 function setI18nLanguage(locale: LocaleType) {
   const localeStore = useLocaleStoreWithOut();

@@ -2,7 +2,7 @@ import { useThemeSetting } from 'fe-ent-core/es/hooks';
 import { useAppStore } from 'fe-ent-core/es/store';
 import { HandlerEnum } from './enum';
 import type { DeepPartial } from 'fe-ent-core/es/types';
-import type { ProjectConfig } from 'fe-ent-core/es/store/types/store';
+import type { ProjectConfig } from 'fe-ent-core/es/store/types';
 
 export function baseHandler(event: HandlerEnum, value: any) {
   const appStore = useAppStore();

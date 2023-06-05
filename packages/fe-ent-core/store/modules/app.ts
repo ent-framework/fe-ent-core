@@ -13,7 +13,7 @@ import type {
   ProjectConfig,
   ThemeSetting,
   TransitionSetting,
-} from '@ent-core/store/types/store';
+} from '@ent-core/store/types';
 import type { DeepPartial, TimeoutHandle } from '@ent-core/types';
 
 export interface AppState {

@@ -86,7 +86,7 @@
   import { LockOutlined } from '@ant-design/icons-vue';
   import headerImg from '../../../assets/header.jpg';
   import { useNow } from './use-now';
-  import type { UserInfo } from 'fe-ent-core/es/store/types/store';
+  import type { UserInfo } from 'fe-ent-core/es/store/types';
 
   const InputPassword = Input.Password;
 

@@ -2,7 +2,7 @@ import { computed } from 'vue';
 
 import { useAppStore } from '@ent-core/store/modules/app';
 import { ContentEnum } from '@ent-core/logics/enums/app-enum';
-import type { ProjectConfig } from '@ent-core/store/types/store';
+import type { ProjectConfig } from '@ent-core/store/types';
 
 type RootSetting = Omit<
   ProjectConfig,

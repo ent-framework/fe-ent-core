@@ -24,7 +24,7 @@
   import { useLocale } from '@ent-core/locales/use-locale';
   import { localeList } from '@ent-core/logics/settings/locale-setting';
   import type { DropMenu } from '@ent-core/components/dropdown/interface';
-  import type { LocaleType } from '@ent-core/store/types/store';
+  import type { LocaleType } from '@ent-core/store/types';
 
   const props = {
     /**

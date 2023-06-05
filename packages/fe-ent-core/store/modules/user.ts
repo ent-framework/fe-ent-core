@@ -12,7 +12,7 @@ import { entRouter } from '@ent-core/router/base';
 import type { GetUserInfoModel, LoginParams } from '@ent-core/logics/types/user';
 import type { RoleEnum } from '@ent-core/logics/enums/role-enum';
 import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
-import type { UserInfo } from '@ent-core/store/types/store';
+import type { UserInfo } from '@ent-core/store/types';
 import type { Nullable } from '@ent-core/types';
 
 export interface UserState {

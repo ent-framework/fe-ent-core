@@ -16,4 +16,4 @@ description: Store相关的Types
 
 ## Type
 
-%%INTERFACE(types/store.ts)%%
+%%INTERFACE(types.ts)%%

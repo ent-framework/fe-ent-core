@@ -5,7 +5,7 @@ import { useAppStore } from '@ent-core/store/modules/app';
 import { SIDE_BAR_MINI_WIDTH, SIDE_BAR_SHOW_TIT_MINI_WIDTH } from '@ent-core/logics/enums/app-enum';
 import { MenuModeEnum, MenuTypeEnum, TriggerEnum } from '@ent-core/logics/enums/menu-enum';
 import { useFullContent } from '@ent-core/hooks/web/use-full-content';
-import type { MenuSetting } from '@ent-core/store/types/store';
+import type { MenuSetting } from '@ent-core/store/types';
 
 const mixSideHasChildren = ref(false);
 

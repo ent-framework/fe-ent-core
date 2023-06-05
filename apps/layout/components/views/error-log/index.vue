@@ -39,7 +39,7 @@
   import { cloneDeep } from 'lodash-es';
   import { getColumns } from './data';
   import DetailModal from './detail-modal.vue';
-  import type { ErrorLogInfo } from 'fe-ent-core/es/store/types/store';
+  import type { ErrorLogInfo } from 'fe-ent-core/es/store/types';
 
   const rowInfo = ref<ErrorLogInfo>();
   const imgList = ref<string[]>([]);

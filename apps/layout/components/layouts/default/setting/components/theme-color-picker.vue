@@ -23,7 +23,7 @@
   import { useDesign } from 'fe-ent-core/es/hooks';
   import { Factory } from 'fe-ent-core/es/logics';
   import { baseHandler } from '../handler';
-  import type { ThemeSetting } from 'fe-ent-core/es/store/types/store';
+  import type { ThemeSetting } from 'fe-ent-core/es/store/types';
 
   import type { PropType } from 'vue';
   import type { HandlerEnum } from '../enum';

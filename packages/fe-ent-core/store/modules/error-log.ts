@@ -6,7 +6,7 @@ import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting
 
 import { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
 import type { AxiosError } from 'axios';
-import type { ErrorLogInfo } from '@ent-core/store/types/store';
+import type { ErrorLogInfo } from '@ent-core/store/types';
 import type { Nullable } from '@ent-core/types';
 
 export interface ErrorLogState {

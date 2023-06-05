@@ -2,7 +2,7 @@ import { defHttp } from '@ent-core/utils/http/axios';
 import { ThemeEnum } from '../enums';
 import type { AppRouteRecordRaw } from '@ent-core/router/types';
 import type { Recordable } from '@ent-core/types';
-import type { ThemeSetting } from '@ent-core/store/types/store';
+import type { ThemeSetting } from '@ent-core/store/types';
 enum Api {
   GetMenuList = '/menu-list',
   GetAppList = '/app-list',
