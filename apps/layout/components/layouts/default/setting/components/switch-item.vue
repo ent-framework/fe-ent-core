@@ -15,10 +15,9 @@
 
   import { Switch, Typography } from 'ant-design-vue';
   import { useDesign, useI18n } from 'fe-ent-core/es/hooks';
-  import { baseHandler } from '../handler';
   import type { PropType } from 'vue';
   import type { HandlerEnum } from '../enum';
-  import type { ChangeEvent } from 'fe-ent-core/es/types';
+  import type { ChangeEvent, Fn } from 'fe-ent-core/es/types';
 
   export default defineComponent({
     name: 'SwitchItem',
@@ -26,6 +25,10 @@
     props: {
       event: {
         type: Number as PropType<HandlerEnum>,
+      },
+      handler: {
+        type: Function as PropType<Fn>,
+        default: () => ({}),
       },
       disabled: {
         type: Boolean,
@@ -45,7 +48,7 @@
         return props.def ? { checked: props.def } : {};
       });
       function handleChange(e: ChangeEvent) {
-        props.event && baseHandler(props.event, e);
+        props.event && props.handler && props.handler(props.event, e);
       }
       return {
         prefixCls,

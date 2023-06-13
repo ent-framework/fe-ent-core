@@ -63,7 +63,7 @@
         const defaultOptions: Partial<Definition> = {
           grid: true,
           background: {
-            color: appStore.getDarkMode === 'light' ? '#f7f9ff' : '#151515',
+            color: appStore.getThemeSetting.theme === 'light' ? '#f7f9ff' : '#151515',
           },
           keyboard: {
             enabled: true,

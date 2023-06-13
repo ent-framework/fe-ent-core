@@ -44,16 +44,40 @@
   };
 
   const props = {
+    /**
+     * 图片源
+     */
     src: { type: String, required: true },
+    /**
+     * 图片 alt
+     */
     alt: { type: String },
+    /**
+     * 圆形裁剪框
+     */
     circled: { type: Boolean, default: false },
+    /**
+     * 实时触发预览
+     */
     realTimePreview: { type: Boolean, default: true },
+    /**
+     * 高度
+     */
     height: { type: [String, Number], default: '360px' },
+    /**
+     * crossorigin
+     */
     crossorigin: {
       type: String as PropType<'' | 'anonymous' | 'use-credentials' | undefined>,
       default: undefined,
     },
+    /**
+     * 图片样式
+     */
     imageStyle: { type: Object as PropType<CSSProperties>, default: () => ({}) },
+    /**
+     * corpperjs 配置项
+     */
     options: { type: Object as PropType<Options>, default: () => ({}) },
   };
 

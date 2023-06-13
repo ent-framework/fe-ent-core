@@ -14,7 +14,7 @@
         <Input v-model:value="formData.mobile" size="large" :placeholder="t('sys.login.mobile')" />
       </FormItem>
       <FormItem name="sms" class="enter-x">
-        <EntCountdownInput
+        <EntCountDownInput
           v-model:value="formData.sms"
           size="large"
           :placeholder="t('sys.login.smsCode')"
@@ -35,7 +35,7 @@
 <script lang="ts" setup>
   import { computed, reactive, ref, unref } from 'vue';
   import { Button, Form, Input } from 'ant-design-vue';
-  import { EntCountdownInput } from 'fe-ent-core';
+  import { EntCountDownInput } from 'fe-ent-core';
   import { useI18n } from 'fe-ent-core/es/hooks';
   import LoginFormTitle from './login-form-title.vue';
   import { LoginStateEnum, useFormRules, useLoginState } from './use-login';

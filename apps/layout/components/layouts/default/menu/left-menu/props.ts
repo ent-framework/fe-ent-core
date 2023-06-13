@@ -1,40 +1,25 @@
-import { MenuModeEnum, MenuTypeEnum } from 'fe-ent-core/es/logics/enums/menu-enum';
 import { ThemeEnum } from 'fe-ent-core/es/logics/enums/app-enum';
 import { propTypes } from 'fe-ent-core/es/utils/prop-types';
 import type { PropType } from 'vue';
 import type { Menu } from 'fe-ent-core/es/router/types';
 import type { MenuTheme } from 'ant-design-vue';
-import type { MenuMode } from 'ant-design-vue/es/menu/src/interface';
 export const basicProps = {
   items: {
     type: Array as PropType<Menu[]>,
     default: () => [],
   },
-  collapsedShowTitle: propTypes.bool,
-  // 最好是4 倍数
-  inlineIndent: propTypes.number.def(20),
-  // 菜单组件的mode属性
-  mode: {
-    type: String as PropType<MenuMode>,
-    default: MenuModeEnum.INLINE,
-  },
-
-  type: {
-    type: String as PropType<MenuTypeEnum>,
-    default: MenuTypeEnum.MIX,
-  },
   theme: {
     type: String as PropType<MenuTheme>,
     default: ThemeEnum.DARK,
   },
-  inlineCollapsed: propTypes.bool,
+  collapse: propTypes.bool,
   mixSider: propTypes.bool,
-
-  isHorizontal: propTypes.bool,
   accordion: propTypes.bool.def(true),
+  collapsedShowTitle: propTypes.bool,
   beforeClickFn: {
     type: Function as PropType<(key: string) => Promise<boolean>>,
   },
+  isSplitMenu: propTypes.bool,
 };
 
 export const itemProps = {

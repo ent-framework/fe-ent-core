@@ -1,6 +1,7 @@
 import { mainOutRoute } from './components/routes/main-out';
 import { getErrorLogRoute, getRedirectRoute, getRootRoute } from './components/routes/basic';
-import { initRouteAndLayout } from './components/init-page';
+import { initLayout } from './init';
+import { useLayoutStore, useLayoutStoreWithOut } from './store/layout';
 import type { AppRouteRecordRaw } from 'fe-ent-core/es/router';
 
 import './components/index.less';
@@ -12,4 +13,4 @@ function getPublicRoutes(rootPathRedirect?: string): AppRouteRecordRaw[] {
   return [mainOutRoute, getRedirectRoute(), getErrorLogRoute(), getRootRoute(rootPathRedirect)];
 }
 
-export { initRouteAndLayout, getPublicRoutes };
+export { initLayout, getPublicRoutes, useLayoutStore, useLayoutStoreWithOut };

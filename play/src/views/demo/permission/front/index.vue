@@ -13,13 +13,13 @@
     <Alert class="mt-4" type="info" message="点击后请查看左侧菜单变化" show-icon />
 
     <div class="mt-4">
-      权限切换(请先切换权限模式为前端角色权限模式):
+      请通过切换账号来切换权限(请先切换权限模式为前端角色权限模式):
       <Space>
-        <ent-button :type="isSuper ? 'primary' : 'default'" @click="changeRole(RoleEnum.SUPER)">
-          {{ RoleEnum.SUPER }}
+        <ent-button :type="isSuper ? 'primary' : 'default'" @click="handleLoginOut">
+          super
         </ent-button>
-        <ent-button :type="isTest ? 'primary' : 'default'" @click="changeRole(RoleEnum.TEST)">
-          {{ RoleEnum.TEST }}
+        <ent-button :type="isTest ? 'primary' : 'default'" @click="handleLoginOut">
+          test
         </ent-button>
       </Space>
     </div>
@@ -28,23 +28,23 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { Alert, Space } from 'ant-design-vue';
-  import { RoleEnum } from 'fe-ent-core/es/logics/enums';
   import { useUserStore } from 'fe-ent-core/es/store';
-  import { usePermission } from 'fe-ent-core/es/hooks';
   import CurrentPermissionMode from '../current-permission-mode.vue';
 
   export default defineComponent({
     components: { Space, Alert, CurrentPermissionMode },
     setup() {
-      const { changeRole } = usePermission();
       const userStore = useUserStore();
-
+      const isSuper = computed(() => userStore.getRoleList.includes('super'));
+      const isTest = computed(() => userStore.getRoleList.includes('test'));
+      function handleLoginOut() {
+        userStore.confirmLoginOut();
+      }
       return {
         userStore,
-        RoleEnum,
-        isSuper: computed(() => userStore.getRoleList.includes(RoleEnum.SUPER)),
-        isTest: computed(() => userStore.getRoleList.includes(RoleEnum.TEST)),
-        changeRole,
+        isSuper,
+        isTest,
+        handleLoginOut,
       };
     },
   });

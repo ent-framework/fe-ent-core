@@ -37,11 +37,11 @@
       const modalFn = useModalContext();
 
       const { getLocale } = useLocale();
-      const { getDarkMode } = useRootSetting();
+      const { getTheme } = useRootSetting();
       const valueRef = ref(props.value || '');
 
       watch(
-        [() => getDarkMode.value, () => initedRef.value],
+        [() => getTheme.value, () => initedRef.value],
         ([val, inited]) => {
           if (!inited) {
             return;
@@ -67,7 +67,7 @@
 
       const getCurrentLang = computed((): 'zh_CN' | 'en_US' | 'ja_JP' | 'ko_KR' => {
         let lang: Lang;
-        switch (unref(getLocale).value) {
+        switch (unref(getLocale)) {
           case 'en':
             lang = 'en_US';
             break;
@@ -87,7 +87,7 @@
         if (!wrapEl) return;
         const bindValue = { ...attrs, ...props };
         const insEditor = new Vditor(wrapEl, {
-          theme: getDarkMode.value === 'dark' ? 'dark' : 'classic',
+          theme: getTheme.value === 'dark' ? 'dark' : 'classic',
           lang: unref(getCurrentLang),
           mode: 'sv',
           fullscreen: {

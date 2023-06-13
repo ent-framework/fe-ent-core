@@ -183,7 +183,7 @@ marked.use({
       return `<pre class="code-content"><code class="${this.options.langPrefix}lang">${code}</code></pre>\n`;
     },
     table(header: string, body: string) {
-      return `<div class="ant-table ant-table-bordered">
+      return `<div class="ant-table ant-table-small ant-table-bordered">
 <div class="ant-table-container"><div class="ant-table-content">
 <table class="component-api-table" style="table-layout: auto;">
   <colgroup>

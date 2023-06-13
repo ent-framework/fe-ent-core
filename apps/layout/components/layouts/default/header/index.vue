@@ -5,6 +5,7 @@
       <!-- logo -->
       <EntAppLogo
         v-if="getShowHeaderLogo || getIsMobile"
+        :collapsed-show-title="getCollapsedShowTitle"
         :class="`${prefixCls}-logo`"
         :style="getLogoWidth"
       />
@@ -51,20 +52,19 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
-  import {
-    useAppInject,
-    useDesign,
-    useHeaderSetting,
-    useMenuSetting,
-    useRootSetting,
-    useTheme,
-  } from 'fe-ent-core/es/hooks';
+  import { useAppInject, useDesign, useRootSetting, useTheme } from 'fe-ent-core/es/hooks';
   import { EntAppLogo, EntDarkModeToggle, EntLocalePicker } from 'fe-ent-core';
   import { MenuModeEnum, MenuSplitTyeEnum, SettingButtonPositionEnum } from 'fe-ent-core/es/logics';
   import { propTypes } from 'fe-ent-core/es/utils';
   import { useLocale } from 'fe-ent-core/es/locales';
   import { useUserStoreWithOut } from 'fe-ent-core/es/store';
   import { Layout } from 'ant-design-vue';
+  import {
+    useHeaderSetting,
+    useLayoutTheme,
+    useLayoutThemeSetting,
+    useMenuSetting,
+  } from '../../../../hooks';
 
   import AppSearch from '../components/app-search.vue';
   import LayoutTrigger from '../trigger/index.vue';
@@ -102,13 +102,11 @@
         getIsMixMode,
         getMenuWidth,
         getIsMixSidebar,
+        getCollapsedShowTitle,
       } = useMenuSetting();
-      const {
-        getUseErrorHandle,
-        getShowSettingButton,
-        getSettingButtonPosition,
-        getShowDarkModeToggle,
-      } = useRootSetting();
+      const { getShowDarkModeToggle, getUseErrorHandle } = useRootSetting();
+
+      const { getShowSettingButton, getSettingButtonPosition } = useLayoutThemeSetting();
 
       const {
         getShowFullScreen,
@@ -120,7 +118,8 @@
         getShowSearch,
       } = useHeaderSetting();
 
-      const { useToken, getActualHeaderTheme } = useTheme();
+      const { useToken } = useTheme();
+      const { getActualHeaderTheme } = useLayoutTheme();
 
       const { getShowLocalePicker } = useLocale();
       const userStore = useUserStoreWithOut();
@@ -199,6 +198,7 @@
         getShowSearch,
         getHeaderStyle,
         isLogined,
+        getCollapsedShowTitle,
       };
     },
   });

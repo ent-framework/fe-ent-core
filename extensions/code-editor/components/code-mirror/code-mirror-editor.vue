@@ -50,7 +50,7 @@
   });
 
   watch(
-    () => appStore.getDarkMode,
+    () => appStore.getThemeSetting.theme,
     async () => {
       setTheme();
     },
@@ -62,7 +62,7 @@
   function setTheme() {
     unref(editor)?.setOption(
       'theme',
-      appStore.getDarkMode === 'light' ? 'idea' : 'material-palenight',
+      appStore.getThemeSetting.theme === 'light' ? 'idea' : 'material-palenight',
     );
   }
 

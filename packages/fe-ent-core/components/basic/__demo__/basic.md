@@ -19,8 +19,8 @@ Display information that needs attention, suitable for brief warning prompts.
 ```vue
 <template>
   <div>
-    <ent-title helpMessage="提示1">标题</ent-title>
-    <ent-title :helpMessage="['提示1', '提示2']">标题</ent-title>
+    <ent-title helpMessage="提示1">标题1</ent-title>
+    <ent-title :helpMessage="['提示1', '提示2']">标题2</ent-title>
   </div>
 </template>
 ```

@@ -4,17 +4,17 @@
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
 
-  import { useDesign, useMenuSetting } from 'fe-ent-core/es/hooks';
-
+  import { useDesign } from 'fe-ent-core/es/hooks';
+  import { useMenuSetting } from '../../../../hooks';
   export default defineComponent({
-    name: 'DargBar',
+    name: 'DragBar',
     props: {
       mobile: Boolean,
     },
     setup(props) {
       const { getMiniWidthNumber, getCollapsed, getCanDrag } = useMenuSetting();
 
-      const { prefixCls } = useDesign('darg-bar');
+      const { prefixCls } = useDesign('drag-bar');
       const getDragBarStyle = computed(() => {
         if (unref(getCollapsed)) {
           return { left: `${unref(getMiniWidthNumber)}px` };

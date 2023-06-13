@@ -1,28 +1,22 @@
-import type { PropType } from 'vue';
-import type { ButtonType } from 'ant-design-vue/es/button';
-
-export const buttonProps = {
-  color: { type: String, validator: (v) => ['error', 'warning', 'success', ''].includes(v) },
-  loading: { type: Boolean },
-  disabled: { type: Boolean },
-  type: {
-    type: String as PropType<ButtonType>,
-    default: 'default',
-  },
-  ghost: { type: Boolean, default: undefined },
-  title: { type: String },
+import { buttonProps } from 'ant-design-vue/es/button/buttonTypes';
+export const btnProps = {
   /**
-   * Icon before text.
+   * 颜色
+   * @type {'error' | 'warning' | 'success'}
+   */
+  color: { type: String, validator: (v) => ['error', 'warning', 'success', ''].includes(v) },
+  /**
+   * 按钮文本前图标，参考 Icon 组件
    */
   preIcon: { type: String },
   /**
-   * Icon after text.
+   * 按钮文本后图标，参考 Icon 组件
    */
   postIcon: { type: String },
   /**
-   * preIcon and postIcon icon size.
-   * @default: 14
+   * 按钮图标大小
    */
   iconSize: { type: Number, default: 14 },
-  onClick: { type: Function as PropType<(...args) => any>, default: null },
+  //onClick: { type: Function as PropType<(...args) => any>, default: null },
+  ...buttonProps(),
 };

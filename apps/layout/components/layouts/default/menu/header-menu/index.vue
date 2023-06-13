@@ -23,12 +23,12 @@
   import { useRouter } from 'vue-router';
   import { isFunction } from '@vueuse/shared';
   import { MenuModeEnum, MenuTypeEnum } from 'fe-ent-core/es/logics/enums/menu-enum';
-  import { useMenuSetting } from 'fe-ent-core/es/hooks/setting/use-menu-setting';
   import { REDIRECT_NAME } from 'fe-ent-core/es/router/constant';
   import { useDesign } from 'fe-ent-core/es/hooks/web/use-design';
   import { getCurrentParentPath } from 'fe-ent-core/es/router/menus';
   import { listenerRouteChange } from 'fe-ent-core/es/logics/mitt/route-change';
   import { getAllParentPath } from 'fe-ent-core/es/router/helper/menu-helper';
+  import { useMenuSetting } from '../../../../../hooks';
   import { basicProps } from './props';
   import { useOpenKeys } from './use-open-keys';
   import BasicSubMenuItem from './components/basic-sub-menu-item.vue';
@@ -36,7 +36,7 @@
   import type { MenuState } from './types';
 
   export default defineComponent({
-    name: 'EntMenu',
+    name: 'EntHeaderMenu',
     components: {
       Menu,
       BasicSubMenuItem,

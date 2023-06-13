@@ -31,11 +31,13 @@
 
   import { Tabs } from 'ant-design-vue';
 
-  import { useDesign, useGo, useMultipleTabSetting, useTheme } from 'fe-ent-core/es/hooks';
-  import { useMultipleTabStore, useUserStore } from 'fe-ent-core/es/store';
+  import { useDesign, useGo, useTheme } from 'fe-ent-core/es/hooks';
+  import { useUserStore } from 'fe-ent-core/es/store';
   import { listenerRouteChange } from 'fe-ent-core/es/logics';
   import { REDIRECT_NAME } from 'fe-ent-core/es/router';
   import { useRouter } from 'vue-router';
+  import { useMultipleTabStore } from '../../../../store/multiple-tab';
+  import { useMultipleTabSetting } from '../../../../hooks';
   import { initAffixTabs, useTabsDrag } from './use-multiple-tabs';
   import TabRedo from './components/tab-redo.vue';
   import FoldButton from './components/fold-button.vue';

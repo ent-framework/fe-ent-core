@@ -15,11 +15,6 @@ const Changelog = () => import('./pages/changelog/changelog.vue');
 const AppProvider = () => import('@ent-core/components/app-provider/README.zh-CN.md');
 const AppProviderEn = () => import('@ent-core/components/app-provider/README.en-US.md');
 
-
-const LocalePicker = () => import('@ent-core/components/locale-picker/README.zh-CN.md');
-const LocalePickerEn = () => import('@ent-core/components/locale-picker/README.en-US.md');
-
-
 const Authority = () => import('@ent-core/components/authority/README.zh-CN.md');
 const AuthorityEn = () => import('@ent-core/components/authority/README.en-US.md');
 
@@ -34,6 +29,57 @@ const ClickOutSideEn = () => import('@ent-core/components/click-out-side/README.
 
 const Container = () => import('@ent-core/components/container/README.zh-CN.md');
 const ContainerEn = () => import('@ent-core/components/container/README.en-US.md');
+
+const CountDown = () => import('@ent-core/components/count-down/README.zh-CN.md');
+const CountDownEn = () => import('@ent-core/components/count-down/README.en-US.md');
+
+const CountTo = () => import('@ent-core/components/count-to/README.zh-CN.md');
+const CountToEn = () => import('@ent-core/components/count-to/README.en-US.md');
+
+const Cropper = () => import('@ent-core/components/cropper/README.zh-CN.md');
+const CropperEn = () => import('@ent-core/components/cropper/README.en-US.md');
+
+const DarkModeToggle = () => import('@ent-core/components/dark-mode-toggle/README.zh-CN.md');
+const DarkModeToggleEn = () => import('@ent-core/components/dark-mode-toggle/README.en-US.md');
+
+const Description = () => import('@ent-core/components/description/README.zh-CN.md');
+const DescriptionEn = () => import('@ent-core/components/description/README.en-US.md');
+
+const Drawer = () => import('@ent-core/components/drawer/README.zh-CN.md');
+const DrawerEn = () => import('@ent-core/components/drawer/README.en-US.md');
+
+const Dropdown = () => import('@ent-core/components/dropdown/README.zh-CN.md');
+const DropdownEn = () => import('@ent-core/components/dropdown/README.en-US.md');
+
+const Form = () => import('@ent-core/components/form/README.zh-CN.md');
+const FormEn = () => import('@ent-core/components/form/README.en-US.md');
+
+const Icon = () => import('@ent-core/components/icon/README.zh-CN.md');
+const IconEn = () => import('@ent-core/components/icon/README.en-US.md');
+
+const Loading = () => import('@ent-core/components/loading/README.zh-CN.md');
+const LoadingEn = () => import('@ent-core/components/loading/README.en-US.md');
+
+const LocalePicker = () => import('@ent-core/components/locale-picker/README.zh-CN.md');
+const LocalePickerEn = () => import('@ent-core/components/locale-picker/README.en-US.md');
+
+const Modal = () => import('@ent-core/components/modal/README.zh-CN.md');
+const ModalEn = () => import('@ent-core/components/modal/README.en-US.md');
+
+const Page = () => import('@ent-core/components/page/README.zh-CN.md');
+const PageEn = () => import('@ent-core/components/page/README.en-US.md');
+
+const Table = () => import('@ent-core/components/table/README.zh-CN.md');
+const TableEn = () => import('@ent-core/components/table/README.en-US.md');
+
+const Time = () => import('@ent-core/components/time/README.zh-CN.md');
+const TimeEn = () => import('@ent-core/components/time/README.en-US.md');
+
+const Transition = () => import('@ent-core/components/transition/README.zh-CN.md');
+const TransitionEn = () => import('@ent-core/components/transition/README.en-US.md');
+
+const Tree = () => import('@ent-core/components/tree/README.zh-CN.md');
+const TreeEn = () => import('@ent-core/components/tree/README.en-US.md');
 
 const Router = () => import('@ent-core/router/README.zh-CN.md');
 const RouterEn = () => import('@ent-core/router/README.en-US.md');
@@ -146,6 +192,92 @@ const components = [
         componentEn: BasicEn,
       },
       {
+        name: 'count-down',
+        component: CountDown,
+        componentEn: CountDownEn,
+      },
+      {
+        name: 'count-to',
+        component: CountTo,
+        componentEn: CountToEn,
+      },
+      {
+        name: 'cropper',
+        component: Cropper,
+        componentEn: CropperEn,
+      },
+      {
+        name: 'description',
+        component: Description,
+        componentEn: DescriptionEn,
+      },
+      {
+        name: 'dropdown',
+        component: Dropdown,
+        componentEn: DropdownEn,
+      },
+      {
+        name: 'icon',
+        component: Icon,
+        componentEn: IconEn,
+      },
+      {
+        name: 'loading',
+        component: Loading,
+        componentEn: LoadingEn,
+      },
+
+      {
+        name: 'time',
+        component: Time,
+        componentEn: TimeEn,
+      },
+    ],
+  },
+  {
+    name: 'dataEntry',
+    list: [
+      {
+        name: 'form',
+        component: Form,
+        componentEn: FormEn,
+      },
+    ],
+  },
+  {
+    name: 'dataDisplay',
+    list: [
+      {
+        name: 'table',
+        component: Table,
+        componentEn: TableEn,
+      },
+      {
+        name: 'tree',
+        component: Tree,
+        componentEn: TreeEn,
+      },
+    ],
+  },
+  {
+    name: 'container',
+    list: [
+      {
+        name: 'modal',
+        component: Modal,
+        componentEn: ModalEn,
+      },
+      {
+        name: 'page',
+        component: Page,
+        componentEn: PageEn,
+      },
+      {
+        name: 'drawer',
+        component: Drawer,
+        componentEn: DrawerEn,
+      },
+      {
         name: 'container',
         component: Container,
         componentEn: ContainerEn,
@@ -171,9 +303,19 @@ const components = [
         componentEn: LocalePickerEn,
       },
       {
+        name: 'dark-mode-toggle',
+        component: DarkModeToggle,
+        componentEn: DarkModeToggleEn,
+      },
+      {
         name: 'clickoutside',
         component: ClickOutSide,
         componentEn: ClickOutSideEn,
+      },
+      {
+        name: 'transition',
+        component: Transition,
+        componentEn: TransitionEn,
       },
     ],
   },

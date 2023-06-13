@@ -5,7 +5,7 @@
 </template>
 <script lang="ts" setup>
   import { computed } from 'vue';
-  import { useLockStore } from 'fe-ent-core/es/store';
+  import { useLockStore } from '../../../store/lock';
   import LockPage from './lock-page.vue';
 
   const lockStore = useLockStore();

@@ -7,9 +7,6 @@ import { resetRouter } from '@ent-core/router/base';
 import { deepMerge } from '@ent-core/utils/base';
 import type {
   BeforeMiniState,
-  HeaderSetting,
-  MenuSetting,
-  MultiTabsSetting,
   ProjectConfig,
   ThemeSetting,
   TransitionSetting,
@@ -45,17 +42,8 @@ export const useAppStore = defineStore({
     getThemeSetting(): ThemeSetting {
       return this.getProjectConfig.themeSetting;
     },
-    getHeaderSetting(): HeaderSetting {
-      return this.getProjectConfig.headerSetting;
-    },
-    getMenuSetting(): MenuSetting {
-      return this.getProjectConfig.menuSetting;
-    },
     getTransitionSetting(): TransitionSetting {
       return this.getProjectConfig.transitionSetting;
-    },
-    getMultiTabsSetting(): MultiTabsSetting {
-      return this.getProjectConfig.multiTabsSetting;
     },
   },
   actions: {

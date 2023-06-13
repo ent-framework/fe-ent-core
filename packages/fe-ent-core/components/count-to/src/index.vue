@@ -9,10 +9,25 @@
   import { isNumber } from '@ent-core/utils/is';
 
   const props = {
+    /**
+     * 起始值
+     */
     startVal: { type: Number, default: 0 },
+    /**
+     * 结束值
+     */
     endVal: { type: Number, default: 2021 },
+    /**
+     * 周期
+     */
     duration: { type: Number, default: 1500 },
+    /**
+     * 自动开始
+     */
     autoplay: { type: Boolean, default: true },
+    /**
+     * 保留小数点位数
+     */
     decimals: {
       type: Number,
       default: 0,
@@ -20,20 +35,29 @@
         return value >= 0;
       },
     },
+    /**
+     * 前缀
+     */
     prefix: { type: String, default: '' },
+    /**
+     * 后缀
+     */
     suffix: { type: String, default: '' },
+    /**
+     * 分割字符
+     */
     separator: { type: String, default: ',' },
     decimal: { type: String, default: '.' },
     /**
-     * font color
+     * 颜色
      */
     color: { type: String },
     /**
-     * Turn on digital animation
+     * 是否启用数字动画
      */
     useEasing: { type: Boolean, default: true },
     /**
-     * Digital animation
+     * 动画效果
      */
     transition: { type: String, default: 'linear' },
   };

@@ -43,26 +43,10 @@ export function useTheme() {
     }
   };
 
-  const getActualHeaderTheme = computed(() => {
-    if (!appStore.getHeaderSetting.theme || appStore.getHeaderSetting.theme === 'none') {
-      return appStore.getThemeSetting.theme;
-    }
-    return appStore.getHeaderSetting.theme;
-  });
-
-  const getActualMenuTheme = computed(() => {
-    if (!appStore.getMenuSetting.theme || appStore.getMenuSetting.theme === 'none') {
-      return appStore.getThemeSetting.theme;
-    }
-    return appStore.getMenuSetting.theme;
-  });
-
   return {
     theme: appTheme,
     getTheme,
     updateGrayMode,
-    getActualHeaderTheme,
-    getActualMenuTheme,
     useToken,
   };
 }

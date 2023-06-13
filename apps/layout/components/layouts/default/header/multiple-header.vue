@@ -8,16 +8,14 @@
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
 
+  import { useAppInject, useDesign, useLayoutHeight } from 'fe-ent-core/es/hooks';
   import {
-    useAppInject,
-    useDesign,
     useFullContent,
     useHeaderSetting,
-    useLayoutHeight,
+    useLayoutTheme,
     useMenuSetting,
     useMultipleTabSetting,
-    useTheme,
-  } from 'fe-ent-core/es/hooks';
+  } from '../../../../hooks';
   import MultipleTabs from '../tabs/index.vue';
   import LayoutHeader from './index.vue';
   import type { CSSProperties } from 'vue';
@@ -37,7 +35,7 @@
       const { getFixed, getShowInsetHeaderRef, getShowFullHeaderRef, getShowHeader } =
         useHeaderSetting();
 
-      const { getActualHeaderTheme } = useTheme();
+      const { getActualHeaderTheme } = useLayoutTheme();
 
       const { getFullContent } = useFullContent();
 

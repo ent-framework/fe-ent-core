@@ -5,4 +5,5 @@ export interface CropendResult {
   imgInfo: Cropper.Data;
 }
 
-export type { Cropper };
+export type CropperOption = Cropper.Options;
+export { Cropper };

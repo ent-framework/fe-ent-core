@@ -8,8 +8,9 @@ import print from './utils/print';
 import templates from './templates';
 import parseInterface from './utils/parse-interface';
 import { getTemplate, toKebabCase } from './utils';
-import { slotTagHandler } from './slot-tag-handler';
-import propExtHandler from './propExtHandler';
+import { slotTagHandler } from './handlers/slot-tag-handler';
+import { propExtHandler } from './handlers/prop-ext-handler';
+import { extendsExtHandler } from './handlers/extends-ext-handler';
 import type { ComponentDoc } from 'vue-docgen-api';
 
 const MD_TEMPLATE = 'TEMPLATE.md';
@@ -94,7 +95,7 @@ const replacePlaceholderToDoc = async ({
       // @ts-ignore
       // eslint-disable-next-line
       const componentDoc = await parser(path.resolve(dir, item[1]), {
-        addScriptHandlers: [propExtHandler, slotTagHandler],
+        addScriptHandlers: [propExtHandler, slotTagHandler, extendsExtHandler],
       });
       result = result.replace(item[0], getApiTmpl(componentDoc, type, lang));
     } catch (err) {

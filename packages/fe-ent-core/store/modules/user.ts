@@ -10,7 +10,6 @@ import { isArray } from '@ent-core/utils/is';
 import { useGlobalStore } from '@ent-core/store/modules/global';
 import { entRouter } from '@ent-core/router/base';
 import type { GetUserInfoModel, LoginParams } from '@ent-core/logics/types/user';
-import type { RoleEnum } from '@ent-core/logics/enums/role-enum';
 import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
 import type { UserInfo } from '@ent-core/store/types';
 import type { Nullable } from '@ent-core/types';
@@ -18,7 +17,7 @@ import type { Nullable } from '@ent-core/types';
 export interface UserState {
   userInfo: Nullable<UserInfo>;
   token?: string;
-  roleList: RoleEnum[];
+  roleList: string[];
   sessionTimeout?: boolean;
   lastUpdateTime: number;
 }
@@ -44,8 +43,8 @@ export const useUserStore = defineStore({
     getToken(): string {
       return this.token || getAuthCache<string>(TOKEN_KEY);
     },
-    getRoleList(): RoleEnum[] {
-      return this.roleList.length > 0 ? this.roleList : getAuthCache<RoleEnum[]>(ROLES_KEY);
+    getRoleList(): string[] {
+      return this.roleList.length > 0 ? this.roleList : getAuthCache<string[]>(ROLES_KEY);
     },
     getSessionTimeout(): boolean {
       return !!this.sessionTimeout;
@@ -59,7 +58,7 @@ export const useUserStore = defineStore({
       this.token = info ? info : ''; // for null or undefined value
       setAuthCache(TOKEN_KEY, info);
     },
-    setRoleList(roleList: RoleEnum[]) {
+    setRoleList(roleList: string[]) {
       this.roleList = roleList;
       setAuthCache(ROLES_KEY, roleList);
     },
@@ -124,7 +123,7 @@ export const useUserStore = defineStore({
       const userInfo = await Factory.getUserFactory().getUserInfo();
       const { roles = [] } = userInfo;
       if (isArray(roles)) {
-        const roleList = roles.map((item) => item.value) as RoleEnum[];
+        const roleList = roles.map((item) => item.value);
         this.setRoleList(roleList);
       } else {
         userInfo.roles = [];

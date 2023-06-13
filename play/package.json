@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "vite serve",
     "build": "vite build",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "dtsgen": "ent-vue-scripts dtsgen"
   },
   "dependencies": {
     "vue": "^3.2.47",

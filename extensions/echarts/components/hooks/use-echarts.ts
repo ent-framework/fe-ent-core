@@ -3,7 +3,6 @@ import { noop, tryOnUnmounted, useDebounceFn } from '@vueuse/core';
 import {
   useBreakpoint,
   useEventListener,
-  useMenuSetting,
   useThemeSetting,
   useTimeoutFn,
 } from 'fe-ent-core/es/hooks';
@@ -17,7 +16,8 @@ export function useEcharts(
   theme: 'light' | 'dark' | 'default' = 'default',
 ) {
   const { getGlobalTheme } = useThemeSetting();
-  const { getCollapsed } = useMenuSetting();
+  const getCollapsed = computed(() => false);
+  //const { getCollapsed } = useMenuSetting();
 
   const getDarkMode = computed(() => {
     return theme === 'default' ? getGlobalTheme.value : theme;
@@ -53,7 +53,7 @@ export function useEcharts(
     });
     removeResizeFn = removeEvent;
     const { widthRef, screenEnum } = useBreakpoint();
-    if (unref(widthRef).value <= (screenEnum.MD as number) || el.offsetHeight === 0) {
+    if (unref(widthRef) <= (screenEnum.MD as number) || el.offsetHeight === 0) {
       useTimeoutFn(() => {
         resizeFn();
       }, 30);

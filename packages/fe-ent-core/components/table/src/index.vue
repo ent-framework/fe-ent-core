@@ -85,6 +85,10 @@
       EntForm,
       HeaderCell,
     },
+    /**
+     * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/table/index.zh-CN.md
+     */
+    extends: Table,
     props: basicProps,
     emits: [
       'fetch-success',

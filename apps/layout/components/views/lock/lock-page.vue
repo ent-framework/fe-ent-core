@@ -82,7 +82,8 @@
   import { computed, ref } from 'vue';
   import { Input } from 'ant-design-vue';
   import { useDesign, useI18n } from 'fe-ent-core/es/hooks';
-  import { useLockStore, useUserStore } from 'fe-ent-core/es/store';
+  import { useUserStore } from 'fe-ent-core/es/store';
+  import { useLockStore } from '../../../store/lock';
   import { LockOutlined } from '@ant-design/icons-vue';
   import headerImg from '../../../assets/header.jpg';
   import { useNow } from './use-now';

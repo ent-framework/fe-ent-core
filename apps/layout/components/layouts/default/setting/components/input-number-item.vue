@@ -13,28 +13,36 @@
   import { defineComponent } from 'vue';
 
   import { InputNumber, Typography } from 'ant-design-vue';
+  import { inputNumberProps } from 'ant-design-vue/es/input-number';
   import { useDesign } from 'fe-ent-core/es/hooks';
-  import { baseHandler } from '../handler';
   import type { PropType } from 'vue';
   import type { HandlerEnum } from '../enum';
+  import type { Fn } from 'fe-ent-core/es/types';
+
+  const props = {
+    event: {
+      type: Number as PropType<HandlerEnum>,
+    },
+    handler: {
+      type: Function as PropType<Fn>,
+      default: () => ({}),
+    },
+    title: {
+      type: String,
+    },
+    ...inputNumberProps(),
+  };
 
   export default defineComponent({
     name: 'InputNumberItem',
     components: { InputNumber, Text: Typography.Text },
     extends: InputNumber,
-    props: {
-      event: {
-        type: Number as PropType<HandlerEnum>,
-      },
-      title: {
-        type: String,
-      },
-    },
+    props,
     setup(props) {
       const { prefixCls } = useDesign('setting-input-number-item');
 
       function handleChange(e) {
-        props.event && baseHandler(props.event, e);
+        props.event && props.handler && props.handler(props.event, e);
       }
       return {
         prefixCls,

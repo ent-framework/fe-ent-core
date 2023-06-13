@@ -3,8 +3,9 @@ import fs from 'fs-extra';
 import fg from 'fast-glob';
 import { parse as parseComponent } from 'vue-docgen-api';
 import { toKebabCase } from '../../utils/convert-case';
-import { slotTagHandler } from '../docgen/slot-tag-handler';
-import propExtHandler from '../docgen/propExtHandler';
+import { slotTagHandler } from '../docgen/handlers/slot-tag-handler';
+import { propExtHandler } from '../docgen/handlers/prop-ext-handler';
+import { extendsExtHandler } from '../docgen/handlers/extends-ext-handler';
 import { getPackage } from '../../utils/get-package';
 import type { ComponentDoc, ParamTag } from 'vue-docgen-api';
 
@@ -205,7 +206,7 @@ const transformToWebTypes = (components: ComponentData[], { version }: { version
       name: component.name,
       attributes: component.props?.map((item) => ({
         name: item.name,
-        description: item.description.en,
+        description: item.description.zh || item.description.en,
         value: {
           type: item.type,
           kind: 'expression',
@@ -213,12 +214,12 @@ const transformToWebTypes = (components: ComponentData[], { version }: { version
       })),
       events: component.events?.map((item) => ({
         name: item.name,
-        description: item.description.en,
+        description: item.description.zh || item.description.en,
       })),
       // @ts-ignore
       slots: component.slots?.map((item) => ({
         name: item.name,
-        description: item.description.en,
+        description: item.description.zh || item.description.en,
       })),
     };
 
@@ -239,7 +240,7 @@ const jsongen = async () => {
   let datePickerBase;
   for (const item of components) {
     const componentDoc = await parseComponent(item, {
-      addScriptHandlers: [propExtHandler, slotTagHandler],
+      addScriptHandlers: [propExtHandler, slotTagHandler, extendsExtHandler],
     });
     const doc = resolveComponent(componentDoc);
     if (/date-picker\/picker/.test(item)) {

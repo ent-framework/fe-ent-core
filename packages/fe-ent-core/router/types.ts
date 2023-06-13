@@ -1,4 +1,3 @@
-import type { RoleEnum } from '@ent-core/logics/enums/role-enum';
 import type { RouteMeta, RouteRecordRaw, Router } from 'vue-router';
 import type { defineComponent } from 'vue';
 import type { Recordable } from '@ent-core/types';
@@ -42,7 +41,7 @@ export interface AppRouteMeta extends RouteMeta {
   // Whether to ignore permissions
   ignoreAuth?: boolean;
   // role info
-  roles?: RoleEnum[];
+  roles?: string[];
   // Whether not to cache
   ignoreKeepAlive?: boolean;
   // Is it fixed on tab
@@ -96,7 +95,7 @@ export type Menu = {
 
   orderNo?: number;
 
-  roles?: RoleEnum[];
+  roles?: string[];
 
   meta?: Partial<RouteMeta>;
 

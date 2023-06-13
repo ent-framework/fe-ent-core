@@ -7,8 +7,6 @@
 
 ## API
 
-
-
-
+%%API(index.vue)%%
 
 

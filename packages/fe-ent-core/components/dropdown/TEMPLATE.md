@@ -21,3 +21,7 @@ description:
 ## API
 
 %%API(src/index.vue)%%
+
+## Type
+
+%%INTERFACE(interface.ts)%%

@@ -9,12 +9,8 @@
     <main :class="cls">
       <article class="arco-vue-article">
         <div class="article-header">
-          <div v-if="meta" class="article-meta">
-            <span class="article-type">{{ meta.type }}</span>
-            <template v-if="meta.category">
-              <span class="separator">/</span>
-              <span class="article-category">{{ meta.category }}</span>
-            </template>
+          <div class="article-meta">
+            <BreadCrumb />
           </div>
           <h1 class="article-title">{{ title }}</h1>
           <div v-if="description" class="article-description">
@@ -37,6 +33,7 @@
   import ArcoFooter from '../footer/index.vue';
   import ChangelogBox from '../changelog-box/index.vue';
   import AsideAnchor from '../aside-anchor/index.vue';
+  import BreadCrumb from '../bread-crumb/index.vue';
   import { articleInjectionKey } from './context';
   import type { AnchorData } from '../aside-anchor/interface';
   import type { PropType } from 'vue';
@@ -47,6 +44,7 @@
       ChangelogBox,
       AsideAnchor,
       ArcoFooter,
+      BreadCrumb,
     },
     props: {
       title: String,
@@ -54,7 +52,7 @@
       changelog: Array,
       meta: Object as PropType<{ category: string; type: string }>,
     },
-    setup(props) {
+    setup() {
       const { getLocale: locale } = useLocale();
       const showAnchor = ref(true);
       const getMessage = (zh: string, en: string) => {

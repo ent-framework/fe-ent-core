@@ -12,6 +12,7 @@
     useTransitionSetting,
   } from 'fe-ent-core/es/hooks';
   import PageLayout from '../../page/index.vue';
+  import { useLayoutThemeSetting } from '../../../../hooks';
 
   export default defineComponent({
     name: 'LayoutContent',
@@ -19,7 +20,8 @@
     setup() {
       const { prefixCls } = useDesign('layout-content');
       const { getOpenPageLoading } = useTransitionSetting();
-      const { getLayoutContentMode, getPageLoading } = useRootSetting();
+      const { getPageLoading } = useRootSetting();
+      const { getLayoutContentMode } = useLayoutThemeSetting();
 
       useContentViewHeight();
       return {

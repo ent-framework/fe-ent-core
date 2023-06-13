@@ -1,7 +1,7 @@
 /**
  * Global authority directive
  * Used for fine-grained control of component permissions
- * @Example v-auth="RoleEnum.TEST"
+ * @Example v-auth="Super"
  */
 import { usePermission } from '@ent-core/hooks/web/use-permission';
 import type { App, Directive, DirectiveBinding } from 'vue';

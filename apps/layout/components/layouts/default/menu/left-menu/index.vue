@@ -1,11 +1,12 @@
 <template>
   <Menu
-    :theme="theme"
     :class="prefixCls"
     :open-keys="getOpenKeys"
     :selected-keys="selectedKeys"
     :force-sub-menu-render="true"
     mode="inline"
+    :theme="theme"
+    @open-change="handleOpenChange"
     @click="handleSelect"
   >
     <template v-for="item in items" :key="item.path">
@@ -20,54 +21,28 @@
   </Menu>
 </template>
 <script lang="ts">
-  import {
-    computed,
-    defineComponent,
-    onMounted,
-    reactive,
-    ref,
-    toRef,
-    toRefs,
-    unref,
-    watch,
-  } from 'vue';
+  import { computed, defineComponent, onMounted, reactive, ref, toRefs, unref, watch } from 'vue';
   import { useRouter } from 'vue-router';
   import { isFunction } from '@vueuse/shared';
   import { Menu } from 'ant-design-vue';
   import { useDesign } from 'fe-ent-core/es/hooks/web/use-design';
   import { listenerRouteChange } from 'fe-ent-core/es/logics/mitt/route-change';
-  import { propTypes } from 'fe-ent-core/es/utils/prop-types';
   import { REDIRECT_NAME } from 'fe-ent-core/es/router/constant';
   import { isUrl } from 'fe-ent-core/es/utils/is';
   import { openWindow } from 'fe-ent-core/es/utils';
   import SimpleSubMenuItem from './components/simple-sub-menu-item.vue';
   import { useOpenKeys } from './use-open-keys';
-  import type { PropType } from 'vue';
+  import { basicProps } from './props';
   import type { RouteLocationNormalizedLoaded } from 'vue-router';
-  import type { Menu as MenuType } from 'fe-ent-core/es/router/types';
   import type { SimpleMenuState } from './types';
   export default defineComponent({
-    name: 'EntSimpleMenu',
+    name: 'EntLeftMenu',
     components: {
       Menu,
       SimpleSubMenuItem,
     },
     inheritAttrs: false,
-    props: {
-      items: {
-        type: Array as PropType<MenuType[]>,
-        default: () => [],
-      },
-      collapse: propTypes.bool,
-      mixSider: propTypes.bool,
-      theme: propTypes.string,
-      accordion: propTypes.bool.def(true),
-      collapsedShowTitle: propTypes.bool,
-      beforeClickFn: {
-        type: Function as PropType<(key: string) => Promise<boolean>>,
-      },
-      isSplitMenu: propTypes.bool,
-    },
+    props: basicProps,
     emits: ['menuClick'],
     setup(props, { attrs, emit }) {
       const currentActiveMenu = ref('');
@@ -82,7 +57,7 @@
       const { currentRoute } = useRouter();
       const { prefixCls } = useDesign('simple-menu');
       const { items, accordion, mixSider, collapse } = toRefs(props);
-      const { setOpenKeys, getOpenKeys } = useOpenKeys(
+      const { handleOpenChange, setOpenKeys, getOpenKeys } = useOpenKeys(
         menuState,
         items,
         accordion,
@@ -138,7 +113,6 @@
           if (!flag) return;
         }
 
-        console.log('menu clicked');
         emit('menuClick', key);
 
         isClickGo.value = true;
@@ -146,15 +120,11 @@
         menuState.selectedKeys = [key];
       }
       onMounted(() => {
-        console.log('实例挂载完成');
         listenerRouteChange((route) => {
-          console.log(`route changed : ${route.path}`);
           if (route.name === REDIRECT_NAME) return;
 
           currentActiveMenu.value = route.meta?.currentActiveMenu as string;
           handleMenuChange(route);
-
-          console.log('handleMenuChange');
 
           if (unref(currentActiveMenu)) {
             console.log('currentActiveMenu');
@@ -168,6 +138,7 @@
         getBindValues,
         handleSelect,
         getOpenKeys,
+        handleOpenChange,
         ...toRefs(menuState),
       };
     },

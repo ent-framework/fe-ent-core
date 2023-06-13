@@ -5,6 +5,7 @@
   </ent-modal>
 </template>
 <script lang="ts" setup>
+  import { EntModal } from 'fe-ent-core';
   import { useI18n } from 'fe-ent-core/es/hooks';
   import { useDescription } from 'fe-ent-core/es/components/description';
   import { getDescSchema } from './data';

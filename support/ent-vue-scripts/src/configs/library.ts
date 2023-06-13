@@ -1,6 +1,5 @@
 import { readPackageJSON } from 'pkg-types';
-import { mergeConfig } from 'vite';
-import dts from 'vite-plugin-dts';
+import { mergeConfig, searchForWorkspaceRoot } from 'vite';
 import glob from 'fast-glob';
 import { createPlugins } from '../plugins';
 import { generateModifyVars } from '../utils/modify-vars';
@@ -16,6 +15,7 @@ import type { InlineConfig, UserConfig } from 'vite';
  */
 async function defineLibraryConfig(source: boolean) {
   const root = process.cwd();
+  const workspace = searchForWorkspaceRoot(root);
   const plugins = await createPlugins({
     isBuild: true,
     mode: 'lib',
@@ -83,17 +83,7 @@ async function defineLibraryConfig(source: boolean) {
         },
       },
     },
-    plugins: [
-      external(source),
-      ...plugins,
-      dts({
-        entryRoot: `${root}`,
-        include: ['**/*.{ts,tsx,vue}'],
-        outputDir: [`${root}/es/`, `${root}/lib/`],
-        logLevel: 'error',
-      }),
-      vueExportHelper(),
-    ],
+    plugins: [external(source), ...plugins, vueExportHelper()],
   };
   const mergedConfig = mergeConfig(
     commonConfig({ command: 'build', mode: 'production' }),

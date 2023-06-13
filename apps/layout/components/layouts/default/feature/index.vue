@@ -8,9 +8,10 @@
   import { computed, defineComponent, unref } from 'vue';
   import { BackTop } from 'ant-design-vue';
 
-  import { useDesign, useHeaderSetting, useRootSetting } from 'fe-ent-core/es/hooks';
+  import { useDesign } from 'fe-ent-core/es/hooks';
   import { SettingButtonPositionEnum } from 'fe-ent-core/es/logics';
   import { useUserStoreWithOut } from 'fe-ent-core/es/store';
+  import { useHeaderSetting, useLayoutThemeSetting } from '../../../../hooks';
 
   import SessionTimeoutLogin from '../../../views/login/session-timeout-login.vue';
   import LayoutLockPage from '../../../views/lock/index.vue';
@@ -25,7 +26,7 @@
     },
     setup() {
       const { getUseOpenBackTop, getShowSettingButton, getSettingButtonPosition, getFullContent } =
-        useRootSetting();
+        useLayoutThemeSetting();
       const userStore = useUserStoreWithOut();
       const { prefixCls } = useDesign('setting-drawer-feature');
       const { getShowHeader } = useHeaderSetting();

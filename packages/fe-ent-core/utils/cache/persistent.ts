@@ -13,7 +13,12 @@ import { Memory } from './memory';
 import type { LockInfo, ProjectConfig, UserInfo } from '@ent-core/store/types';
 import type { RouteLocationNormalized } from 'vue-router';
 
-import type { MULTIPLE_TABS_KEY, PROJ_CFG_KEY, ROLES_KEY } from '@ent-core/logics/enums/cache-enum';
+import type {
+  LAYOUT_KEY,
+  MULTIPLE_TABS_KEY,
+  PROJ_CFG_KEY,
+  ROLES_KEY,
+} from '@ent-core/logics/enums/cache-enum';
 import type { Nullable } from '@ent-core/types';
 
 interface BasicStore {
@@ -21,6 +26,7 @@ interface BasicStore {
   [USER_INFO_KEY]: UserInfo;
   [ROLES_KEY]: string[];
   [LOCK_INFO_KEY]: LockInfo;
+  [LAYOUT_KEY]: any;
   [PROJ_CFG_KEY]: ProjectConfig;
   [MULTIPLE_TABS_KEY]: RouteLocationNormalized[];
 }

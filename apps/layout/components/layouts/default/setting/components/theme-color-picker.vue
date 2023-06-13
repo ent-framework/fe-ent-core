@@ -22,11 +22,11 @@
 
   import { useDesign } from 'fe-ent-core/es/hooks';
   import { Factory } from 'fe-ent-core/es/logics';
-  import { baseHandler } from '../handler';
   import type { ThemeSetting } from 'fe-ent-core/es/store/types';
 
   import type { PropType } from 'vue';
   import type { HandlerEnum } from '../enum';
+  import type { Fn } from 'fe-ent-core/es/types';
 
   export default defineComponent({
     name: 'ThemeColorPicker',
@@ -34,6 +34,10 @@
     props: {
       event: {
         type: Number as PropType<HandlerEnum>,
+      },
+      handler: {
+        type: Function as PropType<Fn>,
+        default: () => ({}),
       },
       def: {
         type: String,
@@ -44,7 +48,7 @@
       const themeSettings = Factory.getLayoutFactory().getThemeSettings();
 
       function handleClick(theme: ThemeSetting) {
-        props.event && baseHandler(props.event, { name: theme.name, token: theme.token });
+        props.event && props.handler &&  props.handler(props.event, { name: theme.name, token: theme.token });
       }
       return {
         prefixCls,

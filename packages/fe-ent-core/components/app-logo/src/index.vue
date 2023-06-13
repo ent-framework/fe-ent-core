@@ -11,20 +11,28 @@
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
   import { Typography } from 'ant-design-vue';
-  import { useDesign, useGlobSetting, useGo, useMenuSetting, useTheme } from '@ent-core/hooks';
+  import { useDesign, useGlobSetting, useGo, useTheme } from '@ent-core/hooks';
   import { useGlobalStore, useUserStore } from '@ent-core/store';
   import LogoImg from './logo.png';
   import type { CSSProperties } from 'vue';
   const props = {
     /**
-     * Whether to show title
+     * 是否显示标题
      */
     showTitle: { type: Boolean, default: true },
     /**
-     * The title is also displayed when the menu is collapsed
+     * 菜单折叠时是否显示标题
      */
     alwaysShowTitle: { type: Boolean },
 
+    /**
+     * 菜单折叠时是否显示标题
+     */
+    collapsedShowTitle: { type: Boolean, default: true },
+
+    /**
+     * 是否有背景色
+     */
     noBackground: { type: Boolean, default: false },
   };
 
@@ -34,7 +42,6 @@
     props,
     setup() {
       const { prefixCls } = useDesign('app-logo');
-      const { getCollapsedShowTitle } = useMenuSetting();
       const userStore = useUserStore();
       const { title, logoUrl } = useGlobSetting();
       const globalStore = useGlobalStore();
@@ -44,7 +51,7 @@
       const getAppLogoClass = computed(() => [
         prefixCls,
         //props.theme,
-        { 'collapsed-show-title': unref(getCollapsedShowTitle) },
+        { 'collapsed-show-title': props.collapsedShowTitle },
       ]);
 
       const getTitleClass = computed(() => [

@@ -2,6 +2,7 @@
   "extends": "../tsconfig.web.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "rootDir": "../",
     "types": ["vite/client"],
     "paths": {
       "@ent-core/*": ["../packages/fe-ent-core/*"],
@@ -18,11 +19,25 @@
       "fe-ent-tinymce": ["../extensions/tinymce/index.ts"],
       "fe-ent-login": ["../apps/login/index.ts"],
       "fe-ent-layout": ["../apps/layout/index.ts"],
+      "fe-ent-layout/es/*": ["../apps/layout/*"],
       "axios": ["../node_modules/axios"],
       "pinia": ["../node_modules/pinia"],
       "@vueuse/shared": ["../node_modules/@vueuse/shared"],
       "ant-design-vue": ["../node_modules/ant-design-vue"]
     }
   },
-  "include": ["src", "../packages", "../apps", "../extensions"]
+  "include": ["src", "../packages/fe-ent-core/**/*", "../apps/**/*", "../extensions/**/*"],
+  "exclude": [
+    "node_modules",
+    "**/node_modules/**",
+    "dist",
+    "es",
+    "lib",
+    "json",
+    "**/dist",
+    "**/__tests__/**/*",
+    "**/gulpfile.ts",
+    "**/test-helper",
+    "**/*.md"
+  ]
 }

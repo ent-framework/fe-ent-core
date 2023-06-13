@@ -7,19 +7,22 @@
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { type Recordable } from '@ent-core/types';
   import BasicButton from './basic-button.vue';
+  import { btnProps } from './props';
   const props = {
     /**
-     * Whether to enable the drop-down menu
+     * 是否启用下拉菜单
      * @default: true
      */
     enable: {
       type: Boolean,
       default: true,
     },
+    ...btnProps,
   };
 
   export default defineComponent({
     name: 'EntPopButton',
+    extends: BasicButton,
     inheritAttrs: false,
     props,
     setup(props, { slots }) {

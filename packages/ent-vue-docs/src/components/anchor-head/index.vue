@@ -1,6 +1,6 @@
 <template>
   <component :is="`h${level}`" :id="href" class="anchor-head">
-    <a class="anchor-link" :href="`#${href}`" @click.prevent="handleClickCopy">
+    <a class="anchor-link" :href="`${href}`" @click.prevent="handleClickCopy">
       <LinkOutlined />
     </a>
     <slot />

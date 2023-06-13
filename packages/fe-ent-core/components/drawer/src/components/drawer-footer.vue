@@ -31,7 +31,7 @@
   import { footerProps } from '../props';
   import type { CSSProperties } from 'vue';
   export default defineComponent({
-    name: 'BasicDrawerFooter',
+    name: 'EntDrawerFooter',
     props: {
       ...footerProps,
       height: {

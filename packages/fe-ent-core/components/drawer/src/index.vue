@@ -55,9 +55,14 @@
   import type { Nullable, Recordable } from '@ent-core/types';
   import type { CSSProperties } from 'vue';
   import type { DrawerInstance, DrawerProps } from './typing';
+
   export default defineComponent({
     name: 'EntDrawer',
     components: { Drawer, EntScrollContainer, DrawerFooter, DrawerHeader },
+    /**
+     * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/drawer/index.zh-CN.md
+     */
+    extends: Drawer,
     inheritAttrs: false,
     props: basicProps,
     emits: ['visible-change', 'ok', 'close', 'register'],
@@ -139,7 +144,7 @@
       watch(
         () => props.visible,
         (newVal, oldVal) => {
-          if (newVal !== oldVal) visibleRef.value = newVal;
+          if (newVal !== oldVal) visibleRef.value = !!newVal;
         },
         { deep: true },
       );

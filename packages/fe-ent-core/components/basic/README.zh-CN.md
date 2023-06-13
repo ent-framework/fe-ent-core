@@ -10,48 +10,45 @@ description: 一些比较基础的通用组件使用方式
 
 ## API
 
-### EntTitle
-用于显示标题，可以显示帮助按钮及文本
+### EntTitle 用于显示标题，可以显示帮助按钮及文本
 
 
 ### `<ent-title>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|help-message|Help text list or string|`string \| string[]`|`''`|
-|span|Whether the color block on the left side of the title|`boolean`|`false`|
-|normal|Whether to default the text, that is, not bold|`boolean`|`false`|
+|参数名|描述|类型|默认值|模块|
+|---|---|---|:---:|---|
+|help-message|标题右侧帮助按钮信息|`string \| string[]`|`''`|`-`|
+|span|是否显示标题左侧蓝色色块|`boolean`|`false`|`-`|
+|normal|将文字默认化，不加粗|`boolean`|`false`|`-`|
 
 
 
-### EntArrow
-带动画的箭头组件
+### EntArrow 带动画的箭头组件
 
 
 ### `<ent-arrow>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|expand|Arrow expand state|`boolean`|`false`|
-|up|Arrow up by default|`boolean`|`false`|
-|down|Arrow down by default|`boolean`|`false`|
-|inset|Cancel padding/margin for inline|`boolean`|`false`|
+|参数名|描述|类型|默认值|模块|
+|---|---|---|:---:|---|
+|expand|箭头展开状态|`boolean`|`false`|`-`|
+|up|箭头默认向上|`boolean`|`false`|`-`|
+|down|箭头默认向下|`boolean`|`false`|`-`|
+|inset|取消 padding/margin，用于内嵌|`boolean`|`false`|`-`|
 
 
 
-### EntHelp
-帮助按钮组件
+### EntHelp 帮助按钮组件
 
 
 ### `<ent-help>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|max-width|Help text max-width|`string`|`'600px'`|
-|show-index|Whether to display the serial number|`boolean`|`false`|
-|color|Help text font color|`string`|`'#ffffff'`|
-|font-size|Help text font size|`string`|`'14px'`|
-|placement|Help text list|`string`|`'right'`|
-|text|Help text list|`string[] \| string`|`-`|
+|参数名|描述|类型|默认值|模块|
+|---|---|---|:---:|---|
+|max-width|最大宽度|`string`|`'600px'`|`-`|
+|show-index|是否显示序号,在 text 为 string[] 情况下生效|`boolean`|`false`|`-`|
+|color|颜色|`string`|`'#ffffff'`|`-`|
+|font-size|字体大小|`string`|`'14px'`|`-`|
+|placement|显示方向，参考 Tooltip 组件|`string`|`'right'`|`-`|
+|text|文本列表|`string[] \| string`|`-`|`-`|
 
 

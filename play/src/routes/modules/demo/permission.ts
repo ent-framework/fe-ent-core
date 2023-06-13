@@ -1,5 +1,4 @@
 import { getParentLayout } from 'fe-ent-core/es/router';
-import { RoleEnum } from 'fe-ent-core/es/logics/enums';
 import { t } from 'fe-ent-core/es/hooks';
 import type { AppRouteRecordRaw } from 'fe-ent-core/es/router';
 
@@ -45,7 +44,7 @@ const permission: AppRouteRecordRaw = {
           component: () => import('/@/views/demo/permission/front/auth-page-a.vue'),
           meta: {
             title: t('routes.demo.permission.frontTestA'),
-            roles: [RoleEnum.SUPER],
+            roles: ['super'],
           },
         },
         {
@@ -54,7 +53,7 @@ const permission: AppRouteRecordRaw = {
           component: () => import('/@/views/demo/permission/front/auth-page-b.vue'),
           meta: {
             title: t('routes.demo.permission.frontTestB'),
-            roles: [RoleEnum.TEST],
+            roles: ['test'],
           },
         },
       ],

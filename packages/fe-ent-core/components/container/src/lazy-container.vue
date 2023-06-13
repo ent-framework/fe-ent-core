@@ -31,23 +31,26 @@
 
   const props = {
     /**
-     * Waiting time, if the time is specified, whether visible or not, it will be automatically loaded after the specified time
+     * @zh 等待时间，如果指定了时间，不论可见与否，在指定时间之后自动加载
+     * @en Waiting time, if the time is specified, whether visible or not, it will be automatically loaded after the specified time
      */
     timeout: { type: Number },
     /**
-     * The viewport where the component is located.
-     * If the component is scrolling in the page container, the viewport is the container
+     * @zh 组件所在的视口，如果组件是在页面容器内滚动，视口就是该容器
+     * @en The viewport where the component is located. If the component is scrolling in the page container, the viewport is the container
      */
     viewport: {
       type: (typeof window !== 'undefined' ? window.HTMLElement : Object) as PropType<HTMLElement>,
       default: () => null,
     },
     /**
-     * Preload threshold, css unit
+     * @zh 预加载阈值, css 单位
+     * @en Preload threshold, css unit
      */
     threshold: { type: String, default: '0px' },
     /**
-     * The scroll direction of the viewport, vertical represents the vertical direction, horizontal represents the horizontal direction
+     * @zh 视口的滚动方向, vertical 代表垂直方向，horizontal 代表水平方向
+     * @en The scroll direction of the viewport, vertical represents the vertical direction, horizontal represents the horizontal direction
      */
     direction: {
       type: String,
@@ -55,12 +58,14 @@
       validator: (v) => ['vertical', 'horizontal'].includes(v),
     },
     /**
-     * The label name of the outer container that wraps the component
+     * @zh 包裹组件的外层容器的标签名
+     * @en The label name of the outer container that wraps the component
      */
     tag: { type: String, default: 'div' },
     maxWaitingTime: { type: Number, default: 80 },
     /**
-     * transition name
+     * @zh transition 动画 name
+     * @en transition name
      */
     transitionName: { type: String, default: 'lazy-container' },
   };

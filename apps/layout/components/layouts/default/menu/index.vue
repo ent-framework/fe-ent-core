@@ -1,18 +1,12 @@
 <script lang="tsx">
-  import { computed, defineComponent, onDeactivated, onUnmounted, toRef, unref } from 'vue';
+  import { computed, defineComponent, toRef, unref } from 'vue';
   import { EntAppLogo, EntScrollContainer } from 'fe-ent-core';
   import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/es/logics';
   import { isUrl, openWindow, propTypes } from 'fe-ent-core/es/utils';
-  import {
-    useAppInject,
-    useDesign,
-    useGo,
-    useMenuSetting,
-    useRootSetting,
-    useThemeSetting,
-  } from 'fe-ent-core/es/hooks';
-  import EntMenu from './header-menu/index.vue';
-  import EntSimpleMenu from './left-menu/index.vue';
+  import { useAppInject, useDesign, useGo } from 'fe-ent-core/es/hooks';
+  import { useLayoutTheme, useLayoutThemeSetting, useMenuSetting } from '../../../../hooks';
+  import EntHeaderMenu from './header-menu/index.vue';
+  import EntLeftMenu from './left-menu/index.vue';
 
   import { useSplitMenu } from './use-layout-menu';
   import type { Nullable } from 'fe-ent-core/es/types';
@@ -20,10 +14,8 @@
 
   export default defineComponent({
     name: 'LayoutMenu',
-    components: { EntAppLogo, EntMenu, EntScrollContainer, EntSimpleMenu },
+    components: { EntAppLogo, EntHeaderMenu, EntScrollContainer, EntLeftMenu },
     props: {
-      theme: propTypes.oneOf(['light', 'dark']),
-
       splitType: {
         type: Number as PropType<MenuSplitTyeEnum>,
         default: MenuSplitTyeEnum.NONE,
@@ -49,9 +41,9 @@
         getIsSidebarType,
         getSplit,
       } = useMenuSetting();
-      const { getShowLogo } = useRootSetting();
+      const { getShowLogo } = useLayoutThemeSetting();
 
-      const { getGlobalTheme } = useThemeSetting();
+      const { getActualHeaderTheme, getActualMenuTheme } = useLayoutTheme();
 
       const { prefixCls } = useDesign('layout-menu');
 
@@ -63,8 +55,6 @@
         unref(getIsMobile) ? MenuModeEnum.INLINE : props.menuMode || unref(getMenuMode),
       );
 
-      const getComputedMenuTheme = computed(() => props.theme || unref(getGlobalTheme));
-
       const getIsShowLogo = computed(() => unref(getShowLogo) && unref(getIsSidebarType));
 
       const getUseScroll = computed(() => {
@@ -75,15 +65,6 @@
             props.splitType === MenuSplitTyeEnum.NONE)
         );
       });
-
-      onUnmounted(() => {
-        console.log('onUnmounted');
-      });
-
-      onDeactivated(() => {
-        console.log('onDeactivated');
-      });
-
       const getWrapperStyle = computed((): CSSProperties => {
         return {
           height: `calc(100% - ${unref(getIsShowLogo) ? '48px' : '0px'})`,
@@ -93,7 +74,6 @@
       const getLogoClass = computed(() => {
         return [
           `${prefixCls}-logo`,
-          unref(getComputedMenuTheme),
           {
             [`${prefixCls}--mobile`]: unref(getIsMobile),
           },
@@ -105,7 +85,6 @@
         return {
           menus,
           beforeClickFn: beforeMenuClickFn,
-          theme: unref(getComputedMenuTheme),
           accordion: unref(getAccordion),
           collapse: unref(getCollapsed),
           collapsedShowTitle: unref(getCollapsedShowTitle),
@@ -136,21 +115,33 @@
       function renderHeader() {
         if (!unref(getIsShowLogo) && !unref(getIsMobile)) return null;
 
-        return <EntAppLogo showTitle={!unref(getCollapsed)} class={unref(getLogoClass)} />;
+        return (
+          <EntAppLogo
+            showTitle={!unref(getCollapsed)}
+            class={unref(getLogoClass)}
+            collapsed-show-title={unref(getCollapsedShowTitle)}
+          />
+        );
       }
 
       function renderMenu() {
         const { menus, ...menuProps } = unref(getCommonProps);
         if (!menus || !menus.length) return null;
         return !props.isHorizontal ? (
-          <EntSimpleMenu {...menuProps} isSplitMenu={unref(getSplit)} items={menus} />
+          <EntLeftMenu
+            {...menuProps}
+            theme={unref(getActualMenuTheme)}
+            isSplitMenu={unref(getSplit)}
+            items={menus}
+          />
         ) : (
-          <EntMenu
+          <EntHeaderMenu
             {...(menuProps as any)}
             isHorizontal={props.isHorizontal}
             type={unref(getMenuType)}
             showLogo={unref(getIsShowLogo)}
             mode={unref(getComputedMenuMode as any)}
+            theme={unref(getActualHeaderTheme)}
             items={menus}
           />
         );

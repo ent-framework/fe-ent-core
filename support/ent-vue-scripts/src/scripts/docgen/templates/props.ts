@@ -13,7 +13,7 @@ const tmpl = (
   const hasVersion = displayableProps.some((prop) => prop?.tags?.version);
   const content = displayableProps
     .map((prop) => {
-      const { name, type, values, defaultValue, required, tags } = prop;
+      const { name, type, values, defaultValue, required, tags, extends: parent } = prop;
       let { description } = prop;
       if (tags?.[lang]?.length) {
         description = (tags[lang][0] as ParamTag).description as string;
@@ -81,7 +81,11 @@ const tmpl = (
         return defaultValue?.value || '-';
       };
 
-      let lineContent = `|${getName()}|${getDescription()}|\`${getType()}\`|\`${getDefaultValue()}\`|`;
+      const getModule = () => {
+        return parent ? `${parent.path}` : '-';
+      };
+
+      let lineContent = `|${getName()}|${getDescription()}|\`${getType()}\`|\`${getDefaultValue()}\`|\`${getModule()}\`|`;
 
       if (hasVersion) {
         // tag 的 ts 类型有问题，所以忽略 ts 规则检查
@@ -106,14 +110,14 @@ export default (props: PropDescriptor[], options: { isInterface: boolean }, lang
   let header: [string, string] = ['', ''];
   if (lang === 'en') {
     header = options.isInterface
-      ? ['|Name|Description|Type|Default|', '|---|---|---|:---:|']
-      : ['|Attribute|Description|Type|Default|', '|---|---|---|:---:|'];
+      ? ['|Name|Description|Type|Default|Module|', '|---|---|---|:---:|---|']
+      : ['|Attribute|Description|Type|Default|Module|', '|---|---|---|:---:|---|'];
     if (hasVersion) {
       header[0] += 'version|';
       header[1] += ':---|';
     }
   } else {
-    header = ['|参数名|描述|类型|默认值|', '|---|---|---|:---:|'];
+    header = ['|参数名|描述|类型|默认值|模块|', '|---|---|---|:---:|---|'];
     if (hasVersion) {
       header[0] += '版本|';
       header[1] += ':---|';

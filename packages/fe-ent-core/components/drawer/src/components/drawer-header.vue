@@ -26,7 +26,7 @@
 
   import { propTypes } from '@ent-core/utils/prop-types';
   export default defineComponent({
-    name: 'BasicDrawerHeader',
+    name: 'EntDrawerFooter',
     components: { EntTitle, ArrowLeftOutlined },
     props: {
       isDetail: propTypes.bool,

@@ -20,16 +20,14 @@
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
-    "build": "pnpm run build:library && pnpm run docgen && pnpm run jsongen",
+    "build": "pnpm run build:library && pnpm run docgen && pnpm run jsongen && pnpm run dtsgen",
     "docgen": "ent-vue-scripts docgen",
     "build:library": "ent-vue-scripts build:library -u -s",
     "jsongen": "ent-vue-scripts jsongen",
-    "dtsgen": "ent-vue-scripts dtsgen --lib"
+    "dtsgen": "ent-vue-scripts dtsgen"
   },
   "peerDependencies": {
-    "vue": "^3.2.47",
-    "ant-design-vue": "4.0.0-rc.5",
-    "fe-ent-core": "workspace:*"
+    "fe-ent-core": "^2.0.0"
   },
   "dependencies": {
     "tinymce": "^5.10.7"
@@ -37,9 +35,7 @@
   "devDependencies": {
     "fe-ent-vue-scripts": "^2.0.0",
     "rimraf": "^5.0.0",
-    "@types/tinycolor2": "^1.4.2",
-    "vue": "^3.2.47",
-    "@types/tinymce": "^4.6.5"
+    "@types/tinycolor2": "^1.4.2"
   },
   "repository": {
     "type": "git",

@@ -22,11 +22,11 @@
   import { defaultProjectSetting } from 'fe-ent-core/es/logics';
   import {
     useAppStore,
-    useMultipleTabStore,
     usePermissionStore,
     useUserStore,
   } from 'fe-ent-core/es/store';
   import { useDesign, useI18n, useMessage } from 'fe-ent-core/es/hooks';
+  import { useMultipleTabStore } from '../../../../../store/multiple-tab';
 
   export default defineComponent({
     name: 'SettingFooter',

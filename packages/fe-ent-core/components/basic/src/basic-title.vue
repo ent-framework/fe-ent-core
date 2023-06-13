@@ -11,7 +11,8 @@
   import type { PropType } from 'vue';
   const props = {
     /**
-     * Help text list or string
+     * @zh 标题右侧帮助按钮信息
+     * @en Help text list or string
      * @default: ''
      */
     helpMessage: {
@@ -19,12 +20,14 @@
       default: '',
     },
     /**
-     * Whether the color block on the left side of the title
+     * @zh 是否显示标题左侧蓝色色块
+     * @en Whether the color block on the left side of the title
      * @default: false
      */
     span: { type: Boolean },
     /**
-     * Whether to default the text, that is, not bold
+     * @zh 将文字默认化，不加粗
+     * @en Whether to default the text, that is, not bold
      * @default: false
      */
     normal: { type: Boolean },

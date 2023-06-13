@@ -1,18 +1,16 @@
 import { computed, defineComponent, unref } from 'vue';
 import { EntDrawer } from 'fe-ent-core';
 import { MenuTypeEnum, TriggerEnum } from 'fe-ent-core/es/logics';
+import { useI18n, useThemeSetting, useTransitionSetting } from 'fe-ent-core/es/hooks';
+import { Divider } from 'ant-design-vue';
 import {
   useHeaderSetting,
-  useI18n,
+  useLayoutThemeSetting,
   useMenuSetting,
   useMultipleTabSetting,
-  useRootSetting,
-  useThemeSetting,
-  useTransitionSetting,
-} from 'fe-ent-core/es/hooks';
-
-import { Divider } from 'ant-design-vue';
-
+} from '../../../../hooks';
+import { globalHandler } from './global-handler';
+import { layoutHandler } from './layout-handler';
 import {
   InputNumberItem,
   SelectItem,
@@ -21,8 +19,6 @@ import {
   ThemeColorPicker,
   TypePicker,
 } from './components';
-
-import { baseHandler } from './handler';
 
 import {
   HandlerEnum,
@@ -47,7 +43,7 @@ export default defineComponent({
       getFullContent,
       getGrayMode,
       getLockTime,
-    } = useRootSetting();
+    } = useLayoutThemeSetting();
 
     const { getOpenPageLoading, getBasicTransition, getEnableTransition, getOpenNProgress } =
       useTransitionSetting();
@@ -96,7 +92,7 @@ export default defineComponent({
           <TypePicker
             menuTypeList={menuTypes}
             handler={(item: typeof menuTypes[0]) => {
-              baseHandler(HandlerEnum.CHANGE_LAYOUT, {
+              layoutHandler(HandlerEnum.CHANGE_LAYOUT, {
                 mode: item.mode,
                 type: item.type,
                 split: unref(getIsHorizontal) ? false : undefined,
@@ -109,7 +105,13 @@ export default defineComponent({
     }
 
     function renderMainTheme() {
-      return <ThemeColorPicker def={unref(getThemeName)} event={HandlerEnum.CHANGE_THEME_TOKEN} />;
+      return (
+        <ThemeColorPicker
+          def={unref(getThemeName)}
+          event={HandlerEnum.CHANGE_THEME_TOKEN}
+          handler={globalHandler}
+        />
+      );
     }
     /**
      * @description:
@@ -129,12 +131,14 @@ export default defineComponent({
             title={t('layout.setting.splitMenu')}
             event={HandlerEnum.MENU_SPLIT}
             def={unref(getSplit)}
+            handler={layoutHandler}
             disabled={!unref(getShowMenuRef) || unref(getMenuType) !== MenuTypeEnum.MIX}
           />
           <SwitchItem
             title={t('layout.setting.mixSidebarFixed')}
             event={HandlerEnum.MENU_FIXED_MIX_SIDEBAR}
             def={unref(getMixSideFixed)}
+            handler={layoutHandler}
             disabled={!unref(getIsMixSidebar)}
           />
 
@@ -142,12 +146,14 @@ export default defineComponent({
             title={t('layout.setting.closeMixSidebarOnChange')}
             event={HandlerEnum.MENU_CLOSE_MIX_SIDEBAR_ON_CHANGE}
             def={unref(getCloseMixSidebarOnChange)}
+            handler={layoutHandler}
             disabled={!unref(getIsMixSidebar)}
           />
           <SwitchItem
             title={t('layout.setting.menuCollapse')}
             event={HandlerEnum.MENU_COLLAPSED}
             def={unref(getCollapsed)}
+            handler={layoutHandler}
             disabled={!unref(getShowMenuRef)}
           />
 
@@ -155,18 +161,21 @@ export default defineComponent({
             title={t('layout.setting.menuDrag')}
             event={HandlerEnum.MENU_HAS_DRAG}
             def={unref(getCanDrag)}
+            handler={layoutHandler}
             disabled={!unref(getShowMenuRef)}
           />
           <SwitchItem
             title={t('layout.setting.menuSearch')}
             event={HandlerEnum.HEADER_SEARCH}
             def={unref(getShowSearch)}
+            handler={layoutHandler}
             disabled={!unref(getShowHeader)}
           />
           <SwitchItem
             title={t('layout.setting.menuAccordion')}
             event={HandlerEnum.MENU_ACCORDION}
             def={unref(getAccordion)}
+            handler={layoutHandler}
             disabled={!unref(getShowMenuRef)}
           />
 
@@ -174,6 +183,7 @@ export default defineComponent({
             title={t('layout.setting.collapseMenuDisplayName')}
             event={HandlerEnum.MENU_COLLAPSED_SHOW_TITLE}
             def={unref(getCollapsedShowTitle)}
+            handler={layoutHandler}
             disabled={!unref(getShowMenuRef) || !unref(getCollapsed) || unref(getIsMixSidebar)}
           />
 
@@ -181,12 +191,14 @@ export default defineComponent({
             title={t('layout.setting.fixedHeader')}
             event={HandlerEnum.HEADER_FIXED}
             def={unref(getHeaderFixed)}
+            handler={layoutHandler}
             disabled={!unref(getShowHeader)}
           />
           <SwitchItem
             title={t('layout.setting.fixedSideBar')}
             event={HandlerEnum.MENU_FIXED}
             def={unref(getMenuFixed)}
+            handler={layoutHandler}
             disabled={!unref(getShowMenuRef) || unref(getIsMixSidebar)}
           />
           <SelectItem
@@ -194,6 +206,7 @@ export default defineComponent({
             event={HandlerEnum.MENU_TRIGGER_MIX_SIDEBAR}
             def={unref(getMixSideTrigger)}
             options={mixSidebarTriggerOptions()}
+            handler={layoutHandler}
             disabled={!unref(getIsMixSidebar)}
           />
           <SelectItem
@@ -201,6 +214,7 @@ export default defineComponent({
             event={HandlerEnum.MENU_TOP_ALIGN}
             def={unref(getTopMenuAlign)}
             options={topMenuAlignOptions()}
+            handler={layoutHandler}
             disabled={
               !unref(getShowHeader) ||
               unref(getSplit) ||
@@ -213,6 +227,7 @@ export default defineComponent({
             event={HandlerEnum.MENU_TRIGGER}
             def={triggerDef}
             options={triggerOptions}
+            handler={layoutHandler}
             disabled={!unref(getShowMenuRef) || unref(getIsMixSidebar)}
           />
           <SelectItem
@@ -224,6 +239,7 @@ export default defineComponent({
           <InputNumberItem
             title={t('layout.setting.autoScreenLock')}
             min={0}
+            handler={layoutHandler}
             event={HandlerEnum.LOCK_TIME}
             defaultValue={unref(getLockTime)}
             formatter={(value: string) => {
@@ -240,6 +256,7 @@ export default defineComponent({
             event={HandlerEnum.MENU_WIDTH}
             disabled={!unref(getShowMenuRef)}
             defaultValue={unref(getMenuWidth)}
+            handler={layoutHandler}
             formatter={(value: string) => `${Number.parseInt(value)}px`}
           />
         </>
@@ -254,6 +271,7 @@ export default defineComponent({
             event={HandlerEnum.SHOW_BREADCRUMB}
             def={unref(getShowBreadCrumb)}
             disabled={!unref(getShowHeader)}
+            handler={layoutHandler}
           />
 
           <SwitchItem
@@ -261,12 +279,14 @@ export default defineComponent({
             event={HandlerEnum.SHOW_BREADCRUMB_ICON}
             def={unref(getShowBreadCrumbIcon)}
             disabled={!unref(getShowHeader)}
+            handler={layoutHandler}
           />
 
           <SwitchItem
             title={t('layout.setting.tabs')}
             event={HandlerEnum.TABS_SHOW}
             def={unref(getShowMultipleTab)}
+            handler={layoutHandler}
           />
 
           <SwitchItem
@@ -274,6 +294,7 @@ export default defineComponent({
             event={HandlerEnum.TABS_SHOW_REDO}
             def={unref(getShowRedo)}
             disabled={!unref(getShowMultipleTab)}
+            handler={layoutHandler}
           />
 
           <SwitchItem
@@ -281,12 +302,14 @@ export default defineComponent({
             event={HandlerEnum.TABS_SHOW_QUICK}
             def={unref(getShowQuick)}
             disabled={!unref(getShowMultipleTab)}
+            handler={layoutHandler}
           />
           <SwitchItem
             title={t('layout.setting.tabsFoldBtn')}
             event={HandlerEnum.TABS_SHOW_FOLD}
             def={unref(getShowFold)}
             disabled={!unref(getShowMultipleTab)}
+            handler={layoutHandler}
           />
 
           <SwitchItem
@@ -294,6 +317,7 @@ export default defineComponent({
             event={HandlerEnum.MENU_SHOW_SIDEBAR}
             def={unref(getShowMenu)}
             disabled={unref(getIsHorizontal)}
+            handler={layoutHandler}
           />
 
           <SelectItem
@@ -302,12 +326,14 @@ export default defineComponent({
             def={unref(getMenuTheme)}
             options={getThemeOptions()}
             disabled={!unref(getShowMenu)}
+            handler={layoutHandler}
           />
 
           <SwitchItem
             title={t('layout.setting.header')}
             event={HandlerEnum.HEADER_SHOW}
             def={unref(getShowHeader)}
+            handler={layoutHandler}
           />
 
           <SelectItem
@@ -316,6 +342,7 @@ export default defineComponent({
             def={unref(getHeaderTheme)}
             options={getThemeOptions()}
             disabled={!unref(getShowHeader)}
+            handler={layoutHandler}
           />
 
           <SwitchItem
@@ -323,22 +350,26 @@ export default defineComponent({
             event={HandlerEnum.SHOW_LOGO}
             def={unref(getShowLogo)}
             disabled={unref(getIsMixSidebar)}
+            handler={layoutHandler}
           />
           <SwitchItem
             title={t('layout.setting.footer')}
             event={HandlerEnum.SHOW_FOOTER}
             def={unref(getShowFooter)}
+            handler={layoutHandler}
           />
           <SwitchItem
             title={t('layout.setting.fullContent')}
             event={HandlerEnum.FULL_CONTENT}
             def={unref(getFullContent)}
+            handler={layoutHandler}
           />
 
           <SwitchItem
             title={t('layout.setting.grayMode')}
             event={HandlerEnum.GRAY_MODE}
             def={unref(getGrayMode)}
+            handler={layoutHandler}
           />
         </>
       );
@@ -351,17 +382,20 @@ export default defineComponent({
             title={t('layout.setting.progress')}
             event={HandlerEnum.OPEN_PROGRESS}
             def={unref(getOpenNProgress)}
+            handler={globalHandler}
           />
           <SwitchItem
             title={t('layout.setting.switchLoading')}
             event={HandlerEnum.OPEN_PAGE_LOADING}
             def={unref(getOpenPageLoading)}
+            handler={globalHandler}
           />
 
           <SwitchItem
             title={t('layout.setting.switchAnimation')}
             event={HandlerEnum.OPEN_ROUTE_TRANSITION}
             def={unref(getEnableTransition)}
+            handler={globalHandler}
           />
 
           <SelectItem
@@ -370,6 +404,7 @@ export default defineComponent({
             def={unref(getBasicTransition)}
             options={routerTransitionOptions}
             disabled={!unref(getEnableTransition)}
+            handler={globalHandler}
           />
         </>
       );

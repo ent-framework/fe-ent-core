@@ -1,19 +1,13 @@
 import path from 'path';
-import fs from 'fs/promises';
 import * as vueCompiler from 'vue/compiler-sfc';
 import consola from 'consola';
-import { rimraf } from 'rimraf';
 import { Project } from 'ts-morph';
 import glob from 'fast-glob';
-import { copySync, ensureDirSync, rmSync } from 'fs-extra';
+import fs from 'fs-extra';
 import chalk from 'chalk';
 import { searchForWorkspaceRoot } from 'vite';
 import { excludeFiles } from '../../utils/exclude-files';
 import type { SourceFile } from 'ts-morph';
-
-/**
- * fork = require( https://github.com/egoist/vue-dts-gen/blob/main/src/index.ts
- */
 
 export const pathRewriter = () => {
   return (id: string) => {
@@ -48,9 +42,10 @@ const build = async () => {
   consola.success('Added source files');
   typeCheck(project);
   consola.success('Type check passed!');
-  await project.emit({
-    emitOnlyDtsFiles: true,
-  });
+  // await project.emit({
+  //   emitOnlyDtsFiles: true,
+  // });
+  await project.emitToMemory({ emitOnlyDtsFiles: true });
 
   const tasks = sourceFiles.map(async (sourceFile) => {
     const relativePath = path.relative(cwd, sourceFile.getFilePath());
@@ -64,11 +59,14 @@ const build = async () => {
 
     const subTasks = emitFiles.map(async (outputFile) => {
       const filepath = outputFile.getFilePath();
-      await fs.mkdir(path.dirname(filepath), {
-        recursive: true,
+      ['lib', 'es'].forEach((d) => {
+        const relativePath = `${process.cwd()}/${d}`;
+        const targetPath = filepath.replace(outDir, relativePath);
+        fs.mkdirSync(path.dirname(targetPath), {
+          recursive: true,
+        });
+        fs.writeFileSync(targetPath, pathRewriter()(outputFile.getText()), 'utf8');
       });
-      await fs.writeFile(filepath, pathRewriter()(outputFile.getText()), 'utf8');
-
       consola.log(chalk.green(`Definition for file: ${chalk.bold(relativePath)} generated`));
     });
 
@@ -143,16 +141,16 @@ function typeCheck(project: Project) {
 
 export default async function (library: boolean) {
   await build();
-  rmSync(path.resolve(outDir, 'tsconfig.tsbuildinfo'));
-  if (!library) {
-    ensureDirSync(path.resolve(cwd, 'es'));
-    copySync(outDir, path.resolve(cwd, 'es'), {
-      recursive: true,
-    });
-    ensureDirSync(path.resolve(cwd, 'lib'));
-    copySync(outDir, path.resolve(cwd, 'lib'), {
-      recursive: true,
-    });
-    rimraf.sync(outDir);
-  }
+  //fs.rmSync(path.resolve(outDir, 'tsconfig.tsbuildinfo'));
+  // if (!library) {
+  //   ensureDirSync(path.resolve(cwd, 'es'));
+  //   copySync(outDir, path.resolve(cwd, 'es'), {
+  //     recursive: true,
+  //   });
+  //   ensureDirSync(path.resolve(cwd, 'lib'));
+  //   copySync(outDir, path.resolve(cwd, 'lib'), {
+  //     recursive: true,
+  //   });
+  //   rimraf.sync(outDir);
+  // }
 }

@@ -1,5 +1,5 @@
 <template>
-  <Button v-bind="getBindValue" :style="getButtonStyle" @click="onClick">
+  <Button v-bind="getBindValue" :class="getClass" :style="getButtonStyle" @click="onClick">
     <template #default="data">
       <Icon v-if="preIcon" :icon="preIcon" :size="iconSize" />
       <slot v-bind="data || {}" />
@@ -11,10 +11,11 @@
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
   import { Button } from 'ant-design-vue';
+  import { useConfigContextInject } from 'ant-design-vue/es/config-provider/context';
   import Icon from '@ent-core/components/icon/src/icon.vue';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
   import { useTheme } from '@ent-core/hooks';
-  import { buttonProps } from './props';
+  import { btnProps } from './props';
   import type { CSSProperties } from 'vue';
 
   export default defineComponent({
@@ -23,13 +24,28 @@
       Button,
       Icon,
     },
+    /**
+     * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/button/index.zh-CN.md
+     */
     extends: Button,
     inheritAttrs: false,
-    props: buttonProps,
+    props: btnProps,
     setup(props) {
       const attrs = useAttrs({ excludeDefaultKeys: false });
       const { useToken } = useTheme();
       const { token } = useToken();
+
+      const appContext = useConfigContextInject();
+      const globalPrefix = appContext.getPrefixCls();
+
+      const getClass = computed(() => {
+        const classNames: string[] = [];
+        const { color } = props;
+        if (color) {
+          classNames.push(`--${globalPrefix}-${color}-color`);
+        }
+        return classNames;
+      });
 
       const getButtonStyle = computed((): CSSProperties => {
         const { color, type, ghost } = props;
@@ -82,6 +98,7 @@
       return {
         getBindValue,
         getButtonStyle,
+        getClass,
       };
     },
   });

@@ -19,7 +19,7 @@
         />
       </FormItem>
       <FormItem name="sms" class="enter-x">
-        <EntCountdownInput
+        <EntCountDownInput
           v-model:value="formData.sms"
           size="large"
           class="fix-auto-fill"
@@ -68,7 +68,7 @@
 <script lang="ts" setup>
   import { computed, defineComponent, reactive, ref, unref } from 'vue';
   import { Button, Checkbox, Form, Input } from 'ant-design-vue';
-  import { EntCountdownInput, EntStrengthMeter } from 'fe-ent-core';
+  import { EntCountDownInput, EntStrengthMeter } from 'fe-ent-core';
   import { useI18n } from 'fe-ent-core/es/hooks';
   import LoginFormTitle from './login-form-title.vue';
   import { LoginStateEnum, useFormRules, useFormValid, useLoginState } from './use-login';
@@ -91,7 +91,7 @@
   });
 
   defineComponent({
-    components: { EntStrengthMeter, EntCountdownInput },
+    components: { EntStrengthMeter, EntCountDownInput },
   });
 
   const { getFormRules } = useFormRules(formData);

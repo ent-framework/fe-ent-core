@@ -133,18 +133,22 @@
   const loading = ref(false);
   const rememberMe = ref(false);
 
-  const formData = reactive({
+  type formDataType = {
+    account: string;
+    password: string;
+  };
+  const formData = reactive<formDataType>({
     account: '',
     password: '',
   });
 
-  const { validForm } = useFormValid(formRef);
+  const { validForm } = useFormValid<formDataType>(formRef);
 
   const getShow = computed(() => unref(getLoginState) === LoginStateEnum.LOGIN);
   async function handleLogin() {
     const data = await validForm();
 
-    const redirect = router.currentRoute.value.query.redirect;
+    const redirect = router.currentRoute.value.query.redirect as string;
 
     if (!data) return;
     try {

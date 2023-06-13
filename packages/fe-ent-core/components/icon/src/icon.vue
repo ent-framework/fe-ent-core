@@ -29,18 +29,42 @@
     name: 'EntIcon',
     components: { SvgIcon, IconifyIcon },
     props: {
-      // icon name
+      /**
+       * 图标名
+       * @type {string}
+       */
       icon: propTypes.string,
-      // icon color
+      /**
+       * 图标颜色
+       * @type {string}
+       */
       color: propTypes.string,
+      /**
+       * 图标宽度
+       * @type {string}
+       */
       width: propTypes.string,
+      /**
+       * 图标高度
+       * @type {string}
+       */
       height: propTypes.string,
-      // icon size
+      /**
+       * 图标大小
+       * @type {string | number}
+       */
       size: {
         type: [String, Number] as PropType<string | number>,
         default: 16,
       },
+      /**
+       *
+       */
       spin: propTypes.bool.def(false),
+      /**
+       * 图标前缀
+       * @type {string}
+       */
       prefix: propTypes.string.def(''),
     },
     setup(props) {

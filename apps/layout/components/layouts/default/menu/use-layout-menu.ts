@@ -1,7 +1,7 @@
 import { computed, ref, unref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { MenuSplitTyeEnum } from 'fe-ent-core/es/logics';
-import { useAppInject, useMenuSetting } from 'fe-ent-core/es/hooks';
+import { useAppInject } from 'fe-ent-core/es/hooks';
 import {
   getChildrenMenus,
   getCurrentParentPath,
@@ -10,6 +10,7 @@ import {
 } from 'fe-ent-core/es/router';
 import { usePermissionStore } from 'fe-ent-core/es/store';
 import { useThrottleFn } from '@vueuse/core';
+import { useMenuSetting } from '../../../../hooks';
 import type { Ref } from 'vue';
 import type { Menu } from 'fe-ent-core/es/router';
 

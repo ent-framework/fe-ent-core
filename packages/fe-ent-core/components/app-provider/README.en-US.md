@@ -11,8 +11,8 @@
 
 ### `<ent-app-provider>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|prefix-cls|class style prefix|`string`|`defaultPrixCls`|
+|Attribute|Description|Type|Default|Module|
+|---|---|---|:---:|---|
+|prefix-cls|class style prefix|`string`|`'ent'`|`-`|
 
 

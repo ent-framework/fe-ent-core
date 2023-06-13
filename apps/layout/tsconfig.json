@@ -3,15 +3,17 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "fe-ent-core": ["../../packages/fe-ent-core/index.ts"],
-      "fe-ent-core/es/*": ["../../packages/fe-ent-core/*"],
       "vue-i18n": ["../../node_modules/vue-i18n"],
       "vue-types": ["../../node_modules/vue-types"],
+      "axios": ["../../node_modules/axios"],
+      "pinia": ["../../node_modules/pinia"],
       "@vueuse/shared": ["../../node_modules/@vueuse/shared"],
-      "ant-design-vue": ["../../node_modules/ant-design-vue"]
-    }
+      "ant-design-vue": ["../../node_modules/ant-design-vue"],
+      "ant-design-vue/es/*": ["../../node_modules/ant-design-vue/es/*"]
+    },
+    "types": ["vite/client"]
   },
-  "include": ["components", "../../packages/fe-ent-core/"],
+  "include": ["components/**/*", "hooks/*", "store/*", "types.ts", "init.ts"],
   "exclude": [
     "node_modules",
     "**/node_modules/**",

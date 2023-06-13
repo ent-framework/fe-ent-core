@@ -6,7 +6,7 @@ export { EntButton, EntPopButton } from './button';
 export { EntCardList } from './card-list';
 export { EntClickOutSide } from './click-out-side';
 export { EntCollapseContainer, EntScrollContainer, EntLazyContainer } from './container';
-export { EntCountButton, EntCountdownInput } from './count-down';
+export { EntCountButton, EntCountDownInput } from './count-down';
 export { EntCountTo } from './count-to';
 export { EntCropperAvatar, EntCropperImage } from './cropper';
 export { EntDarkModeToggle } from './dark-mode-toggle';

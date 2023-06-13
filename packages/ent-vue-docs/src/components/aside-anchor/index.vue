@@ -10,7 +10,7 @@
       <a-anchor-link
         v-for="(item, index) in anchors"
         :key="index"
-        :href="item.href"
+        :href="`${getFullPath}?${item.href}`"
         :title="locale === 'zh_CN' ? item.title.zh_CN : item.title.en"
       />
       <a-anchor-link v-if="hasAPIAnchor" key="article-api" href="#API"> API </a-anchor-link>
@@ -22,6 +22,7 @@
   import { computed, defineComponent, onMounted, ref } from 'vue';
   import { LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
   import Anchor from 'ant-design-vue/lib/anchor';
+  import { useRouter } from 'vue-router';
   import { useLocale } from '@ent-core/locales';
 
   const AAnchor = Anchor;
@@ -62,6 +63,11 @@
         },
       ]);
 
+      const router = useRouter();
+      const getFullPath = computed(() => {
+        return `#${router.currentRoute.value.path}`;
+      });
+
       onMounted(() => {
         hasAPIAnchor.value = !!document.querySelector('.article-content #API');
       });
@@ -70,6 +76,7 @@
         locale,
         cls,
         buttonCls,
+        getFullPath,
         hasAPIAnchor,
         getMessage,
       };

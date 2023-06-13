@@ -24,7 +24,7 @@ const tmpl = (events: EventDescriptor[], lang: string) => {
   );
   const content = displayableEvents
     .map((event) => {
-      const { name, tags } = event;
+      const { name, tags, extends: parent } = event;
       let { description } = event;
       let version = '';
       if (tags?.length) {
@@ -41,7 +41,7 @@ const tmpl = (events: EventDescriptor[], lang: string) => {
 
       let lineContent = `|${toKebabCase(name)}|${escapeCharacter(description || '')}|${
         escapeCharacter(propertiesTmpl(event.properties)) || '-'
-      }|`;
+      }|${parent ? `${parent.path}` : '-'}|`;
 
       if (hasVersion) {
         lineContent += `${version}|`;
@@ -62,8 +62,8 @@ export default (events: EventDescriptor[], lang: string) => {
 
   const header =
     lang === 'en'
-      ? ['|Event Name|Description|Parameters|', '|---|---|---|']
-      : ['|事件名|描述|参数|', '|---|---|---|'];
+      ? ['|Event Name|Description|Parameters|Module|', '|---|---|---|---|']
+      : ['|事件名|描述|参数|模块|', '|---|---|---|---|'];
 
   if (hasVersion) {
     header[0] += lang === 'en' ? 'version|' : '版本|';

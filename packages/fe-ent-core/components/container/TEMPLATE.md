@@ -2,9 +2,9 @@
 ```yaml
 meta:
   type: 组件
-  category: 其他
-title: 皮肤/语言/配置
-description: 皮肤选择(暗黑模式切换)，语言切换，应用配置
+  category: 通用
+title: 容器
+description: 延迟加载，滚动，折叠等容器
 ```
 ---
 ## en-US
@@ -16,8 +16,13 @@ description: 皮肤选择(暗黑模式切换)，语言切换，应用配置
 
 ## API
 
+### 延时加载/懒加载组件, 只在组件可见或者延迟一段时间才进行加载
 %%API(src/lazy-container.vue)%%
 
-%%API(src/scroll-container.vue)%%
+### 滚动容器组件
+%%API(src/collapse/collapse-container.vue)%%
 
+### 区域折叠卡片容器
+
+## Types
 %%INTERFACE(interface.ts)%%

@@ -40,6 +40,10 @@
   export default defineComponent({
     name: 'EntTree',
     components: { EntScrollContainer, TreeIcon },
+    /**
+     * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/tree/index.zh-CN.md
+     */
+    extends: Tree,
     inheritAttrs: false,
     props: treeProps,
     emits: treeEmits,

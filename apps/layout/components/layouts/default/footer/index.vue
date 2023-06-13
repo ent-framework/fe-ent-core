@@ -1,13 +1,7 @@
 <template>
   <Footer v-if="getShowLayoutFooter" ref="footerRef" :class="prefixCls">
-    <div :class="`${prefixCls}__links`">
-      <a @click="openWindow(SITE_URL)">{{ t('layout.footer.onlinePreview') }}</a>
-
-      <GithubFilled :class="`${prefixCls}__github`" @click="openWindow(GITHUB_URL)" />
-
-      <a @click="openWindow(DOC_URL)">{{ t('layout.footer.onlineDocument') }}</a>
-    </div>
-    <div>Copyright &copy;2020 Vben Admin</div>
+    <div :class="`${prefixCls}__links`" />
+    <div>Copyright &copy;2020 Ent Admin</div>
   </Footer>
 </template>
 
@@ -17,11 +11,11 @@
 
   import { GithubFilled } from '@ant-design/icons-vue';
 
-  import { useDesign, useI18n, useLayoutHeight, useRootSetting } from 'fe-ent-core/es/hooks';
+  import { useDesign, useI18n, useLayoutHeight } from 'fe-ent-core/es/hooks';
   import { openWindow } from 'fe-ent-core/es/utils';
-  import { DOC_URL, GITHUB_URL, SITE_URL } from 'fe-ent-core/es/logics';
 
   import { useRouter } from 'vue-router';
+  import { useLayoutThemeSetting } from '../../../../hooks';
   import type { ComponentRef } from 'fe-ent-core/es/types';
 
   export default defineComponent({
@@ -29,7 +23,7 @@
     components: { Footer: Layout.Footer, GithubFilled },
     setup() {
       const { t } = useI18n();
-      const { getShowFooter } = useRootSetting();
+      const { getShowFooter } = useLayoutThemeSetting();
       const { currentRoute } = useRouter();
       const { prefixCls } = useDesign('layout-footer');
 
@@ -50,9 +44,6 @@
         getShowLayoutFooter,
         prefixCls,
         t,
-        DOC_URL,
-        GITHUB_URL,
-        SITE_URL,
         openWindow,
         footerRef,
       };

@@ -12,8 +12,17 @@
   import type { PropType } from 'vue';
 
   const props = {
+    /**
+     * 绑定值
+     */
     value: { type: [Object, Number, String, Array] },
+    /**
+     * 倒计时时间(秒)
+     */
     count: { type: Number, default: 60 },
+    /**
+     * 倒计时之前执行的函数，返回 true 才会开始执行
+     */
     beforeStartFunc: {
       type: Function as PropType<() => Promise<boolean>>,
       default: null,

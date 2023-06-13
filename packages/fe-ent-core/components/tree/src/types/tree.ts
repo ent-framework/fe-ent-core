@@ -1,4 +1,3 @@
-import { buildProps } from '@ent-core/utils/props';
 import type {
   ContextMenuItem,
   CreateContextOptions,
@@ -44,7 +43,7 @@ export type CheckKeys =
   | KeyType[]
   | { checked: string[] | number[]; halfChecked: string[] | number[] };
 
-export const treeProps = buildProps({
+export const treeProps = {
   value: {
     type: [Object, Array] as PropType<KeyType[] | CheckKeys>,
   },
@@ -62,8 +61,17 @@ export const treeProps = buildProps({
     type: String,
     default: '',
   },
+  /**
+   * 是否显示工具栏
+   */
   toolbar: Boolean,
+  /**
+   * 显示搜索框
+   */
   search: Boolean,
+  /**
+   * 当前搜索词
+   */
   searchValue: {
     type: String,
     default: '',
@@ -139,7 +147,7 @@ export const treeProps = buildProps({
     default: false,
   },
   treeWrapperClassName: String,
-});
+};
 
 export type TreeProps = ExtractPropTypes<typeof treeProps>;
 

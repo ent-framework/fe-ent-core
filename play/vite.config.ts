@@ -61,6 +61,10 @@ export default defineConfig(({ command, mode }) => {
             replacement: `${workspace}/apps/layout/index.ts`,
           },
           {
+            find: /^fe-ent-layout\/es\/(.*)$/,
+            replacement: `${workspace}/apps/layout/$1`,
+          },
+          {
             find: /^@ent-core\/(.*)$/,
             replacement: `${workspace}/packages/fe-ent-core/$1`,
           },

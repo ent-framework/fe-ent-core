@@ -7,39 +7,44 @@
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
+  import { descriptionsProps } from 'ant-design-vue/es/descriptions/index';
   import { type Recordable } from '@ent-core/types';
   import type { CollapseContainerOptions } from '@ent-core/components/container/interface';
   import type { CSSProperties, PropType } from 'vue';
   import type { DescriptionsProps } from 'ant-design-vue/es';
   import type { DescInstance, DescItem, DescriptionProps } from './typing';
   const props = {
+    /**
+     * 是否包裹 CollapseContainer 组件
+     */
     useCollapse: { type: Boolean, default: true },
-    title: { type: String, default: '' },
-    size: {
-      type: String,
-      validator: (v) => ['small', 'default', 'middle', undefined].includes(v),
-      default: 'small',
-    },
-    bordered: { type: Boolean, default: true },
-    column: {
-      type: [Number, Object] as PropType<number | Recordable>,
-      default: () => {
-        return { xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 };
-      },
-    },
+    /**
+     * CollapseContainer 组件属性
+     */
     collapseOptions: {
       type: Object as PropType<CollapseContainerOptions>,
       default: null,
     },
+    /**
+     * 详情项配置，见下方 DescItem 配置
+     */
     schema: {
       type: Array as PropType<DescItem[]>,
       default: () => [],
     },
+    /**
+     * 数据源
+     */
     data: { type: Object },
+    ...descriptionsProps(),
   };
 
   export default defineComponent({
     name: 'EntDescription',
+    /**
+     * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/descriptions/index.zh-CN.md
+     */
+    extends: Descriptions,
     props,
     emits: ['register'],
     setup(props, { slots, emit }) {

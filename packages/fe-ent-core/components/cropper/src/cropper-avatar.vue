@@ -42,11 +42,29 @@
   type apiFunParams = { file: Blob; name: string; filename: string };
 
   const props = {
+    /**
+     * 图片宽
+     */
     width: { type: [String, Number], default: '200px' },
+    /**
+     * 当前头像地址(v-model)
+     */
     value: { type: String },
+    /**
+     * 是否显示按钮
+     */
     showBtn: { type: Boolean, default: true },
+    /**
+     * 按钮的其它属性
+     */
     btnProps: { type: Object as PropType<ButtonProps> },
+    /**
+     * 按钮显示文本
+     */
     btnText: { type: String, default: '' },
+    /**
+     * 图片上传接口
+     */
     uploadApi: { type: Function as PropType<(params: apiFunParams) => Promise<void>> },
   };
 

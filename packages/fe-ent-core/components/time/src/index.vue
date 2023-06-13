@@ -17,9 +17,24 @@
   export default defineComponent({
     name: 'EntTime',
     props: {
+      /**
+       * 时间值
+       * @type {number | Date | string}
+       * @required
+       */
       value: propTypes.oneOfType([propTypes.number, propTypes.instanceOf(Date), propTypes.string])
         .isRequired,
+      /**
+       * 刷新时间
+       * @type {number}
+       * @default 60
+       */
       step: propTypes.number.def(60),
+      /**
+       * 模式，date:日期，datetime:时间戳，relative:相对时间
+       * @type {'date' | 'datetime' | 'relative'}
+       * @default 'relative'
+       */
       mode: propTypes.oneOf(['date', 'datetime', 'relative']).def('relative'),
     },
     setup(props) {

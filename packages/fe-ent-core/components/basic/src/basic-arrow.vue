@@ -14,19 +14,23 @@
 
   const props = {
     /**
-     * Arrow expand state
+     * @zh 箭头展开状态
+     * @en Arrow expand state
      */
     expand: { type: Boolean },
     /**
-     * Arrow up by default
+     * @zh 箭头默认向上
+     * @en Arrow up by default
      */
     up: { type: Boolean },
     /**
-     * Arrow down by default
+     * @zh 箭头默认向下
+     * @en Arrow down by default
      */
     down: { type: Boolean },
     /**
-     * Cancel padding/margin for inline
+     * @zh 取消 padding/margin，用于内嵌
+     * @en Cancel padding/margin for inline
      */
     inset: { type: Boolean },
   };

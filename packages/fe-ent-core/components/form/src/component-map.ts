@@ -21,7 +21,7 @@ import {
 import { EntUpload } from '@ent-core/components/upload';
 import { EntStrengthMeter } from '@ent-core/components/strength-meter';
 import { EntIconPicker } from '@ent-core/components/icon';
-import { EntCountdownInput } from '@ent-core/components/count-down';
+import { EntCountDownInput } from '@ent-core/components/count-down';
 import ApiRadioGroup from './components/api-radio-group.vue';
 import RadioButtonGroup from './components/radio-button-group.vue';
 import ApiSelect from './components/api-select.vue';
@@ -66,7 +66,7 @@ componentMap.set('WeekPicker', DatePicker.WeekPicker);
 componentMap.set('TimePicker', TimePicker);
 componentMap.set('StrengthMeter', EntStrengthMeter);
 componentMap.set('IconPicker', EntIconPicker);
-componentMap.set('InputCountDown', EntCountdownInput);
+componentMap.set('InputCountDown', EntCountDownInput);
 
 componentMap.set('Upload', EntUpload);
 componentMap.set('Divider', Divider);

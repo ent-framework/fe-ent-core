@@ -7,7 +7,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { EntIcon } from 'fe-ent-core';
-  import { useMenuSetting } from 'fe-ent-core/es/hooks';
+  import { useMenuSetting } from '../../../../hooks';
 
   export default defineComponent({
     name: 'SiderTrigger',

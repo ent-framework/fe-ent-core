@@ -27,12 +27,9 @@
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
 
-  import {
-    useMultipleTabSetting,
-    useRootSetting,
-    useTransitionSetting,
-  } from 'fe-ent-core/es/hooks';
-  import { useMultipleTabStore } from 'fe-ent-core/es/store';
+  import { useTransitionSetting } from 'fe-ent-core/es/hooks';
+  import { useMultipleTabSetting, useLayoutThemeSetting } from '../../../hooks';
+  import { useMultipleTabStore } from '../../../store/multiple-tab';
 
   import FrameLayout from '../iframe/index.vue';
   import { getTransitionName } from './transition';
@@ -43,7 +40,7 @@
       const { getShowMultipleTab } = useMultipleTabSetting();
       const tabStore = useMultipleTabStore();
 
-      const { getOpenKeepAlive, getCanEmbedIFramePage } = useRootSetting();
+      const { getOpenKeepAlive, getCanEmbedIFramePage } = useLayoutThemeSetting();
 
       const { getBasicTransition, getEnableTransition } = useTransitionSetting();
 

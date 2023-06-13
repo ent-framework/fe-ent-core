@@ -9,7 +9,9 @@ export default function cssOnlyPlugin(): InputPluginOption {
         const chunk = bundle[filename];
         if (filename.endsWith('.css')) {
           const asset = chunk as OutputAsset;
-          fs.mkdirSync(`${process.cwd()}/${outputOptions.dir}`);
+          if (!fs.existsSync(`${process.cwd()}/${outputOptions.dir}`)) {
+            fs.mkdirSync(`${process.cwd()}/${outputOptions.dir}`);
+          }
           fs.writeFileSync(`${process.cwd()}/${outputOptions.dir}/${filename}`, asset.source, { flag: 'w' });
         }
       }

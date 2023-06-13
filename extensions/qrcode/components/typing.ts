@@ -1,4 +1,5 @@
 import type { QRCodeRenderersOptions, QRCodeSegment } from 'qrcode';
+import type { Fn } from 'fe-ent-core/es/types';
 export type ContentType = string | QRCodeSegment[];
 
 export type { QRCodeRenderersOptions };

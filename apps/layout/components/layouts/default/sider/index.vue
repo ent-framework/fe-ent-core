@@ -16,7 +16,8 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Drawer } from 'ant-design-vue';
-  import { useAppInject, useDesign, useMenuSetting } from 'fe-ent-core/es/hooks';
+  import { useAppInject, useDesign } from 'fe-ent-core/es/hooks';
+  import { useMenuSetting } from '../../../../hooks';
   import MixSider from './mix-sider.vue';
   import Sider from './layout-sider.vue';
   export default defineComponent({

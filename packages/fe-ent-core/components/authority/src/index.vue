@@ -5,20 +5,18 @@
   import { defineComponent } from 'vue';
   import { usePermission } from '@ent-core/hooks/web/use-permission';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
-  import type { RoleEnum } from '@ent-core/logics/enums/role-enum';
   import type { PropType } from 'vue';
 
   export default defineComponent({
     name: 'EntAuthority',
     props: {
       /**
-       * Specified role is visible
-       * When the permission mode is the role mode, the value value can pass the role value.
-       * When the permission mode is background, the value value can pass the code permission value
+       * @en Specified role /permission code
+       * @zh 指定角色或者权限代码
        * @default ''
        */
       value: {
-        type: [Number, Array, String] as PropType<RoleEnum | RoleEnum[] | string | string[]>,
+        type: [String, Array] as PropType<string | string[]>,
         default: '',
       },
     },

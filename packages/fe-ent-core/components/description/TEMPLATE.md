@@ -2,9 +2,9 @@
 ```yaml
 meta:
   type: 组件
-  category: 其他
-title: ClickOutSide
-description: 用于监听包裹的元素点击外部触发事件
+  category: 通用
+title: Description 详情组件
+description: 对 antdv 的 Descriptions 组件进行封装
 ```
 ---
 ## en-US

@@ -46,5 +46,9 @@ export function useOpenKeys(
     return unref(collapse) ? [] : menuState.openKeys;
   });
 
-  return { setOpenKeys: debounceSetOpenKeys, getOpenKeys };
+  function handleOpenChange(openKeys: string[]) {
+    menuState.openKeys = openKeys;
+  }
+
+  return { setOpenKeys: debounceSetOpenKeys, getOpenKeys, handleOpenChange };
 }

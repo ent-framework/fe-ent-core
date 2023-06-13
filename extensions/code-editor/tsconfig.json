@@ -3,8 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "fe-ent-core": ["../../packages/fe-ent-core/index.ts"],
-      "fe-ent-core/es/*": ["../../packages/fe-ent-core/*"]
+      "@vueuse/shared": ["../../node_modules/@vueuse/shared"],
+      "pinia": ["../../node_modules/pinia"],
     }
   },
   "include": ["components", "../../packages"],

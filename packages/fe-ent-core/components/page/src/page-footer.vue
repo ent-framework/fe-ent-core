@@ -10,8 +10,8 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
+  import { computed, defineComponent } from 'vue';
+  //import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
   import { useDesign } from '@ent-core/hooks/web/use-design';
 
   export default defineComponent({
@@ -19,7 +19,10 @@
     inheritAttrs: false,
     setup() {
       const { prefixCls } = useDesign('page-footer');
-      const { getCalcContentWidth } = useMenuSetting();
+      //const { getCalcContentWidth } = useMenuSetting();
+      const getCalcContentWidth = computed(() => {
+        return 120;
+      });
       return { prefixCls, getCalcContentWidth };
     },
   });

@@ -19,9 +19,10 @@
 
   import { Breadcrumb } from 'ant-design-vue';
   import { EntIcon } from 'fe-ent-core';
-  import { useDesign, useGo, useI18n, useRootSetting } from 'fe-ent-core/es/hooks';
+  import { useDesign, useGo, useI18n } from 'fe-ent-core/es/hooks';
   import { filter, isString, propTypes } from 'fe-ent-core/es/utils';
   import { REDIRECT_NAME, getAllParentPath, getMenus } from 'fe-ent-core/es/router';
+  import { useLayoutThemeSetting } from '../../../../../hooks';
   import type { Menu } from 'fe-ent-core/es/router';
 
   import type { RouteLocationMatched } from 'vue-router';
@@ -36,7 +37,7 @@
       const routes = ref<RouteLocationMatched[]>([]);
       const { currentRoute } = useRouter();
       const { prefixCls } = useDesign('layout-breadcrumb');
-      const { getShowBreadCrumbIcon } = useRootSetting();
+      const { getShowBreadCrumbIcon } = useLayoutThemeSetting();
       const go = useGo();
 
       const { t } = useI18n();

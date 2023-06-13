@@ -12,13 +12,6 @@
     <template #overlay>
       <Menu @click="handleMenuClick">
         <MenuItem
-          v-if="getShowDoc"
-          key="doc"
-          :text="t('layout.header.dropdownItemDoc')"
-          icon="ion:document-text-outline"
-        />
-        <MenuDivider v-if="getShowDoc" />
-        <MenuItem
           v-if="getUseLockPage"
           key="lock"
           :text="t('layout.header.tooltipLock')"
@@ -39,17 +32,17 @@
 
   import { computed, defineComponent } from 'vue';
   import { Dropdown, Menu, Typography } from 'ant-design-vue';
-  import { DOC_URL } from 'fe-ent-core/es/logics';
-  import { openWindow, propTypes } from 'fe-ent-core/es/utils';
-  import { useDesign, useHeaderSetting, useI18n } from 'fe-ent-core/es/hooks';
+  import { propTypes } from 'fe-ent-core/es/utils';
+  import { useDesign, useI18n } from 'fe-ent-core/es/hooks';
   import { useModal } from 'fe-ent-core/es/components/modal';
   import { useUserStore } from 'fe-ent-core/es/store';
+  import { useHeaderSetting } from '../../../../../../hooks';
   import headerImg from '../../../../../../assets/header.jpg';
 
   import LockAction from '../lock/lock-modal.vue';
   import MenuItem from './drop-menu-item.vue';
 
-  type MenuEvent = 'logout' | 'doc' | 'lock';
+  type MenuEvent = 'logout' | 'lock';
 
   export default defineComponent({
     name: 'UserDropdown',
@@ -57,7 +50,6 @@
       Dropdown,
       Menu,
       MenuItem,
-      MenuDivider: Menu.Divider,
       LockAction,
       Text: Typography.Text,
     },
@@ -67,7 +59,7 @@
     setup() {
       const { prefixCls } = useDesign('header-user-dropdown');
       const { t } = useI18n();
-      const { getShowDoc, getUseLockPage } = useHeaderSetting();
+      const { getUseLockPage } = useHeaderSetting();
       const userStore = useUserStore();
 
       const getUserInfo = computed(() => {
@@ -86,18 +78,10 @@
         userStore.confirmLoginOut();
       }
 
-      // open doc
-      function openDoc() {
-        openWindow(DOC_URL);
-      }
-
       function handleMenuClick(e: { key: MenuEvent }) {
         switch (e.key) {
           case 'logout':
             handleLoginOut();
-            break;
-          case 'doc':
-            openDoc();
             break;
           case 'lock':
             handleLock();
@@ -110,7 +94,6 @@
         t,
         getUserInfo,
         handleMenuClick,
-        getShowDoc,
         register,
         getUseLockPage,
       };

@@ -11,7 +11,7 @@ declare module '@vue/runtime-core' {
     EntClickOutSide: typeof import('fe-ent-core')['EntClickOutSide'];
     EntCollapseContainer: typeof import('fe-ent-core')['EntCollapseContainer'];
     EntCountButton: typeof import('fe-ent-core')['EntCountButton'];
-    EntCountdownInput: typeof import('fe-ent-core')['EntCountdownInput'];
+    EntCountDownInput: typeof import('fe-ent-core')['EntCountDownInput'];
     EntCountTo: typeof import('fe-ent-core')['EntCountTo'];
     EntCropperAvatar: typeof import('fe-ent-core')['EntCropperAvatar'];
     EntCropperImage: typeof import('fe-ent-core')['EntCropperImage'];

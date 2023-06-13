@@ -3,7 +3,7 @@ import { useI18n } from 'fe-ent-core/es/hooks';
 import type { Ref } from 'vue';
 import type { Rule, RuleObject } from 'ant-design-vue/es/form/interface';
 import type { Recordable } from 'fe-ent-core/es/types';
-
+import type { FormInstance } from 'ant-design-vue/es/form';
 export enum LoginStateEnum {
   LOGIN,
   REGISTER,
@@ -28,7 +28,7 @@ export function useLoginState() {
   return { setLoginState, getLoginState, handleBackLogin };
 }
 
-export function useFormValid<T>(formRef: Ref<any>) {
+export function useFormValid<T>(formRef: Ref<FormInstance>) {
   async function validForm() {
     const form = unref(formRef);
     if (!form) return;

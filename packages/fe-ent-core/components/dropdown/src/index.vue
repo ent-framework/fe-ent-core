@@ -40,7 +40,6 @@
   import { omit } from 'lodash-es';
   import { isFunction } from '@vueuse/shared';
   import { EntIcon } from '@ent-core/components/icon';
-  import { type Recordable } from '@ent-core/types';
   import type { DropMenu } from './typing';
   import type { PropType } from 'vue';
   const ADropdown = Dropdown;
@@ -49,22 +48,27 @@
   const AMenuDivider = Menu.Divider;
   const APopconfirm = Popconfirm;
   const props = {
+    /**
+     * 是否用popconfirm触发
+     */
     popconfirm: Boolean,
     /**
-     * the trigger mode which executes the drop-down action
-     * @default ['hover']
-     * @type string[]
+     * 触发方式
      */
     trigger: {
       type: [Array] as PropType<('contextmenu' | 'click' | 'hover')[]>,
-      default: () => {
-        return ['contextmenu'];
-      },
+      default: () => ['contextmenu'],
     },
+    /**
+     * 菜单列表
+     */
     dropMenuList: {
-      type: Array as PropType<(DropMenu & Recordable)[]>,
+      type: Array as PropType<DropMenu[]>,
       default: () => [],
     },
+    /**
+     * 已选中的菜单
+     */
     selectedKeys: {
       type: Array as PropType<string[]>,
       default: () => [],
@@ -75,7 +79,13 @@
     components: { ADropdown, AMenu, AMenuItem, AMenuDivider, APopconfirm, EntIcon },
     inheritAttrs: false,
     props,
-    emits: ['menuEvent'],
+    emits: [
+      /**
+       * 点击菜单时触发
+       * @param {{onClick?: Function;to?: string;icon?: string;event: string | number; text: string;disabled?: boolean;divider?: boolean}} menu
+       */
+      'menuEvent',
+    ],
     setup(props, { emit }) {
       function handleClickMenu(item: DropMenu) {
         const { event } = item;

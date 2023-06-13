@@ -15,50 +15,46 @@
     <div class="mt-4">
       权限切换(请先切换权限模式为前端角色权限模式):
       <Space>
-        <ent-button :type="isSuper ? 'primary' : 'default'" @click="changeRole(RoleEnum.SUPER)">
-          {{ RoleEnum.SUPER }}
+        <ent-button :type="isSuper ? 'primary' : 'default'" @click="handleLoginOut">
+          super
         </ent-button>
-        <ent-button :type="isTest ? 'primary' : 'default'" @click="changeRole(RoleEnum.TEST)">
-          {{ RoleEnum.TEST }}
+        <ent-button :type="isTest ? 'primary' : 'default'" @click="handleLoginOut">
+          test
         </ent-button>
       </Space>
     </div>
     <Divider>组件方式判断权限(有需要可以自行全局注册)</Divider>
-    <ent-authority :value="RoleEnum.SUPER">
+    <ent-authority value="super">
       <ent-button type="primary" class="mx-4"> 拥有super角色权限可见 </ent-button>
     </ent-authority>
 
-    <ent-authority :value="RoleEnum.TEST">
+    <ent-authority value="test">
       <ent-button color="success" class="mx-4"> 拥有test角色权限可见 </ent-button>
     </ent-authority>
 
-    <ent-authority :value="[RoleEnum.TEST, RoleEnum.SUPER]">
+    <ent-authority :value="['test', 'super']">
       <ent-button color="error" class="mx-4"> 拥有[test,super]角色权限可见 </ent-button>
     </ent-authority>
 
     <Divider>函数方式方式判断权限(适用于函数内部过滤)</Divider>
-    <ent-button v-if="hasPermission(RoleEnum.SUPER)" type="primary" class="mx-4">
+    <ent-button v-if="hasPermission('super')" type="primary" class="mx-4">
       拥有super角色权限可见
     </ent-button>
 
-    <ent-button v-if="hasPermission(RoleEnum.TEST)" color="success" class="mx-4">
+    <ent-button v-if="hasPermission('test')" color="success" class="mx-4">
       拥有test角色权限可见
     </ent-button>
 
-    <ent-button v-if="hasPermission([RoleEnum.TEST, RoleEnum.SUPER])" color="error" class="mx-4">
+    <ent-button v-if="hasPermission(['test', 'super'])" color="error" class="mx-4">
       拥有[test,super]角色权限可见
     </ent-button>
 
     <Divider>指令方式方式判断权限(该方式不能动态修改权限.)</Divider>
-    <ent-button v-auth="RoleEnum.SUPER" type="primary" class="mx-4">
-      拥有super角色权限可见
-    </ent-button>
+    <ent-button v-auth="'super'" type="primary" class="mx-4"> 拥有super角色权限可见 </ent-button>
 
-    <ent-button v-auth="RoleEnum.TEST" color="success" class="mx-4">
-      拥有test角色权限可见
-    </ent-button>
+    <ent-button v-auth="'test'" color="success" class="mx-4"> 拥有test角色权限可见 </ent-button>
 
-    <ent-button v-auth="[RoleEnum.TEST, RoleEnum.SUPER]" color="error" class="mx-4">
+    <ent-button v-auth="['test', 'super']" color="error" class="mx-4">
       拥有[test,super]角色权限可见
     </ent-button>
   </ent-page-wrapper>
@@ -66,7 +62,6 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { Alert, Divider, Space } from 'ant-design-vue';
-  import { RoleEnum } from 'fe-ent-core/es/logics/enums';
   import { useUserStore } from 'fe-ent-core/es/store';
   import { usePermission } from 'fe-ent-core/es/hooks';
   import CurrentPermissionMode from '../current-permission-mode.vue';
@@ -74,15 +69,16 @@
   export default defineComponent({
     components: { Space, Alert, CurrentPermissionMode, Divider },
     setup() {
-      const { changeRole, hasPermission } = usePermission();
+      const { hasPermission } = usePermission();
       const userStore = useUserStore();
-
+      function handleLoginOut() {
+        userStore.confirmLoginOut();
+      }
       return {
         userStore,
-        RoleEnum,
-        isSuper: computed(() => userStore.getRoleList.includes(RoleEnum.SUPER)),
-        isTest: computed(() => userStore.getRoleList.includes(RoleEnum.TEST)),
-        changeRole,
+        isSuper: computed(() => userStore.getRoleList.includes('super')),
+        isTest: computed(() => userStore.getRoleList.includes('test')),
+        handleLoginOut,
         hasPermission,
       };
     },

@@ -88,12 +88,12 @@
     useGlobSetting,
     useGo,
     useI18n,
-    useMenuSetting,
     useTheme,
     useThemeSetting,
   } from 'fe-ent-core/es/hooks';
   import { usePermissionStore } from 'fe-ent-core/es/store';
   import { Typography } from 'ant-design-vue';
+  import { useMenuSetting } from '../../../../hooks';
   import LayoutTrigger from '../trigger/index.vue';
   import EntSimpleMenu from '../menu/left-menu/index.vue';
   import EntSimpleMenuTag from '../menu/left-menu/simple-menu-tag.vue';

@@ -14,14 +14,14 @@
     :collapsed="getCollapsed"
     :collapsed-width="getCollapsedWidth"
     :trigger="getTrigger"
-    :theme="getComputedMenuTheme"
     v-bind="getTriggerAttr"
+    :theme="getActualMenuTheme"
     @breakpoint="onBreakpointChange"
   >
     <template v-if="getShowTrigger" #trigger>
       <LayoutTrigger />
     </template>
-    <LayoutMenu :theme="getComputedMenuTheme" :menu-mode="getMode" :split-type="getSplitType" />
+    <LayoutMenu :menu-mode="getMode" :split-type="getSplitType" />
     <DragBar ref="dragBarRef" />
   </Sider>
 </template>
@@ -29,7 +29,8 @@
   import { computed, defineComponent, h, ref, unref } from 'vue';
   import { Layout } from 'ant-design-vue';
   import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/es/logics';
-  import { useAppInject, useDesign, useMenuSetting, useThemeSetting } from 'fe-ent-core/es/hooks';
+  import { useAppInject, useDesign } from 'fe-ent-core/es/hooks';
+  import { useLayoutTheme, useMenuSetting } from '../../../../hooks';
   import LayoutTrigger from '../trigger/index.vue';
   import LayoutMenu from '../menu/index.vue';
   import { useDragLine, useSiderEvent, useTrigger } from './use-layout-sider';
@@ -47,7 +48,6 @@
         getCollapsed,
         getMenuWidth,
         getSplit,
-        getMenuTheme,
         getRealWidth,
         getMenuHidden,
         getMenuFixed,
@@ -55,18 +55,12 @@
         toggleCollapsed,
       } = useMenuSetting();
 
-      const { getGlobalTheme } = useThemeSetting();
-
-      const getComputedMenuTheme = computed(() => {
-        if (getMenuTheme.value === 'none') return getGlobalTheme.value;
-        return getMenuTheme.value;
-      });
-
       const { prefixCls } = useDesign('layout-sideBar');
 
       const { getIsMobile } = useAppInject();
 
       const { getTriggerAttr, getShowTrigger } = useTrigger(getIsMobile);
+      const { getActualMenuTheme } = useLayoutTheme();
 
       useDragLine(sideRef, dragBarRef);
 
@@ -124,12 +118,12 @@
         showClassSideBarRef,
         getMenuWidth,
         getCollapsed,
-        getComputedMenuTheme,
         onBreakpointChange,
         getMode,
         getSplitType,
         getShowTrigger,
         toggleCollapsed,
+        getActualMenuTheme,
       };
     },
   });

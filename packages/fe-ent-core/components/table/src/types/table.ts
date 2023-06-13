@@ -5,7 +5,6 @@ import type { FormProps } from '@ent-core/components/form/interface';
 import type { TableRowSelection as ITableRowSelection } from 'ant-design-vue/es/table/interface';
 import type { ColumnProps } from 'ant-design-vue/es/table';
 import type { AnyFunction, EmitType, Fn, Recordable, VueNode } from '@ent-core/types';
-import type { RoleEnum } from '@ent-core/logics/enums/role-enum';
 
 export declare type SortOrder = 'ascend' | 'descend';
 
@@ -449,7 +448,7 @@ export interface BasicColumn extends ColumnProps<Recordable> {
   editValueMap?: (value: any) => string;
   onEditRow?: () => void;
   // 权限编码控制是否显示
-  auth?: RoleEnum | RoleEnum[] | string | string[];
+  auth?: string | string[];
   // 业务控制是否显示
   ifShow?: boolean | ((column: BasicColumn) => boolean);
   // 自定义修改后显示的内容

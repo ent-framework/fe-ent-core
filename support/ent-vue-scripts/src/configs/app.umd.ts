@@ -1,6 +1,5 @@
 import { readPackageJSON } from 'pkg-types';
 import { type UserConfig, mergeConfig } from 'vite';
-import dts from 'vite-plugin-dts';
 import { createPlugins } from '../plugins';
 import { generateModifyVars } from '../utils/modify-vars';
 import { commonConfig } from './common';
@@ -51,15 +50,7 @@ async function defineAppUmdConfig(defineOptions: DefineOptions) {
         },
       },
     },
-    plugins: [
-      ...plugins,
-      dts({
-        entryRoot: `${root}`,
-        include: ['index.ts', 'components/**/*.{ts,tsx,vue}'],
-        outputDir: `${root}/dist/types`,
-        logLevel: 'error',
-      }),
-    ],
+    plugins,
   };
   const mergedConfig = mergeConfig(commonConfig({ command, mode }), packageConfig);
 

@@ -10,31 +10,37 @@
 
   const props = {
     /**
-     * Help text max-width
+     * @zh 最大宽度
+     * @en Help text max-width
      * @default: 600px
      */
     maxWidth: { type: String, default: '600px' },
     /**
-     * Whether to display the serial number
+     * @zh 是否显示序号,在 text 为 string[] 情况下生效
+     * @en Whether to display the serial number
      * @default: false
      */
     showIndex: { type: Boolean },
     /**
-     * Help text font color
+     * @zh 颜色
+     * @en Help text font color
      * @default: #ffffff
      */
     color: { type: String, default: '#ffffff' },
     /**
-     * Help text font size
+     * @zh 字体大小
+     * @en Help text font size
      * @default: 14px
      */
     fontSize: { type: String, default: '14px' },
     /**
-     * Help text list
+     * @zh 显示方向，参考 Tooltip 组件
+     * @en Help text list
      */
     placement: { type: String, default: 'right' },
     /**
-     * Help text list
+     * @zh 文本列表
+     * @en Help text list
      */
     text: { type: [Array, String] as PropType<string[] | string> },
   };

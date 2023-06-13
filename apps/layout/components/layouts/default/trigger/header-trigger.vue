@@ -8,7 +8,8 @@
   import { defineComponent } from 'vue';
   import { EntIcon } from 'fe-ent-core';
   import { propTypes } from 'fe-ent-core/es/utils';
-  import { useDesign, useMenuSetting } from 'fe-ent-core/es/hooks';
+  import { useDesign } from 'fe-ent-core/es/hooks';
+  import { useMenuSetting } from '../../../../hooks';
 
   export default defineComponent({
     name: 'HeaderTrigger',

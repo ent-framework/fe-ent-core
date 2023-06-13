@@ -17,11 +17,18 @@
 <script lang="ts" setup>
   import { h } from 'vue';
   import { Tag } from 'ant-design-vue';
-  import { DOC_URL, GITHUB_URL, SITE_URL } from 'fe-ent-core/es/logics';
   import { useDescription } from 'fe-ent-core/es/components/description';
   import type { DescItem } from 'fe-ent-core/es/components/description/interface';
 
   const { pkg, lastBuildTime } = __APP_INFO__;
+  // github repo url
+  const GITHUB_URL = 'https://github.com/ent-framework/fe-ent-core';
+
+  // vue-vben-admin-next-doc
+  const DOC_URL = 'https://docs.ent-framework.tech/';
+
+  // site url
+  const SITE_URL = 'https://docs.ent-framework.tech/';
 
   const { dependencies, devDependencies, name, version } = pkg;
 

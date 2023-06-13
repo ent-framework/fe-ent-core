@@ -9,8 +9,6 @@ description: 皮肤选择(暗黑模式切换)，语言切换，应用配置
 
 ## API
 
-
-
-
+%%API(index.vue)%%
 
 

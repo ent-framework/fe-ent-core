@@ -29,7 +29,8 @@
 <script>
   import { defineComponent, ref } from 'vue';
   import { useRoute } from 'vue-router';
-  import { useGo, useTabs } from 'fe-ent-core/es/hooks';
+  import { useGo } from 'fe-ent-core/es/hooks';
+  import { useTabs } from 'fe-ent-layout/es/hooks';
   import { Tabs } from 'ant-design-vue';
   export default defineComponent({
     name: 'AccountDetail',

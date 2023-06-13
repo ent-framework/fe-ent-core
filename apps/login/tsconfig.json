@@ -3,9 +3,16 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "fe-ent-core": ["../../packages/fe-ent-core/index.ts"],
-      "fe-ent-core/es/*": ["../../packages/fe-ent-core/*"]
-    }
+//      "fe-ent-core": ["../../packages/fe-ent-core/index.ts"],
+//      "fe-ent-core/es/*": ["../../packages/fe-ent-core/*"],
+      "vue-types": ["../../node_modules/vue-types"],
+      "axios": ["../../node_modules/axios"],
+      "pinia": ["../../node_modules/pinia"],
+      "ant-design-vue": ["../../node_modules/ant-design-vue"],
+      "ant-design-vue/es/*": ["../../node_modules/ant-design-vue/es/*"],
+      "@types/qrcode": ["../../node_modules/@types/qrcode"]
+    },
+    "types": ["vite/client"]
   },
   "include": ["components", "../../packages"],
   "exclude": [

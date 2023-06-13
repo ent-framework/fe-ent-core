@@ -26,7 +26,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { useGo, useMessage, useTabs } from 'fe-ent-core/es/hooks';
+  import { useGo, useMessage } from 'fe-ent-core/es/hooks';
+  import { useTabs } from 'fe-ent-layout/es/hooks';
   import { Alert, Input } from 'ant-design-vue';
 
   export default defineComponent({

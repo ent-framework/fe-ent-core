@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { PermissionModeEnum, RoleEnum } from 'fe-ent-core/es/logics/enums';
+  import { PermissionModeEnum } from 'fe-ent-core/es/logics/enums';
   import { useAppStore, useUserStore } from 'fe-ent-core/es/store';
   import { usePermission } from 'fe-ent-core/es/hooks';
   import { Alert, Space } from 'ant-design-vue';
@@ -51,7 +51,6 @@
       }
 
       return {
-        RoleEnum,
         refreshMenu,
         switchToken,
         isBackPremissionMode,

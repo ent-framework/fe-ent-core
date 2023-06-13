@@ -18,10 +18,16 @@
     name: 'EntLoading',
     components: { Spin },
     props: {
+      /**
+       * 加载文本
+       */
       tip: {
         type: String as PropType<string>,
         default: '',
       },
+      /**
+       * 大小
+       */
       size: {
         type: String as PropType<SizeEnum>,
         default: SizeEnum.LARGE,
@@ -29,17 +35,29 @@
           return [SizeEnum.DEFAULT, SizeEnum.SMALL, SizeEnum.LARGE].includes(v);
         },
       },
+      /**
+       * 绝对定位，为 false 时可以全屏
+       */
       absolute: {
         type: Boolean as PropType<boolean>,
         default: false,
       },
+      /**
+       * 当前加载状态
+       */
       loading: {
         type: Boolean as PropType<boolean>,
         default: false,
       },
+      /**
+       * 背景色
+       */
       background: {
         type: String as PropType<string>,
       },
+      /**
+       * 背景色主题 ，当背景色不为空时使用背景色
+       */
       theme: {
         type: String as PropType<'dark' | 'light'> | any,
       },

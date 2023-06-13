@@ -20,18 +20,16 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, unref } from 'vue';
+  import { computed, defineComponent, ref, unref } from 'vue';
   import { ConfigProvider, Layout } from 'ant-design-vue';
 
-  import {
-    useAppInject,
-    useDesign,
-    useHeaderSetting,
-    useLockPage,
-    useMenuSetting,
-    useTheme,
-  } from 'fe-ent-core/es/hooks';
+  import { useAppInject, useDesign, useTheme } from 'fe-ent-core/es/hooks';
 
+  import { MenuModeEnum, MenuTypeEnum } from 'fe-ent-core/es/logics';
+  import { createBreakpointListen } from 'fe-ent-core/es/hooks/event/use-breakpoint';
+  import { useAppStore } from 'fe-ent-core/es/store';
+  import { useHeaderSetting, useLayoutTheme, useLockPage, useMenuSetting } from '../../../hooks';
+  import { useLayoutStore } from '../../../store/layout';
   import LayoutMultipleHeader from './header/multiple-header.vue';
   import LayoutSideBar from './sider/index.vue';
   import LayoutContent from './content/index.vue';
@@ -39,7 +37,6 @@
   import LayoutFeatures from './feature/index.vue';
   import LayoutFooter from './footer/index.vue';
 
-  // @ts-nocheck
   export default defineComponent({
     name: 'DefaultLayout',
     components: {
@@ -53,12 +50,17 @@
       ConfigProvider,
     },
     setup() {
+      const isMobile = ref(false);
       const { prefixCls } = useDesign('default-layout');
       const { getIsMobile } = useAppInject();
       const { getShowFullHeaderRef } = useHeaderSetting();
       const { getShowSidebar, getIsMixSidebar, getShowMenu } = useMenuSetting();
+      const isSetState = ref(false);
 
-      const { getTheme, getActualHeaderTheme, getActualMenuTheme } = useTheme();
+      const appStore = useAppStore();
+      const layoutStore = useLayoutStore();
+      const { getTheme } = useTheme();
+      const { getActualHeaderTheme, getActualMenuTheme } = useLayoutTheme();
 
       const getComputedHeaderTheme = computed(() => {
         return getTheme(unref(getActualHeaderTheme));
@@ -78,6 +80,55 @@
         }
         return cls;
       });
+
+      // Monitor screen breakpoint information changes
+      createBreakpointListen(({ screenMap, sizeEnum, width }) => {
+        const lgWidth = screenMap.get(sizeEnum.LG);
+        if (lgWidth) {
+          isMobile.value = width.value - 1 < lgWidth;
+        }
+        handleRestoreState();
+      });
+
+      /**
+       * Used to maintain the state before the window changes
+       */
+      function handleRestoreState() {
+        if (unref(isMobile)) {
+          if (!unref(isSetState)) {
+            isSetState.value = true;
+            const {
+              menuSetting: {
+                type: menuType,
+                mode: menuMode,
+                collapsed: menuCollapsed,
+                split: menuSplit,
+              },
+            } = layoutStore.getLayoutConfig;
+            layoutStore.setLayoutConfig({
+              menuSetting: {
+                type: MenuTypeEnum.SIDEBAR,
+                mode: MenuModeEnum.INLINE,
+                split: false,
+              },
+            });
+            appStore.setBeforeMiniInfo({ menuMode, menuCollapsed, menuType, menuSplit });
+          }
+        } else {
+          if (unref(isSetState)) {
+            isSetState.value = false;
+            const { menuMode, menuCollapsed, menuType, menuSplit } = appStore.getBeforeMiniInfo;
+            layoutStore.setLayoutConfig({
+              menuSetting: {
+                type: menuType,
+                mode: menuMode,
+                collapsed: menuCollapsed,
+                split: menuSplit,
+              },
+            });
+          }
+        }
+      }
 
       return {
         getShowFullHeaderRef,

@@ -8,6 +8,11 @@
       切换权限模式
     </ent-button>
     <Divider />
+    <section>
+      <div>mock 登录账号: admin, 密码: 123456, role: super</div>
+      <div>mock 登录账号: test, 密码: 123456, role: test</div>
+      <div>mock 登录账号: super, 密码: 123456, role: super, test</div>
+    </section>
   </div>
 </template>
 <script lang="ts">
