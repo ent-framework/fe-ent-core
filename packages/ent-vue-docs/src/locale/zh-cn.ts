@@ -221,6 +221,6 @@ export default {
     chore: '架构改动',
     to: '到',
     filter: '筛选选项',
-    close: '关闭'
+    close: '关闭',
   },
 };

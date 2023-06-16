@@ -43,7 +43,7 @@ export default function vueMdPlugin(): Plugin {
         return transform?.call(this, code, getVueId(id));
       }
 
-      const tokens = marked.lexer(code);
+      const tokens = marked.Lexer.lex(code);
       const frontMatter = getFrontMatter(tokens);
 
       if (frontMatter?.changelog) {
@@ -67,7 +67,7 @@ export default function vueMdPlugin(): Plugin {
 
       const content = await read();
 
-      const tokens = marked.lexer(content);
+      const tokens = marked.Lexer.lex(content);
       const frontMatter = getFrontMatter(tokens);
 
       if (frontMatter?.changelog) {

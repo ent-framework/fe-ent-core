@@ -33,7 +33,6 @@
           ? t('common.cancelText')
           : props.cancelText;
       const okText = !props.okText || props.okText.length == 0 ? t('common.okText') : props.okText;
-
       function handleOk(e: Event) {
         emit('ok', e);
       }

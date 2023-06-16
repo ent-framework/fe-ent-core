@@ -5,7 +5,7 @@ import type { Ref } from 'vue';
 export interface UseModalDragMoveContext {
   draggable: Ref<boolean | undefined> | undefined;
   destroyOnClose: Ref<boolean | undefined> | undefined;
-  visible: Ref<boolean>;
+  visible: Ref<boolean | undefined>;
 }
 
 export function useModalDragMove(context: UseModalDragMoveContext) {

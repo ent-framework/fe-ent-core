@@ -1,17 +1,17 @@
 import path from 'path';
-import type { Token, Tokens } from 'marked';
+import type { marked } from 'marked';
 import type { FileImportToken, I18nDescriptionToken } from './interface';
 
-export function isParagraph(token: Token): token is Tokens.Paragraph {
-  return (token as Tokens.Paragraph).type === 'paragraph';
+export function isParagraph(token: marked.Token): token is marked.Tokens.Paragraph {
+  return (token as marked.Tokens.Paragraph).type === 'paragraph';
 }
 
-export function isCode(token: Token): token is Tokens.Code {
-  return (token as Tokens.Code).type === 'code';
+export function isCode(token: marked.Token): token is marked.Tokens.Code {
+  return (token as marked.Tokens.Code).type === 'code';
 }
 
-export function isHeading(token: Token): token is Tokens.Heading {
-  return (token as Tokens.Heading).type === 'heading';
+export function isHeading(token: marked.Token): token is marked.Tokens.Heading {
+  return (token as marked.Tokens.Heading).type === 'heading';
 }
 
 export const isFileImport = (token: any): token is FileImportToken => {
@@ -22,8 +22,8 @@ export const isI18nDescription = (token: any): token is I18nDescriptionToken => 
   return token.type === 'i18nDescription';
 };
 
-export function isSpace(token: Token): token is Tokens.Space {
-  return (token as Tokens.Space).type === 'space';
+export function isSpace(token: marked.Token): token is marked.Tokens.Space {
+  return (token as marked.Tokens.Space).type === 'space';
 }
 
 export const toKebabCase = (string: string): string => {

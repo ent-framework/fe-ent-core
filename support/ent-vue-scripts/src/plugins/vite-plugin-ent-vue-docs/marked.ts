@@ -1,8 +1,7 @@
 import path from 'path';
 import { parse } from '@vue/compiler-sfc';
-import marked from 'marked';
-// @ts-ignore
-import { cleanUrl, escape } from 'marked/src/helpers';
+import { marked } from 'marked';
+import { cleanUrl, escape } from './helper';
 import yaml from 'js-yaml';
 import Prism from 'prismjs';
 import loadLanguages from 'prismjs/components/index';
@@ -69,7 +68,7 @@ const i18nDescription = {
 
     if (match) {
       const text = match[2].trim();
-      const content = marked(text);
+      const content = marked.parse(text);
       return {
         type: 'i18nDescription',
         raw: match[0],
@@ -141,11 +140,11 @@ marked.use({
       return `<h${level} id="${raw}">${text}</h${level}>`;
     },
     link(this: any, href, title, text) {
-      href = cleanUrl(this.options.sanitize, this.options.baseUrl, href);
+      href = cleanUrl(this.options.sanitize, this.options.baseUrl, href as string);
       if (href === null) {
         return text;
       }
-      let out = `<a class="link" href="${escape(href)}"`;
+      let out = `<a class="link" href="${escape(href as string, 'utf-8')}"`;
       if (title) {
         if (/_blank/.test(title)) {
           out += ` target="_blank"`;

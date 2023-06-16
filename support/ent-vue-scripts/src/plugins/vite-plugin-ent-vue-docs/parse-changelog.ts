@@ -1,5 +1,4 @@
 import marked from './marked';
-import type { Token } from 'marked';
 
 const getType = (text: string) => {
   if (/attention|重点注意/i.test(text)) {
@@ -24,7 +23,7 @@ const getType = (text: string) => {
   return 'feature';
 };
 
-export const parseChangelog = (tokens: Token[]) => {
+export const parseChangelog = (tokens: marked.Token[]) => {
   const changelog = [];
 
   let data = { version: '', date: '', list: [], extra: [] };

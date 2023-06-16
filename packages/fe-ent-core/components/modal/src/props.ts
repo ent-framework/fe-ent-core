@@ -1,7 +1,6 @@
-import type { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
-import type { CSSProperties, PropType } from 'vue';
+import { modalProps as AntModalProps } from 'ant-design-vue/es/modal/Modal';
+import type { PropType } from 'vue';
 import type { ModalWrapperProps } from './typing';
-import type { VueNode } from '@ent-core/types';
 
 export const modalProps = {
   visible: { type: Boolean },
@@ -10,72 +9,49 @@ export const modalProps = {
   minHeight: { type: Number },
   // open drag
   draggable: { type: Boolean, default: true },
-  centered: { type: Boolean },
-  cancelText: { type: String },
-  okText: { type: String },
-
   closeFunc: Function as PropType<() => Promise<boolean>>,
 };
 
-export const basicProps = Object.assign({}, modalProps, {
-  defaultFullscreen: { type: Boolean },
-  // Can it be full screen
+export const basicProps = {
+  ...modalProps,
+  /**
+   * 默认全屏
+   */
+  defaultFullscreen: { type: Boolean, default: false },
+  /**
+   * 是否可以进行全屏
+   */
   canFullscreen: { type: Boolean, default: true },
-  // After enabling the wrapper, the bottom can be increased in height
+  /**
+   * 开启是适应高度后，如果超过屏幕高度，底部和顶部会保持一样的间距，该参数可以用来缩小底部的间距
+   */
   wrapperFooterOffset: { type: Number, default: 0 },
-  // Warm reminder message
-  helpMessage: [String, Array] as PropType<string | string[]>,
-  // Whether to setting wrapper
+  /**
+   * 标题右侧提示文本
+   * @type {string | string[]}
+   */
+  helpMessage: { type: [String, Array] as PropType<string | string[]> },
+  /**
+   * 是否开启自适应高度，开启后会跟随屏幕变化自适应内容，并出现滚动条
+   */
   useWrapper: { type: Boolean, default: true },
+  /**
+   * loading 状态
+   */
   loading: { type: Boolean },
+  /**
+   * loading 文本
+   */
   loadingTip: { type: String },
   /**
-   * @description: Show close button
+   * 显示关闭按钮
    */
   showCancelBtn: { type: Boolean, default: true },
   /**
-   * @description: Show confirmation button
+   * 显示确认按钮
    */
   showOkBtn: { type: Boolean, default: true },
 
   wrapperProps: Object as PropType<Partial<ModalWrapperProps>>,
-
-  afterClose: Function as PropType<() => Promise<VueNode>>,
-
-  bodyStyle: Object as PropType<CSSProperties>,
-
-  closable: { type: Boolean, default: true },
-
-  closeIcon: Object as PropType<VueNode>,
-
-  confirmLoading: { type: Boolean },
-
-  destroyOnClose: { type: Boolean },
-
-  footer: Object as PropType<VueNode>,
-
-  getContainer: Function as PropType<() => any>,
-
-  mask: { type: Boolean, default: true },
-
-  maskClosable: { type: Boolean, default: true },
-  keyboard: { type: Boolean, default: true },
-
-  maskStyle: Object as PropType<CSSProperties>,
-
-  okType: { type: String, default: 'primary' },
-
-  okButtonProps: Object as PropType<ButtonProps>,
-
-  cancelButtonProps: Object as PropType<ButtonProps>,
-
-  title: { type: String },
-
-  visible: { type: Boolean },
-
-  width: [String, Number] as PropType<string | number>,
-
-  wrapClassName: { type: String },
-
-  zIndex: { type: Number },
-});
+  ...AntModalProps(),
+};

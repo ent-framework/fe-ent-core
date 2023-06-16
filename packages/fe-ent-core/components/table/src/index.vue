@@ -78,6 +78,11 @@
     TableActionType,
   } from './types/table';
 
+  /**
+   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/table/index.zh-CN.md
+   * @extends Table
+   * @docLink https://next.antdv.com/components/table-cn
+   */
   export default defineComponent({
     name: 'EntTable',
     components: {
@@ -85,10 +90,6 @@
       EntForm,
       HeaderCell,
     },
-    /**
-     * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/table/index.zh-CN.md
-     */
-    extends: Table,
     props: basicProps,
     emits: [
       'fetch-success',

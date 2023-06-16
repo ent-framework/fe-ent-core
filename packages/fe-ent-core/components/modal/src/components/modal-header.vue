@@ -9,7 +9,7 @@
   import type { PropType } from 'vue';
 
   export default defineComponent({
-    name: 'BasicModalHeader',
+    name: 'EntModalHeader',
     components: { EntTitle },
     props: {
       helpMessage: {

@@ -60,13 +60,14 @@
   import type { AdvanceState } from './types/hooks';
   import type { FormActionType, FormProps, FormSchema } from './types/form';
 
+  /**
+   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/form/index.zh-CN.md
+   * @extends Form
+   * @docLink https://next.antdv.com/components/form-cn
+   */
   export default defineComponent({
     name: 'EntForm',
     components: { FormItem, Form, Row, FormAction },
-    /**
-     * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/form/index.zh-CN.md
-     */
-    extends: Form,
     props: basicProps,
     emits: ['advanced-change', 'reset', 'submit', 'register', 'field-value-change'],
     setup(props, { emit, attrs }) {

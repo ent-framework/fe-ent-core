@@ -18,16 +18,17 @@
   import { btnProps } from './props';
   import type { CSSProperties } from 'vue';
 
+  /**
+   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/button/index.zh-CN.md
+   * @extends Button
+   * @docLink https://next.antdv.com/components/button-cn
+   */
   export default defineComponent({
     name: 'EntButton',
     components: {
       Button,
       Icon,
     },
-    /**
-     * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/button/index.zh-CN.md
-     */
-    extends: Button,
     inheritAttrs: false,
     props: btnProps,
     setup(props) {

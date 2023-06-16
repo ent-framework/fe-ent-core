@@ -7,9 +7,8 @@ description: 相对时间组件
 ```
 
 
-@import ./__demo__/basic.md
-
 ## API
+
 
 ### `<ent-time>` Props
 

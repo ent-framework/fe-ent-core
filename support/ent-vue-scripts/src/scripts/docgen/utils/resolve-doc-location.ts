@@ -6,6 +6,7 @@ import type { Tag } from 'vue-inbrowser-compiler-independent-utils';
 export default function resolveDocLocation(nodePath: NodePath) {
   let i = 0;
   let docBlock = getDocblock(nodePath, { commentIndex: i });
+  docBlock = getDocblock(nodePath);
   while (docBlock) {
     // if no doc block return
     if (!docBlock || !docBlock.length) {

@@ -39,12 +39,13 @@
     ...descriptionsProps(),
   };
 
+  /**
+   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/descriptions/index.zh-CN.md
+   * @extends Descriptions
+   * @docLink https://next.antdv.com/components/descriptions-cn
+   */
   export default defineComponent({
     name: 'EntDescription',
-    /**
-     * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/descriptions/index.zh-CN.md
-     */
-    extends: Descriptions,
     props,
     emits: ['register'],
     setup(props, { slots, emit }) {
