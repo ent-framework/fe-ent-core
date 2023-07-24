@@ -75,7 +75,7 @@
   import type { Recordable } from '@ent-core/types';
 
   /**
-   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/modal/index.zh-CN.md
+   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/modal/index.zh-CN.md
    * @extends Modal
    * @docLink https://next.antdv.com/components/modal-cn
    */

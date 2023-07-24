@@ -79,7 +79,7 @@
   } from './types/table';
 
   /**
-   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/table/index.zh-CN.md
+   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/table/index.zh-CN.md
    * @extends Table
    * @docLink https://next.antdv.com/components/table-cn
    */

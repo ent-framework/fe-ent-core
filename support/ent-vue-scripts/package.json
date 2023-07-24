@@ -47,7 +47,7 @@
     "@types/parse5": "^5.0.0"
   },
   "dependencies": {
-    "ant-design-vue": "4.0.0-rc.5",
+    "ant-design-vue": "4.0.0",
     "@babel/core": "^7.14.6",
     "@babel/parser": "^7.14.7",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
@@ -85,7 +85,7 @@
     "ts-morph": "^14.0.0",
     "typescript": "^4.9.4",
     "unocss": "^0.52.4",
-    "vite": "4.2.2",
+    "vite": "4.2.3",
     "vue": "3.2.47",
     "vite-plugin-eslint": "^1.1.2",
     "vite-svg-loader": "^1.5.1",

@@ -52,6 +52,8 @@ export interface HeaderSetting {
   useLockPage: boolean;
   // Show message center button
   showNotice: boolean;
+  // Show document button
+  showDoc: boolean;
   showSearch: boolean;
 }
 

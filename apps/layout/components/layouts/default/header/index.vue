@@ -139,8 +139,9 @@
       const { token } = useToken();
       const getHeaderStyle = computed((): CSSProperties => {
         const tokenValues = unref(token);
+        const theme = unref(getActualHeaderTheme);
         return {
-          backgroundColor: tokenValues.colorBgContainer,
+          backgroundColor: theme === 'dark' ? '#001529' : tokenValues.colorBgContainer,
         };
       });
 

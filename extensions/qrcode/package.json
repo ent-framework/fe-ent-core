@@ -37,7 +37,7 @@
     "rimraf": "^5.0.0",
     "@types/tinycolor2": "^1.4.2",
     "@types/qrcode": "^1.4.1",
-    "vite": "4.2.2"
+    "vite": "4.2.3"
   },
   "repository": {
     "type": "git",

@@ -34,7 +34,7 @@
   },
   "peerDependencies": {
     "vue": "^3.2.0",
-    "ant-design-vue": "4.0.0-rc.5"
+    "ant-design-vue": "4.0.0"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
@@ -73,8 +73,8 @@
     "rimraf": "^5.0.0",
     "vue-demi": "^0.12.1",
     "vue": "3.2.47",
-    "vite": "4.2.2",
-    "ant-design-vue": "4.0.0-rc.5"
+    "vite": "4.2.3",
+    "ant-design-vue": "4.0.0"
   },
   "repository": {
     "type": "git",

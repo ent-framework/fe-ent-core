@@ -38,7 +38,7 @@
   import type { CSSProperties } from 'vue';
 
   /**
-   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/tree/index.zh-CN.md
+   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/tree/index.zh-CN.md
    * @extends Tree
    * @docLink https://next.antdv.com/components/tree-cn
    */

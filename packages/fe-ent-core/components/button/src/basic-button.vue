@@ -19,7 +19,7 @@
   import type { CSSProperties } from 'vue';
 
   /**
-   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/button/index.zh-CN.md
+   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/button/index.zh-CN.md
    * @extends Button
    * @docLink https://next.antdv.com/components/button-cn
    */

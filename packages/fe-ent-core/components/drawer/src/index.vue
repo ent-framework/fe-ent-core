@@ -57,7 +57,7 @@
   import type { DrawerInstance, DrawerProps } from './typing';
 
   /**
-   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0-rc.5/components/drawer/index.zh-CN.md
+   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/drawer/index.zh-CN.md
    * @extends Drawer
    * @docLink https://next.antdv.com/components/drawer-cn
    */
