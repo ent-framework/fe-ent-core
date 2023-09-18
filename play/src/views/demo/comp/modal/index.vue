@@ -25,7 +25,7 @@
       <ent-button type="primary" class="my-4" @click="openTargetModal(4)"> 打开弹窗4 </ent-button>
     </a-space>
 
-    <component :is="currentModal" v-model:visible="modalVisible" :user-data="userData" />
+    <component :is="currentModal" v-model:open="modalVisible" :user-data="userData" />
 
     <Modal1 :min-height="100" @register="register1" />
     <Modal2 @register="register2" />

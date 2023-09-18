@@ -35,9 +35,7 @@
                   :title="icon"
                   @click="handleClick(icon)"
                 >
-                  <!-- <Icon :icon="icon" :prefix="prefix" /> -->
-                  <SvgIcon v-if="isSvgMode" :name="icon" />
-                  <Icon v-else :icon="icon" />
+                  <Icon :icon="icon" />
                 </li>
               </ul>
             </EntScrollContainer>
@@ -56,10 +54,7 @@
           </template>
         </template>
 
-        <span v-if="isSvgMode && currentSelect" class="cursor-pointer px-2 py-1 flex items-center">
-          <SvgIcon :name="currentSelect" />
-        </span>
-        <Icon v-else :icon="currentSelect || 'ion:apps-outline'" class="cursor-pointer px-2 py-1" />
+        <Icon :icon="currentSelect || 'ion:apps-outline'" class="cursor-pointer px-2 py-1" />
       </Popover>
     </template>
   </Input>
@@ -77,26 +72,8 @@
   import { useCopyToClipboard } from '@ent-core/hooks/web/use-copy-to-clipboard';
   import { useMessage } from '@ent-core/hooks/web/use-message';
   import iconsData from '../data/icons-data';
-  import SvgIcon from './svg-icon.vue';
   import Icon from './icon.vue';
   import type { ChangeEvent } from '@ent-core/types';
-  //import svgIcons from 'virtual:svg-icons-names';
-
-  const svgIcons = [
-    'icon-download-count',
-    'icon-dynamic-avatar-1',
-    'icon-dynamic-avatar-2',
-    'icon-dynamic-avatar-3',
-    'icon-dynamic-avatar-4',
-    'icon-dynamic-avatar-5',
-    'icon-dynamic-avatar-6',
-    'icon-moon',
-    'icon-sun',
-    'icon-test',
-    'icon-total-sales',
-    'icon-transaction',
-    'icon-visit-count',
-  ];
 
   function getIcons() {
     const data = iconsData as any;
@@ -110,10 +87,6 @@
     return result;
   }
 
-  function getSvgIcons() {
-    return svgIcons.map((icon) => icon.replace('icon-', ''));
-  }
-
   export default defineComponent({
     name: 'EntIconPicker',
     components: {
@@ -123,19 +96,16 @@
       Pagination,
       Empty,
       Icon,
-      SvgIcon,
     },
     props: {
       value: propTypes.string,
       width: propTypes.string.def('100%'),
       pageSize: propTypes.number.def(140),
       copy: propTypes.bool.def(false),
-      mode: propTypes.oneOf(['svg', 'iconify']).def('iconify'),
     },
     emits: ['change', 'update:value'],
     setup(props, { emit }) {
-      const isSvgMode = props.mode === 'svg';
-      const icons = isSvgMode ? getSvgIcons() : getIcons();
+      const icons = getIcons();
 
       const currentSelect = ref('');
       const visible = ref(false);
@@ -196,7 +166,6 @@
         getPaginationList,
         getTotal,
         handleClick,
-        isSvgMode,
         handlePageChange,
         t,
       };

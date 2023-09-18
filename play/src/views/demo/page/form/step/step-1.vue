@@ -93,7 +93,7 @@
   }
 
   .pay-select {
-    width: 20%;
+    width: 25%;
   }
 
   .pay-input {

@@ -1,10 +1,14 @@
 import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
 
+const colProps = {
+  span: 8,
+};
 export const schemas: FormSchema[] = [
   {
     field: 'title',
     component: 'Input',
     label: '标题',
+    colProps,
     componentProps: {
       placeholder: '给目标起个名字',
     },
@@ -14,12 +18,14 @@ export const schemas: FormSchema[] = [
     field: 'time',
     component: 'RangePicker',
     label: '起止日期',
+    colProps,
     required: true,
   },
   {
     field: 'target',
     component: 'InputTextArea',
     label: '目标描述',
+    colProps,
     componentProps: {
       placeholder: '请输入你的阶段性工作目标',
       rows: 4,
@@ -30,6 +36,7 @@ export const schemas: FormSchema[] = [
     field: 'metrics',
     component: 'InputTextArea',
     label: '衡量标准',
+    colProps,
     componentProps: {
       placeholder: '请输入衡量标准',
       rows: 4,
@@ -40,6 +47,7 @@ export const schemas: FormSchema[] = [
     field: 'client',
     component: 'Input',
     label: '客户',
+    colProps,
     helpMessage: '目标的服务对象',
     subLabel: '( 选填 )',
     componentProps: {
@@ -50,6 +58,7 @@ export const schemas: FormSchema[] = [
     field: 'inviteer',
     component: 'Input',
     label: '邀评人',
+    colProps,
     subLabel: '( 选填 )',
     componentProps: {
       placeholder: '请直接 @姓名／工号，最多可邀请 5 人',
@@ -59,6 +68,7 @@ export const schemas: FormSchema[] = [
     field: 'weights',
     component: 'InputNumber',
     label: '权重',
+    colProps,
     subLabel: '( 选填 )',
     componentProps: {
       formatter: (value: string) => (value ? `${value}%` : ''),
@@ -70,6 +80,9 @@ export const schemas: FormSchema[] = [
     field: 'disclosure',
     component: 'RadioGroup',
     label: '目标公开',
+    colProps: {
+      span: 16,
+    },
     itemProps: {
       extra: '客户、邀评人默认被分享',
     },

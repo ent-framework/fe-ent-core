@@ -64,8 +64,8 @@ importers:
         specifier: ^5.57.1
         version: 5.57.1(eslint@8.37.0)(typescript@4.9.4)
       ant-design-vue:
-        specifier: 4.0.0
-        version: 4.0.0(vue@3.2.47)
+        specifier: 4.0.1
+        version: 4.0.1(vue@3.2.47)
       autoprefixer:
         specifier: ^10.4.0
         version: registry.npmmirror.com/autoprefixer@10.4.2(postcss@8.4.24)
@@ -520,8 +520,8 @@ importers:
         specifier: ^1.4.2
         version: 1.4.3
       ant-design-vue:
-        specifier: 4.0.0
-        version: 4.0.0(vue@3.2.47)
+        specifier: 4.0.1
+        version: 4.0.1(vue@3.2.47)
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -544,8 +544,11 @@ importers:
   play:
     dependencies:
       ant-design-vue:
-        specifier: 4.0.0
-        version: 4.0.0(vue@3.2.47)
+        specifier: 4.0.1
+        version: 4.0.1(vue@3.2.47)
+      fe-ent-core:
+        specifier: ^2.0.0
+        version: link:../packages/fe-ent-core
       vue:
         specifier: ^3.2.47
         version: 3.2.47
@@ -599,8 +602,8 @@ importers:
         specifier: ^1.0.6
         version: 1.1.1(@babel/core@7.21.4)
       ant-design-vue:
-        specifier: 4.0.0
-        version: 4.0.0(vue@3.2.47)
+        specifier: 4.0.1
+        version: 4.0.1(vue@3.2.47)
       axios:
         specifier: ^0.21.1
         version: 0.21.1
@@ -4404,8 +4407,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /ant-design-vue@4.0.0(vue@3.2.47):
-    resolution: {integrity: sha512-6V8DxHPv3HJYDdv48W/KFOUjeZDsYJhFlk13HFSKCJSR2MQs4YnPIAC+rWie9vYcVEKbO+cQDqiOM3cBoHMNUQ==}
+  /ant-design-vue@4.0.1(vue@3.2.47):
+    resolution: {integrity: sha512-/gZEB/e6166hlqaYfSAJLgzr6zAPuVimITYx+OaifMaHYcxKOvbISEFTsDnn7qRshVYHFyUL2HIyN9sSrWDP3w==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       vue: '>=3.2.0'

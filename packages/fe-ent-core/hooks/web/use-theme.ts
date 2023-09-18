@@ -10,10 +10,10 @@ export function useTheme() {
   const appStore = useAppStoreWithOut();
 
   const appTheme = computed(() => {
-    const { theme: gbloalTheme } = appStore.getThemeSetting;
+    const { theme: globalTheme } = appStore.getThemeSetting;
     let themeConfig: ThemeConfig = {};
-    if (gbloalTheme) {
-      if (gbloalTheme == ThemeEnum.DARK) {
+    if (globalTheme) {
+      if (globalTheme == ThemeEnum.DARK) {
         themeConfig = { algorithm: AntTheme.darkAlgorithm };
       } else {
         themeConfig = { algorithm: AntTheme.defaultAlgorithm };
@@ -32,8 +32,8 @@ export function useTheme() {
     if (!theme || theme === 'none') {
       return appTheme.value;
     }
-    const { theme: gbloalTheme } = appStore.getThemeSetting;
-    if (gbloalTheme === theme) {
+    const { theme: globalTheme } = appStore.getThemeSetting;
+    if (globalTheme === theme) {
       return appTheme.value;
     }
     if (theme === ThemeEnum.DARK) {

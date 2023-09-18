@@ -5,7 +5,7 @@
       <ent-button class="mr-2" color="success" @click="successMsg('Success message')">
         Success
       </ent-button>
-      <ent-button class="mr-2" color="warning" @click="warningMsg('Warning message')">
+      <ent-button class="mr-2" color="dangerous" @click="warningMsg('Warning message')">
         Warning
       </ent-button>
       <ent-button class="mr-2" color="error" @click="errorMsg('Error message')"> Error </ent-button>

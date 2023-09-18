@@ -1,11 +1,6 @@
 import { buttonProps } from 'ant-design-vue/es/button/buttonTypes';
 export const btnProps = {
   /**
-   * 颜色
-   * @type {'error' | 'warning' | 'success'}
-   */
-  color: { type: String, validator: (v) => ['error', 'warning', 'success', ''].includes(v) },
-  /**
    * 按钮文本前图标，参考 Icon 组件
    */
   preIcon: { type: String },

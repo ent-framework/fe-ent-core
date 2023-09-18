@@ -44,10 +44,10 @@ program
 
 program
   .command('dtsgen')
-  .option('--lib', 'build type for library')
+  .option('--base <base>', 'base dir contains source code')
   .description('emit .d.ts files for vue files.')
-  .action(({ lib }) => {
-    dtsgen(lib);
+  .action(({ base }) => {
+    dtsgen(base);
   });
 
 program
@@ -94,7 +94,6 @@ program
 program
   .command('build:style')
   .description('build style related files.')
-  .option('-M, --material', 'generate style for material')
   .action(async () => {
     await buildStyle();
   });

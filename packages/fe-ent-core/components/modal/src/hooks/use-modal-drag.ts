@@ -5,7 +5,7 @@ import type { Ref } from 'vue';
 export interface UseModalDragMoveContext {
   draggable: Ref<boolean | undefined> | undefined;
   destroyOnClose: Ref<boolean | undefined> | undefined;
-  visible: Ref<boolean | undefined>;
+  open: Ref<boolean | undefined>;
 }
 
 export function useModalDragMove(context: UseModalDragMoveContext) {
@@ -99,7 +99,7 @@ export function useModalDragMove(context: UseModalDragMoveContext) {
   };
 
   watchEffect(() => {
-    if (!unref(context.visible) || !unref(context.draggable)) {
+    if (!unref(context.open) || !unref(context.draggable)) {
       return;
     }
     useTimeoutFn(() => {

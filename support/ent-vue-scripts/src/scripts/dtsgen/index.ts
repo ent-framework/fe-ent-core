@@ -22,8 +22,8 @@ const projRoot = searchForWorkspaceRoot(cwd);
 const TSCONFIG_PATH = path.resolve(cwd, 'tsconfig.json');
 const outDir = path.resolve(cwd, 'dist', 'types');
 
-const build = async () => {
-  consola.log(`Run in dir: ${process.cwd()}`);
+const build = async (base: string) => {
+  consola.log(`Run in dir: ${process.cwd()}, base: ${base}`);
   const project = new Project({
     compilerOptions: {
       emitDeclarationOnly: true,
@@ -38,7 +38,7 @@ const build = async () => {
     skipAddingFilesFromTsConfig: true,
   });
 
-  const sourceFiles = await addSourceFiles(project);
+  const sourceFiles = await addSourceFiles(project, base);
   consola.success('Added source files');
   typeCheck(project);
   consola.success('Type check passed!');
@@ -76,16 +76,16 @@ const build = async () => {
   await Promise.all(tasks);
 };
 
-async function addSourceFiles(project: Project) {
+async function addSourceFiles(project: Project, base: string) {
   project.addSourceFileAtPath(path.resolve(projRoot, 'typings/support.d.ts'));
 
   const filePaths = excludeFiles(
     await glob(['**/*.{tsx,ts,vue}'], {
-      cwd,
+      cwd: base,
       absolute: false,
       onlyFiles: true,
     }),
-  ).map((file) => `${process.cwd()}/${file}`);
+  ).map((file) => `${base}/${file}`);
 
   const sourceFiles: SourceFile[] = [];
   await Promise.all([
@@ -114,7 +114,7 @@ async function addSourceFiles(project: Project) {
             consola.error(`Error Get Content : ${chalk.bold(file)}`);
           } else {
             const sourceFile = project.createSourceFile(
-              path.relative(process.cwd(), file) + (isTS ? '.ts' : isTSX ? '.tsx' : '.js'),
+              path.relative(base, file) + (isTS ? '.ts' : isTSX ? '.tsx' : '.js'),
               content,
             );
             sourceFiles.push(sourceFile);
@@ -139,8 +139,17 @@ function typeCheck(project: Project) {
   }
 }
 
-export default async function (library: boolean) {
-  await build();
+export default async function (base: string) {
+  if (base) {
+    if (fs.existsSync(path.resolve(cwd, base))) {
+      await build(path.resolve(cwd, base));
+    } else {
+      consola.error(`${base} don't exist in current dir: ${cwd}`);
+    }
+  } else {
+    await build(cwd);
+  }
+
   //fs.rmSync(path.resolve(outDir, 'tsconfig.tsbuildinfo'));
   // if (!library) {
   //   ensureDirSync(path.resolve(cwd, 'es'));

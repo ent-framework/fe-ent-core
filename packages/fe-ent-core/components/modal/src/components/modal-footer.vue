@@ -7,7 +7,7 @@
     <slot name="centerFooter" />
     <ent-button
       v-if="showOkBtn"
-      :type="okType"
+      :type="okType || 'primary'"
       :loading="confirmLoading"
       v-bind="okButtonProps"
       @click="handleOk"
@@ -19,7 +19,6 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-
   import { useI18n } from '@ent-core/hooks';
   import { basicProps } from '../props';
   export default defineComponent({

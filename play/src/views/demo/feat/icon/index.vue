@@ -22,24 +22,9 @@
       </div>
     </ent-collapse-container>
 
-    <ent-collapse-container title="svg 雪碧图" class="my-5">
-      <div class="flex justify-around flex-wrap">
-        <ent-svg-icon name="test" size="32" />
-        <template v-for="item in 6" :key="item">
-          <ent-svg-icon :name="`dynamic-avatar-${item}`" size="32" />
-        </template>
-      </div>
-    </ent-collapse-container>
-
     <ent-collapse-container title="图标选择器(Iconify)" class="my-5">
       <div class="flex justify-around flex-wrap">
         <ent-icon-picker />
-      </div>
-    </ent-collapse-container>
-
-    <ent-collapse-container title="图标选择器(Svg)" class="my-5">
-      <div class="flex justify-around flex-wrap">
-        <ent-icon-picker mode="svg" />
       </div>
     </ent-collapse-container>
 

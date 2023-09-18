@@ -1,7 +1,8 @@
 @basic-modal-close-prefix-cls: ~'@{ent-prefix}-basic-modal-close';
 .@{basic-modal-close-prefix-cls} {
-  display: flex;
-  height: 95%;
+  position: absolute;
+  top: 17px;
+  right: 20px;
   align-items: center;
 
   > span {
@@ -23,7 +24,7 @@
     }
   }
 
-  & span:nth-child(1) {
+  & span {
     display: inline-block;
     padding: 10px;
 

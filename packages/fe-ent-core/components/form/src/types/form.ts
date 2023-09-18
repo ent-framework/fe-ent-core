@@ -44,6 +44,8 @@ export type FormRegisterFn = (formInstance: FormActionType) => void;
 
 export type UseFormReturnType = [FormRegisterFn, FormActionType];
 
+export type FormButtonOptions = Partial<ButtonProps> & { text?: string };
+
 export interface FormProps {
   name?: string;
   layout?: 'vertical' | 'inline' | 'horizontal';
@@ -102,10 +104,10 @@ export interface FormProps {
   showActionButtonGroup?: boolean;
 
   // Reset button configuration
-  resetButtonOptions?: Partial<ButtonProps>;
+  resetButtonOptions?: FormButtonOptions;
 
   // Confirm button configuration
-  submitButtonOptions?: Partial<ButtonProps>;
+  submitButtonOptions?: FormButtonOptions;
 
   // Operation column configuration
   actionColOptions?: Partial<ColEx>;

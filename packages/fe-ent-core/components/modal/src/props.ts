@@ -3,12 +3,16 @@ import type { PropType } from 'vue';
 import type { ModalWrapperProps } from './typing';
 
 export const modalProps = {
-  visible: { type: Boolean },
+  open: { type: Boolean },
   scrollTop: { type: Boolean, default: true },
   height: { type: Number },
   minHeight: { type: Number },
   // open drag
   draggable: { type: Boolean, default: true },
+  /**
+   * Modal是否可关闭，因为增加full screen 按钮，默认为false
+   */
+  closable: { type: Boolean, default: true },
   closeFunc: Function as PropType<() => Promise<boolean>>,
 };
 
@@ -53,5 +57,6 @@ export const basicProps = {
   showOkBtn: { type: Boolean, default: true },
 
   wrapperProps: Object as PropType<Partial<ModalWrapperProps>>,
+
   ...AntModalProps(),
 };

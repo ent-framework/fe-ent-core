@@ -13,9 +13,12 @@
     "clean": "rimraf dist",
     "dtsgen": "ent-vue-scripts dtsgen"
   },
+  "peerDependencies": {
+    "fe-ent-core": "^2.0.0"
+  },
   "dependencies": {
     "vue": "^3.2.47",
-    "ant-design-vue": "4.0.0"
+    "ant-design-vue": "4.0.1"
   },
   "devDependencies": {
     "fe-ent-vue-scripts": "^2.0.0",

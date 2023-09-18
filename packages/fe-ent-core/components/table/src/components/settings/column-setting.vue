@@ -8,7 +8,7 @@
       trigger="click"
       :overlay-class-name="`${prefixCls}__cloumn-list`"
       :get-popup-container="getPopupContainer"
-      @visible-change="handleVisibleChange"
+      @open-change="handleVisibleChange"
     >
       <template #title>
         <div :class="`${prefixCls}__popover-title`">

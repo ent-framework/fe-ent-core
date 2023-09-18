@@ -1,6 +1,6 @@
 <template>
   <Modal v-bind="getBindValue" @cancel="handleCancel">
-    <template v-if="!$slots.closeIcon" #closeIcon>
+    <template v-if="!$slots.closeIcon || !closable">
       <ModalClose
         :can-fullscreen="getProps.canFullscreen"
         :full-screen="fullScreenRef"
@@ -34,7 +34,7 @@
       :loading-tip="getProps.loadingTip"
       :min-height="getProps.minHeight"
       :height="getWrapperHeight"
-      :visible="visibleRef"
+      :open="openRef"
       :modal-footer-height="footer !== undefined && !footer ? 0 : undefined"
       v-bind="omit(getProps.wrapperProps, 'visible', 'height', 'modalFooterHeight')"
       @ext-height="handleExtHeight"
@@ -86,7 +86,7 @@
     props: basicProps,
     emits: ['visible-change', 'height-change', 'cancel', 'ok', 'register', 'update:visible'],
     setup(props, { emit, attrs }) {
-      const visibleRef = ref(false);
+      const openRef = ref(false);
       const propsRef = ref<Partial<ModalProps> | null>(null);
       const modalWrapperRef = ref<any>(null);
       const { prefixCls } = useDesign('basic-modal');
@@ -128,7 +128,7 @@
       const getProps = computed((): Recordable => {
         const opt = {
           ...unref(getMergeProps),
-          visible: unref(visibleRef),
+          open: unref(openRef),
           okButtonProps: undefined,
           cancelButtonProps: undefined,
           title: undefined,
@@ -143,7 +143,8 @@
         const attr = {
           ...attrs,
           ...unref(getMergeProps),
-          visible: unref(visibleRef),
+          open: unref(openRef),
+          closable: false,
           wrapClassName: unref(getWrapClassName),
         };
         if (unref(fullScreenRef)) {
@@ -158,12 +159,12 @@
       });
 
       watchEffect(() => {
-        visibleRef.value = !!props.visible;
+        openRef.value = !!props.open;
         fullScreenRef.value = !!props.defaultFullscreen;
       });
 
       watch(
-        () => unref(visibleRef),
+        () => unref(openRef),
         (v) => {
           emit('visible-change', v);
           emit('update:visible', v);
@@ -186,11 +187,11 @@
         if ((e.target as HTMLElement)?.classList?.contains(`${prefixCls}-close--custom`)) return;
         if (props.closeFunc && isFunction(props.closeFunc)) {
           const isClose: boolean = await props.closeFunc();
-          visibleRef.value = !isClose;
+          openRef.value = !isClose;
           return;
         }
 
-        visibleRef.value = false;
+        openRef.value = false;
         emit('cancel', e);
       }
 
@@ -200,8 +201,8 @@
       function setModalProps(props: Partial<ModalProps>): void {
         // Keep the last setModalProps
         propsRef.value = deepMerge(unref(propsRef) || ({} as any), props);
-        if (Reflect.has(props, 'visible')) {
-          visibleRef.value = !!props.visible;
+        if (Reflect.has(props, 'open')) {
+          openRef.value = !!props.open;
         }
         if (Reflect.has(props, 'defaultFullscreen')) {
           fullScreenRef.value = !!props.defaultFullscreen;
@@ -234,7 +235,7 @@
         fullScreenRef,
         getMergeProps,
         handleOk,
-        visibleRef,
+        openRef,
         omit,
         modalWrapperRef,
         handleExtHeight,

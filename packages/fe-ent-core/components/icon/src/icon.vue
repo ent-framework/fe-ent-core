@@ -1,13 +1,5 @@
 <template>
-  <SvgIcon
-    v-if="isSvgIcon"
-    :size="size"
-    :name="getSvgIcon"
-    :class="[$attrs.class, 'anticon']"
-    :spin="spin"
-  />
   <span
-    v-else
     :class="[$attrs.class, 'app-iconify anticon', spin && 'app-iconify-spin']"
     :style="getWrapStyle"
   >
@@ -20,14 +12,12 @@
   import { isString } from '@ent-core/utils/is';
   import { useTheme } from '@ent-core/hooks';
   import { propTypes } from '@ent-core/utils/prop-types';
-  import SvgIcon from './svg-icon.vue';
   import type { CSSProperties, PropType } from 'vue';
 
-  const SVG_END_WITH_FLAG = '|svg';
   const IconifyIcon = Icon;
   export default defineComponent({
     name: 'EntIcon',
-    components: { SvgIcon, IconifyIcon },
+    components: { IconifyIcon },
     props: {
       /**
        * 图标名
@@ -68,10 +58,6 @@
       prefix: propTypes.string.def(''),
     },
     setup(props) {
-      // const elRef = ref<ElRef>(null);
-
-      const isSvgIcon = computed(() => props.icon?.endsWith(SVG_END_WITH_FLAG));
-      const getSvgIcon = computed(() => props.icon.replace(SVG_END_WITH_FLAG, ''));
       const { useToken } = useTheme();
       const { token } = useToken();
       const getBindValue = computed(() => {
@@ -93,7 +79,7 @@
         };
       });
 
-      return { getBindValue, getWrapStyle, isSvgIcon, getSvgIcon };
+      return { getBindValue, getWrapStyle };
     },
   });
 </script>

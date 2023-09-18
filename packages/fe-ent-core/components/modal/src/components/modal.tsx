@@ -13,10 +13,10 @@ const EntModal = defineComponent({
   props: basicProps,
   emits: ['cancel'],
   setup(props, { slots }) {
-    const { visible, draggable, destroyOnClose } = toRefs(props);
+    const { open, draggable, destroyOnClose } = toRefs(props);
     const attrs = useAttrs();
     useModalDragMove({
-      visible,
+      open,
       destroyOnClose,
       draggable,
     });

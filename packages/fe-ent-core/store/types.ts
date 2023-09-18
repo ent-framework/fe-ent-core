@@ -9,7 +9,7 @@ import type {
 } from '@ent-core/logics/enums/app-enum';
 
 import type { CacheTypeEnum } from '@ent-core/logics/enums/cache-enum';
-import type { SeedToken } from 'ant-design-vue/es/theme/interface';
+import type { AliasToken } from 'ant-design-vue/es/theme/interface';
 
 // Lock screen information
 export interface LockInfo {
@@ -71,7 +71,7 @@ export interface LocaleSetting {
 export interface ThemeSetting {
   theme: ThemeEnum;
   name: string;
-  token: Partial<SeedToken>;
+  token: Partial<AliasToken>;
 }
 export interface TransitionSetting {
   //  Whether to open the page switching animation

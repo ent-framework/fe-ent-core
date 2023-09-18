@@ -47,11 +47,9 @@
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { useFormContext } from '../hooks/use-form-context';
-  import type { ButtonProps } from '@ent-core/components/button/interface';
   import type { PropType } from 'vue';
   import type { ColEx } from '../types';
-
-  type ButtonOptions = Partial<ButtonProps> & { text: string };
+  import type { FormButtonOptions } from '../types/form';
 
   export default defineComponent({
     name: 'BasicFormAction',
@@ -67,11 +65,11 @@
       showSubmitButton: propTypes.bool.def(true),
       showAdvancedButton: propTypes.bool.def(true),
       resetButtonOptions: {
-        type: Object as PropType<ButtonOptions>,
+        type: Object as PropType<FormButtonOptions>,
         default: () => ({}),
       },
       submitButtonOptions: {
-        type: Object as PropType<ButtonOptions>,
+        type: Object as PropType<FormButtonOptions>,
         default: () => ({}),
       },
       actionColOptions: {
@@ -101,7 +99,7 @@
         return actionColOpt;
       });
 
-      const getResetBtnOptions = computed((): ButtonOptions => {
+      const getResetBtnOptions = computed((): FormButtonOptions => {
         return Object.assign(
           {
             text: t('common.resetText'),

@@ -40,7 +40,7 @@ export interface ModalProps {
   // 是否可以进行全屏
   canFullscreen?: boolean;
   defaultFullscreen?: boolean;
-  visible?: boolean;
+  open?: boolean;
   // 温馨提醒信息
   helpMessage: string | string[];
 
@@ -203,7 +203,7 @@ export interface ModalWrapperProps {
   modalFooterHeight: number;
   minHeight: number;
   height: number;
-  visible: boolean;
+  open: boolean;
   fullScreen: boolean;
   useWrapper: boolean;
 }

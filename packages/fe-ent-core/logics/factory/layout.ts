@@ -17,6 +17,7 @@ const defaultThemeSetting: ThemeSetting = {
     colorWarning: '#faad14',
     colorError: '#ff4d4f',
     colorInfo: '#1677ff',
+    controlOutlineWidth: 0,
   },
 };
 
@@ -45,6 +46,7 @@ export class LayoutService implements LayoutFactory {
           colorWarning: '#f0a818',
           colorError: '#e55c5c',
           colorInfo: '#d9d9d9',
+          controlOutlineWidth: 0,
         },
       },
       {
@@ -56,6 +58,7 @@ export class LayoutService implements LayoutFactory {
           colorWarning: '#bc5090',
           colorError: '#ff6361',
           colorInfo: '#ffa600',
+          controlOutlineWidth: 0,
         },
       },
       {
@@ -67,6 +70,7 @@ export class LayoutService implements LayoutFactory {
           colorWarning: '#b8e0d4',
           colorError: '#eac4d5',
           colorInfo: '#d6eadf',
+          controlOutlineWidth: 0,
         },
       },
     ];

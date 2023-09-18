@@ -24,7 +24,7 @@ export {
   ApiRadioGroup,
   RadioButtonGroup,
 } from './form';
-export { EntIcon, EntSvgIcon, EntIconPicker } from './icon';
+export { EntIcon, EntIconPicker } from './icon';
 export { EntLoading } from './loading';
 export { EntLocalePicker } from './locale-picker';
 export { EntModal } from './modal';
