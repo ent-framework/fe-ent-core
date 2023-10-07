@@ -11,10 +11,10 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { jsonToSheetXlsx } from 'fe-ent-core/es/components/excel';
+  import { jsonToSheetXlsx } from 'fe-ent-excel';
   import { useModal } from 'fe-ent-core/es/components/modal';
   import { columns, data } from './data';
-  import type { ExportModalResult } from 'fe-ent-core/es/components/excel/interface';
+  import type { ExportModalResult } from 'fe-ent-excel';
 
   export default defineComponent({
     setup() {

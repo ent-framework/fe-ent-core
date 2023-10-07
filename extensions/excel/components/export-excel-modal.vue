@@ -15,10 +15,10 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntModal, useModalInner } from '@ent-core/components/modal';
-  import { EntForm, useForm } from '@ent-core/components/form';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import type { FormSchema } from '@ent-core/components/form/interface';
+  import { EntModal, useModalInner } from 'fe-ent-core/es/components/modal';
+  import { EntForm, useForm } from 'fe-ent-core/es/components/form';
+  import { useI18n } from 'fe-ent-core/es/hooks/web/use-i18n';
+  import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
   import type { ExportModalResult } from './typing';
 
   function getSchema() {

@@ -53,6 +53,10 @@ export default defineConfig(({ command, mode }) => {
             replacement: `${workspace}/extensions/tinymce/index.ts`,
           },
           {
+            find: /^fe-ent-excel$/,
+            replacement: `${workspace}/extensions/excel/index.ts`,
+          },
+          {
             find: /^fe-ent-login$/,
             replacement: `${workspace}/apps/login/index.ts`,
           },

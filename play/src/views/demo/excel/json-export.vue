@@ -11,7 +11,7 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { jsonToSheetXlsx } from 'fe-ent-core/es/components/excel';
+  import { jsonToSheetXlsx } from 'fe-ent-excel';
   import { columns, data } from './data';
 
   export default defineComponent({

@@ -10,7 +10,7 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { aoaToSheetXlsx } from 'fe-ent-core/es/components/excel';
+  import { aoaToSheetXlsx } from 'fe-ent-excel';
   import { arrData, arrHeader, columns, data } from './data';
 
   export default defineComponent({

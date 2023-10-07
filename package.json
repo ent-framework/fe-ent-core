@@ -20,7 +20,7 @@
     "dev:docs": "pnpm run -C packages/ent-vue-docs dev",
     "build": "pnpm build:gulp",
     "build:gulp": "pnpm run -C internal/build start",
-    "build:all": "pnpm --filter './{packages,extensions,apps}/**' --stream --parallel build",
+    "build:all": "pnpm build:support && pnpm build:lib && pnpm --filter './{extensions,apps}/**' --stream --parallel build",
     "build:lib": "pnpm run -C packages/fe-ent-core build",
     "build:support": "pnpm --filter './support/**' --stream build",
     "build:extensions": "pnpm --filter './extensions/**' --stream build",
@@ -119,7 +119,7 @@
     "typescript": "^4.9.4",
     "vite": "4.4.11",
     "rollup": "3.27.1",
-    "vue": "3.2.47",
+    "vue": "3.3.4",
     "ant-design-vue": "4.0.3"
   },
   "resolutions": {
