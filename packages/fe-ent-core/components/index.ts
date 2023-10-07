@@ -13,7 +13,6 @@ export { EntDarkModeToggle } from './dark-mode-toggle';
 export { EntDescription } from './description';
 export { EntDrawer } from './drawer';
 export { EntDropdown } from './dropdown';
-export { EntExportExcelModal, EntImportExcel } from './excel';
 export {
   EntForm,
   ApiTree,

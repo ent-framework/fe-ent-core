@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import eslint from 'vite-plugin-eslint';
 import external from '../plugins/vite-plugin-external';
 import type { InlineConfig } from 'vite';
 
@@ -31,9 +30,5 @@ export default defineConfig({
     external(),
     vue(),
     vueJsx(),
-    eslint({
-      include: ['components/**/*.ts', 'components/**/*.tsx', 'components/**/*.vue'],
-      exclude: ['node_modules', 'components/icon/**/*'],
-    }),
   ],
 }) as InlineConfig;

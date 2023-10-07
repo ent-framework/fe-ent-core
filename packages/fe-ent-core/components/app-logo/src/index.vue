@@ -20,15 +20,6 @@
      * 是否显示标题
      */
     showTitle: { type: Boolean, default: true },
-    /**
-     * 菜单折叠时是否显示标题
-     */
-    alwaysShowTitle: { type: Boolean },
-
-    /**
-     * 菜单折叠时是否显示标题
-     */
-    collapsedShowTitle: { type: Boolean, default: true },
 
     /**
      * 是否有背景色
@@ -48,18 +39,9 @@
 
       const go = useGo();
 
-      const getAppLogoClass = computed(() => [
-        prefixCls,
-        //props.theme,
-        { 'collapsed-show-title': props.collapsedShowTitle },
-      ]);
+      const getAppLogoClass = computed(() => [prefixCls]);
 
-      const getTitleClass = computed(() => [
-        `${prefixCls}__title`,
-        // {
-        //   'xs:opacity-0': !props.alwaysShowTitle,
-        // },
-      ]);
+      const getTitleClass = computed(() => [`${prefixCls}__title`]);
       const { useToken } = useTheme();
       const { token } = useToken();
 

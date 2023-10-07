@@ -35,7 +35,7 @@
     "fe-ent-vue-scripts": "^2.0.0",
     "@types/qrcode": "^1.4.1",
     "rimraf": "^5.0.0",
-    "vite": "4.2.3",
+    "vite": "4.4.11",
     "vue": "^3.2.0"
   },
   "repository": {

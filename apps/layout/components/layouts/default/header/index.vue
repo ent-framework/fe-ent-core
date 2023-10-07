@@ -5,7 +5,7 @@
       <!-- logo -->
       <EntAppLogo
         v-if="getShowHeaderLogo || getIsMobile"
-        :collapsed-show-title="getCollapsedShowTitle"
+        :show-title="getShowTitle"
         :class="`${prefixCls}-logo`"
         :style="getLogoWidth"
       />
@@ -103,6 +103,7 @@
         getMenuWidth,
         getIsMixSidebar,
         getCollapsedShowTitle,
+        getCollapsed,
       } = useMenuSetting();
       const { getShowDarkModeToggle, getUseErrorHandle } = useRootSetting();
 
@@ -169,6 +170,13 @@
         return unref(getSplit) ? MenuSplitTyeEnum.TOP : MenuSplitTyeEnum.NONE;
       });
 
+      const getShowTitle = computed(() => {
+        if (!unref(getCollapsed)) {
+          return true;
+        }
+        return unref(getCollapsed) && unref(getCollapsedShowTitle);
+      });
+
       const getMenuMode = computed(() => {
         return unref(getSplit) ? MenuModeEnum.HORIZONTAL : null;
       });
@@ -200,6 +208,7 @@
         getHeaderStyle,
         isLogined,
         getCollapsedShowTitle,
+        getShowTitle
       };
     },
   });
