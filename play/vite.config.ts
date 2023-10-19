@@ -6,11 +6,6 @@ export default defineConfig(({ command, mode }) => {
   return defineProjectConfig({
     command,
     mode,
-    options: {
-      cssModify: {
-        primaryColor: '#1f883d',
-      },
-    },
     overrides: {
       build: {
         minify: false,

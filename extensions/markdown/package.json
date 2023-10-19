@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-markdown",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
-    "build": "pnpm run build:library && pnpm run docgen && pnpm run jsongen && pnpm run dtsgen",
+    "build": "pnpm run build:library && pnpm run docgen && pnpm run jsongen",
     "docgen": "ent-vue-scripts docgen",
     "build:library": "ent-vue-scripts build:library -u -s",
     "jsongen": "ent-vue-scripts jsongen",

@@ -3,13 +3,15 @@
     <div class="step1-form">
       <ent-form @register="register">
         <template #fac="{ model, field }">
-          <a-input-group compact>
-            <a-select v-model:value="model['pay']" class="pay-select">
-              <a-select-option value="zfb"> 支付宝 </a-select-option>
-              <a-select-option value="yl"> 银联 </a-select-option>
-            </a-select>
-            <a-input v-model:value="model[field]" class="pay-input" />
-          </a-input-group>
+          <a-form-item-rest>
+            <a-input-group compact>
+              <a-select v-model:value="model['pay']" class="pay-select">
+                <a-select-option value="zfb"> 支付宝 </a-select-option>
+                <a-select-option value="yl"> 银联 </a-select-option>
+              </a-select>
+              <a-input v-model:value="model[field]" class="pay-input" />
+            </a-input-group>
+          </a-form-item-rest>
         </template>
       </ent-form>
     </div>
@@ -29,7 +31,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { useForm } from 'fe-ent-core/es/components/form';
-  import { Divider, Input, Select } from 'ant-design-vue';
+  import { Divider, FormItemRest, Input, Select } from 'ant-design-vue';
   import { step1Schemas } from './data';
 
   export default defineComponent({
@@ -39,6 +41,7 @@
       [Input.name]: Input,
       [Input.Group.name]: Input.Group,
       [Divider.name]: Divider,
+      [FormItemRest.name]: FormItemRest,
     },
     emits: ['next'],
     setup(_, { emit }) {
@@ -97,6 +100,6 @@
   }
 
   .pay-input {
-    width: 70%;
+    width: 75%;
   }
 </style>
