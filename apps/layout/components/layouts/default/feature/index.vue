@@ -10,7 +10,7 @@
 
   import { useDesign } from 'fe-ent-core/es/hooks';
   import { SettingButtonPositionEnum } from 'fe-ent-core/es/logics';
-  import { useUserStoreWithOut } from 'fe-ent-core/es/store';
+  import { useUserStore } from 'fe-ent-core/es/store';
   import { useHeaderSetting, useLayoutThemeSetting } from '../../../../hooks';
 
   import SessionTimeoutLogin from '../../../views/login/session-timeout-login.vue';
@@ -27,7 +27,7 @@
     setup() {
       const { getUseOpenBackTop, getShowSettingButton, getSettingButtonPosition, getFullContent } =
         useLayoutThemeSetting();
-      const userStore = useUserStoreWithOut();
+      const userStore = useUserStore();
       const { prefixCls } = useDesign('setting-drawer-feature');
       const { getShowHeader } = useHeaderSetting();
 

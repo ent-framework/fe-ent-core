@@ -1,10 +1,10 @@
-import { useGlobalStoreWithOut } from 'fe-ent-core/es/store';
+import { useGlobalStore } from 'fe-ent-core/es/store';
 
 export async function initApplication() {
   // ! Need to pay attention to the timing of execution
   // ! 需要注意调用时机
 
-  const globalStore = useGlobalStoreWithOut();
+  const globalStore = useGlobalStore();
   globalStore.setBaseHomePath('/dashboard/workbench');
   // const { changePermissionMode } = usePermission();
   // await changePermissionMode('BACK');

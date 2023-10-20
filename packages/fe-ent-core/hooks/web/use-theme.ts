@@ -1,13 +1,13 @@
 import { computed } from 'vue';
 import { theme as AntTheme } from 'ant-design-vue';
-import { useAppStoreWithOut } from '@ent-core/store';
+import { useAppStore } from '@ent-core/store';
 import { ThemeEnum } from '@ent-core/logics';
 import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
 
 export function useTheme() {
   const { useToken } = AntTheme;
 
-  const appStore = useAppStoreWithOut();
+  const appStore = useAppStore();
 
   const appTheme = computed(() => {
     const { theme: globalTheme } = appStore.getThemeSetting;

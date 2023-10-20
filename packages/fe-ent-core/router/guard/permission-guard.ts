@@ -1,15 +1,15 @@
-import { usePermissionStoreWithOut } from '@ent-core/store/modules/permission';
-import { useUserStoreWithOut } from '@ent-core/store/modules/user';
-import { useGlobalStoreWithOut } from '@ent-core/store/modules/global';
+import { usePermissionStore } from '@ent-core/store/modules/permission';
+import { useUserStore } from '@ent-core/store/modules/user';
+import { useGlobalStore } from '@ent-core/store/modules/global';
 import { PAGE_NOT_FOUND_NAME } from '@ent-core/router/constant';
 import { entRouter } from '@ent-core/router/base';
 import type { RouteRecordRaw, Router } from 'vue-router';
 import type { Recordable } from '@ent-core/types';
 
 export function createPermissionGuard(router: Router) {
-  const globalStore = useGlobalStoreWithOut();
-  const userStore = useUserStoreWithOut();
-  const permissionStore = usePermissionStoreWithOut();
+  const globalStore = useGlobalStore();
+  const userStore = useUserStore();
+  const permissionStore = usePermissionStore();
   const loginPath = globalStore.getBaseLoginPath;
   const baseHome = globalStore.getBaseHomePath;
 

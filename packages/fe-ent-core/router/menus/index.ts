@@ -1,5 +1,5 @@
 import { pathToRegexp } from 'path-to-regexp';
-import { useAppStoreWithOut } from '@ent-core/store/modules/app';
+import { useAppStore } from '@ent-core/store/modules/app';
 import { usePermissionStore } from '@ent-core/store/modules/permission';
 import { getAllParentPath } from '@ent-core/router/helper/menu-helper';
 import { filter } from '@ent-core/utils/helper/tree-helper';
@@ -14,7 +14,7 @@ import type { Menu } from '@ent-core/router/types';
 // ===========================
 
 const getPermissionMode = () => {
-  const appStore = useAppStoreWithOut();
+  const appStore = useAppStore();
   return appStore.getProjectConfig.permissionMode;
 };
 const isBackMode = () => {

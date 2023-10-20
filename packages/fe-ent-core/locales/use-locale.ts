@@ -4,13 +4,13 @@
 
 import { computed, unref } from 'vue';
 import dayjs from 'dayjs';
-import { useLocaleStoreWithOut } from '@ent-core/store/modules/locale';
+import { useLocaleStore } from '@ent-core/store/modules/locale';
 import { i18n } from './setup-i18n';
 import { loadLocalePool, setHtmlPageLang } from './helper';
 import type { LocaleType } from '@ent-core/store/types';
 
 function setI18nLanguage(locale: LocaleType) {
-  const localeStore = useLocaleStoreWithOut();
+  const localeStore = useLocaleStore();
 
   if (i18n.mode === 'legacy') {
     i18n.global.locale = locale;
@@ -22,7 +22,7 @@ function setI18nLanguage(locale: LocaleType) {
 }
 
 export function useLocale() {
-  const localeStore = useLocaleStoreWithOut();
+  const localeStore = useLocaleStore();
   const getLocale = computed(() => localeStore.getLocale);
   const getShowLocalePicker = computed(() => localeStore.getShowPicker);
 

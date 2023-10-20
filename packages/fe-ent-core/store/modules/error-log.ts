@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia';
-import { store } from '@ent-core/store/pinia';
 
 import { formatToDateTime } from '@ent-core/utils/date-util';
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
@@ -71,8 +70,3 @@ export const useErrorLogStore = defineStore({
     },
   },
 });
-
-// Need to be used outside the setup
-export function useErrorLogStoreWithOut() {
-  return useErrorLogStore(store);
-}

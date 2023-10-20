@@ -1,6 +1,6 @@
 import { type AxiosProgressEvent } from 'axios';
 import { noop } from '@vueuse/core';
-import { useUserStoreWithOut } from '@ent-core/store';
+import { useUserStore } from '@ent-core/store';
 import { defHttp } from '@ent-core/utils/http/axios';
 import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
 import type { UploadFileParams } from '@ent-core/logics/types/axios';
@@ -16,7 +16,7 @@ export interface HttpFactory {
 
 export class HttpService implements HttpFactory {
   public unauthorized = () => {
-    const userStore = useUserStoreWithOut();
+    const userStore = useUserStore();
     userStore.setToken(undefined);
     return userStore.logout(true);
   };

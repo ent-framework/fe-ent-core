@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia';
-import { store } from '@ent-core/store/pinia';
 export interface GlobalState {
   // basic login path
   baseLoginPath: string;
@@ -47,7 +46,3 @@ export const useGlobalStore = defineStore({
     },
   },
 });
-
-export function useGlobalStoreWithOut() {
-  return useGlobalStore(store);
-}

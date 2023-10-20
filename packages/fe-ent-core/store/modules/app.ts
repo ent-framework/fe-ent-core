@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia';
-import { store } from '@ent-core/store/pinia';
 
 import { PROJ_CFG_KEY } from '@ent-core/logics/enums/cache-enum';
 import { Persistent } from '@ent-core/utils/cache/persistent';
@@ -78,8 +77,3 @@ export const useAppStore = defineStore({
     },
   },
 });
-
-// Need to be used outside the setup
-export function useAppStoreWithOut() {
-  return useAppStore(store);
-}

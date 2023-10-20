@@ -57,7 +57,7 @@
   import { MenuModeEnum, MenuSplitTyeEnum, SettingButtonPositionEnum } from 'fe-ent-core/es/logics';
   import { propTypes } from 'fe-ent-core/es/utils';
   import { useLocale } from 'fe-ent-core/es/locales';
-  import { useUserStoreWithOut } from 'fe-ent-core/es/store';
+  import { useUserStore } from 'fe-ent-core/es/store';
   import { Layout } from 'ant-design-vue';
   import {
     useHeaderSetting,
@@ -123,7 +123,7 @@
       const { getActualHeaderTheme } = useLayoutTheme();
 
       const { getShowLocalePicker } = useLocale();
-      const userStore = useUserStoreWithOut();
+      const userStore = useUserStore();
       const { getIsMobile } = useAppInject();
 
       const getHeaderClass = computed(() => {

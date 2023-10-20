@@ -1,6 +1,5 @@
 import { h } from 'vue';
 import { defineStore } from 'pinia';
-import { store } from '@ent-core/store/pinia';
 import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '@ent-core/logics/enums/cache-enum';
 import { getAuthCache, setAuthCache } from '@ent-core/utils/auth';
 import { Factory } from '@ent-core/logics/factory';
@@ -169,8 +168,3 @@ export const useUserStore = defineStore({
     },
   },
 });
-
-// Need to be used outside the setup
-export function useUserStoreWithOut() {
-  return useUserStore(store);
-}

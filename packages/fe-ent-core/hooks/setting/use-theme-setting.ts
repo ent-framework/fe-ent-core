@@ -1,12 +1,12 @@
 import { computed } from 'vue';
 
-import { useAppStoreWithOut } from '@ent-core/store/modules/app';
+import { useAppStore } from '@ent-core/store/modules/app';
 
 import type { ThemeEnum } from '@ent-core/logics';
 import type { ThemeSetting } from '@ent-core/store/types';
 
 export function useThemeSetting() {
-  const appStore = useAppStoreWithOut();
+  const appStore = useAppStore();
 
   const getGlobalTheme = computed(() => appStore.getThemeSetting.theme);
   const getThemeName = computed(() => appStore.getThemeSetting.name);

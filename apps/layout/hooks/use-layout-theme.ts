@@ -1,10 +1,10 @@
 import { computed } from 'vue';
-import { useAppStoreWithOut } from 'fe-ent-core/es/store';
-import { useLayoutStoreWithOut } from '../store/layout';
+import { useAppStore } from 'fe-ent-core/es/store';
+import { useLayoutStore } from '../store/layout';
 
 export function useLayoutTheme() {
-  const appStore = useAppStoreWithOut();
-  const layoutStore = useLayoutStoreWithOut();
+  const appStore = useAppStore();
+  const layoutStore = useLayoutStore();
 
   const updateGrayMode = (gray: boolean) => {};
 

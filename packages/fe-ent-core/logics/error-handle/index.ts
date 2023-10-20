@@ -2,7 +2,7 @@
  * Used to configure the global error handling function, which can monitor vue errors, script errors, static resource errors and Promise errors
  */
 
-import { useErrorLogStoreWithOut } from '@ent-core/store/modules/error-log';
+import { useErrorLogStore } from '@ent-core/store/modules/error-log';
 
 import { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
@@ -63,7 +63,7 @@ function formatComponentName(vm: any) {
  */
 
 function vueErrorHandler(err: Error, vm: any, info: string) {
-  const errorLogStore = useErrorLogStoreWithOut();
+  const errorLogStore = useErrorLogStore();
   const { name, path } = formatComponentName(vm);
   errorLogStore.addErrorLogInfo({
     type: ErrorTypeEnum.VUE,
@@ -98,7 +98,7 @@ export function scriptErrorHandler(
     errorInfo.stack = '';
   }
   const name = source ? source.slice(source.lastIndexOf('/') + 1) : 'script';
-  const errorLogStore = useErrorLogStoreWithOut();
+  const errorLogStore = useErrorLogStore();
   errorLogStore.addErrorLogInfo({
     type: ErrorTypeEnum.SCRIPT,
     name,
@@ -117,7 +117,7 @@ function registerPromiseErrorHandler() {
   window.addEventListener(
     'unhandledrejection',
     (event) => {
-      const errorLogStore = useErrorLogStoreWithOut();
+      const errorLogStore = useErrorLogStore();
       errorLogStore.addErrorLogInfo({
         type: ErrorTypeEnum.PROMISE,
         name: 'Promise Error!',
@@ -141,7 +141,7 @@ function registerResourceErrorHandler() {
     'error',
     (e: Event) => {
       const target = e.target ? e.target : (e.srcElement as any);
-      const errorLogStore = useErrorLogStoreWithOut();
+      const errorLogStore = useErrorLogStore();
       errorLogStore.addErrorLogInfo({
         type: ErrorTypeEnum.RESOURCE,
         name: 'Resource Error!',

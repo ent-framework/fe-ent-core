@@ -6,7 +6,7 @@ import { Persistent } from 'fe-ent-core/es/utils/cache/persistent';
 import { PAGE_NOT_FOUND_NAME, REDIRECT_NAME } from 'fe-ent-core/es/router/constant';
 import { getRawRoute } from 'fe-ent-core/es/utils/base';
 import { MULTIPLE_TABS_KEY } from 'fe-ent-core/es/logics/enums/cache-enum';
-import { useGlobalStoreWithOut } from 'fe-ent-core/es/store';
+import { useGlobalStore } from 'fe-ent-core/es/store';
 import { useUserStore } from 'fe-ent-core/es/store/modules/user';
 import { defaultLayoutSetting } from './layout-setting';
 import type { RouteLocationNormalized, RouteLocationRaw, Router } from 'vue-router';
@@ -100,7 +100,7 @@ export const useMultipleTabStore = defineStore({
       const go = useGo(router);
       const len = this.tabList.length;
       const { path } = unref(router.currentRoute);
-      const globalStore = useGlobalStoreWithOut();
+      const globalStore = useGlobalStore();
       let toPath = globalStore.getBaseHomePath;
 
       if (len > 0) {
@@ -117,7 +117,7 @@ export const useMultipleTabStore = defineStore({
     async addTab(route: RouteLocationNormalized) {
       const { path, name, fullPath, params, query, meta } = getRawRoute(route);
       // 404  The page does not need to add a tab
-      const globalStore = useGlobalStoreWithOut();
+      const globalStore = useGlobalStore();
       if (
         path === globalStore.getErrorPagePath ||
         !name ||
@@ -196,7 +196,7 @@ export const useMultipleTabStore = defineStore({
         // There is only one tab, then jump to the homepage, otherwise jump to the right tab
         if (this.tabList.length === 1) {
           const userStore = useUserStore();
-          const globalStore = useGlobalStoreWithOut();
+          const globalStore = useGlobalStore();
           toTarget = userStore.getUserInfo.homePath || globalStore.getBaseHomePath;
         } else {
           //  Jump to the right tab

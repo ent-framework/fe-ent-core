@@ -61,14 +61,15 @@
     "reinstall": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && pnpm install",
     "prepare": "husky install",
     "prepublish": "pnpm run build:libs",
-    "remote": "tsx ./scripts/publish.ts",
+    "publish2remote": "tsx ./scripts/publish.ts",
+    "publish2local": "tsx ./scripts/publish-local.ts",
     "link:global": "tsx ./scripts/pnpmlink.ts",
     "stub": "pnpm run -r --parallel stub",
     "postinstall": "pnpm stub"
   },
   "peerDependencies": {
     "vue": "^3.2.0",
-    "ant-design-vue": "4.0.3"
+    "ant-design-vue": "4.0.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
@@ -120,7 +121,7 @@
     "vite": "4.4.11",
     "rollup": "3.27.1",
     "vue": "3.3.4",
-    "ant-design-vue": "4.0.3"
+    "ant-design-vue": "4.0.6"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china",

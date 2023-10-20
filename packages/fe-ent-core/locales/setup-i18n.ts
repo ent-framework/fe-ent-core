@@ -1,7 +1,7 @@
 import { createI18n } from 'vue-i18n';
 import dayjs from 'dayjs';
 import { localeSetting } from '@ent-core/logics/settings/locale-setting';
-import { useLocaleStoreWithOut } from '@ent-core/store/modules/locale';
+import { useLocaleStore } from '@ent-core/store/modules/locale';
 import zhCN from './lang/zh-CN';
 import en from './lang/en';
 import 'dayjs/locale/zh-cn';
@@ -16,7 +16,7 @@ const { fallback, availableLocales } = localeSetting;
 export let i18n: I18n;
 
 async function createI18nOptions(): Promise<I18nOptions> {
-  const localeStore = useLocaleStoreWithOut();
+  const localeStore = useLocaleStore();
   //default locale
   const locale = localeStore.getLocale;
   if (locale) {

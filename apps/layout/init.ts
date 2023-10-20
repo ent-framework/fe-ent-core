@@ -4,7 +4,7 @@ import {
   COMPONENT_IFRAME_NAME,
   COMPONENT_LAYOUT_NAME,
 } from 'fe-ent-core/es/router';
-import { useGlobalStoreWithOut } from 'fe-ent-core/es/store/modules/global';
+import { useGlobalStore } from 'fe-ent-core/es/store/modules/global';
 import { Persistent } from 'fe-ent-core/es/utils/cache/persistent';
 import { LAYOUT_KEY } from 'fe-ent-core/es/logics';
 import { DefaultLayout } from './components/layouts/default';
@@ -26,7 +26,7 @@ const initLayout = function (app: App, entRouter?: EntRouter) {
 
   if (entRouter) {
     entRouter.setPageNotFoundRoute(getPageNotFoundRoute());
-    const globalStore = useGlobalStoreWithOut();
+    const globalStore = useGlobalStore();
     entRouter.afterEach((to) => {
       // Just enter the login page and clear the authentication information
       if (to.path === globalStore.getBaseLoginPath) {

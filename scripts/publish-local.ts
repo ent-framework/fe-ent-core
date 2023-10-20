@@ -11,7 +11,9 @@ const publish = async () => {
   const publishDir = [`${projRoot}/packages/fe-ent-core`, ...publishFolders];
 
   console.log(publishDir);
-  publishDir.map((pkg) => run('npm publish --access public --otp=205597', pkg));
+  publishDir.map((pkg) =>
+    run('npm publish -registry http://localhost:8081/repository/npm-hosted/ --access public', pkg),
+  );
 };
 
 publish();

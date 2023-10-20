@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-vue-scripts",
-  "version": "2.0.2",
+  "version": "10.0.5",
   "description": "Ent Vue Scripts",
   "main": "dist/index.js",
   "bin": {
@@ -47,7 +47,7 @@
     "@types/parse5": "^5.0.0"
   },
   "dependencies": {
-    "ant-design-vue": "4.0.3",
+    "ant-design-vue": "4.0.6",
     "@babel/core": "^7.14.6",
     "@babel/parser": "^7.14.7",
     "@babel/plugin-proposal-class-properties": "^7.14.5",

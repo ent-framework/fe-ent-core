@@ -6,9 +6,9 @@ import { ContentTypeEnum, RequestEnum, ResultEnum } from '@ent-core/logics/enums
 import { isString } from '@ent-core/utils/is';
 import { getToken } from '@ent-core/utils/auth';
 import { deepMerge, setObjToUrlParams } from '@ent-core/utils/base';
-import { useErrorLogStoreWithOut } from '@ent-core/store/modules/error-log';
+import { useErrorLogStore } from '@ent-core/store/modules/error-log';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
-import { useUserStoreWithOut } from '@ent-core/store/modules/user';
+import { useUserStore } from '@ent-core/store/modules/user';
 import { formatRequestDate, joinTimestamp } from './helper';
 import { checkStatus } from './check-status';
 import { VAxios } from './axios';
@@ -58,7 +58,7 @@ const transform: AxiosTransform = {
     switch (code) {
       case ResultEnum.TIMEOUT: {
         timeoutMsg = t('sys.api.timeoutMessage');
-        const userStore = useUserStoreWithOut();
+        const userStore = useUserStore();
         userStore.setToken(undefined);
         userStore.logout(true);
         break;
@@ -156,7 +156,7 @@ const transform: AxiosTransform = {
    */
   responseInterceptorsCatch: (error: any) => {
     const { t } = useI18n();
-    const errorLogStore = useErrorLogStoreWithOut();
+    const errorLogStore = useErrorLogStore();
     errorLogStore.addAjaxErrorInfo(error);
     const { response, code, message, config } = error || {};
     const errorMessageMode =

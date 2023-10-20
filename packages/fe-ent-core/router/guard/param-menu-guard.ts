@@ -1,13 +1,13 @@
 import { configureDynamicParamsMenu } from '@ent-core/router/helper/menu-helper';
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
-import { useAppStoreWithOut } from '@ent-core/store/modules/app';
+import { useAppStore } from '@ent-core/store/modules/app';
 
-import { usePermissionStoreWithOut } from '@ent-core/store/modules/permission';
+import { usePermissionStore } from '@ent-core/store/modules/permission';
 import type { Menu } from '@ent-core/router/types';
 import type { Router } from 'vue-router';
 
 export function createParamMenuGuard(router: Router) {
-  const permissionStore = usePermissionStoreWithOut();
+  const permissionStore = usePermissionStore();
   router.beforeEach(async (to, _, next) => {
     // filter no name route
     if (!to.name) {
@@ -33,7 +33,7 @@ export function createParamMenuGuard(router: Router) {
 }
 
 const getPermissionMode = () => {
-  const appStore = useAppStoreWithOut();
+  const appStore = useAppStore();
   return appStore.getProjectConfig.permissionMode;
 };
 

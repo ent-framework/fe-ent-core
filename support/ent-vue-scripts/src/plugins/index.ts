@@ -11,6 +11,7 @@ import { configMockPlugin } from './mock';
 import { configSvgIconsPlugin } from './svgSprite';
 import { configVisualizerConfig } from './visualizer';
 import { configUnoCSSPlugin } from './unocss';
+import consola from 'consola';
 
 interface Options {
   isBuild: boolean;
@@ -63,20 +64,24 @@ async function createPlugins({
   }
 
   if (!isBuild && enableInspect) {
+    consola.log('enable inspect');
     vitePlugins.push(Inspect());
   }
 
   if (!isBuild && enableCert) {
+    consola.log('enable cert');
     vitePlugins.push(mkcert());
   }
 
   // rollup-plugin-visualizer
   if (mode !== 'lib' && enableAnalyze) {
+    consola.log('enable analyze');
     vitePlugins.push(configVisualizerConfig());
   }
 
   // vite-plugin-mock
   if (mode !== 'lib' && enableMock) {
+    consola.log('enable mock');
     vitePlugins.push(configMockPlugin({ isBuild }));
   }
 

@@ -1,7 +1,6 @@
 import { toRaw } from 'vue';
 import { defineStore } from 'pinia';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
-import { store } from '@ent-core/store/pinia';
 import {
   backendRouteFilter,
   flatMultiLevelRoutes,
@@ -15,8 +14,8 @@ import { filter } from '@ent-core/utils/helper/tree-helper';
 import { Factory } from '@ent-core/logics/factory';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { entRouter } from '@ent-core/router/base';
-import { useAppStoreWithOut } from './app';
-import { useGlobalStoreWithOut } from './global';
+import { useAppStore } from './app';
+import { useGlobalStore } from './global';
 import { useUserStore } from './user';
 import type { AppRouteRecordRaw, Menu } from '@ent-core/router/types';
 
@@ -96,8 +95,8 @@ export const usePermissionStore = defineStore({
     async buildRoutesAction(): Promise<AppRouteRecordRaw[]> {
       const { t } = useI18n();
       const userStore = useUserStore();
-      const appStore = useAppStoreWithOut();
-      const globalStore = useGlobalStoreWithOut();
+      const appStore = useAppStore();
+      const globalStore = useGlobalStore();
 
       let routes: AppRouteRecordRaw[] = [];
       const roleList = toRaw(userStore.getRoleList) || [];
@@ -233,8 +232,3 @@ export const usePermissionStore = defineStore({
     },
   },
 });
-
-// Need to be used outside the setup
-export function usePermissionStoreWithOut() {
-  return usePermissionStore(store);
-}

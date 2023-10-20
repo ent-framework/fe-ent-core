@@ -1,8 +1,8 @@
 import { unref } from 'vue';
 import { Modal, notification } from 'ant-design-vue';
 import nProgress from 'nprogress';
-import { useAppStoreWithOut } from '@ent-core/store/modules/app';
-import { useUserStoreWithOut } from '@ent-core/store/modules/user';
+import { useAppStore } from '@ent-core/store/modules/app';
+import { useUserStore } from '@ent-core/store/modules/user';
 import { useTransitionSetting } from '@ent-core/hooks/setting/use-transition-setting';
 import { AxiosCanceler } from '@ent-core/utils/http/axios/axios-cancel';
 import { warn } from '@ent-core/utils/log';
@@ -49,8 +49,8 @@ export function createPageGuard(router: Router) {
 
 // Used to handle page loading status
 export function createPageLoadingGuard(router: Router) {
-  const userStore = useUserStoreWithOut();
-  const appStore = useAppStoreWithOut();
+  const userStore = useUserStore();
+  const appStore = useAppStore();
   const { getOpenPageLoading } = useTransitionSetting();
   router.beforeEach(async (to) => {
     if (!userStore.getToken) {

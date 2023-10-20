@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia';
-import { store } from 'fe-ent-core/es/store/pinia';
 import { LAYOUT_KEY } from 'fe-ent-core/es/logics/enums/cache-enum';
 import { getLayoutCache, setLayoutCache } from 'fe-ent-core/es/utils/layout';
 import { deepMerge } from 'fe-ent-core/es/utils';
@@ -37,8 +36,3 @@ export const useLayoutStore = defineStore({
     },
   },
 });
-
-// Need to be used outside the setup
-export function useLayoutStoreWithOut() {
-  return useLayoutStore(store);
-}
