@@ -1,4 +1,4 @@
-import { defHttp } from '@ent-core/utils/http/axios';
+import { defHttp } from '@ent-core/utils/http';
 import { useGlobSetting } from '@ent-core/hooks';
 import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
 import type { GetUserInfoModel, LoginParams, LoginResultModel } from '@ent-core/logics/types/user';

@@ -30,8 +30,7 @@ export interface PermissionState {
   backMenuList: Menu[];
   frontMenuList: Menu[];
 }
-export const usePermissionStore = defineStore({
-  id: 'app-permission',
+export const usePermissionStore = defineStore('app-permission', {
   state: (): PermissionState => ({
     permCodeList: [],
     // Whether the route has been dynamically added
@@ -120,7 +119,7 @@ export const usePermissionStore = defineStore({
        * */
       const patchHomeAffix = (routes: AppRouteRecordRaw[]) => {
         if (!routes || routes.length === 0) return;
-        let homePath: string = userStore.getUserInfo.homePath || globalStore.getBaseHomePath;
+        let homePath: string = userStore.getUserInfo?.homePath || globalStore.getBaseHomePath;
         function patcher(routes: AppRouteRecordRaw[], parentPath = '') {
           if (parentPath) parentPath = `${parentPath}/`;
           routes.forEach((route: AppRouteRecordRaw) => {

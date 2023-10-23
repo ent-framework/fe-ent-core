@@ -4,7 +4,7 @@ import nProgress from 'nprogress';
 import { useAppStore } from '@ent-core/store/modules/app';
 import { useUserStore } from '@ent-core/store/modules/user';
 import { useTransitionSetting } from '@ent-core/hooks/setting/use-transition-setting';
-import { AxiosCanceler } from '@ent-core/utils/http/axios/axios-cancel';
+import { AxiosCanceler } from '@ent-core/utils/http/axios-cancel';
 import { warn } from '@ent-core/utils/log';
 import { setRouteChange } from '@ent-core/logics/mitt/route-change';
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';

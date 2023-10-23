@@ -14,14 +14,14 @@
     "dtsgen": "ent-vue-scripts dtsgen"
   },
   "peerDependencies": {
-    "fe-ent-core": "^2.0.0"
+    "fe-ent-core": "^2.1.0"
   },
   "dependencies": {
     "vue": "3.3.4",
     "ant-design-vue": "4.0.6"
   },
   "devDependencies": {
-    "fe-ent-vue-scripts": "^2.0.0",
+    "fe-ent-vue-scripts": "^2.1.0",
     "vite": "4.4.11",
     "@iconify/json": "^1.1.422",
     "rimraf": "^5.0.0"

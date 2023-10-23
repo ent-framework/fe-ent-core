@@ -36,5 +36,5 @@ export interface GlobEnvConfig {
   // Layout name
   VITE_GLOB_LAYOUT_NAME?: string;
   // VBen version
-  VITE_GLOB_VBEN_VERSION?: string;
+  VITE_GLOB_VERSION?: string;
 }

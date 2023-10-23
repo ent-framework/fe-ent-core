@@ -4,7 +4,6 @@ import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { ContentTypeEnum, RequestEnum, ResultEnum } from '@ent-core/logics/enums/http-enum';
 import { isString } from '@ent-core/utils/is';
-import { getToken } from '@ent-core/utils/auth';
 import { deepMerge, setObjToUrlParams } from '@ent-core/utils/base';
 import { useErrorLogStore } from '@ent-core/store/modules/error-log';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
@@ -134,7 +133,8 @@ const transform: AxiosTransform = {
    */
   requestInterceptors: (config, options) => {
     // 请求之前处理config
-    const token = getToken();
+    const userStore = useUserStore();
+    const token = userStore.getToken;
     if (token && (config as Recordable)?.requestOptions?.withToken !== false) {
       // jwt token
       (config as Recordable).headers.Authorization = options.authenticationScheme

@@ -34,7 +34,7 @@
       title: propTypes.string,
     },
     emits: ['close'],
-    slots: ['titleToolbar'],
+    // slots: ['titleToolbar'],
     setup(_, { emit }) {
       const { prefixCls } = useDesign('basic-drawer-header');
 

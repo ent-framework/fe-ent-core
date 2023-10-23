@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-markdown",
-  "version": "10.0.5",
+  "version": "2.1.0",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -27,14 +27,14 @@
     "dtsgen": "ent-vue-scripts dtsgen"
   },
   "peerDependencies": {
-    "fe-ent-core": "^2.0.0"
+    "fe-ent-core": "^2.1.0"
   },
   "dependencies": {
     "vditor": "^3.9.1",
     "showdown": "^1.9.1"
   },
   "devDependencies": {
-    "fe-ent-vue-scripts": "^2.0.0",
+    "fe-ent-vue-scripts": "^2.1.0",
     "rimraf": "^5.0.0",
     "@types/tinycolor2": "^1.4.2",
     "vite": "4.4.11"

@@ -9,10 +9,8 @@ export * from './mitt';
 export * from './prop-types';
 export * from './uuid';
 
-export * from './auth';
-export * from './cache';
 export * from './event';
 export * from './factory';
 export * from './file';
 export * from './helper';
-export * from './http/axios';
+export * from './http';

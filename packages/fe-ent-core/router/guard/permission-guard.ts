@@ -17,10 +17,10 @@ export function createPermissionGuard(router: Router) {
     if (
       from.path === '/' &&
       to.path === baseHome &&
-      userStore.getUserInfo.homePath &&
-      userStore.getUserInfo.homePath !== baseHome
+      userStore.getUserInfo?.homePath &&
+      userStore.getUserInfo?.homePath !== baseHome
     ) {
-      next(userStore.getUserInfo.homePath);
+      next(userStore.getUserInfo?.homePath);
       return;
     }
 
@@ -71,9 +71,9 @@ export function createPermissionGuard(router: Router) {
     if (
       from.path === loginPath &&
       to.name === PAGE_NOT_FOUND_NAME &&
-      to.fullPath !== (userStore.getUserInfo.homePath || baseHome)
+      to.fullPath !== (userStore.getUserInfo?.homePath || baseHome)
     ) {
-      next(userStore.getUserInfo.homePath || baseHome);
+      next(userStore.getUserInfo?.homePath || baseHome);
       return;
     }
 

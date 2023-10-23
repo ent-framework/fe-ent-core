@@ -1,8 +1,13 @@
 import { createPinia } from 'pinia';
+import { createPersistedState } from 'pinia-plugin-persistedstate';
+import { getCommonStoragePrefix } from '@ent-core/utils';
+import { persistGlobalConfig } from './persist';
 import type { App } from 'vue';
 
-const store = createPinia();
+export const PERSIST_KEY_PREFIX = getCommonStoragePrefix();
 
+const store = createPinia();
+store.use(createPersistedState(persistGlobalConfig(PERSIST_KEY_PREFIX)));
 export function setupStore(app: App<Element>) {
   app.use(store);
 }

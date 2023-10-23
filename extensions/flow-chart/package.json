@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-flow-chart",
-  "version": "10.0.5",
+  "version": "2.1.0",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -27,15 +27,15 @@
     "dtsgen": "ent-vue-scripts dtsgen"
   },
   "peerDependencies": {
-    "fe-ent-core": "^2.0.0",
-    "fe-ent-code-editor": "^2.0.0"
+    "fe-ent-core": "^2.1.0",
+    "fe-ent-code-editor": "^2.1.0"
   },
   "dependencies": {
     "@logicflow/core": "^1.2.1",
     "@logicflow/extension": "^1.2.1"
   },
   "devDependencies": {
-    "fe-ent-vue-scripts": "^2.0.0",
+    "fe-ent-vue-scripts": "^2.1.0",
     "rimraf": "^5.0.0",
     "@types/tinycolor2": "^1.4.2"
   },

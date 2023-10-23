@@ -1,7 +1,7 @@
 import { type AxiosProgressEvent } from 'axios';
 import { noop } from '@vueuse/core';
 import { useUserStore } from '@ent-core/store';
-import { defHttp } from '@ent-core/utils/http/axios';
+import { defHttp } from '@ent-core/utils/http';
 import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
 import type { UploadFileParams } from '@ent-core/logics/types/axios';
 import type { UploadApiResult } from '@ent-core/logics/types/upload';

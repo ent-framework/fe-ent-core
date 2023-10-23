@@ -1,23 +1,19 @@
 import { defineStore } from 'pinia';
-import { LAYOUT_KEY } from 'fe-ent-core/es/logics/enums/cache-enum';
-import { getLayoutCache, setLayoutCache } from 'fe-ent-core/es/utils/layout';
 import { deepMerge } from 'fe-ent-core/es/utils';
+import { defaultLayoutSetting } from './layout-setting';
 import type { HeaderSetting, LayoutConfig, MenuSetting, MultiTabsSetting } from '../types';
-import type { DeepPartial, Nullable } from 'fe-ent-core/es/types';
+import type { DeepPartial } from 'fe-ent-core/es/types';
 
 export interface LayoutState {
-  layoutConfig: Nullable<LayoutConfig>;
+  layoutConfig: LayoutConfig;
 }
-
-export const useLayoutStore = defineStore({
-  id: 'app-layout',
-  state: (): LayoutState => ({
-    // user info
-    layoutConfig: null,
+export const useLayoutStore = defineStore('app-layout', {
+  state: () => ({
+    layoutConfig: { ...defaultLayoutSetting } as LayoutConfig,
   }),
   getters: {
-    getLayoutConfig(): LayoutConfig {
-      return this.layoutConfig || getLayoutCache<LayoutConfig>(LAYOUT_KEY) || {};
+    getLayoutConfig(state): LayoutConfig {
+      return state.layoutConfig || {};
     },
     getMultiTabsSetting(): MultiTabsSetting {
       return this.getLayoutConfig.multiTabsSetting;
@@ -32,7 +28,6 @@ export const useLayoutStore = defineStore({
   actions: {
     setLayoutConfig(config: DeepPartial<LayoutConfig>) {
       this.layoutConfig = deepMerge(this.layoutConfig || {}, config);
-      setLayoutCache(LAYOUT_KEY, this.layoutConfig);
     },
   },
 });

@@ -1,4 +1,4 @@
-import { defHttp } from '@ent-core/utils/http/axios';
+import { defHttp } from '@ent-core/utils/http';
 import { ThemeEnum } from '../enums';
 import type { AppRouteRecordRaw } from '@ent-core/router/types';
 import type { Recordable } from '@ent-core/types';

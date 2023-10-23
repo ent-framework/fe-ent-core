@@ -1,22 +1,15 @@
 import { defineStore } from 'pinia';
 
-import { LOCALE_KEY } from '@ent-core/logics/enums/cache-enum';
-import { createLocalStorage } from '@ent-core/utils/cache';
 import { localeSetting } from '@ent-core/logics/settings/locale-setting';
 import type { LocaleSetting, LocaleType } from '@ent-core/store/types';
-
-const ls = createLocalStorage();
-
-const lsLocaleSetting = (ls.get(LOCALE_KEY) || localeSetting) as LocaleSetting;
 
 export interface LocaleState {
   localInfo: LocaleSetting;
 }
 
-export const useLocaleStore = defineStore({
-  id: 'app-locale',
+export const useLocaleStore = defineStore('app-locale', {
   state: (): LocaleState => ({
-    localInfo: lsLocaleSetting,
+    localInfo: localeSetting,
   }),
   getters: {
     getShowPicker(): boolean {
@@ -33,19 +26,10 @@ export const useLocaleStore = defineStore({
      */
     setLocaleInfo(info: Partial<LocaleSetting>) {
       this.localInfo = { ...this.localInfo, ...info };
-      ls.set(LOCALE_KEY, this.localInfo);
-    },
-    /**
-     * Initialize multilingual information and load the existing configuration from the local cache
-     */
-    initLocale() {
-      this.setLocaleInfo({
-        ...localeSetting,
-        ...this.localInfo,
-      });
     },
     setShowPicker(show: boolean) {
       this.localInfo = { ...this.localInfo, showPicker: show };
     },
   },
+  persist: true,
 });

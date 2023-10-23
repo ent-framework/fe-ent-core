@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
 
-import { PROJ_CFG_KEY } from '@ent-core/logics/enums/cache-enum';
-import { Persistent } from '@ent-core/utils/cache/persistent';
+import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { resetRouter } from '@ent-core/router/base';
 import { deepMerge } from '@ent-core/utils/base';
+import { Factory, ThemeEnum } from '@ent-core/logics';
 import type {
   BeforeMiniState,
   ProjectConfig,
@@ -21,13 +21,25 @@ export interface AppState {
   beforeMiniInfo: BeforeMiniState;
 }
 let timeId: TimeoutHandle;
-export const useAppStore = defineStore({
-  id: 'app',
-  state: (): AppState => ({
-    pageLoading: false,
-    projectConfig: Persistent.getLocal(PROJ_CFG_KEY),
-    beforeMiniInfo: {},
-  }),
+export const useAppStore = defineStore('app', {
+  state: (): AppState => {
+    const defaultThemeSetting = Factory.getLayoutFactory().getDefaultThemeSetting();
+    const projCfg = deepMerge(
+      {
+        ...defaultProjectSetting,
+        themeSetting: {
+          ...defaultThemeSetting,
+          theme: ThemeEnum.LIGHT,
+        },
+      },
+      {},
+    );
+    return {
+      pageLoading: false,
+      projectConfig: projCfg,
+      beforeMiniInfo: {},
+    };
+  },
   getters: {
     getPageLoading(): boolean {
       return this.pageLoading;
@@ -56,12 +68,12 @@ export const useAppStore = defineStore({
 
     setProjectConfig(config: DeepPartial<ProjectConfig>): void {
       this.projectConfig = deepMerge(this.projectConfig || {}, config);
-      Persistent.setLocal(PROJ_CFG_KEY, this.projectConfig, true);
+      // Persistent.setLocal(PROJ_CFG_KEY, this.projectConfig, true);
     },
 
     async resetAllState() {
       resetRouter();
-      Persistent.clearAll();
+      // Persistent.clearAll();
     },
     async setPageLoadingAction(loading: boolean): Promise<void> {
       if (loading) {
@@ -76,4 +88,5 @@ export const useAppStore = defineStore({
       }
     },
   },
+  persist: true,
 });

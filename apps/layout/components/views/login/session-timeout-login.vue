@@ -9,7 +9,7 @@
       const userStore = useUserStore();
       const permissionStore = usePermissionStore();
       const appStore = useAppStore();
-      const userId = ref<Nullable<number | string>>(0);
+      const userId = ref<Nullable<number | string | undefined>>(0);
 
       const isBackMode = () => {
         return appStore.getProjectConfig.permissionMode === PermissionModeEnum.BACK;
@@ -21,7 +21,7 @@
       });
 
       onBeforeUnmount(() => {
-        if (userId.value && userId.value !== userStore.getUserInfo.userId) {
+        if (userId.value && userId.value !== userStore.getUserInfo?.userId) {
           // 登录的不是同一个用户，刷新整个页面以便丢弃之前用户的页面状态
           document.location.reload();
         } else if (isBackMode() && permissionStore.getLastBuildMenuTime === 0) {

@@ -1,7 +1,5 @@
 import { h } from 'vue';
 import { defineStore } from 'pinia';
-import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '@ent-core/logics/enums/cache-enum';
-import { getAuthCache, setAuthCache } from '@ent-core/utils/auth';
 import { Factory } from '@ent-core/logics/factory';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { useMessage } from '@ent-core/hooks/web/use-message';
@@ -21,8 +19,7 @@ export interface UserState {
   lastUpdateTime: number;
 }
 
-export const useUserStore = defineStore({
-  id: 'app-user',
+export const useUserStore = defineStore('app-user', {
   state: (): UserState => ({
     // user info
     userInfo: null,
@@ -36,14 +33,14 @@ export const useUserStore = defineStore({
     lastUpdateTime: 0,
   }),
   getters: {
-    getUserInfo(): UserInfo {
-      return this.userInfo || getAuthCache<UserInfo>(USER_INFO_KEY) || {};
+    getUserInfo(): Nullable<UserInfo> {
+      return this.userInfo;
     },
-    getToken(): string {
-      return this.token || getAuthCache<string>(TOKEN_KEY);
+    getToken(): string | undefined {
+      return this.token;
     },
     getRoleList(): string[] {
-      return this.roleList.length > 0 ? this.roleList : getAuthCache<string[]>(ROLES_KEY);
+      return this.roleList.length > 0 ? this.roleList : [];
     },
     getSessionTimeout(): boolean {
       return !!this.sessionTimeout;
@@ -55,16 +52,13 @@ export const useUserStore = defineStore({
   actions: {
     setToken(info: string | undefined) {
       this.token = info ? info : ''; // for null or undefined value
-      setAuthCache(TOKEN_KEY, info);
     },
     setRoleList(roleList: string[]) {
       this.roleList = roleList;
-      setAuthCache(ROLES_KEY, roleList);
     },
     setUserInfo(info: UserInfo | null) {
       this.userInfo = info;
       this.lastUpdateTime = Date.now();
-      setAuthCache(USER_INFO_KEY, info);
     },
     setSessionTimeout(flag: boolean) {
       this.sessionTimeout = flag;
@@ -167,4 +161,5 @@ export const useUserStore = defineStore({
       });
     },
   },
+  persist: true,
 });

@@ -4,7 +4,7 @@ import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
 import EntCore, { registerAntGlobComp } from 'fe-ent-core';
-import { initAppConfigStore, setupErrorHandle } from 'fe-ent-core/es/logics';
+import { setupErrorHandle } from 'fe-ent-core/es/logics';
 import { setupGlobDirectives } from 'fe-ent-core/es/directives';
 import { setupStore } from 'fe-ent-core/es/store';
 import { entRouter, setupRouterGuard } from 'fe-ent-core/es/router';
@@ -22,9 +22,6 @@ async function bootstrap() {
 
   // Configure store
   setupStore(app);
-
-  // Initialize internal system configuration
-  await initAppConfigStore();
 
   //初始化全局变量
   await initApplication();

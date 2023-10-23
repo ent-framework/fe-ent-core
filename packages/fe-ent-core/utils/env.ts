@@ -13,8 +13,8 @@ export function getCommonStoragePrefix() {
 // Generate cache key according to version
 export function getStorageShortName() {
   const appConfig = getAppEnvConfig();
-  const { VITE_GLOB_APP_SHORT_NAME, VITE_GLOB_VBEN_VERSION } = appConfig;
-  return `${VITE_GLOB_APP_SHORT_NAME}__${getEnv()}${`__${VITE_GLOB_VBEN_VERSION}`}__`.toUpperCase();
+  const { VITE_GLOB_APP_SHORT_NAME, VITE_GLOB_VERSION } = appConfig;
+  return `${VITE_GLOB_APP_SHORT_NAME}__${getEnv()}${`__${VITE_GLOB_VERSION}`}__`.toUpperCase();
 }
 
 export function getAppEnvConfig(): AppEnv {
@@ -40,7 +40,7 @@ export function getAppEnvConfig(): AppEnv {
     VITE_GLOB_API_REQUEST_TIMEOUT,
     VITE_GLOB_UPLOAD_URL,
     VITE_GLOB_LAYOUT_NAME,
-    VITE_GLOB_VBEN_VERSION,
+    VITE_GLOB_VERSION,
     VITE_HASH_ROUTER,
     ...REST
   } = ENV;
@@ -61,7 +61,7 @@ export function getAppEnvConfig(): AppEnv {
     VITE_GLOB_API_REQUEST_TIMEOUT,
     VITE_GLOB_UPLOAD_URL,
     VITE_GLOB_LAYOUT_NAME,
-    VITE_GLOB_VBEN_VERSION,
+    VITE_GLOB_VERSION,
     VITE_HASH_ROUTER,
     ...REST,
   };

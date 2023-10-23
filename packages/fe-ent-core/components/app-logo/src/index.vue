@@ -56,7 +56,7 @@
         return {};
       });
       function goHome() {
-        go(userStore.getUserInfo.homePath || globalStore.getBaseHomePath);
+        go(userStore.getUserInfo?.homePath || globalStore.getBaseHomePath);
       }
 
       const logoImageURL = logoUrl || LogoImg;

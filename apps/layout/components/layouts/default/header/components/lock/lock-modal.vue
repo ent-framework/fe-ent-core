@@ -77,7 +77,7 @@
       }
 
       const avatar = computed(() => {
-        const { avatar } = userStore.getUserInfo;
+        const avatar = userStore.getUserInfo?.avatar;
         return avatar || headerImg;
       });
 

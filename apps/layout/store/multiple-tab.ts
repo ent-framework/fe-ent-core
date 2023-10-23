@@ -1,14 +1,10 @@
 import { toRaw, unref } from 'vue';
 import { defineStore } from 'pinia';
-import { store } from 'fe-ent-core/es/store/pinia';
 import { useGo, useRedo } from 'fe-ent-core/es/hooks/web/use-page';
-import { Persistent } from 'fe-ent-core/es/utils/cache/persistent';
 import { PAGE_NOT_FOUND_NAME, REDIRECT_NAME } from 'fe-ent-core/es/router/constant';
 import { getRawRoute } from 'fe-ent-core/es/utils/base';
-import { MULTIPLE_TABS_KEY } from 'fe-ent-core/es/logics/enums/cache-enum';
 import { useGlobalStore } from 'fe-ent-core/es/store';
 import { useUserStore } from 'fe-ent-core/es/store/modules/user';
-import { defaultLayoutSetting } from './layout-setting';
 import type { RouteLocationNormalized, RouteLocationRaw, Router } from 'vue-router';
 
 export interface MultipleTabState {
@@ -31,7 +27,7 @@ const getToTarget = (tabItem: RouteLocationNormalized) => {
   };
 };
 
-const cacheTab = defaultLayoutSetting.multiTabsSetting.cache;
+//const cacheTab = defaultLayoutSetting.multiTabsSetting.cache;
 
 export const useMultipleTabStore = defineStore({
   id: 'app-multiple-tab',
@@ -39,7 +35,7 @@ export const useMultipleTabStore = defineStore({
     // Tabs that need to be cached
     cacheTabList: new Set(),
     // multiple tab list
-    tabList: cacheTab ? Persistent.getLocal(MULTIPLE_TABS_KEY) || [] : [],
+    tabList: [] as RouteLocationNormalized[],
     // Index of the last moved tab
     lastDragEndIndex: 0,
   }),
@@ -164,7 +160,7 @@ export const useMultipleTabStore = defineStore({
         this.tabList.push(route);
       }
       this.updateCacheTab();
-      cacheTab && Persistent.setLocal(MULTIPLE_TABS_KEY, this.tabList);
+      //cacheTab && Persistent.setLocal(MULTIPLE_TABS_KEY, this.tabList);
     },
 
     async closeTab(tab: RouteLocationNormalized, router: Router) {
@@ -197,7 +193,7 @@ export const useMultipleTabStore = defineStore({
         if (this.tabList.length === 1) {
           const userStore = useUserStore();
           const globalStore = useGlobalStore();
-          toTarget = userStore.getUserInfo.homePath || globalStore.getBaseHomePath;
+          toTarget = userStore.getUserInfo?.homePath || globalStore.getBaseHomePath;
         } else {
           //  Jump to the right tab
           const page = this.tabList[index + 1];
@@ -349,8 +345,3 @@ export const useMultipleTabStore = defineStore({
     },
   },
 });
-
-// Need to be used outside the setup
-export function useMultipleTabWithOutStore() {
-  return useMultipleTabStore(store);
-}

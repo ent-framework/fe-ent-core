@@ -88,6 +88,7 @@
   import headerImg from '../../../assets/header.jpg';
   import { useNow } from './use-now';
   import type { UserInfo } from 'fe-ent-core/es/store/types';
+  import type { Nullable } from 'fe-ent-core/es/types';
 
   const InputPassword = Input.Password;
 
@@ -104,8 +105,8 @@
 
   const { t } = useI18n();
 
-  const userinfo = computed((): UserInfo => {
-    return userStore.getUserInfo || {};
+  const userinfo = computed((): Nullable<UserInfo> => {
+    return userStore.getUserInfo;
   });
   /**
    * @description: unLock
