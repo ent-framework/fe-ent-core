@@ -1,3 +1,4 @@
+import { usePermission } from 'fe-ent-core/es/hooks/web/use-permission';
 import { useGlobalStore } from 'fe-ent-core/es/store';
 
 export async function initApplication() {
@@ -6,8 +7,9 @@ export async function initApplication() {
 
   const globalStore = useGlobalStore();
   globalStore.setBaseHomePath('/dashboard/workbench');
-  // const { changePermissionMode } = usePermission();
-  // await changePermissionMode('BACK');
+  const { changePermissionMode } = usePermission();
+  await changePermissionMode('BACK');
+  //await changePermissionMode('ROUTE_MAPPING');
   // 关闭multi-tab 和 keep-alive
   // const appStore = useAppStoreWithOut();
   // appStore.setProjectConfig({

@@ -4,7 +4,7 @@
     <ConfigProvider v-if="getShowFullHeaderRef" :theme="getComputedHeaderTheme">
       <LayoutHeader fixed />
     </ConfigProvider>
-    <Layout :class="[layoutClass]">
+    <Layout>
       <ConfigProvider :theme="getComputedMenuTheme">
         <LayoutSideBar v-if="getShowSidebar || getIsMobile" />
       </ConfigProvider>
@@ -54,7 +54,7 @@
       const { prefixCls } = useDesign('default-layout');
       const { getIsMobile } = useAppInject();
       const { getShowFullHeaderRef } = useHeaderSetting();
-      const { getShowSidebar, getIsMixSidebar, getShowMenu } = useMenuSetting();
+      const { getShowSidebar, getIsMixSidebar } = useMenuSetting();
       const isSetState = ref(false);
 
       const appStore = useAppStore();
@@ -72,14 +72,6 @@
 
       // Create a lock screen monitor
       const lockEvents = useLockPage();
-
-      const layoutClass = computed(() => {
-        const cls: string[] = ['ant-layout'];
-        if (unref(getIsMixSidebar) || unref(getShowMenu)) {
-          cls.push('ant-layout-has-sider');
-        }
-        return cls;
-      });
 
       // Monitor screen breakpoint information changes
       createBreakpointListen(({ screenMap, sizeEnum, width }) => {
@@ -136,7 +128,6 @@
         prefixCls,
         getIsMobile,
         getIsMixSidebar,
-        layoutClass,
         lockEvents,
         getComputedHeaderTheme,
         getComputedMenuTheme,

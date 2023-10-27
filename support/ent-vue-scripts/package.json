@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-vue-scripts",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Ent Vue Scripts",
   "main": "dist/index.js",
   "bin": {
@@ -86,7 +86,7 @@
     "typescript": "^4.9.4",
     "unocss": "^0.52.4",
     "vite": "4.4.11",
-    "vue": "3.3.4",
+    "vue": "3.3.7",
     "vite-svg-loader": "^1.5.1",
     "vue-docgen-api": "4.56.4",
     "vite-plugin-mkcert": "^1.14.1",

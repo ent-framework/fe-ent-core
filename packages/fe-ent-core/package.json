@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
@@ -71,7 +71,7 @@
     "cross-env": "^7.0.3",
     "fe-ent-vue-scripts": "^2.1.0",
     "rimraf": "^5.0.0",
-    "vue": "3.3.4",
+    "vue": "3.3.7",
     "vite": "4.4.11",
     "ant-design-vue": "4.0.6"
   },

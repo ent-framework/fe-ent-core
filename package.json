@@ -68,7 +68,7 @@
     "postinstall": "pnpm stub"
   },
   "peerDependencies": {
-    "vue": "^3.2.0",
+    "vue": "^3.3.0",
     "ant-design-vue": "4.0.6"
   },
   "devDependencies": {
@@ -120,7 +120,7 @@
     "typescript": "^4.9.4",
     "vite": "4.4.11",
     "rollup": "3.27.1",
-    "vue": "3.3.4",
+    "vue": "3.3.7",
     "ant-design-vue": "4.0.6"
   },
   "resolutions": {

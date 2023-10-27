@@ -1,4 +1,5 @@
 import { pathToRegexp } from 'path-to-regexp';
+import { cloneDeep } from 'lodash-es';
 import { useAppStore } from '@ent-core/store/modules/app';
 import { usePermissionStore } from '@ent-core/store/modules/permission';
 import { getAllParentPath } from '@ent-core/router/helper/menu-helper';
@@ -31,8 +32,7 @@ const isRoleMode = () => {
 
 function getAsyncMenus() {
   const permissionStore = usePermissionStore();
-  //递归过滤所有隐藏的菜单
-  const menuFilter = (items) => {
+  const menuFilter = (items: Menu[]) => {
     return items.filter((item) => {
       const show = !item.meta?.hideMenu && !item.hideMenu;
       if (show && item.children) {
@@ -42,10 +42,11 @@ function getAsyncMenus() {
     });
   };
   if (isBackMode()) {
-    return menuFilter(permissionStore.getBackMenuList);
-  }
-  if (isRouteMappingMode()) {
-    return menuFilter(permissionStore.getFrontMenuList);
+    const menus = permissionStore.getBackMenuList;
+    return menuFilter(cloneDeep(menus));
+  } else if (isRouteMappingMode()) {
+    const menus = permissionStore.getFrontMenuList;
+    return menuFilter(cloneDeep(menus));
   }
   return [];
 }

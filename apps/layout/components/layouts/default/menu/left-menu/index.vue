@@ -127,7 +127,6 @@
           handleMenuChange(route);
 
           if (unref(currentActiveMenu)) {
-            console.log('currentActiveMenu');
             menuState.selectedKeys = [unref(currentActiveMenu)];
             setOpenKeys(unref(currentActiveMenu));
           }

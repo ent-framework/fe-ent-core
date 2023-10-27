@@ -212,8 +212,7 @@ export const usePermissionStore = defineStore('app-permission', {
           routeList = filter(routeList, routeRemoveIgnoreFilter);
           routeList = routeList.filter(routeRemoveIgnoreFilter);
 
-          routeList = flatMultiLevelRoutes(routeList);
-          routes = [...routeList];
+          routes = flatMultiLevelRoutes(routeList);
           break;
         }
       }

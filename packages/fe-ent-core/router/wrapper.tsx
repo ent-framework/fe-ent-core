@@ -35,5 +35,5 @@ const RouteWrapperComponent = defineComponent({
         return <Empty description={description} />;
       };
     }
-  }
+  },
 });
