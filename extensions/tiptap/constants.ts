@@ -6,11 +6,14 @@ export const enum Alignment {
   left = 'left',
   center = 'center',
   right = 'right',
-  justify = 'justify'
+  justify = 'justify',
 }
-export const ALIGN_PATTERN: RegExp = new RegExp(`(${Alignment.left}|${Alignment.center}|${Alignment.right}|${Alignment.justify})`);
+export const ALIGN_PATTERN = new RegExp(
+  `(${Alignment.left}|${Alignment.center}|${Alignment.right}|${Alignment.justify})`,
+);
 
-export const DEFAULT_IMAGE_URL_REGEX = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
+export const DEFAULT_IMAGE_URL_REGEX =
+  /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
 export const DEFAULT_IMAGE_WIDTH = 200;
 export const DEFAULT_IMAGE_DISPLAY = ImageDisplay.INLINE;
 
@@ -25,6 +28,6 @@ export const enum EVENTS {
   PASTE = 'paste',
   DROP = 'drop',
   UPDATE = 'update',
-};
+}
 
-export const PREVIEW_WINDOW_WIDTH: string = '80vw';
+export const PREVIEW_WINDOW_WIDTH = '80vw';

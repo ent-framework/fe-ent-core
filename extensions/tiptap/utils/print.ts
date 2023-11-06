@@ -1,9 +1,11 @@
-import { EditorView } from 'prosemirror-view';
 import Logger from './logger';
+import type { EditorView } from 'prosemirror-view';
 
 function printHtml(dom: Element) {
-  const style :string = Array.from(document.querySelectorAll('style, link'))
-    .reduce((str, style) => str + style.outerHTML, '');
+  const style: string = Array.from(document.querySelectorAll('style, link')).reduce(
+    (str, style) => str + style.outerHTML,
+    '',
+  );
 
   const content: string = style + dom.outerHTML;
 
@@ -22,7 +24,7 @@ function printHtml(dom: Element) {
   }
 
   if (frameWindow) {
-    iframe.onload = function() {
+    iframe.onload = function () {
       try {
         setTimeout(() => {
           frameWindow.focus();
@@ -30,7 +32,7 @@ function printHtml(dom: Element) {
             if (!frameWindow.document.execCommand('print', false)) {
               frameWindow.print();
             }
-          } catch (e) {
+          } catch {
             frameWindow.print();
           }
           frameWindow.close();
@@ -39,7 +41,7 @@ function printHtml(dom: Element) {
         Logger.error(err);
       }
 
-      setTimeout(function() {
+      setTimeout(() => {
         document.body.removeChild(iframe);
       }, 100);
     };

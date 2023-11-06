@@ -1,19 +1,18 @@
-import { Plugin } from 'vue';
-import ElementTiptap from '@/components/ElementTiptap.vue';
+import EntTiptap from './components/Tiptap.vue';
 
-import CommandButton from '@/components/MenuCommands/CommandButton.vue';
-import getSuggestionItems from '@/utils/command-items';
-import renderItems from '@/utils/command-list';
+import CommandButton from './components/menu-commands/command-button.vue';
+import getSuggestionItems from './utils/command-items';
+import renderItems from './utils/command-list';
+import type { Plugin } from 'vue';
 
-const ElementTiptapPlugin: Plugin = {
+const EntTiptapPlugin: Plugin = {
   install(app) {
-    app.component('element-tiptap', ElementTiptap);
-    app.component('el-tiptap', ElementTiptap);
+    app.component('EntTiptap', EntTiptap);
   },
 };
 
-export * from '@/extensions';
+export * from './extensions';
 
-export { ElementTiptapPlugin, ElementTiptap, CommandButton, getSuggestionItems, renderItems };
+export { EntTiptapPlugin, EntTiptap, CommandButton, getSuggestionItems, renderItems };
 
-export default ElementTiptapPlugin;
+export default EntTiptapPlugin;

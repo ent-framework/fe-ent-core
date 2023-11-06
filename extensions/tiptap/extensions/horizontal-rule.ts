@@ -1,28 +1,34 @@
-import type { Editor } from '@tiptap/core';
 import TiptapHorizontalRule from '@tiptap/extension-horizontal-rule';
-import CommandButton from '@/components/MenuCommands/CommandButton.vue';
+import CommandButton from '../components/menu-commands/command-button.vue';
+import type { Editor } from '@tiptap/core';
 
 const HorizontalRule = TiptapHorizontalRule.extend({
   addOptions() {
     return {
       ...this.parent?.(),
       buttonIcon: '',
-      commandList:
-      [{
-        title: 'horizontalRule',
-        command: ({ editor, range }:any) => {
-          editor
-            .chain()
-            .focus()
-            .deleteRange(range)
-            .setHorizontalRule()
-            .run();
+      commandList: [
+        {
+          title: 'horizontalRule',
+          command: ({ editor, range }: any) => {
+            editor.chain().focus().deleteRange(range).setHorizontalRule().run();
+          },
+          disabled: false,
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          isActive(editor: Editor) {
+            return false;
+          },
         },
-        disabled: false,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        isActive(editor:Editor) { return false; }
-      }],
-      button({ editor, extension, t }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+      ],
+      button({
+        editor,
+        extension,
+        t,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return {
           component: CommandButton,
           componentProps: {

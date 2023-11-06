@@ -1,8 +1,9 @@
-import { Editor, Extension } from '@tiptap/core';
+import { Extension } from '@tiptap/core';
 import { getMarkAttributes } from '@tiptap/vue-3';
-import { DEFAULT_FONT_FAMILY_MAP } from '@/utils/font-type';
-import FontFamilyDropdown from '@/components/MenuCommands/FontFamilyDropdown.vue';
 import TextStyle from '@tiptap/extension-text-style';
+import { DEFAULT_FONT_FAMILY_MAP } from '../utils/font-type';
+import FontFamilyDropdown from '../components/menu-commands/font-family-dropdown.vue';
+import type { Editor } from '@tiptap/core';
 
 export type FontFamilyOptions = {
   types: string[];
@@ -31,31 +32,30 @@ const FontFamily = Extension.create<FontFamilyOptions>({
       types: ['textStyle'],
       fontFamilyMap: DEFAULT_FONT_FAMILY_MAP,
       buttonIcon: '',
-      commandList: Object.keys(DEFAULT_FONT_FAMILY_MAP).map(key => {
+      commandList: Object.keys(DEFAULT_FONT_FAMILY_MAP).map((key) => {
         return {
           title: `fontFamily ${key}`,
-          command: ({ editor, range }:any) => {
+          command: ({ editor, range }: any) => {
             if (key === getMarkAttributes(editor.state, 'textStyle').fontFamily || '') {
-              editor
-                .chain()
-                .focus()
-                .deleteRange(range)
-                .unsetFontFamily()
-                .run();
+              editor.chain().focus().deleteRange(range).unsetFontFamily().run();
             } else {
-              editor
-                .chain()
-                .focus()
-                .deleteRange(range)
-                .setFontFamily(key)
-                .run();
+              editor.chain().focus().deleteRange(range).setFontFamily(key).run();
             }
           },
           disabled: false,
-          isActive(editor:Editor) { return key === getMarkAttributes(editor.state, 'textStyle').fontFamily || ''; }
+          isActive(editor: Editor) {
+            return key === getMarkAttributes(editor.state, 'textStyle').fontFamily || '';
+          },
         };
       }),
-      button({ editor, extension }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+      button({
+        editor,
+        extension,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return {
           component: FontFamilyDropdown,
           componentProps: {
@@ -74,8 +74,7 @@ const FontFamily = Extension.create<FontFamilyOptions>({
         attributes: {
           fontFamily: {
             default: null,
-            parseHTML: (element) =>
-              element.style.fontFamily.replace(/['"]/g, ''),
+            parseHTML: (element) => element.style.fontFamily.replace(/['"]/g, ''),
             renderHTML: (attributes) => {
               if (!attributes.fontFamily) {
                 return {};
@@ -95,23 +94,18 @@ const FontFamily = Extension.create<FontFamilyOptions>({
     return {
       setFontFamily:
         (fontFamily) =>
-          ({ chain }) => {
-            return chain().setMark('textStyle', { fontFamily }).run();
-          },
+        ({ chain }) => {
+          return chain().setMark('textStyle', { fontFamily }).run();
+        },
 
       unsetFontFamily:
         () =>
-          ({ chain }) => {
-            return chain()
-              .setMark('textStyle', { fontFamily: null })
-              .removeEmptyTextStyle()
-              .run();
-          },
+        ({ chain }) => {
+          return chain().setMark('textStyle', { fontFamily: null }).removeEmptyTextStyle().run();
+        },
     };
   },
   nessesaryExtensions: [TextStyle],
-}).extend({
-
-});
+}).extend({});
 
 export default FontFamily;

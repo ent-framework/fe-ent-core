@@ -6,8 +6,8 @@ export const EditorContent = defineComponent({
   props: {
     editor: {
       default: null,
-      type: Object
-    }
+      type: Object,
+    },
   },
 
   watch: {
@@ -20,17 +20,17 @@ export const EditorContent = defineComponent({
             editor.createNodeViews();
           });
         }
-      }
-    }
+      },
+    },
+  },
+
+  beforeUnmount() {
+    this.editor.setOptions({
+      element: this.$el,
+    });
   },
 
   render() {
     return h('div');
   },
-
-  beforeUnmount() {
-    this.editor.setOptions({
-      element: this.$el
-    });
-  }
 });

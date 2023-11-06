@@ -52,6 +52,10 @@ export default defineConfig(({ command, mode }) => {
             replacement: `${workspace}/extensions/excel/index.ts`,
           },
           {
+            find: /^fe-ent-tiptap$/,
+            replacement: `${workspace}/extensions/tiptap/index.ts`,
+          },
+          {
             find: /^fe-ent-login$/,
             replacement: `${workspace}/apps/login/index.ts`,
           },

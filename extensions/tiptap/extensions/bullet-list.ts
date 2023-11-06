@@ -1,7 +1,7 @@
-import type { Editor } from '@tiptap/core';
 import TiptapBulletList from '@tiptap/extension-bullet-list';
-import CommandButton from '@/components/MenuCommands/CommandButton.vue';
+import CommandButton from '../components/menu-commands/command-button.vue';
 import ListItem from './list-item';
+import type { Editor } from '@tiptap/core';
 
 const BulletList = TiptapBulletList.extend({
   nessesaryExtensions: [ListItem],
@@ -9,25 +9,28 @@ const BulletList = TiptapBulletList.extend({
     return {
       ...this.parent?.(),
       buttonIcon: '',
-      commandList:
-        [{
+      commandList: [
+        {
           title: 'bulletList',
-          command: ({ editor, range }:any) => {
-            editor
-              .chain()
-              .focus()
-              .deleteRange(range)
-              .run();
-            editor
-              .chain()
-              .focus()
-              .toggleBulletList()
-              .run();
+          command: ({ editor, range }: any) => {
+            editor.chain().focus().deleteRange(range).run();
+            editor.chain().focus().toggleBulletList().run();
           },
           disabled: false,
-          isActive(editor:Editor) { return editor.isActive('bulletList'); }
-        }],
-      button({ editor, extension, t }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+          isActive(editor: Editor) {
+            return editor.isActive('bulletList');
+          },
+        },
+      ],
+      button({
+        editor,
+        extension,
+        t,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return {
           component: CommandButton,
           componentProps: {

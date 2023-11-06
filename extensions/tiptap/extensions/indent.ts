@@ -1,7 +1,7 @@
 import { Extension } from '@tiptap/core';
+import CommandButton from '../components/menu-commands/command-button.vue';
+import { IndentProps, createIndentCommand } from '../utils/indent';
 import type { Editor } from '@tiptap/core';
-import CommandButton from '@/components/MenuCommands/CommandButton.vue';
-import { createIndentCommand, IndentProps } from '@/utils/indent';
 
 export interface IndentOptions {
   types: string[];
@@ -33,7 +33,15 @@ const Indent = Extension.create<IndentOptions>({
       types: ['paragraph', 'heading', 'blockquote'],
       minIndent: IndentProps.min,
       maxIndent: IndentProps.max,
-      button({ editor, extension, t }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+      button({
+        editor,
+        extension,
+        t,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return [
           {
             component: CommandButton,
@@ -71,7 +79,7 @@ const Indent = Extension.create<IndentOptions>({
             default: 0,
             parseHTML: (element) => {
               const identAttr = element.getAttribute('data-indent');
-              return (identAttr ? parseInt(identAttr, 10) : 0) || 0;
+              return (identAttr ? Number.parseInt(identAttr, 10) : 0) || 0;
             },
             renderHTML: (attributes) => {
               if (!attributes.indent) {

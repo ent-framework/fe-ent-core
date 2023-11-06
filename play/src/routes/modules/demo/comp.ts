@@ -382,6 +382,14 @@ const comp: AppRouteRecordRaw = {
             },
           ],
         },
+        {
+          path: 'tiptap',
+          component: () => import('/@/views/demo/editor/tiptap/index.vue'),
+          name: 'TiptapDemo',
+          meta: {
+            title: t('routes.demo.editor.tiptap'),
+          },
+        },
       ],
     },
     {

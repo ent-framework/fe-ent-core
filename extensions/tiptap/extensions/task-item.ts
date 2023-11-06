@@ -1,7 +1,7 @@
 import { VueNodeViewRenderer } from '@tiptap/vue-3';
 import { mergeAttributes } from '@tiptap/core';
 import TiptapTaskItem from '@tiptap/extension-task-item';
-import TaskItemView from '@/components/ExtensionViews/TaskItemView.vue';
+import TaskItemView from '../components/extension-views/task-item-view.vue';
 
 const TaskItem = TiptapTaskItem.extend({
   addAttributes() {
@@ -11,7 +11,7 @@ const TaskItem = TiptapTaskItem.extend({
         default: false,
         keepOnSplit: false,
         parseHTML: (element) => element.getAttribute('data-done') === 'true',
-        renderHTML: attributes => ({
+        renderHTML: (attributes) => ({
           'data-done': attributes.done,
         }),
       },

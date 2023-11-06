@@ -208,7 +208,7 @@
         getHeaderStyle,
         isLogined,
         getCollapsedShowTitle,
-        getShowTitle
+        getShowTitle,
       };
     },
   });

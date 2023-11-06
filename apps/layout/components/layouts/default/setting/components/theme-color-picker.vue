@@ -48,7 +48,9 @@
       const themeSettings = Factory.getLayoutFactory().getThemeSettings();
 
       function handleClick(theme: ThemeSetting) {
-        props.event && props.handler &&  props.handler(props.event, { name: theme.name, token: theme.token });
+        props.event &&
+          props.handler &&
+          props.handler(props.event, { name: theme.name, token: theme.token });
       }
       return {
         prefixCls,

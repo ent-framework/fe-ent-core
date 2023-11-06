@@ -1,8 +1,8 @@
-import { Editor } from '@tiptap/core';
 import TiptapColor from '@tiptap/extension-color';
-import { COLOR_SET } from '@/utils/color';
-import ColorPopover from '@/components/MenuCommands/ColorPopover.vue';
 import TextStyle from '@tiptap/extension-text-style';
+import { COLOR_SET } from '../utils/color';
+import ColorPopover from '../components/menu-commands/color-popover.vue';
+import type { Editor } from '@tiptap/core';
 
 const Color = TiptapColor.extend({
   nessesaryExtensions: [TextStyle],
@@ -11,7 +11,14 @@ const Color = TiptapColor.extend({
       ...this.parent?.(),
       buttonIcon: '',
       colors: COLOR_SET,
-      button({ editor, extension }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+      button({
+        editor,
+        extension,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return {
           component: ColorPopover,
           componentProps: {

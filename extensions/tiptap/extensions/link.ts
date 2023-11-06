@@ -1,9 +1,9 @@
 import { getMarkRange } from '@tiptap/core';
-import type { Editor } from '@tiptap/core';
 import TiptapLink from '@tiptap/extension-link';
 import { Plugin, TextSelection } from 'prosemirror-state';
-import { EditorView } from 'prosemirror-view';
-import AddLinkCommandButton from '@/components/MenuCommands/Link/AddLinkCommandButton.vue';
+import AddLinkCommandButton from '../components/menu-commands/link/add-link-command-button.vue';
+import type { EditorView } from 'prosemirror-view';
+import type { Editor } from '@tiptap/core';
 
 const Link = TiptapLink.extend({
   addOptions() {
@@ -12,13 +12,20 @@ const Link = TiptapLink.extend({
       buttonIcon: '',
       addLinkPlaceholder: '',
       editLinkPlaceholder: '',
-      button({ editor, extension }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+      button({
+        editor,
+        extension,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return {
           component: AddLinkCommandButton,
           componentProps: {
             editor,
             buttonIcon: extension.options.buttonIcon,
-            placeholder: extension.options.addLinkPlaceholder
+            placeholder: extension.options.addLinkPlaceholder,
           },
         };
       },
@@ -39,9 +46,7 @@ const Link = TiptapLink.extend({
             const $start = doc.resolve(range.from);
             const $end = doc.resolve(range.to);
 
-            const transaction = tr.setSelection(
-              new TextSelection($start, $end)
-            );
+            const transaction = tr.setSelection(new TextSelection($start, $end));
 
             view.dispatch(transaction);
             return true;

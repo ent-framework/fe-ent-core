@@ -1,6 +1,6 @@
-import type { Editor } from '@tiptap/core';
 import { Extension } from '@tiptap/core';
-import CommandButton from '@/components/MenuCommands/CommandButton.vue';
+import CommandButton from '../components/menu-commands/command-button.vue';
+import type { Editor } from '@tiptap/core';
 
 const SelectAll = Extension.create({
   name: 'selectAll',
@@ -9,7 +9,15 @@ const SelectAll = Extension.create({
     return {
       ...this.parent?.(),
       buttonIcon: '',
-      button({ editor, extension, t }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+      button({
+        editor,
+        extension,
+        t,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return {
           component: CommandButton,
           componentProps: {

@@ -18,7 +18,7 @@ export default {
         buttons: {
           paragraph: 'Paragraphe',
           heading: 'Titre',
-        }
+        },
       },
       Blockquote: {
         tooltip: 'Citation',
@@ -65,7 +65,7 @@ export default {
             tooltip: 'Retirer',
           },
           image_options: {
-            tooltip: 'Options de l\'image',
+            tooltip: "Options de l'image",
           },
           display: {
             tooltip: 'Affichage',
@@ -78,21 +78,21 @@ export default {
         control: {
           insert_by_url: {
             title: 'Insérer une image',
-            placeholder: 'Lien de l\'image',
+            placeholder: "Lien de l'image",
             confirm: 'Insérer',
             cancel: 'Annuler',
-            invalid_url: 'Lien de l\'image incorrect, merci de corriger',
+            invalid_url: "Lien de l'image incorrect, merci de corriger",
           },
           upload_image: {
             title: 'Télécharger une image',
             button: 'Choisir une image ou déposer celle-ci ici',
           },
           edit_image: {
-            title: 'Editer l\'image',
+            title: "Editer l'image",
             confirm: 'Mettre à jour',
             cancel: 'Annuler',
             form: {
-              src: 'Lien de l\'image',
+              src: "Lien de l'image",
               alt: 'Texte alternatif',
               width: 'Largeur',
               height: 'Hauteur',

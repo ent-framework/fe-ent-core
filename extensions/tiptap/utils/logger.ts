@@ -1,4 +1,4 @@
-import { ELEMENT_TIPTAP_TIP } from '@/constants';
+import { ELEMENT_TIPTAP_TIP } from '../constants';
 
 export default class Logger {
   static warn(msg: string) {

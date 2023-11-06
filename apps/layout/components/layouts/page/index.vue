@@ -28,7 +28,7 @@
   import { computed, defineComponent, unref } from 'vue';
 
   import { useTransitionSetting } from 'fe-ent-core/es/hooks';
-  import { useMultipleTabSetting, useLayoutThemeSetting } from '../../../hooks';
+  import { useLayoutThemeSetting, useMultipleTabSetting } from '../../../hooks';
   import { useMultipleTabStore } from '../../../store/multiple-tab';
 
   import FrameLayout from '../iframe/index.vue';

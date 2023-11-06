@@ -1,5 +1,5 @@
 // @ts-nocheck
-import Logger from '@/utils/logger';
+import Logger from '../utils/logger';
 import en from './locales/en';
 import zh from './locales/zh';
 import zh_tw from './locales/zh-tw';
@@ -50,7 +50,7 @@ export const Trans = {
 
     if (!this.isLangSupported(lang)) {
       Logger.warn(
-        `Can't find the current language "${lang}", Using language "${DEFAULT_LANGUAGE}" by default. Welcome contribution to https://github.com/Leecason/element-tiptap`
+        `Can't find the current language "${lang}", Using language "${DEFAULT_LANGUAGE}" by default. Welcome contribution to https://github.com/Leecason/element-tiptap`,
       );
       l = DEFAULT_LANGUAGE;
     } else {

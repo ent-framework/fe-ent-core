@@ -9,10 +9,10 @@ const Commands = Extension.create({
       suggestion: {
         char: '/',
         startOfLine: false,
-        command: ({ editor, range, props } : any) => {
+        command: ({ editor, range, props }: any) => {
           props.command({ editor, range, props });
-        }
-      }
+        },
+      },
     };
   },
 
@@ -20,10 +20,10 @@ const Commands = Extension.create({
     return [
       Suggestion({
         editor: this.editor,
-        ...this.options.suggestion
-      })
+        ...this.options.suggestion,
+      }),
     ];
-  }
+  },
 });
 
 export default Commands;

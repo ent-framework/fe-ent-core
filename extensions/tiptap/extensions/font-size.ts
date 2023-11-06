@@ -1,12 +1,9 @@
-import { Editor, Extension } from '@tiptap/core';
+import { Extension } from '@tiptap/core';
 import { getMarkAttributes } from '@tiptap/vue-3';
-import {
-  DEFAULT_FONT_SIZES,
-  convertToPX,
-  DEFAULT_FONT_SIZE,
-} from '@/utils/font-size';
-import FontSizeDropdown from '@/components/MenuCommands/FontSizeDropdown.vue';
 import TextStyle from '@tiptap/extension-text-style';
+import { DEFAULT_FONT_SIZE, DEFAULT_FONT_SIZES, convertToPX } from '../utils/font-size';
+import FontSizeDropdown from '../components/menu-commands/font-size-dropdown.vue';
+import type { Editor } from '@tiptap/core';
 
 export type FontSizeOptions = {
   types: string[];
@@ -35,31 +32,30 @@ const FontSize = Extension.create<FontSizeOptions>({
       types: ['textStyle'],
       fontSizes: DEFAULT_FONT_SIZES,
       buttonIcon: '',
-      commandList: DEFAULT_FONT_SIZES.map(key => {
+      commandList: DEFAULT_FONT_SIZES.map((key) => {
         return {
           title: `fontSize ${key}`,
-          command: ({ editor, range }:any) => {
+          command: ({ editor, range }: any) => {
             if (key === getMarkAttributes(editor.state, 'textStyle').fontSize || '') {
-              editor
-                .chain()
-                .focus()
-                .deleteRange(range)
-                .unsetFontSize()
-                .run();
+              editor.chain().focus().deleteRange(range).unsetFontSize().run();
             } else {
-              editor
-                .chain()
-                .focus()
-                .deleteRange(range)
-                .setFontSize(key)
-                .run();
+              editor.chain().focus().deleteRange(range).setFontSize(key).run();
             }
           },
           disabled: false,
-          isActive(editor:Editor) { return key === getMarkAttributes(editor.state, 'textStyle').fontSize || ''; }
+          isActive(editor: Editor) {
+            return key === getMarkAttributes(editor.state, 'textStyle').fontSize || '';
+          },
         };
       }),
-      button({ editor, extension }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+      button({
+        editor,
+        extension,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return {
           component: FontSizeDropdown,
           componentProps: {
@@ -98,17 +94,17 @@ const FontSize = Extension.create<FontSizeOptions>({
     return {
       setFontSize:
         (fontSize) =>
-          ({ chain }) => {
-            return chain().setMark('textStyle', { fontSize }).run();
-          },
+        ({ chain }) => {
+          return chain().setMark('textStyle', { fontSize }).run();
+        },
       unsetFontSize:
         () =>
-          ({ chain }) => {
-            return chain()
-              .setMark('textStyle', { fontSize: DEFAULT_FONT_SIZE })
-              .removeEmptyTextStyle()
-              .run();
-          },
+        ({ chain }) => {
+          return chain()
+            .setMark('textStyle', { fontSize: DEFAULT_FONT_SIZE })
+            .removeEmptyTextStyle()
+            .run();
+        },
     };
   },
   nessesaryExtensions: [TextStyle],

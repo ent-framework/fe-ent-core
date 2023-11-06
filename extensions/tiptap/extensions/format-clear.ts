@@ -1,6 +1,6 @@
-import { ChainedCommands, Extension, UnionCommands } from '@tiptap/core';
-import type { Editor } from '@tiptap/core';
-import CommandButton from '@/components/MenuCommands/CommandButton.vue';
+import { Extension } from '@tiptap/core';
+import CommandButton from '../components/menu-commands/command-button.vue';
+import type { ChainedCommands, Editor, UnionCommands } from '@tiptap/core';
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -31,28 +31,32 @@ const FormatClear = Extension.create({
     return {
       formatClear:
         () =>
-          ({ editor, chain }) => {
-            Object.entries(
-              commandsMap
-            ).reduce<ChainedCommands>((chain, [name, command]) => {
-              const extension = editor.extensionManager.extensions.find(
-                (e) => e.name === name
-              );
-              if (extension) {
-                return chain[command]();
-              }
-              return chain;
-            }, chain());
+        ({ editor, chain }) => {
+          Object.entries(commandsMap).reduce<ChainedCommands>((chain, [name, command]) => {
+            const extension = editor.extensionManager.extensions.find((e) => e.name === name);
+            if (extension) {
+              return chain[command]();
+            }
+            return chain;
+          }, chain());
 
-            return chain().focus().run();
-          },
+          return chain().focus().run();
+        },
     };
   },
   addOptions() {
     return {
       ...this.parent?.(),
       buttonIcon: '',
-      button({ editor, extension, t }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+      button({
+        editor,
+        extension,
+        t,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return {
           component: CommandButton,
           componentProps: {

@@ -1,5 +1,6 @@
-import { Editor } from '@tiptap/core';
-import { ref, provide, watch, nextTick, unref, ShallowRef } from 'vue';
+import { nextTick, provide, ref, unref, watch } from 'vue';
+import type { ShallowRef } from 'vue';
+import type { Editor } from '@tiptap/core';
 
 export default function useCodeView(editor: ShallowRef<Editor | undefined>) {
   // Don't use ref or reactive, object proxy will encounter this problem
@@ -23,7 +24,7 @@ export default function useCodeView(editor: ShallowRef<Editor | undefined>) {
 
   const initCodemirror = () => {
     const codeViewExtension = unref(editor)!.extensionManager.extensions.find(
-      (e) => e.name === 'codeView'
+      (e) => e.name === 'codeView',
     );
     if (codeViewExtension) {
       const { codemirror, codemirrorOptions } = codeViewExtension.options;

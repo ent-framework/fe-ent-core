@@ -22,7 +22,7 @@ export function readFileDataUrl(file: File): Promise<any> {
 
   return new Promise((resolve, reject) => {
     // @ts-ignore
-    reader.onload = readerEvent => resolve(readerEvent.target.result);
+    reader.onload = (readerEvent) => resolve(readerEvent.target.result);
     reader.onerror = reject;
 
     reader.readAsDataURL(file);

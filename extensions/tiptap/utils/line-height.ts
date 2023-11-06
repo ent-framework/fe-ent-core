@@ -1,26 +1,14 @@
-import {
-  TextSelection,
-  AllSelection,
-  EditorState,
-  Transaction,
-} from 'prosemirror-state';
-import { Node as ProsemirrorNode, NodeType } from 'prosemirror-model';
-import { LINE_HEIGHT_100, DEFAULT_LINE_HEIGHT } from '@/constants';
+import { AllSelection, TextSelection } from 'prosemirror-state';
+import { DEFAULT_LINE_HEIGHT, LINE_HEIGHT_100 } from '../constants';
+import type { EditorState, Transaction } from 'prosemirror-state';
+import type { NodeType, Node as ProsemirrorNode } from 'prosemirror-model';
 import type { Command } from '@tiptap/core';
 
-export const ALLOWED_NODE_TYPES = [
-  'paragraph',
-  'heading',
-  'list_item',
-  'todo_item',
-];
+export const ALLOWED_NODE_TYPES = ['paragraph', 'heading', 'list_item', 'todo_item'];
 
 const NUMBER_VALUE_PATTERN = /^\d+(.\d+)?$/;
 
-export function isLineHeightActive(
-  state: EditorState,
-  lineHeight: string
-): boolean {
+export function isLineHeightActive(state: EditorState, lineHeight: string): boolean {
   const { selection, doc } = state;
   const { from, to } = selection;
 
@@ -52,11 +40,11 @@ export function transformLineHeightToCSS(value: string | number): string {
   let strValue = String(value);
 
   if (NUMBER_VALUE_PATTERN.test(strValue)) {
-    const numValue = parseFloat(strValue);
-    strValue = String(Math.round(numValue * 100)) + '%';
+    const numValue = Number.parseFloat(strValue);
+    strValue = `${String(Math.round(numValue * 100))}%`;
   }
 
-  return parseFloat(strValue) * LINE_HEIGHT_100 + '%';
+  return `${Number.parseFloat(strValue) * LINE_HEIGHT_100}%`;
 }
 
 export function transformCSStoLineHeight(value: string): string {
@@ -66,12 +54,12 @@ export function transformCSStoLineHeight(value: string): string {
   let strValue = value;
 
   if (NUMBER_VALUE_PATTERN.test(value)) {
-    const numValue = parseFloat(value);
-    strValue = String(Math.round(numValue * 100)) + '%';
+    const numValue = Number.parseFloat(value);
+    strValue = `${String(Math.round(numValue * 100))}%`;
     if (strValue === DEFAULT_LINE_HEIGHT) return '';
   }
 
-  return parseFloat(strValue) / LINE_HEIGHT_100 + '%';
+  return `${Number.parseFloat(strValue) / LINE_HEIGHT_100}%`;
 }
 
 interface SetLineHeightTask {
@@ -80,25 +68,19 @@ interface SetLineHeightTask {
   pos: number;
 }
 
-export function setTextLineHeight(
-  tr: Transaction,
-  lineHeight: string | null
-): Transaction {
+export function setTextLineHeight(tr: Transaction, lineHeight: string | null): Transaction {
   const { selection, doc } = tr;
 
   if (!selection || !doc) return tr;
 
-  if (
-    !(selection instanceof TextSelection || selection instanceof AllSelection)
-  ) {
+  if (!(selection instanceof TextSelection || selection instanceof AllSelection)) {
     return tr;
   }
 
   const { from, to } = selection;
 
   const tasks: Array<SetLineHeightTask> = [];
-  const lineHeightValue =
-    lineHeight && lineHeight !== DEFAULT_LINE_HEIGHT ? lineHeight : null;
+  const lineHeightValue = lineHeight && lineHeight !== DEFAULT_LINE_HEIGHT ? lineHeight : null;
 
   doc.nodesBetween(from, to, (node, pos) => {
     const nodeType = node.type;

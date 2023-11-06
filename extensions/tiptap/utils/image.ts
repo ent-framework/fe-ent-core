@@ -54,4 +54,4 @@ export const enum ImageDisplay {
   BREAK_TEXT = 'block',
   FLOAT_LEFT = 'left',
   FLOAT_RIGHT = 'right',
-};
+}

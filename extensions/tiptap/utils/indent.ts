@@ -1,7 +1,8 @@
-import type { Command, Editor } from '@tiptap/core';
 import { isList } from '@tiptap/core';
-import { TextSelection, AllSelection, Transaction } from 'prosemirror-state';
+import { AllSelection, TextSelection } from 'prosemirror-state';
 import { clamp } from './shared';
+import type { Transaction } from 'prosemirror-state';
+import type { Command, Editor } from '@tiptap/core';
 
 export const enum IndentProps {
   max = 7,
@@ -15,15 +16,13 @@ function updateIndentLevel(
   tr: Transaction,
   delta: number,
   types: string[],
-  editor: Editor
+  editor: Editor,
 ): Transaction {
   const { doc, selection } = tr;
 
   if (!doc || !selection) return tr;
 
-  if (
-    !(selection instanceof TextSelection || selection instanceof AllSelection)
-  ) {
+  if (!(selection instanceof TextSelection || selection instanceof AllSelection)) {
     return tr;
   }
 
@@ -44,11 +43,7 @@ function updateIndentLevel(
   return tr;
 }
 
-function setNodeIndentMarkup(
-  tr: Transaction,
-  pos: number,
-  delta: number
-): Transaction {
+function setNodeIndentMarkup(tr: Transaction, pos: number, delta: number): Transaction {
   if (!tr.doc) return tr;
 
   const node = tr.doc.nodeAt(pos);
@@ -69,13 +64,7 @@ function setNodeIndentMarkup(
   return tr.setNodeMarkup(pos, node.type, nodeAttrs, node.marks);
 }
 
-export function createIndentCommand({
-  delta,
-  types,
-}: {
-  delta: number;
-  types: string[];
-}): Command {
+export function createIndentCommand({ delta, types }: { delta: number; types: string[] }): Command {
   return ({ state, dispatch, editor }) => {
     const { selection } = state;
     let { tr } = state;

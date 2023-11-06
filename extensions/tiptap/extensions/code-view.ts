@@ -1,7 +1,7 @@
 import { Extension } from '@tiptap/core';
-import { extendCodemirror } from '@/utils/code-view';
-import Logger from '@/utils/logger';
-import CodeViewCommandButton from '@/components/MenuCommands/CodeViewCommandButton.vue';
+import { extendCodemirror } from '../utils/code-view';
+import Logger from '../utils/logger';
+import CodeViewCommandButton from '../components/menu-commands/code-view-command-button.vue';
 
 export const DEFAULT_CODEMIRROR_OPTIONS = {
   lineNumbers: true,
@@ -36,12 +36,12 @@ const CodeView = Extension.create<CodeViewOptions>({
     return {
       ...this.parent?.(),
       buttonIcon: '',
-      button({ extension }: { extension: any; }) {
+      button({ extension }: { extension: any }) {
         return {
           component: CodeViewCommandButton,
           componentProps: {
             buttonIcon: extension.options.buttonIcon,
-          }
+          },
         };
       },
     };

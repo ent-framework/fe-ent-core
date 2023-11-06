@@ -20,11 +20,7 @@
   import { defineComponent } from 'vue';
   import { CopyOutlined, RedoOutlined } from '@ant-design/icons-vue';
   import { defaultProjectSetting } from 'fe-ent-core/es/logics';
-  import {
-    useAppStore,
-    usePermissionStore,
-    useUserStore,
-  } from 'fe-ent-core/es/store';
+  import { useAppStore, usePermissionStore, useUserStore } from 'fe-ent-core/es/store';
   import { useDesign, useI18n, useMessage } from 'fe-ent-core/es/hooks';
   import { useMultipleTabStore } from '../../../../../store/multiple-tab';
 

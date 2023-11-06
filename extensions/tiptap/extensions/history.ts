@@ -1,13 +1,21 @@
-import type { Editor } from '@tiptap/core';
 import TiptapHistory from '@tiptap/extension-history';
-import CommandButton from '@/components/MenuCommands/CommandButton.vue';
+import CommandButton from '../components/menu-commands/command-button.vue';
+import type { Editor } from '@tiptap/core';
 
 const History = TiptapHistory.extend({
   addOptions() {
     return {
       ...this.parent?.(),
       buttonIcon: ['', ''],
-      button({ editor, extension, t }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+      button({
+        editor,
+        extension,
+        t,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return [
           {
             component: CommandButton,

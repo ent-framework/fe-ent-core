@@ -1,7 +1,7 @@
 import { Extension } from '@tiptap/core';
+import { printEditorContent } from '../utils/print';
+import CommandButton from '../components/menu-commands/command-button.vue';
 import type { Editor } from '@tiptap/core';
-import { printEditorContent } from '@/utils/print';
-import CommandButton from '@/components/MenuCommands/CommandButton.vue';
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -20,7 +20,15 @@ const Print = Extension.create({
   addOptions() {
     return {
       buttonIcon: '',
-      button({ editor, extension, t }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+      button({
+        editor,
+        extension,
+        t,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return {
           component: CommandButton,
           componentProps: {
@@ -40,9 +48,9 @@ const Print = Extension.create({
     return {
       print:
         () =>
-          ({ view }) => {
-            return printEditorContent(view);
-          },
+        ({ view }) => {
+          return printEditorContent(view);
+        },
     };
   },
 

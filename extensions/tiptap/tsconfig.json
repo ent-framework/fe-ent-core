@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.web.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+    }
+  },
+  "include": [
+    "components",
+    "extensions",
+    "hooks",
+    "i18n",
+    "utils",
+    "../../packages"
+  ]
+}

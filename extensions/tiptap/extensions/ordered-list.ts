@@ -1,7 +1,7 @@
-import type { Editor } from '@tiptap/core';
 import TiptapOrderedList from '@tiptap/extension-ordered-list';
-import CommandButton from '@/components/MenuCommands/CommandButton.vue';
+import CommandButton from '../components/menu-commands/command-button.vue';
 import ListItem from './list-item';
+import type { Editor } from '@tiptap/core';
 
 const OrderedList = TiptapOrderedList.extend({
   nessesaryExtensions: [ListItem],
@@ -9,25 +9,28 @@ const OrderedList = TiptapOrderedList.extend({
     return {
       ...this.parent?.(),
       buttonIcon: '',
-      commandList:
-        [{
+      commandList: [
+        {
           title: 'orderedList',
-          command: ({ editor, range }:any) => {
-            editor
-              .chain()
-              .focus()
-              .deleteRange(range)
-              .run();
-            editor
-              .chain()
-              .focus()
-              .toggleOrderedList()
-              .run();
+          command: ({ editor, range }: any) => {
+            editor.chain().focus().deleteRange(range).run();
+            editor.chain().focus().toggleOrderedList().run();
           },
           disabled: false,
-          isActive(editor:Editor) { return editor.isActive('orderedList'); }
-        }],
-      button({ editor, extension, t }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+          isActive(editor: Editor) {
+            return editor.isActive('orderedList');
+          },
+        },
+      ],
+      button({
+        editor,
+        extension,
+        t,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return {
           component: CommandButton,
           componentProps: {

@@ -15,10 +15,9 @@
   import { computed, defineComponent } from 'vue';
   import { Select, Typography } from 'ant-design-vue';
   import { useDesign } from 'fe-ent-core/es/hooks';
-  import type { ChangeEvent } from 'fe-ent-core/es/types';
+  import type { ChangeEvent, Fn } from 'fe-ent-core/es/types';
   import type { HandlerEnum } from '../enum';
   import type { PropType } from 'vue';
-  import {Fn} from "fe-ent-core/es/types";
   type LabelValueOptions = {
     label: string;
     value: any;

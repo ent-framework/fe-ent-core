@@ -1,5 +1,5 @@
 import { mergeCells, splitCell } from 'prosemirror-tables';
-import { EditorState } from 'prosemirror-state';
+import type { EditorState } from 'prosemirror-state';
 
 export function isTableActive(state: EditorState): boolean {
   const { selection, doc } = state;

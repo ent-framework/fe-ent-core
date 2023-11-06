@@ -1,6 +1,6 @@
-import type { Editor, Extension } from '@tiptap/core';
 import TiptapTextAlign from '@tiptap/extension-text-align';
-import CommandButton from '@/components/MenuCommands/CommandButton.vue';
+import CommandButton from '../components/menu-commands/command-button.vue';
+import type { Editor } from '@tiptap/core';
 
 const TextAlign = TiptapTextAlign.extend({
   addOptions() {
@@ -8,7 +8,15 @@ const TextAlign = TiptapTextAlign.extend({
       ...this.parent?.(),
       buttonIcon: ['', '', '', ''],
       types: ['heading', 'paragraph', 'list_item', 'title'],
-      button({ editor, extension, t }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+      button({
+        editor,
+        extension,
+        t,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return extension.options.alignments.reduce((acc: any[], alignment: string) => {
           return acc.concat({
             component: CommandButton,
@@ -20,15 +28,10 @@ const TextAlign = TiptapTextAlign.extend({
                   editor.commands.setTextAlign(alignment);
                 }
               },
-              isActive:
-                alignment === 'left'
-                  ? false
-                  : editor.isActive({ textAlign: alignment }),
+              isActive: alignment === 'left' ? false : editor.isActive({ textAlign: alignment }),
               icon: `align-${alignment}`,
               buttonIcon: extension.options.buttonIcon?.[acc.length],
-              tooltip: t(
-                `editor.extensions.TextAlign.buttons.align_${alignment}.tooltip`
-              ),
+              tooltip: t(`editor.extensions.TextAlign.buttons.align_${alignment}.tooltip`),
             },
           });
         }, []);

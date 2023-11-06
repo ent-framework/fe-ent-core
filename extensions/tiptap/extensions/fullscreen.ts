@@ -1,5 +1,5 @@
 import { Extension } from '@tiptap/core';
-import FullscreenCommandButton from '@/components/MenuCommands/FullscreenCommandButton.vue';
+import FullscreenCommandButton from '../components/menu-commands/fullscreen-command-button.vue';
 
 const Fullscreen = Extension.create({
   name: 'fullscreen',
@@ -13,7 +13,7 @@ const Fullscreen = Extension.create({
           component: FullscreenCommandButton,
           componentProps: {
             buttonIcon: extension.options.buttonIcon,
-          }
+          },
         };
       },
     };

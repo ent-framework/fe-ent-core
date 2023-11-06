@@ -1,31 +1,34 @@
-import type { Editor } from '@tiptap/core';
 import TiptapItalic from '@tiptap/extension-italic';
-import CommandButton from '@/components/MenuCommands/CommandButton.vue';
+import CommandButton from '../components/menu-commands/command-button.vue';
+import type { Editor } from '@tiptap/core';
 
 const Italic = TiptapItalic.extend({
   addOptions() {
     return {
       ...this.parent?.(),
       buttonIcon: '',
-      commandList:
-      [{
-        title: 'italic',
-        command: ({ editor, range }:any) => {
-          editor
-            .chain()
-            .focus()
-            .deleteRange(range)
-            .run();
-          editor
-            .chain()
-            .focus()
-            .toggleItalic()
-            .run();
+      commandList: [
+        {
+          title: 'italic',
+          command: ({ editor, range }: any) => {
+            editor.chain().focus().deleteRange(range).run();
+            editor.chain().focus().toggleItalic().run();
+          },
+          disabled: false,
+          isActive(editor: Editor) {
+            return editor.isActive('italic');
+          },
         },
-        disabled: false,
-        isActive(editor:Editor) { return editor.isActive('italic'); }
-      }],
-      button({ editor, extension, t }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+      ],
+      button({
+        editor,
+        extension,
+        t,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return {
           component: CommandButton,
           componentProps: {

@@ -1,7 +1,8 @@
 import { Node, mergeAttributes } from '@tiptap/core';
-import { Editor, VueNodeViewRenderer } from '@tiptap/vue-3';
-import IframeCommandButton from '@/components/MenuCommands/IframeCommandButton.vue';
-import IframeView from '@/components/ExtensionViews/IframeView.vue';
+import { VueNodeViewRenderer } from '@tiptap/vue-3';
+import IframeCommandButton from '../components/menu-commands/iframe-command-button.vue';
+import IframeView from '../components/extension-views/iframe-view.vue';
+import type { Editor } from '@tiptap/vue-3';
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -53,19 +54,26 @@ const Iframe = Node.create({
     return {
       setIframe:
         (options) =>
-          ({ commands }) => {
-            return commands.insertContent({
-              type: this.name,
-              attrs: options,
-            });
-          },
+        ({ commands }) => {
+          return commands.insertContent({
+            type: this.name,
+            attrs: options,
+          });
+        },
     };
   },
 
   addOptions() {
     return {
       buttonIcon: '',
-      button({ editor, extension }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+      button({
+        editor,
+        extension,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return {
           component: IframeCommandButton,
           componentProps: {

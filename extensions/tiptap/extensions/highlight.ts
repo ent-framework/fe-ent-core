@@ -1,7 +1,7 @@
-import { Editor } from '@tiptap/core';
 import TiptapHighlight from '@tiptap/extension-highlight';
-import { COLOR_SET } from '@/utils/color';
-import HighlightPopover from '../components/MenuCommands/HighlightPopover.vue';
+import HighlightPopover from '../components/menu-commands/highlight-popover.vue';
+import { COLOR_SET } from '../utils/color';
+import type { Editor } from '@tiptap/core';
 
 const Highlight = TiptapHighlight.extend({
   addOptions() {
@@ -10,7 +10,14 @@ const Highlight = TiptapHighlight.extend({
       buttonIcon: '',
       multicolor: true,
       colors: COLOR_SET,
-      button({ editor, extension }: { editor: Editor; extension: any; t: (...args: any[]) => string }) {
+      button({
+        editor,
+        extension,
+      }: {
+        editor: Editor;
+        extension: any;
+        t: (...args: any[]) => string;
+      }) {
         return {
           component: HighlightPopover,
           componentProps: {
