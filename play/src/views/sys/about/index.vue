@@ -20,7 +20,6 @@
   import { useDescription } from 'fe-ent-core/es/components/description';
   import type { DescItem } from 'fe-ent-core/es/components/description/interface';
 
-  const { pkg, lastBuildTime } = __APP_INFO__;
   // github repo url
   const GITHUB_URL = 'https://github.com/ent-framework/fe-ent-core';
 
@@ -68,7 +67,6 @@
 
   const infoData = {
     version,
-    lastBuildTime,
     doc: DOC_URL,
     preview: SITE_URL,
     github: GITHUB_URL,

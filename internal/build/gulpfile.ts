@@ -13,7 +13,6 @@ export default series(
     withTaskName('buildCoreTypesDefinitions', () => run('pnpm run -C packages/fe-ent-core dtsgen')),
     withTaskName('buildJsonFiles', () => run('pnpm run -C packages/fe-ent-core jsongen')),
   ),
-  withTaskName('buildQrCode', () => run('pnpm run -C extensions/qrcode build')),
   parallel(
     //withTaskName('buildExtensions', () => run('pnpm -w run build:extensions')),
     withTaskName('buildLogin', () => run('pnpm run -C apps/login build')),

@@ -8,13 +8,13 @@
   const { currentRoute, replace } = useRouter();
 
   const { params, query } = unref(currentRoute);
+  // eslint-disable-next-line camelcase
   const { path, _redirect_type = 'path' } = params;
-  console.log(_redirect_type);
   Reflect.deleteProperty(params, '_redirect_type');
   Reflect.deleteProperty(params, 'path');
 
   const _path = Array.isArray(path) ? path.join('/') : path;
-
+  // eslint-disable-next-line camelcase
   if (_redirect_type === 'name') {
     replace({
       name: _path,

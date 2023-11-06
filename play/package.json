@@ -11,7 +11,7 @@
     "dev": "vite serve",
     "build": "vite build",
     "clean": "rimraf dist",
-    "dtsgen": "ent-vue-scripts dtsgen"
+    "dtsgen": "ent-vue-scripts dtsgen --base src"
   },
   "peerDependencies": {
     "fe-ent-core": "^2.1.0"

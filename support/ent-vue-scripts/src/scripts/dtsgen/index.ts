@@ -18,7 +18,6 @@ export const pathRewriter = () => {
 };
 
 const cwd = process.cwd();
-const projRoot = searchForWorkspaceRoot(cwd);
 const TSCONFIG_PATH = path.resolve(cwd, 'tsconfig.json');
 const outDir = path.resolve(cwd, 'dist', 'types');
 
@@ -77,7 +76,7 @@ const build = async (base: string) => {
 };
 
 async function addSourceFiles(project: Project, base: string) {
-  project.addSourceFileAtPath(path.resolve(projRoot, 'typings/support.d.ts'));
+  //project.addSourceFileAtPath(path.resolve(projRoot, 'typings/support.d.ts'));
 
   const filePaths = excludeFiles(
     await glob(['**/*.{tsx,ts,vue}'], {
@@ -149,17 +148,4 @@ export default async function (base: string) {
   } else {
     await build(cwd);
   }
-
-  //fs.rmSync(path.resolve(outDir, 'tsconfig.tsbuildinfo'));
-  // if (!library) {
-  //   ensureDirSync(path.resolve(cwd, 'es'));
-  //   copySync(outDir, path.resolve(cwd, 'es'), {
-  //     recursive: true,
-  //   });
-  //   ensureDirSync(path.resolve(cwd, 'lib'));
-  //   copySync(outDir, path.resolve(cwd, 'lib'), {
-  //     recursive: true,
-  //   });
-  //   rimraf.sync(outDir);
-  // }
 }

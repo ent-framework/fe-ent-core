@@ -8,8 +8,8 @@ export async function initApplication() {
   const globalStore = useGlobalStore();
   globalStore.setBaseHomePath('/dashboard/workbench');
   const { changePermissionMode } = usePermission();
-  await changePermissionMode('BACK');
-  //await changePermissionMode('ROUTE_MAPPING');
+  //await changePermissionMode('BACK');
+  await changePermissionMode('ROUTE_MAPPING');
   // 关闭multi-tab 和 keep-alive
   // const appStore = useAppStoreWithOut();
   // appStore.setProjectConfig({

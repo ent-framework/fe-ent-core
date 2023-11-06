@@ -7,12 +7,12 @@
   >
     <CurrentPermissionMode />
 
-    <p>
+    <Text>
       当前角色: <a> {{ userStore.getRoleList }} </a>
-    </p>
+    </Text>
     <Alert class="mt-4" type="info" message="点击后请查看左侧菜单变化" show-icon />
 
-    <div class="mt-4">
+    <Text class="mt-4 block">
       请通过切换账号来切换权限(请先切换权限模式为前端角色权限模式):
       <Space>
         <ent-button :type="isSuper ? 'primary' : 'default'" @click="handleLoginOut">
@@ -22,17 +22,17 @@
           test
         </ent-button>
       </Space>
-    </div>
+    </Text>
   </ent-page-wrapper>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { Alert, Space } from 'ant-design-vue';
+  import { Alert, Space, Typography } from 'ant-design-vue';
   import { useUserStore } from 'fe-ent-core/es/store';
   import CurrentPermissionMode from '../current-permission-mode.vue';
 
   export default defineComponent({
-    components: { Space, Alert, CurrentPermissionMode },
+    components: { Space, Alert, CurrentPermissionMode, Text: Typography.Text },
     setup() {
       const userStore = useUserStore();
       const isSuper = computed(() => userStore.getRoleList.includes('super'));

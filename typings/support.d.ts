@@ -1,17 +1,7 @@
 import type { ComponentPublicInstance, FunctionalComponent } from 'vue';
-import type { Recordable } from '@ent-core/types';
 import type { RoleEnum } from '@ent-core/logics';
 
 declare global {
-  const __APP_INFO__: {
-    pkg: {
-      name: string;
-      version: string;
-      dependencies: Recordable<string>;
-      devDependencies: Recordable<string>;
-    };
-    lastBuildTime: string;
-  };
   const process: {
     env: {
       NODE_ENV: string;

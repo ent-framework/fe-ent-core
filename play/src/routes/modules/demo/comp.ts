@@ -499,16 +499,6 @@ const comp: AppRouteRecordRaw = {
         },
       ],
     },
-    //
-
-    {
-      path: 'qrcode',
-      name: 'QrCodeDemo',
-      component: () => import('/@/views/demo/comp/qrcode/index.vue'),
-      meta: {
-        title: t('routes.demo.comp.qrcode'),
-      },
-    },
     {
       path: 'strength-meter',
       name: 'StrengthMeterDemo',

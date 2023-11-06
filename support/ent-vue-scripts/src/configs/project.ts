@@ -92,16 +92,8 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
 
 async function createDefineData(root: string, viteEnv: ViteEnv) {
   try {
-    const pkgJson = await readPackageJSON(root);
-    const { dependencies, devDependencies, name, version } = pkgJson;
-
-    const __APP_INFO__ = {
-      pkg: { dependencies, devDependencies, name, version },
-      lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
-    };
     return {
       'process.env': viteEnv,
-      __APP_INFO__: JSON.stringify(__APP_INFO__),
     };
   } catch {
     return {};

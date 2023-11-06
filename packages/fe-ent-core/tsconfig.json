@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.web.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "types": ["vite/client"],
+    "types": ["vite/client", "node"],
     "paths": {
       "@ent-core/*": ["./*"]
     }

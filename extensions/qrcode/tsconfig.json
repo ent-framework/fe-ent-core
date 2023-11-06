@@ -1,9 +1,0 @@
-{
-  "extends": "../../tsconfig.web.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-    }
-  },
-  "include": ["components", "../../packages"],
-}
