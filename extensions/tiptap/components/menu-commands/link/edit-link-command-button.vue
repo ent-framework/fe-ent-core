@@ -8,54 +8,54 @@
       :button-icon="buttonIcon"
     />
 
-    <el-dialog
+    <Modal
       v-model="editLinkDialogVisible"
       :title="t('editor.extensions.Link.edit.control.title')"
       :append-to-body="true"
       width="400px"
-      class="el-tiptap-edit-link-dialog"
+      class="ent-tiptap-edit-link-dialog"
     >
-      <el-form :model="linkAttrs" label-position="right" size="small">
-        <el-form-item :label="t('editor.extensions.Link.edit.control.href')" prop="href">
-          <el-input v-model="linkAttrs.href" autocomplete="off" :placeholder="placeholder" />
-        </el-form-item>
+      <Form :model="linkAttrs" label-position="right" size="small">
+        <FormItem :label="t('editor.extensions.Link.edit.control.href')" prop="href">
+          <Input v-model="linkAttrs.href" autocomplete="off" :placeholder="placeholder" />
+        </FormItem>
 
-        <el-form-item prop="openInNewTab">
-          <el-checkbox v-model="linkAttrs.openInNewTab">
+        <FormItem prop="openInNewTab">
+          <Checkbox v-model="linkAttrs.openInNewTab">
             {{ t('editor.extensions.Link.edit.control.open_in_new_tab') }}
-          </el-checkbox>
-        </el-form-item>
-      </el-form>
+          </Checkbox>
+        </FormItem>
+      </Form>
 
       <template #footer>
-        <el-button size="small" round @click="closeEditLinkDialog">
+        <Button size="small" round @click="closeEditLinkDialog">
           {{ t('editor.extensions.Link.edit.control.cancel') }}
-        </el-button>
+        </Button>
 
-        <el-button type="primary" size="small" round @mousedown.prevent @click="updateLinkAttrs">
+        <Button type="primary" size="small" round @mousedown.prevent @click="updateLinkAttrs">
           {{ t('editor.extensions.Link.edit.control.confirm') }}
-        </el-button>
+        </Button>
       </template>
-    </el-dialog>
+    </Modal>
   </div>
 </template>
 
 <script lang="ts">
   import { defineComponent, inject } from 'vue';
   import { Editor } from '@tiptap/vue-3';
-  import { ElButton, ElCheckbox, ElDialog, ElForm, ElFormItem, ElInput } from 'element-plus';
+  import { Button, Checkbox, Form, FormItem, Input, Modal } from 'ant-design-vue';
   import CommandButton from '../command-button.vue';
 
   export default defineComponent({
     name: 'EditLinkCommandButton',
 
     components: {
-      ElDialog,
-      ElForm,
-      ElFormItem,
-      ElInput,
-      ElCheckbox,
-      ElButton,
+      Modal,
+      Form,
+      FormItem,
+      Input,
+      Checkbox,
+      Button,
       CommandButton,
     },
 

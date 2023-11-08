@@ -1,10 +1,10 @@
 <template>
-  <el-popover
-    ref="popoverRef"
-    v-model="popoverVisible"
+  <Popover
+    :open="popoverVisible"
     placement="right"
     trigger="hover"
-    popper-class="el-tiptap-popper"
+    class="ent-tiptap-popper"
+    @open-change="resetTableGridSize"
     @after-leave="resetTableGridSize"
   >
     <div class="table-grid-size-editor">
@@ -36,42 +36,33 @@
         {{ t('editor.extensions.Table.buttons.insert_table') }}
       </div>
     </template>
-  </el-popover>
+  </Popover>
 </template>
 
 <script lang="ts">
-  import { defineComponent, inject, ref, unref } from 'vue';
-  import { ElPopover } from 'element-plus';
+  import { defineComponent, inject, ref } from 'vue';
+  import { Popover } from 'ant-design-vue';
 
   const INIT_GRID_SIZE = 5;
   const MAX_GRID_SIZE = 10;
   const DEFAULT_SELECTED_GRID_SIZE = 2;
-
-  interface GridSize {
-    row: number;
-    col: number;
-  }
-
   export default defineComponent({
     name: 'CreateTablePopover',
 
     components: {
-      ElPopover,
+      Popover,
     },
 
     setup(_, { emit }) {
       const t = inject('t');
-
-      const popoverRef = ref();
       const popoverVisible = ref(false);
 
       const confirmCreateTable = (row: number, col: number) => {
-        unref(popoverRef).hide();
-
+        popoverVisible.value = false;
         emit('createTable', { row, col });
       };
 
-      return { t, popoverVisible, popoverRef, confirmCreateTable };
+      return { t, popoverVisible, confirmCreateTable };
     },
 
     data() {
@@ -101,16 +92,18 @@
         this.selectedTableGridSize.col = col;
       },
 
-      resetTableGridSize() {
-        this.tableGridSize = {
-          row: INIT_GRID_SIZE,
-          col: INIT_GRID_SIZE,
-        };
+      resetTableGridSize(visible: boolean) {
+        if (!visible) {
+          this.tableGridSize = {
+            row: INIT_GRID_SIZE,
+            col: INIT_GRID_SIZE,
+          };
 
-        this.selectedTableGridSize = {
-          row: DEFAULT_SELECTED_GRID_SIZE,
-          col: DEFAULT_SELECTED_GRID_SIZE,
-        };
+          this.selectedTableGridSize = {
+            row: DEFAULT_SELECTED_GRID_SIZE,
+            col: DEFAULT_SELECTED_GRID_SIZE,
+          };
+        }
       },
     },
   });

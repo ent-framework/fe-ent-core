@@ -8,24 +8,24 @@
       :button-icon="buttonIcon"
     />
 
-    <el-dialog
+    <Modal
       v-model="editImageDialogVisible"
       :title="t('editor.extensions.Image.control.edit_image.title')"
       :append-to-body="true"
       width="400px"
-      class="el-tiptap-edit-image-dialog"
+      class="ent-tiptap-edit-image-dialog"
       @open="syncImageAttrs"
     >
-      <el-form :model="imageAttrs" label-position="top" size="small">
-        <el-form-item :label="t('editor.extensions.Image.control.edit_image.form.src')">
-          <el-input :value="imageAttrs.src" autocomplete="off" disabled />
-        </el-form-item>
+      <Form :model="imageAttrs" label-position="top" size="small">
+        <FormItem :label="t('editor.extensions.Image.control.edit_image.form.src')">
+          <Input :value="imageAttrs.src" autocomplete="off" disabled />
+        </FormItem>
 
-        <el-form-item :label="t('editor.extensions.Image.control.edit_image.form.alt')">
-          <el-input v-model="imageAttrs.alt" autocomplete="off" />
-        </el-form-item>
+        <FormItem :label="t('editor.extensions.Image.control.edit_image.form.alt')">
+          <Input v-model="imageAttrs.alt" autocomplete="off" />
+        </FormItem>
 
-        <el-form-item>
+        <FormItem>
           <el-col :span="11">
             <el-form-item :label="t('editor.extensions.Image.control.edit_image.form.width')">
               <el-input v-model="imageAttrs.width" type="number" />
@@ -36,36 +36,35 @@
               <el-input v-model="imageAttrs.height" type="number" />
             </el-form-item>
           </el-col>
-        </el-form-item>
-      </el-form>
+        </FormItem>
+      </Form>
 
       <template #footer>
-        <el-button size="small" round @click="closeEditImageDialog">
+        <Button size="small" round @click="closeEditImageDialog">
           {{ t('editor.extensions.Image.control.edit_image.cancel') }}
-        </el-button>
+        </Button>
 
-        <el-button type="primary" size="small" round @click="updateImageAttrs">
+        <Button type="primary" size="small" round @click="updateImageAttrs">
           {{ t('editor.extensions.Image.control.edit_image.confirm') }}
-        </el-button>
+        </Button>
       </template>
-    </el-dialog>
+    </Modal>
   </div>
 </template>
 
 <script lang="ts">
   import { defineComponent, inject } from 'vue';
   import { nodeViewProps } from '@tiptap/vue-3';
-  import { ElButton, ElCol, ElDialog, ElForm, ElFormItem, ElInput } from 'element-plus';
+  import { Button, Form, FormItem, Input, Modal } from 'ant-design-vue';
   import CommandButton from '../command-button.vue';
 
   export default defineComponent({
     components: {
-      ElDialog,
-      ElForm,
-      ElFormItem,
-      ElInput,
-      ElCol,
-      ElButton,
+      Modal,
+      Form,
+      FormItem,
+      Input,
+      Button,
       CommandButton,
     },
 

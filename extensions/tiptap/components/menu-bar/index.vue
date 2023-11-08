@@ -1,5 +1,5 @@
 <template>
-  <div class="el-tiptap-editor__menu-bar">
+  <div class="ent-tiptap-editor__menu-bar">
     <component
       :is="spec.component"
       v-for="(spec, i) in generateCommandButtonComponentSpecs()"

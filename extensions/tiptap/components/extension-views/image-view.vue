@@ -45,19 +45,19 @@
       <!-- when image is break text or float
       bubble menu's position is miscalculated
       use el-popover instead bubble menu -->
-      <el-popover
-        :visible="selected && !isDragging"
+      <Popover
+        :open="selected && !isDragging"
         :disabled="!editor?.isEditable"
         :show-arrow="false"
         placement="top"
-        popper-class="el-tiptap-image-popper"
+        popper-class="ent-tiptap-image-popper"
       >
         <image-bubble-menu :node="node" :editor="editor" :update-attrs="updateAttributes" />
 
         <template #reference>
           <div class="image-view__body__placeholder" />
         </template>
-      </el-popover>
+      </Popover>
     </div>
   </node-view-wrapper>
 </template>
@@ -65,7 +65,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3';
-  import { ElPopover } from 'element-plus';
+  import { Popover } from 'ant-design-vue';
   import { ResizeObserver } from '@juggle/resize-observer';
   import ImageBubbleMenu from '../menu-bubble/image-bubble-menu.vue';
   import { resolveImg } from '../../utils/image';
@@ -86,7 +86,7 @@
     name: 'ImageView',
 
     components: {
-      ElPopover,
+      Popover,
       NodeViewWrapper,
       ImageBubbleMenu,
     },

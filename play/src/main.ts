@@ -22,13 +22,11 @@ async function bootstrap() {
 
   // Configure store
   setupStore(app);
-
-  //初始化全局变量
-  await initApplication();
-
   // Multilingual configuration
   // Asynchronous case: language files may be obtained from the server side
   await setupI18n(app);
+  //初始化全局变量
+  await initApplication();
 
   // Register ant global components
   registerAntGlobComp(app);

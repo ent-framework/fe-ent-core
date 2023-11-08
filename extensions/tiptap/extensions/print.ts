@@ -1,6 +1,7 @@
 import { Extension } from '@tiptap/core';
 import { printEditorContent } from '../utils/print';
 import CommandButton from '../components/menu-commands/command-button.vue';
+import svg from '../icons/print.svg';
 import type { Editor } from '@tiptap/core';
 
 declare module '@tiptap/core' {
@@ -36,7 +37,7 @@ const Print = Extension.create({
               editor.commands.print();
             },
             buttonIcon: extension.options.buttonIcon,
-            icon: 'print',
+            icon: svg,
             tooltip: t('editor.extensions.Print.tooltip'),
           },
         };

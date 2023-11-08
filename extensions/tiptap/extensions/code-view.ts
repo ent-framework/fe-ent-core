@@ -14,6 +14,7 @@ export const DEFAULT_CODEMIRROR_OPTIONS = {
 export interface CodeViewOptions {
   codemirror: any;
   codemirrorOptions: any;
+  bubble: boolean;
 }
 
 const CodeView = Extension.create<CodeViewOptions>({

@@ -1,8 +1,14 @@
 import TiptapHorizontalRule from '@tiptap/extension-horizontal-rule';
 import CommandButton from '../components/menu-commands/command-button.vue';
+import svg from '../icons/horizontal-rule.svg';
 import type { Editor } from '@tiptap/core';
+import type { HorizontalRuleOptions } from '@tiptap/extension-horizontal-rule';
 
-const HorizontalRule = TiptapHorizontalRule.extend({
+interface CustomHorizontalRuleOptions extends HorizontalRuleOptions {
+  bubble: boolean;
+}
+
+const HorizontalRule = TiptapHorizontalRule.extend<CustomHorizontalRuleOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
@@ -36,7 +42,7 @@ const HorizontalRule = TiptapHorizontalRule.extend({
               editor.commands.setHorizontalRule();
             },
             buttonIcon: extension.options.buttonIcon,
-            icon: 'horizontal-rule',
+            icon: svg,
             tooltip: t('editor.extensions.HorizontalRule.tooltip'),
           },
         };

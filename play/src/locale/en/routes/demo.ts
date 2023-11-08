@@ -55,6 +55,8 @@ export default {
     tinymce: 'Rich text',
     tinymceBasic: 'Basic',
     tinymceForm: 'embedded form',
+
+    tiptap: 'TipTap',
   },
   excel: {
     excel: 'Excel',

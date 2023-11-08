@@ -1,9 +1,16 @@
 import TiptapTaskList from '@tiptap/extension-task-list';
 import CommandButton from '../components/menu-commands/command-button.vue';
+import svg from '../icons/tasks.svg';
 import TaskItem from './task-item';
 import type { Editor } from '@tiptap/core';
 
-const TaskList = TiptapTaskList.extend({
+import type { TaskListOptions } from '@tiptap/extension-task-list';
+
+interface CustomTaskListOptions extends TaskListOptions {
+  bubble: boolean;
+}
+
+const TaskList = TiptapTaskList.extend<CustomTaskListOptions>({
   addOptions() {
     return {
       buttonIcon: '',
@@ -38,7 +45,7 @@ const TaskList = TiptapTaskList.extend({
             },
             isActive: editor.isActive('taskList'),
             buttonIcon: extension.options.buttonIcon,
-            icon: 'tasks',
+            icon: svg,
             tooltip: t('editor.extensions.TodoList.tooltip'),
           },
         };

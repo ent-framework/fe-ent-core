@@ -38,7 +38,7 @@
   });
 </script>
 
-<style lang="scss">
+<style lang="less">
   .link-bubble-menu {
     display: flex;
   }

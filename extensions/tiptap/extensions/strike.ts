@@ -1,8 +1,13 @@
 import TiptapStrike from '@tiptap/extension-strike';
 import CommandButton from '../components/menu-commands/command-button.vue';
+import svg from '../icons/strikethrough.svg';
 import type { Editor } from '@tiptap/core';
+import type { StrikeOptions } from '@tiptap/extension-strike';
 
-const Strike = TiptapStrike.extend({
+interface CustomStrikeOptions extends StrikeOptions {
+  bubble: boolean;
+}
+const Strike = TiptapStrike.extend<CustomStrikeOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
@@ -37,7 +42,7 @@ const Strike = TiptapStrike.extend({
             },
             buttonIcon: extension.options.buttonIcon,
             isActive: editor.isActive('strike'),
-            icon: 'strikethrough',
+            icon: svg,
             tooltip: t('editor.extensions.Strike.tooltip'),
           },
         };

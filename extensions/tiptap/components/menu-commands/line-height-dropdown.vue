@@ -1,5 +1,5 @@
 <template>
-  <el-dropdown
+  <Dropdown
     placement="bottom"
     trigger="click"
     popper-class="my-dropdown"
@@ -12,41 +12,42 @@
         :button-icon="buttonIcon"
         :tooltip="t('editor.extensions.LineHeight.tooltip')"
         :readonly="isCodeViewMode"
-        icon="text-height"
+        :icon="textHeight"
       />
     </div>
     <template #dropdown>
-      <el-dropdown-menu class="el-tiptap-dropdown-menu">
-        <el-dropdown-item
+      <Menu class="ent-tiptap-dropdown-menu">
+        <MenuItem
           v-for="lineHeight in lineHeights"
           :key="lineHeight"
           :command="lineHeight"
           :class="{
-            'el-tiptap-dropdown-menu__item--active': isLineHeightActive(lineHeight),
+            'ent-tiptap-dropdown-menu__item--active': isLineHeightActive(lineHeight),
           }"
-          class="el-tiptap-dropdown-menu__item"
+          class="ent-tiptap-dropdown-menu__item"
         >
           <span>{{ lineHeight }}</span>
-        </el-dropdown-item>
-      </el-dropdown-menu>
+        </MenuItem>
+      </Menu>
     </template>
-  </el-dropdown>
+  </Dropdown>
 </template>
 
 <script lang="ts">
   import { defineComponent, inject } from 'vue';
   import { Editor } from '@tiptap/vue-3';
-  import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
+  import { Dropdown, Menu } from 'ant-design-vue';
   import { isLineHeightActive } from '../../utils/line-height';
+  import textHeight from '../../icons/text-height.svg';
   import CommandButton from './command-button.vue';
-
+  const MenuItem = Menu.Item;
   export default defineComponent({
     name: 'LineHeightDropdown',
 
     components: {
-      ElDropdown,
-      ElDropdownMenu,
-      ElDropdownItem,
+      Dropdown,
+      Menu,
+      MenuItem,
       CommandButton,
     },
 
@@ -66,7 +67,7 @@
       const enableTooltip = inject('enableTooltip', true);
       const isCodeViewMode = inject('isCodeViewMode', false);
 
-      return { t, enableTooltip, isCodeViewMode };
+      return { t, enableTooltip, isCodeViewMode, textHeight };
     },
 
     computed: {

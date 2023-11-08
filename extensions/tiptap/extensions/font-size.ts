@@ -7,6 +7,7 @@ import type { Editor } from '@tiptap/core';
 
 export type FontSizeOptions = {
   types: string[];
+  bubble?: boolean;
 };
 
 declare module '@tiptap/core' {

@@ -49,7 +49,7 @@ function printHtml(dom: Element) {
 }
 
 export function printEditorContent(view: EditorView) {
-  const editorContent = view.dom.closest('.el-tiptap-editor__content');
+  const editorContent = view.dom.closest('.ent-tiptap-editor__content');
   if (editorContent) {
     printHtml(editorContent);
     return true;

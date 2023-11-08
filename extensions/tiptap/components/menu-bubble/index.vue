@@ -2,15 +2,15 @@
   <bubble-menu v-if="editor" v-show="activeMenu !== 'none'" :editor="editor">
     <div
       :class="{
-        'el-tiptap-editor__menu-bubble--active': bubbleMenuEnable,
+        'ent-tiptap-editor__menu-bubble--active': bubbleMenuEnable,
       }"
-      class="el-tiptap-editor__menu-bubble"
+      class="ent-tiptap-editor__menu-bubble"
     >
       <link-bubble-menu v-if="activeMenu === 'link'" :editor="editor">
         <template #prepend>
           <div
             v-if="textMenuEnable"
-            class="el-tiptap-editor__command-button"
+            class="ent-tiptap-editor__command-button"
             @mousedown.prevent
             @click="linkBack"
           >

@@ -1,8 +1,15 @@
 import TiptapHistory from '@tiptap/extension-history';
 import CommandButton from '../components/menu-commands/command-button.vue';
+import undo from '../icons/undo.svg';
+import redo from '../icons/redo.svg';
 import type { Editor } from '@tiptap/core';
+import type { HistoryOptions } from '@tiptap/extension-history';
 
-const History = TiptapHistory.extend({
+export interface CustomHistoryOptions extends HistoryOptions {
+  depth: number;
+}
+
+const History = TiptapHistory.extend<CustomHistoryOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
@@ -24,7 +31,7 @@ const History = TiptapHistory.extend({
                 editor.commands.undo();
               },
               disabled: !editor.can().chain().focus().undo().run(),
-              icon: 'undo',
+              icon: undo,
               buttonIcon: extension.options.buttonIcon?.[0],
               tooltip: t('editor.extensions.History.tooltip.undo'),
             },
@@ -36,7 +43,7 @@ const History = TiptapHistory.extend({
                 editor.commands.redo();
               },
               disabled: !editor.can().chain().focus().redo().run(),
-              icon: 'redo',
+              icon: redo,
               buttonIcon: extension.options.buttonIcon?.[1],
               tooltip: t('editor.extensions.History.tooltip.redo'),
             },

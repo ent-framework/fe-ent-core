@@ -4,9 +4,9 @@
     :style="editorStyle"
     :class="[
       {
-        'el-tiptap-editor': true,
-        'el-tiptap-editor--fullscreen': isFullscreen,
-        'el-tiptap-editor--with-footer': showFooter,
+        'ent-tiptap-editor': true,
+        'ent-tiptap-editor--fullscreen': isFullscreen,
+        'ent-tiptap-editor--with-footer': showFooter,
       },
       editorClass,
     ]"
@@ -20,7 +20,7 @@
     <div
       v-if="isCodeViewMode"
       :class="{
-        'el-tiptap-editor__codemirror': true,
+        'ent-tiptap-editor__codemirror': true,
         'border-bottom-radius': isCodeViewMode,
       }"
     >
@@ -31,7 +31,7 @@
       :editor="editor"
       :class="[
         {
-          'el-tiptap-editor__content': true,
+          'ent-tiptap-editor__content': true,
         },
         editorContentClass,
       ]"
@@ -41,12 +41,12 @@
       v-if="showFooter"
       :class="[
         {
-          'el-tiptap-editor__footer': true,
+          'ent-tiptap-editor__footer': true,
         },
         editorFooterClass,
       ]"
     >
-      <span class="el-tiptap-editor__characters">
+      <span class="ent-tiptap-editor__characters">
         {{ t('editor.characters') }}: {{ characters }}
       </span>
     </div>
@@ -65,30 +65,8 @@
   import type { EditorProps } from '@tiptap/pm/view';
   import type { Editor, Extensions } from '@tiptap/core';
 
-  interface Props {
-    extensions: Extensions;
-    content?: string | { content: any; type: string };
-    placeholder?: string;
-    lang?: string;
-    width?: string | number;
-    height?: string | number;
-    editorProps?: EditorProps;
-    output: 'html' | 'json';
-    readonly?: boolean;
-    tooltip?: boolean;
-    enableCharCount?: boolean;
-    charCountMax?: number;
-    spellcheck?: boolean;
-    // ----- Editor Class -----
-    editorClass?: string | string[] | Record<string, boolean>;
-    editorContentClass: string | string[] | Record<string, boolean>;
-    editorMenubarClass: string | string[] | Record<string, boolean>;
-    editorBubbleMenuClass: string | string[] | Record<string, boolean>;
-    editorFooterClass: string | string[] | Record<string, boolean>;
-  }
-
   export default defineComponent({
-    name: 'ElementTiptap',
+    name: 'EntTiptap',
 
     components: {
       EditorContent,
@@ -175,23 +153,24 @@
       },
     },
     setup(props, { emit }) {
-      const extensions = props.extensions
-        .concat([
-          TiptapPlaceholder.configure({
-            emptyEditorClass: 'el-tiptap-editor--empty',
-            emptyNodeClass: 'el-tiptap-editor__placeholder',
-            showOnlyCurrent: false,
-            placeholder: () => {
-              return props.placeholder;
-            },
+      const extensions = props.extensions.concat([
+        TiptapPlaceholder.configure({
+          emptyEditorClass: 'ent-tiptap-editor--empty',
+          emptyNodeClass: 'ent-tiptap-editor__placeholder',
+          showOnlyCurrent: false,
+          placeholder: () => {
+            return props.placeholder;
+          },
+        }),
+      ]);
+      if (props.enableCharCount) {
+        extensions.push(
+          CharacterCount.configure({
+            limit: props.charCountMax,
+            mode: 'textSize',
           }),
-          props.enableCharCount
-            ? CharacterCount.configure({
-                limit: props.charCountMax,
-              })
-            : null,
-        ])
-        .filter(Boolean);
+        );
+      }
 
       const onUpdate = ({ editor }: { editor: Editor }) => {
         let output;
@@ -206,7 +185,7 @@
         emit('onUpdate', output, editor);
       };
       let additionalExtensions: any[] = [];
-      extensions.map((extension) => {
+      extensions.forEach((extension) => {
         if (
           extension?.parent?.config?.nessesaryExtensions ||
           extension?.config?.nessesaryExtensions
@@ -323,7 +302,7 @@
   });
 </script>
 
-<style lang="scss">
-  @import '../styles/editor.scss';
-  @import '../styles/command-button.scss';
+<style lang="less">
+  @import '../styles/editor.less';
+  @import '../styles/command-button.less';
 </style>

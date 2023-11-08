@@ -1,5 +1,6 @@
 import { Extension } from '@tiptap/core';
 import CommandButton from '../components/menu-commands/command-button.vue';
+import svg from '../icons/clear-format.svg';
 import type { ChainedCommands, Editor, UnionCommands } from '@tiptap/core';
 
 declare module '@tiptap/core' {
@@ -64,7 +65,7 @@ const FormatClear = Extension.create({
               editor.commands.formatClear();
             },
             buttonIcon: extension.options.buttonIcon,
-            icon: 'clear-format',
+            icon: svg,
             tooltip: t('editor.extensions.FormatClear.tooltip'),
           },
         };

@@ -12,6 +12,7 @@ const EntTiptapPlugin: Plugin = {
 };
 
 export * from './extensions';
+export * from './components/default-extensions';
 
 export { EntTiptapPlugin, EntTiptap, CommandButton, getSuggestionItems, renderItems };
 

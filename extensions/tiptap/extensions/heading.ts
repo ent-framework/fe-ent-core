@@ -3,7 +3,12 @@ import HeadingDropdown from '../components/menu-commands/heading-dropdown.vue';
 import type { Editor, Extension } from '@tiptap/core';
 import type { HeadingOptions } from '@tiptap/extension-heading';
 
-const Heading = TiptapHeading.extend({
+interface CustomHeadingOptions extends HeadingOptions {
+  level: number;
+  bubble: boolean;
+}
+
+const Heading = TiptapHeading.extend<CustomHeadingOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

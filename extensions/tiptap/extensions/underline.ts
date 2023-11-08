@@ -2,8 +2,13 @@ import TiptapUnderline from '@tiptap/extension-underline';
 import CommandButton from '../components/menu-commands/command-button.vue';
 import svg from '../icons/underline.svg';
 import type { Editor } from '@tiptap/core';
+import type { UnderlineOptions } from '@tiptap/extension-underline';
 
-const Underline = TiptapUnderline.extend({
+interface CustomUnderlineOptions extends UnderlineOptions {
+  bubble: boolean;
+}
+
+const Underline = TiptapUnderline.extend<CustomUnderlineOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

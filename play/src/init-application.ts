@@ -1,5 +1,8 @@
 import { usePermission } from 'fe-ent-core/es/hooks/web/use-permission';
 import { useGlobalStore } from 'fe-ent-core/es/store';
+import { useLocale } from 'fe-ent-core/es/locales';
+import localeEn from '/@/locale/en';
+import localeZh from '/@/locale/zh-CN';
 
 export async function initApplication() {
   // ! Need to pay attention to the timing of execution
@@ -10,6 +13,10 @@ export async function initApplication() {
   const { changePermissionMode } = usePermission();
   //await changePermissionMode('BACK');
   await changePermissionMode('ROUTE_MAPPING');
+  const { addMessages } = useLocale();
+  // 添加翻译
+  addMessages('en', localeEn);
+  addMessages('zh_CN', localeZh);
   // 关闭multi-tab 和 keep-alive
   // const appStore = useAppStoreWithOut();
   // appStore.setProjectConfig({

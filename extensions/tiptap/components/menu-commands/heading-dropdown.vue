@@ -1,8 +1,8 @@
 <template>
-  <el-dropdown
+  <Dropdown
     placement="bottom"
     trigger="click"
-    popper-class="el-tiptap-dropdown-popper"
+    popper-class="ent-tiptap-dropdown-popper"
     :popper-options="{ modifiers: [{ name: 'computeStyles', options: { adaptive: false } }] }"
     @command="toggleHeading"
   >
@@ -13,23 +13,23 @@
         :tooltip="t('editor.extensions.Heading.tooltip')"
         :readonly="isCodeViewMode"
         :button-icon="buttonIcon"
-        icon="heading"
+        :icon="heading"
       />
     </div>
     <template #dropdown>
-      <el-dropdown-menu class="el-tiptap-dropdown-menu">
-        <el-dropdown-item v-for="level in [0, ...levels]" :key="level" :command="level">
+      <Menu class="ent-tiptap-dropdown-menu">
+        <MenuItem v-for="level in [0, ...levels]" :key="level" :command="level">
           <div
             :class="[
               {
-                'el-tiptap-dropdown-menu__item--active':
+                'ent-tiptap-dropdown-menu__item--active':
                   level > 0
                     ? editor.isActive('heading', {
                         level,
                       })
                     : editor.isActive('paragraph'),
               },
-              'el-tiptap-dropdown-menu__item',
+              'ent-tiptap-dropdown-menu__item',
             ]"
           >
             <template v-if="level > 0">
@@ -39,26 +39,27 @@
             </template>
             <span v-else>{{ t('editor.extensions.Heading.buttons.paragraph') }}</span>
           </div>
-        </el-dropdown-item>
-      </el-dropdown-menu>
+        </MenuItem>
+      </Menu>
     </template>
-  </el-dropdown>
+  </Dropdown>
 </template>
 
 <script lang="ts">
   import { defineComponent, inject } from 'vue';
-  import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
+  import { Dropdown, Menu } from 'ant-design-vue';
   import { Editor } from '@tiptap/core';
+  import heading from '../../icons/heading.svg';
   import CommandButton from './command-button.vue';
   import type { Level } from '@tiptap/extension-heading';
-
+  const MenuItem = Menu.Item;
   export default defineComponent({
     name: 'HeadingDropdown',
 
     components: {
-      ElDropdown,
-      ElDropdownMenu,
-      ElDropdownItem,
+      Dropdown,
+      Menu,
+      MenuItem,
       CommandButton,
     },
 
@@ -83,7 +84,7 @@
       const enableTooltip = inject('enableTooltip', true);
       const isCodeViewMode = inject('isCodeViewMode', false);
 
-      return { t, enableTooltip, isCodeViewMode };
+      return { t, enableTooltip, isCodeViewMode, heading };
     },
 
     methods: {

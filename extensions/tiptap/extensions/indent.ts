@@ -1,12 +1,15 @@
 import { Extension } from '@tiptap/core';
 import CommandButton from '../components/menu-commands/command-button.vue';
 import { IndentProps, createIndentCommand } from '../utils/indent';
+import indent from '../icons/indent.svg';
+import outdent from '../icons/outdent.svg';
 import type { Editor } from '@tiptap/core';
 
 export interface IndentOptions {
   types: string[];
   minIndent: number;
   maxIndent: number;
+  bubble: boolean;
 }
 
 declare module '@tiptap/core' {
@@ -50,7 +53,7 @@ const Indent = Extension.create<IndentOptions>({
                 editor.commands.indent();
               },
               buttonIcon: extension.options.buttonIcon?.[0],
-              icon: 'indent',
+              icon: indent,
               tooltip: t('editor.extensions.Indent.buttons.indent.tooltip'),
             },
           },
@@ -60,7 +63,7 @@ const Indent = Extension.create<IndentOptions>({
               command: () => {
                 editor.commands.outdent();
               },
-              icon: 'outdent',
+              icon: outdent,
               buttonIcon: extension.options.buttonIcon?.[1],
               tooltip: t('editor.extensions.Indent.buttons.outdent.tooltip'),
             },

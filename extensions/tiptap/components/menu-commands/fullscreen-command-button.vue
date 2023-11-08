@@ -5,7 +5,7 @@
       :enable-tooltip="enableTooltip"
       :tooltip="buttonTooltip"
       :button-icon="buttonIcon"
-      :icon="isFullscreen ? 'compress' : 'expand'"
+      :icon="getIcon"
       :is-active="isFullscreen"
     />
   </div>
@@ -13,6 +13,8 @@
 
 <script lang="ts">
   import { defineComponent, inject } from 'vue';
+  import compress from '../../icons/compress.svg';
+  import expand from '../../icons/expand.svg';
   import CommandButton from './command-button.vue';
 
   export default defineComponent({
@@ -41,6 +43,9 @@
         return this.isFullscreen
           ? this.t('editor.extensions.Fullscreen.tooltip.exit_fullscreen')
           : this.t('editor.extensions.Fullscreen.tooltip.fullscreen');
+      },
+      getIcon() {
+        return this.isFullscreen ? compress : expand;
       },
     },
   });

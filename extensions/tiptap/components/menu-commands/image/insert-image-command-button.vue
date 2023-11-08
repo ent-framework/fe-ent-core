@@ -1,73 +1,73 @@
 <template>
   <div>
-    <el-popover
+    <Popover
       :disabled="isCodeViewMode"
       placement="bottom"
       trigger="click"
-      popper-class="el-tiptap-popper"
+      popper-class="ent-tiptap-popper"
     >
-      <div class="el-tiptap-popper__menu">
-        <div class="el-tiptap-popper__menu__item" @click="openUrlPrompt">
-          <span>{{ t('editor.extensions.Image.buttons.insert_image.external') }}</span>
-        </div>
+      <template v-if="!isCodeViewMode" #content>
+        <div class="ent-tiptap-popper__menu">
+          <div class="ent-tiptap-popper__menu__item" @click="openUrlPrompt">
+            <span>{{ t('editor.extensions.Image.buttons.insert_image.external') }}</span>
+          </div>
 
-        <div class="el-tiptap-popper__menu__item" @click="imageUploadDialogVisible = true">
-          <span>{{ t('editor.extensions.Image.buttons.insert_image.upload') }}</span>
+          <div class="ent-tiptap-popper__menu__item" @click="imageUploadDialogVisible = true">
+            <span>{{ t('editor.extensions.Image.buttons.insert_image.upload') }}</span>
+          </div>
         </div>
-      </div>
-
-      <template #reference>
-        <span>
-          <command-button
-            :enable-tooltip="enableTooltip"
-            :tooltip="t('editor.extensions.Image.buttons.insert_image.tooltip')"
-            :readonly="isCodeViewMode"
-            icon="image"
-            :button-icon="buttonIcon"
-          />
-        </span>
       </template>
-    </el-popover>
+      <span>
+        <command-button
+          :enable-tooltip="enableTooltip"
+          :tooltip="t('editor.extensions.Image.buttons.insert_image.tooltip')"
+          :readonly="isCodeViewMode"
+          :icon="image"
+          :button-icon="buttonIcon"
+        />
+      </span>
+    </Popover>
 
-    <el-dialog
+    <Modal
       v-model="imageUploadDialogVisible"
       :title="t('editor.extensions.Image.control.upload_image.title')"
       :append-to-body="true"
     >
-      <el-upload
+      <Upload
         :http-request="uploadImage"
         :show-file-list="false"
-        class="el-tiptap-upload"
+        class="ent-tiptap-upload"
         action="#"
         drag
         accept="image/*"
       >
-        <div class="el-tiptap-upload__icon">
+        <div class="ent-tiptap-upload__icon">
           <i class="fa fa-upload" />
         </div>
-        <div class="el-tiptap-upload__text">
+        <div class="ent-tiptap-upload__text">
           {{ t('editor.extensions.Image.control.upload_image.button') }}
         </div>
-      </el-upload>
-    </el-dialog>
+      </Upload>
+    </Modal>
   </div>
 </template>
 
 <script lang="ts">
   import { defineComponent, inject } from 'vue';
-  import { ElDialog, ElLoading, ElMessageBox, ElPopover, ElUpload } from 'element-plus';
+  import { Modal, Popover, Spin, Upload } from 'ant-design-vue';
   import { Editor } from '@tiptap/core';
   import CommandButton from '../command-button.vue';
   import { readFileDataUrl } from '../../../utils/shared';
+  import image from '../../../icons/image.svg';
   import Logger from '../../../utils/logger';
 
   export default defineComponent({
     name: 'ImageCommandButton',
 
     components: {
-      ElDialog,
-      ElUpload,
-      ElPopover,
+      Modal,
+      Upload,
+      Popover,
       CommandButton,
     },
 
@@ -87,7 +87,7 @@
       const enableTooltip = inject('enableTooltip', true);
       const isCodeViewMode = inject('isCodeViewMode', false);
 
-      return { t, enableTooltip, isCodeViewMode };
+      return { t, enableTooltip, isCodeViewMode, image };
     },
 
     data() {
@@ -127,7 +127,7 @@
         const uploadRequest = this.imageNodeOptions.uploadRequest;
 
         const loadingInstance = ElLoading.service({
-          target: '.el-tiptap-upload',
+          target: '.ent-tiptap-upload',
         });
         try {
           const url = await (uploadRequest ? uploadRequest(file) : readFileDataUrl(file));

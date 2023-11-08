@@ -1,54 +1,49 @@
 <template>
-  <el-popover
-    ref="popoverRef"
-    :disabled="isCodeViewMode"
-    placement="bottom"
-    trigger="click"
-    popper-class="el-tiptap-popper"
-  >
-    <div class="color-set">
-      <div v-for="color in colorSet" :key="color" class="color__wrapper">
-        <div
-          :style="{
-            'background-color': color,
-          }"
-          :class="{ 'color--selected': selectedColor === color }"
-          class="color"
-          @mousedown.prevent
-          @click.stop="confirmColor(color)"
-        />
-      </div>
+  <Popover ref="popoverRef" placement="bottom" trigger="click" popper-class="ent-tiptap-popper">
+    <template v-if="!isCodeViewMode" #content>
+      <div class="color-set">
+        <div v-for="color in colorSet" :key="color" class="color__wrapper">
+          <div
+            :style="{
+              'background-color': color,
+            }"
+            :class="{ 'color--selected': selectedColor === color }"
+            class="color"
+            @mousedown.prevent
+            @click.stop="confirmColor(color)"
+          />
+        </div>
 
-      <div class="color__wrapper">
-        <div class="color color--remove" @mousedown.prevent @click.stop="confirmColor()" />
+        <div class="color__wrapper">
+          <div class="color color--remove" @mousedown.prevent @click.stop="confirmColor()" />
+        </div>
       </div>
-    </div>
-
-    <template #reference>
-      <span>
-        <command-button
-          :button-icon="buttonIcon"
-          :enable-tooltip="enableTooltip"
-          :tooltip="t('editor.extensions.TextHighlight.tooltip')"
-          icon="highlight"
-          :readonly="isCodeViewMode"
-        />
-      </span>
     </template>
-  </el-popover>
+
+    <span>
+      <command-button
+        :button-icon="buttonIcon"
+        :enable-tooltip="enableTooltip"
+        :tooltip="t('editor.extensions.TextHighlight.tooltip')"
+        :icon="highlight"
+        :readonly="isCodeViewMode"
+      />
+    </span>
+  </Popover>
 </template>
 
 <script lang="ts">
   import { computed, defineComponent, inject, ref, unref } from 'vue';
   import { Editor, getMarkAttributes } from '@tiptap/vue-3';
-  import { ElPopover } from 'element-plus';
+  import { Popover } from 'ant-design-vue';
+  import highlight from '../../icons/highlight.svg';
   import CommandButton from './command-button.vue';
 
   export default defineComponent({
     name: 'HighlightPopover',
 
     components: {
-      ElPopover,
+      Popover,
       CommandButton,
     },
 
@@ -93,6 +88,7 @@
         selectedColor,
         popoverVisible,
         confirmColor,
+        highlight,
       };
     },
 

@@ -2,8 +2,11 @@ import TiptapBold from '@tiptap/extension-bold';
 import CommandButton from '../components/menu-commands/command-button.vue';
 import svg from '../icons/bold.svg';
 import type { Editor } from '@tiptap/core';
-
-const Bold = TiptapBold.extend({
+import type { BoldOptions } from '@tiptap/extension-bold';
+export interface CustomBoldOptions extends BoldOptions {
+  bubble: boolean;
+}
+const Bold = TiptapBold.extend<CustomBoldOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

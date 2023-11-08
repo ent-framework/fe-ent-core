@@ -1,9 +1,15 @@
 import TiptapOrderedList from '@tiptap/extension-ordered-list';
 import CommandButton from '../components/menu-commands/command-button.vue';
+import svg from '../icons/list-ol.svg';
 import ListItem from './list-item';
 import type { Editor } from '@tiptap/core';
+import type { OrderedListOptions } from '@tiptap/extension-ordered-list';
 
-const OrderedList = TiptapOrderedList.extend({
+interface CustomOrderedListOptions extends OrderedListOptions {
+  bubble: boolean;
+}
+
+const OrderedList = TiptapOrderedList.extend<CustomOrderedListOptions>({
   nessesaryExtensions: [ListItem],
   addOptions() {
     return {
@@ -39,7 +45,7 @@ const OrderedList = TiptapOrderedList.extend({
             },
             buttonIcon: extension.options.buttonIcon,
             isActive: editor.isActive('orderedList'),
-            icon: 'list-ol',
+            icon: svg,
             tooltip: t('editor.extensions.OrderedList.tooltip'),
           },
         };

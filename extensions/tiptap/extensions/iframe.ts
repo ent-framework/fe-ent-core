@@ -25,8 +25,7 @@ const Iframe = Node.create({
       src: {
         default: null,
         parseHTML: (element) => {
-          const src = element.getAttribute('src');
-          return src;
+          return element.getAttribute('src');
         },
       },
     };

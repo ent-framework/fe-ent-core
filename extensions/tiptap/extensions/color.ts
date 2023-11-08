@@ -3,8 +3,11 @@ import TextStyle from '@tiptap/extension-text-style';
 import { COLOR_SET } from '../utils/color';
 import ColorPopover from '../components/menu-commands/color-popover.vue';
 import type { Editor } from '@tiptap/core';
-
-const Color = TiptapColor.extend({
+import type { ColorOptions } from '@tiptap/extension-color';
+interface CustomColorOptions extends ColorOptions {
+  bubble: boolean;
+}
+const Color = TiptapColor.extend<CustomColorOptions>({
   nessesaryExtensions: [TextStyle],
   addOptions() {
     return {

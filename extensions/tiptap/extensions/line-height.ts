@@ -11,6 +11,7 @@ import type { Editor } from '@tiptap/core';
 export interface LineHeightOptions {
   types: string[];
   lineHeights: string[];
+  bubble: boolean;
 }
 
 declare module '@tiptap/core' {
@@ -27,6 +28,7 @@ const LineHeight = Extension.create<LineHeightOptions>({
 
   addOptions() {
     return {
+      bubble: false,
       buttonIcon: '',
       types: ['paragraph', 'heading', 'list_item', 'todo_item'],
       lineHeights: ['100%', '115%', '150%', '200%', '250%', '300%'],

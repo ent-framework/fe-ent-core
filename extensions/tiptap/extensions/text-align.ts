@@ -1,8 +1,31 @@
 import TiptapTextAlign from '@tiptap/extension-text-align';
 import CommandButton from '../components/menu-commands/command-button.vue';
+import alignLeft from '../icons/align-left.svg';
+import alignCenter from '../icons/align-center.svg';
+import alignRight from '../icons/align-right.svg';
+import alignJustify from '../icons/align-justify.svg';
 import type { Editor } from '@tiptap/core';
+import type { TextAlignOptions } from '@tiptap/extension-text-align';
 
-const TextAlign = TiptapTextAlign.extend({
+export interface CustomTextAlignOptions extends TextAlignOptions {
+  bubble: boolean;
+}
+
+const getIcon = (alignment: string) => {
+  switch (alignment) {
+    case 'left':
+      return alignLeft;
+    case 'center':
+      return alignCenter;
+    case 'right':
+      return alignRight;
+    case 'justify':
+      return alignJustify;
+  }
+  return alignLeft;
+};
+
+const TextAlign = TiptapTextAlign.extend<CustomTextAlignOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
@@ -29,7 +52,7 @@ const TextAlign = TiptapTextAlign.extend({
                 }
               },
               isActive: alignment === 'left' ? false : editor.isActive({ textAlign: alignment }),
-              icon: `align-${alignment}`,
+              icon: getIcon(`${alignment}`),
               buttonIcon: extension.options.buttonIcon?.[acc.length],
               tooltip: t(`editor.extensions.TextAlign.buttons.align_${alignment}.tooltip`),
             },

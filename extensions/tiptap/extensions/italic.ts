@@ -1,8 +1,14 @@
 import TiptapItalic from '@tiptap/extension-italic';
 import CommandButton from '../components/menu-commands/command-button.vue';
+import svg from '../icons/italic.svg';
 import type { Editor } from '@tiptap/core';
+import type { ItalicOptions } from '@tiptap/extension-italic';
 
-const Italic = TiptapItalic.extend({
+interface CustomItalicOptions extends ItalicOptions {
+  bubble: boolean;
+}
+
+const Italic = TiptapItalic.extend<CustomItalicOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
@@ -36,7 +42,7 @@ const Italic = TiptapItalic.extend({
               editor.commands.toggleItalic();
             },
             isActive: editor.isActive('italic'),
-            icon: 'italic',
+            icon: svg,
             buttonIcon: extension.options.buttonIcon,
             tooltip: t('editor.extensions.Italic.tooltip'),
           },

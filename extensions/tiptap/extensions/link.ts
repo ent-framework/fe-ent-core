@@ -2,10 +2,17 @@ import { getMarkRange } from '@tiptap/core';
 import TiptapLink from '@tiptap/extension-link';
 import { Plugin, TextSelection } from 'prosemirror-state';
 import AddLinkCommandButton from '../components/menu-commands/link/add-link-command-button.vue';
+import type { LinkOptions } from '@tiptap/extension-link';
 import type { EditorView } from 'prosemirror-view';
 import type { Editor } from '@tiptap/core';
 
-const Link = TiptapLink.extend({
+export interface CustomLinkOptions extends LinkOptions {
+  bubble: boolean;
+  addLinkPlaceholder: string;
+  editLinkPlaceholder: string;
+}
+
+const Link = TiptapLink.extend<CustomLinkOptions>({
   addOptions() {
     return {
       ...this.parent?.(),

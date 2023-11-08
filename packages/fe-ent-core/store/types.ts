@@ -56,7 +56,7 @@ export interface BeforeMiniState {
   menuType?: MenuTypeEnum;
 }
 
-export type LocaleType = 'zh_CN' | 'en' | 'ru' | 'ja' | 'ko';
+export type LocaleType = 'zh_CN' | 'en';
 
 export interface LocaleSetting {
   showPicker: boolean;

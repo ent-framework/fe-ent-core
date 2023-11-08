@@ -2,15 +2,18 @@ import TiptapBlockquote from '@tiptap/extension-blockquote';
 import CommandButton from '../components/menu-commands/command-button.vue';
 import svg from '../icons/quote-right.svg';
 import type { Editor } from '@tiptap/core';
+import type { Component } from 'vue';
+import type { BlockquoteOptions } from '@tiptap/extension-blockquote';
 
-export interface BlockquoteOptions {
-  buttonIcon: string;
+export interface CustomBlockquoteOptions extends BlockquoteOptions {
+  buttonIcon: Component | undefined;
+  bubble: boolean;
 }
-const Blockquote = TiptapBlockquote.extend<BlockquoteOptions>({
+const Blockquote = TiptapBlockquote.extend<CustomBlockquoteOptions>({
   addOptions() {
     return {
       ...this.parent?.(),
-      buttonIcon: '',
+      buttonIcon: undefined,
       commandList: [
         {
           title: 'blockquote',

@@ -1,62 +1,59 @@
 <template>
-  <el-dropdown
-    placement="bottom"
-    trigger="click"
-    popper-class="my-dropdown"
-    :popper-options="{ modifiers: [{ name: 'computeStyles', options: { adaptive: false } }] }"
-    @command="toggleFontSize"
-  >
+  <Dropdown placement="bottom" trigger="click">
     <div>
       <command-button
         :enable-tooltip="enableTooltip"
         :tooltip="t('editor.extensions.FontSize.tooltip')"
         :readonly="isCodeViewMode"
         :button-icon="buttonIcon"
-        icon="font-size"
+        :icon="fontSize"
       />
     </div>
-    <template #dropdown>
-      <el-dropdown-menu class="el-tiptap-dropdown-menu">
-        <el-dropdown-item
+    <template #overlay>
+      <Menu class="ent-tiptap-dropdown-menu" @click="toggleFontSize">
+        <MenuItem
+          key="default"
           :command="defaultSize"
           :class="{
-            'el-tiptap-dropdown-menu__item--active': activeFontSize === defaultSize,
+            'ent-tiptap-dropdown-menu__item--active': activeFontSize === defaultSize,
           }"
-          class="el-tiptap-dropdown-menu__item"
+          class="ent-tiptap-dropdown-menu__item"
         >
           <span data-font-size="default">{{ t('editor.extensions.FontSize.default') }}</span>
-        </el-dropdown-item>
+        </MenuItem>
 
-        <el-dropdown-item
-          v-for="fontSize in fontSizes"
-          :key="fontSize"
-          :command="fontSize"
+        <MenuItem
+          v-for="fs in fontSizes"
+          :key="fs"
+          :command="fs"
           :class="{
-            'el-tiptap-dropdown-menu__item--active': fontSize === activeFontSize,
+            'ent-tiptap-dropdown-menu__item--active': fs === activeFontSize,
           }"
-          class="el-tiptap-dropdown-menu__item"
+          class="ent-tiptap-dropdown-menu__item"
         >
-          <span :data-font-size="fontSize">{{ fontSize }}</span>
-        </el-dropdown-item>
-      </el-dropdown-menu>
+          <span :data-font-size="fs">{{ fs }}</span>
+        </MenuItem>
+      </Menu>
     </template>
-  </el-dropdown>
+  </Dropdown>
 </template>
 
 <script lang="ts">
-  import { defineComponent, inject } from 'vue';
+  import { computed, defineComponent, inject, unref } from 'vue';
   import { Editor, getMarkAttributes } from '@tiptap/vue-3';
-  import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
+  import { Dropdown, Menu } from 'ant-design-vue';
   import { DEFAULT_FONT_SIZE } from '../../utils/font-size';
+  import fontSize from '../../icons/font-size.svg';
   import CommandButton from './command-button.vue';
-
+  import type { MenuProps } from 'ant-design-vue';
+  const MenuItem = Menu.Item;
   export default defineComponent({
     name: 'FontSizeDropdown',
 
     components: {
-      ElDropdown,
-      ElDropdownMenu,
-      ElDropdownItem,
+      Dropdown,
+      Menu,
+      MenuItem,
       CommandButton,
     },
 
@@ -71,35 +68,40 @@
       },
     },
 
-    setup() {
+    setup(props) {
       const t = inject('t');
       const enableTooltip = inject('enableTooltip', true);
       const isCodeViewMode = inject('isCodeViewMode', false);
 
-      return { t, enableTooltip, isCodeViewMode, defaultSize: DEFAULT_FONT_SIZE };
-    },
-
-    computed: {
-      fontSizes(): string[] {
-        const fontSizeOptions = this.editor.extensionManager.extensions.find(
+      const fontSizes = computed(() => {
+        const fontSizeOptions = props.editor.extensionManager.extensions.find(
           (e) => e.name === 'fontSize',
         )!.options;
         return fontSizeOptions.fontSizes;
-      },
+      });
 
-      activeFontSize() {
-        return getMarkAttributes(this.editor.state, 'textStyle').fontSize || '';
-      },
-    },
+      const activeFontSize = computed(() => {
+        return getMarkAttributes(props.editor.state, 'textStyle').fontSize || '';
+      });
 
-    methods: {
-      toggleFontSize(size: string) {
-        if (size === this.activeFontSize) {
-          this.editor.commands.unsetFontSize();
+      const toggleFontSize: MenuProps['onClick'] = (e) => {
+        if (e.key === unref(activeFontSize)) {
+          props.editor.commands.unsetFontSize();
         } else {
-          this.editor.commands.setFontSize(size);
+          props.editor.commands.setFontSize(e.key);
         }
-      },
+      };
+
+      return {
+        t,
+        enableTooltip,
+        isCodeViewMode,
+        defaultSize: DEFAULT_FONT_SIZE,
+        fontSize,
+        fontSizes,
+        activeFontSize,
+        toggleFontSize,
+      };
     },
   });
 </script>

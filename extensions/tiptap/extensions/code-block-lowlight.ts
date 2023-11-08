@@ -1,8 +1,10 @@
 import TiptapCodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
 import CommandButton from '../components/menu-commands/command-button.vue';
+import svg from '../icons/code.svg';
 import type { Editor } from '@tiptap/core';
 
 export default TiptapCodeBlockLowlight.extend({
+  name: 'codeBlockLowlight',
   addOptions() {
     return {
       ...this.parent?.(),
@@ -11,14 +13,14 @@ export default TiptapCodeBlockLowlight.extend({
       buttonIcon: '',
       commandList: [
         {
-          title: 'codeBlock',
+          title: 'codeBlockLowlight',
           command: ({ editor, range }: any) => {
             editor.chain().focus().deleteRange(range).run();
             editor.chain().focus().toggleCodeBlock().run();
           },
           disabled: false,
           isActive(editor: Editor) {
-            return editor.isActive('codeBlock');
+            return editor.isActive('codeBlockLowlight');
           },
         },
       ],
@@ -38,8 +40,8 @@ export default TiptapCodeBlockLowlight.extend({
               editor.commands.toggleCodeBlock();
             },
             buttonIcon: extension.options.buttonIcon,
-            isActive: editor.isActive('codeBlock'),
-            icon: 'code',
+            isActive: editor.isActive('codeBlockLowlight'),
+            icon: svg,
             tooltip: t('editor.extensions.CodeBlock.tooltip'),
           },
         };

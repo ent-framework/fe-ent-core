@@ -1,5 +1,6 @@
 import { Extension } from '@tiptap/core';
 import CommandButton from '../components/menu-commands/command-button.vue';
+import svg from '../icons/select-all.svg';
 import type { Editor } from '@tiptap/core';
 
 const SelectAll = Extension.create({
@@ -26,7 +27,7 @@ const SelectAll = Extension.create({
               editor.commands.selectAll();
             },
             buttonIcon: extension.options.buttonIcon,
-            icon: 'select-all',
+            icon: svg,
             tooltip: t('editor.extensions.SelectAll.tooltip'),
           },
         };

@@ -1,13 +1,13 @@
 <template>
-  <el-popover ref="popoverRef" placement="top" trigger="click" popper-class="el-tiptap-popper">
-    <div class="el-tiptap-popper__menu">
+  <Popover ref="popoverRef" placement="top" trigger="click" popper-class="ent-tiptap-popper">
+    <div class="ent-tiptap-popper__menu">
       <div
         v-for="display in displayCollection"
         :key="display"
         :class="{
-          'el-tiptap-popper__menu__item--active': display === currDisplay,
+          'ent-tiptap-popper__menu__item--active': display === currDisplay,
         }"
-        class="el-tiptap-popper__menu__item"
+        class="ent-tiptap-popper__menu__item"
         @mousedown="hidePopover"
         @click="updateAttrs!({ display })"
       >
@@ -25,13 +25,13 @@
         />
       </span>
     </template>
-  </el-popover>
+  </Popover>
 </template>
 
 <script lang="ts">
   import { defineComponent, inject } from 'vue';
   import { nodeViewProps } from '@tiptap/vue-3';
-  import { ElPopover } from 'element-plus';
+  import { Popover } from 'ant-design-vue';
   import CommandButton from '../command-button.vue';
   import { ImageDisplay } from '../../../utils/image';
 
@@ -39,7 +39,7 @@
     name: 'ImageDisplayCommandButton',
 
     components: {
-      ElPopover,
+      Popover,
       CommandButton,
     },
     props: {

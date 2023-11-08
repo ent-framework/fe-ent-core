@@ -4,7 +4,7 @@
       :command="() => toggleIsCodeViewMode(!isCodeViewMode)"
       :enable-tooltip="enableTooltip"
       :tooltip="t('editor.extensions.CodeView.tooltip')"
-      icon="file-code"
+      :icon="svg"
       :button-icon="buttonIcon"
       :is-active="isCodeViewMode"
     />
@@ -13,6 +13,7 @@
 
 <script lang="ts">
   import { defineComponent, inject } from 'vue';
+  import svg from '../../icons/file-code.svg';
   import CommandButton from './command-button.vue';
 
   export default defineComponent({
@@ -34,7 +35,7 @@
       const isCodeViewMode = inject('isCodeViewMode', false);
       const toggleIsCodeViewMode = inject('toggleIsCodeViewMode');
 
-      return { t, enableTooltip, isCodeViewMode, toggleIsCodeViewMode };
+      return { t, enableTooltip, isCodeViewMode, svg, toggleIsCodeViewMode };
     },
   });
 </script>

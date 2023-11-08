@@ -1,9 +1,15 @@
 import TiptapBulletList from '@tiptap/extension-bullet-list';
 import CommandButton from '../components/menu-commands/command-button.vue';
+import svg from '../icons/list-ul.svg';
 import ListItem from './list-item';
 import type { Editor } from '@tiptap/core';
+import type { BulletListOptions } from '@tiptap/extension-bullet-list';
 
-const BulletList = TiptapBulletList.extend({
+interface CustomBulletListOptions extends BulletListOptions {
+  bubble: boolean;
+}
+
+const BulletList = TiptapBulletList.extend<CustomBulletListOptions>({
   nessesaryExtensions: [ListItem],
   addOptions() {
     return {
@@ -39,7 +45,7 @@ const BulletList = TiptapBulletList.extend({
             },
             buttonIcon: extension.options.buttonIcon,
             isActive: editor.isActive('bulletList'),
-            icon: 'list-ul',
+            icon: svg,
             tooltip: t('editor.extensions.BulletList.tooltip'),
           },
         };

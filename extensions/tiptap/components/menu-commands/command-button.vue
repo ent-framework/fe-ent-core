@@ -1,16 +1,7 @@
 <template>
-  <el-tooltip
-    :content="tooltip"
-    :show-after="350"
-    :disabled="!enableTooltip || readonly"
-    effect="dark"
-    popper-class="tooltip-up"
-    placement="top"
-    :enterable="false"
-  >
+  <Tooltip :title="tooltip" :disabled="!enableTooltip || readonly" placement="top">
     <div v-if="!buttonIcon" :class="commandButtonClass" @mousedown.prevent @click="onClick">
-<!--      <v-icon :name="icon" :button-icon="buttonIcon" />-->
-      <img :src="icon" width="16" height="16" />
+      <img alt="" :src="icon" width="16" height="16" />
     </div>
     <div
       v-else
@@ -19,23 +10,22 @@
       @click="onClick"
       v-html="buttonIcon"
     />
-  </el-tooltip>
+  </Tooltip>
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { ElTooltip } from 'element-plus';
-  import VIcon from '../icon/icon.vue';
+  import { computed, defineComponent } from 'vue';
+  import { Tooltip } from 'ant-design-vue';
   import { noop } from '../../utils/shared';
+  import type { Component, PropType } from 'vue';
 
   export default defineComponent({
     components: {
-      ElTooltip,
-      VIcon,
+      Tooltip,
     },
     props: {
       icon: {
-        type: String,
+        type: [Object, String] as PropType<Component | string>,
         required: true,
       },
 
@@ -73,20 +63,22 @@
         default: false,
       },
     },
-    computed: {
-      commandButtonClass(): object {
+    emits: ['cmdBtnClicked'],
+    setup(props, { emit }) {
+      const commandButtonClass = computed(() => {
         return {
-          'el-tiptap-editor__command-button': true,
-          'el-tiptap-editor__command-button--active': this.isActive,
-          'el-tiptap-editor__command-button--readonly': this.readonly || this.disabled,
+          'ent-tiptap-editor__command-button': true,
+          'ent-tiptap-editor__command-button--active': props.isActive,
+          'ent-tiptap-editor__command-button--readonly': props.readonly || props.disabled,
         };
-      },
-    },
+      });
 
-    methods: {
-      onClick() {
-        if (!this.readonly && !this.disabled) this.command();
-      },
+      const onClick = () => {
+        if (!props.readonly && !props.disabled) props.command();
+        emit('cmdBtnClicked');
+      };
+
+      return { commandButtonClass, onClick };
     },
   });
 </script>

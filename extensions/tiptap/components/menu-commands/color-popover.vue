@@ -1,77 +1,71 @@
 <template>
-  <el-popover
-    ref="popoverRef"
-    :disabled="isCodeViewMode"
-    placement="bottom"
-    trigger="click"
-    popper-class="el-tiptap-popper"
-  >
-    <div class="color-set">
-      <div v-for="color in colorSet" :key="color" class="color__wrapper">
-        <div
-          :style="{
-            'background-color': color,
-          }"
-          :class="{ 'color--selected': selectedColor === color }"
-          class="color"
-          @mousedown.prevent
-          @click.stop="confirmColor(color)"
-        />
+  <Popover ref="popoverRef" placement="bottom" trigger="click" popper-class="ent-tiptap-popper">
+    <template v-if="!isCodeViewMode" #content>
+      <div class="color-set">
+        <div v-for="color in colorSet" :key="color" class="color__wrapper">
+          <div
+            :style="{
+              'background-color': color,
+            }"
+            :class="{ 'color--selected': selectedColor === color }"
+            class="color"
+            @mousedown.prevent
+            @click.stop="confirmColor(color)"
+          />
+        </div>
+
+        <div class="color__wrapper">
+          <div class="color color--remove" @mousedown.prevent @click.stop="confirmColor()" />
+        </div>
       </div>
 
-      <div class="color__wrapper">
-        <div class="color color--remove" @mousedown.prevent @click.stop="confirmColor()" />
-      </div>
-    </div>
-
-    <div class="color-hex">
-      <el-input
-        v-model="colorText"
-        placeholder="HEX"
-        autofocus="true"
-        maxlength="7"
-        size="small"
-        class="color-hex__input"
-      />
-
-      <el-button
-        text
-        type="primary"
-        size="small"
-        class="color-hex__button"
-        @click="confirmColor(colorText)"
-      >
-        OK
-      </el-button>
-    </div>
-
-    <template #reference>
-      <span>
-        <command-button
-          :enable-tooltip="enableTooltip"
-          :tooltip="t('editor.extensions.TextColor.tooltip')"
-          icon="font-color"
-          :button-icon="buttonIcon"
-          :readonly="isCodeViewMode"
+      <div class="color-hex">
+        <Input
+          v-model="colorText"
+          placeholder="HEX"
+          :autofocus="true"
+          maxlength="7"
+          size="small"
+          class="color-hex__input"
         />
-      </span>
+
+        <Button
+          text
+          type="primary"
+          size="small"
+          class="color-hex__button"
+          @click="confirmColor(colorText)"
+        >
+          OK
+        </Button>
+      </div>
     </template>
-  </el-popover>
+    <span>
+      <command-button
+        :enable-tooltip="enableTooltip"
+        :tooltip="t('editor.extensions.TextColor.tooltip')"
+        :icon="fontColor"
+        :button-icon="buttonIcon"
+        :readonly="isCodeViewMode"
+      />
+    </span>
+  </Popover>
 </template>
 
 <script lang="ts">
   import { computed, defineComponent, inject, ref, unref, watch } from 'vue';
   import { Editor, getMarkAttributes } from '@tiptap/vue-3';
-  import { ElButton, ElInput, ElPopover } from 'element-plus';
+  import { Button, Input, Popover } from 'ant-design-vue';
+  import fontColor from '../../icons/font-color.svg';
   import CommandButton from './command-button.vue';
 
   export default defineComponent({
     name: 'ColorPopover',
 
     components: {
-      ElButton,
-      ElPopover,
-      ElInput,
+      Button,
+      Popover,
+      Input,
       CommandButton,
     },
 
@@ -120,6 +114,7 @@
         colorText,
         selectedColor,
         confirmColor,
+        fontColor,
       };
     },
 

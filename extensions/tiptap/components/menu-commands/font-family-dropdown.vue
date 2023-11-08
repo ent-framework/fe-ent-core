@@ -1,51 +1,48 @@
 <template>
-  <el-dropdown
-    placement="bottom"
-    trigger="click"
-    popper-class="my-dropdown"
-    :popper-options="{ modifiers: [{ name: 'computeStyles', options: { adaptive: false } }] }"
-    @command="toggleFontType"
-  >
+  <Dropdown placement="bottom" trigger="click">
     <div>
       <command-button
         :enable-tooltip="enableTooltip"
         :tooltip="t('editor.extensions.FontType.tooltip')"
         :readonly="isCodeViewMode"
-        icon="font-family"
+        :icon="fontFamily"
         :button-icon="buttonIcon"
       />
     </div>
-    <template #dropdown>
-      <el-dropdown-menu class="el-tiptap-dropdown-menu">
-        <el-dropdown-item
+    <template #overlay>
+      <Menu class="ent-tiptap-editor-dropdown-menu" @click="toggleFontType">
+        <MenuItem
           v-for="name in fontFamilies"
           :key="name"
           :command="name"
           :class="{
-            'el-tiptap-dropdown-menu__item--active': name === activeFontFamily,
+            'ent-tiptap-editor-dropdown-menu__item--active': name === activeFontFamily,
           }"
-          class="el-tiptap-dropdown-menu__item"
+          class="ent-tiptap-editor-dropdown-menu__item"
         >
           <span :data-font="name" :style="{ 'font-family': name }">{{ name }}</span>
-        </el-dropdown-item>
-      </el-dropdown-menu>
+        </MenuItem>
+      </Menu>
     </template>
-  </el-dropdown>
+  </Dropdown>
 </template>
 
 <script lang="ts">
-  import { defineComponent, inject } from 'vue';
+  import { computed, defineComponent, inject, ref, unref } from 'vue';
   import { Editor, getMarkAttributes } from '@tiptap/vue-3';
-  import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus';
+  import { Dropdown, Menu } from 'ant-design-vue';
+  import fontFamily from '../../icons/font-family.svg';
   import CommandButton from './command-button.vue';
+  import type { MenuProps } from 'ant-design-vue';
+  const MenuItem = Menu.Item;
 
   export default defineComponent({
     name: 'FontFamilyDropdown',
 
     components: {
-      ElDropdown,
-      ElDropdownMenu,
-      ElDropdownItem,
+      Dropdown,
+      Menu,
+      MenuItem,
       CommandButton,
     },
     props: {
@@ -59,35 +56,40 @@
       },
     },
 
-    setup() {
+    setup(props) {
       const t = inject('t');
       const enableTooltip = inject('enableTooltip', true);
       const isCodeViewMode = inject('isCodeViewMode', false);
 
-      return { t, enableTooltip, isCodeViewMode };
-    },
-
-    computed: {
-      fontFamilies() {
-        const fontFamilyOptions = this.editor.extensionManager.extensions.find(
+      const fontFamilies = computed(() => {
+        const fontFamilyOptions = props.editor.extensionManager.extensions.find(
           (e) => e.name === 'fontFamily',
         )!.options;
         return fontFamilyOptions.fontFamilyMap;
-      },
+      });
 
-      activeFontFamily() {
-        return getMarkAttributes(this.editor.state, 'textStyle').fontFamily || '';
-      },
-    },
+      const activeFontFamily = computed(() => {
+        return getMarkAttributes(props.editor.state, 'textStyle').fontFamily || '';
+      });
 
-    methods: {
-      toggleFontType(name: string) {
-        if (name === this.activeFontFamily) {
-          this.editor.commands.unsetFontFamily();
+      const toggleFontType: MenuProps['onClick'] = (e) => {
+        const aff = unref(activeFontFamily);
+        if (e.key === aff) {
+          props.editor.commands.unsetFontFamily();
         } else {
-          this.editor.commands.setFontFamily(name);
+          props.editor.commands.setFontFamily(e.key);
         }
-      },
+      };
+
+      return {
+        t,
+        enableTooltip,
+        isCodeViewMode,
+        fontFamily,
+        toggleFontType,
+        fontFamilies,
+        activeFontFamily,
+      };
     },
   });
 </script>

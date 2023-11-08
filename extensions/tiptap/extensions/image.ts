@@ -10,6 +10,7 @@ import type { Editor } from '@tiptap/core';
 interface CustomImageOptions extends ImageOptions {
   defaultWidth: number | null;
   draggable: boolean;
+  bubble: boolean;
 }
 const Image = TiptapImage.extend<CustomImageOptions>({
   // https://github.com/ueberdosis/tiptap/issues/1206

@@ -6,58 +6,61 @@
       :command="openAddLinkDialog"
       :enable-tooltip="enableTooltip"
       :tooltip="t('editor.extensions.Link.add.tooltip')"
-      icon="link"
+      :icon="link"
       :button-icon="buttonIcon"
     />
 
-    <el-dialog
-      v-model="addLinkDialogVisible"
+    <Modal
+      v-model:open="addLinkDialogVisible"
       :title="t('editor.extensions.Link.add.control.title')"
       :append-to-body="true"
       width="400px"
-      class="el-tiptap-edit-link-dialog"
+      class="ent-tiptap-edit-link-dialog"
     >
-      <el-form :model="linkAttrs" label-position="right" size="small">
-        <el-form-item :label="t('editor.extensions.Link.add.control.href')" prop="href">
-          <el-input v-model="linkAttrs.href" autocomplete="off" :placeholder="placeholder" />
-        </el-form-item>
+      <Form :model="linkAttrs" label-position="right" size="small">
+        <FormItem :label="t('editor.extensions.Link.add.control.href')" name="href">
+          <Input v-model:value="linkAttrs.href" autocomplete="off" :placeholder="placeholder" />
+        </FormItem>
 
-        <el-form-item prop="openInNewTab">
-          <el-checkbox v-model="linkAttrs.openInNewTab">
+        <FormItem name="openInNewTab">
+          <Checkbox v-model:checked="linkAttrs.openInNewTab">
             {{ t('editor.extensions.Link.add.control.open_in_new_tab') }}
-          </el-checkbox>
-        </el-form-item>
-      </el-form>
+          </Checkbox>
+        </FormItem>
+      </Form>
 
       <template #footer>
-        <el-button size="small" round @click="closeAddLinkDialog">
+        <a-button size="small" round @click="closeAddLinkDialog">
           {{ t('editor.extensions.Link.add.control.cancel') }}
-        </el-button>
+        </a-button>
 
-        <el-button type="primary" size="small" round @mousedown.prevent @click="addLink">
+        <a-button type="primary" size="small" round @mousedown.prevent @click="addLink">
           {{ t('editor.extensions.Link.add.control.confirm') }}
-        </el-button>
+        </a-button>
       </template>
-    </el-dialog>
+    </Modal>
   </div>
 </template>
 
 <script lang="ts">
   import { defineComponent, inject } from 'vue';
-  import { ElButton, ElCheckbox, ElDialog, ElForm, ElFormItem, ElInput } from 'element-plus';
+  import { Button, Checkbox, Form, FormItem, Input, Modal } from 'ant-design-vue';
   import { Editor } from '@tiptap/core';
   import CommandButton from '../command-button.vue';
+  import link from '../../../icons/link.svg';
+
+  const AButton = Button;
 
   export default defineComponent({
     name: 'AddLinkCommandButton',
 
     components: {
-      ElDialog,
-      ElForm,
-      ElFormItem,
-      ElInput,
-      ElCheckbox,
-      ElButton,
+      Modal,
+      Form,
+      FormItem,
+      Input,
+      Checkbox,
+      AButton,
       CommandButton,
     },
 
@@ -81,7 +84,7 @@
       const enableTooltip = inject('enableTooltip', true);
       const isCodeViewMode = inject('isCodeViewMode', true);
 
-      return { t, enableTooltip, isCodeViewMode };
+      return { t, enableTooltip, isCodeViewMode, link };
     },
 
     data() {
@@ -90,7 +93,6 @@
           href: '',
           openInNewTab: true,
         },
-
         addLinkDialogVisible: false,
       };
     },

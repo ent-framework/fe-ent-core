@@ -1,5 +1,6 @@
 import TiptapCodeBlock from '@tiptap/extension-code-block';
 import CommandButton from '../components/menu-commands/command-button.vue';
+import svg from '../icons/code.svg';
 import type { Editor } from '@tiptap/core';
 
 const CodeBlock = TiptapCodeBlock.extend({
@@ -37,7 +38,7 @@ const CodeBlock = TiptapCodeBlock.extend({
             },
             buttonIcon: extension.options.buttonIcon,
             isActive: editor.isActive('codeBlock'),
-            icon: 'code',
+            icon: svg,
             tooltip: t('editor.extensions.CodeBlock.tooltip'),
           },
         };
