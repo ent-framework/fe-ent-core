@@ -79,5 +79,6 @@ export const basicProps = {
     default: null,
   },
   //destroyOnClose: { type: Boolean },
+  ...footerProps,
   ...drawerProps(),
 };

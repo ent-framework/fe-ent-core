@@ -1,4 +1,4 @@
-//import { tableProps } from 'ant-design-vue/es/table';
+import { tableProps } from 'ant-design-vue/es/table';
 import { propTypes } from '@ent-core/utils/prop-types';
 import { DEFAULT_FILTER_FN, DEFAULT_SIZE, DEFAULT_SORT_FN, FETCH_SETTING } from './const';
 //import type { TableRowSelection } from 'ant-design-vue/es/table/interface';
@@ -15,6 +15,7 @@ import type { FormProps } from '@ent-core/components/form/interface';
 import type { Fn, Recordable } from '@ent-core/types';
 
 export const basicProps = {
+  ...tableProps(),
   /**
    * 点击行是否选中 checkbox 或者 radio。需要开启
    * @type {boolean}

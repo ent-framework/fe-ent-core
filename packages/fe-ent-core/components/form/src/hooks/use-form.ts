@@ -1,14 +1,11 @@
 import { nextTick, onUnmounted, ref, unref, watch } from 'vue';
 import { error } from '@ent-core/utils/log';
 import { getDynamicProps } from '@ent-core/utils';
-import type { DynamicProps } from '@ent-core/logics/types/utils';
 import type { NamePath } from 'ant-design-vue/es/form/interface';
 import type { FormActionType, FormProps, FormSchema, UseFormReturnType } from '../types/form';
 import type { Nullable, Recordable } from '@ent-core/types';
 
-type Props = Partial<DynamicProps<FormProps>>;
-
-export function useForm(props?: Props): UseFormReturnType {
+export function useForm(props?: Partial<FormProps>): UseFormReturnType {
   const formRef = ref<Nullable<FormActionType>>(null);
   const loadedRef = ref<Nullable<boolean>>(false);
 

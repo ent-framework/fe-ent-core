@@ -1,5 +1,5 @@
 import { computed, reactive, ref, toRaw, unref, watch } from 'vue';
-import { cloneDeep, isEqual } from 'lodash-es';
+import { cloneDeep, isEqual, get } from 'lodash-es';
 import { isFunction } from '@vueuse/shared';
 import { usePermission } from '@ent-core/hooks/web/use-permission';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
@@ -25,9 +25,23 @@ function handleItem(item: BasicColumn, ellipsis: boolean) {
       });
     }
   }
-  if (children && children.length) {
-    handleChildren(children, !!ellipsis);
+  if (
+    item.dataIndex &&
+    isString(dataIndex) &&
+    (item.dataIndex as string).indexOf('.') > 0 &&
+    !item.customRender
+  ) {
+    Object.assign(item, {
+      customRender: handleObjectDisplay,
+    });
   }
+  if (children && children.length) {
+    handleChildren(children, ellipsis);
+  }
+}
+
+function handleObjectDisplay({ record, column }) {
+  return get(record, column.dataIndex);
 }
 
 function handleChildren(children: BasicColumn[] | undefined, ellipsis: boolean) {

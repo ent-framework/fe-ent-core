@@ -4,12 +4,11 @@ import { getDynamicProps } from '@ent-core/utils/base';
 import { error } from '@ent-core/utils/log';
 import type { BasicColumn, BasicTableProps, FetchParams, TableActionType } from '../types/table';
 import type { PaginationProps } from '../types/pagination';
-import type { DynamicProps } from '@ent-core/logics/types/utils';
 import type { FormActionType } from '@ent-core/components/form/interface';
 import type { WatchStopHandle } from 'vue';
 import type { Nullable, Recordable } from '@ent-core/types';
 
-type Props = Partial<DynamicProps<BasicTableProps>>;
+type Props = Partial<BasicTableProps>;
 
 type UseTableMethod = TableActionType & {
   getForm: () => FormActionType;
