@@ -14,7 +14,7 @@ export default series(
     withTaskName('buildJsonFiles', () => run('pnpm run -C packages/fe-ent-core jsongen')),
   ),
   parallel(
-    //withTaskName('buildExtensions', () => run('pnpm -w run build:extensions')),
+    withTaskName('buildExtensions', () => run('pnpm -w run build:extensions')),
     withTaskName('buildLogin', () => run('pnpm run -C apps/login build')),
     withTaskName('buildLayout', () => run('pnpm run -C apps/layout build')),
   ),

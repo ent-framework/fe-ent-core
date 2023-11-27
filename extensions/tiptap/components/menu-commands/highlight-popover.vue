@@ -1,5 +1,5 @@
 <template>
-  <Popover ref="popoverRef" placement="bottom" trigger="click" popper-class="ent-tiptap-popper">
+  <Popover placement="bottom" trigger="click" popper-class="ent-tiptap-popper">
     <template v-if="!isCodeViewMode" #content>
       <div class="color-set">
         <div v-for="color in colorSet" :key="color" class="color__wrapper">
@@ -63,7 +63,6 @@
       const enableTooltip = inject('enableTooltip', true);
       const isCodeViewMode = inject('isCodeViewMode', false);
 
-      const popoverRef = ref();
       const popoverVisible = ref(false);
 
       function confirmColor(color?: string) {
@@ -72,8 +71,6 @@
         } else {
           props.editor.commands.unsetHighlight();
         }
-
-        unref(popoverRef).hide();
       }
 
       const selectedColor = computed<string>(() => {
@@ -84,7 +81,6 @@
         t,
         enableTooltip,
         isCodeViewMode,
-        popoverRef,
         selectedColor,
         popoverVisible,
         confirmColor,

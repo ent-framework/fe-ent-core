@@ -19,6 +19,11 @@ export function getBasicColumns(): BasicColumn[] {
       ],
     },
     {
+      title: 'ObjectName',
+      dataIndex: 'obj.name',
+      width: 100,
+    },
+    {
       title: '地址',
       dataIndex: 'address',
     },
@@ -251,6 +256,7 @@ export function getBasicData() {
       arr.push({
         id: `${index}`,
         name: 'John Brown',
+        obj: { name: `test-${index + 10}` },
         age: `1${index}`,
         no: `${index + 10}`,
         address: 'New York No. 1 Lake ParkNew York No. 1 Lake Park',

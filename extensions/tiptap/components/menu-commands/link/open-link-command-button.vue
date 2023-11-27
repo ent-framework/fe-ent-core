@@ -3,7 +3,7 @@
     :command="openLink"
     :enable-tooltip="enableTooltip"
     :tooltip="t('editor.extensions.Link.open.tooltip')"
-    icon="external-link"
+    :icon="externalLink"
     :button-icon="buttonIcon"
   />
 </template>
@@ -12,6 +12,7 @@
   import { defineComponent, inject } from 'vue';
   import { Editor } from '@tiptap/vue-3';
   import CommandButton from '../command-button.vue';
+  import externalLink from '../../../icons/external-link.svg';
 
   export default defineComponent({
     name: 'OpenLinkCommandButton',
@@ -40,7 +41,7 @@
       const t = inject('t');
       const enableTooltip = inject('enableTooltip', true);
 
-      return { t, enableTooltip };
+      return { t, enableTooltip, externalLink };
     },
 
     methods: {

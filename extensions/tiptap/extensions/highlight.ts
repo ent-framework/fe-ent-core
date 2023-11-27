@@ -2,7 +2,7 @@ import TiptapHighlight from '@tiptap/extension-highlight';
 import HighlightPopover from '../components/menu-commands/highlight-popover.vue';
 import { COLOR_SET } from '../utils/color';
 import type { Editor } from '@tiptap/core';
-import type {HighlightOptions} from '@tiptap/extension-highlight';
+import type { HighlightOptions } from '@tiptap/extension-highlight';
 
 interface CustomHighlightOptions extends HighlightOptions {
   bubble: boolean;

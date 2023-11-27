@@ -1,5 +1,10 @@
 <template>
-  <bubble-menu v-if="editor" v-show="activeMenu !== 'none'" :editor="editor">
+  <bubble-menu
+    v-if="editor"
+    v-show="activeMenu !== 'none'"
+    :tippy-options="{ zIndex: 1000 }"
+    :editor="editor"
+  >
     <div
       :class="{
         'ent-tiptap-editor__menu-bubble--active': bubbleMenuEnable,
@@ -14,7 +19,7 @@
             @mousedown.prevent
             @click="linkBack"
           >
-            <img :src="arrowLeft" height="16" width="16" />
+            <img alt="" :src="arrowLeft" height="16" width="16" />
           </div>
         </template>
       </link-bubble-menu>
@@ -178,6 +183,9 @@
 
       $_getCurrentMenuType(): MenuType {
         if (this.isLinkSelection) return MenuType.LINK;
+        if (this.editor.isActive('codeBlock') || this.editor.isActive('codeBlockLowlight')) {
+          return MenuType.NONE;
+        }
         if (
           this.editor.state.selection instanceof TextSelection ||
           this.editor.state.selection instanceof AllSelection

@@ -40,8 +40,10 @@ const FontFamily = Extension.create<FontFamilyOptions>({
           command: ({ editor, range }: any) => {
             if (key === getMarkAttributes(editor.state, 'textStyle').fontFamily || '') {
               editor.chain().focus().deleteRange(range).unsetFontFamily().run();
+              //editor.chain().focus().unsetFontFamily().run();
             } else {
               editor.chain().focus().deleteRange(range).setFontFamily(key).run();
+              //editor.chain().focus().setFontFamily(key).run();
             }
           },
           disabled: false,

@@ -138,7 +138,7 @@
   },
   "homepage": "https://github.com/ent-framework/fe-ent-core",
   "engines": {
-    "node": ">=16.15.1",
+    "node": ">=18.0.0",
     "pnpm": ">=8.1.0"
   }
 }

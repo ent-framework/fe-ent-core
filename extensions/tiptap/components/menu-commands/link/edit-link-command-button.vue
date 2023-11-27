@@ -4,7 +4,7 @@
       :command="openEditLinkDialog"
       :enable-tooltip="enableTooltip"
       :tooltip="t('editor.extensions.Link.edit.tooltip')"
-      icon="edit"
+      :icon="edit"
       :button-icon="buttonIcon"
     />
 
@@ -44,6 +44,7 @@
   import { defineComponent, inject } from 'vue';
   import { Editor } from '@tiptap/vue-3';
   import { Button, Checkbox, Form, FormItem, Input, Modal } from 'ant-design-vue';
+  import edit from '../../../icons/edit.svg';
   import CommandButton from '../command-button.vue';
 
   export default defineComponent({
@@ -79,7 +80,7 @@
       const t = inject('t');
       const enableTooltip = inject('enableTooltip', true);
 
-      return { t, enableTooltip };
+      return { t, enableTooltip, edit };
     },
 
     data() {

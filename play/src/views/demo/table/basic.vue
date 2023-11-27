@@ -4,7 +4,7 @@
       title="基础示例"
       title-help-message="温馨提醒"
       :columns="columns"
-      :data-source="data"
+      :data-source="dataSource"
       :can-resize="canResize"
       :loading="loading"
       :striped="striped"
@@ -63,7 +63,7 @@
 
       return {
         columns: getBasicColumns(),
-        data: getBasicData(),
+        dataSource: getBasicData(),
         canResize,
         loading,
         striped,

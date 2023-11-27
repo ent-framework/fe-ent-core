@@ -24,9 +24,10 @@
           v-model="colorText"
           placeholder="HEX"
           :autofocus="true"
-          maxlength="7"
+          :maxlength="7"
           size="small"
           class="color-hex__input"
+          allow-clear
         />
 
         <Button
@@ -84,8 +85,6 @@
       const t = inject('t');
       const enableTooltip = inject('enableTooltip', true);
       const isCodeViewMode = inject('isCodeViewMode', false);
-
-      const popoverRef = ref();
       const colorText = ref('');
 
       function confirmColor(color?: string) {
@@ -94,8 +93,6 @@
         } else {
           props.editor.commands.unsetColor();
         }
-
-        unref(popoverRef).hide();
       }
 
       const selectedColor = computed<string>(() => {
@@ -110,7 +107,6 @@
         t,
         enableTooltip,
         isCodeViewMode,
-        popoverRef,
         colorText,
         selectedColor,
         confirmColor,

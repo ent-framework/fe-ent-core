@@ -75,8 +75,10 @@
       const toggleFontType: MenuProps['onClick'] = (e) => {
         const aff = unref(activeFontFamily);
         if (e.key === aff) {
+          //props.editor.chain().focus().unsetFontFamily().run();
           props.editor.commands.unsetFontFamily();
         } else {
+          //props.editor.chain().focus().unsetFontFamily(e.key).run();
           props.editor.commands.setFontFamily(e.key);
         }
       };
