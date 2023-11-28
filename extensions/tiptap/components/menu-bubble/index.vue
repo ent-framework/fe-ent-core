@@ -45,7 +45,6 @@
   import { getMarkRange } from '@tiptap/core';
   import { AllSelection, TextSelection } from 'prosemirror-state';
   import arrowLeft from '../../icons/arrow-left.svg';
-  import VIcon from '../icon/icon.vue';
   import LinkBubbleMenu from './link-bubble-menu.vue';
   import type { Selection } from 'prosemirror-state';
 
@@ -61,7 +60,6 @@
     components: {
       BubbleMenu,
       LinkBubbleMenu,
-      VIcon,
     },
 
     props: {

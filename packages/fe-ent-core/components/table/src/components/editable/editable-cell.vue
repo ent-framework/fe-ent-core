@@ -337,113 +337,110 @@
 
       function initCbs(cbs: 'submitCbs' | 'validCbs' | 'cancelCbs', handle) {
         if (props.record) {
-          /* eslint-disable  */
-        isArray(props.record[cbs])
-          ? props.record[cbs]?.push(handle)
-          : (props.record[cbs] = [handle]);
-      }
-    }
-
-    if (props.record) {
-      initCbs('submitCbs', handleSubmit);
-      initCbs('validCbs', handleSubmitRule);
-      initCbs('cancelCbs', handleCancel);
-
-      if (props.column.dataIndex) {
-        if (!props.record.editValueRefs) props.record.editValueRefs = {};
-        props.record.editValueRefs[props.column.dataIndex as any] = currentValueRef;
-      }
-      /* eslint-disable  */
-      props.record.onCancelEdit = () => {
-        isArray(props.record?.cancelCbs) && props.record?.cancelCbs.forEach((fn) => fn());
-      };
-      /* eslint-disable */
-      props.record.onSubmitEdit = async () => {
-        if (isArray(props.record?.submitCbs)) {
-          if (!props.record?.onValid?.()) return;
-          const submitFns = props.record?.submitCbs || [];
-          submitFns.forEach((fn) => fn(false, false));
-          table.emit?.('edit-row-end');
-          return true;
+          isArray(props.record[cbs])
+            ? props.record[cbs]?.push(handle)
+            : (props.record[cbs] = [handle]);
         }
-      };
-    }
+      }
 
-    return {
-      isEdit,
-      prefixCls,
-      handleEdit,
-      currentValueRef,
-      handleSubmit,
-      handleChange,
-      handleCancel,
-      elRef,
-      getComponent,
-      getRule,
-      onClickOutside,
-      ruleMessage,
-      getRuleVisible,
-      getComponentProps,
-      handleOptionsChange,
-      getWrapperStyle,
-      getWrapperClass,
-      getRowEditable,
-      getValues,
-      handleEnter,
-      handleSubmitClick,
-      spinning,
-    };
-  },
-  render() {
-    return (
-      <div class={this.prefixCls}>
-        <div
-          v-show={!this.isEdit}
-          class={{ [`${this.prefixCls}__normal`]: true, 'ellipsis-cell': this.column.ellipsis }}
-          onClick={this.handleEdit}
-        >
-          <div class="cell-content" title={this.column.ellipsis ? this.getValues ?? '' : ''}>
-            {this.column.editRender
-              ? this.column.editRender({
-                text: this.value,
-                record: this.record as Recordable,
-                column: this.column,
-                index: this.index,
-              })
-              : this.getValues ?? '\u00A0'}
-          </div>
-          {!this.column.editRow && <FormOutlined class={`${this.prefixCls}__normal-icon`} />}
-        </div>
-        {this.isEdit && (
-          <Spin spinning={this.spinning}>
-            <div class={`${this.prefixCls}__wrapper`} v-click-outside={this.onClickOutside}>
-              <CellComponent
-                {...this.getComponentProps}
-                component={this.getComponent}
-                style={this.getWrapperStyle}
-                popoverVisible={this.getRuleVisible}
-                rule={this.getRule}
-                ruleMessage={this.ruleMessage}
-                class={this.getWrapperClass}
-                ref="elRef"
-                onChange={this.handleChange}
-                onOptionsChange={this.handleOptionsChange}
-                onPressEnter={this.handleEnter}
-              />
-              {!this.getRowEditable && (
-                <div class={`${this.prefixCls}__action`}>
-                  <CheckOutlined
-                    class={[`${this.prefixCls}__icon`, 'mx-2']}
-                    onClick={this.handleSubmitClick}
-                  />
-                  <CloseOutlined class={`${this.prefixCls}__icon `} onClick={this.handleCancel} />
-                </div>
-              )}
+      if (props.record) {
+        initCbs('submitCbs', handleSubmit);
+        initCbs('validCbs', handleSubmitRule);
+        initCbs('cancelCbs', handleCancel);
+
+        if (props.column.dataIndex) {
+          if (!props.record.editValueRefs) props.record.editValueRefs = {};
+          props.record.editValueRefs[props.column.dataIndex as any] = currentValueRef;
+        }
+        props.record.onCancelEdit = () => {
+          isArray(props.record?.cancelCbs) && props.record?.cancelCbs.forEach((fn) => fn());
+        };
+        props.record.onSubmitEdit = async () => {
+          if (isArray(props.record?.submitCbs)) {
+            if (!props.record?.onValid?.()) return;
+            const submitFns = props.record?.submitCbs || [];
+            submitFns.forEach((fn) => fn(false, false));
+            table.emit?.('edit-row-end');
+            return true;
+          }
+        };
+      }
+
+      return {
+        isEdit,
+        prefixCls,
+        handleEdit,
+        currentValueRef,
+        handleSubmit,
+        handleChange,
+        handleCancel,
+        elRef,
+        getComponent,
+        getRule,
+        onClickOutside,
+        ruleMessage,
+        getRuleVisible,
+        getComponentProps,
+        handleOptionsChange,
+        getWrapperStyle,
+        getWrapperClass,
+        getRowEditable,
+        getValues,
+        handleEnter,
+        handleSubmitClick,
+        spinning,
+      };
+    },
+    render() {
+      return (
+        <div class={this.prefixCls}>
+          <div
+            v-show={!this.isEdit}
+            class={{ [`${this.prefixCls}__normal`]: true, 'ellipsis-cell': this.column.ellipsis }}
+            onClick={this.handleEdit}
+          >
+            <div class="cell-content" title={this.column.ellipsis ? this.getValues ?? '' : ''}>
+              {this.column.editRender
+                ? this.column.editRender({
+                    text: this.value,
+                    record: this.record as Recordable,
+                    column: this.column,
+                    index: this.index,
+                  })
+                : this.getValues ?? '\u00A0'}
             </div>
-          </Spin>
-        )}
-      </div>
-    );
-  },
-});
+            {!this.column.editRow && <FormOutlined class={`${this.prefixCls}__normal-icon`} />}
+          </div>
+          {this.isEdit && (
+            <Spin spinning={this.spinning}>
+              <div class={`${this.prefixCls}__wrapper`} v-click-outside={this.onClickOutside}>
+                <CellComponent
+                  {...this.getComponentProps}
+                  component={this.getComponent}
+                  style={this.getWrapperStyle}
+                  popoverVisible={this.getRuleVisible}
+                  rule={this.getRule}
+                  ruleMessage={this.ruleMessage}
+                  class={this.getWrapperClass}
+                  ref="elRef"
+                  onChange={this.handleChange}
+                  onOptionsChange={this.handleOptionsChange}
+                  onPressEnter={this.handleEnter}
+                />
+                {!this.getRowEditable && (
+                  <div class={`${this.prefixCls}__action`}>
+                    <CheckOutlined
+                      class={[`${this.prefixCls}__icon`, 'mx-2']}
+                      onClick={this.handleSubmitClick}
+                    />
+                    <CloseOutlined class={`${this.prefixCls}__icon `} onClick={this.handleCancel} />
+                  </div>
+                )}
+              </div>
+            </Spin>
+          )}
+        </div>
+      );
+    },
+  });
 </script>

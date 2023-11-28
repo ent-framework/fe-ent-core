@@ -7,12 +7,13 @@
     "start": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts"
   },
   "dependencies": {
-    "gulp": "4.0.2",
+    "gulp": "^4.0.2",
     "vite": "^5.0.2",
     "@pnpm/types": "^8.4.0",
     "@pnpm/find-workspace-packages": "^3.1.55"
   },
   "devDependencies": {
-    "@types/gulp": "4.0.9"
+    "@types/gulp": "4.0.9",
+    "@esbuild-kit/cjs-loader": "^2.4.4"
   }
 }

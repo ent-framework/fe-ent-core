@@ -12,6 +12,7 @@
     "lib",
     "json"
   ],
+  "type": "module",
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "typings": "es/index.d.ts",

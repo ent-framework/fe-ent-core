@@ -36,21 +36,11 @@ const config: InlineConfig = {
           exports: 'named',
           preserveModulesRoot: `${process.cwd()}`,
         },
-        {
-          interop: 'auto',
-          format: 'commonjs',
-          dir: 'lib',
-          entryFileNames: '[name].js',
-          preserveModules: true,
-          exports: 'named',
-          preserveModulesRoot: `${process.cwd()}`,
-        },
       ],
     },
     // 开启lib模式，但不使用下面配置
     lib: {
       entry: 'components/index.ts',
-      formats: ['es', 'cjs'],
     },
   },
   css: {

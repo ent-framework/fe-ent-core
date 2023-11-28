@@ -15,7 +15,7 @@ export default (): InlineConfig => {
       target: 'modules',
       outDir: 'dist',
       emptyOutDir: false,
-      sourcemap: true,
+      sourcemap: false,
       minify: false,
       cssMinify: true,
       //brotliSize: false,
@@ -47,7 +47,6 @@ export default (): InlineConfig => {
       // 开启lib模式
       lib: {
         entry,
-        formats: ['umd'],
         name: 'Ent',
       },
     },

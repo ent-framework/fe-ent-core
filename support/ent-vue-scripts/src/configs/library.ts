@@ -42,10 +42,6 @@ async function defineLibraryConfig(source: boolean) {
       sourcemap: true,
       lib: {
         entry: 'index.ts',
-        formats: ['es', 'cjs'],
-        fileName: (format: ModuleFormat, entryName: string) => {
-          return `${entryName}.${format === 'cjs' ? 'js' : 'mjs'}`;
-        },
       },
       rollupOptions: {
         input,
@@ -59,15 +55,14 @@ async function defineLibraryConfig(source: boolean) {
             exports: 'named',
             //preserveModulesRoot: 'components',
           },
-          {
-            interop: 'auto',
-            format: 'commonjs',
-            dir: 'lib',
-            entryFileNames: '[name].js',
-            preserveModules: true,
-            exports: 'named',
-            //preserveModulesRoot: 'components',
-          },
+          // {
+          //   interop: 'auto',
+          //   format: 'commonjs',
+          //   dir: 'lib',
+          //   entryFileNames: '[name].js',
+          //   preserveModules: true,
+          //   exports: 'named',
+          // },
         ],
         external: [...deps],
         // output: {
