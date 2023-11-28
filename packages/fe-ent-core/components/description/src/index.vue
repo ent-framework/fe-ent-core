@@ -2,7 +2,7 @@
   import { computed, defineComponent, ref, unref } from 'vue';
   import { get } from 'lodash-es';
   import { Descriptions } from 'ant-design-vue';
-  import { isFunction } from '@vueuse/shared';
+  import { isFunction } from '@ent-core/utils/is';
   import CollapseContainer from '@ent-core/components/container';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
@@ -127,7 +127,9 @@
                 return null;
               }
               const getField = get(_data, field);
-              return isFunction(render) ? render(getField, _data) : getField ?? '';
+              return render !== undefined && isFunction(render)
+                ? render(getField, _data)
+                : getField ?? '';
             };
 
             const width = contentMinWidth;

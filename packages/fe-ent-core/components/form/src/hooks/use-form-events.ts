@@ -1,7 +1,6 @@
 import { nextTick, toRaw, unref } from 'vue';
 import { cloneDeep, get, set, uniqBy } from 'lodash-es';
-import { isFunction } from '@vueuse/shared';
-import { isArray, isDef, isEmpty, isNullOrUnDef, isObject, isString } from '@ent-core/utils/is';
+import { isArray, isDef, isEmpty, isFunction, isNullOrUnDef, isObject, isString } from '@ent-core/utils/is';
 import { deepMerge } from '@ent-core/utils';
 import { dateUtil } from '@ent-core/utils/date-util';
 import { error } from '@ent-core/utils/log';

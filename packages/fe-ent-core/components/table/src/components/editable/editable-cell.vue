@@ -4,13 +4,12 @@
 
   import { pick, set } from 'lodash-es';
   import { Spin } from 'ant-design-vue';
-  import { isFunction } from '@vueuse/shared';
   import { useDesign } from '@ent-core/hooks/web/use-design';
 
   import vClickOutside from '@ent-core/directives/click-out-side';
 
   import { propTypes } from '@ent-core/utils/prop-types';
-  import { isArray, isBoolean, isNumber, isString } from '@ent-core/utils/is';
+  import { isArray, isBoolean, isFunction, isNumber, isString } from '@ent-core/utils/is';
   import { treeToList } from '@ent-core/utils/helper/tree-helper';
   import { useTableContext } from '../../hooks/use-table-context';
   import { createPlaceholderMessage } from './helper';
@@ -114,7 +113,7 @@
         if (isBoolean(editDynamicDisabled)) {
           disabled = editDynamicDisabled;
         }
-        if (isFunction(editDynamicDisabled)) {
+        if (typeof editDynamicDisabled === 'function') {
           const { record } = props;
           disabled = editDynamicDisabled({ record });
         }
@@ -217,7 +216,7 @@
             ruleMessage.value = createPlaceholderMessage(component);
             return false;
           }
-          if (isFunction(editRule)) {
+          if (typeof editRule === 'function') {
             const res = await editRule(currentValue, record);
             if (res) {
               ruleMessage.value = res;

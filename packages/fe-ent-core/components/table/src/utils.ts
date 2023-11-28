@@ -1,4 +1,3 @@
-import { isFunction } from '@vueuse/shared';
 import { isBoolean } from '@ent-core/utils';
 import type { BasicColumn } from '@ent-core/components/table/interface';
 
@@ -10,7 +9,7 @@ export function isIfShow(column: BasicColumn): boolean {
   if (isBoolean(ifShow)) {
     isIfShow = ifShow;
   }
-  if (isFunction(ifShow)) {
+  if (ifShow !== undefined && typeof ifShow === 'function') {
     isIfShow = ifShow(column);
   }
   return isIfShow;

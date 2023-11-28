@@ -14,8 +14,7 @@
   import { TreeSelect } from 'ant-design-vue';
   import { get } from 'lodash-es';
   import { LoadingOutlined } from '@ant-design/icons-vue';
-  import { isFunction } from '@vueuse/shared';
-  import { isArray } from '@ent-core/utils/is';
+  import { isArray, isFunction } from '@ent-core/utils/is';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { type Recordable } from '@ent-core/types';
   import type { PropType } from 'vue';

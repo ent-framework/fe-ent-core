@@ -1,6 +1,6 @@
 import { computed, getCurrentInstance, shallowReactive, unref, watch } from 'vue';
-import { isFunction, useDebounceFn } from '@vueuse/shared';
-import { isBoolean, isNumber, isObject } from '@ent-core/utils/is';
+import { useDebounceFn } from '@vueuse/shared';
+import { isBoolean, isNullOrUnDef, isNumber, isObject } from '@ent-core/utils/is';
 import { useBreakpoint } from '@ent-core/hooks/event/use-breakpoint';
 import type { ComputedRef, Ref, ShallowReactive } from 'vue';
 import type { EmitType, Recordable } from '@ent-core/types';
@@ -125,11 +125,15 @@ export default function ({
       const { show, colProps } = schema;
       let isShow = true;
 
+      if (isNullOrUnDef(show)) {
+        isShow = false;
+      }
+
       if (isBoolean(show)) {
         isShow = show;
       }
 
-      if (isFunction(show)) {
+      if (show !== undefined && typeof show === 'function') {
         isShow = show({
           schema,
           model: formModel,

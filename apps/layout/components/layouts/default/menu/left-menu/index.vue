@@ -23,7 +23,6 @@
 <script lang="ts">
   import { computed, defineComponent, onMounted, reactive, ref, toRefs, unref, watch } from 'vue';
   import { useRouter } from 'vue-router';
-  import { isFunction } from '@vueuse/shared';
   import { Menu } from 'ant-design-vue';
   import { useDesign } from 'fe-ent-core/es/hooks/web/use-design';
   import { listenerRouteChange } from 'fe-ent-core/es/logics/mitt/route-change';
@@ -108,7 +107,7 @@
           return;
         }
         const { beforeClickFn } = props;
-        if (beforeClickFn && isFunction(beforeClickFn)) {
+        if (beforeClickFn && typeof beforeClickFn === 'function') {
           const flag = await beforeClickFn(key);
           if (!flag) return;
         }

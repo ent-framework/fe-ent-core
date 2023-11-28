@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-tiptap",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -83,7 +83,7 @@
     "fe-ent-vue-scripts": "^2.1.0",
     "rimraf": "^5.0.0",
     "@types/codemirror": "^5.60.5",
-    "vite": "4.4.11"
+    "vite": "^5.0.2"
   },
   "repository": {
     "type": "git",

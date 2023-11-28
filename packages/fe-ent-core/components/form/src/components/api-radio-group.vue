@@ -22,7 +22,7 @@
   import { type PropType, computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { Radio } from 'ant-design-vue';
   import { get, omit } from 'lodash-es';
-  import { isFunction } from '@vueuse/shared';
+  import { isFunction } from '@ent-core/utils/is';
   import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
   import { propTypes } from '@ent-core/utils/prop-types';

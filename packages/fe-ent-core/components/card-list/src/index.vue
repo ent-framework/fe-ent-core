@@ -85,7 +85,7 @@
     TableOutlined,
   } from '@ant-design/icons-vue';
   import { Avatar, Card, Image, List, Slider, Tooltip, Typography } from 'ant-design-vue';
-  import { isFunction } from '@vueuse/shared';
+  import { isFunction } from '@ent-core/utils/is';
   import { EntDropdown } from '@ent-core/components/dropdown';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { propTypes } from '@ent-core/utils/prop-types';

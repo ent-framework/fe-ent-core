@@ -42,9 +42,8 @@
     watch,
   } from 'vue';
   import { Drawer } from 'ant-design-vue';
-  import { isFunction } from '@vueuse/shared';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { isNumber } from '@ent-core/utils/is';
+  import { isFunction, isNumber } from '@ent-core/utils/is';
   import { deepMerge } from '@ent-core/utils';
   import { EntScrollContainer } from '@ent-core/components/container';
   import { useDesign } from '@ent-core/hooks/web/use-design';

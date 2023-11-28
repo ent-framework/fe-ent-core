@@ -113,7 +113,6 @@
   import { DragOutlined, SettingOutlined } from '@ant-design/icons-vue';
   import { cloneDeep, omit } from 'lodash-es';
   import sortablejs from 'sortablejs';
-  import { isFunction } from '@vueuse/shared';
   import { EntIcon } from '@ent-core/components/icon';
   import { EntScrollContainer } from '@ent-core/components/container';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
@@ -404,7 +403,7 @@
       }
 
       function getPopupContainer() {
-        return isFunction(attrs.getPopupContainer)
+        return attrs.getPopupContainer && typeof attrs.getPopupContainer === 'function'
           ? attrs.getPopupContainer()
           : getParentContainer();
       }

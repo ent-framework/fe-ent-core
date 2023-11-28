@@ -12,9 +12,8 @@
   } from 'vue';
   import { Empty, Spin, Tree } from 'ant-design-vue';
   import { cloneDeep, difference, get, omit } from 'lodash-es';
-  import { isFunction } from '@vueuse/shared';
   import { EntScrollContainer } from '@ent-core/components/container';
-  import { isArray, isBoolean, isEmpty, isNumber } from '@ent-core/utils/is';
+  import { isArray, isBoolean, isEmpty, isFunction, isNumber } from '@ent-core/utils/is';
   import { extendSlots, getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { eachTree, filter, treeToList } from '@ent-core/utils/helper/tree-helper';
 
@@ -358,7 +357,7 @@
         if (!actionList || actionList.length === 0) return;
         return actionList.map((item, index) => {
           let nodeShow = true;
-          if (isFunction(item.show)) {
+          if (item.show && typeof item.show === 'function') {
             nodeShow = item.show?.(node);
           } else if (isBoolean(item.show)) {
             nodeShow = item.show;

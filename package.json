@@ -69,7 +69,7 @@
   },
   "peerDependencies": {
     "vue": "^3.3.0",
-    "ant-design-vue": "4.0.6"
+    "ant-design-vue": "4.0.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
@@ -85,7 +85,7 @@
     "@types/less": "^3.0.3",
     "@types/lodash-es": "^4.14.17",
     "@types/mockjs": "^1.0.4",
-    "@types/node": "^17.0.40",
+    "@types/node": "^18.18.13",
     "@types/showdown": "^1.9.4",
     "@types/tinycolor2": "^1.4.2",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
@@ -96,7 +96,6 @@
     "conventional-changelog-cli": "^2.1.1",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
-    "esbuild": "0.18.10",
     "eslint": "^8.37.0",
     "eslint-define-config": "^1.5.1",
     "esno": "^0.16.3",
@@ -104,7 +103,7 @@
     "husky": "^7.0.4",
     "jest": "^29.5.0",
     "lint-staged": "11.2.6",
-    "postcss": "^8.4.27",
+    "postcss": "^8.4.31",
     "prettier": "^2.7.1",
     "rimraf": "^5.0.0",
     "stylelint": "^14.16.1",
@@ -118,14 +117,16 @@
     "tsx": "^3.6.0",
     "tslib": "^2.3.1",
     "typescript": "^4.9.4",
-    "vite": "4.4.11",
-    "rollup": "3.27.1",
-    "vue": "3.3.7",
-    "ant-design-vue": "4.0.6"
+    "vite": "^5.0.2",
+    "rollup": "^4.6.0",
+    "vue": "^3.3.7",
+    "ant-design-vue": "4.0.7"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china",
-    "rollup": "3.27.1",
+    "vue": "3.3.7",
+    "vite": "5.0.2",
+    "rollup": "4.6.0",
     "gifsicle": "5.2.0"
   },
   "repository": {

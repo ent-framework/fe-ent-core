@@ -1,6 +1,6 @@
-import { isFunction } from '@vueuse/shared';
-
 const toString = Object.prototype.toString;
+
+export const isFunction = (val: unknown) => typeof val === 'function';
 
 export function is(val: unknown, type: string) {
   return toString.call(val) === `[object ${type}]`;

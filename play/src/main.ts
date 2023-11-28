@@ -37,7 +37,8 @@ async function bootstrap() {
 
   entRouter.addPublicRoutes([LoginRoute]);
   entRouter.addPublicRoutes(getPublicRoutes());
-  entRouter.importAuthRoutes(import.meta.globEager(`/src/routes/modules/**/*.ts`));
+  entRouter.importAuthRoutes(import.meta.glob(`/src/routes/modules/**/*.ts`, {eager: true}));
+
 
   app.use(entRouter);
 

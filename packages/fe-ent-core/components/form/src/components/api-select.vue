@@ -25,7 +25,7 @@
   import { Select } from 'ant-design-vue';
   import { get, omit } from 'lodash-es';
   import { LoadingOutlined } from '@ant-design/icons-vue';
-  import { isFunction } from '@vueuse/shared';
+  import { isFunction } from '@ent-core/utils/is';
   import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';

@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-vue-docs",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "private": true,
   "author": {
     "name": "jeff qian",
@@ -21,7 +21,7 @@
   "devDependencies": {
     "fe-ent-vue-scripts": "^2.1.0",
     "@iconify/json": "^1.1.422",
-    "vite": "4.4.11",
+    "vite": "^5.0.2",
     "tsx": "^3.6.0"
   },
   "repository": {

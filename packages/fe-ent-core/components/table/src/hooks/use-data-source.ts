@@ -1,9 +1,8 @@
 import { computed, onMounted, reactive, ref, unref, watch, watchEffect } from 'vue';
 import { cloneDeep, get, merge } from 'lodash-es';
-import { isFunction } from '@vueuse/shared';
 import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
 import { buildUUID } from '@ent-core/utils/uuid';
-import { isBoolean, isObject } from '@ent-core/utils/is';
+import { isBoolean, isFunction, isObject } from '@ent-core/utils/is';
 import { FETCH_SETTING, PAGE_SIZE, ROW_KEY } from '../const';
 import type { ComputedRef, Ref } from 'vue';
 import type { PaginationProps } from '../types/pagination';
@@ -68,13 +67,13 @@ export function useDataSource(
     setPagination(pagination);
 
     const params: Recordable = {};
-    if (sorter && isFunction(sortFn)) {
+    if (sorter && typeof sortFn === 'function') {
       const sortInfo = sortFn(sorter);
       searchState.sortInfo = sortInfo;
       params.sortInfo = sortInfo;
     }
 
-    if (filters && isFunction(filterFn)) {
+    if (filters && typeof filterFn === 'function') {
       const filterInfo = filterFn(filters);
       searchState.filterInfo = filterInfo;
       params.filterInfo = filterInfo;
@@ -172,7 +171,7 @@ export function useDataSource(
         for (let i = 0; i < data.length; i++) {
           const row = data[i];
           let targetKeyName: string = rowKeyName as string;
-          if (isFunction(rowKeyName)) {
+          if (targetKeyName && typeof rowKeyName === 'function') {
             targetKeyName = rowKeyName(row);
           }
           if (row[targetKeyName] === key) {

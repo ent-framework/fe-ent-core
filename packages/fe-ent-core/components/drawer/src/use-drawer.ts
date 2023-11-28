@@ -10,7 +10,7 @@ import {
 } from 'vue';
 import { tryOnUnmounted } from '@vueuse/core';
 import { isEqual } from 'lodash-es';
-import { isFunction } from '@vueuse/shared';
+import { isFunction } from '@ent-core/utils/is';
 import { error } from '@ent-core/utils/log';
 import type { Fn, Nullable } from '@ent-core/types';
 import type {

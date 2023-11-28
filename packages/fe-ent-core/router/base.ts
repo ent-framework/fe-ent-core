@@ -42,7 +42,7 @@ export function createEntRouter(): EntRouter {
 
   /***
    * 添加需要授权的路由，将路由信息缓存起来
-   * 可以通过addAuthRoutes(import.meta.globEager("*.ts"))方式在启动类中批量导入
+   * 可以通过addAuthRoutes(import.meta.glob("*.ts"))方式在启动类中批量导入
    * @param modules
    */
   function importAuthRoutes(modules: Record<string, Record<string, any>>) {

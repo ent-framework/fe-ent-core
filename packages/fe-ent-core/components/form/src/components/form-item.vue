@@ -2,7 +2,6 @@
   import { computed, defineComponent, toRefs, unref } from 'vue';
   import { Col, Divider, Form } from 'ant-design-vue';
   import { cloneDeep, upperFirst } from 'lodash-es';
-  import { isFunction } from '@vueuse/shared';
   import { EntHelp } from '@ent-core/components/basic';
   import { isBoolean, isNull } from '@ent-core/utils/is';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
@@ -82,7 +81,7 @@
       const getComponentsProps = computed(() => {
         const { schema, tableAction, formModel, formActionType } = props;
         let { componentProps = {} } = schema;
-        if (isFunction(componentProps)) {
+        if (typeof componentProps === 'function') {
           componentProps = componentProps({ schema, tableAction, formModel, formActionType }) ?? {};
         }
         if (schema.component === 'Divider') {
@@ -106,7 +105,7 @@
         if (isBoolean(dynamicDisabled)) {
           disabled = dynamicDisabled;
         }
-        if (isFunction(dynamicDisabled)) {
+        if (typeof dynamicDisabled === 'function') {
           disabled = dynamicDisabled(unref(getValues));
         }
         return disabled;
@@ -130,10 +129,10 @@
         if (isBoolean(ifShow)) {
           isIfShow = ifShow;
         }
-        if (isFunction(show)) {
+        if (typeof show === 'function') {
           isShow = show(unref(getValues));
         }
-        if (isFunction(ifShow)) {
+        if (typeof ifShow === 'function') {
           isIfShow = ifShow(unref(getValues));
         }
         isShow = isShow && itemIsAdvanced;
@@ -150,7 +149,7 @@
           required,
         } = props.schema;
 
-        if (isFunction(dynamicRules)) {
+        if (typeof dynamicRules === 'function') {
           return dynamicRules(unref(getValues)) as Rule[];
         }
 
@@ -188,7 +187,7 @@
           return Promise.resolve();
         }
 
-        const getRequired = isFunction(required) ? required(unref(getValues)) : required;
+        const getRequired = typeof required === 'function' ? required(unref(getValues)) : required;
 
         /*
          * 1、若设置了required属性，又没有其他的rules，就创建一个验证规则；
@@ -299,11 +298,12 @@
         if (!renderComponentContent) {
           return <Comp {...compAttr} />;
         }
-        const compSlot = isFunction(renderComponentContent)
-          ? { ...renderComponentContent(unref(getValues)) }
-          : {
-              default: () => renderComponentContent,
-            };
+        const compSlot =
+          typeof renderComponentContent === 'function'
+            ? { ...renderComponentContent(unref(getValues)) }
+            : {
+                default: () => renderComponentContent,
+              };
         return <Comp {...compAttr}>{compSlot}</Comp>;
       }
 
@@ -316,9 +316,8 @@
         ) : (
           label
         );
-        const getHelpMessage = isFunction(helpMessage)
-          ? helpMessage(unref(getValues))
-          : helpMessage;
+        const getHelpMessage =
+          typeof helpMessage === 'function' ? helpMessage(unref(getValues)) : helpMessage;
         if (!getHelpMessage || (Array.isArray(getHelpMessage) && getHelpMessage.length === 0)) {
           return renderLabel;
         }
@@ -351,7 +350,7 @@
           };
 
           const showSuffix = !!suffix;
-          const getSuffix = isFunction(suffix) ? suffix(unref(getValues)) : suffix;
+          const getSuffix = typeof suffix === 'function' ? suffix(unref(getValues)) : suffix;
 
           // TODO 自定义组件验证会出现问题，因此这里框架默认将自定义组件设置手动触发验证，如果其他组件还有此问题请手动设置autoLink=false
           if (NO_AUTO_LINK_COMPONENTS.includes(component)) {

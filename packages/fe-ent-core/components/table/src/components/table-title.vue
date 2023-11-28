@@ -5,7 +5,6 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { isFunction } from '@vueuse/shared';
   import { EntTitle } from '@ent-core/components/basic';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import type { PropType } from 'vue';
@@ -32,7 +31,7 @@
         const { title, getSelectRows = () => {} } = props;
         let tit = title;
 
-        if (isFunction(title)) {
+        if (title && typeof title === 'function') {
           tit = title({
             selectRows: getSelectRows(),
           });

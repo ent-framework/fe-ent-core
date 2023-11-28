@@ -34,7 +34,6 @@
   import { computed, defineComponent, toRaw, unref } from 'vue';
   import { MoreOutlined } from '@ant-design/icons-vue';
   import { Divider, Tooltip } from 'ant-design-vue';
-  import { isFunction } from '@vueuse/shared';
   import Icon from '@ent-core/components/icon';
   import { EntPopButton } from '@ent-core/components/button';
   import { EntDropdown } from '@ent-core/components/dropdown';
@@ -80,7 +79,7 @@
         if (isBoolean(ifShow)) {
           isIfShow = ifShow;
         }
-        if (isFunction(ifShow)) {
+        if (ifShow && typeof ifShow === 'function') {
           isIfShow = ifShow(action);
         }
         return isIfShow;

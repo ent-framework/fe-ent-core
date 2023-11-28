@@ -44,7 +44,7 @@
 <script lang="ts">
   import { computed, defineComponent, reactive, ref, toRefs, unref } from 'vue';
   import { Alert, Upload } from 'ant-design-vue';
-  import { isFunction } from '@vueuse/shared';
+  import { isFunction } from '@ent-core/utils/is';
   import { EntModal, useModalInner } from '@ent-core/components/modal';
   // hooks
   import { useMessage } from '@ent-core/hooks/web/use-message';
@@ -218,7 +218,7 @@
       // 点击开始上传
       async function handleStartUpload() {
         const { maxNumber } = props;
-        if ((fileListRef.value.length + props.previewFileList?.length ?? 0) > maxNumber) {
+        if ((fileListRef.value.length + props.previewFileList?.length) > maxNumber) {
           return createMessage.warning(t('component.upload.maxNumber', [maxNumber]));
         }
         try {

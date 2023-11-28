@@ -113,7 +113,7 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { Avatar, Space, Tooltip, Upload } from 'ant-design-vue';
-  import { isFunction } from '@vueuse/shared';
+  import { isFunction } from '@ent-core/utils/is';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { EntModal, useModalInner } from '@ent-core/components/modal';
   import { Factory } from '@ent-core/logics/factory';

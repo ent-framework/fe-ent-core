@@ -21,7 +21,6 @@
   import { computed, defineComponent, onMounted, reactive, ref, toRefs, unref, watch } from 'vue';
   import { Menu } from 'ant-design-vue';
   import { useRouter } from 'vue-router';
-  import { isFunction } from '@vueuse/shared';
   import { MenuModeEnum, MenuTypeEnum } from 'fe-ent-core/es/logics/enums/menu-enum';
   import { REDIRECT_NAME } from 'fe-ent-core/es/router/constant';
   import { useDesign } from 'fe-ent-core/es/hooks/web/use-design';
@@ -122,7 +121,7 @@
 
       async function handleMenuClick({ key }: { key: string; keyPath: string[] }) {
         const { beforeClickFn } = props;
-        if (beforeClickFn && isFunction(beforeClickFn)) {
+        if (beforeClickFn && typeof beforeClickFn === 'function') {
           const flag = await beforeClickFn(key);
           if (!flag) return;
         }

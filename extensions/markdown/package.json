@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-markdown",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -37,7 +37,7 @@
     "fe-ent-vue-scripts": "^2.1.0",
     "rimraf": "^5.0.0",
     "@types/tinycolor2": "^1.4.2",
-    "vite": "4.4.11"
+    "vite": "^5.0.2"
   },
   "repository": {
     "type": "git",

@@ -38,7 +38,7 @@
   import { computed, defineComponent } from 'vue';
   import { Dropdown, Menu, Popconfirm } from 'ant-design-vue';
   import { omit } from 'lodash-es';
-  import { isFunction } from '@vueuse/shared';
+  import { isFunction } from '@ent-core/utils/is';
   import { EntIcon } from '@ent-core/components/icon';
   import type { DropMenu } from './typing';
   import type { PropType } from 'vue';

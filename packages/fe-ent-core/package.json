@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
@@ -34,17 +34,17 @@
   },
   "peerDependencies": {
     "vue": "^3.3.0",
-    "ant-design-vue": "4.0.6"
+    "ant-design-vue": "4.0.7"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
     "@iconify/vue": "4.1.1",
-    "@vueuse/core": "^9.13.0",
-    "@vueuse/shared": "^9.13.0",
+    "@vueuse/core": "^10.6.1",
+    "@vueuse/shared": "^10.6.1",
     "@zxcvbn-ts/core": "^1.2.0",
     "axios": "^1.5.1",
     "cropperjs": "^1.5.13",
-    "crypto-js": "^4.1.1",
+    "crypto-js": "^4.2.0",
     "dayjs": "^1.11.7",
     "intro.js": "^4.3.0",
     "lodash-es": "^4.17.21",
@@ -61,7 +61,7 @@
     "vue-types": "^3.0.0"
   },
   "devDependencies": {
-    "@types/node": "^17.0.40",
+    "@types/node": "^18.18.13",
     "@iconify/json": "^2.1.138",
     "@purge-icons/generated": "^0.9.0",
     "@types/nprogress": "^0.2.0",
@@ -71,9 +71,9 @@
     "cross-env": "^7.0.3",
     "fe-ent-vue-scripts": "^2.1.0",
     "rimraf": "^5.0.0",
-    "vue": "3.3.7",
-    "vite": "4.4.11",
-    "ant-design-vue": "4.0.6"
+    "vue": "^3.3.7",
+    "vite": "^5.0.2",
+    "ant-design-vue": "4.0.7"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,5 @@
 import { computed, reactive, ref, toRaw, unref, watch } from 'vue';
 import { cloneDeep, isEqual, get } from 'lodash-es';
-import { isFunction } from '@vueuse/shared';
 import { usePermission } from '@ent-core/hooks/web/use-permission';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { isArray, isBoolean, isMap, isString } from '@ent-core/utils/is';
@@ -152,7 +151,7 @@ export function useColumns(
     if (isBoolean(ifShow)) {
       isIfShow = ifShow;
     }
-    if (isFunction(ifShow)) {
+    if (ifShow && typeof ifShow === 'function') {
       isIfShow = ifShow(column);
     }
     return isIfShow;
@@ -319,7 +318,7 @@ export function formatCell(text: string, format: CellFormat, record: Recordable,
   }
 
   // custom function
-  if (isFunction(format)) {
+  if (typeof format === 'function') {
     return format(text, record, index);
   }
 

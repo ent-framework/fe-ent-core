@@ -1,17 +1,17 @@
 import { unref } from 'vue';
-import { isFunction } from '@vueuse/shared';
+import { isFunction } from '@ent-core/utils/is';
 import type { ComputedRef } from 'vue';
 import type { BasicTableProps, TableCustomRecord } from '../types/table';
 
 export function useTableStyle(propsRef: ComputedRef<BasicTableProps>, prefixCls: string) {
-  function getRowClassName(record: TableCustomRecord, index: number) {
+  function getRowClassName(record: TableCustomRecord, index: number, indent: number) {
     const { striped, rowClassName } = unref(propsRef);
     const classNames: string[] = [];
     if (striped) {
       classNames.push((index || 0) % 2 === 1 ? `${prefixCls}-row__striped` : '');
     }
     if (rowClassName && isFunction(rowClassName)) {
-      classNames.push(rowClassName(record, index));
+      classNames.push(rowClassName(record, index, indent));
     }
     return classNames.filter((cls) => !!cls).join(' ');
   }
