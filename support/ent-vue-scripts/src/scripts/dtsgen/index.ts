@@ -5,7 +5,6 @@ import { Project } from 'ts-morph';
 import glob from 'fast-glob';
 import fs from 'fs-extra';
 import chalk from 'chalk';
-import { searchForWorkspaceRoot } from 'vite';
 import { excludeFiles } from '../../utils/exclude-files';
 import type { SourceFile } from 'ts-morph';
 
@@ -32,6 +31,7 @@ const build = async (base: string) => {
       skipLibCheck: true,
       preserveSymlinks: true,
       noImplicitAny: false,
+      removeComments: false,
     },
     tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true,
@@ -58,14 +58,12 @@ const build = async (base: string) => {
 
     const subTasks = emitFiles.map(async (outputFile) => {
       const filepath = outputFile.getFilePath();
-      ['lib', 'es'].forEach((d) => {
-        const relativePath = `${process.cwd()}/${d}`;
-        const targetPath = filepath.replace(outDir, relativePath);
-        fs.mkdirSync(path.dirname(targetPath), {
-          recursive: true,
-        });
-        fs.writeFileSync(targetPath, pathRewriter()(outputFile.getText()), 'utf8');
+      const relativePath = `${process.cwd()}/es`;
+      const targetPath = filepath.replace(outDir, relativePath);
+      fs.mkdirSync(path.dirname(targetPath), {
+        recursive: true,
       });
+      fs.writeFileSync(targetPath, pathRewriter()(outputFile.getText()), 'utf8');
       consola.log(chalk.green(`Definition for file: ${chalk.bold(relativePath)} generated`));
     });
 

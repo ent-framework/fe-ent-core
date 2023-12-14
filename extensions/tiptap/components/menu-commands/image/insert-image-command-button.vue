@@ -54,11 +54,11 @@
 
 <script lang="ts">
   import { defineComponent, inject } from 'vue';
-  import { Modal, Popover, Spin, Upload } from 'ant-design-vue';
+  import { Modal, Popover, Upload } from 'ant-design-vue';
   import { Editor } from '@tiptap/core';
   import CommandButton from '../command-button.vue';
   import { readFileDataUrl } from '../../../utils/shared';
-  import image from '../../../icons/image.svg';
+  import image from '../../icons/icon-image.vue';
   import Logger from '../../../utils/logger';
 
   export default defineComponent({

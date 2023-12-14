@@ -1,6 +1,6 @@
 import TiptapTaskList from '@tiptap/extension-task-list';
 import CommandButton from '../components/menu-commands/command-button.vue';
-import svg from '../icons/tasks.svg';
+import svg from '../components/icons/icon-tasks.vue';
 import TaskItem from './task-item';
 import type { Editor } from '@tiptap/core';
 

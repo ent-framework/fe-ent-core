@@ -1,9 +1,9 @@
 import TiptapTextAlign from '@tiptap/extension-text-align';
 import CommandButton from '../components/menu-commands/command-button.vue';
-import alignLeft from '../icons/align-left.svg';
-import alignCenter from '../icons/align-center.svg';
-import alignRight from '../icons/align-right.svg';
-import alignJustify from '../icons/align-justify.svg';
+import alignLeft from '../components/icons/icon-align-left.vue';
+import alignCenter from '../components/icons/icon-align-center.vue';
+import alignRight from '../components/icons/icon-align-right.vue';
+import alignJustify from '../components/icons/icon-align-justify.vue';
 import type { Editor } from '@tiptap/core';
 import type { TextAlignOptions } from '@tiptap/extension-text-align';
 

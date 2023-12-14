@@ -1,6 +1,6 @@
 import TiptapOrderedList from '@tiptap/extension-ordered-list';
 import CommandButton from '../components/menu-commands/command-button.vue';
-import svg from '../icons/list-ol.svg';
+import svg from '../components/icons/icon-list-ol.vue';
 import ListItem from './list-item';
 import type { Editor } from '@tiptap/core';
 import type { OrderedListOptions } from '@tiptap/extension-ordered-list';

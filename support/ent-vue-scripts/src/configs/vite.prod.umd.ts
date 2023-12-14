@@ -70,6 +70,6 @@ export default (): InlineConfig => {
       ],
     },
     // @ts-ignore vite内部类型错误
-    plugins: [vue(), vueJsx(), configUnoCSSPlugin(true)],
+    plugins: [vue(), vueJsx()],
   };
 };

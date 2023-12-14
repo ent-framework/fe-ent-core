@@ -1,7 +1,7 @@
 import TiptapHistory from '@tiptap/extension-history';
 import CommandButton from '../components/menu-commands/command-button.vue';
-import undo from '../icons/undo.svg';
-import redo from '../icons/redo.svg';
+import undo from '../components/icons/icon-undo.vue';
+import redo from '../components/icons/icon-redo.vue';
 import type { Editor } from '@tiptap/core';
 import type { HistoryOptions } from '@tiptap/extension-history';
 

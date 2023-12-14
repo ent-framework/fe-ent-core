@@ -115,7 +115,7 @@
   import { Popover } from 'ant-design-vue';
   import CommandButton from '../command-button.vue';
   import { enableMergeCells, enableSplitCell, isTableActive } from '../../../utils/table';
-  import table from '../../../icons/table.svg';
+  import table from '../../icons/icon-table.vue';
   import CreateTablePopover from './create-table-popover.vue';
 
   export default defineComponent({

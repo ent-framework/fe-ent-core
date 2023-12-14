@@ -44,7 +44,7 @@
   import { defineComponent, inject } from 'vue';
   import { Editor } from '@tiptap/vue-3';
   import { Button, Checkbox, Form, FormItem, Input, Modal } from 'ant-design-vue';
-  import edit from '../../../icons/edit.svg';
+  import edit from '../../icons/icon-edit.vue';
   import CommandButton from '../command-button.vue';
 
   export default defineComponent({

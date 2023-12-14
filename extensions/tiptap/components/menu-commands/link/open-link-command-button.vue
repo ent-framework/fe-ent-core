@@ -12,7 +12,7 @@
   import { defineComponent, inject } from 'vue';
   import { Editor } from '@tiptap/vue-3';
   import CommandButton from '../command-button.vue';
-  import externalLink from '../../../icons/external-link.svg';
+  import externalLink from '../../icons/icon-external-link.vue';
 
   export default defineComponent({
     name: 'OpenLinkCommandButton',

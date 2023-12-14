@@ -1,6 +1,6 @@
 import { Extension } from '@tiptap/core';
 import CommandButton from '../components/menu-commands/command-button.vue';
-import svg from '../icons/clear-format.svg';
+import svg from '../components/icons/icon-clear-format.vue';
 import type { ChainedCommands, Editor, UnionCommands } from '@tiptap/core';
 
 declare module '@tiptap/core' {

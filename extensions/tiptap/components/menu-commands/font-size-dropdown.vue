@@ -43,7 +43,7 @@
   import { Editor, getMarkAttributes } from '@tiptap/vue-3';
   import { Dropdown, Menu } from 'ant-design-vue';
   import { DEFAULT_FONT_SIZE } from '../../utils/font-size';
-  import fontSize from '../../icons/font-size.svg';
+  import fontSize from '../icons/icon-font-size.vue';
   import CommandButton from './command-button.vue';
   import type { MenuProps } from 'ant-design-vue';
   const MenuItem = Menu.Item;

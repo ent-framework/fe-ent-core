@@ -1,6 +1,6 @@
 import TiptapStrike from '@tiptap/extension-strike';
 import CommandButton from '../components/menu-commands/command-button.vue';
-import svg from '../icons/strikethrough.svg';
+import svg from '../components/icons/icon-strikethrough.vue';
 import type { Editor } from '@tiptap/core';
 import type { StrikeOptions } from '@tiptap/extension-strike';
 

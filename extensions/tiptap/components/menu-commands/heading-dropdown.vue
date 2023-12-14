@@ -49,7 +49,7 @@
   import { defineComponent, inject } from 'vue';
   import { Dropdown, Menu } from 'ant-design-vue';
   import { Editor } from '@tiptap/core';
-  import heading from '../../icons/heading.svg';
+  import heading from '../icons/icon-heading.vue';
   import CommandButton from './command-button.vue';
   import type { Level } from '@tiptap/extension-heading';
   const MenuItem = Menu.Item;

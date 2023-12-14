@@ -39,7 +39,7 @@
     "clean:support": "pnpm --filter './support/**' --stream clean",
     "clean:dist": "rimraf dist",
     "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
-    "clean:lib": "rimraf node_modules",
+    "clean:lib": "pnpm -C packages/fe-ent-core clean",
     "report": "cross-env REPORT=true npm run build",
     "type:check": "vue-tsc --noEmit --skipLibCheck",
     "preview": "npm run build && vite preview",

@@ -51,11 +51,6 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
       },
     ],
   );
-  // if (isBuild) {
-  //   alias.push({ find: 'vue-router', replacement: 'vue-router/dist/vue-router.prod.cjs' });
-  // } else {
-  //   alias.push({ find: 'vue-router', replacement: 'vue-router/dist/vue-router.cjs' });
-  // }
   const applicationConfig: UserConfig = {
     resolve: {
       alias,
@@ -66,6 +61,9 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
       cssTarget: 'chrome80',
       rollupOptions: {
         output: {
+          entryFileNames: `assets/[name].js`,
+          chunkFileNames: `assets/[name].js`,
+          assetFileNames: `assets/[name].[ext]`,
           manualChunks: {
             vue: ['vue', 'pinia', 'vue-router'],
             antv: ['ant-design-vue'],

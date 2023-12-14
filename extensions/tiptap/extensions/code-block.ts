@@ -1,6 +1,6 @@
 import TiptapCodeBlock from '@tiptap/extension-code-block';
 import CommandButton from '../components/menu-commands/command-button.vue';
-import svg from '../icons/code.svg';
+import svg from '../components/icons/icon-code.vue';
 import type { Editor } from '@tiptap/core';
 
 const CodeBlock = TiptapCodeBlock.extend({

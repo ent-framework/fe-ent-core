@@ -3,7 +3,7 @@ import { getMarkAttributes } from '@tiptap/vue-3';
 import TextStyle from '@tiptap/extension-text-style';
 import { DEFAULT_FONT_FAMILY_MAP } from '../utils/font-type';
 import FontFamilyDropdown from '../components/menu-commands/font-family-dropdown.vue';
-import svg from '../icons/font-family.svg';
+import svg from '../components/icons/icon-font-family.vue';
 import type { Editor } from '@tiptap/core';
 
 export type FontFamilyOptions = {

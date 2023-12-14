@@ -54,10 +54,10 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, inject, ref, unref, watch } from 'vue';
+  import { computed, defineComponent, inject, ref, watch } from 'vue';
   import { Editor, getMarkAttributes } from '@tiptap/vue-3';
   import { Button, Input, Popover } from 'ant-design-vue';
-  import fontColor from '../../icons/font-color.svg';
+  import fontColor from '../icons/icon-font-color.vue';
   import CommandButton from './command-button.vue';
 
   export default defineComponent({

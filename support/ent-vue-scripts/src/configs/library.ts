@@ -1,5 +1,5 @@
 import { readPackageJSON } from 'pkg-types';
-import { mergeConfig, searchForWorkspaceRoot } from 'vite';
+import { mergeConfig } from 'vite';
 import glob from 'fast-glob';
 import { createPlugins } from '../plugins';
 import { generateModifyVars } from '../utils/modify-vars';
@@ -7,7 +7,6 @@ import vueExportHelper from '../plugins/vite-plugin-vue-export-helper';
 import external from '../plugins/vite-plugin-external';
 import { excludeFiles } from '../utils/exclude-files';
 import { commonConfig } from './common';
-import type { ModuleFormat } from 'rollup';
 import type { InlineConfig, UserConfig } from 'vite';
 
 /***
@@ -15,7 +14,7 @@ import type { InlineConfig, UserConfig } from 'vite';
  */
 async function defineLibraryConfig(source: boolean) {
   const root = process.cwd();
-  const workspace = searchForWorkspaceRoot(root);
+  //const workspace = searchForWorkspaceRoot(root);
   const plugins = await createPlugins({
     isBuild: true,
     mode: 'lib',

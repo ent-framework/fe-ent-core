@@ -1,6 +1,6 @@
 import TiptapItalic from '@tiptap/extension-italic';
 import CommandButton from '../components/menu-commands/command-button.vue';
-import svg from '../icons/italic.svg';
+import svg from '../components/icons/icon-italic.vue';
 import type { Editor } from '@tiptap/core';
 import type { ItalicOptions } from '@tiptap/extension-italic';
 

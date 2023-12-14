@@ -12,7 +12,9 @@ export default function cssOnlyPlugin(): InputPluginOption {
           if (!fs.existsSync(`${process.cwd()}/${outputOptions.dir}`)) {
             fs.mkdirSync(`${process.cwd()}/${outputOptions.dir}`);
           }
-          fs.writeFileSync(`${process.cwd()}/${outputOptions.dir}/${filename}`, asset.source, { flag: 'w' });
+          fs.writeFileSync(`${process.cwd()}/${outputOptions.dir}/${filename}`, asset.source, {
+            flag: 'w',
+          });
         }
       }
     },

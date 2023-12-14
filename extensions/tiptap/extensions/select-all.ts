@@ -1,6 +1,6 @@
 import { Extension } from '@tiptap/core';
 import CommandButton from '../components/menu-commands/command-button.vue';
-import svg from '../icons/select-all.svg';
+import svg from '../components/icons/icon-select-all.vue';
 import type { Editor } from '@tiptap/core';
 
 const SelectAll = Extension.create({

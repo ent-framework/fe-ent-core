@@ -1,6 +1,6 @@
 import TiptapBlockquote from '@tiptap/extension-blockquote';
 import CommandButton from '../components/menu-commands/command-button.vue';
-import svg from '../icons/quote-right.svg';
+import svg from '../components/icons/icon-quote-right.vue';
 import type { Editor } from '@tiptap/core';
 import type { Component } from 'vue';
 import type { BlockquoteOptions } from '@tiptap/extension-blockquote';

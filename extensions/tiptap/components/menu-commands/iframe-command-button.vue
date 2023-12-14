@@ -12,8 +12,7 @@
 <script lang="ts">
   import { defineComponent, inject } from 'vue';
   import { Editor } from '@tiptap/vue-3';
-  import { message } from 'ant-design-vue';
-  import video from '../../icons/video.svg';
+  import video from '../icons/icon-video.vue';
   import CommandButton from './command-button.vue';
 
   export default defineComponent({

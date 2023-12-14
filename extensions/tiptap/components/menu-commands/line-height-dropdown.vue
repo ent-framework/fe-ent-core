@@ -38,7 +38,7 @@
   import { Editor } from '@tiptap/vue-3';
   import { Dropdown, Menu } from 'ant-design-vue';
   import { isLineHeightActive } from '../../utils/line-height';
-  import textHeight from '../../icons/text-height.svg';
+  import textHeight from '../icons/icon-text-height.vue';
   import CommandButton from './command-button.vue';
   const MenuItem = Menu.Item;
   export default defineComponent({

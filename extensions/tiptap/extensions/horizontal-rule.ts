@@ -1,6 +1,6 @@
 import TiptapHorizontalRule from '@tiptap/extension-horizontal-rule';
 import CommandButton from '../components/menu-commands/command-button.vue';
-import svg from '../icons/horizontal-rule.svg';
+import svg from '../components/icons/icon-horizontal-rule.vue';
 import type { Editor } from '@tiptap/core';
 import type { HorizontalRuleOptions } from '@tiptap/extension-horizontal-rule';
 

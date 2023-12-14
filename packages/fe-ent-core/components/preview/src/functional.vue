@@ -1,11 +1,11 @@
 <script lang="tsx">
   import { computed, defineComponent, reactive, ref, unref, watchEffect } from 'vue';
   import { CloseOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
-  import resumeSvg from '../svg/resume.svg';
-  import rotateSvg from '../svg/p-rotate.svg';
-  import scaleSvg from '../svg/scale.svg';
-  import unScaleSvg from '../svg/unscale.svg';
-  import unRotateSvg from '../svg/unrotate.svg';
+  import ResumeSvg from '@ent-core/components/icons/icon-resume.vue';
+  import RotateSvg from '@ent-core/components/icons/icon-rotate.vue';
+  import ScaleSvg from '@ent-core/components/icons/icon-scale.vue';
+  import UnScaleSvg from '@ent-core/components/icons/icon-unscale.vue';
+  import UnRotateSvg from '@ent-core/components/icons/icon-unrotate.vue';
   import type { PropType } from 'vue';
 
   enum StatueEnum {
@@ -350,22 +350,22 @@
               class={`${prefixCls}__controller-item`}
               onClick={() => scaleFunc(-getScaleStep.value)}
             >
-              <img src={unScaleSvg} />
+              <UnScaleSvg />
             </div>
             <div
               class={`${prefixCls}__controller-item`}
               onClick={() => scaleFunc(getScaleStep.value)}
             >
-              <img src={scaleSvg} />
+              <ScaleSvg />
             </div>
             <div class={`${prefixCls}__controller-item`} onClick={resume}>
-              <img src={resumeSvg} />
+              <ResumeSvg />
             </div>
             <div class={`${prefixCls}__controller-item`} onClick={() => rotateFunc(-90)}>
-              <img src={unRotateSvg} />
+              <UnRotateSvg />
             </div>
             <div class={`${prefixCls}__controller-item`} onClick={() => rotateFunc(90)}>
-              <img src={rotateSvg} />
+              <RotateSvg />
             </div>
           </div>
         );

@@ -33,10 +33,10 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, inject, ref, unref } from 'vue';
+  import { computed, defineComponent, inject, ref } from 'vue';
   import { Editor, getMarkAttributes } from '@tiptap/vue-3';
   import { Popover } from 'ant-design-vue';
-  import highlight from '../../icons/highlight.svg';
+  import highlight from '../icons/icon-highlight.vue';
   import CommandButton from './command-button.vue';
 
   export default defineComponent({

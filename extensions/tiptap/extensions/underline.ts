@@ -1,6 +1,6 @@
 import TiptapUnderline from '@tiptap/extension-underline';
 import CommandButton from '../components/menu-commands/command-button.vue';
-import svg from '../icons/underline.svg';
+import svg from '../components/icons/icon-underline.vue';
 import type { Editor } from '@tiptap/core';
 import type { UnderlineOptions } from '@tiptap/extension-underline';
 

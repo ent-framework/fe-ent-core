@@ -3,6 +3,7 @@
 import path from 'path';
 import fs from 'fs-extra';
 import { Command } from 'commander';
+import icongen from './scripts/icongen';
 import lessgen from './scripts/lessgen';
 import docgen from './scripts/docgen';
 import dtsgen from './scripts/dtsgen';
@@ -35,6 +36,12 @@ program
     docgen({ input, components });
   });
 
+program
+  .command('icongen')
+  .description('generate icon components.')
+  .action(() => {
+    icongen();
+  });
 program
   .command('lessgen')
   .description('generate index less file.')

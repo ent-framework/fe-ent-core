@@ -19,7 +19,7 @@
             @mousedown.prevent
             @click="linkBack"
           >
-            <img alt="" :src="arrowLeft" height="16" width="16" />
+            <ArrowLeft :size="16" />
           </div>
         </template>
       </link-bubble-menu>
@@ -44,7 +44,7 @@
   import { BubbleMenu, Editor } from '@tiptap/vue-3';
   import { getMarkRange } from '@tiptap/core';
   import { AllSelection, TextSelection } from 'prosemirror-state';
-  import arrowLeft from '../../icons/arrow-left.svg';
+  import ArrowLeft from '../icons/icon-arrow-left.vue';
   import LinkBubbleMenu from './link-bubble-menu.vue';
   import type { Selection } from 'prosemirror-state';
 
@@ -60,6 +60,7 @@
     components: {
       BubbleMenu,
       LinkBubbleMenu,
+      ArrowLeft,
     },
 
     props: {
@@ -86,7 +87,7 @@
       return {
         activeMenu: MenuType.NONE,
         isLinkBack: false,
-        arrowLeft,
+        ArrowLeft,
       };
     },
 

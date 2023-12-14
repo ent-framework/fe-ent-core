@@ -2,12 +2,12 @@
   import { computed, defineComponent, ref, unref } from 'vue';
   import { get } from 'lodash-es';
   import { Descriptions } from 'ant-design-vue';
+  import { descriptionsProps } from 'ant-design-vue/es/descriptions/index';
   import { isFunction } from '@ent-core/utils/is';
   import CollapseContainer from '@ent-core/components/container';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
-  import { descriptionsProps } from 'ant-design-vue/es/descriptions/index';
   import { type Recordable } from '@ent-core/types';
   import type { CollapseContainerOptions } from '@ent-core/components/container/interface';
   import type { CSSProperties, PropType } from 'vue';

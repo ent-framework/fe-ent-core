@@ -4,3 +4,4 @@ node_modules
 /lib
 /es
 /json
+components/icons/*.vue

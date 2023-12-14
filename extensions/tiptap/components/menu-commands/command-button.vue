@@ -1,7 +1,7 @@
 <template>
   <Tooltip :title="tooltip" :disabled="!enableTooltip || readonly" placement="top">
     <div v-if="!buttonIcon" :class="commandButtonClass" @mousedown.prevent @click="onClick">
-      <img alt="" :src="icon" width="16" height="16" />
+      <component :is="icon" :size="12" class="btn" />
     </div>
     <div
       v-else

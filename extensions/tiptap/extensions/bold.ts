@@ -1,6 +1,6 @@
 import TiptapBold from '@tiptap/extension-bold';
 import CommandButton from '../components/menu-commands/command-button.vue';
-import svg from '../icons/bold.svg';
+import svg from '../components/icons/icon-bold.vue';
 import type { Editor } from '@tiptap/core';
 import type { BoldOptions } from '@tiptap/extension-bold';
 export interface CustomBoldOptions extends BoldOptions {

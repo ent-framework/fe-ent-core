@@ -13,8 +13,8 @@
 
 <script lang="ts">
   import { defineComponent, inject } from 'vue';
-  import compress from '../../icons/compress.svg';
-  import expand from '../../icons/expand.svg';
+  import compress from '../icons/icon-compress.vue';
+  import expand from '../icons/icon-expand.vue';
   import CommandButton from './command-button.vue';
 
   export default defineComponent({

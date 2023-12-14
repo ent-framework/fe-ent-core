@@ -47,7 +47,7 @@
   import { Button, Checkbox, Form, FormItem, Input, Modal } from 'ant-design-vue';
   import { Editor } from '@tiptap/core';
   import CommandButton from '../command-button.vue';
-  import link from '../../../icons/link.svg';
+  import link from '../../icons/icon-link.vue';
 
   const AButton = Button;
 

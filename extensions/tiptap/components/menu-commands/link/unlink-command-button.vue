@@ -12,7 +12,7 @@
   import { defineComponent, inject } from 'vue';
   import { Editor } from '@tiptap/vue-3';
   import CommandButton from '../command-button.vue';
-  import unlink from '../../../icons/unlink.svg';
+  import unlink from '../../icons/icon-unlink.vue';
 
   export default defineComponent({
     name: 'UnlinkCommandButton',

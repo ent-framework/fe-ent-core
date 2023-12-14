@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "2.1.7",
+  "version": "2.1.9",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
@@ -24,11 +24,12 @@
   "scripts": {
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
     "docgen": "ent-vue-scripts docgen",
-    "build": "pnpm run build:component && pnpm run build:style && pnpm run dtsgen && pnpm run jsongen",
+    "build": "pnpm run icongen && pnpm run build:component && pnpm run build:style && pnpm run dtsgen && pnpm run jsongen",
     "gen:doc": "ent-vue-scripts docgen",
     "build:component": "ent-vue-scripts build:component -u",
     "build:module": "ent-vue-scripts build:component",
     "build:style": "cross-env DEBUG=true ent-vue-scripts build:style",
+    "icongen": "ent-vue-scripts icongen",
     "dtsgen": "ent-vue-scripts dtsgen",
     "jsongen": "ent-vue-scripts jsongen",
     "changelog": "ent-vue-scripts changelog"

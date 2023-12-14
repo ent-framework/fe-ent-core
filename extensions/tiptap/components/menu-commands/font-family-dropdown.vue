@@ -28,10 +28,10 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, inject, ref, unref } from 'vue';
+  import { computed, defineComponent, inject, unref } from 'vue';
   import { Editor, getMarkAttributes } from '@tiptap/vue-3';
   import { Dropdown, Menu } from 'ant-design-vue';
-  import fontFamily from '../../icons/font-family.svg';
+  import fontFamily from '../icons/icon-font-family.vue';
   import CommandButton from './command-button.vue';
   import type { MenuProps } from 'ant-design-vue';
   const MenuItem = Menu.Item;

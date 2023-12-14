@@ -1,8 +1,8 @@
 import { Extension } from '@tiptap/core';
 import CommandButton from '../components/menu-commands/command-button.vue';
 import { IndentProps, createIndentCommand } from '../utils/indent';
-import indent from '../icons/indent.svg';
-import outdent from '../icons/outdent.svg';
+import indent from '../components/icons/icon-indent.vue';
+import outdent from '../components/icons/icon-outdent.vue';
 import type { Editor } from '@tiptap/core';
 
 export interface IndentOptions {

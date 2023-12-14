@@ -1,6 +1,6 @@
 import TiptapBulletList from '@tiptap/extension-bullet-list';
 import CommandButton from '../components/menu-commands/command-button.vue';
-import svg from '../icons/list-ul.svg';
+import svg from '../components/icons/icon-list-ul.vue';
 import ListItem from './list-item';
 import type { Editor } from '@tiptap/core';
 import type { BulletListOptions } from '@tiptap/extension-bullet-list';
