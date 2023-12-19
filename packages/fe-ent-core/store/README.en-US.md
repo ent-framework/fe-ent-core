@@ -74,7 +74,7 @@
 |---|---|---|:---:|---|
 |theme|theme|`ThemeEnum`|`-`|`-`|
 |name|name|`string`|`-`|`-`|
-|token|token|`Partial<SeedToken>`|`-`|`-`|
+|token|token|`Partial<AliasToken>`|`-`|`-`|
 
 
 

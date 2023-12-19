@@ -40,10 +40,6 @@ export default defineConfig(({ command, mode }) => {
             replacement: `${workspace}/extensions/markdown/index.ts`,
           },
           {
-            find: /^fe-ent-qrcode$/,
-            replacement: `${workspace}/extensions/qrcode/index.ts`,
-          },
-          {
             find: /^fe-ent-tinymce$/,
             replacement: `${workspace}/extensions/tinymce/index.ts`,
           },

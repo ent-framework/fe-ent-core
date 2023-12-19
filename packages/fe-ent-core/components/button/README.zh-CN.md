@@ -14,7 +14,6 @@ description: 二次封装按钮组件
 
 |参数名|描述|类型|默认值|模块|版本|
 |---|---|---|:---:|---|:---|
-|color|颜色|`'error' \| 'warning' \| 'success'`|`-`|`-`||
 |pre-icon|按钮文本前图标，参考 Icon 组件|`string`|`-`|`-`||
 |post-icon|按钮文本后图标，参考 Icon 组件|`string`|`-`|`-`||
 |icon-size|按钮图标大小|`number`|`14`|`-`||
@@ -43,7 +42,6 @@ description: 二次封装按钮组件
 
 |参数名|描述|类型|默认值|模块|版本|
 |---|---|---|:---:|---|:---|
-|color|颜色|`'error' \| 'warning' \| 'success'`|`-`|`-`||
 |pre-icon|按钮文本前图标，参考 Icon 组件|`string`|`-`|`-`||
 |post-icon|按钮文本后图标，参考 Icon 组件|`string`|`-`|`-`||
 |icon-size|按钮图标大小|`number`|`14`|`-`||

@@ -299,7 +299,7 @@
 |footer|Table footer renderer|`AnyFunction \| VNodeChild \| JSX.Element`|`-`|`-`||
 |indentSize|Indent size in pixels of tree data|`number`|`-`|`-`||
 |locale|i18n text including filter, sort, empty text, etc|`object`|`-`|`-`||
-|rowClassName|Row's className|`(record: TableCustomRecord<T>, index: number) => string`|`-`|`-`||
+|rowClassName|Row's className|`(record: TableCustomRecord<T>, index: number, indent: number) => string`|`-`|`-`||
 |rowSelection|Row selection config|`TableRowSelection`|`-`|`-`||
 |scroll|Set horizontal or vertical scrolling, can also be used to specify the width and height of the scroll area.<br>It is recommended to set a number for x, if you want to set it to true,<br>you need to add style .ant-table td { white-space: nowrap; }.|`{ x?: number \| string \| true; y?: number \| string }`|`-`|`-`||
 |showHeader|Whether to show table header|`boolean`|`false`|`-`||

@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "fe-ent-vue-scripts": "^2.1.0",
-    "@iconify/json": "^1.1.422",
     "vite": "^5.0.2",
     "tsx": "^3.6.0"
   },
