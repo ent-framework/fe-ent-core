@@ -1,19 +1,22 @@
 <template>
   <div ref="wrapRef" :class="getWrapperClass">
-    <EntForm
-      v-if="getBindValues.useSearchForm"
-      ref="formRef"
-      submit-on-reset
-      v-bind="getFormProps"
-      :table-action="tableAction"
-      @register="registerForm"
-      @submit="handleSearchInfoChange"
-      @advanced-change="redoHeight"
-    >
-      <template v-for="item in getFormSlotKeys" #[replaceFormSlotKey(item)]="data">
-        <slot :name="item" v-bind="data || {}" />
-      </template>
-    </EntForm>
+    <div v-if="getBindValues.useSearchForm" class="search-form">
+      <EntForm
+        v-if="getBindValues.useSearchForm"
+        ref="formRef"
+        submit-on-reset
+        v-bind="getFormProps"
+        :table-action="tableAction"
+        :style="getWrapStyle"
+        @register="registerForm"
+        @submit="handleSearchInfoChange"
+        @advanced-change="redoHeight"
+      >
+        <template v-for="item in getFormSlotKeys" #[replaceFormSlotKey(item)]="data">
+          <slot :name="item" v-bind="data || {}" />
+        </template>
+      </EntForm>
+    </div>
 
     <Table
       v-show="getEmptyDataIsShowTable"
@@ -46,13 +49,14 @@
     unref,
     watchEffect,
   } from 'vue';
-  import { Table } from 'ant-design-vue';
+  import { Card, Table } from 'ant-design-vue';
   import { omit } from 'lodash-es';
   import { isFunction } from '@ent-core/utils/is';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { PageWrapperFixedHeightKey } from '@ent-core/components/page';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { warn } from '@ent-core/utils/log';
+  import { useTheme } from '@ent-core/hooks';
   import HeaderCell from './components/header-cell.vue';
   import { usePagination } from './hooks/use-pagination';
   import { useColumns } from './hooks/use-columns';
@@ -77,6 +81,7 @@
     SizeType,
     TableActionType,
   } from './types/table';
+  import type { CSSProperties } from 'vue/dist/vue';
 
   /**
    * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/table/index.zh-CN.md
@@ -86,6 +91,7 @@
   export default defineComponent({
     name: 'EntTable',
     components: {
+      Card,
       Table,
       EntForm,
       HeaderCell,
@@ -131,6 +137,16 @@
           warn(
             "'canResize' of BasicTable may not work in PageWrapper with 'fixedHeight' (especially in hot updates)",
           );
+      });
+
+      const { useToken } = useTheme();
+      const { token } = useToken();
+
+      const getWrapStyle = computed((): CSSProperties => {
+        const tokenValue = unref(token);
+        return {
+          backgroundColor: tokenValue.colorBgContainer,
+        };
       });
 
       const { getLoading, setLoading } = useLoading(getProps);
@@ -359,6 +375,7 @@
         getFormSlotKeys,
         getWrapperClass,
         columns: getViewColumns,
+        getWrapStyle,
       };
     },
   });
