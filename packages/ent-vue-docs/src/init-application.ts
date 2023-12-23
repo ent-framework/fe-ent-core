@@ -1,22 +1,20 @@
-import { useLayoutStoreWithOut } from 'fe-ent-layout';
-import { useAppStoreWithOut } from '@ent-core/store';
-import { MenuModeEnum, MenuTypeEnum } from '@ent-core/logics';
+import { useLayoutStore } from 'fe-ent-layout';
+import { useAppStore } from '@ent-core/store';
+import { MenuModeEnum, MenuTypeEnum, ThemeEnum } from '@ent-core/logics';
 
 export async function initApplication() {
   // const { changePermissionMode } = usePermission();
   // await changePermissionMode('BACK');
   // 关闭multi-tab 和 keep-alive
-  const appStore = useAppStoreWithOut();
-  appStore.setProjectConfig({
-
-  })
-  const layoutStore = useLayoutStoreWithOut();
+  const appStore = useAppStore();
+  appStore.setProjectConfig({});
+  const layoutStore = useLayoutStore();
   layoutStore.setLayoutConfig({
     multiTabsSetting: {
       show: false,
     },
     menuSetting: {
-      theme: 'light',
+      theme: ThemeEnum.LIGHT,
       split: true,
       mode: MenuModeEnum.INLINE,
       type: MenuTypeEnum.MIX,

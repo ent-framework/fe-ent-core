@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-echarts",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -46,9 +46,6 @@
     "url": "https://github.com/ent-framework/fe-ent-core/issues"
   },
   "homepage": "https://github.com/ent-framework/fe-ent-core",
-  "engines": {
-    "node": "^12 || >=14"
-  },
   "vetur": {
     "tags": "json/vetur-tags.json",
     "attributes": "json/vetur-attributes.json"

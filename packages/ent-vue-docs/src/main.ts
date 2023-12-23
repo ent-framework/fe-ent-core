@@ -3,9 +3,9 @@ import 'uno.css';
 import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
-import { Button, PageHeader, Tooltip, Table } from 'ant-design-vue';
+import { Button, PageHeader, Table, Tooltip } from 'ant-design-vue';
 
-import { initAppConfigStore } from '@ent-core/logics/init-app-config';
+import { initLayout } from 'fe-ent-layout';
 import { setupErrorHandle } from '@ent-core/logics/error-handle';
 import { entRouter, transformRouteToMenu } from '@ent-core/router';
 import { setupRouterGuard } from '@ent-core/router/guard';
@@ -13,7 +13,7 @@ import { setupStore } from '@ent-core/store';
 import { setupGlobDirectives } from '@ent-core/directives';
 import { setupI18n } from '@ent-core/locales/setup-i18n';
 import EntCore, { registerAntGlobComp } from '@ent-core/index';
-import { usePermissionStoreWithOut } from '@ent-core/store/modules/permission';
+import { usePermissionStore } from '@ent-core/store/modules/permission';
 import { useLocale } from '@ent-core/locales';
 import getRoutes from './router';
 import { initApplication } from './init-application';
@@ -21,7 +21,6 @@ import locales from './locale';
 
 import '@ent-core/theme/index.less';
 import 'prismjs/themes/prism.css';
-import { initLayout } from 'fe-ent-layout';
 
 import ArcoArticle from './components/article/index.vue';
 import AnchorHead from './components/anchor-head/index.vue';
@@ -35,24 +34,21 @@ async function bootstrap() {
 
   // Configure store
   setupStore(app);
-
-  // Initialize internal system configuration
-  await initAppConfigStore();
-
-  //初始化全局变量
-  await initApplication();
-
   // Multilingual configuration
   // Asynchronous case: language files may be obtained from the server side
   await setupI18n(app);
+  //初始化全局变量
+  await initApplication();
+  // Register ant global components
+  registerAntGlobComp(app);
 
   initLayout(app, entRouter);
+
   const { getLocale, addMessages, setLocalePicker } = useLocale();
   setLocalePicker(false);
   addMessages('en', locales.en);
   addMessages('zh_CN', locales.zh_CN);
 
-  registerAntGlobComp(app);
   app.use(EntCore);
 
   app.component(CodeBlock.name, CodeBlock);
@@ -69,7 +65,7 @@ async function bootstrap() {
   const docsRoutes = getRoutes(getLocale.value);
   entRouter.addPublicRoutes(docsRoutes);
 
-  const permissionStore = usePermissionStoreWithOut();
+  const permissionStore = usePermissionStore();
   permissionStore.setFrontMenuList(transformRouteToMenu(docsRoutes, true));
   app.use(entRouter);
 

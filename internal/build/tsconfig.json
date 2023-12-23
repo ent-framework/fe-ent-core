@@ -4,5 +4,10 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "include": ["gulpfile.ts", "utils/*"]
 }

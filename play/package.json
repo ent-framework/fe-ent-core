@@ -33,8 +33,5 @@
   "bugs": {
     "url": "https://github.com/ent-framework/fe-ent-core/issues"
   },
-  "homepage": "https://github.com/ent-framework/fe-ent-core",
-  "engines": {
-    "node": "^12 || >=14"
-  }
+  "homepage": "https://github.com/ent-framework/fe-ent-core"
 }

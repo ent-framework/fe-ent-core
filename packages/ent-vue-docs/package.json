@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-vue-docs",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "private": true,
   "author": {
     "name": "jeff qian",
@@ -20,8 +20,7 @@
   },
   "devDependencies": {
     "fe-ent-vue-scripts": "^2.1.0",
-    "vite": "^5.0.2",
-    "tsx": "^3.6.0"
+    "vite": "^5.0.2"
   },
   "repository": {
     "type": "git",
@@ -31,8 +30,5 @@
   "bugs": {
     "url": "https://github.com/ent-framework/fe-ent-core/issues"
   },
-  "homepage": "https://github.com/ent-framework/fe-ent-core",
-  "engines": {
-    "node": "^12 || >=14"
-  }
+  "homepage": "https://github.com/ent-framework/fe-ent-core"
 }
