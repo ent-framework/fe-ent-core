@@ -1,6 +1,6 @@
-import type { OptimizeOptions } from 'svgo';
+import type { Config } from 'svgo';
 
-const options: OptimizeOptions = {
+const options: Config = {
   plugins: [
     {
       name: 'preset-default',

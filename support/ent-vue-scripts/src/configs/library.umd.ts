@@ -36,6 +36,7 @@ async function defineUmdLibraryConfig(source: boolean, base: string) {
       cssMinify: true,
       rollupOptions: {
         input: ['index.ts'],
+        treeshake: 'smallest',
         output: [
           {
             format: 'umd',

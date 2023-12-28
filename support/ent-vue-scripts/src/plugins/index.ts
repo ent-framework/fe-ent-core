@@ -4,14 +4,13 @@ import { type PluginOption } from 'vite';
 import purgeIcons from 'vite-plugin-purge-icons';
 import Inspect from 'vite-plugin-inspect';
 import mkcert from 'vite-plugin-mkcert';
+import consola from 'consola';
 import { createAppConfigPlugin } from './vite-plugin-app-config';
 import { configCompressPlugin } from './compress';
 import { configHtmlPlugin } from './html';
 import { configMockPlugin } from './mock';
-import { configSvgIconsPlugin } from './svgSprite';
 import { configVisualizerConfig } from './visualizer';
 import { configUnoCSSPlugin } from './unocss';
-import consola from 'consola';
 
 interface Options {
   isBuild: boolean;
@@ -47,11 +46,7 @@ async function createPlugins({
   }
 
   // vite-plugin-svg-icons
-  vitePlugins.push(
-    configSvgIconsPlugin({ isBuild }),
-    purgeIcons(),
-    configUnoCSSPlugin(mode === 'lib'),
-  );
+  vitePlugins.push(purgeIcons(), configUnoCSSPlugin(mode === 'lib'));
 
   // The following plugins only work in the production environment
   if (isBuild) {

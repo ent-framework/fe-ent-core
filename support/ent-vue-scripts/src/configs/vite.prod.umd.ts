@@ -1,7 +1,6 @@
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import terser from '@rollup/plugin-terser';
-import { configUnoCSSPlugin } from '../plugins/unocss';
 import { generateModifyVars } from '../utils/modify-vars';
 import type { InlineConfig } from 'vite';
 import type { OutputPlugin } from 'rollup';
@@ -21,7 +20,7 @@ export default (): InlineConfig => {
       //brotliSize: false,
       rollupOptions: {
         //external: 'vue',
-        //treeshake: false,
+        treeshake: 'smallest',
         output: [
           {
             format: 'umd',
