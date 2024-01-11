@@ -246,13 +246,13 @@ export interface BasicTableProps<T = any> {
    * Expanded container render for each row
    * @type Function
    */
-  expandedRowRender?: (record?: ExpandedRowRenderRecord<T>) => VNodeChild | JSX.Element;
+  expandedRowRender?: (record?: ExpandedRowRenderRecord<T>) => VNodeChild;
 
   /**
    * Customize row expand Icon.
    * @type Function | VNodeChild
    */
-  expandIcon?: AnyFunction | VNodeChild | JSX.Element;
+  expandIcon?: AnyFunction | VNodeChild;
 
   /**
    * Whether to expand row by clicking anywhere in the whole row
@@ -270,7 +270,7 @@ export interface BasicTableProps<T = any> {
    * Table footer renderer
    * @type Function | VNodeChild
    */
-  footer?: AnyFunction | VNodeChild | JSX.Element;
+  footer?: AnyFunction | VNodeChild;
 
   /**
    * Indent size in pixels of tree data
@@ -324,7 +324,7 @@ export interface BasicTableProps<T = any> {
    * Table title renderer
    * @type Function | ScopedSlot
    */
-  title?: VNodeChild | JSX.Element | string | ((data: Recordable) => string);
+  title?: VNodeChild | string | ((data: Recordable) => string);
 
   /**
    * Set props on per header row
@@ -457,7 +457,7 @@ export interface BasicColumn extends ColumnProps<Recordable> {
     record: Recordable;
     column: BasicColumn;
     index: number;
-  }) => VNodeChild | JSX.Element;
+  }) => VNodeChild;
   // 动态 Disabled
   editDynamicDisabled?: boolean | ((record: Recordable) => boolean);
 }

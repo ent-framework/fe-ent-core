@@ -17,8 +17,8 @@
     "fe-ent-core": "^2.1.0"
   },
   "dependencies": {
-    "vue": "^3.3.7",
-    "ant-design-vue": "4.0.7"
+    "vue": "^3.4.0",
+    "ant-design-vue": "^4.1.0"
   },
   "devDependencies": {
     "fe-ent-vue-scripts": "^2.1.0",

@@ -103,7 +103,7 @@ export interface PaginationProps {
    * to customize item innerHTML
    * @type Function
    */
-  itemRender?: (props: PaginationRenderProps) => VNodeChild | JSX.Element;
+  itemRender?: (props: PaginationRenderProps) => VNodeChild;
 
   /**
    * specify the position of Pagination

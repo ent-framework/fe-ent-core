@@ -127,7 +127,7 @@ export interface DrawerProps extends DrawerFooterProps {
    * The title for Drawer.
    * @type any (string | slot)
    */
-  title?: VNodeChild | JSX.Element;
+  title?: VNodeChild;
 
   /**
    * The class name of the container of the Drawer dialog.

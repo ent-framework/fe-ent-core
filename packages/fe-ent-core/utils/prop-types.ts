@@ -1,7 +1,7 @@
 import { createTypes } from 'vue-types';
 import type { CSSProperties, VNodeChild } from 'vue';
 import type { VueTypeValidableDef, VueTypesInterface } from 'vue-types';
-type VueNode = VNodeChild | JSX.Element;
+type VueNode = VNodeChild;
 
 const propTypes = createTypes({
   func: undefined,

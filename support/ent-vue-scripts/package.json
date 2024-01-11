@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-vue-scripts",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "description": "Ent Vue Scripts",
   "main": "dist/index.js",
   "bin": {
@@ -52,7 +52,7 @@
     "@vitejs/plugin-vue": "^4.5.0",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "@vue/babel-plugin-jsx": "^1.1.5",
-    "ant-design-vue": "4.0.7",
+    "ant-design-vue": "^4.1.0",
     "axios": "^0.21.1",
     "chalk": "^4.1.2",
     "clean-css": "^5.2.1",

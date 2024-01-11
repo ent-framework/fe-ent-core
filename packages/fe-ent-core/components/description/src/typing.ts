@@ -7,7 +7,7 @@ export interface DescItem {
   contentMinWidth?: number;
   labelStyle?: CSSProperties;
   field: string;
-  label: string | VNode | JSX.Element;
+  label: string | VNode;
   // Merge column
   span?: number;
   show?: (...arg: any) => boolean;
@@ -15,7 +15,7 @@ export interface DescItem {
   render?: (
     val: any,
     data: Recordable,
-  ) => VNode | undefined | JSX.Element | Element | string | number;
+  ) => VNode | undefined | Element | string | number;
 }
 
 export interface DescriptionProps extends DescriptionsProps {
