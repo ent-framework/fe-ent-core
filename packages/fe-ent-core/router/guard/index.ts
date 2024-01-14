@@ -154,7 +154,7 @@ export function createSessionGuard(router: Router) {
   router.beforeEach(async () => {
     try {
       if (!userStore.isSessionLoaded) {
-        await userStore.receiveSession('false');
+        await userStore.receiveSession('');
       }
     } catch (error) {
       const { createMessage } = useMessage();

@@ -1,5 +1,4 @@
 import type { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
-import type { RoleInfo } from '@ent-core/logics/types/user';
 import type { MenuModeEnum, MenuTypeEnum } from '@ent-core/logics/enums/menu-enum';
 import type {
   PermissionModeEnum,
@@ -37,16 +36,6 @@ export interface ErrorLogInfo {
   url: string;
   // Error time
   time?: string;
-}
-
-export interface UserInfo {
-  userId: string | number;
-  username: string;
-  realName: string;
-  avatar: string;
-  desc?: string;
-  homePath?: string;
-  roles: RoleInfo[];
 }
 
 export interface BeforeMiniState {

@@ -4,6 +4,12 @@
 export interface LoginParams {
   username: string;
   password: string;
+  authType?: string;
+  state?: string;
+  captcha?: string;
+  mobile?: any;
+  otpCaptcha?: any;
+  rememberMe?: boolean;
 }
 
 export interface RoleInfo {
@@ -15,26 +21,40 @@ export interface RoleInfo {
  * @description: Login interface return value
  */
 export interface LoginResultModel {
+  type: string;
+  ticket: string;
   userId: string | number;
   token: string;
+  rememberMe: string;
+  refresh_token: string;
+  expired: number;
 }
 
 /**
  * @description: Get user information return value
  */
-export interface GetUserInfoModel {
+export interface UserInfoModel {
   roles: RoleInfo[];
   // 用户id
   userId: string | number;
   // 用户名
   username: string;
-  // 真实名字
-  realName: string;
+  // 显示名字
+  displayName: string;
   // 头像
   avatar: string;
   // 介绍
   desc?: string;
-
+  email: string;
+  // 租户ID
+  instId: string;
+  instName?: any;
+  // 密码设置类型
+  passwordSetType?: number;
+  // 个人首页
+  homePath?: string;
+  // 权限
+  authorities: string[];
   [key: string]: any;
 }
 

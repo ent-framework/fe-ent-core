@@ -30,7 +30,7 @@
           <div :class="`${prefixCls}-entry__header enter-x`">
             <img :src="userinfo.avatar || headerImg" :class="`${prefixCls}-entry__header-img`" />
             <p :class="`${prefixCls}-entry__header-name`">
-              {{ userinfo.realName }}
+              {{ userinfo.displayName }}
             </p>
           </div>
           <div style="width: 100%">
@@ -87,7 +87,7 @@
   import { useLockStore } from '../../../store/lock';
   import headerImg from '../../../assets/header.jpg';
   import { useNow } from './use-now';
-  import type { UserInfo } from 'fe-ent-core/es/store/types';
+  import type { UserInfoModel } from 'fe-ent-core/es/logics/types';
   import type { Nullable } from 'fe-ent-core/es/types';
 
   const InputPassword = Input.Password;
@@ -105,7 +105,7 @@
 
   const { t } = useI18n();
 
-  const userinfo = computed((): Nullable<UserInfo> => {
+  const userinfo = computed((): Nullable<UserInfoModel> => {
     return userStore.getUserInfo;
   });
   /**

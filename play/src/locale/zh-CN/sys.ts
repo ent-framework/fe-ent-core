@@ -26,7 +26,7 @@ export default {
     logoutMessage: '是否确认退出系统?',
     menuLoading: '菜单加载中...',
     themeLoading: '皮肤加载中...',
-    sessionLoadingError: '不能获取会话，请于管理员联系',
+    sessionLoadingError: '不能获取会话，请与管理员联系',
   },
   errorLog: {
     tableTitle: '错误日志列表',

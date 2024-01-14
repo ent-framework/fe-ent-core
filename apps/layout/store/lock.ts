@@ -36,10 +36,10 @@ export const useLockStore = defineStore('app-lock', {
           const res = await userStore.login({
             username: username!,
             password: password!,
-            goHome: false,
             mode: 'none',
           });
           if (res) {
+            await userStore.getUserInfoAction();
             this.resetLockInfo();
           }
           return res;

@@ -14,6 +14,7 @@ import { filter } from '@ent-core/utils/helper/tree-helper';
 import { Factory } from '@ent-core/logics/factory';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { entRouter } from '@ent-core/router/base';
+import { isArray } from '@ent-core/utils/is';
 import { useAppStore } from './app';
 import { useGlobalStore } from './global';
 import { useUserStore } from './user';
@@ -187,7 +188,15 @@ export const usePermissionStore = defineStore('app-permission', {
           }
           //获取登录人的PermissionCode
           try {
-            await this.changePermissionCode();
+            if (
+              userStore.getUserInfo &&
+              userStore.getUserInfo.authorities &&
+              isArray(userStore.getUserInfo.authorities)
+            ) {
+              this.setPermCodeList(userStore.getUserInfo.authorities);
+            } else {
+              await this.changePermissionCode();
+            }
             // 从后端获取Menu
             routeList = (await Factory.getLayoutFactory().getMenuList({
               entryPath,
