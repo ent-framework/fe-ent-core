@@ -63,7 +63,47 @@ const fakeCodeList: any = {
 
   '2': ['2000', '4000', '6000'],
 };
+
+const session: any = {
+  inst: {
+    id: 10000,
+    name: 'Ent Framework',
+    fullName: 'Ent Framework单点登录认证系统',
+    division: '',
+    country: '',
+    region: '',
+    locality: '',
+    street: '',
+    contact: '',
+    address: '',
+    postalCode: '',
+    phone: '',
+    fax: '',
+    email: '',
+    sortIndex: 1,
+    logo: './assets/logo.png',
+    domain: '127.0.0.1',
+    frontTitle: '统一认证系统',
+    consoleDomain: 'mgt.maxkey.top',
+    consoleTitle: '身份安全管理系统',
+    captcha: 'TEXT',
+    defaultUri: '',
+    status: 1,
+    description: '',
+  },
+  state: '1asfss09afjspudfdd',
+};
+
 export default [
+  //获取用户session
+  {
+    url: '/api/session',
+    timeout: 200,
+    method: 'get',
+    response: (request: requestParams) => {
+      return resultSuccess({ ...session });
+    },
+  },
   // mock user login
   {
     url: '/api/login',

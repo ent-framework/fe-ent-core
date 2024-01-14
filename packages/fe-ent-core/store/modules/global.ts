@@ -11,7 +11,7 @@ export interface GlobalState {
 }
 export const useGlobalStore = defineStore('global', {
   state: (): GlobalState => ({
-    baseLoginPath: '/login',
+    baseLoginPath: '/login.html',
     baseHomePath: '/dashboard',
     errorPagePath: '/exception',
     errorLogPagePath: '/error-log/list',
@@ -44,5 +44,4 @@ export const useGlobalStore = defineStore('global', {
       this.errorLogPagePath = errorLogPage;
     },
   },
-  persist: true,
 });

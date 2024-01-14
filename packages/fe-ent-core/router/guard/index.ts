@@ -8,6 +8,7 @@ import { AxiosCanceler } from '@ent-core/utils/http/axios-cancel';
 import { warn } from '@ent-core/utils/log';
 import { setRouteChange } from '@ent-core/logics/mitt/route-change';
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
+import { useI18n, useMessage } from '@ent-core/hooks';
 import { createPermissionGuard } from './permission-guard';
 import { createStateGuard } from './state-guard';
 import { createParamMenuGuard } from './param-menu-guard';
@@ -22,6 +23,7 @@ export function setupRouterGuard(router: Router) {
   createScrollGuard(router);
   createMessageGuard(router);
   createProgressGuard(router);
+  createSessionGuard(router);
   createPermissionGuard(router);
   createParamMenuGuard(router); // must after createPermissionGuard (menu has been built.)
   createStateGuard(router);
@@ -143,6 +145,27 @@ export function createProgressGuard(router: Router) {
 
   router.afterEach(async () => {
     unref(getOpenNProgress) && nProgress.done();
+    return true;
+  });
+}
+
+export function createSessionGuard(router: Router) {
+  const userStore = useUserStore();
+  router.beforeEach(async () => {
+    try {
+      if (!userStore.isSessionLoaded) {
+        await userStore.receiveSession('false');
+      }
+    } catch (error) {
+      const { createMessage } = useMessage();
+      const { t } = useI18n();
+      createMessage.info({
+        content: t('sys.app.sessionLoadingError'),
+        duration: 2,
+      });
+      warn(`message guard error:${error}`);
+      return false;
+    }
     return true;
   });
 }

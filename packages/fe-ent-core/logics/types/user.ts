@@ -37,3 +37,32 @@ export interface GetUserInfoModel {
 
   [key: string]: any;
 }
+
+/**
+ * 会话状态
+ */
+export interface Session {
+  isRememberMe?: boolean;
+  isKerberos?: string;
+  otpType?: string;
+  otpInterval?: number;
+  userDomainUrlJson?: string;
+  inst?: Institution;
+  captcha?: string;
+  state?: string;
+}
+
+/**
+ * 租户信息
+ */
+export interface Institution {
+  id?: number;
+  name?: string;
+  fullName?: string;
+  logo?: string;
+  domain?: string;
+  frontTitle?: string;
+  consoleTitle?: string;
+  defaultUri?: string;
+  description?: string;
+}

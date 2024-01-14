@@ -53,18 +53,32 @@ export function createPermissionGuard(router: Router) {
         return;
       }
 
-      // redirect login page
-      const redirectData: { path: string; replace: boolean; query?: Recordable<string> } = {
-        path: loginPath,
-        replace: true,
-      };
-      if (to.path) {
-        redirectData.query = {
-          ...redirectData.query,
-          redirect: to.path,
+      if (loginPath.indexOf('.html') > 0) {
+        let loinPage = loginPath;
+        let currentPath = window.location.pathname;
+        if (currentPath === '/') {
+          currentPath = '/index.html';
+        }
+        if (to.path) {
+          currentPath += `#${to.path}`;
+          loinPage += `#/?redirect=${encodeURIComponent(`${currentPath}`)}`;
+        }
+        window.location.href = loinPage;
+        return;
+      } else {
+        // redirect login page
+        const redirectData: { path: string; replace: boolean; query?: Recordable<string> } = {
+          path: loginPath,
+          replace: true,
         };
+        if (to.path) {
+          redirectData.query = {
+            ...redirectData.query,
+            redirect: to.path,
+          };
+        }
+        next(redirectData);
       }
-      next(redirectData);
     }
 
     // Jump to the 404 page after processing the login

@@ -10,8 +10,11 @@ import type { GetUserInfoModel, LoginParams } from '@ent-core/logics/types/user'
 import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
 import type { UserInfo } from '@ent-core/store/types';
 import type { Nullable } from '@ent-core/types';
+import type { Session } from '@ent-core/logics/types';
 
 export interface UserState {
+  session?: Session;
+  sessionLoaded?: boolean;
   userInfo: Nullable<UserInfo>;
   token?: string;
   roleList: string[];
@@ -21,6 +24,8 @@ export interface UserState {
 
 export const useUserStore = defineStore('app-user', {
   state: (): UserState => ({
+    session: {},
+    sessionLoaded: false,
     // user info
     userInfo: null,
     // token
@@ -28,7 +33,7 @@ export const useUserStore = defineStore('app-user', {
     // roleList
     roleList: [],
     // Whether the login expired
-    sessionTimeout: false,
+    sessionTimeout: true,
     // Last fetch time
     lastUpdateTime: 0,
   }),
@@ -47,6 +52,12 @@ export const useUserStore = defineStore('app-user', {
     },
     getLastUpdateTime(): number {
       return this.lastUpdateTime;
+    },
+    getSession(): Session {
+      return this.session || {};
+    },
+    isSessionLoaded(): boolean {
+      return this.sessionLoaded || false;
     },
   },
   actions: {
@@ -68,6 +79,22 @@ export const useUserStore = defineStore('app-user', {
       this.token = '';
       this.roleList = [];
       this.sessionTimeout = false;
+    },
+    setSession(session: Session) {
+      this.session = session;
+    },
+    setSessionLoaded(loaded: boolean) {
+      this.sessionLoaded = loaded;
+    },
+
+    async receiveSession(rememberMe?: string) {
+      try {
+        this.setSession(await Factory.getUserFactory().getSession(rememberMe));
+        this.setSessionLoaded(true);
+        // save token
+      } catch (error) {
+        return Promise.reject(error);
+      }
     },
     /**
      * @description: login
@@ -100,13 +127,15 @@ export const useUserStore = defineStore('app-user', {
       if (sessionTimeout) {
         this.setSessionTimeout(false);
       } else {
-        if (goHome) {
-          if (redirect && redirect.length > 0) {
-            await entRouter.replace(redirect);
+        if (redirect && redirect.length > 0) {
+          if (redirect.indexOf('.html') > 0) {
+            window.location.href = redirect;
           } else {
-            const globalStore = useGlobalStore();
-            await entRouter.replace(userInfo?.homePath || globalStore.baseHomePath);
+            await entRouter.replace(redirect);
           }
+        } else if (goHome) {
+          const globalStore = useGlobalStore();
+          await entRouter.replace(userInfo?.homePath || globalStore.baseHomePath);
         }
       }
       return userInfo;
@@ -137,11 +166,15 @@ export const useUserStore = defineStore('app-user', {
         }
       }
       this.setToken(undefined);
-      this.setSessionTimeout(false);
+      this.setSessionTimeout(true);
       this.setUserInfo(null);
       if (goLogin) {
         const globalStore = useGlobalStore();
-        await entRouter.push(globalStore.baseLoginPath);
+        if (globalStore.baseLoginPath.indexOf('.html') > 0) {
+          window.location.href = globalStore.baseLoginPath;
+        } else {
+          await entRouter.push(globalStore.baseLoginPath);
+        }
       }
     },
 

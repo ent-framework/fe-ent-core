@@ -27,6 +27,7 @@ export default {
     logoutMessage: 'Confirm to exit the system?',
     menuLoading: 'Menu loading...',
     themeLoading: 'Theme loading...',
+    sessionLoadingError: 'Can not get session, please check with system administrator',
   },
   errorLog: {
     tableTitle: 'Error log list',

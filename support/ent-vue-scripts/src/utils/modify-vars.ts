@@ -14,11 +14,11 @@ export function generateModifyVars(cssModifyOptions?: ModifyVarOptions) {
   let preLoadFile = '';
   preLoadFile = path.resolve(cwd, `theme/config.less`);
   if (!fs.existsSync(preLoadFile)) {
-    preLoadFile = path.resolve(cwd, `node_modules/fe-ent-core/lib/theme/config.less`);
+    preLoadFile = path.resolve(cwd, `node_modules/fe-ent-core/es/theme/config.less`);
   }
   if (!fs.existsSync(preLoadFile)) {
     const root = searchForWorkspaceRoot(cwd);
-    preLoadFile = path.resolve(root, `packages/fe-ent-core/theme/config.less`);
+    preLoadFile = path.resolve(root, `packages/fe-ent-core/es/theme/config.less`);
   }
 
   //const modifyVars = getThemeVariables();

@@ -1,16 +1,23 @@
 import { defHttp } from '@ent-core/utils/http';
 import { useGlobSetting } from '@ent-core/hooks';
 import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
-import type { GetUserInfoModel, LoginParams, LoginResultModel } from '@ent-core/logics/types/user';
+import type {
+  GetUserInfoModel,
+  LoginParams,
+  LoginResultModel,
+  Session,
+} from '@ent-core/logics/types/user';
 
 enum Api {
   Login = '/login',
   Logout = '/logout',
   GetUserInfo = '/user-info',
   GetPermCode = '/perm-code',
+  GetSession = '/session',
 }
 
 export interface UserFactory {
+  getSession: (remember_me?: string) => Promise<Session>;
   loginApi: (params: LoginParams, mode?: ErrorMessageMode) => Promise<LoginResultModel>;
   getUserInfo: () => Promise<GetUserInfoModel>;
   getPermCode: () => Promise<string[]>;
@@ -18,6 +25,14 @@ export interface UserFactory {
 }
 
 export class UserService implements UserFactory {
+  getSession = (rememberMe?: string) => {
+    const globSetting = useGlobSetting();
+    const { userApiPrefix = '' } = globSetting;
+    return defHttp.get<Session>({
+      url: `${userApiPrefix}${Api.GetSession}`,
+      params: { remember_me: rememberMe },
+    });
+  };
   doLogout = () => {
     const globSetting = useGlobSetting();
     const { userApiPrefix = '' } = globSetting;
