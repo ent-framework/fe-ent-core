@@ -148,9 +148,9 @@
           wrapClassName: unref(getWrapClassName),
         };
         if (unref(fullScreenRef)) {
-          return omit(attr, ['height', 'title']);
+          return omit(attr, ['height', 'title', 'onOk']);
         }
-        return omit(attr, 'title');
+        return omit(attr, 'title', 'onOk');
       });
 
       const getWrapperHeight = computed(() => {

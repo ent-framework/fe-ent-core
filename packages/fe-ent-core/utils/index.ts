@@ -10,7 +10,6 @@ export * from './prop-types';
 export * from './uuid';
 
 export * from './event';
-export * from './factory';
 export * from './file';
 export * from './helper';
 export * from './http';

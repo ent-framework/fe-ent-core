@@ -1,5 +1,3 @@
-export interface UploadApiResult {
-  message: string;
-  code: number;
-  url: string;
-}
+import type { Result } from './axios';
+
+export type UploadApiResult = Result<string>;

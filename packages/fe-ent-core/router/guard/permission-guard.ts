@@ -1,19 +1,20 @@
 import { usePermissionStore } from '@ent-core/store/modules/permission';
+import { useSessionStore } from '@ent-core/store/modules/session';
 import { useUserStore } from '@ent-core/store/modules/user';
-import { useGlobalStore } from '@ent-core/store/modules/global';
+import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
 import { PAGE_NOT_FOUND_NAME } from '@ent-core/router/constant';
 import { entRouter } from '@ent-core/router/base';
 import type { RouteRecordRaw, Router } from 'vue-router';
 import type { Recordable } from '@ent-core/types';
 
 export function createPermissionGuard(router: Router) {
-  const globalStore = useGlobalStore();
-  const userStore = useUserStore();
-  const permissionStore = usePermissionStore();
-  const loginPath = globalStore.getBaseLoginPath;
-  const baseHome = globalStore.getBaseHomePath;
-
   router.beforeEach(async (to, from, next) => {
+    const globSetting = useGlobSetting();
+    const userStore = useUserStore();
+    const permissionStore = usePermissionStore();
+    const sessionStore = useSessionStore();
+    const loginPath = globSetting.loginUrl;
+    const baseHome = globSetting.homePath;
     if (
       from.path === '/' &&
       to.path === baseHome &&
@@ -24,7 +25,9 @@ export function createPermissionGuard(router: Router) {
       return;
     }
 
-    const token = userStore.getToken;
+    const redirect = (to.query?.redirect as string) || undefined;
+
+    const token = sessionStore.getToken;
     const whitePathList = entRouter.getPublicRoutePathList();
     // Whitelist can be directly entered
     if (whitePathList.includes(to.path)) {
@@ -56,8 +59,8 @@ export function createPermissionGuard(router: Router) {
       if (loginPath.indexOf('.html') > 0) {
         let loinPage = loginPath;
         let currentPath = window.location.pathname;
-        if (currentPath === '/') {
-          currentPath = '/index.html';
+        if (currentPath.endsWith('/') && !currentPath.includes('.html')) {
+          currentPath += 'index.html';
         }
         if (to.path) {
           currentPath += `#${to.path}`;
@@ -65,17 +68,24 @@ export function createPermissionGuard(router: Router) {
         }
         window.location.href = loinPage;
         return;
-      } else {
+      } else if (to.path !== loginPath) {
         // redirect login page
         const redirectData: { path: string; replace: boolean; query?: Recordable<string> } = {
           path: loginPath,
           replace: true,
         };
         if (to.path) {
-          redirectData.query = {
-            ...redirectData.query,
-            redirect: to.path,
-          };
+          if (redirect) {
+            redirectData.query = {
+              ...redirectData.query,
+              redirect: `${encodeURIComponent(redirect)}`,
+            };
+          } else {
+            redirectData.query = {
+              ...redirectData.query,
+              redirect: to.path,
+            };
+          }
         }
         next(redirectData);
       }

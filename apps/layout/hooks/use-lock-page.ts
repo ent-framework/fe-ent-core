@@ -1,7 +1,7 @@
 import { computed, onUnmounted, unref, watchEffect } from 'vue';
 import { useThrottleFn } from '@vueuse/core';
 
-import { useUserStore } from 'fe-ent-core/es/store/modules/user';
+import { useSessionStore } from 'fe-ent-core/es/store';
 import { useLockStore } from '../store/lock';
 import { useLayoutStore } from '../store/layout';
 
@@ -11,7 +11,7 @@ import type { TimeoutHandle } from 'fe-ent-core/es/types';
 export function useLockPage() {
   const { getLockTime } = useLayoutThemeSetting();
   const lockStore = useLockStore();
-  const userStore = useUserStore();
+  const sessionStore = useSessionStore();
   const layoutStore = useLayoutStore();
 
   let timeId: TimeoutHandle;
@@ -22,7 +22,7 @@ export function useLockPage() {
 
   function resetCalcLockTimeout(): void {
     // not login
-    if (!userStore.getToken) {
+    if (!sessionStore.getToken) {
       clear();
       return;
     }
@@ -46,7 +46,7 @@ export function useLockPage() {
   }
 
   watchEffect((onClean) => {
-    if (userStore.getToken) {
+    if (sessionStore.getToken) {
       resetCalcLockTimeout();
     } else {
       clear();

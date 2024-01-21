@@ -63,6 +63,7 @@
     "prepublish": "pnpm run build:libs",
     "publish2remote": "tsx ./scripts/publish.ts",
     "publish2local": "tsx ./scripts/publish-local.ts",
+    "publish2ali": "tsx ./scripts/publish-ali.ts",
     "link:global": "tsx ./scripts/pnpmlink.ts",
     "stub": "pnpm run -r --parallel stub",
     "postinstall": "pnpm stub"

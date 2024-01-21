@@ -15,6 +15,10 @@ export interface GlobConfig {
   shortName: string;
   // layout name
   layoutName: string;
+  loginUrl: string;
+  homePath: string;
+  errorPath: string;
+  errorLogPath: string;
 }
 export interface GlobEnvConfig {
   // Site title
@@ -37,4 +41,8 @@ export interface GlobEnvConfig {
   VITE_GLOB_LAYOUT_NAME?: string;
   // VBen version
   VITE_GLOB_VERSION?: string;
+  VITE_GLOB_LOGIN_URL?: string;
+  VITE_GLOB_HOME_PATH?: string;
+  VITE_GLOB_ERROR_PATH?: string;
+  VITE_GLOB_ERROR_LOG_PATH?: string;
 }

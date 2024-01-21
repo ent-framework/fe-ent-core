@@ -13,6 +13,10 @@ export const useGlobSetting = (): Readonly<GlobConfig> => {
     VITE_GLOB_UPLOAD_URL,
     VITE_GLOB_LAYOUT_NAME,
     VITE_GLOB_LOGO_URL,
+    VITE_GLOB_LOGIN_URL,
+    VITE_GLOB_HOME_PATH,
+    VITE_GLOB_ERROR_PATH,
+    VITE_GLOB_ERROR_LOG_PATH,
   } = getAppEnvConfig();
 
   if (!/[a-zA-Z_]*/.test(VITE_GLOB_APP_SHORT_NAME)) {
@@ -32,6 +36,10 @@ export const useGlobSetting = (): Readonly<GlobConfig> => {
     uploadUrl: VITE_GLOB_UPLOAD_URL,
     requestTimeout: VITE_GLOB_API_REQUEST_TIMEOUT,
     layoutName: VITE_GLOB_LAYOUT_NAME || 'DefaultLayout',
+    loginUrl: VITE_GLOB_LOGIN_URL || '/login',
+    homePath: VITE_GLOB_HOME_PATH || '/dashboard',
+    errorPath: VITE_GLOB_ERROR_PATH || '/exception',
+    errorLogPath: VITE_GLOB_ERROR_LOG_PATH || '/error-log/list',
   };
   return glob as Readonly<GlobConfig>;
 };

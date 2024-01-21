@@ -3,10 +3,11 @@
     <Alert message="基础示例" />
     <ent-upload
       :max-size="20"
-      :max-number="10"
+      :max-number="1"
       :api="uploadApi"
       class="my-5"
       :accept="['jpg', 'jpeg']"
+      :upload-params="uploadParams"
       @change="handleChange"
     />
 
@@ -23,6 +24,10 @@
   import { Alert } from 'ant-design-vue';
   import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
 
+  const uploadParams: any = {
+    secretFlag: 'N',
+    fileLocation: 'ALIYUN',
+  };
   const schemas: FormSchema[] = [
     {
       field: 'field1',
@@ -34,6 +39,7 @@
       rules: [{ required: true, message: '请选择上传文件' }],
       componentProps: {
         api: Factory.getHttpFactory().uploadApi,
+        uploadParams,
       },
     },
   ];
@@ -57,6 +63,7 @@
         },
         uploadApi,
         register,
+        uploadParams,
       };
     },
   });

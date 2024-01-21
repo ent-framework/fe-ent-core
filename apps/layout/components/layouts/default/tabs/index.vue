@@ -32,7 +32,7 @@
   import { Tabs } from 'ant-design-vue';
 
   import { useDesign, useGo, useTheme } from 'fe-ent-core/es/hooks';
-  import { useUserStore } from 'fe-ent-core/es/store';
+  import { useSessionStore } from 'fe-ent-core/es/store';
   import { listenerRouteChange } from 'fe-ent-core/es/logics';
   import { REDIRECT_NAME } from 'fe-ent-core/es/router';
   import { useRouter } from 'vue-router';
@@ -59,7 +59,7 @@
 
       useTabsDrag(affixTextList);
       const tabStore = useMultipleTabStore();
-      const userStore = useUserStore();
+      const sessionStore = useSessionStore();
       const router = useRouter();
 
       const { prefixCls } = useDesign('multiple-tabs');
@@ -94,7 +94,7 @@
       onMounted(() => {
         listenerRouteChange((route) => {
           const { name } = route;
-          if (name === REDIRECT_NAME || !route || !userStore.getToken) {
+          if (name === REDIRECT_NAME || !route || !sessionStore.getToken) {
             return;
           }
 

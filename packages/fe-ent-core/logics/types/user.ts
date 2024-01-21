@@ -25,7 +25,8 @@ export interface LoginResultModel {
   ticket: string;
   userId: string | number;
   token: string;
-  rememberMe: string;
+  rememberMe?: string;
+  rememberMeExpiresIn?: number;
   refresh_token: string;
   expired: number;
 }
@@ -70,6 +71,7 @@ export interface Session {
   inst?: Institution;
   captcha?: string;
   state?: string;
+  auth?: LoginResultModel;
 }
 
 /**

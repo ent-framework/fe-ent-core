@@ -12,7 +12,7 @@
   import { computed, defineComponent, unref } from 'vue';
   import { Typography } from 'ant-design-vue';
   import { useDesign, useGlobSetting, useGo, useTheme } from '@ent-core/hooks';
-  import { useGlobalStore, useUserStore } from '@ent-core/store';
+  import { useUserStore } from '@ent-core/store';
   import LogoImg from './logo.png';
   import type { CSSProperties } from 'vue';
   const props = {
@@ -34,8 +34,7 @@
     setup() {
       const { prefixCls } = useDesign('app-logo');
       const userStore = useUserStore();
-      const { title, logoUrl } = useGlobSetting();
-      const globalStore = useGlobalStore();
+      const { title, logoUrl, homePath } = useGlobSetting();
 
       const go = useGo();
 
@@ -56,7 +55,7 @@
         return {};
       });
       function goHome() {
-        go(userStore.getUserInfo?.homePath || globalStore.getBaseHomePath);
+        go(userStore.getUserInfo?.homePath || homePath);
       }
 
       const logoImageURL = logoUrl || LogoImg;

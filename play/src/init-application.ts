@@ -1,5 +1,4 @@
 import { usePermission } from 'fe-ent-core/es/hooks/web/use-permission';
-import { useGlobalStore } from 'fe-ent-core/es/store';
 import { useLocale } from 'fe-ent-core/es/locales';
 import localeEn from '/@/locale/en';
 import localeZh from '/@/locale/zh-CN';
@@ -7,9 +6,6 @@ import localeZh from '/@/locale/zh-CN';
 export async function initApplication() {
   // ! Need to pay attention to the timing of execution
   // ! 需要注意调用时机
-
-  const globalStore = useGlobalStore();
-  globalStore.setBaseHomePath('/dashboard/workbench');
   const { changePermissionMode } = usePermission();
   //await changePermissionMode('BACK');
   await changePermissionMode('ROUTE_MAPPING');

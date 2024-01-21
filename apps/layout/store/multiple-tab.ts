@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import { useGo, useRedo } from 'fe-ent-core/es/hooks/web/use-page';
 import { PAGE_NOT_FOUND_NAME, REDIRECT_NAME } from 'fe-ent-core/es/router/constant';
 import { getRawRoute } from 'fe-ent-core/es/utils/base';
-import { useGlobalStore } from 'fe-ent-core/es/store';
+import { useGlobSetting } from 'fe-ent-core/es/hooks';
 import { useUserStore } from 'fe-ent-core/es/store/modules/user';
 import type { RouteLocationNormalized, RouteLocationRaw, Router } from 'vue-router';
 
@@ -96,8 +96,8 @@ export const useMultipleTabStore = defineStore({
       const go = useGo(router);
       const len = this.tabList.length;
       const { path } = unref(router.currentRoute);
-      const globalStore = useGlobalStore();
-      let toPath = globalStore.getBaseHomePath;
+      const globSetting = useGlobSetting();
+      let toPath = globSetting.homePath;
 
       if (len > 0) {
         const page = this.tabList[len - 1];
@@ -113,9 +113,9 @@ export const useMultipleTabStore = defineStore({
     async addTab(route: RouteLocationNormalized) {
       const { path, name, fullPath, params, query, meta } = getRawRoute(route);
       // 404  The page does not need to add a tab
-      const globalStore = useGlobalStore();
+      const globSetting = useGlobSetting();
       if (
-        path === globalStore.getErrorPagePath ||
+        path === globSetting.errorPath ||
         !name ||
         [REDIRECT_NAME, PAGE_NOT_FOUND_NAME].includes(name as string)
       ) {
@@ -192,8 +192,8 @@ export const useMultipleTabStore = defineStore({
         // There is only one tab, then jump to the homepage, otherwise jump to the right tab
         if (this.tabList.length === 1) {
           const userStore = useUserStore();
-          const globalStore = useGlobalStore();
-          toTarget = userStore.getUserInfo?.homePath || globalStore.getBaseHomePath;
+          const globSetting = useGlobSetting();
+          toTarget = userStore.getUserInfo?.homePath || globSetting.homePath;
         } else {
           //  Jump to the right tab
           const page = this.tabList[index + 1];

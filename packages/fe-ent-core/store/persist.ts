@@ -15,10 +15,7 @@ const serializer: Serializer = {
    */
   serialize: (value: StateTree) => {
     const stringData = JSON.stringify(value);
-    const stringifyValue = enableStorageEncryption
-      ? encryption.encryptByAES(stringData)
-      : stringData;
-    return stringifyValue;
+    return enableStorageEncryption ? encryption.encryptByAES(stringData) : stringData;
   },
   /**
    * Deserializes string into state before hydrating
@@ -32,7 +29,7 @@ const serializer: Serializer = {
 
 export function persistGlobalConfig(keyPrefix: string): PersistedStateFactoryOptions {
   return {
-    storage: localStorage,
+    storage: sessionStorage,
     key: (id) => `${keyPrefix}__${id}`,
     serializer,
   };

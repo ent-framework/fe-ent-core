@@ -7,7 +7,7 @@ import {
   routeWrapper,
 } from '@ent-core/router/helper/route-helper';
 import { transformRouteToMenu } from '@ent-core/router/helper/menu-helper';
-
+import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
 import { filter } from '@ent-core/utils/helper/tree-helper';
@@ -16,7 +16,6 @@ import { useMessage } from '@ent-core/hooks/web/use-message';
 import { entRouter } from '@ent-core/router/base';
 import { isArray } from '@ent-core/utils/is';
 import { useAppStore } from './app';
-import { useGlobalStore } from './global';
 import { useUserStore } from './user';
 import type { AppRouteRecordRaw, Menu } from '@ent-core/router/types';
 
@@ -96,7 +95,7 @@ export const usePermissionStore = defineStore('app-permission', {
       const { t } = useI18n();
       const userStore = useUserStore();
       const appStore = useAppStore();
-      const globalStore = useGlobalStore();
+      const globSetting = useGlobSetting();
 
       let routes: AppRouteRecordRaw[] = [];
       const roleList = toRaw(userStore.getRoleList) || [];
@@ -120,7 +119,7 @@ export const usePermissionStore = defineStore('app-permission', {
        * */
       const patchHomeAffix = (routes: AppRouteRecordRaw[]) => {
         if (!routes || routes.length === 0) return;
-        let homePath: string = userStore.getUserInfo?.homePath || globalStore.getBaseHomePath;
+        let homePath: string = userStore.getUserInfo?.homePath || globSetting.homePath;
         function patcher(routes: AppRouteRecordRaw[], parentPath = '') {
           if (parentPath) parentPath = `${parentPath}/`;
           routes.forEach((route: AppRouteRecordRaw) => {

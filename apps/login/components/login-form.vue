@@ -24,7 +24,18 @@
         :placeholder="t('sys.login.password')"
       />
     </FormItem>
-
+    <FormItem v-if="captcha !== 'none'" name="captcha" class="enter-x">
+      <InputGroup compact>
+        <Input
+          v-model:value="formData.captcha"
+          class="fix-auto-fill"
+          size="large"
+          :placeholder="t('sys.login.captcha')"
+          style="width: calc(100% - 200px)"
+        />
+        <img id="canvas" style="width: 120px" :src="captchaUrl" @click="onCaptchaClick" />
+      </InputGroup>
+    </FormItem>
     <ARow class="enter-x">
       <ACol :span="12">
         <FormItem>
@@ -86,7 +97,7 @@
   </Form>
 </template>
 <script lang="ts" setup>
-  import { computed, reactive, ref, unref } from 'vue';
+  import { computed, reactive, ref, unref, watchEffect } from 'vue';
 
   import { Button, Checkbox, Col, Divider, Form, Input, Row } from 'ant-design-vue';
   import {
@@ -97,9 +108,10 @@
     WechatFilled,
   } from '@ant-design/icons-vue';
 
-  import { useDesign, useI18n, useMessage } from 'fe-ent-core/es/hooks';
-  import { useUserStore } from 'fe-ent-core/es/store';
+  import { useDesign, useGlobSetting, useI18n, useMessage } from 'fe-ent-core/es/hooks';
+  import { useSessionStore, useUserStore } from 'fe-ent-core/es/store';
   import { useRouter } from 'vue-router';
+  import { defHttp } from 'fe-ent-core/es/utils';
   import { LoginStateEnum, useFormRules, useFormValid, useLoginState } from './use-login';
   import LoginFormTitle from './login-form-title.vue';
 
@@ -121,14 +133,16 @@
   const ARow = Row;
   const FormItem = Form.Item;
   const InputPassword = Input.Password;
+  const InputGroup = Input.Group;
   const { t } = useI18n();
   const { notification, createErrorModal } = useMessage();
   const { prefixCls } = useDesign('login');
+  const sessionStore = useSessionStore();
   const userStore = useUserStore();
   const router = useRouter();
   const { setLoginState, getLoginState } = useLoginState();
   const { getFormRules } = useFormRules();
-
+  const globSetting = useGlobSetting();
   const formRef = ref();
   const loading = ref(false);
   const rememberMe = ref(false);
@@ -136,19 +150,45 @@
   type formDataType = {
     account: string;
     password: string;
+    captcha?: string;
   };
   const formData = reactive<formDataType>({
     account: '',
     password: '',
+    captcha: '',
   });
 
   const { validForm } = useFormValid<formDataType>(formRef);
-
+  const captcha = computed(() => sessionStore.getSession.captcha);
   const getShow = computed(() => unref(getLoginState) === LoginStateEnum.LOGIN);
+  const captchaUrl = ref();
+  const getCaptcha = async () => {
+    defHttp
+      .get<string>({
+        url: `${globSetting.userApiPrefix}/captcha`,
+        params: {
+          state: sessionStore.getSession.state,
+          captcha: 'text',
+        },
+      })
+      .then((data) => {
+        captchaUrl.value = data;
+      });
+  };
+
+  watchEffect(() => {
+    if (captcha.value !== 'none') {
+      getCaptcha();
+    }
+  });
+
+  const onCaptchaClick = () => {
+    getCaptcha();
+  };
   async function handleLogin() {
     const data = await validForm();
 
-    const redirect = router.currentRoute.value.query.redirect as string;
+    const redirect = decodeURIComponent(router.currentRoute.value.query.redirect as string);
 
     if (!data) return;
     try {
@@ -157,6 +197,8 @@
         authType: 'normal',
         password: data.password,
         username: data.account,
+        captcha: data.captcha,
+        rememberMe: rememberMe.value,
         mode: 'none', //不要默认的错误提示
       });
       const userInfo = await userStore.getUserInfoAction();
@@ -169,6 +211,7 @@
       }
       await userStore.afterLoginAction(true, redirect);
     } catch (error) {
+      await getCaptcha();
       createErrorModal({
         title: t('sys.api.errorTip'),
         content: (error as unknown as Error).message || t('sys.api.networkExceptionMsg'),

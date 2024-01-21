@@ -4,19 +4,15 @@ import { Factory } from '@ent-core/logics/factory';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { isArray } from '@ent-core/utils/is';
-import { useGlobalStore } from '@ent-core/store/modules/global';
+import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
 import { entRouter } from '@ent-core/router/base';
-import type { LoginParams, UserInfoModel, LoginResultModel } from '@ent-core/logics/types/user';
+import { useSessionStore } from '@ent-core/store/modules/session';
+import type { LoginParams, UserInfoModel } from '@ent-core/logics/types/user';
 import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
 import type { Nullable } from '@ent-core/types';
-import type { Session } from '@ent-core/logics/types';
 
 export interface UserState {
-  session?: Session;
-  sessionLoaded?: boolean;
   userInfo: Nullable<UserInfoModel>;
-  tokenInfo: Nullable<LoginResultModel>;
-  token?: string;
   roleList: string[];
   sessionTimeout?: boolean;
   lastUpdateTime: number;
@@ -24,26 +20,18 @@ export interface UserState {
 
 export const useUserStore = defineStore('app-user', {
   state: (): UserState => ({
-    session: {},
-    sessionLoaded: false,
     // user info
     userInfo: null,
-    tokenInfo: null,
-    // token
-    token: undefined,
     // roleList
     roleList: [],
     // Whether the login expired
-    sessionTimeout: true,
+    sessionTimeout: false,
     // Last fetch time
     lastUpdateTime: 0,
   }),
   getters: {
     getUserInfo(): Nullable<UserInfoModel> {
       return this.userInfo;
-    },
-    getToken(): string | undefined {
-      return this.token;
     },
     getRoleList(): string[] {
       return this.roleList.length > 0 ? this.roleList : [];
@@ -54,17 +42,8 @@ export const useUserStore = defineStore('app-user', {
     getLastUpdateTime(): number {
       return this.lastUpdateTime;
     },
-    getSession(): Session {
-      return this.session || {};
-    },
-    isSessionLoaded(): boolean {
-      return this.sessionLoaded || false;
-    },
   },
   actions: {
-    setToken(info: string | undefined) {
-      this.token = info ? info : ''; // for null or undefined value
-    },
     setRoleList(roleList: string[]) {
       this.roleList = roleList;
     },
@@ -75,30 +54,10 @@ export const useUserStore = defineStore('app-user', {
     setSessionTimeout(flag: boolean) {
       this.sessionTimeout = flag;
     },
-    setTokenInfo(loginResult: LoginResultModel | null) {
-      this.tokenInfo = loginResult;
-    },
-    setSession(session: Session) {
-      this.session = session;
-    },
-    setSessionLoaded(loaded: boolean) {
-      this.sessionLoaded = loaded;
-    },
     resetState() {
       this.userInfo = null;
-      this.tokenInfo = null;
-      this.token = '';
       this.roleList = [];
       this.sessionTimeout = false;
-    },
-    async receiveSession(rememberMeJwt?: string) {
-      try {
-        this.setSession(await Factory.getUserFactory().getSession(rememberMeJwt));
-        this.setSessionLoaded(true);
-        // save token
-      } catch (error) {
-        return Promise.reject(error);
-      }
     },
     /**
      * @description: login
@@ -109,13 +68,18 @@ export const useUserStore = defineStore('app-user', {
       },
     ) {
       try {
+        const session = useSessionStore();
         const { mode, ...loginParams } = params;
-        loginParams.state = this.getSession.state || '';
+        loginParams.state = session.getSession.state || '';
         const data = await Factory.getUserFactory().loginApi(loginParams, mode);
-        const { token } = data;
         // save token
-        this.setToken(token);
-        this.setTokenInfo(data);
+        if (data.rememberMe) {
+          session.setRememberMeJwt(data.rememberMe);
+        }
+        if (data.rememberMeExpiresIn) {
+          session.setRememberMeExpiresIn(Date.now() + data.rememberMeExpiresIn);
+        }
+        session.setStoredToken(data);
         this.setSessionTimeout(false);
         return data;
       } catch (error) {
@@ -123,8 +87,9 @@ export const useUserStore = defineStore('app-user', {
       }
     },
     async afterLoginAction(goHome?: boolean, redirect?: string) {
-      if (!this.getToken || !this.userInfo) {
-        this.setSessionTimeout(true);
+      const session = useSessionStore();
+      if (!session.getToken || !this.userInfo) {
+        this.setSessionTimeout(false);
         return;
       }
       if (redirect && redirect.length > 0) {
@@ -134,15 +99,16 @@ export const useUserStore = defineStore('app-user', {
           await entRouter.replace(redirect);
         }
       } else if (goHome) {
-        const globalStore = useGlobalStore();
-        await entRouter.replace(this.userInfo?.homePath || globalStore.baseHomePath);
+        const globSetting = useGlobSetting();
+        await entRouter.replace(this.userInfo?.homePath || globSetting.homePath);
       }
     },
     /**
      * 获取当前用户身份信息
      */
     async getUserInfoAction(): Promise<UserInfoModel | null> {
-      if (!this.getToken) return null;
+      const session = useSessionStore();
+      if (!session.getToken) return null;
       const userInfo = await Factory.getUserFactory().getUserInfo();
       const { roles = [] } = userInfo;
       if (isArray(roles)) {
@@ -159,22 +125,23 @@ export const useUserStore = defineStore('app-user', {
      * @description: logout
      */
     async logout(goLogin = false) {
-      if (this.getToken) {
+      const session = useSessionStore();
+      if (session.getToken) {
         try {
           await Factory.getUserFactory().doLogout();
         } catch {
           console.error('注销Token失败');
         }
       }
-      this.setToken(undefined);
-      this.setSessionTimeout(true);
+      session.resetState();
+      this.setSessionTimeout(false);
       this.setUserInfo(null);
       if (goLogin) {
-        const globalStore = useGlobalStore();
-        if (globalStore.baseLoginPath.indexOf('.html') > 0) {
-          window.location.href = globalStore.baseLoginPath;
+        const globSetting = useGlobSetting();
+        if (globSetting.loginUrl.indexOf('.html') > 0) {
+          window.location.href = globSetting.loginUrl;
         } else {
-          await entRouter.push(globalStore.baseLoginPath);
+          await entRouter.replace(globSetting.loginUrl);
         }
       }
     },
@@ -195,5 +162,4 @@ export const useUserStore = defineStore('app-user', {
       });
     },
   },
-  persist: true,
 });

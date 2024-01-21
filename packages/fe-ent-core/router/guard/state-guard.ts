@@ -2,20 +2,23 @@ import { useAppStore } from '@ent-core/store/modules/app';
 import { useUserStore } from '@ent-core/store/modules/user';
 import { usePermissionStore } from '@ent-core/store/modules/permission';
 import { removeTabChangeListener } from '@ent-core/logics/mitt/route-change';
-import { useGlobalStore } from '@ent-core/store/modules/global';
+import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
+import { useSessionStore } from '@ent-core/store/modules/session';
 import type { Router } from 'vue-router';
 
 export function createStateGuard(router: Router) {
-  const globalStore = useGlobalStore();
   router.afterEach((to) => {
+    const globSetting = useGlobSetting();
     // Just enter the login page and clear the authentication information
-    if (to.path === globalStore.getBaseLoginPath) {
+    if (to.path === globSetting.loginUrl) {
       const userStore = useUserStore();
       const appStore = useAppStore();
       const permissionStore = usePermissionStore();
+      const sessionStore = useSessionStore();
       appStore.resetAllState();
       permissionStore.resetState();
       userStore.resetState();
+      sessionStore.resetState();
       removeTabChangeListener();
     }
   });

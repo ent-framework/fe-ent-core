@@ -4,7 +4,7 @@ import {
   COMPONENT_IFRAME_NAME,
   COMPONENT_LAYOUT_NAME,
 } from 'fe-ent-core/es/router';
-import { useGlobalStore } from 'fe-ent-core/es/store/modules/global';
+import { useGlobSetting } from 'fe-ent-core/es/hooks';
 import { DefaultLayout } from './components/layouts/default';
 import { default as IFRAME } from './components/views/iframe/frame-blank';
 import { default as ExceptionPage } from './components/views/exception/exception.vue';
@@ -21,10 +21,10 @@ const initLayout = function (app: App, entRouter?: EntRouter) {
 
   if (entRouter) {
     entRouter.setPageNotFoundRoute(getPageNotFoundRoute());
-    const globalStore = useGlobalStore();
+    const globSetting = useGlobSetting();
     entRouter.afterEach((to) => {
       // Just enter the login page and clear the authentication information
-      if (to.path === globalStore.getBaseLoginPath) {
+      if (to.path === globSetting.loginUrl) {
         const tabStore = useMultipleTabStore();
         tabStore.resetState();
       }

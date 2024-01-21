@@ -181,7 +181,7 @@
         return unref(getSplit) ? MenuModeEnum.HORIZONTAL : null;
       });
 
-      const isLogined = !!userStore.getToken;
+      const isLogined = userStore.getUserInfo !== undefined && userStore.getUserInfo !== null;
 
       return {
         prefixCls,

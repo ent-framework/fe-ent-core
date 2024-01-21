@@ -8,6 +8,7 @@ import { deepMerge, setObjToUrlParams } from '@ent-core/utils/base';
 import { useErrorLogStore } from '@ent-core/store/modules/error-log';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { useUserStore } from '@ent-core/store/modules/user';
+import { useSessionStore } from '@ent-core/store/modules/session';
 import { formatRequestDate, joinTimestamp } from './helper';
 import { checkStatus } from './check-status';
 import { VAxios } from './axios';
@@ -58,7 +59,6 @@ const transform: AxiosTransform = {
       case ResultEnum.TIMEOUT: {
         timeoutMsg = t('sys.api.timeoutMessage');
         const userStore = useUserStore();
-        userStore.setToken(undefined);
         userStore.logout(true);
         break;
       }
@@ -133,8 +133,8 @@ const transform: AxiosTransform = {
    */
   requestInterceptors: (config, options) => {
     // 请求之前处理config
-    const userStore = useUserStore();
-    const token = userStore.getToken;
+    const sessionStore = useSessionStore();
+    const token = sessionStore.getToken;
     if (token && (config as Recordable)?.requestOptions?.withToken !== false) {
       // jwt token
       (config as Recordable).headers.Authorization = options.authenticationScheme

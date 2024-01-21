@@ -8,12 +8,6 @@ export default defineConfig(({ command, mode }) => {
     mode,
     overrides: {
       build: {
-        rollupOptions: {
-          input: {
-            index: 'index.html',
-            login: 'login.html',
-          },
-        },
         minify: false,
         cssCodeSplit: true,
       },
@@ -86,6 +80,13 @@ export default defineConfig(({ command, mode }) => {
             // only https
             // secure: false
           },
+          // 配合 Ent-framework 测试
+          // '/api': {
+          //   target: 'http://127.0.0.1:8000',
+          //   changeOrigin: true,
+          //   ws: true,
+          //   rewrite: (path) => path.replace(new RegExp(`^/api`), ''),
+          // },
         },
       },
     },

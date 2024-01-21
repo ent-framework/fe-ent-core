@@ -14,8 +14,8 @@
   import { computed, defineComponent } from 'vue';
   import { Badge, Tooltip } from 'ant-design-vue';
   import { EntIcon } from 'fe-ent-core';
-  import { useI18n } from 'fe-ent-core/es/hooks';
-  import { useErrorLogStore, useGlobalStore } from 'fe-ent-core/es/store';
+  import { useGlobSetting, useI18n } from 'fe-ent-core/es/hooks';
+  import { useErrorLogStore } from 'fe-ent-core/es/store';
 
   import { useRouter } from 'vue-router';
 
@@ -27,11 +27,11 @@
       const { t } = useI18n();
       const { push } = useRouter();
       const errorLogStore = useErrorLogStore();
-      const globalStore = useGlobalStore();
+      const globSetting = useGlobSetting();
       const getCount = computed(() => errorLogStore.getErrorLogListCount);
 
       function handleToErrorList() {
-        push(globalStore.getErrorLogPagePath).then(() => {
+        push(globSetting.errorLogPath).then(() => {
           errorLogStore.setErrorLogListCount(0);
         });
       }

@@ -1,7 +1,7 @@
 import { unref } from 'vue';
 import { useRouter } from 'vue-router';
 import { isString } from '@ent-core/utils/is';
-import { useGlobalStore } from '@ent-core/store';
+import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
 import { REDIRECT_NAME } from '@ent-core/router/constant';
 import type { RouteLocationRaw, Router } from 'vue-router';
 
@@ -12,8 +12,8 @@ function handleError(e: Error) {
 // page switch
 export function useGo(_router?: Router) {
   const { push, replace } = _router || useRouter();
-  const globalStore = useGlobalStore();
-  function go(opt: RouteLocationRaw | string = globalStore.getBaseHomePath, isReplace = false) {
+  const globSetting = useGlobSetting();
+  function go(opt: RouteLocationRaw | string = globSetting.homePath, isReplace = false) {
     if (!opt) {
       return;
     }

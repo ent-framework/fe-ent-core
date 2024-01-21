@@ -2,7 +2,7 @@ import { unref } from 'vue';
 import { Modal, notification } from 'ant-design-vue';
 import nProgress from 'nprogress';
 import { useAppStore } from '@ent-core/store/modules/app';
-import { useUserStore } from '@ent-core/store/modules/user';
+import { useSessionStore } from '@ent-core/store/modules/session';
 import { useTransitionSetting } from '@ent-core/hooks/setting/use-transition-setting';
 import { AxiosCanceler } from '@ent-core/utils/http/axios-cancel';
 import { warn } from '@ent-core/utils/log';
@@ -51,11 +51,11 @@ export function createPageGuard(router: Router) {
 
 // Used to handle page loading status
 export function createPageLoadingGuard(router: Router) {
-  const userStore = useUserStore();
   const appStore = useAppStore();
   const { getOpenPageLoading } = useTransitionSetting();
   router.beforeEach(async (to) => {
-    if (!userStore.getToken) {
+    const sessionStore = useSessionStore();
+    if (!sessionStore.getToken) {
       return true;
     }
     if (to.meta.loaded) {
@@ -150,11 +150,11 @@ export function createProgressGuard(router: Router) {
 }
 
 export function createSessionGuard(router: Router) {
-  const userStore = useUserStore();
   router.beforeEach(async () => {
+    const sessionStore = useSessionStore();
     try {
-      if (!userStore.isSessionLoaded) {
-        await userStore.receiveSession('');
+      if (!sessionStore.isSessionLoaded) {
+        await sessionStore.receiveSession();
       }
     } catch (error) {
       const { createMessage } = useMessage();

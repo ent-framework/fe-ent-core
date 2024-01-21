@@ -201,7 +201,7 @@
             },
           );
           item.status = UploadResultStatus.SUCCESS;
-          item.responseData = data;
+          item.responseData = data; // response data
           return {
             success: true,
             error: null,
@@ -218,7 +218,7 @@
       // 点击开始上传
       async function handleStartUpload() {
         const { maxNumber } = props;
-        if ((fileListRef.value.length + props.previewFileList?.length) > maxNumber) {
+        if (fileListRef.value.length + props.previewFileList?.length > maxNumber) {
           return createMessage.warning(t('component.upload.maxNumber', [maxNumber]));
         }
         try {
@@ -256,7 +256,7 @@
         for (const item of fileListRef.value) {
           const { status, responseData } = item;
           if (status === UploadResultStatus.SUCCESS && responseData) {
-            fileList.push(responseData.url);
+            fileList.push(responseData.data);
           }
         }
         // 存在一个上传成功的即可保存

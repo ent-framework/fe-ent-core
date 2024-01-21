@@ -17,7 +17,6 @@ export interface HttpFactory {
 export class HttpService implements HttpFactory {
   public unauthorized = () => {
     const userStore = useUserStore();
-    userStore.setToken(undefined);
     return userStore.logout(true);
   };
   public uploadApi = (params: UploadFileParams) => {
