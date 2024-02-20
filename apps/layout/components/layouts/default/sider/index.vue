@@ -27,7 +27,6 @@
       const { prefixCls } = useDesign('layout-sider-wrapper');
       const { getIsMobile } = useAppInject();
       const { setMenuSetting, getCollapsed, getMenuWidth, getIsMixSidebar } = useMenuSetting();
-
       function handleClose() {
         setMenuSetting({
           collapsed: true,

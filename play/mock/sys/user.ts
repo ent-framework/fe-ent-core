@@ -86,7 +86,7 @@ const session: any = {
     frontTitle: '统一认证系统',
     consoleDomain: 'mgt.maxkey.top',
     consoleTitle: '身份安全管理系统',
-    captcha: 'TEXT',
+    captcha: 'none',
     defaultUri: '',
     status: 1,
     description: '',

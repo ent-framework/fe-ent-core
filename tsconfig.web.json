@@ -13,6 +13,7 @@
     "dist",
     "**/dist",
     "**/__tests__/**/*",
+    "**/es/**/*.d.ts",
     "**/gulpfile.ts",
     "**/test-helper",
     "**/*.md"

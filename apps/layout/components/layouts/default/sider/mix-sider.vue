@@ -65,7 +65,7 @@
         <EntSimpleMenu
           :items="childrenMenus"
           :theme="getComputedMenuTheme"
-          mix-sider
+          :mix-sider="true"
           @menu-click="handleMenuClick"
         />
       </EntScrollContainer>

@@ -6,7 +6,7 @@ settings:
 
 overrides:
   bin-wrapper: npm:bin-wrapper-china
-  ant-design-vue: 4.1.0
+  ant-design-vue: 4.1.2
   vue: 3.4.8
   vite: 5.0.10
   rollup: 4.6.0
@@ -71,8 +71,8 @@ importers:
         specifier: ^5.57.1
         version: 5.62.0(eslint@8.56.0)(typescript@4.9.5)
       ant-design-vue:
-        specifier: 4.1.0
-        version: 4.1.0(vue@3.4.8)
+        specifier: 4.1.2
+        version: 4.1.2(vue@3.4.8)
       autoprefixer:
         specifier: ^10.4.0
         version: 10.4.16(postcss@8.4.32)
@@ -678,8 +678,8 @@ importers:
         specifier: ^1.4.2
         version: 1.4.6
       ant-design-vue:
-        specifier: 4.1.0
-        version: 4.1.0(vue@3.4.8)
+        specifier: 4.1.2
+        version: 4.1.2(vue@3.4.8)
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -699,8 +699,8 @@ importers:
   play:
     dependencies:
       ant-design-vue:
-        specifier: 4.1.0
-        version: 4.1.0(vue@3.4.8)
+        specifier: 4.1.2
+        version: 4.1.2(vue@3.4.8)
       fe-ent-core:
         specifier: ^2.1.0
         version: link:../packages/fe-ent-core
@@ -742,8 +742,8 @@ importers:
         specifier: ^1.1.5
         version: 1.1.5(@babel/core@7.21.8)
       ant-design-vue:
-        specifier: 4.1.0
-        version: 4.1.0(vue@3.4.8)
+        specifier: 4.1.2
+        version: 4.1.2(vue@3.4.8)
       axios:
         specifier: ^0.21.1
         version: 0.21.4
@@ -5317,8 +5317,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /ant-design-vue@4.1.0(vue@3.4.8):
-    resolution: {integrity: sha512-sVQAfTCxpGRfFykM033/0ZWfNWbsL8EsqhBP9knbP4Ptc52zG57mQsCPWvq6Cj3yqmDJW6ykY05v0KB+5rAPXg==, tarball: https://registry.npmmirror.com/ant-design-vue/-/ant-design-vue-4.1.0.tgz}
+  /ant-design-vue@4.1.2(vue@3.4.8):
+    resolution: {integrity: sha512-ynFkDJLlHgumeK6Hr1UZ7PvQNZ1uBcri/pmejBdS3kRqHeA5VRsxneYDwa8YxA+uYB5YfT2jpYsSHsiMiCjRGg==, tarball: https://registry.npmmirror.com/ant-design-vue/-/ant-design-vue-4.1.2.tgz}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       vue: 3.4.8

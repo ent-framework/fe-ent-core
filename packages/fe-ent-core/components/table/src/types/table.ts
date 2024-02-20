@@ -61,15 +61,36 @@ export interface SorterResult {
 }
 
 export interface FetchParams {
+  /**
+   * Search queries
+   */
   searchInfo?: Recordable;
+  /**
+   * Page size
+   */
   page?: number;
+  /**
+   * Sort settings
+   */
   sortInfo?: Recordable;
+  /**
+   * filter info, additional params for filter data.
+   */
   filterInfo?: Recordable;
 }
 
 export interface GetColumnsParams {
+  /**
+   * Ignore index column
+   */
   ignoreIndex?: boolean;
+  /**
+   * Ignore action column
+   */
   ignoreAction?: boolean;
+  /**
+   * Sort columns or not.
+   */
   sort?: boolean;
 }
 
@@ -131,83 +152,169 @@ export interface TableSetting {
 }
 
 export interface BasicTableProps<T = any> {
-  // 点击行选中
+  /**
+   * 点击行选中
+   */
   clickToRowSelect?: boolean;
+  /**
+   * Is tree table.
+   */
   isTreeTable?: boolean;
-  // 自定义排序方法
+  /**
+   * 自定义排序方法
+   * @param sortInfo
+   */
   sortFn?: (sortInfo: SorterResult) => any;
-  // 排序方法
+  /**
+   * 过滤数据方法
+   * @param data
+   */
   filterFn?: (data: Partial<Recordable<string[]>>) => any;
-  // 取消表格的默认padding
+  /**
+   * 取消表格的默认padding
+   */
   inset?: boolean;
-  // 显示表格设置
+  /**
+   * 显示表格设置
+   */
   showTableSetting?: boolean;
+  /**
+   * 表格设置
+   */
   tableSetting?: TableSetting;
-  // 斑马纹
+  /**
+   * 斑马纹
+   */
   striped?: boolean;
-  // 是否自动生成key
+  /**
+   * 是否自动生成key
+   */
   autoCreateKey?: boolean;
-  // 计算合计行的方法
+  /**
+   * 计算合计行的方法
+   * @param arg
+   */
   summaryFunc?: (...arg: any) => Recordable[];
-  // 自定义合计表格内容
+  /**
+   * 自定义合计表格内容
+   */
   summaryData?: Recordable[];
-  // 是否显示合计行
+  /**
+   * 是否显示合计行
+   */
   showSummary?: boolean;
-  // 是否可拖拽列
+  /**
+   * 是否可拖拽列
+   */
   canColDrag?: boolean;
-  // 接口请求对象
+  /**
+   * 接口请求对象
+   * @param arg
+   */
   api?: (...arg: any) => Promise<any>;
-  // 请求之前处理参数
+  /**
+   * 请求之前处理参数
+   */
   beforeFetch?: Fn;
-  // 自定义处理接口返回参数
+  /**
+   * 自定义处理接口返回参数
+   */
   afterFetch?: Fn;
-  // 查询条件请求之前处理
+  /**
+   * Form查询条件请求之前处理
+   */
   handleSearchInfoFn?: Fn;
-  // 请求接口配置
+  /**
+   * 请求接口配置
+   */
   fetchSetting?: Partial<FetchSetting>;
-  // 立即请求接口
+  /**
+   * 立即请求接口
+   */
   immediate?: boolean;
-  // 在开起搜索表单的时候，如果没有数据是否显示表格
+  /**
+   * 在开起搜索表单的时候，如果没有数据是否显示表格
+   */
   emptyDataIsShowTable?: boolean;
-  // 额外的请求参数
+  /**
+   * 额外的请求参数
+   */
   searchInfo?: Recordable;
-  // 默认的排序参数
+  /**
+   * 默认的排序参数
+   */
   defSort?: Recordable;
-  // 使用搜索表单
+  /**
+   * 使用搜索表单
+   */
   useSearchForm?: boolean;
-  // 表单配置
+  /**
+   * 表单配置
+   */
   formConfig?: Partial<FormProps>;
-  // 列配置
+  /**
+   * 列配置
+   */
   columns: BasicColumn[];
-  // 是否显示序号列
+  /**
+   * 是否显示序号列
+   */
   showIndexColumn?: boolean;
-  // 序号列配置
+  /**
+   * 序号列配置
+   */
   indexColumnProps?: BasicColumn;
+  /**
+   * 操作栏
+   */
   actionColumn?: BasicColumn;
-  // 文本超过宽度是否显示。。。
+  /**
+   * 文本超过宽度是否显示 ...
+   */
   ellipsis?: boolean;
-  // 是否继承父级高度（父级高度-表单高度-padding高度）
+  /**
+   * 是否继承父级高度（父级高度-表单高度-padding高度）
+   */
   isCanResizeParent?: boolean;
-  // 是否可以自适应高度
+  /**
+   * 是否可以自适应高度
+   */
   canResize?: boolean;
-  // 自适应高度偏移， 计算结果-偏移量
+  /**
+   * 自适应高度偏移， 计算结果-偏移量
+   */
   resizeHeightOffset?: number;
-
-  // 在分页改变的时候清空选项
+  /**
+   * 在分页改变的时候清空选项
+   */
   clearSelectOnPageChange?: boolean;
-  //
+  /**
+   * 行Key，可以设定为主键ID，也可以自定义
+   */
   rowKey?: string | ((record: Recordable) => string);
-  // 数据
+  /**
+   * 数据源
+   */
   dataSource?: Recordable[];
-  // 标题右侧提示
+  /**
+   * 数据
+   */
   titleHelpMessage?: string | string[];
-  // 表格滚动最大高度
+  /**
+   * 表格滚动最大高度
+   */
   maxHeight?: number;
-  // 是否显示边框
+  /**
+   * 是否显示边框
+   */
   bordered?: boolean;
-  // 分页配置
+  /**
+   * 分页配置
+   */
   pagination?: PaginationProps | boolean;
-  // loading加载
+  /**
+   * 数据加载时是否显示loading图标
+   */
   loading?: boolean;
 
   /**
@@ -412,9 +519,7 @@ export interface BasicColumn extends ColumnProps<Recordable> {
   filters?: {
     text: string;
     value: string;
-    children?:
-      | unknown[]
-      | (((props: Record<string, unknown>) => unknown[]) & (() => unknown[]) & (() => unknown[]));
+    children?: unknown[] | (((props: Record<string, unknown>) => unknown[]) & (() => unknown[]));
   }[];
 
   //
@@ -447,18 +552,27 @@ export interface BasicColumn extends ColumnProps<Recordable> {
   editRule?: boolean | ((text: string, record: Recordable) => Promise<string>);
   editValueMap?: (value: any) => string;
   onEditRow?: () => void;
-  // 权限编码控制是否显示
+  /**
+   * 权限编码控制是否显示
+   */
   auth?: string | string[];
-  // 业务控制是否显示
+  /**
+   * 业务控制是否显示
+   */
   ifShow?: boolean | ((column: BasicColumn) => boolean);
-  // 自定义修改后显示的内容
+  /**
+   * 自定义修改后显示的内容
+   * @param opt
+   */
   editRender?: (opt: {
     text: string | number | boolean | Recordable;
     record: Recordable;
     column: BasicColumn;
     index: number;
   }) => VNodeChild;
-  // 动态 Disabled
+  /**
+   * 动态 Disabled
+   */
   editDynamicDisabled?: boolean | ((record: Recordable) => boolean);
 }
 

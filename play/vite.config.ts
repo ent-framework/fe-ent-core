@@ -76,9 +76,6 @@ export default defineConfig(({ command, mode }) => {
             target: 'http://localhost:3000',
             changeOrigin: true,
             ws: true,
-            // rewrite: (path) => path.replace(new RegExp(`^/api`), ''),
-            // only https
-            // secure: false
           },
           // 配合 Ent-framework 测试
           // '/api': {

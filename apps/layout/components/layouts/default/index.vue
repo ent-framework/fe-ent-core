@@ -80,6 +80,7 @@
           isMobile.value = width.value - 1 < lgWidth;
         }
         handleRestoreState();
+        console.log('createBreakpointListen');
       });
 
       /**
@@ -101,6 +102,7 @@
               menuSetting: {
                 type: MenuTypeEnum.SIDEBAR,
                 mode: MenuModeEnum.INLINE,
+                collapsed: true,
                 split: false,
               },
             });

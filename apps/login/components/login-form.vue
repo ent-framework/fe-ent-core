@@ -24,7 +24,7 @@
         :placeholder="t('sys.login.password')"
       />
     </FormItem>
-    <FormItem v-if="captcha !== 'none'" name="captcha" class="enter-x">
+    <FormItem v-if="captcha" name="captcha" class="enter-x">
       <InputGroup compact>
         <Input
           v-model:value="formData.captcha"
@@ -159,7 +159,10 @@
   });
 
   const { validForm } = useFormValid<formDataType>(formRef);
-  const captcha = computed(() => sessionStore.getSession.captcha);
+  const captcha = computed(
+    () =>
+      sessionStore.getSession.captcha && sessionStore.getSession.captcha.toUpperCase() !== 'NONE',
+  );
   const getShow = computed(() => unref(getLoginState) === LoginStateEnum.LOGIN);
   const captchaUrl = ref();
   const getCaptcha = async () => {
@@ -177,7 +180,7 @@
   };
 
   watchEffect(() => {
-    if (captcha.value !== 'none') {
+    if (captcha.value) {
       getCaptcha();
     }
   });
@@ -211,7 +214,9 @@
       }
       await userStore.afterLoginAction(true, redirect);
     } catch (error) {
-      await getCaptcha();
+      if (captcha.value) {
+        await getCaptcha();
+      }
       createErrorModal({
         title: t('sys.api.errorTip'),
         content: (error as unknown as Error).message || t('sys.api.networkExceptionMsg'),
