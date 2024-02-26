@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-vue-scripts",
-  "version": "2.1.28",
+  "version": "2.1.30",
   "description": "Ent Vue Scripts",
   "main": "dist/index.js",
   "bin": {
@@ -81,7 +81,7 @@
     "ts-morph": "^14.0.0",
     "typescript": "^4.9.4",
     "unocss": "^0.57.7",
-    "vite": "^5.0.7",
+    "vite": "^5.1.4",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-html": "^3.2.0",
     "vite-plugin-inspect": "^0.7.42",

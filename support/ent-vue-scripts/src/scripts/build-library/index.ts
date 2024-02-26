@@ -15,6 +15,7 @@ async function run({ umd = false, source = false, base = '' }) {
   const files = glob.sync('**/*.less', {
     cwd,
     absolute: false,
+    ignore: ['node_modules/**'],
   });
 
   for (const filename of files) {

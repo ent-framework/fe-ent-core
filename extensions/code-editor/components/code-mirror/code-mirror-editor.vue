@@ -9,20 +9,18 @@
   import { useWindowSizeFn } from 'fe-ent-core/es/hooks';
   import { MODE } from '../typing';
   import { CodeMirror } from './codemirror';
-  import type { PropType } from 'vue';
   import type { Nullable } from 'fe-ent-core/es/types';
 
-  const props = defineProps({
-    mode: {
-      type: String as PropType<MODE>,
-      default: MODE.JSON,
-      validator(value: any) {
-        // 这个值必须匹配下列字符串中的一个
-        return Object.values(MODE).includes(value);
-      },
-    },
-    value: { type: String, default: '' },
-    readonly: { type: Boolean, default: false },
+  export interface CodeMirrorEditorProps {
+    mode: MODE;
+    value: string;
+    readonly: boolean;
+  }
+
+  const props = withDefaults(defineProps<CodeMirrorEditorProps>(), {
+    mode: MODE.JSON,
+    value: '',
+    readonly: false,
   });
 
   const emit = defineEmits(['change']);

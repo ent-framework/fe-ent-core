@@ -54,14 +54,6 @@ async function defineLibraryConfig(source: boolean) {
             exports: 'named',
             //preserveModulesRoot: 'components',
           },
-          // {
-          //   interop: 'auto',
-          //   format: 'commonjs',
-          //   dir: 'lib',
-          //   entryFileNames: '[name].js',
-          //   preserveModules: true,
-          //   exports: 'named',
-          // },
         ],
         external: [...deps],
         // output: {

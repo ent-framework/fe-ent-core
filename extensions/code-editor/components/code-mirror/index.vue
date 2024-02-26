@@ -13,20 +13,32 @@
   import { isString } from 'fe-ent-core/es/utils';
   import { MODE } from '../typing';
   import CodeMirrorEditor from './code-mirror-editor.vue';
-  import type { PropType } from 'vue';
 
-  const props = defineProps({
-    value: { type: [Object, String] as PropType<Record<string, any> | string> },
-    mode: {
-      type: String as PropType<MODE>,
-      default: MODE.JSON,
-      validator(value: any) {
-        // 这个值必须匹配下列字符串中的一个
-        return Object.values(MODE).includes(value);
-      },
-    },
-    readonly: { type: Boolean },
-    autoFormat: { type: Boolean, default: true },
+  export interface CodeMirrorProps {
+    /**
+     * 值
+     */
+    value: string | Record<string, any>;
+    /**
+     * 模式
+     * @type string
+     * @default JSON
+     */
+    mode: MODE;
+    /**
+     * 是否只读
+     */
+    readonly?: boolean;
+    /**
+     * 是否开启自动格式化
+     * @default true
+     */
+    autoFormat?: boolean;
+  }
+
+  const props = withDefaults(defineProps<CodeMirrorProps>(), {
+    mode: MODE.JSON,
+    autoFormat: true,
   });
 
   defineComponent({
