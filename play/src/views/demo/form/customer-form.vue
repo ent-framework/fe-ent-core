@@ -14,6 +14,7 @@
   import { useForm } from 'fe-ent-core/es/components/form';
   import { useMessage } from 'fe-ent-core/es/hooks';
   import { Input } from 'ant-design-vue';
+  import { mockPost } from '/@/api/post';
   import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
 
   const schemas: FormSchema[] = [
@@ -59,6 +60,11 @@
       },
       rules: [{ required: true }],
     },
+    {
+      field: 'field4',
+      component: 'InputTextArea',
+      label: 'InputTextArea',
+    },
   ];
   export default defineComponent({
     components: {
@@ -78,6 +84,7 @@
         schemas,
         handleSubmit: (values: any) => {
           createMessage.success(`click search,values:${JSON.stringify(values)}`);
+          mockPost(values);
         },
         setProps,
       };
