@@ -3,7 +3,7 @@
 import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
 import { useMessage } from '@ent-core/hooks/web/use-message';
 import { ContentTypeEnum, RequestEnum, ResultEnum } from '@ent-core/logics/enums/http-enum';
-import { isString } from '@ent-core/utils/is';
+import { isFunction, isString } from '@ent-core/utils/is';
 import { deepMerge, setObjToUrlParams } from '@ent-core/utils/base';
 import { useErrorLogStore } from '@ent-core/store/modules/error-log';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
@@ -28,9 +28,12 @@ const transform: AxiosTransform = {
    */
   transformRequestHook: (res: AxiosResponse<Result>, options: RequestOptions) => {
     const { t } = useI18n();
-    const { isTransformResponse, isReturnNativeResponse } = options;
+    const { isTransformResponse, isReturnNativeResponse, transformResponse } = options;
     // 是否返回原生响应头 比如：需要获取响应头时使用该属性
     if (isReturnNativeResponse) {
+      if (transformResponse && isFunction(transformResponse)) {
+        return transformResponse(res);
+      }
       return res;
     }
     // 不进行任何处理，直接返回
@@ -49,6 +52,9 @@ const transform: AxiosTransform = {
     // 这里逻辑可以根据项目进行修改
     const hasSuccess = data && Reflect.has(data, 'code') && code === ResultEnum.SUCCESS;
     if (hasSuccess) {
+      if (transformResponse && isFunction(transformResponse)) {
+        return transformResponse(result);
+      }
       return result;
     }
 
