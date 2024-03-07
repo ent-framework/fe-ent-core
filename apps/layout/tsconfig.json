@@ -12,7 +12,7 @@
     },
     "types": ["vite/client"]
   },
-  "include": ["components/**/*", "hooks/*", "store/*", "types.ts", "init.ts"],
+  "include": ["components/**/*", "hooks/*", "store/*", "locales", "types.ts", "index.ts"],
   "exclude": [
     "node_modules",
     "**/node_modules/**",

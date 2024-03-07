@@ -1,4 +1,5 @@
 import { defHttp } from '@ent-core/utils/http';
+import { useGlobSetting } from '@ent-core/hooks';
 import { ThemeEnum } from '../enums';
 import type { AppRouteRecordRaw } from '@ent-core/router/types';
 import type { Recordable } from '@ent-core/types';
@@ -29,7 +30,9 @@ export interface LayoutFactory {
 
 export class LayoutService implements LayoutFactory {
   getMenuList = (params: Recordable) => {
-    return defHttp.get<AppRouteRecordRaw[]>({ url: Api.GetMenuList, params });
+    const globSetting = useGlobSetting();
+    const { userApiPrefix = '' } = globSetting;
+    return defHttp.get<AppRouteRecordRaw[]>({ url: `${userApiPrefix}${Api.GetMenuList}`, params });
   };
   getDefaultThemeSetting = () => {
     return defaultThemeSetting;

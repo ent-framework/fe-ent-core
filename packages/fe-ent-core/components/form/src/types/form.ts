@@ -76,7 +76,9 @@ export interface FormProps {
   schemas?: FormSchema[];
   // Function values used to merge into dynamic control form items
   mergeDynamicData?: Recordable;
-  // Compact mode for search forms
+  /**
+   * Compact mode for search forms
+   */
   compact?: boolean;
   // Blank line span
   emptySpan?: number | Partial<ColEx>;
@@ -142,7 +144,9 @@ export interface FormSchema {
   helpComponentProps?: Partial<HelpComponentProps>;
   // Label width, if it is passed, the labelCol and WrapperCol configured by itemProps will be invalid
   labelWidth?: string | number;
-  // Disable the adjustment of labelWidth with global settings of formModel, and manually set labelCol and wrapperCol by yourself
+  /**
+   * Disable the adjustment of labelWidth with global settings of formModel, and manually set labelCol and wrapperCol by yourself
+   */
   disabledLabelWidth?: boolean;
   // render component
   component: ComponentType;
@@ -160,21 +164,33 @@ export interface FormSchema {
 
   suffix?: string | number | ((values: RenderCallbackParams) => string | number);
 
-  // Validation rules
+  /**
+   * Validation rules
+   */
   rules?: Rule[];
-  // Check whether the information is added to the label
+  /**
+   * Check whether the information is added to the label
+   */
   rulesMessageJoinLabel?: boolean;
 
-  // Reference formModelItem
+  /**
+   * Reference formModelItem
+   */
   itemProps?: Partial<FormItem>;
 
-  // col configuration outside formModelItem
+  /**
+   * col configuration outside formModelItem
+   */
   colProps?: Partial<ColEx>;
 
-  // 默认值
+  /**
+   * 默认值
+   */
   defaultValue?: any;
 
-  // 是否自动处理与时间相关组件的默认值
+  /**
+   * 是否自动处理与时间相关组件的默认值
+   */
   isHandleDateDefaultValue?: boolean;
 
   isAdvanced?: boolean;
@@ -182,14 +198,22 @@ export interface FormSchema {
   // Matching details components
   span?: number;
 
+  /**
+   * 是否显示，可以根据其他输入选项的值，做一些联动
+   */
   ifShow?: boolean | ((renderCallbackParams: RenderCallbackParams) => boolean);
 
   show?: boolean | ((renderCallbackParams: RenderCallbackParams) => boolean);
-
-  // Render the content in the form-item tag
+  /**
+   *  Render the content in the form-item tag
+   * @param renderCallbackParams
+   */
   render?: (renderCallbackParams: RenderCallbackParams) => VNode | VNode[] | string;
 
-  // Rendering col content requires outer wrapper form-item
+  /**
+   * Rendering col content requires outer wrapper form-item
+   * @param renderCallbackParams
+   */
   renderColContent?: (renderCallbackParams: RenderCallbackParams) => VNode | VNode[] | string;
 
   renderComponentContent?:
@@ -198,12 +222,15 @@ export interface FormSchema {
     | VNode[]
     | string;
 
-  // Custom slot, in from-item
+  /**
+   * Custom slot, in from-item
+   */
   slot?: string;
 
-  // Custom slot, similar to renderColContent
+  /**
+   * Custom slot, similar to renderColContent
+   */
   colSlot?: string;
-
   dynamicDisabled?: boolean | ((renderCallbackParams: RenderCallbackParams) => boolean);
 
   dynamicRules?: (renderCallbackParams: RenderCallbackParams) => Rule[];

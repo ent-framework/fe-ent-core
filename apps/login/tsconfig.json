@@ -14,7 +14,7 @@
     },
     "types": ["vite/client"]
   },
-  "include": ["components", "../../packages"],
+  "include": ["components", "locales","../../packages"],
   "exclude": [
     "node_modules",
     "dist",

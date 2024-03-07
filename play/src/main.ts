@@ -13,8 +13,8 @@ import { initApplication } from '/@/init-application';
 
 import 'fe-ent-core/es/theme/index.less';
 
-import { getPublicRoutes, initLayout } from 'fe-ent-layout';
-import { LoginRoute } from 'fe-ent-login';
+import { initLayout } from 'fe-ent-layout';
+import { initLogin } from 'fe-ent-login';
 
 import App from './App.vue';
 async function bootstrap() {
@@ -31,12 +31,11 @@ async function bootstrap() {
   // Register ant global components
   registerAntGlobComp(app);
 
-  initLayout(app, entRouter);
-
   app.use(EntCore);
 
-  entRouter.addPublicRoutes([LoginRoute]);
-  entRouter.addPublicRoutes(getPublicRoutes());
+  initLayout(app, entRouter);
+  initLogin(app, entRouter);
+
   entRouter.importAuthRoutes(import.meta.glob(`/src/routes/modules/**/*.ts`, { eager: true }));
 
   app.use(entRouter);

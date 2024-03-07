@@ -49,7 +49,7 @@
 
       const [registerForm, { validateFields, resetFields }] = useForm({
         showActionButtonGroup: false,
-        labelWidth: '40%',
+        labelWidth: '30%',
         labelAlign: 'left',
         schemas: [
           {
@@ -58,7 +58,7 @@
             component: 'InputPassword',
             required: true,
             colProps: {
-              span: 12,
+              span: 24,
             },
           },
         ],
