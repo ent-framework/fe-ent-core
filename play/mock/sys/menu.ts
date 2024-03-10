@@ -5,24 +5,24 @@ import type { MockMethod } from 'vite-plugin-mock';
 
 // single
 const dashboardRoute = {
-  path: '/dashboard',
+  path: '',
   name: 'Dashboard',
-  redirect: '/dashboard/analysis',
   meta: {
     orderNo: 5000,
     title: 'routes.dashboard.dashboard',
-    hideChildrenInMenu: false,
+    //hideChildrenInMenu: false,
     icon: 'bx:bx-home',
   },
+  component: 'LAYOUT',
   children: [
     {
-      path: 'analysis',
+      path: '/dashboard/analysis',
       name: 'Analysis',
       meta: {
         hideMenu: false,
         hideBreadcrumb: true,
         title: 'routes.dashboard.analysis',
-        currentActiveMenu: '/dashboard',
+       // currentActiveMenu: '/dashboard',
         icon: 'bx:bx-home',
       },
     },

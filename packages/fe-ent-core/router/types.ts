@@ -46,8 +46,13 @@ export interface AppRouteMeta extends RouteMeta {
   ignoreKeepAlive?: boolean;
   // Is it fixed on tab
   affix?: boolean;
-  // icon on tab
+  /**
+   * icon on menu
+   */
   icon?: string;
+  /**
+   * frameSrc
+   */
   frameSrc?: string;
   // current page transition
   transitionName?: string;
@@ -63,7 +68,9 @@ export interface AppRouteMeta extends RouteMeta {
   currentActiveMenu?: string;
   // Never show in tab
   hideTab?: boolean;
-  // Never show in menu
+  /**
+   * Never show in menu
+   */
   hideMenu?: boolean;
 
   isLink?: boolean;

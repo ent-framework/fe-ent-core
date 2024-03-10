@@ -197,9 +197,7 @@ export const usePermissionStore = defineStore('app-permission', {
               await this.changePermissionCode();
             }
             // 从后端获取Menu
-            routeList = (await Factory.getLayoutFactory().getMenuList({
-              entryPath,
-            })) as AppRouteRecordRaw[];
+            routeList = (await Factory.getUserFactory().getMenuList()) as AppRouteRecordRaw[];
           } catch (error) {
             console.error(error);
           }
@@ -214,6 +212,7 @@ export const usePermissionStore = defineStore('app-permission', {
           routeList = backendRouteFilter(entRouter.getAuthRoutes(), routeList);
           //  Background routing to menu structure
           const backMenuList = transformRouteToMenu(routeList);
+          console.log(JSON.stringify(backMenuList));
           this.setBackMenuList(backMenuList);
 
           // remove meta.ignoreRoute item

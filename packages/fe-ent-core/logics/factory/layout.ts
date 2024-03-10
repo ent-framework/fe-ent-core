@@ -1,13 +1,5 @@
-import { defHttp } from '@ent-core/utils/http';
-import { useGlobSetting } from '@ent-core/hooks';
 import { ThemeEnum } from '../enums';
-import type { AppRouteRecordRaw } from '@ent-core/router/types';
-import type { Recordable } from '@ent-core/types';
 import type { ThemeSetting } from '@ent-core/store/types';
-enum Api {
-  GetMenuList = '/menu-list',
-  GetAppList = '/app-list',
-}
 
 const defaultThemeSetting: ThemeSetting = {
   theme: ThemeEnum.LIGHT,
@@ -23,17 +15,11 @@ const defaultThemeSetting: ThemeSetting = {
 };
 
 export interface LayoutFactory {
-  getMenuList: (params: Recordable) => Promise<AppRouteRecordRaw[]>;
   getDefaultThemeSetting: () => ThemeSetting;
   getThemeSettings: () => ThemeSetting[];
 }
 
 export class LayoutService implements LayoutFactory {
-  getMenuList = (params: Recordable) => {
-    const globSetting = useGlobSetting();
-    const { userApiPrefix = '' } = globSetting;
-    return defHttp.get<AppRouteRecordRaw[]>({ url: `${userApiPrefix}${Api.GetMenuList}`, params });
-  };
   getDefaultThemeSetting = () => {
     return defaultThemeSetting;
   };

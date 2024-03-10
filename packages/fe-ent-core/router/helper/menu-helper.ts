@@ -62,21 +62,22 @@ const menuParamRegex = /(?::)([\s\S]+?)((?=\/)|$)/g;
 export function configureDynamicParamsMenu(menu: Menu, params: RouteParams) {
   const { path, paramPath } = toRaw(menu);
   let realPath = paramPath ? paramPath : path;
-  const matchArr = realPath.match(menuParamRegex);
+  if (realPath) {
+    const matchArr = realPath.match(menuParamRegex);
 
-  matchArr?.forEach((it) => {
-    const realIt = it.slice(1);
-    if (params[realIt]) {
-      realPath = realPath.replace(`:${realIt}`, params[realIt] as string);
+    matchArr?.forEach((it) => {
+      const realIt = it.slice(1);
+      if (params[realIt]) {
+        realPath = realPath.replace(`:${realIt}`, params[realIt] as string);
+      }
+    });
+    // save original param path.
+    if (!paramPath && matchArr && matchArr.length > 0) {
+      menu.paramPath = path;
     }
-  });
-  // save original param path.
-  if (!paramPath && matchArr && matchArr.length > 0) {
-    menu.paramPath = path;
+    // TODO 这里可能引起面包屑bug
+    menu.path = realPath;
   }
-  // TODO 这里可能引起面包屑bug
-  menu.path = realPath;
-
   // children
   menu.children?.forEach((item) => configureDynamicParamsMenu(item, params));
 }

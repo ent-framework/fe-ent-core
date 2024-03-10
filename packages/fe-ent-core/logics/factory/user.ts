@@ -7,12 +7,14 @@ import type {
   Session,
   UserInfoModel,
 } from '@ent-core/logics/types/user';
+import type { AppRouteRecordRaw } from '@ent-core/router';
 
 enum Api {
   Login = '/login',
   Logout = '/logout',
   GetUserInfo = '/user-info',
   GetPermCode = '/perm-code',
+  GetMenuList = '/menu-list',
   GetSession = '/session',
 }
 
@@ -20,11 +22,25 @@ export interface UserFactory {
   getSession: (remember_me?: string) => Promise<Session>;
   loginApi: (params: LoginParams, mode?: ErrorMessageMode) => Promise<LoginResultModel>;
   getUserInfo: () => Promise<UserInfoModel>;
+  getMenuList: () => Promise<AppRouteRecordRaw[]>;
   getPermCode: () => Promise<string[]>;
   doLogout: () => Promise<any>;
 }
 
 export class UserService implements UserFactory {
+  private appCode?: string;
+  constructor(appCode?: string) {
+    this.appCode = appCode;
+  }
+  getMenuList = () => {
+    const globSetting = useGlobSetting();
+    const { userApiPrefix = '' } = globSetting;
+    const params: Record<string, string> = {};
+    if (this.appCode) {
+      params['appCode'] = this.appCode;
+    }
+    return defHttp.get<AppRouteRecordRaw[]>({ url: `${userApiPrefix}${Api.GetMenuList}`, params });
+  };
   getSession = (rememberMeJwt?: string) => {
     const globSetting = useGlobSetting();
     const { userApiPrefix = '' } = globSetting;
@@ -42,7 +58,11 @@ export class UserService implements UserFactory {
   getPermCode = () => {
     const globSetting = useGlobSetting();
     const { userApiPrefix = '' } = globSetting;
-    return defHttp.get<string[]>({ url: `${userApiPrefix}${Api.GetPermCode}` });
+    const params: Record<string, string> = {};
+    if (this.appCode) {
+      params['appCode'] = this.appCode;
+    }
+    return defHttp.get<string[]>({ url: `${userApiPrefix}${Api.GetPermCode}`, params });
   };
 
   getUserInfo = () => {

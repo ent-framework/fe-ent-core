@@ -8,7 +8,7 @@ export async function initApplication() {
   // ! 需要注意调用时机
   const { changePermissionMode } = usePermission();
   //await changePermissionMode('BACK');
-  await changePermissionMode('ROUTE_MAPPING');
+  //await changePermissionMode('ROUTE_MAPPING');
   const { addMessages } = useLocale();
   // 添加翻译
   addMessages('en', localeEn);
