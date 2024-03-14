@@ -1,233 +1,72 @@
 [
   {
-    "orderNo": 5000,
-    "title": "routes.dashboard.dashboard",
-    "icon": "bx:bx-home",
-    "meta": {
-      "orderNo": 5000,
-      "title": "routes.dashboard.dashboard",
-      "icon": "bx:bx-home"
-    },
-    "name": "routes.dashboard.dashboard",
-    "hideMenu": false,
-    "path": "",
-    "redirect": "//dashboard/analysis",
-    "children": [
-      {
-        "title": "routes.dashboard.analysis",
-        "hideMenu": false,
-        "hideBreadcrumb": true,
-        "icon": "bx:bx-home",
-        "meta": {
-          "title": "routes.dashboard.analysis",
-          "hideMenu": false,
-          "hideBreadcrumb": true,
-          "icon": "bx:bx-home"
-        },
-        "name": "routes.dashboard.analysis",
-        "path": "/dashboard/analysis"
-      }
-    ]
-  },
-  {
-    "orderNo": 1000,
-    "icon": "carbon:user-role",
-    "title": "routes.demo.permission.permission",
-    "meta": {
-      "orderNo": 1000,
-      "icon": "carbon:user-role",
-      "title": "routes.demo.permission.permission"
-    },
-    "name": "routes.demo.permission.permission",
-    "hideMenu": false,
-    "path": "/permission",
-    "redirect": "/permission/front/page",
-    "children": [
-      {
-        "title": "routes.demo.permission.back",
-        "meta": {
-          "title": "routes.demo.permission.back"
-        },
-        "name": "routes.demo.permission.back",
-        "hideMenu": false,
-        "path": "/permission/back",
-        "children": [
-          {
-            "title": "routes.dashboard.workbench",
-            "hideMenu": false,
-            "hideBreadcrumb": true,
-            "icon": "bx:bx-home",
-            "meta": {
-              "title": "routes.dashboard.workbench",
-              "hideMenu": false,
-              "hideBreadcrumb": true,
-              "icon": "bx:bx-home"
-            },
-            "name": "routes.dashboard.workbench",
-            "path": "/dashboard/workbench"
-          },
-          {
-            "title": "routes.demo.permission.backPage",
-            "meta": {
-              "title": "routes.demo.permission.backPage"
-            },
-            "name": "routes.demo.permission.backPage",
-            "hideMenu": false,
-            "path": "/permission/back/page"
-          },
-          {
-            "title": "routes.demo.permission.backBtn",
-            "meta": {
-              "title": "routes.demo.permission.backBtn"
-            },
-            "name": "routes.demo.permission.backBtn",
-            "hideMenu": false,
-            "path": "/permission/back/btn"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "orderNo": 2000,
-    "icon": "carbon:user-role",
-    "title": "routes.demo.level.level",
-    "meta": {
-      "orderNo": 2000,
-      "icon": "carbon:user-role",
-      "title": "routes.demo.level.level"
-    },
-    "name": "routes.demo.level.level",
-    "hideMenu": false,
-    "path": "/level",
-    "redirect": "/level/menu1/menu1-1/menu1-1-1",
-    "children": [
-      {
-        "title": "Menu1",
-        "meta": {
-          "title": "Menu1"
-        },
-        "name": "Menu1",
-        "hideMenu": false,
-        "path": "/level/menu1",
-        "redirect": "/level/menu1/menu1-1/menu1-1-1",
-        "children": [
-          {
-            "title": "Menu1-1",
-            "meta": {
-              "title": "Menu1-1"
-            },
-            "name": "Menu1-1",
-            "hideMenu": false,
-            "path": "/level/menu1/menu1-1",
-            "redirect": "/level/menu1/menu1-1/menu1-1-1",
-            "children": [
-              {
-                "title": "Menu111",
-                "meta": {
-                  "title": "Menu111"
-                },
-                "name": "Menu111",
-                "hideMenu": false,
-                "path": "/level/menu1/menu1-1/menu1-1-1"
-              }
-            ]
-          },
-          {
-            "title": "Menu1-2",
-            "meta": {
-              "title": "Menu1-2"
-            },
-            "name": "Menu1-2",
-            "hideMenu": false,
-            "path": "/level/menu1/menu1-2"
-          }
-        ]
-      },
-      {
-        "title": "Menu2",
-        "meta": {
-          "title": "Menu2"
-        },
-        "name": "Menu2",
-        "hideMenu": false,
-        "path": "/level/menu2"
-      }
-    ]
-  },
-  {
-    "orderNo": 2000,
     "icon": "ion:settings-outline",
-    "title": "routes.demo.system.moduleName",
+    "title": "系统管理",
     "meta": {
-      "orderNo": 2000,
       "icon": "ion:settings-outline",
-      "title": "routes.demo.system.moduleName"
+      "title": "系统管理"
     },
-    "name": "routes.demo.system.moduleName",
+    "name": "系统管理",
     "hideMenu": false,
-    "path": "/system",
-    "redirect": "/system/account",
     "children": [
       {
-        "title": "routes.demo.system.account",
-        "ignoreKeepAlive": true,
+        "title": "用户管理",
         "meta": {
-          "title": "routes.demo.system.account",
-          "ignoreKeepAlive": true
+          "title": "用户管理"
         },
-        "name": "routes.demo.system.account",
+        "name": "用户管理",
         "hideMenu": false,
-        "path": "/system/account"
+        "path": "/admin/user-info"
       },
       {
-        "hideMenu": true,
-        "title": "routes.demo.system.account_detail",
-        "ignoreKeepAlive": true,
-        "showMenu": false,
-        "currentActiveMenu": "/system/account",
+        "title": "租户管理",
+        "icon": "simple-icons:about-dot-me",
         "meta": {
-          "hideMenu": true,
-          "title": "routes.demo.system.account_detail",
-          "ignoreKeepAlive": true,
-          "showMenu": false,
-          "currentActiveMenu": "/system/account"
+          "title": "租户管理",
+          "icon": "simple-icons:about-dot-me"
         },
-        "name": "routes.demo.system.account_detail",
-        "path": "/system/account_detail/:id"
+        "name": "租户管理",
+        "hideMenu": false,
+        "path": "/tenant/institutions"
+      }
+    ]
+  },
+  {
+    "icon": "ion:aperture-outline",
+    "title": "资源管理",
+    "meta": {
+      "icon": "ion:aperture-outline",
+      "title": "资源管理"
+    },
+    "name": "资源管理",
+    "hideMenu": false,
+    "children": [
+      {
+        "title": "静态页面资源",
+        "meta": {
+          "title": "静态页面资源"
+        },
+        "name": "静态页面资源",
+        "hideMenu": false,
+        "path": "/admin/resource-page"
       },
       {
-        "title": "routes.demo.system.role",
-        "ignoreKeepAlive": true,
+        "title": "权限位管理",
         "meta": {
-          "title": "routes.demo.system.role",
-          "ignoreKeepAlive": true
+          "title": "权限位管理"
         },
-        "name": "routes.demo.system.role",
+        "name": "权限位管理",
         "hideMenu": false,
-        "path": "/system/role"
+        "path": "/admin/resource-code"
       },
       {
-        "title": "routes.demo.system.menu",
-        "ignoreKeepAlive": true,
+        "title": "资源管理",
         "meta": {
-          "title": "routes.demo.system.menu",
-          "ignoreKeepAlive": true
+          "title": "资源管理"
         },
-        "name": "routes.demo.system.menu",
+        "name": "资源管理",
         "hideMenu": false,
-        "path": "/system/menu"
-      },
-      {
-        "title": "routes.demo.system.dept",
-        "ignoreKeepAlive": true,
-        "meta": {
-          "title": "routes.demo.system.dept",
-          "ignoreKeepAlive": true
-        },
-        "name": "routes.demo.system.dept",
-        "hideMenu": false,
-        "path": "/system/dept"
+        "path": "/admin/resources"
       }
     ]
   }

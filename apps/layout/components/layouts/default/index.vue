@@ -80,7 +80,6 @@
           isMobile.value = width.value - 1 < lgWidth;
         }
         handleRestoreState();
-        console.log('createBreakpointListen');
       });
 
       /**

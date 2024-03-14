@@ -8,21 +8,26 @@
     :rules="getFormRules"
     @keypress.enter="handleLogin"
   >
+    <FormItem v-if="tenantCode" name="tenantCode" class="enter-x">
+      <Input v-model:value="formData.tenantCode" size="large" class="fix-auto-fill">
+        <template #addonBefore>
+          <span class="login-input-label">{{ t('sys.login.tenantCode') }}</span>
+        </template>
+      </Input>
+    </FormItem>
     <FormItem name="account" class="enter-x">
-      <Input
-        v-model:value="formData.account"
-        size="large"
-        :placeholder="t('sys.login.userName')"
-        class="fix-auto-fill"
-      />
+      <Input v-model:value="formData.account" size="large" class="fix-auto-fill">
+        <template #addonBefore>
+          <span class="login-input-label">{{ t('sys.login.userName') }}</span>
+        </template>
+      </Input>
     </FormItem>
     <FormItem name="password" class="enter-x">
-      <InputPassword
-        v-model:value="formData.password"
-        size="large"
-        visibility-toggle
-        :placeholder="t('sys.login.password')"
-      />
+      <InputPassword v-model:value="formData.password" size="large" visibility-toggle class="fix-auto-fill">
+        <template #addonBefore>
+          <span class="login-input-label">{{ t('sys.login.password') }}</span>
+        </template>
+      </InputPassword>
     </FormItem>
     <FormItem v-if="captcha" name="captcha" class="enter-x">
       <InputGroup compact>
@@ -30,9 +35,12 @@
           v-model:value="formData.captcha"
           class="fix-auto-fill"
           size="large"
-          :placeholder="t('sys.login.captcha')"
-          style="width: calc(100% - 200px)"
-        />
+          style="width: calc(100% - 120px)"
+        >
+          <template #addonBefore>
+            <span class="login-input-label">{{ t('sys.login.captcha') }}</span>
+          </template>
+        </Input>
         <img id="canvas" style="width: 120px" :src="captchaUrl" @click="onCaptchaClick" />
       </InputGroup>
     </FormItem>
@@ -148,11 +156,13 @@
   const rememberMe = ref(false);
 
   type formDataType = {
+    tenantCode: string;
     account: string;
     password: string;
     captcha?: string;
   };
   const formData = reactive<formDataType>({
+    tenantCode: '',
     account: '',
     password: '',
     captcha: '',
@@ -163,6 +173,10 @@
     () =>
       sessionStore.getSession.captcha && sessionStore.getSession.captcha.toUpperCase() !== 'NONE',
   );
+  const tenantCode = computed(() => {
+    return sessionStore.getSession.inst === undefined;
+  });
+
   const getShow = computed(() => unref(getLoginState) === LoginStateEnum.LOGIN);
   const captchaUrl = ref();
   const getCaptcha = async () => {
@@ -201,6 +215,7 @@
         password: data.password,
         username: data.account,
         captcha: data.captcha,
+        tenantCode: data.tenantCode,
         rememberMe: rememberMe.value,
         mode: 'none', //不要默认的错误提示
       });
@@ -227,3 +242,9 @@
     }
   }
 </script>
+<style scoped lang="less">
+  .login-input-label {
+    display: block;
+    width: 60px;
+  }
+</style>

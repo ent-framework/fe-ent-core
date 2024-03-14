@@ -1,5 +1,6 @@
 import { computed, ref, unref } from 'vue';
 import { useI18n } from 'fe-ent-core/es/hooks';
+import { useSessionStore } from 'fe-ent-core/es/store';
 import type { Ref } from 'vue';
 import type { Rule, RuleObject } from 'ant-design-vue/es/form/interface';
 import type { Recordable } from 'fe-ent-core/es/types';
@@ -41,11 +42,13 @@ export function useFormValid<T>(formRef: Ref<FormInstance>) {
 
 export function useFormRules(formData?: Recordable) {
   const { t } = useI18n();
-
+  const sessionStore = useSessionStore();
   const getAccountFormRule = computed(() => createRule(t('sys.login.accountPlaceholder')));
   const getPasswordFormRule = computed(() => createRule(t('sys.login.passwordPlaceholder')));
   const getSmsFormRule = computed(() => createRule(t('sys.login.smsPlaceholder')));
   const getMobileFormRule = computed(() => createRule(t('sys.login.mobilePlaceholder')));
+  const getTenantFormRule = computed(() => createRule(t('sys.login.tenantCodePlaceholder')));
+  const getCaptchaFormRule = computed(() => createRule(t('sys.login.captchaPlaceholder')));
 
   const validatePolicy = async (_: RuleObject, value: boolean) => {
     return !value ? Promise.reject(t('sys.login.policyPlaceholder')) : Promise.resolve();
@@ -68,42 +71,47 @@ export function useFormRules(formData?: Recordable) {
     const passwordFormRule = unref(getPasswordFormRule);
     const smsFormRule = unref(getSmsFormRule);
     const mobileFormRule = unref(getMobileFormRule);
+    const tenantFormRule = unref(getTenantFormRule);
+    const captchaFormRule = unref(getCaptchaFormRule);
 
     const mobileRule = {
       sms: smsFormRule,
       mobile: mobileFormRule,
     };
 
-    switch (unref(currentState)) {
-      // register form rules
-      case LoginStateEnum.REGISTER:
-        return {
-          account: accountFormRule,
-          password: passwordFormRule,
-          confirmPassword: [
-            { validator: validateConfirmPassword(formData?.password), trigger: 'change' },
-          ],
-          policy: [{ validator: validatePolicy, trigger: 'change' }],
-          ...mobileRule,
-        };
-
-      // reset password form rules
-      case LoginStateEnum.RESET_PASSWORD:
-        return {
-          account: accountFormRule,
-          ...mobileRule,
-        };
-
-      // mobile form rules
-      case LoginStateEnum.MOBILE:
-        return mobileRule;
-
-      // login form rules
-      default:
-        return {
-          account: accountFormRule,
-          password: passwordFormRule,
-        };
+    const loginStateEnum = unref(currentState);
+    if (loginStateEnum === LoginStateEnum.REGISTER) {
+      return {
+        account: accountFormRule,
+        password: passwordFormRule,
+        confirmPassword: [
+          { validator: validateConfirmPassword(formData?.password), trigger: 'change' },
+        ],
+        policy: [{ validator: validatePolicy, trigger: 'change' }],
+        ...mobileRule,
+      };
+    } else if (loginStateEnum === LoginStateEnum.RESET_PASSWORD) {
+      return {
+        account: accountFormRule,
+        ...mobileRule,
+      };
+    } else if (loginStateEnum === LoginStateEnum.MOBILE) {
+      return mobileRule;
+    } else {
+      const rules = {
+        account: accountFormRule,
+        password: passwordFormRule,
+      };
+      if (
+        sessionStore.getSession.captcha &&
+        sessionStore.getSession.captcha.toUpperCase() !== 'NONE'
+      ) {
+        rules['captcha'] = captchaFormRule;
+      }
+      if (sessionStore.getSession.inst === undefined) {
+        rules['tenantCode'] = tenantFormRule;
+      }
+      return rules;
     }
   });
   return { getFormRules };

@@ -23,6 +23,8 @@ export default {
     loginSuccessDesc: 'Welcome back',
 
     // placeholder
+    tenantCodePlaceholder: 'Please input company code',
+    captchaPlaceholder: 'Please input captcha code',
     accountPlaceholder: 'Please input username',
     passwordPlaceholder: 'Please input password',
     smsPlaceholder: 'Please input sms code',
@@ -30,7 +32,8 @@ export default {
     policyPlaceholder: 'Register after checking',
     diffPwd: 'The two passwords are inconsistent',
 
-    userName: 'Username',
+    tenantCode: 'Company Code',
+    userName: 'User name',
     password: 'Password',
     captcha: 'Captcha',
     confirmPassword: 'Confirm Password',

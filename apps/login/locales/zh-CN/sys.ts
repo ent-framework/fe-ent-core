@@ -23,6 +23,8 @@ export default {
     loginSuccessDesc: '欢迎回来',
 
     // placeholder
+    tenantCodePlaceholder: '请输入企业编码',
+    captchaPlaceholder: '请输入验证码',
     accountPlaceholder: '请输入账号',
     passwordPlaceholder: '请输入密码',
     smsPlaceholder: '请输入验证码',
@@ -30,6 +32,7 @@ export default {
     policyPlaceholder: '勾选后才能注册',
     diffPwd: '两次输入密码不一致',
 
+    tenantCode: '企业编码',
     userName: '账号',
     password: '密码',
     captcha: '验证码',

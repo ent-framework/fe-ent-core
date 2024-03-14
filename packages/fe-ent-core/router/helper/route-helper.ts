@@ -88,7 +88,10 @@ function existInFilter(
   for (let index = 0; index < filters?.length; index++) {
     const c = filters[index];
     //只要存在子节点，默认为一个目录
-    if ((target.path === undefined || target.path === null || target.path === '') && target.children?.length) {
+    if (
+      (target.path === undefined || target.path === null || target.path === '') &&
+      target.children?.length
+    ) {
       return omit(target, 'children');
     }
     if (c.path === target?.path) {
@@ -125,6 +128,9 @@ export function backendRouteFilter(bizRoutes?: AppRouteRecordRaw[], filters?: Ap
         set(filtered, 'children', children);
       }
       results.push(filtered);
+    } else if (route?.children?.length && children.length > 0) {
+      set(route, 'children', children);
+      results.push(route);
     }
   });
 

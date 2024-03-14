@@ -65,7 +65,8 @@ export function usePermission() {
       return def;
     }
 
-    const permMode = defaultProjectSetting.permissionMode;
+    const permMode =
+      appStore.getProjectConfig.permissionMode || defaultProjectSetting.permissionMode;
 
     if ([PermissionModeEnum.ROUTE_MAPPING, PermissionModeEnum.ROLE].includes(permMode)) {
       if (!isArray(value)) {

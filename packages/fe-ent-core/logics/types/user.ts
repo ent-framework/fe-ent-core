@@ -4,6 +4,7 @@
 export interface LoginParams {
   username: string;
   password: string;
+  tenantCode?: string;
   authType?: string;
   state?: string;
   captcha?: string;

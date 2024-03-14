@@ -212,7 +212,6 @@ export const usePermissionStore = defineStore('app-permission', {
           routeList = backendRouteFilter(entRouter.getAuthRoutes(), routeList);
           //  Background routing to menu structure
           const backMenuList = transformRouteToMenu(routeList);
-          console.log(JSON.stringify(backMenuList));
           this.setBackMenuList(backMenuList);
 
           // remove meta.ignoreRoute item

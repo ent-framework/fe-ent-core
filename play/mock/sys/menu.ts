@@ -5,7 +5,7 @@ import type { MockMethod } from 'vite-plugin-mock';
 
 // single
 const dashboardRoute = {
-  path: '',
+  path: '/11222222',
   name: 'Dashboard',
   meta: {
     orderNo: 5000,

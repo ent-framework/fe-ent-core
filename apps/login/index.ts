@@ -1,11 +1,10 @@
-import Login from './components/login.vue';
-import type { AppRouteRecordRaw } from 'fe-ent-core/es/router';
-import type { EntRouter } from 'fe-ent-core/es/router';
 import { useLocale } from 'fe-ent-core/es/locales';
+import Login from './components/login.vue';
 import './components/index.less';
 import localeEn from './locales/en';
 import localeZh from './locales/zh-CN';
-import type {App} from "vue/dist/vue";
+import type { App } from 'vue/dist/vue';
+import type { AppRouteRecordRaw, EntRouter } from 'fe-ent-core/es/router';
 
 const LoginRoute: AppRouteRecordRaw = {
   path: '/login',
@@ -21,8 +20,8 @@ const initLogin = function (app: App, entRouter?: EntRouter) {
   addMessages('en', localeEn);
   addMessages('zh_CN', localeZh);
   if (entRouter) {
-    entRouter.addPublicRoutes([LoginRoute])
+    entRouter.addPublicRoutes([LoginRoute]);
   }
-}
+};
 
 export { initLogin };

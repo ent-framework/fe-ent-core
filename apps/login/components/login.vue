@@ -74,15 +74,15 @@
       },
       mobileLoginEnable: {
         type: Boolean,
-        default: true,
+        default: false,
       },
       qrLoginEnable: {
         type: Boolean,
-        default: true,
+        default: false,
       },
       registerEnable: {
         type: Boolean,
-        default: true,
+        default: false,
       },
     },
     setup() {
