@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "2.1.42",
+  "version": "2.1.44",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
@@ -16,6 +16,16 @@
   "module": "es/index.mjs",
   "typings": "es/index.d.ts",
   "unpkg": "dist/index.full.min.js",
+  "exports": {
+    ".": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.mjs",
+      "require": "./lib/index.js"
+    },
+    "./global": {
+      "types": "./global.d.ts"
+    }
+  },
   "sideEffects": [
     "dist/*",
     "*.less"

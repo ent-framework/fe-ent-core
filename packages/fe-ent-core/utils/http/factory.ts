@@ -172,9 +172,8 @@ const transform: AxiosTransform = {
     //response?.data?.message 封装后的
     const msg: string = response?.data?.message || response?.data?.error?.message || message;
     const err: string = error?.toString?.() ?? '';
-    let errMessage = '';
-
     try {
+      let errMessage = '';
       if (code === 'ECONNABORTED' && message.includes('timeout')) {
         errMessage = t('sys.api.apiTimeoutMessage');
       }
@@ -194,7 +193,7 @@ const transform: AxiosTransform = {
       throw new Error(error as unknown as string);
     }
     checkStatus(error?.response?.status || 200, msg, errorMessageMode);
-    return Promise.reject(error);
+    return Promise.reject(new Error(msg));
   },
 };
 

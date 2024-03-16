@@ -33,7 +33,7 @@
       <InputGroup compact>
         <Input
           v-model:value="formData.captcha"
-          class="fix-auto-fill"
+          class="fix-auto-fill captcha"
           size="large"
           style="width: calc(100% - 120px)"
         >
@@ -234,7 +234,7 @@
       }
       createErrorModal({
         title: t('sys.api.errorTip'),
-        content: (error as unknown as Error).message || t('sys.api.networkExceptionMsg'),
+        content: (error as unknown as Error).message || t('sys.api.apiRequestFailed'),
         getContainer: () => document.body.querySelector(`.${prefixCls}`) || document.body,
       });
     } finally {

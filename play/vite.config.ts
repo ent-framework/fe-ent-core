@@ -78,11 +78,20 @@ export default defineConfig(({ command, mode }) => {
           //   ws: true,
           // },
           // 配合 Ent-framework 测试
+          // '/api': {
+          //   target: 'http://127.0.0.1:8000',
+          //   changeOrigin: true,
+          //   ws: true,
+          //   rewrite: (path) => path.replace(new RegExp(`^/api`), ''),
+          // },
           '/api': {
-            target: 'http://127.0.0.1:8000',
+            target: 'https://aitag.kaytune.com',
             changeOrigin: true,
             ws: true,
-            rewrite: (path) => path.replace(new RegExp(`^/api`), ''),
+            timeout: 20000,
+            //rewrite: (path) => path.replace(new RegExp(`^/api`), ''),
+            // only https
+            // secure: false
           },
         },
       },
