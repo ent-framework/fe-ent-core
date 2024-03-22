@@ -42,11 +42,15 @@ consola.log(chalk.cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n')));
 
       allPackages.map(async (pkg) => {
         const json: Record<string, any> = getPackageManifest(pkg);
-        json.version = tagVersion;
-        await fs.promises.writeFile(pkg, JSON.stringify(json, null, 2), {
-          encoding: 'utf-8',
-        });
-        consola.log(chalk.yellow(`Updating ${pkg} version to ${tagVersion}`));
+        if (json.private && json.private === true) {
+          consola.log(chalk.yellow(`Ignore private package ${pkg}`));
+        } else {
+          json.version = tagVersion;
+          await fs.promises.writeFile(pkg, JSON.stringify(json, null, 2), {
+            encoding: 'utf-8',
+          });
+          consola.log(chalk.yellow(`Updating ${pkg} version to ${tagVersion}`));
+        }
       });
     } catch (e) {
       console.error(e);

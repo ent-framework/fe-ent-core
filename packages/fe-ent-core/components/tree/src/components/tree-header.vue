@@ -114,8 +114,6 @@
             divider: checkable,
           },
           ...defaultToolbarList,
-          { label: t('component.tree.checkStrictly'), value: ToolbarEnum.CHECK_STRICTLY },
-          { label: t('component.tree.checkUnStrictly'), value: ToolbarEnum.CHECK_UN_STRICTLY },
         ]
       : defaultToolbarList;
   });
@@ -135,12 +133,13 @@
       case ToolbarEnum.UN_EXPAND_ALL:
         props.expandAll?.(false);
         break;
-      case ToolbarEnum.CHECK_STRICTLY:
-        emit('change', false);
-        break;
-      case ToolbarEnum.CHECK_UN_STRICTLY:
-        emit('change', true);
-        break;
+      // CHECK_STRICTLY 选取有bug，暂时注释掉
+      // case ToolbarEnum.CHECK_STRICTLY:
+      //   emit('change', false);
+      //   break;
+      // case ToolbarEnum.CHECK_UN_STRICTLY:
+      //   emit('change', true);
+      //   break;
     }
   }
 
