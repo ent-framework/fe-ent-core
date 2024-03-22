@@ -22,6 +22,7 @@ export const treeEmits = [
   'change',
   'check',
   'update:searchValue',
+  'check-all',
 ];
 
 export interface TreeState {
@@ -42,6 +43,16 @@ export type KeyType = string | number;
 export type CheckKeys =
   | KeyType[]
   | { checked: string[] | number[]; halfChecked: string[] | number[] };
+
+/**
+ * 包装类型
+ */
+export interface TreeNodeCheckedEvent {
+  event: 'check';
+  checked: boolean;
+  nativeEvent: MouseEvent;
+  halfCheckedKeys?: KeyType[];
+}
 
 export const treeProps = {
   value: {

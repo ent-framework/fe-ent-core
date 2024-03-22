@@ -35,7 +35,6 @@
   } from './types/tree';
   import type { Recordable } from '@ent-core/types';
   import type { CSSProperties } from 'vue';
-
   /**
    * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/tree/index.zh-CN.md
    * @extends Tree
@@ -189,6 +188,7 @@
 
       function checkAll(checkAll: boolean) {
         state.checkedKeys = checkAll ? getEnabledKeys() : ([] as KeyType[]);
+        emit('check-all', state.checkedKeys);
       }
 
       function expandAll(expandAll: boolean) {

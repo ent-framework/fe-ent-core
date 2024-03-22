@@ -3,8 +3,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-//      "fe-ent-core": ["../../packages/fe-ent-core/index.ts"],
-//      "fe-ent-core/es/*": ["../../packages/fe-ent-core/*"],
       "vue-types": ["../../node_modules/vue-types"],
       "axios": ["../../node_modules/axios"],
       "pinia": ["../../node_modules/pinia"],
@@ -14,7 +12,7 @@
     },
     "types": ["vite/client"]
   },
-  "include": ["components", "locales","../../packages"],
+  "include": ["components", "locales", "index.ts"],
   "exclude": [
     "node_modules",
     "dist",

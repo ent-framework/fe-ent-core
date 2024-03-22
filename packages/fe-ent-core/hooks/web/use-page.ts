@@ -1,5 +1,5 @@
 import { unref } from 'vue';
-import { useRouter } from 'vue-router';
+import { entRouter } from '@ent-core/router';
 import { isString } from '@ent-core/utils/is';
 import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
 import { REDIRECT_NAME } from '@ent-core/router/constant';
@@ -11,7 +11,7 @@ function handleError(e: Error) {
 
 // page switch
 export function useGo(_router?: Router) {
-  const { push, replace } = _router || useRouter();
+  const { push, replace } = _router || entRouter;
   const globSetting = useGlobSetting();
   function go(opt: RouteLocationRaw | string = globSetting.homePath, isReplace = false) {
     if (!opt) {
@@ -31,7 +31,7 @@ export function useGo(_router?: Router) {
  * @description: redo current page
  */
 export const useRedo = (_router?: Router) => {
-  const { push, currentRoute } = _router || useRouter();
+  const { push, currentRoute } = _router || entRouter;
   const { query, params = {}, name, fullPath } = unref(currentRoute.value);
   function redo(): Promise<boolean> {
     return new Promise((resolve) => {
