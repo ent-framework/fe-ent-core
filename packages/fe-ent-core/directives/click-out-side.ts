@@ -1,16 +1,13 @@
-import { on } from '@ent-core/utils/dom-utils';
-import { isServer } from '@ent-core/utils/is';
-import type { App, ComponentPublicInstance, DirectiveBinding, ObjectDirective } from 'vue';
-import type { Nullable } from '@ent-core/types';
+import { isElement, isServer } from '@ent-core/utils/is';
+import type { ComponentPublicInstance, DirectiveBinding, ObjectDirective } from 'vue';
 
 type DocumentHandler = <T extends MouseEvent>(mouseup: T, mousedown: T) => void;
-
 type FlushList = Map<
   HTMLElement,
   {
     documentHandler: DocumentHandler;
     bindingFn: (...args: unknown[]) => unknown;
-  }
+  }[]
 >;
 
 const nodeList: FlushList = new Map();
@@ -18,12 +15,12 @@ const nodeList: FlushList = new Map();
 let startClick: MouseEvent;
 
 if (!isServer) {
-  on(document, 'mousedown', (e) => {
-    startClick = e as MouseEvent;
-  });
-  on(document, 'mouseup', (e) => {
-    for (const { documentHandler } of nodeList.values()) {
-      documentHandler(e as MouseEvent, startClick);
+  document.addEventListener('mousedown', (e: MouseEvent) => (startClick = e));
+  document.addEventListener('mouseup', (e: MouseEvent) => {
+    for (const handlers of nodeList.values()) {
+      for (const { documentHandler } of handlers) {
+        documentHandler(e as MouseEvent, startClick);
+      }
     }
   });
 }
@@ -32,18 +29,18 @@ function createDocumentHandler(el: HTMLElement, binding: DirectiveBinding): Docu
   let excludes: HTMLElement[] = [];
   if (Array.isArray(binding.arg)) {
     excludes = binding.arg;
-  } else {
+  } else if (isElement(binding.arg)) {
     // due to current implementation on binding type is wrong the type casting is necessary here
     excludes.push(binding.arg as unknown as HTMLElement);
   }
   return function (mouseup, mousedown) {
     const popperRef = (
       binding.instance as ComponentPublicInstance<{
-        popperRef: Nullable<HTMLElement>;
+        popperRef: HTMLElement;
       }>
     ).popperRef;
     const mouseUpTarget = mouseup.target as Node;
-    const mouseDownTarget = mousedown.target as Node;
+    const mouseDownTarget = mousedown?.target as Node;
     const isBound = !binding || !binding.instance;
     const isTargetExists = !mouseUpTarget || !mouseDownTarget;
     const isContainedByEl = el.contains(mouseUpTarget) || el.contains(mouseDownTarget);
@@ -64,29 +61,45 @@ function createDocumentHandler(el: HTMLElement, binding: DirectiveBinding): Docu
     ) {
       return;
     }
-    binding.value();
+    binding.value(mouseup, mousedown);
   };
 }
 
 const ClickOutside: ObjectDirective = {
-  beforeMount(el, binding) {
-    nodeList.set(el, {
+  beforeMount(el: HTMLElement, binding: DirectiveBinding) {
+    // there could be multiple handlers on the element
+    if (!nodeList.has(el)) {
+      nodeList.set(el, []);
+    }
+
+    nodeList.get(el)!.push({
       documentHandler: createDocumentHandler(el, binding),
       bindingFn: binding.value,
     });
   },
-  updated(el, binding) {
-    nodeList.set(el, {
+  updated(el: HTMLElement, binding: DirectiveBinding) {
+    if (!nodeList.has(el)) {
+      nodeList.set(el, []);
+    }
+
+    const handlers = nodeList.get(el)!;
+    const oldHandlerIndex = handlers.findIndex((item) => item.bindingFn === binding.oldValue);
+    const newHandler = {
       documentHandler: createDocumentHandler(el, binding),
       bindingFn: binding.value,
-    });
+    };
+
+    if (oldHandlerIndex >= 0) {
+      // replace the old handler to the new handler
+      handlers.splice(oldHandlerIndex, 1, newHandler);
+    } else {
+      handlers.push(newHandler);
+    }
   },
-  unmounted(el) {
+  unmounted(el: HTMLElement) {
+    // remove all listeners when a component unmounted
     nodeList.delete(el);
   },
 };
 
-export function setClickOutsideDirective(app: App) {
-  app.directive('click-outside', ClickOutside);
-}
 export default ClickOutside;

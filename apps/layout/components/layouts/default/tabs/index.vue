@@ -27,13 +27,12 @@
   </div>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, onMounted, ref, unref } from 'vue';
+  import { computed, defineComponent, ref, unref, watch } from 'vue';
 
   import { Tabs } from 'ant-design-vue';
 
   import { useDesign, useGo, useTheme } from 'fe-ent-core/es/hooks';
   import { useSessionStore } from 'fe-ent-core/es/store';
-  import { listenerRouteChange } from 'fe-ent-core/es/logics';
   import { REDIRECT_NAME } from 'fe-ent-core/es/router';
   import { useRouter } from 'vue-router';
   import { useMultipleTabStore } from '../../../../store/multiple-tab';
@@ -56,7 +55,7 @@
     setup() {
       const affixTextList = initAffixTabs();
       const activeKeyRef = ref('');
-
+      const { currentRoute } = useRouter();
       useTabsDrag(affixTextList);
       const tabStore = useMultipleTabStore();
       const sessionStore = useSessionStore();
@@ -91,33 +90,38 @@
         };
       });
 
-      onMounted(() => {
-        listenerRouteChange((route) => {
-          const { name } = route;
-          if (name === REDIRECT_NAME || !route || !sessionStore.getToken) {
-            return;
-          }
+      watch(
+        () => currentRoute.value,
+        (route) => {
+          listenerRouteChange(route);
+        },
+        { immediate: true, deep: true },
+      );
 
-          const { path, fullPath, meta = {} } = route;
-          const { currentActiveMenu, hideTab } = meta as RouteMeta;
-          const isHide = !hideTab ? null : currentActiveMenu;
-          const p = isHide || fullPath || path;
-          if (activeKeyRef.value !== p) {
-            activeKeyRef.value = p as string;
-          }
+      function listenerRouteChange(route: RouteLocationNormalized) {
+        const { name } = route;
+        if (name === REDIRECT_NAME || !route || !sessionStore.getToken) {
+          return;
+        }
 
-          if (isHide) {
-            const findParentRoute = router
-              .getRoutes()
-              .find((item) => item.path === currentActiveMenu);
+        const { path, fullPath, meta = {} } = route;
+        const { currentActiveMenu, hideTab } = meta as RouteMeta;
+        const isHide = !hideTab ? null : currentActiveMenu;
+        const p = isHide || fullPath || path;
+        if (activeKeyRef.value !== p) {
+          activeKeyRef.value = p as string;
+        }
 
-            findParentRoute &&
-              tabStore.addTab(findParentRoute as unknown as RouteLocationNormalized);
-          } else {
-            tabStore.addTab(unref(route));
-          }
-        });
-      });
+        if (isHide) {
+          const findParentRoute = router
+            .getRoutes()
+            .find((item) => item.path === currentActiveMenu);
+
+          findParentRoute && tabStore.addTab(findParentRoute as unknown as RouteLocationNormalized);
+        } else {
+          tabStore.addTab(unref(route));
+        }
+      }
 
       function handleChange(activeKey: any) {
         activeKeyRef.value = activeKey;

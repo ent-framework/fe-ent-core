@@ -9,6 +9,8 @@ import type {
 
 import type { CacheTypeEnum } from '@ent-core/logics/enums/cache-enum';
 import type { AliasToken } from 'ant-design-vue/es/theme/interface';
+import type { Nullable, Recordable } from '@ent-core/types';
+import type { ColumnOptionsType, SizeType } from '@ent-core/components/table/interface';
 
 // Lock screen information
 export interface LockInfo {
@@ -94,4 +96,11 @@ export interface ProjectConfig {
   themeSetting: ThemeSetting;
   // Animation configuration
   transitionSetting: TransitionSetting;
+}
+
+export interface TableSetting {
+  size: Nullable<SizeType>;
+  showIndexColumn: Recordable<Nullable<boolean>>;
+  columns: Recordable<Nullable<Array<ColumnOptionsType>>>;
+  showRowSelection: Recordable<Nullable<boolean>>;
 }

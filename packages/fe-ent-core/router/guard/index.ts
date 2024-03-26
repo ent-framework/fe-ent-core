@@ -6,7 +6,7 @@ import { useSessionStore } from '@ent-core/store/modules/session';
 import { useTransitionSetting } from '@ent-core/hooks/setting/use-transition-setting';
 import { AxiosCanceler } from '@ent-core/utils/http/axios-cancel';
 import { warn } from '@ent-core/utils/log';
-import { setRouteChange } from '@ent-core/logics/mitt/route-change';
+//import { setRouteChange } from '@ent-core/logics/mitt/route-change';
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { useI18n, useMessage } from '@ent-core/hooks';
 import { createPermissionGuard } from './permission-guard';
@@ -39,7 +39,7 @@ export function createPageGuard(router: Router) {
     // The page has already been loaded, it will be faster to open it again, you don’t need to do loading and other processing
     to.meta.loaded = !!loadedPageMap.get(to.path);
     // Notify routing changes
-    setRouteChange(to);
+    //setRouteChange(to);
 
     return true;
   });

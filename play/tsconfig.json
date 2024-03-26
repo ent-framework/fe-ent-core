@@ -1,5 +1,6 @@
 {
-  "extends": "../tsconfig.web.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "ts-config-ent/web.json",
   "compilerOptions": {
     "baseUrl": ".",
     "types": ["vite/client"],

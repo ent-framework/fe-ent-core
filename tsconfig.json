@@ -1,8 +1,4 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.web.json" },
-    { "path": "./tsconfig.node.json" },
-    { "path": "./tsconfig.vite-config.json" },
-  ]
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "ts-config-ent/vue-app.json"
 }

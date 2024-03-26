@@ -7,7 +7,7 @@ import type { Recordable } from '@ent-core/types';
 export function useTableForm(
   propsRef: ComputedRef<BasicTableProps>,
   slots: Slots,
-  fetch: (opt?: FetchParams | undefined) => Promise<void>,
+  fetch: (opt?: FetchParams) => Promise<Recordable[] | undefined>,
   getLoading: ComputedRef<boolean | undefined>,
 ) {
   const getFormProps = computed((): Partial<FormProps> => {

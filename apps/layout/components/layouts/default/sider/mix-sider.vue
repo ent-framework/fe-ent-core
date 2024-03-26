@@ -75,13 +75,10 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
+  import { useRouter } from 'vue-router';
   import { vClickOutside } from 'fe-ent-core/es/directives';
   import { EntAppLogo, EntIcon, EntScrollContainer } from 'fe-ent-core';
-  import {
-    SIDE_BAR_MINI_WIDTH,
-    SIDE_BAR_SHOW_TIT_MINI_WIDTH,
-    listenerRouteChange,
-  } from 'fe-ent-core/es/logics';
+  import { SIDE_BAR_MINI_WIDTH, SIDE_BAR_SHOW_TIT_MINI_WIDTH } from 'fe-ent-core/es/logics';
   import { getChildrenMenus, getCurrentParentPath, getShallowMenus } from 'fe-ent-core/es/router';
   import {
     useDesign,
@@ -100,7 +97,7 @@
   import { useDragLine } from './use-layout-sider';
   import type { RouteLocationNormalized } from 'vue-router';
   import type { CSSProperties } from 'vue';
-  import type { ElRef, Nullable } from 'fe-ent-core/es/types';
+  import type { ElRef } from 'fe-ent-core/es/types';
   import type { Menu } from 'fe-ent-core/es/router';
 
   export default defineComponent({
@@ -124,7 +121,7 @@
       const openMenu = ref(false);
       const dragBarRef = ref<ElRef>(null);
       const sideRef = ref<ElRef>(null);
-      const currentRoute = ref<Nullable<RouteLocationNormalized>>(null);
+      const { currentRoute } = useRouter();
 
       const { prefixCls } = useDesign('layout-mix-sider');
       const go = useGo();
@@ -168,11 +165,11 @@
       });
 
       const getIsFixed = computed(() => {
-        /* eslint-disable-next-line */
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         mixSideHasChildren.value = unref(childrenMenus).length > 0;
         const isFixed = unref(getMixSideFixed) && unref(mixSideHasChildren);
         if (isFixed) {
-          /* eslint-disable-next-line */
+          // eslint-disable-next-line vue/no-side-effects-in-computed-properties
           openMenu.value = true;
         }
         return isFixed;
@@ -206,16 +203,25 @@
 
       const getShowDragBar = computed(() => unref(getCanDrag));
 
+      function listenerRouteChange(route: RouteLocationNormalized) {
+        currentRoute.value = route;
+        setActive(true);
+        if (unref(getCloseMixSidebarOnChange)) {
+          closeMenu();
+        }
+      }
+
       onMounted(async () => {
         menuModules.value = await getShallowMenus();
-        listenerRouteChange((route) => {
-          currentRoute.value = route;
-          setActive(true);
-          if (unref(getCloseMixSidebarOnChange)) {
-            closeMenu();
-          }
-        });
       });
+
+      watch(
+        () => currentRoute.value,
+        (route) => {
+          listenerRouteChange(route);
+        },
+        { immediate: true, deep: true },
+      );
 
       // Menu changes
       watch(

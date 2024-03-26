@@ -1,8 +1,9 @@
 {
-  "extends": "../../tsconfig.web.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "ts-config-ent/web.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
+      "vue": ["../../node_modules/vue"],
       "vue-i18n": ["../../node_modules/vue-i18n"],
       "vue-types": ["../../node_modules/vue-types"],
       "axios": ["../../node_modules/axios"],

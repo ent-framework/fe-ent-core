@@ -1,24 +1,24 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Base",
   "compilerOptions": {
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "noUnusedLocals": true,
     "noImplicitAny": false,
+    "noUnusedLocals": true,
     "outDir": "dist",
-    "preserveSymlinks": true,
-    "resolveJsonModule": true,
     "removeComments": false,
+    "resolveJsonModule": true,
+    "sourceMap": false,
     "strict": true,
     "strictFunctionTypes": false,
-    "sourceMap": false,
-    "rootDir": ".",
     "target": "es2018",
-    "types": [],
-  }
+    "types": []
+  },
+  "exclude": ["**/node_modules/**", "**/dist/**"]
 }

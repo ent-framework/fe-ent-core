@@ -1,5 +1,6 @@
 {
-  "extends": "../../tsconfig.node.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "ts-config-ent/node.json",
   "compilerOptions": {
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true

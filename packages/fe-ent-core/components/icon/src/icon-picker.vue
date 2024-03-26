@@ -75,18 +75,6 @@
   import Icon from './icon.vue';
   import type { ChangeEvent } from '@ent-core/types';
 
-  function getIcons() {
-    const data = iconsData as any;
-    const prefix: string = data?.prefix ?? '';
-    let result: string[] = [];
-    if (prefix) {
-      result = (data?.icons ?? []).map((item) => `${prefix}:${item}`);
-    } else if (Array.isArray(iconsData)) {
-      result = iconsData as string[];
-    }
-    return result;
-  }
-
   export default defineComponent({
     name: 'EntIconPicker',
     components: {
@@ -105,6 +93,18 @@
     },
     emits: ['change', 'update:value'],
     setup(props, { emit }) {
+      function getIcons() {
+        const data = iconsData as any;
+        const prefix: string = data?.prefix ?? '';
+        let result: string[] = [];
+        if (prefix) {
+          result = (data?.icons ?? []).map((item) => `${prefix}:${item}`);
+        } else if (Array.isArray(iconsData)) {
+          result = iconsData as string[];
+        }
+        return result;
+      }
+
       const icons = getIcons();
 
       const currentSelect = ref('');

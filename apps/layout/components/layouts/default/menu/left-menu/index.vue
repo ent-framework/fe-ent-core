@@ -21,11 +21,10 @@
   </Menu>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, onMounted, reactive, ref, toRefs, unref, watch } from 'vue';
+  import { computed, defineComponent, reactive, ref, toRefs, unref, watch } from 'vue';
   import { useRouter } from 'vue-router';
   import { Menu } from 'ant-design-vue';
   import { useDesign } from 'fe-ent-core/es/hooks/web/use-design';
-  import { listenerRouteChange } from 'fe-ent-core/es/logics/mitt/route-change';
   import { REDIRECT_NAME } from 'fe-ent-core/es/router/constant';
   import { isUrl } from 'fe-ent-core/es/utils/is';
   import { openWindow } from 'fe-ent-core/es/utils';
@@ -65,6 +64,26 @@
       );
 
       const getBindValues = computed(() => ({ ...attrs, ...props }));
+
+      function listenerRouteChange(route: RouteLocationNormalizedLoaded) {
+        if (route.name === REDIRECT_NAME) return;
+
+        currentActiveMenu.value = route.meta?.currentActiveMenu as string;
+        handleMenuChange(route);
+
+        if (unref(currentActiveMenu)) {
+          menuState.selectedKeys = [unref(currentActiveMenu)];
+          setOpenKeys(unref(currentActiveMenu));
+        }
+      }
+
+      watch(
+        () => currentRoute.value,
+        (route) => {
+          listenerRouteChange(route);
+        },
+        { immediate: true, deep: true },
+      );
 
       watch(
         () => props.collapse,
@@ -118,19 +137,7 @@
         setOpenKeys(key);
         menuState.selectedKeys = [key];
       }
-      onMounted(() => {
-        listenerRouteChange((route) => {
-          if (route.name === REDIRECT_NAME) return;
 
-          currentActiveMenu.value = route.meta?.currentActiveMenu as string;
-          handleMenuChange(route);
-
-          if (unref(currentActiveMenu)) {
-            menuState.selectedKeys = [unref(currentActiveMenu)];
-            setOpenKeys(unref(currentActiveMenu));
-          }
-        });
-      });
       return {
         prefixCls,
         getBindValues,

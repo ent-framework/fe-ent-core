@@ -1,4 +1,4 @@
-import { computed } from 'vue';
+import { computed, unref } from 'vue';
 import { theme as AntTheme } from 'ant-design-vue';
 import { useAppStore } from '@ent-core/store';
 import { ThemeEnum } from '@ent-core/logics';
@@ -29,17 +29,18 @@ export function useTheme() {
   const updateGrayMode = (gray: boolean) => {};
 
   const getTheme = (theme?: string): ThemeConfig => {
+    const currTheme = unref(appTheme);
     if (!theme || theme === 'none') {
-      return appTheme.value;
+      return currTheme;
     }
     const { theme: globalTheme } = appStore.getThemeSetting;
     if (globalTheme === theme) {
-      return appTheme.value;
+      return currTheme;
     }
     if (theme === ThemeEnum.DARK) {
-      return { ...appTheme.value, algorithm: AntTheme.darkAlgorithm };
+      return { ...currTheme, algorithm: AntTheme.darkAlgorithm };
     } else {
-      return { ...appTheme.value, algorithm: AntTheme.defaultAlgorithm };
+      return { ...currTheme, algorithm: AntTheme.defaultAlgorithm };
     }
   };
 

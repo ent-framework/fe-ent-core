@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-layout",
-  "version": "2.1.48",
+  "version": "2.1.55",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -25,15 +25,12 @@
     "jsongen": "ent-vue-scripts jsongen",
     "dtsgen": "ent-vue-scripts dtsgen"
   },
-  "peerDependencies": {
+  "dependencies": {
     "fe-ent-core": "^2.1.0"
   },
   "devDependencies": {
     "fe-ent-vue-scripts": "^2.1.0",
-    "rimraf": "^5.0.0",
-    "pinia": "^2.1.6",
-    "pinia-plugin-persistedstate": "^3.2.0",
-    "vue": "^3.3.0"
+    "rimraf": "^5.0.0"
   },
   "repository": {
     "type": "git",

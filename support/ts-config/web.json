@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Web",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": true,
+    "jsx": "preserve",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "strictFunctionTypes": false
+  }
+}

@@ -5,6 +5,7 @@ import type { FormProps } from '@ent-core/components/form/interface';
 import type { TableRowSelection as ITableRowSelection } from 'ant-design-vue/es/table/interface';
 import type { ColumnProps } from 'ant-design-vue/es/table';
 import type { AnyFunction, EmitType, Fn, Recordable, VueNode } from '@ent-core/types';
+import type { FixedType } from 'ant-design-vue/es/vc-table/interface';
 
 export declare type SortOrder = 'ascend' | 'descend';
 
@@ -97,7 +98,7 @@ export interface GetColumnsParams {
 export type SizeType = 'default' | 'middle' | 'small' | 'large';
 
 export interface TableActionType {
-  reload: (opt?: FetchParams) => Promise<void>;
+  reload: (opt?: FetchParams) => Promise<Recordable[] | undefined>;
   setSelectedRows: (rows: Recordable[]) => void;
   getSelectRows: <T = Recordable>() => T[];
   clearSelectedRowKeys: () => void;
@@ -584,4 +585,15 @@ export type ColumnChangeParam = {
 
 export interface InnerHandlers {
   onColumnsChange: (data: ColumnChangeParam[]) => void;
+}
+
+export interface ColumnOptionsType {
+  value: string;
+  label: string;
+  //
+  column: {
+    defaultHidden?: boolean;
+  };
+  //
+  fixed?: FixedType;
 }

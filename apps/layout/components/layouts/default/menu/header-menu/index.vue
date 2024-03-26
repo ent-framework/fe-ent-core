@@ -18,14 +18,13 @@
   </Menu>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, onMounted, reactive, ref, toRefs, unref, watch } from 'vue';
+  import { computed, defineComponent, reactive, ref, toRefs, unref, watch } from 'vue';
   import { Menu } from 'ant-design-vue';
   import { useRouter } from 'vue-router';
   import { MenuModeEnum, MenuTypeEnum } from 'fe-ent-core/es/logics/enums/menu-enum';
   import { REDIRECT_NAME } from 'fe-ent-core/es/router/constant';
   import { useDesign } from 'fe-ent-core/es/hooks/web/use-design';
   import { getCurrentParentPath } from 'fe-ent-core/es/router/menus';
-  import { listenerRouteChange } from 'fe-ent-core/es/logics/mitt/route-change';
   import { getAllParentPath } from 'fe-ent-core/es/router/helper/menu-helper';
   import { useMenuSetting } from '../../../../../hooks';
   import { basicProps } from './props';
@@ -98,18 +97,24 @@
         return inlineCollapseOptions;
       });
 
-      onMounted(() => {
-        listenerRouteChange((route) => {
-          if (route.name === REDIRECT_NAME) return;
-          handleMenuChange(route);
-          currentActiveMenu.value = route.meta?.currentActiveMenu as string;
+      function listenerRouteChange(route: RouteLocationNormalizedLoaded) {
+        if (route.name === REDIRECT_NAME) return;
+        handleMenuChange(route);
+        currentActiveMenu.value = route.meta?.currentActiveMenu as string;
 
-          if (unref(currentActiveMenu)) {
-            menuState.selectedKeys = [unref(currentActiveMenu)];
-            setOpenKeys(unref(currentActiveMenu));
-          }
-        });
-      });
+        if (unref(currentActiveMenu)) {
+          menuState.selectedKeys = [unref(currentActiveMenu)];
+          setOpenKeys(unref(currentActiveMenu));
+        }
+      }
+
+      watch(
+        () => currentRoute.value,
+        (route) => {
+          listenerRouteChange(route);
+        },
+        { immediate: true, deep: true },
+      );
 
       !props.mixSider &&
         watch(

@@ -29,7 +29,9 @@
         <slot :name="item" v-bind="data || {}" />
       </template>
       <template #headerCell="{ column }">
-        <HeaderCell :column="column" />
+        <slot name="headerCell" v-bind="{ column }">
+          <HeaderCell :column="column" />
+        </slot>
       </template>
       <!-- 增加对antdv3.x兼容 -->
       <template #bodyCell="data">
@@ -49,7 +51,7 @@
     unref,
     watchEffect,
   } from 'vue';
-  import { Card, Table } from 'ant-design-vue';
+  import { Table } from 'ant-design-vue';
   import { omit } from 'lodash-es';
   import { isFunction } from '@ent-core/utils/is';
   import { EntForm, useForm } from '@ent-core/components/form';
@@ -91,7 +93,6 @@
   export default defineComponent({
     name: 'EntTable',
     components: {
-      Card,
       Table,
       EntForm,
       HeaderCell,

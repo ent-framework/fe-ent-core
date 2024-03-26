@@ -5,10 +5,8 @@ export * from './date-util';
 export * from './dom-utils';
 export * from './env';
 export * from './is';
-export * from './mitt';
 export * from './prop-types';
 export * from './uuid';
-
 export * from './event';
 export * from './file';
 export * from './helper';

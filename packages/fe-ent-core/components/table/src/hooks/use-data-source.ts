@@ -340,7 +340,7 @@ export function useDataSource(
   }
 
   function setTableData<T = Recordable>(values: T[]) {
-    dataSourceRef.value = values;
+    dataSourceRef.value = values as Recordable[];
   }
 
   function getDataSource<T = Recordable>() {
