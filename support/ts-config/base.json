@@ -17,8 +17,7 @@
     "sourceMap": false,
     "strict": true,
     "strictFunctionTypes": false,
-    "target": "es2018",
-    "types": []
+    "target": "es2018"
   },
   "exclude": ["**/node_modules/**", "**/dist/**"]
 }

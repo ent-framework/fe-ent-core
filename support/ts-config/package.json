@@ -1,10 +1,11 @@
 {
   "name": "ts-config-ent",
-  "version": "2.1.55",
+  "version": "2.1.57",
   "files": [
     "base.json",
     "node.json",
     "vue-app.json",
-    "web.json"
+    "web.json",
+    "support.d.ts"
   ]
 }

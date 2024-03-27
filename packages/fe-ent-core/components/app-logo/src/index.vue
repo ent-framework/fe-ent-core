@@ -4,7 +4,7 @@
 -->
 <template>
   <div class="anticon" :class="getAppLogoClass" :style="getWrapStyle" @click="goHome">
-    <img :src="logoImageURL" />
+    <img alt="logo" :src="logoImageURL" />
     <Text v-show="$props.showTitle" class="ml-2 truncate" :class="getTitleClass">{{ title }}</Text>
   </div>
 </template>

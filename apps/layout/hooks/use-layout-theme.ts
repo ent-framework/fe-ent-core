@@ -6,7 +6,7 @@ export function useLayoutTheme() {
   const appStore = useAppStore();
   const layoutStore = useLayoutStore();
 
-  const updateGrayMode = (gray: boolean) => {};
+  // const updateGrayMode = (gray: boolean) => {};
 
   const getActualHeaderTheme = computed(() => {
     if (!layoutStore.getHeaderSetting.theme || layoutStore.getHeaderSetting.theme === 'none') {
@@ -23,7 +23,6 @@ export function useLayoutTheme() {
   });
 
   return {
-    updateGrayMode,
     getActualHeaderTheme,
     getActualMenuTheme,
   };

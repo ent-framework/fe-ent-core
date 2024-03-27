@@ -46,7 +46,7 @@
     "preview:dist": "vite preview",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "update:version": "tsx ./scripts/update-version.ts",
-    "lint": "eslint --max-warnings 0  \"{apps,extensions}/**/*.{vue,ts,tsx}\"",
+    "lint": "pnpm run -r --parallel lint",
     "lint:fix": "pnpm run lint --fix",
     "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
     "lint:stylelint": "stylelint \"packages/fe-ent-core/**/*.{vue,less,css}\" --cache --cache-location node_modules/.cache/stylelint/",

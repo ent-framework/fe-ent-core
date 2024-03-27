@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-markdown",
-  "version": "2.1.55",
+  "version": "2.1.57",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -23,7 +23,8 @@
     "docgen": "ent-vue-scripts docgen",
     "build:library": "ent-vue-scripts build:library -u -s",
     "jsongen": "ent-vue-scripts jsongen",
-    "dtsgen": "ent-vue-scripts dtsgen"
+    "dtsgen": "ent-vue-scripts dtsgen",
+    "lint": "eslint --max-warnings 0  \"components/**/*.{vue,ts,tsx}\" --fix"
   },
   "peerDependencies": {
     "fe-ent-core": "^2.1.0"

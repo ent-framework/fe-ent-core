@@ -4,11 +4,6 @@ import { defineLibraryConfig } from './configs/library';
 
 import getDocSiteConfig from './configs/vite.site';
 
-export {
-  defineAppConfig,
-  defineProjectConfig,
-  defineLibraryConfig,
-  getDocSiteConfig,
-};
+export { defineAppConfig, defineProjectConfig, defineLibraryConfig, getDocSiteConfig };
 
 export type { DefineOptions } from './configs/type';

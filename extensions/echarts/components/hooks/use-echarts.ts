@@ -105,7 +105,7 @@ export function useEcharts(
     },
   );
 
-  watch(getCollapsed, (_) => {
+  watch(getCollapsed, () => {
     useTimeoutFn(() => {
       resizeFn();
     }, 300);

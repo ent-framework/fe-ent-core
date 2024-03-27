@@ -47,7 +47,7 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { EntAppLogo, EntDarkModeToggle, EntLocalePicker } from 'fe-ent-core';
+  import { EntAppLogo, EntLocalePicker } from 'fe-ent-core';
   import { useDesign, useGlobSetting, useI18n } from 'fe-ent-core/es/hooks';
   import { useLocaleStore } from 'fe-ent-core/es/store';
   import loginImg from '../assets/login-box-bg.svg';
@@ -61,7 +61,6 @@
     components: {
       EntAppLogo,
       EntLocalePicker,
-      EntDarkModeToggle,
       LoginForm,
       ForgetPasswordForm,
       RegisterForm,

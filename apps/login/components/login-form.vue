@@ -23,7 +23,12 @@
       </Input>
     </FormItem>
     <FormItem name="password" class="enter-x">
-      <InputPassword v-model:value="formData.password" size="large" visibility-toggle class="fix-auto-fill">
+      <InputPassword
+        v-model:value="formData.password"
+        size="large"
+        visibility-toggle
+        class="fix-auto-fill"
+      >
         <template #addonBefore>
           <span class="login-input-label">{{ t('sys.login.password') }}</span>
         </template>

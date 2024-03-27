@@ -13,12 +13,12 @@
       <Menu @click="handleMenuClick">
         <MenuItem
           v-if="getUseLockPage"
-          key="lock"
+          item-key="lock"
           :text="t('layout.header.tooltipLock')"
           icon="ion:lock-closed-outline"
         />
         <MenuItem
-          key="logout"
+          item-key="logout"
           :text="t('layout.header.dropdownItemLoginOut')"
           icon="ion:power-outline"
         />

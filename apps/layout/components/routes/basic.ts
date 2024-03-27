@@ -1,4 +1,4 @@
-import {t, useGlobSetting} from 'fe-ent-core/es/hooks';
+import { t, useGlobSetting } from 'fe-ent-core/es/hooks';
 import { COMPONENT_LAYOUT_NAME, PAGE_NOT_FOUND_NAME, REDIRECT_NAME } from 'fe-ent-core/es/router';
 import redirect from '../views/redirect/index.vue';
 import errorLog from '../views/error-log/index.vue';
@@ -83,7 +83,7 @@ export function getErrorLogRoute(): AppRouteRecordRaw {
 
 export function getRootRoute(): AppRouteRecordRaw {
   const globSetting = useGlobSetting();
-  const { homePath} = globSetting;
+  const { homePath } = globSetting;
   return {
     path: '/',
     name: 'Root',

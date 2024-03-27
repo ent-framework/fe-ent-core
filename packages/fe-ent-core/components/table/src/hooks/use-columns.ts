@@ -1,5 +1,5 @@
 import { computed, reactive, ref, toRaw, unref, watch } from 'vue';
-import { cloneDeep, isEqual, get } from 'lodash-es';
+import { cloneDeep, get, isEqual } from 'lodash-es';
 import { usePermission } from '@ent-core/hooks/web/use-permission';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { isArray, isBoolean, isMap, isString } from '@ent-core/utils/is';

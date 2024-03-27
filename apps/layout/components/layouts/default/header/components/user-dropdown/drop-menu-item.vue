@@ -1,5 +1,5 @@
 <template>
-  <MenuItem :key="itemKey">
+  <MenuItem :key="key">
     <span class="flex items-center">
       <EntIcon :icon="icon" class="mr-1" />
       <span>{{ text }}</span>
@@ -17,14 +17,14 @@
     name: 'DropdownMenuItem',
     components: { MenuItem: Menu.Item, EntIcon },
     props: {
-      key: propTypes.string,
+      itemKey: propTypes.string,
       text: propTypes.string,
       icon: propTypes.string,
     },
     setup(props) {
       const instance = getCurrentInstance();
-      const itemKey = computed(() => props.key || instance?.vnode?.props?.key);
-      return { itemKey };
+      const key = computed(() => props.itemKey || instance?.vnode?.props?.key);
+      return { key };
     },
   });
 </script>

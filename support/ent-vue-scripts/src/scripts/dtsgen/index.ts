@@ -25,6 +25,7 @@ const build = async (base: string) => {
   const project = new Project({
     compilerOptions: {
       emitDeclarationOnly: true,
+      // declaration: true,
       outDir,
       baseUrl: cwd,
       rootDir: cwd,
@@ -35,25 +36,25 @@ const build = async (base: string) => {
     },
     tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true,
+    // skipFileDependencyResolution: true,
   });
 
   const sourceFiles = await addSourceFiles(project, base);
-  consola.success('Added source files');
+  consola.success(`Added source files, count: ${sourceFiles.length}`);
   typeCheck(project);
   consola.success('Type check passed!');
   // await project.emit({
   //   emitOnlyDtsFiles: true,
   // });
-  await project.emitToMemory({ emitOnlyDtsFiles: true });
+  project.emitToMemory({ emitOnlyDtsFiles: true });
 
   const tasks = sourceFiles.map(async (sourceFile) => {
     const relativePath = path.relative(cwd, sourceFile.getFilePath());
-    consola.log(chalk.yellow(`Generating definition for file: ${chalk.bold(relativePath)}`));
 
     const emitOutput = sourceFile.getEmitOutput();
     const emitFiles = emitOutput.getOutputFiles();
     if (emitFiles.length === 0) {
-      consola.warn(`Emit no file: ${chalk.bold(relativePath)}`);
+      consola.error(`Emit no file: ${chalk.bold(relativePath)} \n`);
     }
 
     const subTasks = emitFiles.map(async (outputFile) => {
@@ -64,7 +65,6 @@ const build = async (base: string) => {
         recursive: true,
       });
       fs.writeFileSync(targetPath, pathRewriter()(outputFile.getText()), 'utf8');
-      consola.log(chalk.green(`Definition for file: ${chalk.bold(relativePath)} generated`));
     });
 
     await Promise.all(subTasks);
@@ -114,12 +114,16 @@ async function addSourceFiles(project: Project, base: string) {
               path.relative(base, file) + (isTS ? '.ts' : isTSX ? '.tsx' : '.js'),
               content,
             );
-            sourceFiles.push(sourceFile);
+            if (sourceFile) {
+              sourceFiles.push(sourceFile);
+            }
           }
         }
       } else {
         const sourceFile = project.addSourceFileAtPath(file);
-        sourceFiles.push(sourceFile);
+        if (sourceFile) {
+          sourceFiles.push(sourceFile);
+        }
       }
     }),
   ]);

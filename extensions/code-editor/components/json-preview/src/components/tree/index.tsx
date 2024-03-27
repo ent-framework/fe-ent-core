@@ -138,8 +138,8 @@ export default defineComponent({
           scrollCount < 0
             ? 0
             : scrollCount + visibleCount > flatDataValue.length
-            ? flatDataValue.length - visibleCount
-            : scrollCount;
+              ? flatDataValue.length - visibleCount
+              : scrollCount;
         if (start < 0) {
           start = 0;
         }

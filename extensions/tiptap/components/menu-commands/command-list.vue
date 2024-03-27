@@ -8,10 +8,10 @@
         item.isActive(editor) && index === selectedIndex
           ? 'dark'
           : item.isActive(editor)
-          ? 'light'
-          : index === selectedIndex
-          ? 'plain'
-          : 'light'
+            ? 'light'
+            : index === selectedIndex
+              ? 'plain'
+              : 'light'
       "
       :type="!(item.isActive(editor) || index === selectedIndex) ? 'info' : ''"
       :class="{ 'command-list__selected-active': item.isActive(editor) && index === selectedIndex }"

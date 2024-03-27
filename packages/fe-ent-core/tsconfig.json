@@ -3,7 +3,7 @@
   "extends": "ts-config-ent/web.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "types": ["vite/client", "node"],
+    "types": ["vite/client", "node", "ts-config-ent/support"],
     "paths": {
       "@ent-core/*": ["./*"]
     }
@@ -26,11 +26,6 @@
     "dist",
     "es",
     "lib",
-    "json",
-    "**/dist",
-    "**/__tests__/**/*",
-    "**/gulpfile.ts",
-    "**/test-helper",
-    "**/*.md"
+    "json"
   ]
 }

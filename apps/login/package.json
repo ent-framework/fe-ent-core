@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-login",
-  "version": "2.1.55",
+  "version": "2.1.57",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -24,7 +24,8 @@
     "build:library": "ent-vue-scripts build:library -u -s",
     "build:app": "ent-vue-scripts build:app",
     "jsongen": "ent-vue-scripts jsongen",
-    "dtsgen": "ent-vue-scripts dtsgen"
+    "dtsgen": "ent-vue-scripts dtsgen",
+    "lint": "eslint --max-warnings 0  \"{components,locales}/**/*.{vue,ts,tsx}\" --fix"
   },
   "peerDependencies": {
     "fe-ent-core": "^2.1.0"
@@ -32,8 +33,7 @@
   "devDependencies": {
     "fe-ent-vue-scripts": "^2.1.0",
     "@types/qrcode": "^1.4.1",
-    "rimraf": "^5.0.0",
-    "vue": "^3.3.0"
+    "rimraf": "^5.0.0"
   },
   "repository": {
     "type": "git",
