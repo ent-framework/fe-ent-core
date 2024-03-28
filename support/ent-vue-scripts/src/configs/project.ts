@@ -51,6 +51,7 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
       },
     ],
   );
+  const hashed = defineOptions.options?.hash ?? true;
   const applicationConfig: UserConfig = {
     resolve: {
       alias,
@@ -61,9 +62,9 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
       cssTarget: 'chrome80',
       rollupOptions: {
         output: {
-          entryFileNames: `assets/[name].js`,
-          chunkFileNames: `assets/[name].js`,
-          assetFileNames: `assets/[name].[ext]`,
+          entryFileNames: hashed ? `assets/[name]-[hash].js` : `assets/[name].js`,
+          chunkFileNames: hashed ? `assets/[name]-[hash].js` : `assets/[name].js`,
+          assetFileNames: hashed ? `assets/[name]-[hash].[ext]` : `assets/[name].[ext]`,
           manualChunks: {
             vue: ['vue', 'pinia', 'vue-router'],
             antv: ['ant-design-vue'],

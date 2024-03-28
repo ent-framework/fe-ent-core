@@ -238,6 +238,14 @@ const comp: AppRouteRecordRaw = {
             title: t('routes.demo.table.authColumn'),
           },
         },
+        {
+          path: 'tab-table',
+          name: 'TabTableDemo',
+          component: () => import('/@/views/demo/table/tab-table.vue'),
+          meta: {
+            title: t('routes.demo.table.embeddedTab'),
+          },
+        },
       ],
     },
     {

@@ -68,7 +68,7 @@ export interface GlobEnvConfig {
    */
   VITE_GLOB_LOGIN_URL?: string;
   /**
-   * 登录成功后默认返回的路由，这个路由需要存在，否则页面会404, 默认为/dashboard
+   * 登录成功后默认返回的路由，这个路由需要存在，否则页面会404, 默认为/welcome
    */
   VITE_GLOB_HOME_PATH?: string;
   /**

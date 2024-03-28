@@ -1,12 +1,12 @@
 {
   "name": "stylelint-config-ent",
-  "version": "2.1.57",
+  "version": "2.1.58",
   "files": [
     "index.js"
   ],
   "main": "index.js",
   "devDependencies": {
-    "postcss": "^8.4.35",
+    "postcss": "^8.4.36",
     "postcss-html": "^1.6.0",
     "postcss-less": "^6.0.0",
     "postcss-scss": "^4.0.9",

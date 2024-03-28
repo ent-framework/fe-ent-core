@@ -187,5 +187,6 @@ export default {
     editCellTable: '可编辑单元格',
     editRowTable: '可编辑行',
     authColumn: '权限列',
+    embeddedTab: '内嵌Tab',
   },
 };

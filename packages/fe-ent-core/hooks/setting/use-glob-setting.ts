@@ -39,7 +39,7 @@ export const useGlobSetting = (): Readonly<GlobConfig> => {
     requestTimeout: VITE_GLOB_API_REQUEST_TIMEOUT,
     layoutName: VITE_GLOB_LAYOUT_NAME || 'DefaultLayout',
     loginUrl: VITE_GLOB_LOGIN_URL || '/login',
-    homePath: VITE_GLOB_HOME_PATH || '/dashboard',
+    homePath: VITE_GLOB_HOME_PATH || '/welcome',
     errorPath: VITE_GLOB_ERROR_PATH || '/exception',
     errorLogPath: VITE_GLOB_ERROR_LOG_PATH || '/error-log/list',
   };

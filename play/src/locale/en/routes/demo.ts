@@ -197,5 +197,6 @@ export default {
     editCellTable: 'Editable cell',
     editRowTable: 'Editable row',
     authColumn: 'Auth column',
+    embeddedTab: 'Embedded tab',
   },
 };
