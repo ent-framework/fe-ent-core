@@ -56,10 +56,11 @@ export default {
     restore: '还原',
   },
   table: {
-    settingDens: '密度',
+    settingDens: '大小',
     settingDensDefault: '默认',
     settingDensMiddle: '中等',
     settingDensSmall: '紧凑',
+    settingDensLarge: '大型',
     settingColumn: '列设置',
     settingColumnShow: '列展示',
     settingIndexColumnShow: '序号列',

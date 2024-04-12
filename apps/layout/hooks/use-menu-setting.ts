@@ -24,6 +24,8 @@ export function useMenuSetting() {
 
   const getCollapsed = computed(() => layoutStore.getMenuSetting.collapsed);
 
+  const getInverted = computed(() => layoutStore.getMenuSetting.inverted);
+
   const getMenuType = computed(() => layoutStore.getMenuSetting.type);
 
   const getMenuMode = computed(() => layoutStore.getMenuSetting.mode);
@@ -130,7 +132,7 @@ export function useMenuSetting() {
     setMenuSetting,
 
     toggleCollapsed,
-
+    getInverted,
     getMenuFixed,
     getRealWidth,
     getMenuType,

@@ -1,52 +1,28 @@
 <template>
-  <Modal v-bind="getBindValue" @cancel="handleCancel">
-    <template v-if="!$slots.closeIcon || !closable">
-      <ModalClose
-        :can-fullscreen="getProps.canFullscreen"
-        :full-screen="fullScreenRef"
-        @cancel="handleCancel"
-        @fullscreen="handleFullScreen"
-      />
+  <NModal v-bind="getBindValue" @update-show="onUpdateShow">
+    <template #header>
+      <div id="basic-modal-bar" class="w-full cursor-move">
+        <ModalHeader
+          :help-message="getProps.helpMessage"
+          :title="getMergeProps.title"
+          @dblclick="handleTitleDbClick"
+        />
+      </div>
     </template>
-
-    <template v-if="!$slots.title" #title>
-      <ModalHeader
-        :help-message="getProps.helpMessage"
-        :title="getMergeProps.title"
-        @dblclick="handleTitleDbClick"
-      />
+    <template #default>
+      <slot name="default" />
     </template>
-
-    <template v-if="!$slots.footer" #footer>
+    <template v-if="!$slots.action" #action>
       <ModalFooter v-bind="getBindValue" @ok="handleOk" @cancel="handleCancel">
         <template v-for="item in Object.keys($slots)" #[item]="data">
           <slot :name="item" v-bind="data || {}" />
         </template>
       </ModalFooter>
     </template>
-
-    <ModalWrapper
-      ref="modalWrapperRef"
-      :use-wrapper="getProps.useWrapper"
-      :footer-offset="wrapperFooterOffset"
-      :full-screen="fullScreenRef"
-      :loading="getProps.loading"
-      :loading-tip="getProps.loadingTip"
-      :min-height="getProps.minHeight"
-      :height="getWrapperHeight"
-      :open="openRef"
-      :modal-footer-height="footer !== undefined && !footer ? 0 : undefined"
-      v-bind="omit(getProps.wrapperProps, 'visible', 'height', 'modalFooterHeight')"
-      @ext-height="handleExtHeight"
-      @height-change="handleHeightChange"
-    >
-      <slot />
-    </ModalWrapper>
-
-    <template v-for="item in Object.keys(omit($slots, 'default'))" #[item]="data">
-      <slot :name="item" v-bind="data || {}" />
+    <template v-else #action>
+      <slot name="action" />
     </template>
-  </Modal>
+  </NModal>
 </template>
 <script lang="ts">
   import {
@@ -61,18 +37,14 @@
     watchEffect,
   } from 'vue';
   import { omit } from 'lodash-es';
-  import { isFunction } from '@ent-core/utils/is';
+  import { NModal } from 'naive-ui';
   import { deepMerge } from '@ent-core/utils';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import Modal from './components/modal';
-  import ModalWrapper from './components/modal-wrapper.vue';
-  import ModalClose from './components/modal-close.vue';
   import ModalFooter from './components/modal-footer.vue';
   import ModalHeader from './components/modal-header.vue';
   import { basicProps } from './props';
   import { useFullScreen } from './hooks/use-modal-full-screen';
   import type { ModalMethods, ModalProps } from './typing';
-  import type { Recordable } from '@ent-core/types';
+  import type { Nullable, Recordable } from '@ent-core/types';
 
   /**
    * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/modal/index.zh-CN.md
@@ -81,15 +53,14 @@
    */
   export default defineComponent({
     name: 'EntModal',
-    components: { Modal, ModalWrapper, ModalClose, ModalFooter, ModalHeader },
+    components: { ModalHeader, NModal, ModalFooter },
     inheritAttrs: false,
     props: basicProps,
     emits: ['visible-change', 'height-change', 'cancel', 'ok', 'register', 'update:visible'],
     setup(props, { emit, attrs }) {
       const openRef = ref(false);
-      const propsRef = ref<Partial<ModalProps> | null>(null);
+      const propsRef = ref<Partial<Nullable<ModalProps>>>(null);
       const modalWrapperRef = ref<any>(null);
-      const { prefixCls } = useDesign('basic-modal');
 
       // modal   Bottom and top height
       const extHeightRef = ref(0);
@@ -128,7 +99,7 @@
       const getProps = computed((): Recordable => {
         const opt = {
           ...unref(getMergeProps),
-          open: unref(openRef),
+          show: unref(openRef),
           okButtonProps: undefined,
           cancelButtonProps: undefined,
           title: undefined,
@@ -141,11 +112,12 @@
 
       const getBindValue = computed((): Recordable => {
         const attr = {
+          closable: true,
           ...attrs,
           ...unref(getMergeProps),
-          open: unref(openRef),
-          closable: false,
+          show: unref(openRef),
           wrapClassName: unref(getWrapClassName),
+          preset: 'card',
         };
         if (unref(fullScreenRef)) {
           return omit(attr, ['height', 'title', 'onOk']);
@@ -159,8 +131,8 @@
       });
 
       watchEffect(() => {
-        openRef.value = !!props.open;
-        fullScreenRef.value = !!props.defaultFullscreen;
+        openRef.value = !!props.show;
+        fullScreenRef.value = props.defaultFullscreen;
       });
 
       watch(
@@ -181,18 +153,13 @@
       );
 
       // 取消事件
-      async function handleCancel(e: Event) {
-        e?.stopPropagation();
-        // 过滤自定义关闭按钮的空白区域
-        if ((e.target as HTMLElement)?.classList?.contains(`${prefixCls}-close--custom`)) return;
-        if (props.closeFunc && isFunction(props.closeFunc)) {
-          const isClose: boolean = await props.closeFunc();
-          openRef.value = !isClose;
-          return;
-        }
-
+      async function handleCancel() {
         openRef.value = false;
-        emit('cancel', e);
+        emit('cancel');
+      }
+
+      async function onUpdateShow(show: boolean) {
+        openRef.value = show;
       }
 
       /**
@@ -201,8 +168,8 @@
       function setModalProps(props: Partial<ModalProps>): void {
         // Keep the last setModalProps
         propsRef.value = deepMerge(unref(propsRef) || ({} as any), props);
-        if (Reflect.has(props, 'open')) {
-          openRef.value = !!props.open;
+        if (Reflect.has(props, 'show')) {
+          openRef.value = !!props.show;
         }
         if (Reflect.has(props, 'defaultFullscreen')) {
           fullScreenRef.value = !!props.defaultFullscreen;
@@ -242,6 +209,7 @@
         handleHeightChange,
         handleTitleDbClick,
         getWrapperHeight,
+        onUpdateShow,
       };
     },
   });

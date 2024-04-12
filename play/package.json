@@ -17,8 +17,12 @@
     "fe-ent-core": "^2.1.0"
   },
   "dependencies": {
+    "intro.js": "^4.3.0",
+    "print-js": "^1.6.0",
     "vue": "^3.4.0",
-    "ant-design-vue": "^4.1.0"
+    "ant-design-vue": "^4.1.0",
+    "naive-ui": "^2.38.1",
+    "vfonts": "^0.0.3"
   },
   "devDependencies": {
     "fe-ent-vue-scripts": "^2.1.0",

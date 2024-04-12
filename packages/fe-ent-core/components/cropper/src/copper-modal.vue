@@ -9,26 +9,45 @@
     @ok="handleOk"
   >
     <div :class="prefixCls">
-      <div :class="`${prefixCls}-left`">
-        <div :class="`${prefixCls}-cropper`">
-          <CropperImage
-            v-if="src"
-            :src="src"
-            height="300px"
-            :circled="circled"
-            @cropend="handleCropend"
-            @ready="handleReady"
-          />
+      <div :class="`${prefixCls}-container`">
+        <div :class="`${prefixCls}-left`">
+          <div :class="`${prefixCls}-cropper`">
+            <CropperImage
+              v-if="src"
+              :src="src"
+              height="300px"
+              :circled="circled"
+              @cropend="handleCropend"
+              @ready="handleReady"
+            />
+          </div>
         </div>
-
-        <div :class="`${prefixCls}-toolbar`">
-          <Upload :file-list="[]" accept="image/*" :before-upload="handleBeforeUpload">
-            <Tooltip :title="t('component.cropper.selectImage')" placement="bottom">
-              <ent-button size="small" pre-icon="ant-design:upload-outlined" type="primary" />
-            </Tooltip>
-          </Upload>
-          <Space>
-            <Tooltip :title="t('component.cropper.btn_reset')" placement="bottom">
+        <div :class="`${prefixCls}-right`">
+          <div :class="`${prefixCls}-preview`">
+            <img v-if="previewSource" :src="previewSource" :alt="t('component.cropper.preview')" />
+          </div>
+          <template v-if="previewSource">
+            <div :class="`${prefixCls}-group`">
+              <NAvatar :src="previewSource" size="large" />
+              <NAvatar :src="previewSource" :size="48" />
+              <NAvatar :src="previewSource" :size="64" />
+              <NAvatar :src="previewSource" :size="80" />
+            </div>
+          </template>
+        </div>
+      </div>
+      <div :class="`${prefixCls}-toolbar`">
+        <NSpace :size="[4, 4]" justify="start">
+          <NUpload :file-list="[]" accept="image/*" @before-upload="handleBeforeUpload">
+            <NTooltip placement="bottom">
+              <template #trigger>
+                <ent-button size="small" pre-icon="ant-design:upload-outlined" type="primary" />
+              </template>
+              <span>{{ t('component.cropper.selectImage') }}</span>
+            </NTooltip>
+          </NUpload>
+          <NTooltip placement="bottom">
+            <template #trigger>
               <ent-button
                 type="primary"
                 pre-icon="ant-design:reload-outlined"
@@ -36,8 +55,11 @@
                 :disabled="!src"
                 @click="handlerToolbar('reset')"
               />
-            </Tooltip>
-            <Tooltip :title="t('component.cropper.btn_rotate_left')" placement="bottom">
+            </template>
+            <span>{{ t('component.cropper.btn_reset') }}</span>
+          </NTooltip>
+          <NTooltip placement="bottom">
+            <template #trigger>
               <ent-button
                 type="primary"
                 pre-icon="ant-design:rotate-left-outlined"
@@ -45,8 +67,11 @@
                 :disabled="!src"
                 @click="handlerToolbar('rotate', -45)"
               />
-            </Tooltip>
-            <Tooltip :title="t('component.cropper.btn_rotate_right')" placement="bottom">
+            </template>
+            <span>{{ t('component.cropper.btn_rotate_left') }}</span>
+          </NTooltip>
+          <NTooltip placement="bottom">
+            <template #trigger>
               <ent-button
                 type="primary"
                 pre-icon="ant-design:rotate-right-outlined"
@@ -54,8 +79,11 @@
                 :disabled="!src"
                 @click="handlerToolbar('rotate', 45)"
               />
-            </Tooltip>
-            <Tooltip :title="t('component.cropper.btn_scale_x')" placement="bottom">
+            </template>
+            <span>{{ t('component.cropper.btn_rotate_right') }}</span>
+          </NTooltip>
+          <NTooltip placement="bottom">
+            <template #trigger>
               <ent-button
                 type="primary"
                 pre-icon="vaadin:arrows-long-h"
@@ -63,8 +91,11 @@
                 :disabled="!src"
                 @click="handlerToolbar('scaleX')"
               />
-            </Tooltip>
-            <Tooltip :title="t('component.cropper.btn_scale_y')" placement="bottom">
+            </template>
+            <span>{{ t('component.cropper.btn_scale_x') }}</span>
+          </NTooltip>
+          <NTooltip placement="bottom">
+            <template #trigger>
               <ent-button
                 type="primary"
                 pre-icon="vaadin:arrows-long-v"
@@ -72,8 +103,11 @@
                 :disabled="!src"
                 @click="handlerToolbar('scaleY')"
               />
-            </Tooltip>
-            <Tooltip :title="t('component.cropper.btn_zoom_in')" placement="bottom">
+            </template>
+            <span>{{ t('component.cropper.btn_scale_y') }}</span>
+          </NTooltip>
+          <NTooltip placement="bottom">
+            <template #trigger>
               <ent-button
                 type="primary"
                 pre-icon="ant-design:zoom-in-outlined"
@@ -81,8 +115,11 @@
                 :disabled="!src"
                 @click="handlerToolbar('zoom', 0.1)"
               />
-            </Tooltip>
-            <Tooltip :title="t('component.cropper.btn_zoom_out')" placement="bottom">
+            </template>
+            <span>{{ t('component.cropper.btn_zoom_in') }}</span>
+          </NTooltip>
+          <NTooltip placement="bottom">
+            <template #trigger>
               <ent-button
                 type="primary"
                 pre-icon="ant-design:zoom-out-outlined"
@@ -90,29 +127,17 @@
                 :disabled="!src"
                 @click="handlerToolbar('zoom', -0.1)"
               />
-            </Tooltip>
-          </Space>
-        </div>
-      </div>
-      <div :class="`${prefixCls}-right`">
-        <div :class="`${prefixCls}-preview`">
-          <img v-if="previewSource" :src="previewSource" :alt="t('component.cropper.preview')" />
-        </div>
-        <template v-if="previewSource">
-          <div :class="`${prefixCls}-group`">
-            <Avatar :src="previewSource" size="large" />
-            <Avatar :src="previewSource" :size="48" />
-            <Avatar :src="previewSource" :size="64" />
-            <Avatar :src="previewSource" :size="80" />
-          </div>
-        </template>
+            </template>
+            <span>{{ t('component.cropper.btn_zoom_out') }}</span>
+          </NTooltip>
+        </NSpace>
       </div>
     </div>
   </EntModal>
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { Avatar, Space, Tooltip, Upload } from 'ant-design-vue';
+  import { NAvatar, NSpace, NTooltip, NUpload } from 'naive-ui';
   import { isFunction } from '@ent-core/utils/is';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { EntModal, useModalInner } from '@ent-core/components/modal';
@@ -134,7 +159,7 @@
 
   export default defineComponent({
     name: 'CropperModal',
-    components: { EntModal, Space, CropperImage, Upload, Avatar, Tooltip },
+    components: { EntModal, NSpace, CropperImage, NUpload, NAvatar, NTooltip },
     props,
     emits: ['uploadSuccess', 'register'],
     setup(props, { emit }) {

@@ -1,13 +1,12 @@
-import { MenuModeEnum, MenuTypeEnum } from 'fe-ent-core/es/logics/enums/menu-enum';
+import { MenuTypeEnum } from 'fe-ent-core/es/logics/enums/menu-enum';
 import { ThemeEnum } from 'fe-ent-core/es/logics/enums/app-enum';
 import { propTypes } from 'fe-ent-core/es/utils/prop-types';
 import type { PropType } from 'vue';
 import type { Menu } from 'fe-ent-core/es/router/types';
-import type { MenuTheme } from 'ant-design-vue';
-import type { MenuMode } from 'ant-design-vue/es/menu/src/interface';
+import type { MenuOption } from 'naive-ui/es/menu';
 export const basicProps = {
   items: {
-    type: Array as PropType<Menu[]>,
+    type: Array as PropType<MenuOption[]>,
     default: () => [],
   },
   collapsedShowTitle: propTypes.bool,
@@ -15,16 +14,16 @@ export const basicProps = {
   inlineIndent: propTypes.number.def(20),
   // 菜单组件的mode属性
   mode: {
-    type: String as PropType<MenuMode>,
-    default: MenuModeEnum.INLINE,
+    type: String as PropType<'horizontal' | 'vertical'>,
+    default: 'horizontal',
   },
-
+  collapse: propTypes.bool,
   type: {
     type: String as PropType<MenuTypeEnum>,
     default: MenuTypeEnum.MIX,
   },
   theme: {
-    type: String as PropType<MenuTheme>,
+    type: String as PropType<ThemeEnum>,
     default: ThemeEnum.DARK,
   },
   inlineCollapsed: propTypes.bool,

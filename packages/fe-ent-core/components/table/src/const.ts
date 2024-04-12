@@ -33,6 +33,8 @@ export const DEFAULT_FILTER_FN = defaultFilterFn;
 //  Default layout of table cells
 export const DEFAULT_ALIGN = 'center';
 
-export const INDEX_COLUMN_FLAG = 'INDEX';
+export const INDEX_COLUMN_FLAG = '_INDEX';
 
-export const ACTION_COLUMN_FLAG = 'ACTION';
+export const ACTION_COLUMN_FLAG = '_ACTION';
+
+export const TREE_EXPAND_COLUMN_FLAG = '_EXPAND';

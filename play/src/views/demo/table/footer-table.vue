@@ -35,6 +35,7 @@
         api: demoListApi,
         rowSelection: { type: 'checkbox' },
         columns: getBasicColumns(),
+        rowKey: (record) => record.id,
         showSummary: true,
         summaryFunc: handleSummary,
         scroll: { x: 2000 },

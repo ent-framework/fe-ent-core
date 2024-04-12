@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%">
+  <div :class="`${prefixCls}`">
     <div v-if="$slots.headerTop" style="margin: 5px">
       <slot name="headerTop" />
     </div>
@@ -12,7 +12,7 @@
       />
       <div :class="`${prefixCls}__toolbar`">
         <slot name="toolbar" />
-        <Divider v-if="$slots.toolbar && showTableSetting" type="vertical" />
+        <NDivider v-if="$slots.toolbar && showTableSetting" :vertical="true" />
         <TableSetting
           v-if="showTableSetting"
           :setting="tableSetting"
@@ -24,35 +24,21 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { Divider } from 'ant-design-vue';
+  import { NDivider } from 'naive-ui';
   import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { tableHeaderProps } from '../props';
   import TableSettingComponent from './settings/index.vue';
   import TableTitle from './table-title.vue';
-  import type { PropType } from 'vue';
-  import type { ColumnChangeParam, TableSetting } from '../types/table';
+  import type { ColumnChangeParam } from '../types/table';
 
   export default defineComponent({
     name: 'BasicTableHeader',
     components: {
-      Divider,
+      NDivider,
       TableTitle,
       TableSetting: TableSettingComponent,
     },
-    props: {
-      title: {
-        type: [Function, String] as PropType<string | ((data) => string)>,
-      },
-      tableSetting: {
-        type: Object as PropType<TableSetting>,
-      },
-      showTableSetting: {
-        type: Boolean,
-      },
-      titleHelpMessage: {
-        type: [String, Array] as PropType<string | string[]>,
-        default: '',
-      },
-    },
+    props: tableHeaderProps,
     emits: ['columns-change'],
     setup(_, { emit }) {
       const { prefixCls } = useDesign('basic-table-header');

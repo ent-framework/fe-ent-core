@@ -91,6 +91,7 @@ const setting: LayoutConfig = {
     mixSideTrigger: MixSidebarTriggerEnum.CLICK,
     // Fixed expanded menu
     mixSideFixed: false,
+    inverted: false,
   },
 
   // Multi-label

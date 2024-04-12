@@ -29,6 +29,7 @@
         api: demoListApi,
         columns: getCustomHeaderColumns(),
         canResize: false,
+        rowKey: (record) => record.id,
         scroll: { y: 100 },
       });
 

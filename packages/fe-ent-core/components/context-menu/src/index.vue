@@ -1,9 +1,14 @@
 <script lang="tsx">
-  import { computed, defineComponent, nextTick, onMounted, onUnmounted, ref, unref } from 'vue';
-  import { Divider, Menu } from 'ant-design-vue';
+  import { computed, defineComponent, h, nextTick, onMounted, onUnmounted, ref, unref } from 'vue';
+  import { NDropdown } from 'naive-ui';
   import { EntIcon } from '@ent-core/components/icon';
-  import type { CSSProperties, FunctionalComponent, PropType } from 'vue';
-  import type { Axis, ContextMenuItem, ItemContentProps } from './typing';
+  import type {
+    DropdownDividerOption,
+    DropdownMixedOption,
+    DropdownOption,
+  } from 'naive-ui/es/dropdown/src/interface';
+  import type { CSSProperties, PropType } from 'vue';
+  import type { Axis, ContextMenuItem } from './typing';
 
   const prefixCls = 'context-menu';
 
@@ -26,20 +31,6 @@
         return [];
       },
     },
-  };
-
-  const ItemContent: FunctionalComponent<ItemContentProps> = (props) => {
-    const { item } = props;
-    return (
-      <span
-        style="display: inline-block; width: 100%; "
-        class="px-4"
-        onClick={props.handler.bind(null, item)}
-      >
-        {props.showIcon && item.icon && <EntIcon class="mr-2" icon={item.icon} />}
-        <span>{item.label}</span>
-      </span>
-    );
   };
 
   export default defineComponent({
@@ -77,60 +68,39 @@
         el && document.body.removeChild(el);
       });
 
-      function handleAction(item: ContextMenuItem, e: MouseEvent) {
-        const { handler, disabled } = item;
-        if (disabled) {
-          return;
-        }
-        showRef.value = false;
-        e?.stopPropagation();
-        e?.preventDefault();
-        handler?.();
-      }
-
-      function renderMenuItem(items: ContextMenuItem[]) {
-        const visibleItems = items.filter((item) => !item.hidden);
-        return visibleItems.map((item) => {
-          const { disabled, label, children, divider = false } = item;
-
-          const contentProps = {
-            item,
-            handler: handleAction,
-            showIcon: props.showIcon,
-          };
-
-          if (!children || children.length === 0) {
-            return (
-              <>
-                <Menu.Item disabled={disabled} class={`${prefixCls}__item`} key={label}>
-                  <ItemContent {...contentProps} />
-                </Menu.Item>
-                {divider ? <Divider key={`d-${label}`} /> : null}
-              </>
-            );
-          }
-          if (!unref(showRef)) return null;
-
-          return (
-            <Menu.SubMenu key={label} disabled={disabled} popupClassName={`${prefixCls}__popup`}>
-              {{
-                title: () => <ItemContent {...contentProps} />,
-                default: () => renderMenuItem(children),
-              }}
-            </Menu.SubMenu>
-          );
-        });
-      }
       return () => {
         if (!unref(showRef)) {
           return null;
         }
+        const menuOptions: DropdownMixedOption[] = [];
         const { items } = props;
+        if (items && items.length > 0) {
+          items.forEach((item) => {
+            const { label, children, divider = false } = item;
+            if (!children || children.length === 0) {
+              if (divider) {
+                menuOptions.push({
+                  type: 'divider',
+                  key: `d-${label}`,
+                } as DropdownDividerOption);
+              } else {
+                menuOptions.push({
+                  type: 'render',
+                  label: item.label,
+                  key: `d-${label}`,
+                  icon: () => {
+                    if (item.icon) {
+                      return h(EntIcon, { icon: item.icon });
+                    }
+                  },
+                } as DropdownOption);
+              }
+            }
+          });
+        }
         return (
           <div class={prefixCls}>
-            <Menu inlineIndent={12} mode="vertical" ref={wrapRef} style={unref(getStyle)}>
-              {renderMenuItem(items)}
-            </Menu>
+            <NDropdown options={menuOptions} ref={wrapRef} style={unref(getStyle)} />
           </div>
         );
       };

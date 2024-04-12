@@ -7,28 +7,24 @@
       <Col :span="8">
         <ent-tree
           title="可勾选，默认全部展开"
-          :tree-data="treeData"
+          :data="treeData"
           :checkable="true"
           default-expand-all
+          show-line
           @check="handleCheck"
         />
       </Col>
       <Col :span="8">
         <ent-tree
           title="指定默认展开/勾选示例"
-          :tree-data="treeData"
+          :data="treeData"
           :checkable="true"
           :expanded-keys="['0-0']"
           :checked-keys="['0-0']"
         />
       </Col>
       <Col :span="8">
-        <ent-tree
-          ref="asyncTreeRef"
-          title="懒加载异步树"
-          :tree-data="tree"
-          :load-data="onLoadData"
-        />
+        <ent-tree ref="asyncTreeRef" title="懒加载异步树" :data="tree" :load-data="onLoadData" />
       </Col>
       <Col :span="16">
         <Card title="异步数据，默认展开">

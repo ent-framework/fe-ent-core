@@ -74,9 +74,9 @@ export function useModal(): UseModalReturnType {
       getInstance()?.redoModalHeight?.();
     },
 
-    openModal: <T = any>(open = true, data?: T, openOnSet = true): void => {
+    openModal: <T = any>(show = true, data?: T, openOnSet = true): void => {
       getInstance()?.setModalProps({
-        open,
+        show,
       });
 
       if (!data) return;
@@ -93,7 +93,7 @@ export function useModal(): UseModalReturnType {
     },
 
     closeModal: () => {
-      getInstance()?.setModalProps({ open: false });
+      getInstance()?.setModalProps({ show: false });
     },
   };
   return [register, methods];
@@ -145,7 +145,7 @@ export const useModalInner = (callbackFn?: Fn): UseModalInnerReturnType => {
       },
 
       closeModal: () => {
-        getInstance()?.setModalProps({ open: false });
+        getInstance()?.setModalProps({ show: false });
       },
 
       setModalProps: (props: Partial<ModalProps>) => {

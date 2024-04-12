@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "fe-ent-vue-scripts": "^2.1.0",
+    "naive-ui": "^2.38.1",
     "@types/qrcode": "^1.4.1",
     "rimraf": "^5.0.0"
   },

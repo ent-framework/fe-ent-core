@@ -5,23 +5,24 @@
         class="w-1/3"
         title="右侧操作按钮/自定义图标"
         help-message="帮助信息"
-        :tree-data="treeData"
+        :data="treeData"
         :action-list="actionList"
-        :render-icon="createIcon"
       />
       <ent-tree
         class="w-1/3 mx-4"
         title="右键菜单"
-        :tree-data="treeData"
+        :data="treeData"
         :before-right-click="getRightMenuList"
       />
       <ent-tree
         class="w-1/3"
         title="工具栏使用"
+        :show-irrelevant-nodes="false"
         toolbar
         checkable
         search
-        :tree-data="treeData"
+        cascade
+        :data="treeData"
         :before-right-click="getRightMenuList"
       />
     </div>

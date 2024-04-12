@@ -90,6 +90,7 @@ export default {
     tabsRedoBtn: '标签页刷新按钮',
     tabsFoldBtn: '标签页折叠按钮',
     sidebar: '左侧菜单',
+    sidebarInverted: '左侧菜单背景翻转',
     header: '顶栏',
     footer: '页脚',
     fullContent: '全屏内容',

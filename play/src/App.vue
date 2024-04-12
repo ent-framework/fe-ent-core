@@ -1,20 +1,25 @@
 <template>
-  <ConfigProvider :locale="getAntdLocale" :theme="theme">
+  <NConfigProvider
+    :abstract="true"
+    :locale="getCombinedLocale.nLocale"
+    :date-locale="getCombinedLocale.nDateLocale"
+    :theme="theme"
+  >
     <EntAppProvider>
       <RouterView />
     </EntAppProvider>
-  </ConfigProvider>
+  </NConfigProvider>
 </template>
 
 <script lang="ts" setup>
-  import { ConfigProvider } from 'ant-design-vue';
   import { EntAppProvider } from 'fe-ent-core';
+  import { NConfigProvider } from 'naive-ui';
   import { useLocale } from 'fe-ent-core/es/locales';
   import { useTheme, useTitle } from 'fe-ent-core/es/hooks';
 
   // support Multi-language
-  const { getAntdLocale } = useLocale();
-  const { theme } = useTheme();
+  const { getCombinedLocale } = useLocale();
+  const { theme, themeOverrides } = useTheme();
   // Listening to page changes and dynamically changing site titles
   useTitle();
 </script>

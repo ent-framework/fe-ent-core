@@ -1,13 +1,13 @@
 import { computed, onMounted, reactive, ref, unref, watch, watchEffect } from 'vue';
-import { cloneDeep, get, merge } from 'lodash-es';
+import { get, merge } from 'lodash-es';
 import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
-import { buildUUID } from '@ent-core/utils/uuid';
 import { isBoolean, isFunction, isObject } from '@ent-core/utils/is';
-import { FETCH_SETTING, PAGE_SIZE, ROW_KEY } from '../const';
+import { FETCH_SETTING, PAGE_SIZE } from '../const';
 import type { ComputedRef, Ref } from 'vue';
-import type { PaginationProps } from '../types/pagination';
+import type { DataTableRowKey, PaginationProps } from 'naive-ui';
 import type { BasicTableProps, FetchParams, SorterResult } from '../types/table';
 import type { EmitType, Recordable } from '@ent-core/types';
+
 interface ActionType {
   getPaginationInfo: ComputedRef<boolean | PaginationProps>;
   setPagination: (info: Partial<PaginationProps>) => void;
@@ -45,10 +45,10 @@ export function useDataSource(
   });
 
   watch(
-    () => unref(propsRef).dataSource,
+    () => unref(propsRef).data,
     () => {
-      const { dataSource, api } = unref(propsRef);
-      !api && dataSource && (dataSourceRef.value = dataSource);
+      const { data, api } = unref(propsRef);
+      !api && data && (dataSourceRef.value = data);
     },
     {
       immediate: true,
@@ -57,8 +57,8 @@ export function useDataSource(
 
   function handleTableChange(
     pagination: PaginationProps,
-    filters: Partial<Recordable<string[]>>,
-    sorter: SorterResult,
+    filters?: Partial<Recordable<string[]>>,
+    sorter?: SorterResult,
   ) {
     const { clearSelectOnPageChange, sortFn, filterFn } = unref(propsRef);
     if (clearSelectOnPageChange) {
@@ -81,50 +81,10 @@ export function useDataSource(
     fetch(params);
   }
 
-  function setTableKey(items: any[]) {
-    if (!items || !Array.isArray(items)) return;
-    items.forEach((item) => {
-      if (!item[ROW_KEY]) {
-        item[ROW_KEY] = buildUUID();
-      }
-      if (item.children && item.children.length) {
-        setTableKey(item.children);
-      }
-    });
-  }
-
-  const getAutoCreateKey = computed(() => {
-    return unref(propsRef).autoCreateKey && !unref(propsRef).rowKey;
-  });
-
-  const getRowKey = computed(() => {
-    const { rowKey } = unref(propsRef);
-    return unref(getAutoCreateKey) ? ROW_KEY : rowKey;
-  });
-
   const getDataSourceRef = computed(() => {
     const dataSource = unref(dataSourceRef);
     if (!dataSource || dataSource.length === 0) {
       return unref(dataSourceRef);
-    }
-    if (unref(getAutoCreateKey)) {
-      const firstItem = dataSource[0];
-      const lastItem = dataSource[dataSource.length - 1];
-
-      if (firstItem && lastItem) {
-        if (!firstItem[ROW_KEY] || !lastItem[ROW_KEY]) {
-          const data = cloneDeep(unref(dataSourceRef));
-          data.forEach((item) => {
-            if (!item[ROW_KEY]) {
-              item[ROW_KEY] = buildUUID();
-            }
-            if (item.children && item.children.length) {
-              setTableKey(item.children);
-            }
-          });
-          dataSourceRef.value = data;
-        }
-      }
     }
     return unref(dataSourceRef);
   });
@@ -151,9 +111,9 @@ export function useDataSource(
     }
   }
 
-  function deleteTableDataRecord(rowKey: string | number | string[] | number[]) {
+  function deleteTableDataRecord(rowKey: DataTableRowKey | DataTableRowKey[]) {
     if (!dataSourceRef.value || dataSourceRef.value.length == 0) return;
-    const rowKeyName = unref(getRowKey);
+    const { rowKey: rowKeyName } = unref(propsRef);
     if (!rowKeyName) return;
     const rowKeys = !Array.isArray(rowKey) ? [rowKey] : rowKey;
 
@@ -170,11 +130,11 @@ export function useDataSource(
         }
         for (let i = 0; i < data.length; i++) {
           const row = data[i];
-          let targetKeyName: string = rowKeyName as string;
-          if (targetKeyName && typeof rowKeyName === 'function') {
+          let targetKeyName: DataTableRowKey = '';
+          if (rowKeyName && typeof rowKeyName === 'function') {
             targetKeyName = rowKeyName(row);
           }
-          if (row[targetKeyName] === key) {
+          if (targetKeyName === key) {
             return { index: i, data };
           }
           if (row.children?.length > 0) {
@@ -190,10 +150,10 @@ export function useDataSource(
 
     for (const key of rowKeys) {
       deleteRow(dataSourceRef.value, key);
-      deleteRow(unref(propsRef).dataSource, key);
+      deleteRow(unref(propsRef).data, key);
     }
     setPagination({
-      total: unref(propsRef).dataSource?.length,
+      itemCount: unref(propsRef).data?.length,
     });
   }
 
@@ -210,11 +170,10 @@ export function useDataSource(
 
   function findTableDataRecord(rowKey: string | number) {
     if (!dataSourceRef.value || dataSourceRef.value.length == 0) return;
-
-    const rowKeyName = unref(getRowKey);
+    const { rowKey: rowKeyName } = unref(propsRef);
     if (!rowKeyName) return;
 
-    const { childrenColumnName = 'children' } = unref(propsRef);
+    const { childrenKey = 'children' } = unref(propsRef);
 
     const findRow = (array: any[]) => {
       let ret;
@@ -230,7 +189,7 @@ export function useDataSource(
             return true;
           }
         }
-        return r[childrenColumnName] && r[childrenColumnName].some(iter);
+        return r[childrenKey] && r[childrenKey].some(iter);
       });
       return ret;
     };
@@ -266,12 +225,12 @@ export function useDataSource(
       );
       let pageParams: Recordable = {};
 
-      const { current = 1, pageSize = PAGE_SIZE } = unref(getPaginationInfo) as PaginationProps;
+      const { page = 1, pageSize = PAGE_SIZE } = unref(getPaginationInfo) as PaginationProps;
 
       if ((isBoolean(pagination) && !pagination) || isBoolean(getPaginationInfo)) {
         pageParams = {};
       } else {
-        pageParams[pageField] = (opt && opt.page) || current;
+        pageParams[pageField] = (opt && opt.page) || page;
         pageParams[sizeField] = pageSize;
       }
 
@@ -303,9 +262,9 @@ export function useDataSource(
       // 假如数据变少，导致总页数变少并小于当前选中页码，通过getPaginationRef获取到的页码是不正确的，需获取正确的页码再次执行
       if (Number(resultTotal)) {
         const currentTotalPage = Math.ceil(resultTotal / pageSize);
-        if (current > currentTotalPage) {
+        if (page > currentTotalPage) {
           setPagination({
-            current: currentTotalPage,
+            page: currentTotalPage,
           });
           return await fetch(opt);
         }
@@ -316,11 +275,11 @@ export function useDataSource(
       }
       dataSourceRef.value = resultItems;
       setPagination({
-        total: resultTotal || 0,
+        itemCount: resultTotal || 0,
       });
       if (opt && opt.page) {
         setPagination({
-          current: opt.page || 1,
+          page: opt.page || 1,
         });
       }
       emit('fetch-success', {
@@ -332,7 +291,7 @@ export function useDataSource(
       emit('fetch-error', error);
       dataSourceRef.value = [];
       setPagination({
-        total: 0,
+        itemCount: 0,
       });
     } finally {
       setLoading(false);
@@ -365,9 +324,7 @@ export function useDataSource(
     getDataSourceRef,
     getDataSource,
     getRawDataSource,
-    getRowKey,
     setTableData,
-    getAutoCreateKey,
     fetch,
     reload,
     updateTableData,

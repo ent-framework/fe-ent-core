@@ -1,67 +1,25 @@
 <script lang="tsx">
-  import { computed, defineComponent, toRefs, unref } from 'vue';
-  import { Col, Divider, Form } from 'ant-design-vue';
+  import { computed, defineComponent, unref, ref } from 'vue';
+  import { NFormItem } from 'naive-ui';
   import { cloneDeep, upperFirst } from 'lodash-es';
   import { EntHelp } from '@ent-core/components/basic';
-  import { isBoolean, isNull } from '@ent-core/utils/is';
+  import { isBoolean, isFunction, isNull } from '@ent-core/utils/is';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useItemLabelWidth } from '../hooks/use-label-width';
-  import {
-    NO_AUTO_LINK_COMPONENTS,
-    createPlaceholderMessage,
-    setComponentRuleType,
-  } from '../helper';
+  import { createPlaceholderMessage, setComponentRuleType } from '../helper';
   import { componentMap } from '../component-map';
+  import { formItemProps } from '../props';
   import type { Nullable, Recordable } from '@ent-core/types';
-  import type { TableActionType } from '@ent-core/components/table/interface';
-  import type { Rule } from 'ant-design-vue/es/form';
-  import type { FormActionType, FormProps, FormSchema } from '../types/form';
-  import type { PropType, Ref } from 'vue';
+  import type { FormItemInst, FormItemRule } from 'naive-ui/es/form';
 
   export default defineComponent({
     name: 'BasicFormItem',
     inheritAttrs: false,
-    props: {
-      schema: {
-        type: Object as PropType<FormSchema>,
-        default: () => ({}),
-      },
-      formProps: {
-        type: Object as PropType<FormProps>,
-        default: () => ({}),
-      },
-      allDefaultValues: {
-        type: Object as PropType<Recordable<any>>,
-        default: () => ({}),
-      },
-      formModel: {
-        type: Object as PropType<Recordable<any>>,
-        default: () => ({}),
-      },
-      setFormModel: {
-        type: Function as PropType<(key: string, value: any, schema: FormSchema) => void>,
-        default: null,
-      },
-      tableAction: {
-        type: Object as PropType<TableActionType>,
-      },
-      formActionType: {
-        type: Object as PropType<FormActionType>,
-      },
-      isAdvanced: {
-        type: Boolean,
-      },
-    },
+    props: formItemProps,
     setup(props, { slots }) {
       const { t } = useI18n();
 
-      const { schema, formProps } = toRefs(props) as {
-        schema: Ref<FormSchema>;
-        formProps: Ref<FormProps>;
-      };
-
-      const itemLabelWidthProp = useItemLabelWidth(schema, formProps);
+      const formItemRef = ref<FormItemInst>();
 
       const getValues = computed(() => {
         const { allDefaultValues, formModel, schema } = props;
@@ -84,17 +42,7 @@
         if (typeof componentProps === 'function') {
           componentProps = componentProps({ schema, tableAction, formModel, formActionType }) ?? {};
         }
-        if (schema.component === 'Divider') {
-          componentProps = Object.assign(
-            { type: 'horizontal' },
-            {
-              orientation: 'left',
-              plain: true,
-            },
-            componentProps,
-          );
-        }
-        return componentProps as Recordable<any>;
+        return componentProps as Recordable;
       });
 
       const getDisable = computed(() => {
@@ -139,7 +87,7 @@
         return { isShow, isIfShow };
       }
 
-      function handleRules(): Rule[] {
+      function handleRules(): FormItemRule[] {
         const {
           rules: defRules = [],
           component,
@@ -150,10 +98,10 @@
         } = props.schema;
 
         if (typeof dynamicRules === 'function') {
-          return dynamicRules(unref(getValues)) as Rule[];
+          return dynamicRules(unref(getValues)) as FormItemRule[];
         }
 
-        let rules: Rule[] = cloneDeep(defRules) as Rule[];
+        let rules: FormItemRule[] = cloneDeep(defRules) as FormItemRule[];
         const { rulesMessageJoinLabel: globalRulesMessageJoinLabel } = props.formProps;
 
         const joinLabel = Reflect.has(props.schema, 'rulesMessageJoinLabel')
@@ -246,12 +194,13 @@
           renderComponentContent,
           component,
           field,
-          changeEvent = 'change',
+          changeEvent = 'update:value',
           valueField,
         } = props.schema;
 
         const isCheck = component && ['Switch', 'Checkbox'].includes(component);
-
+        const componentProps = unref(getComponentsProps);
+        const { onChange, ...others } = componentProps;
         const eventKey = `on${upperFirst(changeEvent)}`;
 
         const on = {
@@ -263,16 +212,22 @@
             const target = e ? e.target : null;
             const value = target ? (isCheck ? target.checked : target.value) : e;
             props.setFormModel(field, value, props.schema);
+            if (onChange && isFunction(onChange)) {
+              onChange(value, props.schema);
+            }
+            unref(formItemRef)?.validate();
           },
         };
+
         const Comp = componentMap.get(component) as ReturnType<typeof defineComponent>;
 
         const { autoSetPlaceHolder, size } = props.formProps;
+
         const propsData: Recordable<any> = {
-          allowClear: true,
+          clearable: true,
           getPopupContainer: (trigger: Element) => trigger.parentNode,
           size,
-          ...unref(getComponentsProps),
+          ...others,
           disabled: unref(getDisable),
         };
 
@@ -280,7 +235,7 @@
         // RangePicker place is an array
         if (isCreatePlaceholder && component !== 'RangePicker' && component) {
           propsData.placeholder =
-            unref(getComponentsProps)?.placeholder || createPlaceholderMessage(component);
+            componentProps?.placeholder || createPlaceholderMessage(component);
         }
         propsData.codeField = field;
         propsData.formValues = unref(getValues);
@@ -330,64 +285,53 @@
       }
 
       function renderItem() {
-        const { itemProps, slot, render, field, suffix, component } = props.schema;
-        const { labelCol, wrapperCol } = unref(itemLabelWidthProp);
-        const { colon } = props.formProps;
+        const { formItemProps = {}, slot, render, field, suffix, label } = props.schema;
+        const { baseFormItemProps = {} } = props.formProps;
+        const getContent = () => {
+          return slot
+            ? getSlot(slots, slot, unref(getValues))
+            : render
+              ? render(unref(getValues))
+              : renderComponent();
+        };
 
-        if (component === 'Divider') {
-          return (
-            <Col span={24}>
-              <Divider {...unref(getComponentsProps)}>{renderLabelHelpMessage()}</Divider>
-            </Col>
-          );
-        } else {
-          const getContent = () => {
-            return slot
-              ? getSlot(slots, slot, unref(getValues))
-              : render
-                ? render(unref(getValues))
-                : renderComponent();
-          };
+        const showSuffix = !!suffix;
+        const getSuffix = typeof suffix === 'function' ? suffix(unref(getValues)) : suffix;
 
-          const showSuffix = !!suffix;
-          const getSuffix = typeof suffix === 'function' ? suffix(unref(getValues)) : suffix;
-
-          // TODO 自定义组件验证会出现问题，因此这里框架默认将自定义组件设置手动触发验证，如果其他组件还有此问题请手动设置autoLink=false
-          if (NO_AUTO_LINK_COMPONENTS.includes(component)) {
-            props.schema &&
-              (props.schema.itemProps! = {
-                autoLink: false,
-                ...props.schema.itemProps,
-              });
-          }
-          return (
-            <Form.Item
-              name={field}
-              colon={colon}
-              class={{ 'suffix-item': showSuffix }}
-              {...(itemProps as Recordable<any>)}
-              label={renderLabelHelpMessage()}
-              rules={handleRules()}
-              labelCol={labelCol}
-              wrapperCol={wrapperCol}
-            >
-              <div style="display:flex">
-                <div style="flex:1;">{getContent()}</div>
-                {showSuffix && <span class="suffix">{getSuffix}</span>}
-              </div>
-            </Form.Item>
-          );
-        }
+        // TODO 自定义组件验证会出现问题，因此这里框架默认将自定义组件设置手动触发验证，如果其他组件还有此问题请手动设置autoLink=false
+        // if (NO_AUTO_LINK_COMPONENTS.includes(component)) {
+        //   props.schema &&
+        //     (props.schema.itemProps! = {
+        //       autoLink: false,
+        //       ...props.schema.itemProps,
+        //     });
+        // }
+        const itemProps = { ...baseFormItemProps, ...formItemProps };
+        return (
+          <NFormItem
+            ref={formItemRef}
+            class={{ 'suffix-item': showSuffix }}
+            {...(itemProps as Recordable)}
+            label={label}
+            path={field}
+            rule={handleRules()}
+            v-model:value={props.formModel[field]}
+            v-slots={{
+              label: () => renderLabelHelpMessage(),
+            }}
+          >
+            {getContent()}
+            {showSuffix && <span class="suffix">{getSuffix}</span>}
+          </NFormItem>
+        );
       }
 
       return () => {
-        const { colProps = {}, colSlot, renderColContent, component } = props.schema;
+        const { colSlot, renderColContent, component } = props.schema;
         if (!componentMap.has(component)) {
           return null;
         }
 
-        const { baseColProps = {} } = props.formProps;
-        const realColProps = { ...baseColProps, ...colProps };
         const { isIfShow, isShow } = getShow();
         const values = unref(getValues);
 
@@ -398,14 +342,14 @@
               ? renderColContent(values)
               : renderItem();
         };
-
-        return (
-          isIfShow && (
-            <Col {...realColProps} v-show={isShow}>
-              {getContent()}
-            </Col>
-          )
-        );
+        return isIfShow && isShow && getContent();
+        // return (
+        //   isIfShow && (
+        //     <NGridItem {...realColProps} v-show={isShow}>
+        //       {getContent()}
+        //     </NGridItem>
+        //   )
+        // );
       };
     },
   });

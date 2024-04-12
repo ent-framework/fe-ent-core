@@ -31,6 +31,7 @@ export interface MenuSetting {
   collapsedShowTitle: boolean;
   mixSideTrigger: MixSidebarTriggerEnum;
   mixSideFixed: boolean;
+  inverted: boolean;
 }
 
 export interface MultiTabsSetting {

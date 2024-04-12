@@ -1,3 +1,5 @@
+export type { ExtractPublicPropTypes } from 'naive-ui/es/_utils';
+
 export type { VueNode } from 'ant-design-vue/es/_util/type';
 
 export type Nullable<T> = T | null;

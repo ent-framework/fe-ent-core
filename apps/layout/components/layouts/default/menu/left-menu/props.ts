@@ -2,14 +2,14 @@ import { ThemeEnum } from 'fe-ent-core/es/logics/enums/app-enum';
 import { propTypes } from 'fe-ent-core/es/utils/prop-types';
 import type { PropType } from 'vue';
 import type { Menu } from 'fe-ent-core/es/router/types';
-import type { MenuTheme } from 'ant-design-vue';
+import type { MenuOption } from 'naive-ui/es/menu';
 export const basicProps = {
   items: {
-    type: Array as PropType<Menu[]>,
+    type: Array as PropType<MenuOption[]>,
     default: () => [],
   },
   theme: {
-    type: String as PropType<MenuTheme>,
+    type: String as PropType<ThemeEnum>,
     default: ThemeEnum.DARK,
   },
   collapse: propTypes.bool,

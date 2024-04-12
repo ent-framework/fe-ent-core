@@ -11,7 +11,7 @@ export type { DropMenu };
 export interface TabContentProps {
   tabItem: RouteLocationNormalized;
   type?: TabContentEnum;
-  trigger?: ('click' | 'hover' | 'contextmenu')[];
+  trigger?: 'hover' | 'click' | 'focus' | 'manual';
 }
 
 export enum MenuEventEnum {

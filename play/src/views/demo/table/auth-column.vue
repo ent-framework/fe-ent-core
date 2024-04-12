@@ -65,21 +65,21 @@
   const columns: BasicColumn[] = [
     {
       title: '编号',
-      dataIndex: 'no',
+      key: 'no',
       width: 100,
     },
     {
       title: '姓名',
-      dataIndex: 'name',
+      key: 'name',
       auth: 'test', // 根据权限控制是否显示: 无权限，不显示
     },
     {
       title: '状态',
-      dataIndex: 'status',
+      key: 'status',
     },
     {
       title: '地址',
-      dataIndex: 'address',
+      key: 'address',
       auth: 'super', // 同时根据权限和业务控制是否显示
       ifShow: (_column) => {
         return true;
@@ -87,11 +87,11 @@
     },
     {
       title: '开始时间',
-      dataIndex: 'beginTime',
+      key: 'beginTime',
     },
     {
       title: '结束时间',
-      dataIndex: 'endTime',
+      key: 'endTime',
       width: 200,
     },
   ];
@@ -105,7 +105,7 @@
         actionColumn: {
           width: 250,
           title: 'Action',
-          dataIndex: 'action',
+          key: 'action',
         },
       });
       function handleEdit(record: Recordable) {

@@ -52,6 +52,9 @@ function handler(event: HandlerEnum, value: any): DeepPartial<LayoutConfig> {
     case HandlerEnum.MENU_WIDTH:
       return { menuSetting: { menuWidth: value } };
 
+    case HandlerEnum.MENU_INVERTED:
+      return { menuSetting: { inverted: value } };
+
     case HandlerEnum.MENU_SHOW_SIDEBAR:
       return { menuSetting: { show: value } };
 

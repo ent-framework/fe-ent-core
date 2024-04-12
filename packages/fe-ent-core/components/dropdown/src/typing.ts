@@ -1,11 +1,20 @@
 import type { Fn } from '@ent-core/types';
+import type { MenuOptionSharedPart } from 'naive-ui/es/menu/src/interface';
+import type { PopconfirmProps } from 'naive-ui/es/popconfirm';
 
-export interface DropMenu {
+export interface DropMenu extends MenuOptionSharedPart {
   onClick?: Fn;
-  to?: string;
-  icon?: string;
-  event: string | number;
-  text: string;
-  disabled?: boolean;
+  /**
+   * 菜单的文本
+   */
+  label?: string;
+  /**
+   * 分割符号
+   */
   divider?: boolean;
+  /**
+   * 弹窗的配置属性
+   * confirmContent - 确认文本
+   */
+  popConfirm?: PopconfirmProps & { confirmContent?: string };
 }

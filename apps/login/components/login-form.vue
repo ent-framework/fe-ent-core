@@ -1,6 +1,6 @@
 <template>
   <LoginFormTitle v-show="getShow" class="enter-x" />
-  <Form
+  <NForm
     v-show="getShow"
     ref="formRef"
     class="p-4 enter-x"
@@ -8,93 +8,114 @@
     :rules="getFormRules"
     @keypress.enter="handleLogin"
   >
-    <FormItem v-if="tenantCode" name="tenantCode" class="enter-x">
-      <Input v-model:value="formData.tenantCode" size="large" class="fix-auto-fill">
-        <template #addonBefore>
-          <span class="login-input-label">{{ t('sys.login.tenantCode') }}</span>
-        </template>
-      </Input>
-    </FormItem>
-    <FormItem name="account" class="enter-x">
-      <Input v-model:value="formData.account" size="large" class="fix-auto-fill">
-        <template #addonBefore>
-          <span class="login-input-label">{{ t('sys.login.userName') }}</span>
-        </template>
-      </Input>
-    </FormItem>
-    <FormItem name="password" class="enter-x">
-      <InputPassword
-        v-model:value="formData.password"
-        size="large"
-        visibility-toggle
-        class="fix-auto-fill"
-      >
-        <template #addonBefore>
-          <span class="login-input-label">{{ t('sys.login.password') }}</span>
-        </template>
-      </InputPassword>
-    </FormItem>
-    <FormItem v-if="captcha" name="captcha" class="enter-x">
-      <InputGroup compact>
-        <Input
+    <NFormItem v-if="getShowTenantCode" path="tenantCode" class="enter-x">
+      <NInputGroup>
+        <NInputGroupLabel size="large" class="login-input-label">{{
+          t('sys.login.tenantCode')
+        }}</NInputGroupLabel>
+        <NInput
+          v-model:value="formData.tenantCode"
+          :placeholder="t('sys.login.tenantCodePlaceholder')"
+          size="large"
+          class="fix-auto-fill"
+        />
+      </NInputGroup>
+    </NFormItem>
+    <NFormItem path="account" class="enter-x">
+      <NInputGroup>
+        <NInputGroupLabel size="large" class="login-input-label">{{
+          t('sys.login.userName')
+        }}</NInputGroupLabel>
+        <NInput
+          v-model:value="formData.account"
+          :placeholder="t('sys.login.accountPlaceholder')"
+          size="large"
+          class="fix-auto-fill"
+        />
+      </NInputGroup>
+    </NFormItem>
+    <NFormItem path="password" class="enter-x">
+      <NInputGroup>
+        <NInputGroupLabel size="large" class="login-input-label">{{
+          t('sys.login.password')
+        }}</NInputGroupLabel>
+        <NInput
+          v-model:value="formData.password"
+          type="password"
+          size="large"
+          visibility-toggle
+          class="fix-auto-fill"
+          :placeholder="t('sys.login.passwordPlaceholder')"
+        />
+      </NInputGroup>
+    </NFormItem>
+    <NFormItem v-if="getShowCaptcha" path="captcha" class="enter-x">
+      <NInputGroup>
+        <NInputGroupLabel size="large" class="login-input-label">{{
+          t('sys.login.captcha')
+        }}</NInputGroupLabel>
+        <NInput
           v-model:value="formData.captcha"
           class="fix-auto-fill captcha"
           size="large"
           style="width: calc(100% - 120px)"
-        >
-          <template #addonBefore>
-            <span class="login-input-label">{{ t('sys.login.captcha') }}</span>
-          </template>
-        </Input>
-        <img id="canvas" style="width: 120px" :src="captchaUrl" @click="onCaptchaClick" />
-      </InputGroup>
-    </FormItem>
-    <ARow class="enter-x">
-      <ACol :span="12">
-        <FormItem>
+          :placeholder="t('sys.login.captchaPlaceholder')"
+        />
+        <img
+          id="canvas"
+          alt="captcha"
+          style="width: 120px"
+          :src="captchaUrl"
+          @click="onCaptchaClick"
+        />
+      </NInputGroup>
+    </NFormItem>
+    <NGrid class="enter-x">
+      <NGridItem :span="12">
+        <NFormItem>
           <!-- No logic, you need to deal with it yourself -->
-          <Checkbox v-model:checked="rememberMe" size="small">
+          <NCheckbox v-model:checked="rememberMe" size="small">
             {{ t('sys.login.rememberMe') }}
-          </Checkbox>
-        </FormItem>
-      </ACol>
-      <ACol :span="12">
-        <FormItem :style="{ 'text-align': 'right' }">
+          </NCheckbox>
+        </NFormItem>
+      </NGridItem>
+      <NGridItem :span="12">
+        <NFormItem :style="{ 'text-align': 'right' }">
           <!-- No logic, you need to deal with it yourself -->
-          <Button type="link" size="small" @click="setLoginState(LoginStateEnum.RESET_PASSWORD)">
+          <NButton type="link" size="small" @click="setLoginState(LoginStateEnum.RESET_PASSWORD)">
             {{ t('sys.login.forgetPassword') }}
-          </Button>
-        </FormItem>
-      </ACol>
-    </ARow>
+          </NButton>
+        </NFormItem>
+      </NGridItem>
+    </NGrid>
 
-    <FormItem class="enter-x">
-      <Button type="primary" size="large" block :loading="loading" @click="handleLogin">
+    <NFormItem class="enter-x">
+      <NButton type="primary" size="large" block :loading="loading" @click="handleLogin">
         {{ t('sys.login.loginButton') }}
-      </Button>
+      </NButton>
       <!-- <Button size="large" class="mt-4 enter-x" block @click="handleRegister">
         {{ t('sys.login.registerButton') }}
       </Button> -->
-    </FormItem>
-    <ARow class="enter-x">
-      <ACol v-if="mobileLoginEnable" :md="8" :xs="24" class="!my-2 !md:my-0 xs:mx-0 md:mr-2">
-        <Button block @click="setLoginState(LoginStateEnum.MOBILE)">
+    </NFormItem>
+    <NGrid class="enter-x">
+      <NGridItem v-if="mobileLoginEnable" :md="8" :xs="24" class="!my-2 !md:my-0 xs:mx-0 md:mr-2">
+        <NButton block @click="setLoginState(LoginStateEnum.MOBILE)">
           {{ t('sys.login.mobileSignInFormTitle') }}
-        </Button>
-      </ACol>
-      <ACol v-if="qrLoginEnable" :md="8" :xs="24" class="!my-2 !md:my-0 xs:mx-0 md:mr-2">
-        <Button block @click="setLoginState(LoginStateEnum.QR_CODE)">
+        </NButton>
+      </NGridItem>
+      <NGridItem v-if="qrLoginEnable" :md="8" :xs="24" class="!my-2 !md:my-0 xs:mx-0 md:mr-2">
+        <NButton block @click="setLoginState(LoginStateEnum.QR_CODE)">
           {{ t('sys.login.qrSignInFormTitle') }}
-        </Button>
-      </ACol>
-      <ACol v-if="registerEnable" :md="7" :xs="24">
-        <Button block @click="setLoginState(LoginStateEnum.REGISTER)">
+        </NButton>
+      </NGridItem>
+      <NGridItem v-if="registerEnable" :md="7" :xs="24">
+        <NButton block @click="setLoginState(LoginStateEnum.REGISTER)">
           {{ t('sys.login.registerButton') }}
-        </Button>
-      </ACol>
-    </ARow>
+        </NButton>
+      </NGridItem>
+    </NGrid>
 
-    <Divider v-if="false" class="enter-x">{{ t('sys.login.otherSignIn') }}</Divider>
+    <NDivider v-if="false" class="enter-x">{{ t('sys.login.otherSignIn') }}</NDivider>
 
     <div
       v-if="false"
@@ -107,12 +128,23 @@
       <GoogleCircleFilled />
       <TwitterCircleFilled />
     </div>
-  </Form>
+  </NForm>
 </template>
 <script lang="ts" setup>
-  import { computed, reactive, ref, unref, watchEffect } from 'vue';
+  import { computed, ref, unref, watchEffect } from 'vue';
 
-  import { Button, Checkbox, Col, Divider, Form, Input, Row } from 'ant-design-vue';
+  import {
+    NButton,
+    NCheckbox,
+    NDivider,
+    NForm,
+    NFormItem,
+    NGrid,
+    NGridItem,
+    NInput,
+    NInputGroup,
+    NInputGroupLabel,
+  } from 'naive-ui';
   import {
     AlipayCircleFilled,
     GithubFilled,
@@ -142,11 +174,6 @@
       default: true,
     },
   });
-  const ACol = Col;
-  const ARow = Row;
-  const FormItem = Form.Item;
-  const InputPassword = Input.Password;
-  const InputGroup = Input.Group;
   const { t } = useI18n();
   const { notification, createErrorModal } = useMessage();
   const { prefixCls } = useDesign('login');
@@ -166,19 +193,19 @@
     password: string;
     captcha?: string;
   };
-  const formData = reactive<formDataType>({
+  const formData = ref<formDataType>({
     tenantCode: '',
     account: '',
     password: '',
     captcha: '',
   });
 
-  const { validForm } = useFormValid<formDataType>(formRef);
-  const captcha = computed(
+  const { validForm } = useFormValid(formRef);
+  const getShowCaptcha = computed(
     () =>
       sessionStore.getSession.captcha && sessionStore.getSession.captcha.toUpperCase() !== 'NONE',
   );
-  const tenantCode = computed(() => {
+  const getShowTenantCode = computed(() => {
     return sessionStore.getSession.inst === undefined;
   });
 
@@ -199,7 +226,7 @@
   };
 
   watchEffect(() => {
-    if (captcha.value) {
+    if (getShowCaptcha.value) {
       getCaptcha();
     }
   });
@@ -208,39 +235,38 @@
     getCaptcha();
   };
   async function handleLogin() {
-    const data = await validForm();
+    const warnings = await validForm();
 
     const redirect = decodeURIComponent(router.currentRoute.value.query.redirect as string);
 
-    if (!data) return;
+    if (warnings && warnings.length) return;
     try {
       loading.value = true;
       await userStore.login({
         authType: 'normal',
-        password: data.password,
-        username: data.account,
-        captcha: data.captcha,
-        tenantCode: data.tenantCode,
+        password: formData.value.password,
+        username: formData.value.account,
+        captcha: formData.value.captcha,
+        tenantCode: formData.value.tenantCode,
         rememberMe: rememberMe.value,
         mode: 'none', //不要默认的错误提示
       });
       const userInfo = await userStore.getUserInfoAction();
       if (userInfo) {
         notification.success({
-          message: t('sys.login.loginSuccessTitle'),
-          description: `${t('sys.login.loginSuccessDesc')}: ${userInfo.displayName}`,
+          title: t('sys.login.loginSuccessTitle'),
+          content: `${t('sys.login.loginSuccessDesc')}: ${userInfo.displayName}`,
           duration: 3,
         });
       }
       await userStore.afterLoginAction(true, redirect);
     } catch (error) {
-      if (captcha.value) {
+      if (getShowCaptcha.value) {
         await getCaptcha();
       }
       createErrorModal({
         title: t('sys.api.errorTip'),
         content: (error as unknown as Error).message || t('sys.api.apiRequestFailed'),
-        getContainer: () => document.body.querySelector(`.${prefixCls}`) || document.body,
       });
     } finally {
       loading.value = false;
@@ -250,6 +276,7 @@
 <style scoped lang="less">
   .login-input-label {
     display: block;
-    width: 60px;
+    width: 33%;
+    text-align: center;
   }
 </style>

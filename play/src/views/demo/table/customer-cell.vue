@@ -32,51 +32,51 @@
   const columns: BasicColumn[] = [
     {
       title: 'ID',
-      dataIndex: 'id',
+      key: 'id',
     },
     {
       title: '头像',
-      dataIndex: 'avatar',
+      key: 'avatar',
       width: 100,
     },
     {
       title: '分类',
-      dataIndex: 'category',
+      key: 'category',
       width: 80,
       align: 'center',
       defaultHidden: true,
     },
     {
       title: '姓名',
-      dataIndex: 'name',
+      key: 'name',
       width: 120,
     },
     {
       title: '图片列表1',
-      dataIndex: 'imgArr',
+      key: 'imgArr',
       helpMessage: ['这是简单模式的图片列表', '只会显示一张在表格中', '但点击可预览多张图片'],
       width: 140,
     },
     {
       title: '照片列表2',
-      dataIndex: 'imgs',
+      key: 'imgs',
       width: 160,
     },
     {
       title: '地址',
-      dataIndex: 'address',
+      key: 'address',
     },
     {
       title: '编号',
-      dataIndex: 'no',
+      key: 'no',
     },
     {
       title: '开始时间',
-      dataIndex: 'beginTime',
+      key: 'beginTime',
     },
     {
       title: '结束时间',
-      dataIndex: 'endTime',
+      key: 'endTime',
     },
   ];
   export default defineComponent({
@@ -89,6 +89,7 @@
         columns,
         bordered: true,
         showTableSetting: true,
+        rowKey: (record) => record.id,
       });
 
       return {

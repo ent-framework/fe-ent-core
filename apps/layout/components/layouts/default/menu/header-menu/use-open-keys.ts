@@ -6,11 +6,11 @@ import { useTimeoutFn } from 'fe-ent-core/es/hooks/core/use-timeout';
 import { useMenuSetting } from '../../../../../hooks';
 import type { Ref } from 'vue';
 import type { MenuState } from './types';
-import type { Menu as MenuType } from 'fe-ent-core/es/router/types';
+import type { MenuOption } from 'naive-ui/es/menu';
 
 export function useOpenKeys(
   menuState: MenuState,
-  menus: Ref<MenuType[]>,
+  menus: Ref<MenuOption[]>,
   mode: Ref<MenuModeEnum>,
   accordion: Ref<boolean>,
 ) {
@@ -63,7 +63,7 @@ export function useOpenKeys(
       const rootSubMenuKeys: string[] = [];
       for (const { children, path } of unref(menus)) {
         if (children && children.length > 0) {
-          rootSubMenuKeys.push(path);
+          rootSubMenuKeys.push(path as string);
         }
       }
       if (!unref(getCollapsed)) {

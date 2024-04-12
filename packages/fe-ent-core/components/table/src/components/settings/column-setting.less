@@ -1,6 +1,6 @@
 @basic-column-setting-prefix-cls: ~'@{ent-prefix}-basic-column-setting';
 
-.table-coulmn-drag-icon {
+.table-column-drag-icon {
   margin: 0 5px;
   cursor: move;
 }
@@ -15,11 +15,11 @@
 
   &__check-item {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
     min-width: 100%;
     padding: 4px;
 
-    .ant-checkbox-wrapper {
+    .n-checkbox-wrapper {
       width: 100%;
 
       &:hover {
@@ -54,14 +54,14 @@
       height: 1em !important;
     }
 
-    .ant-popover-inner-content {
+    .n-popover-inner-content {
       // max-height: 360px;
       padding-right: 0;
       padding-left: 0;
       // overflow: auto;
     }
 
-    .ant-checkbox-group {
+    .n-checkbox-group {
       width: 100%;
       max-width: 260px;
       flex-wrap: wrap;

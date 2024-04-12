@@ -1,5 +1,5 @@
 <template>
-  <a-cascader
+  <NCascader
     v-model:value="state"
     :options="options"
     :load-data="loadData"
@@ -16,11 +16,11 @@
         {{ t('component.form.apiSelectNotFound') }}
       </span>
     </template>
-  </a-cascader>
+  </NCascader>
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref, watch, watchEffect } from 'vue';
-  import { Cascader } from 'ant-design-vue';
+  import { NCascader } from 'naive-ui';
   import { get, omit } from 'lodash-es';
   import { LoadingOutlined } from '@ant-design/icons-vue';
   import { isFunction } from '@ent-core/utils/is';
@@ -40,7 +40,7 @@
     name: 'ApiCascader',
     components: {
       LoadingOutlined,
-      [Cascader.name]: Cascader,
+      NCascader,
     },
     props: {
       value: {

@@ -1,28 +1,26 @@
 <template>
-  <Select
+  <NSelect
     v-bind="$attrs"
     v-model:value="state"
     :options="getOptions"
-    @dropdown-visible-change="handleFetch"
-    @change="handleChange"
+    :loading="loading"
+    @update:show="handleFetch"
+    @update:value="handleChange"
   >
     <template v-for="item in Object.keys($slots)" #[item]="data">
       <slot :name="item" v-bind="data || {}" />
     </template>
-    <template v-if="loading" #suffixIcon>
-      <LoadingOutlined spin />
-    </template>
-    <template v-if="loading" #notFoundContent>
+    <template v-if="loading" #empty>
       <span>
         <LoadingOutlined spin class="mr-1" />
         {{ t('component.form.apiSelectNotFound') }}
       </span>
     </template>
-  </Select>
+  </NSelect>
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
-  import { Select } from 'ant-design-vue';
+  import { NSelect } from 'naive-ui';
   import { get, omit } from 'lodash-es';
   import { LoadingOutlined } from '@ant-design/icons-vue';
   import { isFunction } from '@ent-core/utils/is';
@@ -37,7 +35,7 @@
   export default defineComponent({
     name: 'ApiSelect',
     components: {
-      Select,
+      NSelect,
       LoadingOutlined,
     },
     inheritAttrs: false,
@@ -120,14 +118,15 @@
             options.value = get(res, props.resultField) || [];
           }
           emitChange();
-        } catch (error) {
-          // console.warn(error);
+        } catch (error: any) {
+          // eslint-disable-next-line no-console
+          console.warn(error);
         } finally {
           loading.value = false;
         }
       }
 
-      async function handleFetch(visible) {
+      async function handleFetch(visible: boolean) {
         if (visible) {
           if (props.alwaysLoad) {
             await fetch();

@@ -1,30 +1,11 @@
 import { computed, ref, unref, watch } from 'vue';
-import { LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
 import { isBoolean } from '@ent-core/utils/is';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../const';
 import type { ComputedRef } from 'vue';
 import type { BasicTableProps } from '../types/table';
-import type { PaginationProps } from '../types/pagination';
-
-interface ItemRender {
-  page: number;
-  type: 'page' | 'prev' | 'next';
-  originalElement: any;
-}
-
-function itemRender({ page, type, originalElement }: ItemRender) {
-  if (type === 'prev') {
-    return page === 0 ? null : <LeftOutlined />;
-  } else if (type === 'next') {
-    return page === 1 ? null : <RightOutlined />;
-  }
-  return originalElement;
-}
+import type { PaginationProps } from 'naive-ui';
 
 export function usePagination(refProps: ComputedRef<BasicTableProps>) {
-  const { t } = useI18n();
-
   const configRef = ref<PaginationProps>({});
   const show = ref(true);
 
@@ -40,7 +21,7 @@ export function usePagination(refProps: ComputedRef<BasicTableProps>) {
     },
   );
 
-  const getPaginationInfo = computed((): PaginationProps | boolean => {
+  const getPaginationInfo = computed((): PaginationProps | false => {
     const { pagination } = unref(refProps);
 
     if (!unref(show) || (isBoolean(pagination) && !pagination)) {
@@ -48,14 +29,13 @@ export function usePagination(refProps: ComputedRef<BasicTableProps>) {
     }
 
     return {
-      current: 1,
+      page: 1,
       pageSize: PAGE_SIZE,
-      size: 'small',
+      //      size: 'small',
       defaultPageSize: PAGE_SIZE,
-      showTotal: (total) => t('component.table.total', { total }),
-      showSizeChanger: true,
-      pageSizeOptions: PAGE_SIZE_OPTIONS,
-      itemRender,
+      //      showTotal: (total) => t('component.table.total', { total }),
+      showSizePicker: true,
+      pageSizes: PAGE_SIZE_OPTIONS,
       showQuickJumper: true,
       ...(isBoolean(pagination) ? {} : pagination),
       ...unref(configRef),

@@ -1,6 +1,6 @@
 <script lang="tsx">
   import { computed, defineComponent, ref, unref } from 'vue';
-  import { Button, Result } from 'ant-design-vue';
+  import { NButton, NResult } from 'naive-ui';
   import { useDesign, useGlobSetting, useGo, useI18n, useRedo } from 'fe-ent-core/es/hooks';
   import { ExceptionEnum } from 'fe-ent-core/es/logics';
   import { useRoute } from 'vue-router';
@@ -107,7 +107,7 @@
       return () => {
         const { title, subTitle, btnText, icon, handler, status } = unref(getMapValue) || {};
         return (
-          <Result
+          <NResult
             class={prefixCls}
             status={status as any}
             title={props.title || title}
@@ -116,13 +116,13 @@
             {{
               extra: () =>
                 btnText && (
-                  <Button type="primary" onClick={handler}>
+                  <NButton type="primary" onClick={handler}>
                     {() => btnText}
-                  </Button>
+                  </NButton>
                 ),
               icon: () => (icon ? <img src={icon} /> : null),
             }}
-          </Result>
+          </NResult>
         );
       };
     },

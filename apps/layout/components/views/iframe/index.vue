@@ -1,13 +1,13 @@
 <template>
   <div :class="prefixCls" :style="getWrapStyle">
-    <Spin :spinning="loading" size="large" :style="getWrapStyle">
+    <NSpin :show="loading" size="large" :style="getWrapStyle">
       <iframe ref="frameRef" :src="frameSrc" :class="`${prefixCls}__main`" @load="hideLoading" />
-    </Spin>
+    </NSpin>
   </div>
 </template>
 <script lang="ts" setup>
   import { computed, ref, unref } from 'vue';
-  import { Spin } from 'ant-design-vue';
+  import { NSpin } from 'naive-ui';
   import { useDesign, useLayoutHeight, useWindowSizeFn } from 'fe-ent-core/es/hooks';
   import { propTypes } from 'fe-ent-core/es/utils';
   import type { CSSProperties } from 'vue';

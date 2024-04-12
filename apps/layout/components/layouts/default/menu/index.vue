@@ -1,16 +1,19 @@
 <script lang="tsx">
-  import { computed, defineComponent, toRef, unref } from 'vue';
+  import { computed, defineComponent, h, toRef, unref } from 'vue';
   import { EntAppLogo, EntScrollContainer } from 'fe-ent-core';
   import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/es/logics';
   import { isUrl, openWindow, propTypes } from 'fe-ent-core/es/utils';
   import { useAppInject, useDesign, useGo } from 'fe-ent-core/es/hooks';
+  import EntIcon from 'fe-ent-core/es/components/icon';
+  import { useI18n } from 'fe-ent-core/es/hooks/web/use-i18n';
   import { useLayoutTheme, useLayoutThemeSetting, useMenuSetting } from '../../../../hooks';
   import EntHeaderMenu from './header-menu/index.vue';
   import EntLeftMenu from './left-menu/index.vue';
-
   import { useSplitMenu } from './use-layout-menu';
   import type { Nullable } from 'fe-ent-core/es/types';
   import type { CSSProperties, PropType } from 'vue';
+  import type { Menu } from 'fe-ent-core/es/router';
+  import type { MenuOption } from 'naive-ui/es/menu';
 
   export default defineComponent({
     name: 'LayoutMenu',
@@ -30,7 +33,7 @@
     },
     setup(props) {
       const go = useGo();
-
+      const { t } = useI18n();
       const {
         getMenuMode,
         getMenuType,
@@ -124,15 +127,45 @@
         );
       }
 
+      function renderMenuIcon(option: Menu) {
+        if (option.meta?.icon) {
+          return h(EntIcon, { icon: option.icon });
+        }
+        return null;
+      }
+
+      function convertToItem(menu: Menu): MenuOption {
+        const m: MenuOption = {
+          label: t(menu.meta?.title as string),
+          key: menu.path,
+          icon: () => {
+            return renderMenuIcon(menu);
+          },
+          children: menu.children ? menu.children.map((m) => convertToItem(m)) : undefined,
+          name: menu.name,
+          path: menu.path,
+        };
+
+        return m;
+      }
+
+      function convertItems(menus: Menu[]) {
+        const results: MenuOption[] = menus.map((menu) => {
+          return convertToItem(menu);
+        });
+        return results;
+      }
+
       function renderMenu() {
         const { menus, ...menuProps } = unref(getCommonProps);
         if (!menus || !menus.length) return null;
+        const nMenuItems = convertItems(menus);
         return !props.isHorizontal ? (
           <EntLeftMenu
             {...menuProps}
             theme={unref(getActualMenuTheme)}
             isSplitMenu={unref(getSplit)}
-            items={menus}
+            items={nMenuItems}
           />
         ) : (
           <EntHeaderMenu
@@ -142,7 +175,7 @@
             showLogo={unref(getIsShowLogo)}
             mode={unref(getComputedMenuMode as any)}
             theme={unref(getActualHeaderTheme)}
-            items={menus}
+            items={nMenuItems}
           />
         );
       }

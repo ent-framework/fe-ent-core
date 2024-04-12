@@ -1,17 +1,18 @@
 <template>
   <div :class="prefixCls" class="relative">
-    <InputPassword
+    <NInput
       v-if="showInput"
       v-bind="$attrs"
       allowClear
       :value="innerValueRef"
-      @change="handleChange"
+      type="password"
+      @update:value="handleChange"
       :disabled="disabled"
     >
       <template #[item]="data" v-for="item in Object.keys($slots)">
         <slot :name="item" v-bind="data || {}"></slot>
       </template>
-    </InputPassword>
+    </NInput>
     <div :class="`${prefixCls}-bar`">
       <div :class="`${prefixCls}-bar--fill`" :data-score="getPasswordStrength"></div>
     </div>
@@ -20,15 +21,14 @@
 
 <script lang="ts">
   import { defineComponent, computed, ref, watch, unref, watchEffect } from 'vue';
-  import { Input } from 'ant-design-vue';
+  import { NInput } from 'naive-ui';
   import { zxcvbn, ZxcvbnResult } from '@zxcvbn-ts/core';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { propTypes } from '@ent-core/utils/prop-types';
-  import { ChangeEvent } from '@ent-core/types';
 
   export default defineComponent({
     name: 'EntStrengthMeter',
-    components: { InputPassword: Input.Password },
+    components: { NInput },
     props: {
       value: propTypes.string,
       showInput: propTypes.bool.def(true),
@@ -49,8 +49,8 @@
         return score;
       });
 
-      function handleChange(e: ChangeEvent) {
-        innerValueRef.value = e.target.value;
+      function handleChange(val) {
+        innerValueRef.value = val;
       }
 
       watchEffect(() => {

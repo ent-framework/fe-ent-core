@@ -1,17 +1,13 @@
-import type { NamePath, RuleObject } from 'ant-design-vue/es/form/interface';
-import type { CSSProperties, VNode } from 'vue';
+import type { basicProps } from '../props';
+import type { VNode } from 'vue';
 import type { ButtonProps } from '@ent-core/components/button/interface';
-import type { FormItem } from './form-item';
-import type { ColEx, ComponentType } from './index';
+import type { ComponentType, componentsRegistry } from './index';
 import type { TableActionType } from '@ent-core/components/table/src/types/table';
-import type { RowProps } from 'ant-design-vue/es/grid/Row';
-import type { Recordable } from '@ent-core/types';
+import type { ExtractPublicPropTypes, Recordable } from '@ent-core/types';
+import type { GridItemProps } from 'naive-ui/es/grid';
+import type { FormInst, FormItemProps, FormItemRule, FormRules } from 'naive-ui/es/form';
 
 export type FieldMapToTime = [string, [string, string], (string | [string, string])?][];
-
-export type Rule = RuleObject & {
-  trigger?: 'blur' | 'change' | ['change', 'blur'];
-};
 
 export interface RenderCallbackParams {
   schema: FormSchema;
@@ -20,12 +16,11 @@ export interface RenderCallbackParams {
   field: string;
 }
 
-export interface FormActionType {
+export interface FormActionType extends FormInst {
   submit: () => Promise<void>;
   setFieldsValue: (values: Recordable) => Promise<void>;
   resetFields: () => Promise<void>;
   getFieldsValue: () => Recordable;
-  clearValidate: (name?: string | string[]) => Promise<void>;
   updateSchema: (data: Partial<FormSchema> | Partial<FormSchema>[]) => Promise<void>;
   resetSchema: (data: Partial<FormSchema> | Partial<FormSchema>[]) => Promise<void>;
   setProps: (formProps: Partial<FormProps>) => Promise<void>;
@@ -35,96 +30,17 @@ export interface FormActionType {
     prefixField: string | undefined,
     first?: boolean | undefined,
   ) => Promise<void>;
-  validateFields: (nameList?: NamePath[]) => Promise<any>;
-  validate: (nameList?: NamePath[]) => Promise<any>;
-  scrollToField: (name: NamePath, options?: ScrollOptions) => Promise<void>;
 }
 
 export type FormRegisterFn = (formInstance: FormActionType) => void;
 
 export type UseFormReturnType = [FormRegisterFn, FormActionType];
 
-export type FormButtonOptions = Partial<ButtonProps> & { text?: string };
+export type FormButtonOptions = Partial<ButtonProps> & { btnContent?: string };
 
-export interface FormProps {
-  name?: string;
-  layout?: 'vertical' | 'inline' | 'horizontal';
-  // Form value
-  model?: Recordable;
-  // The width of all items in the entire form
-  labelWidth?: number | string;
-  // alignment
-  labelAlign?: 'left' | 'right';
-  // Row configuration for the entire form
-  rowProps?: RowProps;
-  // Submit form on reset
-  submitOnReset?: boolean;
-  // Submit form on form changing
-  submitOnChange?: boolean;
-  // Col configuration for the entire form
-  labelCol?: Partial<ColEx>;
-  // Col configuration for the entire form
-  wrapperCol?: Partial<ColEx>;
+export interface FormProps extends ExtractPublicPropTypes<typeof basicProps> {}
 
-  // General row style
-  baseRowStyle?: CSSProperties;
-
-  // General col configuration
-  baseColProps?: Partial<ColEx>;
-
-  // Form configuration rules
-  schemas?: FormSchema[];
-  // Function values used to merge into dynamic control form items
-  mergeDynamicData?: Recordable;
-  /**
-   * Compact mode for search forms
-   */
-  compact?: boolean;
-  // Blank line span
-  emptySpan?: number | Partial<ColEx>;
-  // Internal component size of the form
-  size?: 'default' | 'small' | 'large';
-  // Whether to disable
-  disabled?: boolean;
-  // Time interval fields are mapped into multiple
-  fieldMapToTime?: FieldMapToTime;
-  // Placeholder is set automatically
-  autoSetPlaceHolder?: boolean;
-  // Auto submit on press enter on input
-  autoSubmitOnEnter?: boolean;
-  // Check whether the information is added to the label
-  rulesMessageJoinLabel?: boolean;
-  // Whether to show collapse and expand buttons
-  showAdvancedButton?: boolean;
-  // Whether to focus on the first input box, only works when the first form item is input
-  autoFocusFirstItem?: boolean;
-  // Automatically collapse over the specified number of rows
-  autoAdvancedLine?: number;
-  // Always show lines
-  alwaysShowLines?: number;
-  // Whether to show the operation button
-  showActionButtonGroup?: boolean;
-
-  // Reset button configuration
-  resetButtonOptions?: FormButtonOptions;
-
-  // Confirm button configuration
-  submitButtonOptions?: FormButtonOptions;
-
-  // Operation column configuration
-  actionColOptions?: Partial<ColEx>;
-
-  // Show reset button
-  showResetButton?: boolean;
-  // Show confirmation button
-  showSubmitButton?: boolean;
-
-  resetFunc?: () => Promise<void>;
-  submitFunc?: () => Promise<void>;
-  transformDateFunc?: (date: any) => string;
-  colon?: boolean;
-}
-export interface FormSchema {
+export interface FormSchema extends DynamicComponentProps<ComponentType> {
   // Field name
   field: string;
   // Event name triggered by internal value change, default change
@@ -132,7 +48,7 @@ export interface FormSchema {
   // Variable name bound to v-model Default value
   valueField?: string;
   // Label name
-  label: string | VNode;
+  label: string;
   // Auxiliary text
   subLabel?: string;
   // Help text on the right side of the text
@@ -148,17 +64,7 @@ export interface FormSchema {
    * Disable the adjustment of labelWidth with global settings of formModel, and manually set labelCol and wrapperCol by yourself
    */
   disabledLabelWidth?: boolean;
-  // render component
-  component: ComponentType;
-  // Component parameters
-  componentProps?:
-    | ((opt: {
-        schema: FormSchema;
-        tableAction: TableActionType;
-        formActionType: FormActionType;
-        formModel: Recordable;
-      }) => Recordable)
-    | object;
+
   // Required
   required?: boolean | ((renderCallbackParams: RenderCallbackParams) => boolean);
 
@@ -167,7 +73,7 @@ export interface FormSchema {
   /**
    * Validation rules
    */
-  rules?: Rule[];
+  rules?: FormRules;
   /**
    * Check whether the information is added to the label
    */
@@ -176,12 +82,12 @@ export interface FormSchema {
   /**
    * Reference formModelItem
    */
-  itemProps?: Partial<FormItem>;
+  formItemProps?: Partial<FormItemProps>;
 
   /**
    * col configuration outside formModelItem
    */
-  colProps?: Partial<ColEx>;
+  gridItemProps?: Partial<GridItemProps>;
 
   /**
    * 默认值
@@ -233,7 +139,7 @@ export interface FormSchema {
   colSlot?: string;
   dynamicDisabled?: boolean | ((renderCallbackParams: RenderCallbackParams) => boolean);
 
-  dynamicRules?: (renderCallbackParams: RenderCallbackParams) => Rule[];
+  dynamicRules?: (renderCallbackParams: RenderCallbackParams) => FormItemRule[];
 }
 export interface HelpComponentProps {
   maxWidth: string;
@@ -250,3 +156,16 @@ export interface HelpComponentProps {
   // Positioning
   position: any;
 }
+
+// 定义动态组件的props类型
+export type DynamicComponentProps<T extends ComponentType> = {
+  component: T;
+  componentProps?:
+    | ExtractPublicPropTypes<(typeof componentsRegistry)[T]['props']>
+    | ((opt: {
+        schema: FormSchema;
+        tableAction: TableActionType;
+        formActionType: FormActionType;
+        formModel: Recordable;
+      }) => Recordable);
+};

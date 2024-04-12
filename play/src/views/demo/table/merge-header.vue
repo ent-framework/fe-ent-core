@@ -16,6 +16,7 @@
         title: '多级表头示例',
         api: demoListApi,
         columns: getMergeHeaderColumns(),
+        rowKey: (record) => record.id,
       });
 
       return {

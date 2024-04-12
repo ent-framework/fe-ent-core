@@ -5,18 +5,17 @@
     :class="{ absolute, [theme]: !!theme }"
     :style="[background ? `background-color: ${background}` : '']"
   >
-    <Spin v-bind="$attrs" :tip="tip" :size="size" :spinning="loading" />
+    <NSpin v-bind="$attrs" :description="tip" :size="size" :show="loading" />
   </section>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { Spin } from 'ant-design-vue';
-  import { SizeEnum } from '@ent-core/logics/enums/size-enum';
+  import { NSpin } from 'naive-ui';
   import type { PropType } from 'vue';
 
   export default defineComponent({
     name: 'EntLoading',
-    components: { Spin },
+    components: { NSpin },
     props: {
       /**
        * 加载文本
@@ -29,11 +28,8 @@
        * 大小
        */
       size: {
-        type: String as PropType<SizeEnum>,
-        default: SizeEnum.LARGE,
-        validator: (v: SizeEnum): boolean => {
-          return [SizeEnum.DEFAULT, SizeEnum.SMALL, SizeEnum.LARGE].includes(v);
-        },
+        type: [String, Number] as PropType<'small' | 'medium' | 'large' | number>,
+        default: 'medium',
       },
       /**
        * 绝对定位，为 false 时可以全屏

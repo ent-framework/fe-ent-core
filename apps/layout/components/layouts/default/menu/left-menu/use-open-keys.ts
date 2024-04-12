@@ -6,11 +6,11 @@ import { getAllParentPath } from 'fe-ent-core/es/router/helper/menu-helper';
 import { useTimeoutFn } from 'fe-ent-core/es/hooks/core/use-timeout';
 import type { Ref } from 'vue';
 import type { SimpleMenuState } from './types';
-import type { Menu as MenuType } from 'fe-ent-core/es/router/types';
+import type { MenuOption } from 'naive-ui/es/menu';
 
 export function useOpenKeys(
   menuState: SimpleMenuState,
-  menus: Ref<MenuType[]>,
+  menus: Ref<MenuOption[]>,
   accordion: Ref<boolean>,
   mixSider: Ref<boolean>,
   collapse: Ref<boolean>,
@@ -21,7 +21,7 @@ export function useOpenKeys(
     const menuList = toRaw(menus.value);
     const handle = () => {
       if (menuList?.length === 0) {
-        menuState.selectedKeys = [];
+        menuState.selectedKey = '';
         menuState.openKeys = [];
         menuState.defaultSelectedKeys = [];
         return;

@@ -25,7 +25,7 @@
       <ent-button class="mr-2" @click="deleteNodeByKey('2-2')"> 删除parent3节点 </ent-button>
       <ent-button class="mr-2" @click="updateNodeByKey('1-1')"> 更新parent2节点 </ent-button>
     </div>
-    <ent-tree ref="treeRef" :tree-data="treeData" title="函数操作" :checkable="true" />
+    <ent-tree ref="treeRef" :data="treeData" title="函数操作" :checkable="true" />
   </ent-page-wrapper>
 </template>
 <script lang="ts">

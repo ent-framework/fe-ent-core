@@ -1,4 +1,5 @@
-import { Tag } from 'ant-design-vue';
+import { h } from 'vue';
+import { NTag } from 'naive-ui';
 import { ErrorTypeEnum } from 'fe-ent-core/es/logics';
 import { useI18n } from 'fe-ent-core/es/hooks';
 import type { BasicColumn } from 'fe-ent-core/es/components/table/interface';
@@ -7,10 +8,11 @@ export function getColumns(): BasicColumn[] {
   const { t } = useI18n();
   return [
     {
-      dataIndex: 'type',
+      key: 'type',
       title: t('sys.errorLog.tableColumnType'),
       width: 80,
-      customRender: ({ text }) => {
+      render: (record) => {
+        const text = record.type;
         const color =
           text === ErrorTypeEnum.VUE
             ? 'green'
@@ -21,36 +23,36 @@ export function getColumns(): BasicColumn[] {
                 : ErrorTypeEnum.AJAX
                   ? 'red'
                   : 'purple';
-        return <Tag color={color}>{() => text}</Tag>;
+        return h(NTag, { color: { color } }, () => text);
       },
     },
     {
-      dataIndex: 'url',
+      key: 'url',
       title: 'URL',
       width: 200,
     },
     {
-      dataIndex: 'time',
+      key: 'time',
       title: t('sys.errorLog.tableColumnDate'),
       width: 160,
     },
     {
-      dataIndex: 'file',
+      key: 'file',
       title: t('sys.errorLog.tableColumnFile'),
       width: 200,
     },
     {
-      dataIndex: 'name',
+      key: 'name',
       title: 'Name',
       width: 200,
     },
     {
-      dataIndex: 'message',
+      key: 'message',
       title: t('sys.errorLog.tableColumnMsg'),
       width: 300,
     },
     {
-      dataIndex: 'stack',
+      key: 'stack',
       title: t('sys.errorLog.tableColumnStackMsg'),
     },
   ];
@@ -59,7 +61,7 @@ export function getColumns(): BasicColumn[] {
 export function getDescSchema(): any {
   return getColumns().map((column) => {
     return {
-      field: column.dataIndex!,
+      field: column.key!,
       label: column.title,
     };
   });

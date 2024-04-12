@@ -1,11 +1,14 @@
 @cropper-am-prefix-cls: ~'@{ent-prefix}-cropper-am';
 
 .@{cropper-am-prefix-cls} {
-  display: flex;
+
+  &-container {
+    display: flex;
+  }
 
   &-left,
   &-right {
-    height: 340px;
+    height: 320px;
   }
 
   &-left {
@@ -35,13 +38,6 @@
       );
     background-position: 0 0, 12px 12px;
     background-size: 24px 24px;
-  }
-
-  &-toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
   }
 
   &-preview {

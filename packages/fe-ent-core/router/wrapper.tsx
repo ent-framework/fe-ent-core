@@ -1,5 +1,5 @@
 import { defineComponent, getCurrentInstance } from 'vue';
-import { Empty } from 'ant-design-vue';
+import { NEmpty } from 'naive-ui';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 
 /**
@@ -32,7 +32,7 @@ const RouteWrapperComponent = defineComponent({
       const { t } = useI18n();
       const description = t('layout.notFound', [componentName]);
       return () => {
-        return <Empty description={description} />;
+        return <NEmpty description={description} />;
       };
     }
   },

@@ -54,10 +54,11 @@ export default {
     restore: 'Restore',
   },
   table: {
-    settingDens: 'Density',
+    settingDens: 'Size',
     settingDensDefault: 'Default',
     settingDensMiddle: 'Middle',
     settingDensSmall: 'Compact',
+    settingDensLarge: 'Large',
     settingColumn: 'Column settings',
     settingColumnShow: 'Column display',
     settingIndexColumnShow: 'Index Column',

@@ -1,17 +1,17 @@
 <template>
-  <a-tree v-bind="getAttrs" @change="handleChange">
+  <NTree v-bind="getAttrs" @change="handleChange">
     <template v-for="item in Object.keys($slots)" #[item]="data">
       <slot :name="item" v-bind="data || {}" />
     </template>
     <template v-if="loading" #suffixIcon>
       <LoadingOutlined spin />
     </template>
-  </a-tree>
+  </NTree>
 </template>
 
 <script lang="ts">
   import { type PropType, computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
-  import { Tree } from 'ant-design-vue';
+  import { NTree } from 'naive-ui';
   import { get } from 'lodash-es';
   import { LoadingOutlined } from '@ant-design/icons-vue';
   import { isArray, isFunction } from '@ent-core/utils/is';
@@ -19,7 +19,7 @@
   import type { AnyFunction, Recordable } from '@ent-core/types';
   export default defineComponent({
     name: 'ApiTree',
-    components: { ATree: Tree, LoadingOutlined },
+    components: { NTree, LoadingOutlined },
     props: {
       api: { type: Function as PropType<(arg?: Recordable<any>) => Promise<Recordable<any>>> },
       params: { type: Object },

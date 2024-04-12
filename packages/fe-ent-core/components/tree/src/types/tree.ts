@@ -1,10 +1,8 @@
-import type {
-  ContextMenuItem,
-  CreateContextOptions,
-} from '@ent-core/components/context-menu/interface';
+import { treeProps } from 'naive-ui/es/tree';
+import type { ContextMenuItem } from '@ent-core/components/context-menu/interface';
 import type { ExtractPropTypes, PropType } from 'vue';
 import type { Recordable } from '@ent-core/types';
-import type { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
+import type { TreeOption } from 'naive-ui/es/tree/src/interface';
 
 export enum ToolbarEnum {
   SELECT_ALL,
@@ -26,16 +24,17 @@ export const treeEmits = [
 ];
 
 export interface TreeState {
-  expandedKeys: KeyType[];
-  selectedKeys: KeyType[];
-  checkedKeys: CheckKeys;
-  checkStrictly: boolean;
+  expandedKeys?: KeyType[];
+  selectedKeys?: KeyType[];
+  checkedKeys?: KeyType[];
+  cascade?: boolean;
 }
 
 export interface FieldNames {
   children?: string;
-  title?: string;
+  label?: string;
   key?: string;
+  disabled?: string;
 }
 
 export type KeyType = string | number;
@@ -54,14 +53,8 @@ export interface TreeNodeCheckedEvent {
   halfCheckedKeys?: KeyType[];
 }
 
-export const treeProps = {
-  value: {
-    type: [Object, Array] as PropType<KeyType[] | CheckKeys>,
-  },
-
-  renderIcon: {
-    type: Function as PropType<(params: Recordable) => string>,
-  },
+export const basicTreeProps = {
+  ...treeProps,
 
   helpMessage: {
     type: [String, Array] as PropType<string | string[]>,
@@ -75,60 +68,20 @@ export const treeProps = {
   /**
    * 是否显示工具栏
    */
-  toolbar: Boolean,
-  /**
-   * 显示搜索框
-   */
-  search: Boolean,
-  /**
-   * 当前搜索词
-   */
-  searchValue: {
-    type: String,
-    default: '',
-  },
-  checkStrictly: Boolean,
-  clickRowToExpand: {
+  toolbar: {
     type: Boolean,
     default: false,
   },
-  checkable: Boolean,
-  defaultExpandLevel: {
-    type: [String, Number] as PropType<string | number>,
-    default: '',
-  },
-  defaultExpandAll: Boolean,
-
-  fieldNames: {
-    type: Object as PropType<FieldNames>,
-  },
-
-  treeData: {
-    type: Array as PropType<TreeDataItem[]>,
-  },
-
-  actionList: {
-    type: Array as PropType<TreeActionItem[]>,
-    default: () => [],
-  },
-
-  expandedKeys: {
-    type: Array as PropType<KeyType[]>,
-    default: () => [],
-  },
-
-  selectedKeys: {
-    type: Array as PropType<KeyType[]>,
-    default: () => [],
-  },
-
-  checkedKeys: {
-    type: [Array, Object] as PropType<CheckKeys>,
-    default: () => [],
+  /**
+   * 显示搜索框
+   */
+  search: {
+    type: Boolean,
+    default: false,
   },
 
   beforeRightClick: {
-    type: Function as PropType<(...arg: any) => ContextMenuItem[] | CreateContextOptions>,
+    type: Function as PropType<(...arg: any) => ContextMenuItem[]>,
     default: undefined,
   },
 
@@ -142,17 +95,6 @@ export const treeProps = {
     >,
     default: undefined,
   },
-  // 高亮搜索值，仅高亮具体匹配值（通过title）值为true时使用默认色值，值为#xxx时使用此值替代且高亮开启
-  highlight: {
-    type: [Boolean, String] as PropType<boolean | string>,
-    default: false,
-  },
-  // 搜索完成时自动展开结果
-  expandOnSearch: Boolean,
-  // 搜索完成自动选中所有结果,当且仅当 checkable===true 时生效
-  checkOnSearch: Boolean,
-  // 搜索完成自动select所有结果
-  selectedOnSearch: Boolean,
   loading: {
     type: Boolean,
     default: false,
@@ -162,7 +104,7 @@ export const treeProps = {
 
 export type TreeProps = ExtractPropTypes<typeof treeProps>;
 
-export interface TreeItem extends TreeDataItem {
+export interface TreeItem extends TreeOption {
   icon?: any;
 }
 
@@ -173,8 +115,8 @@ export interface TreeActionItem {
 
 export interface InsertNodeParams {
   parentKey: string | null;
-  node: TreeDataItem;
-  list?: TreeDataItem[];
+  node: TreeItem;
+  list?: TreeItem[];
   push?: 'push' | 'unshift';
 }
 
@@ -185,13 +127,13 @@ export interface TreeActionType {
   getExpandedKeys: () => KeyType[];
   setSelectedKeys: (keys: KeyType[]) => void;
   getSelectedKeys: () => KeyType[];
-  setCheckedKeys: (keys: CheckKeys) => void;
-  getCheckedKeys: () => CheckKeys;
+  setCheckedKeys: (keys: KeyType[]) => void;
+  getCheckedKeys: () => KeyType[];
   filterByLevel: (level: number) => void;
   insertNodeByKey: (opt: InsertNodeParams) => void;
   insertNodesByKey: (opt: InsertNodeParams) => void;
   deleteNodeByKey: (key: string) => void;
-  updateNodeByKey: (key: string, node: Omit<TreeDataItem, 'key'>) => void;
+  updateNodeByKey: (key: string, node: Omit<TreeItem, 'key'>) => void;
   setSearchValue: (value: string) => void;
   getSearchValue: () => string;
   getSelectedNode: (

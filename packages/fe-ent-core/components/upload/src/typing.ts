@@ -12,7 +12,7 @@ export interface FileItem {
   name: string;
   size: string | number;
   type?: string;
-  percent: number;
+  percent: number | number[];
   file: File;
   status?: UploadResultStatus;
   responseData?: UploadApiResult;

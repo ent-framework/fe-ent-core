@@ -4,6 +4,7 @@
     destroy-on-close
     title="Modal Title"
     :help-message="['提示1', '提示2']"
+    style="width: 600px"
     @register="register"
     @visible-change="handleShow"
   >

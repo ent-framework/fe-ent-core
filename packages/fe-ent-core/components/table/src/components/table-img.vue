@@ -5,11 +5,11 @@
     class="flex items-center mx-auto"
     :style="getWrapStyle"
   >
-    <Badge v-if="simpleShow" :count="!showBadge || imgList.length == 1 ? 0 : imgList.length">
+    <NBadge v-if="simpleShow" :count="!showBadge || imgList.length == 1 ? 0 : imgList.length">
       <div class="img-div">
-        <PreviewGroup>
+        <NImageGroup>
           <template v-for="(img, index) in imgList" :key="img">
-            <Image
+            <NImage
               :width="size"
               :style="{
                 display: index === 0 ? '' : 'none !important',
@@ -17,30 +17,30 @@
               :src="srcPrefix + img"
             />
           </template>
-        </PreviewGroup>
+        </NImageGroup>
       </div>
-    </Badge>
-    <PreviewGroup v-else>
+    </NBadge>
+    <NImageGroup v-else>
       <template v-for="(img, index) in imgList" :key="img">
-        <Image
+        <NImage
           :width="size"
           :style="{ marginLeft: index === 0 ? 0 : margin + 'px' }"
           :src="srcPrefix + img"
         />
       </template>
-    </PreviewGroup>
+    </NImageGroup>
   </div>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { Badge, Image } from 'ant-design-vue';
+  import { NBadge, NImage, NImageGroup } from 'naive-ui';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { propTypes } from '@ent-core/utils/prop-types';
   import type { CSSProperties } from 'vue';
 
   export default defineComponent({
     name: 'EntTableImg',
-    components: { Image, PreviewGroup: Image.PreviewGroup, Badge },
+    components: { NImage, NImageGroup, NBadge },
     props: {
       imgList: propTypes.arrayOf(propTypes.string),
       size: propTypes.number.def(40),

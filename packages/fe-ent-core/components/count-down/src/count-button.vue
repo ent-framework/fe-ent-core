@@ -1,11 +1,11 @@
 <template>
-  <Button v-bind="$attrs" :disabled="isStart" :loading="loading" @click="handleStart">
+  <NButton v-bind="$attrs" :disabled="isStart" :loading="loading" @click="handleStart">
     {{ getButtonText }}
-  </Button>
+  </NButton>
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watchEffect } from 'vue';
-  import { Button } from 'ant-design-vue';
+  import { NButton } from 'naive-ui';
   import { isFunction } from '@ent-core/utils/is';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useCountdown } from './use-countdown';
@@ -31,7 +31,7 @@
 
   export default defineComponent({
     name: 'EntCountButton',
-    components: { Button },
+    components: { NButton },
     props,
     setup(props) {
       const loading = ref(false);

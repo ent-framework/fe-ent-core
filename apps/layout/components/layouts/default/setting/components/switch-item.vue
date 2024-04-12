@@ -1,19 +1,19 @@
 <template>
   <div :class="prefixCls">
-    <Text> {{ title }}</Text>
-    <Switch
-      v-bind="getBindValue"
-      :disabled="disabled"
-      :checked-children="t('layout.setting.on')"
-      :un-checked-children="t('layout.setting.off')"
-      @change="handleChange"
-    />
+    <NText> {{ title }}</NText>
+    <NSwitch :value="getBindValue" :disabled="disabled" @update:value="handleChange">
+      <template #checked>
+        {{ t('layout.setting.on') }}
+      </template>
+      <template #unchecked>
+        {{ t('layout.setting.off') }}
+      </template>
+    </NSwitch>
   </div>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-
-  import { Switch, Typography } from 'ant-design-vue';
+  import { NSwitch, NText } from 'naive-ui';
   import { useDesign, useI18n } from 'fe-ent-core/es/hooks';
   import type { PropType } from 'vue';
   import type { HandlerEnum } from '../enum';
@@ -21,7 +21,7 @@
 
   export default defineComponent({
     name: 'SwitchItem',
-    components: { Switch, Text: Typography.Text },
+    components: { NSwitch, NText },
     props: {
       event: {
         type: Number as PropType<HandlerEnum>,
@@ -45,7 +45,7 @@
       const { t } = useI18n();
 
       const getBindValue = computed(() => {
-        return props.def ? { checked: props.def } : {};
+        return props.def;
       });
       function handleChange(e: ChangeEvent) {
         props.event && props.handler && props.handler(props.event, e);

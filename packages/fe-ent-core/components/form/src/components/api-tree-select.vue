@@ -1,26 +1,22 @@
 <template>
-  <a-tree-select v-bind="getAttrs" @change="handleChange">
+  <NTreeSelect v-bind="getAttrs" :loading="loading" @update:value="handleChange">
     <template v-for="item in Object.keys($slots)" #[item]="data">
       <slot :name="item" v-bind="data || {}" />
     </template>
-    <template v-if="loading" #suffixIcon>
-      <LoadingOutlined spin />
-    </template>
-  </a-tree-select>
+  </NTreeSelect>
 </template>
 
 <script lang="ts">
   import { computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
-  import { TreeSelect } from 'ant-design-vue';
+  import { NTreeSelect } from 'naive-ui';
   import { get } from 'lodash-es';
-  import { LoadingOutlined } from '@ant-design/icons-vue';
   import { isArray, isFunction } from '@ent-core/utils/is';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { type Recordable } from '@ent-core/types';
   import type { PropType } from 'vue';
   export default defineComponent({
     name: 'ApiTreeSelect',
-    components: { ATreeSelect: TreeSelect, LoadingOutlined },
+    components: { NTreeSelect },
     props: {
       api: { type: Function as PropType<(arg?: Recordable<any>) => Promise<Recordable<any>>> },
       params: { type: Object },
@@ -34,7 +30,7 @@
       const loading = ref(false);
       const getAttrs = computed(() => {
         return {
-          ...(props.api ? { treeData: unref(treeData) } : {}),
+          ...(props.api ? { options: unref(treeData) } : {}),
           ...attrs,
         };
       });

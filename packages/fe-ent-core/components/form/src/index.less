@@ -1,7 +1,7 @@
-@basic-form-prefix-cls: ~'@{ent-prefix}-basic-form';
+@basic-form-prefix-cls: ~'@{ent-prefix}-form';
 
 .@{basic-form-prefix-cls} {
-  .ant-form-item {
+  .n-form-item {
     &-label label::after {
       margin: 0 6px 0 2px;
     }
@@ -42,4 +42,10 @@
       margin-bottom: 8px !important;
     }
   }
+
+  &-action.n-form-item {
+    grid-template-rows:none;
+  }
 }
+
+

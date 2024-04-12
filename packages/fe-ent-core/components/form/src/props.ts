@@ -1,21 +1,85 @@
-import { formProps } from 'ant-design-vue/es/form';
+import { type FormItemProps, formProps } from 'naive-ui/es/form';
 import { propTypes } from '@ent-core/utils/prop-types';
-import type { Fn, Recordable } from '@ent-core/types';
-import type { FieldMapToTime, FormSchema } from './types/form';
 import type { CSSProperties, PropType } from 'vue';
-import type { ColEx } from './types';
+import type { Fn, Recordable } from '@ent-core/types';
+import type {
+  FieldMapToTime,
+  FormActionType,
+  FormButtonOptions,
+  FormProps,
+  FormSchema,
+} from './types/form';
 import type { TableActionType } from '@ent-core/components/table/interface';
-import type { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
-import type { RowProps } from 'ant-design-vue/es/grid/Row';
+import type { GridItemProps, GridProps } from 'naive-ui/es/grid';
+
+export const formActionProps = {
+  /**
+   * 是否显示操作按钮
+   * @type {boolean}
+   * @default true
+   */
+  showActionButtonGroup: {
+    type: Boolean,
+    default: true,
+  },
+  actionButtonGroupPosition: {
+    type: String as PropType<'right' | 'left' | 'center'>,
+    default: 'right',
+  },
+  /**
+   * 显示重置按钮
+   * @type {boolean}
+   * @default true
+   */
+  showResetButton: {
+    type: Boolean,
+    default: true,
+  },
+  /**
+   * 是否显示确认按钮
+   * @type {boolean}
+   * @default true
+   */
+  showSubmitButton: {
+    type: Boolean,
+    default: true,
+  },
+  /**
+   * 是否显示收起展开按钮
+   * @type {boolean}
+   */
+  showAdvancedButton: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * 重置按钮配置见下方 ActionButtonOption
+   */
+  resetButtonOptions: {
+    type: Object as PropType<FormButtonOptions>,
+    default: () => ({}),
+  },
+  /**
+   * 确认按钮配置
+   */
+  submitButtonOptions: {
+    type: Object as PropType<FormButtonOptions>,
+    default: () => ({}),
+  },
+  /**
+   * 操作按钮外层 Col 组件配置，如果开启 showAdvancedButton，则不用设置，具体见下方 actionColOptions
+   */
+  actionColOptions: {
+    type: Object as PropType<Partial<GridItemProps>>,
+    default: () => ({}),
+  },
+  actionSpan: propTypes.number.def(6),
+  isAdvanced: propTypes.bool,
+  hideAdvanceBtn: propTypes.bool,
+};
 
 export const basicProps = {
-  /**
-   * 扩展 form 组件，增加 label 宽度，表单内所有组件适用，可以单独在某个项覆盖或者禁用
-   */
-  labelWidth: {
-    type: [Number, String] as PropType<number | string>,
-    default: 0,
-  },
+  ...formProps,
   /**
    * 用于将表单内时间区域的应设成 2 个字段,见下方说明
    */
@@ -23,11 +87,6 @@ export const basicProps = {
     type: Array as PropType<FieldMapToTime>,
     default: () => [],
   },
-  /**
-   * 紧凑类型表单，减少 margin-bottom
-   * @type {boolean}
-   */
-  compact: propTypes.bool,
   /**
    * 表单配置
    */
@@ -43,17 +102,41 @@ export const basicProps = {
     default: null,
   },
   /**
-   * 配置所有 Row 的 style 样式
+   * 配置所有 Grid 的 style 样式
    */
-  baseRowStyle: {
+  baseGridStyle: {
     type: Object as PropType<CSSProperties>,
   },
   /**
-   * 配置所有选子项的 ColProps，不需要逐个配置，子项也可单独配置优先与全局
+   * 配置所有 Grid 的 props 配置
    */
-  baseColProps: {
-    type: Object as PropType<Partial<ColEx>>,
+  gridProps: {
+    type: Object as PropType<GridProps>,
+    default: () => ({
+      cols: 24,
+      xGap: 10,
+    }),
   },
+  /**
+   * 配置所有选子项的 GridItemProps，不需要逐个配置，子项也可单独配置优先与全局
+   */
+  baseGridItemProps: {
+    type: Object as PropType<Partial<GridItemProps>>,
+    default: () => ({
+      span: 6,
+    }),
+  },
+  /**
+   * 配置所有 FormItem 的 props 配置，schema中可以通过 formItemProps 覆盖
+   */
+  baseFormItemProps: {
+    type: Object as PropType<Partial<FormItemProps>>,
+    default: () => ({
+      labelPlacement: 'left',
+      labelWidth: 'auto',
+    }),
+  },
+
   /**
    * 自动设置表单内组件的 placeholder，自定义组件需自行实现
    * @type {boolean}
@@ -86,11 +169,6 @@ export const basicProps = {
     default: 0,
   },
   /**
-   * 是否显示收起展开按钮
-   * @type {boolean}
-   */
-  showAdvancedButton: propTypes.bool,
-  /**
    * 转化时间格式
    */
   transformDateFunc: {
@@ -116,44 +194,14 @@ export const basicProps = {
    */
   alwaysShowLines: propTypes.number.def(1),
   /**
-   * 是否显示操作按钮
-   * @type {boolean}
-   * @default true
-   */
-  showActionButtonGroup: propTypes.bool.def(true),
-  /**
-   * 操作按钮外层 Col 组件配置，如果开启 showAdvancedButton，则不用设置，具体见下方 actionColOptions
-   */
-  actionColOptions: Object as PropType<Partial<ColEx>>,
-  /**
-   * 显示重置按钮
-   * @type {boolean}
-   * @default true
-   */
-  showResetButton: propTypes.bool.def(true),
-  /**
    * 是否聚焦第一个输入框，只在第一个表单项为input的时候作用
    * @type {boolean}
    */
-  autoFocusFirstItem: propTypes.bool,
-  /**
-   * 重置按钮配置见下方 ActionButtonOption
-   */
-  resetButtonOptions: Object as PropType<Partial<ButtonProps>>,
-  /**
-   * 是否显示确认按钮
-   * @type {boolean}
-   * @default true
-   */
-  showSubmitButton: propTypes.bool.def(true),
-  /**
-   * 确认按钮配置
-   */
-  submitButtonOptions: Object as PropType<Partial<ButtonProps>>,
+  autoFocusFirstItem: propTypes.bool.def(true),
+
   tableAction: {
     type: Object as PropType<TableActionType>,
   },
-  // 自定义重置函数
   /**
    * 自定义重置按钮逻辑
    */
@@ -162,22 +210,40 @@ export const basicProps = {
    * 	自定义提交按钮逻辑
    */
   submitFunc: Function as PropType<() => Promise<void>>,
-  rowProps: Object as PropType<RowProps>,
-  // 以下为默认props
-  // labelCol: Object as PropType<Partial<ColEx>>,
-  //
-  // layout: propTypes.oneOf(['horizontal', 'vertical', 'inline']).def('horizontal'),
-  //
-  // wrapperCol: Object as PropType<Partial<ColEx>>,
-  //
-  // colon: propTypes.bool,
-  //
-  // labelAlign: propTypes.string,
-  //
-  /**
-   * Size
-   */
-  //size: propTypes.oneOf(['default', 'small', 'large']).def('default'),
 
-  ...formProps(),
+  ...formActionProps,
 };
+
+export const formItemProps = {
+  schema: {
+    type: Object as PropType<FormSchema>,
+    default: () => ({}),
+  },
+  formProps: {
+    type: Object as PropType<FormProps>,
+    default: () => ({}),
+  },
+  allDefaultValues: {
+    type: Object as PropType<Recordable<any>>,
+    default: () => ({}),
+  },
+  formModel: {
+    type: Object as PropType<Recordable<any>>,
+    default: () => ({}),
+  },
+  setFormModel: {
+    type: Function as PropType<(key: string, value: any, schema: FormSchema) => void>,
+    default: null,
+  },
+  tableAction: {
+    type: Object as PropType<TableActionType>,
+  },
+  formActionType: {
+    type: Object as PropType<FormActionType>,
+  },
+  isAdvanced: {
+    type: Boolean,
+  },
+};
+
+export type OptionsItem = { label: string; value: string | number | boolean; disabled?: boolean };

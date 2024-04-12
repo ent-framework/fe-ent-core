@@ -1,5 +1,5 @@
 <template>
-  <Transfer
+  <NTransfer
     :data-source="getdataSource"
     :filter-option="filterOption"
     :render="(item) => item.title"
@@ -13,7 +13,7 @@
 
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
-  import { Transfer } from 'ant-design-vue';
+  import { NTransfer } from 'naive-ui';
   import { get, omit } from 'lodash-es';
   import { isFunction } from '@ent-core/utils/is';
   import { propTypes } from '@ent-core/utils/prop-types';
@@ -23,7 +23,7 @@
 
   export default defineComponent({
     name: 'ApiTransfer',
-    components: { Transfer },
+    components: { NTransfer },
     props: {
       value: { type: Array as PropType<Array<string>> },
       api: {

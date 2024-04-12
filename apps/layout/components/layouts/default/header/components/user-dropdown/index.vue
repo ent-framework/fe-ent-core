@@ -1,57 +1,42 @@
 <template>
-  <Dropdown placement="bottomLeft" :overlay-class-name="`${prefixCls}-dropdown-overlay`">
+  <NDropdown
+    placement="bottom-start"
+    :class="`${prefixCls}-dropdown-overlay`"
+    :options="getOptions"
+    @select="handleSelect"
+  >
     <span :class="[prefixCls, `${prefixCls}--${theme}`]" class="flex">
       <img :class="`${prefixCls}__header`" :src="getUserInfo.avatar" />
       <span :class="`${prefixCls}__info hidden md:block`">
-        <Text :class="`${prefixCls}__name  `" class="truncate">
+        <NText :class="`${prefixCls}__name  `" class="truncate">
           {{ getUserInfo.displayName }}
-        </Text>
+        </NText>
       </span>
     </span>
-
-    <template #overlay>
-      <Menu @click="handleMenuClick">
-        <MenuItem
-          v-if="getUseLockPage"
-          item-key="lock"
-          :text="t('layout.header.tooltipLock')"
-          icon="ion:lock-closed-outline"
-        />
-        <MenuItem
-          item-key="logout"
-          :text="t('layout.header.dropdownItemLoginOut')"
-          icon="ion:power-outline"
-        />
-      </Menu>
-    </template>
-  </Dropdown>
+  </NDropdown>
   <LockAction @register="register" />
 </template>
 <script lang="ts">
   // components
 
-  import { computed, defineComponent } from 'vue';
-  import { Dropdown, Menu, Typography } from 'ant-design-vue';
+  import { computed, defineComponent, h, unref } from 'vue';
+  import EntIcon from 'fe-ent-core/es/components/icon';
+  import { NDropdown, NText } from 'naive-ui';
   import { propTypes } from 'fe-ent-core/es/utils';
   import { useDesign, useI18n } from 'fe-ent-core/es/hooks';
   import { useModal } from 'fe-ent-core/es/components/modal';
   import { useUserStore } from 'fe-ent-core/es/store';
   import { useHeaderSetting } from '../../../../../../hooks';
   import headerImg from '../../../../../../assets/header.jpg';
-
   import LockAction from '../lock/lock-modal.vue';
-  import MenuItem from './drop-menu-item.vue';
-
-  type MenuEvent = 'logout' | 'lock';
+  import type { DropdownMixedOption } from 'naive-ui/es/dropdown/src/interface';
 
   export default defineComponent({
     name: 'UserDropdown',
     components: {
-      Dropdown,
-      Menu,
-      MenuItem,
+      NDropdown,
       LockAction,
-      Text: Typography.Text,
+      NText,
     },
     props: {
       theme: propTypes.oneOf(['dark', 'light']),
@@ -78,8 +63,8 @@
         userStore.confirmLoginOut();
       }
 
-      function handleMenuClick(e: { key: MenuEvent }) {
-        switch (e.key) {
+      function handleSelect(key: string) {
+        switch (key) {
           case 'logout':
             handleLoginOut();
             break;
@@ -89,11 +74,30 @@
         }
       }
 
+      const getOptions = computed((): DropdownMixedOption[] => {
+        const isLockEnable = unref(getUseLockPage);
+        const options: DropdownMixedOption[] = [];
+        if (isLockEnable) {
+          options.push({
+            label: () => t('layout.header.tooltipLock'),
+            icon: () => h(EntIcon, { icon: 'ion:lock-closed-outline' }),
+            key: 'lock',
+          });
+        }
+        options.push({
+          label: () => t('layout.header.dropdownItemLoginOut'),
+          icon: () => h(EntIcon, { icon: 'ion:power-outline' }),
+          key: 'logout',
+        });
+        return options;
+      });
+
       return {
+        getOptions,
         prefixCls,
         t,
         getUserInfo,
-        handleMenuClick,
+        handleSelect,
         register,
         getUseLockPage,
       };

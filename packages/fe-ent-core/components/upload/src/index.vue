@@ -1,24 +1,24 @@
 <template>
   <div>
-    <Space>
+    <NSpace>
       <ent-button type="primary" pre-icon="carbon:cloud-upload" @click="openUploadModal">
         {{ t('component.upload.upload') }}
       </ent-button>
-      <Tooltip v-if="showPreview" placement="bottom">
-        <template #title>
-          {{ t('component.upload.uploaded') }}
-          <template v-if="fileList.length">
-            {{ fileList.length }}
-          </template>
+      <NTooltip v-if="showPreview" placement="bottom">
+        <template #trigger>
+          <ent-button @click="openPreviewModal">
+            <EntIcon icon="bi:eye" />
+            <template v-if="fileList.length && showPreviewNumber">
+              {{ fileList.length }}
+            </template>
+          </ent-button>
         </template>
-        <ent-button @click="openPreviewModal">
-          <EntIcon icon="bi:eye" />
-          <template v-if="fileList.length && showPreviewNumber">
-            {{ fileList.length }}
-          </template>
-        </ent-button>
-      </Tooltip>
-    </Space>
+        {{ t('component.upload.uploaded') }}
+        <template v-if="fileList.length">
+          {{ fileList.length }}
+        </template>
+      </NTooltip>
+    </NSpace>
 
     <UploadModal
       v-bind="bindValue"
@@ -38,9 +38,10 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watch } from 'vue';
-  import { Space, Tooltip } from 'ant-design-vue';
+  import { NSpace, NTooltip } from 'naive-ui';
   import { omit } from 'lodash-es';
   import { EntIcon } from '@ent-core/components/icon';
+  import { EntButton } from '@ent-core/components/button';
   import { useModal } from '@ent-core/components/modal';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { isArray } from '@ent-core/utils/is';
@@ -50,7 +51,7 @@
   import type { Recordable } from '@ent-core/types';
   export default defineComponent({
     name: 'EntUpload',
-    components: { UploadModal, UploadPreviewModal, EntIcon, Tooltip, Space },
+    components: { UploadModal, UploadPreviewModal, EntIcon, NSpace, NTooltip, EntButton },
     props: uploadContainerProps,
     emits: ['change', 'delete', 'preview-delete', 'update:value'],
 

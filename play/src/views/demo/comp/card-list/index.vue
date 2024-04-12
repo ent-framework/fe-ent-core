@@ -2,8 +2,8 @@
   <ent-page-wrapper title="卡片列表示例" content="基础封装">
     <ent-card-list :params="params" :api="demoListApi" @get-method="getMethod" @delete="handleDel">
       <template #header>
-        <ent-button type="primary" color="error"> 按钮1 </ent-button>
-        <ent-button type="primary" color="success"> 按钮2 </ent-button>
+        <ent-button type="primary"> 按钮1 </ent-button>
+        <ent-button type="primary"> 按钮2 </ent-button>
       </template>
     </ent-card-list>
   </ent-page-wrapper>

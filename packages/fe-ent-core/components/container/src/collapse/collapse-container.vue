@@ -1,5 +1,5 @@
 <template>
-  <div :class="prefixCls" :style="getContentStyle">
+  <div :class="prefixCls">
     <CollapseHeader v-bind="$props" :prefix-cls="prefixCls" :show="show" @expand="handleExpand">
       <template #title>
         <slot name="title" />
@@ -11,7 +11,7 @@
 
     <div class="p-2">
       <CollapseTransition :enable="canExpan">
-        <Skeleton v-if="loading" :active="loading" />
+        <NSkeleton v-if="loading" :animated="loading" />
         <div v-else v-show="show" :class="`${prefixCls}__body`">
           <slot />
         </div>
@@ -23,17 +23,16 @@
   </div>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, ref } from 'vue';
+  import { defineComponent, ref } from 'vue';
   // component
-  import { Skeleton } from 'ant-design-vue';
+  import { NSkeleton } from 'naive-ui';
   import { CollapseTransition } from '@ent-core/components/transition';
   import { triggerWindowResize } from '@ent-core/utils/event';
   // hook
   import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useTheme } from '@ent-core/hooks';
   import CollapseHeader from './collapse-header.vue';
-  import type { CSSProperties, PropType } from 'vue';
+  import type { PropType } from 'vue';
 
   const props = {
     /**
@@ -71,19 +70,12 @@
 
   export default defineComponent({
     name: 'EntCollapseContainer',
-    components: { CollapseHeader, CollapseTransition, Skeleton },
+    components: { CollapseHeader, CollapseTransition, NSkeleton },
     props,
     setup(props) {
       const show = ref(true);
 
       const { prefixCls } = useDesign('collapse-container');
-      const { useToken } = useTheme();
-      const { token } = useToken();
-      const getContentStyle = computed((): CSSProperties => {
-        return {
-          backgroundColor: token.value.colorBgContainer,
-        };
-      });
       /**
        * @description: Handling development events
        */
@@ -98,7 +90,6 @@
         prefixCls,
         handleExpand,
         show,
-        getContentStyle,
       };
     },
   });

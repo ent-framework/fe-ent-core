@@ -1,29 +1,33 @@
 <template>
-  <Layout :class="prefixCls" v-bind="lockEvents">
+  <NLayout :class="prefixCls" v-bind="lockEvents">
     <LayoutFeatures />
-    <ConfigProvider v-if="getShowFullHeaderRef" :theme="getComputedHeaderTheme">
+    <NConfigProvider v-if="getShowFullHeaderRef" :theme="getComputedHeaderTheme">
       <LayoutHeader fixed />
-    </ConfigProvider>
-    <Layout>
-      <ConfigProvider :theme="getComputedMenuTheme">
+    </NConfigProvider>
+    <NLayout
+      :has-sider="getShowSidebar || getIsMobile"
+      collapse-mode="width"
+      :collapsed="getCollapsed"
+    >
+      <NConfigProvider :abstract="true">
         <LayoutSideBar v-if="getShowSidebar || getIsMobile" />
-      </ConfigProvider>
-      <Layout :class="`${prefixCls}-main`">
-        <ConfigProvider :theme="getComputedHeaderTheme">
+      </NConfigProvider>
+      <NLayout :class="`${prefixCls}-main`">
+        <NConfigProvider :abstract="true" :theme="getComputedHeaderTheme">
           <LayoutMultipleHeader />
-        </ConfigProvider>
+        </NConfigProvider>
         <LayoutContent />
         <LayoutFooter />
-      </Layout>
-    </Layout>
-  </Layout>
+      </NLayout>
+    </NLayout>
+  </NLayout>
 </template>
 
 <script lang="ts">
   import { computed, defineComponent, ref, unref } from 'vue';
-  import { ConfigProvider, Layout } from 'ant-design-vue';
+  import { NConfigProvider, NLayout } from 'naive-ui';
 
-  import { useAppInject, useDesign, useTheme } from 'fe-ent-core/es/hooks';
+  import { useAppInject, useDesign, useTheme, useThemeSetting } from 'fe-ent-core/es/hooks';
 
   import { MenuModeEnum, MenuTypeEnum } from 'fe-ent-core/es/logics';
   import { createBreakpointListen } from 'fe-ent-core/es/hooks/event/use-breakpoint';
@@ -46,20 +50,21 @@
       LayoutContent,
       LayoutSideBar,
       LayoutMultipleHeader,
-      Layout,
-      ConfigProvider,
+      NLayout,
+      NConfigProvider,
     },
     setup() {
       const isMobile = ref(false);
       const { prefixCls } = useDesign('default-layout');
       const { getIsMobile } = useAppInject();
       const { getShowFullHeaderRef } = useHeaderSetting();
-      const { getShowSidebar, getIsMixSidebar } = useMenuSetting();
+      const { getShowSidebar, getIsMixSidebar, getCollapsed } = useMenuSetting();
       const isSetState = ref(false);
 
       const appStore = useAppStore();
       const layoutStore = useLayoutStore();
       const { getTheme } = useTheme();
+      const { getGlobalTheme } = useThemeSetting();
       const { getActualHeaderTheme, getActualMenuTheme } = useLayoutTheme();
 
       const getComputedHeaderTheme = computed(() => {
@@ -68,6 +73,10 @@
 
       const getComputedMenuTheme = computed(() => {
         return getTheme(unref(getActualMenuTheme));
+      });
+
+      const getBodyTheme = computed(() => {
+        return getTheme(unref(getGlobalTheme));
       });
 
       // Create a lock screen monitor
@@ -124,6 +133,7 @@
       }
 
       return {
+        getCollapsed,
         getShowFullHeaderRef,
         getShowSidebar,
         prefixCls,
@@ -132,6 +142,7 @@
         lockEvents,
         getComputedHeaderTheme,
         getComputedMenuTheme,
+        getBodyTheme,
       };
     },
   });

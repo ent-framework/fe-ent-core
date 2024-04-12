@@ -8,12 +8,12 @@
   //background-color: @component-background;
   //border-bottom: 1px solid @border-color-base;
 
-  .ant-tabs-small {
+  .n-tabs-small {
     height: @multiple-height;
   }
 
-  .ant-tabs.ant-tabs-card {
-    .ant-tabs-nav {
+  .n-tabs.n-tabs-card {
+    .n-tabs-nav {
       padding-top: 2px;
       height: @multiple-height;
       margin: 0;
@@ -21,12 +21,12 @@
       border: 0;
       box-shadow: none;
 
-      .ant-tabs-nav-container {
+      .n-tabs-nav-container {
         height: @multiple-height;
         padding-top: 2px;
       }
 
-      .ant-tabs-tab {
+      .n-tabs-tab {
         height: calc(@multiple-height - 2px);
         padding-right: 12px;
         line-height: calc(@multiple-height - 2px);
@@ -35,12 +35,12 @@
         transition: none;
 
         &:hover {
-          .ant-tabs-tab-remove {
+          .n-tabs-tab-remove {
             opacity: 1;
           }
         }
 
-        .ant-tabs-tab-remove {
+        .n-tabs-tab-remove {
           width: 8px;
           height: 28px;
           font-size: 12px;
@@ -66,13 +66,13 @@
         }
       }
 
-      .ant-tabs-tab:not(.ant-tabs-tab-active) {
+      .n-tabs-tab:not(.n-tabs-tab-active) {
         &:hover {
           //color: @primary-color;
         }
       }
 
-      .ant-tabs-tab-active {
+      .n-tabs-tab-active {
         position: relative;
         padding-left: 18px;
         //background: @primary-color;
@@ -83,7 +83,7 @@
           //color: @white !important;
         }
 
-        .ant-tabs-tab-remove {
+        .n-tabs-tab-remove {
           opacity: 1;
         }
 
@@ -95,16 +95,16 @@
     }
 
 
-    .ant-tabs-nav > div:nth-child(1) {
+    .n-tabs-nav > div:nth-child(1) {
       padding: 0 6px;
 
-      .ant-tabs-tab {
+      .n-tabs-tab {
         margin-right: 3px !important;
       }
     }
   }
 
-  .ant-tabs-tab:not(.ant-tabs-tab-active) {
+  .n-tabs-tab:not(.n-tabs-tab-active) {
     .anticon-close {
       font-size: 12px;
 
@@ -114,16 +114,16 @@
     }
   }
 
-  .ant-tabs-extra-content {
+  .n-tabs-extra-content {
     line-height: @multiple-height !important;
   }
 
-  .ant-dropdown-trigger {
+  .n-dropdown-trigger {
     display: inline-flex;
   }
 
   &--hide-close {
-    .ant-tabs-tab-remove {
+    .n-tabs-tab-remove {
       opacity: 0 !important;
     }
   }
@@ -159,7 +159,6 @@
     &__info {
       display: inline-block;
       width: 100%;
-      height: @multiple-height - 2;
       padding-left: 0;
       margin-left: -10px;
       font-size: 12px;

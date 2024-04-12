@@ -1,34 +1,33 @@
 <template>
-  <Drawer :class="prefixCls" v-bind="getBindValues" @close="onClose">
-    <template v-if="!$slots.title" #title>
-      <DrawerHeader
-        :title="getMergeProps.title"
-        :is-detail="isDetail"
-        :show-detail-back="showDetailBack"
-        @close="onClose"
-      >
-        <template #titleToolbar>
-          <slot name="titleToolbar" />
-        </template>
-      </DrawerHeader>
-    </template>
-    <template v-else #title>
-      <slot name="title" />
-    </template>
-
-    <EntScrollContainer
-      v-loading="getLoading"
-      :style="getScrollContentStyle"
-      :loading-tip="loadingText || t('common.loadingText')"
-    >
-      <slot />
-    </EntScrollContainer>
-    <DrawerFooter v-bind="getProps" :height="getFooterHeight" @close="onClose" @ok="handleOk">
-      <template v-for="item in Object.keys($slots)" #[item]="data">
-        <slot :name="item" v-bind="data || {}" />
+  <NDrawer
+    :class="prefixCls"
+    v-bind="getBindValues"
+    @after-leave="onClose"
+    @update-show="onUpdateShow"
+  >
+    <NDrawerContent v-bind="getContentProps">
+      <template #header>
+        <DrawerHeader
+          :title="getMergeProps.title"
+          :is-detail="isDetail"
+          :show-detail-back="showDetailBack"
+          @close="onClose"
+        >
+          <template #titleToolbar>
+            <slot name="titleToolbar" />
+          </template>
+        </DrawerHeader>
       </template>
-    </DrawerFooter>
-  </Drawer>
+      <slot />
+      <template #footer>
+        <DrawerFooter v-bind="getProps" @close="onClose" @ok="handleOk">
+          <template v-for="item in Object.keys($slots)" #[item]="data">
+            <slot :name="item" v-bind="data || {}" />
+          </template>
+        </DrawerFooter>
+      </template>
+    </NDrawerContent>
+  </NDrawer>
 </template>
 <script lang="ts">
   import {
@@ -41,20 +40,18 @@
     unref,
     watch,
   } from 'vue';
-  import { Drawer } from 'ant-design-vue';
+  import { NDrawer, NDrawerContent } from 'naive-ui';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { isFunction, isNumber } from '@ent-core/utils/is';
+  import { isFunction } from '@ent-core/utils/is';
   import { deepMerge } from '@ent-core/utils';
-  import { EntScrollContainer } from '@ent-core/components/container';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
   import { basicProps } from './props';
   import DrawerHeader from './components/drawer-header.vue';
   import DrawerFooter from './components/drawer-footer.vue';
-  import type { Nullable, Recordable } from '@ent-core/types';
-  import type { CSSProperties } from 'vue';
+  import type { Nullable } from '@ent-core/types';
   import type { DrawerInstance, DrawerProps } from './typing';
-
+  import type { DrawerContentProps } from 'naive-ui/es/drawer';
   /**
    * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/drawer/index.zh-CN.md
    * @extends Drawer
@@ -62,7 +59,7 @@
    */
   export default defineComponent({
     name: 'EntDrawer',
-    components: { Drawer, EntScrollContainer, DrawerFooter, DrawerHeader },
+    components: { NDrawer, NDrawerContent, DrawerFooter, DrawerHeader },
     inheritAttrs: false,
     props: basicProps,
     emits: ['visible-change', 'ok', 'close', 'register'],
@@ -72,7 +69,7 @@
       const propsRef = ref<Partial<Nullable<DrawerProps>>>(null);
 
       const { t } = useI18n();
-      const { prefixVar, prefixCls } = useDesign('basic-drawer');
+      const { prefixCls } = useDesign('basic-drawer');
 
       const drawerInstance: DrawerInstance = {
         setDrawerProps,
@@ -88,27 +85,26 @@
       });
 
       const getProps = computed((): DrawerProps => {
-        const opt = {
+        const opt: DrawerProps = {
           placement: 'right',
           ...unref(attrs),
           ...unref(getMergeProps),
-          open: unref(openRef),
+          show: unref(openRef),
         };
         opt.title = undefined;
-        const { isDetail, width, wrapClassName, getContainer } = opt;
+        const { isDetail, width } = opt;
         if (isDetail) {
           if (!width) {
             opt.width = '100%';
           }
-          const detailCls = `${prefixCls}__detail`;
-          opt.class = wrapClassName ? `${wrapClassName} ${detailCls}` : detailCls;
-
-          if (!getContainer) {
-            // TODO type error?
-            opt.getContainer = `.${prefixVar}-layout-content` as any;
-          }
         }
-        return opt as DrawerProps;
+        return opt;
+      });
+
+      const getContentProps = computed((): DrawerContentProps => {
+        const props = unref(getProps);
+        const { title, content = {} } = props;
+        return { closable: true, title, ...content };
       });
 
       const getBindValues = computed((): DrawerProps => {
@@ -118,31 +114,12 @@
         };
       });
 
-      // Custom implementation of the bottom button,
-      const getFooterHeight = computed(() => {
-        const { footerHeight, showFooter } = unref(getProps);
-        if (showFooter && footerHeight) {
-          return isNumber(footerHeight)
-            ? `${footerHeight}px`
-            : `${footerHeight.replace('px', '')}px`;
-        }
-        return `0px`;
-      });
-
-      const getScrollContentStyle = computed((): CSSProperties => {
-        const footerHeight = unref(getFooterHeight);
-        return {
-          position: 'relative',
-          height: `calc(100% - ${footerHeight})`,
-        };
-      });
-
       const getLoading = computed(() => {
         return !!unref(getProps)?.loading;
       });
 
       watch(
-        () => props.visible,
+        () => props.show,
         (newVal, oldVal) => {
           if (newVal !== oldVal) openRef.value = !!newVal;
         },
@@ -160,9 +137,9 @@
       );
 
       // Cancel event
-      async function onClose(e: Recordable) {
+      async function onClose() {
         const { closeFunc } = unref(getProps);
-        emit('close', e);
+        emit('close');
         if (closeFunc && isFunction(closeFunc)) {
           const res = await closeFunc();
           openRef.value = !res;
@@ -171,12 +148,19 @@
         openRef.value = false;
       }
 
+      async function onUpdateShow(show: boolean) {
+        openRef.value = show;
+        if (!show) {
+          await onClose();
+        }
+      }
+
       function setDrawerProps(props: Partial<DrawerProps>): void {
         // Keep the last setDrawerProps
         propsRef.value = deepMerge(unref(propsRef) || ({} as any), props);
 
-        if (Reflect.has(props, 'open')) {
-          openRef.value = !!props.open;
+        if (Reflect.has(props, 'show')) {
+          openRef.value = !!props.show;
         }
       }
 
@@ -188,13 +172,14 @@
         onClose,
         t,
         prefixCls,
+        openRef,
         getMergeProps: getMergeProps as any,
-        getScrollContentStyle,
         getProps: getProps as any,
+        getContentProps,
         getLoading,
         getBindValues,
-        getFooterHeight,
         handleOk,
+        onUpdateShow,
       };
     },
   });

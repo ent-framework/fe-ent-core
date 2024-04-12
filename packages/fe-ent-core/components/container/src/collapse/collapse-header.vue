@@ -2,7 +2,7 @@
   <div :class="[`${prefixCls}__header px-2 py-5`, $attrs.class]">
     <EntTitle :help-message="helpMessage" normal>
       <template v-if="title">
-        <Text>{{ title }}</Text>
+        <NElement tag="span">{{ title }}</NElement>
       </template>
       <template v-else>
         <slot name="title" />
@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { Typography } from 'ant-design-vue';
+  import { NElement } from 'naive-ui';
   import { EntArrow, EntTitle } from '@ent-core/components/basic';
   import type { PropType } from 'vue';
 
@@ -32,7 +32,7 @@
   };
 
   export default defineComponent({
-    components: { EntArrow, EntTitle, Text: Typography.Text },
+    components: { EntArrow, EntTitle, NElement },
     props,
     emits: ['expand'],
   });

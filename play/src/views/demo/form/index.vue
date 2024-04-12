@@ -2,29 +2,27 @@
   <ent-page-wrapper title="表单基础示例" content-full-height>
     <ent-collapse-container title="基础示例">
       <ent-form
-        auto-focus-first-item
-        :label-width="200"
         :schemas="schemas"
         :action-col-options="{ span: 24 }"
         @submit="handleSubmit"
         @reset="handleReset"
       >
         <template #selectA="{ model, field }">
-          <a-select
+          <NSelect
             v-model:value="model[field]"
             :options="optionsA"
             mode="multiple"
             allow-clear
-            @change="valueSelectA = model[field]"
+            @update:value="valueSelectA = model[field]"
           />
         </template>
         <template #selectB="{ model, field }">
-          <a-select
+          <NSelect
             v-model:value="model[field]"
             :options="optionsB"
             mode="multiple"
             allow-clear
-            @change="valueSelectB = model[field]"
+            @update:value="valueSelectB = model[field]"
           />
         </template>
         <template #localSearch="{ model, field }">
@@ -42,7 +40,7 @@
           <ApiSelect
             v-model:value="model[field]"
             :api="optionsListApi"
-            show-search
+            filterable
             :filter-option="false"
             result-field="list"
             label-field="name"
@@ -63,7 +61,7 @@
   import { optionsListApi } from '/@/api/select';
   import { useDebounceFn } from '@vueuse/core';
   import { treeOptionsListApi } from '/@/api/tree';
-  import { Select } from 'ant-design-vue';
+  import { NSelect } from 'naive-ui';
   import { cloneDeep } from 'lodash';
   import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
   import type { Recordable } from 'fe-ent-core/es/types';
@@ -142,7 +140,7 @@
       field: 'divider-basic',
       component: 'Divider',
       label: '基础字段',
-      colProps: {
+      gridItemProps: {
         span: 24,
       },
     },
@@ -150,12 +148,9 @@
       field: 'field1',
       component: 'Input',
       label: '字段1',
-
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
-      // componentProps:{},
-      // can func
       componentProps: ({ schema, formModel }) => {
         console.log('form:', schema);
         console.log('formModel:', formModel);
@@ -178,7 +173,7 @@
       component: 'Input',
       label: '带后缀',
       defaultValue: '111',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -192,7 +187,7 @@
       field: 'field3',
       component: 'DatePicker',
       label: '字段3',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
     },
@@ -200,7 +195,7 @@
       field: 'field4',
       component: 'Select',
       label: '字段4',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -222,7 +217,7 @@
       field: 'field5',
       component: 'CheckboxGroup',
       label: '字段5',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -242,7 +237,7 @@
       field: 'field7',
       component: 'RadioGroup',
       label: '字段7',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -262,7 +257,7 @@
       field: 'field8',
       component: 'Checkbox',
       label: '字段8',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       renderComponentContent: 'Check',
@@ -271,7 +266,7 @@
       field: 'field9',
       component: 'Switch',
       label: '字段9',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
     },
@@ -279,7 +274,7 @@
       field: 'field10',
       component: 'RadioButtonGroup',
       label: '字段10',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -299,7 +294,7 @@
       field: 'field11',
       component: 'Cascader',
       label: '字段11',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -343,7 +338,7 @@
       field: 'divider-api-select',
       component: 'Divider',
       label: '远程下拉演示',
-      colProps: {
+      gridItemProps: {
         span: 24,
       },
     },
@@ -373,7 +368,7 @@
           console.log('get options', options.length, options);
         },
       },
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       defaultValue: '0',
@@ -385,7 +380,7 @@
       helpMessage: ['ApiSelect组件', '远程数据源本地搜索', '只发起一次请求获取所有选项'],
       required: true,
       slot: 'localSearch',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       defaultValue: '0',
@@ -397,7 +392,7 @@
       helpMessage: ['ApiSelect组件', '将关键词发送到接口进行远程搜索'],
       required: true,
       slot: 'remoteSearch',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       defaultValue: '0',
@@ -410,9 +405,12 @@
       required: true,
       componentProps: {
         api: treeOptionsListApi,
+        bordered: true,
         resultField: 'list',
+        keyField: 'value',
+        labelField: 'title',
       },
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
     },
@@ -434,7 +432,7 @@
         valueField: 'id',
       },
       defaultValue: '1',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
     },
@@ -456,7 +454,7 @@
         valueField: 'id',
         isBtn: true,
       },
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
     },
@@ -464,7 +462,7 @@
       field: 'divider-linked',
       component: 'Divider',
       label: '字段联动',
-      colProps: {
+      gridItemProps: {
         span: 24,
       },
     },
@@ -472,7 +470,7 @@
       field: 'province',
       component: 'Select',
       label: '省份',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: ({ formModel, formActionType }) => {
@@ -505,7 +503,7 @@
       field: 'city',
       component: 'Select',
       label: '城市',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -518,7 +516,7 @@
       component: 'Divider',
       label: '互斥多选',
       helpMessage: ['两个Select共用数据源', '但不可选择对方已选中的项目'],
-      colProps: {
+      gridItemProps: {
         span: 24,
       },
     },
@@ -528,7 +526,7 @@
       label: '互斥SelectA',
       slot: 'selectA',
       defaultValue: [],
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
     },
@@ -538,7 +536,7 @@
       label: '互斥SelectB',
       slot: 'selectB',
       defaultValue: [],
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
     },
@@ -546,7 +544,7 @@
       field: 'divider-others',
       component: 'Divider',
       label: '其它',
-      colProps: {
+      gridItemProps: {
         span: 24,
       },
     },
@@ -555,33 +553,33 @@
       component: 'InputNumber',
       label: '字段20',
       required: true,
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
     },
-    {
-      field: 'field21',
-      component: 'Slider',
-      label: '字段21',
-      componentProps: {
-        min: 0,
-        max: 100,
-        range: true,
-        marks: {
-          20: '20°C',
-          60: '60°C',
-        },
-      },
-      colProps: {
-        span: 8,
-      },
-    },
+    // {
+    //   field: 'field21',
+    //   component: 'Slider',
+    //   label: '字段21',
+    //   componentProps: {
+    //     min: 0,
+    //     max: 100,
+    //     range: true,
+    //     marks: {
+    //       20: '20°C',
+    //       60: '60°C',
+    //     },
+    //   },
+    //   gridItemProps: {
+    //     span: 8,
+    //   },
+    // },
     {
       field: 'field22',
       component: 'Rate',
       label: '字段22',
       defaultValue: 3,
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -594,7 +592,7 @@
   export default defineComponent({
     components: {
       ApiSelect,
-      ASelect: Select,
+      NSelect,
     },
     setup() {
       const check = ref(null);

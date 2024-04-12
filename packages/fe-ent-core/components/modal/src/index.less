@@ -1,7 +1,7 @@
 .fullscreen-modal {
   overflow: hidden;
 
-  .ant-modal {
+  .n-modal {
     top: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
@@ -15,11 +15,10 @@
   }
 }
 
-.ant-modal {
+.n-modal {
   width: 520px;
-  padding-bottom: 0;
 
-  .ant-modal-body > .scrollbar {
+  .n-modal-body > .scrollbar {
     padding: 14px;
   }
 
@@ -33,7 +32,7 @@
     }
   }
 
-  .ant-modal-body {
+  .n-modal-body {
     padding: 0;
 
     > .scrollbar > .scrollbar__bar.is-horizontal {
@@ -76,7 +75,7 @@
   }
 
   &-confirm-body {
-    .ant-modal-confirm-content {
+    .n-modal-confirm-content {
       // color: #fff;
 
       > * {
@@ -85,44 +84,44 @@
     }
   }
 
-  &-confirm-confirm.error .ant-modal-confirm-body > .anticon {
+  &-confirm-confirm.error .n-modal-confirm-body > .nicon {
     //color: @error-color;
   }
 
   &-confirm-btns {
-    .ant-btn:last-child {
+    .n-btn:last-child {
       margin-right: 0;
     }
   }
 
   &-confirm-info {
-    .ant-modal-confirm-body > .anticon {
+    .n-modal-confirm-body > .nicon {
       //color: @warning-color;
     }
   }
 
   &-confirm-confirm.success {
-    .ant-modal-confirm-body > .anticon {
+    .n-modal-confirm-body > .nicon {
       //color: @success-color;
     }
   }
 }
 
-.ant-modal-confirm .ant-modal-body {
+.n-modal-confirm .n-modal-body {
   padding: 24px !important;
 }
 @media screen and (max-height: 600px) {
-  .ant-modal {
+  .n-modal {
     top: 60px;
   }
 }
 @media screen and (max-height: 540px) {
-  .ant-modal {
+  .n-modal {
     top: 30px;
   }
 }
 @media screen and (max-height: 480px) {
-  .ant-modal {
+  .n-modal {
     top: 10px;
   }
 }

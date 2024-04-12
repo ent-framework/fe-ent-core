@@ -4,11 +4,12 @@
       title="基础示例"
       title-help-message="温馨提醒"
       :columns="columns"
-      :data-source="dataSource"
+      :data="dataSource"
       :can-resize="canResize"
       :loading="loading"
       :striped="striped"
       :bordered="border"
+      :row-key="(record) => record.id"
       show-table-setting
       :pagination="pagination"
       @columns-change="handleColumnChange"
@@ -39,7 +40,7 @@
       const loading = ref(false);
       const striped = ref(true);
       const border = ref(true);
-      const pagination = ref<any>(false);
+      const pagination = ref<any>(true);
       function toggleCanResize() {
         canResize.value = !canResize.value;
       }

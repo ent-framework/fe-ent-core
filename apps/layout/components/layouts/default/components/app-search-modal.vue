@@ -4,17 +4,17 @@
       <div v-if="visible" :class="getClass" @click.stop>
         <div v-click-outside="handleClose" :class="`${prefixCls}-content`">
           <div :class="`${prefixCls}-input__wrapper`">
-            <a-input
+            <NInput
               ref="inputRef"
               :class="`${prefixCls}-input`"
               :placeholder="t('common.searchText')"
-              allow-clear
-              @change="handleSearch"
+              clearable
+              @update:value="handleSearch"
             >
               <template #prefix>
                 <SearchOutlined />
               </template>
-            </a-input>
+            </NInput>
             <span :class="`${prefixCls}-cancel`" @click="handleClose">
               {{ t('common.cancelText') }}
             </span>
@@ -61,6 +61,7 @@
   import { computed, nextTick, ref, unref, watch } from 'vue';
   import { SearchOutlined } from '@ant-design/icons-vue';
   import { EntIcon } from 'fe-ent-core';
+  import { NInput } from 'naive-ui';
   import { useAppInject, useDesign, useI18n, useRefs } from 'fe-ent-core/es/hooks';
   import { vClickOutside } from 'fe-ent-core/es/directives';
   import { useMenuSearch } from './use-menu-search';

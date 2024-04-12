@@ -43,8 +43,8 @@
 
       const getIsTabs = computed(() => !props.isExtra);
 
-      const getTrigger = computed((): ('contextmenu' | 'click' | 'hover')[] =>
-        unref(getIsTabs) ? ['contextmenu'] : ['click'],
+      const getTrigger = computed((): 'hover' | 'click' | 'focus' | 'manual' =>
+        unref(getIsTabs) ? 'manual' : 'click',
       );
 
       const { getDropMenuList, handleMenuEvent, handleContextMenu } = useTabDropdown(

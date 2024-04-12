@@ -72,9 +72,9 @@ export function useDrawer(): UseDrawerReturnType {
       return visibleData[Math.trunc(unref(uid))];
     }),
 
-    openDrawer: <T = any>(open = true, data?: T, openOnSet = true): void => {
+    openDrawer: <T = any>(show = true, data?: T, openOnSet = true): void => {
       getInstance()?.setDrawerProps({
-        open,
+        show,
       });
       if (!data) return;
 
@@ -89,7 +89,7 @@ export function useDrawer(): UseDrawerReturnType {
       }
     },
     closeDrawer: () => {
-      getInstance()?.setDrawerProps({ open: false });
+      getInstance()?.setDrawerProps({ show: false });
     },
   };
 
@@ -148,7 +148,7 @@ export const useDrawerInner = (callbackFn?: Fn): UseDrawerInnerReturnType => {
       }),
 
       closeDrawer: () => {
-        getInstance()?.setDrawerProps({ open: false });
+        getInstance()?.setDrawerProps({ show: false });
       },
 
       setDrawerProps: (props: Partial<DrawerProps>) => {

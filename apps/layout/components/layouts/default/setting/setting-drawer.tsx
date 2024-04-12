@@ -2,7 +2,7 @@ import { computed, defineComponent, unref } from 'vue';
 import { EntDrawer } from 'fe-ent-core';
 import { MenuTypeEnum, TriggerEnum } from 'fe-ent-core/es/logics';
 import { useI18n, useThemeSetting, useTransitionSetting } from 'fe-ent-core/es/hooks';
-import { Divider } from 'ant-design-vue';
+import { NDivider } from 'naive-ui';
 import {
   useHeaderSetting,
   useLayoutThemeSetting,
@@ -67,6 +67,7 @@ export default defineComponent({
       getMixSideTrigger,
       getMixSideFixed,
       getMenuTheme,
+      getInverted,
     } = useMenuSetting();
 
     const {
@@ -242,8 +243,8 @@ export default defineComponent({
             handler={layoutHandler}
             event={HandlerEnum.LOCK_TIME}
             defaultValue={unref(getLockTime)}
-            formatter={(value: string) => {
-              return Number.parseInt(value) === 0
+            format={(value: number) => {
+              return value === 0
                 ? `0(${t('layout.setting.notAutoScreenLock')})`
                 : `${value}${t('layout.setting.minute')}`;
             }}
@@ -257,7 +258,7 @@ export default defineComponent({
             disabled={!unref(getShowMenuRef)}
             defaultValue={unref(getMenuWidth)}
             handler={layoutHandler}
-            formatter={(value: string) => `${Number.parseInt(value)}px`}
+            format={(value: number) => `${value}px`}
           />
         </>
       );
@@ -328,7 +329,13 @@ export default defineComponent({
             disabled={!unref(getShowMenu)}
             handler={layoutHandler}
           />
-
+          <SwitchItem
+            title={t('layout.setting.sidebarInverted')}
+            event={HandlerEnum.MENU_INVERTED}
+            def={unref(getInverted)}
+            handler={layoutHandler}
+            disabled={unref(getIsHorizontal)}
+          />
           <SwitchItem
             title={t('layout.setting.header')}
             event={HandlerEnum.HEADER_SHOW}
@@ -417,17 +424,17 @@ export default defineComponent({
         width={330}
         class="setting-drawer"
       >
-        <Divider>{() => t('layout.setting.navMode')}</Divider>
+        <NDivider>{() => t('layout.setting.navMode')}</NDivider>
         {renderSidebar()}
-        <Divider>{() => t('layout.setting.sysTheme')}</Divider>
+        <NDivider>{() => t('layout.setting.sysTheme')}</NDivider>
         {renderMainTheme()}
-        <Divider>{() => t('layout.setting.interfaceFunction')}</Divider>
+        <NDivider>{() => t('layout.setting.interfaceFunction')}</NDivider>
         {renderFeatures()}
-        <Divider>{() => t('layout.setting.interfaceDisplay')}</Divider>
+        <NDivider>{() => t('layout.setting.interfaceDisplay')}</NDivider>
         {renderContent()}
-        <Divider>{() => t('layout.setting.animation')}</Divider>
+        <NDivider>{() => t('layout.setting.animation')}</NDivider>
         {renderTransition()}
-        <Divider />
+        <NDivider />
         <SettingFooter />
       </EntDrawer>
     );

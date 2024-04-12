@@ -4,6 +4,7 @@ import { useAppStore } from '@ent-core/store/modules/app';
 
 import type { ThemeEnum } from '@ent-core/logics';
 import type { ThemeSetting } from '@ent-core/store/types';
+import type { DeepPartial } from '@ent-core/types';
 
 export function useThemeSetting() {
   const appStore = useAppStore();
@@ -12,7 +13,7 @@ export function useThemeSetting() {
   const getThemeName = computed(() => appStore.getThemeSetting.name);
 
   // Set header configuration
-  function setThemeSetting(themeSetting: Partial<ThemeSetting>) {
+  function setThemeSetting(themeSetting: DeepPartial<ThemeSetting>) {
     appStore.setProjectConfig({ themeSetting });
   }
 

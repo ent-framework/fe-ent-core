@@ -1,15 +1,17 @@
 <template>
-  <Tooltip placement="top">
-    <template #title>
-      <span>{{ t('component.table.settingFullScreen') }}</span>
+  <NTooltip placement="top">
+    <template #trigger>
+      <NIcon>
+        <FullscreenOutlined v-if="!isFullscreen" @click="toggle" />
+        <FullscreenExitOutlined v-else @click="toggle" />
+      </NIcon>
     </template>
-    <FullscreenOutlined v-if="!isFullscreen" @click="toggle" />
-    <FullscreenExitOutlined v-else @click="toggle" />
-  </Tooltip>
+    {{ t('component.table.settingFullScreen') }}
+  </NTooltip>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { Tooltip } from 'ant-design-vue';
+  import { NIcon, NTooltip } from 'naive-ui';
   import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons-vue';
   import { useFullscreen } from '@vueuse/core';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
@@ -20,7 +22,8 @@
     components: {
       FullscreenExitOutlined,
       FullscreenOutlined,
-      Tooltip,
+      NTooltip,
+      NIcon,
     },
 
     setup() {

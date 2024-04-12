@@ -15,6 +15,7 @@
         title: '多级表头示例',
         api: demoListApi,
         columns: getMultipleHeaderColumns(),
+        rowKey: (record) => record.id,
       });
 
       return {

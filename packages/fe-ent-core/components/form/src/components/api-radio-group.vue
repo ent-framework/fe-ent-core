@@ -2,25 +2,25 @@
  * @Description:It is troublesome to implement radio button group in the form. So it is extracted independently as a separate component
 -->
 <template>
-  <RadioGroup v-bind="attrs" v-model:value="state" button-style="solid">
+  <NRadioGroup v-bind="attrs" v-model:value="state" button-style="solid">
     <template v-for="item in getOptions" :key="`${item.value}`">
-      <RadioButton
+      <NRadioButton
         v-if="props.isBtn"
         :value="item.value"
         :disabled="item.disabled"
         @click="handleClick(item)"
       >
         {{ item.label }}
-      </RadioButton>
-      <Radio v-else :value="item.value" :disabled="item.disabled" @click="handleClick(item)">
+      </NRadioButton>
+      <NRadio v-else :value="item.value" :disabled="item.disabled" @click="handleClick(item)">
         {{ item.label }}
-      </Radio>
+      </NRadio>
     </template>
-  </RadioGroup>
+  </NRadioGroup>
 </template>
 <script lang="ts">
   import { type PropType, computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
-  import { Radio } from 'ant-design-vue';
+  import { NRadio, NRadioButton, NRadioGroup } from 'naive-ui';
   import { get, omit } from 'lodash-es';
   import { isFunction } from '@ent-core/utils/is';
   import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
@@ -33,9 +33,9 @@
   export default defineComponent({
     name: 'ApiRadioGroup',
     components: {
-      RadioGroup: Radio.Group,
-      RadioButton: Radio.Button,
-      Radio,
+      NRadio,
+      NRadioGroup,
+      NRadioButton,
     },
     props: {
       api: {
@@ -68,7 +68,7 @@
       const attrs = useAttrs();
       const { t } = useI18n();
       // Embedded in the form, just use the hook binding to perform form verification
-      const [state] = useRuleFormItem(props, 'value', 'change', emitData);
+      const [state] = useRuleFormItem(props, 'value', 'update:value', emitData);
 
       // Processing options value
       const getOptions = computed(() => {

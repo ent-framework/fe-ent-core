@@ -16,8 +16,8 @@ export function useTableForm(
     return {
       showAdvancedButton: true,
       ...formConfig,
+      showFeedback: false,
       submitButtonOptions: { loading: unref(getLoading), ...submitButtonOptions },
-      compact: true,
     };
   });
 

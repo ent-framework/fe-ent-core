@@ -1,33 +1,31 @@
-import { tableProps } from 'ant-design-vue/es/table';
+import { dataTableProps } from 'naive-ui/es/data-table';
 import { propTypes } from '@ent-core/utils/prop-types';
-import { DEFAULT_FILTER_FN, DEFAULT_SIZE, DEFAULT_SORT_FN, FETCH_SETTING } from './const';
-//import type { TableRowSelection } from 'ant-design-vue/es/table/interface';
+import { DEFAULT_FILTER_FN, DEFAULT_SORT_FN, FETCH_SETTING } from './const';
 import type { PropType } from 'vue';
-import type { PaginationProps } from './types/pagination';
 import type {
   BasicColumn,
   FetchSetting,
-  SizeType,
   SorterResult,
+  TableRowSelection,
   TableSetting,
 } from './types/table';
 import type { FormProps } from '@ent-core/components/form/interface';
 import type { Fn, Recordable } from '@ent-core/types';
-
-export const basicProps = {
-  ...tableProps(),
+import type { DataTableExpandColumn, DataTableSelectionColumn } from 'naive-ui';
+export const tableHeaderProps = {
   /**
-   * 点击行是否选中 checkbox 或者 radio。需要开启
-   * @type {boolean}
-   * @default true
+   * 标题
    */
-  clickToRowSelect: propTypes.bool.def(true),
+  title: {
+    type: [String, Function] as PropType<string | ((data: Recordable) => string)>,
+    default: null,
+  },
   /**
-   * 是否树表
-   * @type {boolean}
-   * @default false
+   * 表格标题右侧温馨提醒
    */
-  isTreeTable: propTypes.bool.def(false),
+  titleHelpMessage: {
+    type: [String, Array] as PropType<string | string[]>,
+  },
   /**
    * 显示表格设置工具
    * @type {boolean}
@@ -37,12 +35,43 @@ export const basicProps = {
    * 表格设置工具配置, 见下方 TableSetting
    * @type {object}
    */
-  tableSetting: propTypes.shape<TableSetting>({}),
+  tableSetting: {
+    type: Object as PropType<Partial<TableSetting>>,
+  },
+};
+
+export const basicProps = {
+  ...dataTableProps,
+  ...tableHeaderProps,
+  /**
+   * 点击行是否选中 checkbox 或者 radio。需要开启
+   * @type {boolean}
+   * @default true
+   */
+  clickToRowSelect: {
+    type: Boolean,
+    default: true,
+  },
+  rowSelection: {
+    type: Object as PropType<TableRowSelection>,
+  },
+
+  /**
+   * 是否树表
+   * @type {boolean}
+   * @default false
+   */
+  isTreeTable: {
+    type: Boolean,
+    default: false,
+  },
   /**
    * 取消表格的默认 padding
    * @type {boolean}
    */
-  inset: propTypes.bool,
+  inset: {
+    type: Boolean,
+  },
   /**
    * 自定义排序方法。见下方全局配置说明
    * @type {Function}
@@ -59,51 +88,19 @@ export const basicProps = {
     type: Function as PropType<(data: Partial<Recordable<string[]>>) => any>,
     default: DEFAULT_FILTER_FN,
   },
-  /**
-   * 是否自动生成 key
-   * @type {boolean}
-   * @default true
-   */
-  autoCreateKey: propTypes.bool.def(true),
-  /**
-   * 斑马纹
-   * @type {boolean}
-   * @default true
-   */
-  striped: propTypes.bool.def(true),
-  /**
-   * 是否显示合计行
-   * @type {boolean}
-   */
-  showSummary: propTypes.bool,
-  /**
-   * 计算合计行的方法
-   * @type {Function}
-   */
-  summaryFunc: {
-    type: [Function, Array] as PropType<(...arg: any[]) => any[]>,
-    default: null,
-  },
-  /**
-   * 自定义合计数据。如果有则显示该数据
-   * @type {Record[]}
-   */
-  summaryData: {
-    type: Array as PropType<Recordable[]>,
-    default: null,
-  },
-  /**
-   * 缩进值
-   * @type {number}
-   * @default 24
-   */
-  indentSize: propTypes.number.def(24),
-  /**
-   * 列能否拖动
-   * @type {boolean}
-   * @default true
-   */
-  canColDrag: propTypes.bool.def(true),
+
+  // /**
+  //  * 缩进值
+  //  * @type {number}
+  //  * @default 24
+  //  */
+  // indentSize: propTypes.number.def(24),
+  // /**
+  //  * 列能否拖动
+  //  * @type {boolean}
+  //  * @default true
+  //  */
+  // canColDrag: propTypes.bool.def(true),
   /**
    * 请求接口，可以直接将src/api内的函数直接传入
    * @type {Function}
@@ -141,7 +138,7 @@ export const basicProps = {
    * @type {object}
    */
   fetchSetting: {
-    type: Object as PropType<FetchSetting>,
+    type: Object as PropType<Partial<FetchSetting>>,
     default: () => FETCH_SETTING,
   },
   /**
@@ -150,12 +147,6 @@ export const basicProps = {
    * @default true
    */
   immediate: propTypes.bool.def(true),
-  /**
-   * 在启用搜索表单的前提下，是否在表格没有数据的时候显示表格
-   * @type {boolean}
-   * @default true
-   */
-  emptyDataIsShowTable: propTypes.bool.def(true),
   /**
    * 额外的请求参数
    * @type {object}
@@ -186,13 +177,6 @@ export const basicProps = {
     default: null,
   },
   /**
-   * 列
-   */
-  columns: {
-    type: [Array] as PropType<BasicColumn[]>,
-    default: () => [],
-  },
-  /**
    * 显示行号
    * @type {boolean}
    * @default true
@@ -204,7 +188,11 @@ export const basicProps = {
    */
   indexColumnProps: {
     type: Object as PropType<BasicColumn>,
-    default: null,
+    default: () => {
+      return {
+        width: 50,
+      };
+    },
   },
   /**
    * 表格右侧操作列配置 BasicColumn
@@ -214,8 +202,21 @@ export const basicProps = {
     type: Object as PropType<BasicColumn>,
     default: null,
   },
+
   /**
-   * 文本超过宽度是否显示...
+   * 选择行的配置
+   */
+  selectionColumn: {
+    type: Object as PropType<Partial<DataTableSelectionColumn>>,
+  },
+  /**
+   * 展开行的配置
+   */
+  expandColumn: {
+    type: Object as PropType<Partial<DataTableExpandColumn>>,
+  },
+  /**
+   * 文本超过宽度是否显示..., 全局设置，可以被column上的ellipsis属性覆盖
    * @type {boolean}
    * @default true
    */
@@ -231,55 +232,4 @@ export const basicProps = {
    * @type {boolean}
    */
   clearSelectOnPageChange: propTypes.bool,
-  /**
-   * 表格自适应高度计算结果会减去这个值
-   * @type {number}
-   * @default 0
-   */
-  resizeHeightOffset: propTypes.number.def(0),
-  /**
-   * 标题
-   */
-  title: {
-    type: [String, Function] as PropType<string | ((data: Recordable) => string)>,
-    default: null,
-  },
-  /**
-   * 表格标题右侧温馨提醒
-   */
-  titleHelpMessage: {
-    type: [String, Array] as PropType<string | string[]>,
-  },
-  /**
-   * 表格最大高度，超出会显示滚动条
-   * @type {number}
-   */
-  maxHeight: propTypes.number,
-  pagination: {
-    type: [Object, Boolean] as PropType<PaginationProps | boolean>,
-    default: null,
-  },
-
-  // scroll: {
-  //   type: Object as PropType<{ x: number | string | true; y: number | string }>,
-  //   default: null,
-  // },
-  /**
-   * 单元格编辑状态提交回调，返回false将阻止单元格提交数据到table。该回调在行编辑模式下无效。
-   */
-  beforeEditSubmit: {
-    type: Function as PropType<
-      (data: {
-        record: Recordable;
-        index: number;
-        key: string | number;
-        value: any;
-      }) => Promise<any>
-    >,
-  },
-  size: {
-    type: String as PropType<SizeType>,
-    default: DEFAULT_SIZE,
-  },
-  //...tableProps(),
 };

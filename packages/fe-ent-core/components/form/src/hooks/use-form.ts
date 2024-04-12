@@ -1,9 +1,9 @@
 import { nextTick, onUnmounted, ref, unref, watch } from 'vue';
 import { error } from '@ent-core/utils/log';
 import { getDynamicProps } from '@ent-core/utils';
-import type { NamePath } from 'ant-design-vue/es/form/interface';
 import type { FormActionType, FormProps, FormSchema, UseFormReturnType } from '../types/form';
 import type { Nullable, Recordable } from '@ent-core/types';
+import type { ValidateError } from 'async-validator';
 
 export function useForm(props?: Partial<FormProps>): UseFormReturnType {
   const formRef = ref<Nullable<FormActionType>>(null);
@@ -43,10 +43,6 @@ export function useForm(props?: Partial<FormProps>): UseFormReturnType {
   }
 
   const methods: FormActionType = {
-    scrollToField: async (name: NamePath, options?: ScrollOptions | undefined) => {
-      const form = await getForm();
-      form.scrollToField(name, options);
-    },
     setProps: async (formProps: Partial<FormProps>) => {
       const form = await getForm();
       form.setProps(formProps);
@@ -62,9 +58,9 @@ export function useForm(props?: Partial<FormProps>): UseFormReturnType {
       form.resetSchema(data);
     },
 
-    clearValidate: async (name?: string | string[]) => {
+    restoreValidation: async () => {
       const form = await getForm();
-      form.clearValidate(name);
+      form.restoreValidation();
     },
 
     resetFields: async () => {
@@ -101,14 +97,11 @@ export function useForm(props?: Partial<FormProps>): UseFormReturnType {
       return form.submit();
     },
 
-    validate: async (nameList?: NamePath[]): Promise<Recordable> => {
+    validate: async (): Promise<{
+      warnings: ValidateError[][] | undefined;
+    }> => {
       const form = await getForm();
-      return form.validate(nameList);
-    },
-
-    validateFields: async (nameList?: NamePath[]): Promise<Recordable> => {
-      const form = await getForm();
-      return form.validateFields(nameList);
+      return form.validate();
     },
   };
 

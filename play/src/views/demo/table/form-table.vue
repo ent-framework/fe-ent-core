@@ -40,7 +40,7 @@
         showTableSetting: true,
         tableSetting: { fullScreen: true },
         showIndexColumn: false,
-        rowKey: 'id',
+        rowKey: (record) => record.id,
         rowSelection: {
           type: 'checkbox',
           selectedRowKeys: checkedKeys,

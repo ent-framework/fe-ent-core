@@ -1,5 +1,6 @@
-import { drawerProps } from 'ant-design-vue/es/drawer';
+import { drawerProps } from 'naive-ui/es/drawer';
 import { type Recordable } from '@ent-core/types';
+import type { DrawerContentProps } from 'naive-ui/es/drawer';
 import type { PropType } from 'vue';
 
 export const footerProps = {
@@ -38,17 +39,15 @@ export const footerProps = {
   /**
    * 是否显示底部
    */
-  showFooter: { type: Boolean },
-  /**
-   * 底部高
-   */
-  footerHeight: {
-    type: [String, Number] as PropType<string | number>,
-    default: 60,
-  },
+  showFooter: { type: Boolean, default: true },
 };
 
 export const basicProps = {
+  ...drawerProps,
+  /**
+   * 抽屉标题
+   */
+  title: { type: String },
   /**
    * 是否明细页面
    */
@@ -78,7 +77,15 @@ export const basicProps = {
     type: [Function, Object] as PropType<any>,
     default: null,
   },
+  /**
+   *
+   */
+  content: {
+    type: Object as PropType<DrawerContentProps>,
+    default: () => ({
+      closable: true,
+    }),
+  },
   //destroyOnClose: { type: Boolean },
   ...footerProps,
-  ...drawerProps(),
 };

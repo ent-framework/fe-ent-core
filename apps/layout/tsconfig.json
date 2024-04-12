@@ -2,14 +2,20 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "ts-config-ent/web.json",
   "compilerOptions": {
+    "baseUrl": ".",
+    "preserveSymlinks": true,
     "paths": {
+      "fe-ent-core": ["../../packages/fe-ent-core"],
+      "fe-ent-core/es": ["../../packages/fe-ent-core/es"],
       "vue": ["../../node_modules/vue"],
       "vue-i18n": ["../../node_modules/vue-i18n"],
       "vue-types": ["../../node_modules/vue-types"],
       "axios": ["../../node_modules/axios"],
       "@vueuse/shared": ["../../node_modules/@vueuse/shared"],
-      "ant-design-vue": ["../../node_modules/ant-design-vue"],
-      "ant-design-vue/es/*": ["../../node_modules/ant-design-vue/es/*"]
+      "naive-ui/es/*": ["../../node_modules/naive-ui/es/*"],
+      "@vue/shared": ["../../node_modules/@vue/shared"],
+      "@types/lodash-es": ["../../node_modules/@types/lodash-es"],
+      "@types/lodash": ["../../packages/fe-ent-core/node_modules/@types/lodash"]
     },
     "types": ["vite/client"]
   },

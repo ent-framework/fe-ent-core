@@ -1,30 +1,30 @@
 <template>
   <div :class="prefixCls">
-    <Popover title="" trigger="click" :overlay-class-name="`${prefixCls}__overlay`">
-      <Badge :count="count" dot :number-style="numberStyle">
-        <BellOutlined />
-      </Badge>
-      <template #content>
-        <Tabs>
-          <template v-for="item in listData" :key="item.key">
-            <TabPane>
-              <template #tab>
-                {{ item.name }}
-                <span v-if="item.list.length !== 0">({{ item.list.length }})</span>
-              </template>
-              <!-- 绑定title-click事件的通知列表中标题是“可点击”的-->
-              <NoticeList v-if="item.key === '1'" :list="item.list" @title-click="onNoticeClick" />
-              <NoticeList v-else :list="item.list" />
-            </TabPane>
-          </template>
-        </Tabs>
+    <NPopover title="" trigger="click" :overlay-class-name="`${prefixCls}__overlay`">
+      <template #trigger>
+        <NBadge :count="count" dot :number-style="numberStyle">
+          <BellOutlined />
+        </NBadge>
       </template>
-    </Popover>
+      <NTabs>
+        <template v-for="item in listData" :key="item.key">
+          <NTabPane :name="item.name" :tab="item.name">
+            <template #tab>
+              {{ item.name }}
+              <span v-if="item.list.length !== 0">({{ item.list.length }})</span>
+            </template>
+            <!-- 绑定title-click事件的通知列表中标题是“可点击”的-->
+            <NoticeList v-if="item.key === '1'" :list="item.list" @title-click="onNoticeClick" />
+            <NoticeList v-else :list="item.list" />
+          </NTabPane>
+        </template>
+      </NTabs>
+    </NPopover>
   </div>
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref } from 'vue';
-  import { Badge, Popover, Tabs } from 'ant-design-vue';
+  import { NBadge, NPopover, NTabs } from 'naive-ui';
   import { BellOutlined } from '@ant-design/icons-vue';
   import { useDesign, useMessage } from 'fe-ent-core/es/hooks';
   import { tabListData } from './data';
@@ -32,7 +32,7 @@
   import type { ListItem } from './data';
 
   export default defineComponent({
-    components: { Popover, BellOutlined, Tabs, TabPane: Tabs.TabPane, Badge, NoticeList },
+    components: { NPopover, BellOutlined, NTabs, NTabPane: NTabs.TabPane, NBadge, NoticeList },
     setup() {
       const { prefixCls } = useDesign('header-notify');
       const { createMessage } = useMessage();

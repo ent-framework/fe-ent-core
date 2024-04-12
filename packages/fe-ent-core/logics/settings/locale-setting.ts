@@ -19,11 +19,11 @@ export const localeSetting: LocaleSetting = {
 // locale list
 export const localeList: DropMenu[] = [
   {
-    text: '简体中文',
-    event: LOCALE.ZH_CN,
+    value: LOCALE.ZH_CN,
+    label: '简体中文',
   },
   {
-    text: 'English',
-    event: LOCALE.EN_US,
+    value: LOCALE.EN_US,
+    label: 'English',
   },
 ];

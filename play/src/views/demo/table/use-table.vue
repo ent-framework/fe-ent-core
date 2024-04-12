@@ -58,12 +58,18 @@
           field: 'name',
           order: 'ascend',
         },
-        rowKey: 'id',
+        rowKey: (record) => record.id,
         showTableSetting: true,
         onChange,
         rowSelection: {
           type: 'checkbox',
         },
+        selectionColumn: {
+          disabled: (record) => {
+            return record.id === '3';
+          },
+        },
+        clickToRowSelect: true,
         onColumnsChange: (data: ColumnChangeParam[]) => {
           console.log('ColumnsChanged', data);
         },

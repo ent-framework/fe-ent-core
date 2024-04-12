@@ -47,7 +47,7 @@
       const getRealName = computed(() => userStore.getUserInfo?.displayName);
       const [register, { closeModal }] = useModalInner();
 
-      const [registerForm, { validateFields, resetFields }] = useForm({
+      const [registerForm, { validate, resetFields }] = useForm({
         showActionButtonGroup: false,
         labelWidth: '30%',
         labelAlign: 'left',
@@ -57,7 +57,7 @@
             label: t('layout.header.lockScreenPassword'),
             component: 'InputPassword',
             required: true,
-            colProps: {
+            gridItemProps: {
               span: 24,
             },
           },
@@ -65,7 +65,7 @@
       });
 
       async function handleLock() {
-        const values = (await validateFields()) as any;
+        const values = (await validate()) as any;
         const password: string | undefined = values.password;
         closeModal();
 

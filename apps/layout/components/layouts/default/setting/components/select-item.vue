@@ -1,21 +1,21 @@
 <template>
   <div :class="prefixCls">
-    <Text> {{ title }}</Text>
-    <Select
-      v-bind="getBindValue"
+    <NText> {{ title }}</NText>
+    <NSelect
+      :value="getBindValue"
       :class="`${prefixCls}-select`"
       :disabled="disabled"
       size="small"
       :options="options"
-      @change="handleChange"
+      @update:value="handleChange"
     />
   </div>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { Select, Typography } from 'ant-design-vue';
+  import { NSelect, NText } from 'naive-ui';
   import { useDesign } from 'fe-ent-core/es/hooks';
-  import type { ChangeEvent, Fn } from 'fe-ent-core/es/types';
+  import type { Fn } from 'fe-ent-core/es/types';
   import type { HandlerEnum } from '../enum';
   import type { PropType } from 'vue';
   type LabelValueOptions = {
@@ -25,7 +25,7 @@
   }[];
   export default defineComponent({
     name: 'SelectItem',
-    components: { Select, Text: Typography.Text },
+    components: { NSelect, NText },
     props: {
       event: {
         type: Number as PropType<HandlerEnum>,
@@ -54,11 +54,11 @@
     setup(props) {
       const { prefixCls } = useDesign('setting-select-item');
       const getBindValue = computed(() => {
-        return props.def ? { value: props.def, defaultValue: props.initValue || props.def } : {};
+        return props.def || props.initValue;
       });
 
-      function handleChange(e: ChangeEvent) {
-        props.event && props.handler && props.handler(props.event, e);
+      function handleChange(key: string) {
+        props.event && props.handler && props.handler(props.event, key);
       }
       return {
         prefixCls,

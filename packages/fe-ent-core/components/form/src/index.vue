@@ -1,63 +1,87 @@
 <template>
-  <Form
+  <NForm
     v-bind="getBindValue"
     ref="formElRef"
     :class="getFormClass"
     :model="formModel"
     @keypress.enter="handleEnterPress"
   >
-    <Row v-bind="getRow">
+    <NGrid v-bind="getGrid">
       <slot name="formHeader" />
       <template v-for="schema in getSchema" :key="schema.field">
-        <FormItem
-          :is-advanced="fieldsIsAdvancedMap[schema.field]"
-          :table-action="tableAction"
-          :form-action-type="formActionType"
-          :schema="schema"
-          :form-props="getProps"
-          :all-default-values="defaultValueRef"
-          :form-model="formModel"
-          :set-form-model="setFormModel"
-        >
-          <template v-for="item in Object.keys($slots)" #[item]="data">
-            <slot :name="item" v-bind="data || {}" />
-          </template>
-        </FormItem>
+        <NGridItem v-if="schema.component === 'Divider'" :span="24">
+          <NDivider v-bind="schema.componentProps">
+            {{ schema.label }}
+          </NDivider>
+        </NGridItem>
+        <NGridItem v-else v-bind="schema.gridItemProps">
+          <FormItem
+            :is-advanced="fieldsIsAdvancedMap[schema.field]"
+            :table-action="tableAction"
+            :form-action-type="formActionType"
+            :schema="schema"
+            :form-props="getProps"
+            :all-default-values="defaultValueRef"
+            :form-model="formModel"
+            :set-form-model="setFormModel"
+          >
+            <template v-for="item in Object.keys($slots)" #[item]="data">
+              <slot :name="item" v-bind="data || {}" />
+            </template>
+          </FormItem>
+        </NGridItem>
       </template>
-
-      <FormAction v-bind="getFormActionBindProps" @toggle-advanced="handleToggleAdvanced">
-        <template
-          v-for="item in ['resetBefore', 'submitBefore', 'advanceBefore', 'advanceAfter']"
-          #[item]="data"
+      <NGridItem
+        v-if="getFormActionBindProps.showActionButtonGroup"
+        :span="isInline ? '' : 24"
+        :suffix="!!isInline"
+        :style="actionColStyles"
+      >
+        <NSpace
+          align="center"
+          :justify="getActionButtonGroupJustify"
+          :style="getActionButtonGroupStyles"
         >
-          <slot :name="item" v-bind="data || {}" />
-        </template>
-      </FormAction>
+          <FormAction
+            :class="`${prefixCls}-action`"
+            v-bind="getFormActionBindProps"
+            @toggle-advanced="handleToggleAdvanced"
+          >
+            <template
+              v-for="item in ['headerTop', 'submitBefore', 'advanceBefore', 'advanceAfter']"
+              #[item]="data"
+            >
+              <slot :name="item" v-bind="data || {}" />
+            </template>
+          </FormAction>
+        </NSpace>
+      </NGridItem>
       <slot name="formFooter" />
-    </Row>
-  </Form>
+    </NGrid>
+  </NForm>
 </template>
 <script lang="ts">
   import { computed, defineComponent, nextTick, onMounted, reactive, ref, unref, watch } from 'vue';
-  import { Form, Row } from 'ant-design-vue';
+  import { NDivider, NForm, NGrid, NGridItem } from 'naive-ui';
   import { useDebounceFn } from '@vueuse/shared';
-  import { cloneDeep } from 'lodash-es';
+  import { formProps } from 'naive-ui/es/form';
+  import { cloneDeep, pick } from 'lodash-es';
   import { dateUtil } from '@ent-core/utils/date-util';
   import { deepMerge } from '@ent-core/utils';
   import { useModalContext } from '@ent-core/components/modal';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import FormItem from './components/form-item.vue';
   import FormAction from './components/form-action.vue';
-
   import { dateItemType } from './helper';
   import { useFormValues } from './hooks/use-form-values';
   import useAdvanced from './hooks/use-advanced';
   import { useFormEvents } from './hooks/use-form-events';
   import { createFormContext } from './hooks/use-form-context';
   import { useAutoFocus } from './hooks/use-auto-focus';
-  import { basicProps } from './props';
-  import type { Ref } from 'vue';
+  import { basicProps, formActionProps } from './props';
+  import type { CSSProperties, Ref } from 'vue';
   import type { AdvanceState } from './types/hooks';
+  import type { GridItemProps, GridProps } from 'naive-ui/es/grid';
   import type { FormActionType, FormProps, FormSchema } from './types/form';
 
   /**
@@ -67,7 +91,14 @@
    */
   export default defineComponent({
     name: 'EntForm',
-    components: { FormItem, Form, Row, FormAction },
+    components: {
+      NGrid,
+      NGridItem,
+      NForm,
+      NDivider,
+      FormAction,
+      FormItem,
+    },
     props: basicProps,
     emits: ['advanced-change', 'reset', 'submit', 'register', 'field-value-change'],
     setup(props, { emit, attrs }) {
@@ -87,7 +118,7 @@
       const schemaRef = ref<FormSchema[] | null>(null);
       const formElRef = ref<FormActionType | null>(null);
 
-      const { prefixCls } = useDesign('basic-form');
+      const { prefixCls } = useDesign('form');
 
       // Get the basic configuration of the form
       const getProps = computed((): FormProps => {
@@ -99,24 +130,38 @@
         return [
           prefixCls,
           {
-            [`${prefixCls}--compact`]: unref(getProps).compact,
+            [`${prefixCls}--inline`]: unref(isInline),
           },
         ];
       });
 
+      const isInline = computed(() => {
+        const { inline } = unref(getProps);
+        return !!inline;
+      });
+
       // Get uniform row style and Row configuration for the entire form
-      const getRow = computed(() => {
-        const { baseRowStyle = {}, rowProps } = unref(getProps);
+      const getGrid = computed((): GridProps => {
+        const { gridProps } = unref(getProps);
         return {
-          style: baseRowStyle,
-          ...rowProps,
+          ...gridProps,
         };
       });
 
-      const getBindValue = computed(() => ({ ...attrs, ...props, ...unref(getProps) }));
+      const getBindValue = computed((): FormProps => {
+        const value = pick(
+          {
+            ...props,
+            ...unref(getProps),
+          },
+          Object.keys(formProps),
+        );
+        return { ...attrs, ...value } as FormProps;
+      });
 
       const getSchema = computed((): FormSchema[] => {
-        const schemas: FormSchema[] = unref(schemaRef) || (unref(getProps).schemas as any);
+        const props_ = unref(getProps);
+        const schemas: FormSchema[] = unref(schemaRef) || (props_.schemas as any);
         for (const schema of schemas) {
           const { defaultValue, component, isHandleDateDefaultValue = true } = schema;
           // handle date type
@@ -130,6 +175,19 @@
               });
               schema.defaultValue = def;
             }
+          }
+          if (schema.component === 'Divider') {
+            schema.componentProps = Object.assign(
+              { 'title-placement': 'left' },
+              schema.componentProps,
+            );
+          } else {
+            // 基础表单的baseColProps
+            const { baseGridItemProps } = props_;
+            schema.gridItemProps = {
+              ...baseGridItemProps,
+              ...schema.gridItemProps,
+            };
           }
         }
         if (unref(getProps).showAdvancedButton) {
@@ -167,16 +225,13 @@
       const {
         handleSubmit,
         setFieldsValue,
-        clearValidate,
         validate,
-        validateFields,
         getFieldsValue,
         updateSchema,
         resetSchema,
         appendSchemaByField,
         removeSchemaByField,
         resetFields,
-        scrollToField,
       } = useFormEvents({
         emit,
         getProps,
@@ -241,13 +296,14 @@
         propsRef.value = deepMerge(unref(propsRef) || {}, formProps);
       }
 
-      function setFormModel(key: string, value: any, schema: FormSchema) {
+      function setFormModel(key: string, value: any) {
         formModel[key] = value;
         emit('field-value-change', key, value);
         // TODO 优化验证，这里如果是autoLink=false手动关联的情况下才会再次触发此函数
-        if (schema && schema.itemProps && !schema.itemProps.autoLink) {
-          validateFields([key]);
-        }
+        // if (schema && schema.itemProps && !schema.itemProps.autoLink) {
+        //   validateFields([key]);
+        // }
+        // validate();
       }
 
       function handleEnterPress(e: KeyboardEvent) {
@@ -270,11 +326,8 @@
         setProps,
         removeSchemaByField,
         appendSchemaByField,
-        clearValidate,
-        validateFields,
         validate,
         submit: handleSubmit,
-        scrollToField,
       };
 
       onMounted(() => {
@@ -282,22 +335,64 @@
         emit('register', formActionType);
       });
 
+      const getFormActionBindProps = computed(() => {
+        return pick({ ...getProps.value, ...advanceState }, Object.keys(formActionProps));
+      });
+
+      const actionColProps = computed(() => {
+        const { showAdvancedButton, actionSpan: span, actionColOptions } = props;
+        const actionSpan = 24 - span;
+        const advancedSpanObj = showAdvancedButton
+          ? { span: actionSpan < 6 ? 24 : actionSpan }
+          : {};
+        const actionColOpt: Partial<GridItemProps> = {
+          span: showAdvancedButton ? 6 : 4,
+          ...advancedSpanObj,
+          ...actionColOptions,
+        };
+        return actionColOpt;
+      });
+
+      const actionColStyles = computed((): CSSProperties => {
+        return { textAlign: 'right' };
+      });
+
+      const getActionButtonGroupJustify = computed(() => {
+        const inline = unref(isInline);
+        if (inline) {
+          return 'end';
+        }
+        const { actionButtonGroupPosition } = unref(getFormActionBindProps);
+        return actionButtonGroupPosition;
+      });
+      const getActionButtonGroupStyles = computed((): CSSProperties => {
+        const inline = unref(isInline);
+        const { labelWidth } = unref(getProps);
+        return { 'margin-left': `${inline ? 12 : labelWidth}px` };
+      });
+
       return {
+        prefixCls,
+        isInline,
         getBindValue,
         handleToggleAdvanced,
         handleEnterPress,
         formModel,
         defaultValueRef,
         advanceState,
-        getRow,
+        getGrid,
         getProps,
         formElRef,
         getSchema,
         formActionType: formActionType as any,
         setFormModel,
         getFormClass,
-        getFormActionBindProps: computed(() => ({ ...getProps.value, ...advanceState })),
+        getFormActionBindProps,
         fieldsIsAdvancedMap,
+        actionColProps,
+        actionColStyles,
+        getActionButtonGroupJustify,
+        getActionButtonGroupStyles,
         ...formActionType,
       };
     },

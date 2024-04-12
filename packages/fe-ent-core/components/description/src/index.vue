@@ -1,7 +1,7 @@
 <script lang="tsx">
   import { computed, defineComponent, ref, unref } from 'vue';
   import { get } from 'lodash-es';
-  import { Descriptions } from 'ant-design-vue';
+  import { NDescriptions, NDescriptionsItem } from 'naive-ui';
   import { descriptionsProps } from 'ant-design-vue/es/descriptions/index';
   import { isFunction } from '@ent-core/utils/is';
   import CollapseContainer from '@ent-core/components/container';
@@ -134,17 +134,22 @@
 
             const width = contentMinWidth;
             return (
-              <Descriptions.Item label={renderLabel(item)} key={field} span={span}>
-                {() => {
-                  if (!contentMinWidth) {
-                    return getContent();
-                  }
-                  const style: CSSProperties = {
-                    minWidth: `${width}px`,
-                  };
-                  return <div style={style}>{getContent()}</div>;
+              <NDescriptionsItem key={field} span={span}>
+                {{
+                  label: () => {
+                    return renderLabel(item);
+                  },
+                  default: () => {
+                    if (!contentMinWidth) {
+                      return getContent();
+                    }
+                    const style: CSSProperties = {
+                      minWidth: `${width}px`,
+                    };
+                    return <div style={style}>{getContent()}</div>;
+                  },
                 }}
-              </Descriptions.Item>
+              </NDescriptionsItem>
             );
           })
           .filter((item) => !!item);
@@ -152,9 +157,9 @@
 
       const renderDesc = () => {
         return (
-          <Descriptions class={`${prefixCls}`} {...(unref(getDescriptionsProps) as any)}>
+          <NDescriptions class={`${prefixCls}`} {...(unref(getDescriptionsProps) as any)}>
             {renderItem()}
-          </Descriptions>
+          </NDescriptions>
         );
       };
 

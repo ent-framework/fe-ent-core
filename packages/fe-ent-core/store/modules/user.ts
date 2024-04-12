@@ -156,7 +156,7 @@ export const useUserStore = defineStore('app-user', {
         iconType: 'warning',
         title: () => h('span', t('sys.app.logoutTip')),
         content: () => h('span', t('sys.app.logoutMessage')),
-        onOk: async () => {
+        onPositiveClick: async () => {
           await this.logout(true);
         },
       });

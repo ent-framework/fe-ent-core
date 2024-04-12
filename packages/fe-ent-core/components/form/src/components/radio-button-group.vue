@@ -2,17 +2,17 @@
  * @Description:It is troublesome to implement radio button group in the form. So it is extracted independently as a separate component
 -->
 <template>
-  <RadioGroup v-bind="attrs" v-model:value="state" button-style="solid">
+  <NRadioGroup v-bind="attrs" v-model:value="state" button-style="solid">
     <template v-for="item in getOptions" :key="`${item.value}`">
-      <RadioButton :value="item.value" :disabled="item.disabled" @click="handleClick(item)">
+      <NRadioButton :value="item.value" :disabled="item.disabled" @click="handleClick(item)">
         {{ item.label }}
-      </RadioButton>
+      </NRadioButton>
     </template>
-  </RadioGroup>
+  </NRadioGroup>
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref } from 'vue';
-  import { Radio } from 'ant-design-vue';
+  import { NRadioGroup, NRadioButton } from 'naive-ui';
   import { isString } from '@ent-core/utils/is';
   import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
@@ -24,8 +24,8 @@
   export default defineComponent({
     name: 'RadioButtonGroup',
     components: {
-      RadioGroup: Radio.Group,
-      RadioButton: Radio.Button,
+      NRadioGroup,
+      NRadioButton,
     },
     props: {
       value: {

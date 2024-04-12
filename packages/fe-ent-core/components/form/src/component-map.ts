@@ -2,26 +2,43 @@
  * Component list, register here to setting it in the form
  */
 import {
-  AutoComplete,
-  Cascader,
-  Checkbox,
-  DatePicker,
-  Divider,
-  Input,
-  InputNumber,
-  Radio,
-  Rate,
-  Select,
-  Slider,
-  Switch,
-  TimePicker,
-  TreeSelect,
-} from 'ant-design-vue';
+  NAutoComplete,
+  NCascader,
+  NCheckbox,
+  NDatePicker,
+  NDivider,
+  NInput,
+  NInputGroup,
+  NInputNumber,
+  NRadio,
+  NRate,
+  NSelect,
+  NSlider,
+  NSwitch,
+  NTimePicker,
+  NTransfer,
+  NTreeSelect,
+} from 'naive-ui';
 
 import { EntUpload } from '@ent-core/components/upload';
 import { EntStrengthMeter } from '@ent-core/components/strength-meter';
 import { EntIconPicker } from '@ent-core/components/icon';
 import { EntCountDownInput } from '@ent-core/components/count-down';
+import DateRangePicker from './components/date-range-picker.vue';
+import DateTimePicker from './components/datetime-picker.vue';
+import DateTimeRangePicker from './components/datetime-range-picker.vue';
+import MonthPicker from './components/month-picker.vue';
+import MonthRangePicker from './components/month-range-picker.vue';
+import QuarterPicker from './components/quarter-picker.vue';
+import QuarterRangePicker from './components/quarter-range-picker.vue';
+import YearPicker from './components/year-picker.vue';
+import YearRangePicker from './components/year-range-picker.vue';
+import WeekPicker from './components/week-picker.vue';
+
+import CheckboxGroup from './components/checkbox-group.vue';
+import InputTextArea from './components/input-text-area.vue';
+import InputPassword from './components/input-password.vue';
+import RadioGroup from './components/radio-group.vue';
 import ApiRadioGroup from './components/api-radio-group.vue';
 import RadioButtonGroup from './components/radio-button-group.vue';
 import ApiSelect from './components/api-select.vue';
@@ -34,42 +51,51 @@ import type { Component } from 'vue';
 
 const componentMap = new Map<ComponentType, Component>();
 
-componentMap.set('Input', Input);
-componentMap.set('InputGroup', Input.Group);
-componentMap.set('InputPassword', Input.Password);
-componentMap.set('InputSearch', Input.Search);
-componentMap.set('InputTextArea', Input.TextArea);
-componentMap.set('InputNumber', InputNumber);
-componentMap.set('AutoComplete', AutoComplete);
+componentMap.set('Input', NInput);
+componentMap.set('InputGroup', NInputGroup);
+componentMap.set('InputPassword', InputPassword);
+//componentMap.set('InputSearch', Input.Search);
+componentMap.set('InputTextArea', InputTextArea);
+componentMap.set('InputNumber', NInputNumber);
+componentMap.set('AutoComplete', NAutoComplete);
 
-componentMap.set('Select', Select);
+componentMap.set('Select', NSelect);
 componentMap.set('ApiSelect', ApiSelect);
 componentMap.set('ApiTree', ApiTree);
-componentMap.set('TreeSelect', TreeSelect);
+componentMap.set('TreeSelect', NTreeSelect);
 componentMap.set('ApiTreeSelect', ApiTreeSelect);
 componentMap.set('ApiRadioGroup', ApiRadioGroup);
-componentMap.set('Switch', Switch);
+componentMap.set('Switch', NSwitch);
+componentMap.set('Radio', NRadio);
 componentMap.set('RadioButtonGroup', RadioButtonGroup);
-componentMap.set('RadioGroup', Radio.Group);
-componentMap.set('Checkbox', Checkbox);
-componentMap.set('CheckboxGroup', Checkbox.Group);
+componentMap.set('RadioGroup', RadioGroup);
+componentMap.set('Checkbox', NCheckbox);
+componentMap.set('CheckboxGroup', CheckboxGroup);
 componentMap.set('ApiCascader', ApiCascader);
-componentMap.set('Cascader', Cascader);
-componentMap.set('Slider', Slider);
-componentMap.set('Rate', Rate);
+componentMap.set('Cascader', NCascader);
+componentMap.set('Slider', NSlider);
+componentMap.set('Rate', NRate);
 componentMap.set('ApiTransfer', ApiTransfer);
+componentMap.set('Transfer', NTransfer);
 
-componentMap.set('DatePicker', DatePicker);
-componentMap.set('MonthPicker', DatePicker.MonthPicker);
-componentMap.set('RangePicker', DatePicker.RangePicker);
-componentMap.set('WeekPicker', DatePicker.WeekPicker);
-componentMap.set('TimePicker', TimePicker);
+componentMap.set('DatePicker', NDatePicker);
+componentMap.set('RangePicker', DateRangePicker);
+componentMap.set('DateTimePicker', DateTimePicker);
+componentMap.set('DateTimeRangePicker', DateTimeRangePicker);
+componentMap.set('MonthPicker', MonthPicker);
+componentMap.set('MonthRangePicker', MonthRangePicker);
+componentMap.set('QuarterPicker', QuarterPicker);
+componentMap.set('QuarterRangePicker', QuarterRangePicker);
+componentMap.set('YearPicker', YearPicker);
+componentMap.set('YearRangePicker', YearRangePicker);
+componentMap.set('WeekPicker', WeekPicker);
+componentMap.set('TimePicker', NTimePicker);
 componentMap.set('StrengthMeter', EntStrengthMeter);
 componentMap.set('IconPicker', EntIconPicker);
 componentMap.set('InputCountDown', EntCountDownInput);
 
 componentMap.set('Upload', EntUpload);
-componentMap.set('Divider', Divider);
+componentMap.set('Divider', NDivider);
 
 export function add(compName: ComponentType, component: Component) {
   componentMap.set(compName, component);

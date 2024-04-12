@@ -1,11 +1,8 @@
 import { createI18n } from 'vue-i18n';
-import dayjs from 'dayjs';
 import { localeSetting } from '@ent-core/logics/settings/locale-setting';
 import { useLocaleStore } from '@ent-core/store/modules/locale';
 import zhCN from './lang/zh-CN';
 import en from './lang/en';
-import 'dayjs/locale/zh-cn';
-import 'dayjs/locale/en';
 
 import { setHtmlPageLang, setLoadLocalePool } from './helper';
 import type { App } from 'vue';
@@ -19,9 +16,6 @@ async function createI18nOptions(): Promise<I18nOptions> {
   const localeStore = useLocaleStore();
   //default locale
   const locale = localeStore.getLocale;
-  if (locale) {
-    dayjs.locale(locale);
-  }
   setHtmlPageLang(locale);
   setLoadLocalePool((loadLocalePool) => {
     loadLocalePool.push(locale);

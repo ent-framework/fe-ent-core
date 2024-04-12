@@ -18,12 +18,12 @@
     name: 'FormBasicPage',
     setup() {
       const { createMessage } = useMessage();
-      const [register, { validate, setProps }] = useForm({
-        labelCol: {
-          span: 12,
+      const [register, { validate, setProps, getFieldsValue }] = useForm({
+        gridProps: {
+          xGap: 10,
         },
-        wrapperCol: {
-          span: 15,
+        baseGridItemProps: {
+          span: 12,
         },
         schemas,
         actionColOptions: {
@@ -50,6 +50,7 @@
                 loading: false,
               },
             });
+            console.log(getFieldsValue());
             createMessage.success('提交成功！');
           }, 2000);
         } catch {}

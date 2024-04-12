@@ -1,11 +1,9 @@
-import type { ComponentType } from './component-type';
-import type { VNodeChild } from 'vue';
-import type { PaginationProps } from './pagination';
-import type { FormProps } from '@ent-core/components/form/interface';
-import type { TableRowSelection as ITableRowSelection } from 'ant-design-vue/es/table/interface';
+import type { basicProps } from '../props';
+import type { PaginationProps } from 'naive-ui';
 import type { ColumnProps } from 'ant-design-vue/es/table';
-import type { AnyFunction, EmitType, Fn, Recordable, VueNode } from '@ent-core/types';
+import type { EmitType, ExtractPublicPropTypes, Recordable } from '@ent-core/types';
 import type { FixedType } from 'ant-design-vue/es/vc-table/interface';
+import type { DataTableBaseColumn, DataTableRowKey } from 'naive-ui/es/data-table';
 
 export declare type SortOrder = 'ascend' | 'descend';
 
@@ -13,30 +11,13 @@ export interface TableCurrentDataSource<T = Recordable> {
   currentDataSource: T[];
 }
 
-export interface TableRowSelection<T = any> extends ITableRowSelection {
-  /**
-   * Callback executed when selected rows change
-   * @type Function
-   */
-  onChange?: (selectedRowKeys: string[] | number[], selectedRows: T[]) => any;
-
-  /**
-   * Callback executed when select/deselect one row
-   * @type Function
-   */
-  onSelect?: (record: T, selected: boolean, selectedRows: any[], nativeEvent: Event) => any;
-
-  /**
-   * Callback executed when select/deselect all rows
-   * @type Function
-   */
-  onSelectAll?: (selected: boolean, selectedRows: T[], changeRows: T[]) => any;
-
-  /**
-   * Callback executed when row selection is inverted
-   * @type Function
-   */
-  onSelectInvert?: (selectedRows: string[] | number[]) => any;
+export type RowSelectionType = 'checkbox' | 'radio';
+export interface TableRowSelection {
+  type?: RowSelectionType;
+  selectedRowKeys?: DataTableRowKey[];
+  defaultSelectedRowKeys?: DataTableRowKey[];
+  selectedRows?: Recordable[];
+  defaultSelectedRows?: Recordable[];
 }
 
 export interface ExpandedRowRenderRecord<T> extends TableCustomRecord<T> {
@@ -95,19 +76,14 @@ export interface GetColumnsParams {
   sort?: boolean;
 }
 
-export type SizeType = 'default' | 'middle' | 'small' | 'large';
+export type SizeType = 'small' | 'medium' | 'large';
 
 export interface TableActionType {
   reload: (opt?: FetchParams) => Promise<Recordable[] | undefined>;
   setSelectedRows: (rows: Recordable[]) => void;
-  getSelectRows: <T = Recordable>() => T[];
+  getSelectRows: () => Recordable[];
   clearSelectedRowKeys: () => void;
-  expandAll: () => void;
-  expandRows: (keys: string[] | number[]) => void;
-  collapseAll: () => void;
-  scrollTo: (pos: string) => void; // pos: id | "top" | "bottom"
-  getSelectRowKeys: () => string[];
-  deleteSelectRowByKey: (key: string) => void;
+  getSelectRowKeys: () => DataTableRowKey[];
   setPagination: (info: Partial<PaginationProps>) => void;
   setTableData: <T = Recordable>(values: T[]) => void;
   updateTableDataRecord: (rowKey: string | number, record: Recordable) => Recordable | void;
@@ -115,22 +91,25 @@ export interface TableActionType {
   insertTableDataRecord: (record: Recordable | Recordable[], index?: number) => Recordable[] | void;
   findTableDataRecord: (rowKey: string | number) => Recordable | void;
   getColumns: (opt?: GetColumnsParams) => BasicColumn[];
-  setColumns: (columns: BasicColumn[] | string[]) => void;
+  setColumns: (columns: BasicColumn[] | DataTableRowKey[]) => void;
   getDataSource: <T = Recordable>() => T[];
   getRawDataSource: <T = Recordable>() => T;
   setLoading: (loading: boolean) => void;
   setProps: (props: Partial<BasicTableProps>) => void;
-  redoHeight: () => void;
-  setSelectedRowKeys: (rowKeys: string[] | number[]) => void;
+  setSelectedRowKeys: (
+    keys: DataTableRowKey[],
+    rows: Recordable[],
+    meta: { row: Recordable | undefined; action: 'check' | 'uncheck' | 'checkAll' | 'uncheckAll' },
+  ) => void;
   getPaginationRef: () => PaginationProps | boolean;
   getSize: () => SizeType;
-  getRowSelection: () => TableRowSelection<Recordable>;
+  getRowSelection: () => TableRowSelection;
   getCacheColumns: () => BasicColumn[];
   emit?: EmitType;
   updateTableData: (index: number, key: string, value: any) => Recordable;
   setShowPagination: (show: boolean) => Promise<void>;
   getShowPagination: () => boolean;
-  setCacheColumnsByField?: (dataIndex: string | undefined, value: BasicColumn) => void;
+  setCacheColumnsByField?: (dataIndex: string | undefined, value: Partial<BasicColumn>) => void;
   setCacheColumns?: (columns: BasicColumn[]) => void;
 }
 
@@ -152,362 +131,7 @@ export interface TableSetting {
   fullScreen?: boolean;
 }
 
-export interface BasicTableProps<T = any> {
-  /**
-   * 点击行选中
-   */
-  clickToRowSelect?: boolean;
-  /**
-   * Is tree table.
-   */
-  isTreeTable?: boolean;
-  /**
-   * 自定义排序方法
-   * @param sortInfo
-   */
-  sortFn?: (sortInfo: SorterResult) => any;
-  /**
-   * 过滤数据方法
-   * @param data
-   */
-  filterFn?: (data: Partial<Recordable<string[]>>) => any;
-  /**
-   * 取消表格的默认padding
-   */
-  inset?: boolean;
-  /**
-   * 显示表格设置
-   */
-  showTableSetting?: boolean;
-  /**
-   * 表格设置
-   */
-  tableSetting?: TableSetting;
-  /**
-   * 斑马纹
-   */
-  striped?: boolean;
-  /**
-   * 是否自动生成key
-   */
-  autoCreateKey?: boolean;
-  /**
-   * 计算合计行的方法
-   * @param arg
-   */
-  summaryFunc?: (...arg: any) => Recordable[];
-  /**
-   * 自定义合计表格内容
-   */
-  summaryData?: Recordable[];
-  /**
-   * 是否显示合计行
-   */
-  showSummary?: boolean;
-  /**
-   * 是否可拖拽列
-   */
-  canColDrag?: boolean;
-  /**
-   * 接口请求对象
-   * @param arg
-   */
-  api?: (...arg: any) => Promise<any>;
-  /**
-   * 请求之前处理参数
-   */
-  beforeFetch?: Fn;
-  /**
-   * 自定义处理接口返回参数
-   */
-  afterFetch?: Fn;
-  /**
-   * Form查询条件请求之前处理
-   */
-  handleSearchInfoFn?: Fn;
-  /**
-   * 请求接口配置
-   */
-  fetchSetting?: Partial<FetchSetting>;
-  /**
-   * 立即请求接口
-   */
-  immediate?: boolean;
-  /**
-   * 在开起搜索表单的时候，如果没有数据是否显示表格
-   */
-  emptyDataIsShowTable?: boolean;
-  /**
-   * 额外的请求参数
-   */
-  searchInfo?: Recordable;
-  /**
-   * 默认的排序参数
-   */
-  defSort?: Recordable;
-  /**
-   * 使用搜索表单
-   */
-  useSearchForm?: boolean;
-  /**
-   * 表单配置
-   */
-  formConfig?: Partial<FormProps>;
-  /**
-   * 列配置
-   */
-  columns: BasicColumn[];
-  /**
-   * 是否显示序号列
-   */
-  showIndexColumn?: boolean;
-  /**
-   * 序号列配置
-   */
-  indexColumnProps?: BasicColumn;
-  /**
-   * 操作栏
-   */
-  actionColumn?: BasicColumn;
-  /**
-   * 文本超过宽度是否显示 ...
-   */
-  ellipsis?: boolean;
-  /**
-   * 是否继承父级高度（父级高度-表单高度-padding高度）
-   */
-  isCanResizeParent?: boolean;
-  /**
-   * 是否可以自适应高度
-   */
-  canResize?: boolean;
-  /**
-   * 自适应高度偏移， 计算结果-偏移量
-   */
-  resizeHeightOffset?: number;
-  /**
-   * 在分页改变的时候清空选项
-   */
-  clearSelectOnPageChange?: boolean;
-  /**
-   * 行Key，可以设定为主键ID，也可以自定义
-   */
-  rowKey?: string | ((record: Recordable) => string);
-  /**
-   * 数据源
-   */
-  dataSource?: Recordable[];
-  /**
-   * 数据
-   */
-  titleHelpMessage?: string | string[];
-  /**
-   * 表格滚动最大高度
-   */
-  maxHeight?: number;
-  /**
-   * 是否显示边框
-   */
-  bordered?: boolean;
-  /**
-   * 分页配置
-   */
-  pagination?: PaginationProps | boolean;
-  /**
-   * 数据加载时是否显示loading图标
-   */
-  loading?: boolean;
-
-  /**
-   * The column contains children to display
-   * @default 'children'
-   * @type string | string[]
-   */
-  childrenColumnName?: string;
-
-  /**
-   * Override default table elements
-   * @type object
-   */
-  components?: object;
-
-  /**
-   * Expand all rows initially
-   * @default false
-   * @type boolean
-   */
-  defaultExpandAllRows?: boolean;
-
-  /**
-   * Initial expanded row keys
-   * @type string[]
-   */
-  defaultExpandedRowKeys?: string[];
-
-  /**
-   * Current expanded row keys
-   * @type string[]
-   */
-  expandedRowKeys?: string[];
-
-  /**
-   * Expanded container render for each row
-   * @type Function
-   */
-  expandedRowRender?: (record?: ExpandedRowRenderRecord<T>) => VNodeChild;
-
-  /**
-   * Customize row expand Icon.
-   * @type Function | VNodeChild
-   */
-  expandIcon?: AnyFunction | VNodeChild;
-
-  /**
-   * Whether to expand row by clicking anywhere in the whole row
-   * @default false
-   * @type boolean
-   */
-  expandRowByClick?: boolean;
-
-  /**
-   * The index of `expandIcon` which column will be inserted when `expandIconAsCell` is false. default 0
-   */
-  expandIconColumnIndex?: number;
-
-  /**
-   * Table footer renderer
-   * @type Function | VNodeChild
-   */
-  footer?: AnyFunction | VNodeChild;
-
-  /**
-   * Indent size in pixels of tree data
-   * @default 15
-   * @type number
-   */
-  indentSize?: number;
-
-  /**
-   * i18n text including filter, sort, empty text, etc
-   * @default { filterConfirm: 'Ok', filterReset: 'Reset', emptyText: 'No Data' }
-   * @type object
-   */
-  locale?: object;
-
-  /**
-   * Row's className
-   * @type Function
-   */
-  rowClassName?: (record: TableCustomRecord<T>, index: number, indent: number) => string;
-
-  /**
-   * Row selection config
-   * @type object
-   */
-  rowSelection?: TableRowSelection;
-
-  /**
-   * Set horizontal or vertical scrolling, can also be used to specify the width and height of the scroll area.
-   * It is recommended to set a number for x, if you want to set it to true,
-   * you need to add style .ant-table td { white-space: nowrap; }.
-   * @type object
-   */
-  scroll?: { x?: number | string | true; y?: number | string };
-
-  /**
-   * Whether to show table header
-   * @default true
-   * @type boolean
-   */
-  showHeader?: boolean;
-
-  /**
-   * Size of table
-   * @default 'default'
-   * @type string
-   */
-  size?: SizeType;
-
-  /**
-   * Table title renderer
-   * @type Function | ScopedSlot
-   */
-  title?: VNodeChild | string | ((data: Recordable) => string);
-
-  /**
-   * Set props on per header row
-   * @type Function
-   */
-  customHeaderRow?: (column: ColumnProps, index: number) => object;
-
-  /**
-   * Set props on per row
-   * @type Function
-   */
-  customRow?: (record: T, index: number) => object;
-
-  /**
-   * `table-layout` attribute of table element
-   * `fixed` when header/columns are fixed, or using `column.ellipsis`
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout
-   * @version 1.5.0
-   */
-  tableLayout?: 'auto' | 'fixed' | string;
-
-  /**
-   * the render container of dropdowns in table
-   * @param triggerNode
-   * @version 1.5.0
-   */
-  getPopupContainer?: (triggerNode?: HTMLElement) => HTMLElement;
-
-  /**
-   * Data can be changed again before rendering.
-   * The default configuration of general user empty data.
-   * You can configured globally through [ConfigProvider](https://antdv.com/components/config-provider-cn/)
-   *
-   * @version 1.5.4
-   */
-  transformCellText?: AnyFunction;
-
-  /**
-   * Callback executed before editable cell submit value, not for row-editor
-   *
-   * The cell will not submit data while callback return false
-   */
-  beforeEditSubmit?: (data: {
-    record: Recordable;
-    index: number;
-    key: string | number;
-    value: any;
-  }) => Promise<any>;
-
-  /**
-   * Callback executed when pagination, filters or sorter is changed
-   * @param pagination
-   * @param filters
-   * @param sorter
-   * @param currentDataSource
-   */
-  onChange?: (pagination: any, filters: any, sorter: any, extra: any) => void;
-
-  /**
-   * Callback executed when the row expand icon is clicked
-   *
-   * @param expanded
-   * @param record
-   */
-  onExpand?: (expande: boolean, record: T) => void;
-
-  /**
-   * Callback executed when the expanded rows change
-   * @param expandedRows
-   */
-  onExpandedRowsChange?: (expandedRows: string[] | number[]) => void;
-
-  onColumnsChange?: (data: ColumnChangeParam[]) => void;
-}
+export interface BasicTableProps extends ExtractPublicPropTypes<typeof basicProps> {}
 
 export type CellFormat =
   | string
@@ -515,44 +139,13 @@ export type CellFormat =
   | Map<string | number, any>;
 
 // @ts-ignore
-export interface BasicColumn extends ColumnProps<Recordable> {
-  children?: BasicColumn[];
-  filters?: {
-    text: string;
-    value: string;
-    children?: unknown[] | (((props: Record<string, unknown>) => unknown[]) & (() => unknown[]));
-  }[];
-
-  //
-  flag?: 'INDEX' | 'DEFAULT' | 'CHECKBOX' | 'RADIO' | 'ACTION';
-  customTitle?: VueNode;
-
-  slots?: Recordable;
-
+export interface BasicColumn extends DataTableBaseColumn<Recordable> {
+  flag?: '_INDEX' | '_ACTION' | '_EXPAND';
+  //type?: string;
   // Whether to hide the column by default, it can be displayed in the column configuration
   defaultHidden?: boolean;
-
-  // Help text for table column header
-  helpMessage?: string | string[];
-
+  slots?: Recordable;
   format?: CellFormat;
-
-  // Editable
-  edit?: boolean;
-  editRow?: boolean;
-  editable?: boolean;
-  editComponent?: ComponentType;
-  editComponentProps?:
-    | ((opt: {
-        text: string | number | boolean | Recordable;
-        record: Recordable;
-        column: BasicColumn;
-        index: number;
-      }) => Recordable)
-    | Recordable;
-  editRule?: boolean | ((text: string, record: Recordable) => Promise<string>);
-  editValueMap?: (value: any) => string;
-  onEditRow?: () => void;
   /**
    * 权限编码控制是否显示
    */
@@ -561,25 +154,11 @@ export interface BasicColumn extends ColumnProps<Recordable> {
    * 业务控制是否显示
    */
   ifShow?: boolean | ((column: BasicColumn) => boolean);
-  /**
-   * 自定义修改后显示的内容
-   * @param opt
-   */
-  editRender?: (opt: {
-    text: string | number | boolean | Recordable;
-    record: Recordable;
-    column: BasicColumn;
-    index: number;
-  }) => VNodeChild;
-  /**
-   * 动态 Disabled
-   */
-  editDynamicDisabled?: boolean | ((record: Recordable) => boolean);
 }
 
 export type ColumnChangeParam = {
-  dataIndex: string;
-  fixed: boolean | 'left' | 'right' | undefined;
+  key: string;
+  fixed: 'left' | 'right' | undefined;
   visible: boolean;
 };
 

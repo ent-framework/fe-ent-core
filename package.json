@@ -79,7 +79,6 @@
     "@types/intro.js": "^3.0.2",
     "@types/jest": "^27.0.2",
     "@types/less": "^3.0.3",
-    "@types/lodash-es": "^4.14.17",
     "@types/mockjs": "^1.0.4",
     "@types/node": "^18.18.13",
     "@types/showdown": "^1.9.4",

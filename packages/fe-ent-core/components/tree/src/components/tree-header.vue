@@ -10,32 +10,22 @@
       class="flex items-center flex-1 cursor-pointer justify-self-stretch"
     >
       <div v-if="search" :class="getInputSearchCls">
-        <InputSearch
+        <NInput
           v-model:value="searchValue"
           :placeholder="t('common.searchText')"
           size="small"
-          allow-clear
+          clearable
         />
       </div>
-      <Dropdown v-if="toolbar" @click.prevent>
+      <NDropdown v-if="toolbar" :options="toolbarList" @select="handleMenuClick">
         <EntIcon icon="ion:ellipsis-vertical" />
-        <template #overlay>
-          <Menu @click="handleMenuClick">
-            <template v-for="item in toolbarList" :key="item.value">
-              <MenuItem v-bind="{ key: item.value }">
-                {{ item.label }}
-              </MenuItem>
-              <MenuDivider v-if="item.divider" />
-            </template>
-          </Menu>
-        </template>
-      </Dropdown>
+      </NDropdown>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
   import { type PropType, computed, ref, useSlots, watch } from 'vue';
-  import { Dropdown, InputSearch, Menu, MenuDivider, MenuItem } from 'ant-design-vue';
+  import { NDropdown, NInput } from 'naive-ui';
   import { useDebounceFn } from '@vueuse/core';
   import { EntIcon } from '@ent-core/components/icon';
   import { EntTitle } from '@ent-core/components/basic';
@@ -97,20 +87,20 @@
   const toolbarList = computed(() => {
     const { checkable } = props;
     const defaultToolbarList = [
-      { label: t('component.tree.expandAll'), value: ToolbarEnum.EXPAND_ALL },
+      { label: t('component.tree.expandAll'), key: ToolbarEnum.EXPAND_ALL },
       {
         label: t('component.tree.unExpandAll'),
-        value: ToolbarEnum.UN_EXPAND_ALL,
+        key: ToolbarEnum.UN_EXPAND_ALL,
         divider: checkable,
       },
     ];
 
     return checkable
       ? [
-          { label: t('component.tree.selectAll'), value: ToolbarEnum.SELECT_ALL },
+          { label: t('component.tree.selectAll'), key: ToolbarEnum.SELECT_ALL },
           {
             label: t('component.tree.unSelectAll'),
-            value: ToolbarEnum.UN_SELECT_ALL,
+            key: ToolbarEnum.UN_SELECT_ALL,
             divider: checkable,
           },
           ...defaultToolbarList,
@@ -118,8 +108,7 @@
       : defaultToolbarList;
   });
 
-  function handleMenuClick(e: { key: ToolbarEnum }) {
-    const { key } = e;
+  function handleMenuClick(key: string | number) {
     switch (key) {
       case ToolbarEnum.SELECT_ALL:
         props.checkAll?.(true);

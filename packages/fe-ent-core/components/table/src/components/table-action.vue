@@ -1,39 +1,30 @@
 <template>
   <div :class="[prefixCls, getAlign]" @click="onCellClick">
     <template v-for="(action, index) in getActions" :key="`${index}-${action.label}`">
-      <Tooltip v-if="action.tooltip" v-bind="getTooltip(action.tooltip)">
-        <EntPopButton v-bind="action">
-          <Icon v-if="action.icon" :icon="action.icon" :class="{ 'mr-1': !!action.label }" />
-          <template v-if="action.label">{{ action.label }}</template>
-        </EntPopButton>
-      </Tooltip>
-      <EntPopButton v-else v-bind="action">
-        <Icon v-if="action.icon" :icon="action.icon" :class="{ 'mr-1': !!action.label }" />
-        <template v-if="action.label">{{ action.label }}</template>
-      </EntPopButton>
-      <Divider
-        v-if="divider && index < getActions.length - 1"
-        type="vertical"
-        class="action-divider"
-      />
+      <NTooltip v-if="action.tooltip" v-bind="getTooltip(action.tooltip)">
+        <template #trigger>
+          <EntPopButton v-bind="getPopButton(action)" />
+        </template>
+      </NTooltip>
+      <EntPopButton v-else v-bind="getPopButton(action)" />
     </template>
     <EntDropdown
       v-if="dropDownActions && getDropdownList.length > 0"
-      :trigger="['hover']"
+      trigger="hover"
       :drop-menu-list="getDropdownList"
       popconfirm
     >
       <slot name="more" />
-      <ent-button v-if="!$slots.more" type="link" size="small">
+      <ent-button v-if="!$slots.more" type="default" size="small">
         <MoreOutlined class="icon-more" />
       </ent-button>
     </EntDropdown>
   </div>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, toRaw, unref } from 'vue';
+  import { computed, defineComponent, h, toRaw, unref } from 'vue';
   import { MoreOutlined } from '@ant-design/icons-vue';
-  import { Divider, Tooltip } from 'ant-design-vue';
+  import { NDivider, NTooltip } from 'naive-ui';
   import Icon from '@ent-core/components/icon';
   import { EntPopButton } from '@ent-core/components/button';
   import { EntDropdown } from '@ent-core/components/dropdown';
@@ -43,21 +34,23 @@
   import { propTypes } from '@ent-core/utils/prop-types';
   import { useTableContext } from '../hooks/use-table-context';
   import { ACTION_COLUMN_FLAG } from '../const';
+  import type { PopButtonProps } from '@ent-core/components/button/interface';
+  import type { DropMenu } from '@ent-core/components/dropdown/interface';
   import type { TableActionItem, TableActionType } from '@ent-core/components/table/interface';
-  import type { TooltipProps } from 'ant-design-vue';
+  import type { TooltipProps } from 'naive-ui';
   import type { PropType } from 'vue';
 
   export default defineComponent({
     name: 'EntTableAction',
-    components: { Icon, EntPopButton, Divider, EntDropdown, MoreOutlined, Tooltip },
+    components: { Icon, EntPopButton, NDivider, EntDropdown, MoreOutlined, NTooltip },
     props: {
       actions: {
         type: Array as PropType<TableActionItem[]>,
-        default: null,
+        default: () => [],
       },
       dropDownActions: {
         type: Array as PropType<TableActionItem[]>,
-        default: null,
+        default: () => [],
       },
       divider: propTypes.bool.def(true),
       outside: propTypes.bool,
@@ -85,39 +78,53 @@
         return isIfShow;
       }
 
-      const getActions = computed(() => {
-        return (toRaw(props.actions) || [])
-          .filter((action) => {
-            return hasPermission(action.auth) && isIfShow(action);
-          })
-          .map((action) => {
-            const { popConfirm } = action;
-            return {
-              getPopupContainer: () => unref((table as any)?.wrapRef) ?? document.body,
-              type: 'link',
-              size: 'small',
-              ...action,
-              ...(popConfirm || {}),
-              onConfirm: popConfirm?.confirm,
-              onCancel: popConfirm?.cancel,
-              enable: !!popConfirm,
-            };
-          });
+      /**
+       * 转成PopButton的属性
+       */
+      const getActions = computed((): TableActionItem[] => {
+        return (toRaw(props.actions) || []).filter((action) => {
+          return hasPermission(action.auth) && isIfShow(action);
+        });
       });
 
-      const getDropdownList = computed((): any[] => {
+      function getPopButton(action: TableActionItem): PopButtonProps {
+        const { popConfirm, label, icon, disabled, ...others } = action;
+        return {
+          size: 'small',
+          btnLabel: label,
+          disabled,
+          renderIcon: () => {
+            if (icon) {
+              return h(Icon, { icon: action.icon });
+            }
+            return null;
+          },
+          ...others,
+          popConfirm,
+          enable: !!popConfirm,
+        } as PopButtonProps;
+      }
+
+      /**
+       * 利用EntDropDown 渲染下拉菜单，菜单也是可以支持PopButton的
+       */
+      const getDropdownList = computed((): DropMenu[] => {
         const list = (toRaw(props.dropDownActions) || []).filter((action) => {
           return hasPermission(action.auth) && isIfShow(action);
         });
         return list.map((action, index) => {
           const { label, popConfirm } = action;
           return {
-            ...action,
-            ...popConfirm,
-            onConfirm: popConfirm?.confirm,
-            onCancel: popConfirm?.cancel,
-            text: label,
-            divider: index < list.length - 1 ? props.divider : false,
+            icon: () => {
+              if (action.icon) {
+                return h(Icon, { icon: action.icon });
+              }
+              return null;
+            },
+            popConfirm,
+            label,
+            key: `dropdown-${label}-${index}`,
+            divider: action.divider,
           };
         });
       });
@@ -130,7 +137,7 @@
 
       function getTooltip(data: string | TooltipProps): TooltipProps {
         return {
-          getPopupContainer: () => unref((table as any)?.wrapRef) ?? document.body,
+          to: unref((table as any)?.wrapRef) || document.body,
           placement: 'bottom',
           ...(isString(data) ? { title: data } : data),
         };
@@ -145,7 +152,15 @@
         isInButton && e.stopPropagation();
       }
 
-      return { prefixCls, getActions, getDropdownList, getAlign, onCellClick, getTooltip };
+      return {
+        prefixCls,
+        getActions,
+        getDropdownList,
+        getAlign,
+        onCellClick,
+        getTooltip,
+        getPopButton,
+      };
     },
   });
 </script>

@@ -1,5 +1,12 @@
 <template>
-  <ent-page-wrapper content-background content-class="flex" dense content-full-height fixed-height class="p-4">
+  <ent-page-wrapper
+    content-background
+    content-class="flex"
+    dense
+    content-full-height
+    fixed-height
+    class="p-4"
+  >
     <ent-table @register="registerTable">
       <template #toolbar>
         <ent-button type="primary" @click="handleReloadCurrent"> 刷新当前页 </ent-button>
@@ -20,7 +27,11 @@
         title: '远程加载示例',
         api: demoListApi,
         columns: getBasicColumns(),
+        rowKey: (record) => record.id,
         pagination: { pageSize: 10 },
+        fetchSetting: {
+          totalField: 'total',
+        },
       });
       function handleReloadCurrent() {
         reload();

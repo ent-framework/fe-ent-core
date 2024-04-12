@@ -1,12 +1,12 @@
 <template>
   <LayoutLockPage />
-  <BackTop v-if="getUseOpenBackTop" :target="getTarget" />
+  <NBackTop v-if="getUseOpenBackTop" :listen-to="getTarget" :right="100" />
   <SettingDrawer v-if="getIsFixedSettingDrawer" :class="prefixCls" />
   <SessionTimeoutLogin v-if="getIsSessionTimeout" />
 </template>
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
-  import { BackTop } from 'ant-design-vue';
+  import { NBackTop } from 'naive-ui';
 
   import { useDesign } from 'fe-ent-core/es/hooks';
   import { SettingButtonPositionEnum } from 'fe-ent-core/es/logics';
@@ -19,7 +19,7 @@
   export default defineComponent({
     name: 'LayoutFeatures',
     components: {
-      BackTop,
+      NBackTop,
       LayoutLockPage,
       SettingDrawer,
       SessionTimeoutLogin,

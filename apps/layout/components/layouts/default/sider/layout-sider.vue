@@ -4,18 +4,17 @@
     v-show="showClassSideBarRef"
     :style="getHiddenDomStyle"
   />
-  <Sider
+  <NLayoutSider
     v-show="showClassSideBarRef"
     ref="sideRef"
-    breakpoint="lg"
-    collapsible
+    :bordered="true"
+    :inverted="getInverted"
     :class="getSiderClass"
     :width="getMenuWidth"
     :collapsed="getCollapsed"
     :collapsed-width="getCollapsedWidth"
     :trigger="getTrigger"
     v-bind="getTriggerAttr"
-    :theme="getActualMenuTheme"
     @breakpoint="onBreakpointChange"
   >
     <template v-if="getShowTrigger" #trigger>
@@ -23,11 +22,11 @@
     </template>
     <LayoutMenu :menu-mode="getMode" :split-type="getSplitType" />
     <DragBar ref="dragBarRef" />
-  </Sider>
+  </NLayoutSider>
 </template>
 <script lang="ts">
   import { computed, defineComponent, h, ref, unref } from 'vue';
-  import { Layout } from 'ant-design-vue';
+  import { NLayoutSider } from 'naive-ui';
   import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/es/logics';
   import { useAppInject, useDesign } from 'fe-ent-core/es/hooks';
   import { useLayoutTheme, useMenuSetting } from '../../../../hooks';
@@ -39,7 +38,7 @@
   import type { CSSProperties } from 'vue';
   export default defineComponent({
     name: 'LayoutSideBar',
-    components: { Sider: Layout.Sider, LayoutMenu, DragBar, LayoutTrigger },
+    components: { NLayoutSider, LayoutMenu, DragBar, LayoutTrigger },
     setup() {
       const dragBarRef = ref<ElRef>(null);
       const sideRef = ref<ElRef>(null);
@@ -52,6 +51,7 @@
         getMenuHidden,
         getMenuFixed,
         getIsMixMode,
+        getInverted,
         toggleCollapsed,
       } = useMenuSetting();
 
@@ -112,6 +112,7 @@
         getHiddenDomStyle,
         getSiderClass,
         getTrigger,
+        getInverted,
         getTriggerAttr,
         getCollapsedWidth,
         getMenuFixed,

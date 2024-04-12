@@ -10,49 +10,41 @@
           <div class="my-2">
             <h3>success</h3>
             <div class="py-2">
-              <ent-button color="success"> 成功 </ent-button>
-              <ent-button color="success" class="ml-2" disabled> 禁用 </ent-button>
-              <ent-button color="success" class="ml-2" loading> loading </ent-button>
-              <ent-button color="success" type="link" class="ml-2"> link </ent-button>
-              <ent-button color="success" type="link" class="ml-2" loading>
-                loading link
-              </ent-button>
-              <ent-button color="success" type="link" class="ml-2" disabled>
-                disabled link
-              </ent-button>
+              <ent-button> 成功 </ent-button>
+              <ent-button class="ml-2" disabled> 禁用 </ent-button>
+              <ent-button class="ml-2" loading> loading </ent-button>
+              <ent-button type="link" class="ml-2"> link </ent-button>
+              <ent-button type="link" class="ml-2" loading> loading link </ent-button>
+              <ent-button type="link" class="ml-2" disabled> disabled link </ent-button>
             </div>
           </div>
 
           <div class="my-2">
             <h3>warning</h3>
-            <ent-button color="warning"> 警告 </ent-button>
-            <ent-button color="warning" class="ml-2" disabled> 禁用 </ent-button>
-            <ent-button color="warning" class="ml-2" loading> loading </ent-button>
-            <ent-button color="warning" type="link" class="ml-2"> link </ent-button>
-            <ent-button color="warning" type="link" class="ml-2" loading> loading link </ent-button>
-            <ent-button color="warning" type="link" class="ml-2" disabled>
-              disabled link
-            </ent-button>
+            <ent-button> 警告 </ent-button>
+            <ent-button class="ml-2" disabled> 禁用 </ent-button>
+            <ent-button class="ml-2" loading> loading </ent-button>
+            <ent-button type="link" class="ml-2"> link </ent-button>
+            <ent-button type="link" class="ml-2" loading> loading link </ent-button>
+            <ent-button type="link" class="ml-2" disabled> disabled link </ent-button>
           </div>
 
           <div class="my-2">
             <h3>error</h3>
-            <ent-button color="error"> 错误 </ent-button>
-            <ent-button color="error" class="ml-2" disabled> 禁用 </ent-button>
-            <ent-button color="error" class="ml-2" loading> loading </ent-button>
-            <ent-button color="error" type="link" class="ml-2"> link </ent-button>
-            <ent-button color="error" type="link" class="ml-2" loading> loading link </ent-button>
-            <ent-button color="error" type="link" class="ml-2" disabled> disabled link </ent-button>
+            <ent-button> 错误 </ent-button>
+            <ent-button class="ml-2" disabled> 禁用 </ent-button>
+            <ent-button class="ml-2" loading> loading </ent-button>
+            <ent-button type="link" class="ml-2"> link </ent-button>
+            <ent-button type="link" class="ml-2" loading> loading link </ent-button>
+            <ent-button type="link" class="ml-2" disabled> disabled link </ent-button>
           </div>
 
           <div class="my-2">
             <h3>ghost</h3>
-            <ent-button ghost color="success" class="ml-2"> 幽灵成功 </ent-button>
-            <ent-button ghost color="warning" class="ml-2"> 幽灵警告 </ent-button>
-            <ent-button ghost color="error" class="ml-2"> 幽灵错误 </ent-button>
-            <ent-button ghost type="dashed" color="warning" class="ml-2">
-              幽灵警告dashed
-            </ent-button>
+            <ent-button ghost class="ml-2"> 幽灵成功 </ent-button>
+            <ent-button ghost class="ml-2"> 幽灵警告 </ent-button>
+            <ent-button ghost class="ml-2"> 幽灵错误 </ent-button>
+            <ent-button ghost type="dashed" class="ml-2"> 幽灵警告dashed </ent-button>
             <ent-button ghost danger class="ml-2"> 幽灵危险 </ent-button>
           </div>
         </a-card>
@@ -116,7 +108,6 @@
             <div class="py-2">
               <ent-pop-button
                 pre-icon="ant-design:delete-outlined"
-                color="error"
                 title="确认删除？"
                 @confirm="alert"
               >
@@ -135,6 +126,9 @@
             style="margin-right: 50px"
           />
           <StatisticCountdown title="Number" :value="100000" style="margin-right: 50px" />
+        </a-card>
+        <a-card>
+          <ent-help text="Tooltip 内容"> Tooltip </ent-help>
         </a-card>
       </a-col>
     </a-row>

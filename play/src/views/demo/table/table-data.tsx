@@ -5,31 +5,27 @@ export function getBasicColumns(): BasicColumn[] {
   return [
     {
       title: 'ID',
-      dataIndex: 'id',
+      key: 'id',
       fixed: 'left',
       width: 200,
     },
     {
       title: '姓名',
-      dataIndex: 'name',
+      key: 'name',
       width: 150,
-      filters: [
-        { text: 'Male', value: 'male' },
-        { text: 'Female', value: 'female' },
-      ],
     },
     {
       title: 'ObjectName',
-      dataIndex: 'obj.name',
+      key: 'obj.name',
       width: 100,
     },
     {
       title: '地址',
-      dataIndex: 'address',
+      key: 'address',
     },
     {
       title: '编号',
-      dataIndex: 'no',
+      key: 'no',
       width: 150,
       sorter: true,
       defaultHidden: true,
@@ -38,13 +34,13 @@ export function getBasicColumns(): BasicColumn[] {
       title: '开始时间',
       width: 150,
       sorter: true,
-      dataIndex: 'beginTime',
+      key: 'beginTime',
     },
     {
       title: '结束时间',
       width: 150,
       sorter: true,
-      dataIndex: 'endTime',
+      key: 'endTime',
     },
   ];
 }
@@ -54,22 +50,22 @@ export function getBasicShortColumns(): BasicColumn[] {
     {
       title: 'ID',
       width: 150,
-      dataIndex: 'id',
+      key: 'id',
       sorter: true,
       sortOrder: 'ascend',
     },
     {
       title: '姓名',
-      dataIndex: 'name',
+      key: 'name',
       width: 120,
     },
     {
       title: '地址',
-      dataIndex: 'address',
+      key: 'address',
     },
     {
       title: '编号',
-      dataIndex: 'no',
+      key: 'no',
       width: 80,
     },
   ];
@@ -79,22 +75,22 @@ export function getMultipleHeaderColumns(): BasicColumn[] {
   return [
     {
       title: 'ID',
-      dataIndex: 'id',
+      key: 'id',
       width: 200,
     },
     {
       title: '姓名',
-      dataIndex: 'name',
+      key: 'name',
       width: 120,
     },
     {
       title: '地址',
-      dataIndex: 'address',
+      key: 'address',
       sorter: true,
       children: [
         {
           title: '编号',
-          dataIndex: 'no',
+          key: 'no',
           width: 120,
           filters: [
             { text: 'Male', value: 'male', children: [] },
@@ -104,12 +100,12 @@ export function getMultipleHeaderColumns(): BasicColumn[] {
 
         {
           title: '开始时间',
-          dataIndex: 'beginTime',
+          key: 'beginTime',
           width: 120,
         },
         {
           title: '结束时间',
-          dataIndex: 'endTime',
+          key: 'endTime',
           width: 120,
         },
       ],
@@ -121,19 +117,19 @@ export function getCustomHeaderColumns(): BasicColumn[] {
   return [
     {
       title: 'ID',
-      dataIndex: 'id',
+      key: 'id',
       helpMessage: 'headerHelpMessage方式1',
       width: 200,
     },
     {
       // title: '姓名',
-      dataIndex: 'name',
+      key: 'name',
       width: 120,
       // slots: { title: 'customTitle' },
     },
     {
       // title: '地址',
-      dataIndex: 'address',
+      key: 'address',
       width: 120,
       // slots: { title: 'customAddress' },
       sorter: true,
@@ -141,7 +137,7 @@ export function getCustomHeaderColumns(): BasicColumn[] {
 
     {
       title: '编号',
-      dataIndex: 'no',
+      key: 'no',
       width: 120,
       filters: [
         { text: 'Male', value: 'male', children: [] },
@@ -150,12 +146,12 @@ export function getCustomHeaderColumns(): BasicColumn[] {
     },
     {
       title: '开始时间',
-      dataIndex: 'beginTime',
+      key: 'beginTime',
       width: 120,
     },
     {
       title: '结束时间',
-      dataIndex: 'endTime',
+      key: 'endTime',
       width: 120,
     },
   ];
@@ -169,7 +165,7 @@ export function getMergeHeaderColumns(): BasicColumn[] {
   return [
     {
       title: 'ID',
-      dataIndex: 'id',
+      key: 'id',
       width: 300,
       customCell: (_, index) => ({
         colSpan: index === 9 ? 6 : 1,
@@ -177,13 +173,13 @@ export function getMergeHeaderColumns(): BasicColumn[] {
     },
     {
       title: '姓名',
-      dataIndex: 'name',
+      key: 'name',
       width: 300,
       customCell: cellContent,
     },
     {
       title: '地址',
-      dataIndex: 'address',
+      key: 'address',
       colSpan: 2,
       width: 120,
       sorter: true,
@@ -194,7 +190,7 @@ export function getMergeHeaderColumns(): BasicColumn[] {
     },
     {
       title: '编号',
-      dataIndex: 'no',
+      key: 'no',
       colSpan: 0,
       filters: [
         { text: 'Male', value: 'male', children: [] },
@@ -204,13 +200,13 @@ export function getMergeHeaderColumns(): BasicColumn[] {
     },
     {
       title: '开始时间',
-      dataIndex: 'beginTime',
+      key: 'beginTime',
       width: 200,
       customCell: cellContent,
     },
     {
       title: '结束时间',
-      dataIndex: 'endTime',
+      key: 'endTime',
       width: 200,
       customCell: cellContent,
     },
@@ -241,7 +237,7 @@ export function getFormConfig(): Partial<FormProps> {
         label: `Slot示例`,
         component: 'Select',
         slot: 'custom',
-        colProps: {
+        gridItemProps: {
           xl: 12,
           xxl: 8,
         },
@@ -283,7 +279,7 @@ export function getTreeTableData() {
         children: [
           {
             id: `l2-${index}`,
-            name: 'John Brown',
+            name: `John Brown - ${index}`,
             age: `1${index}`,
             no: `${index + 10}`,
             address: 'New York No. 1 Lake ParkNew York No. 1 Lake Park',

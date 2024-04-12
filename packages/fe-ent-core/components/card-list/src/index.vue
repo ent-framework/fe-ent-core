@@ -3,76 +3,66 @@
     <div class="p-4 mb-2 bg-white">
       <EntForm @register="registerForm" />
     </div>
-    <div class="p-2 bg-white">
-      <List
-        :grid="{ gutter: 5, xs: 1, sm: 2, md: 4, lg: 4, xl: 6, xxl: grid }"
-        :data-source="data"
-        :pagination="paginationProp"
-      >
-        <template #header>
-          <div class="flex justify-end space-x-2"
-            ><slot name="header" />
-            <Tooltip>
-              <template #title>
-                <div class="w-50">每行显示数量</div>
-                <Slider
-                  id="slider"
-                  v-bind="sliderProp"
-                  v-model:value="grid"
-                  @change="sliderChange"
-                />
-              </template>
+    <NCard title="sss" :bordered="false">
+      <template #header>
+        <div class="flex justify-end space-x-2">
+          <slot name="header" />
+          <NTooltip>
+            <template #trigger>
               <EntButton><TableOutlined /></EntButton>
-            </Tooltip>
-            <Tooltip @click="fetch">
-              <template #title>刷新</template>
-              <EntButton><RedoOutlined /></EntButton>
-            </Tooltip>
-          </div>
-        </template>
-        <template #renderItem="{ item }">
-          <ListItem>
-            <Card>
-              <template #title />
-              <template #cover>
-                <div :class="height">
-                  <Image :src="item.imgs[0]" />
-                </div>
-              </template>
-              <template #actions>
-                <EditOutlined key="edit" />
-                <EntDropdown
-                  :trigger="['hover']"
-                  :drop-menu-list="[
-                    {
-                      text: '删除',
-                      event: '1',
-                      popConfirm: {
-                        title: '是否确认删除',
-                        confirm: handleDelete.bind(null, item.id),
-                      },
+            </template>
+            <div class="w-50">每行显示数量</div>
+            <NSlider
+              id="slider"
+              v-model:value="grid"
+              :marks="sliderMarks"
+              :max="12"
+              :min="3"
+              step="mark"
+              @change="sliderChange"
+            />
+          </NTooltip>
+          <NTooltip>
+            <template #trigger
+              ><EntButton @click="fetch"><RedoOutlined /></EntButton
+            ></template>
+            刷新
+          </NTooltip>
+        </div>
+      </template>
+      <NGrid :cols="grid" :x-gap="10">
+        <NGridItem v-for="(item, index) in data" :key="index">
+          <NCard>
+            <template #cover>
+              <div :class="height">
+                <NImage :src="item.imgs[0]" />
+              </div>
+            </template>
+            <template #action>
+              <EditOutlined key="edit" />
+              <EntDropdown
+                trigger="hover"
+                :drop-menu-list="[
+                  {
+                    text: '删除',
+                    event: '1',
+                    popConfirm: {
+                      title: '是否确认删除',
+                      confirm: handleDelete.bind(null, item.id),
                     },
-                  ]"
-                  popconfirm
-                >
-                  <EllipsisOutlined key="ellipsis" />
-                </EntDropdown>
-              </template>
-
-              <CardMeta>
-                <template #title>
-                  <TypographyText :content="item.name" :ellipsis="{ tooltip: item.address }" />
-                </template>
-                <template #avatar>
-                  <Avatar :src="item.avatar" />
-                </template>
-                <template #description>{{ item.time }}</template>
-              </CardMeta>
-            </Card>
-          </ListItem>
-        </template>
-      </List>
-    </div>
+                  },
+                ]"
+                popconfirm
+              >
+                <EllipsisOutlined key="ellipsis" />
+              </EntDropdown>
+            </template>
+            <NAvatar :src="item.avatar" />
+            {{ item.time }}
+          </NCard>
+        </NGridItem>
+      </NGrid>
+    </NCard>
   </div>
 </template>
 
@@ -84,16 +74,13 @@
     RedoOutlined,
     TableOutlined,
   } from '@ant-design/icons-vue';
-  import { Avatar, Card, Image, List, Slider, Tooltip, Typography } from 'ant-design-vue';
+  import { NAvatar, NCard, NGrid, NGridItem, NImage, NSlider, NTooltip } from 'naive-ui';
   import { isFunction } from '@ent-core/utils/is';
   import { EntDropdown } from '@ent-core/components/dropdown';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { EntButton } from '@ent-core/components/button';
   import { grid, useSlider } from './data';
-  const ListItem = List.Item;
-  const CardMeta = Card.Meta;
-  const TypographyText = Typography.Text;
 
   //暴露内部方法
   export default defineComponent({
@@ -106,15 +93,13 @@
       EntForm,
       EntDropdown,
       EntButton,
-      Image,
-      Tooltip,
-      Avatar,
-      ListItem,
-      CardMeta,
-      TypographyText,
-      Slider,
-      Card,
-      List,
+      NImage,
+      NCard,
+      NAvatar,
+      NGrid,
+      NGridItem,
+      NTooltip,
+      NSlider,
     },
     props: {
       params: propTypes.object.def({}),
@@ -124,6 +109,13 @@
     setup(props, { emit }) {
       // 获取slider属性
       const sliderProp = computed(() => useSlider(4));
+      const sliderMarks = {
+        3: '3',
+        4: '4',
+        6: '6',
+        8: '8',
+        12: '12',
+      };
       //数据
       const data = ref([]);
       // 切换每行个数
@@ -137,7 +129,7 @@
       const [registerForm, { validate }] = useForm({
         schemas: [{ field: 'type', component: 'Input', label: '类型' }],
         labelWidth: 80,
-        baseColProps: { span: 6 },
+        baseGridItemProps: { span: 6 },
         actionColOptions: { span: 24 },
         autoSubmitOnEnter: true,
         submitFunc: handleSubmit,
@@ -205,6 +197,7 @@
         height,
         grid,
         fetch,
+        sliderMarks,
       };
     },
   });

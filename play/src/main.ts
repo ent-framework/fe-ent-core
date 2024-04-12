@@ -15,6 +15,7 @@ import 'fe-ent-core/es/theme/index.less';
 
 import { initLayout } from 'fe-ent-layout';
 import { initLogin } from 'fe-ent-login';
+import naive from 'naive-ui';
 
 import App from './App.vue';
 async function bootstrap() {
@@ -39,6 +40,8 @@ async function bootstrap() {
   entRouter.importAuthRoutes(import.meta.glob(`/src/routes/modules/**/*.ts`, { eager: true }));
 
   app.use(entRouter);
+
+  app.use(naive);
 
   // router-guard
   setupRouterGuard(entRouter);

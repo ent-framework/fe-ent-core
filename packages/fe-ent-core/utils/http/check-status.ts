@@ -5,15 +5,15 @@ import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
 // import router from '@ent-core/router';
 // import { PageEnum } from '@ent-core/logics/enums/page-enum';
 
-const { createMessage, createErrorModal } = useMessage();
-const error = createMessage.error!;
-
 export function checkStatus(
   status: number,
   msg: string,
   errorMessageMode: ErrorMessageMode = 'message',
 ): void {
   const { t } = useI18n();
+  const { createMessage, createErrorModal } = useMessage();
+  const error = createMessage.error!;
+
   let errMessage = '';
 
   switch (status) {
@@ -70,7 +70,7 @@ export function checkStatus(
     if (errorMessageMode === 'modal') {
       createErrorModal({ title: t('sys.api.errorTip'), content: errMessage });
     } else if (errorMessageMode === 'message') {
-      error({ content: errMessage, key: `global_error_message_status_${status}` });
+      error(errMessage, { type: 'error' });
     }
   }
 }

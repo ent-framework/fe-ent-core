@@ -4,13 +4,14 @@ import type { ThemeSetting } from '@ent-core/store/types';
 const defaultThemeSetting: ThemeSetting = {
   theme: ThemeEnum.LIGHT,
   name: 'default',
-  token: {
-    colorPrimary: '#1677ff',
-    colorSuccess: '#52c41a',
-    colorWarning: '#faad14',
-    colorError: '#ff4d4f',
-    colorInfo: '#1677ff',
-    controlOutlineWidth: 0,
+  themeOverrides: {
+    common: {
+      primaryColor: '#1677ff',
+      successColor: '#52c41a',
+      warningColor: '#faad14',
+      errorColor: '#ff4d4f',
+      infoColor: '#1677ff',
+    },
   },
 };
 
@@ -29,37 +30,40 @@ export class LayoutService implements LayoutFactory {
       {
         theme: ThemeEnum.LIGHT,
         name: 'Kola',
-        token: {
-          colorPrimary: '#51b8f1',
-          colorSuccess: '#58a732',
-          colorWarning: '#f0a818',
-          colorError: '#e55c5c',
-          colorInfo: '#d9d9d9',
-          controlOutlineWidth: 0,
+        themeOverrides: {
+          common: {
+            primaryColor: '#51b8f1',
+            successColor: '#58a732',
+            warningColor: '#f0a818',
+            errorColor: '#e55c5c',
+            infoColor: '#d9d9d9',
+          },
         },
       },
       {
         theme: ThemeEnum.LIGHT,
         name: 'Moody Sunset',
-        token: {
-          colorPrimary: '#003f5c',
-          colorSuccess: '#58508d',
-          colorWarning: '#bc5090',
-          colorError: '#ff6361',
-          colorInfo: '#ffa600',
-          controlOutlineWidth: 0,
+        themeOverrides: {
+          common: {
+            primaryColor: '#003f5c',
+            successColor: '#58508d',
+            warningColor: '#bc5090',
+            errorColor: '#ff6361',
+            infoColor: '#ffa600',
+          },
         },
       },
       {
         theme: ThemeEnum.LIGHT,
         name: 'Celestial Sea',
-        token: {
-          colorPrimary: '#809bce',
-          colorSuccess: '#95b8d1',
-          colorWarning: '#b8e0d4',
-          colorError: '#eac4d5',
-          colorInfo: '#d6eadf',
-          controlOutlineWidth: 0,
+        themeOverrides: {
+          common: {
+            primaryColor: '#809bce',
+            successColor: '#95b8d1',
+            warningColor: '#b8e0d4',
+            errorColor: '#eac4d5',
+            infoColor: '#d6eadf',
+          },
         },
       },
     ];

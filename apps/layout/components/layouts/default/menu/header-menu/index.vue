@@ -1,43 +1,35 @@
 <template>
-  <Menu
-    :selected-keys="selectedKeys"
-    :default-selected-keys="defaultSelectedKeys"
+  <NMenu
     :mode="mode"
-    :open-keys="getOpenKeys"
-    :inline-indent="inlineIndent"
-    :theme="theme"
+    :indent="inlineIndent"
     :class="getMenuClass"
-    :sub-menu-open-delay="0.2"
-    v-bind="getInlineCollapseOptions"
-    @open-change="handleOpenChange"
-    @click="handleMenuClick"
-  >
-    <template v-for="item in items" :key="item.path">
-      <BasicSubMenuItem :item="item" :theme="theme" :is-horizontal="isHorizontal" />
-    </template>
-  </Menu>
+    :options="items"
+    :render-label="renderMenuLabel"
+    responsive
+    @update:value="handleUpdateValue"
+  />
 </template>
 <script lang="ts">
-  import { computed, defineComponent, reactive, ref, toRefs, unref, watch } from 'vue';
-  import { Menu } from 'ant-design-vue';
-  import { useRouter } from 'vue-router';
+  import { computed, defineComponent, h, reactive, ref, toRefs, unref, watch } from 'vue';
+  import { NMenu } from 'naive-ui';
+  import { RouterLink, useRouter } from 'vue-router';
   import { MenuModeEnum, MenuTypeEnum } from 'fe-ent-core/es/logics/enums/menu-enum';
   import { REDIRECT_NAME } from 'fe-ent-core/es/router/constant';
   import { useDesign } from 'fe-ent-core/es/hooks/web/use-design';
   import { getCurrentParentPath } from 'fe-ent-core/es/router/menus';
   import { getAllParentPath } from 'fe-ent-core/es/router/helper/menu-helper';
+  import { entRouter } from 'fe-ent-core/es/router';
   import { useMenuSetting } from '../../../../../hooks';
   import { basicProps } from './props';
   import { useOpenKeys } from './use-open-keys';
-  import BasicSubMenuItem from './components/basic-sub-menu-item.vue';
   import type { RouteLocationNormalizedLoaded } from 'vue-router';
   import type { MenuState } from './types';
+  import type { MenuOption } from 'naive-ui/es/menu';
 
   export default defineComponent({
     name: 'EntHeaderMenu',
     components: {
-      Menu,
-      BasicSubMenuItem,
+      NMenu,
     },
     props: basicProps,
     emits: ['menuClick'],
@@ -55,7 +47,7 @@
       const { prefixCls } = useDesign('basic-menu');
       const { items, mode, accordion } = toRefs(props);
 
-      const { getCollapsed, getTopMenuAlign, getSplit } = useMenuSetting();
+      const { getTopMenuAlign, getSplit } = useMenuSetting();
 
       const { currentRoute } = useRouter();
 
@@ -87,16 +79,6 @@
         ];
       });
 
-      const getInlineCollapseOptions = computed(() => {
-        const isInline = props.mode === MenuModeEnum.INLINE;
-
-        const inlineCollapseOptions: { inlineCollapsed?: boolean } = {};
-        if (isInline) {
-          inlineCollapseOptions.inlineCollapsed = props.mixSider ? false : unref(getCollapsed);
-        }
-        return inlineCollapseOptions;
-      });
-
       function listenerRouteChange(route: RouteLocationNormalizedLoaded) {
         if (route.name === REDIRECT_NAME) return;
         handleMenuChange(route);
@@ -124,7 +106,7 @@
           },
         );
 
-      async function handleMenuClick({ key }: { key: string; keyPath: string[] }) {
+      async function handleUpdateValue({ key }: { key: string; keyPath: string[] }) {
         const { beforeClickFn } = props;
         if (beforeClickFn && typeof beforeClickFn === 'function') {
           const flag = await beforeClickFn(key);
@@ -154,10 +136,39 @@
           menuState.selectedKeys = parentPaths;
         }
       }
+      function renderMenuLabel(option: MenuOption) {
+        if ('href' in option) {
+          return h('a', { href: option.href, target: '_blank' }, option.label as string);
+        }
+        let label = option.label as string;
+        if (props.collapse) {
+          if (!props.collapsedShowTitle) {
+            // 判断有没有ICON，没有icon会造成带单空白没显示
+            if (!option.icon) {
+              label = label.charAt(0);
+            }
+          }
+        }
+        if (option.children?.length) {
+          return label;
+        }
+        if (entRouter.hasRoute(option.name as string)) {
+          return h(
+            RouterLink,
+            {
+              to: {
+                path: option.path as string,
+              },
+            },
+            { default: () => option.label },
+          );
+        }
+        return option.label as string;
+      }
 
       return {
-        handleMenuClick,
-        getInlineCollapseOptions,
+        renderMenuLabel,
+        handleUpdateValue,
         getMenuClass,
         handleOpenChange,
         getOpenKeys,

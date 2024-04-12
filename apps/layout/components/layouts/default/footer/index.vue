@@ -7,7 +7,7 @@
 
 <script lang="ts">
   import { computed, defineComponent, ref, unref } from 'vue';
-  import { Layout } from 'ant-design-vue';
+  import { NLayoutFooter } from 'naive-ui';
   import { useDesign, useI18n, useLayoutHeight } from 'fe-ent-core/es/hooks';
   import { openWindow } from 'fe-ent-core/es/utils';
 
@@ -17,7 +17,7 @@
 
   export default defineComponent({
     name: 'LayoutFooter',
-    components: { Footer: Layout.Footer },
+    components: { Footer: NLayoutFooter },
     setup() {
       const { t } = useI18n();
       const { getShowFooter } = useLayoutThemeSetting();

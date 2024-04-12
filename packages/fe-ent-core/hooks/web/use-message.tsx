@@ -1,122 +1,115 @@
-import { message as Message, Modal, notification } from 'ant-design-vue';
+import { h } from 'vue';
 import { CheckCircleFilled, CloseCircleFilled, InfoCircleFilled } from '@ant-design/icons-vue';
-
-import { isString } from '@ent-core/utils/is';
 import { useI18n } from './use-i18n';
-import type { ConfigProps, NotificationArgsProps } from 'ant-design-vue/es/notification';
-import type { ModalFunc, ModalFuncProps } from 'ant-design-vue/es/modal/Modal';
+import type {
+  DialogOptions,
+  MessageOptions,
+  MessageProviderInst,
+  ModalOptions,
+  NotificationOptions,
+  NotificationProviderInst,
+} from 'naive-ui';
+import type { MessageSetupProps } from 'naive-ui/es/message/src/message-props';
+import type { ConfigProps } from 'ant-design-vue/es/notification';
 
 export interface NotifyApi {
-  info(config: NotificationArgsProps): void;
-  success(config: NotificationArgsProps): void;
-  error(config: NotificationArgsProps): void;
-  warn(config: NotificationArgsProps): void;
-  warning(config: NotificationArgsProps): void;
-  open(args: NotificationArgsProps): void;
+  info(config: NotificationOptions): void;
+  success(config: NotificationOptions): void;
+  error(config: NotificationOptions): void;
+  warn(config: NotificationOptions): void;
+  warning(config: NotificationOptions): void;
+  open(args: NotificationOptions): void;
   close(key: string): void;
   config(options: ConfigProps): void;
   destroy(): void;
 }
 
 export declare type NotificationPlacement = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
-export declare type IconType = 'success' | 'info' | 'error' | 'warning';
-export interface ModalOptionsEx extends Omit<ModalFuncProps, 'iconType'> {
-  iconType: 'warning' | 'success' | 'error' | 'info';
-}
-export type ModalOptionsPartial = Partial<ModalOptionsEx> & Pick<ModalOptionsEx, 'content'>;
+export declare type IconType = 'default' | 'error' | 'info' | 'success' | 'warning';
 
-interface ConfirmOptions {
-  info: ModalFunc;
-  success: ModalFunc;
-  error: ModalFunc;
-  warn: ModalFunc;
-  warning: ModalFunc;
-}
+export interface ModalOptionsEx extends Omit<MessageSetupProps, 'type'> {}
 
-function getIcon(iconType: string) {
-  if (iconType === 'warning') {
-    return <InfoCircleFilled class="modal-icon-warning" />;
-  } else if (iconType === 'success') {
-    return <CheckCircleFilled class="modal-icon-success" />;
-  } else if (iconType === 'info') {
-    return <InfoCircleFilled class="modal-icon-info" />;
-  } else {
-    return <CloseCircleFilled class="modal-icon-error" />;
-  }
-}
-
-function renderContent({ content }: Pick<ModalOptionsEx, 'content'>) {
-  if (isString(content)) {
-    return <div innerHTML={`<div>${content as string}</div>`}></div>;
-  } else {
-    return content;
-  }
-}
-
+export type ModalOptionsPartial = Partial<MessageOptions>;
 /**
  * @description: Create confirmation box
  */
-function createConfirm(options: ModalOptionsEx): ConfirmOptions {
+function createConfirm(options: DialogOptions & { iconType: IconType }) {
   const iconType = options.iconType || 'warning';
   Reflect.deleteProperty(options, 'iconType');
-  const opt: ModalFuncProps = {
-    centered: true,
-    icon: getIcon(iconType),
+  const { t } = useI18n();
+  const opt: DialogOptions = {
+    type: iconType,
+    icon: () => {
+      if (iconType === 'warning') {
+        return h(InfoCircleFilled, { class: 'modal-icon-warning' });
+      } else if (iconType === 'success') {
+        return h(CheckCircleFilled, { class: 'modal-icon-success' });
+      } else if (iconType === 'info') {
+        return h(InfoCircleFilled, { class: 'modal-icon-info' });
+      } else {
+        return h(CloseCircleFilled, { class: 'modal-icon-error' });
+      }
+    },
+    positiveText: t('common.okText'),
+    negativeText: t('common.cancelText'),
     ...options,
-    content: renderContent(options),
   };
-  return Modal.confirm(opt) as unknown as ConfirmOptions;
+  window.$dialog?.create(opt);
 }
 
-const getBaseOptions = () => {
-  const { t } = useI18n();
+const getBaseOptions = (): ModalOptions => {
   return {
-    okText: t('common.okText'),
-    centered: true,
+    closable: true,
   };
 };
 
-function createModalOptions(options: ModalOptionsPartial, icon: string): ModalOptionsPartial {
+function createModalOptions(setupOptions: ModalOptions, iconType: string): ModalOptions {
+  const { to } = setupOptions;
+  const { t } = useI18n();
   return {
     ...getBaseOptions(),
-    ...options,
-    content: renderContent(options),
-    icon: getIcon(icon),
+    positiveText: t('common.okText'),
+    negativeText: t('common.cancelText'),
+    ...setupOptions,
+    icon: () => {
+      if (iconType === 'warning') {
+        return h(InfoCircleFilled, { class: 'modal-icon-warning' });
+      } else if (iconType === 'success') {
+        return h(CheckCircleFilled, { class: 'modal-icon-success' });
+      } else if (iconType === 'info') {
+        return h(InfoCircleFilled, { class: 'modal-icon-info' });
+      } else {
+        return h(CloseCircleFilled, { class: 'modal-icon-error' });
+      }
+    },
+    to: to ?? document.body,
+    preset: 'dialog',
   };
 }
 
-function createSuccessModal(options: ModalOptionsPartial) {
-  return Modal.success(createModalOptions(options, 'success'));
+function createSuccessModal(options: ModalOptions) {
+  return window.$modal?.create({ type: 'success', ...createModalOptions(options, 'success') });
 }
 
-function createErrorModal(options: ModalOptionsPartial) {
-  return Modal.error(createModalOptions(options, 'close'));
+function createErrorModal(options: ModalOptions) {
+  return window.$modal?.create({ type: 'error', ...createModalOptions(options, 'error') });
 }
 
-function createInfoModal(options: ModalOptionsPartial) {
-  return Modal.info(createModalOptions(options, 'info'));
+function createInfoModal(options: ModalOptions) {
+  return window.$modal?.create({ type: 'info', ...createModalOptions(options, 'info') });
 }
 
-function createWarningModal(options: ModalOptionsPartial) {
-  return Modal.warning(createModalOptions(options, 'warning'));
+function createWarningModal(options: ModalOptions) {
+  return window.$modal?.create({ type: 'warning', ...createModalOptions(options, 'warning') });
 }
-
-notification.config({
-  placement: 'topRight',
-  duration: 3,
-});
-
-Message.config({
-  maxCount: 5,
-});
 
 /**
  * @description: message
  */
 export function useMessage() {
   return {
-    createMessage: Message,
-    notification: notification as NotifyApi,
+    createMessage: window.$message as MessageProviderInst,
+    notification: window.$notification as NotificationProviderInst,
     createConfirm,
     createSuccessModal,
     createErrorModal,

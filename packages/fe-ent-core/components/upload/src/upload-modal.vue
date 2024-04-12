@@ -25,9 +25,9 @@
     </template>
 
     <div class="upload-modal-toolbar">
-      <Alert :message="getHelpText" type="info" banner class="upload-modal-toolbar__text" />
+      <NAlert :title="getHelpText" type="info" banner class="upload-modal-toolbar__text" />
 
-      <Upload
+      <NUpload
         :accept="getStringAccept"
         :multiple="multiple"
         :before-upload="beforeUpload"
@@ -36,14 +36,14 @@
         <ent-button type="primary">
           {{ t('component.upload.choose') }}
         </ent-button>
-      </Upload>
+      </NUpload>
     </div>
     <FileList :data-source="fileListRef" :columns="columns" :action-column="actionColumn" />
   </EntModal>
 </template>
 <script lang="ts">
   import { computed, defineComponent, reactive, ref, toRefs, unref } from 'vue';
-  import { Alert, Upload } from 'ant-design-vue';
+  import { NAlert, NUpload } from 'naive-ui';
   import { isFunction } from '@ent-core/utils/is';
   import { EntModal, useModalInner } from '@ent-core/components/modal';
   // hooks
@@ -63,7 +63,7 @@
   import type { PropType } from 'vue';
 
   export default defineComponent({
-    components: { EntModal, Upload, Alert, FileList },
+    components: { EntModal, NUpload, NAlert, FileList },
     props: {
       ...basicProps,
       previewFileList: {

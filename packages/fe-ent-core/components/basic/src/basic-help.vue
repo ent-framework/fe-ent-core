@@ -1,8 +1,7 @@
 <script lang="tsx">
   import { computed, defineComponent, unref } from 'vue';
-  import { Tooltip } from 'ant-design-vue';
+  import { NTooltip } from 'naive-ui';
   import { InfoCircleOutlined } from '@ant-design/icons-vue';
-  import { getPopupContainer } from '@ent-core/utils';
   import { isArray, isString } from '@ent-core/utils/is';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { useDesign } from '@ent-core/hooks/web/use-design';
@@ -47,7 +46,7 @@
 
   export default defineComponent({
     name: 'EntHelp',
-    components: { Tooltip },
+    components: { NTooltip },
     props,
     setup(props, { slots }) {
       const { prefixCls } = useDesign('basic-help');
@@ -82,16 +81,20 @@
 
       return () => {
         return (
-          <Tooltip
-            overlayClassName={`${prefixCls}__wrap`}
-            title={<div style={unref(getTooltipStyle)}>{renderTitle()}</div>}
-            autoAdjustOverflow={true}
-            overlayStyle={unref(getOverlayStyle)}
+          <NTooltip
+            contentClass={`${prefixCls}__wrap`}
+            contentStyle={unref(getOverlayStyle)}
             placement={props.placement as 'right'}
-            getPopupContainer={() => getPopupContainer()}
           >
-            <span class={prefixCls}>{getSlot(slots) || <InfoCircleOutlined />}</span>
-          </Tooltip>
+            {{
+              trigger: () => {
+                return <span class={prefixCls}>{getSlot(slots) || <InfoCircleOutlined />}</span>;
+              },
+              default: () => {
+                return <div style={unref(getTooltipStyle)}>{renderTitle()}</div>;
+              },
+            }}
+          </NTooltip>
         );
       };
     },

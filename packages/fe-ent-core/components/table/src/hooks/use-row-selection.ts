@@ -1,18 +1,19 @@
-import { computed, nextTick, ref, toRaw, unref, watch } from 'vue';
+import { computed, reactive, unref, watch } from 'vue';
 import { omit } from 'lodash-es';
-import { isFunction } from '@ent-core/utils/is';
-import { findNodeAll } from '@ent-core/utils/helper/tree-helper';
-import { ROW_KEY } from '../const';
 import type { ComputedRef, Ref } from 'vue';
 import type { BasicTableProps, TableRowSelection } from '../types/table';
 import type { EmitType, Recordable } from '@ent-core/types';
+import type { DataTableRowKey } from 'naive-ui';
+
 export function useRowSelection(
   propsRef: ComputedRef<BasicTableProps>,
   tableData: Ref<Recordable[]>,
   emit: EmitType,
 ) {
-  const selectedRowKeysRef = ref<string[]>([]);
-  const selectedRowRef = ref<Recordable[]>([]);
+  const checkState = reactive<{ keys: DataTableRowKey[]; rows: Recordable[] }>({
+    keys: [],
+    rows: [],
+  });
 
   const getRowSelectionRef = computed((): TableRowSelection | null => {
     const { rowSelection } = unref(propsRef);
@@ -21,89 +22,61 @@ export function useRowSelection(
     }
 
     return {
-      selectedRowKeys: unref(selectedRowKeysRef),
-      onChange: (selectedRowKeys: string[]) => {
-        setSelectedRowKeys(selectedRowKeys);
-      },
+      selectedRowKeys: checkState.keys,
       ...omit(rowSelection, ['onChange']),
     };
   });
 
   watch(
     () => unref(propsRef).rowSelection?.selectedRowKeys,
-    (v: string[]) => {
-      setSelectedRowKeys(v);
+    (v: DataTableRowKey[]) => {
+      checkState.keys = v;
     },
   );
 
-  watch(
-    () => unref(selectedRowKeysRef),
-    () => {
-      nextTick(() => {
-        const { rowSelection } = unref(propsRef);
-        if (rowSelection) {
-          const { onChange } = rowSelection;
-          if (onChange && isFunction(onChange)) onChange(getSelectRowKeys(), getSelectRows());
-        }
-        emit('selection-change', {
-          keys: getSelectRowKeys(),
-          rows: getSelectRows(),
-        });
-      });
-    },
-    { deep: true },
-  );
-
-  const getAutoCreateKey = computed(() => {
-    return unref(propsRef).autoCreateKey && !unref(propsRef).rowKey;
-  });
-
-  const getRowKey = computed(() => {
-    const { rowKey } = unref(propsRef);
-    return unref(getAutoCreateKey) ? ROW_KEY : rowKey;
-  });
-
-  function setSelectedRowKeys(rowKeys: string[]) {
-    selectedRowKeysRef.value = rowKeys;
-    const allSelectedRows = findNodeAll(
-      toRaw(unref(tableData)).concat(toRaw(unref(selectedRowRef))),
-      (item) => rowKeys?.includes(item[unref(getRowKey) as string]),
-      {
-        children: propsRef.value.childrenColumnName ?? 'children',
-      },
-    );
-    const trueSelectedRows: any[] = [];
-    rowKeys?.forEach((key: string) => {
-      const found = allSelectedRows.find((item) => item[unref(getRowKey) as string] === key);
-      found && trueSelectedRows.push(found);
-    });
-    selectedRowRef.value = trueSelectedRows;
+  // watch(
+  //   () => unref(selectedRowKeysRef),
+  //   () => {
+  //     nextTick(() => {
+  //       const { rowSelection } = unref(propsRef);
+  //       if (rowSelection) {
+  //         const { onChange } = rowSelection;
+  //         if (onChange && isFunction(onChange)) onChange(getSelectRowKeys(), getSelectRows());
+  //       }
+  //       emit('selection-change', {
+  //         keys: getSelectRowKeys(),
+  //         rows: getSelectRows(),
+  //       });
+  //     });
+  //   },
+  //   { deep: true },
+  // );
+  function setSelectedRowKeys(
+    keys: DataTableRowKey[],
+    rows?: Recordable[],
+    meta?: { row: Recordable | undefined; action: 'check' | 'uncheck' | 'checkAll' | 'uncheckAll' },
+  ) {
+    checkState.keys = keys;
+    checkState.rows = rows || [];
+    emit('update:checked-row-keys', keys, rows, meta);
   }
 
   function setSelectedRows(rows: Recordable[]) {
-    selectedRowRef.value = rows;
+    checkState.rows = rows;
   }
 
   function clearSelectedRowKeys() {
-    selectedRowRef.value = [];
-    selectedRowKeysRef.value = [];
-  }
-
-  function deleteSelectRowByKey(key: string) {
-    const selectedRowKeys = unref(selectedRowKeysRef);
-    const index = selectedRowKeys.indexOf(key);
-    if (index !== -1) {
-      unref(selectedRowKeysRef).splice(index, 1);
-    }
+    checkState.keys = [];
+    checkState.rows = [];
   }
 
   function getSelectRowKeys() {
-    return unref(selectedRowKeysRef);
+    return checkState.keys;
   }
 
-  function getSelectRows<T = Recordable>() {
+  function getSelectRows() {
     // const ret = toRaw(unref(selectedRowRef)).map((item) => toRaw(item));
-    return unref(selectedRowRef) as T[];
+    return checkState.rows;
   }
 
   function getRowSelection() {
@@ -111,13 +84,13 @@ export function useRowSelection(
   }
 
   return {
+    checkState,
     getRowSelection,
     getRowSelectionRef,
     getSelectRows,
     getSelectRowKeys,
     setSelectedRowKeys,
     clearSelectedRowKeys,
-    deleteSelectRowByKey,
     setSelectedRows,
   };
 }

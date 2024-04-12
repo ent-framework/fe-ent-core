@@ -1,40 +1,40 @@
-import type { ButtonProps } from 'ant-design-vue/es/button/buttonTypes';
-import type { TooltipProps } from 'ant-design-vue/es/tooltip/Tooltip';
+import type { ButtonProps } from 'naive-ui/es/button';
+import type { TooltipProps } from 'naive-ui/es/tooltip';
+import type { PopconfirmProps } from 'naive-ui/es/popconfirm';
 import type { Fn } from '@ent-core/types';
 
 export interface TableActionItem extends ButtonProps {
+  /**
+   * 按钮的鼠标点击事件
+   */
   onClick?: Fn;
+  /**
+   * 按钮的文字
+   */
   label?: string;
-  color?: 'success' | 'error' | 'warning';
+  /**
+   * 图标
+   */
   icon?: string;
-  popConfirm?: PopConfirm;
-  disabled?: boolean;
+  /**
+   * 弹窗的配置属性
+   * confirmContent - 确认文本
+   */
+  popConfirm?: Partial<PopconfirmProps> & { confirmContent?: string };
+  /**
+   * 是否分割线
+   */
   divider?: boolean;
-  // 权限编码控制是否显示
+  /**
+   * 权限编码控制是否显示
+   */
   auth?: string | string[];
-  // 业务控制是否显示
+  /**
+   * 业务控制是否显示
+   */
   ifShow?: boolean | ((action: TableActionItem) => boolean);
+  /**
+   * 提示
+   */
   tooltip?: string | TooltipProps;
-}
-
-export interface PopConfirm {
-  title: string;
-  okText?: string;
-  cancelText?: string;
-  confirm: Fn;
-  cancel?: Fn;
-  icon?: string;
-  placement?:
-    | 'top'
-    | 'left'
-    | 'right'
-    | 'bottom'
-    | 'topLeft'
-    | 'topRight'
-    | 'leftTop'
-    | 'leftBottom'
-    | 'rightTop'
-    | 'rightBottom'
-    | 'bottomLeft'
-    | 'bottomRight';
 }

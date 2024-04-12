@@ -1,4 +1,4 @@
-import { Progress, Tag } from 'ant-design-vue';
+import { NProgress, NTag } from 'naive-ui';
 import TableAction from '@ent-core/components/table/src/components/table-action.vue';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import ThumbUrl from './thumb-url.vue';
@@ -16,25 +16,26 @@ export function createTableColumns(): BasicColumn[] {
   const { t } = useI18n();
   return [
     {
-      dataIndex: 'thumbUrl',
+      key: 'thumbUrl',
       title: t('component.upload.legend'),
       width: 100,
-      customRender: ({ record }) => {
+      render: (record) => {
         const { thumbUrl } = (record as FileItem) || {};
         return thumbUrl && <ThumbUrl fileUrl={thumbUrl} />;
       },
     },
     {
-      dataIndex: 'name',
+      key: 'name',
       title: t('component.upload.fileName'),
       align: 'left',
-      customRender: ({ text, record }) => {
+      render: (record) => {
+        const { name: text } = record;
         const { percent, status: uploadStatus } = (record as FileItem) || {};
-        let status: 'normal' | 'exception' | 'active' | 'success' = 'normal';
+        let status: 'default' | 'success' | 'error' | 'warning' | 'info' = 'default';
         if (uploadStatus === UploadResultStatus.ERROR) {
-          status = 'exception';
+          status = 'error';
         } else if (uploadStatus === UploadResultStatus.UPLOADING) {
-          status = 'active';
+          status = 'default';
         } else if (uploadStatus === UploadResultStatus.SUCCESS) {
           status = 'success';
         }
@@ -43,16 +44,16 @@ export function createTableColumns(): BasicColumn[] {
             <p class="truncate mb-1" title={text}>
               {text}
             </p>
-            <Progress percent={percent} size="small" status={status} />
+            <NProgress percentage={percent} status={status} />
           </span>
         );
       },
     },
     {
-      dataIndex: 'size',
+      key: 'size',
       title: t('component.upload.fileSize'),
       width: 100,
-      customRender: ({ text = 0 }) => {
+      render: ({ text = 0 }) => {
         return text && `${(text / 1024).toFixed(2)}KB`;
       },
     },
@@ -62,16 +63,16 @@ export function createTableColumns(): BasicColumn[] {
     //   width: 100,
     // },
     {
-      dataIndex: 'status',
+      key: 'status',
       title: t('component.upload.fileStatue'),
       width: 100,
-      customRender: ({ text }) => {
+      render: ({ text }) => {
         if (text === UploadResultStatus.SUCCESS) {
-          return <Tag color="green">{() => t('component.upload.uploadSuccess')}</Tag>;
+          return <NTag type="success">{() => t('component.upload.uploadSuccess')}</NTag>;
         } else if (text === UploadResultStatus.ERROR) {
-          return <Tag color="red">{() => t('component.upload.uploadError')}</Tag>;
+          return <NTag type="error">{() => t('component.upload.uploadError')}</NTag>;
         } else if (text === UploadResultStatus.UPLOADING) {
-          return <Tag color="blue">{() => t('component.upload.uploading')}</Tag>;
+          return <NTag type="info">{() => t('component.upload.uploading')}</NTag>;
         }
 
         return text;
@@ -84,9 +85,8 @@ export function createActionColumn(handleRemove: AnyFunction): BasicColumn {
   return {
     width: 120,
     title: t('component.upload.operating'),
-    dataIndex: 'action',
-    fixed: false,
-    customRender: ({ record }) => {
+    key: 'action',
+    render: ({ record }) => {
       const actions: TableActionItem[] = [
         {
           label: t('component.upload.del'),
@@ -109,16 +109,16 @@ export function createPreviewColumns(): BasicColumn[] {
   const { t } = useI18n();
   return [
     {
-      dataIndex: 'url',
+      key: 'url',
       title: t('component.upload.legend'),
       width: 100,
-      customRender: ({ record }) => {
+      render: ({ record }) => {
         const { url } = (record as PreviewFileItem) || {};
         return isImgTypeByName(url) && <ThumbUrl fileUrl={url} />;
       },
     },
     {
-      dataIndex: 'name',
+      key: 'name',
       title: t('component.upload.fileName'),
       align: 'left',
     },
@@ -136,9 +136,8 @@ export function createPreviewActionColumn({
   return {
     width: 160,
     title: t('component.upload.operating'),
-    dataIndex: 'action',
-    fixed: false,
-    customRender: ({ record }) => {
+    key: 'action',
+    render: ({ record }) => {
       const actions: TableActionItem[] = [
         {
           label: t('component.upload.del'),

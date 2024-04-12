@@ -23,7 +23,7 @@
       title-help-message="使用Ref调用表格内方法"
       :api="api"
       :columns="columns"
-      row-key="id"
+      :row-key="(record) => record.id"
       :row-selection="{ type: 'checkbox' }"
     />
   </div>
@@ -84,7 +84,7 @@
 
       function setPaginationInfo() {
         getTableAction().setPagination({
-          current: 2,
+          page: 2,
         });
         getTableAction().reload();
       }

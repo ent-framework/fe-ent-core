@@ -7,10 +7,9 @@
   </span>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, unref } from 'vue';
+  import { computed, defineComponent } from 'vue';
   import { Icon } from '@iconify/vue';
   import { isString } from '@ent-core/utils/is';
-  import { useTheme } from '@ent-core/hooks';
   import { propTypes } from '@ent-core/utils/prop-types';
   import type { CSSProperties, PropType } from 'vue';
 
@@ -58,8 +57,6 @@
       prefix: propTypes.string.def(''),
     },
     setup(props) {
-      const { useToken } = useTheme();
-      const { token } = useToken();
       const getBindValue = computed(() => {
         return {
           ...props,
@@ -71,10 +68,9 @@
         if (isString(size)) {
           fs = Number.parseInt(size, 10);
         }
-        const tokenValue = unref(token);
         return {
           fontSize: `${fs}px`,
-          color: color ? color : tokenValue.colorText,
+          color: color ? color : 'var(--n-text-color-base)',
           display: 'inline-flex',
         };
       });

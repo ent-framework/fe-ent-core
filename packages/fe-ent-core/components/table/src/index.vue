@@ -7,37 +7,31 @@
         submit-on-reset
         v-bind="getFormProps"
         :table-action="tableAction"
-        :style="getWrapStyle"
         @register="registerForm"
         @submit="handleSearchInfoChange"
-        @advanced-change="redoHeight"
       >
         <template v-for="item in getFormSlotKeys" #[replaceFormSlotKey(item)]="data">
           <slot :name="item" v-bind="data || {}" />
         </template>
       </EntForm>
     </div>
-
-    <Table
-      v-show="getEmptyDataIsShowTable"
+    <TableHeader v-bind="getTableHeaderProps">
+      <template v-for="item in ['resetBefore', 'toolbar']" #[item]="data">
+        <slot :name="item" v-bind="data || {}" />
+      </template>
+    </TableHeader>
+    <NDataTable
       ref="tableElRef"
       v-bind="getBindValues"
-      :row-class-name="getRowClassName"
-      @change="handleTableChange"
+      v-model:checked-row-keys="checkState.keys"
+      @update:checked-row-keys="setSelectedRowKeys"
+      @update:page="handlePageChange"
+      @update:page-size="handlePageSizeChange"
     >
       <template v-for="item in Object.keys($slots)" #[item]="data" :key="item">
         <slot :name="item" v-bind="data || {}" />
       </template>
-      <template #headerCell="{ column }">
-        <slot name="headerCell" v-bind="{ column }">
-          <HeaderCell :column="column" />
-        </slot>
-      </template>
-      <!-- 增加对antdv3.x兼容 -->
-      <template #bodyCell="data">
-        <slot name="bodyCell" v-bind="data || {}" />
-      </template>
-    </Table>
+    </NDataTable>
   </div>
 </template>
 <script lang="ts">
@@ -51,39 +45,24 @@
     unref,
     watchEffect,
   } from 'vue';
-  import { Table } from 'ant-design-vue';
-  import { omit } from 'lodash-es';
-  import { isFunction } from '@ent-core/utils/is';
+  import { NDataTable } from 'naive-ui';
+  import { omit, pick } from 'lodash-es';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { PageWrapperFixedHeightKey } from '@ent-core/components/page';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { warn } from '@ent-core/utils/log';
-  import { useTheme } from '@ent-core/hooks';
-  import HeaderCell from './components/header-cell.vue';
+  import TableHeader from './components/table-header.vue';
   import { usePagination } from './hooks/use-pagination';
   import { useColumns } from './hooks/use-columns';
   import { useDataSource } from './hooks/use-data-source';
   import { useLoading } from './hooks/use-loading';
   import { useRowSelection } from './hooks/use-row-selection';
-  import { useTableScroll } from './hooks/use-table-scroll';
-  import { useTableScrollTo } from './hooks/use-scroll-to';
   import { useCustomRow } from './hooks/use-custom-row';
-  import { useTableStyle } from './hooks/use-table-style';
-  import { useTableHeader } from './hooks/use-table-header';
-  import { useTableExpand } from './hooks/use-table-expand';
   import { createTableContext } from './hooks/use-table-context';
-  import { useTableFooter } from './hooks/use-table-footer';
   import { useTableForm } from './hooks/use-table-form';
 
-  import { basicProps } from './props';
-  import type {
-    BasicTableProps,
-    ColumnChangeParam,
-    InnerHandlers,
-    SizeType,
-    TableActionType,
-  } from './types/table';
-  import type { CSSProperties } from 'vue/dist/vue';
+  import { basicProps, tableHeaderProps } from './props';
+  import type { BasicTableProps, SizeType, TableActionType } from './types/table';
 
   /**
    * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/table/index.zh-CN.md
@@ -93,9 +72,9 @@
   export default defineComponent({
     name: 'EntTable',
     components: {
-      Table,
+      NDataTable,
       EntForm,
-      HeaderCell,
+      TableHeader,
     },
     props: basicProps,
     emits: [
@@ -115,6 +94,7 @@
       'expanded-rows-change',
       'change',
       'columns-change',
+      'update:checked-row-keys',
     ],
     setup(props, { attrs, emit, slots, expose }) {
       const tableElRef = ref(null);
@@ -140,16 +120,6 @@
           );
       });
 
-      const { useToken } = useTheme();
-      const { token } = useToken();
-
-      const getWrapStyle = computed((): CSSProperties => {
-        const tokenValue = unref(token);
-        return {
-          backgroundColor: tokenValue.colorBgContainer,
-        };
-      });
-
       const { getLoading, setLoading } = useLoading(getProps);
       const {
         getPaginationInfo,
@@ -160,18 +130,17 @@
       } = usePagination(getProps);
 
       const {
-        getRowSelection,
-        getRowSelectionRef,
+        checkState,
         getSelectRows,
         setSelectedRows,
         clearSelectedRowKeys,
         getSelectRowKeys,
-        deleteSelectRowByKey,
         setSelectedRowKeys,
+        getRowSelection,
       } = useRowSelection(getProps, tableData, emit);
 
       const {
-        handleTableChange: onTableChange,
+        handleTableChange,
         getDataSourceRef,
         getDataSource,
         getRawDataSource,
@@ -181,9 +150,7 @@
         insertTableDataRecord,
         findTableDataRecord,
         fetch,
-        getRowKey,
         reload,
-        getAutoCreateKey,
         updateTableData,
       } = useDataSource(
         getProps,
@@ -198,89 +165,45 @@
         emit,
       );
 
-      function handleTableChange(...args) {
-        onTableChange.call(undefined, ...args);
-        emit('change', ...args);
-        // 解决通过useTable注册onChange时不起作用的问题
-        const { onChange } = unref(getProps);
-        onChange && isFunction(onChange) && onChange.call(undefined, ...args);
-      }
-
       const {
         getViewColumns,
         getColumns,
         setCacheColumnsByField,
         setCacheColumns,
         setColumns,
-        getColumnsRef,
         getCacheColumns,
       } = useColumns(getProps, getPaginationInfo);
 
-      const { getScrollRef, redoHeight } = useTableScroll(
-        getProps,
-        tableElRef,
-        getColumnsRef,
-        getRowSelectionRef,
-        getDataSourceRef,
-        wrapRef,
-        formRef,
-      );
-
-      const { scrollTo } = useTableScrollTo(tableElRef, getDataSourceRef);
-
       const { customRow } = useCustomRow(getProps, {
         setSelectedRowKeys,
+        getSelectRows,
         getSelectRowKeys,
         clearSelectedRowKeys,
-        getAutoCreateKey,
         emit,
       });
-
-      const { getRowClassName } = useTableStyle(getProps, prefixCls);
-
-      const { getExpandOption, expandAll, expandRows, collapseAll } = useTableExpand(
-        getProps,
-        tableData,
-        emit,
-      );
-
-      const handlers: InnerHandlers = {
-        onColumnsChange: (data: ColumnChangeParam[]) => {
-          emit('columns-change', data);
-          // support useTable
-          unref(getProps).onColumnsChange?.(data);
-        },
-      };
-
-      const { getHeaderProps } = useTableHeader(getProps, slots, handlers);
-
-      const { getFooterProps } = useTableFooter(
-        getProps,
-        getScrollRef,
-        tableElRef,
-        getDataSourceRef,
-      );
 
       const { getFormProps, replaceFormSlotKey, getFormSlotKeys, handleSearchInfoChange } =
         useTableForm(getProps, slots, fetch, getLoading);
 
-      const getBindValues = computed(() => {
+      const getTableHeaderProps = computed(() => {
+        return pick({ ...getProps.value }, Object.keys(tableHeaderProps));
+      });
+
+      const getBindValues = computed((): BasicTableProps => {
         const dataSource = unref(getDataSourceRef);
-        let propsData: any = {
+        const _props = unref(getProps);
+        const { api } = _props;
+        let propsData: BasicTableProps = {
           ...attrs,
-          customRow,
-          ...unref(getProps),
-          ...unref(getHeaderProps),
-          scroll: unref(getScrollRef),
+          ..._props,
           loading: unref(getLoading),
-          tableLayout: 'fixed',
-          rowSelection: unref(getRowSelectionRef),
-          rowKey: unref(getRowKey),
+          rowProps: customRow,
+          //rowSelection: unref(getRowSelectionRef),
+          //rowKey: unref(getRowKey),
           columns: toRaw(unref(getViewColumns)),
           pagination: toRaw(unref(getPaginationInfo)),
-          dataSource,
-          footer: unref(getFooterProps),
-          ...unref(getExpandOption),
+          data: dataSource,
+          remote: !!api,
         };
         // if (slots.expandedRowRender) {
         //   propsData = omit(propsData, 'scroll');
@@ -302,16 +225,15 @@
         ];
       });
 
-      const getEmptyDataIsShowTable = computed(() => {
-        const { emptyDataIsShowTable, useSearchForm } = unref(getProps);
-        if (emptyDataIsShowTable || !useSearchForm) {
-          return true;
-        }
-        return !!unref(getDataSourceRef).length;
-      });
-
       function setProps(props: Partial<BasicTableProps>) {
         innerPropsRef.value = { ...unref(innerPropsRef), ...props };
+      }
+
+      function handlePageChange(currentPage) {
+        handleTableChange({ ...getPagination(), page: currentPage });
+      }
+      function handlePageSizeChange(pageSize) {
+        handleTableChange({ ...getPagination(), pageSize });
       }
 
       const tableAction: TableActionType = {
@@ -320,14 +242,12 @@
         setSelectedRows,
         clearSelectedRowKeys,
         getSelectRowKeys,
-        deleteSelectRowByKey,
         setPagination,
         setTableData,
         updateTableDataRecord,
         deleteTableDataRecord,
         insertTableDataRecord,
         findTableDataRecord,
-        redoHeight,
         setSelectedRowKeys,
         setColumns,
         setLoading,
@@ -343,10 +263,6 @@
         setShowPagination,
         getShowPagination,
         setCacheColumnsByField,
-        expandAll,
-        expandRows,
-        collapseAll,
-        scrollTo,
         getSize: () => {
           return unref(getBindValues).size as SizeType;
         },
@@ -362,21 +278,21 @@
         formRef,
         tableElRef,
         getBindValues,
+        getTableHeaderProps,
         getLoading,
         registerForm,
         handleSearchInfoChange,
-        getEmptyDataIsShowTable,
-        handleTableChange,
-        getRowClassName,
         wrapRef,
         tableAction,
-        redoHeight,
         getFormProps: getFormProps as any,
         replaceFormSlotKey,
         getFormSlotKeys,
+        checkState,
+        setSelectedRowKeys,
         getWrapperClass,
         columns: getViewColumns,
-        getWrapStyle,
+        handlePageChange,
+        handlePageSizeChange,
       };
     },
   });

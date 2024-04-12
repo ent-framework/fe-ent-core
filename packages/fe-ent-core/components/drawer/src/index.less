@@ -4,17 +4,17 @@
 @basic-drawer-prefix-cls-detail: ~'@{ent-prefix}-basic-drawer__detail';
 
 .@{basic-drawer-prefix-cls} {
-  .ant-drawer-wrapper-body {
+  .n-drawer-wrapper-body {
     overflow: hidden;
   }
 
-  .ant-drawer-close {
+  .n-drawer-close {
     &:hover {
       //color: @error-color;
     }
   }
 
-  .ant-drawer-body {
+  .n-drawer-body {
     height: calc(100% - @header-height);
     padding: 0;
     //background-color: @component-background;
@@ -31,9 +31,8 @@
 }
 
 .@{basic-drawer-prefix-cls-detail} {
-  position: absolute;
 
-  .ant-drawer-header {
+  .n-drawer-header {
     width: 100%;
     height: @detail-header-height;
     padding: 0;
@@ -41,11 +40,11 @@
     box-sizing: border-box;
   }
 
-  .ant-drawer-title {
+  .n-drawer-title {
     height: 100%;
   }
 
-  .ant-drawer-close {
+  .n-drawer-close {
     height: @detail-header-height;
     line-height: @detail-header-height;
   }
@@ -54,7 +53,7 @@
     padding: 0 !important;
   }
 
-  .ant-drawer-body {
+  .n-drawer-body {
     height: calc(100% - @detail-header-height);
   }
 }

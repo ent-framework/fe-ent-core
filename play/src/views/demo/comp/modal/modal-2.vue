@@ -3,6 +3,7 @@
     title="Modal Title"
     :help-message="['提示1', '提示2']"
     :ok-button-props="{ disabled: true }"
+    style="width: 600px"
     @register="register"
   >
     <ent-button type="primary" class="mr-2" @click="closeModal"> 从内部关闭弹窗 </ent-button>

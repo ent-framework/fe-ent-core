@@ -34,8 +34,9 @@
             </p>
           </div>
           <div style="width: 100%">
-            <InputPassword
+            <NInput
               v-model:value="password"
+              type="password"
               :placeholder="t('sys.lock.placeholder')"
               class="enter-x"
             />
@@ -80,7 +81,7 @@
 </template>
 <script lang="ts" setup>
   import { computed, ref } from 'vue';
-  import { Input } from 'ant-design-vue';
+  import { NInput } from 'naive-ui';
   import { useDesign, useI18n } from 'fe-ent-core/es/hooks';
   import { useUserStore } from 'fe-ent-core/es/store';
   import { LockOutlined } from '@ant-design/icons-vue';
@@ -89,8 +90,6 @@
   import { useNow } from './use-now';
   import type { UserInfoModel } from 'fe-ent-core/es/logics/types';
   import type { Nullable } from 'fe-ent-core/es/types';
-
-  const InputPassword = Input.Password;
 
   const password = ref('');
   const loading = ref(false);

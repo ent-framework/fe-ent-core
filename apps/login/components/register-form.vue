@@ -1,55 +1,56 @@
 <template>
   <template v-if="getShow">
     <LoginFormTitle class="enter-x" />
-    <Form ref="formRef" class="p-4 enter-x" :model="formData" :rules="getFormRules">
-      <FormItem name="account" class="enter-x">
-        <Input
+    <NForm ref="formRef" class="p-4 enter-x" :model="formData" :rules="getFormRules">
+      <NFormItem path="account" class="enter-x">
+        <NInput
           v-model:value="formData.account"
           class="fix-auto-fill"
           size="large"
           :placeholder="t('sys.login.userName')"
         />
-      </FormItem>
-      <FormItem name="mobile" class="enter-x">
-        <Input
+      </NFormItem>
+      <NFormItem path="mobile" class="enter-x">
+        <NInput
           v-model:value="formData.mobile"
           size="large"
           :placeholder="t('sys.login.mobile')"
           class="fix-auto-fill"
         />
-      </FormItem>
-      <FormItem name="sms" class="enter-x">
+      </NFormItem>
+      <NFormItem path="sms" class="enter-x">
         <EntCountDownInput
           v-model:value="formData.sms"
           size="large"
           class="fix-auto-fill"
           :placeholder="t('sys.login.smsCode')"
         />
-      </FormItem>
-      <FormItem name="password" class="enter-x">
+      </NFormItem>
+      <NFormItem path="password" class="enter-x">
         <EntStrengthMeter
           v-model:value="formData.password"
           size="large"
           :placeholder="t('sys.login.password')"
         />
-      </FormItem>
-      <FormItem name="confirmPassword" class="enter-x">
-        <InputPassword
+      </NFormItem>
+      <NFormItem path="confirmPassword" class="enter-x">
+        <NInput
           v-model:value="formData.confirmPassword"
+          type="password"
           size="large"
           visibility-toggle
           :placeholder="t('sys.login.confirmPassword')"
         />
-      </FormItem>
+      </NFormItem>
 
-      <FormItem class="enter-x" name="policy">
+      <NFormItem class="enter-x" name="policy">
         <!-- No logic, you need to deal with it yourself -->
-        <Checkbox v-model:checked="formData.policy" size="small">
+        <NCheckbox v-model:checked="formData.policy" size="small">
           {{ t('sys.login.policy') }}
-        </Checkbox>
-      </FormItem>
+        </NCheckbox>
+      </NFormItem>
 
-      <Button
+      <NButton
         type="primary"
         class="enter-x"
         size="large"
@@ -58,23 +59,21 @@
         @click="handleRegister"
       >
         {{ t('sys.login.registerButton') }}
-      </Button>
-      <Button size="large" block class="mt-4 enter-x" @click="handleBackLogin">
+      </NButton>
+      <NButton size="large" block class="mt-4 enter-x" @click="handleBackLogin">
         {{ t('sys.login.backSignIn') }}
-      </Button>
-    </Form>
+      </NButton>
+    </NForm>
   </template>
 </template>
 <script lang="ts" setup>
   import { computed, defineComponent, reactive, ref, unref } from 'vue';
-  import { Button, Checkbox, Form, Input } from 'ant-design-vue';
+  import { NButton, NCheckbox, NForm, NFormItem, NInput } from 'naive-ui';
   import { EntCountDownInput, EntStrengthMeter } from 'fe-ent-core';
   import { useI18n } from 'fe-ent-core/es/hooks';
   import LoginFormTitle from './login-form-title.vue';
   import { LoginStateEnum, useFormRules, useFormValid, useLoginState } from './use-login';
 
-  const FormItem = Form.Item;
-  const InputPassword = Input.Password;
   const { t } = useI18n();
   const { handleBackLogin, getLoginState } = useLoginState();
 

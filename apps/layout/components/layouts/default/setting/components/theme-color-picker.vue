@@ -8,7 +8,7 @@
             [`${prefixCls}__item--active`]: def === theme.name,
           },
         ]"
-        :style="{ background: theme.token.colorPrimary }"
+        :style="{ background: theme.themeOverrides.common?.primaryColor }"
         @click="handleClick(theme)"
       >
         <CheckOutlined />
@@ -50,7 +50,7 @@
       function handleClick(theme: ThemeSetting) {
         props.event &&
           props.handler &&
-          props.handler(props.event, { name: theme.name, token: theme.token });
+          props.handler(props.event, { name: theme.name, token: theme.themeOverrides });
       }
       return {
         prefixCls,

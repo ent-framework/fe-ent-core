@@ -3,7 +3,7 @@
   "extends": "ts-config-ent/web.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "types": ["vite/client", "node"],
+    "types": ["vite/client", "node", "ts-config-ent/support"],
     "paths": {
       "@ent-core/*": ["./*"]
     }
@@ -19,7 +19,8 @@
     "types",
     "utils",
     "index.ts",
-    "global.ts"
+    "global.ts",
+    "shims-vue.d.ts"
   ],
   "exclude": [
     "node_modules",

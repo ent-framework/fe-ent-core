@@ -3,11 +3,18 @@
  */
 
 import { computed, unref } from 'vue';
-import dayjs from 'dayjs';
+import { dateEnUS, dateZhCN, enUS, zhCN } from 'naive-ui';
 import { useLocaleStore } from '@ent-core/store/modules/locale';
 import { i18n } from './setup-i18n';
 import { loadLocalePool, setHtmlPageLang } from './helper';
 import type { LocaleType } from '@ent-core/store/types';
+import type { NDateLocale, NLocale } from 'naive-ui';
+
+interface NaiveUILocale {
+  locale: LocaleType;
+  nLocale: NLocale;
+  nDateLocale: NDateLocale;
+}
 
 function setI18nLanguage(locale: LocaleType) {
   const localeStore = useLocaleStore();
@@ -29,9 +36,22 @@ export function useLocale() {
   const setLocalePicker = (show: boolean) => {
     localeStore.setShowPicker(show);
   };
-  const getAntdLocale = computed((): any => {
-    // @ts-ignore
-    return i18n.global.getLocaleMessage(unref(getLocale))?.antdLocale ?? {};
+
+  const getCombinedLocale = computed((): NaiveUILocale => {
+    const localeType = localeStore.getLocale;
+    if (localeType === 'zh_CN') {
+      return {
+        locale: localeType,
+        nLocale: zhCN,
+        nDateLocale: dateZhCN,
+      };
+    } else {
+      return {
+        locale: localeType,
+        nLocale: enUS,
+        nDateLocale: dateEnUS,
+      };
+    }
   });
 
   // Switching the language will change the locale of useI18n
@@ -47,7 +67,6 @@ export function useLocale() {
       setI18nLanguage(locale);
       return locale;
     }
-    dayjs.locale(locale);
     loadLocalePool.push(locale);
 
     setI18nLanguage(locale);
@@ -60,10 +79,10 @@ export function useLocale() {
 
   return {
     getLocale,
+    getCombinedLocale,
     getShowLocalePicker,
     changeLocale,
     setLocalePicker,
-    getAntdLocale,
     addMessages,
   };
 }

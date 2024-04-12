@@ -1,6 +1,7 @@
-import { computed, reactive, unref } from 'vue';
+import { computed, h, reactive, unref } from 'vue';
 import { useI18n } from 'fe-ent-core/es/hooks';
 import { useRouter } from 'vue-router';
+import EntIcon from 'fe-ent-core/es/components/icon';
 import { useMultipleTabStore } from '../../../../store/multiple-tab';
 import { useTabs } from '../../../../hooks';
 import { MenuEventEnum } from './types';
@@ -52,40 +53,40 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
       !isCurItem || (index === tabStore.getTabList.length - 1 && tabStore.getLastDragEndIndex >= 0);
     const dropMenuList: DropMenu[] = [
       {
-        icon: 'ion:reload-sharp',
+        icon: () => h(EntIcon, { icon: 'ion:lock-closed-sharp' }),
         event: MenuEventEnum.REFRESH_PAGE,
         text: t('layout.multipleTab.reload'),
         disabled: refreshDisabled,
       },
       {
-        icon: 'clarity:close-line',
+        icon: () => h(EntIcon, { icon: 'clarity:close-line' }),
         event: MenuEventEnum.CLOSE_CURRENT,
         text: t('layout.multipleTab.close'),
         disabled: !!meta?.affix || disabled,
         divider: true,
       },
       {
-        icon: 'line-md:arrow-close-left',
+        icon: () => h(EntIcon, { icon: 'line-md:arrow-close-left' }),
         event: MenuEventEnum.CLOSE_LEFT,
         text: t('layout.multipleTab.closeLeft'),
         disabled: closeLeftDisabled,
         divider: false,
       },
       {
-        icon: 'line-md:arrow-close-right',
+        icon: () => h(EntIcon, { icon: 'line-md:arrow-close-right' }),
         event: MenuEventEnum.CLOSE_RIGHT,
         text: t('layout.multipleTab.closeRight'),
         disabled: closeRightDisabled,
         divider: true,
       },
       {
-        icon: 'dashicons:align-center',
+        icon: () => h(EntIcon, { icon: 'dashicons:align-center' }),
         event: MenuEventEnum.CLOSE_OTHER,
         text: t('layout.multipleTab.closeOther'),
         disabled: disabled || !isCurItem,
       },
       {
-        icon: 'clarity:minus-line',
+        icon: () => h(EntIcon, { icon: 'clarity:minus-line' }),
         event: MenuEventEnum.CLOSE_ALL,
         text: t('layout.multipleTab.closeAll'),
         disabled,

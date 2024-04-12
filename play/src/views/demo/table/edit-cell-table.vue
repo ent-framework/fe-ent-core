@@ -20,7 +20,7 @@
   const columns: BasicColumn[] = [
     {
       title: '输入框',
-      dataIndex: 'name',
+      key: 'name',
       edit: true,
       editComponentProps: {
         prefix: '$',
@@ -29,14 +29,14 @@
     },
     {
       title: '默认输入状态',
-      dataIndex: 'name7',
+      key: 'name7',
       edit: true,
       editable: true,
       width: 200,
     },
     {
       title: '输入框校验',
-      dataIndex: 'name1',
+      key: 'name1',
       edit: true,
       // 默认必填校验
       editRule: true,
@@ -44,7 +44,7 @@
     },
     {
       title: '输入框函数校验',
-      dataIndex: 'name2',
+      key: 'name2',
       edit: true,
       editRule: async (text) => {
         if (text === '2') {
@@ -56,7 +56,7 @@
     },
     {
       title: '数字输入框',
-      dataIndex: 'id',
+      key: 'id',
       edit: true,
       editRule: true,
       editComponent: 'InputNumber',
@@ -64,7 +64,7 @@
     },
     {
       title: '下拉框',
-      dataIndex: 'name3',
+      key: 'name3',
       edit: true,
       editComponent: 'Select',
       editComponentProps: {
@@ -83,7 +83,7 @@
     },
     {
       title: '远程下拉',
-      dataIndex: 'name4',
+      key: 'name4',
       edit: true,
       editComponent: 'ApiSelect',
       editComponentProps: {
@@ -96,7 +96,7 @@
     },
     {
       title: '远程下拉树',
-      dataIndex: 'name71',
+      key: 'name71',
       edit: true,
       editComponent: 'ApiTreeSelect',
       editRule: false,
@@ -108,7 +108,7 @@
     },
     {
       title: '日期选择',
-      dataIndex: 'date',
+      key: 'date',
       edit: true,
       editComponent: 'DatePicker',
       editComponentProps: {
@@ -119,7 +119,7 @@
     },
     {
       title: '时间选择',
-      dataIndex: 'time',
+      key: 'time',
       edit: true,
       editComponent: 'TimePicker',
       editComponentProps: {
@@ -130,7 +130,7 @@
     },
     {
       title: '勾选框',
-      dataIndex: 'name5',
+      key: 'name5',
       edit: true,
       editComponent: 'Checkbox',
       editValueMap: (value) => {
@@ -140,7 +140,7 @@
     },
     {
       title: '开关',
-      dataIndex: 'name6',
+      key: 'name6',
       edit: true,
       editComponent: 'Switch',
       editValueMap: (value) => {

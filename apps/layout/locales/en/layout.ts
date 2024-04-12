@@ -90,6 +90,7 @@ export default {
     tabsRedoBtn: 'Tabs redo button',
     tabsFoldBtn: 'Tabs flod button',
     sidebar: 'Sidebar',
+    sidebarInverted: 'Sidebar background inverted',
     header: 'Header',
     footer: 'Footer',
     fullContent: 'Full content',

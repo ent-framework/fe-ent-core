@@ -1,43 +1,33 @@
 <template>
-  <Menu
+  <NMenu
+    :collapsed="collapse"
     :class="prefixCls"
-    :open-keys="getOpenKeys"
-    :selected-keys="selectedKeys"
-    :force-sub-menu-render="true"
-    mode="inline"
-    :theme="theme"
+    :collapsed-icon-size="22"
+    :options="items"
+    :value="selectedKey"
+    :render-label="renderMenuLabel"
     @open-change="handleOpenChange"
-    @click="handleSelect"
-  >
-    <template v-for="item in items" :key="item.path">
-      <SimpleSubMenuItem
-        :item="item"
-        :parent="true"
-        :collapsed-show-title="collapsedShowTitle"
-        :collapse="collapse"
-        :theme="theme"
-      />
-    </template>
-  </Menu>
+    @update:value="handleUpdateValue"
+  />
 </template>
 <script lang="ts">
-  import { computed, defineComponent, reactive, ref, toRefs, unref, watch } from 'vue';
-  import { useRouter } from 'vue-router';
-  import { Menu } from 'ant-design-vue';
+  import { computed, defineComponent, h, reactive, ref, toRefs, unref, watch } from 'vue';
+  import { RouterLink, useRouter } from 'vue-router';
+  import { NMenu } from 'naive-ui';
   import { useDesign } from 'fe-ent-core/es/hooks/web/use-design';
   import { REDIRECT_NAME } from 'fe-ent-core/es/router/constant';
   import { isUrl } from 'fe-ent-core/es/utils/is';
   import { openWindow } from 'fe-ent-core/es/utils';
-  import SimpleSubMenuItem from './components/simple-sub-menu-item.vue';
+  import { entRouter } from 'fe-ent-core/es/router';
   import { useOpenKeys } from './use-open-keys';
   import { basicProps } from './props';
+  import type { MenuOption } from 'naive-ui/es/menu';
   import type { RouteLocationNormalizedLoaded } from 'vue-router';
   import type { SimpleMenuState } from './types';
   export default defineComponent({
     name: 'EntLeftMenu',
     components: {
-      Menu,
-      SimpleSubMenuItem,
+      NMenu,
     },
     inheritAttrs: false,
     props: basicProps,
@@ -49,7 +39,7 @@
       const menuState = reactive<SimpleMenuState>({
         defaultSelectedKeys: [],
         openKeys: [],
-        selectedKeys: [],
+        selectedKey: '',
       });
 
       const { currentRoute } = useRouter();
@@ -72,7 +62,7 @@
         handleMenuChange(route);
 
         if (unref(currentActiveMenu)) {
-          menuState.selectedKeys = [unref(currentActiveMenu)];
+          menuState.selectedKey = unref(currentActiveMenu);
           setOpenKeys(unref(currentActiveMenu));
         }
       }
@@ -115,7 +105,7 @@
         }
         const path = (route || unref(currentRoute)).path;
 
-        menuState.selectedKeys = [path];
+        menuState.selectedKey = path;
 
         setOpenKeys(path);
       }
@@ -135,10 +125,60 @@
 
         isClickGo.value = true;
         setOpenKeys(key);
-        menuState.selectedKeys = [key];
+        menuState.selectedKey = key;
+      }
+
+      function renderMenuLabel(option: MenuOption) {
+        if ('href' in option) {
+          return h('a', { href: option.href, target: '_blank' }, option.label as string);
+        }
+        let label = option.label as string;
+        if (props.collapse) {
+          if (!props.collapsedShowTitle) {
+            // 判断有没有ICON，没有icon会造成带单空白没显示
+            if (!option.icon) {
+              label = label.charAt(0);
+            }
+          }
+        }
+        if (option.children?.length) {
+          return label;
+        }
+        if (entRouter.hasRoute(option.name as string)) {
+          return h(
+            RouterLink,
+            {
+              to: {
+                path: option.path as string,
+              },
+            },
+            { default: () => option.label },
+          );
+        }
+        return option.label as string;
+      }
+
+      async function handleUpdateValue(key: string) {
+        if (isUrl(key)) {
+          openWindow(key);
+          return;
+        }
+        const { beforeClickFn } = props;
+        if (beforeClickFn && typeof beforeClickFn === 'function') {
+          const flag = await beforeClickFn(key);
+          if (!flag) return;
+        }
+
+        emit('menuClick', key);
+
+        isClickGo.value = true;
+        setOpenKeys(key);
+        menuState.selectedKey = key;
       }
 
       return {
+        handleUpdateValue,
+        renderMenuLabel,
         prefixCls,
         getBindValues,
         handleSelect,

@@ -6,9 +6,10 @@ import {
   ThemeEnum,
 } from '@ent-core/logics/enums/app-enum';
 import type { ProjectConfig } from '@ent-core/store/types';
+import type { DeepPartial } from '@ent-core/types';
 
 // ! You need to clear the browser cache after the change
-const setting: ProjectConfig = {
+const setting: DeepPartial<ProjectConfig> = {
   // Whether to show the theme switch button
   showDarkModeToggle: true,
 
@@ -24,12 +25,14 @@ const setting: ProjectConfig = {
   themeSetting: {
     theme: ThemeEnum.LIGHT,
     name: 'default',
-    token: {
-      colorPrimary: '#51b8f1',
-      colorSuccess: '#58a732',
-      colorWarning: '#f0a818',
-      colorError: '#e55c5c',
-      colorInfo: '#d9d9d9',
+    themeOverrides: {
+      common: {
+        primaryColor: '#51b8f1',
+        successColor: '#58a732',
+        warningColor: '#f0a818',
+        errorColor: '#e55c5c',
+        infoColor: '#d9d9d9',
+      },
     },
   },
 

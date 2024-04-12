@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <ent-table :data-source="dataSource" @register="registerTable" @edit-change="onEditChange">
+    <ent-table :data="dataSource" @register="registerTable" @edit-change="onEditChange">
       <template #toolbar>
         <ent-button type="primary" @click="addRecord">添加行</ent-button>
       </template>
@@ -31,7 +31,7 @@
   const columns: BasicColumn[] = [
     {
       title: '输入框',
-      dataIndex: 'name',
+      key: 'name',
       editRow: true,
       editComponentProps: {
         prefix: '$',
@@ -40,13 +40,13 @@
     },
     {
       title: '默认输入状态',
-      dataIndex: 'name7',
+      key: 'name7',
       editRow: true,
       width: 150,
     },
     {
       title: '输入框校验',
-      dataIndex: 'name1',
+      key: 'name1',
       editRow: true,
       align: 'left',
       // 默认必填校验
@@ -55,7 +55,7 @@
     },
     {
       title: '输入框函数校验',
-      dataIndex: 'name2',
+      key: 'name2',
       editRow: true,
       align: 'right',
       editRule: async (text) => {
@@ -67,7 +67,7 @@
     },
     {
       title: '数字输入框',
-      dataIndex: 'id',
+      key: 'id',
       editRow: true,
       editRule: true,
       editComponent: 'InputNumber',
@@ -75,7 +75,7 @@
     },
     {
       title: '下拉框',
-      dataIndex: 'name3',
+      key: 'name3',
       editRow: true,
       editComponent: 'Select',
       editComponentProps: {
@@ -98,7 +98,7 @@
     },
     {
       title: '远程下拉',
-      dataIndex: 'name4',
+      key: 'name4',
       editRow: true,
       editComponent: 'ApiSelect',
       editComponentProps: {
@@ -111,7 +111,7 @@
     },
     {
       title: '远程下拉树',
-      dataIndex: 'name8',
+      key: 'name8',
       editRow: true,
       editComponent: 'ApiTreeSelect',
       editRule: false,
@@ -123,7 +123,7 @@
     },
     {
       title: '日期选择',
-      dataIndex: 'date',
+      key: 'date',
       editRow: true,
       editComponent: 'DatePicker',
       editComponentProps: {
@@ -134,7 +134,7 @@
     },
     {
       title: '时间选择',
-      dataIndex: 'time',
+      key: 'time',
       editRow: true,
       editComponent: 'TimePicker',
       editComponentProps: {
@@ -145,7 +145,7 @@
     },
     {
       title: '勾选框',
-      dataIndex: 'name5',
+      key: 'name5',
       editRow: true,
 
       editComponent: 'Checkbox',
@@ -156,7 +156,7 @@
     },
     {
       title: '开关',
-      dataIndex: 'name6',
+      key: 'name6',
       editRow: true,
       editComponent: 'Switch',
       editValueMap: (value) => {
@@ -182,7 +182,7 @@
         actionColumn: {
           width: 160,
           title: 'Action',
-          dataIndex: 'action',
+          key: 'action',
         },
       });
 

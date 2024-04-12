@@ -1,18 +1,14 @@
 <template>
-  <Tooltip
-    :title="t('layout.header.tooltipErrorLog')"
-    placement="bottom"
-    :mouse-enter-delay="0.5"
-    @click="handleToErrorList"
-  >
-    <Badge :count="getCount" :offset="[0, 10]" :overflow-count="99">
+  <NTooltip placement="bottom" :mouse-enter-delay="0.5" @click="handleToErrorList">
+    <NBadge :value="getCount" :max="10">
       <EntIcon icon="ion:bug-outline" />
-    </Badge>
-  </Tooltip>
+    </NBadge>
+    {{ t('layout.header.tooltipErrorLog') }}
+  </NTooltip>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { Badge, Tooltip } from 'ant-design-vue';
+  import { NBadge, NTooltip } from 'naive-ui';
   import { EntIcon } from 'fe-ent-core';
   import { useGlobSetting, useI18n } from 'fe-ent-core/es/hooks';
   import { useErrorLogStore } from 'fe-ent-core/es/store';
@@ -21,7 +17,7 @@
 
   export default defineComponent({
     name: 'ErrorAction',
-    components: { EntIcon, Tooltip, Badge },
+    components: { EntIcon, NTooltip, NBadge },
 
     setup() {
       const { t } = useI18n();

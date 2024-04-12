@@ -1,46 +1,45 @@
 <template>
   <template v-if="getShow">
     <LoginFormTitle class="enter-x" />
-    <Form ref="formRef" class="p-4 enter-x" :model="formData" :rules="getFormRules">
-      <FormItem name="account" class="enter-x">
-        <Input
+    <NForm ref="formRef" class="p-4 enter-x" :model="formData" :rules="getFormRules">
+      <NFormItem name="account" class="enter-x">
+        <NInput
           v-model:value="formData.account"
           size="large"
           :placeholder="t('sys.login.userName')"
         />
-      </FormItem>
+      </NFormItem>
 
-      <FormItem name="mobile" class="enter-x">
-        <Input v-model:value="formData.mobile" size="large" :placeholder="t('sys.login.mobile')" />
-      </FormItem>
-      <FormItem name="sms" class="enter-x">
+      <NFormItem name="mobile" class="enter-x">
+        <NInput v-model:value="formData.mobile" size="large" :placeholder="t('sys.login.mobile')" />
+      </NFormItem>
+      <NFormItem name="sms" class="enter-x">
         <EntCountDownInput
           v-model:value="formData.sms"
           size="large"
           :placeholder="t('sys.login.smsCode')"
         />
-      </FormItem>
+      </NFormItem>
 
-      <FormItem class="enter-x">
-        <Button type="primary" size="large" block :loading="loading" @click="handleReset">
+      <NFormItem class="enter-x">
+        <NButton type="primary" size="large" block :loading="loading" @click="handleReset">
           {{ t('common.resetText') }}
-        </Button>
-        <Button size="large" block class="mt-4" @click="handleBackLogin">
+        </NButton>
+        <NButton size="large" block class="mt-4" @click="handleBackLogin">
           {{ t('sys.login.backSignIn') }}
-        </Button>
-      </FormItem>
-    </Form>
+        </NButton>
+      </NFormItem>
+    </NForm>
   </template>
 </template>
 <script lang="ts" setup>
   import { computed, reactive, ref, unref } from 'vue';
-  import { Button, Form, Input } from 'ant-design-vue';
+  import { NButton, NForm, NFormItem, NInput } from 'naive-ui';
   import { EntCountDownInput } from 'fe-ent-core';
   import { useI18n } from 'fe-ent-core/es/hooks';
   import LoginFormTitle from './login-form-title.vue';
   import { LoginStateEnum, useFormRules, useLoginState } from './use-login';
 
-  const FormItem = Form.Item;
   const { t } = useI18n();
   const { handleBackLogin, getLoginState } = useLoginState();
   const { getFormRules } = useFormRules();

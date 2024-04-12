@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <NFlex :justify="buttonPosition">
     <slot name="insertFooter" />
     <ent-button v-if="showCancelBtn" v-bind="cancelButtonProps" @click="handleCancel">
       {{ cancelText }}
@@ -15,14 +15,18 @@
       {{ okText }}
     </ent-button>
     <slot name="appendFooter" />
-  </div>
+  </NFlex>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
+  import { NFlex } from 'naive-ui';
   import { useI18n } from '@ent-core/hooks';
   import { basicProps } from '../props';
   export default defineComponent({
     name: 'BasicModalFooter',
+    components: {
+      NFlex,
+    },
     props: basicProps,
     emits: ['ok', 'cancel'],
     setup(props, { emit }) {

@@ -1,13 +1,13 @@
 <template>
   <div :class="`${prefixCls}`">
-    <RedoSetting v-if="getSetting.redo" :get-popup-container="getTableContainer" />
-    <SizeSetting v-if="getSetting.size" :get-popup-container="getTableContainer" />
+    <RedoSetting v-if="getSetting.redo" />
+    <SizeSetting v-if="getSetting.size" />
     <ColumnSetting
       v-if="getSetting.setting"
       :get-popup-container="getTableContainer"
       @columns-change="handleColumnChange"
     />
-    <FullScreenSetting v-if="getSetting.fullScreen" :get-popup-container="getTableContainer" />
+    <FullScreenSetting v-if="getSetting.fullScreen" />
   </div>
 </template>
 <script lang="ts">

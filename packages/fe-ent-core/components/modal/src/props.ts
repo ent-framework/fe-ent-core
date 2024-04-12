@@ -1,23 +1,35 @@
-import { modalProps as AntModalProps } from 'ant-design-vue/es/modal/Modal';
+import { modalProps } from 'naive-ui/es/modal';
 import type { PropType } from 'vue';
 import type { ModalWrapperProps } from './typing';
+import type { ButtonProps } from '@ent-core/components/button/interface';
 
-export const modalProps = {
-  open: { type: Boolean },
-  scrollTop: { type: Boolean, default: true },
-  height: { type: Number },
-  minHeight: { type: Number },
-  // open drag
-  draggable: { type: Boolean, default: true },
-  /**
-   * Modal是否可关闭，因为增加full screen 按钮，默认为false
-   */
-  closable: { type: Boolean, default: true },
-  closeFunc: Function as PropType<() => Promise<boolean>>,
+// export const modalProps = {
+//   open: { type: Boolean },
+//   scrollTop: { type: Boolean, default: true },
+//   height: { type: Number },
+//   minHeight: { type: Number },
+//   /**
+//    * Modal是否可关闭，因为增加full screen 按钮，默认为false
+//    */
+//   closable: { type: Boolean, default: true },
+//   closeFunc: Function as PropType<() => Promise<boolean>>,
+// };
+
+export const footerProps = {
+  okType: { type: String },
+  okText: { type: String },
+  cancelText: { type: String },
+  okButtonProps: Object as PropType<Partial<ButtonProps>>,
+  cancelButtonProps: Object as PropType<Partial<ButtonProps>>,
+  buttonPosition: {
+    type: String as PropType<'start' | 'center' | 'end'>,
+    default: 'center',
+  },
 };
 
 export const basicProps = {
   ...modalProps,
+  scrollTop: { type: Boolean, default: true },
   /**
    * 默认全屏
    */
@@ -39,6 +51,10 @@ export const basicProps = {
    * 是否开启自适应高度，开启后会跟随屏幕变化自适应内容，并出现滚动条
    */
   useWrapper: { type: Boolean, default: true },
+
+  confirmLoading: {
+    type: Boolean,
+  },
   /**
    * loading 状态
    */
@@ -56,7 +72,10 @@ export const basicProps = {
    */
   showOkBtn: { type: Boolean, default: true },
 
+  // open drag
+  draggable: { type: Boolean, default: true },
+
   wrapperProps: Object as PropType<Partial<ModalWrapperProps>>,
 
-  ...AntModalProps(),
+  ...footerProps,
 };

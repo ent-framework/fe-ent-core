@@ -14,7 +14,6 @@ import { dateUtil } from '@ent-core/utils/date-util';
 import { error } from '@ent-core/utils/log';
 import { dateItemType, defaultValueComponents, handleInputNumberValue } from '../helper';
 import type { EmitType, Fn, Recordable } from '@ent-core/types';
-import type { NamePath } from 'ant-design-vue/es/form/interface';
 import type { FormActionType, FormProps, FormSchema } from '../types/form';
 import type { ComputedRef, Ref } from 'vue';
 
@@ -85,17 +84,16 @@ export function useFormEvents({
 
     const formEl = unref(formElRef);
     if (!formEl) return;
-
     Object.keys(formModel).forEach((key) => {
       const schema = unref(getSchema).find((item) => item.field === key);
       const isInput = schema?.component && defaultValueComponents.includes(schema.component);
       const defaultValue = cloneDeep(defaultValueRef.value[key]);
       formModel[key] = isInput ? defaultValue || '' : defaultValue;
     });
-    nextTick(() => clearValidate());
+    await nextTick(() => restoreValidation());
 
     emit('reset', toRaw(formModel));
-    submitOnReset && handleSubmit();
+    submitOnReset && (await handleSubmit());
   }
 
   /**
@@ -167,9 +165,7 @@ export function useFormEvents({
         });
       }
     });
-    validateFields(validKeys).catch((error) => {
-      console.log(error);
-    });
+    await validate();
   }
 
   /**
@@ -333,20 +329,12 @@ export function useFormEvents({
     });
   }
 
-  async function validateFields(nameList?: NamePath[] | undefined) {
-    return unref(formElRef)?.validateFields(nameList);
+  async function validate() {
+    return unref(formElRef)?.validate();
   }
 
-  async function validate(nameList?: NamePath[] | undefined) {
-    return unref(formElRef)?.validate(nameList);
-  }
-
-  async function clearValidate(name?: string | string[]) {
-    await unref(formElRef)?.clearValidate(name);
-  }
-
-  async function scrollToField(name: NamePath, options?: ScrollOptions | undefined) {
-    await unref(formElRef)?.scrollToField(name, options);
+  async function restoreValidation() {
+    await unref(formElRef)?.restoreValidation();
   }
 
   /**
@@ -375,9 +363,8 @@ export function useFormEvents({
 
   return {
     handleSubmit,
-    clearValidate,
+    restoreValidation,
     validate,
-    validateFields,
     getFieldsValue,
     updateSchema,
     resetSchema,
@@ -385,6 +372,5 @@ export function useFormEvents({
     removeSchemaByField,
     resetFields,
     setFieldsValue,
-    scrollToField,
   };
 }

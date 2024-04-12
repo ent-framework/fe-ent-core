@@ -1,67 +1,44 @@
 <template>
   <div class="p-4">
-    <ent-table @register="registerTable">
-      <template #bodyCell="{ column, record }">
-        <template v-if="column.key === 'action'">
-          <ent-table-action
-            :actions="[
-              {
-                label: '删除',
-                icon: 'ic:outline-delete-outline',
-                onClick: handleDelete.bind(null, record),
-              },
-            ]"
-            :drop-down-actions="[
-              {
-                label: '启用',
-                popConfirm: {
-                  title: '是否启用？',
-                  confirm: handleOpen.bind(null, record),
-                },
-              },
-            ]"
-          />
-        </template>
-      </template>
-    </ent-table>
+    <ent-table @register="registerTable" />
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent } from 'vue';
+  import { defineComponent, h } from 'vue';
   import type { Recordable } from 'fe-ent-core/es/types';
   import type { BasicColumn } from 'fe-ent-core/es/components/table/interface';
-  import { useTable } from 'fe-ent-core/es/components/table';
+  import { EntTableAction, useTable } from 'fe-ent-core/es/components/table';
 
   import { demoListApi } from '/@/api/table';
   const columns: BasicColumn[] = [
     {
       title: 'ID',
-      dataIndex: 'id',
+      key: 'id',
       fixed: 'left',
       width: 280,
     },
     {
       title: '姓名',
-      dataIndex: 'name',
+      key: 'name',
       width: 260,
     },
     {
       title: '地址',
-      dataIndex: 'address',
+      key: 'address',
     },
     {
       title: '编号',
-      dataIndex: 'no',
+      key: 'no',
       width: 300,
     },
     {
       title: '开始时间',
       width: 200,
-      dataIndex: 'beginTime',
+      key: 'beginTime',
     },
     {
       title: '结束时间',
-      dataIndex: 'endTime',
+      key: 'endTime',
       width: 200,
     },
   ];
@@ -73,10 +50,54 @@
         columns,
         rowSelection: { type: 'radio' },
         bordered: true,
+        rowKey: (record) => record.id,
         actionColumn: {
-          width: 160,
+          width: 260,
           title: 'Action',
-          dataIndex: 'action',
+          key: 'action',
+          render: (record) => {
+            return h(
+              EntTableAction,
+              {
+                actions: [
+                  {
+                    label: '删除',
+                    icon: 'ic:outline-delete-outline',
+                    onClick: handleDelete.bind(null, record),
+                  },
+                  {
+                    label: '删除-确认',
+                    icon: 'ic:outline-delete-outline',
+                    popConfirm: {
+                      confirmContent: '是否删除？',
+                      onPositiveClick: handleDelete.bind(null, record),
+                    },
+                  },
+                ],
+                dropDownActions: [
+                  {
+                    label: '启用',
+                    popConfirm: {
+                      confirmContent: '是否启用？',
+                      onPositiveClick: handleOpen.bind(null, record),
+                    },
+                  },
+                  {
+                    divider: true,
+                  },
+                  {
+                    label: '启用测试',
+                    icon: 'ic:outline-delete-outline',
+                    popConfirm: {
+                      confirmContent: '是否启用测试？',
+                      onPositiveClick: handleOpen.bind(null, record),
+                    },
+                  },
+                ],
+              },
+              { default: () => '' },
+            );
+          },
         },
       });
       function handleDelete(record: Recordable) {
@@ -87,8 +108,6 @@
       }
       return {
         registerTable,
-        handleDelete,
-        handleOpen,
       };
     },
   });

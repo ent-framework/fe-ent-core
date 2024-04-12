@@ -1,12 +1,9 @@
 import { unref } from 'vue';
-import { Modal, notification } from 'ant-design-vue';
-import nProgress from 'nprogress';
 import { useAppStore } from '@ent-core/store/modules/app';
 import { useSessionStore } from '@ent-core/store/modules/session';
 import { useTransitionSetting } from '@ent-core/hooks/setting/use-transition-setting';
 import { AxiosCanceler } from '@ent-core/utils/http/axios-cancel';
 import { warn } from '@ent-core/utils/log';
-//import { setRouteChange } from '@ent-core/logics/mitt/route-change';
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 import { useI18n, useMessage } from '@ent-core/hooks';
 import { createPermissionGuard } from './permission-guard';
@@ -123,8 +120,8 @@ export function createMessageGuard(router: Router) {
   router.beforeEach(async () => {
     try {
       if (closeMessageOnSwitch) {
-        Modal.destroyAll();
-        notification.destroy();
+        window.$notification?.destroyAll();
+        window.$message?.destroyAll();
       }
     } catch (error) {
       warn(`message guard error:${error}`);
@@ -139,12 +136,12 @@ export function createProgressGuard(router: Router) {
     if (to.meta.loaded) {
       return true;
     }
-    unref(getOpenNProgress) && nProgress.start();
+    unref(getOpenNProgress) && window.$loadingBar?.start();
     return true;
   });
 
   router.afterEach(async () => {
-    unref(getOpenNProgress) && nProgress.done();
+    unref(getOpenNProgress) && window.$loadingBar?.finish();
     return true;
   });
 }
@@ -159,8 +156,8 @@ export function createSessionGuard(router: Router) {
     } catch (error) {
       const { createMessage } = useMessage();
       const { t } = useI18n();
-      createMessage.info({
-        content: t('sys.app.sessionLoadingError'),
+      createMessage.info(t('sys.app.sessionLoadingError'), {
+        type: 'loading',
         duration: 2,
       });
       warn(`message guard error:${error}`);

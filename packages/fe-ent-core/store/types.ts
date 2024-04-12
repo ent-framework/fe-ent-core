@@ -8,9 +8,9 @@ import type {
 } from '@ent-core/logics/enums/app-enum';
 
 import type { CacheTypeEnum } from '@ent-core/logics/enums/cache-enum';
-import type { AliasToken } from 'ant-design-vue/es/theme/interface';
 import type { Nullable, Recordable } from '@ent-core/types';
 import type { ColumnOptionsType, SizeType } from '@ent-core/components/table/interface';
+import type { GlobalThemeOverrides } from 'naive-ui/es/config-provider';
 
 // Lock screen information
 export interface LockInfo {
@@ -62,7 +62,7 @@ export interface LocaleSetting {
 export interface ThemeSetting {
   theme: ThemeEnum;
   name: string;
-  token: Partial<AliasToken>;
+  themeOverrides: GlobalThemeOverrides;
 }
 export interface TransitionSetting {
   //  Whether to open the page switching animation

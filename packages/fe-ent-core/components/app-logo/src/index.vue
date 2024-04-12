@@ -5,13 +5,20 @@
 <template>
   <div class="anticon" :class="getAppLogoClass" :style="getWrapStyle" @click="goHome">
     <img alt="logo" :src="logoImageURL" />
-    <Text v-show="$props.showTitle" class="ml-2 truncate" :class="getTitleClass">{{ title }}</Text>
+    <NEl
+      v-show="$props.showTitle"
+      tag="span"
+      class="ml-2 truncate"
+      :class="getTitleClass"
+      style="color: var(--primary-color)"
+      >{{ title }}</NEl
+    >
   </div>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, unref } from 'vue';
-  import { Typography } from 'ant-design-vue';
-  import { useDesign, useGlobSetting, useGo, useTheme } from '@ent-core/hooks';
+  import { computed, defineComponent } from 'vue';
+  import { NEl } from 'naive-ui';
+  import { useDesign, useGlobSetting, useGo } from '@ent-core/hooks';
   import { useUserStore } from '@ent-core/store';
   import LogoImg from './logo.png';
   import type { CSSProperties } from 'vue';
@@ -29,7 +36,7 @@
 
   export default defineComponent({
     name: 'EntAppLogo',
-    components: { Text: Typography.Text },
+    components: { NEl },
     props,
     setup() {
       const { prefixCls } = useDesign('app-logo');
@@ -41,14 +48,11 @@
       const getAppLogoClass = computed(() => [prefixCls]);
 
       const getTitleClass = computed(() => [`${prefixCls}__title`]);
-      const { useToken } = useTheme();
-      const { token } = useToken();
 
       const getWrapStyle = computed((): CSSProperties => {
         if (!props.noBackground) {
-          const tokenValue = unref(token);
           return {
-            backgroundColor: tokenValue.colorBgContainer,
+            backgroundColor: 'var(--n-body-color)',
           };
         }
 
@@ -62,7 +66,6 @@
 
       return {
         title,
-        token,
         goHome,
         getAppLogoClass,
         getTitleClass,

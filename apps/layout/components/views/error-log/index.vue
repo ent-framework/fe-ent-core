@@ -13,23 +13,11 @@
           {{ t('sys.errorLog.fireResourceError') }}
         </ent-button>
       </template>
-      <template #bodyCell="{ column, record }">
-        <template v-if="column.key === 'action'">
-          <ent-table-action
-            :actions="[
-              {
-                label: t('sys.errorLog.tableActionDesc'),
-                onClick: handleDetail.bind(null, record),
-              },
-            ]"
-          />
-        </template>
-      </template>
     </ent-table>
   </div>
 </template>
 <script lang="ts" setup>
-  import { nextTick, ref, watch } from 'vue';
+  import { h, nextTick, ref, watch } from 'vue';
   import { EntTable, EntTableAction } from 'fe-ent-core';
   import { isDevMode } from 'fe-ent-core/es/utils';
   import { useErrorLogStore } from 'fe-ent-core/es/store';
@@ -52,7 +40,21 @@
     actionColumn: {
       width: 80,
       title: 'Action',
-      dataIndex: 'action',
+      key: 'action',
+      render: (record) => {
+        return h(
+          EntTableAction,
+          {
+            actions: [
+              {
+                label: t('sys.errorLog.tableActionDesc'),
+                onClick: handleDetail.bind(null, record),
+              },
+            ],
+          },
+          { default: () => '' },
+        );
+      },
     },
   });
   const [registerModal, { openModal }] = useModal();

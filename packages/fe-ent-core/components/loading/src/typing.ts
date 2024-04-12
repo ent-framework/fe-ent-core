@@ -1,8 +1,6 @@
-import type { SizeEnum } from '@ent-core/logics/enums/size-enum';
-
 export interface LoadingProps {
   tip: string;
-  size: SizeEnum;
+  size: 'small' | 'medium' | 'large' | number;
   absolute: boolean;
   loading: boolean;
   background: string;

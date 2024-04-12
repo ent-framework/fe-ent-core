@@ -6,7 +6,7 @@ import type { ComputedRef, Ref, ShallowReactive } from 'vue';
 import type { EmitType, Recordable } from '@ent-core/types';
 import type { FormProps, FormSchema } from '../types/form';
 import type { AdvanceState } from '../types/hooks';
-import type { ColEx } from '../types';
+import type { GridItemProps } from 'naive-ui/es/grid';
 
 const BASIC_COL_LEN = 24;
 
@@ -64,19 +64,14 @@ export default function ({
     { immediate: true },
   );
 
-  function getAdvanced(itemCol: Partial<ColEx>, itemColSum = 0, isLastAction = false) {
+  function getAdvanced(itemCol: Partial<GridItemProps>, itemColSum = 0, isLastAction = false) {
     const width = unref(realWidthRef);
 
-    const mdWidth =
-      Number.parseInt(itemCol.md as string) ||
-      Number.parseInt(itemCol.xs as string) ||
-      Number.parseInt(itemCol.sm as string) ||
-      (itemCol.span as number) ||
-      BASIC_COL_LEN;
+    const mdWidth = (itemCol.span as number) || BASIC_COL_LEN;
 
-    const lgWidth = Number.parseInt(itemCol.lg as string) || mdWidth;
-    const xlWidth = Number.parseInt(itemCol.xl as string) || lgWidth;
-    const xxlWidth = Number.parseInt(itemCol.xxl as string) || xlWidth;
+    const lgWidth = mdWidth;
+    const xlWidth = lgWidth;
+    const xxlWidth = xlWidth;
     if (width <= screenEnum.LG) {
       itemColSum += mdWidth;
     } else if (width < screenEnum.XL) {
@@ -119,10 +114,10 @@ export default function ({
   function updateAdvanced() {
     let itemColSum = 0;
     let realItemColSum = 0;
-    const { baseColProps = {} } = unref(getProps);
+    const { baseGridItemProps = {} } = unref(getProps);
 
     for (const schema of unref(getSchema)) {
-      const { show, colProps } = schema;
+      const { show, gridItemProps } = schema;
       let isShow = true;
 
       if (isNullOrUnDef(show)) {
@@ -145,9 +140,9 @@ export default function ({
         });
       }
 
-      if (isShow && (colProps || baseColProps)) {
+      if (isShow && (gridItemProps || baseGridItemProps)) {
         const { itemColSum: sum, isAdvanced } = getAdvanced(
-          { ...baseColProps, ...colProps },
+          { ...baseGridItemProps, ...gridItemProps },
           itemColSum,
         );
 

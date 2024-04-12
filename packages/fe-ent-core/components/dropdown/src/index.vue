@@ -1,63 +1,29 @@
 <template>
-  <a-dropdown :trigger="trigger" v-bind="$attrs">
-    <span>
-      <slot />
-    </span>
-    <template #overlay>
-      <a-menu :selected-keys="selectedKeys">
-        <template v-for="item in dropMenuList" :key="`${item.event}`">
-          <a-menu-item
-            v-bind="getAttr(item.event)"
-            :disabled="item.disabled"
-            @click="handleClickMenu(item)"
-          >
-            <a-popconfirm
-              v-if="popconfirm && item.popConfirm"
-              v-bind="getPopConfirmAttrs(item.popConfirm)"
-            >
-              <template v-if="item.popConfirm.icon" #icon>
-                <EntIcon :icon="item.popConfirm.icon" />
-              </template>
-              <div>
-                <EntIcon v-if="item.icon" :icon="item.icon" />
-                <span class="ml-1">{{ item.text }}</span>
-              </div>
-            </a-popconfirm>
-            <template v-else>
-              <EntIcon v-if="item.icon" :icon="item.icon" />
-              <span class="ml-1">{{ item.text }}</span>
-            </template>
-          </a-menu-item>
-          <a-menu-divider v-if="item.divider" :key="`d-${item.event}`" />
-        </template>
-      </a-menu>
-    </template>
-  </a-dropdown>
+  <NDropdown v-bind="$attrs" :options="getOptions">
+    <slot />
+  </NDropdown>
 </template>
 <script lang="ts">
-  import { computed, defineComponent } from 'vue';
-  import { Dropdown, Menu, Popconfirm } from 'ant-design-vue';
+  import { computed, defineComponent, h } from 'vue';
+  import { NButton, NDropdown, NPopconfirm } from 'naive-ui';
   import { omit } from 'lodash-es';
-  import { isFunction } from '@ent-core/utils/is';
+  import { isFunction, isString } from '@ent-core/utils';
   import { EntIcon } from '@ent-core/components/icon';
+  import type { DropdownRenderOption } from 'naive-ui';
   import type { DropMenu } from './typing';
   import type { PropType } from 'vue';
-  const ADropdown = Dropdown;
-  const AMenu = Menu;
-  const AMenuItem = Menu.Item;
-  const AMenuDivider = Menu.Divider;
-  const APopconfirm = Popconfirm;
+  import type {
+    DropdownDividerOption,
+    DropdownMixedOption,
+  } from 'naive-ui/es/dropdown/src/interface';
+
   const props = {
-    /**
-     * 是否用popconfirm触发
-     */
-    popconfirm: Boolean,
     /**
      * 触发方式
      */
     trigger: {
-      type: [Array] as PropType<('contextmenu' | 'click' | 'hover')[]>,
-      default: () => ['contextmenu'],
+      type: String as PropType<'hover' | 'click' | 'focus' | 'manual'>,
+      default: () => 'click',
     },
     /**
      * 菜单列表
@@ -76,7 +42,7 @@
   };
   export default defineComponent({
     name: 'EntDropdown',
-    components: { ADropdown, AMenu, AMenuItem, AMenuDivider, APopconfirm, EntIcon },
+    components: { NDropdown },
     inheritAttrs: false,
     props,
     emits: [
@@ -94,22 +60,82 @@
         item.onClick?.();
       }
 
-      const getPopConfirmAttrs = computed(() => {
-        return (attrs) => {
-          const originAttrs = omit(attrs, ['confirm', 'cancel', 'icon']);
-          if (!attrs.onConfirm && attrs.confirm && isFunction(attrs.confirm))
-            originAttrs['onConfirm'] = attrs.confirm;
-          if (!attrs.onCancel && attrs.cancel && isFunction(attrs.cancel))
-            originAttrs['onCancel'] = attrs.cancel;
-          return originAttrs;
-        };
+      const getOptions = computed((): DropdownMixedOption[] => {
+        if (!props.dropMenuList) return [];
+        const options: DropdownMixedOption[] = [];
+        options.push(
+          ...props.dropMenuList.map((item) => {
+            if (item.divider) {
+              return {
+                type: 'divider',
+                key: item.key,
+              } as DropdownDividerOption;
+            } else {
+              const { disabled, icon, key, label, popConfirm } = item;
+              return {
+                type: 'render',
+                key,
+                render: () => {
+                  if (popConfirm) {
+                    return h(
+                      NPopconfirm,
+                      {
+                        ...omit(popConfirm, ['title']),
+                      },
+                      {
+                        trigger: () => {
+                          return h(
+                            NButton,
+                            {
+                              renderIcon: () => {
+                                return icon?.();
+                              },
+                              disabled,
+                              bordered: false,
+                              text: true,
+                              size: 'small',
+                            },
+                            { default: () => label },
+                          );
+                        },
+                        default: () => {
+                          return popConfirm.confirmContent;
+                        },
+                      },
+                    );
+                  }
+                  return h(
+                    NButton,
+                    {
+                      renderIcon: () => {
+                        if (isString(icon)) {
+                          return h(EntIcon, { icon });
+                        }
+                        if (isFunction(icon)) {
+                          return icon?.();
+                        }
+                        return null;
+                      },
+                      disabled,
+                      bordered: false,
+                      text: true,
+                      size: 'small',
+                    },
+                    { default: () => label },
+                  );
+                },
+              } as DropdownRenderOption;
+            }
+          }),
+        );
+        return options;
       });
 
       const getAttr = (key: string | number) => ({ key });
       return {
         getAttr,
-        getPopConfirmAttrs,
         handleClickMenu,
+        getOptions,
       };
     },
   });

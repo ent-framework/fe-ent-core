@@ -1,30 +1,26 @@
-<!--
- * @Author: Vben
- * @Description: Multi-language switching component
--->
 <template>
-  <EntDropdown
+  <NPopselect
+    v-model:value="selectedKeys"
     placement="bottom"
-    :trigger="['click']"
-    :drop-menu-list="localeList"
-    :selected-keys="selectedKeys"
-    overlay-class-name="app-locale-picker-overlay"
-    @menu-event="handleMenuEvent"
+    trigger="click"
+    :options="localeList"
+    class="app-locale-picker-overlay"
+    @update:value="handleMenuEvent"
   >
-    <span class="cursor-pointer flex items-center">
+    <div class="cursor-pointer flex items-center">
       <EntIcon icon="ion:language" />
       <span v-if="showText" class="ml-1">{{ getLocaleText }}</span>
-    </span>
-  </EntDropdown>
+    </div>
+  </NPopselect>
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watchEffect } from 'vue';
-  import { EntDropdown } from '@ent-core/components/dropdown';
+  import { NPopselect } from 'naive-ui';
   import { EntIcon } from '@ent-core/components/icon';
   import { useLocale } from '@ent-core/locales/use-locale';
   import { localeList } from '@ent-core/logics/settings/locale-setting';
-  import type { DropMenu } from '@ent-core/components/dropdown/interface';
   import type { LocaleType } from '@ent-core/store/types';
+  import type { DropdownOption } from 'naive-ui';
 
   const props = {
     /**
@@ -39,15 +35,16 @@
 
   export default defineComponent({
     name: 'EntLocalePicker',
-    components: { EntDropdown, EntIcon },
+    components: { EntIcon, NPopselect },
+    inheritAttrs: false,
     props,
     setup(props) {
-      const selectedKeys = ref<string[]>([]);
+      const selectedKeys = ref<string>();
 
       const { changeLocale, getLocale } = useLocale();
 
       const getLocaleText = computed(() => {
-        const key = selectedKeys.value[0];
+        const key = selectedKeys.value;
         if (!key) {
           return '';
         }
@@ -55,20 +52,20 @@
       });
 
       watchEffect(() => {
-        selectedKeys.value = [unref(getLocale)];
+        selectedKeys.value = unref(getLocale);
       });
 
       async function toggleLocale(lang: LocaleType | string) {
         await changeLocale(lang as LocaleType);
-        selectedKeys.value = [lang as string];
+        selectedKeys.value = lang as string;
         props.reload && location.reload();
       }
 
-      function handleMenuEvent(menu: DropMenu) {
-        if (unref(getLocale) === menu.event) {
+      function handleMenuEvent(key: string | number, menu: DropdownOption) {
+        if (unref(getLocale) === menu.value) {
           return;
         }
-        toggleLocale(menu.event as string);
+        toggleLocale(menu.value as string);
       }
       return {
         getLocaleText,

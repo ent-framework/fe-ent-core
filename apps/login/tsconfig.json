@@ -8,8 +8,7 @@
       "vue-types": ["../../node_modules/vue-types"],
       "axios": ["../../node_modules/axios"],
       "pinia": ["../../node_modules/pinia"],
-      "ant-design-vue": ["../../node_modules/ant-design-vue"],
-      "ant-design-vue/es/*": ["../../node_modules/ant-design-vue/es/*"],
+      "naive-ui/es/*": ["../../node_modules/naive-ui/es/*"],
       "@types/qrcode": ["../../node_modules/@types/qrcode"]
     },
     "types": ["vite/client"]

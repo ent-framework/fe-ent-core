@@ -1,23 +1,17 @@
 <template>
   <div :class="[prefixCls, `${prefixCls}--${theme}`]">
-    <a-breadcrumb :routes="routes">
-      <template #itemRender="{ route, routes: routesMatched, paths }">
+    <NBreadcrumb>
+      <NBreadcrumbItem v-for="route in routes" :key="route.path">
         <EntIcon v-if="getShowBreadCrumbIcon && getIcon(route)" :icon="getIcon(route)" />
-        <span v-if="!hasRedirect(routesMatched, route)">
-          {{ t(route.name || route.meta.title) }}
-        </span>
-        <router-link v-else to="" @click="handleClick(route, paths, $event)">
-          {{ t(route.name || route.meta.title) }}
-        </router-link>
-      </template>
-    </a-breadcrumb>
+        {{ t((route.name || route.meta.title) as string) }}
+      </NBreadcrumbItem>
+    </NBreadcrumb>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent, ref, watchEffect } from 'vue';
   import { useRouter } from 'vue-router';
-
-  import { Breadcrumb } from 'ant-design-vue';
+  import { NBreadcrumb, NBreadcrumbItem, NDropdown } from 'naive-ui';
   import { EntIcon } from 'fe-ent-core';
   import { useDesign, useGo, useI18n } from 'fe-ent-core/es/hooks';
   import { filter, isString, propTypes } from 'fe-ent-core/es/utils';
@@ -29,7 +23,7 @@
 
   export default defineComponent({
     name: 'LayoutBreadcrumb',
-    components: { EntIcon, [Breadcrumb.name]: Breadcrumb },
+    components: { EntIcon, NBreadcrumb, NBreadcrumbItem, NDropdown },
     props: {
       theme: propTypes.oneOf(['dark', 'light']),
     },

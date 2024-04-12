@@ -1,34 +1,35 @@
 import { computed, unref } from 'vue';
-import { theme as AntTheme } from 'ant-design-vue';
+import { darkTheme, lightTheme } from 'naive-ui';
 import { useAppStore } from '@ent-core/store';
 import { ThemeEnum } from '@ent-core/logics';
-import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
+import type { BuiltInGlobalTheme } from 'naive-ui/es/themes/interface';
 
 export function useTheme() {
-  const { useToken } = AntTheme;
 
   const appStore = useAppStore();
 
   const appTheme = computed(() => {
     const { theme: globalTheme } = appStore.getThemeSetting;
-    let themeConfig: ThemeConfig = {};
+    let themeConfig: BuiltInGlobalTheme;
     if (globalTheme) {
       if (globalTheme == ThemeEnum.DARK) {
-        themeConfig = { algorithm: AntTheme.darkAlgorithm };
+        themeConfig = darkTheme;
       } else {
-        themeConfig = { algorithm: AntTheme.defaultAlgorithm };
+        themeConfig = lightTheme;
       }
-    }
-    const token = appStore.getThemeSetting.token;
-    if (token) {
-      themeConfig = { ...themeConfig, token };
+    } else {
+      themeConfig = lightTheme;
     }
     return themeConfig;
   });
 
+  const themeOverrides = computed(() => {
+    return appStore.getThemeSetting.themeOverrides;
+  });
+
   const updateGrayMode = (gray: boolean) => {};
 
-  const getTheme = (theme?: string): ThemeConfig => {
+  const getTheme = (theme?: string): BuiltInGlobalTheme => {
     const currTheme = unref(appTheme);
     if (!theme || theme === 'none') {
       return currTheme;
@@ -38,16 +39,16 @@ export function useTheme() {
       return currTheme;
     }
     if (theme === ThemeEnum.DARK) {
-      return { ...currTheme, algorithm: AntTheme.darkAlgorithm };
+      return darkTheme;
     } else {
-      return { ...currTheme, algorithm: AntTheme.defaultAlgorithm };
+      return lightTheme;
     }
   };
 
   return {
     theme: appTheme,
+    themeOverrides,
     getTheme,
     updateGrayMode,
-    useToken,
   };
 }

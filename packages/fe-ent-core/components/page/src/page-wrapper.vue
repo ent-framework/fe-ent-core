@@ -1,10 +1,9 @@
 <template>
   <div ref="wrapperRef" :class="getClass">
-    <PageHeader
+    <NPageHeader
       v-if="content || $slots.headerContent || title || getHeaderSlots.length"
       v-bind="omit($attrs, 'class')"
       ref="headerRef"
-      :ghost="ghost"
       :title="title"
     >
       <template #default>
@@ -16,7 +15,7 @@
       <template v-for="item in getHeaderSlots" #[item]="data">
         <slot :name="item" v-bind="data || {}" />
       </template>
-    </PageHeader>
+    </NPageHeader>
 
     <div ref="contentRef" class="overflow-hidden" :class="getContentClass" :style="getContentStyle">
       <slot />
@@ -36,9 +35,8 @@
   import { computed, defineComponent, provide, ref, unref, watch } from 'vue';
 
   import { omit } from 'lodash-es';
-  import { PageHeader } from 'ant-design-vue';
+  import { NPageHeader } from 'naive-ui';
   import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useTheme } from '@ent-core/hooks/web/use-theme';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { useContentHeight } from '@ent-core/hooks/web/use-content-height';
   import { PageWrapperFixedHeightKey } from '../constant';
@@ -47,7 +45,7 @@
 
   export default defineComponent({
     name: 'EntPageWrapper',
-    components: { PageFooter, PageHeader },
+    components: { PageFooter, NPageHeader },
     inheritAttrs: false,
     props: {
       title: propTypes.string,
@@ -99,9 +97,6 @@
         ];
       });
 
-      const { useToken } = useTheme();
-      const { token } = useToken();
-
       const getShowFooter = computed(() => slots?.leftFooter || slots?.rightFooter);
 
       const getHeaderSlots = computed(() => {
@@ -110,7 +105,6 @@
 
       const getContentStyle = computed((): CSSProperties => {
         const { contentFullHeight, contentStyle, fixedHeight } = props;
-        const tokenValues = unref(token);
         if (!contentFullHeight) {
           return { ...contentStyle };
         }
@@ -120,7 +114,6 @@
           ...contentStyle,
           minHeight: height,
           ...(fixedHeight ? { height } : {}),
-          backgroundColor: tokenValues.colorBgContainer,
         };
       });
 

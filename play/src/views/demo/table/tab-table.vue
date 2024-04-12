@@ -58,7 +58,7 @@
           field: 'name',
           order: 'ascend',
         },
-        rowKey: 'id',
+        rowKey: (record) => record.id,
         showTableSetting: true,
         onChange,
         rowSelection: {

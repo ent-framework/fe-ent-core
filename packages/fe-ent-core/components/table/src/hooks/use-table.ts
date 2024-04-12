@@ -3,10 +3,11 @@ import { tryOnUnmounted } from '@vueuse/core';
 import { getDynamicProps } from '@ent-core/utils/base';
 import { error } from '@ent-core/utils/log';
 import type { BasicColumn, BasicTableProps, FetchParams, TableActionType } from '../types/table';
-import type { PaginationProps } from '../types/pagination';
+import type { PaginationProps } from 'naive-ui';
 import type { FormActionType } from '@ent-core/components/form/interface';
 import type { WatchStopHandle } from 'vue';
 import type { Nullable, Recordable } from '@ent-core/types';
+import type { DataTableRowKey } from 'naive-ui/es/data-table';
 
 type Props = Partial<BasicTableProps>;
 
@@ -72,9 +73,6 @@ export function useTable(tableProps?: Props): [
     setProps: (props: Partial<BasicTableProps>) => {
       getTableInstance().setProps(props);
     },
-    redoHeight: () => {
-      getTableInstance().redoHeight();
-    },
     setSelectedRows: (rows: Recordable[]) => {
       return toRaw(getTableInstance().setSelectedRows(rows));
     },
@@ -100,9 +98,6 @@ export function useTable(tableProps?: Props): [
     setPagination: (info: Partial<PaginationProps>) => {
       return getTableInstance().setPagination(info);
     },
-    deleteSelectRowByKey: (key: string) => {
-      getTableInstance().deleteSelectRowByKey(key);
-    },
     getSelectRowKeys: () => {
       return toRaw(getTableInstance().getSelectRowKeys());
     },
@@ -112,8 +107,15 @@ export function useTable(tableProps?: Props): [
     clearSelectedRowKeys: () => {
       getTableInstance().clearSelectedRowKeys();
     },
-    setSelectedRowKeys: (keys: string[] | number[]) => {
-      getTableInstance().setSelectedRowKeys(keys);
+    setSelectedRowKeys: (
+      keys: DataTableRowKey[],
+      rows: Recordable[],
+      meta: {
+        row: Recordable | undefined;
+        action: 'check' | 'uncheck' | 'checkAll' | 'uncheckAll';
+      },
+    ) => {
+      getTableInstance().setSelectedRowKeys(keys, rows, meta);
     },
     getPaginationRef: () => {
       return getTableInstance().getPaginationRef();
@@ -150,18 +152,6 @@ export function useTable(tableProps?: Props): [
     },
     getShowPagination: () => {
       return toRaw(getTableInstance().getShowPagination());
-    },
-    expandAll: () => {
-      getTableInstance().expandAll();
-    },
-    expandRows: (keys: string[]) => {
-      getTableInstance().expandRows(keys);
-    },
-    collapseAll: () => {
-      getTableInstance().collapseAll();
-    },
-    scrollTo: (pos: string) => {
-      getTableInstance().scrollTo(pos);
     },
   };
 

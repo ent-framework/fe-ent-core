@@ -1,7 +1,7 @@
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
 import { isNumber } from '@ent-core/utils/is';
-import type { Rule } from 'ant-design-vue/es/form';
 import type { ComponentType } from './types';
+import type { FormItemRule } from 'naive-ui/es/form';
 
 /**
  * @description: 生成placeholder
@@ -33,7 +33,11 @@ function genType() {
   return [...DATE_TYPE, 'RangePicker'];
 }
 
-export function setComponentRuleType(rule: Rule, component: ComponentType, valueFormat: string) {
+export function setComponentRuleType(
+  rule: FormItemRule,
+  component: ComponentType,
+  valueFormat: string,
+) {
   if (['DatePicker', 'MonthPicker', 'WeekPicker', 'TimePicker'].includes(component)) {
     rule.type = valueFormat ? 'string' : 'object';
   } else if (['RangePicker', 'Upload', 'CheckboxGroup', 'TimePicker'].includes(component)) {

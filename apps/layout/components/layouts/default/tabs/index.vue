@@ -1,37 +1,41 @@
 <template>
-  <div :class="getWrapClass" :style="getWrapStyle">
-    <Tabs
-      type="editable-card"
+  <div :class="getWrapClass">
+    <NTabs
+      type="card"
       size="small"
       :animated="false"
       :hide-add="true"
       :tab-bar-gutter="3"
-      :active-key="activeKeyRef"
-      @change="handleChange"
+      :value="activeKeyRef"
       @edit="handleEdit"
+      @close="handleClose"
+      @update:value="handleUpdateValue"
     >
-      <template v-for="item in getTabsState" :key="item.query ? item.fullPath : item.path">
-        <TabPane :closable="!(item && item.meta && item.meta.affix)">
-          <template #tab>
-            <TabContent :tab-item="item" />
-          </template>
-        </TabPane>
-      </template>
+      <NTabPane
+        v-for="item in getTabsState"
+        :key="getItemKey(item)"
+        :closable="!(item && item.meta && item.meta.affix)"
+        :name="getItemKey(item)"
+        :tab="t(item.meta?.title as string)"
+      >
+        <template #tab>
+          <TabContent :tab-item="item" />
+        </template>
+      </NTabPane>
 
-      <template v-if="getShowRedo || getShowQuick" #rightExtra>
+      <template v-if="getShowRedo || getShowQuick" #suffix>
         <TabRedo v-if="getShowRedo" />
         <TabContent v-if="getShowQuick" is-extra :tab-item="$route" />
         <FoldButton v-if="getShowFold" />
       </template>
-    </Tabs>
+    </NTabs>
   </div>
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watch } from 'vue';
+  import { NTabPane, NTabs } from 'naive-ui';
+  import { useDesign, useGo, useI18n } from 'fe-ent-core/es/hooks';
 
-  import { Tabs } from 'ant-design-vue';
-
-  import { useDesign, useGo, useTheme } from 'fe-ent-core/es/hooks';
   import { useSessionStore } from 'fe-ent-core/es/store';
   import { REDIRECT_NAME } from 'fe-ent-core/es/router';
   import { useRouter } from 'vue-router';
@@ -42,17 +46,17 @@
   import FoldButton from './components/fold-button.vue';
   import TabContent from './components/tab-content.vue';
   import type { RouteLocationNormalized, RouteMeta } from 'vue-router';
-  import type { CSSProperties } from 'vue';
   export default defineComponent({
     name: 'MultipleTabs',
     components: {
       TabRedo,
       FoldButton,
-      Tabs,
-      TabPane: Tabs.TabPane,
+      NTabs,
+      NTabPane,
       TabContent,
     },
     setup() {
+      const { t } = useI18n();
       const affixTextList = initAffixTabs();
       const activeKeyRef = ref('');
       const { currentRoute } = useRouter();
@@ -80,16 +84,6 @@
           },
         ];
       });
-
-      const { useToken } = useTheme();
-      const { token } = useToken();
-      const getWrapStyle = computed((): CSSProperties => {
-        const tokenValues = unref(token);
-        return {
-          backgroundColor: tokenValues.colorBgContainer,
-        };
-      });
-
       watch(
         () => currentRoute.value,
         (route) => {
@@ -123,9 +117,13 @@
         }
       }
 
-      function handleChange(activeKey: any) {
-        activeKeyRef.value = activeKey;
-        go(activeKey, false);
+      function handleUpdateValue(activeKey: any) {
+        const options = unref(getTabsState).find((item) => getItemKey(item) === activeKey);
+        if (options) {
+          activeKeyRef.value = activeKey;
+          go(activeKey, false);
+        }
+        console.log(activeKey, options);
       }
 
       // Close the current tab
@@ -137,18 +135,32 @@
 
         tabStore.closeTabByKey(targetKey, router);
       }
+      function handleClose(targetKey: string) {
+        // Added operation to hide, currently only use delete operation
+        if (unref(unClose)) {
+          return;
+        }
+
+        tabStore.closeTabByKey(targetKey, router);
+      }
+
+      function getItemKey(item) {
+        return item.query ? item.fullPath : item.path;
+      }
       return {
+        t,
         prefixCls,
         unClose,
         getWrapClass,
-        getWrapStyle,
         handleEdit,
-        handleChange,
+        handleClose,
+        handleUpdateValue,
         activeKeyRef,
         getTabsState,
         getShowQuick,
         getShowRedo,
         getShowFold,
+        getItemKey,
       };
     },
   });

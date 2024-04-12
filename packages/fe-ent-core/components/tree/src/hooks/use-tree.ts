@@ -3,35 +3,34 @@ import { cloneDeep } from 'lodash-es';
 import { forEach } from '@ent-core/utils/helper/tree-helper';
 import type { FieldNames, InsertNodeParams, KeyType, TreeItem } from '../types/tree';
 import type { ComputedRef, Ref } from 'vue';
-import type { TreeDataItem } from 'ant-design-vue/es/tree/Tree';
 
-export function useTree(treeDataRef: Ref<TreeDataItem[]>, getFieldNames: ComputedRef<FieldNames>) {
-  function getAllKeys(list?: TreeDataItem[]) {
-    const keys: string[] = [];
+export function useTree(treeDataRef: Ref<TreeItem[]>, getFieldNames: ComputedRef<FieldNames>) {
+  function getAllKeys(list?: TreeItem[]) {
+    const keys: KeyType[] = [];
     const treeData = list || unref(treeDataRef);
     const { key: keyField, children: childrenField } = unref(getFieldNames);
     if (!childrenField || !keyField) return keys;
 
     for (const node of treeData) {
-      keys.push(node[keyField]!);
-      const children = node[childrenField];
+      keys.push(node[keyField]! as KeyType);
+      const children = node[childrenField] as TreeItem[];
       if (children && children.length) {
-        keys.push(...(getAllKeys(children) as string[]));
+        keys.push(...(getAllKeys(children) as KeyType[]));
       }
     }
     return keys as KeyType[];
   }
 
   // get keys that can be checked and selected
-  function getEnabledKeys(list?: TreeDataItem[]) {
-    const keys: string[] = [];
+  function getEnabledKeys(list?: TreeItem[]) {
+    const keys: KeyType[] = [];
     const treeData = list || unref(treeDataRef);
     const { key: keyField, children: childrenField } = unref(getFieldNames);
     if (!childrenField || !keyField) return keys;
 
     for (const node of treeData) {
-      node.disabled !== true && node.selectable !== false && keys.push(node[keyField]!);
-      const children = node[childrenField];
+      node.disabled !== true && node.selectable !== false && keys.push(node[keyField]! as KeyType);
+      const children = node[childrenField] as TreeItem[];
       if (children && children.length) {
         keys.push(...(getEnabledKeys(children) as string[]));
       }
@@ -39,15 +38,15 @@ export function useTree(treeDataRef: Ref<TreeDataItem[]>, getFieldNames: Compute
     return keys as KeyType[];
   }
 
-  function getChildrenKeys(nodeKey: string | number, list?: TreeDataItem[]) {
+  function getChildrenKeys(nodeKey: string | number, list?: TreeItem[]) {
     const keys: KeyType[] = [];
     const treeData = list || unref(treeDataRef);
     const { key: keyField, children: childrenField } = unref(getFieldNames);
     if (!childrenField || !keyField) return keys;
     for (const node of treeData) {
-      const children = node[childrenField];
+      const children = node[childrenField] as TreeItem[];
       if (nodeKey === node[keyField]) {
-        keys.push(node[keyField]!);
+        keys.push(node[keyField]! as KeyType);
         if (children && children.length) {
           keys.push(...(getAllKeys(children) as string[]));
         }
@@ -61,7 +60,7 @@ export function useTree(treeDataRef: Ref<TreeDataItem[]>, getFieldNames: Compute
   }
 
   // Update node
-  function updateNodeByKey(key: string, node: TreeDataItem, list?: TreeDataItem[]) {
+  function updateNodeByKey(key: string, node: TreeItem, list?: TreeItem[]) {
     if (!key) return;
     const treeData = list || unref(treeDataRef);
     const { key: keyField, children: childrenField } = unref(getFieldNames);
@@ -82,17 +81,17 @@ export function useTree(treeDataRef: Ref<TreeDataItem[]>, getFieldNames: Compute
   }
 
   // Expand the specified level
-  function filterByLevel(level = 1, list?: TreeDataItem[], currentLevel = 1) {
+  function filterByLevel(level = 1, list?: TreeItem[], currentLevel = 1) {
     if (!level) {
       return [];
     }
-    const res: (string | number)[] = [];
+    const res: KeyType[] = [];
     const data = list || unref(treeDataRef) || [];
     for (const item of data) {
       const { key: keyField, children: childrenField } = unref(getFieldNames);
       const key = keyField ? item[keyField] : '';
-      const children = childrenField ? item[childrenField] : [];
-      res.push(key);
+      const children = childrenField ? (item[childrenField] as TreeItem[]) : [];
+      res.push(key as KeyType);
       if (children && children.length && currentLevel < level) {
         currentLevel += 1;
         res.push(...filterByLevel(level, children, currentLevel));
@@ -154,7 +153,7 @@ export function useTree(treeDataRef: Ref<TreeDataItem[]>, getFieldNames: Compute
     }
   }
   // Delete node
-  function deleteNodeByKey(key: string, list?: TreeDataItem[]) {
+  function deleteNodeByKey(key: string, list?: TreeItem[]) {
     if (!key) return;
     const treeData = list || unref(treeDataRef);
     const { key: keyField, children: childrenField } = unref(getFieldNames);
@@ -185,8 +184,8 @@ export function useTree(treeDataRef: Ref<TreeDataItem[]>, getFieldNames: Compute
         selectedNode = item;
         return;
       }
-      if (item[childrenField!] && item[childrenField!].length) {
-        selectedNode = getSelectedNode(key, item[childrenField!], selectedNode);
+      if (item[childrenField!] && (item[childrenField!] as TreeItem[]).length) {
+        selectedNode = getSelectedNode(key, item[childrenField!] as TreeItem[], selectedNode);
       }
     });
     return selectedNode || null;

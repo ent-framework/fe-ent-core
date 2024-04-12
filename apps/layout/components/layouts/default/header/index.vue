@@ -1,5 +1,5 @@
 <template>
-  <Header :class="getHeaderClass" :style="getHeaderStyle">
+  <NLayoutHeader :class="getHeaderClass">
     <!-- left start -->
     <div :class="`${prefixCls}-left`">
       <!-- logo -->
@@ -42,23 +42,27 @@
         :class="`${prefixCls}-action__item`"
       />
 
-      <EntDarkModeToggle v-if="getShowDarkModeToggle" class="mx-auto" />
+      <EntDarkModeToggle
+        v-if="getShowDarkModeToggle"
+        :class="`${prefixCls}-action__item mx-auto`"
+      />
 
       <UserDropDown v-if="isLogined" />
 
       <SettingDrawer v-if="getShowSetting" :class="`${prefixCls}-action__item`" />
     </div>
-  </Header>
+  </NLayoutHeader>
 </template>
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
-  import { useAppInject, useDesign, useRootSetting, useTheme } from 'fe-ent-core/es/hooks';
+  import { useAppInject, useDesign, useRootSetting } from 'fe-ent-core/es/hooks';
   import { EntAppLogo, EntDarkModeToggle, EntLocalePicker } from 'fe-ent-core';
   import { MenuModeEnum, MenuSplitTyeEnum, SettingButtonPositionEnum } from 'fe-ent-core/es/logics';
   import { propTypes } from 'fe-ent-core/es/utils';
   import { useLocale } from 'fe-ent-core/es/locales';
   import { useUserStore } from 'fe-ent-core/es/store';
-  import { Layout } from 'ant-design-vue';
+  import { NLayoutHeader } from 'naive-ui';
+
   import {
     useHeaderSetting,
     useLayoutTheme,
@@ -71,12 +75,11 @@
   import LayoutMenu from '../menu/index.vue';
   import SettingDrawer from '../setting/index.vue';
   import { ErrorAction, FullScreen, LayoutBreadcrumb, Notify, UserDropDown } from './components';
-  import type { CSSProperties } from 'vue';
 
   export default defineComponent({
     name: 'LayoutHeader',
     components: {
-      Header: Layout.Header,
+      NLayoutHeader,
       EntAppLogo,
       LayoutTrigger,
       LayoutBreadcrumb,
@@ -119,7 +122,6 @@
         getShowSearch,
       } = useHeaderSetting();
 
-      const { useToken } = useTheme();
       const { getActualHeaderTheme } = useLayoutTheme();
 
       const { getShowLocalePicker } = useLocale();
@@ -136,14 +138,6 @@
             [`${prefixCls}--${theme}`]: theme,
           },
         ];
-      });
-      const { token } = useToken();
-      const getHeaderStyle = computed((): CSSProperties => {
-        const tokenValues = unref(token);
-        const theme = unref(getActualHeaderTheme);
-        return {
-          backgroundColor: theme === 'dark' ? '#001529' : tokenValues.colorBgContainer,
-        };
       });
 
       const getShowSetting = computed(() => {
@@ -205,7 +199,6 @@
         getShowSettingButton,
         getShowSetting,
         getShowSearch,
-        getHeaderStyle,
         isLogined,
         getCollapsedShowTitle,
         getShowTitle,

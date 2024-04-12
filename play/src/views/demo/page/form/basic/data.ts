@@ -9,6 +9,7 @@ export const schemas: FormSchema[] = [
     component: 'Input',
     label: '标题',
     colProps,
+    helpMessage: '标题',
     componentProps: {
       placeholder: '给目标起个名字',
     },
@@ -20,12 +21,20 @@ export const schemas: FormSchema[] = [
     label: '起止日期',
     colProps,
     required: true,
+    componentProps: {
+      'value-format': 'yyyy-MM-dd',
+      format: 'yyyy-MM-dd',
+    },
+  },
+  {
+    field: 'divider',
+    label: '',
+    component: 'Divider',
   },
   {
     field: 'target',
     component: 'InputTextArea',
     label: '目标描述',
-    colProps,
     componentProps: {
       placeholder: '请输入你的阶段性工作目标',
       rows: 4,
@@ -106,7 +115,7 @@ export const schemas: FormSchema[] = [
   {
     field: 'disclosurer',
     component: 'Select',
-    label: ' ',
+    label: '测试2222222',
     show: ({ model }) => {
       return model.disclosure === '2';
     },

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showFooter || $slots.footer" :class="prefixCls" :style="getStyle">
+  <div v-if="showFooter || $slots.footer" :class="prefixCls">
     <template v-if="!$slots.footer">
       <slot name="insertFooter" />
       <ent-button v-if="showCancelBtn" v-bind="cancelButtonProps" class="mr-2" @click="handleClose">
@@ -25,19 +25,14 @@
   </div>
 </template>
 <script lang="ts">
-  import { computed, defineComponent } from 'vue';
+  import { defineComponent } from 'vue';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { footerProps } from '../props';
-  import type { CSSProperties } from 'vue';
   export default defineComponent({
     name: 'EntDrawerFooter',
     props: {
       ...footerProps,
-      height: {
-        type: String,
-        default: '60px',
-      },
     },
     emits: ['ok', 'close'],
     setup(props, { emit }) {
@@ -50,14 +45,6 @@
 
       const { prefixCls } = useDesign('basic-drawer-footer');
 
-      const getStyle = computed((): CSSProperties => {
-        const heightStr = `${props.height}`;
-        return {
-          height: heightStr,
-          lineHeight: heightStr,
-        };
-      });
-
       function handleOk() {
         emit('ok');
       }
@@ -65,7 +52,7 @@
       function handleClose() {
         emit('close');
       }
-      return { handleOk, prefixCls, handleClose, getStyle, okText, cancelText };
+      return { handleOk, prefixCls, handleClose, okText, cancelText };
     },
   });
 </script>
