@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia';
 
 import { format } from 'date-fns';
-import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
+import { defaultProjectSetting } from '../../logics/settings/project-setting';
 
-import { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
+import { ErrorTypeEnum } from '../../logics/enums/exception-enum';
 import type { AxiosError } from 'axios';
-import type { ErrorLogInfo } from '@ent-core/store/types';
-import type { Nullable } from '@ent-core/types';
+import type { ErrorLogInfo } from '../../store/types';
+import type { Nullable } from '../../types';
 
 export interface ErrorLogState {
   errorLogInfoList: Nullable<ErrorLogInfo[]>;

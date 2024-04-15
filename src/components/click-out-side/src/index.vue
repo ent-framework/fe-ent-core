@@ -6,7 +6,7 @@
 <script lang="ts">
   import { defineComponent, onMounted, ref } from 'vue';
   import { onClickOutside } from '@vueuse/core';
-  import type { ElRef } from '@ent-core/types';
+  import type { ElRef } from '../../../types';
 
   export default defineComponent({
     name: 'EntClickOutSide',

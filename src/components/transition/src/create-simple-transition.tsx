@@ -1,5 +1,5 @@
 import { Transition, TransitionGroup, defineComponent } from 'vue';
-import { getSlot } from '@ent-core/utils/helper/tsx-helper';
+import { getSlot } from '../../../utils/helper/tsx-helper';
 import type { PropType } from 'vue';
 import type { Mode } from './type';
 

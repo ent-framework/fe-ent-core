@@ -1,7 +1,7 @@
 import { inject, provide } from 'vue';
 import type { ComputedRef, Ref } from 'vue';
 import type { BasicTableProps, TableActionType } from '../types/table';
-import type { Nullable, Recordable } from '@ent-core/types';
+import type { Nullable, Recordable } from '../../../../types';
 const key = Symbol('ent-table');
 
 type Instance = TableActionType & {

@@ -2,8 +2,8 @@
   <NInputGroup compact>
     <NInput
       v-bind="$attrs"
-      :class="prefixCls"
       v-model:value="state"
+      :class="prefixCls"
       :size="size"
       style="width: calc(100% - 200px)"
     />
@@ -13,8 +13,8 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { NInput, NInputGroup } from 'naive-ui';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
+  import { useDesign } from '../../../hooks/web/use-design';
+  import { useRuleFormItem } from '../../../hooks/component/use-form-item';
   import CountButton from './count-button.vue';
   import { countDownInputProps } from './props';
 

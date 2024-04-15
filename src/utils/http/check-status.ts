@@ -1,9 +1,9 @@
-import { useMessage } from '@ent-core/hooks/web/use-message';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
-import { Factory } from '@ent-core/logics/factory';
-import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
-// import router from '@ent-core/router';
-// import { PageEnum } from '@ent-core/logics/enums/page-enum';
+import { useMessage } from '../../hooks/web/use-message';
+import { useI18n } from '../../hooks/web/use-i18n';
+import { Factory } from '../../logics/factory';
+import type { ErrorMessageMode } from '../../logics/types/axios';
+// import router from '../../router';
+// import { PageEnum } from '../../logics/enums/page-enum';
 
 export function checkStatus(
   status: number,

@@ -1,5 +1,5 @@
 import { ThemeEnum } from '../enums';
-import type { ThemeSetting } from '@ent-core/store/types';
+import type { ThemeSetting } from '../../store/types';
 
 const defaultThemeSetting: ThemeSetting = {
   theme: ThemeEnum.LIGHT,

@@ -1,12 +1,12 @@
 <script lang="tsx">
   import { computed, defineComponent, reactive, ref, unref, watch } from 'vue';
-  import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
-  import { hackCss } from '@ent-core/utils/dom-utils';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { useTimeoutFn } from '../../../hooks/core/use-timeout';
+  import { hackCss } from '../../../utils/dom-utils';
+  import { useI18n } from '../../../hooks/web/use-i18n';
   import BasicDragVerify from './drag-verify.vue';
   import { rotateProps } from './props';
   import type { DragVerifyActionType, MoveData } from './typing';
-  import type { Nullable } from '@ent-core/types';
+  import type { Nullable } from '../../../types';
 
   export default defineComponent({
     name: 'EntRotateDragVerify',

@@ -6,7 +6,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { NImage } from 'naive-ui';
-  import { propTypes } from '@ent-core/utils/prop-types';
+  import { propTypes } from '../../../utils/prop-types';
 
   export default defineComponent({
     components: { NImage },

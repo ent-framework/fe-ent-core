@@ -5,8 +5,8 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import Icon from '@ent-core/components/icon/src/icon.vue';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import Icon from '../../../components/icon/src/icon.vue';
+  import { useDesign } from '../../../hooks/web/use-design';
 
   const props = {
     /**

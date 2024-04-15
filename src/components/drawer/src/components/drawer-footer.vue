@@ -26,8 +26,8 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { useDesign } from '../../../../hooks/web/use-design';
+  import { useI18n } from '../../../../hooks/web/use-i18n';
   import { footerProps } from '../props';
   export default defineComponent({
     name: 'EntDrawerFooter',

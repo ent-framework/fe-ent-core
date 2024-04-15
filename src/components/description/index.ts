@@ -1,4 +1,4 @@
-import { withInstall } from '@ent-core/utils';
+import { withInstall } from '../../utils';
 import description from './src/index.vue';
 
 export { useDescription } from './src/use-description';

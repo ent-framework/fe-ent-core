@@ -10,9 +10,9 @@
   import { computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
   import { NTreeSelect } from 'naive-ui';
   import { get } from 'lodash-es';
-  import { isArray, isFunction } from '@ent-core/utils/is';
-  import { propTypes } from '@ent-core/utils/prop-types';
-  import { type Recordable } from '@ent-core/types';
+  import { isArray, isFunction } from '../../../../utils/is';
+  import { propTypes } from '../../../../utils/prop-types';
+  import { type Recordable } from '../../../../types';
   import type { PropType } from 'vue';
   export default defineComponent({
     name: 'ApiTreeSelect',

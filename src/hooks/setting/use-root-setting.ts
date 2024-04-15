@@ -1,7 +1,7 @@
 import { computed } from 'vue';
 
-import { useAppStore } from '@ent-core/store/modules/app';
-import type { ProjectConfig } from '@ent-core/store/types';
+import { useAppStore } from '../../store/modules/app';
+import type { ProjectConfig } from '../../store/types';
 
 type RootSetting = Omit<
   ProjectConfig,

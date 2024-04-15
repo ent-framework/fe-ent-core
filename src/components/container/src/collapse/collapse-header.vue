@@ -17,7 +17,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { NElement } from 'naive-ui';
-  import { EntArrow, EntTitle } from '@ent-core/components/basic';
+  import { EntArrow, EntTitle } from '../../../../components/basic';
   import type { PropType } from 'vue';
 
   const props = {

@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { addClass, removeClass } from '@ent-core/utils/dom-utils';
+  import { addClass, removeClass } from '../../../utils/dom-utils';
 
   export default defineComponent({
     name: 'CollapseTransition',

@@ -1,4 +1,4 @@
-import { withInstall } from '@ent-core/utils';
+import { withInstall } from '../../utils';
 import basicDrawer from './src/index.vue';
 
 export const EntDrawer = withInstall(basicDrawer);

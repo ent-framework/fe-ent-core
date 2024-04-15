@@ -6,10 +6,10 @@
 
 <script lang="ts">
   import { computed, defineComponent, nextTick, ref, unref } from 'vue';
-  import Scrollbar from '@ent-core/components/scroll-bar';
-  import { useScrollTo } from '@ent-core/hooks/event/use-scroll-to';
-  import type { ScrollbarType } from '@ent-core/components/scroll-bar/interface';
-  import type { Nullable } from '@ent-core/types';
+  import Scrollbar from '../../../components/scroll-bar';
+  import { useScrollTo } from '../../../hooks/event/use-scroll-to';
+  import type { ScrollbarType } from '../../../components/scroll-bar/interface';
+  import type { Nullable } from '../../../types';
   import type { CSSProperties } from 'vue';
 
   export default defineComponent({

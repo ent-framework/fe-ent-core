@@ -1,5 +1,5 @@
 import { computed, unref } from 'vue';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import { useI18n } from '../../../hooks/web/use-i18n';
 import type { Ref } from 'vue';
 
 export function useUploadType({

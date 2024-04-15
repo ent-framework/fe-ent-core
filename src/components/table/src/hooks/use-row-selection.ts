@@ -2,7 +2,7 @@ import { computed, reactive, unref, watch } from 'vue';
 import { omit } from 'lodash-es';
 import type { ComputedRef, Ref } from 'vue';
 import type { BasicTableProps, TableRowSelection } from '../types/table';
-import type { EmitType, Recordable } from '@ent-core/types';
+import type { EmitType, Recordable } from '../../../../types';
 import type { DataTableRowKey } from 'naive-ui';
 
 export function useRowSelection(

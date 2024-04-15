@@ -1,9 +1,9 @@
-import { configureDynamicParamsMenu } from '@ent-core/router/helper/menu-helper';
-import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
-import { useAppStore } from '@ent-core/store/modules/app';
+import { configureDynamicParamsMenu } from '../../router/helper/menu-helper';
+import { PermissionModeEnum } from '../../logics/enums/app-enum';
+import { useAppStore } from '../../store/modules/app';
 
-import { usePermissionStore } from '@ent-core/store/modules/permission';
-import type { Menu } from '@ent-core/router/types';
+import { usePermissionStore } from '../../store/modules/permission';
+import type { Menu } from '../../router/types';
 import type { Router } from 'vue-router';
 
 export function createParamMenuGuard(router: Router) {

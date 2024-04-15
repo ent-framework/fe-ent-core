@@ -39,7 +39,7 @@
               </div>
             </template>
             <template #action>
-              <EntIcon icon="ant-design:edit-outlined" key="edit" />
+              <EntIcon key="edit" icon="ant-design:edit-outlined" />
               <EntDropdown
                 trigger="hover"
                 :drop-menu-list="[
@@ -54,7 +54,7 @@
                 ]"
                 popconfirm
               >
-                <EntIcon icon="ant-design:ellipsis-outlined" key="ellipsis" />
+                <EntIcon key="ellipsis" icon="ant-design:ellipsis-outlined" />
               </EntDropdown>
             </template>
             <NAvatar :src="item.avatar" />
@@ -69,12 +69,12 @@
 <script lang="ts">
   import { computed, defineComponent, onMounted, ref } from 'vue';
   import { NAvatar, NCard, NGrid, NGridItem, NImage, NSlider, NTooltip } from 'naive-ui';
-  import { isFunction } from '@ent-core/utils/is';
-  import { EntDropdown } from '@ent-core/components/dropdown';
-  import { EntIcon } from '@ent-core/components/icon';
-  import { EntForm, useForm } from '@ent-core/components/form';
-  import { propTypes } from '@ent-core/utils/prop-types';
-  import { EntButton } from '@ent-core/components/button';
+  import { isFunction } from '../../../utils/is';
+  import { EntDropdown } from '../../../components/dropdown';
+  import { EntIcon } from '../../../components/icon';
+  import { EntForm, useForm } from '../../../components/form';
+  import { propTypes } from '../../../utils/prop-types';
+  import { EntButton } from '../../../components/button';
   import { grid, useSlider } from './data';
 
   //暴露内部方法

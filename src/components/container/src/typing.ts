@@ -1,4 +1,4 @@
-import type { Nullable, RefType } from '@ent-core/types';
+import type { Nullable, RefType } from '../../../types';
 
 export type ScrollType = 'default' | 'main';
 

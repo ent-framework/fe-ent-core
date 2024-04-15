@@ -1,6 +1,6 @@
 import { createI18n } from 'vue-i18n';
-import { localeSetting } from '@ent-core/logics/settings/locale-setting';
-import { useLocaleStore } from '@ent-core/store/modules/locale';
+import { localeSetting } from '../logics/settings/locale-setting';
+import { useLocaleStore } from '../store/modules/locale';
 import zhCN from './lang/zh-CN';
 import en from './lang/en';
 

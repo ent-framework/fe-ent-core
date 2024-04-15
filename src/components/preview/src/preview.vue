@@ -17,9 +17,9 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { NImage, NImageGroup } from 'naive-ui';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { propTypes } from '@ent-core/utils/prop-types';
-  import { isString } from '@ent-core/utils/is';
+  import { useDesign } from '../../../hooks/web/use-design';
+  import { propTypes } from '../../../utils/prop-types';
+  import { isString } from '../../../utils/is';
   import type { PropType } from 'vue';
   import type { ImageItem } from './typing';
 

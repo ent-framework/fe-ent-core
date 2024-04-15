@@ -1,6 +1,6 @@
 import { defineComponent, getCurrentInstance } from 'vue';
 import { NEmpty } from 'naive-ui';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import { useI18n } from '../hooks/web/use-i18n';
 
 /**
  * 如果路由设置了组件名称，从已注册的组件中查找并显示

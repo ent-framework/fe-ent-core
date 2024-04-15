@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 
-import { localeSetting } from '@ent-core/logics/settings/locale-setting';
-import type { LocaleSetting, LocaleType } from '@ent-core/store/types';
+import { localeSetting } from '../../logics/settings/locale-setting';
+import type { LocaleSetting, LocaleType } from '../../store/types';
 
 export interface LocaleState {
   localInfo: LocaleSetting;

@@ -1,4 +1,4 @@
-import { withInstall } from '@ent-core/utils';
+import { withInstall } from '../../utils';
 import clickOutSide from './src/index.vue';
 
 export const EntClickOutSide = withInstall(clickOutSide);

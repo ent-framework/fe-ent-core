@@ -6,7 +6,7 @@
 <script lang="ts">
   import { computed, defineComponent, onMounted, ref, unref, watch, watchEffect } from 'vue';
   import { TransitionPresets, useTransition } from '@vueuse/core';
-  import { isNumber } from '@ent-core/utils/is';
+  import { isNumber } from '../../../utils/is';
 
   const props = {
     /**

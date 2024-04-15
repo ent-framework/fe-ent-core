@@ -6,7 +6,7 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, useSlots } from 'vue';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useDesign } from '../../../hooks/web/use-design';
   import BasicHelp from './basic-help.vue';
   import type { PropType } from 'vue';
   const props = {

@@ -6,8 +6,8 @@
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watchEffect } from 'vue';
   import { NButton } from 'naive-ui';
-  import { isFunction } from '@ent-core/utils/is';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { isFunction } from '../../../utils/is';
+  import { useI18n } from '../../../hooks/web/use-i18n';
   import { useCountdown } from './use-countdown';
   import type { PropType } from 'vue';
 

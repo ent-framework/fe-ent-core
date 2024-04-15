@@ -1,9 +1,9 @@
 <script lang="tsx">
   import { computed, defineComponent, nextTick, onMounted, reactive, ref, unref, watch } from 'vue';
-  import { useEventListener } from '@ent-core/hooks/event/use-event-listener';
-  import { getSlot } from '@ent-core/utils/helper/tsx-helper';
+  import { useEventListener } from '../../../hooks/event/use-event-listener';
+  import { getSlot } from '../../../utils/helper/tsx-helper';
   import type { CSSProperties, PropType } from 'vue';
-  import type { Recordable } from '@ent-core/types';
+  import type { Recordable } from '../../../types';
   type NumberOrNumberString = PropType<string | number | undefined>;
 
   const props = {

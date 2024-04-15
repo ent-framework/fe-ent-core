@@ -5,10 +5,10 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { EntTitle } from '@ent-core/components/basic';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { EntTitle } from '../../../../components/basic';
+  import { useDesign } from '../../../../hooks/web/use-design';
   import type { PropType } from 'vue';
-  import type { Recordable } from '@ent-core/types';
+  import type { Recordable } from '../../../../types';
 
   export default defineComponent({
     name: 'BasicTableTitle',

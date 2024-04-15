@@ -1,7 +1,7 @@
 import type { basicProps } from '../props';
 import type { PaginationProps } from 'naive-ui';
 import type { ColumnProps } from 'ant-design-vue/es/table';
-import type { EmitType, ExtractPublicPropTypes, Recordable } from '@ent-core/types';
+import type { EmitType, ExtractPublicPropTypes, Recordable } from '../../../../types';
 import type { FixedType } from 'ant-design-vue/es/vc-table/interface';
 import type { DataTableBaseColumn, DataTableRowKey } from 'naive-ui/es/data-table';
 

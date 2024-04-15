@@ -1,4 +1,4 @@
-import { createContext, useContext } from '@ent-core/hooks/core/use-context';
+import { createContext, useContext } from '../../../hooks/core/use-context';
 import type { InjectionKey, Ref } from 'vue';
 
 export interface AppProviderContextProps {

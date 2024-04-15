@@ -1,10 +1,10 @@
 import { toRaw } from 'vue';
 import { cloneDeep } from 'lodash-es';
-import { findPath, treeMap } from '@ent-core/utils/helper/tree-helper';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import { findPath, treeMap } from '../../utils/helper/tree-helper';
+import { useI18n } from '../../hooks/web/use-i18n';
 import type { RouteParams } from 'vue-router';
-import type { AppRouteRecordRaw, Menu, MenuModule } from '@ent-core/router/types';
-import type { Recordable } from '@ent-core/types';
+import type { AppRouteRecordRaw, Menu, MenuModule } from '../../router/types';
+import type { Recordable } from '../../types';
 
 export function getAllParentPath<T = Recordable>(treeData: T[], path: string) {
   const menuList = findPath(treeData, (n) => n.path === path) as Menu[];

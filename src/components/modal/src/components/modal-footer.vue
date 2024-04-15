@@ -20,7 +20,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { NFlex } from 'naive-ui';
-  import { useI18n } from '@ent-core/hooks';
+  import { useI18n } from '../../../../hooks';
   import { basicProps } from '../props';
   export default defineComponent({
     name: 'BasicModalFooter',

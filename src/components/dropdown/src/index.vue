@@ -7,9 +7,9 @@
   import { computed, defineComponent, h } from 'vue';
   import { NButton, NDropdown, NPopconfirm } from 'naive-ui';
   import { omit } from 'lodash-es';
-  import { isFunction, isString } from '@ent-core/utils';
-  import { EntIcon } from '@ent-core/components/icon';
-  import { useDesign } from '@ent-core/hooks';
+  import { isFunction, isString } from '../../../utils';
+  import { EntIcon } from '../../../components/icon';
+  import { useDesign } from '../../../hooks';
   import { basicDropdownProps } from './props';
   import type { DropdownRenderOption } from 'naive-ui';
   import type { DropMenu } from './typing';

@@ -1,8 +1,8 @@
 import { unref } from 'vue';
-import { isFunction, isString } from '@ent-core/utils/is';
+import { isFunction, isString } from '../../../../utils/is';
 import type { ComputedRef, HTMLAttributes } from 'vue';
 import type { BasicTableProps } from '../types/table';
-import type { EmitType, Recordable } from '@ent-core/types';
+import type { EmitType, Recordable } from '../../../../types';
 import type { CreateRowKey } from 'naive-ui/es/data-table/src/interface';
 import type { DataTableRowKey } from 'naive-ui';
 

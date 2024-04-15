@@ -1,6 +1,6 @@
 import type { basicProps, footerProps } from './props';
 import type { ComputedRef } from 'vue';
-import type { ExtractPublicPropTypes } from '@ent-core/types';
+import type { ExtractPublicPropTypes } from '../../../types';
 
 export interface DrawerInstance {
   setDrawerProps: (props: Partial<DrawerProps>) => void;

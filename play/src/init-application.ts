@@ -2,7 +2,7 @@ import { usePermission } from 'fe-ent-core/es/hooks/web/use-permission';
 import { useLocale } from 'fe-ent-core/es/locales';
 import localeEn from '/@/locale/en';
 import localeZh from '/@/locale/zh-CN';
-import { PermissionModeEnum } from '@ent-core/logics';
+import { PermissionModeEnum } from 'fe-ent-core/es/logics';
 
 export async function initApplication() {
   // ! Need to pay attention to the timing of execution

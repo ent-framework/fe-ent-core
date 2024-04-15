@@ -1,7 +1,7 @@
 import { modalProps } from 'naive-ui/es/modal';
 import type { PropType } from 'vue';
 import type { ModalWrapperProps } from './typing';
-import type { ButtonProps } from '@ent-core/components/button/interface';
+import type { ButtonProps } from '../../../components/button/interface';
 
 // export const modalProps = {
 //   open: { type: Boolean },

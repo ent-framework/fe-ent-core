@@ -1,4 +1,4 @@
-import type { ElRef } from '@ent-core/types';
+import type { ElRef } from '../../../types';
 
 export interface BarMapItem {
   offset: string;

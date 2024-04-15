@@ -2,7 +2,7 @@ import { inputGroupProps, inputProps } from 'naive-ui/es/input';
 import { inputNumberProps } from 'naive-ui/es/input-number';
 import { selectProps } from 'naive-ui/es/select';
 import { dividerProps } from 'naive-ui/es/divider';
-import { countDownInputProps } from '@ent-core/components/count-down';
+import { countDownInputProps } from '../../../../components/count-down';
 
 export type ComponentType =
   | 'Input'

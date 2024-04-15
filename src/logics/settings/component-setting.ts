@@ -1,7 +1,7 @@
 // Used to configure the general configuration of some components without modifying the components
 
-import type { SorterResult } from '@ent-core/components/table/interface';
-import type { Recordable } from '@ent-core/types';
+import type { SorterResult } from '../../components/table/interface';
+import type { Recordable } from '../../types';
 export default {
   // basic-table setting
   table: {

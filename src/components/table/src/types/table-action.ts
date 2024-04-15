@@ -1,7 +1,7 @@
 import type { ButtonProps } from 'naive-ui/es/button';
 import type { TooltipProps } from 'naive-ui/es/tooltip';
 import type { PopconfirmProps } from 'naive-ui/es/popconfirm';
-import type { Fn } from '@ent-core/types';
+import type { Fn } from '../../../../types';
 
 export interface TableActionItem extends ButtonProps {
   /**

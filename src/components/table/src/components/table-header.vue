@@ -25,7 +25,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { NDivider } from 'naive-ui';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useDesign } from '../../../../hooks/web/use-design';
   import { tableHeaderProps } from '../props';
   import TableSettingComponent from './settings/index.vue';
   import TableTitle from './table-title.vue';

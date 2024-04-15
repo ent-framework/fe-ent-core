@@ -4,9 +4,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "types": ["vite/client", "node", "./shims-vue"],
-    "paths": {
-      "@ent-core/*": ["./src/*"]
-    }
   },
   "include": [
     "src",

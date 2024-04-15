@@ -1,4 +1,4 @@
-import { withInstall } from '@ent-core/utils';
+import { withInstall } from '../../utils';
 import BasicArrow from './src/basic-arrow.vue';
 import BasicTitle from './src/basic-title.vue';
 import BasicHelp from './src/basic-help.vue';

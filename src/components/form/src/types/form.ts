@@ -1,9 +1,9 @@
 import type { basicProps } from '../props';
 import type { VNode } from 'vue';
-import type { ButtonProps } from '@ent-core/components/button/interface';
+import type { ButtonProps } from '../../../../components/button/interface';
 import type { ComponentType, componentsRegistry } from './index';
-import type { TableActionType } from '@ent-core/components/table/src/types/table';
-import type { ExtractPublicPropTypes, Recordable } from '@ent-core/types';
+import type { TableActionType } from '../../../../components/table/src/types/table';
+import type { ExtractPublicPropTypes, Recordable } from '../../../../types';
 import type { GridItemProps } from 'naive-ui/es/grid';
 import type { FormInst, FormItemProps, FormItemRule, FormRules } from 'naive-ui/es/form';
 

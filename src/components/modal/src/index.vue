@@ -38,13 +38,13 @@
   } from 'vue';
   import { omit } from 'lodash-es';
   import { NModal } from 'naive-ui';
-  import { deepMerge } from '@ent-core/utils';
+  import { deepMerge } from '../../../utils';
   import ModalFooter from './components/modal-footer.vue';
   import ModalHeader from './components/modal-header.vue';
   import { basicProps } from './props';
   import { useFullScreen } from './hooks/use-modal-full-screen';
   import type { ModalMethods, ModalProps } from './typing';
-  import type { Nullable, Recordable } from '@ent-core/types';
+  import type { Nullable, Recordable } from '../../../types';
 
   /**
    * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/modal/index.zh-CN.md

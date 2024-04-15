@@ -12,10 +12,10 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref } from 'vue';
-  import { NRadioGroup, NRadioButton } from 'naive-ui';
-  import { isString } from '@ent-core/utils/is';
-  import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
-  import { useAttrs } from '@ent-core/hooks/core/use-attrs';
+  import { NRadioButton, NRadioGroup } from 'naive-ui';
+  import { isString } from '../../../../utils/is';
+  import { useRuleFormItem } from '../../../../hooks/component/use-form-item';
+  import { useAttrs } from '../../../../hooks/core/use-attrs';
   import type { PropType } from 'vue';
 
   type OptionsItem = { label: string; value: string | number | boolean; disabled?: boolean };

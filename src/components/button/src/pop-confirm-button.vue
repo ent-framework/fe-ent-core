@@ -2,9 +2,9 @@
   import { computed, defineComponent, h, unref } from 'vue';
   import { NButton, NPopconfirm } from 'naive-ui';
   import { omit } from 'lodash-es';
-  import { useAttrs } from '@ent-core/hooks/core/use-attrs';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { type Recordable } from '@ent-core/types';
+  import { useAttrs } from '../../../hooks/core/use-attrs';
+  import { useI18n } from '../../../hooks/web/use-i18n';
+  import { type Recordable } from '../../../types';
   import { popConfirmBtnProps } from './props';
 
   export default defineComponent({

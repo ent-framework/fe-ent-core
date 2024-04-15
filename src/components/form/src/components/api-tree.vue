@@ -13,10 +13,10 @@
   import { type PropType, computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
   import { NTree } from 'naive-ui';
   import { get } from 'lodash-es';
-  import { EntIcon } from '@ent-core/components/icon';
-  import { isArray, isFunction } from '@ent-core/utils/is';
-  import { propTypes } from '@ent-core/utils/prop-types';
-  import type { AnyFunction, Recordable } from '@ent-core/types';
+  import { EntIcon } from '../../../../components/icon';
+  import { isArray, isFunction } from '../../../../utils/is';
+  import { propTypes } from '../../../../utils/prop-types';
+  import type { AnyFunction, Recordable } from '../../../../types';
   export default defineComponent({
     name: 'ApiTree',
     components: { NTree, EntIcon },

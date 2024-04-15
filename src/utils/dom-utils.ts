@@ -1,5 +1,5 @@
 import { upperFirst } from 'lodash-es';
-import type { Fn } from '@ent-core/types';
+import type { Fn } from '../types';
 import type { FunctionArgs } from '@vueuse/core';
 
 export interface ViewportOffsetResult {

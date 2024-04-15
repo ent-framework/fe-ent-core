@@ -1,4 +1,4 @@
-import { createLoading } from '@ent-core/components/loading';
+import { createLoading } from '../components/loading';
 import type { App, Directive } from 'vue';
 
 const loadingDirective: Directive = {

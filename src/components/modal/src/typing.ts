@@ -1,6 +1,6 @@
 import type { basicProps } from './props';
 import type { ComputedRef } from 'vue';
-import type { ExtractPublicPropTypes } from '@ent-core/types';
+import type { ExtractPublicPropTypes } from '../../../types';
 /**
  * @description: 弹窗对外暴露的方法
  */

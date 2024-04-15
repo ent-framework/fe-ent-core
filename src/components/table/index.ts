@@ -1,4 +1,4 @@
-import { withInstall } from '@ent-core/utils';
+import { withInstall } from '../../utils';
 import BasicTable from './src/index.vue';
 import TableAction from './src/components/table-action.vue';
 import TableImg from './src/components/table-img.vue';

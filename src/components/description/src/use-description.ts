@@ -1,6 +1,6 @@
 import { getCurrentInstance, ref, unref } from 'vue';
 import type { DescInstance, DescriptionProps, UseDescReturnType } from './typing';
-import type { Nullable } from '@ent-core/types';
+import type { Nullable } from '../../../types';
 
 export function useDescription(props?: Partial<DescriptionProps>): UseDescReturnType {
   if (!getCurrentInstance()) {

@@ -1,6 +1,6 @@
 import type { RouteMeta, RouteRecordRaw, Router } from 'vue-router';
 import type { defineComponent } from 'vue';
-import type { Recordable } from '@ent-core/types';
+import type { Recordable } from '../types';
 //import type { ItemType } from 'ant-design-vue/es/menu';
 
 export type Component<T = any> =

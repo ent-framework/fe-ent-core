@@ -19,8 +19,8 @@
 <script lang="ts">
   import { defineComponent, onMounted, reactive, ref, toRef, toRefs } from 'vue';
   import { NSkeleton } from 'naive-ui';
-  import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
-  import { useIntersectionObserver } from '@ent-core/hooks/event/use-intersection-observer';
+  import { useTimeoutFn } from '../../../hooks/core/use-timeout';
+  import { useIntersectionObserver } from '../../../hooks/event/use-intersection-observer';
   import type { PropType } from 'vue';
 
   interface State {

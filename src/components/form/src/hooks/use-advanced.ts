@@ -1,9 +1,9 @@
 import { computed, getCurrentInstance, shallowReactive, unref, watch } from 'vue';
 import { useDebounceFn } from '@vueuse/shared';
-import { isBoolean, isNullOrUnDef, isNumber, isObject } from '@ent-core/utils/is';
-import { useBreakpoint } from '@ent-core/hooks/event/use-breakpoint';
+import { isBoolean, isNullOrUnDef, isNumber, isObject } from '../../../../utils/is';
+import { useBreakpoint } from '../../../../hooks/event/use-breakpoint';
 import type { ComputedRef, Ref, ShallowReactive } from 'vue';
-import type { EmitType, Recordable } from '@ent-core/types';
+import type { EmitType, Recordable } from '../../../../types';
 import type { FormProps, FormSchema } from '../types/form';
 import type { AdvanceState } from '../types/hooks';
 import type { GridItemProps } from 'naive-ui/es/grid';

@@ -4,10 +4,10 @@
 
 import { computed, unref } from 'vue';
 import { dateEnUS, dateZhCN, enUS, zhCN } from 'naive-ui';
-import { useLocaleStore } from '@ent-core/store/modules/locale';
+import { useLocaleStore } from '../store/modules/locale';
 import { i18n } from './setup-i18n';
 import { loadLocalePool, setHtmlPageLang } from './helper';
-import type { LocaleType } from '@ent-core/store/types';
+import type { LocaleType } from '../store/types';
 import type { NDateLocale, NLocale } from 'naive-ui';
 
 interface NaiveUILocale {

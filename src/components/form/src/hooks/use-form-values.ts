@@ -1,9 +1,9 @@
 import { unref } from 'vue';
 import { cloneDeep, set } from 'lodash-es';
-import { isArray, isFunction, isNullOrUnDef, isObject, isString } from '@ent-core/utils/is';
+import { isArray, isFunction, isNullOrUnDef, isObject, isString } from '../../../../utils/is';
 import type { ComputedRef, Ref } from 'vue';
 import type { FormProps, FormSchema } from '../types/form';
-import type { Recordable } from '@ent-core/types';
+import type { Recordable } from '../../../../types';
 
 interface UseFormValuesContext {
   defaultValueRef: Ref<any>;

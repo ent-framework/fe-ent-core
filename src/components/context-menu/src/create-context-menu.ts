@@ -1,8 +1,8 @@
 import { createVNode, render } from 'vue';
-import { isClient } from '@ent-core/utils/is';
+import { isClient } from '../../../utils/is';
 import contextMenuVue from './index.vue';
 import type { ContextMenuProps, CreateContextOptions } from './typing';
-import type { Fn } from '@ent-core/types';
+import type { Fn } from '../../../types';
 
 const menuManager: {
   domList: Element[];

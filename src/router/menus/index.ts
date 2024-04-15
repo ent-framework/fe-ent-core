@@ -1,14 +1,14 @@
 import { pathToRegexp } from 'path-to-regexp';
 import { cloneDeep } from 'lodash-es';
-import { useAppStore } from '@ent-core/store/modules/app';
-import { usePermissionStore } from '@ent-core/store/modules/permission';
-import { getAllParentPath } from '@ent-core/router/helper/menu-helper';
-import { filter } from '@ent-core/utils/helper/tree-helper';
-import { isUrl } from '@ent-core/utils/is';
-import { useEntRouter } from '@ent-core/router/base';
-import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
+import { useAppStore } from '../../store/modules/app';
+import { usePermissionStore } from '../../store/modules/permission';
+import { getAllParentPath } from '../../router/helper/menu-helper';
+import { filter } from '../../utils/helper/tree-helper';
+import { isUrl } from '../../utils/is';
+import { useEntRouter } from '../../router/base';
+import { PermissionModeEnum } from '../../logics/enums/app-enum';
 import type { RouteRecordNormalized } from 'vue-router';
-import type { Menu } from '@ent-core/router/types';
+import type { Menu } from '../../router/types';
 
 // ===========================
 // ==========Helper===========

@@ -15,9 +15,9 @@
   import { computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { NTransfer } from 'naive-ui';
   import { get, omit } from 'lodash-es';
-  import { isFunction } from '@ent-core/utils/is';
-  import { propTypes } from '@ent-core/utils/prop-types';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { isFunction } from '../../../../utils/is';
+  import { propTypes } from '../../../../utils/prop-types';
+  import { useI18n } from '../../../../hooks/web/use-i18n';
   import type { PropType } from 'vue';
   import type { TransferDirection, TransferItem } from 'ant-design-vue/es/transfer';
 

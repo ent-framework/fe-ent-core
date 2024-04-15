@@ -1,4 +1,4 @@
-import { withInstall } from '@ent-core/utils';
+import { withInstall } from '../../utils';
 import BasicDragVerify from './src/drag-verify.vue';
 import RotateDragVerify from './src/img-rotate.vue';
 

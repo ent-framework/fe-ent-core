@@ -11,10 +11,10 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
-  import { EntIcon } from '@ent-core/components/icon';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useRootSetting, useThemeSetting } from '@ent-core/hooks/setting';
-  import { ThemeEnum } from '@ent-core/logics/enums/app-enum';
+  import { EntIcon } from '../../../components/icon';
+  import { useDesign } from '../../../hooks/web/use-design';
+  import { useRootSetting, useThemeSetting } from '../../../hooks/setting';
+  import { ThemeEnum } from '../../../logics/enums/app-enum';
 
   export default defineComponent({
     name: 'EntDarkModeToggle',

@@ -1,5 +1,5 @@
 import { computed, unref } from 'vue';
-import { useAppProviderContext } from '@ent-core/components/app-provider';
+import { useAppProviderContext } from '../../components/app-provider';
 
 export function useAppInject() {
   const values = useAppProviderContext();

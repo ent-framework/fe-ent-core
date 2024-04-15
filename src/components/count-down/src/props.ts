@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import type {Size} from 'naive-ui/es/input/src/interface';
+import type { Size } from 'naive-ui/es/input/src/interface';
 
 export const countDownInputProps = {
   /**

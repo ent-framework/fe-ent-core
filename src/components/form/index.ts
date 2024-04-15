@@ -1,4 +1,4 @@
-import { withInstall } from '@ent-core/utils';
+import { withInstall } from '../../utils';
 import BasicForm from './src/index.vue';
 
 export { useComponentRegister } from './src/hooks/use-component-register';

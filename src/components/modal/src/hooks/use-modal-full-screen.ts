@@ -1,6 +1,6 @@
 import { computed, ref, unref } from 'vue';
 import type { Ref } from 'vue';
-import type { ComponentRef } from '@ent-core/types';
+import type { ComponentRef } from '../../../../types';
 
 export interface UseFullScreenContext {
   wrapClassName: Ref<string | undefined>;

@@ -1,10 +1,10 @@
 <script lang="tsx">
   import { computed, defineComponent, unref } from 'vue';
   import { NTooltip } from 'naive-ui';
-  import EntIcon from '@ent-core/components/icon/src/icon.vue';
-  import { isArray, isString } from '@ent-core/utils/is';
-  import { getSlot } from '@ent-core/utils/helper/tsx-helper';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import EntIcon from '../../../components/icon/src/icon.vue';
+  import { isArray, isString } from '../../../utils/is';
+  import { getSlot } from '../../../utils/helper/tsx-helper';
+  import { useDesign } from '../../../hooks/web/use-design';
   import type { CSSProperties, PropType } from 'vue';
 
   const props = {

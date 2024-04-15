@@ -38,9 +38,9 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { NFormItem } from 'naive-ui';
-  import { EntButton } from '@ent-core/components/button';
-  import { EntArrow } from '@ent-core/components/basic';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { EntButton } from '../../../../components/button';
+  import { EntArrow } from '../../../../components/basic';
+  import { useI18n } from '../../../../hooks/web/use-i18n';
   import { useFormContext } from '../hooks/use-form-context';
   import { formActionProps } from '../props';
   import type { FormButtonOptions } from '../types/form';

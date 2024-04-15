@@ -1,7 +1,7 @@
 import { treeProps } from 'naive-ui/es/tree';
-import type { ContextMenuItem } from '@ent-core/components/context-menu/interface';
+import type { ContextMenuItem } from '../../../../components/context-menu/interface';
 import type { ExtractPropTypes, PropType } from 'vue';
-import type { Recordable } from '@ent-core/types';
+import type { Recordable } from '../../../../types';
 import type { TreeOption } from 'naive-ui/es/tree/src/interface';
 
 export enum ToolbarEnum {

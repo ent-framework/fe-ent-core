@@ -1,8 +1,8 @@
 import { inject } from 'vue';
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
 import { noop } from '@vueuse/core';
-import { getAppEnvConfig } from '@ent-core/utils/env';
-import { routeWrapper } from '@ent-core/router/helper/route-helper';
+import { getAppEnvConfig } from '../utils/env';
+import { routeWrapper } from '../router/helper/route-helper';
 import { routerKey } from './router_symbols';
 import type { AppRouteRecordRaw, EntRouter } from './types';
 import type { App } from 'vue';

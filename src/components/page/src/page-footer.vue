@@ -11,8 +11,8 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  //import { useMenuSetting } from '@ent-core/hooks/setting/use-menu-setting';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  //import { useMenuSetting } from '../../../hooks/setting/use-menu-setting';
+  import { useDesign } from '../../../hooks/web/use-design';
 
   export default defineComponent({
     name: 'PageFooter',

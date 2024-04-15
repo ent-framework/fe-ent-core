@@ -1,4 +1,4 @@
-import { withInstall } from '@ent-core/utils';
+import { withInstall } from '../../utils';
 import Icon from './src/icon.vue';
 import IconPicker from './src/icon-picker.vue';
 

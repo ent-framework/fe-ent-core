@@ -1,4 +1,4 @@
-import type { Recordable } from '@ent-core/types';
+import type { Recordable } from '../../types';
 export type ErrorMessageMode = 'none' | 'modal' | 'message' | undefined;
 
 export interface BasicPageParams {

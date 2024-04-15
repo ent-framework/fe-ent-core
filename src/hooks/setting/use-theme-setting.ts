@@ -1,10 +1,10 @@
 import { computed } from 'vue';
 
-import { useAppStore } from '@ent-core/store/modules/app';
+import { useAppStore } from '../../store/modules/app';
 
-import type { ThemeEnum } from '@ent-core/logics';
-import type { ThemeSetting } from '@ent-core/store/types';
-import type { DeepPartial } from '@ent-core/types';
+import type { ThemeEnum } from '../../logics';
+import type { ThemeSetting } from '../../store/types';
+import type { DeepPartial } from '../../types';
 
 export function useThemeSetting() {
   const appStore = useAppStore();

@@ -40,15 +40,15 @@
   import { computed, defineComponent, ref, unref, watch } from 'vue';
   import { NSpace, NTooltip } from 'naive-ui';
   import { omit } from 'lodash-es';
-  import { EntIcon } from '@ent-core/components/icon';
-  import { EntButton } from '@ent-core/components/button';
-  import { useModal } from '@ent-core/components/modal';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { isArray } from '@ent-core/utils/is';
+  import { EntIcon } from '../../../components/icon';
+  import { EntButton } from '../../../components/button';
+  import { useModal } from '../../../components/modal';
+  import { useI18n } from '../../../hooks/web/use-i18n';
+  import { isArray } from '../../../utils/is';
   import { uploadContainerProps } from './props';
   import UploadPreviewModal from './upload-preview-modal.vue';
   import UploadModal from './upload-modal.vue';
-  import type { Recordable } from '@ent-core/types';
+  import type { Recordable } from '../../../types';
   export default defineComponent({
     name: 'EntUpload',
     components: { UploadModal, UploadPreviewModal, EntIcon, NSpace, NTooltip, EntButton },

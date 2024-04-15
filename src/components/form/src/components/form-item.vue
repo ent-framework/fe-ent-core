@@ -1,15 +1,15 @@
 <script lang="tsx">
-  import { computed, defineComponent, unref, ref } from 'vue';
+  import { computed, defineComponent, ref, unref } from 'vue';
   import { NFormItem } from 'naive-ui';
   import { cloneDeep, upperFirst } from 'lodash-es';
-  import { EntHelp } from '@ent-core/components/basic';
-  import { isBoolean, isFunction, isNull } from '@ent-core/utils/is';
-  import { getSlot } from '@ent-core/utils/helper/tsx-helper';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { EntHelp } from '../../../../components/basic';
+  import { isBoolean, isFunction, isNull } from '../../../../utils/is';
+  import { getSlot } from '../../../../utils/helper/tsx-helper';
+  import { useI18n } from '../../../../hooks/web/use-i18n';
   import { createPlaceholderMessage, setComponentRuleType } from '../helper';
   import { componentMap } from '../component-map';
   import { formItemProps } from '../props';
-  import type { Nullable, Recordable } from '@ent-core/types';
+  import type { Nullable, Recordable } from '../../../../types';
   import type { FormItemInst, FormItemRule } from 'naive-ui/es/form';
 
   export default defineComponent({

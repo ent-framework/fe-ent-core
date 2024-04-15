@@ -2,12 +2,12 @@
   import { computed, defineComponent, reactive, ref, toRaw, unref, watch, watchEffect } from 'vue';
   import { NDropdown, NSpin, NTree } from 'naive-ui';
   import { cloneDeep, omit } from 'lodash-es';
-  import { EntScrollContainer } from '@ent-core/components/container';
-  import { isFunction } from '@ent-core/utils/is';
-  import { extendSlots } from '@ent-core/utils/helper/tsx-helper';
+  import { EntScrollContainer } from '../../../components/container';
+  import { isFunction } from '../../../utils/is';
+  import { extendSlots } from '../../../utils/helper/tsx-helper';
 
-  import { useContextMenu } from '@ent-core/hooks/web/use-context-menu';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useContextMenu } from '../../../hooks/web/use-context-menu';
+  import { useDesign } from '../../../hooks/web/use-design';
 
   import { useTree } from './hooks/use-tree';
   import { TreeIcon } from './tree-icon';
@@ -16,10 +16,10 @@
   import type {
     ContextMenuItem,
     CreateContextOptions,
-  } from '@ent-core/components/context-menu/interface';
+  } from '../../../components/context-menu/interface';
   import type { FieldNames, KeyType, TreeActionType, TreeItem, TreeState } from './types/tree';
   import type { DropdownOption, TreeOption, TreeProps } from 'naive-ui';
-  import type { Recordable } from '@ent-core/types';
+  import type { Recordable } from '../../../types';
   import type { CSSProperties } from 'vue';
 
   /**

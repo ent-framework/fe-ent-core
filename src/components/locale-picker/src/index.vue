@@ -18,10 +18,10 @@
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watchEffect } from 'vue';
   import { NPopselect } from 'naive-ui';
-  import { EntIcon } from '@ent-core/components/icon';
-  import { useLocale } from '@ent-core/locales/use-locale';
-  import { localeList } from '@ent-core/logics/settings/locale-setting';
-  import type { LocaleType } from '@ent-core/store/types';
+  import { EntIcon } from '../../../components/icon';
+  import { useLocale } from '../../../locales/use-locale';
+  import { localeList } from '../../../logics/settings/locale-setting';
+  import type { LocaleType } from '../../../store/types';
   import type { DropdownOption } from 'naive-ui';
 
   const props = {

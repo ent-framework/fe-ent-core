@@ -1,6 +1,6 @@
 import { unref } from 'vue';
 import { cloneDeep } from 'lodash-es';
-import { forEach } from '@ent-core/utils/helper/tree-helper';
+import { forEach } from '../../../../utils/helper/tree-helper';
 import type { FieldNames, InsertNodeParams, KeyType, TreeItem } from '../types/tree';
 import type { ComputedRef, Ref } from 'vue';
 

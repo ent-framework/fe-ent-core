@@ -3,8 +3,8 @@
 -->
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { usePermission } from '@ent-core/hooks/web/use-permission';
-  import { getSlot } from '@ent-core/utils/helper/tsx-helper';
+  import { usePermission } from '../../../hooks/web/use-permission';
+  import { getSlot } from '../../../utils/helper/tsx-helper';
   import type { PropType } from 'vue';
 
   export default defineComponent({

@@ -1,16 +1,16 @@
 import { defineStore } from 'pinia';
 
-import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
-import { resetRouter } from '@ent-core/router/base';
-import { deepMerge } from '@ent-core/utils/base';
-import { Factory, ThemeEnum } from '@ent-core/logics';
+import { defaultProjectSetting } from '../../logics/settings/project-setting';
+import { resetRouter } from '../../router/base';
+import { deepMerge } from '../../utils/base';
+import { Factory, ThemeEnum } from '../../logics';
 import type {
   BeforeMiniState,
   ProjectConfig,
   ThemeSetting,
   TransitionSetting,
-} from '@ent-core/store/types';
-import type { DeepPartial, TimeoutHandle } from '@ent-core/types';
+} from '../../store/types';
+import type { DeepPartial, TimeoutHandle } from '../../types';
 
 export interface AppState {
   // Page loading status

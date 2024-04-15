@@ -1,14 +1,14 @@
 import { intersection } from 'lodash-es';
-import { useAppStore } from '@ent-core/store/modules/app';
-import { usePermissionStore } from '@ent-core/store/modules/permission';
-import { useUserStore } from '@ent-core/store/modules/user';
+import { useAppStore } from '../../store/modules/app';
+import { usePermissionStore } from '../../store/modules/permission';
+import { useUserStore } from '../../store/modules/user';
 
-import { entRouter, resetRouter } from '@ent-core/router';
+import { entRouter, resetRouter } from '../../router';
 
-import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
-import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
+import { defaultProjectSetting } from '../../logics/settings/project-setting';
+import { PermissionModeEnum } from '../../logics/enums/app-enum';
 
-import { isArray } from '@ent-core/utils/is';
+import { isArray } from '../../utils/is';
 //import { useTabs } from './use-tabs';
 import type { RouteRecordRaw } from 'vue-router';
 

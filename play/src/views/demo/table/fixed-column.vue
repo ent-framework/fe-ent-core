@@ -61,7 +61,7 @@
               {
                 actions: [
                   {
-                    label: '删除',
+                    tooltip: '删除',
                     icon: 'ant-design:delete-outlined',
                     onClick: handleDelete.bind(null, record),
                   },

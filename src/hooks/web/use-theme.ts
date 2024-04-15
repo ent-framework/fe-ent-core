@@ -1,11 +1,10 @@
 import { computed, unref } from 'vue';
 import { darkTheme, lightTheme } from 'naive-ui';
-import { useAppStore } from '@ent-core/store';
-import { ThemeEnum } from '@ent-core/logics';
+import { useAppStore } from '../../store';
+import { ThemeEnum } from '../../logics';
 import type { BuiltInGlobalTheme } from 'naive-ui/es/themes/interface';
 
 export function useTheme() {
-
   const appStore = useAppStore();
 
   const appTheme = computed(() => {

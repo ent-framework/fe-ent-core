@@ -27,8 +27,8 @@
     ref,
     unref,
   } from 'vue';
-  import { addResizeListener, removeResizeListener } from '@ent-core/utils/event';
-  import componentSetting from '@ent-core/logics/settings/component-setting';
+  import { addResizeListener, removeResizeListener } from '../../../utils/event';
+  import componentSetting from '../../../logics/settings/component-setting';
   import { toObject } from './util';
   import Bar from './bar';
   const { scrollbar } = componentSetting;

@@ -1,4 +1,4 @@
-import { isElement, isServer } from '@ent-core/utils/is';
+import { isElement, isServer } from '../utils/is';
 import type { ComponentPublicInstance, DirectiveBinding, ObjectDirective } from 'vue';
 
 type DocumentHandler = <T extends MouseEvent>(mouseup: T, mousedown: T) => void;

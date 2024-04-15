@@ -1,12 +1,12 @@
-import { CacheTypeEnum } from '@ent-core/logics/enums/cache-enum';
+import { CacheTypeEnum } from '../../logics/enums/cache-enum';
 import {
   PermissionModeEnum,
   RouterTransitionEnum,
   SessionTimeoutProcessingEnum,
   ThemeEnum,
-} from '@ent-core/logics/enums/app-enum';
-import type { ProjectConfig } from '@ent-core/store/types';
-import type { DeepPartial } from '@ent-core/types';
+} from '../../logics/enums/app-enum';
+import type { ProjectConfig } from '../../store/types';
+import type { DeepPartial } from '../../types';
 
 // ! You need to clear the browser cache after the change
 const setting: DeepPartial<ProjectConfig> = {

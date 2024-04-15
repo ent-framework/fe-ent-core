@@ -9,8 +9,8 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { NTooltip } from 'naive-ui';
-  import { EntIcon } from '@ent-core/components/icon';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { EntIcon } from '../../../../../components/icon';
+  import { useI18n } from '../../../../../hooks/web/use-i18n';
   import { useTableContext } from '../../hooks/use-table-context';
 
   export default defineComponent({

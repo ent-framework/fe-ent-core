@@ -24,18 +24,18 @@
 <script lang="ts">
   import { computed, defineComponent, h, toRaw, unref } from 'vue';
   import { NFlex, NTooltip } from 'naive-ui';
-  import Icon from '@ent-core/components/icon';
-  import { EntPopButton } from '@ent-core/components/button';
-  import { EntDropdown } from '@ent-core/components/dropdown';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { usePermission } from '@ent-core/hooks/web/use-permission';
-  import { isBoolean, isString } from '@ent-core/utils/is';
-  import { propTypes } from '@ent-core/utils/prop-types';
+  import Icon from '../../../../components/icon';
+  import { EntPopButton } from '../../../../components/button';
+  import { EntDropdown } from '../../../../components/dropdown';
+  import { useDesign } from '../../../../hooks/web/use-design';
+  import { usePermission } from '../../../../hooks/web/use-permission';
+  import { isBoolean, isString } from '../../../../utils/is';
+  import { propTypes } from '../../../../utils/prop-types';
   import { useTableContext } from '../hooks/use-table-context';
   import { ACTION_COLUMN_FLAG } from '../const';
-  import type { PopButtonProps } from '@ent-core/components/button/interface';
-  import type { DropMenu } from '@ent-core/components/dropdown/interface';
-  import type { TableActionItem, TableActionType } from '@ent-core/components/table/interface';
+  import type { PopButtonProps } from '../../../../components/button/interface';
+  import type { DropMenu } from '../../../../components/dropdown/interface';
+  import type { TableActionItem, TableActionType } from '../../../../components/table/interface';
   import type { TooltipProps } from 'naive-ui';
   import type { PropType } from 'vue';
 

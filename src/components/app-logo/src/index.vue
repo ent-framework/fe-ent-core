@@ -18,8 +18,8 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { NEl } from 'naive-ui';
-  import { useDesign, useGlobSetting, useGo } from '@ent-core/hooks';
-  import { useUserStore } from '@ent-core/store';
+  import { useDesign, useGlobSetting, useGo } from '../../../hooks';
+  import { useUserStore } from '../../../store';
   import LogoImg from './logo.png';
   import type { CSSProperties } from 'vue';
   const props = {

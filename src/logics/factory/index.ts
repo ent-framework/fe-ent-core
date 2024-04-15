@@ -1,9 +1,9 @@
-import { UserService } from '@ent-core/logics/factory/user';
-import { LayoutService } from '@ent-core/logics/factory/layout';
-import { HttpService } from '@ent-core/logics/factory/http';
-import type { UserFactory } from '@ent-core/logics/factory/user';
-import type { LayoutFactory } from '@ent-core/logics/factory/layout';
-import type { HttpFactory } from '@ent-core/logics/factory/http';
+import { UserService } from '../../logics/factory/user';
+import { LayoutService } from '../../logics/factory/layout';
+import { HttpService } from '../../logics/factory/http';
+import type { UserFactory } from '../../logics/factory/user';
+import type { LayoutFactory } from '../../logics/factory/layout';
+import type { HttpFactory } from '../../logics/factory/http';
 
 export class Factory {
   private static userFactory: UserFactory = new UserService();

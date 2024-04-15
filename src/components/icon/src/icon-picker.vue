@@ -61,14 +61,14 @@
 <script lang="ts">
   import { defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { NEmpty, NFlex, NInput, NPagination, NPopover } from 'naive-ui';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { EntScrollContainer } from '@ent-core/components/container';
+  import { useDesign } from '../../../hooks/web/use-design';
+  import { EntScrollContainer } from '../../../components/container';
 
-  import { propTypes } from '@ent-core/utils/prop-types';
-  import { usePagination } from '@ent-core/hooks/web/use-pagination';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useCopyToClipboard } from '@ent-core/hooks/web/use-copy-to-clipboard';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
+  import { propTypes } from '../../../utils/prop-types';
+  import { usePagination } from '../../../hooks/web/use-pagination';
+  import { useI18n } from '../../../hooks/web/use-i18n';
+  import { useCopyToClipboard } from '../../../hooks/web/use-copy-to-clipboard';
+  import { useMessage } from '../../../hooks/web/use-message';
   import { useIconData } from './use-icon-data';
   import Icon from './icon.vue';
 

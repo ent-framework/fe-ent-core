@@ -1,4 +1,4 @@
-import { withInstall } from '@ent-core/utils';
+import { withInstall } from '../../utils';
 
 import appDarkModeToggle from './src/index.vue';
 

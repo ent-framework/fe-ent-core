@@ -30,13 +30,13 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useModal } from '@ent-core/components/modal';
-  import { useMessage } from '@ent-core/hooks/web/use-message';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import Icon from '@ent-core/components/icon';
+  import { useDesign } from '../../../hooks/web/use-design';
+  import { useModal } from '../../../components/modal';
+  import { useMessage } from '../../../hooks/web/use-message';
+  import { useI18n } from '../../../hooks/web/use-i18n';
+  import Icon from '../../../components/icon';
   import CopperModal from './copper-modal.vue';
-  import type { ButtonProps } from '@ent-core/components/button/interface';
+  import type { ButtonProps } from '../../../components/button/interface';
   import type { CSSProperties, PropType } from 'vue';
 
   type apiFunParams = { file: Blob; name: string; filename: string };

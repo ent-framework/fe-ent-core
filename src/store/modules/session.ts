@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
-import { Factory } from '@ent-core/logics/factory';
-import type { Nullable } from '@ent-core/types';
-import type { LoginResultModel, Session } from '@ent-core/logics/types';
+import { Factory } from '../../logics/factory';
+import type { Nullable } from '../../types';
+import type { LoginResultModel, Session } from '../../logics/types';
 
 export interface SessionState {
   session: Nullable<Session>;

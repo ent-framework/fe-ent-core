@@ -1,8 +1,8 @@
 import { nextTick, onUnmounted, ref, unref, watch } from 'vue';
-import { error } from '@ent-core/utils/log';
-import { getDynamicProps } from '@ent-core/utils';
+import { error } from '../../../../utils/log';
+import { getDynamicProps } from '../../../../utils';
 import type { FormActionType, FormProps, FormSchema, UseFormReturnType } from '../types/form';
-import type { Nullable, Recordable } from '@ent-core/types';
+import type { Nullable, Recordable } from '../../../../types';
 import type { ValidateError } from 'async-validator';
 
 export function useForm(props?: Partial<FormProps>): UseFormReturnType {

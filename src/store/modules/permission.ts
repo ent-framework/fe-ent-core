@@ -1,23 +1,23 @@
 import { toRaw } from 'vue';
 import { defineStore } from 'pinia';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import { useI18n } from '../../hooks/web/use-i18n';
 import {
   backendRouteFilter,
   flatMultiLevelRoutes,
   routeWrapper,
-} from '@ent-core/router/helper/route-helper';
-import { transformRouteToMenu } from '@ent-core/router/helper/menu-helper';
-import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
-import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
-import { PermissionModeEnum } from '@ent-core/logics/enums/app-enum';
-import { filter } from '@ent-core/utils/helper/tree-helper';
-import { Factory } from '@ent-core/logics/factory';
-import { useMessage } from '@ent-core/hooks/web/use-message';
-import { entRouter } from '@ent-core/router/base';
-import { isArray } from '@ent-core/utils/is';
+} from '../../router/helper/route-helper';
+import { transformRouteToMenu } from '../../router/helper/menu-helper';
+import { useGlobSetting } from '../../hooks/setting/use-glob-setting';
+import { defaultProjectSetting } from '../../logics/settings/project-setting';
+import { PermissionModeEnum } from '../../logics/enums/app-enum';
+import { filter } from '../../utils/helper/tree-helper';
+import { Factory } from '../../logics/factory';
+import { useMessage } from '../../hooks/web/use-message';
+import { entRouter } from '../../router/base';
+import { isArray } from '../../utils/is';
 import { useAppStore } from './app';
 import { useUserStore } from './user';
-import type { AppRouteRecordRaw, Menu } from '@ent-core/router/types';
+import type { AppRouteRecordRaw, Menu } from '../../router/types';
 
 export interface PermissionState {
   // Permission code list

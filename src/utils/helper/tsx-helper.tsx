@@ -1,4 +1,4 @@
-import { isFunction } from '@ent-core/utils/is';
+import { isFunction } from '../../utils/is';
 import type { Slots } from 'vue';
 
 /**

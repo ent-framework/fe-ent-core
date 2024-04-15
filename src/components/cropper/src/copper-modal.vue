@@ -138,12 +138,12 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { NAvatar, NSpace, NTooltip, NUpload } from 'naive-ui';
-  import { isFunction } from '@ent-core/utils/is';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { EntModal, useModalInner } from '@ent-core/components/modal';
-  import { Factory } from '@ent-core/logics/factory';
-  import { dataURLtoBlob } from '@ent-core/utils/file/base64-convert';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { isFunction } from '../../../utils/is';
+  import { useDesign } from '../../../hooks/web/use-design';
+  import { EntModal, useModalInner } from '../../../components/modal';
+  import { Factory } from '../../../logics/factory';
+  import { dataURLtoBlob } from '../../../utils/file/base64-convert';
+  import { useI18n } from '../../../hooks/web/use-i18n';
   import CropperImage from './cropper.vue';
   import type { PropType } from 'vue';
   import type { CropendResult, Cropper } from './typing';

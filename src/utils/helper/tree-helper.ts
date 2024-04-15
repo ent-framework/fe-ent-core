@@ -1,4 +1,4 @@
-import type { Fn } from '@ent-core/types';
+import type { Fn } from '../../types';
 
 export interface TreeHelperConfig {
   id: string;

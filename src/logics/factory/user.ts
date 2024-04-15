@@ -1,13 +1,13 @@
-import { defHttp } from '@ent-core/utils/http';
-import { useGlobSetting } from '@ent-core/hooks';
-import type { ErrorMessageMode } from '@ent-core/logics/types/axios';
+import { defHttp } from '../../utils/http';
+import { useGlobSetting } from '../../hooks';
+import type { ErrorMessageMode } from '../../logics/types/axios';
 import type {
   LoginParams,
   LoginResultModel,
   Session,
   UserInfoModel,
-} from '@ent-core/logics/types/user';
-import type { AppRouteRecordRaw } from '@ent-core/router';
+} from '../../logics/types/user';
+import type { AppRouteRecordRaw } from '../../router';
 
 enum Api {
   Login = '/login',

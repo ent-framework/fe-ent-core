@@ -1,8 +1,8 @@
-import { useAppStore } from '@ent-core/store/modules/app';
-import { useUserStore } from '@ent-core/store/modules/user';
-import { usePermissionStore } from '@ent-core/store/modules/permission';
-import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
-import { useSessionStore } from '@ent-core/store/modules/session';
+import { useAppStore } from '../../store/modules/app';
+import { useUserStore } from '../../store/modules/user';
+import { usePermissionStore } from '../../store/modules/permission';
+import { useGlobSetting } from '../../hooks/setting/use-glob-setting';
+import { useSessionStore } from '../../store/modules/session';
 import type { Router } from 'vue-router';
 
 export function createStateGuard(router: Router) {

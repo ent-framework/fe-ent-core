@@ -41,15 +41,15 @@
     watch,
   } from 'vue';
   import { NDrawer, NDrawerContent } from 'naive-ui';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { isFunction } from '@ent-core/utils/is';
-  import { deepMerge } from '@ent-core/utils';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { useAttrs } from '@ent-core/hooks/core/use-attrs';
+  import { useI18n } from '../../../hooks/web/use-i18n';
+  import { isFunction } from '../../../utils/is';
+  import { deepMerge } from '../../../utils';
+  import { useDesign } from '../../../hooks/web/use-design';
+  import { useAttrs } from '../../../hooks/core/use-attrs';
   import { basicProps } from './props';
   import DrawerHeader from './components/drawer-header.vue';
   import DrawerFooter from './components/drawer-footer.vue';
-  import type { Nullable } from '@ent-core/types';
+  import type { Nullable } from '../../../types';
   import type { DrawerInstance, DrawerProps } from './typing';
   import type { DrawerContentProps } from 'naive-ui/es/drawer';
   /**

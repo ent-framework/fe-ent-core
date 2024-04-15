@@ -7,7 +7,7 @@ import type {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from 'axios';
-import type { RequestOptions, Result } from '@ent-core/logics/types/axios';
+import type { RequestOptions, Result } from '../../logics/types/axios';
 
 export interface CreateAxiosOptions extends AxiosRequestConfig {
   authenticationScheme?: string;

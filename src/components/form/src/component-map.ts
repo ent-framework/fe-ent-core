@@ -20,10 +20,10 @@ import {
   NTreeSelect,
 } from 'naive-ui';
 
-import { EntUpload } from '@ent-core/components/upload';
-import { EntStrengthMeter } from '@ent-core/components/strength-meter';
-import { EntIconPicker } from '@ent-core/components/icon';
-import { EntCountDownInput } from '@ent-core/components/count-down';
+import { EntUpload } from '../../../components/upload';
+import { EntStrengthMeter } from '../../../components/strength-meter';
+import { EntIconPicker } from '../../../components/icon';
+import { EntCountDownInput } from '../../../components/count-down';
 import DateRangePicker from './components/date-range-picker.vue';
 import DateTimePicker from './components/datetime-picker.vue';
 import DateTimeRangePicker from './components/datetime-range-picker.vue';

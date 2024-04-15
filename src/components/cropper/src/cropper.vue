@@ -14,9 +14,9 @@
   import { computed, defineComponent, onMounted, onUnmounted, ref, unref } from 'vue';
   import Cropper from 'cropperjs';
   import { useDebounceFn } from '@vueuse/shared';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useDesign } from '../../../hooks/web/use-design';
   import type { CSSProperties, PropType } from 'vue';
-  import type { ElRef, Nullable } from '@ent-core/types';
+  import type { ElRef, Nullable } from '../../../types';
 
   type Options = Cropper.Options;
 

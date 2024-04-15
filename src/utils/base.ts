@@ -2,7 +2,7 @@ import { unref } from 'vue';
 import { isObject } from './is';
 import type { RouteLocationNormalized, RouteRecordNormalized } from 'vue-router';
 import type { App, Component, Plugin } from 'vue';
-import type { Recordable, TargetContext } from '@ent-core/types';
+import type { Recordable, TargetContext } from '../types';
 
 /**
  * @description:  Set ui mount node

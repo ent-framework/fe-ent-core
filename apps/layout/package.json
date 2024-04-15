@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-layout",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -24,7 +24,7 @@
     "build:library": "ent-vue-scripts build:library -u -s",
     "jsongen": "ent-vue-scripts jsongen",
     "dtsgen": "ent-vue-scripts dtsgen",
-    "lint": "eslint --max-warnings 0  \"{components,hooks,locales,store}/**/*.{vue,ts,tsx}\" --fix"
+    "lint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix"
   },
   "peerDependencies": {
     "fe-ent-core": "^3.0.0"

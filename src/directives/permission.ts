@@ -3,7 +3,7 @@
  * Used for fine-grained control of component permissions
  * @Example v-auth="Super"
  */
-import { usePermission } from '@ent-core/hooks/web/use-permission';
+import { usePermission } from '../hooks/web/use-permission';
 import type { App, Directive, DirectiveBinding } from 'vue';
 
 function isAuth(el: Element, binding: any) {

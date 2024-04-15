@@ -52,14 +52,6 @@ const config: InlineConfig = {
       },
     },
   },
-  resolve: {
-    alias: [
-      {
-        find: /^@ent-core\/(.*)$/,
-        replacement: `${process.cwd()}/src/$1`,
-      },
-    ],
-  },
   // @ts-ignore vite内部类型错误
   plugins: [
     external(),

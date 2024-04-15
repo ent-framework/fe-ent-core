@@ -66,9 +66,9 @@
   import { useDebounceFn } from '@vueuse/shared';
   import { formProps } from 'naive-ui/es/form';
   import { cloneDeep, pick } from 'lodash-es';
-  import { deepMerge } from '@ent-core/utils';
-  import { useModalContext } from '@ent-core/components/modal';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { deepMerge } from '../../../utils';
+  import { useModalContext } from '../../../components/modal';
+  import { useDesign } from '../../../hooks/web/use-design';
   import FormItem from './components/form-item.vue';
   import FormAction from './components/form-action.vue';
   import { useFormValues } from './hooks/use-form-values';

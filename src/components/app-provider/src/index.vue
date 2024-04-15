@@ -7,7 +7,7 @@
     NModalProvider,
     NNotificationProvider,
   } from 'naive-ui';
-  import { createBreakpointListen } from '@ent-core/hooks/event/use-breakpoint';
+  import { createBreakpointListen } from '../../../hooks/event/use-breakpoint';
   import { createAppProviderContext } from './use-app-context';
   import EntAppProviderWrapper from './wrapper.vue';
 

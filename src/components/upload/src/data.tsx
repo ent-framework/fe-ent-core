@@ -1,15 +1,15 @@
 import { NProgress, NTag } from 'naive-ui';
-import TableAction from '@ent-core/components/table/src/components/table-action.vue';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
+import TableAction from '../../../components/table/src/components/table-action.vue';
+import { useI18n } from '../../../hooks/web/use-i18n';
 import ThumbUrl from './thumb-url.vue';
 import { UploadResultStatus } from './typing';
 import {
   // checkImgType,
   isImgTypeByName,
 } from './helper';
-import type { AnyFunction, Fn } from '@ent-core/types';
+import type { AnyFunction, Fn } from '../../../types';
 import type { FileItem, PreviewFileItem } from './typing';
-import type { BasicColumn, TableActionItem } from '@ent-core/components/table/interface';
+import type { BasicColumn, TableActionItem } from '../../../components/table/interface';
 
 // 文件上传列表
 export function createTableColumns(): BasicColumn[] {

@@ -1,7 +1,7 @@
 import { Transition, defineComponent } from 'vue';
-import { getSlot } from '@ent-core/utils/helper/tsx-helper';
+import { getSlot } from '../../../utils/helper/tsx-helper';
 import type { PropType } from 'vue';
-import type { Recordable } from '@ent-core/types';
+import type { Recordable } from '../../../types';
 import type { Mode } from './type';
 
 export function createJavascriptTransition(

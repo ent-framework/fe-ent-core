@@ -1,7 +1,7 @@
 <script lang="tsx">
   import { defineComponent, nextTick, watch } from 'vue';
-  import { isFunction } from '@ent-core/utils/is';
-  import { useModalContext } from '@ent-core/components/modal/src/hooks/use-modal-context';
+  import { isFunction } from '../../../utils/is';
+  import { useModalContext } from '../../../components/modal/src/hooks/use-modal-context';
   import { fileListProps } from './props';
   import type { CSSProperties } from 'vue';
 

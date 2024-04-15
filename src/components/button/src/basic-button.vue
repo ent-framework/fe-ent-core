@@ -11,8 +11,8 @@
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
   import { NButton } from 'naive-ui';
-  import Icon from '@ent-core/components/icon/src/icon.vue';
-  import { useAttrs } from '@ent-core/hooks/core/use-attrs';
+  import Icon from '../../../components/icon/src/icon.vue';
+  import { useAttrs } from '../../../hooks/core/use-attrs';
   import { btnProps } from './props';
 
   /**

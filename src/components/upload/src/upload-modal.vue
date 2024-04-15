@@ -44,14 +44,14 @@
 <script lang="ts">
   import { computed, defineComponent, reactive, ref, toRefs, unref } from 'vue';
   import { NAlert, NUpload } from 'naive-ui';
-  import { isFunction } from '@ent-core/utils/is';
-  import { EntModal, useModalInner } from '@ent-core/components/modal';
+  import { isFunction } from '../../../utils/is';
+  import { EntModal, useModalInner } from '../../../components/modal';
   // hooks
-  import { useMessage } from '@ent-core/hooks/web/use-message';
+  import { useMessage } from '../../../hooks/web/use-message';
   //   types
-  import { buildUUID } from '@ent-core/utils/uuid';
-  import { warn } from '@ent-core/utils/log';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
+  import { buildUUID } from '../../../utils/uuid';
+  import { warn } from '../../../utils/log';
+  import { useI18n } from '../../../hooks/web/use-i18n';
   import { UploadResultStatus } from './typing';
   import { basicProps } from './props';
   import { createActionColumn, createTableColumns } from './data';

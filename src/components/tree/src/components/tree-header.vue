@@ -27,9 +27,9 @@
   import { type PropType, computed, ref, useSlots, watch } from 'vue';
   import { NDropdown, NInput } from 'naive-ui';
   import { useDebounceFn } from '@vueuse/core';
-  import { EntIcon } from '@ent-core/components/icon';
-  import { EntTitle } from '@ent-core/components/basic';
-  import { useI18n } from '@ent-core//hooks/web/use-i18n';
+  import { EntIcon } from '../../../../components/icon';
+  import { EntTitle } from '../../../../components/basic';
+  import { useI18n } from '../../../..//hooks/web/use-i18n';
   import { ToolbarEnum } from '../types/tree';
 
   const searchValue = ref('');

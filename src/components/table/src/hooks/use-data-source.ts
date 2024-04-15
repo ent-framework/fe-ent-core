@@ -1,12 +1,12 @@
 import { computed, onMounted, reactive, ref, unref, watch, watchEffect } from 'vue';
 import { get, merge } from 'lodash-es';
-import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
-import { isBoolean, isFunction, isObject } from '@ent-core/utils/is';
+import { useTimeoutFn } from '../../../../hooks/core/use-timeout';
+import { isBoolean, isFunction, isObject } from '../../../../utils/is';
 import { FETCH_SETTING, PAGE_SIZE } from '../const';
 import type { ComputedRef, Ref } from 'vue';
 import type { DataTableRowKey, PaginationProps } from 'naive-ui';
 import type { BasicTableProps, FetchParams, SorterResult } from '../types/table';
-import type { EmitType, Recordable } from '@ent-core/types';
+import type { EmitType, Recordable } from '../../../../types';
 
 interface ActionType {
   getPaginationInfo: ComputedRef<boolean | PaginationProps>;

@@ -1,11 +1,11 @@
 import axios from 'axios';
 import qs from 'qs';
 import { cloneDeep } from 'lodash-es';
-import { isFunction } from '@ent-core/utils/is';
-import { ContentTypeEnum, RequestEnum } from '@ent-core/logics/enums/http-enum';
+import { isFunction } from '../../utils/is';
+import { ContentTypeEnum, RequestEnum } from '../../logics/enums/http-enum';
 import { AxiosCanceler } from './axios-cancel';
 import type { CreateAxiosOptions } from './axios-transform';
-import type { RequestOptions, Result, UploadFileParams } from '@ent-core/logics/types/axios';
+import type { RequestOptions, Result, UploadFileParams } from '../../logics/types/axios';
 import type {
   AxiosError,
   AxiosInstance,

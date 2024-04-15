@@ -2,7 +2,7 @@ import { unref } from 'vue';
 import { createLoading } from './create-loading';
 import type { LoadingProps } from './typing';
 import type { Ref } from 'vue';
-import type { ElRef } from '@ent-core/types';
+import type { ElRef } from '../../../types';
 
 export interface UseLoadingOptions {
   target?: any;

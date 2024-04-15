@@ -1,7 +1,7 @@
 import { cloneDeep, merge, omit, set } from 'lodash-es';
-import { isString, isUrl } from '@ent-core/utils/is';
+import { isString, isUrl } from '../../utils/is';
 import { wrapperRoute } from '../wrapper';
-import type { AppRouteRecordRaw } from '@ent-core/router/types';
+import type { AppRouteRecordRaw } from '../../router/types';
 
 /**
  * Convert multi-level routing to level 2 routing

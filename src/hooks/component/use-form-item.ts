@@ -10,7 +10,7 @@ import {
 } from 'vue';
 import { isEqual } from 'lodash-es';
 import type { DeepReadonly, Ref, UnwrapRef, WritableComputedRef } from 'vue';
-import type { Recordable } from '@ent-core/types';
+import type { Recordable } from '../../types';
 
 export function useRuleFormItem<T extends Recordable, K extends keyof T, V = UnwrapRef<T[K]>>(
   props: T,

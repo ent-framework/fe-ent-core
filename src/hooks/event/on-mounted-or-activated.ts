@@ -1,5 +1,5 @@
 import { nextTick, onActivated, onMounted } from 'vue';
-import type { AnyFunction } from '@ent-core/types';
+import type { AnyFunction } from '../../types';
 /**
  * 在 OnMounted 或者 OnActivated 时触发
  * @param hook 任何函数（包括异步函数）

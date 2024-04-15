@@ -1,16 +1,16 @@
 import { unref } from 'vue';
-import { useAppStore } from '@ent-core/store/modules/app';
-import { useSessionStore } from '@ent-core/store/modules/session';
-import { useTransitionSetting } from '@ent-core/hooks/setting/use-transition-setting';
-import { AxiosCanceler } from '@ent-core/utils/http/axios-cancel';
-import { warn } from '@ent-core/utils/log';
-import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
-import { useI18n, useMessage } from '@ent-core/hooks';
+import { useAppStore } from '../../store/modules/app';
+import { useSessionStore } from '../../store/modules/session';
+import { useTransitionSetting } from '../../hooks/setting/use-transition-setting';
+import { AxiosCanceler } from '../../utils/http/axios-cancel';
+import { warn } from '../../utils/log';
+import { defaultProjectSetting } from '../../logics/settings/project-setting';
+import { useI18n, useMessage } from '../../hooks';
 import { createPermissionGuard } from './permission-guard';
 import { createStateGuard } from './state-guard';
 import { createParamMenuGuard } from './param-menu-guard';
 import type { RouteLocationNormalized, Router } from 'vue-router';
-import type { Nullable } from '@ent-core/types';
+import type { Nullable } from '../../types';
 
 // Don't change the order of creation
 export function setupRouterGuard(router: Router) {

@@ -1,21 +1,21 @@
 // axios配置  可自行根据项目进行更改，只需更改该文件即可，其他文件可以不动
 // The axios configuration can be changed according to the project, just change the file, other files can be left unchanged
-import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
-import { useMessage } from '@ent-core/hooks/web/use-message';
-import { ContentTypeEnum, RequestEnum, ResultEnum } from '@ent-core/logics/enums/http-enum';
-import { isFunction, isString } from '@ent-core/utils/is';
-import { deepMerge, setObjToUrlParams } from '@ent-core/utils/base';
-import { useErrorLogStore } from '@ent-core/store/modules/error-log';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
-import { useUserStore } from '@ent-core/store/modules/user';
-import { useSessionStore } from '@ent-core/store/modules/session';
+import { useGlobSetting } from '../../hooks/setting/use-glob-setting';
+import { useMessage } from '../../hooks/web/use-message';
+import { ContentTypeEnum, RequestEnum, ResultEnum } from '../../logics/enums/http-enum';
+import { isFunction, isString } from '../../utils/is';
+import { deepMerge, setObjToUrlParams } from '../../utils/base';
+import { useErrorLogStore } from '../../store/modules/error-log';
+import { useI18n } from '../../hooks/web/use-i18n';
+import { useUserStore } from '../../store/modules/user';
+import { useSessionStore } from '../../store/modules/session';
 import { formatRequestDate, joinTimestamp } from './helper';
 import { checkStatus } from './check-status';
 import { VAxios } from './axios';
 import type { AxiosTransform, CreateAxiosOptions } from './axios-transform';
-import type { RequestOptions, Result } from '@ent-core/logics/types/axios';
+import type { RequestOptions, Result } from '../../logics/types/axios';
 import type { AxiosResponse } from 'axios';
-import type { Recordable } from '@ent-core/types';
+import type { Recordable } from '../../types';
 
 const { createMessage, createErrorModal } = useMessage();
 

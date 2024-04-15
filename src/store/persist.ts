@@ -2,8 +2,8 @@
  * @link https://prazdevs.github.io/pinia-plugin-persistedstate/zh/guide/
  */
 
-import { cacheCipher, enableStorageEncryption } from '@ent-core/logics/settings/encryption-setting';
-import { AesEncryption } from '@ent-core/utils';
+import { cacheCipher, enableStorageEncryption } from '../logics/settings/encryption-setting';
+import { AesEncryption } from '../utils';
 import type { StateTree } from 'pinia';
 import type { PersistedStateFactoryOptions, Serializer } from 'pinia-plugin-persistedstate';
 

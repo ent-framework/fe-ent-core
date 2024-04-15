@@ -1,5 +1,5 @@
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
-import { isNumber } from '@ent-core/utils/is';
+import { useI18n } from '../../../hooks/web/use-i18n';
+import { isNumber } from '../../../utils/is';
 import type { ComponentType } from './types';
 import type { FormItemRule } from 'naive-ui/es/form';
 

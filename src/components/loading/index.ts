@@ -1,4 +1,4 @@
-import { withInstall } from '@ent-core/utils/base';
+import { withInstall } from '../../utils/base';
 import Loading from './src/index.vue';
 
 export { useLoading } from './src/use-loading';

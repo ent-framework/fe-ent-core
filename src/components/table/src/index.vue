@@ -47,10 +47,10 @@
   } from 'vue';
   import { NDataTable } from 'naive-ui';
   import { omit, pick } from 'lodash-es';
-  import { EntForm, useForm } from '@ent-core/components/form';
-  import { PageWrapperFixedHeightKey } from '@ent-core/components/page';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { warn } from '@ent-core/utils/log';
+  import { EntForm, useForm } from '../../../components/form';
+  import { PageWrapperFixedHeightKey } from '../../../components/page';
+  import { useDesign } from '../../../hooks/web/use-design';
+  import { warn } from '../../../utils/log';
   import TableHeader from './components/table-header.vue';
   import { usePagination } from './hooks/use-pagination';
   import { useColumns } from './hooks/use-columns';

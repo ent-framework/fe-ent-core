@@ -1,4 +1,4 @@
-import componentSetting from '@ent-core/logics/settings/component-setting';
+import componentSetting from '../../../logics/settings/component-setting';
 
 const { table } = componentSetting;
 

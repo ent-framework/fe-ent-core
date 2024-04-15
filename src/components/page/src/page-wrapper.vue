@@ -36,9 +36,9 @@
 
   import { omit } from 'lodash-es';
   import { NPageHeader } from 'naive-ui';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { propTypes } from '@ent-core/utils/prop-types';
-  import { useContentHeight } from '@ent-core/hooks/web/use-content-height';
+  import { useDesign } from '../../../hooks/web/use-design';
+  import { propTypes } from '../../../utils/prop-types';
+  import { useContentHeight } from '../../../hooks/web/use-content-height';
   import { PageWrapperFixedHeightKey } from '../constant';
   import PageFooter from './page-footer.vue';
   import type { CSSProperties, PropType } from 'vue';

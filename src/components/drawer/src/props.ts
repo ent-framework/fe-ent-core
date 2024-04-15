@@ -1,5 +1,5 @@
 import { drawerProps } from 'naive-ui/es/drawer';
-import { type Recordable } from '@ent-core/types';
+import { type Recordable } from '../../../types';
 import type { DrawerContentProps } from 'naive-ui/es/drawer';
 import type { PropType } from 'vue';
 

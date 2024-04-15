@@ -34,8 +34,8 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { NBadge, NImage, NImageGroup } from 'naive-ui';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { propTypes } from '@ent-core/utils/prop-types';
+  import { useDesign } from '../../../../hooks/web/use-design';
+  import { propTypes } from '../../../../utils/prop-types';
   import type { CSSProperties } from 'vue';
 
   export default defineComponent({

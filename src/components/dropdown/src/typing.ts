@@ -1,4 +1,4 @@
-import type { Fn } from '@ent-core/types';
+import type { Fn } from '../../../types';
 import type { MenuOptionSharedPart } from 'naive-ui/es/menu/src/interface';
 import type { PopconfirmProps } from 'naive-ui/es/popconfirm';
 

@@ -1,5 +1,5 @@
 import type { VNodeChild } from 'vue';
-import type { AnyFunction, Recordable } from '@ent-core/types';
+import type { AnyFunction, Recordable } from '../../../../types';
 export interface ColumnFilterItem {
   text?: string;
   value?: string;

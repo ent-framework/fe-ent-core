@@ -2,7 +2,7 @@ import { createVNode, defineComponent, h, reactive, render } from 'vue';
 import Loading from './index.vue';
 import type { VNode } from 'vue';
 import type { LoadingProps } from './typing';
-import type { Nullable } from '@ent-core/types';
+import type { Nullable } from '../../../types';
 
 export function createLoading(props?: Partial<LoadingProps>, target?: HTMLElement, wait = false) {
   let vm: Nullable<VNode> = null;

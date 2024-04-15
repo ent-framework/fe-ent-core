@@ -1,4 +1,4 @@
-import type { LocaleType } from '@ent-core/store/types';
+import type { LocaleType } from '../store/types';
 
 export const loadLocalePool: LocaleType[] = [];
 

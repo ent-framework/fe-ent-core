@@ -1,7 +1,7 @@
 <script lang="tsx">
   import { computed, defineComponent, h, nextTick, onMounted, onUnmounted, ref, unref } from 'vue';
   import { NDropdown } from 'naive-ui';
-  import { EntIcon } from '@ent-core/components/icon';
+  import { EntIcon } from '../../../components/icon';
   import type {
     DropdownDividerOption,
     DropdownMixedOption,

@@ -1,5 +1,5 @@
-import type { UploadApiResult } from '@ent-core/logics/types/upload';
-import type { AnyFunction } from '@ent-core/types';
+import type { UploadApiResult } from '../../../logics/types/upload';
+import type { AnyFunction } from '../../../types';
 
 export enum UploadResultStatus {
   SUCCESS = 'success',

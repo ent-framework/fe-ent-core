@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
@@ -73,7 +73,7 @@
     "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
     "lint:play": "eslint --max-warnings 0  \"play/**/*.{vue,ts,tsx}\" --fix",
     "lint:support": "eslint --max-warnings 0  \"support/**/*.{vue,ts,tsx}\" --fix",
-    "lint:lib": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\"",
+    "lint:lib": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix",
     "test:unit": "jest",
     "test:unit-coverage": "jest --coverage",
     "test:gzip": "npx http-server dist --cors --gzip -c-1",

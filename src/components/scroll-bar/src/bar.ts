@@ -1,8 +1,8 @@
 import { computed, defineComponent, getCurrentInstance, h, inject, onUnmounted, ref } from 'vue';
-import { off, on } from '@ent-core/utils/dom-utils';
+import { off, on } from '../../../utils/dom-utils';
 import { BAR_MAP, renderThumbStyle } from './util';
 import type { Ref } from 'vue';
-import type { Nullable, Recordable } from '@ent-core/types';
+import type { Nullable, Recordable } from '../../../types';
 
 export default defineComponent({
   name: 'EntScrollBar',

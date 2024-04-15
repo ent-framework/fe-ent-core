@@ -23,8 +23,8 @@
   import { defineComponent, computed, ref, watch, unref, watchEffect } from 'vue';
   import { NInput } from 'naive-ui';
   import { zxcvbn, ZxcvbnResult } from '@zxcvbn-ts/core';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { propTypes } from '@ent-core/utils/prop-types';
+  import { useDesign } from '../../../hooks/web/use-design';
+  import { propTypes } from '../../../utils/prop-types';
 
   export default defineComponent({
     name: 'EntStrengthMeter',

@@ -1,4 +1,4 @@
-import { withInstall } from '@ent-core/utils';
+import { withInstall } from '../../utils';
 import basicModal from './src/index.vue';
 
 export const EntModal = withInstall(basicModal);

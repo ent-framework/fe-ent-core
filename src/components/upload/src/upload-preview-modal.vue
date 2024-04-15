@@ -12,11 +12,11 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, watch } from 'vue';
-  //   import { BasicTable, useTable } from '@ent-core/components/Table';
-  import { EntModal, useModalInner } from '@ent-core/components/modal';
-  import { downloadByUrl } from '@ent-core/utils/file/download';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { isArray } from '@ent-core/utils/is';
+  //   import { BasicTable, useTable } from '../../../components/Table';
+  import { EntModal, useModalInner } from '../../../components/modal';
+  import { downloadByUrl } from '../../../utils/file/download';
+  import { useI18n } from '../../../hooks/web/use-i18n';
+  import { isArray } from '../../../utils/is';
   import FileList from './file-list.vue';
   import { previewProps } from './props';
   import { createPreviewActionColumn, createPreviewColumns } from './data';

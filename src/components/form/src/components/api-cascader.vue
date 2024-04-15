@@ -22,12 +22,12 @@
   import { defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { NCascader } from 'naive-ui';
   import { get, omit } from 'lodash-es';
-  import { EntIcon } from '@ent-core/components/icon';
-  import { isFunction } from '@ent-core/utils/is';
-  import { propTypes } from '@ent-core/utils/prop-types';
-  import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { type Recordable } from '@ent-core/types';
+  import { EntIcon } from '../../../../components/icon';
+  import { isFunction } from '../../../../utils/is';
+  import { propTypes } from '../../../../utils/prop-types';
+  import { useRuleFormItem } from '../../../../hooks/component/use-form-item';
+  import { useI18n } from '../../../../hooks/web/use-i18n';
+  import { type Recordable } from '../../../../types';
   import type { PropType } from 'vue';
   interface Option {
     value: string;

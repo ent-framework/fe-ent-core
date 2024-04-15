@@ -103,11 +103,11 @@
   import { NCheckbox, NCheckboxGroup, NDivider, NPopover, NSpace, NTooltip } from 'naive-ui';
   import { cloneDeep, omit } from 'lodash-es';
   import sortablejs from 'sortablejs';
-  import { EntIcon } from '@ent-core/components/icon';
-  import { EntScrollContainer } from '@ent-core/components/container';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
-  import { isNullAndUnDef } from '@ent-core/utils/is';
+  import { EntIcon } from '../../../../../components/icon';
+  import { EntScrollContainer } from '../../../../../components/container';
+  import { useI18n } from '../../../../../hooks/web/use-i18n';
+  import { useDesign } from '../../../../../hooks/web/use-design';
+  import { isNullAndUnDef } from '../../../../../utils/is';
   import { useTableContext } from '../../hooks/use-table-context';
   import type { BasicColumn, BasicTableProps, ColumnChangeParam } from '../../types/table';
   import type Sortable from 'sortablejs';

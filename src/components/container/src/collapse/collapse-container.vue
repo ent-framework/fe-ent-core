@@ -26,11 +26,11 @@
   import { defineComponent, ref } from 'vue';
   // component
   import { NSkeleton } from 'naive-ui';
-  import { CollapseTransition } from '@ent-core/components/transition';
-  import { triggerWindowResize } from '@ent-core/utils/event';
+  import { CollapseTransition } from '../../../../components/transition';
+  import { triggerWindowResize } from '../../../../utils/event';
   // hook
-  import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
-  import { useDesign } from '@ent-core/hooks/web/use-design';
+  import { useTimeoutFn } from '../../../../hooks/core/use-timeout';
+  import { useDesign } from '../../../../hooks/web/use-design';
   import CollapseHeader from './collapse-header.vue';
   import type { PropType } from 'vue';
 

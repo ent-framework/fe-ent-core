@@ -1,4 +1,4 @@
-import { withInstall } from '@ent-core/utils';
+import { withInstall } from '../../utils';
 import BasicButton from './src/basic-button.vue';
 import PopConfirmButton from './src/pop-confirm-button.vue';
 

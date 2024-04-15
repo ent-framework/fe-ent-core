@@ -60,14 +60,6 @@ export default (): InlineConfig => {
     // define: {
     //   'process.env': JSON.stringify({ NODE_ENV: 'production' }),
     // },
-    resolve: {
-      alias: [
-        {
-          find: /^@ent-core\/(.*)$/,
-          replacement: `${process.cwd()}/src/$1`,
-        },
-      ],
-    },
     // @ts-ignore vite内部类型错误
     plugins: [vue(), vueJsx()],
   };

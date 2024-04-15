@@ -1,8 +1,8 @@
 import { computed, reactive, ref, toRaw, unref, watch } from 'vue';
 import { cloneDeep, get, isEqual } from 'lodash-es';
-import { usePermission } from '@ent-core/hooks/web/use-permission';
-import { useI18n } from '@ent-core/hooks/web/use-i18n';
-import { isArray, isBoolean, isString } from '@ent-core/utils/is';
+import { usePermission } from '../../../../hooks/web/use-permission';
+import { useI18n } from '../../../../hooks/web/use-i18n';
+import { isArray, isBoolean, isString } from '../../../../utils/is';
 import { ACTION_COLUMN_FLAG, DEFAULT_ALIGN, INDEX_COLUMN_FLAG, PAGE_SIZE } from '../const';
 import type { ComputedRef, Ref } from 'vue';
 import type {

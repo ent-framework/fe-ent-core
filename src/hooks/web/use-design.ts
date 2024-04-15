@@ -1,4 +1,4 @@
-import { useAppProviderContext } from '@ent-core/components/app-provider';
+import { useAppProviderContext } from '../../components/app-provider';
 export function useDesign(scope: string) {
   const values = useAppProviderContext();
   const prefixCls = values.prefixCls ? values.prefixCls : 'ent';

@@ -1,4 +1,4 @@
-import { i18n } from '@ent-core/locales/setup-i18n';
+import { i18n } from '../../locales/setup-i18n';
 
 type I18nGlobalTranslation = {
   (key: string): string;

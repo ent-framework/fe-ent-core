@@ -1,6 +1,6 @@
 import { defineComponent, h } from 'vue';
 import { isString } from 'lodash-es';
-import Icon from '@ent-core/components/icon/src/icon.vue';
+import Icon from '../../../components/icon/src/icon.vue';
 
 export const TreeIcon = defineComponent({
   props: {

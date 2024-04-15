@@ -1,11 +1,11 @@
 <script lang="tsx">
   import { computed, defineComponent, reactive, ref, unref, watchEffect } from 'vue';
-  import { EntIcon } from '@ent-core/components/icon';
-  import ResumeSvg from '@ent-core/components/icons/icon-resume.vue';
-  import RotateSvg from '@ent-core/components/icons/icon-rotate.vue';
-  import ScaleSvg from '@ent-core/components/icons/icon-scale.vue';
-  import UnScaleSvg from '@ent-core/components/icons/icon-unscale.vue';
-  import UnRotateSvg from '@ent-core/components/icons/icon-unrotate.vue';
+  import { EntIcon } from '../../../components/icon';
+  import ResumeSvg from '../../../components/icons/icon-resume.vue';
+  import RotateSvg from '../../../components/icons/icon-rotate.vue';
+  import ScaleSvg from '../../../components/icons/icon-scale.vue';
+  import UnScaleSvg from '../../../components/icons/icon-unscale.vue';
+  import UnRotateSvg from '../../../components/icons/icon-unrotate.vue';
   import type { PropType } from 'vue';
 
   enum StatueEnum {

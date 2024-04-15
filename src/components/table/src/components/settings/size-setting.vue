@@ -17,9 +17,9 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { NPopselect, NTooltip } from 'naive-ui';
-  import { EntIcon } from '@ent-core/components/icon';
-  import { useI18n } from '@ent-core/hooks/web/use-i18n';
-  import { getPopupContainer } from '@ent-core/utils';
+  import { EntIcon } from '../../../../../components/icon';
+  import { useI18n } from '../../../../../hooks/web/use-i18n';
+  import { getPopupContainer } from '../../../../../utils';
   import { useTableContext } from '../../hooks/use-table-context';
   import type { DropdownOption } from 'naive-ui/es/dropdown';
   import type { SizeType } from '../../types/table';

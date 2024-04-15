@@ -18,7 +18,7 @@ export const pathRewriter = () => {
 
 const cwd = process.cwd();
 const TSCONFIG_PATH = path.resolve(cwd, 'tsconfig.json');
-const outDir = path.resolve(cwd, 'dist', 'types');
+const outDir = path.resolve(cwd, 'es');
 
 const build = async (base: string) => {
   consola.log(`Run in dir: ${process.cwd()}, base: ${base}`);
@@ -33,9 +33,6 @@ const build = async (base: string) => {
       preserveSymlinks: true,
       noImplicitAny: false,
       removeComments: false,
-      paths: {
-        '@ent-core/*': [`${base}/*`],
-      },
     },
     tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true,
@@ -64,7 +61,7 @@ const build = async (base: string) => {
       fs.mkdirSync(path.dirname(targetPath), {
         recursive: true,
       });
-      fs.writeFileSync(targetPath, pathRewriter()(outputFile.getText()), 'utf8');
+      fs.writeFileSync(targetPath, outputFile.getText(), 'utf8');
     });
 
     await Promise.all(subTasks);

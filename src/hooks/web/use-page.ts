@@ -1,8 +1,8 @@
 import { unref } from 'vue';
-import { entRouter } from '@ent-core/router';
-import { isString } from '@ent-core/utils/is';
-import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
-import { REDIRECT_NAME } from '@ent-core/router/constant';
+import { entRouter } from '../../router';
+import { isString } from '../../utils/is';
+import { useGlobSetting } from '../../hooks/setting/use-glob-setting';
+import { REDIRECT_NAME } from '../../router/constant';
 import type { RouteLocationRaw, Router } from 'vue-router';
 
 function handleError(e: Error) {

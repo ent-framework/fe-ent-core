@@ -1,6 +1,6 @@
 import { createPinia } from 'pinia';
 import { createPersistedState } from 'pinia-plugin-persistedstate';
-import { getCommonStoragePrefix } from '@ent-core/utils';
+import { getCommonStoragePrefix } from '../utils';
 import { persistGlobalConfig } from './persist';
 import type { App } from 'vue';
 

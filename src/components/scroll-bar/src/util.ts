@@ -1,5 +1,5 @@
 import type { BarMap } from './types';
-import type { Recordable } from '@ent-core/types';
+import type { Recordable } from '../../../types';
 
 export const BAR_MAP: BarMap = {
   vertical: {

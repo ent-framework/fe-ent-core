@@ -1,15 +1,15 @@
-import type { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
-import type { MenuModeEnum, MenuTypeEnum } from '@ent-core/logics/enums/menu-enum';
+import type { ErrorTypeEnum } from '../logics/enums/exception-enum';
+import type { MenuModeEnum, MenuTypeEnum } from '../logics/enums/menu-enum';
 import type {
   PermissionModeEnum,
   RouterTransitionEnum,
   SessionTimeoutProcessingEnum,
   ThemeEnum,
-} from '@ent-core/logics/enums/app-enum';
+} from '../logics/enums/app-enum';
 
-import type { CacheTypeEnum } from '@ent-core/logics/enums/cache-enum';
-import type { Nullable, Recordable } from '@ent-core/types';
-import type { ColumnOptionsType, SizeType } from '@ent-core/components/table/interface';
+import type { CacheTypeEnum } from '../logics/enums/cache-enum';
+import type { Nullable, Recordable } from '../types';
+import type { ColumnOptionsType, SizeType } from '../components/table/interface';
 import type { GlobalThemeOverrides } from 'naive-ui/es/config-provider';
 
 // Lock screen information

@@ -11,9 +11,9 @@ import {
 } from 'vue';
 import { isEqual } from 'lodash-es';
 import { tryOnUnmounted } from '@vueuse/core';
-import { isFunction } from '@ent-core/utils/is';
-import { error } from '@ent-core/utils/log';
-import type { Fn, Nullable } from '@ent-core/types';
+import { isFunction } from '../../../../utils/is';
+import { error } from '../../../../utils/log';
+import type { Fn, Nullable } from '../../../../types';
 import type {
   ModalMethods,
   ModalProps,

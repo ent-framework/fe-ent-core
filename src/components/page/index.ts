@@ -1,4 +1,4 @@
-import { withInstall } from '@ent-core/utils';
+import { withInstall } from '../../utils';
 
 import pageWrapper from './src/page-wrapper.vue';
 export const EntPageWrapper = withInstall(pageWrapper);

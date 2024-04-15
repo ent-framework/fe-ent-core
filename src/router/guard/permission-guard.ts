@@ -1,11 +1,11 @@
-import { usePermissionStore } from '@ent-core/store/modules/permission';
-import { useSessionStore } from '@ent-core/store/modules/session';
-import { useUserStore } from '@ent-core/store/modules/user';
-import { useGlobSetting } from '@ent-core/hooks/setting/use-glob-setting';
-import { PAGE_NOT_FOUND_NAME } from '@ent-core/router/constant';
-import { entRouter } from '@ent-core/router/base';
+import { usePermissionStore } from '../../store/modules/permission';
+import { useSessionStore } from '../../store/modules/session';
+import { useUserStore } from '../../store/modules/user';
+import { useGlobSetting } from '../../hooks/setting/use-glob-setting';
+import { PAGE_NOT_FOUND_NAME } from '../../router/constant';
+import { entRouter } from '../../router/base';
 import type { RouteRecordRaw, Router } from 'vue-router';
-import type { Recordable } from '@ent-core/types';
+import type { Recordable } from '../../types';
 
 export function createPermissionGuard(router: Router) {
   router.beforeEach(async (to, from, next) => {

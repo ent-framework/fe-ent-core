@@ -1,5 +1,5 @@
 import { computed, ref, unref, watch } from 'vue';
-import { isBoolean } from '@ent-core/utils/is';
+import { isBoolean } from '../../../../utils/is';
 import { PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../const';
 import type { ComputedRef } from 'vue';
 import type { BasicTableProps } from '../types/table';

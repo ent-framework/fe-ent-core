@@ -1,5 +1,5 @@
 import { createVNode, render } from 'vue';
-import { isClient } from '@ent-core/utils/is';
+import { isClient } from '../../../utils/is';
 import ImgPreview from './functional.vue';
 import type { Options, Props } from './typing';
 
