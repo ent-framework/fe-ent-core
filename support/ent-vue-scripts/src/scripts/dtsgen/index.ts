@@ -33,13 +33,16 @@ const build = async (base: string) => {
       preserveSymlinks: true,
       noImplicitAny: false,
       removeComments: false,
+      paths: {
+        '@ent-core/*': [`${base}/*`],
+      },
     },
     tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true,
     // skipFileDependencyResolution: true,
   });
 
-  const sourceFiles = await addSourceFiles(project, base);
+  const sourceFiles = await addSourceFiles(project, cwd, base);
   consola.success(`Added source files, count: ${sourceFiles.length}`);
   typeCheck(project);
   consola.success('Type check passed!');
@@ -47,7 +50,7 @@ const build = async (base: string) => {
   project.emitToMemory({ emitOnlyDtsFiles: true });
 
   const tasks = sourceFiles.map(async (sourceFile) => {
-    const relativePath = path.relative(cwd, sourceFile.getFilePath());
+    const relativePath = path.relative(base, sourceFile.getFilePath());
 
     const emitOutput = sourceFile.getEmitOutput();
     const emitFiles = emitOutput.getOutputFiles();
@@ -56,9 +59,8 @@ const build = async (base: string) => {
     }
 
     const subTasks = emitFiles.map(async (outputFile) => {
-      const filepath = outputFile.getFilePath();
-      const relativePath = `${process.cwd()}/es`;
-      const targetPath = filepath.replace(outDir, relativePath);
+      const outputPath = `${process.cwd()}/es`;
+      const targetPath = `${outputPath}/${relativePath}`;
       fs.mkdirSync(path.dirname(targetPath), {
         recursive: true,
       });
@@ -71,16 +73,16 @@ const build = async (base: string) => {
   await Promise.all(tasks);
 };
 
-async function addSourceFiles(project: Project, base: string) {
+async function addSourceFiles(project: Project, cwd: string, base: string) {
   //project.addSourceFileAtPath(path.resolve(projRoot, 'typings/support.d.ts'));
 
   const filePaths = excludeFiles(
     await glob(['**/*.{tsx,ts,vue}'], {
       cwd: base,
-      absolute: false,
+      absolute: true,
       onlyFiles: true,
     }),
-  ).map((file) => `${base}/${file}`);
+  );
 
   const sourceFiles: SourceFile[] = [];
   await Promise.all([
@@ -109,7 +111,7 @@ async function addSourceFiles(project: Project, base: string) {
             consola.error(`Error Get Content : ${chalk.bold(file)}`);
           } else {
             const sourceFile = project.createSourceFile(
-              path.relative(base, file) + (isTS ? '.ts' : isTSX ? '.tsx' : '.js'),
+              path.relative(cwd, file) + (isTS ? '.ts' : isTSX ? '.tsx' : '.js'),
               content,
             );
             if (sourceFile) {

@@ -262,6 +262,25 @@ importers:
         specifier: ^5.0.0
         version: 5.0.5
 
+  docs:
+    dependencies:
+      '@stackblitz/sdk':
+        specifier: ^1.6.0
+        version: 1.9.0
+      clipboard:
+        specifier: ^2.0.6
+        version: 2.0.11
+      codesandbox:
+        specifier: ^2.2.3
+        version: 2.2.3
+      fe-ent-layout:
+        specifier: ^2.1.0
+        version: link:../apps/layout
+    devDependencies:
+      fe-ent-vue-scripts:
+        specifier: ^2.1.0
+        version: link:../support/ent-vue-scripts
+
   extensions/code-editor:
     dependencies:
       codemirror:
@@ -563,25 +582,6 @@ importers:
       ts-node:
         specifier: ^10.1.0
         version: 10.9.2(@types/node@18.19.3)(typescript@5.4.3)
-
-  packages/ent-vue-docs:
-    dependencies:
-      '@stackblitz/sdk':
-        specifier: ^1.6.0
-        version: 1.9.0
-      clipboard:
-        specifier: ^2.0.6
-        version: 2.0.11
-      codesandbox:
-        specifier: ^2.2.3
-        version: 2.2.3
-      fe-ent-layout:
-        specifier: ^2.1.0
-        version: link:../../apps/layout
-    devDependencies:
-      fe-ent-vue-scripts:
-        specifier: ^2.1.0
-        version: link:../../support/ent-vue-scripts
 
   play:
     dependencies:
@@ -5523,7 +5523,6 @@ packages:
 
   /axios@0.18.1:
     resolution: {integrity: sha512-0BfJq4NSfQXd+SkFdrvFbG7addhYSBA2mQwISr46pD6E5iqkWg02RAs8vyTT/j0RTnoYmeXauBuSv1qKwR179g==, tarball: https://registry.npmmirror.com/axios/-/axios-0.18.1.tgz}
-    deprecated: Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410
     dependencies:
       follow-redirects: 1.5.10
       is-buffer: 2.0.5
@@ -12477,7 +12476,6 @@ packages:
   /node-fetch-npm@2.0.4:
     resolution: {integrity: sha512-iOuIQDWDyjhv9qSDrj9aq/klt6F9z1p2otB3AV7v3zBDcL/x+OfGsvGQZZCcMZbUf4Ujw1xGNQkjvGnVT22cKg==, tarball: https://registry.npmmirror.com/node-fetch-npm/-/node-fetch-npm-2.0.4.tgz}
     engines: {node: '>=4'}
-    deprecated: This module is not used anymore, npm uses minipass-fetch for its fetch implementation now
     dependencies:
       encoding: 0.1.13
       json-parse-better-errors: 1.0.2
@@ -14563,7 +14561,6 @@ packages:
 
   /shortid@2.2.16:
     resolution: {integrity: sha512-Ugt+GIZqvGXCIItnsL+lvFJOiN7RYqlGy7QE41O3YC1xbNSeDGIRO7xg2JJXIAj1cAGnOeC1r7/T9pgrtQbv4g==, tarball: https://registry.npmmirror.com/shortid/-/shortid-2.2.16.tgz}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     dependencies:
       nanoid: 2.1.11
     dev: false
@@ -14701,7 +14698,6 @@ packages:
   /socks@1.1.10:
     resolution: {integrity: sha512-ArX4vGPULWjKDKgUnW8YzfI2uXW7kzgkJuB0GnFBA/PfT3exrrOk+7Wk2oeb894Qf20u1PWv9LEgrO0Z82qAzA==, tarball: https://registry.npmmirror.com/socks/-/socks-1.1.10.tgz}
     engines: {node: '>= 0.10.0', npm: '>= 1.3.5'}
-    deprecated: If using 2.x branch, please upgrade to at least 2.1.6 to avoid a serious bug with socket data flow and an import issue introduced in 2.1.0
     dependencies:
       ip: 1.1.8
       smart-buffer: 1.1.15

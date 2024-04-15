@@ -1,9 +1,8 @@
 #
 packages:
-  - 'packages/**'
   - 'extensions/**'
   - 'apps/**'
+  - docs
   - play
   - 'support/**'
   - 'internal/**'
-  - 'docs/**'
