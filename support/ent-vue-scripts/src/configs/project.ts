@@ -67,8 +67,8 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
           assetFileNames: hashed ? `assets/[name]-[hash].[ext]` : `assets/[name].[ext]`,
           manualChunks: {
             vue: ['vue', 'pinia', 'vue-router'],
-            antv: ['ant-design-vue'],
-            antd: ['@ant-design/icons-vue'],
+            naive: ['naive-ui'],
+            icons: ['@vicons/ionicons5', '@vicons/antd'],
           },
         },
       },

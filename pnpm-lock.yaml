@@ -215,14 +215,14 @@ importers:
         specifier: ^4.17.9
         version: 4.17.12
       fe-ent-core:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../..
     devDependencies:
       '@vue/shared':
         specifier: ^3.4.8
         version: 3.4.8
       fe-ent-vue-scripts:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../../support/ent-vue-scripts
       lodash:
         specifier: ^4.17.21
@@ -246,14 +246,14 @@ importers:
   apps/login:
     dependencies:
       fe-ent-core:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../..
     devDependencies:
       '@types/qrcode':
         specifier: ^1.4.1
         version: 1.5.5
       fe-ent-vue-scripts:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../../support/ent-vue-scripts
       naive-ui:
         specifier: ^2.38.1
@@ -275,10 +275,10 @@ importers:
         version: 2.2.3
       fe-ent-layout:
         specifier: ^2.1.0
-        version: link:../apps/layout
+        version: 2.1.58(fe-ent-core@2.1.58)
     devDependencies:
       fe-ent-vue-scripts:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../support/ent-vue-scripts
 
   extensions/code-editor:
@@ -287,14 +287,14 @@ importers:
         specifier: ^5.65.12
         version: 5.65.16
       fe-ent-core:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../..
     devDependencies:
       '@types/codemirror':
         specifier: ^5.60.5
         version: 5.60.15
       fe-ent-vue-scripts:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../../support/ent-vue-scripts
       rimraf:
         specifier: ^5.0.0
@@ -306,14 +306,14 @@ importers:
         specifier: ^5.4.2
         version: 5.4.3
       fe-ent-core:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../..
     devDependencies:
       '@types/tinycolor2':
         specifier: ^1.4.2
         version: 1.4.6
       fe-ent-vue-scripts:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../../support/ent-vue-scripts
       rimraf:
         specifier: ^5.0.0
@@ -321,15 +321,18 @@ importers:
 
   extensions/excel:
     dependencies:
+      date-fns:
+        specifier: ^2.30.0
+        version: 2.30.0
       fe-ent-core:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../..
       xlsx:
         specifier: ^0.18.5
         version: 0.18.5
     devDependencies:
       fe-ent-vue-scripts:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../../support/ent-vue-scripts
       rimraf:
         specifier: ^5.0.0
@@ -345,16 +348,16 @@ importers:
         version: 1.2.19
       fe-ent-code-editor:
         specifier: ^2.1.0
-        version: link:../code-editor
+        version: 2.1.58(fe-ent-core@)
       fe-ent-core:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../..
     devDependencies:
       '@types/tinycolor2':
         specifier: ^1.4.2
         version: 1.4.6
       fe-ent-vue-scripts:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../../support/ent-vue-scripts
       rimraf:
         specifier: ^5.0.0
@@ -363,7 +366,7 @@ importers:
   extensions/markdown:
     dependencies:
       fe-ent-core:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../..
       showdown:
         specifier: ^1.9.1
@@ -376,7 +379,7 @@ importers:
         specifier: ^1.4.2
         version: 1.4.6
       fe-ent-vue-scripts:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../../support/ent-vue-scripts
       rimraf:
         specifier: ^5.0.0
@@ -385,7 +388,7 @@ importers:
   extensions/tinymce:
     dependencies:
       fe-ent-core:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../..
       tinymce:
         specifier: ^5.10.7
@@ -395,7 +398,7 @@ importers:
         specifier: ^1.4.2
         version: 1.4.6
       fe-ent-vue-scripts:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../../support/ent-vue-scripts
       rimraf:
         specifier: ^5.0.0
@@ -536,7 +539,7 @@ importers:
         specifier: ^3.31.0
         version: 3.34.0
       fe-ent-core:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../..
       highlight.js:
         specifier: ^11.8.0
@@ -555,7 +558,7 @@ importers:
         specifier: ^5.60.5
         version: 5.60.15
       fe-ent-vue-scripts:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../../support/ent-vue-scripts
       rimraf:
         specifier: ^5.0.0
@@ -589,7 +592,7 @@ importers:
         specifier: 4.1.2
         version: 4.1.2(vue@3.4.8)
       fe-ent-core:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:..
       intro.js:
         specifier: ^4.3.0
@@ -608,7 +611,7 @@ importers:
         version: 3.4.8(typescript@5.4.3)
     devDependencies:
       fe-ent-vue-scripts:
-        specifier: ^2.1.0
+        specifier: ^3.0.0
         version: link:../support/ent-vue-scripts
       rimraf:
         specifier: ^5.0.0
@@ -2480,6 +2483,15 @@ packages:
       local-pkg: 0.4.3
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@iconify/vue@4.1.1(vue@3.4.8):
+    resolution: {integrity: sha512-RL85Bm/DAe8y6rT6pux7D2FJSiUEM/TPfyK7GrbAOfTSwrhvwJW+S5yijdGcmtXouA8MtuH9C7l4hiSE4mLMjg==, tarball: https://registry.npmmirror.com/@iconify/vue/-/vue-4.1.1.tgz}
+    peerDependencies:
+      vue: 3.4.8
+    dependencies:
+      '@iconify/types': 2.0.0
+      vue: 3.4.8(typescript@5.4.3)
     dev: false
 
   /@intlify/core-base@9.11.1:
@@ -8603,6 +8615,56 @@ packages:
     dependencies:
       bser: 2.1.1
 
+  /fe-ent-code-editor@2.1.58(fe-ent-core@):
+    resolution: {integrity: sha512-agu87/12okMXp1BDCTppOOw+9tKLtqbSvQEDed7m72l0ZfOayddUtEJfWsR25rPu0wu0cKF6Cphi9zx+pFcBRQ==}
+    peerDependencies:
+      fe-ent-core: ^2.1.0
+    dependencies:
+      codemirror: 5.65.16
+      fe-ent-core: 'link:'
+    dev: false
+
+  /fe-ent-core@2.1.58(typescript@5.4.3):
+    resolution: {integrity: sha512-J6GMrUaddyxJRp33D79JjwvlgNzssrvJGJiXc091/SsIGEs7/WBX/vpA2ToxmuRM7JsaMOgNa4IwfGUcW7OAjA==}
+    dependencies:
+      '@ant-design/icons-vue': 7.0.1(vue@3.4.8)
+      '@iconify/vue': 4.1.1(vue@3.4.8)
+      '@vueuse/core': 10.7.0(vue@3.4.8)
+      '@vueuse/shared': 10.7.0(vue@3.4.8)
+      '@zxcvbn-ts/core': 1.2.0
+      ant-design-vue: 4.1.2(vue@3.4.8)
+      axios: 1.6.8(debug@4.3.4)
+      cropperjs: 1.6.1
+      crypto-js: 4.2.0
+      dayjs: 1.11.10
+      intro.js: 4.3.0
+      lodash-es: 4.17.21
+      nprogress: 0.2.0
+      path-to-regexp: 6.2.1
+      pinia: 2.1.7(typescript@5.4.3)(vue@3.4.8)
+      pinia-plugin-persistedstate: 3.2.1(pinia@2.1.7)
+      print-js: 1.6.0
+      qs: 6.12.0
+      resize-observer-polyfill: 1.5.1
+      sortablejs: 1.15.1
+      vue: 3.4.8(typescript@5.4.3)
+      vue-i18n: 9.11.1(vue@3.4.8)
+      vue-router: 4.3.0(vue@3.4.8)
+      vue-types: 3.0.2(vue@3.4.8)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - debug
+      - typescript
+    dev: false
+
+  /fe-ent-layout@2.1.58(fe-ent-core@2.1.58):
+    resolution: {integrity: sha512-r9mPEYQIK3hph9tUxCRsD9w9W8AwVrsQ/TNHvEDjfKCzPFjnrLIVai+XId5LW/LFUhcm0rRfPQXtJX4z/eInQw==}
+    peerDependencies:
+      fe-ent-core: ^2.1.0
+    dependencies:
+      fe-ent-core: 2.1.58(typescript@5.4.3)
+    dev: false
+
   /figures@2.0.0:
     resolution: {integrity: sha512-Oa2M9atig69ZkfwiApY8F2Yy+tzMbazyvqv21R0NsSC8floSOC09BbT1ITWAdoMGQvJ/aZnR1KMwdx9tvHnTNA==, tarball: https://registry.npmmirror.com/figures/-/figures-2.0.0.tgz}
     engines: {node: '>=4'}
@@ -12586,6 +12648,10 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       path-key: 4.0.0
+
+  /nprogress@0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==, tarball: https://registry.npmmirror.com/nprogress/-/nprogress-0.2.0.tgz}
+    dev: false
 
   /nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==, tarball: https://registry.npmmirror.com/nth-check/-/nth-check-2.1.1.tgz}

@@ -6,9 +6,9 @@
     "rootDir": "../",
     "types": ["vite/client"],
     "paths": {
-      "@ent-core/*": ["../packages/fe-ent-core/*"],
-      "fe-ent-core": ["../packages/fe-ent-core/index.ts"],
-      "fe-ent-core/es/*": ["../packages/fe-ent-core/*"],
+      "@ent-core/*": ["../src/*"],
+      "fe-ent-core": ["../src/index.ts"],
+      "fe-ent-core/es/*": ["../src/*"],
       "/@/*": [
         "src/*"
       ],

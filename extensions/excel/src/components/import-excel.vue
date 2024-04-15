@@ -15,7 +15,7 @@
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
   import * as XLSX from 'xlsx';
-  import { dateUtil } from 'fe-ent-core/es/utils/date-util';
+  import { format } from 'date-fns';
 
   import type { ExcelData } from './typing';
   export default defineComponent({
@@ -119,7 +119,7 @@
                   row[field].setSeconds(row[field].getSeconds() + 43);
                 }
                 if (dateFormat) {
-                  row[field] = dateUtil(row[field]).format(dateFormat);
+                  row[field] = format(row[field], dateFormat);
                 }
               }
             }

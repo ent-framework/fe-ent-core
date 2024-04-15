@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-flow-chart",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -35,7 +35,7 @@
     "@logicflow/extension": "^1.2.1"
   },
   "devDependencies": {
-    "fe-ent-vue-scripts": "^2.1.0",
+    "fe-ent-vue-scripts": "^3.0.0",
     "rimraf": "^5.0.0",
     "@types/tinycolor2": "^1.4.2"
   },

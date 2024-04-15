@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-login",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -31,7 +31,7 @@
     "fe-ent-core": "^3.0.0"
   },
   "devDependencies": {
-    "fe-ent-vue-scripts": "^2.1.0",
+    "fe-ent-vue-scripts": "^3.0.0",
     "naive-ui": "^2.38.1",
     "@types/qrcode": "^1.4.1",
     "rimraf": "^5.0.0"

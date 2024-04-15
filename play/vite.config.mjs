@@ -16,56 +16,56 @@ export default defineConfig(({ command, mode }) => {
           // 别名，转发 fe-ent-core 文件请求
           {
             find: /^fe-ent-core$/,
-            replacement: `${workspace}/packages/fe-ent-core/index.ts`,
+            replacement: `${workspace}/src/index.ts`,
           },
           {
             find: /^fe-ent-core\/es\/(.*)$/,
-            replacement: `${workspace}/packages/fe-ent-core/$1`,
+            replacement: `${workspace}/src/$1`,
           },
           // 别名，转发 fe-ent-extension 文件请求
           {
             find: /^fe-ent-code-editor$/,
-            replacement: `${workspace}/extensions/code-editor/index.ts`,
+            replacement: `${workspace}/extensions/code-editor/src/index.ts`,
           },
           {
             find: /^fe-ent-echarts$/,
-            replacement: `${workspace}/extensions/echarts/index.ts`,
+            replacement: `${workspace}/extensions/echarts/src/index.ts`,
           },
           {
             find: /^fe-ent-flow-chart$/,
-            replacement: `${workspace}/extensions/flow-chart/index.ts`,
+            replacement: `${workspace}/extensions/flow-chart/src/index.ts`,
           },
           {
             find: /^fe-ent-markdown$/,
-            replacement: `${workspace}/extensions/markdown/index.ts`,
+            replacement: `${workspace}/extensions/markdown/src/index.ts`,
           },
           {
             find: /^fe-ent-tinymce$/,
-            replacement: `${workspace}/extensions/tinymce/index.ts`,
+            replacement: `${workspace}/extensions/tinymce/src/index.ts`,
           },
           {
             find: /^fe-ent-excel$/,
-            replacement: `${workspace}/extensions/excel/index.ts`,
+            replacement: `${workspace}/extensions/excel/src/index.ts`,
           },
           {
             find: /^fe-ent-tiptap$/,
-            replacement: `${workspace}/extensions/tiptap/index.ts`,
+            replacement: `${workspace}/extensions/tiptap/src/index.ts`,
           },
           {
             find: /^fe-ent-login$/,
-            replacement: `${workspace}/apps/login/index.ts`,
+            replacement: `${workspace}/apps/login/src/index.ts`,
           },
           {
             find: /^fe-ent-layout$/,
-            replacement: `${workspace}/apps/layout/index.ts`,
+            replacement: `${workspace}/apps/layout/src/index.ts`,
           },
           {
             find: /^fe-ent-layout\/es\/(.*)$/,
-            replacement: `${workspace}/apps/layout/$1`,
+            replacement: `${workspace}/apps/layout/src/$1`,
           },
           {
             find: /^@ent-core\/(.*)$/,
-            replacement: `${workspace}/packages/fe-ent-core/$1`,
+            replacement: `${workspace}/src/$1`,
           },
         ],
       },
