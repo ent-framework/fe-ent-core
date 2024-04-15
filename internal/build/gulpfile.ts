@@ -6,12 +6,10 @@ export default series(
   withTaskName('buildSupport', () => run('pnpm build:support')),
 
   parallel(
-    withTaskName('buildCoreComponent', () =>
-      run('pnpm run -C packages/fe-ent-core build:component'),
-    ),
-    withTaskName('buildCoreStyle', () => run('pnpm run -C packages/fe-ent-core build:style')),
-    withTaskName('buildCoreTypesDefinitions', () => run('pnpm run -C packages/fe-ent-core dtsgen')),
-    withTaskName('buildJsonFiles', () => run('pnpm run -C packages/fe-ent-core jsongen')),
+    withTaskName('buildCoreComponent', () => run('pnpm run build:lib')),
+    withTaskName('buildCoreStyle', () => run('pnpm run lib:build:style')),
+    withTaskName('buildCoreTypesDefinitions', () => run('pnpm run lib:dtsgen')),
+    withTaskName('buildJsonFiles', () => run('pnpm run lib:jsongen')),
   ),
   parallel(
     withTaskName('buildExtensions', () => run('pnpm -w run build:extensions')),

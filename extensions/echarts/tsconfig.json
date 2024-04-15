@@ -6,5 +6,5 @@
     "paths": {
     }
   },
-  "include": ["components", "../../packages/fe-ent-core"],
+  "include": ["src"],
 }

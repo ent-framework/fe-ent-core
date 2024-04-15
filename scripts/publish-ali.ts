@@ -10,7 +10,7 @@ const publish = async () => {
     onlyDirectories: true,
   });
 
-  const publishDir = [`${projRoot}/packages/fe-ent-core`, ...publishFolders];
+  const publishDir = [`${projRoot}`, ...publishFolders];
 
   console.log(publishDir);
   publishDir.forEach((pkg) => {

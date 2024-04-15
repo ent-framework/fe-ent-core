@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-tiptap",
-  "version": "2.1.58",
+  "version": "3.0.1",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -27,7 +27,7 @@
     "dtsgen": "ent-vue-scripts dtsgen"
   },
   "peerDependencies": {
-    "fe-ent-core": "^2.1.0"
+    "fe-ent-core": "^3.0.0"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",

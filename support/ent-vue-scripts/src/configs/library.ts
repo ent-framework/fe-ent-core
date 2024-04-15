@@ -14,6 +14,7 @@ import type { InlineConfig, UserConfig } from 'vite';
  */
 async function defineLibraryConfig(source: boolean) {
   const root = process.cwd();
+  const base = `${root}/src`;
   //const workspace = searchForWorkspaceRoot(root);
   const plugins = await createPlugins({
     isBuild: true,
@@ -27,11 +28,11 @@ async function defineLibraryConfig(source: boolean) {
   const deps = [...Object.keys(dependencies), ...Object.keys(peerDependencies)];
   const input = excludeFiles(
     glob.sync('**/*.{ts,tsx,vue}', {
-      cwd: process.cwd(),
+      cwd: base,
       absolute: false,
       onlyFiles: true,
     }),
-  ).map((file) => `${process.cwd()}/${file}`);
+  ).map((file) => `${base}/${file}`);
   const packageConfig: UserConfig = {
     build: {
       target: 'modules',
@@ -40,7 +41,7 @@ async function defineLibraryConfig(source: boolean) {
       minify: false,
       sourcemap: true,
       lib: {
-        entry: 'index.ts',
+        entry: `${base}/index.ts`,
       },
       rollupOptions: {
         input,
@@ -52,7 +53,7 @@ async function defineLibraryConfig(source: boolean) {
             entryFileNames: '[name].mjs',
             preserveModules: true,
             exports: 'named',
-            //preserveModulesRoot: 'components',
+            preserveModulesRoot: 'src',
           },
         ],
         external: [...deps],

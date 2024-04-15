@@ -6,25 +6,27 @@ import { build } from 'vite';
 import { defineLibraryConfig } from '../../configs/library';
 import { defineUmdLibraryConfig } from '../../configs/library.umd';
 
-async function run({ umd = false, source = false, base = '' }) {
+async function run({ umd = false, source = false }) {
+  consola.info(`building library... with umd ${umd}, source: ${source}`);
   const cwd = process.cwd();
   await fs.emptyDir(path.resolve(cwd, 'dist'));
   await build(await defineLibraryConfig(source));
   consola.success(`build library successfully in path ${cwd}`);
   // 拷贝less文件到目标文件，index.less编译生成index.css
   const files = glob.sync('**/*.less', {
-    cwd,
+    cwd: `${cwd}/src`,
     absolute: false,
     ignore: ['node_modules/**'],
   });
 
   for (const filename of files) {
-    const absolute = path.resolve(cwd, `${filename}`);
+    const absolute = path.resolve(`${cwd}/src`, `${filename}`);
     fs.copySync(absolute, path.resolve(cwd, `es/${filename}`));
   }
 
   if (umd) {
-    await build(await defineUmdLibraryConfig(source, base));
+    consola.info(`start build library umd in path ${cwd}`);
+    await build(await defineUmdLibraryConfig(source));
     consola.success(`build library umd successfully in path ${cwd}`);
   }
 }

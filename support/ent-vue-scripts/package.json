@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-vue-scripts",
-  "version": "2.1.58",
+  "version": "3.0.1",
   "description": "Ent Vue Scripts",
   "main": "dist/index.js",
   "bin": {

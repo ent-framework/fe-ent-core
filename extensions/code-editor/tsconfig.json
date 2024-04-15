@@ -8,5 +8,5 @@
       "pinia": ["../../node_modules/pinia"],
     }
   },
-  "include": ["components", "../../packages"],
+  "include": ["src"],
 }

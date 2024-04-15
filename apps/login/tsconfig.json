@@ -13,7 +13,7 @@
     },
     "types": ["vite/client"]
   },
-  "include": ["components", "locales", "index.ts"],
+  "include": ["src"],
   "exclude": [
     "node_modules",
     "dist",

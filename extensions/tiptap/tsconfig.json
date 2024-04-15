@@ -8,11 +8,6 @@
     }
   },
   "include": [
-    "components",
-    "extensions",
-    "hooks",
-    "i18n",
-    "utils",
-    "../../packages"
+    "src"
   ]
 }

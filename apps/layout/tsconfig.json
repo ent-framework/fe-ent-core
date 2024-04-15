@@ -3,10 +3,7 @@
   "extends": "ts-config-ent/web.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "rootDir": "../../",
     "paths": {
-      "fe-ent-core": ["../../packages/fe-ent-core/es/*"],
-      "fe-ent-core/es": ["../../packages/fe-ent-core/es/*"],
       "vue": ["../../node_modules/vue"],
       "vue-i18n": ["../../node_modules/vue-i18n"],
       "vue-types": ["../../node_modules/vue-types"],
@@ -19,7 +16,7 @@
     },
     "types": ["vite/client"]
   },
-  "include": ["components/**/*", "hooks/*", "store/*", "locales", "types.ts", "index.ts"],
+  "include": ["src"],
   "exclude": [
     "node_modules",
     "**/node_modules/**",

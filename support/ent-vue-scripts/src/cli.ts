@@ -93,9 +93,8 @@ program
   .description('build library')
   .option('-u, --umd', 'build with UMD file')
   .option('-s, --source', 'build with library source')
-  .option('--base', 'build with library source')
-  .action(async ({ umd, source, base }) => {
-    await buildLibrary({ umd, source, base });
+  .action(async ({ umd, source = false }) => {
+    await buildLibrary({ umd, source });
   });
 
 program

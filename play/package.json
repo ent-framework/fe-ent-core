@@ -14,7 +14,7 @@
     "dtsgen": "ent-vue-scripts dtsgen --base src"
   },
   "peerDependencies": {
-    "fe-ent-core": "^2.1.0"
+    "fe-ent-core": "^3.0.0"
   },
   "dependencies": {
     "intro.js": "^4.3.0",
