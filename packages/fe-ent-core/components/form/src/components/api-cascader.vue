@@ -8,11 +8,11 @@
     @change="handleChange"
   >
     <template v-if="loading" #suffixIcon>
-      <LoadingOutlined spin />
+      <EntIcon icon="ant-design:loading-outlined" />
     </template>
     <template v-if="loading" #notFoundContent>
       <span>
-        <LoadingOutlined spin class="mr-1" />
+        <EntIcon icon="ant-design:loading-outlined" />
         {{ t('component.form.apiSelectNotFound') }}
       </span>
     </template>
@@ -22,7 +22,7 @@
   import { defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { NCascader } from 'naive-ui';
   import { get, omit } from 'lodash-es';
-  import { LoadingOutlined } from '@ant-design/icons-vue';
+  import { EntIcon } from '@ent-core/components/icon';
   import { isFunction } from '@ent-core/utils/is';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
@@ -39,8 +39,8 @@
   export default defineComponent({
     name: 'ApiCascader',
     components: {
-      LoadingOutlined,
       NCascader,
+      EntIcon,
     },
     props: {
       value: {

@@ -1,8 +1,9 @@
 <template>
   <NMenu
-    :collapsed="collapse"
+    :collapsed="collapsed"
     :class="prefixCls"
     :collapsed-icon-size="22"
+    :collapsed-width="getCollapsedWidth"
     :options="items"
     :value="selectedKey"
     :render-label="renderMenuLabel"
@@ -19,6 +20,7 @@
   import { isUrl } from 'fe-ent-core/es/utils/is';
   import { openWindow } from 'fe-ent-core/es/utils';
   import { entRouter } from 'fe-ent-core/es/router';
+  import { useSiderEvent } from '../../sider/use-layout-sider';
   import { useOpenKeys } from './use-open-keys';
   import { basicProps } from './props';
   import type { MenuOption } from 'naive-ui/es/menu';
@@ -44,13 +46,14 @@
 
       const { currentRoute } = useRouter();
       const { prefixCls } = useDesign('simple-menu');
-      const { items, accordion, mixSider, collapse } = toRefs(props);
+      const { getCollapsedWidth } = useSiderEvent();
+      const { items, accordion, mixSider, collapsed } = toRefs(props);
       const { handleOpenChange, setOpenKeys, getOpenKeys } = useOpenKeys(
         menuState,
         items,
         accordion,
         mixSider as any,
-        collapse as any,
+        collapsed as any,
       );
 
       const getBindValues = computed(() => ({ ...attrs, ...props }));
@@ -76,7 +79,7 @@
       );
 
       watch(
-        () => props.collapse,
+        () => props.collapsed,
         (collapse) => {
           if (collapse) {
             menuState.openKeys = [];
@@ -133,7 +136,7 @@
           return h('a', { href: option.href, target: '_blank' }, option.label as string);
         }
         let label = option.label as string;
-        if (props.collapse) {
+        if (props.collapsed) {
           if (!props.collapsedShowTitle) {
             // 判断有没有ICON，没有icon会造成带单空白没显示
             if (!option.icon) {
@@ -184,6 +187,7 @@
         handleSelect,
         getOpenKeys,
         handleOpenChange,
+        getCollapsedWidth,
         ...toRefs(menuState),
       };
     },

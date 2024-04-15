@@ -9,7 +9,7 @@
           <slot name="header" />
           <NTooltip>
             <template #trigger>
-              <EntButton><TableOutlined /></EntButton>
+              <EntButton><EntIcon icon="ant-design:table-outlined" /></EntButton>
             </template>
             <div class="w-50">每行显示数量</div>
             <NSlider
@@ -24,7 +24,7 @@
           </NTooltip>
           <NTooltip>
             <template #trigger
-              ><EntButton @click="fetch"><RedoOutlined /></EntButton
+              ><EntButton @click="fetch"><EntIcon icon="ant-design:redo-outlined" /></EntButton
             ></template>
             刷新
           </NTooltip>
@@ -39,7 +39,7 @@
               </div>
             </template>
             <template #action>
-              <EditOutlined key="edit" />
+              <EntIcon icon="ant-design:edit-outlined" key="edit" />
               <EntDropdown
                 trigger="hover"
                 :drop-menu-list="[
@@ -54,7 +54,7 @@
                 ]"
                 popconfirm
               >
-                <EllipsisOutlined key="ellipsis" />
+                <EntIcon icon="ant-design:ellipsis-outlined" key="ellipsis" />
               </EntDropdown>
             </template>
             <NAvatar :src="item.avatar" />
@@ -68,15 +68,10 @@
 
 <script lang="ts">
   import { computed, defineComponent, onMounted, ref } from 'vue';
-  import {
-    EditOutlined,
-    EllipsisOutlined,
-    RedoOutlined,
-    TableOutlined,
-  } from '@ant-design/icons-vue';
   import { NAvatar, NCard, NGrid, NGridItem, NImage, NSlider, NTooltip } from 'naive-ui';
   import { isFunction } from '@ent-core/utils/is';
   import { EntDropdown } from '@ent-core/components/dropdown';
+  import { EntIcon } from '@ent-core/components/icon';
   import { EntForm, useForm } from '@ent-core/components/form';
   import { propTypes } from '@ent-core/utils/prop-types';
   import { EntButton } from '@ent-core/components/button';
@@ -86,10 +81,6 @@
   export default defineComponent({
     name: 'EntCardList',
     components: {
-      EditOutlined,
-      EllipsisOutlined,
-      RedoOutlined,
-      TableOutlined,
       EntForm,
       EntDropdown,
       EntButton,
@@ -100,6 +91,7 @@
       NGridItem,
       NTooltip,
       NSlider,
+      EntIcon,
     },
     props: {
       params: propTypes.object.def({}),

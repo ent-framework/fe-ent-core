@@ -1,7 +1,6 @@
 import { unref } from 'vue';
 import { cloneDeep, set } from 'lodash-es';
 import { isArray, isFunction, isNullOrUnDef, isObject, isString } from '@ent-core/utils/is';
-import { dateUtil } from '@ent-core/utils/date-util';
 import type { ComputedRef, Ref } from 'vue';
 import type { FormProps, FormSchema } from '../types/form';
 import type { Recordable } from '@ent-core/types';
@@ -89,39 +88,7 @@ export function useFormValues({
         set(res, key, value);
       }
     }
-    return handleRangeTimeValue(res);
-  }
-
-  /**
-   * @description: Processing time interval parameters
-   */
-  function handleRangeTimeValue(values: Recordable) {
-    const fieldMapToTime = unref(getProps).fieldMapToTime;
-
-    if (!fieldMapToTime || !Array.isArray(fieldMapToTime)) {
-      return values;
-    }
-
-    for (const [field, [startTimeKey, endTimeKey], format = 'YYYY-MM-DD'] of fieldMapToTime) {
-      if (!field || !startTimeKey || !endTimeKey) {
-        continue;
-      }
-      // If the value to be converted is empty, remove the field
-      if (!values[field]) {
-        Reflect.deleteProperty(values, field);
-        continue;
-      }
-
-      const [startTime, endTime]: string[] = values[field];
-
-      const [startTimeFormat, endTimeFormat] = Array.isArray(format) ? format : [format, format];
-
-      values[startTimeKey] = dateUtil(startTime).format(startTimeFormat);
-      values[endTimeKey] = dateUtil(endTime).format(endTimeFormat);
-      Reflect.deleteProperty(values, field);
-    }
-
-    return values;
+    return res;
   }
 
   function initDefault() {

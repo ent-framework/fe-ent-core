@@ -2,8 +2,7 @@ import { computed, reactive, ref, toRaw, unref, watch } from 'vue';
 import { cloneDeep, get, isEqual } from 'lodash-es';
 import { usePermission } from '@ent-core/hooks/web/use-permission';
 import { useI18n } from '@ent-core/hooks/web/use-i18n';
-import { isArray, isBoolean, isMap, isString } from '@ent-core/utils/is';
-import { formatToDate } from '@ent-core/utils/date-util';
+import { isArray, isBoolean, isString } from '@ent-core/utils/is';
 import { ACTION_COLUMN_FLAG, DEFAULT_ALIGN, INDEX_COLUMN_FLAG, PAGE_SIZE } from '../const';
 import type { ComputedRef, Ref } from 'vue';
 import type {
@@ -13,8 +12,7 @@ import type {
   DataTableSelectionColumn,
   PaginationProps,
 } from 'naive-ui';
-import type { BasicColumn, BasicTableProps, CellFormat, GetColumnsParams } from '../types/table';
-import type { Recordable } from '@ent-core/types';
+import type { BasicColumn, BasicTableProps, GetColumnsParams } from '../types/table';
 
 function handleItem(item: BasicColumn, ellipsis: boolean) {
   const { key } = item;
@@ -156,13 +154,11 @@ export function useColumns(
     columns.forEach((item) => {
       if (isBaseColumn(item)) {
         const baseColumn = item as BasicColumn;
-        const { render, slots } = baseColumn;
+        const { render } = baseColumn;
 
         handleItem(
           baseColumn,
-          Reflect.has(baseColumn, 'ellipsis')
-            ? !!baseColumn.ellipsis
-            : !!ellipsis && !render && !slots,
+          Reflect.has(baseColumn, 'ellipsis') ? !!baseColumn.ellipsis : !!ellipsis && !render,
         );
       }
     });
@@ -186,29 +182,6 @@ export function useColumns(
 
   const getViewColumns = computed(() => {
     const viewColumns = sortFixedColumn(unref(getColumnsRef));
-
-    const mapFn = (column: BasicColumn) => {
-      const { slots, render, format, flag } = column;
-
-      if (!slots || !slots?.title) {
-        // column.slots = { title: `header-${dataIndex}`, ...(slots || {}) };
-        // column.customTitle = column.title;
-        // Reflect.deleteProperty(column, 'title');
-      }
-      const isDefaultAction = [INDEX_COLUMN_FLAG, ACTION_COLUMN_FLAG].includes(flag!);
-      if (!render && format && !isDefaultAction) {
-        column.render = ({ text, record, index }) => {
-          return formatCell(text, format, record, index);
-        };
-      }
-
-      // edit table
-      // if ((edit || editRow) && !isDefaultAction) {
-      //   column.render = renderEditCell(column);
-      // }
-      return reactive(column);
-    };
-
     const columns = cloneDeep(viewColumns);
     return columns
       .filter((column) => {
@@ -221,7 +194,7 @@ export function useColumns(
       })
       .map((column) => {
         if (isBaseColumn(column)) {
-          return mapFn(column as BasicColumn);
+          return reactive(column);
         }
         return column;
       });
@@ -362,36 +335,4 @@ function sortFixedColumn(columns: DataTableColumn[]) {
     }
     return true;
   });
-}
-
-// format cell
-export function formatCell(text: string, format: CellFormat, record: Recordable, index: number) {
-  if (!format) {
-    return text;
-  }
-
-  // custom function
-  if (typeof format === 'function') {
-    return format(text, record, index);
-  }
-
-  try {
-    // date type
-    const DATE_FORMAT_PREFIX = 'date|';
-    if (isString(format) && format.startsWith(DATE_FORMAT_PREFIX) && text) {
-      const dateFormat = format.replace(DATE_FORMAT_PREFIX, '');
-
-      if (!dateFormat) {
-        return text;
-      }
-      return formatToDate(text, dateFormat);
-    }
-
-    // Map
-    if (isMap(format)) {
-      return format.get(text);
-    }
-  } catch {
-    return text;
-  }
 }

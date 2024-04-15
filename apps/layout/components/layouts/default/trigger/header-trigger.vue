@@ -1,7 +1,7 @@
 <template>
   <span :class="[prefixCls, theme]" @click="toggleCollapsed">
-    <EntIcon v-if="getCollapsed" icon="ant-design:menu-unfold-outlined" width="1em" height="1em" />
-    <EntIcon v-else icon="ant-design:menu-fold-outlined" width="1em" height="1em" />
+    <EntIcon v-if="getCollapsed" icon="ant-design:menu-unfold-outlined" />
+    <EntIcon v-else icon="ant-design:menu-fold-outlined" />
   </span>
 </template>
 <script lang="ts">

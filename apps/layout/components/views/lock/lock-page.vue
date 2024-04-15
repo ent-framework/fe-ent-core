@@ -9,7 +9,7 @@
       class="absolute top-0 left-1/2 flex pt-5 h-16 items-center justify-center sm:text-md xl:text-xl text-white flex-col cursor-pointer transform translate-x-1/2"
       @click="handleShowForm(false)"
     >
-      <LockOutlined />
+      <EntIcon icon="ion:lock-closed-outline" />
       <span>{{ t('sys.lock.unlock') }}</span>
     </div>
 
@@ -84,7 +84,7 @@
   import { NInput } from 'naive-ui';
   import { useDesign, useI18n } from 'fe-ent-core/es/hooks';
   import { useUserStore } from 'fe-ent-core/es/store';
-  import { LockOutlined } from '@ant-design/icons-vue';
+  import { EntIcon } from 'fe-ent-core/es/components/icon';
   import { useLockStore } from '../../../store/lock';
   import headerImg from '../../../assets/header.jpg';
   import { useNow } from './use-now';

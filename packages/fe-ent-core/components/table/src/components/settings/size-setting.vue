@@ -8,7 +8,7 @@
         :options="sizeOptions"
         @update:value="handleTitleClick"
       >
-        <ColumnHeightOutlined />
+        <EntIcon icon="ant-design:column-height-outlined" />
       </NPopselect>
     </template>
     <span>{{ t('component.table.settingDens') }}</span>
@@ -17,7 +17,7 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { NPopselect, NTooltip } from 'naive-ui';
-  import { ColumnHeightOutlined } from '@ant-design/icons-vue';
+  import { EntIcon } from '@ent-core/components/icon';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { getPopupContainer } from '@ent-core/utils';
   import { useTableContext } from '../../hooks/use-table-context';
@@ -27,9 +27,9 @@
   export default defineComponent({
     name: 'SizeSetting',
     components: {
-      ColumnHeightOutlined,
       NTooltip,
       NPopselect,
+      EntIcon,
     },
     setup() {
       const table = useTableContext();

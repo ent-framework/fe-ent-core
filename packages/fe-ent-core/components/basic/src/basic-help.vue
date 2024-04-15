@@ -1,7 +1,7 @@
 <script lang="tsx">
   import { computed, defineComponent, unref } from 'vue';
   import { NTooltip } from 'naive-ui';
-  import { InfoCircleOutlined } from '@ant-design/icons-vue';
+  import EntIcon from '@ent-core/components/icon/src/icon.vue';
   import { isArray, isString } from '@ent-core/utils/is';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
   import { useDesign } from '@ent-core/hooks/web/use-design';
@@ -46,10 +46,10 @@
 
   export default defineComponent({
     name: 'EntHelp',
-    components: { NTooltip },
+    components: { NTooltip, EntIcon },
     props,
     setup(props, { slots }) {
-      const { prefixCls } = useDesign('basic-help');
+      const { prefixCls } = useDesign('help');
 
       const getTooltipStyle = computed(
         (): CSSProperties => ({ color: props.color, fontSize: props.fontSize }),
@@ -88,7 +88,11 @@
           >
             {{
               trigger: () => {
-                return <span class={prefixCls}>{getSlot(slots) || <InfoCircleOutlined />}</span>;
+                return (
+                  <span class={prefixCls}>
+                    {getSlot(slots) || <EntIcon icon="ant-design:info-circle-outlined" />}
+                  </span>
+                );
               },
               default: () => {
                 return <div style={unref(getTooltipStyle)}>{renderTitle()}</div>;

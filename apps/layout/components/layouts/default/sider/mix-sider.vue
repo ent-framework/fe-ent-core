@@ -80,13 +80,7 @@
   import { EntAppLogo, EntIcon, EntScrollContainer } from 'fe-ent-core';
   import { SIDE_BAR_MINI_WIDTH, SIDE_BAR_SHOW_TIT_MINI_WIDTH } from 'fe-ent-core/es/logics';
   import { getChildrenMenus, getCurrentParentPath, getShallowMenus } from 'fe-ent-core/es/router';
-  import {
-    useDesign,
-    useGlobSetting,
-    useGo,
-    useI18n,
-    useThemeSetting,
-  } from 'fe-ent-core/es/hooks';
+  import { useDesign, useGlobSetting, useGo, useI18n, useThemeSetting } from 'fe-ent-core/es/hooks';
   import { usePermissionStore } from 'fe-ent-core/es/store';
   import { NText } from 'naive-ui';
   import { useMenuSetting } from '../../../../hooks';

@@ -66,13 +66,11 @@
   import { useDebounceFn } from '@vueuse/shared';
   import { formProps } from 'naive-ui/es/form';
   import { cloneDeep, pick } from 'lodash-es';
-  import { dateUtil } from '@ent-core/utils/date-util';
   import { deepMerge } from '@ent-core/utils';
   import { useModalContext } from '@ent-core/components/modal';
   import { useDesign } from '@ent-core/hooks/web/use-design';
   import FormItem from './components/form-item.vue';
   import FormAction from './components/form-action.vue';
-  import { dateItemType } from './helper';
   import { useFormValues } from './hooks/use-form-values';
   import useAdvanced from './hooks/use-advanced';
   import { useFormEvents } from './hooks/use-form-events';
@@ -163,19 +161,6 @@
         const props_ = unref(getProps);
         const schemas: FormSchema[] = unref(schemaRef) || (props_.schemas as any);
         for (const schema of schemas) {
-          const { defaultValue, component, isHandleDateDefaultValue = true } = schema;
-          // handle date type
-          if (isHandleDateDefaultValue && defaultValue && dateItemType.includes(component)) {
-            if (!Array.isArray(defaultValue)) {
-              schema.defaultValue = dateUtil(defaultValue);
-            } else {
-              const def: any[] = [];
-              defaultValue.forEach((item) => {
-                def.push(dateUtil(item));
-              });
-              schema.defaultValue = def;
-            }
-          }
           if (schema.component === 'Divider') {
             schema.componentProps = Object.assign(
               { 'title-placement': 'left' },

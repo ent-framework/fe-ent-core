@@ -12,7 +12,7 @@
     </template>
     <template v-if="loading" #empty>
       <span>
-        <LoadingOutlined spin class="mr-1" />
+        <EntIcon icon="ant-design:loading-outlined" />
         {{ t('component.form.apiSelectNotFound') }}
       </span>
     </template>
@@ -22,7 +22,7 @@
   import { computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { NSelect } from 'naive-ui';
   import { get, omit } from 'lodash-es';
-  import { LoadingOutlined } from '@ant-design/icons-vue';
+  import { EntIcon } from '@ent-core/components/icon';
   import { isFunction } from '@ent-core/utils/is';
   import { useRuleFormItem } from '@ent-core/hooks/component/use-form-item';
   import { useAttrs } from '@ent-core/hooks/core/use-attrs';
@@ -36,7 +36,7 @@
     name: 'ApiSelect',
     components: {
       NSelect,
-      LoadingOutlined,
+      EntIcon,
     },
     inheritAttrs: false,
     props: {

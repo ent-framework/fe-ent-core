@@ -11,15 +11,14 @@
         :style="{ background: theme.themeOverrides.common?.primaryColor }"
         @click="handleClick(theme)"
       >
-        <CheckOutlined />
+        <EntIcon icon="ant-design:check-outlined" />
       </span>
     </template>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { CheckOutlined } from '@ant-design/icons-vue';
-
+  import { EntIcon } from 'fe-ent-core';
   import { useDesign } from 'fe-ent-core/es/hooks';
   import { Factory } from 'fe-ent-core/es/logics';
   import type { ThemeSetting } from 'fe-ent-core/es/store/types';
@@ -30,7 +29,7 @@
 
   export default defineComponent({
     name: 'ThemeColorPicker',
-    components: { CheckOutlined },
+    components: { EntIcon },
     props: {
       event: {
         type: Number as PropType<HandlerEnum>,

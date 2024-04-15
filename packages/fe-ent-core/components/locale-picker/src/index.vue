@@ -1,17 +1,19 @@
 <template>
-  <NPopselect
-    v-model:value="selectedKeys"
-    placement="bottom"
-    trigger="click"
-    :options="localeList"
-    class="app-locale-picker-overlay"
-    @update:value="handleMenuEvent"
-  >
-    <div class="cursor-pointer flex items-center">
-      <EntIcon icon="ion:language" />
-      <span v-if="showText" class="ml-1">{{ getLocaleText }}</span>
-    </div>
-  </NPopselect>
+  <div>
+    <NPopselect
+      v-model:value="selectedKeys"
+      placement="bottom"
+      trigger="click"
+      :options="localeList"
+      class="app-locale-picker-overlay"
+      @update:value="handleMenuEvent"
+    >
+      <div class="cursor-pointer flex items-center">
+        <EntIcon icon="ion:language" />
+        <span v-if="showText" class="ml-1">{{ getLocaleText }}</span>
+      </div>
+    </NPopselect>
+  </div>
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watchEffect } from 'vue';
@@ -36,7 +38,6 @@
   export default defineComponent({
     name: 'EntLocalePicker',
     components: { EntIcon, NPopselect },
-    inheritAttrs: false,
     props,
     setup(props) {
       const selectedKeys = ref<string>();

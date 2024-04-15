@@ -10,9 +10,8 @@ import {
   isString,
 } from '@ent-core/utils/is';
 import { deepMerge } from '@ent-core/utils';
-import { dateUtil } from '@ent-core/utils/date-util';
 import { error } from '@ent-core/utils/log';
-import { dateItemType, defaultValueComponents, handleInputNumberValue } from '../helper';
+import { defaultValueComponents, handleInputNumberValue } from '../helper';
 import type { EmitType, Fn, Recordable } from '@ent-core/types';
 import type { FormActionType, FormProps, FormSchema } from '../types/form';
 import type { ComputedRef, Ref } from 'vue';
@@ -126,24 +125,7 @@ export function useFormEvents({
       // 0| '' is allow
       if (hasKey || !!constructValue) {
         const fieldValue = constructValue || value;
-        // time type
-        if (itemIsDateType(key)) {
-          if (Array.isArray(fieldValue)) {
-            const arr: any[] = [];
-            for (const ele of fieldValue) {
-              arr.push(ele ? dateUtil(ele) : null);
-            }
-            unref(formModel)[key] = arr;
-          } else {
-            unref(formModel)[key] = fieldValue
-              ? _props?.valueFormat
-                ? fieldValue
-                : dateUtil(fieldValue)
-              : null;
-          }
-        } else {
-          unref(formModel)[key] = fieldValue;
-        }
+        unref(formModel)[key] = fieldValue;
         if (_props?.onChange) {
           _props?.onChange(fieldValue);
         }
@@ -318,15 +300,6 @@ export function useFormEvents({
     const formEl = unref(formElRef);
     if (!formEl) return {};
     return handleFormValues(toRaw(unref(formModel)));
-  }
-
-  /**
-   * @description: Is it time
-   */
-  function itemIsDateType(key: string) {
-    return unref(getSchema).some((item) => {
-      return item.field === key ? dateItemType.includes(item.component) : false;
-    });
   }
 
   async function validate() {

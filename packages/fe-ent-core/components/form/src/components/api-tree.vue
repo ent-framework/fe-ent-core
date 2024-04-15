@@ -4,7 +4,7 @@
       <slot :name="item" v-bind="data || {}" />
     </template>
     <template v-if="loading" #suffixIcon>
-      <LoadingOutlined spin />
+      <EntIcon icon="ant-design:loading-outlined" />
     </template>
   </NTree>
 </template>
@@ -13,13 +13,13 @@
   import { type PropType, computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
   import { NTree } from 'naive-ui';
   import { get } from 'lodash-es';
-  import { LoadingOutlined } from '@ant-design/icons-vue';
+  import { EntIcon } from '@ent-core/components/icon';
   import { isArray, isFunction } from '@ent-core/utils/is';
   import { propTypes } from '@ent-core/utils/prop-types';
   import type { AnyFunction, Recordable } from '@ent-core/types';
   export default defineComponent({
     name: 'ApiTree',
-    components: { NTree, LoadingOutlined },
+    components: { NTree, EntIcon },
     props: {
       api: { type: Function as PropType<(arg?: Recordable<any>) => Promise<Recordable<any>>> },
       params: { type: Object },

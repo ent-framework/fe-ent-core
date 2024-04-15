@@ -22,9 +22,9 @@ export interface TableActionItem extends ButtonProps {
    */
   popConfirm?: Partial<PopconfirmProps> & { confirmContent?: string };
   /**
-   * 是否分割线
+   * 是否追加分割线
    */
-  divider?: boolean;
+  appendDivider?: boolean;
   /**
    * 权限编码控制是否显示
    */

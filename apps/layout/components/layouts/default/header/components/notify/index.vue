@@ -3,7 +3,7 @@
     <NPopover title="" trigger="click" :overlay-class-name="`${prefixCls}__overlay`">
       <template #trigger>
         <NBadge :count="count" dot :number-style="numberStyle">
-          <BellOutlined />
+          <EntIcon icon="ion:notifications-outline" />
         </NBadge>
       </template>
       <NTabs>
@@ -25,14 +25,14 @@
 <script lang="ts">
   import { computed, defineComponent, ref } from 'vue';
   import { NBadge, NPopover, NTabs } from 'naive-ui';
-  import { BellOutlined } from '@ant-design/icons-vue';
+  import { EntIcon } from 'fe-ent-core';
   import { useDesign, useMessage } from 'fe-ent-core/es/hooks';
   import { tabListData } from './data';
   import NoticeList from './notice-list.vue';
   import type { ListItem } from './data';
 
   export default defineComponent({
-    components: { NPopover, BellOutlined, NTabs, NTabPane: NTabs.TabPane, NBadge, NoticeList },
+    components: { NPopover, NTabs, NTabPane: NTabs.TabPane, NBadge, NoticeList, EntIcon },
     setup() {
       const { prefixCls } = useDesign('header-notify');
       const { createMessage } = useMessage();

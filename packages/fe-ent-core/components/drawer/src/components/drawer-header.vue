@@ -7,7 +7,7 @@
   <div v-else :class="[prefixCls, `${prefixCls}--detail`]">
     <span :class="`${prefixCls}__twrap`">
       <span v-if="showDetailBack" @click="handleClose">
-        <ArrowLeftOutlined :class="`${prefixCls}__back`" />
+        <EntIcon icon="ant-design:arrow-left-outlined" :class="`${prefixCls}__back`" />
       </span>
       <span v-if="title">{{ title }}</span>
     </span>
@@ -19,15 +19,15 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { ArrowLeftOutlined } from '@ant-design/icons-vue';
   import { EntTitle } from '@ent-core/components/basic';
+  import { EntIcon } from '@ent-core/components/icon';
 
   import { useDesign } from '@ent-core/hooks/web/use-design';
 
   import { propTypes } from '@ent-core/utils/prop-types';
   export default defineComponent({
     name: 'EntDrawerHeader',
-    components: { EntTitle, ArrowLeftOutlined },
+    components: { EntTitle, EntIcon },
     props: {
       isDetail: propTypes.bool,
       showDetailBack: propTypes.bool,

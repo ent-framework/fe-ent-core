@@ -12,7 +12,7 @@ export const basicProps = {
     type: String as PropType<ThemeEnum>,
     default: ThemeEnum.DARK,
   },
-  collapse: propTypes.bool,
+  collapsed: propTypes.bool,
   mixSider: propTypes.bool,
   accordion: propTypes.bool.def(true),
   collapsedShowTitle: propTypes.bool,

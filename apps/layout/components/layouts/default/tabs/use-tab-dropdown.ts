@@ -53,42 +53,41 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
       !isCurItem || (index === tabStore.getTabList.length - 1 && tabStore.getLastDragEndIndex >= 0);
     const dropMenuList: DropMenu[] = [
       {
-        icon: () => h(EntIcon, { icon: 'ion:lock-closed-sharp' }),
-        event: MenuEventEnum.REFRESH_PAGE,
-        text: t('layout.multipleTab.reload'),
+        icon: () => h(EntIcon, { icon: 'ant-design:redo-outlined' }),
+        key: MenuEventEnum.REFRESH_PAGE,
+        label: t('layout.multipleTab.reload'),
         disabled: refreshDisabled,
       },
       {
-        icon: () => h(EntIcon, { icon: 'clarity:close-line' }),
-        event: MenuEventEnum.CLOSE_CURRENT,
-        text: t('layout.multipleTab.close'),
+        icon: () => h(EntIcon, { icon: 'ion:close-outline' }),
+        key: MenuEventEnum.CLOSE_CURRENT,
+        label: t('layout.multipleTab.close'),
         disabled: !!meta?.affix || disabled,
-        divider: true,
+        appendDivider: true,
       },
       {
-        icon: () => h(EntIcon, { icon: 'line-md:arrow-close-left' }),
-        event: MenuEventEnum.CLOSE_LEFT,
-        text: t('layout.multipleTab.closeLeft'),
+        icon: () => h(EntIcon, { icon: 'ant-design:vertical-right-outlined' }),
+        key: MenuEventEnum.CLOSE_LEFT,
+        label: t('layout.multipleTab.closeLeft'),
         disabled: closeLeftDisabled,
-        divider: false,
       },
       {
-        icon: () => h(EntIcon, { icon: 'line-md:arrow-close-right' }),
-        event: MenuEventEnum.CLOSE_RIGHT,
-        text: t('layout.multipleTab.closeRight'),
+        icon: () => h(EntIcon, { icon: 'ant-design:vertical-left-outlined' }),
+        key: MenuEventEnum.CLOSE_RIGHT,
+        label: t('layout.multipleTab.closeRight'),
         disabled: closeRightDisabled,
-        divider: true,
+        appendDivider: true,
       },
       {
-        icon: () => h(EntIcon, { icon: 'dashicons:align-center' }),
-        event: MenuEventEnum.CLOSE_OTHER,
-        text: t('layout.multipleTab.closeOther'),
+        icon: () => h(EntIcon, { icon: 'ant-design:align-center-outlined' }),
+        key: MenuEventEnum.CLOSE_OTHER,
+        label: t('layout.multipleTab.closeOther'),
         disabled: disabled || !isCurItem,
       },
       {
-        icon: () => h(EntIcon, { icon: 'clarity:minus-line' }),
-        event: MenuEventEnum.CLOSE_ALL,
-        text: t('layout.multipleTab.closeAll'),
+        icon: () => h(EntIcon, { icon: 'ant-design:minus-outlined' }),
+        key: MenuEventEnum.CLOSE_ALL,
+        label: t('layout.multipleTab.closeAll'),
         disabled,
       },
     ];
@@ -109,9 +108,8 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
   }
 
   // Handle right click event
-  function handleMenuEvent(menu: DropMenu): void {
-    const { event } = menu;
-    switch (event) {
+  function handleMenuEvent(key: string): void {
+    switch (key) {
       case MenuEventEnum.REFRESH_PAGE:
         // refresh page
         refreshPage();

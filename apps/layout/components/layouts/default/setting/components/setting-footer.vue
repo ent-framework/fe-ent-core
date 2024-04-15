@@ -1,32 +1,32 @@
 <template>
   <div :class="prefixCls">
     <ent-button type="primary" block @click="handleCopy">
-      <CopyOutlined class="mr-2" />
+      <EntIcon icon="ant-design:copy-outlined" class="mr-2" />
       {{ t('layout.setting.copyBtn') }}
     </ent-button>
 
     <ent-button color="warning" block class="my-3" @click="handleResetSetting">
-      <RedoOutlined class="mr-2" />
+      <EntIcon icon="ant-design:redo-outlined" class="mr-2" />
       {{ t('common.resetText') }}
     </ent-button>
 
     <ent-button color="error" block @click="handleClearAndRedo">
-      <RedoOutlined class="mr-2" />
+      <EntIcon icon="ant-design:redo-outlined" class="mr-2" />
       {{ t('layout.setting.clearBtn') }}
     </ent-button>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { CopyOutlined, RedoOutlined } from '@ant-design/icons-vue';
   import { defaultProjectSetting } from 'fe-ent-core/es/logics';
+  import { EntIcon } from 'fe-ent-core';
   import { useAppStore, usePermissionStore, useUserStore } from 'fe-ent-core/es/store';
   import { useDesign, useI18n, useMessage } from 'fe-ent-core/es/hooks';
   import { useMultipleTabStore } from '../../../../../store/multiple-tab';
 
   export default defineComponent({
     name: 'SettingFooter',
-    components: { CopyOutlined, RedoOutlined },
+    components: { EntIcon },
     setup() {
       const permissionStore = usePermissionStore();
       const { prefixCls } = useDesign('setting-footer');

@@ -21,7 +21,9 @@
       const getIsUnFold = computed(() => !unref(getShowMenu) && !unref(getShowHeader));
 
       const getIcon = computed(() =>
-        unref(getIsUnFold) ? 'codicon:screen-normal' : 'codicon:screen-full',
+        unref(getIsUnFold)
+          ? 'ant-design:fullscreen-outlined'
+          : 'ant-design:fullscreen-exit-outlined',
       );
 
       function handleFold() {

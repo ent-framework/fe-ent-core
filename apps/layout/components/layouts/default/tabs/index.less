@@ -12,12 +12,12 @@
     height: @multiple-height;
   }
 
-  .n-tabs.n-tabs-card {
+  .n-tabs.n-tabs--card-type {
     .n-tabs-nav {
       padding-top: 2px;
       height: @multiple-height;
       margin: 0;
-      //background-color: @component-background;
+      background-color: var(--n-color);
       border: 0;
       box-shadow: none;
 
@@ -31,7 +31,7 @@
         padding-right: 12px;
         line-height: calc(@multiple-height - 2px);
         //color: @text-color-base;
-        //background-color: @component-background;
+        //background-color: var(--n-color);
         transition: none;
 
         &:hover {
@@ -54,10 +54,6 @@
             svg {
               width: 0.8em;
             }
-          }
-
-          .anticon-close {
-            vertical-align: 0.125em !important;
           }
         }
 
@@ -93,25 +89,6 @@
         }
       }
     }
-
-
-    .n-tabs-nav > div:nth-child(1) {
-      padding: 0 6px;
-
-      .n-tabs-tab {
-        margin-right: 3px !important;
-      }
-    }
-  }
-
-  .n-tabs-tab:not(.n-tabs-tab-active) {
-    .anticon-close {
-      font-size: 12px;
-
-      svg {
-        width: 0.6em;
-      }
-    }
   }
 
   .n-tabs-extra-content {
@@ -139,15 +116,6 @@
       //color: @text-color-secondary;
       text-align: center;
       cursor: pointer;
-      //border-left: 1px solid @border-color-base;
-
-      &:hover {
-        //color: @text-color-base;
-      }
-
-      span[role='img'] {
-        transform: rotate(90deg);
-      }
     }
 
     &__extra-redo {

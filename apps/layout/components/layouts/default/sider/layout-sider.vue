@@ -7,8 +7,8 @@
   <NLayoutSider
     v-show="showClassSideBarRef"
     ref="sideRef"
+    collapse-mode="width"
     :bordered="true"
-    :inverted="getInverted"
     :class="getSiderClass"
     :width="getMenuWidth"
     :collapsed="getCollapsed"
@@ -51,7 +51,6 @@
         getMenuHidden,
         getMenuFixed,
         getIsMixMode,
-        getInverted,
         toggleCollapsed,
       } = useMenuSetting();
 
@@ -112,7 +111,6 @@
         getHiddenDomStyle,
         getSiderClass,
         getTrigger,
-        getInverted,
         getTriggerAttr,
         getCollapsedWidth,
         getMenuFixed,

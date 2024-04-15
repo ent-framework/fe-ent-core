@@ -38,7 +38,7 @@
     components: { BasicHelp },
     props,
     setup(props) {
-      const { prefixCls } = useDesign('basic-title');
+      const { prefixCls } = useDesign('title');
       const slots = useSlots();
       const getClass = computed(() => [
         prefixCls,

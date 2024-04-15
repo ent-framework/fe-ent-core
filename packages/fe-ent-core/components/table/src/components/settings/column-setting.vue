@@ -8,7 +8,7 @@
         @open-change="handleVisibleChange"
       >
         <template #trigger>
-          <SettingOutlined />
+          <EntIcon icon="ant-design:setting-outlined" />
         </template>
         <div :class="`${prefixCls}__popover-title`">
           <NCheckbox
@@ -40,7 +40,7 @@
             <template v-for="item in plainOptions" :key="item.value">
               <div v-if="!('ifShow' in item && !item.ifShow)" :class="`${prefixCls}__check-item`">
                 <NSpace justify="space-between">
-                  <DragOutlined class="table-column-drag-icon" />
+                  <EntIcon icon="ant-design:drag-outlined" class="table-column-drag-icon" />
                   <NCheckbox :value="item.value">
                     {{ item.label }}
                   </NCheckbox>
@@ -101,7 +101,6 @@
     watchEffect,
   } from 'vue';
   import { NCheckbox, NCheckboxGroup, NDivider, NPopover, NSpace, NTooltip } from 'naive-ui';
-  import { DragOutlined, SettingOutlined } from '@ant-design/icons-vue';
   import { cloneDeep, omit } from 'lodash-es';
   import sortablejs from 'sortablejs';
   import { EntIcon } from '@ent-core/components/icon';
@@ -123,12 +122,10 @@
   export default defineComponent({
     name: 'ColumnSetting',
     components: {
-      SettingOutlined,
       NPopover,
       NTooltip,
       NCheckbox,
       NCheckboxGroup,
-      DragOutlined,
       NSpace,
       EntScrollContainer,
       NDivider,

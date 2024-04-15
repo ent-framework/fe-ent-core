@@ -1,6 +1,6 @@
 <script lang="tsx">
   import { computed, defineComponent, reactive, ref, unref, watch, watchEffect } from 'vue';
-  import { CheckOutlined, DoubleRightOutlined } from '@ant-design/icons-vue';
+  import { EntIcon } from '@ent-core/components/icon';
   import { useTimeoutFn } from '@ent-core/hooks/core/use-timeout';
   import { useEventListener } from '@ent-core/hooks/event/use-event-listener';
   import { getSlot } from '@ent-core/utils/helper/tsx-helper';
@@ -262,9 +262,12 @@
             >
               {getSlot(slots, 'actionIcon', isPassing) ||
                 (isPassing ? (
-                  <CheckOutlined class={`darg-verify-action__icon`} />
+                  <EntIcon icon="ant-design:check-outlined" class={`darg-verify-action__icon`} />
                 ) : (
-                  <DoubleRightOutlined class={`darg-verify-action__icon`} />
+                  <EntIcon
+                    icon="ant-design:double-right-outlined"
+                    class={`darg-verify-action__icon`}
+                  />
                 ))}
             </div>
           );

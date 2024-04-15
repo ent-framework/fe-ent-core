@@ -78,6 +78,17 @@ export function useCustomRow(
             return;
           }
 
+          const expandColumn = (e as MouseEvent)
+            .composedPath?.()
+            .find(
+              (dom: HTMLElement) =>
+                dom.tagName === 'DIV' && dom.className.includes('n-data-table-expand-trigger'),
+            ) as HTMLElement;
+          // 展开列，不触发
+          if (expandColumn) {
+            return;
+          }
+
           const isCheckbox = rowSelection.type === 'checkbox';
           if (isCheckbox) {
             const disabled = tr.querySelector(

@@ -32,7 +32,6 @@ export { EntImagePreview } from './preview';
 export { EntScrollbar } from './scroll-bar';
 export { EntStrengthMeter } from './strength-meter';
 export { EntTable, EntTableImg, EntTableAction } from './table';
-export { EntTime } from './time';
 export { EntTree } from './tree';
 export { EntUpload } from './upload';
 export { EntDragVerify, EntRotateDragVerify } from './verify';

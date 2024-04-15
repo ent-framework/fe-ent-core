@@ -62,12 +62,12 @@
                 actions: [
                   {
                     label: '删除',
-                    icon: 'ic:outline-delete-outline',
+                    icon: 'ant-design:delete-outlined',
                     onClick: handleDelete.bind(null, record),
                   },
                   {
                     label: '删除-确认',
-                    icon: 'ic:outline-delete-outline',
+                    icon: 'ant-design:delete-outlined',
                     popConfirm: {
                       confirmContent: '是否删除？',
                       onPositiveClick: handleDelete.bind(null, record),
@@ -81,13 +81,11 @@
                       confirmContent: '是否启用？',
                       onPositiveClick: handleOpen.bind(null, record),
                     },
-                  },
-                  {
-                    divider: true,
+                    appendDivider: true,
                   },
                   {
                     label: '启用测试',
-                    icon: 'ic:outline-delete-outline',
+                    icon: 'ant-design:delete-outlined',
                     popConfirm: {
                       confirmContent: '是否启用测试？',
                       onPositiveClick: handleOpen.bind(null, record),

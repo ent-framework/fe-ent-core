@@ -2,15 +2,8 @@
   <div :class="prefixCls">
     <NTooltip :title="getTitle" placement="bottom">
       <template #trigger>
-        <span @click="toggle">
-          <EntIcon
-            v-if="!isFullscreen"
-            icon="ant-design:fullscreen-outlined"
-            width="1em"
-            height="1em"
-          />
-          <EntIcon v-else icon="ant-design:fullscreen-exit-outlined" width="1em" height="1em" />
-        </span>
+        <EntIcon v-if="!isFullscreen" icon="ant-design:fullscreen-outlined" @click="toggle" />
+        <EntIcon v-else icon="ant-design:fullscreen-exit-outlined" @click="toggle" />
       </template>
       {{ getTitle }}
     </NTooltip>
@@ -29,7 +22,7 @@
     setup() {
       const { t } = useI18n();
       const { toggle, isFullscreen } = useFullscreen();
-      const { prefixCls } = useDesign('header-notify');
+      const { prefixCls } = useDesign('header-fullscreen');
       const getTitle = computed(() => {
         return unref(isFullscreen)
           ? t('layout.header.tooltipExitFull')

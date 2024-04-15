@@ -1,7 +1,12 @@
 <template>
   <div v-if="getShowDarkModeToggle" :class="getClass">
-    <EntIcon v-if="getGlobalTheme === 'light'" icon="ph:sun" name="sun" @click="toggleDarkMode" />
-    <EntIcon v-if="getGlobalTheme === 'dark'" icon="ph:moon" name="moon" @click="toggleDarkMode" />
+    <EntIcon
+      v-if="getGlobalTheme === 'light'"
+      icon="ion:sunny-outline"
+      name="sun"
+      @click="toggleDarkMode"
+    />
+    <EntIcon v-if="getGlobalTheme === 'dark'" icon="ion:moon-outline" @click="toggleDarkMode" />
   </div>
 </template>
 <script lang="ts">

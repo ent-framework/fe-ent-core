@@ -1,7 +1,7 @@
 <template>
   <NTooltip placement="top">
     <template #trigger>
-      <RedoOutlined @click="redo" />
+      <EntIcon icon="ant-design:redo-outlined" />
     </template>
     <span>{{ t('common.redo') }}</span>
   </NTooltip>
@@ -9,15 +9,15 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { NTooltip } from 'naive-ui';
-  import { RedoOutlined } from '@ant-design/icons-vue';
+  import { EntIcon } from '@ent-core/components/icon';
   import { useI18n } from '@ent-core/hooks/web/use-i18n';
   import { useTableContext } from '../../hooks/use-table-context';
 
   export default defineComponent({
     name: 'RedoSetting',
     components: {
-      RedoOutlined,
       NTooltip,
+      EntIcon,
     },
     setup() {
       const table = useTableContext();

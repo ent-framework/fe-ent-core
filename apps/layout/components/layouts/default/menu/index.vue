@@ -89,7 +89,7 @@
           menus,
           beforeClickFn: beforeMenuClickFn,
           accordion: unref(getAccordion),
-          collapse: unref(getCollapsed),
+          collapsed: unref(getCollapsed),
           collapsedShowTitle: unref(getCollapsedShowTitle),
           onMenuClick: handleMenuClick,
         };

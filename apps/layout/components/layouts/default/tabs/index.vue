@@ -123,7 +123,6 @@
           activeKeyRef.value = activeKey;
           go(activeKey, false);
         }
-        console.log(activeKey, options);
       }
 
       // Close the current tab

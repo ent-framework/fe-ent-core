@@ -12,7 +12,7 @@
               @update:value="handleSearch"
             >
               <template #prefix>
-                <SearchOutlined />
+                <EntIcon icon="ant-design:search-outlined" />
               </template>
             </NInput>
             <span :class="`${prefixCls}-cancel`" @click="handleClose">
@@ -59,7 +59,6 @@
 
 <script lang="ts" setup>
   import { computed, nextTick, ref, unref, watch } from 'vue';
-  import { SearchOutlined } from '@ant-design/icons-vue';
   import { EntIcon } from 'fe-ent-core';
   import { NInput } from 'naive-ui';
   import { useAppInject, useDesign, useI18n, useRefs } from 'fe-ent-core/es/hooks';

@@ -1,6 +1,6 @@
 <script lang="tsx">
   import { computed, defineComponent, reactive, ref, unref, watchEffect } from 'vue';
-  import { CloseOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
+  import { EntIcon } from '@ent-core/components/icon';
   import ResumeSvg from '@ent-core/components/icons/icon-resume.vue';
   import RotateSvg from '@ent-core/components/icons/icon-rotate.vue';
   import ScaleSvg from '@ent-core/components/icons/icon-scale.vue';
@@ -325,7 +325,7 @@
       const renderClose = () => {
         return (
           <div class={`${prefixCls}__close`} onClick={handleClose}>
-            <CloseOutlined class={`${prefixCls}__close-icon`} />
+            <EntIcon icon="ant-design:close-outlined" class={`${prefixCls}__close-icon`} />
           </div>
         );
       };
@@ -377,7 +377,11 @@
         }
         return (
           <div class={[`${prefixCls}__arrow`, direction]} onClick={() => handleChange(direction)}>
-            {direction === 'left' ? <LeftOutlined /> : <RightOutlined />}
+            {direction === 'left' ? (
+              <EntIcon icon="ant-design:left-outlined" />
+            ) : (
+              <EntIcon icon="ant-design:right-outlined" />
+            )}
           </div>
         );
       };

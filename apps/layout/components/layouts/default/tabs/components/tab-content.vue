@@ -2,13 +2,15 @@
   <EntDropdown
     :drop-menu-list="getDropMenuList"
     :trigger="getTrigger"
-    @menu-event="handleMenuEvent"
+    :class="`${prefixCls}`"
+    placement="bottom-end"
+    @select="handleMenuEvent"
   >
     <div v-if="getIsTabs" :class="`${prefixCls}__info`" @contextmenu="handleContext">
       <span class="ml-1">{{ getTitle }}</span>
     </div>
     <span v-else :class="`${prefixCls}__extra-quick`" @click="handleContext">
-      <EntIcon icon="ion:chevron-down" />
+      <EntIcon icon="ion:chevron-down-outline" />
     </span>
   </EntDropdown>
 </template>

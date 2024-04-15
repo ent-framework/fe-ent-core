@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-import { formatToDateTime } from '@ent-core/utils/date-util';
+import { format } from 'date-fns';
 import { defaultProjectSetting } from '@ent-core/logics/settings/project-setting';
 
 import { ErrorTypeEnum } from '@ent-core/logics/enums/exception-enum';
@@ -31,7 +31,7 @@ export const useErrorLogStore = defineStore({
     addErrorLogInfo(info: ErrorLogInfo) {
       const item = {
         ...info,
-        time: formatToDateTime(new Date()),
+        time: format(new Date(), 'YYYY-MM-DD HH:mm:ss'),
       };
       this.errorLogInfoList = [item, ...(this.errorLogInfoList || [])];
       this.errorLogListCount += 1;

@@ -1,5 +1,5 @@
 <template>
-  <div :class="[prefixCls, getAlign]" @click="onCellClick">
+  <NFlex :class="[prefixCls, getAlign]" @click="onCellClick">
     <template v-for="(action, index) in getActions" :key="`${index}-${action.label}`">
       <NTooltip v-if="action.tooltip" v-bind="getTooltip(action.tooltip)">
         <template #trigger>
@@ -16,15 +16,14 @@
     >
       <slot name="more" />
       <ent-button v-if="!$slots.more" type="default" size="small">
-        <MoreOutlined class="icon-more" />
+        <Icon icon="ant-design:more-outlined" class="icon-more" />
       </ent-button>
     </EntDropdown>
-  </div>
+  </NFlex>
 </template>
 <script lang="ts">
   import { computed, defineComponent, h, toRaw, unref } from 'vue';
-  import { MoreOutlined } from '@ant-design/icons-vue';
-  import { NDivider, NTooltip } from 'naive-ui';
+  import { NFlex, NTooltip } from 'naive-ui';
   import Icon from '@ent-core/components/icon';
   import { EntPopButton } from '@ent-core/components/button';
   import { EntDropdown } from '@ent-core/components/dropdown';
@@ -42,7 +41,7 @@
 
   export default defineComponent({
     name: 'EntTableAction',
-    components: { Icon, EntPopButton, NDivider, EntDropdown, MoreOutlined, NTooltip },
+    components: { Icon, EntPopButton, NFlex, EntDropdown, NTooltip },
     props: {
       actions: {
         type: Array as PropType<TableActionItem[]>,
@@ -124,7 +123,7 @@
             popConfirm,
             label,
             key: `dropdown-${label}-${index}`,
-            divider: action.divider,
+            appendDivider: action.appendDivider,
           };
         });
       });

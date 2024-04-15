@@ -144,8 +144,6 @@ export interface BasicColumn extends DataTableBaseColumn<Recordable> {
   //type?: string;
   // Whether to hide the column by default, it can be displayed in the column configuration
   defaultHidden?: boolean;
-  slots?: Recordable;
-  format?: CellFormat;
   /**
    * 权限编码控制是否显示
    */

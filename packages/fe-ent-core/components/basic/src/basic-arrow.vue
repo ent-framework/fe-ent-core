@@ -1,7 +1,3 @@
-<!--
- * @Author: Vben
- * @Description: Arrow component with animation
--->
 <template>
   <span :class="getClass">
     <Icon icon="ion:chevron-forward" :style="$attrs.iconStyle" />
@@ -40,7 +36,7 @@
     components: { Icon },
     props,
     setup(props) {
-      const { prefixCls } = useDesign('basic-arrow');
+      const { prefixCls } = useDesign('arrow');
 
       // get component class
       const getClass = computed(() => {

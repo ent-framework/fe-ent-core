@@ -1,81 +1,42 @@
 <template>
-  <span
-    :class="[$attrs.class, 'app-iconify anticon', spin && 'app-iconify-spin']"
-    :style="getWrapStyle"
-  >
-    <IconifyIcon v-bind="getBindValue" />
-  </span>
+  <NIcon v-bind="getBindValue" />
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { Icon } from '@iconify/vue';
-  import { isString } from '@ent-core/utils/is';
+  import { NIcon } from 'naive-ui';
+  import { iconProps } from 'naive-ui/es/icon';
   import { propTypes } from '@ent-core/utils/prop-types';
-  import type { CSSProperties, PropType } from 'vue';
+  import { useIconData } from './use-icon-data';
 
-  const IconifyIcon = Icon;
   export default defineComponent({
     name: 'EntIcon',
-    components: { IconifyIcon },
+    components: { NIcon },
     props: {
+      ...iconProps,
       /**
        * 图标名
        * @type {string}
        */
       icon: propTypes.string,
-      /**
-       * 图标颜色
-       * @type {string}
-       */
-      color: propTypes.string,
-      /**
-       * 图标宽度
-       * @type {string}
-       */
-      width: propTypes.string,
-      /**
-       * 图标高度
-       * @type {string}
-       */
-      height: propTypes.string,
-      /**
-       * 图标大小
-       * @type {string | number}
-       */
-      size: {
-        type: [String, Number] as PropType<string | number>,
-        default: 16,
-      },
-      /**
-       *
-       */
-      spin: propTypes.bool.def(false),
-      /**
-       * 图标前缀
-       * @type {string}
-       */
-      prefix: propTypes.string.def(''),
     },
-    setup(props) {
-      const getBindValue = computed(() => {
-        return {
-          ...props,
-        };
-      });
-      const getWrapStyle = computed((): CSSProperties => {
-        const { size, color } = props;
-        let fs = size;
-        if (isString(size)) {
-          fs = Number.parseInt(size, 10);
-        }
-        return {
-          fontSize: `${fs}px`,
-          color: color ? color : 'var(--n-text-color-base)',
-          display: 'inline-flex',
-        };
-      });
+    setup(props, { attrs }) {
+      const { getIconData } = useIconData();
 
-      return { getBindValue, getWrapStyle };
+      const getBindValue = computed(() => {
+        const { icon, ...others } = props;
+        const propValue = {
+          ...others,
+          ...attrs,
+        };
+        if (icon) {
+          const iconData = getIconData();
+          if (iconData?.has(icon)) {
+            propValue.component = iconData.get(icon);
+          }
+        }
+        return propValue;
+      });
+      return { getBindValue };
     },
   });
 </script>

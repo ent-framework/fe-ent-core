@@ -1,5 +1,5 @@
 <template>
-  <NDropdown v-bind="$attrs" :options="getOptions">
+  <NDropdown v-bind="getBindValue" :options="getOptions" :class="`${prefixCls}`">
     <slot />
   </NDropdown>
 </template>
@@ -9,42 +9,19 @@
   import { omit } from 'lodash-es';
   import { isFunction, isString } from '@ent-core/utils';
   import { EntIcon } from '@ent-core/components/icon';
+  import { useDesign } from '@ent-core/hooks';
+  import { basicDropdownProps } from './props';
   import type { DropdownRenderOption } from 'naive-ui';
   import type { DropMenu } from './typing';
-  import type { PropType } from 'vue';
   import type {
     DropdownDividerOption,
     DropdownMixedOption,
   } from 'naive-ui/es/dropdown/src/interface';
 
-  const props = {
-    /**
-     * 触发方式
-     */
-    trigger: {
-      type: String as PropType<'hover' | 'click' | 'focus' | 'manual'>,
-      default: () => 'click',
-    },
-    /**
-     * 菜单列表
-     */
-    dropMenuList: {
-      type: Array as PropType<DropMenu[]>,
-      default: () => [],
-    },
-    /**
-     * 已选中的菜单
-     */
-    selectedKeys: {
-      type: Array as PropType<string[]>,
-      default: () => [],
-    },
-  };
   export default defineComponent({
     name: 'EntDropdown',
     components: { NDropdown },
-    inheritAttrs: false,
-    props,
+    props: basicDropdownProps,
     emits: [
       /**
        * 点击菜单时触发
@@ -52,7 +29,8 @@
        */
       'menuEvent',
     ],
-    setup(props, { emit }) {
+    setup(props, { emit, attrs }) {
+      const { prefixCls } = useDesign('dropdown');
       function handleClickMenu(item: DropMenu) {
         const { event } = item;
         const menu = props.dropMenuList.find((item) => `${item.event}` === `${event}`);
@@ -60,82 +38,90 @@
         item.onClick?.();
       }
 
+      const getBindValue = computed(() => {
+        return {
+          ...props,
+          ...attrs,
+        };
+      });
+
       const getOptions = computed((): DropdownMixedOption[] => {
         if (!props.dropMenuList) return [];
         const options: DropdownMixedOption[] = [];
-        options.push(
-          ...props.dropMenuList.map((item) => {
-            if (item.divider) {
-              return {
-                type: 'divider',
-                key: item.key,
-              } as DropdownDividerOption;
-            } else {
-              const { disabled, icon, key, label, popConfirm } = item;
-              return {
-                type: 'render',
-                key,
-                render: () => {
-                  if (popConfirm) {
-                    return h(
-                      NPopconfirm,
-                      {
-                        ...omit(popConfirm, ['title']),
-                      },
-                      {
-                        trigger: () => {
-                          return h(
-                            NButton,
-                            {
-                              renderIcon: () => {
-                                return icon?.();
-                              },
-                              disabled,
-                              bordered: false,
-                              text: true,
-                              size: 'small',
-                            },
-                            { default: () => label },
-                          );
+        props.dropMenuList.forEach((item) => {
+          const { disabled, icon, key, label, popConfirm } = item;
+          options.push({
+            type: 'render',
+            key,
+            render: () => {
+              if (popConfirm) {
+                return h(
+                  NPopconfirm,
+                  {
+                    ...omit(popConfirm, ['title']),
+                  },
+                  {
+                    trigger: () => {
+                      return h(
+                        NButton,
+                        {
+                          renderIcon: () => {
+                            return icon?.();
+                          },
+                          disabled,
+                          bordered: false,
+                          text: true,
+                          size: 'small',
                         },
-                        default: () => {
-                          return popConfirm.confirmContent;
-                        },
-                      },
-                    );
-                  }
-                  return h(
-                    NButton,
-                    {
-                      renderIcon: () => {
-                        if (isString(icon)) {
-                          return h(EntIcon, { icon });
-                        }
-                        if (isFunction(icon)) {
-                          return icon?.();
-                        }
-                        return null;
-                      },
-                      disabled,
-                      bordered: false,
-                      text: true,
-                      size: 'small',
+                        { default: () => label },
+                      );
                     },
-                    { default: () => label },
-                  );
+                    default: () => {
+                      return popConfirm.confirmContent;
+                    },
+                  },
+                );
+              }
+              return h(
+                NButton,
+                {
+                  renderIcon: () => {
+                    if (isString(icon)) {
+                      return h(EntIcon, { icon });
+                    }
+                    if (isFunction(icon)) {
+                      return icon?.();
+                    }
+                    return null;
+                  },
+                  disabled,
+                  bordered: false,
+                  text: true,
+                  size: 'small',
+                  class: `${prefixCls}-dropdown-item`,
                 },
-              } as DropdownRenderOption;
-            }
-          }),
-        );
+                { default: () => label },
+              );
+            },
+          } as DropdownRenderOption);
+
+          if (item.appendDivider) {
+            options.push({
+              type: 'divider',
+              key: item.key,
+            } as DropdownDividerOption);
+          }
+        });
         return options;
       });
 
       const getAttr = (key: string | number) => ({ key });
       return {
+        getBindValue,
         getAttr,
         handleClickMenu,
         getOptions,
+        prefixCls,
       };
     },
   });

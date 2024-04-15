@@ -1,7 +1,6 @@
 export * from './base';
 export * from './cipher';
 export * from './color';
-export * from './date-util';
 export * from './dom-utils';
 export * from './env';
 export * from './is';
