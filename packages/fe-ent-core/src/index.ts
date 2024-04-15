@@ -5,7 +5,6 @@ import type { App } from 'vue';
 export * from './components';
 
 export { registerAntGlobComp };
-export {} from './global';
 
 export const install = function (app: App) {
   Object.keys(components).forEach((key) => {

@@ -6,7 +6,7 @@
     "preserveSymlinks": true,
     "types": ["vite/client", "node", "ts-config-ent/support"],
     "paths": {
-      "@ent-core/*": ["./*"]
+      "@ent-core/*": ["./src/*"]
     }
   },
   "include": [

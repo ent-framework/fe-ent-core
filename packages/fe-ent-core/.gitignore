@@ -2,4 +2,4 @@ dist
 es
 lib
 json
-components/icons/*.vue
+src/components/icons/*.vue

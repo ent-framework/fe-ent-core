@@ -11,9 +11,9 @@ const directives = resolvePath('./directives');
 const theme = resolvePath('./theme');
 
 // icon相关
-const icon = resolvePath('./components/icons');
+const icon = resolvePath('./src/components/icons');
 const iconSvgs = resolvePath('./icons');
-const iconComponents = resolvePath('./components/icons');
+const iconComponents = resolvePath('./src/components/icons');
 
 export default {
   resolvePath,

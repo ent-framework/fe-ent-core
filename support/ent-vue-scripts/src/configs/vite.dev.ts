@@ -20,15 +20,11 @@ export default defineConfig({
       },
     },
     lib: {
-      entry: 'components/index.ts',
+      entry: 'src/components/index.ts',
       formats: ['es'],
     },
     watch: {},
   },
 
-  plugins: [
-    external(),
-    vue(),
-    vueJsx(),
-  ],
+  plugins: [external(), vue(), vueJsx()],
 }) as InlineConfig;

@@ -16,7 +16,7 @@ const config: InlineConfig = {
     write: false,
     //brotliSize: false,
     rollupOptions: {
-      input: 'style.ts',
+      input: 'src/style.ts',
       output: [
         {
           format: 'es',

@@ -9,11 +9,11 @@ import type { InlineConfig } from 'vite';
 
 const input = excludeFiles(
   glob.sync('**/*.{ts,tsx,vue}', {
-    cwd: process.cwd(),
+    cwd: `${process.cwd()}/src`,
     absolute: false,
     onlyFiles: true,
   }),
-).map((file) => `${process.cwd()}/${file}`);
+).map((file) => `${process.cwd()}/src/${file}`);
 const config: InlineConfig = {
   mode: 'production',
   build: {
@@ -24,7 +24,7 @@ const config: InlineConfig = {
     sourcemap: false,
     //brotliSize: false,
     rollupOptions: {
-      input: ['index.ts', ...input],
+      input: [...input],
       treeshake: false,
       output: [
         {
@@ -40,7 +40,7 @@ const config: InlineConfig = {
     },
     // 开启lib模式，但不使用下面配置
     lib: {
-      entry: 'components/index.ts',
+      entry: 'src/components/index.ts',
     },
   },
   css: {
@@ -55,7 +55,7 @@ const config: InlineConfig = {
     alias: [
       {
         find: /^@ent-core\/(.*)$/,
-        replacement: `${process.cwd()}/$1`,
+        replacement: `${process.cwd()}/src/$1`,
       },
     ],
   },

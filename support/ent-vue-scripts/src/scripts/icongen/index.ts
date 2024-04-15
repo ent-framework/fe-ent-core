@@ -44,7 +44,7 @@ function getSVGData(): IconData[] {
 }
 
 async function buildIconComponent(data: IconData[]) {
-  await fs.emptyDir(path.resolve(root, 'components/icons'));
+  await fs.emptyDir(path.resolve(root, 'src/components/icons'));
 
   for (const iconData of data) {
     for (const item of iconData.list) {

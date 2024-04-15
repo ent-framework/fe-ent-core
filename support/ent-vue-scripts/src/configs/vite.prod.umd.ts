@@ -6,7 +6,7 @@ import type { InlineConfig } from 'vite';
 import type { OutputPlugin } from 'rollup';
 
 export default (): InlineConfig => {
-  const entry = 'index.ts';
+  const entry = `${process.cwd()}/src/index.ts`;
 
   return {
     mode: 'production',
@@ -64,7 +64,7 @@ export default (): InlineConfig => {
       alias: [
         {
           find: /^@ent-core\/(.*)$/,
-          replacement: `${process.cwd()}/$1`,
+          replacement: `${process.cwd()}/src/$1`,
         },
       ],
     },

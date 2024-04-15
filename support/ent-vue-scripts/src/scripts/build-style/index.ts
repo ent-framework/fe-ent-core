@@ -8,7 +8,7 @@ import config from '../../configs/vite.prod.style';
 const run = async () => {
   const cwd = process.cwd();
   // 拷贝less文件到目标文件，index.less编译生成index.css
-  const files = glob.sync('{components,directives}/**/*.less', {
+  const files = glob.sync('src/{components,directives}/**/*.less', {
     cwd,
   });
 

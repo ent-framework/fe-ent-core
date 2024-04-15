@@ -11,7 +11,8 @@
     "es",
     "lib",
     "json",
-    "volar.d.ts"
+    "theme",
+    "global.d.ts"
   ],
   "type": "module",
   "module": "es/index.mjs",
