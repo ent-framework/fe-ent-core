@@ -16,6 +16,7 @@ const input = excludeFiles(
 ).map((file) => `${process.cwd()}/src/${file}`);
 const config: InlineConfig = {
   mode: 'production',
+  //base: `${process.cwd()}/src`,
   build: {
     target: 'modules',
     outDir: 'es',
@@ -34,7 +35,7 @@ const config: InlineConfig = {
           entryFileNames: '[name].mjs',
           preserveModules: true,
           exports: 'named',
-          preserveModulesRoot: `${process.cwd()}`,
+          preserveModulesRoot: `${process.cwd()}/src/`,
         },
       ],
     },

@@ -6,6 +6,22 @@
     "email": "qbaojian@163.com",
     "url": "https://github.com/ent-framework/fe-ent-core"
   },
+  "files": [
+    "dist",
+    "es",
+    "lib",
+    "json",
+    "theme",
+    "global.d.ts"
+  ],
+  "type": "module",
+  "module": "es/index.mjs",
+  "typings": "es/index.d.ts",
+  "unpkg": "dist/index.full.min.js",
+  "sideEffects": [
+    "dist/*",
+    "*.less"
+  ],
   "packageManager": "pnpm@8.1.0",
   "workspaces": [
     "packages/*",
@@ -22,7 +38,6 @@
     "build": "pnpm build:gulp",
     "build:gulp": "pnpm run -C internal/build start",
     "build:all": "pnpm build:support && pnpm build:lib && pnpm --filter './{extensions,apps}/**' --stream --parallel build",
-    "build:lib": "pnpm run -C packages/fe-ent-core build",
     "build:support": "pnpm --filter './support/**' --stream build",
     "build:extensions": "pnpm --filter './extensions/**' --stream build",
     "build:apps": "pnpm --filter './apps/**' --stream build",
@@ -32,6 +47,14 @@
     "changelog": "pnpm run -C packages/fe-ent-core --stream changelog",
     "build:play": "pnpm -C play --stream build",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
+    "build:lib": "pnpm run lib:icongen && pnpm run lib:build:component && pnpm run lib:build:style && pnpm run lib:dtsgen && pnpm run lib:jsongen",
+    "lib:docgen": "ent-vue-scripts docgen",
+    "lib:gen:doc": "ent-vue-scripts docgen",
+    "lib:build:component": "ent-vue-scripts build:component -u",
+    "lib:build:style": "cross-env DEBUG=true ent-vue-scripts build:style",
+    "lib:icongen": "ent-vue-scripts icongen",
+    "lib:dtsgen": "ent-vue-scripts dtsgen",
+    "lib:jsongen": "ent-vue-scripts jsongen",
     "build:no-cache": "yarn clean:cache && pnpm run build",
     "clean": "pnpm run -r --parallel clean",
     "clean:all": "pnpm run clean:dist && pnpm run clean",
@@ -134,8 +157,7 @@
     "tslib": "^2.3.1",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3",
-    "vite": "^5.2.3",
-    "fe-ent-core": "workspace:*"
+    "vite": "^5.2.3"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china",

@@ -14,6 +14,85 @@ overrides:
 importers:
 
   .:
+    dependencies:
+      '@vicons/antd':
+        specifier: ^0.12.0
+        version: 0.12.0
+      '@vicons/ionicons5':
+        specifier: ^0.12.0
+        version: 0.12.0
+      '@vue/shared':
+        specifier: ^3.4.8
+        version: 3.4.8
+      '@vueuse/core':
+        specifier: ^10.6.1
+        version: 10.7.0(vue@3.4.8)
+      '@vueuse/shared':
+        specifier: ^10.6.1
+        version: 10.7.0(vue@3.4.8)
+      '@zxcvbn-ts/core':
+        specifier: ^1.2.0
+        version: 1.2.0
+      async-validator:
+        specifier: ^4.2.5
+        version: 4.2.5
+      axios:
+        specifier: ^1.6.8
+        version: 1.6.8(debug@4.3.4)
+      cropperjs:
+        specifier: ^1.5.13
+        version: 1.6.1
+      crypto-js:
+        specifier: ^4.2.0
+        version: 4.2.0
+      csstype:
+        specifier: ^3.1.3
+        version: 3.1.3
+      date-fns:
+        specifier: ^2.30.0
+        version: 2.30.0
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+      lodash-es:
+        specifier: ^4.17.21
+        version: 4.17.21
+      naive-ui:
+        specifier: ^2.38.1
+        version: 2.38.1(vue@3.4.8)
+      path-to-regexp:
+        specifier: ^6.2.0
+        version: 6.2.1
+      pinia:
+        specifier: ^2.1.6
+        version: 2.1.7(typescript@5.4.3)(vue@3.4.8)
+      pinia-plugin-persistedstate:
+        specifier: ^3.2.0
+        version: 3.2.1(pinia@2.1.7)
+      qs:
+        specifier: ^6.12.0
+        version: 6.12.0
+      resize-observer-polyfill:
+        specifier: ^1.5.1
+        version: 1.5.1
+      sortablejs:
+        specifier: ^1.15.0
+        version: 1.15.1
+      treemate:
+        specifier: ^0.3.11
+        version: 0.3.11
+      vue:
+        specifier: 3.4.8
+        version: 3.4.8(typescript@5.4.3)
+      vue-i18n:
+        specifier: ^9.11.1
+        version: 9.11.1(vue@3.4.8)
+      vue-router:
+        specifier: ^4.3.0
+        version: 4.3.0(vue@3.4.8)
+      vue-types:
+        specifier: ^3.0.0
+        version: 3.0.2(vue@3.4.8)
     devDependencies:
       '@commitlint/cli':
         specifier: ^14.1.0
@@ -84,9 +163,6 @@ importers:
       esno:
         specifier: ^0.16.3
         version: 0.16.3
-      fe-ent-core:
-        specifier: workspace:*
-        version: link:packages/fe-ent-core
       fs-extra:
         specifier: ^10.0.0
         version: 10.1.0
@@ -140,7 +216,7 @@ importers:
         version: 4.17.12
       fe-ent-core:
         specifier: ^2.1.0
-        version: link:../../packages/fe-ent-core
+        version: link:../..
     devDependencies:
       '@vue/shared':
         specifier: ^3.4.8
@@ -171,7 +247,7 @@ importers:
     dependencies:
       fe-ent-core:
         specifier: ^2.1.0
-        version: link:../../packages/fe-ent-core
+        version: link:../..
     devDependencies:
       '@types/qrcode':
         specifier: ^1.4.1
@@ -193,7 +269,7 @@ importers:
         version: 5.65.16
       fe-ent-core:
         specifier: ^2.1.0
-        version: link:../../packages/fe-ent-core
+        version: link:../..
     devDependencies:
       '@types/codemirror':
         specifier: ^5.60.5
@@ -212,7 +288,7 @@ importers:
         version: 5.4.3
       fe-ent-core:
         specifier: ^2.1.0
-        version: link:../../packages/fe-ent-core
+        version: link:../..
     devDependencies:
       '@types/tinycolor2':
         specifier: ^1.4.2
@@ -228,7 +304,7 @@ importers:
     dependencies:
       fe-ent-core:
         specifier: ^2.1.0
-        version: link:../../packages/fe-ent-core
+        version: link:../..
       xlsx:
         specifier: ^0.18.5
         version: 0.18.5
@@ -253,7 +329,7 @@ importers:
         version: link:../code-editor
       fe-ent-core:
         specifier: ^2.1.0
-        version: link:../../packages/fe-ent-core
+        version: link:../..
     devDependencies:
       '@types/tinycolor2':
         specifier: ^1.4.2
@@ -269,7 +345,7 @@ importers:
     dependencies:
       fe-ent-core:
         specifier: ^2.1.0
-        version: link:../../packages/fe-ent-core
+        version: link:../..
       showdown:
         specifier: ^1.9.1
         version: 1.9.1
@@ -291,7 +367,7 @@ importers:
     dependencies:
       fe-ent-core:
         specifier: ^2.1.0
-        version: link:../../packages/fe-ent-core
+        version: link:../..
       tinymce:
         specifier: ^5.10.7
         version: 5.10.9
@@ -442,7 +518,7 @@ importers:
         version: 3.34.0
       fe-ent-core:
         specifier: ^2.1.0
-        version: link:../../packages/fe-ent-core
+        version: link:../..
       highlight.js:
         specifier: ^11.8.0
         version: 11.9.0
@@ -507,124 +583,6 @@ importers:
         specifier: ^2.1.0
         version: link:../../support/ent-vue-scripts
 
-  packages/fe-ent-core:
-    dependencies:
-      '@vicons/antd':
-        specifier: ^0.12.0
-        version: 0.12.0
-      '@vicons/ionicons5':
-        specifier: ^0.12.0
-        version: 0.12.0
-      '@vue/shared':
-        specifier: ^3.4.8
-        version: 3.4.8
-      '@vueuse/core':
-        specifier: ^10.6.1
-        version: 10.7.0(vue@3.4.8)
-      '@vueuse/shared':
-        specifier: ^10.6.1
-        version: 10.7.0(vue@3.4.8)
-      '@zxcvbn-ts/core':
-        specifier: ^1.2.0
-        version: 1.2.0
-      async-validator:
-        specifier: ^4.2.5
-        version: 4.2.5
-      axios:
-        specifier: ^1.6.8
-        version: 1.6.8(debug@4.3.4)
-      cropperjs:
-        specifier: ^1.5.13
-        version: 1.6.1
-      crypto-js:
-        specifier: ^4.2.0
-        version: 4.2.0
-      csstype:
-        specifier: ^3.1.3
-        version: 3.1.3
-      date-fns:
-        specifier: ^2.30.0
-        version: 2.30.0
-      lodash:
-        specifier: ^4.17.21
-        version: 4.17.21
-      lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
-      naive-ui:
-        specifier: ^2.38.1
-        version: 2.38.1(vue@3.4.8)
-      path-to-regexp:
-        specifier: ^6.2.0
-        version: 6.2.1
-      pinia:
-        specifier: ^2.1.6
-        version: 2.1.7(typescript@5.4.3)(vue@3.4.8)
-      pinia-plugin-persistedstate:
-        specifier: ^3.2.0
-        version: 3.2.1(pinia@2.1.7)
-      qs:
-        specifier: ^6.12.0
-        version: 6.12.0
-      resize-observer-polyfill:
-        specifier: ^1.5.1
-        version: 1.5.1
-      sortablejs:
-        specifier: ^1.15.0
-        version: 1.15.1
-      treemate:
-        specifier: ^0.3.11
-        version: 0.3.11
-      vue:
-        specifier: 3.4.8
-        version: 3.4.8(typescript@5.4.3)
-      vue-i18n:
-        specifier: ^9.11.1
-        version: 9.11.1(vue@3.4.8)
-      vue-router:
-        specifier: ^4.3.0
-        version: 4.3.0(vue@3.4.8)
-      vue-types:
-        specifier: ^3.0.0
-        version: 3.0.2(vue@3.4.8)
-    devDependencies:
-      '@purge-icons/generated':
-        specifier: ^0.9.0
-        version: 0.9.0
-      '@types/lodash':
-        specifier: ^4.14.198
-        version: 4.17.0
-      '@types/lodash-es':
-        specifier: ^4.17.9
-        version: 4.17.12
-      '@types/node':
-        specifier: ^18.18.13
-        version: 18.19.3
-      '@types/nprogress':
-        specifier: ^0.2.0
-        version: 0.2.3
-      '@types/qs':
-        specifier: ^6.9.7
-        version: 6.9.10
-      '@types/sortablejs':
-        specifier: ^1.15.1
-        version: 1.15.7
-      '@types/tinycolor2':
-        specifier: ^1.4.2
-        version: 1.4.6
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
-      fe-ent-vue-scripts:
-        specifier: ^2.1.0
-        version: link:../../support/ent-vue-scripts
-      rimraf:
-        specifier: ^5.0.0
-        version: 5.0.5
-      vite:
-        specifier: 5.2.3
-        version: 5.2.3(@types/node@18.19.3)(less@4.2.0)
-
   play:
     dependencies:
       ant-design-vue:
@@ -632,7 +590,7 @@ importers:
         version: 4.1.2(vue@3.4.8)
       fe-ent-core:
         specifier: ^2.1.0
-        version: link:../packages/fe-ent-core
+        version: link:..
       intro.js:
         specifier: ^4.3.0
         version: 4.3.0
@@ -2505,9 +2463,11 @@ packages:
     resolution: {integrity: sha512-1nemfyD/OJzh9ALepH7YfuuP8BdEB24Skhd8DXWh0hzcOxImbb1ZizSZkpCzAwSZSGcJFmscIBaBQu+yLyWaxQ==, tarball: https://registry.npmmirror.com/@iconify/iconify/-/iconify-3.1.1.tgz}
     dependencies:
       '@iconify/types': 2.0.0
+    dev: false
 
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==, tarball: https://registry.npmmirror.com/@iconify/types/-/types-2.0.0.tgz}
+    dev: false
 
   /@iconify/utils@2.1.13:
     resolution: {integrity: sha512-6uWvJIo715xYRy1KmCCyZYW0YYkLjaojEExoEkxpOHKhi9cyHW8hVKo+m8zrxzNVSqjUx9OuVRa2BWXeXfkp5A==, tarball: https://registry.npmmirror.com/@iconify/utils/-/utils-2.1.13.tgz}
@@ -3440,12 +3400,6 @@ packages:
       '@iconify/iconify': 3.1.1
     dev: false
 
-  /@purge-icons/generated@0.9.0:
-    resolution: {integrity: sha512-s2t+1oVtGDV6KtqfCXtUOhxfeYvOdDF90IVm+nMs/6bUP0HeGZLslguuL/AibpwtfL4FA/oCsIu/RhwapgAdJw==, tarball: https://registry.npmmirror.com/@purge-icons/generated/-/generated-0.9.0.tgz}
-    dependencies:
-      '@iconify/iconify': 3.1.1
-    dev: true
-
   /@remirror/core-constants@2.0.2:
     resolution: {integrity: sha512-dyHY+sMF0ihPus3O27ODd4+agdHMEmuRdyiZJ2CCWjPV5UFmn17ZbElvk6WOGVE4rdCJKZQCrPV2BcikOMLUGQ==, tarball: https://registry.npmmirror.com/@remirror/core-constants/-/core-constants-2.0.2.tgz}
     dev: false
@@ -4262,10 +4216,6 @@ packages:
   /@types/normalize-package-data@2.4.4:
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==, tarball: https://registry.npmmirror.com/@types/normalize-package-data/-/normalize-package-data-2.4.4.tgz}
 
-  /@types/nprogress@0.2.3:
-    resolution: {integrity: sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==, tarball: https://registry.npmmirror.com/@types/nprogress/-/nprogress-0.2.3.tgz}
-    dev: true
-
   /@types/nunjucks@3.2.6:
     resolution: {integrity: sha512-pHiGtf83na1nCzliuAdq8GowYiXvH5l931xZ0YEHaLMNFgynpEqx+IPStlu7UaDkehfvl01e4x/9Tpwhy7Ue3w==, tarball: https://registry.npmmirror.com/@types/nunjucks/-/nunjucks-3.2.6.tgz}
     dev: true
@@ -4308,10 +4258,6 @@ packages:
       '@types/node': 17.0.45
     dev: true
 
-  /@types/qs@6.9.10:
-    resolution: {integrity: sha512-3Gnx08Ns1sEoCrWssEgTSJs/rsT2vhGP+Ja9cnnk9k4ALxinORlQneLXFeFKOTJMOeZUFD1s7w+w2AphTpvzZw==, tarball: https://registry.npmmirror.com/@types/qs/-/qs-6.9.10.tgz}
-    dev: true
-
   /@types/responselike@1.0.3:
     resolution: {integrity: sha512-H/+L+UkTV33uf49PH5pCAUBVPNj2nDBXTN+qS1dOwyyg24l3CcicicCA7ca+HMvJBZcFgl5r8e+RR6elsb4Lyw==, tarball: https://registry.npmmirror.com/@types/responselike/-/responselike-1.0.3.tgz}
     dependencies:
@@ -4324,10 +4270,6 @@ packages:
 
   /@types/showdown@1.9.4:
     resolution: {integrity: sha512-50ehC3IAijfkvoNqmQ+VL73S7orOxmAK8ljQAFBv8o7G66lAZyxQj1L3BAv2dD86myLXI+sgKP1kcxAaxW356w==, tarball: https://registry.npmmirror.com/@types/showdown/-/showdown-1.9.4.tgz}
-    dev: true
-
-  /@types/sortablejs@1.15.7:
-    resolution: {integrity: sha512-PvgWCx1Lbgm88FdQ6S7OGvLIjWS66mudKPlfdrWil0TjsO5zmoZmzoKiiwRShs1dwPgrlkr0N4ewuy0/+QUXYQ==, tarball: https://registry.npmmirror.com/@types/sortablejs/-/sortablejs-1.15.7.tgz}
     dev: true
 
   /@types/stack-utils@2.0.3:

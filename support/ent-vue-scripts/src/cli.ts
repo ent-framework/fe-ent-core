@@ -53,7 +53,7 @@ program
   .command('dtsgen')
   .option('--base <base>', 'base dir contains source code')
   .description('emit .d.ts files for vue files.')
-  .action(({ base }) => {
+  .action(({ base = 'src' }) => {
     dtsgen(base);
   });
 

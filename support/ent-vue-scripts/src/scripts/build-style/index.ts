@@ -8,12 +8,12 @@ import config from '../../configs/vite.prod.style';
 const run = async () => {
   const cwd = process.cwd();
   // 拷贝less文件到目标文件，index.less编译生成index.css
-  const files = glob.sync('src/{components,directives}/**/*.less', {
-    cwd,
+  const files = glob.sync('{components,directives}/**/*.less', {
+    cwd: `${cwd}/src`,
   });
 
   for (const filename of files) {
-    const absolute = paths.resolvePath(`${filename}`);
+    const absolute = paths.resolvePath(`src/${filename}`);
     fs.copySync(absolute, paths.resolvePath(`es/${filename}`));
   }
   fs.copySync(paths.theme, paths.resolvePath('es/theme'), { recursive: true });

@@ -12,7 +12,7 @@ export interface ModifyVarOptions {
 export function generateModifyVars(cssModifyOptions?: ModifyVarOptions) {
   const cwd = process.cwd();
   let preLoadFile = '';
-  preLoadFile = path.resolve(cwd, `theme/config.less`);
+  preLoadFile = path.resolve(cwd, `src/theme/config.less`);
   if (!fs.existsSync(preLoadFile)) {
     preLoadFile = path.resolve(cwd, `node_modules/fe-ent-core/es/theme/config.less`);
   }

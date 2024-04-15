@@ -1,4 +1,23 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "ts-config-ent/vue-app.json",
+  "extends": "ts-config-ent/web.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": ["vite/client", "node", "shims-vue"],
+    "paths": {
+      "@ent-core/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "src",
+    "global.d.ts",
+    "shims-vue.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "es",
+    "lib",
+    "json"
+  ]
 }

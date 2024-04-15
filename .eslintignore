@@ -1,1 +1,6 @@
 components/icons/
+dist/*
+es/*
+lib/*
+json/*
+src/components/icons/*

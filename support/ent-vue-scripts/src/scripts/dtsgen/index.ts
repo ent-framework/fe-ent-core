@@ -27,8 +27,8 @@ const build = async (base: string) => {
       emitDeclarationOnly: true,
       // declaration: true,
       outDir,
-      baseUrl: `${cwd}/src`,
-      rootDir: `${cwd}/src`,
+      baseUrl: `${base}`,
+      rootDir: `${cwd}`,
       skipLibCheck: true,
       preserveSymlinks: true,
       noImplicitAny: false,
@@ -43,9 +43,7 @@ const build = async (base: string) => {
   consola.success(`Added source files, count: ${sourceFiles.length}`);
   typeCheck(project);
   consola.success('Type check passed!');
-  // await project.emit({
-  //   emitOnlyDtsFiles: true,
-  // });
+
   project.emitToMemory({ emitOnlyDtsFiles: true });
 
   const tasks = sourceFiles.map(async (sourceFile) => {
