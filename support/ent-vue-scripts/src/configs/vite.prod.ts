@@ -41,7 +41,7 @@ const config: InlineConfig = {
     },
     // 开启lib模式，但不使用下面配置
     lib: {
-      entry: 'src/components/index.ts',
+      entry: '',
     },
   },
   css: {

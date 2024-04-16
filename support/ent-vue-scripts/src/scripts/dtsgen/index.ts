@@ -1,20 +1,12 @@
 import path from 'path';
 import * as vueCompiler from 'vue/compiler-sfc';
 import consola from 'consola';
-import { Project } from 'ts-morph';
+import { ModuleResolutionKind, Project, ScriptTarget } from 'ts-morph';
 import glob from 'fast-glob';
 import fs from 'fs-extra';
 import chalk from 'chalk';
 import { excludeFiles } from '../../utils/exclude-files';
 import type { SourceFile } from 'ts-morph';
-
-export const pathRewriter = () => {
-  return (id: string) => {
-    //id = id.replaceAll(`${EP_PREFIX}/theme`, 'fe-ent-core/theme');
-    id = id.replaceAll(`@ent-core/`, `fe-ent-core/es/`);
-    return id;
-  };
-};
 
 const cwd = process.cwd();
 const TSCONFIG_PATH = path.resolve(cwd, 'tsconfig.json');
@@ -24,11 +16,15 @@ const build = async (base: string) => {
   consola.log(`Run in dir: ${process.cwd()}, base: ${base}`);
   const project = new Project({
     compilerOptions: {
+      allowJs: true,
+      declaration: true,
       emitDeclarationOnly: true,
       // declaration: true,
       outDir,
       baseUrl: `${base}`,
       rootDir: `${cwd}`,
+      target: ScriptTarget.ES2015,
+      moduleResolution: ModuleResolutionKind.NodeJs,
       skipLibCheck: true,
       preserveSymlinks: true,
       noImplicitAny: false,
@@ -46,21 +42,20 @@ const build = async (base: string) => {
 
   project.emitToMemory({ emitOnlyDtsFiles: true });
 
+  const basePathPrefix = path.relative(cwd, base);
   const tasks = sourceFiles.map(async (sourceFile) => {
-    const relativePath = path.relative(base, sourceFile.getFilePath());
-
     const emitOutput = sourceFile.getEmitOutput();
     const emitFiles = emitOutput.getOutputFiles();
     if (emitFiles.length === 0) {
+      const relativePath = path.relative(outDir, sourceFile.getFilePath());
       consola.error(`Emit no file: ${chalk.bold(relativePath)} \n`);
     }
 
     const subTasks = emitFiles.map(async (outputFile) => {
-      const outputPath = `${process.cwd()}/es`;
-      const targetPath = `${outputPath}/${relativePath}`;
-      fs.mkdirSync(path.dirname(targetPath), {
-        recursive: true,
-      });
+      const filePath = outputFile.getFilePath();
+      const relativePath = path.relative(outDir, filePath);
+      const targetPath = `${basePathPrefix && basePathPrefix.length > 0 ? `${outDir}/${relativePath.replace(`${basePathPrefix}/`, '')}` : filePath}`;
+      await fs.ensureDir(path.dirname(targetPath));
       fs.writeFileSync(targetPath, outputFile.getText(), 'utf8');
     });
 
@@ -84,6 +79,7 @@ async function addSourceFiles(project: Project, cwd: string, base: string) {
   const sourceFiles: SourceFile[] = [];
   await Promise.all([
     ...filePaths.map(async (file) => {
+      const content = await fs.promises.readFile(file, 'utf8');
       if (file.endsWith('.vue')) {
         const content = await fs.readFile(file, 'utf-8');
         const sfc = vueCompiler.parse(content);
@@ -108,17 +104,21 @@ async function addSourceFiles(project: Project, cwd: string, base: string) {
             consola.error(`Error Get Content : ${chalk.bold(file)}`);
           } else {
             const sourceFile = project.createSourceFile(
-              path.relative(cwd, file) + (isTS ? '.ts' : isTSX ? '.tsx' : '.js'),
+              path.relative(cwd, file).replace('.vue', isTS ? '.ts' : isTSX ? '.tsx' : '.js'),
               content,
             );
             if (sourceFile) {
+              removeVueSpecifier(sourceFile);
               sourceFiles.push(sourceFile);
             }
           }
         }
       } else {
-        const sourceFile = project.addSourceFileAtPath(file);
+        const sourceFile = project.createSourceFile(file, content, {
+          overwrite: true,
+        });
         if (sourceFile) {
+          removeVueSpecifier(sourceFile);
           sourceFiles.push(sourceFile);
         }
       }
@@ -136,6 +136,17 @@ function typeCheck(project: Project) {
     throw err;
   }
 }
+
+const removeVueSpecifier = (sourceFile: SourceFile) => {
+  const imports = sourceFile.getImportDeclarations();
+  imports.forEach((item) => {
+    const specifier = item.getModuleSpecifierValue();
+    const ext = path.extname(specifier);
+    if (ext === '.vue') {
+      item.setModuleSpecifier(specifier.replace('.vue', ''));
+    }
+  });
+};
 
 export default async function (base: string) {
   if (base) {

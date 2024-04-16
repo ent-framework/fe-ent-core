@@ -10,7 +10,7 @@ import { getPackage } from '../../utils/get-package';
 import type { ComponentDoc, ParamTag } from 'vue-docgen-api';
 
 const getComponentsFromTemplates = async () => {
-  const templates = await fg('components/**/TEMPLATE.md');
+  const templates = await fg('src/components/**/TEMPLATE.md');
 
   const components: string[] = [];
   for (const item of templates) {

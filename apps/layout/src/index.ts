@@ -5,24 +5,25 @@ import {
   COMPONENT_LAYOUT_NAME,
 } from 'fe-ent-core/es/router';
 import { useGlobSetting } from 'fe-ent-core/es/hooks';
-import { DefaultLayout } from './components/layouts/default';
-import { default as IFRAME } from './components/views/iframe/frame-blank';
+import { useLocale } from 'fe-ent-core/es/locales';
+import { default as DefaultLayout } from './components/layouts/default/index.vue';
+import { default as IFRAME } from './components/views/iframe/frame-blank.vue';
 import { default as ExceptionPage } from './components/views/exception/exception.vue';
 import { useMultipleTabStore } from './store/multiple-tab';
-import { getPageNotFoundRoute } from './components/routes/basic';
-import { useLocale } from 'fe-ent-core/es/locales';
+import {
+  getErrorLogRoute,
+  getPageNotFoundRoute,
+  getRedirectRoute,
+  getRootRoute,
+} from './components/routes/basic';
 import localeEn from './locales/en';
 import localeZh from './locales/zh-CN';
-import type { App } from 'vue';
-import type { EntRouter } from 'fe-ent-core/es/router';
 import { mainOutRoute } from './components/routes/main-out';
-import { getErrorLogRoute, getRedirectRoute, getRootRoute } from './components/routes/basic';
 import { useLayoutStore } from './store/layout';
-import type { AppRouteRecordRaw } from 'fe-ent-core/es/router';
+import type { App } from 'vue';
+import type { AppRouteRecordRaw, EntRouter } from 'fe-ent-core/es/router';
 
 import './components/index.less';
-
-export * from './components/layouts/default';
 
 // 导入基础路由，与业务无关
 function getPublicRoutes(): AppRouteRecordRaw[] {

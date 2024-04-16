@@ -67,6 +67,7 @@
                   },
                   {
                     label: '删除-确认',
+                    tooltip: '确认删除提示',
                     icon: 'ant-design:delete-outlined',
                     popConfirm: {
                       confirmContent: '是否删除？',
@@ -77,6 +78,7 @@
                 dropDownActions: [
                   {
                     label: '启用',
+                    tooltip: '启用',
                     popConfirm: {
                       confirmContent: '是否启用？',
                       onPositiveClick: handleOpen.bind(null, record),

@@ -1,6 +1,6 @@
 import { useLayoutStore } from 'fe-ent-layout';
-import { useAppStore } from '@ent-core/store';
-import { MenuModeEnum, MenuTypeEnum, ThemeEnum } from '@ent-core/logics';
+import { useAppStore } from 'fe-ent-core/es/store';
+import { MenuModeEnum, MenuTypeEnum, ThemeEnum } from 'fe-ent-core/es/logics';
 
 export async function initApplication() {
   // const { changePermissionMode } = usePermission();

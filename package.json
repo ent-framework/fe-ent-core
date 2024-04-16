@@ -1,33 +1,19 @@
 {
-  "name": "fe-ent-core",
+  "private": true,
   "version": "3.0.3",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
     "url": "https://github.com/ent-framework/fe-ent-core"
   },
-  "files": [
-    "dist",
-    "es",
-    "lib",
-    "json",
-    "theme",
-    "global.d.ts"
-  ],
-  "module": "es/index.mjs",
-  "typings": "es/index.d.ts",
-  "unpkg": "dist/index.full.min.js",
-  "sideEffects": [
-    "dist/*",
-    "*.less"
-  ],
   "packageManager": "pnpm@8.1.0",
   "workspaces": [
-    "docs",
-    "play",
+    "packages/*",
     "apps/*",
     "extensions/*",
-    "support/*"
+    "support/*",
+    "play",
+    "docs"
   ],
   "scripts": {
     "bootstrap": "pnpm install",
@@ -87,34 +73,6 @@
     "link:global": "tsx ./scripts/pnpmlink.ts",
     "stub": "pnpm run -r --parallel stub",
     "postinstall": "pnpm stub"
-  },
-  "dependencies": {
-    "@vicons/ionicons5": "^0.12.0",
-    "@vicons/antd": "^0.12.0",
-    "@vue/shared": "^3.4.8",
-    "@vueuse/core": "^10.6.1",
-    "@vueuse/shared": "^10.6.1",
-    "@zxcvbn-ts/core": "^1.2.0",
-    "async-validator": "^4.2.5",
-    "axios": "^1.6.8",
-    "cropperjs": "^1.5.13",
-    "crypto-js": "^4.2.0",
-    "csstype": "^3.1.3",
-    "date-fns": "^2.30.0",
-    "lodash": "^4.17.21",
-    "lodash-es": "^4.17.21",
-    "naive-ui": "^2.38.1",
-    "path-to-regexp": "^6.2.0",
-    "pinia": "^2.1.6",
-    "pinia-plugin-persistedstate": "^3.2.0",
-    "qs": "^6.12.0",
-    "resize-observer-polyfill": "^1.5.1",
-    "sortablejs": "^1.15.0",
-    "treemate": "^0.3.11",
-    "vue": "^3.4.8",
-    "vue-i18n": "^9.11.1",
-    "vue-router": "^4.3.0",
-    "vue-types": "^3.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",

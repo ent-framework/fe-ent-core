@@ -9,12 +9,12 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, inject, computed } from 'vue';
-  import { useLocale } from '@ent-core/locales';
+  import { computed, defineComponent, inject } from 'vue';
+  import { useLocale } from 'fe-ent-core/es/locales';
+  import { useRouter } from 'vue-router';
   import AnchorHead from '../anchor-head/index.vue';
   import { articleInjectionKey } from '../article/context';
   import type { PropType } from 'vue';
-  import { useRouter } from 'vue-router';
 
   export default defineComponent({
     name: 'CodeBlock',

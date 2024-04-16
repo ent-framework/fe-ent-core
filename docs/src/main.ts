@@ -1,25 +1,25 @@
 import 'uno.css';
 // Register icon sprite
-import 'virtual:svg-icons-register';
+//import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
 import { Button, PageHeader, Table, Tooltip } from 'ant-design-vue';
 
 import { initLayout } from 'fe-ent-layout';
-import { setupErrorHandle } from '@ent-core/logics/error-handle';
-import { entRouter, transformRouteToMenu } from '@ent-core/router';
-import { setupRouterGuard } from '@ent-core/router/guard';
-import { setupStore } from '@ent-core/store';
-import { setupGlobDirectives } from '@ent-core/directives';
-import { setupI18n } from '@ent-core/locales/setup-i18n';
-import EntCore, { registerAntGlobComp } from '@ent-core/index';
-import { usePermissionStore } from '@ent-core/store/modules/permission';
-import { useLocale } from '@ent-core/locales';
+import { setupErrorHandle } from 'fe-ent-core/es/logics/error-handle';
+import { entRouter, transformRouteToMenu } from 'fe-ent-core/es/router';
+import { setupRouterGuard } from 'fe-ent-core/es/router/guard';
+import { setupStore } from 'fe-ent-core/es/store';
+import { setupGlobDirectives } from 'fe-ent-core/es/directives';
+import { setupI18n } from 'fe-ent-core/es/locales/setup-i18n';
+import EntCore, { registerAntGlobComp } from 'fe-ent-core/es/index';
+import { usePermissionStore } from 'fe-ent-core/es/store/modules/permission';
+import { useLocale } from 'fe-ent-core/es/locales';
 import getRoutes from './router';
 import { initApplication } from './init-application';
 import locales from './locale';
 
-import '@ent-core/theme/index.less';
+import 'fe-ent-core/es/theme/index.less';
 import 'prismjs/themes/prism.css';
 
 import ArcoArticle from './components/article/index.vue';

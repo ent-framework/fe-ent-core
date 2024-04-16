@@ -16,7 +16,7 @@
     "@stackblitz/sdk": "^1.6.0",
     "codesandbox": "^2.2.3",
     "clipboard": "^2.0.6",
-    "fe-ent-layout": "^2.1.0"
+    "fe-ent-layout": "^3.0.0"
   },
   "devDependencies": {
     "fe-ent-vue-scripts": "^3.0.0"

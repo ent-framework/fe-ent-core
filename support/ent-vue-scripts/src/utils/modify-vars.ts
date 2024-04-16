@@ -18,7 +18,7 @@ export function generateModifyVars(cssModifyOptions?: ModifyVarOptions) {
   }
   if (!fs.existsSync(preLoadFile)) {
     const root = searchForWorkspaceRoot(cwd);
-    preLoadFile = path.resolve(root, `packages/fe-ent-core/es/theme/config.less`);
+    preLoadFile = path.resolve(root, `src/theme/config.less`);
   }
 
   //const modifyVars = getThemeVariables();

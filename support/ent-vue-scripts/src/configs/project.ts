@@ -1,6 +1,4 @@
 import { resolve } from 'node:path';
-import dayjs from 'dayjs';
-import { readPackageJSON } from 'pkg-types';
 import { loadEnv, mergeConfig } from 'vite';
 import { createPlugins } from '../plugins';
 import { generateModifyVars } from '../utils/modify-vars';

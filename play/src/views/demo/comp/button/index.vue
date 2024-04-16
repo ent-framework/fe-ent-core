@@ -104,14 +104,21 @@
       <a-col :xl="10" :lg="24">
         <a-card title="PopConfirm Color">
           <div class="my-2">
-            <h3>success</h3>
+            <h3>带确认的按钮</h3>
             <div class="py-2">
-              <ent-pop-button
-                pre-icon="ant-design:delete-outlined"
-                title="确认删除？"
-                @confirm="alert"
-              >
-                确认删除
+              <ent-pop-button icon="ant-design:delete-outlined" @click="alert">
+                <template #confirm> 确认删除？ </template>
+                删除
+              </ent-pop-button>
+            </div>
+          </div>
+          <div class="my-2">
+            <h3>带Tooltip & 确认的按钮</h3>
+            <div class="py-2">
+              <ent-pop-button icon="ant-design:delete-outlined" @click="alert">
+                <template #confirm> 确认删除？ </template>
+                <template #tooltip> 点击删除？ </template>
+                删除
               </ent-pop-button>
             </div>
           </div>
@@ -130,6 +137,22 @@
         <a-card>
           <ent-help text="Tooltip 内容"> Tooltip </ent-help>
         </a-card>
+        <a-card>
+          <n-tooltip trigger="hover">
+            <template #trigger>
+              <n-popconfirm
+                @positive-click="handlePositiveClick"
+                @negative-click="handleNegativeClick"
+              >
+                <template #trigger>
+                  <n-button>引用</n-button>
+                </template>
+                一切都将一去杳然，任何人都无法将其捕获。
+              </n-popconfirm>
+            </template>
+            如果它长得像鸭子，走起来像鸭子，叫起来也像鸭子，那它一定是个鸭子。
+          </n-tooltip>
+        </a-card>
       </a-col>
     </a-row>
   </ent-page-wrapper>
@@ -137,6 +160,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { Card, Col, Row, StatisticCountdown } from 'ant-design-vue';
+  import { useMessage } from 'naive-ui';
   export default defineComponent({
     components: {
       ACard: Card,
@@ -148,9 +172,16 @@
       const alert = () => {
         console.log('clicked');
       };
+      const message = useMessage();
       return {
         alert,
         deadline: Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30,
+        handlePositiveClick() {
+          message.info('是的');
+        },
+        handleNegativeClick() {
+          message.info('并不');
+        },
       };
     },
   });

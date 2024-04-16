@@ -1,15 +1,17 @@
 {
-  "extends": "../../tsconfig.web.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "ts-config-ent/web.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "rootDir": "../",
     "types": ["vite/client"],
     "paths": {
       "vue-types": ["../node_modules/vue-types"],
-      "@ent-core/*": ["../fe-ent-core/*"],
       "fe-ent-layout": ["../../apps/layout/index.ts"],
-      "fe-ent-core": ["../fe-ent-core/index.ts"],
-      "fe-ent-core/es/*": ["../fe-ent-core/*"]
+      "fe-ent-core": ["../src/index.ts"],
+      "fe-ent-core/es/*": ["../src/*"],
+      "fe-ent-core/*": ["../src/*"]
     }
   },
-  "include": ["src/", "global.d.ts", "../../packages/"]
+  "include": ["src/", "global.d.ts", "../src/"]
 }

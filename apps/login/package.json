@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
-    "build": "pnpm run build:library && pnpm run docgen && pnpm run jsongen",
+    "build": "pnpm run build:library && pnpm run docgen && pnpm run jsongen pnpm run dtsgen",
     "docgen": "ent-vue-scripts docgen",
     "build:library": "ent-vue-scripts build:library -u -s",
     "build:app": "ent-vue-scripts build:app",

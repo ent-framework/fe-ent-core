@@ -21,15 +21,15 @@ export default defineConfig(({ command, mode }) => {
           // 别名，转发 fe-ent-core 文件请求
           {
             find: /^fe-ent-core$/,
-            replacement: `${root}/packages/fe-ent-core/index.ts`,
+            replacement: `${root}/src/index.ts`,
           },
           {
             find: /^fe-ent-core\/es\/(.*)$/,
-            replacement: `${root}/packages/fe-ent-core/$1`,
+            replacement: `${root}/src/$1`,
           },
           {
             find: /^fe-ent-layout$/,
-            replacement: `${root}/apps/layout/index.ts`,
+            replacement: `${root}/apps/layout/src/index.ts`,
           },
         ],
       },

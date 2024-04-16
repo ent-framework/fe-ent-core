@@ -23,7 +23,7 @@
   import { LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
   import Anchor from 'ant-design-vue/lib/anchor';
   import { useRouter } from 'vue-router';
-  import { useLocale } from '@ent-core/locales';
+  import { useLocale } from 'fe-ent-core/es/locales';
 
   const AAnchor = Anchor;
   const AAnchorLink = Anchor.Link;

@@ -19,29 +19,31 @@
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
-    "build": "pnpm run build:library && pnpm run docgen && pnpm run jsongen",
+    "build": "pnpm run build:library && pnpm run docgen && pnpm run jsongen && pnpm run dtsgen",
     "docgen": "ent-vue-scripts docgen",
     "build:library": "ent-vue-scripts build:library -u -s",
     "jsongen": "ent-vue-scripts jsongen",
     "dtsgen": "ent-vue-scripts dtsgen",
-    "lint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix"
+    "lint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix",
+    "type-check": "vue-tsc --noEmit -p ../../tsconfig.dts.json --composite false"
   },
   "peerDependencies": {
     "fe-ent-core": "^3.0.0"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.198",
-    "@types/lodash-es": "^4.17.9"
-  },
-  "devDependencies": {
-    "fe-ent-vue-scripts": "^3.0.0",
-    "rimraf": "^5.0.0",
     "naive-ui": "^2.38.1",
     "@vue/shared": "^3.4.8",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "pinia": "^2.1.6",
     "pinia-plugin-persistedstate": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.198",
+    "@types/lodash-es": "^4.17.9",
+    "fe-ent-vue-scripts": "^3.0.0",
+    "rimraf": "^5.0.0",
+    "vue-tsc": "^2.0.13"
   },
   "repository": {
     "type": "git",

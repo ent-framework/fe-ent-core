@@ -10,7 +10,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { LinkOutlined } from '@ant-design/icons-vue';
-  import { useMessage } from '@ent-core/hooks';
+  import { useMessage } from 'fe-ent-core/es/hooks';
   import copy from '../../utils/clipboard';
 
   export default defineComponent({

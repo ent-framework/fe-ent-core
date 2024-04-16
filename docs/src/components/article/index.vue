@@ -29,7 +29,7 @@
 
 <script lang="ts">
   import { computed, defineComponent, provide, reactive, ref } from 'vue';
-  import { useLocale } from '@ent-core/locales';
+  import { useLocale } from 'fe-ent-core/es/locales';
   import ArcoFooter from '../footer/index.vue';
   import ChangelogBox from '../changelog-box/index.vue';
   import AsideAnchor from '../aside-anchor/index.vue';

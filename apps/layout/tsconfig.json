@@ -9,10 +9,12 @@
       "vue-types": ["../../node_modules/vue-types"],
       "axios": ["../../node_modules/axios"],
       "@vueuse/shared": ["../../node_modules/@vueuse/shared"],
-      "naive-ui/es/*": ["../../node_modules/naive-ui/es/*"],
+      "naive-ui/es/*": ["./node_modules/naive-ui/es/*"],
       "@vue/shared": ["../../node_modules/@vue/shared"],
       "@types/lodash-es": ["../../node_modules/@types/lodash-es"],
-      "@types/lodash": ["./node_modules/@types/lodash"]
+      "@types/lodash": ["./node_modules/@types/lodash"],
+      "fe-ent-core/es/*": ["../../es/*"],
+      "fe-ent-core": ["../../es/index.ts"]
     },
     "types": ["vite/client"]
   },
