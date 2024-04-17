@@ -5,8 +5,8 @@
     "baseUrl": ".",
     "paths": {
       "@vueuse/shared": ["../../node_modules/@vueuse/shared"],
-      "pinia": ["../../node_modules/pinia"],
+      "pinia": ["../../node_modules/pinia"]
     }
   },
-  "include": ["src"],
+  "include": ["src"]
 }

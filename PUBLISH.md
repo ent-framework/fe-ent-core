@@ -21,7 +21,7 @@ npm login
 
 - 确认要发布的版本，TAG_VERSION，比如1.0.3，修改版本
 ```bash
-TAG_VERSION=1.0.1 pnpm update:version
+TAG_VERSION=3.0.1 pnpm update:version
 ```
 - 构建新版本
 ```bash

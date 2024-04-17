@@ -3,33 +3,30 @@
   "extends": "ts-config-ent/web.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "rootDir": "../",
     "types": ["vite/client"],
     "paths": {
-      "@ent-core/*": ["../src/*"],
-      "fe-ent-core": ["../src/index.ts"],
-      "fe-ent-core/es/*": ["../src/*"],
+      "fe-ent-core": ["../packages/ent-core/src/index.ts"],
+      "fe-ent-core/es/*": ["../packages/ent-core/src/*"],
       "/@/*": [
         "src/*"
       ],
-      "fe-ent-code-editor": ["../extensions/code-editor/index.ts"],
-      "fe-ent-echarts": ["../extensions/echarts/index.ts"],
-      "fe-ent-flow-chart": ["../extensions/flow-chart/index.ts"],
-      "fe-ent-markdown": ["../extensions/markdown/index.ts"],
-      "fe-ent-qrcode": ["../extensions/qrcode/index.ts"],
-      "fe-ent-tinymce": ["../extensions/tinymce/index.ts"],
-      "fe-ent-tiptap": ["../extensions/tiptap/index.ts"],
-      "fe-ent-excel": ["../extensions/excel/index.ts"],
-      "fe-ent-login": ["../apps/login/index.ts"],
-      "fe-ent-layout": ["../apps/layout/index.ts"],
-      "fe-ent-layout/es/*": ["../apps/layout/*"],
+      "fe-ent-code-editor": ["../extensions/code-editor/src/index.ts"],
+      "fe-ent-echarts": ["../extensions/echarts/src/index.ts"],
+      "fe-ent-flow-chart": ["../extensions/flow-chart/src/index.ts"],
+      "fe-ent-markdown": ["../extensions/markdown/src/index.ts"],
+      "fe-ent-qrcode": ["../extensions/qrcode/src/index.ts"],
+      "fe-ent-tinymce": ["../extensions/tinymce/src/index.ts"],
+      "fe-ent-tiptap": ["../extensions/tiptap/src/index.ts"],
+      "fe-ent-excel": ["../extensions/excel/src/index.ts"],
+      "fe-ent-login": ["../apps/login/src/index.ts"],
+      "fe-ent-layout": ["../apps/layout/src/index.ts"],
+      "fe-ent-layout/es/*": ["../apps/layout/src/*"],
       "axios": ["../node_modules/axios"],
       "pinia": ["../node_modules/pinia"],
-      "@vueuse/shared": ["../node_modules/@vueuse/shared"],
-      "ant-design-vue": ["../node_modules/ant-design-vue"]
+      "@vueuse/shared": ["../node_modules/@vueuse/shared"]
     }
   },
-  "include": ["src", "../packages/fe-ent-core/**/*", "../apps/**/*", "../extensions/**/*"],
+  "include": ["src", "../packages/ent-core/src/**/*", "../apps/**/*", "../extensions/**/*"],
   "exclude": [
     "node_modules",
     "**/node_modules/**",

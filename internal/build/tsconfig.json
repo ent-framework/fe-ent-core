@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "ts-config-ent/node.json",
   "compilerOptions": {
+    "preserveSymlinks": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },

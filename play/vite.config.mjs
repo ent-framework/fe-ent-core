@@ -16,11 +16,11 @@ export default defineConfig(({ command, mode }) => {
           // 别名，转发 fe-ent-core 文件请求
           {
             find: /^fe-ent-core$/,
-            replacement: `${workspace}/src/index.ts`,
+            replacement: `${workspace}/packages/ent-core/src/index.ts`,
           },
           {
             find: /^fe-ent-core\/es\/(.*)$/,
-            replacement: `${workspace}/src/$1`,
+            replacement: `${workspace}/packages/ent-core/src/$1`,
           },
           // 别名，转发 fe-ent-extension 文件请求
           {

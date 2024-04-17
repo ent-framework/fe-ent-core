@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
@@ -16,16 +16,6 @@
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
   "unpkg": "dist/index.full.min.js",
-  "exports": {
-    ".": {
-      "types": "./es/index.d.ts",
-      "import": "./es/index.mjs"
-    },
-    "./es": "./es/index.mjs",
-    "./es/*.mjs": "./es/*.mjs",
-    "./es/*": "./es/*.mjs",
-    "./*": "./*"
-  },
   "sideEffects": [
     "dist/*",
     "*.less"
@@ -33,7 +23,8 @@
   "scripts": {
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
     "docgen": "ent-vue-scripts docgen",
-    "build": "pnpm run icongen && pnpm run build:component && pnpm run build:style && pnpm run dtsgen && pnpm run jsongen",
+    "build": "pnpm run icongen && pnpm run build-all",
+    "build-all": "npm-run-all --parallel build:component build:style docgen jsongen dtsgen",
     "gen:doc": "ent-vue-scripts docgen",
     "build:component": "ent-vue-scripts build:component -u",
     "build:style": "cross-env DEBUG=true ent-vue-scripts build:style",

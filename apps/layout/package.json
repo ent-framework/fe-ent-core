@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-layout",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -12,38 +12,31 @@
     "json"
   ],
   "module": "es/index.mjs",
-  "typings": "es/index.d.ts",
+  "types": "es/index.d.ts",
   "unpkg": "dist/index.full.min.js",
   "sideEffects": [
     "dist/*"
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
-    "build": "pnpm run build:library && pnpm run docgen && pnpm run jsongen && pnpm run dtsgen",
+    "build": "npm-run-all --parallel build:library docgen jsongen dtsgen",
     "docgen": "ent-vue-scripts docgen",
     "build:library": "ent-vue-scripts build:library -u -s",
     "jsongen": "ent-vue-scripts jsongen",
     "dtsgen": "ent-vue-scripts dtsgen",
-    "lint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix",
-    "type-check": "vue-tsc --noEmit -p ../../tsconfig.dts.json --composite false"
+    "lint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix"
   },
   "peerDependencies": {
     "fe-ent-core": "^3.0.0"
   },
-  "dependencies": {
-    "naive-ui": "^2.38.1",
-    "@vue/shared": "^3.4.8",
-    "lodash": "^4.17.21",
-    "lodash-es": "^4.17.21",
-    "pinia": "^2.1.6",
-    "pinia-plugin-persistedstate": "^3.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/lodash": "^4.14.198",
     "@types/lodash-es": "^4.17.9",
     "fe-ent-vue-scripts": "^3.0.0",
-    "rimraf": "^5.0.0",
-    "vue-tsc": "^2.0.13"
+    "naive-ui": "^2.38.1",
+    "vue": "^3.4.8",
+    "rimraf": "^5.0.0"
   },
   "repository": {
     "type": "git",

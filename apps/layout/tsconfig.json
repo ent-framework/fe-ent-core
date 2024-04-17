@@ -9,16 +9,16 @@
       "vue-types": ["../../node_modules/vue-types"],
       "axios": ["../../node_modules/axios"],
       "@vueuse/shared": ["../../node_modules/@vueuse/shared"],
-      "naive-ui/es/*": ["./node_modules/naive-ui/es/*"],
+      "naive-ui/es/*": ["../../packages/ent-core/node_modules/naive-ui/es/*"],
       "@vue/shared": ["../../node_modules/@vue/shared"],
       "@types/lodash-es": ["../../node_modules/@types/lodash-es"],
       "@types/lodash": ["./node_modules/@types/lodash"],
-      "fe-ent-core/es/*": ["../../es/*"],
-      "fe-ent-core": ["../../es/index.ts"]
+      "fe-ent-core": ["../../packages/ent-core/es"],
+      "fe-ent-core/es/*": ["../../packages/ent-core/es/*"]
     },
     "types": ["vite/client"]
   },
-  "include": ["src"],
+  "include": ["src", "../../packages/ent-core/es"],
   "exclude": [
     "node_modules",
     "**/node_modules/**",

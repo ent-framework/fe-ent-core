@@ -9,7 +9,9 @@
       "axios": ["../../node_modules/axios"],
       "pinia": ["../../node_modules/pinia"],
       "naive-ui/es/*": ["../../node_modules/naive-ui/es/*"],
-      "@types/qrcode": ["../../node_modules/@types/qrcode"]
+      "@types/qrcode": ["../../node_modules/@types/qrcode"],
+      "fe-ent-core": ["../../packages/ent-core/es"],
+      "fe-ent-core/es/*": ["../../packages/ent-core/es/*"]
     },
     "types": ["vite/client"]
   },

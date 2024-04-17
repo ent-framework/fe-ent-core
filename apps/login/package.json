@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-login",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -12,28 +12,28 @@
     "json"
   ],
   "module": "es/index.mjs",
-  "typings": "es/index.d.ts",
+  "types": "es/index.d.ts",
   "unpkg": "dist/index.full.min.js",
   "sideEffects": [
     "dist/*"
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
-    "build": "pnpm run build:library && pnpm run docgen && pnpm run jsongen pnpm run dtsgen",
+    "build": "npm-run-all --parallel build:library docgen jsongen dtsgen",
     "docgen": "ent-vue-scripts docgen",
     "build:library": "ent-vue-scripts build:library -u -s",
-    "build:app": "ent-vue-scripts build:app",
     "jsongen": "ent-vue-scripts jsongen",
     "dtsgen": "ent-vue-scripts dtsgen",
-    "lint": "eslint --max-warnings 0  \"{components,locales}/**/*.{vue,ts,tsx}\" --fix"
+    "lint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix"
   },
   "peerDependencies": {
     "fe-ent-core": "^3.0.0"
   },
   "devDependencies": {
     "fe-ent-vue-scripts": "^3.0.0",
-    "naive-ui": "^2.38.1",
     "@types/qrcode": "^1.4.1",
+    "naive-ui": "^2.38.1",
+    "vue": "^3.4.8",
     "rimraf": "^5.0.0"
   },
   "repository": {

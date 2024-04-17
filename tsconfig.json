@@ -1,15 +1,4 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "ts-config-ent/web.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "types": ["vite/client", "node"],
-  },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "es",
-    "lib",
-    "json"
-  ]
+  "extends": "ts-config-ent/vue-app.json"
 }

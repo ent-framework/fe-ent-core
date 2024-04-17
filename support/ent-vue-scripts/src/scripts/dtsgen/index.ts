@@ -21,7 +21,7 @@ const build = async (base: string) => {
       emitDeclarationOnly: true,
       // declaration: true,
       outDir,
-      baseUrl: `${base}`,
+      baseUrl: `${cwd}`,
       rootDir: `${cwd}`,
       target: ScriptTarget.ES2015,
       moduleResolution: ModuleResolutionKind.NodeJs,

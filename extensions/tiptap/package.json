@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-tiptap",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
-    "build": "pnpm run icongen && pnpm run build:library && pnpm run docgen && pnpm run jsongen",
+    "build": "npm-run-all --parallel build:library docgen jsongen",
     "docgen": "ent-vue-scripts docgen",
     "build:library": "ent-vue-scripts build:library -u -s",
     "icongen": "ent-vue-scripts icongen",
