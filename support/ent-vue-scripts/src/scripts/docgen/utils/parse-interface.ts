@@ -71,7 +71,8 @@ export default (filePath: string) => {
     //   }
     // });
 
-    for (const [name, declarations] of sourceFile.getExportedDeclarations()) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    for (const [_, declarations] of sourceFile.getExportedDeclarations()) {
       declarations.forEach((d) => {
         if (d.getKindName() === 'InterfaceDeclaration') {
           const interfaceDeclaration = d as InterfaceDeclaration;

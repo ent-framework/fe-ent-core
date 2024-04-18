@@ -3,6 +3,7 @@
   "extends": "ts-config-ent/web.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "rootDir": "../../",
     "types": ["vite/client"],
     "paths": {
       "fe-ent-core": ["../packages/ent-core/src/index.ts"],

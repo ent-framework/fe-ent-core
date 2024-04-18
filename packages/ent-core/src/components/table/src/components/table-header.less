@@ -1,18 +1,17 @@
+@basic-table-header-prefix-cls: ~'@{ent-prefix}-basic-table-header';
 
-  @basic-table-header-prefix-cls: ~'@{ent-prefix}-basic-table-header';
+.@{basic-table-header-prefix-cls} {
+  width: 100%;
+  padding: 10px 0 10px 0;
 
-  .@{basic-table-header-prefix-cls} {
-    width: 100%;
-    padding: 10px 0 10px 0;
+  &__toolbar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
-    &__toolbar {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-
-      > * {
-        margin-right: 8px;
-      }
+    > * {
+      margin-right: 8px;
     }
   }
+}

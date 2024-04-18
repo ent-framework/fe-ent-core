@@ -5,13 +5,13 @@ const propertiesTmpl = (properties: EventDescriptor['properties']): string => {
   return (properties || [])
     .map((property) => {
       const { type, name, description } = property;
-      const res = [];
+      const res: string[] = [];
       name && res.push(name);
       if (type.names.length) {
         res.length && res.push(': ');
         res.push(`\`${type.names.join(' | ')}\``);
       }
-      description && res.push(description);
+      description && res.push(description as string);
       return res.join('');
     })
     .join('\n');

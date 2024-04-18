@@ -80,7 +80,7 @@ async function buildIconComponent(data: IconData[]) {
 }
 
 function buildType(data: IconData[]) {
-  const exports = [];
+  const exports: string[] = [];
   for (const iconData of data) {
     for (const item of iconData.list) {
       exports.push(

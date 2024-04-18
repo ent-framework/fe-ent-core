@@ -37,7 +37,7 @@ async function bootstrap() {
   initLayout(app, entRouter);
   initLogin(app, entRouter);
 
-  entRouter.importAuthRoutes(import.meta.glob(`/src/routes/modules/**/*.ts`, { eager: true }));
+  entRouter.importAuthRoutes(import.meta.glob(`/src/routes/**/*.ts`, { eager: true }));
 
   app.use(entRouter);
 

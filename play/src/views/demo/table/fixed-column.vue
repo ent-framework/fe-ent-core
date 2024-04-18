@@ -69,10 +69,8 @@
                     label: '删除-确认',
                     tooltip: '确认删除提示',
                     icon: 'ant-design:delete-outlined',
-                    popConfirm: {
-                      confirmContent: '是否删除？',
-                      onPositiveClick: handleDelete.bind(null, record),
-                    },
+                    onClick: handleDelete.bind(null, record),
+                    confirm: '是否删除？',
                   },
                 ],
                 dropDownActions: [

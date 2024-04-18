@@ -62,13 +62,13 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, nextTick, onMounted, reactive, ref, unref, watch } from 'vue';
-  import { NDivider, NForm, NGrid, NGridItem } from 'naive-ui';
+  import { NDivider, NForm, NGrid, NGridItem, NSpace } from 'naive-ui';
   import { useDebounceFn } from '@vueuse/shared';
   import { formProps } from 'naive-ui/es/form';
   import { cloneDeep, pick } from 'lodash-es';
   import { deepMerge } from '../../../utils';
-  import { useModalContext } from '../../../components/modal';
-  import { useDesign } from '../../../hooks/web/use-design';
+  import { useModalContext } from '../../modal';
+  import { useDesign } from '../../../hooks';
   import FormItem from './components/form-item.vue';
   import FormAction from './components/form-action.vue';
   import { useFormValues } from './hooks/use-form-values';
@@ -96,6 +96,7 @@
       NDivider,
       FormAction,
       FormItem,
+      NSpace,
     },
     props: basicProps,
     emits: ['advanced-change', 'reset', 'submit', 'register', 'field-value-change'],

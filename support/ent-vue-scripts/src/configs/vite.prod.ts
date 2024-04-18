@@ -57,7 +57,6 @@ const config: InlineConfig = {
     external(),
     vue({
       isProduction: true,
-      reactivityTransform: true,
     }),
     vueJsx(),
     vueExportHelper(),

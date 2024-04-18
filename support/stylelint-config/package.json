@@ -1,6 +1,6 @@
 {
   "name": "stylelint-config-ent",
-  "version": "3.0.4",
+  "version": "3.0.7",
   "files": [
     "index.js"
   ],

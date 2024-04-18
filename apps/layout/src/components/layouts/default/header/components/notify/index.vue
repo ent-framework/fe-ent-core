@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref } from 'vue';
-  import { NBadge, NPopover, NTabs } from 'naive-ui';
+  import { NBadge, NPopover, NTabPane, NTabs } from 'naive-ui';
   import { EntIcon } from 'fe-ent-core';
   import { useDesign, useMessage } from 'fe-ent-core/es/hooks';
   import { tabListData } from './data';
@@ -32,7 +32,7 @@
   import type { ListItem } from './data';
 
   export default defineComponent({
-    components: { NPopover, NTabs, NTabPane: NTabs.TabPane, NBadge, NoticeList, EntIcon },
+    components: { NPopover, NTabs, NTabPane, NBadge, NoticeList, EntIcon },
     setup() {
       const { prefixCls } = useDesign('header-notify');
       const { createMessage } = useMessage();

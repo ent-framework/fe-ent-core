@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-vue-scripts",
-  "version": "3.0.4",
+  "version": "3.0.7",
   "description": "Ent Vue Scripts",
   "main": "dist/index.js",
   "bin": {
@@ -17,7 +17,7 @@
     "clean": "rimraf dist",
     "dev": "tsc --watch",
     "stub": "pnpm run build",
-    "build": "pnpm run build:lib && pnpm run build:types",
+    "build": "pnpm run clean && pnpm run build:lib && pnpm run build:types",
     "build:lib": "tsc && node copy-template.js",
     "build:types": "tsc --emitDeclarationOnly --outDir dist",
     "lint-staged": "npx lint-staged",
@@ -49,7 +49,7 @@
     "@babel/parser": "~7.21.4",
     "@babel/preset-typescript": "~7.21.4",
     "@rollup/plugin-terser": "^0.4.4",
-    "@vitejs/plugin-vue": "^4.5.0",
+    "@vitejs/plugin-vue": "^5.0.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "@vue/babel-plugin-jsx": "^1.1.5",
     "ant-design-vue": "^4.1.0",

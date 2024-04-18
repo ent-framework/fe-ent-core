@@ -2,7 +2,7 @@ import { transformChangelog, transformDemo, transformMain } from './markdown';
 import { getDescriptor } from './descriptor';
 import { getFrontMatter, getVueId, isDemoMarkdown, isVirtualModule } from './utils';
 import marked from './marked';
-import type { Plugin } from 'vite';
+import type { ModuleNode, Plugin } from 'vite';
 
 export default function vueMdPlugin(): Plugin {
   let vuePlugin: Plugin | undefined;
@@ -74,7 +74,7 @@ export default function vueMdPlugin(): Plugin {
         return modules;
       }
 
-      const updated = [];
+      const updated: ModuleNode[] = [];
 
       const isDemo = isDemoMarkdown(file);
 

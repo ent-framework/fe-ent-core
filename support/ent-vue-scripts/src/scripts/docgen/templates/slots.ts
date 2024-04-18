@@ -5,13 +5,13 @@ const bindingsTmpl = (bindings: SlotDescriptor['bindings']): string => {
   return (bindings || [])
     .map((binding) => {
       const { type, name, description } = binding;
-      const res = [];
+      const res: string[] = [];
       name && res.push(name);
       if (type?.name) {
         res.length && res.push(': ');
         res.push(`\`${type.name}\``);
       }
-      description && res.push(description);
+      description && res.push(description as string);
       return res.join('');
     })
     .join('\n');

@@ -29,9 +29,11 @@ const getComponentsFromTemplates = async () => {
 
 interface ComponentData {
   name: string;
+  description: string;
   props: Array<{
     name: string;
-    type: string;
+    type?: string;
+    defaultValue?: string;
     description: {
       zh: string;
       en: string;
@@ -44,19 +46,30 @@ interface ComponentData {
       en: string;
     };
   }>;
+  slots: Array<{
+    name: string;
+    description: {
+      zh: string;
+      en: string;
+    };
+  }>;
 }
 
 const isLanguageTag = (title: string): title is 'zh' | 'en' => {
   return ['zh', 'en'].includes(title);
 };
 
-const resolveComponent = (doc: ComponentDoc) => {
+const resolveComponent = (doc: ComponentDoc): ComponentData => {
   return {
-    name: toKebabCase(`${doc.displayName}`),
+    name: `${doc.displayName}`,
+    description: doc.description || '',
     props:
       doc.props
         ?.map((descriptor) => {
-          let description;
+          let description: {
+            zh: string;
+            en: string;
+          };
           if (descriptor.description) {
             description = {
               zh: descriptor.description,
@@ -79,6 +92,7 @@ const resolveComponent = (doc: ComponentDoc) => {
           return {
             name: toKebabCase(descriptor.name),
             type: descriptor.type?.name,
+            defaultValue: descriptor.defaultValue?.value ?? descriptor.defaultValue?.value ?? '',
             description,
           };
         })
@@ -86,7 +100,10 @@ const resolveComponent = (doc: ComponentDoc) => {
     events:
       doc.events
         ?.map((descriptor) => {
-          let description;
+          let description: {
+            zh: string;
+            en: string;
+          };
           if (descriptor.description) {
             description = {
               zh: descriptor.description,
@@ -114,7 +131,10 @@ const resolveComponent = (doc: ComponentDoc) => {
     slots:
       doc.slots
         ?.map((descriptor) => {
-          let description;
+          let description: {
+            zh: string;
+            en: string;
+          };
           if (descriptor.description) {
             description = {
               zh: descriptor.description,
@@ -158,7 +178,7 @@ const transformToVetur = (components: ComponentData[]) => {
   const attributes: Record<string, any> = {};
 
   for (const component of components) {
-    const attrs = [];
+    const attrs: string[] = [];
     for (const item of component.events ?? []) {
       attrs.push(item.name);
       attributes[`${component.name}/${item.name}`] = {
@@ -171,7 +191,7 @@ const transformToVetur = (components: ComponentData[]) => {
         attrs.push(attrName);
         attributes[`${component.name}/${attrName}`] = {
           description: item.description.en,
-          type: isValidType(item.type) ? item.type : undefined,
+          type: isValidType(item.type || '') ? item.type : undefined,
         };
       }
     }
@@ -186,17 +206,19 @@ const transformToVetur = (components: ComponentData[]) => {
   };
 };
 
-const transformToWebTypes = (components: ComponentData[], { version }: { version: string }) => {
+const transformToWebTypes = (
+  components: ComponentData[],
+  { name, version }: { name: string; version: string },
+) => {
   const json = {
     $schema: 'https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json',
     framework: 'vue',
-    name: 'fe-ent-core',
+    name,
+    'js-types-syntax': 'typescript',
     version,
     contributions: {
       html: {
-        'types-syntax': 'typescript',
-        'description-markup': 'markdown',
-        tags: [],
+        'vue-components': [],
       },
     },
   };
@@ -204,27 +226,32 @@ const transformToWebTypes = (components: ComponentData[], { version }: { version
   for (const component of components) {
     const data = {
       name: component.name,
-      attributes: component.props?.map((item) => ({
-        name: item.name,
-        description: item.description.zh || item.description.en,
-        value: {
-          type: item.type,
-          kind: 'expression',
-        },
-      })),
-      events: component.events?.map((item) => ({
-        name: item.name,
-        description: item.description.zh || item.description.en,
-      })),
+      description: component.description,
+      source: {
+        symbol: component.name,
+      },
       // @ts-ignore
       slots: component.slots?.map((item) => ({
         name: item.name,
         description: item.description.zh || item.description.en,
       })),
+      attributes: [],
+      props: component.props?.map((item) => ({
+        name: item.name,
+        description: item.description.zh || item.description.en,
+        type: item.type,
+        default: item.defaultValue,
+      })),
+      js: {
+        events: component.events?.map((item) => ({
+          name: item.name,
+          description: item.description.zh || item.description.en,
+        })),
+      },
     };
 
     // @ts-ignore
-    json.contributions.html.tags.push(data);
+    json.contributions.html['vue-components'].push(data);
   }
 
   return json;
@@ -235,7 +262,7 @@ const jsongen = async () => {
 
   const components = await getComponentsFromTemplates();
 
-  const docs = [];
+  const docs: any[] = [];
   let typographyBase;
   let datePickerBase;
   for (const item of components) {
@@ -273,18 +300,21 @@ const jsongen = async () => {
   await fs.writeFile(
     path.resolve(process.cwd(), 'json/vetur-tags.json'),
     JSON.stringify(tags, null, 2),
+    { encoding: 'utf8', flag: 'w' },
   );
   await fs.writeFile(
     path.resolve(process.cwd(), 'json/vetur-attributes.json'),
     JSON.stringify(attributes, null, 2),
+    { encoding: 'utf8', flag: 'w' },
   );
 
   // @ts-ignore
-  const web = transformToWebTypes(docs, { version: packageData.version });
+  const web = transformToWebTypes(docs, { name: packageData.name, version: packageData.version });
 
   await fs.writeFile(
     path.resolve(process.cwd(), 'json/web-types.json'),
     JSON.stringify(web, null, 2),
+    { encoding: 'utf8', flag: 'w' },
   );
 };
 

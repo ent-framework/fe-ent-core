@@ -44,7 +44,10 @@
         if (disabled) return -1;
         const innerValue = unref(innerValueRef);
         const zxcvbnResult = zxcvbn(unref(innerValueRef));
-        const score = innerValue && (<ZxcvbnResult>zxcvbnResult).score ? (<ZxcvbnResult>zxcvbnResult).score : -1;
+        const score =
+          innerValue && (<ZxcvbnResult>zxcvbnResult).score
+            ? (<ZxcvbnResult>zxcvbnResult).score
+            : -1;
         emit('score-change', score);
         return score;
       });

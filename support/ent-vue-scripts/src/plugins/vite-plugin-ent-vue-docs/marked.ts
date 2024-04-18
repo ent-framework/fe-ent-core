@@ -1,10 +1,10 @@
 import path from 'path';
 import { parse } from '@vue/compiler-sfc';
 import { marked } from 'marked';
-import { cleanUrl, escape } from './helper';
 import yaml from 'js-yaml';
 import Prism from 'prismjs';
 import loadLanguages from 'prismjs/components/index';
+import { cleanUrl, escape } from './helper';
 import type { FileImportToken, I18nDescriptionToken } from './interface';
 
 const languages = ['shell', 'js', 'ts', 'jsx', 'tsx', 'less', 'diff'];
@@ -91,7 +91,7 @@ marked.setOptions({
     callback?: (error: any, code?: string) => void,
   ): string | void {
     if (lang === 'vue') {
-      const { descriptor, errors } = parse(code);
+      const { descriptor } = parse(code);
       const { script, styles } = descriptor;
 
       let htmlContent = code;

@@ -13,24 +13,20 @@
     :width="getMenuWidth"
     :collapsed="getCollapsed"
     :collapsed-width="getCollapsedWidth"
-    :trigger="getTrigger"
+    :show-trigger="getShowTrigger"
     v-bind="getTriggerAttr"
     @breakpoint="onBreakpointChange"
   >
-    <template v-if="getShowTrigger" #trigger>
-      <LayoutTrigger />
-    </template>
     <LayoutMenu :menu-mode="getMode" :split-type="getSplitType" />
     <DragBar ref="dragBarRef" />
   </NLayoutSider>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, h, ref, unref } from 'vue';
+  import { computed, defineComponent, ref, unref } from 'vue';
   import { NLayoutSider } from 'naive-ui';
   import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/es/logics';
   import { useAppInject, useDesign } from 'fe-ent-core/es/hooks';
   import { useLayoutTheme, useMenuSetting } from '../../../../hooks';
-  import LayoutTrigger from '../trigger/index.vue';
   import LayoutMenu from '../menu/index.vue';
   import { useDragLine, useSiderEvent, useTrigger } from './use-layout-sider';
   import DragBar from './drag-bar.vue';
@@ -38,7 +34,7 @@
   import type { CSSProperties } from 'vue';
   export default defineComponent({
     name: 'LayoutSideBar',
-    components: { NLayoutSider, LayoutMenu, DragBar, LayoutTrigger },
+    components: { NLayoutSider, LayoutMenu, DragBar },
     setup() {
       const dragBarRef = ref<ElRef>(null);
       const sideRef = ref<ElRef>(null);
@@ -99,10 +95,6 @@
         };
       });
 
-      // 在此处使用计算量可能会导致sider异常
-      // andv 更新后，如果trigger插槽可用，则此处代码可废弃
-      const getTrigger = h(LayoutTrigger);
-
       return {
         prefixCls,
         sideRef,
@@ -110,7 +102,6 @@
         getIsMobile,
         getHiddenDomStyle,
         getSiderClass,
-        getTrigger,
         getTriggerAttr,
         getCollapsedWidth,
         getMenuFixed,

@@ -1,17 +1,16 @@
+@basic-table-img-prefix-cls: ~'@{ent-prefix}-basic-table-img';
 
-  @basic-table-img-prefix-cls: ~'@{ent-prefix}-basic-table-img';
+.@{basic-table-img-prefix-cls} {
+  .ant-image {
+    margin-right: 4px;
+    cursor: zoom-in;
 
-  .@{basic-table-img-prefix-cls} {
-    .ant-image {
-      margin-right: 4px;
-      cursor: zoom-in;
-
-      img {
-        border-radius: 2px;
-      }
-    }
-
-    .img-div {
-      display: inline-grid;
+    img {
+      border-radius: 2px;
     }
   }
+
+  .img-div {
+    display: inline-grid;
+  }
+}

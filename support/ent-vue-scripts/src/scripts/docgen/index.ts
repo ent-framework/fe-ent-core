@@ -93,7 +93,7 @@ const replacePlaceholderToDoc = async ({
   for (const item of matches) {
     try {
       // @ts-ignore
-      // eslint-disable-next-line
+      // eslint-disable-next-line eslint-comments/no-unlimited-disable
       const componentDoc = await parser(path.resolve(dir, item[1]), {
         addScriptHandlers: [propExtHandler, slotTagHandler, extendsExtHandler],
       });
@@ -107,7 +107,7 @@ const replacePlaceholderToDoc = async ({
 };
 
 const docgen = async ({ input, components }: { input?: string; components?: string[] }) => {
-  const files = [];
+  const files: string[] = [];
 
   if (input) {
     const filename = path.resolve(process.cwd(), input);

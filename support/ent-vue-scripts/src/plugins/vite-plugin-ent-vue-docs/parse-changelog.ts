@@ -24,7 +24,7 @@ const getType = (text: string) => {
 };
 
 export const parseChangelog = (tokens: marked.Token[]) => {
-  const changelog = [];
+  const changelog: { version: string; date: string; list: string[]; extra: string[] }[] = [];
 
   let data = { version: '', date: '', list: [], extra: [] };
 

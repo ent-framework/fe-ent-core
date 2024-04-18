@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "3.0.4",
+  "version": "3.0.7",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
@@ -11,7 +11,7 @@
     "es",
     "lib",
     "json",
-    "global.d.ts"
+    "volar.d.ts"
   ],
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
@@ -32,7 +32,8 @@
     "dtsgen": "ent-vue-scripts dtsgen",
     "jsongen": "ent-vue-scripts jsongen",
     "changelog": "ent-vue-scripts changelog",
-    "lint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix"
+    "lint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix",
+    "prettier": "prettier --write  \"src/**/*.{ts,json,tsx,css,less,vue}\""
   },
   "dependencies": {
     "@vicons/ionicons5": "^0.12.0",
@@ -74,6 +75,11 @@
     "rimraf": "^5.0.0",
     "vite": "^5.2.3"
   },
+  "vetur": {
+    "tags": "./json/vetur-tags.json",
+    "attributes": "./json/vetur-attributes.json"
+  },
+  "web-types": "./json/web-types.json",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ent-framework/fe-ent-core.git"

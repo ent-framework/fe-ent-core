@@ -3,7 +3,7 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { NInput } from 'naive-ui/es/input';
+  import { NInput } from 'naive-ui';
 
   export default defineComponent({
     name: 'InputTextArea',

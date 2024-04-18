@@ -2,10 +2,10 @@
   import { computed, defineComponent, ref, unref } from 'vue';
   import { NFormItem } from 'naive-ui';
   import { cloneDeep, upperFirst } from 'lodash-es';
-  import { EntHelp } from '../../../../components/basic';
+  import { EntHelp } from '../../../basic';
   import { isBoolean, isFunction, isNull } from '../../../../utils/is';
-  import { getSlot } from '../../../../utils/helper/tsx-helper';
-  import { useI18n } from '../../../../hooks/web/use-i18n';
+  import { getSlot } from '../../../../utils';
+  import { useI18n } from '../../../../hooks';
   import { createPlaceholderMessage, setComponentRuleType } from '../helper';
   import { componentMap } from '../component-map';
   import { formItemProps } from '../props';

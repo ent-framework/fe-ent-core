@@ -1,14 +1,10 @@
 <template>
   <NLayout :class="prefixCls" v-bind="lockEvents">
     <LayoutFeatures />
-    <NConfigProvider v-if="getShowFullHeaderRef" :theme="getComputedHeaderTheme">
+    <NConfigProvider v-if="getShowFullHeaderRef" :abstract="true" :theme="getComputedHeaderTheme">
       <LayoutHeader fixed />
     </NConfigProvider>
-    <NLayout
-      :has-sider="getShowSidebar || getIsMobile"
-      collapse-mode="width"
-      :collapsed="getCollapsed"
-    >
+    <NLayout :has-sider="getShowSidebar || getIsMobile" collapse-mode="width">
       <NConfigProvider :abstract="true">
         <LayoutSideBar v-if="getShowSidebar || getIsMobile" />
       </NConfigProvider>
