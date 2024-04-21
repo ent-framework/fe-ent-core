@@ -1,7 +1,7 @@
 <template>
   <NTooltip placement="top">
     <template #trigger>
-      <EntIcon icon="ant-design:redo-outlined" />
+      <EntIcon icon="ant-design:redo-outlined" @click="redo" />
     </template>
     <span>{{ t('common.redo') }}</span>
   </NTooltip>
@@ -9,8 +9,8 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { NTooltip } from 'naive-ui';
-  import { EntIcon } from '../../../../../components/icon';
-  import { useI18n } from '../../../../../hooks/web/use-i18n';
+  import { EntIcon } from '../../../../icon';
+  import { useI18n } from '../../../../../hooks';
   import { useTableContext } from '../../hooks/use-table-context';
 
   export default defineComponent({

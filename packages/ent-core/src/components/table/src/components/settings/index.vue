@@ -12,8 +12,7 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, unref } from 'vue';
-  import { useI18n } from '../../../../../hooks/web/use-i18n';
-  import { useDesign } from '../../../../../hooks';
+  import { useDesign, useI18n } from '../../../../../hooks';
   import { useTableContext } from '../../hooks/use-table-context';
   import ColumnSetting from './column-setting.vue';
   import SizeSetting from './size-setting.vue';

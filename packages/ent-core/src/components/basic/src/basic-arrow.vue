@@ -1,12 +1,12 @@
 <template>
   <span :class="getClass">
-    <Icon icon="ion:chevron-forward" :style="$attrs.iconStyle" />
+    <Icon icon="ion:chevron-forward-outline" :style="$attrs.iconStyle" />
   </span>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import Icon from '../../../components/icon/src/icon.vue';
-  import { useDesign } from '../../../hooks/web/use-design';
+  import { useDesign } from '../../../hooks';
 
   const props = {
     /**

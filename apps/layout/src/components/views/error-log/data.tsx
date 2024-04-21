@@ -3,6 +3,7 @@ import { NTag } from 'naive-ui';
 import { ErrorTypeEnum } from 'fe-ent-core/es/logics';
 import { useI18n } from 'fe-ent-core/es/hooks';
 import type { BasicColumn } from 'fe-ent-core/es/components/table/interface';
+import type { DescItem } from 'fe-ent-core/es/components/description/interface';
 
 export function getColumns(): BasicColumn[] {
   const { t } = useI18n();
@@ -58,11 +59,11 @@ export function getColumns(): BasicColumn[] {
   ];
 }
 
-export function getDescSchema(): any {
+export function getDescSchema(): DescItem[] {
   return getColumns().map((column) => {
     return {
       field: column.key!,
       label: column.title,
-    };
+    } as DescItem;
   });
 }

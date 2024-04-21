@@ -30,10 +30,10 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent } from 'vue';
+  import { defineComponent, h } from 'vue';
 
   import { useDrawer } from 'fe-ent-core/es/components/drawer';
-  import { useTable } from 'fe-ent-core/es/components/table';
+  import { EntTableAction, useTable } from 'fe-ent-core/es/components/table';
   import { getRoleListByPage } from '/@/api/system';
 
   import RoleDrawer from './role-drawer.vue';
@@ -60,9 +60,29 @@
         actionColumn: {
           width: 80,
           title: '操作',
-          dataIndex: 'action',
+          key: 'action',
           // slots: { customRender: 'action' },
           fixed: undefined,
+          render: (record) => {
+            return h(
+              EntTableAction,
+              {
+                actions: [
+                  {
+                    icon: 'clarity:note-edit-line',
+                    onClick: handleEdit.bind(null, record),
+                  },
+                  {
+                    icon: 'ant-design:delete-outlined',
+                    confirm: '是否确认删除',
+                    placement: 'left',
+                    onClick: handleDelete.bind(null, record),
+                  },
+                ],
+              },
+              { default: () => '' },
+            );
+          },
         },
       });
 

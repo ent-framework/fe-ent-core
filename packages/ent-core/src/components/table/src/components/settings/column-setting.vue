@@ -42,14 +42,14 @@
                 <NSpace justify="space-between">
                   <EntIcon icon="ant-design:drag-outlined" class="table-column-drag-icon" />
                   <NCheckbox :value="item.value">
-                    {{ item.label }}
+                    {{ item.title }}
                   </NCheckbox>
                 </NSpace>
                 <NSpace justify="end">
                   <NTooltip placement="bottom-start" :mouse-leave-delay="0.4">
                     <template #trigger>
                       <EntIcon
-                        icon="line-md:arrow-align-left"
+                        icon="ant-design-vue:vertical_right_outlined"
                         :class="[
                           `${prefixCls}__fixed-left`,
                           {
@@ -66,7 +66,7 @@
                   <NTooltip placement="bottom-start" :mouse-leave-delay="0.4">
                     <template #trigger>
                       <EntIcon
-                        icon="line-md:arrow-align-left"
+                        icon="ant-design-vue:vertical_left_outlined"
                         :class="[
                           `${prefixCls}__fixed-right`,
                           {
@@ -103,11 +103,10 @@
   import { NCheckbox, NCheckboxGroup, NDivider, NPopover, NSpace, NTooltip } from 'naive-ui';
   import { cloneDeep, omit } from 'lodash-es';
   import sortablejs from 'sortablejs';
-  import { EntIcon } from '../../../../../components/icon';
-  import { EntScrollContainer } from '../../../../../components/container';
-  import { useI18n } from '../../../../../hooks/web/use-i18n';
-  import { useDesign } from '../../../../../hooks/web/use-design';
-  import { isNullAndUnDef } from '../../../../../utils/is';
+  import { EntIcon } from '../../../../icon';
+  import { EntScrollContainer } from '../../../../container';
+  import { useDesign, useI18n } from '../../../../../hooks';
+  import { isNullAndUnDef } from '../../../../../utils';
   import { useTableContext } from '../../hooks/use-table-context';
   import type { BasicColumn, BasicTableProps, ColumnChangeParam } from '../../types/table';
   import type Sortable from 'sortablejs';
@@ -133,7 +132,7 @@
     },
     emits: ['columns-change'],
 
-    setup(_, { emit, attrs }) {
+    setup(_, { emit }) {
       const { t } = useI18n();
       const table = useTableContext();
 

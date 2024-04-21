@@ -30,8 +30,8 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { useTable } from 'fe-ent-core/es/components/table';
+  import { defineComponent, h } from 'vue';
+  import { EntTableAction, useTable } from 'fe-ent-core/es/components/table';
   import { useModal } from 'fe-ent-core/es/components/modal';
   import { getDeptList } from '/@/api/system';
 
@@ -60,11 +60,30 @@
         showIndexColumn: false,
         canResize: false,
         actionColumn: {
-          width: 80,
+          width: 120,
           title: '操作',
-          dataIndex: 'action',
+          key: 'action',
           // slots: { customRender: 'action' },
           fixed: undefined,
+          render: (record) => {
+            return h(
+              EntTableAction,
+              {
+                actions: [
+                  {
+                    icon: 'clarity:note-edit-line',
+                    onClick: handleEdit.bind(null, record),
+                  },
+                  {
+                    icon: 'ant-design:delete-outlined',
+                    confirm: '是否确认删除',
+                    onClick: handleDelete.bind(null, record),
+                  },
+                ],
+              },
+              { default: () => '' },
+            );
+          },
         },
       });
 

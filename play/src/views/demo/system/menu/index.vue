@@ -4,47 +4,28 @@
       <template #toolbar>
         <ent-button type="primary" @click="handleCreate"> 新增菜单 </ent-button>
       </template>
-      <template #bodyCell="{ column, record }">
-        <template v-if="column.key === 'action'">
-          <ent-table-action
-            :actions="[
-              {
-                icon: 'clarity:note-edit-line',
-                onClick: handleEdit.bind(null, record),
-              },
-              {
-                icon: 'ant-design:delete-outlined',
-                color: 'error',
-                popConfirm: {
-                  title: '是否确认删除',
-                  placement: 'left',
-                  confirm: handleDelete.bind(null, record),
-                },
-              },
-            ]"
-          />
-        </template>
-      </template>
     </ent-table>
     <MenuDrawer @register="registerDrawer" @success="handleSuccess" />
+    <MenuDetail @register="registerDetailDrawer" />
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, nextTick } from 'vue';
+  import { defineComponent, h, nextTick } from 'vue';
 
-  import { useTable } from 'fe-ent-core/es/components/table';
+  import { EntTableAction, useTable } from 'fe-ent-core/es/components/table';
   import { useDrawer } from 'fe-ent-core/es/components/drawer';
   import { getMenuList } from '/@/api/system';
-
   import MenuDrawer from './menu-drawer.vue';
-
+  import MenuDetail from './menu-detail.vue';
   import { columns, searchFormSchema } from './menu-data';
+  import type { Recordable } from 'fe-ent-core/es/types';
 
   export default defineComponent({
     name: 'MenuManagement',
-    components: { MenuDrawer },
+    components: { MenuDrawer, MenuDetail },
     setup() {
       const [registerDrawer, { openDrawer }] = useDrawer();
+      const [registerDetailDrawer, { openDrawer: openDetailDrawer }] = useDrawer();
       const [registerTable, { reload, expandAll }] = useTable({
         title: '菜单列表',
         api: getMenuList,
@@ -62,11 +43,35 @@
         showIndexColumn: false,
         canResize: false,
         actionColumn: {
-          width: 80,
+          width: 120,
           title: '操作',
-          dataIndex: 'action',
+          key: 'action',
           // slots: { customRender: 'action' },
           fixed: undefined,
+          render: (record) => {
+            return h(
+              EntTableAction,
+              {
+                actions: [
+                  {
+                    icon: 'ant-design:unordered-list-outlined',
+                    tooltip: '查看用户账号详情',
+                    onClick: handleView.bind(null, record),
+                  },
+                  {
+                    icon: 'clarity:note-edit-line',
+                    onClick: handleEdit.bind(null, record),
+                  },
+                  {
+                    icon: 'ant-design:delete-outlined',
+                    confirm: '是否确认删除',
+                    onClick: handleDelete.bind(null, record),
+                  },
+                ],
+              },
+              { default: () => '' },
+            );
+          },
         },
       });
 
@@ -80,6 +85,11 @@
         openDrawer(true, {
           record,
           isUpdate: true,
+        });
+      }
+      function handleView(record: Recordable) {
+        openDetailDrawer(true, {
+          record,
         });
       }
 
@@ -104,6 +114,7 @@
         handleDelete,
         handleSuccess,
         onFetchSuccess,
+        registerDetailDrawer,
       };
     },
   });

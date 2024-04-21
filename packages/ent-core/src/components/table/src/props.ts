@@ -1,5 +1,5 @@
 import { dataTableProps } from 'naive-ui/es/data-table';
-import { propTypes } from '../../../utils/prop-types';
+import { propTypes } from '../../../utils';
 import { DEFAULT_FILTER_FN, DEFAULT_SORT_FN, FETCH_SETTING } from './const';
 import type { PropType } from 'vue';
 import type {
@@ -9,7 +9,7 @@ import type {
   TableRowSelection,
   TableSetting,
 } from './types/table';
-import type { FormProps } from '../../../components/form/interface';
+import type { FormProps } from '../../form/src/types/form';
 import type { Fn, Recordable } from '../../../types';
 import type { DataTableExpandColumn, DataTableSelectionColumn } from 'naive-ui';
 export const tableHeaderProps = {

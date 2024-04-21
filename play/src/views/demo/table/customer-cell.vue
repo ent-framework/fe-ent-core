@@ -1,33 +1,12 @@
 <template>
   <div class="p-4">
-    <ent-table @register="registerTable">
-      <template #id="{ record }"> ID: {{ record.id }} </template>
-      <template #no="{ record }">
-        <Tag color="green">
-          {{ record.no }}
-        </Tag>
-      </template>
-      <template #avatar="{ record }">
-        <Avatar :size="60" :src="record.avatar" />
-      </template>
-      <template #img="{ text }">
-        <ent-table-img :size="60" :simple-show="true" :img-list="text" />
-      </template>
-      <template #imgs="{ text }"> <ent-table-img :size="60" :img-list="text" /> </template>
-
-      <template #category="{ record }">
-        <Tag color="green">
-          {{ record.no }}
-        </Tag>
-      </template>
-    </ent-table>
+    <ent-table @register="registerTable" />
   </div>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
   import type { BasicColumn } from 'fe-ent-core/es/components/table/interface';
   import { useTable } from 'fe-ent-core/es/components/table';
-  import { Avatar, Tag } from 'ant-design-vue';
   import { demoListApi } from '/@/api/table';
   const columns: BasicColumn[] = [
     {
@@ -54,7 +33,7 @@
     {
       title: '图片列表1',
       key: 'imgArr',
-      helpMessage: ['这是简单模式的图片列表', '只会显示一张在表格中', '但点击可预览多张图片'],
+      //helpMessage: ['这是简单模式的图片列表', '只会显示一张在表格中', '但点击可预览多张图片'],
       width: 140,
     },
     {
@@ -80,7 +59,6 @@
     },
   ];
   export default defineComponent({
-    components: { Tag, Avatar },
     setup() {
       const [registerTable] = useTable({
         title: '自定义列内容',

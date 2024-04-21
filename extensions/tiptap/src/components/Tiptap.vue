@@ -62,8 +62,9 @@
   import { Trans } from '../i18n';
   import MenuBar from './menu-bar/index.vue';
   import MenuBubble from './menu-bubble/index.vue';
+  import type { PropType } from 'vue';
   import type { EditorProps } from '@tiptap/pm/view';
-  import type { Editor, Extensions } from '@tiptap/core';
+  import type { Editor, Extension } from '@tiptap/core';
 
   export default defineComponent({
     name: 'EntTiptap',
@@ -80,7 +81,7 @@
         default: '',
       },
       extensions: {
-        type: Array as () => Extensions,
+        type: Array as PropType<Extension[]>,
         default: () => [],
       },
       placeholder: {
@@ -123,7 +124,7 @@
         default: true,
       },
       editorProps: {
-        type: Object as () => EditorProps,
+        type: Object as PropType<EditorProps>,
         default: () => {},
       },
       charCountMax: {
@@ -184,7 +185,7 @@
 
         emit('onUpdate', output, editor);
       };
-      let additionalExtensions: any[] = [];
+      let additionalExtensions: Extension[] = [];
       extensions.forEach((extension) => {
         if (
           extension?.parent?.config?.nessesaryExtensions ||
@@ -197,7 +198,7 @@
           ];
         }
       });
-      const uniqueObjects = [];
+      const uniqueObjects: Extension[] = [];
       const seenValues = {} as { [key: string]: boolean };
       // remove duplicate extensions
       for (const obj of additionalExtensions) {

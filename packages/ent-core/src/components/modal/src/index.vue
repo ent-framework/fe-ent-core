@@ -46,14 +46,10 @@
   import type { ModalMethods, ModalProps } from './typing';
   import type { Nullable, Recordable } from '../../../types';
 
-  /**
-   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/modal/index.zh-CN.md
-   * @extends Modal
-   * @docLink https://next.antdv.com/components/modal-cn
-   */
   export default defineComponent({
     name: 'EntModal',
     components: { ModalHeader, NModal, ModalFooter },
+    extends: NModal,
     inheritAttrs: false,
     props: basicProps,
     emits: ['visible-change', 'height-change', 'cancel', 'ok', 'register', 'update:visible'],

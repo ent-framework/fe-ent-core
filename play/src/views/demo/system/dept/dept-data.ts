@@ -6,20 +6,20 @@ import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
 export const columns: BasicColumn[] = [
   {
     title: '部门名称',
-    dataIndex: 'deptName',
+    key: 'deptName',
     width: 160,
     align: 'left',
   },
   {
     title: '排序',
-    dataIndex: 'orderNo',
+    key: 'orderNo',
     width: 50,
   },
   {
     title: '状态',
-    dataIndex: 'status',
+    key: 'status',
     width: 80,
-    customRender: ({ record }) => {
+    render: (record) => {
       const status = record.status;
       const enable = Math.trunc(status) === 0;
       const color = enable ? 'green' : 'red';
@@ -29,12 +29,12 @@ export const columns: BasicColumn[] = [
   },
   {
     title: '创建时间',
-    dataIndex: 'createTime',
+    key: 'createTime',
     width: 180,
   },
   {
     title: '备注',
-    dataIndex: 'remark',
+    key: 'remark',
   },
 ];
 
@@ -70,7 +70,6 @@ export const formSchema: FormSchema[] = [
     field: 'parentDept',
     label: '上级部门',
     component: 'TreeSelect',
-
     componentProps: {
       fieldNames: {
         title: 'deptName',

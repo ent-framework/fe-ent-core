@@ -6,16 +6,10 @@ import type { PropType, VNodeChild } from 'vue';
 export const btnProps = {
   ...buttonProps,
   /**
-   * 按钮文本前图标，参考 Icon 组件
+   * 按钮图标，参考 Icon 组件
    */
-  preIcon: { type: String },
-  /**
-   * 按钮文本后图标，参考 Icon 组件
-   */
-  postIcon: { type: String },
-  /**
-   * 按钮图标大小
-   */
+  icon: { type: String },
+
   iconSize: { type: Number, default: 14 },
 };
 

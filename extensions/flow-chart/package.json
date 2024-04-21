@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-flow-chart",
-  "version": "3.0.7",
+  "version": "3.0.9",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -12,14 +12,14 @@
     "json"
   ],
   "module": "es/index.mjs",
-  "typings": "es/index.d.ts",
+  "types": "es/index.d.ts",
   "unpkg": "dist/index.full.min.js",
   "sideEffects": [
     "dist/*"
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
-    "build": "npm-run-all --parallel build:library docgen jsongen",
+    "build": "npm-run-all --parallel build:library docgen jsongen dtsgen",
     "docgen": "ent-vue-scripts docgen",
     "build:library": "ent-vue-scripts build:library -u -s",
     "jsongen": "ent-vue-scripts jsongen",

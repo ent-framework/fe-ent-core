@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-vue-scripts",
-  "version": "3.0.7",
+  "version": "3.0.9",
   "description": "Ent Vue Scripts",
   "main": "dist/index.js",
   "bin": {
@@ -47,6 +47,7 @@
   "dependencies": {
     "@babel/core": "~7.21.4",
     "@babel/parser": "~7.21.4",
+    "@babel/preset-env": "~7.21.4",
     "@babel/preset-typescript": "~7.21.4",
     "@rollup/plugin-terser": "^0.4.4",
     "@vitejs/plugin-vue": "^5.0.4",

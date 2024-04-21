@@ -71,12 +71,6 @@
           case 'en':
             lang = 'en_US';
             break;
-          case 'ja':
-            lang = 'ja_JP';
-            break;
-          case 'ko':
-            lang = 'ko_KR';
-            break;
           default:
             lang = 'zh_CN';
         }

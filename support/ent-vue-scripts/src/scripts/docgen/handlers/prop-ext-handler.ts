@@ -5,7 +5,7 @@ import getMemberFilter from 'vue-docgen-api/dist/utils/getPropsFilter';
 import { describePropsFromValue } from '../utils/describe-props-from-value';
 import resolveVar from '../utils/resolve-var';
 import readFile from '../utils/read-file';
-import {parseType} from "../utils/parse-type";
+import { parseType } from '../utils/parse-type';
 import type { Documentation, ParseOptions } from 'vue-docgen-api';
 import type { NodePath } from 'ast-types/lib/node-path';
 import type { PropsValuePath } from '../types';

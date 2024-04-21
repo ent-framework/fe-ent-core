@@ -61,7 +61,7 @@ export const refundTableSchema: BasicColumn[] = [
   {
     title: '商品编号',
     width: 150,
-    dataIndex: 't1',
+    key: 't1',
     customRender: ({ record }) => {
       return (
         <Button type="link" size="small">
@@ -73,44 +73,44 @@ export const refundTableSchema: BasicColumn[] = [
   {
     title: '商品名称',
     width: 150,
-    dataIndex: 't2',
+    key: 't2',
   },
   {
     title: '商品条码',
     width: 150,
-    dataIndex: 't3',
+    key: 't3',
   },
   {
     title: '单价	',
     width: 150,
-    dataIndex: 't4',
+    key: 't4',
   },
   {
     title: '数量（件）	',
     width: 150,
-    dataIndex: 't5',
+    key: 't5',
   },
   {
     title: '金额',
     width: 150,
-    dataIndex: 't6',
+    key: 't6',
   },
 ];
 export const refundTimeTableSchema: BasicColumn[] = [
   {
     title: '时间',
     width: 150,
-    dataIndex: 't1',
+    key: 't1',
   },
   {
     title: '当前进度',
     width: 150,
-    dataIndex: 't2',
+    key: 't2',
   },
   {
     title: '状态',
     width: 150,
-    dataIndex: 't3',
+    key: 't3',
     customRender: ({ record }) => {
       return <Badge status="success" text={record.t3} />;
     },
@@ -118,12 +118,12 @@ export const refundTimeTableSchema: BasicColumn[] = [
   {
     title: '操作员ID	',
     width: 150,
-    dataIndex: 't4',
+    key: 't4',
   },
   {
     title: '耗时',
     width: 150,
-    dataIndex: 't5',
+    key: 't5',
   },
 ];
 

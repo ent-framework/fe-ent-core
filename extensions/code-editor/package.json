@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-code-editor",
-  "version": "3.0.7",
+  "version": "3.0.9",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -12,7 +12,7 @@
     "json"
   ],
   "module": "es/index.mjs",
-  "typings": "es/index.d.ts",
+  "types": "es/index.d.ts",
   "unpkg": "dist/index.full.min.js",
   "sideEffects": [
     "dist/*"

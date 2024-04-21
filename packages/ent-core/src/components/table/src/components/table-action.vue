@@ -10,9 +10,13 @@
       popconfirm
     >
       <slot name="more" />
-      <ent-button v-if="!$slots.more" type="default" size="small">
-        <Icon icon="ant-design:more-outlined" class="icon-more" />
-      </ent-button>
+      <ent-button
+        v-if="!$slots.more"
+        icon="ant-design:more-outlined"
+        type="default"
+        :size="getButtonSize"
+        class="icon-more"
+      />
     </EntDropdown>
   </NFlex>
 </template>
@@ -20,23 +24,24 @@
   import { computed, defineComponent, h, toRaw } from 'vue';
   import { NFlex } from 'naive-ui';
   import Icon from '../../../../components/icon';
-  import { EntPopButton } from '../../../../components/button';
-  import { EntDropdown } from '../../../../components/dropdown';
-  import { useDesign } from '../../../../hooks/web/use-design';
-  import { usePermission } from '../../../../hooks/web/use-permission';
+  import { EntPopButton } from '../../../button';
+  import { EntDropdown } from '../../../dropdown';
+  import { useDesign, usePermission } from '../../../../hooks';
   import { isBoolean, isString } from '../../../../utils/is';
-  import { propTypes } from '../../../../utils/prop-types';
+  import { propTypes } from '../../../../utils';
   import { useTableContext } from '../hooks/use-table-context';
   import { ACTION_COLUMN_FLAG } from '../const';
-  import type { PopButtonProps } from '../../../../components/button/interface';
-  import type { DropMenu } from '../../../../components/dropdown/interface';
+  import type { RetInstance } from '../hooks/use-table-context';
+  import type { PopButtonProps } from '../../../button/interface';
+  import type { DropMenu } from '../../../dropdown/src/typing';
   import type { TableActionItem, TableActionType } from '../../../../components/table/interface';
   import type { TooltipProps } from 'naive-ui';
+  import type { Size } from 'naive-ui/es/button/src/interface';
   import type { PropType } from 'vue';
 
   export default defineComponent({
     name: 'EntTableAction',
-    components: { Icon, EntPopButton, NFlex, EntDropdown },
+    components: { EntPopButton, NFlex, EntDropdown },
     props: {
       actions: {
         type: Array as PropType<TableActionItem[]>,
@@ -49,10 +54,14 @@
       divider: propTypes.bool.def(true),
       outside: propTypes.bool,
       stopButtonPropagation: propTypes.bool.def(false),
+      buttonSize: {
+        type: String as PropType<Size>,
+        default: () => 'small',
+      },
     },
     setup(props) {
       const { prefixCls } = useDesign('basic-table-action');
-      let table: Partial<TableActionType> = {};
+      let table: RetInstance;
       if (!props.outside) {
         table = useTableContext();
       }
@@ -128,8 +137,24 @@
 
       const getAlign = computed(() => {
         const columns = (table as TableActionType)?.getColumns?.() || [];
-        const actionColumn = columns.find((item) => item.flag === ACTION_COLUMN_FLAG);
+        const actionColumn = columns.find((item) => item.key === ACTION_COLUMN_FLAG);
         return actionColumn?.align ?? 'left';
+      });
+
+      const getButtonSize = computed((): Size => {
+        if (props.outside) {
+          return props.buttonSize;
+        } else {
+          const tableSize = table !== undefined ? table!.getSize() || 'small' : 'small';
+          switch (tableSize) {
+            case 'small':
+              return 'tiny';
+            case 'large':
+              return 'medium';
+            default:
+              return 'small';
+          }
+        }
       });
 
       function getTooltip(data: string | TooltipProps): TooltipProps {
@@ -157,6 +182,7 @@
         onCellClick,
         getTooltip,
         getPopButton,
+        getButtonSize,
       };
     },
   });

@@ -8,22 +8,22 @@ import { setRoleStatus } from '/@/api/system';
 export const columns: BasicColumn[] = [
   {
     title: '角色名称',
-    dataIndex: 'roleName',
+    key: 'roleName',
     width: 200,
   },
   {
     title: '角色值',
-    dataIndex: 'roleValue',
+    key: 'roleValue',
     width: 180,
   },
   {
     title: '排序',
-    dataIndex: 'orderNo',
+    key: 'orderNo',
     width: 50,
   },
   {
     title: '状态',
-    dataIndex: 'status',
+    key: 'status',
     width: 120,
     customRender: ({ record }) => {
       if (!Reflect.has(record, 'pendingStatus')) {
@@ -55,12 +55,12 @@ export const columns: BasicColumn[] = [
   },
   {
     title: '创建时间',
-    dataIndex: 'createTime',
+    key: 'createTime',
     width: 180,
   },
   {
     title: '备注',
-    dataIndex: 'remark',
+    key: 'remark',
   },
 ];
 

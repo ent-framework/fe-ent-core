@@ -140,8 +140,6 @@ export type CellFormat =
 
 // @ts-ignore
 export interface BasicColumn extends DataTableBaseColumn<Recordable> {
-  flag?: '_INDEX' | '_ACTION' | '_EXPAND';
-  //type?: string;
   // Whether to hide the column by default, it can be displayed in the column configuration
   defaultHidden?: boolean;
   /**

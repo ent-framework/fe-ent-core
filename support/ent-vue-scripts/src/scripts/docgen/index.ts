@@ -198,9 +198,7 @@ const docgen = async ({ input, components }: { input?: string; components?: stri
       if (!input) {
         const componentName = getComponentNameFormDir(dirname);
 
-        print.success(
-          `Generate README of component ${chalk.black.bold(`${componentName}`)} Success!`,
-        );
+        print.success(`Generate README of component ${chalk.bold(`${componentName}`)} Success!`);
       }
     } catch (err) {
       print.error(err);

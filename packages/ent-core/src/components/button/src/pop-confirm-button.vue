@@ -2,13 +2,14 @@
   import { computed, defineComponent, h, unref } from 'vue';
   import { NButton, NPopconfirm, NTooltip } from 'naive-ui';
   import { omit } from 'lodash-es';
-  import { useAttrs } from '../../../hooks/core/use-attrs';
+  import { useAttrs } from '../../../hooks';
   import { type Recordable } from '../../../types';
   import { isFunction, isString } from '../../../utils';
   import { EntIcon } from '../../icon';
   import { popConfirmBtnProps } from './props';
   export default defineComponent({
     name: 'EntPopButton',
+    extends: NButton,
     inheritAttrs: false,
     props: popConfirmBtnProps,
     setup(props, { slots }) {

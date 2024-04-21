@@ -111,6 +111,14 @@ const comp: AppRouteRecordRaw = {
 
       children: [
         {
+          path: 'naive-table',
+          name: 'NavieTableBasicDemo',
+          component: () => import('/@/views/demo/table/naive-table.vue'),
+          meta: {
+            title: 'naive-table',
+          },
+        },
+        {
           path: 'basic',
           name: 'TableBasicDemo',
           component: () => import('/@/views/demo/table/basic.vue'),

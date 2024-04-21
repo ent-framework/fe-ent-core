@@ -14,6 +14,6 @@ export const install = function (app: App) {
   return app;
 };
 
-//export type * from './components/typing';
+export type { ExportModalResult } from './components/typing';
 
 export default install;

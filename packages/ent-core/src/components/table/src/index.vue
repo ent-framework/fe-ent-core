@@ -16,8 +16,14 @@
       </EntForm>
     </div>
     <TableHeader v-bind="getTableHeaderProps">
-      <template v-for="item in ['resetBefore', 'toolbar']" #[item]="data">
-        <slot :name="item" v-bind="data || {}" />
+      <template v-if="$slots.headerTop" #headerTop>
+        <slot name="headerTop" />
+      </template>
+      <template v-if="$slots.tableTitle" #tableTitle>
+        <slot name="tableTitle" />
+      </template>
+      <template v-if="$slots.toolbar" #toolbar>
+        <slot name="toolbar" />
       </template>
     </TableHeader>
     <NDataTable
@@ -64,11 +70,6 @@
   import { basicProps, tableHeaderProps } from './props';
   import type { BasicTableProps, SizeType, TableActionType } from './types/table';
 
-  /**
-   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/table/index.zh-CN.md
-   * @extends Table
-   * @docLink https://next.antdv.com/components/table-cn
-   */
   export default defineComponent({
     name: 'EntTable',
     components: {
@@ -76,6 +77,7 @@
       EntForm,
       TableHeader,
     },
+    extends: NDataTable,
     props: basicProps,
     emits: [
       'fetch-success',
@@ -198,17 +200,11 @@
           ..._props,
           loading: unref(getLoading),
           rowProps: customRow,
-          //rowSelection: unref(getRowSelectionRef),
-          //rowKey: unref(getRowKey),
           columns: toRaw(unref(getViewColumns)),
           pagination: toRaw(unref(getPaginationInfo)),
           data: dataSource,
           remote: !!api,
         };
-        // if (slots.expandedRowRender) {
-        //   propsData = omit(propsData, 'scroll');
-        // }
-
         propsData = omit(propsData, ['class', 'onChange']);
         return propsData;
       });

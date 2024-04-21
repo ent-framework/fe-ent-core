@@ -41,25 +41,20 @@
     watch,
   } from 'vue';
   import { NDrawer, NDrawerContent } from 'naive-ui';
-  import { useI18n } from '../../../hooks/web/use-i18n';
+  import { useAttrs, useDesign, useI18n } from '../../../hooks';
   import { isFunction } from '../../../utils/is';
   import { deepMerge } from '../../../utils';
-  import { useDesign } from '../../../hooks/web/use-design';
-  import { useAttrs } from '../../../hooks/core/use-attrs';
   import { basicProps } from './props';
   import DrawerHeader from './components/drawer-header.vue';
   import DrawerFooter from './components/drawer-footer.vue';
   import type { Nullable } from '../../../types';
   import type { DrawerInstance, DrawerProps } from './typing';
   import type { DrawerContentProps } from 'naive-ui/es/drawer';
-  /**
-   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/drawer/index.zh-CN.md
-   * @extends Drawer
-   * @docLink https://next.antdv.com/components/drawer-cn
-   */
+
   export default defineComponent({
     name: 'EntDrawer',
-    components: { NDrawer, NDrawerContent, DrawerFooter, DrawerHeader },
+    components: { NDrawerContent, DrawerFooter, DrawerHeader },
+    extends: NDrawer,
     inheritAttrs: false,
     props: basicProps,
     emits: ['visible-change', 'ok', 'close', 'register'],

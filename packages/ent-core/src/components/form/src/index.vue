@@ -82,11 +82,6 @@
   import type { GridItemProps, GridProps } from 'naive-ui/es/grid';
   import type { FormActionType, FormProps, FormSchema } from './types/form';
 
-  /**
-   * @docLocation https://raw.githubusercontent.com/vueComponent/ant-design-vue/4.0.0/components/form/index.zh-CN.md
-   * @extends Form
-   * @docLink https://next.antdv.com/components/form-cn
-   */
   export default defineComponent({
     name: 'EntForm',
     components: {
@@ -98,6 +93,8 @@
       FormItem,
       NSpace,
     },
+    extends: NForm,
+    inheritAttrs: false,
     props: basicProps,
     emits: ['advanced-change', 'reset', 'submit', 'register', 'field-value-change'],
     setup(props, { emit, attrs }) {

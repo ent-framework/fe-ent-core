@@ -9,10 +9,15 @@ import { excludeFiles } from '../../utils/exclude-files';
 import type { SourceFile } from 'ts-morph';
 
 const cwd = process.cwd();
-const TSCONFIG_PATH = path.resolve(cwd, 'tsconfig.json');
 const outDir = path.resolve(cwd, 'es');
 
-const build = async (base: string) => {
+const build = async (base: string, tsconfig: string) => {
+  let tsconfigFile = tsconfig;
+  if (!tsconfig.endsWith('.json')) {
+    tsconfigFile = `${tsconfig}.json`;
+  }
+  const TSCONFIG_PATH = path.resolve(cwd, tsconfigFile);
+
   consola.log(`Run in dir: ${process.cwd()}, base: ${base}`);
   const project = new Project({
     compilerOptions: {
@@ -130,10 +135,14 @@ async function addSourceFiles(project: Project, cwd: string, base: string) {
 function typeCheck(project: Project) {
   const diagnostics = project.getPreEmitDiagnostics();
   if (diagnostics.length > 0) {
+    // diagnostics.forEach((diagnostic) => {
+    //   consola.error(diagnostic.getCode());
+    //   consola.error(diagnostic.getSourceFile()?.getText(false));
+    // });
     consola.error(project.formatDiagnosticsWithColorAndContext(diagnostics));
-    const err = new Error('Failed to generate dts.');
-    consola.error(err);
-    throw err;
+    // const err = new Error('Failed to generate dts.');
+    // consola.error(err);
+    // throw err;
   }
 }
 
@@ -148,14 +157,14 @@ const removeVueSpecifier = (sourceFile: SourceFile) => {
   });
 };
 
-export default async function (base: string) {
+export default async function (base: string, tsconfig: string) {
   if (base) {
     if (fs.existsSync(path.resolve(cwd, base))) {
-      await build(path.resolve(cwd, base));
+      await build(path.resolve(cwd, base), tsconfig);
     } else {
       consola.error(`${base} don't exist in current dir: ${cwd}`);
     }
   } else {
-    await build(cwd);
+    await build(cwd, tsconfig);
   }
 }

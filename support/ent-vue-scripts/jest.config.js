@@ -1,7 +1,5 @@
-// Used to manually run unit tests within the project
+/** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
-  transform: {
-    '^.+\\.[jt]sx?$': 'babel-jest',
-    '^.+\\.vue$': 'vue-jest',
-  },
+  preset: 'ts-jest',
+  testEnvironment: 'node',
 };

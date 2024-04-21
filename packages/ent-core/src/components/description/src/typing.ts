@@ -1,15 +1,10 @@
 import { type Recordable } from '../../../types';
-import type { CSSProperties, VNode } from 'vue';
-import type { CollapseContainerOptions } from '../../../components/container/interface';
-import type { DescriptionsProps } from 'ant-design-vue/es/descriptions';
-export interface DescItem {
-  labelMinWidth?: number;
-  contentMinWidth?: number;
-  labelStyle?: CSSProperties;
+import type { VNode } from 'vue';
+import type { CollapseContainerOptions } from '../../container/src/typing';
+import type { DescriptionItemProps, DescriptionsProps } from 'naive-ui';
+
+export interface DescItem extends DescriptionItemProps {
   field: string;
-  label: string | VNode;
-  // Merge column
-  span?: number;
   show?: (...arg: any) => boolean;
   // render
   render?: (val: any, data: Recordable) => VNode | undefined | Element | string | number;

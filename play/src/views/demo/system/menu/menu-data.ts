@@ -1,52 +1,53 @@
 import { h } from 'vue';
 import { EntIcon } from 'fe-ent-core';
-import { Tag } from 'ant-design-vue';
+import { NTag } from 'naive-ui';
 import type { BasicColumn } from 'fe-ent-core/es/components/table/interface';
 import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
+import type { DescItem } from 'fe-ent-core/es/components/description/interface';
 export const columns: BasicColumn[] = [
   {
     title: '菜单名称',
-    dataIndex: 'menuName',
+    key: 'menuName',
     width: 200,
     align: 'left',
   },
   {
     title: '图标',
-    dataIndex: 'icon',
+    key: 'icon',
     width: 50,
-    customRender: ({ record }) => {
+    render: (record) => {
       return h(EntIcon, { icon: record.icon });
     },
   },
   {
     title: '权限标识',
-    dataIndex: 'permission',
+    key: 'permission',
     width: 180,
   },
   {
     title: '组件',
-    dataIndex: 'component',
+    key: 'component',
   },
   {
     title: '排序',
-    dataIndex: 'orderNo',
+    key: 'orderNo',
     width: 50,
   },
   {
     title: '状态',
-    dataIndex: 'status',
+    key: 'status',
     width: 80,
-    customRender: ({ record }) => {
+    render: (record) => {
       const status = record.status;
       const enable = Math.trunc(status) === 0;
-      const color = enable ? 'green' : 'red';
-      const text = enable ? '启用' : '停用';
-      return h(Tag, { color }, () => text);
+      const type = enable ? 'success' : 'warning';
+      const text = enable ? '是' : '否';
+      return h(NTag, { type }, () => text);
     },
   },
   {
     title: '创建时间',
-    dataIndex: 'createTime',
+    key: 'createTime',
     width: 180,
   },
 ];
@@ -60,7 +61,7 @@ export const searchFormSchema: FormSchema[] = [
     field: 'menuName',
     label: '菜单名称',
     component: 'Input',
-    colProps: { span: 8 },
+    gridItemProps: { span: 8 },
   },
   {
     field: 'status',
@@ -72,7 +73,7 @@ export const searchFormSchema: FormSchema[] = [
         { label: '停用', value: '1' },
       ],
     },
-    colProps: { span: 8 },
+    gridItemProps: { span: 8 },
   },
 ];
 
@@ -89,7 +90,7 @@ export const formSchema: FormSchema[] = [
         { label: '按钮', value: '2' },
       ],
     },
-    colProps: { lg: 24, md: 24 },
+    gridItemProps: { span: 24 },
   },
   {
     field: 'menuName',
@@ -197,5 +198,56 @@ export const formSchema: FormSchema[] = [
       ],
     },
     ifShow: ({ values }) => !isButton(values.type),
+  },
+];
+
+export const detailSchema: DescItem[] = [
+  {
+    field: 'type',
+    label: '菜单类型',
+  },
+  {
+    field: 'menuName',
+    label: '菜单名称',
+  },
+  {
+    field: 'parentMenu',
+    label: '上级菜单',
+  },
+  {
+    field: 'orderNo',
+    label: '排序',
+  },
+  {
+    field: 'icon',
+    label: '图标',
+  },
+  {
+    field: 'routePath',
+    label: '路由地址',
+  },
+  {
+    field: 'component',
+    label: '组件路径',
+  },
+  {
+    field: 'permission',
+    label: '权限标识',
+  },
+  {
+    field: 'status',
+    label: '状态',
+  },
+  {
+    field: 'isExt',
+    label: '是否外链',
+  },
+  {
+    field: 'keepalive',
+    label: '是否缓存',
+  },
+  {
+    field: 'show',
+    label: '是否显示',
   },
 ];

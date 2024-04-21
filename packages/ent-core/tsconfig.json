@@ -4,6 +4,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "types": ["vite/client", "node", "./shims-vue"],
+    "paths": {
+      "treemate": ["./node_modules/treemate"]
+    }
   },
   "include": [
     "src",

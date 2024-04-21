@@ -23,6 +23,6 @@
 
   const [register] = useDescription({
     column: 2,
-    schema: getDescSchema()!,
+    schema: getDescSchema(),
   });
 </script>

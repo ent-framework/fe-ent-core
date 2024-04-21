@@ -1,4 +1,4 @@
-import { computed, reactive, ref, toRaw, unref, watch } from 'vue';
+import { computed, ref, toRaw, unref, watch } from 'vue';
 import { cloneDeep, get, isEqual } from 'lodash-es';
 import { useI18n, usePermission } from '../../../../hooks';
 import { isArray, isBoolean, isString } from '../../../../utils/is';
@@ -42,7 +42,7 @@ function handleIndexColumn(
 ) {
   const { t } = useI18n();
 
-  const { showIndexColumn, indexColumnProps, isTreeTable } = unref(propsRef);
+  const { showIndexColumn, indexColumnProps = {}, isTreeTable } = unref(propsRef);
 
   let pushIndexColumns = false;
   if (unref(isTreeTable)) {
@@ -50,7 +50,7 @@ function handleIndexColumn(
   }
   columns.forEach(() => {
     const indIndex = columns.findIndex(
-      (column) => (column as BasicColumn).flag === INDEX_COLUMN_FLAG,
+      (column) => (column as BasicColumn).key === INDEX_COLUMN_FLAG,
     );
     if (showIndexColumn) {
       pushIndexColumns = indIndex === -1;
@@ -65,8 +65,6 @@ function handleIndexColumn(
 
   columns.unshift({
     key: INDEX_COLUMN_FLAG,
-    flag: INDEX_COLUMN_FLAG,
-    width: 50,
     title: t('component.table.index'),
     align: 'center',
     render: (rowData, index) => {
@@ -114,6 +112,7 @@ function handleRowSelectionColumn(
     key: ACTION_COLUMN_FLAG,
     type: 'selection',
     multiple: rowSelection.type === 'checkbox',
+    fixed: 'left',
   } as DataTableSelectionColumn);
 }
 
@@ -182,21 +181,14 @@ export function useColumns(
   const getViewColumns = computed(() => {
     const viewColumns = sortFixedColumn(unref(getColumnsRef));
     const columns = cloneDeep(viewColumns);
-    return columns
-      .filter((column) => {
-        const isBase = isBaseColumn(column);
-        if (isBase) {
-          const baseColumn = column as BasicColumn;
-          return hasPermission(baseColumn.auth) && isIfShow(baseColumn);
-        }
-        return true;
-      })
-      .map((column) => {
-        if (isBaseColumn(column)) {
-          return reactive(column);
-        }
-        return column;
-      });
+    return columns.filter((column) => {
+      const isBase = isBaseColumn(column);
+      if (isBase) {
+        const baseColumn = column as BasicColumn;
+        return hasPermission(baseColumn.auth) && isIfShow(baseColumn);
+      }
+      return true;
+    });
   });
 
   watch(
@@ -205,10 +197,7 @@ export function useColumns(
       columnsRef.value = columns as DataTableColumn[];
       cacheColumns =
         (columns?.filter((item) => {
-          if (isBaseColumn(item)) {
-            return !(item as BasicColumn).flag;
-          }
-          return false;
+          return isBaseColumn(item);
         }) as BasicColumn[]) ?? [];
     },
   );
@@ -279,19 +268,23 @@ export function useColumns(
     let columns = toRaw(unref(getColumnsRef));
     if (ignoreIndex) {
       columns = columns.filter((item) => {
-        return Reflect.has(item, 'flag') && get(item, 'flag') !== INDEX_COLUMN_FLAG;
+        if (isBaseColumn(item)) {
+          return (item as BasicColumn).key !== INDEX_COLUMN_FLAG;
+        }
+        return true;
       });
     }
     if (ignoreAction) {
       columns = columns.filter((item) => {
-        return Reflect.has(item, 'flag') && get(item, 'flag') !== ACTION_COLUMN_FLAG;
+        if (isBaseColumn(item)) {
+          return (item as BasicColumn).key !== ACTION_COLUMN_FLAG;
+        }
+        return true;
       });
     }
-
     if (sort) {
       columns = sortFixedColumn(columns);
     }
-
     return columns as BasicColumn[];
   }
   function getCacheColumns() {
@@ -299,7 +292,7 @@ export function useColumns(
   }
   function setCacheColumns(columns: BasicColumn[]) {
     if (!isArray(columns)) return;
-    cacheColumns = columns.filter((item) => !item.flag);
+    cacheColumns = columns.filter((item) => isBaseColumn(item));
   }
 
   return {
@@ -312,7 +305,6 @@ export function useColumns(
     setCacheColumns,
   };
 }
-
 function sortFixedColumn(columns: DataTableColumn[]) {
   const fixedLeftColumns: DataTableColumn[] = [];
   const fixedRightColumns: DataTableColumn[] = [];

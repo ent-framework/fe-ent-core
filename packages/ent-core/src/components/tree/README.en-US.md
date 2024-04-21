@@ -10,49 +10,56 @@
 
 ### `<ent-tree>` Props
 
-|Attribute|Description|Type|Default|Module|version|
-|---|---|---|:---:|---|:---|
-|title|自定义标题|`slot`|`-`|`antdv`|2.0.0|
-|toolbar|是否显示工具栏|`boolean`|`false`|`-`||
-|search|显示搜索框|`boolean`|`false`|`-`||
-|allow-drop|是否允许拖拽时放置在该节点|`({ dropNode, dropPosition }) => boolean`|`-`|`antdv`||
-|auto-expand-parent|是否自动展开父节点|`boolean`|`false`|`antdv`||
-|block-node|是否节点占据一行|`boolean`|`false`|`antdv`||
-|checkable|节点前添加 Checkbox 复选框|`boolean`|`false`|`antdv`||
-|checked-keys(v-model)|（受控）选中复选框的树节点（注意：父子节点有关联，如果传入父节点 key，则子节点自动选中；相应当子节点 key 都传入，父节点也自动选中。当设置`checkable`和`checkStrictly`，它是一个有`checked`和`halfChecked`属性的对象，并且父子节点的选中与否不再关联|`string\[] \| number\[] \| {checked: string\[] \| number\[], halfChecked: string\[] \| number\[]}`|`\[]`|`antdv`||
-|check-strictly|checkable 状态下节点选择完全受控（父子节点选中状态不再关联）|`boolean`|`false`|`antdv`||
-|default-expand-all|默认展开所有树节点, 如果是异步数据，需要在数据返回后再实例化，建议用 v-if="data.length"；当有 expandedKeys 时，defaultExpandAll 将失效|`boolean`|`false`|`antdv`||
-|disabled|将树禁用|`bool`|`false`|`antdv`||
-|draggable|设置节点可拖拽|`boolean`|`false`|`antdv`||
-|expanded-keys(v-model)|（受控）展开指定的树节点|`string\[] \| number\[]`|`\[]`|`antdv`||
-|field-names|替换 treeNode 中 title,key,children 字段为 treeData 中对应的字段|`object`|`{children:'children', title:'title', key:'key' }`|`antdv`|3.0.0|
-|filter-tree-node|按需筛选树节点（高亮），返回 true|`function(node)`|`-`|`antdv`||
-|height|设置虚拟滚动容器高度，设置后内部节点不再支持横向滚动|`number`|`-`|`antdv`||
-|load-data|异步加载数据|`function(node)`|`-`|`antdv`||
-|loaded-keys|（受控）已经加载的节点，需要配合 `loadData` 使用|`string\[] \| number\[]`|`\[]`|`antdv`||
-|multiple|支持点选多个节点（节点本身）|`boolean`|`false`|`antdv`||
-|selectable|是否可选中|`boolean`|`true`|`antdv`||
-|selected-keys(v-model)|（受控）设置选中的树节点|`string\[] \| number\[]`|`-`|`antdv`||
-|show-icon|是否展示 TreeNode title 前的图标，没有默认样式，如设置为 true，需要自行定义图标相关样式|`boolean`|`false`|`antdv`||
-|show-line|是否展示连接线|`boolean \| {showLeafIcon: boolean}(3.0+)`|`false`|`antdv`||
-|switcher-icon|自定义树节点的展开/折叠图标|`v-slot:switcherIcon="{active, checked, expanded, loading, selected, halfChecked, title, key, children, dataRef, data, defaultIcon, switcherCls}"`|`-`|`antdv`||
-|tree-data|treeNodes 数据，如果设置则不需要手动构造 TreeNode 节点（key 在整个树范围内唯一）|`[TreeNode\[\]](#treenode)`|`--`|`antdv`||
-|virtual|设置 false 时关闭虚拟滚动|`boolean`|`true`|`antdv`|3.0|
-### `<ent-tree>` Events
-
-|Event Name|Description|Parameters|Module|
-|---|---|---|---|
-|check|点击复选框触发|-|antdv|
-|dragend|dragend 触发时调用|-|antdv|
-|dragenter|dragenter 触发时调用|-|antdv|
-|dragleave|dragleave 触发时调用|-|antdv|
-|dragover|dragover 触发时调用|-|antdv|
-|dragstart|开始拖拽时调用|-|antdv|
-|drop|drop 触发时调用|-|antdv|
-|expand|展开/收起节点时触发|-|antdv|
-|load|节点加载完毕时触发|-|antdv|
-|right-click|响应右键点击|-|antdv|
-|select|点击树节点触发|-|antdv|
+|Attribute|Description|Type|Default|Module|
+|---|---|---|:---:|---|
+|toolbar|是否显示工具栏|`boolean`|`false`|`-`|
+|search|显示搜索框|`boolean`|`false`|`-`|
+|accordion|Whether to use accrodion expand mode.|`boolean`|`false`|`-`|
+|show-irrelevant-nodes|Whether to filter unmached nodes when tree is in filter mode.|`boolean`|`false`|`-`|
+|data|The node data of the tree. Reset `data` will cause clearing of some uncontrolled status. If you need to modify data, you'd better make tree work in a controlled manner.|`Array<TreeOption>`|`-`|`-`|
+|expand-on-dragenter|Whether to expand nodes after dragenter.|`boolean`|`false`|`-`|
+|expand-on-click|Whether to expand or collapse nodes after click.|`boolean`|`false`|`-`|
+|check-on-click|Allow node clicking to trigger check when `checkable` is `true`.|`boolean \| ((node: TreeOption) => boolean)`|`-`|`-`|
+|cancelable|Whether node's select status can be cancelled.|`boolean`|`false`|`-`|
+|checkable|Whether to display the selection box.|`boolean`|`false`|`-`|
+|draggable|Whether it can be dragged.|`boolean`|`false`|`-`|
+|block-node|The node name is spread out in the whole row.|`boolean`|`false`|`-`|
+|block-line|Nodes spread out the whole row.|`boolean`|`false`|`-`|
+|show-line|Whether to display the connection line.|`boolean`|`false`|`-`|
+|disabled|Whether to disable|`boolean`|`false`|`-`|
+|checked-keys|Checked keys of the tree.|`Array<string \| number>`|`-`|`-`|
+|default-checked-keys|Multiple options selected by default.|`Array<string \| number>`|`-`|`-`|
+|selected-keys|If set, selected status will work in controlled manner.|`Array<string \| number>`|`-`|`-`|
+|default-selected-keys|Nodes selected by default.|`Array<string \| number>`|`-`|`-`|
+|multiple|Whether to allow multiple selection of nodes.|`boolean`|`false`|`-`|
+|pattern|What to search by default.|`string`|`-`|`-`|
+|cascade|Whether to cascade checkboxes.|`boolean`|`false`|`-`|
+|selectable|Whether the node can be selected.|`boolean`|`false`|`-`|
+|scrollbar-props|See [Scrollbar props](scrollbar#Scrollbar-Props)|`object`|`-`|`-`|
+|allow-drop|Whether to allow dropping.|`(info: { dropPosition: DropPosition, node: TreeOption, phase: 'drag' \| 'drop' }) => boolean`|`-`|`-`|
+|animated|Whether to show expand animation.|`boolean`|`false`|`-`|
+|checkbox-placement|Checkbox's placement.|`'left' \| 'right'`|`-`|`-`|
+|virtual-scroll|Whether to enable virtual scroll. You need to set proper style height of the tree in advance.|`boolean`|`false`|`-`|
+|watch-props|Default prop names that needed to be watched. Components will be updated after the prop is changed. Note: the `watch-props` itself is not reactive.|`Array<'defaultCheckedKeys' \| 'defaultSelectedKeys' \|'defaultExpandedKeys'>`|`-`|`-`|
+|render-label|Render function of all the options' label.|`(info: { option: TreeOption, checked: boolean, selected: boolean }) => VNodeChild`|`-`|`-`|
+|render-prefix|Render function of all the options' prefix.|`(info: { option: TreeOption, checked: boolean, selected: boolean }) => VNodeChild`|`-`|`-`|
+|render-suffix|Render function of all the options' suffix.|`(info: { option: TreeOption, checked: boolean, selected: boolean }) => VNodeChild`|`-`|`-`|
+|node-props|HTML attributes of node.|`(info: { option: TreeOption }) => HTMLAttributes`|`-`|`-`|
+|keyboard|Whether to support keyboard operation.|`boolean`|`false`|`-`|
+|get-children|Get children of the option.|`(option: any) => unknown`|`-`|`-`|
+|allow-checking-not-loaded|Whether to allow cascade checking on not loaded nodes. If you want to use this, you should know the `check-keys` may be incomplete. Also, you should aware about the consistency bewteen naive's checking logic and your backend's checking logic, especially when there are disabled nodes.|`boolean`|`false`|`-`|
+|filter|The function that filter tree nodes based on pattern.|`(pattern: string, node: TreeOption) => boolean`|`-`|`-`|
+|default-expand-all|Expand all options.|`boolean`|`false`|`-`|
+|expanded-keys|If set, expanded status will work in controlled manner.|`Array<string \| number>`|`-`|`-`|
+|key-field|The key field in `TreeOption`.|`string`|`-`|`-`|
+|label-field|The label field in `TreeOption`.|`string`|`-`|`-`|
+|children-field|The children field in `TreeOption`.|`string`|`-`|`-`|
+|disabled-field|The disabled field in `TreeOption`.|`string`|`-`|`-`|
+|default-expanded-keys|Expanded items by default.|`Array<string \| number>`|`-`|`-`|
+|indeterminate-keys|Indeterminate keys of the tree.|`Array<string \| number>`|`-`|`-`|
+|render-switcher-icon|Render function of option switcher icon.|`(props: { option: TreeOption, expanded: boolean, selected: boolean }) => VNodeChild`|`-`|`-`|
+|override-default-node-click-behavior|Override default node click behavior.|`(info: { option: TreeSelectOption }) => 'toggleExpand' \| 'toggleSelect' \| 'toggleCheck' \| 'default' \| 'none'`|`-`|`-`|
+|check-strategy|The strategy of setting checked callback's keys argument. `all` means setting all checked node. `parent` means setting all checked parent node of whom all child node are checked. `child` means setting all child node.|`string`|`-`|`-`|
 
 
 

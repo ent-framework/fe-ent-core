@@ -1,19 +1,16 @@
 <template>
-  <ent-table @register="registerTable">
+  <ent-table
+    :row-selection="{ type: 'checkbox', selectedRowKeys: checkedKeys, onSelect, onSelectAll }"
+    @register="registerTable"
+    @update:checked-row-keys="onSelect"
+  >
     <template #form-custom> custom-slot </template>
-    <template #headerTop>
-      <a-alert type="info" show-icon>
-        <template #message>
-          <template v-if="checkedKeys.length > 0">
-            <span>已选中{{ checkedKeys.length }}条记录(可跨页)</span>
-            <ent-button type="link" size="small" @click="checkedKeys = []">清空</ent-button>
-          </template>
-          <template v-else>
-            <span>未选中任何项目</span>
-          </template>
-        </template>
-      </a-alert>
-    </template>
+    <!--    <template #headerTop>
+      <NAlert v-if="checkedKeys.length > 0" type="info" :show-icon="false">
+        <span>已选中{{ checkedKeys.length }}条记录(可跨页)</span>
+        <ent-button type="link" size="small" @click="checkedKeys = []">清空</ent-button>
+      </NAlert>
+    </template>-->
     <template #toolbar>
       <ent-button type="primary" @click="getFormValues">获取表单数据</ent-button>
     </template>
@@ -23,12 +20,12 @@
   import { defineComponent, ref } from 'vue';
   import { useTable } from 'fe-ent-core/es/components/table';
   import { getBasicColumns, getFormConfig } from './table-data';
-  import { Alert } from 'ant-design-vue';
+  import { NAlert } from 'naive-ui';
 
   import { demoListApi } from '/@/api/table';
 
   export default defineComponent({
-    components: { AAlert: Alert },
+    components: { NAlert },
     setup() {
       const checkedKeys = ref<Array<string | number>>([]);
       const [registerTable, { getForm }] = useTable({
@@ -41,24 +38,16 @@
         tableSetting: { fullScreen: true },
         showIndexColumn: false,
         rowKey: (record) => record.id,
-        rowSelection: {
-          type: 'checkbox',
-          selectedRowKeys: checkedKeys,
-          onSelect,
-          onSelectAll,
-        },
       });
 
       function getFormValues() {
         console.log(getForm().getFieldsValue());
       }
 
-      function onSelect(record, selected) {
-        if (selected) {
-          checkedKeys.value = [...checkedKeys.value, record.id];
-        } else {
-          checkedKeys.value = checkedKeys.value.filter((id) => id !== record.id);
-        }
+      function onSelect(keys, rows) {
+        checkedKeys.value = keys;
+        console.log(keys);
+        console.log(rows);
       }
       function onSelectAll(selected, selectedRows, changeRows) {
         const changeIds = changeRows.map((item) => item.id);

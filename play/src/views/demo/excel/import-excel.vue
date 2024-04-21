@@ -38,7 +38,7 @@
           } = excelData;
           const columns: BasicColumn[] = [];
           for (const title of header) {
-            columns.push({ title, dataIndex: title });
+            columns.push({ title, key: title });
           }
           tableListRef.value.push({ title: sheetName, dataSource: results, columns });
         }

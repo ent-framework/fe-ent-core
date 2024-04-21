@@ -19,7 +19,6 @@
   import { EntForm, useForm } from 'fe-ent-core/es/components/form';
   import { useI18n } from 'fe-ent-core/es/hooks/web/use-i18n';
   import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
-  import type { ExportModalResult } from './typing';
 
   function getSchema() {
     const { t } = useI18n();
@@ -29,6 +28,9 @@
         component: 'Input',
         label: t('component.excel.fileName'),
         rules: [{ required: true }],
+        gridItemProps: {
+          span: 24,
+        },
       },
       {
         field: 'bookType',
@@ -36,6 +38,9 @@
         label: t('component.excel.fileType'),
         defaultValue: 'xlsx',
         rules: [{ required: true }],
+        gridItemProps: {
+          span: 24,
+        },
         componentProps: {
           options: [
             {
@@ -70,14 +75,17 @@
     components: { EntModal, EntForm },
     emits: ['success', 'register'],
     setup(_, { emit }) {
-      const [registerForm, { validateFields }] = useForm();
+      const [registerForm, { validate, getFieldsValue }] = useForm();
       const [registerModal, { closeModal }] = useModalInner();
       const { t } = useI18n();
       const schemas = getSchema();
 
       async function handleOk() {
-        const res = (await validateFields()) as ExportModalResult;
-        const { filename, bookType } = res;
+        const { warnings } = await validate();
+        if (warnings && warnings?.length > 0) {
+          return;
+        }
+        const { filename, bookType } = getFieldsValue();
         emit('success', {
           filename: `${filename.split('.').shift()}.${bookType}`,
           bookType,

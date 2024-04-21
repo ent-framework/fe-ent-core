@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <ent-table @register="registerTable" />
+    <ent-table :scroll-x="1200" @register="registerTable" />
   </div>
 </template>
 <script lang="ts">
@@ -12,12 +12,6 @@
   import { demoListApi } from '/@/api/table';
   const columns: BasicColumn[] = [
     {
-      title: 'ID',
-      key: 'id',
-      fixed: 'left',
-      width: 280,
-    },
-    {
       title: '姓名',
       key: 'name',
       width: 260,
@@ -27,13 +21,19 @@
       key: 'address',
     },
     {
+      title: 'ID',
+      key: 'id',
+      fixed: 'left',
+      width: 100,
+    },
+    {
       title: '编号',
       key: 'no',
       width: 300,
     },
     {
       title: '开始时间',
-      width: 200,
+      width: 500,
       key: 'beginTime',
     },
     {
@@ -77,19 +77,15 @@
                   {
                     label: '启用',
                     tooltip: '启用',
-                    popConfirm: {
-                      confirmContent: '是否启用？',
-                      onPositiveClick: handleOpen.bind(null, record),
-                    },
+                    confirm: '是否启用？',
+                    onClick: handleOpen.bind(null, record),
                     appendDivider: true,
                   },
                   {
                     label: '启用测试',
                     icon: 'ant-design:delete-outlined',
-                    popConfirm: {
-                      confirmContent: '是否启用测试？',
-                      onPositiveClick: handleOpen.bind(null, record),
-                    },
+                    confirm: '是否启用测试？',
+                    onClick: handleOpen.bind(null, record),
                   },
                 ],
               },

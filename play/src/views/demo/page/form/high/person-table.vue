@@ -18,17 +18,17 @@
   const columns: BasicColumn[] = [
     {
       title: '成员姓名',
-      dataIndex: 'name',
+      key: 'name',
       editRow: true,
     },
     {
       title: '工号',
-      dataIndex: 'no',
+      key: 'no',
       editRow: true,
     },
     {
       title: '所属部门',
-      dataIndex: 'dept',
+      key: 'dept',
       editRow: true,
     },
   ];
@@ -59,7 +59,7 @@
         actionColumn: {
           width: 160,
           title: '操作',
-          dataIndex: 'action',
+          key: 'action',
         },
         pagination: false,
       });

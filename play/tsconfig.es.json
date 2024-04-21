@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "ts-config-ent/web.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "../../",
+    "types": ["vite/client"],
+    "paths": {
+      "fe-ent-core": ["../packages/ent-core/es"],
+      "fe-ent-core/es/*": ["../packages/ent-core/es/*"],
+      "/@/*": [
+        "src/*"
+      ],
+      "fe-ent-code-editor": ["../extensions/code-editor/es"],
+      "fe-ent-echarts": ["../extensions/echarts/es"],
+      "fe-ent-flow-chart": ["../extensions/flow-chart/es"],
+      "fe-ent-markdown": ["../extensions/markdown/es"],
+      "fe-ent-qrcode": ["../extensions/qrcode/es"],
+      "fe-ent-tinymce": ["../extensions/tinymce/es"],
+      "fe-ent-tiptap": ["../extensions/tiptap/es"],
+      "fe-ent-excel": ["../extensions/excel/es"],
+      "fe-ent-login": ["../apps/login/es"],
+      "fe-ent-layout": ["../apps/layout/es"],
+      "fe-ent-layout/es/*": ["../apps/layout/es/*"],
+      "axios": ["../node_modules/axios"],
+      "pinia": ["../node_modules/pinia"],
+      "@vueuse/shared": ["../node_modules/@vueuse/shared"],
+    }
+  },
+  "include": ["src", "../packages/ent-core/src/**/*", "../apps/**/*", "../extensions/**/*"],
+  "exclude": [
+    "node_modules",
+    "**/node_modules/**",
+    "dist",
+    "es",
+    "lib",
+    "json",
+    "**/dist",
+    "**/__tests__/**/*",
+    "**/gulpfile.ts",
+    "**/test-helper",
+    "**/*.md"
+  ]
+}

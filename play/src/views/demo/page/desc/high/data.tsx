@@ -5,17 +5,17 @@ export const refundTimeTableSchema: BasicColumn[] = [
   {
     title: '时间',
     width: 150,
-    dataIndex: 't1',
+    key: 't1',
   },
   {
     title: '当前进度',
     width: 150,
-    dataIndex: 't2',
+    key: 't2',
   },
   {
     title: '状态',
     width: 150,
-    dataIndex: 't3',
+    key: 't3',
     customRender: ({ record }) => {
       return <Badge status="success" text={record.t3} />;
     },
@@ -23,12 +23,12 @@ export const refundTimeTableSchema: BasicColumn[] = [
   {
     title: '操作员ID	',
     width: 150,
-    dataIndex: 't4',
+    key: 't4',
   },
   {
     title: '耗时',
     width: 150,
-    dataIndex: 't5',
+    key: 't5',
   },
 ];
 

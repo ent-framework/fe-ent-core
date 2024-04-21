@@ -1,5 +1,5 @@
 import { treeProps } from 'naive-ui/es/tree';
-import type { ContextMenuItem } from '../../../../components/context-menu/interface';
+import type { ContextMenuItem } from '../../../context-menu/src/typing';
 import type { ExtractPropTypes, PropType } from 'vue';
 import type { Recordable } from '../../../../types';
 import type { TreeOption } from 'naive-ui/es/tree/src/interface';

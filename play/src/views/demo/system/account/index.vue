@@ -5,44 +5,16 @@
       <template #toolbar>
         <ent-button type="primary" @click="handleCreate">新增账号</ent-button>
       </template>
-      <template #bodyCell="{ column, record }">
-        <template v-if="column.key === 'action'">
-          <ent-table-action
-            :actions="[
-              {
-                icon: 'clarity:info-standard-line',
-                tooltip: '查看用户详情',
-                onClick: handleView.bind(null, record),
-              },
-              {
-                icon: 'clarity:note-edit-line',
-                tooltip: '编辑用户资料',
-                onClick: handleEdit.bind(null, record),
-              },
-              {
-                icon: 'ant-design:delete-outlined',
-                color: 'error',
-                tooltip: '删除此账号',
-                popConfirm: {
-                  title: '是否确认删除',
-                  placement: 'left',
-                  confirm: handleDelete.bind(null, record),
-                },
-              },
-            ]"
-          />
-        </template>
-      </template>
     </ent-table>
     <AccountModal @register="registerModal" @success="handleSuccess" />
   </ent-page-wrapper>
 </template>
 <script lang="ts">
-  import { defineComponent, reactive } from 'vue';
+  import { defineComponent, h, reactive } from 'vue';
 
   import { useGo } from 'fe-ent-core/es/hooks';
   import { useModal } from 'fe-ent-core/es/components/modal';
-  import { useTable } from 'fe-ent-core/es/components/table';
+  import { EntTableAction, useTable } from 'fe-ent-core/es/components/table';
   import { getAccountList } from '/@/api/system';
   import DeptTree from './dept-tree.vue';
 
@@ -60,7 +32,7 @@
       const [registerTable, { reload, updateTableDataRecord }] = useTable({
         title: '账号列表',
         api: getAccountList,
-        rowKey: 'id',
+        rowKey: (row) => row.id,
         columns,
         formConfig: {
           labelWidth: 120,
@@ -77,7 +49,33 @@
         actionColumn: {
           width: 120,
           title: '操作',
-          dataIndex: 'action',
+          key: 'action',
+          render: (record) => {
+            return h(
+              EntTableAction,
+              {
+                actions: [
+                  {
+                    icon: 'clarity:info-standard-line',
+                    tooltip: '查看用户详情',
+                    onClick: handleView.bind(null, record),
+                  },
+                  {
+                    icon: 'clarity:note-edit-line',
+                    tooltip: '编辑用户资料',
+                    onClick: handleEdit.bind(null, record),
+                  },
+                  {
+                    icon: 'ant-design:delete-outlined',
+                    tooltip: '删除此账号',
+                    confirm: '是否确认删除',
+                    onClick: handleDelete.bind(null, record),
+                  },
+                ],
+              },
+              { default: () => '' },
+            );
+          },
         },
       });
 

@@ -3,35 +3,35 @@ import type { BasicColumn } from 'fe-ent-core/es/components/table/interface';
 export const columns: BasicColumn[] = [
   {
     title: 'ID',
-    dataIndex: 'id',
+    key: 'id',
     width: 80,
   },
   {
     title: '姓名',
-    dataIndex: 'name',
+    key: 'name',
     width: 120,
   },
   {
     title: '年龄',
-    dataIndex: 'age',
+    key: 'age',
     width: 80,
   },
   {
     title: '编号',
-    dataIndex: 'no',
+    key: 'no',
     width: 80,
   },
   {
     title: '地址',
-    dataIndex: 'address',
+    key: 'address',
   },
   {
     title: '开始时间',
-    dataIndex: 'beginTime',
+    key: 'beginTime',
   },
   {
     title: '结束时间',
-    dataIndex: 'endTime',
+    key: 'endTime',
   },
 ];
 

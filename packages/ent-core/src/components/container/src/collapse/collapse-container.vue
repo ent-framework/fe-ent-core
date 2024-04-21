@@ -27,10 +27,10 @@
   // component
   import { NSkeleton } from 'naive-ui';
   import { CollapseTransition } from '../../../../components/transition';
-  import { triggerWindowResize } from '../../../../utils/event';
+  import { triggerWindowResize } from '../../../../utils';
   // hook
   import { useTimeoutFn } from '../../../../hooks/core/use-timeout';
-  import { useDesign } from '../../../../hooks/web/use-design';
+  import { useDesign } from '../../../../hooks';
   import CollapseHeader from './collapse-header.vue';
   import type { PropType } from 'vue';
 

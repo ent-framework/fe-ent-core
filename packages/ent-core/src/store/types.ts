@@ -1,13 +1,14 @@
-import type { ErrorTypeEnum } from '../logics/enums/exception-enum';
-import type { MenuModeEnum, MenuTypeEnum } from '../logics/enums/menu-enum';
 import type {
+  CacheTypeEnum,
+  ErrorTypeEnum,
+  MenuModeEnum,
+  MenuTypeEnum,
   PermissionModeEnum,
   RouterTransitionEnum,
   SessionTimeoutProcessingEnum,
   ThemeEnum,
-} from '../logics/enums/app-enum';
+} from '../logics';
 
-import type { CacheTypeEnum } from '../logics/enums/cache-enum';
 import type { Nullable, Recordable } from '../types';
 import type { ColumnOptionsType, SizeType } from '../components/table/interface';
 import type { GlobalThemeOverrides } from 'naive-ui/es/config-provider';

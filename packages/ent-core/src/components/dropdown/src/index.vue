@@ -9,7 +9,7 @@
   import { isFunction, isString } from '../../../utils';
   import { EntIcon } from '../../icon';
   import { useDesign } from '../../../hooks';
-  import { EntPopButton } from '../../button/';
+  import { PopConfirmButton } from '../../button';
   import { basicDropdownProps } from './props';
   import type { DropdownRenderOption } from 'naive-ui';
   import type { DropMenu } from './typing';
@@ -20,7 +20,9 @@
 
   export default defineComponent({
     name: 'EntDropdown',
-    components: { NDropdown, EntPopButton },
+    components: { NDropdown, PopConfirmButton },
+    extends: NDropdown,
+    inheritAttrs: false,
     props: basicDropdownProps,
     emits: [
       /**
@@ -97,8 +99,10 @@
               }
               const { icon } = item;
               return h(
-                EntPopButton,
+                PopConfirmButton,
                 {
+                  text: true,
+                  size: 'small',
                   popConfirmProps,
                   tooltipProps,
                   disabled,

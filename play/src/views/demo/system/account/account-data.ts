@@ -4,32 +4,32 @@ import type { FormSchema } from 'fe-ent-core/es/components/form/interface';
 export const columns: BasicColumn[] = [
   {
     title: '用户名',
-    dataIndex: 'account',
+    key: 'account',
     width: 120,
   },
   {
     title: '昵称',
-    dataIndex: 'nickname',
+    key: 'nickname',
     width: 120,
   },
   {
     title: '邮箱',
-    dataIndex: 'email',
+    key: 'email',
     width: 120,
   },
   {
     title: '创建时间',
-    dataIndex: 'createTime',
+    key: 'createTime',
     width: 180,
   },
   {
     title: '角色',
-    dataIndex: 'role',
+    key: 'role',
     width: 200,
   },
   {
     title: '备注',
-    dataIndex: 'remark',
+    key: 'remark',
   },
 ];
 

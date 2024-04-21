@@ -52,9 +52,10 @@ program
 program
   .command('dtsgen')
   .option('--base <base>', 'base dir contains source code')
+  .option('--tsconfig <tsconfig>', 'base dir contains source code')
   .description('emit .d.ts files for vue files.')
-  .action(({ base = 'src' }) => {
-    dtsgen(base);
+  .action(({ base = 'src', tsconfig = 'tsconfig.json' }) => {
+    dtsgen(base, tsconfig);
   });
 
 program

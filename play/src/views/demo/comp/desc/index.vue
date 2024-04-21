@@ -10,8 +10,8 @@
 
     <ent-description
       class="mt-4"
-      title="垂直示例"
-      layout="vertical"
+      title="标签在左侧"
+      label-placement="left"
       :collapse-options="{ canExpand: true, helpMessage: 'help me' }"
       :column="2"
       :data="mockData"

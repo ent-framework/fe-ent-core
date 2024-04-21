@@ -1,5 +1,5 @@
 import { type FormItemProps, formProps } from 'naive-ui/es/form';
-import { propTypes } from '../../../utils/prop-types';
+import { propTypes } from '../../../utils';
 import type { CSSProperties, PropType } from 'vue';
 import type { Fn, Recordable } from '../../../types';
 import type {
@@ -9,7 +9,7 @@ import type {
   FormProps,
   FormSchema,
 } from './types/form';
-import type { TableActionType } from '../../../components/table/interface';
+import type { TableActionType } from '../../table/src/types/table';
 import type { GridItemProps, GridProps } from 'naive-ui/es/grid';
 
 export const formActionProps = {
