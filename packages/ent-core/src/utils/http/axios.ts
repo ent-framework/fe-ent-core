@@ -11,7 +11,7 @@ import type {
   AxiosInstance,
   AxiosRequestConfig,
   AxiosResponse,
-  InternalAxiosRequestConfig,
+  InternalAxiosRequestConfig
 } from 'axios';
 
 export * from './axios-transform';
@@ -77,7 +77,7 @@ export class VAxios {
       requestInterceptors,
       requestInterceptorsCatch,
       responseInterceptors,
-      responseInterceptorsCatch,
+      responseInterceptorsCatch
     } = transform;
 
     const axiosCanceler = new AxiosCanceler();
@@ -86,7 +86,7 @@ export class VAxios {
     this.axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
       // If cancel repeat request is turned on, then cancel repeat request is prohibited
       const {
-        headers: { ignoreCancelToken },
+        headers: { ignoreCancelToken }
       } = config;
 
       const ignoreCancel =
@@ -154,8 +154,8 @@ export class VAxios {
       data: formData,
       headers: {
         'Content-type': ContentTypeEnum.FORM_DATA,
-        ignoreCancelToken: true,
-      },
+        ignoreCancelToken: true
+      }
     });
   }
 
@@ -174,7 +174,7 @@ export class VAxios {
 
     return {
       ...config,
-      data: qs.stringify(config.data, { arrayFormat: 'brackets' }),
+      data: qs.stringify(config.data, { arrayFormat: 'brackets' })
     };
   }
 

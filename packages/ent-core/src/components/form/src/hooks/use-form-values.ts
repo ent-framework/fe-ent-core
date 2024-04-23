@@ -52,7 +52,7 @@ export function useFormValues({
   defaultValueRef,
   getSchema,
   formModel,
-  getProps,
+  getProps
 }: UseFormValuesContext) {
   // Processing form values
   function handleFormValues(values: Recordable) {

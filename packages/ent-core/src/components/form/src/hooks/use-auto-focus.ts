@@ -13,7 +13,7 @@ export async function useAutoFocus({
   getSchema,
   getProps,
   formElRef,
-  isInitedDefault,
+  isInitedDefault
 }: UseAutoFocusContext) {
   watchEffect(async () => {
     if (unref(isInitedDefault) || !unref(getProps).autoFocusFirstItem) {

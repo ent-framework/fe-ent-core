@@ -53,7 +53,7 @@
       FoldButton,
       NTabs,
       NTabPane,
-      TabContent,
+      TabContent
     },
     setup() {
       const { t } = useI18n();
@@ -80,8 +80,8 @@
         return [
           prefixCls,
           {
-            [`${prefixCls}--hide-close`]: unref(unClose),
-          },
+            [`${prefixCls}--hide-close`]: unref(unClose)
+          }
         ];
       });
       watch(
@@ -89,7 +89,7 @@
         (route) => {
           listenerRouteChange(route);
         },
-        { immediate: true, deep: true },
+        { immediate: true, deep: true }
       );
 
       function listenerRouteChange(route: RouteLocationNormalized) {
@@ -159,8 +159,8 @@
         getShowQuick,
         getShowRedo,
         getShowFold,
-        getItemKey,
+        getItemKey
       };
-    },
+    }
   });
 </script>

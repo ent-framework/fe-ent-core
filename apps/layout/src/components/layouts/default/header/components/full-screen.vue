@@ -33,8 +33,8 @@
         prefixCls,
         getTitle,
         isFullscreen,
-        toggle,
+        toggle
       };
-    },
+    }
   });
 </script>

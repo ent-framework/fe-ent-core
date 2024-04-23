@@ -11,8 +11,8 @@ export const footerProps = {
   cancelButtonProps: Object as PropType<Partial<ButtonProps>>,
   buttonPosition: {
     type: String as PropType<'start' | 'center' | 'end'>,
-    default: 'center',
-  },
+    default: 'center'
+  }
 };
 
 export const basicProps = {
@@ -41,7 +41,7 @@ export const basicProps = {
   useWrapper: { type: Boolean, default: true },
 
   confirmLoading: {
-    type: Boolean,
+    type: Boolean
   },
   /**
    * loading 状态
@@ -65,5 +65,5 @@ export const basicProps = {
 
   wrapperProps: Object as PropType<Partial<ModalWrapperProps>>,
 
-  ...footerProps,
+  ...footerProps
 };

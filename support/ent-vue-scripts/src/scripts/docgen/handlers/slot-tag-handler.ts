@@ -34,7 +34,7 @@ export function slotTagHandler(documentation: Documentation, path: any) {
             slotDescriptor.bindings = bindingsTag;
           }
           const customTags = jsDoc.tags.filter(
-            (t: any) => t.title !== 'binding' && t.title !== 'slot',
+            (t: any) => t.title !== 'binding' && t.title !== 'slot'
           );
           if (customTags.length) {
             const tags = customTags.reduce((pre, item) => {

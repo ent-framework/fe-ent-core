@@ -4,7 +4,7 @@ import { useGlobSetting, useI18n, useMessage } from '../../hooks';
 import {
   backendRouteFilter,
   flatMultiLevelRoutes,
-  routeWrapper,
+  routeWrapper
 } from '../../router/helper/route-helper';
 import { entRouter, transformRouteToMenu } from '../../router';
 import { defaultProjectSetting } from '../../logics/settings/project-setting';
@@ -35,7 +35,7 @@ export const usePermissionStore = defineStore('app-permission', {
     // Backstage menu list
     backMenuList: [],
     // menu List
-    frontMenuList: [],
+    frontMenuList: []
   }),
   getters: {
     getPermCodeList(): string[] | number[] {
@@ -52,7 +52,7 @@ export const usePermissionStore = defineStore('app-permission', {
     },
     getIsDynamicAddedRoute(): boolean {
       return this.isDynamicAddedRoute;
-    },
+    }
   },
   actions: {
     setPermCodeList(codeList: string[]) {
@@ -170,7 +170,7 @@ export const usePermissionStore = defineStore('app-permission', {
 
           createMessage.info(t('sys.app.menuLoading'), {
             type: 'loading',
-            duration: 1,
+            duration: 1
           });
 
           // !Simulate to obtain permission codes from the background,
@@ -228,6 +228,6 @@ export const usePermissionStore = defineStore('app-permission', {
 
       patchHomeAffix(routes);
       return routes;
-    },
-  },
+    }
+  }
 });

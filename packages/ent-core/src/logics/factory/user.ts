@@ -5,7 +5,7 @@ import type {
   LoginParams,
   LoginResultModel,
   Session,
-  UserInfoModel,
+  UserInfoModel
 } from '../types';
 import type { AppRouteRecordRaw } from '../../router';
 
@@ -15,7 +15,7 @@ enum Api {
   GetUserInfo = '/user-info',
   GetPermCode = '/perm-code',
   GetMenuList = '/menu-list',
-  GetSession = '/session',
+  GetSession = '/session'
 }
 
 export interface UserFactory {
@@ -46,7 +46,7 @@ export class UserService implements UserFactory {
     const { userApiPrefix = '' } = globSetting;
     return defHttp.get<Session>({
       url: `${userApiPrefix}${Api.GetSession}`,
-      params: { remember_me: rememberMeJwt },
+      params: { remember_me: rememberMeJwt }
     });
   };
   doLogout = () => {
@@ -70,7 +70,7 @@ export class UserService implements UserFactory {
     const { userApiPrefix = '' } = globSetting;
     return defHttp.get<UserInfoModel>(
       { url: `${userApiPrefix}${Api.GetUserInfo}` },
-      { errorMessageMode: 'none' },
+      { errorMessageMode: 'none' }
     );
   };
 
@@ -80,11 +80,11 @@ export class UserService implements UserFactory {
     return defHttp.post<LoginResultModel>(
       {
         url: `${userApiPrefix}${Api.Login}`,
-        params,
+        params
       },
       {
-        errorMessageMode: mode,
-      },
+        errorMessageMode: mode
+      }
     );
   };
 }

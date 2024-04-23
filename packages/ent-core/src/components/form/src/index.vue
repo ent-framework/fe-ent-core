@@ -91,7 +91,7 @@
       NDivider,
       FormAction,
       FormItem,
-      NSpace,
+      NSpace
     },
     extends: NForm,
     inheritAttrs: false,
@@ -105,7 +105,7 @@
         isAdvanced: true,
         hideAdvanceBtn: false,
         isLoad: false,
-        actionSpan: 6,
+        actionSpan: 6
       });
 
       const defaultValueRef = ref({});
@@ -127,11 +127,11 @@
         return [
           prefixCls,
           {
-            [`${prefixCls}--inline`]: unref(isInline),
+            [`${prefixCls}--inline`]: unref(isInline)
           },
           {
-            [`${prefixCls}--show-feed-back`]: showFeedback,
-          },
+            [`${prefixCls}--show-feed-back`]: showFeedback
+          }
         ];
       });
 
@@ -144,7 +144,7 @@
       const getGrid = computed((): GridProps => {
         const { gridProps } = unref(getProps);
         return {
-          ...gridProps,
+          ...gridProps
         };
       });
 
@@ -152,9 +152,9 @@
         const value = pick(
           {
             ...props,
-            ...unref(getProps),
+            ...unref(getProps)
           },
-          Object.keys(formProps),
+          Object.keys(formProps)
         );
         return { ...attrs, ...value } as FormProps;
       });
@@ -166,20 +166,20 @@
           if (schema.component === 'Divider') {
             schema.componentProps = Object.assign(
               { 'title-placement': 'left' },
-              schema.componentProps,
+              schema.componentProps
             );
           } else {
             // 基础表单的baseColProps
             const { baseGridItemProps } = props_;
             schema.gridItemProps = {
               ...baseGridItemProps,
-              ...schema.gridItemProps,
+              ...schema.gridItemProps
             };
           }
         }
         if (unref(getProps).showAdvancedButton) {
           return cloneDeep(
-            schemas.filter((schema) => schema.component !== 'Divider') as FormSchema[],
+            schemas.filter((schema) => schema.component !== 'Divider') as FormSchema[]
           );
         } else {
           return cloneDeep(schemas as FormSchema[]);
@@ -192,21 +192,21 @@
         getProps,
         getSchema,
         formModel,
-        defaultValueRef,
+        defaultValueRef
       });
 
       const { handleFormValues, initDefault } = useFormValues({
         getProps,
         defaultValueRef,
         getSchema,
-        formModel,
+        formModel
       });
 
       useAutoFocus({
         getSchema,
         getProps,
         isInitedDefault: isInitedDefaultRef,
-        formElRef: formElRef as Ref<FormActionType>,
+        formElRef: formElRef as Ref<FormActionType>
       });
 
       const {
@@ -218,7 +218,7 @@
         resetSchema,
         appendSchemaByField,
         removeSchemaByField,
-        resetFields,
+        resetFields
       } = useFormEvents({
         emit,
         getProps,
@@ -227,12 +227,12 @@
         defaultValueRef,
         formElRef: formElRef as Ref<FormActionType>,
         schemaRef: schemaRef as Ref<FormSchema[]>,
-        handleFormValues,
+        handleFormValues
       });
 
       createFormContext({
         resetAction: resetFields,
-        submitAction: handleSubmit,
+        submitAction: handleSubmit
       });
 
       watch(
@@ -243,15 +243,15 @@
           setFieldsValue(model);
         },
         {
-          immediate: true,
-        },
+          immediate: true
+        }
       );
 
       watch(
         () => unref(getProps).schemas,
         (schemas) => {
           resetSchema(schemas ?? []);
-        },
+        }
       );
 
       watch(
@@ -268,7 +268,7 @@
             initDefault();
             isInitedDefaultRef.value = true;
           }
-        },
+        }
       );
 
       watch(
@@ -276,7 +276,7 @@
         useDebounceFn(() => {
           unref(getProps).submitOnChange && handleSubmit();
         }, 300),
-        { deep: true },
+        { deep: true }
       );
 
       async function setProps(formProps: Partial<FormProps>): Promise<void> {
@@ -314,7 +314,7 @@
         removeSchemaByField,
         appendSchemaByField,
         validate,
-        submit: handleSubmit,
+        submit: handleSubmit
       };
 
       onMounted(() => {
@@ -335,7 +335,7 @@
         const actionColOpt: Partial<GridItemProps> = {
           span: showAdvancedButton ? 6 : 4,
           ...advancedSpanObj,
-          ...actionColOptions,
+          ...actionColOptions
         };
         return actionColOpt;
       });
@@ -380,8 +380,8 @@
         actionColStyles,
         getActionButtonGroupJustify,
         getActionButtonGroupStyles,
-        ...formActionType,
+        ...formActionType
       };
-    },
+    }
   });
 </script>

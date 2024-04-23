@@ -39,6 +39,6 @@ export default {
     confirmPassword: '确认密码',
     email: '邮箱',
     smsCode: '短信验证码',
-    mobile: '手机号码',
-  },
+    mobile: '手机号码'
+  }
 };

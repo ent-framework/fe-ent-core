@@ -39,7 +39,7 @@ const Indent = Extension.create<IndentOptions>({
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -54,8 +54,8 @@ const Indent = Extension.create<IndentOptions>({
               },
               buttonIcon: extension.options.buttonIcon?.[0],
               icon: indent,
-              tooltip: t('editor.extensions.Indent.buttons.indent.tooltip'),
-            },
+              tooltip: t('editor.extensions.Indent.buttons.indent.tooltip')
+            }
           },
           {
             component: CommandButton,
@@ -65,11 +65,11 @@ const Indent = Extension.create<IndentOptions>({
               },
               icon: outdent,
               buttonIcon: extension.options.buttonIcon?.[1],
-              tooltip: t('editor.extensions.Indent.buttons.outdent.tooltip'),
-            },
-          },
+              tooltip: t('editor.extensions.Indent.buttons.outdent.tooltip')
+            }
+          }
         ];
-      },
+      }
     };
   },
 
@@ -90,10 +90,10 @@ const Indent = Extension.create<IndentOptions>({
               }
 
               return { 'data-indent': attributes.indent };
-            },
-          },
-        },
-      },
+            }
+          }
+        }
+      }
     ];
   },
 
@@ -102,22 +102,22 @@ const Indent = Extension.create<IndentOptions>({
       indent: () =>
         createIndentCommand({
           delta: IndentProps.more,
-          types: this.options.types,
+          types: this.options.types
         }),
       outdent: () =>
         createIndentCommand({
           delta: IndentProps.less,
-          types: this.options.types,
-        }),
+          types: this.options.types
+        })
     };
   },
 
   addKeyboardShortcuts() {
     return {
       Tab: () => this.editor.commands.indent(),
-      'Shift-Tab': () => this.editor.commands.outdent(),
+      'Shift-Tab': () => this.editor.commands.outdent()
     };
-  },
+  }
 });
 
 export default Indent;

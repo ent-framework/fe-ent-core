@@ -35,8 +35,8 @@
       return {
         t,
         getCount,
-        handleToErrorList,
+        handleToErrorList
       };
-    },
+    }
   });
 </script>

@@ -69,8 +69,8 @@
         t,
         handleCopy,
         handleResetSetting,
-        handleClearAndRedo,
+        handleClearAndRedo
       };
-    },
+    }
   });
 </script>

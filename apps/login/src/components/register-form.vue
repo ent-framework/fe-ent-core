@@ -86,11 +86,11 @@
     confirmPassword: '',
     mobile: '',
     sms: '',
-    policy: false,
+    policy: false
   });
 
   defineComponent({
-    components: { EntStrengthMeter, EntCountDownInput },
+    components: { EntStrengthMeter, EntCountDownInput }
   });
 
   const { getFormRules } = useFormRules(formData);

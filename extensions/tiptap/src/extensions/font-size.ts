@@ -46,12 +46,12 @@ const FontSize = Extension.create<FontSizeOptions>({
           disabled: false,
           isActive(editor: Editor) {
             return key === getMarkAttributes(editor.state, 'textStyle').fontSize || '';
-          },
+          }
         };
       }),
       button({
         editor,
-        extension,
+        extension
       }: {
         editor: Editor;
         extension: any;
@@ -61,10 +61,10 @@ const FontSize = Extension.create<FontSizeOptions>({
           component: FontSizeDropdown,
           componentProps: {
             editor,
-            buttonIcon: extension.options.buttonIcon,
-          },
+            buttonIcon: extension.options.buttonIcon
+          }
         };
-      },
+      }
     };
   },
 
@@ -82,12 +82,12 @@ const FontSize = Extension.create<FontSizeOptions>({
               }
 
               return {
-                style: `font-size: ${attributes.fontSize}px`,
+                style: `font-size: ${attributes.fontSize}px`
               };
-            },
-          },
-        },
-      },
+            }
+          }
+        }
+      }
     ];
   },
 
@@ -105,10 +105,10 @@ const FontSize = Extension.create<FontSizeOptions>({
             .setMark('textStyle', { fontSize: DEFAULT_FONT_SIZE })
             .removeEmptyTextStyle()
             .run();
-        },
+        }
     };
   },
-  nessesaryExtensions: [TextStyle],
+  nessesaryExtensions: [TextStyle]
 });
 
 export default FontSize;

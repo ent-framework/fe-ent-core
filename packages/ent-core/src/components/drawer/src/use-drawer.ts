@@ -6,7 +6,7 @@ import {
   ref,
   toRaw,
   unref,
-  watchEffect,
+  watchEffect
 } from 'vue';
 import { tryOnUnmounted } from '@vueuse/core';
 import { isEqual } from 'lodash-es';
@@ -18,7 +18,7 @@ import type {
   DrawerProps,
   ReturnDrawerMethods,
   UseDrawerInnerReturnType,
-  UseDrawerReturnType,
+  UseDrawerReturnType
 } from './typing';
 
 const dataTransferRef = reactive<any>({});
@@ -74,7 +74,7 @@ export function useDrawer(): UseDrawerReturnType {
 
     openDrawer: <T = any>(show = true, data?: T, openOnSet = true): void => {
       getInstance()?.setDrawerProps({
-        show,
+        show
       });
       if (!data) return;
 
@@ -90,7 +90,7 @@ export function useDrawer(): UseDrawerReturnType {
     },
     closeDrawer: () => {
       getInstance()?.setDrawerProps({ show: false });
-    },
+    }
   };
 
   return [register, methods];
@@ -153,7 +153,7 @@ export const useDrawerInner = (callbackFn?: Fn): UseDrawerInnerReturnType => {
 
       setDrawerProps: (props: Partial<DrawerProps>) => {
         getInstance()?.setDrawerProps(props);
-      },
-    },
+      }
+    }
   ];
 };

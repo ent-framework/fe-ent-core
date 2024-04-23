@@ -17,7 +17,7 @@ export function createEntRouter(): EntRouter {
       : createWebHistory(appEnv.VITE_PUBLIC_PATH || ''),
     routes: [],
     strict: true,
-    scrollBehavior: () => ({ left: 0, top: 0 }),
+    scrollBehavior: () => ({ left: 0, top: 0 })
   });
 
   const publicRoutes: AppRouteRecordRaw[] = [];
@@ -111,7 +111,7 @@ export function createEntRouter(): EntRouter {
       // @ts-ignore
       const _entRouter = this;
       app.provide(routerKey, _entRouter);
-    },
+    }
   };
   return entRouter;
 }

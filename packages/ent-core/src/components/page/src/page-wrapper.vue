@@ -53,13 +53,13 @@
       ghost: propTypes.bool,
       content: propTypes.string,
       contentStyle: {
-        type: Object as PropType<CSSProperties>,
+        type: Object as PropType<CSSProperties>
       },
       contentBackground: propTypes.bool,
       contentFullHeight: propTypes.bool,
       contentClass: propTypes.string,
       fixedHeight: propTypes.bool,
-      upwardSpace: propTypes.oneOfType([propTypes.number, propTypes.string]).def(0),
+      upwardSpace: propTypes.oneOfType([propTypes.number, propTypes.string]).def(0)
     },
     setup(props, { slots, attrs }) {
       const wrapperRef = ref(null);
@@ -70,7 +70,7 @@
 
       provide(
         PageWrapperFixedHeightKey,
-        computed(() => props.fixedHeight),
+        computed(() => props.fixedHeight)
       );
 
       const getIsContentFullHeight = computed(() => {
@@ -83,7 +83,7 @@
         wrapperRef,
         [headerRef, footerRef],
         [contentRef],
-        getUpwardSpace,
+        getUpwardSpace
       );
       setCompensation({ useLayoutFooter: true, elements: [footerRef] });
 
@@ -91,9 +91,9 @@
         return [
           prefixCls,
           {
-            [`${prefixCls}--dense`]: props.dense,
+            [`${prefixCls}--dense`]: props.dense
           },
-          attrs.class ?? {},
+          attrs.class ?? {}
         ];
       });
 
@@ -113,7 +113,7 @@
         return {
           ...contentStyle,
           minHeight: height,
-          ...(fixedHeight ? { height } : {}),
+          ...(fixedHeight ? { height } : {})
         };
       });
 
@@ -123,8 +123,8 @@
           `${prefixCls}-content`,
           contentClass,
           {
-            [`${prefixCls}-content-bg`]: contentBackground,
-          },
+            [`${prefixCls}-content-bg`]: contentBackground
+          }
         ];
       });
 
@@ -135,8 +135,8 @@
         },
         {
           flush: 'post',
-          immediate: true,
-        },
+          immediate: true
+        }
       );
 
       return {
@@ -150,8 +150,8 @@
         prefixCls,
         getShowFooter,
         omit,
-        getContentClass,
+        getContentClass
       };
-    },
+    }
   });
 </script>

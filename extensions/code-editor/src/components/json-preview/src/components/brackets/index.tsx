@@ -5,9 +5,9 @@ export default defineComponent({
   props: {
     data: {
       required: true,
-      type: String,
+      type: String
     },
-    onClick: Function as PropType<(e: MouseEvent) => void>,
+    onClick: Function as PropType<(e: MouseEvent) => void>
   },
 
   render() {
@@ -20,5 +20,5 @@ export default defineComponent({
         {data}
       </span>
     );
-  },
+  }
 });

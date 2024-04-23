@@ -25,13 +25,13 @@ const OrderedList = TiptapOrderedList.extend<CustomOrderedListOptions>({
           disabled: false,
           isActive(editor: Editor) {
             return editor.isActive('orderedList');
-          },
-        },
+          }
+        }
       ],
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -46,12 +46,12 @@ const OrderedList = TiptapOrderedList.extend<CustomOrderedListOptions>({
             buttonIcon: extension.options.buttonIcon,
             isActive: editor.isActive('orderedList'),
             icon: svg,
-            tooltip: t('editor.extensions.OrderedList.tooltip'),
-          },
+            tooltip: t('editor.extensions.OrderedList.tooltip')
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default OrderedList;

@@ -23,26 +23,26 @@ const config: InlineConfig = {
           dir: 'dist',
           exports: 'named',
           entryFileNames: '[name].js',
-          plugins: [terser() as OutputPlugin],
-        },
+          plugins: [terser() as OutputPlugin]
+        }
       ],
-      plugins: [cssOnlyPlugin()],
+      plugins: [cssOnlyPlugin()]
     },
     // 开启lib模式，但不使用下面配置
     lib: {
       entry: '',
-      formats: ['es'],
-    },
+      formats: ['es']
+    }
   },
   css: {
     preprocessorOptions: {
       less: {
         modifyVars: generateModifyVars(),
-        javascriptEnabled: true,
-      },
-    },
+        javascriptEnabled: true
+      }
+    }
   },
-  plugins: [configUnoCSSPlugin(true)],
+  plugins: [configUnoCSSPlugin(true)]
 };
 
 export default config;

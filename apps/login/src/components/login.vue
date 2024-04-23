@@ -65,24 +65,24 @@
       ForgetPasswordForm,
       RegisterForm,
       MobileForm,
-      QrCodeForm,
+      QrCodeForm
     },
     props: {
       sessionTimeout: {
-        type: Boolean,
+        type: Boolean
       },
       mobileLoginEnable: {
         type: Boolean,
-        default: false,
+        default: false
       },
       qrLoginEnable: {
         type: Boolean,
-        default: false,
+        default: false
       },
       registerEnable: {
         type: Boolean,
-        default: false,
-      },
+        default: false
+      }
     },
     setup() {
       const globSetting = useGlobSetting();
@@ -97,8 +97,8 @@
         showLocale,
         title,
         loginImg,
-        t,
+        t
       };
-    },
+    }
   });
 </script>

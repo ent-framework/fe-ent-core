@@ -48,9 +48,9 @@
                     event: '1',
                     popConfirm: {
                       title: '是否确认删除',
-                      confirm: handleDelete.bind(null, item.id),
-                    },
-                  },
+                      confirm: handleDelete.bind(null, item.id)
+                    }
+                  }
                 ]"
                 popconfirm
               >
@@ -91,11 +91,11 @@
       NGridItem,
       NTooltip,
       NSlider,
-      EntIcon,
+      EntIcon
     },
     props: {
       params: propTypes.object.def({}),
-      api: propTypes.func,
+      api: propTypes.func
     },
     emits: ['getMethod', 'delete'],
     setup(props, { emit }) {
@@ -106,7 +106,7 @@
         4: '4',
         6: '6',
         8: '8',
-        12: '12',
+        12: '12'
       };
       //数据
       const data = ref([]);
@@ -124,7 +124,7 @@
         baseGridItemProps: { span: 6 },
         actionColOptions: { span: 24 },
         autoSubmitOnEnter: true,
-        submitFunc: handleSubmit,
+        submitFunc: handleSubmit
       });
       //表单提交
       async function handleSubmit() {
@@ -162,7 +162,7 @@
         total,
         showTotal: (total) => `总 ${total} 条`,
         onChange: pageChange,
-        onShowSizeChange: pageSizeChange,
+        onShowSizeChange: pageSizeChange
       });
 
       function pageChange(p, pz) {
@@ -189,8 +189,8 @@
         height,
         grid,
         fetch,
-        sliderMarks,
+        sliderMarks
       };
-    },
+    }
   });
 </script>

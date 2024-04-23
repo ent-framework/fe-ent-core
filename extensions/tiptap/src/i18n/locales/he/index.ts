@@ -2,29 +2,29 @@ export default {
   editor: {
     extensions: {
       Bold: {
-        tooltip: 'מודגש',
+        tooltip: 'מודגש'
       },
       Underline: {
-        tooltip: 'קו תחתון',
+        tooltip: 'קו תחתון'
       },
       Italic: {
-        tooltip: 'הטה',
+        tooltip: 'הטה'
       },
       Strike: {
-        tooltip: 'קו חוצה',
+        tooltip: 'קו חוצה'
       },
       Heading: {
         tooltip: 'כותרת',
         buttons: {
           paragraph: 'פסקה',
-          heading: 'כותרת',
-        },
+          heading: 'כותרת'
+        }
       },
       Blockquote: {
-        tooltip: 'ציטוט',
+        tooltip: 'ציטוט'
       },
       CodeBlock: {
-        tooltip: 'קוד',
+        tooltip: 'קוד'
       },
       Link: {
         add: {
@@ -34,8 +34,8 @@ export default {
             href: 'קישור',
             open_in_new_tab: 'פתח בחלון חדש',
             confirm: 'החל',
-            cancel: 'ביטול',
-          },
+            cancel: 'ביטול'
+          }
         },
         edit: {
           tooltip: 'ערוך קישור',
@@ -44,36 +44,36 @@ export default {
             href: 'קישור',
             open_in_new_tab: 'פתח בחלון חדש',
             confirm: 'עידכון',
-            cancel: 'ביטול',
-          },
+            cancel: 'ביטול'
+          }
         },
         unlink: {
-          tooltip: 'הסר קישור',
+          tooltip: 'הסר קישור'
         },
         open: {
-          tooltip: 'פתח קישור',
-        },
+          tooltip: 'פתח קישור'
+        }
       },
       Image: {
         buttons: {
           insert_image: {
             tooltip: 'הוספת תמונה',
             external: 'הוספת תמונה לפי קישור',
-            upload: 'העלאת תמונה',
+            upload: 'העלאת תמונה'
           },
           remove_image: {
-            tooltip: 'הסר',
+            tooltip: 'הסר'
           },
           image_options: {
-            tooltip: 'אפשרויות תמונה',
+            tooltip: 'אפשרויות תמונה'
           },
           display: {
             tooltip: 'הצג',
             inline: 'בשורה',
             block: 'שבור טקסט',
             left: 'הצמד לשמאל',
-            right: 'הצמד לימין',
-          },
+            right: 'הצמד לימין'
+          }
         },
         control: {
           insert_by_url: {
@@ -81,11 +81,11 @@ export default {
             placeholder: 'קישור לתמונה',
             confirm: 'הוספה',
             cancel: 'ביטול',
-            invalid_url: 'נא הזן קישור תקין',
+            invalid_url: 'נא הזן קישור תקין'
           },
           upload_image: {
             title: 'העלאת תמונה',
-            button: 'לחץ כאן לבחירת תמונה מתיקיה או גרור אותה הנה',
+            button: 'לחץ כאן לבחירת תמונה מתיקיה או גרור אותה הנה'
           },
           edit_image: {
             title: 'עריכה תמונה',
@@ -95,10 +95,10 @@ export default {
               src: 'קישור לתמונה',
               alt: 'טקסט חלופי',
               width: 'רוחב',
-              height: 'גובה',
-            },
-          },
-        },
+              height: 'גובה'
+            }
+          }
+        }
       },
       Iframe: {
         tooltip: 'הוספת סרטון',
@@ -106,49 +106,49 @@ export default {
           title: 'הוספת סרטון',
           placeholder: 'קישור',
           confirm: 'הוספה',
-          cancel: 'ביטול',
-        },
+          cancel: 'ביטול'
+        }
       },
       BulletList: {
-        tooltip: 'תבליטים',
+        tooltip: 'תבליטים'
       },
       OrderedList: {
-        tooltip: 'מספור',
+        tooltip: 'מספור'
       },
       TodoList: {
-        tooltip: 'רשימת משימות',
+        tooltip: 'רשימת משימות'
       },
       TextAlign: {
         buttons: {
           align_left: {
-            tooltip: 'ישר לשמאל',
+            tooltip: 'ישר לשמאל'
           },
           align_center: {
-            tooltip: 'ישר לאמצע',
+            tooltip: 'ישר לאמצע'
           },
           align_right: {
-            tooltip: 'ישר לימין',
+            tooltip: 'ישר לימין'
           },
           align_justify: {
-            tooltip: 'ישר לשני הצדדים',
-          },
-        },
+            tooltip: 'ישר לשני הצדדים'
+          }
+        }
       },
       FontType: {
-        tooltip: 'גופן',
+        tooltip: 'גופן'
       },
       FontSize: {
         tooltip: 'גודל גופן',
-        default: 'ברירת מחדל',
+        default: 'ברירת מחדל'
       },
       TextColor: {
-        tooltip: 'צבע טקסט',
+        tooltip: 'צבע טקסט'
       },
       TextHighlight: {
-        tooltip: 'צבע סימון טקסט',
+        tooltip: 'צבע סימון טקסט'
       },
       LineHeight: {
-        tooltip: 'גובה שורה',
+        tooltip: 'גובה שורה'
       },
       Table: {
         tooltip: 'טבלה',
@@ -162,53 +162,53 @@ export default {
           delete_row: 'מחק שורה',
           merge_cells: 'מיזוג תאים',
           split_cell: 'פיצול תא',
-          delete_table: 'מחיקת טבלה',
-        },
+          delete_table: 'מחיקת טבלה'
+        }
       },
       Indent: {
         buttons: {
           indent: {
-            tooltip: 'בקטן כניסה',
+            tooltip: 'בקטן כניסה'
           },
           outdent: {
-            tooltip: 'הגדל כניסה',
-          },
-        },
+            tooltip: 'הגדל כניסה'
+          }
+        }
       },
       FormatClear: {
-        tooltip: 'נקה עיצוב',
+        tooltip: 'נקה עיצוב'
       },
       HorizontalRule: {
-        tooltip: 'קו אופקי',
+        tooltip: 'קו אופקי'
       },
       History: {
         tooltip: {
           undo: 'הקודם',
-          redo: 'הבא',
-        },
+          redo: 'הבא'
+        }
       },
       Fullscreen: {
         tooltip: {
           fullscreen: 'מסך מלא',
-          exit_fullscreen: 'יציאה ממסך מלא',
-        },
+          exit_fullscreen: 'יציאה ממסך מלא'
+        }
       },
       Print: {
-        tooltip: 'הדפס',
+        tooltip: 'הדפס'
       },
       Preview: {
         tooltip: 'תצוגה מקדימה',
         dialog: {
-          title: 'תצוגה מקדימה',
-        },
+          title: 'תצוגה מקדימה'
+        }
       },
       SelectAll: {
-        tooltip: 'בחר הכל',
+        tooltip: 'בחר הכל'
       },
       CodeView: {
-        tooltip: 'תצוגת קוד',
-      },
+        tooltip: 'תצוגת קוד'
+      }
     },
-    characters: 'תווים',
-  },
+    characters: 'תווים'
+  }
 };

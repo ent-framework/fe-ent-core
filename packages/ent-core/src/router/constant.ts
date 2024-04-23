@@ -15,7 +15,7 @@ export const getParentLayout = (_name?: string) => {
   return () =>
     new Promise((resolve) => {
       resolve({
-        name: _name || PARENT_LAYOUT_NAME,
+        name: _name || PARENT_LAYOUT_NAME
       });
     });
 };

@@ -17,7 +17,7 @@ export function resolveImg(src: string): Promise<ImageResult> {
       complete: false,
       width: 0,
       height: 0,
-      src,
+      src
     };
 
     if (!src) {
@@ -53,5 +53,5 @@ export const enum ImageDisplay {
   INLINE = 'inline',
   BREAK_TEXT = 'block',
   FLOAT_LEFT = 'left',
-  FLOAT_RIGHT = 'right',
+  FLOAT_RIGHT = 'right'
 }

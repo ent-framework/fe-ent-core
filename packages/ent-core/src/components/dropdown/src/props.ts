@@ -9,6 +9,6 @@ export const basicDropdownProps = {
    */
   dropMenuList: {
     type: Array as PropType<DropMenu[]>,
-    default: () => [],
-  },
+    default: () => []
+  }
 };

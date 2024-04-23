@@ -25,37 +25,37 @@ export function getColumns(): BasicColumn[] {
                   ? 'red'
                   : 'purple';
         return h(NTag, { color: { color } }, () => text);
-      },
+      }
     },
     {
       key: 'url',
       title: 'URL',
-      width: 200,
+      width: 200
     },
     {
       key: 'time',
       title: t('sys.errorLog.tableColumnDate'),
-      width: 160,
+      width: 160
     },
     {
       key: 'file',
       title: t('sys.errorLog.tableColumnFile'),
-      width: 200,
+      width: 200
     },
     {
       key: 'name',
       title: 'Name',
-      width: 200,
+      width: 200
     },
     {
       key: 'message',
       title: t('sys.errorLog.tableColumnMsg'),
-      width: 300,
+      width: 300
     },
     {
       key: 'stack',
-      title: t('sys.errorLog.tableColumnStackMsg'),
-    },
+      title: t('sys.errorLog.tableColumnStackMsg')
+    }
   ];
 }
 
@@ -63,7 +63,7 @@ export function getDescSchema(): DescItem[] {
   return getColumns().map((column) => {
     return {
       field: column.key!,
-      label: column.title,
+      label: column.title
     } as DescItem;
   });
 }

@@ -53,7 +53,7 @@ import {
   Gapcursor,
   Commands,
   Dropcursor,
-  CodeBlockLowlight,
+  CodeBlockLowlight
 } from '../extensions';
 
 lowlight.registerLanguage('html', html);
@@ -75,7 +75,7 @@ export const textExtensions = [
   Color.configure({ bubble: true }),
   Highlight.configure({ bubble: true }),
   FormatClear,
-  History,
+  History
 ];
 
 export const paragraphExtensions = [
@@ -91,7 +91,7 @@ export const paragraphExtensions = [
   Indent,
   Blockquote,
   CodeBlock,
-  History,
+  History
 ];
 
 export const richAndToolsExtensions = [
@@ -110,11 +110,11 @@ export const richAndToolsExtensions = [
     codemirror,
     codemirrorOptions: {
       styleActiveLine: true,
-      autoCloseTags: true,
-    },
+      autoCloseTags: true
+    }
   }),
   // Gapcursor,
-  History,
+  History
 ];
 export const allExtensions = [
   Doc,
@@ -142,18 +142,18 @@ export const allExtensions = [
   Link.configure({
     bubble: true,
     addLinkPlaceholder: 'add link',
-    editLinkPlaceholder: 'edit link',
+    editLinkPlaceholder: 'edit link'
   }),
   Commands.configure({
     suggestion: {
       items: getSuggestionItems,
-      render: renderItems,
-    },
+      render: renderItems
+    }
   }),
   Image.configure({
     bubble: false,
     defaultWidth: 400,
-    draggable: true,
+    draggable: true
   }),
   Iframe.configure({ bubble: false }),
   Table.configure({ resizable: true }),
@@ -166,10 +166,10 @@ export const allExtensions = [
     codemirror,
     codemirrorOptions: {
       styleActiveLine: false,
-      autoCloseTags: true,
-    },
+      autoCloseTags: true
+    }
   }),
   Gapcursor,
   CodeBlock,
-  Dropcursor,
+  Dropcursor
 ];

@@ -29,7 +29,7 @@
     components: {
       NTooltip,
       NPopselect,
-      EntIcon,
+      EntIcon
     },
     setup() {
       const table = useTableContext();
@@ -40,23 +40,23 @@
       function handleTitleClick(value: SizeType) {
         selectedKeysRef.value = value;
         table.setProps({
-          size: value,
+          size: value
         });
       }
 
       const sizeOptions: DropdownOption[] = [
         {
           value: 'small',
-          label: t('component.table.settingDensSmall'),
+          label: t('component.table.settingDensSmall')
         },
         {
           value: 'medium',
-          label: t('component.table.settingDensMiddle'),
+          label: t('component.table.settingDensMiddle')
         },
         {
           value: 'large',
-          label: t('component.table.settingDensLarge'),
-        },
+          label: t('component.table.settingDensLarge')
+        }
       ];
 
       return {
@@ -64,8 +64,8 @@
         selectedKeysRef,
         getPopupContainer,
         sizeOptions,
-        t,
+        t
       };
-    },
+    }
   });
 </script>

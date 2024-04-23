@@ -28,28 +28,28 @@
     components: { NSelect, NText },
     props: {
       event: {
-        type: Number as PropType<HandlerEnum>,
+        type: Number as PropType<HandlerEnum>
       },
       disabled: {
-        type: Boolean,
+        type: Boolean
       },
       title: {
-        type: String,
+        type: String
       },
       handler: {
         type: Function as PropType<Fn>,
-        default: () => ({}),
+        default: () => ({})
       },
       def: {
-        type: [String, Number] as PropType<string | number>,
+        type: [String, Number] as PropType<string | number>
       },
       initValue: {
-        type: [String, Number] as PropType<string | number>,
+        type: [String, Number] as PropType<string | number>
       },
       options: {
         type: Array as PropType<LabelValueOptions>,
-        default: () => [],
-      },
+        default: () => []
+      }
     },
     setup(props) {
       const { prefixCls } = useDesign('setting-select-item');
@@ -63,8 +63,8 @@
       return {
         prefixCls,
         handleChange,
-        getBindValue,
+        getBindValue
       };
-    },
+    }
   });
 </script>

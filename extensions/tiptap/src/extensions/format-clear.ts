@@ -26,7 +26,7 @@ const FormatClear = Extension.create({
       color: 'unsetColor',
       highlight: 'unsetHighlight',
       textAlign: 'unsetTextAlign',
-      lineHeight: 'unsetLineHeight',
+      lineHeight: 'unsetLineHeight'
     };
 
     return {
@@ -42,7 +42,7 @@ const FormatClear = Extension.create({
           }, chain());
 
           return chain().focus().run();
-        },
+        }
     };
   },
   addOptions() {
@@ -52,7 +52,7 @@ const FormatClear = Extension.create({
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -66,12 +66,12 @@ const FormatClear = Extension.create({
             },
             buttonIcon: extension.options.buttonIcon,
             icon: svg,
-            tooltip: t('editor.extensions.FormatClear.tooltip'),
-          },
+            tooltip: t('editor.extensions.FormatClear.tooltip')
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default FormatClear;

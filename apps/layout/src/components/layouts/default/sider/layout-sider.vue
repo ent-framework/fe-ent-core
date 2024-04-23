@@ -47,7 +47,7 @@
         getMenuHidden,
         getMenuFixed,
         getIsMixMode,
-        toggleCollapsed,
+        toggleCollapsed
       } = useMenuSetting();
 
       const { prefixCls } = useDesign('layout-sideBar');
@@ -78,8 +78,8 @@
           prefixCls,
           {
             [`${prefixCls}--fixed`]: unref(getMenuFixed),
-            [`${prefixCls}--mix`]: unref(getIsMixMode) && !unref(getIsMobile),
-          },
+            [`${prefixCls}--mix`]: unref(getIsMixMode) && !unref(getIsMobile)
+          }
         ];
       });
 
@@ -91,7 +91,7 @@
           flex: `0 0 ${width}`,
           maxWidth: width,
           minWidth: width,
-          transition: 'all 0.2s',
+          transition: 'all 0.2s'
         };
       });
 
@@ -113,8 +113,8 @@
         getSplitType,
         getShowTrigger,
         toggleCollapsed,
-        getActualMenuTheme,
+        getActualMenuTheme
       };
-    },
+    }
   });
 </script>

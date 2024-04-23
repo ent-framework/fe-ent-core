@@ -42,8 +42,8 @@
         prefixCls,
         t,
         openWindow,
-        footerRef,
+        footerRef
       };
-    },
+    }
   });
 </script>

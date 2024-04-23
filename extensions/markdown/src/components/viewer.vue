@@ -11,10 +11,10 @@
   converter.setOption('tables', true);
   const props = defineProps({
     value: { type: String },
-    class: { type: String },
+    class: { type: String }
   });
   defineComponent({
-    name: 'EntMarkdownViewer',
+    name: 'EntMarkdownViewer'
   });
   const getHtmlData = computed(() => converter.makeHtml(props.value || ''));
 </script>

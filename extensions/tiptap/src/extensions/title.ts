@@ -9,7 +9,7 @@ const Title = Node.create({
   addOptions() {
     return {
       ...this.parent?.(),
-      placeholder: '',
+      placeholder: ''
     };
   },
 
@@ -19,7 +19,7 @@ const Title = Node.create({
 
   renderHTML({ HTMLAttributes }) {
     return ['h1', mergeAttributes(HTMLAttributes), 0];
-  },
+  }
 });
 
 export default Title;

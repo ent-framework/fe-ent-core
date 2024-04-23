@@ -3,7 +3,7 @@ import {
   createLineHeightCommand,
   isLineHeightActive,
   transformCSStoLineHeight,
-  transformLineHeightToCSS,
+  transformLineHeightToCSS
 } from '../utils/line-height';
 import LineHeightDropdown from '../components/menu-commands/line-height-dropdown.vue';
 import type { Editor } from '@tiptap/core';
@@ -45,12 +45,12 @@ const LineHeight = Extension.create<LineHeightOptions>({
           disabled: false,
           isActive(editor: Editor) {
             return isLineHeightActive(editor.state, key) || '';
-          },
+          }
         };
       }),
       button({
         editor,
-        extension,
+        extension
       }: {
         editor: Editor;
         extension: any;
@@ -60,10 +60,10 @@ const LineHeight = Extension.create<LineHeightOptions>({
           component: LineHeightDropdown,
           componentProps: {
             editor,
-            buttonIcon: extension.options.buttonIcon,
-          },
+            buttonIcon: extension.options.buttonIcon
+          }
         };
-      },
+      }
     };
   },
 
@@ -85,12 +85,12 @@ const LineHeight = Extension.create<LineHeightOptions>({
               const cssLineHeight = transformLineHeightToCSS(attributes.lineHeight);
 
               return {
-                style: `line-height: ${cssLineHeight};`,
+                style: `line-height: ${cssLineHeight};`
               };
-            },
-          },
-        },
-      },
+            }
+          }
+        }
+      }
     ];
   },
 
@@ -102,9 +102,9 @@ const LineHeight = Extension.create<LineHeightOptions>({
         () =>
         ({ commands }) => {
           return this.options.types.every((type) => commands.resetAttributes(type, 'lineHeight'));
-        },
+        }
     };
-  },
+  }
 });
 
 export default LineHeight;

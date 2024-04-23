@@ -47,7 +47,7 @@
       LayoutSideBar,
       LayoutMultipleHeader,
       NLayout,
-      NConfigProvider,
+      NConfigProvider
     },
     setup() {
       const isMobile = ref(false);
@@ -99,16 +99,16 @@
                 type: menuType,
                 mode: menuMode,
                 collapsed: menuCollapsed,
-                split: menuSplit,
-              },
+                split: menuSplit
+              }
             } = layoutStore.getLayoutConfig;
             layoutStore.setLayoutConfig({
               menuSetting: {
                 type: MenuTypeEnum.SIDEBAR,
                 mode: MenuModeEnum.INLINE,
                 collapsed: true,
-                split: false,
-              },
+                split: false
+              }
             });
             appStore.setBeforeMiniInfo({ menuMode, menuCollapsed, menuType, menuSplit });
           }
@@ -121,8 +121,8 @@
                 type: menuType,
                 mode: menuMode,
                 collapsed: menuCollapsed,
-                split: menuSplit,
-              },
+                split: menuSplit
+              }
             });
           }
         }
@@ -138,8 +138,8 @@
         lockEvents,
         getComputedHeaderTheme,
         getComputedMenuTheme,
-        getBodyTheme,
+        getBodyTheme
       };
-    },
+    }
   });
 </script>

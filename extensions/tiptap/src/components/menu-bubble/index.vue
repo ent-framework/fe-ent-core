@@ -7,7 +7,7 @@
   >
     <div
       :class="{
-        'ent-tiptap-editor__menu-bubble--active': bubbleMenuEnable,
+        'ent-tiptap-editor__menu-bubble--active': bubbleMenuEnable
       }"
       class="ent-tiptap-editor__menu-bubble"
     >
@@ -51,7 +51,7 @@
   const enum MenuType {
     NONE = 'none',
     DEFAULT = 'default',
-    LINK = 'link',
+    LINK = 'link'
   }
 
   export default defineComponent({
@@ -60,19 +60,19 @@
     components: {
       BubbleMenu,
       LinkBubbleMenu,
-      ArrowLeft,
+      ArrowLeft
     },
 
     props: {
       editor: {
         type: Editor,
-        required: true,
+        required: true
       },
 
       menuBubbleOptions: {
         type: Object,
-        default: () => ({}),
-      },
+        default: () => ({})
+      }
     },
 
     setup() {
@@ -87,7 +87,7 @@
       return {
         activeMenu: MenuType.NONE,
         isLinkBack: false,
-        ArrowLeft,
+        ArrowLeft
       };
     },
 
@@ -114,7 +114,7 @@
         const { selection } = tr;
 
         return this.$_isLinkSelection(selection);
-      },
+      }
     },
 
     watch: {
@@ -127,7 +127,7 @@
           this.activeMenu = this.$_getCurrentMenuType();
           this.isLinkBack = false;
         }
-      },
+      }
     },
 
     methods: {
@@ -142,7 +142,7 @@
             const menuBtnComponentSpec = button({
               editor: this.editor,
               t: this.t, // i18n
-              extension,
+              extension
             });
 
             if (Array.isArray(menuBtnComponentSpec)) {
@@ -150,7 +150,7 @@
                 ...acc,
                 ...menuBtnComponentSpec.map((item) => {
                   return { ...item, priority: extension.options.priority };
-                }),
+                })
               ];
             }
 
@@ -192,7 +192,7 @@
           return MenuType.DEFAULT;
         }
         return MenuType.NONE;
-      },
-    },
+      }
+    }
   });
 </script>

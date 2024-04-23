@@ -7,11 +7,11 @@ import sys from './en/sys';
 const modules = {
   component,
   common,
-  sys,
+  sys
 };
 export default {
   message: {
     ...modules,
-    antdLocale,
-  },
+    antdLocale
+  }
 };

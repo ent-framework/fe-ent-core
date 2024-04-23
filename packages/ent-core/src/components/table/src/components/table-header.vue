@@ -44,7 +44,7 @@
       NDivider,
       NAlert,
       TableTitle,
-      TableSetting: TableSettingComponent,
+      TableSetting: TableSettingComponent
     },
     props: tableHeaderProps,
     emits: ['columns-change'],
@@ -63,6 +63,6 @@
       }
 
       return { prefixCls, handleColumnChange, getSelectedKey, clearSelected };
-    },
+    }
   });
 </script>

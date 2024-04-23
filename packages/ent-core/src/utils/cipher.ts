@@ -23,7 +23,7 @@ export class AesEncryption {
     return {
       mode: CryptoJS.mode.ECB,
       padding: CryptoJS.pad.Pkcs7,
-      iv: this.iv,
+      iv: this.iv
     };
   }
 

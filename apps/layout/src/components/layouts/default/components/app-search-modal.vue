@@ -33,8 +33,8 @@
               :class="[
                 `${prefixCls}-list__item`,
                 {
-                  [`${prefixCls}-list__item--active`]: activeIndex === index,
-                },
+                  [`${prefixCls}-list__item--active`]: activeIndex === index
+                }
               ]"
               @mouseenter="handleMouseenter"
               @click="handleEnter"
@@ -68,7 +68,7 @@
   import type { Nullable } from 'fe-ent-core/es/types';
 
   const props = defineProps({
-    visible: { type: Boolean },
+    visible: { type: Boolean }
   });
 
   const emit = defineEmits(['close']);
@@ -94,8 +94,8 @@
     return [
       prefixCls,
       {
-        [`${prefixCls}--mobile`]: unref(getIsMobile),
-      },
+        [`${prefixCls}--mobile`]: unref(getIsMobile)
+      }
     ];
   });
 
@@ -106,7 +106,7 @@
         nextTick(() => {
           unref(inputRef)?.focus();
         });
-    },
+    }
   );
 
   function handleClose() {

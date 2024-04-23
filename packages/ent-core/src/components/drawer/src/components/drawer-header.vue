@@ -31,7 +31,7 @@
     props: {
       isDetail: propTypes.bool,
       showDetailBack: propTypes.bool,
-      title: propTypes.string,
+      title: propTypes.string
     },
     emits: ['close'],
     // slots: ['titleToolbar'],
@@ -43,6 +43,6 @@
       }
 
       return { prefixCls, handleClose };
-    },
+    }
   });
 </script>

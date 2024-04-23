@@ -23,13 +23,13 @@ const Italic = TiptapItalic.extend<CustomItalicOptions>({
           disabled: false,
           isActive(editor: Editor) {
             return editor.isActive('italic');
-          },
-        },
+          }
+        }
       ],
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -44,12 +44,12 @@ const Italic = TiptapItalic.extend<CustomItalicOptions>({
             isActive: editor.isActive('italic'),
             icon: svg,
             buttonIcon: extension.options.buttonIcon,
-            tooltip: t('editor.extensions.Italic.tooltip'),
-          },
+            tooltip: t('editor.extensions.Italic.tooltip')
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default Italic;

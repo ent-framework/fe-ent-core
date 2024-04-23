@@ -26,16 +26,16 @@ const Iframe = Node.create({
         default: null,
         parseHTML: (element) => {
           return element.getAttribute('src');
-        },
-      },
+        }
+      }
     };
   },
 
   parseHTML() {
     return [
       {
-        tag: 'iframe',
-      },
+        tag: 'iframe'
+      }
     ];
   },
 
@@ -44,8 +44,8 @@ const Iframe = Node.create({
       'iframe',
       mergeAttributes(HTMLAttributes, {
         frameborder: 0,
-        allowfullscreen: 'true',
-      }),
+        allowfullscreen: 'true'
+      })
     ];
   },
 
@@ -56,9 +56,9 @@ const Iframe = Node.create({
         ({ commands }) => {
           return commands.insertContent({
             type: this.name,
-            attrs: options,
+            attrs: options
           });
-        },
+        }
     };
   },
 
@@ -67,7 +67,7 @@ const Iframe = Node.create({
       buttonIcon: '',
       button({
         editor,
-        extension,
+        extension
       }: {
         editor: Editor;
         extension: any;
@@ -77,16 +77,16 @@ const Iframe = Node.create({
           component: IframeCommandButton,
           componentProps: {
             editor,
-            buttonIcon: extension.options.buttonIcon,
-          },
+            buttonIcon: extension.options.buttonIcon
+          }
         };
-      },
+      }
     };
   },
 
   addNodeView() {
     return VueNodeViewRenderer(IframeView);
-  },
+  }
 });
 
 export default Iframe;

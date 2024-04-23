@@ -10,10 +10,10 @@ async function run(config: ConfigEnv, port: number) {
     ...(command === 'serve' && {
       overrides: {
         server: {
-          port,
-        },
-      },
-    }),
+          port
+        }
+      }
+    })
   });
   //不重文件加载配置
   appConfig.configFile = false;

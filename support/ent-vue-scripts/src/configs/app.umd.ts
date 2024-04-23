@@ -19,7 +19,7 @@ async function defineAppUmdConfig(defineOptions: DefineOptions) {
     root,
     enableAnalyze: false,
     enableMock: false,
-    compress: 'none',
+    compress: 'none'
   });
   const { dependencies = {}, peerDependencies = {} } = await readPackageJSON(root);
   const deps = [...Object.keys(dependencies), ...Object.keys(peerDependencies)];
@@ -36,21 +36,21 @@ async function defineAppUmdConfig(defineOptions: DefineOptions) {
         formats: ['es', 'cjs'],
         fileName: (format: ModuleFormat, entryName: string) => {
           return `${entryName}.${format === 'cjs' ? 'js' : 'mjs'}`;
-        },
+        }
       },
       rollupOptions: {
-        external: [...deps, ...entDeps],
-      },
+        external: [...deps, ...entDeps]
+      }
     },
     css: {
       preprocessorOptions: {
         less: {
           modifyVars: generateModifyVars(),
-          javascriptEnabled: true,
-        },
-      },
+          javascriptEnabled: true
+        }
+      }
     },
-    plugins,
+    plugins
   };
   const mergedConfig = mergeConfig(commonConfig({ command, mode }), packageConfig);
 

@@ -11,8 +11,8 @@ const LoginRoute: AppRouteRecordRaw = {
   name: 'Login',
   component: Login,
   meta: {
-    title: 'routes.basic.login',
-  },
+    title: 'routes.basic.login'
+  }
 };
 
 const initLogin = function (app: App, entRouter?: EntRouter) {

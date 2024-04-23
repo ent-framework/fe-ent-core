@@ -21,13 +21,13 @@
             <NTooltip>
               {{
                 footer: () => t('common.searchText'),
-                trigger: () => <EntIcon icon="ant-design:search-outlined" />,
+                trigger: () => <EntIcon icon="ant-design:search-outlined" />
               }}
             </NTooltip>
             <AppSearchModal onClose={changeModal.bind(null, false)} visible={unref(showModal)} />
           </div>
         );
       };
-    },
+    }
   });
 </script>

@@ -6,26 +6,26 @@ import type { MenuOption } from 'naive-ui/es/menu';
 export const basicProps = {
   items: {
     type: Array as PropType<MenuOption[]>,
-    default: () => [],
+    default: () => []
   },
   theme: {
     type: String as PropType<ThemeEnum>,
-    default: ThemeEnum.DARK,
+    default: ThemeEnum.DARK
   },
   collapsed: propTypes.bool,
   mixSider: propTypes.bool,
   accordion: propTypes.bool.def(true),
   collapsedShowTitle: propTypes.bool,
   beforeClickFn: {
-    type: Function as PropType<(key: string) => Promise<boolean>>,
+    type: Function as PropType<(key: string) => Promise<boolean>>
   },
-  isSplitMenu: propTypes.bool,
+  isSplitMenu: propTypes.bool
 };
 
 export const itemProps = {
   item: {
     type: Object as PropType<Menu>,
-    default: {},
+    default: {}
   },
   level: propTypes.number,
   theme: propTypes.oneOf(['dark', 'light']),
@@ -33,18 +33,18 @@ export const itemProps = {
   isHorizontal: propTypes.bool,
   collapsedShowTitle: propTypes.bool,
   collapse: propTypes.bool,
-  parent: propTypes.bool,
+  parent: propTypes.bool
 };
 
 export const contentProps = {
   item: {
     type: Object as PropType<Menu>,
-    default: null,
+    default: null
   },
   showTitle: propTypes.bool.def(true),
   level: propTypes.number.def(0),
   isHorizontal: propTypes.bool.def(true),
   collapse: propTypes.bool,
   collapsedShowTitle: propTypes.bool,
-  parent: propTypes.bool,
+  parent: propTypes.bool
 };

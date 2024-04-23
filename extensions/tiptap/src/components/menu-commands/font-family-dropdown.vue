@@ -16,7 +16,7 @@
           :key="name"
           :command="name"
           :class="{
-            'ent-tiptap-editor-dropdown-menu__item--active': name === activeFontFamily,
+            'ent-tiptap-editor-dropdown-menu__item--active': name === activeFontFamily
           }"
           class="ent-tiptap-editor-dropdown-menu__item"
         >
@@ -43,17 +43,17 @@
       Dropdown,
       Menu,
       MenuItem,
-      CommandButton,
+      CommandButton
     },
     props: {
       editor: {
         type: Editor,
-        required: true,
+        required: true
       },
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup(props) {
@@ -63,7 +63,7 @@
 
       const fontFamilies = computed(() => {
         const fontFamilyOptions = props.editor.extensionManager.extensions.find(
-          (e) => e.name === 'fontFamily',
+          (e) => e.name === 'fontFamily'
         )!.options;
         return fontFamilyOptions.fontFamilyMap;
       });
@@ -90,8 +90,8 @@
         fontFamily,
         toggleFontType,
         fontFamilies,
-        activeFontFamily,
+        activeFontFamily
       };
-    },
+    }
   });
 </script>

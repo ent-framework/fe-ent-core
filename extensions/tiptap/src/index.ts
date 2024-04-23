@@ -8,7 +8,7 @@ import type { Plugin } from 'vue';
 const EntTiptapPlugin: Plugin = {
   install(app) {
     app.component('EntTiptap', EntTiptap);
-  },
+  }
 };
 
 export * from './extensions';

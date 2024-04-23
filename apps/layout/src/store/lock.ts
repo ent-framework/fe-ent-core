@@ -9,12 +9,12 @@ export interface LockState {
 
 export const useLockStore = defineStore('app-lock', {
   state: (): LockState => ({
-    lockInfo: { pwd: undefined, isLock: false },
+    lockInfo: { pwd: undefined, isLock: false }
   }),
   getters: {
     getLockInfo(): Nullable<LockInfo> {
       return this.lockInfo;
-    },
+    }
   },
   actions: {
     setLockInfo(info: LockInfo) {
@@ -36,7 +36,7 @@ export const useLockStore = defineStore('app-lock', {
           const res = await userStore.login({
             username: username!,
             password: password!,
-            mode: 'none',
+            mode: 'none'
           });
           if (res) {
             await userStore.getUserInfoAction();
@@ -48,6 +48,6 @@ export const useLockStore = defineStore('app-lock', {
         }
       };
       return tryLogin();
-    },
-  },
+    }
+  }
 });

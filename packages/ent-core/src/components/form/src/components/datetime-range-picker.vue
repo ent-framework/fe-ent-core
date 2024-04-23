@@ -14,12 +14,12 @@
       const getBindValue = computed(() => ({
         ...props,
         ...attrs,
-        type: 'datetimerange',
+        type: 'datetimerange'
       }));
 
       return {
-        getBindValue,
+        getBindValue
       };
-    },
+    }
   });
 </script>

@@ -25,13 +25,13 @@ const BulletList = TiptapBulletList.extend<CustomBulletListOptions>({
           disabled: false,
           isActive(editor: Editor) {
             return editor.isActive('bulletList');
-          },
-        },
+          }
+        }
       ],
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -46,12 +46,12 @@ const BulletList = TiptapBulletList.extend<CustomBulletListOptions>({
             buttonIcon: extension.options.buttonIcon,
             isActive: editor.isActive('bulletList'),
             icon: svg,
-            tooltip: t('editor.extensions.BulletList.tooltip'),
-          },
+            tooltip: t('editor.extensions.BulletList.tooltip')
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default BulletList;

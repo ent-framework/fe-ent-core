@@ -68,18 +68,18 @@
       Modal,
       Upload,
       Popover,
-      CommandButton,
+      CommandButton
     },
 
     props: {
       editor: {
         type: Editor,
-        required: true,
+        required: true
       },
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup() {
@@ -93,14 +93,14 @@
     data() {
       return {
         imageUploadDialogVisible: false,
-        uploading: false,
+        uploading: false
       };
     },
 
     computed: {
       imageNodeOptions() {
         return this.editor.extensionManager.extensions.find((e) => e.name === 'image')!.options;
-      },
+      }
     },
 
     methods: {
@@ -111,7 +111,7 @@
           inputPlaceholder: this.t('editor.extensions.Image.control.insert_by_url.placeholder'),
           inputPattern: this.imageNodeOptions.urlPattern,
           inputErrorMessage: this.t('editor.extensions.Image.control.insert_by_url.invalid_url'),
-          roundButton: true,
+          roundButton: true
         })
           .then(({ value: url }) => {
             this.editor.commands.setImage({ src: url });
@@ -127,7 +127,7 @@
         const uploadRequest = this.imageNodeOptions.uploadRequest;
 
         const loadingInstance = ElLoading.service({
-          target: '.ent-tiptap-upload',
+          target: '.ent-tiptap-upload'
         });
         try {
           const url = await (uploadRequest ? uploadRequest(file) : readFileDataUrl(file));
@@ -140,7 +140,7 @@
             loadingInstance.close();
           });
         }
-      },
-    },
+      }
+    }
   });
 </script>

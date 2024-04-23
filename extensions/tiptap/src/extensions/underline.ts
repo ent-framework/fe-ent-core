@@ -23,13 +23,13 @@ const Underline = TiptapUnderline.extend<CustomUnderlineOptions>({
           disabled: false,
           isActive(editor: Editor) {
             return editor.isActive('underline');
-          },
-        },
+          }
+        }
       ],
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -44,12 +44,12 @@ const Underline = TiptapUnderline.extend<CustomUnderlineOptions>({
             buttonIcon: extension.options.buttonIcon,
             isActive: editor.isActive('underline'),
             icon: svg,
-            tooltip: t('editor.extensions.Underline.tooltip'),
-          },
+            tooltip: t('editor.extensions.Underline.tooltip')
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default Underline;

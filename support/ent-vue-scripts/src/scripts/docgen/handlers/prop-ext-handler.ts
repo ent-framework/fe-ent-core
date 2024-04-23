@@ -17,7 +17,7 @@ export async function propExtHandler(
   documentation: Documentation,
   path: NodePath,
   ast: bt.File,
-  opt: ParseOptions,
+  opt: ParseOptions
 ) {
   if (bt.isObjectExpression(path.node)) {
     const propsPath = path
@@ -75,7 +75,7 @@ export async function propExtHandler(
                 p,
                 ast,
                 opt,
-                modelPropertyName,
+                modelPropertyName
               );
             }
           }

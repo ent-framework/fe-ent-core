@@ -15,14 +15,14 @@
     components: { EntTitle },
     props: {
       title: {
-        type: [Function, String] as PropType<string | ((data) => string)>,
+        type: [Function, String] as PropType<string | ((data) => string)>
       },
       getSelectRows: {
-        type: Function as PropType<() => Recordable[]>,
+        type: Function as PropType<() => Recordable[]>
       },
       helpMessage: {
-        type: [String, Array] as PropType<string | string[]>,
-      },
+        type: [String, Array] as PropType<string | string[]>
+      }
     },
     setup(props) {
       const { prefixCls } = useDesign('basic-table-title');
@@ -33,13 +33,13 @@
 
         if (title && typeof title === 'function') {
           tit = title({
-            selectRows: getSelectRows(),
+            selectRows: getSelectRows()
           });
         }
         return tit;
       });
 
       return { getTitle, prefixCls };
-    },
+    }
   });
 </script>

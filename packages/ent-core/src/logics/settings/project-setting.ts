@@ -3,7 +3,7 @@ import {
   PermissionModeEnum,
   RouterTransitionEnum,
   SessionTimeoutProcessingEnum,
-  ThemeEnum,
+  ThemeEnum
 } from '../enums';
 import type { ProjectConfig } from '../../store/types';
 import type { DeepPartial } from '../../types';
@@ -31,9 +31,9 @@ const setting: DeepPartial<ProjectConfig> = {
         successColor: '#58a732',
         warningColor: '#f0a818',
         errorColor: '#e55c5c',
-        infoColor: '#d9d9d9',
-      },
-    },
+        infoColor: '#d9d9d9'
+      }
+    }
   },
 
   // Transition Setting
@@ -50,7 +50,7 @@ const setting: DeepPartial<ProjectConfig> = {
     openPageLoading: true,
 
     // Whether to open the top progress bar
-    openNProgress: true,
+    openNProgress: true
   },
 
   // Whether to delete unclosed messages and notify when switching the interface
@@ -61,7 +61,7 @@ const setting: DeepPartial<ProjectConfig> = {
   removeAllHttpPending: false,
 
   // Use error-handler-plugin
-  useErrorHandle: false,
+  useErrorHandle: false
 };
 
 export { setting as defaultProjectSetting };

@@ -59,7 +59,7 @@ export function downloadByData(data: BlobPart, filename: string, mime?: string, 
 export function downloadByUrl({
   url,
   target = '_blank',
-  fileName,
+  fileName
 }: {
   url: string;
   target?: TargetContext;

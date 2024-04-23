@@ -2,29 +2,29 @@ export default {
   editor: {
     extensions: {
       Bold: {
-        tooltip: 'Полужирный',
+        tooltip: 'Полужирный'
       },
       Underline: {
-        tooltip: 'Подчеркнутый',
+        tooltip: 'Подчеркнутый'
       },
       Italic: {
-        tooltip: 'Курсив',
+        tooltip: 'Курсив'
       },
       Strike: {
-        tooltip: 'Зачеркнутый',
+        tooltip: 'Зачеркнутый'
       },
       Heading: {
         tooltip: 'Заголовок',
         buttons: {
           paragraph: 'Параграф',
-          heading: 'Заголовок',
-        },
+          heading: 'Заголовок'
+        }
       },
       Blockquote: {
-        tooltip: 'Цитата',
+        tooltip: 'Цитата'
       },
       CodeBlock: {
-        tooltip: 'Блок кода',
+        tooltip: 'Блок кода'
       },
       Link: {
         add: {
@@ -34,8 +34,8 @@ export default {
             href: 'Адрес',
             open_in_new_tab: 'Открыть в новой вкладке',
             confirm: 'Применить',
-            cancel: 'Отменить',
-          },
+            cancel: 'Отменить'
+          }
         },
         edit: {
           tooltip: 'Редактировать ссылку',
@@ -44,36 +44,36 @@ export default {
             href: 'Адрес',
             open_in_new_tab: 'Открыть в новой вкладке',
             confirm: 'Обновить',
-            cancel: 'Отменить',
-          },
+            cancel: 'Отменить'
+          }
         },
         unlink: {
-          tooltip: 'Удалить ссылку',
+          tooltip: 'Удалить ссылку'
         },
         open: {
-          tooltip: 'Открыть ссылку',
-        },
+          tooltip: 'Открыть ссылку'
+        }
       },
       Image: {
         buttons: {
           insert_image: {
             tooltip: 'Вставить картинку',
             external: 'Вставить картинку по ссылке',
-            upload: 'Загрузить картинку',
+            upload: 'Загрузить картинку'
           },
           remove_image: {
-            tooltip: 'Удалить',
+            tooltip: 'Удалить'
           },
           image_options: {
-            tooltip: 'Опции изображения',
+            tooltip: 'Опции изображения'
           },
           display: {
             tooltip: 'Положение',
             inline: 'В тексте',
             block: 'Обтекание текстом',
             left: 'Слева',
-            right: 'Справа',
-          },
+            right: 'Справа'
+          }
         },
         control: {
           insert_by_url: {
@@ -81,11 +81,11 @@ export default {
             placeholder: 'Адрес картинки',
             confirm: 'Вставить',
             cancel: 'Отменить',
-            invalid_url: 'Пожалуйста введите правильный адрес',
+            invalid_url: 'Пожалуйста введите правильный адрес'
           },
           upload_image: {
             title: 'Загрузить картинку',
-            button: 'Выберите файл изображения или перетащите сюда',
+            button: 'Выберите файл изображения или перетащите сюда'
           },
           edit_image: {
             title: 'Редактировать изображение',
@@ -95,10 +95,10 @@ export default {
               src: 'Адрес картинки',
               alt: 'Альтернативный текст',
               width: 'Ширина',
-              height: 'Высота',
-            },
-          },
-        },
+              height: 'Высота'
+            }
+          }
+        }
       },
       Iframe: {
         tooltip: 'Вставить видео',
@@ -106,49 +106,49 @@ export default {
           title: 'Вставить видео',
           placeholder: 'Адрес',
           confirm: 'Вставить',
-          cancel: 'Отменить',
-        },
+          cancel: 'Отменить'
+        }
       },
       BulletList: {
-        tooltip: 'Маркированный список',
+        tooltip: 'Маркированный список'
       },
       OrderedList: {
-        tooltip: 'Нумерованный список',
+        tooltip: 'Нумерованный список'
       },
       TodoList: {
-        tooltip: 'Список задач',
+        tooltip: 'Список задач'
       },
       TextAlign: {
         buttons: {
           align_left: {
-            tooltip: 'Выровнять по левому краю',
+            tooltip: 'Выровнять по левому краю'
           },
           align_center: {
-            tooltip: 'Выровнять по центру',
+            tooltip: 'Выровнять по центру'
           },
           align_right: {
-            tooltip: 'Выровнять по правому краю',
+            tooltip: 'Выровнять по правому краю'
           },
           align_justify: {
-            tooltip: 'Выровнять по ширине',
-          },
-        },
+            tooltip: 'Выровнять по ширине'
+          }
+        }
       },
       FontType: {
-        tooltip: 'Шрифт',
+        tooltip: 'Шрифт'
       },
       FontSize: {
         tooltip: 'Размер шрифта',
-        default: 'По умолчанию',
+        default: 'По умолчанию'
       },
       TextColor: {
-        tooltip: 'Цвет текста',
+        tooltip: 'Цвет текста'
       },
       TextHighlight: {
-        tooltip: 'Цвет выделения текста',
+        tooltip: 'Цвет выделения текста'
       },
       LineHeight: {
-        tooltip: 'Интервал',
+        tooltip: 'Интервал'
       },
       Table: {
         tooltip: 'Таблица',
@@ -162,53 +162,53 @@ export default {
           delete_row: 'Удалить строку',
           merge_cells: 'Объединить ячейки',
           split_cell: 'Разделить ячейки',
-          delete_table: 'Удалить таблицу',
-        },
+          delete_table: 'Удалить таблицу'
+        }
       },
       Indent: {
         buttons: {
           indent: {
-            tooltip: 'Увеличить отступ',
+            tooltip: 'Увеличить отступ'
           },
           outdent: {
-            tooltip: 'Уменьшить отступ',
-          },
-        },
+            tooltip: 'Уменьшить отступ'
+          }
+        }
       },
       FormatClear: {
-        tooltip: 'Очистить форматирование',
+        tooltip: 'Очистить форматирование'
       },
       HorizontalRule: {
-        tooltip: 'Горизонтальная линия',
+        tooltip: 'Горизонтальная линия'
       },
       History: {
         tooltip: {
           undo: 'Отменить',
-          redo: 'Повторить',
-        },
+          redo: 'Повторить'
+        }
       },
       Fullscreen: {
         tooltip: {
           fullscreen: 'Полноэкранный режим',
-          exit_fullscreen: 'Выйти из полноэкранного режима',
-        },
+          exit_fullscreen: 'Выйти из полноэкранного режима'
+        }
       },
       Print: {
-        tooltip: 'Печать',
+        tooltip: 'Печать'
       },
       Preview: {
         tooltip: 'Предварительный просмотр',
         dialog: {
-          title: 'Предварительный просмотр',
-        },
+          title: 'Предварительный просмотр'
+        }
       },
       SelectAll: {
-        tooltip: 'Выделить все',
+        tooltip: 'Выделить все'
       },
       CodeView: {
-        tooltip: 'Просмотр кода',
-      },
+        tooltip: 'Просмотр кода'
+      }
     },
-    characters: 'Количество символов',
-  },
+    characters: 'Количество символов'
+  }
 };

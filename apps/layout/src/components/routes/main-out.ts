@@ -14,6 +14,6 @@ export const mainOutRoute: AppRouteRecordRaw = {
   component: MainOut,
   meta: {
     title: 'MainOut',
-    ignoreAuth: true,
-  },
+    ignoreAuth: true
+  }
 };

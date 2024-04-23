@@ -5,7 +5,7 @@
     NLoadingBarProvider,
     NMessageProvider,
     NModalProvider,
-    NNotificationProvider,
+    NNotificationProvider
   } from 'naive-ui';
   import { createBreakpointListen } from '../../../hooks/event/use-breakpoint';
   import { createAppProviderContext } from './use-app-context';
@@ -15,7 +15,7 @@
     /**
      * class style prefix
      */
-    prefixCls: { type: String, default: 'ent' },
+    prefixCls: { type: String, default: 'ent' }
   };
 
   export default defineComponent({
@@ -26,7 +26,7 @@
       NNotificationProvider,
       NMessageProvider,
       NModalProvider,
-      EntAppProviderWrapper,
+      EntAppProviderWrapper
     },
     inheritAttrs: false,
     props,
@@ -46,7 +46,7 @@
       // Inject variables into the global
       createAppProviderContext({ prefixCls, isMobile });
       //return () => slots.default?.();
-    },
+    }
   });
 </script>
 

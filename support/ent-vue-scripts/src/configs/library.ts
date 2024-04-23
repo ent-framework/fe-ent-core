@@ -22,7 +22,7 @@ async function defineLibraryConfig(source: boolean) {
     root,
     enableAnalyze: false,
     enableMock: false,
-    compress: 'none',
+    compress: 'none'
   });
   const { dependencies = {}, peerDependencies = {} } = await readPackageJSON(root);
   const deps = [...Object.keys(dependencies), ...Object.keys(peerDependencies)];
@@ -30,8 +30,8 @@ async function defineLibraryConfig(source: boolean) {
     glob.sync('**/*.{ts,tsx,vue}', {
       cwd: base,
       absolute: false,
-      onlyFiles: true,
-    }),
+      onlyFiles: true
+    })
   ).map((file) => `${base}/${file}`);
   const packageConfig: UserConfig = {
     build: {
@@ -41,7 +41,7 @@ async function defineLibraryConfig(source: boolean) {
       minify: false,
       sourcemap: true,
       lib: {
-        entry: `${base}/index.ts`,
+        entry: `${base}/index.ts`
       },
       rollupOptions: {
         input,
@@ -53,28 +53,28 @@ async function defineLibraryConfig(source: boolean) {
             entryFileNames: '[name].mjs',
             preserveModules: true,
             exports: 'named',
-            preserveModulesRoot: 'src',
-          },
+            preserveModulesRoot: 'src'
+          }
         ],
-        external: [...deps],
+        external: [...deps]
         // output: {
         //   exports: 'named',
         // },
-      },
+      }
     },
     css: {
       preprocessorOptions: {
         less: {
           modifyVars: generateModifyVars(),
-          javascriptEnabled: true,
-        },
-      },
+          javascriptEnabled: true
+        }
+      }
     },
-    plugins: [external(source), ...plugins, vueExportHelper()],
+    plugins: [external(source), ...plugins, vueExportHelper()]
   };
   const mergedConfig = mergeConfig(
     commonConfig({ command: 'build', mode: 'production' }),
-    packageConfig,
+    packageConfig
   );
 
   return mergedConfig as InlineConfig;

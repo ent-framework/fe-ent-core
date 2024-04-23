@@ -25,6 +25,6 @@ export function generateModifyVars(cssModifyOptions?: ModifyVarOptions) {
   const cssModifyVars = cssModifyOptions?.cssModifyVars || {};
   return {
     hack: `true;@import (reference) "${preLoadFile}";`,
-    ...cssModifyVars,
+    ...cssModifyVars
   };
 }

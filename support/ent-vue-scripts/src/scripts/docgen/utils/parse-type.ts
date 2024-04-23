@@ -6,7 +6,7 @@ import type { NodePath } from 'ast-types/lib/node-path';
 import type { ParamTag } from 'vue-inbrowser-compiler-independent-utils';
 export function parseType(prop: PropDescriptor, path: NodePath) {
   const typeMatch = prop.type?.name.match(
-    /propTypes\.(string|bool|func|number|object|integer|array|oneOfType|oneOf)/,
+    /propTypes\.(string|bool|func|number|object|integer|array|oneOfType|oneOf)/
   );
 
   if (typeMatch) {
@@ -18,14 +18,14 @@ export function parseType(prop: PropDescriptor, path: NodePath) {
         if (typeTag) {
           prop.type = {
             name: `${(typeTag as ParamTag).type?.name}`,
-            func: false,
+            func: false
           };
         }
         const defaultTag = jsDoc.tags.find((t) => t.title === 'default');
         if (defaultTag) {
           prop.defaultValue = {
             value: `${(defaultTag as Tag).content}`,
-            func: false,
+            func: false
           };
         }
         const requiredTag = jsDoc.tags.find((t) => t.title === 'required');

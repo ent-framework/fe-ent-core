@@ -10,7 +10,7 @@ export const btnProps = {
    */
   icon: { type: String },
 
-  iconSize: { type: Number, default: 14 },
+  iconSize: { type: Number, default: 14 }
 };
 
 export const popConfirmBtnProps = {
@@ -20,20 +20,20 @@ export const popConfirmBtnProps = {
    * 图标文件
    */
   icon: {
-    type: [String, Function] as PropType<string | (() => VNodeChild)>,
+    type: [String, Function] as PropType<string | (() => VNodeChild)>
   },
 
   /**
    * 弹窗的配置属性
    */
   popConfirmProps: {
-    type: Object as PropType<Partial<PopconfirmProps>>,
+    type: Object as PropType<Partial<PopconfirmProps>>
   },
 
   /**
    * 提示
    */
   tooltipProps: {
-    type: Object as PropType<Partial<TooltipProps>>,
-  },
+    type: Object as PropType<Partial<TooltipProps>>
+  }
 };

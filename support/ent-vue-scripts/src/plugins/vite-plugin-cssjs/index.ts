@@ -10,9 +10,9 @@ export default function cssjsPlugin(): Plugin {
           type: 'asset',
           fileName: filename.replace('index.js', 'css.js'),
           // @ts-ignore
-          source: chunk.code.replace(/\.less/g, '.css'),
+          source: chunk.code.replace(/\.less/g, '.css')
         });
       }
-    },
+    }
   };
 }

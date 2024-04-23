@@ -14,12 +14,12 @@
       const getBindValue = computed(() => ({
         ...props,
         ...attrs,
-        type: 'password',
+        type: 'password'
       }));
 
       return {
-        getBindValue,
+        getBindValue
       };
-    },
+    }
   });
 </script>

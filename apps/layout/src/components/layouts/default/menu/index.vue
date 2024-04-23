@@ -21,15 +21,15 @@
     props: {
       splitType: {
         type: Number as PropType<MenuSplitTyeEnum>,
-        default: MenuSplitTyeEnum.NONE,
+        default: MenuSplitTyeEnum.NONE
       },
 
       isHorizontal: propTypes.bool,
       // menu Mode
       menuMode: {
         type: [String] as PropType<Nullable<MenuModeEnum>>,
-        default: '',
-      },
+        default: ''
+      }
     },
     setup(props) {
       const go = useGo();
@@ -42,7 +42,7 @@
         getAccordion,
         getIsHorizontal,
         getIsSidebarType,
-        getSplit,
+        getSplit
       } = useMenuSetting();
       const { getShowLogo } = useLayoutThemeSetting();
 
@@ -55,7 +55,7 @@
       const { getIsMobile } = useAppInject();
 
       const getComputedMenuMode = computed(() =>
-        unref(getIsMobile) ? MenuModeEnum.INLINE : props.menuMode || unref(getMenuMode),
+        unref(getIsMobile) ? MenuModeEnum.INLINE : props.menuMode || unref(getMenuMode)
       );
 
       const getIsShowLogo = computed(() => unref(getShowLogo) && unref(getIsSidebarType));
@@ -70,7 +70,7 @@
       });
       const getWrapperStyle = computed((): CSSProperties => {
         return {
-          height: `calc(100% - ${unref(getIsShowLogo) ? '48px' : '0px'})`,
+          height: `calc(100% - ${unref(getIsShowLogo) ? '48px' : '0px'})`
         };
       });
 
@@ -78,8 +78,8 @@
         return [
           `${prefixCls}-logo`,
           {
-            [`${prefixCls}--mobile`]: unref(getIsMobile),
-          },
+            [`${prefixCls}--mobile`]: unref(getIsMobile)
+          }
         ];
       });
 
@@ -91,7 +91,7 @@
           accordion: unref(getAccordion),
           collapsed: unref(getCollapsed),
           collapsedShowTitle: unref(getCollapsedShowTitle),
-          onMenuClick: handleMenuClick,
+          onMenuClick: handleMenuClick
         };
       });
       /**
@@ -146,7 +146,7 @@
               ? menu.children.map((m) => convertToItem(m))
               : undefined,
           name: menu.name,
-          path: menu.path,
+          path: menu.path
         };
         return m;
       }
@@ -196,6 +196,6 @@
           </>
         );
       };
-    },
+    }
   });
 </script>

@@ -13,7 +13,7 @@
   import type { CSSProperties } from 'vue';
 
   defineProps({
-    frameSrc: propTypes.string.def(''),
+    frameSrc: propTypes.string.def('')
   });
 
   const loading = ref(true);
@@ -27,7 +27,7 @@
 
   const getWrapStyle = computed((): CSSProperties => {
     return {
-      height: `${unref(heightRef)}px`,
+      height: `${unref(heightRef)}px`
     };
   });
 

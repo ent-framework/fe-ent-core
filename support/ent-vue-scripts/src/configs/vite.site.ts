@@ -7,6 +7,6 @@ import type { InlineConfig } from 'vite';
 export default async function getDocSiteConfig(options: DefineOptions) {
   const config = await defineProjectConfig(options);
   return mergeConfig(config, {
-    plugins: [vueDocs()],
+    plugins: [vueDocs()]
   } as InlineConfig);
 }

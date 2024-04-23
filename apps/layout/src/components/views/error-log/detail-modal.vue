@@ -15,14 +15,14 @@
   defineProps({
     info: {
       type: Object as PropType<ErrorLogInfo>,
-      default: null,
-    },
+      default: null
+    }
   });
 
   const { t } = useI18n();
 
   const [register] = useDescription({
     column: 2,
-    schema: getDescSchema(),
+    schema: getDescSchema()
   });
 </script>

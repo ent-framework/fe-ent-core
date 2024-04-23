@@ -22,7 +22,7 @@
       NBackTop,
       LayoutLockPage,
       SettingDrawer,
-      SessionTimeoutLogin,
+      SessionTimeoutLogin
     },
     setup() {
       const { getUseOpenBackTop, getShowSettingButton, getSettingButtonPosition, getFullContent } =
@@ -50,8 +50,8 @@
         getUseOpenBackTop,
         getIsFixedSettingDrawer,
         prefixCls,
-        getIsSessionTimeout,
+        getIsSessionTimeout
       };
-    },
+    }
   });
 </script>

@@ -4,11 +4,11 @@ import type { ParamTag, PropDescriptor } from 'vue-docgen-api';
 const tmpl = (
   props: PropDescriptor[],
   { isInterface = false }: { isInterface: boolean },
-  lang: string,
+  lang: string
 ) => {
   const displayableProps = props.filter(
     ({ name, description, tags }) =>
-      description || ['disabled'].includes(name) || lang in (tags ?? {}),
+      description || ['disabled'].includes(name) || lang in (tags ?? {})
   );
   const hasVersion = displayableProps.some((prop) => prop?.tags?.version);
   const content = displayableProps
@@ -23,7 +23,7 @@ const tmpl = (
       const fixedType = cleanStr(
         // tag 的 ts 类型有问题，所以忽略 ts 规则检查
         // @ts-ignore-next-line
-        trimStr(tags?.type?.[0]?.description || type?.name || ''),
+        trimStr(tags?.type?.[0]?.description || type?.name || '')
       );
 
       const getName = () =>
@@ -47,7 +47,7 @@ const tmpl = (
                 const fixItem = fixedType === 'string' ? `'${unquote(item)}'` : item;
                 return fixItem;
               })
-              .join(' | '),
+              .join(' | ')
           );
         }
         return escapeCharacter(fixedType);
@@ -100,7 +100,7 @@ const tmpl = (
     .join('\n');
   return {
     hasVersion,
-    content,
+    content
   };
 };
 

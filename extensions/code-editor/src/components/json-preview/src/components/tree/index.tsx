@@ -15,47 +15,47 @@ export default defineComponent({
     // JSONLike data.
     data: {
       type: Object as PropType<JSONDataType>,
-      default: null,
+      default: null
     },
     // Define the depth of the tree, nodes greater than this depth will not be expanded.
     deep: {
       type: Number,
-      default: Number.POSITIVE_INFINITY,
+      default: Number.POSITIVE_INFINITY
     },
     deepCollapseChildren: {
       type: Boolean,
-      default: false,
+      default: false
     },
     collapsePath: {
       type: RegExp,
-      default: null,
+      default: null
     },
     // Data root path.
     path: {
       type: String,
-      default: 'root',
+      default: 'root'
     },
     // Whether to use virtual scroll, usually applied to big data.
     virtual: {
       type: Boolean,
-      default: false,
+      default: false
     },
     //When using virtual scroll, set the number of items there can be
     virtualLines: {
       type: Number,
-      default: 10,
+      default: 10
     },
     // When using virtual scroll, define the height of each row.
     itemHeight: {
       type: Number,
-      default: 20,
+      default: 20
     },
     // When there is a selection function, define the selected path.
     // For multiple selections, it is an array ['root.a','root.b'], for single selection, it is a string of 'root.a'.
     modelValue: {
       type: [String, Array] as PropType<string | string[]>,
-      default: () => '',
-    },
+      default: () => ''
+    }
   },
 
   emits: ['click', 'change', 'update:modelValue'],
@@ -78,11 +78,11 @@ export default defineComponent({
         ) {
           return {
             ...acc,
-            [item.path]: 1,
+            [item.path]: 1
           };
         }
         return acc;
-      }, {}) as Record<string, 1>,
+      }, {}) as Record<string, 1>
     });
 
     const flatData = computed(() => {
@@ -90,7 +90,7 @@ export default defineComponent({
       const data = jsonFlatten(props.data, props.path).reduce((acc, cur, index) => {
         const item = {
           ...cur,
-          id: index,
+          id: index
         };
         const isHidden = state.hiddenPaths[item.path];
         if (startHiddenItem && startHiddenItem.path === item.path) {
@@ -99,7 +99,7 @@ export default defineComponent({
             ...startHiddenItem,
             ...item,
             content: isObject ? '{...}' : '[...]',
-            type: isObject ? 'objectCollapsed' : 'arrayCollapsed',
+            type: isObject ? 'objectCollapsed' : 'arrayCollapsed'
           } as NodeDataType;
           startHiddenItem = null;
           return acc.concat(mergeItem);
@@ -185,7 +185,7 @@ export default defineComponent({
       if (collapsed) {
         state.hiddenPaths = {
           ...state.hiddenPaths,
-          [path]: 1,
+          [path]: 1
         };
       } else {
         const newPaths = { ...state.hiddenPaths };
@@ -214,7 +214,7 @@ export default defineComponent({
       onTreeScroll,
       onSelectedChange,
       onTreeNodeClick,
-      onBracketsClick,
+      onBracketsClick
     };
   },
 
@@ -234,7 +234,7 @@ export default defineComponent({
       state,
       flatData,
       selectedPaths,
-      selectableType,
+      selectableType
     } = this;
 
     const { onTreeNodeClick, onBracketsClick, onSelectedChange, onTreeScroll } = this;
@@ -268,7 +268,7 @@ export default defineComponent({
         ref="tree"
         class={{
           'vjs-tree': true,
-          'is-virtual': virtual,
+          'is-virtual': virtual
         }}
         onScroll={onTreeScroll}
       >
@@ -281,5 +281,5 @@ export default defineComponent({
         )}
       </div>
     );
-  },
+  }
 });

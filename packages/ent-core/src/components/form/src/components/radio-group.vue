@@ -16,26 +16,26 @@
     ...radioProps,
     options: {
       type: Array as PropType<OptionsItem[]>,
-      default: () => [],
-    },
+      default: () => []
+    }
   };
   export default defineComponent({
     name: 'RadioGroup',
     components: {
       NRadio,
-      NRadioGroup,
+      NRadioGroup
     },
     inheritAttrs: false,
     props,
     setup(props, { attrs }) {
       const getBindValue = computed(() => ({
         ...props,
-        ...attrs,
+        ...attrs
       }));
 
       return {
-        getBindValue,
+        getBindValue
       };
-    },
+    }
   });
 </script>

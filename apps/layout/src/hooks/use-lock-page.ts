@@ -37,14 +37,14 @@ export function useLockPage() {
       () => {
         lockPage();
       },
-      lockTime * 60 * 1000,
+      lockTime * 60 * 1000
     );
   }
 
   function lockPage(): void {
     lockStore.setLockInfo({
       isLock: true,
-      pwd: undefined,
+      pwd: undefined
     });
   }
 

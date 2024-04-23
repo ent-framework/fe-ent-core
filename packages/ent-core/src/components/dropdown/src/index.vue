@@ -15,7 +15,7 @@
   import type { DropMenu } from './typing';
   import type {
     DropdownDividerOption,
-    DropdownMixedOption,
+    DropdownMixedOption
   } from 'naive-ui/es/dropdown/src/interface';
 
   export default defineComponent({
@@ -29,7 +29,7 @@
        * 点击菜单时触发
        * @param {{onClick?: Function;to?: string;icon?: string;event: string | number; text: string;disabled?: boolean;divider?: boolean}} menu
        */
-      'menuEvent',
+      'menuEvent'
     ],
     setup(props, { emit, attrs }) {
       const { prefixCls } = useDesign('dropdown');
@@ -43,7 +43,7 @@
       const getBindValue = computed(() => {
         return {
           ...props,
-          ...attrs,
+          ...attrs
         };
       });
 
@@ -59,7 +59,7 @@
             tooltipProps = {},
             confirm,
             popConfirmProps = {},
-            onClick,
+            onClick
           } = item;
           options.push({
             type: 'render',
@@ -75,7 +75,7 @@
                       return createTextVNode(tooltip);
                     }
                     return null;
-                  },
+                  }
                 });
               }
               if (confirm) {
@@ -87,14 +87,14 @@
                       return createTextVNode(confirm);
                     }
                     return null;
-                  },
+                  }
                 });
               }
               if (label) {
                 Object.assign(slots, {
                   default: () => {
                     return createTextVNode(label);
-                  },
+                  }
                 });
               }
               const { icon } = item;
@@ -115,17 +115,17 @@
                       return icon?.();
                     }
                     return null;
-                  },
+                  }
                 },
-                { ...slots },
+                { ...slots }
               );
-            },
+            }
           } as DropdownRenderOption);
 
           if (item.appendDivider) {
             options.push({
               type: 'divider',
-              key: item.key,
+              key: item.key
             } as DropdownDividerOption);
           }
         });
@@ -138,8 +138,8 @@
         getAttr,
         handleClickMenu,
         getOptions,
-        prefixCls,
+        prefixCls
       };
-    },
+    }
   });
 </script>

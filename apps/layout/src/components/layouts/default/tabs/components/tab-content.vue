@@ -30,9 +30,9 @@
     props: {
       tabItem: {
         type: Object as PropType<RouteLocationNormalized>,
-        default: null,
+        default: null
       },
-      isExtra: Boolean,
+      isExtra: Boolean
     },
     setup(props) {
       const { prefixCls } = useDesign('multiple-tabs-content');
@@ -46,12 +46,12 @@
       const getIsTabs = computed(() => !props.isExtra);
 
       const getTrigger = computed((): 'hover' | 'click' | 'focus' | 'manual' =>
-        unref(getIsTabs) ? 'manual' : 'click',
+        unref(getIsTabs) ? 'manual' : 'click'
       );
 
       const { getDropMenuList, handleMenuEvent, handleContextMenu } = useTabDropdown(
         props as TabContentProps,
-        getIsTabs,
+        getIsTabs
       );
 
       function handleContext(e) {
@@ -65,8 +65,8 @@
         handleContext,
         getTrigger,
         getIsTabs,
-        getTitle,
+        getTitle
       };
-    },
+    }
   });
 </script>

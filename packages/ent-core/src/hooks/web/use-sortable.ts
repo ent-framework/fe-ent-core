@@ -13,7 +13,7 @@ export function useSortable(el: HTMLElement | Ref<HTMLElement>, options?: Sortab
         animation: 500,
         delay: 400,
         delayOnTouchOnly: true,
-        ...options,
+        ...options
       });
     });
   }

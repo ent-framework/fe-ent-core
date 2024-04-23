@@ -24,7 +24,7 @@ const Print = Extension.create({
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -38,10 +38,10 @@ const Print = Extension.create({
             },
             buttonIcon: extension.options.buttonIcon,
             icon: svg,
-            tooltip: t('editor.extensions.Print.tooltip'),
-          },
+            tooltip: t('editor.extensions.Print.tooltip')
+          }
         };
-      },
+      }
     };
   },
 
@@ -51,15 +51,15 @@ const Print = Extension.create({
         () =>
         ({ view }) => {
           return printEditorContent(view);
-        },
+        }
     };
   },
 
   addKeyboardShortcuts() {
     return {
-      'Mod-p': () => this.editor.commands.print(),
+      'Mod-p': () => this.editor.commands.print()
     };
-  },
+  }
 });
 
 export default Print;

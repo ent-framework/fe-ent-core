@@ -17,7 +17,7 @@ import {
   NSwitch,
   NTimePicker,
   NTransfer,
-  NTreeSelect,
+  NTreeSelect
 } from 'naive-ui';
 
 import { EntUpload } from '../../upload';

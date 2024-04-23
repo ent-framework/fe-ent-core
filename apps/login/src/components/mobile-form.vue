@@ -47,7 +47,7 @@
 
   const formData = reactive({
     mobile: '',
-    sms: '',
+    sms: ''
   });
 
   const { validForm } = useFormValid(formRef);

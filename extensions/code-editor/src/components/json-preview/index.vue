@@ -7,6 +7,6 @@
   //import 'vue-json-pretty/lib/styles.css';
 
   defineProps({
-    data: Object,
+    data: Object
   });
 </script>

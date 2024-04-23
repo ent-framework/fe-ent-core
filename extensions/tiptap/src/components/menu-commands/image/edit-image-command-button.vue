@@ -65,7 +65,7 @@
       FormItem,
       Input,
       Button,
-      CommandButton,
+      CommandButton
     },
 
     props: {
@@ -73,8 +73,8 @@
       updateAttrs: nodeViewProps['updateAttributes'],
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup() {
@@ -88,7 +88,7 @@
       return {
         editImageDialogVisible: false,
 
-        imageAttrs: this.getImageAttrs(),
+        imageAttrs: this.getImageAttrs()
       };
     },
 
@@ -102,7 +102,7 @@
           src: this.node!.attrs.src,
           alt: this.node!.attrs.alt,
           width: this.node!.attrs.width,
-          height: this.node!.attrs.height,
+          height: this.node!.attrs.height
         };
       },
 
@@ -116,7 +116,7 @@
         this.updateAttrs!({
           alt: this.imageAttrs.alt,
           width: width >= 0 ? width : null,
-          height: height >= 0 ? height : null,
+          height: height >= 0 ? height : null
         });
 
         this.closeEditImageDialog();
@@ -128,7 +128,7 @@
 
       closeEditImageDialog() {
         this.editImageDialogVisible = false;
-      },
-    },
+      }
+    }
   });
 </script>

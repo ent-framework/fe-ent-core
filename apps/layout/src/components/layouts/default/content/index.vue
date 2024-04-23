@@ -9,7 +9,7 @@
     useContentViewHeight,
     useDesign,
     useRootSetting,
-    useTransitionSetting,
+    useTransitionSetting
   } from 'fe-ent-core/es/hooks';
   import PageLayout from '../../page/index.vue';
   import { useLayoutThemeSetting } from '../../../../hooks';
@@ -28,8 +28,8 @@
         prefixCls,
         getOpenPageLoading,
         getLayoutContentMode,
-        getPageLoading,
+        getPageLoading
       };
-    },
+    }
   });
 </script>

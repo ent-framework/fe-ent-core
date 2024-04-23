@@ -10,7 +10,7 @@ export default defineComponent({
   props: {
     vertical: Boolean,
     size: String,
-    move: Number,
+    move: Number
   },
 
   setup(props) {
@@ -36,7 +36,7 @@ export default defineComponent({
 
     const clickTrackHandler = (e: any) => {
       const offset = Math.abs(
-        e.target.getBoundingClientRect()[bar.value.direction] - e[bar.value.client],
+        e.target.getBoundingClientRect()[bar.value.direction] - e[bar.value.client]
       );
       const thumbHalf = thumb.value[bar.value.offset] / 2;
       const thumbPositionPercentage =
@@ -85,7 +85,7 @@ export default defineComponent({
         'div',
         {
           class: ['scrollbar__bar', `is-${bar.value.key}`],
-          onMousedown: clickTrackHandler,
+          onMousedown: clickTrackHandler
         },
         h('div', {
           ref: thumb,
@@ -94,9 +94,9 @@ export default defineComponent({
           style: renderThumbStyle({
             size: props.size,
             move: props.move,
-            bar: bar.value,
-          }),
-        }),
+            bar: bar.value
+          })
+        })
       );
-  },
+  }
 });

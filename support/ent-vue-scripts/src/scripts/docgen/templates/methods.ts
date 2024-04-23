@@ -43,7 +43,7 @@ const returnsTmpl = (returns: MethodDescriptor['returns']): string => {
 
 const tmpl = (methods: MethodDescriptor[], lang: string) => {
   const displayableMethods = methods.filter(
-    (method) => method.description || lang in (method.tags ?? {}),
+    (method) => method.description || lang in (method.tags ?? {})
   );
   const hasVersion = displayableMethods.some((method) => method?.tags?.version);
   const content = displayableMethods
@@ -57,7 +57,7 @@ const tmpl = (methods: MethodDescriptor[], lang: string) => {
       const readableParams = paramsTmpl(method.params) || '-';
       const readableReturns = returnsTmpl(method.returns) || '-';
       let lineContent = `|${name}|${escapeCharacter(description || '')}|${escapeCharacter(
-        readableParams,
+        readableParams
       )}|${escapeCharacter(readableReturns)}|`;
 
       if (hasVersion) {
@@ -71,7 +71,7 @@ const tmpl = (methods: MethodDescriptor[], lang: string) => {
 
   return {
     hasVersion,
-    content,
+    content
   };
 };
 

@@ -45,21 +45,21 @@
                         return icon?.();
                       }
                       return null;
-                    },
+                    }
                   }
                 : {
-                    renderIcon,
+                    renderIcon
                   }),
 
               ...(withClick
                 ? {
-                    onClick,
+                    onClick
                   }
-                : {}),
+                : {})
             },
             {
-              default: () => slots.default?.(),
-            },
+              default: () => slots.default?.()
+            }
           );
         };
 
@@ -74,7 +74,7 @@
               NPopconfirm,
               {
                 ...popConfirmProps,
-                onPositiveClick: onClick,
+                onPositiveClick: onClick
               },
               {
                 trigger: () => {
@@ -82,8 +82,8 @@
                 },
                 default: () => {
                   return slots.confirm?.();
-                },
-              },
+                }
+              }
             );
           }
           return renderButton(true);
@@ -100,14 +100,14 @@
               },
               default: () => {
                 return slots.tooltip?.();
-              },
-            },
+              }
+            }
           );
         } else if (slots.confirm) {
           return renderConfirmChild();
         }
         return null;
       };
-    },
+    }
   });
 </script>

@@ -19,18 +19,18 @@
     name: 'IframeCommandButton',
 
     components: {
-      CommandButton,
+      CommandButton
     },
 
     props: {
       editor: {
         type: Editor,
-        required: true,
+        required: true
       },
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup(props) {
@@ -46,13 +46,13 @@
             confirmButtonText: t('editor.extensions.Iframe.control.confirm'),
             cancelButtonText: t('editor.extensions.Iframe.control.cancel'),
             inputPlaceholder: t('editor.extensions.Iframe.control.placeholder'),
-            roundButton: true,
-          },
+            roundButton: true
+          }
         );
 
         props.editor.commands.setIframe({ src: href });
       };
       return { t, enableTooltip, isCodeViewMode, video, openInsertVideoControl };
-    },
+    }
   });
 </script>

@@ -14,12 +14,12 @@
       const getBindValue = computed(() => ({
         ...props,
         ...attrs,
-        type: 'yearrange',
+        type: 'yearrange'
       }));
 
       return {
-        getBindValue,
+        getBindValue
       };
-    },
+    }
   });
 </script>

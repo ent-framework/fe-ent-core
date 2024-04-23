@@ -69,7 +69,7 @@ const componentList = [
   'upload',
   'image',
   'overflow-list',
-  'scrollbar',
+  'scrollbar'
 ];
 
 export const isValidComponent = (component: string) => {

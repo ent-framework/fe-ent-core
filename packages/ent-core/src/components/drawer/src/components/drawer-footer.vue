@@ -32,7 +32,7 @@
   export default defineComponent({
     name: 'EntDrawerFooter',
     props: {
-      ...footerProps,
+      ...footerProps
     },
     emits: ['ok', 'close'],
     setup(props, { emit }) {
@@ -53,6 +53,6 @@
         emit('close');
       }
       return { handleOk, prefixCls, handleClose, okText, cancelText };
-    },
+    }
   });
 </script>

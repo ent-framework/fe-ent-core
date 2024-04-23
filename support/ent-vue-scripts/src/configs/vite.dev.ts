@@ -16,15 +16,15 @@ export default defineConfig({
       output: {
         entryFileNames: '[name].js',
         preserveModules: true,
-        preserveModulesRoot: 'components',
-      },
+        preserveModulesRoot: 'components'
+      }
     },
     lib: {
       entry: 'src/components/index.ts',
-      formats: ['es'],
+      formats: ['es']
     },
-    watch: {},
+    watch: {}
   },
 
-  plugins: [external(), vue(), vueJsx()],
+  plugins: [external(), vue(), vueJsx()]
 }) as InlineConfig;

@@ -9,7 +9,7 @@ import type {
   DataTableExpandColumn,
   DataTableRowKey,
   DataTableSelectionColumn,
-  PaginationProps,
+  PaginationProps
 } from 'naive-ui';
 import type { BasicColumn, BasicTableProps, GetColumnsParams } from '../types/table';
 
@@ -22,7 +22,7 @@ function handleItem(item: BasicColumn, ellipsis: boolean) {
     }
     if (!isBoolean(item.ellipsis)) {
       Object.assign(item, {
-        ellipsis,
+        ellipsis
       });
     }
   }
@@ -30,7 +30,7 @@ function handleItem(item: BasicColumn, ellipsis: boolean) {
     Object.assign(item, {
       render: (record) => {
         return get(record, key);
-      },
+      }
     });
   }
 }
@@ -38,7 +38,7 @@ function handleItem(item: BasicColumn, ellipsis: boolean) {
 function handleIndexColumn(
   propsRef: ComputedRef<BasicTableProps>,
   getPaginationRef: ComputedRef<boolean | PaginationProps>,
-  columns: DataTableColumn[],
+  columns: DataTableColumn[]
 ) {
   const { t } = useI18n();
 
@@ -50,7 +50,7 @@ function handleIndexColumn(
   }
   columns.forEach(() => {
     const indIndex = columns.findIndex(
-      (column) => (column as BasicColumn).key === INDEX_COLUMN_FLAG,
+      (column) => (column as BasicColumn).key === INDEX_COLUMN_FLAG
     );
     if (showIndexColumn) {
       pushIndexColumns = indIndex === -1;
@@ -77,10 +77,10 @@ function handleIndexColumn(
     },
     ...(isFixedLeft
       ? {
-          fixed: 'left',
+          fixed: 'left'
         }
       : {}),
-    ...indexColumnProps,
+    ...indexColumnProps
   });
 }
 
@@ -89,21 +89,21 @@ function handleActionColumn(propsRef: ComputedRef<BasicTableProps>, columns: Dat
   if (!actionColumn) return;
 
   const hasIndex = columns.findIndex(
-    (column) => (column as BasicColumn).key === ACTION_COLUMN_FLAG,
+    (column) => (column as BasicColumn).key === ACTION_COLUMN_FLAG
   );
   if (hasIndex === -1) {
     columns.push({
       ...columns[hasIndex],
       fixed: 'right',
       ...actionColumn,
-      key: ACTION_COLUMN_FLAG,
+      key: ACTION_COLUMN_FLAG
     } as BasicColumn);
   }
 }
 
 function handleRowSelectionColumn(
   propsRef: ComputedRef<BasicTableProps>,
-  columns: DataTableColumn[],
+  columns: DataTableColumn[]
 ) {
   const { rowSelection, selectionColumn = {} } = unref(propsRef);
   if (!rowSelection) return;
@@ -112,7 +112,7 @@ function handleRowSelectionColumn(
     key: ACTION_COLUMN_FLAG,
     type: 'selection',
     multiple: rowSelection.type === 'checkbox',
-    fixed: 'left',
+    fixed: 'left'
   } as DataTableSelectionColumn);
 }
 
@@ -121,7 +121,7 @@ function handleExpandColumn(propsRef: ComputedRef<BasicTableProps>, columns: Dat
   if (!expandColumn) return;
   columns.unshift({
     ...expandColumn,
-    type: 'expand',
+    type: 'expand'
   } as DataTableExpandColumn);
 }
 
@@ -131,7 +131,7 @@ function isBaseColumn(column: DataTableColumn) {
 
 export function useColumns(
   propsRef: ComputedRef<BasicTableProps>,
-  getPaginationRef: ComputedRef<false | PaginationProps>,
+  getPaginationRef: ComputedRef<false | PaginationProps>
 ) {
   const columnsRef = ref(unref(propsRef).columns) as Ref<DataTableColumn[]>;
   let cacheColumns =
@@ -156,7 +156,7 @@ export function useColumns(
 
         handleItem(
           baseColumn,
-          Reflect.has(baseColumn, 'ellipsis') ? !!baseColumn.ellipsis : !!ellipsis && !render,
+          Reflect.has(baseColumn, 'ellipsis') ? !!baseColumn.ellipsis : !!ellipsis && !render
         );
       }
     });
@@ -199,7 +199,7 @@ export function useColumns(
         (columns?.filter((item) => {
           return isBaseColumn(item);
         }) as BasicColumn[]) ?? [];
-    },
+    }
   );
 
   function setCacheColumnsByField(dataIndex: string | undefined, value: Partial<DataTableColumn>) {
@@ -247,7 +247,7 @@ export function useColumns(
       cacheColumns.forEach((item) => {
         newColumns.push({
           ...item,
-          defaultHidden: !columnKeys.includes(item.key as string),
+          defaultHidden: !columnKeys.includes(item.key as string)
         } as BasicColumn);
       });
       // Sort according to another array
@@ -302,7 +302,7 @@ export function useColumns(
     setColumns,
     getViewColumns,
     setCacheColumnsByField,
-    setCacheColumns,
+    setCacheColumns
   };
 }
 function sortFixedColumn(columns: DataTableColumn[]) {

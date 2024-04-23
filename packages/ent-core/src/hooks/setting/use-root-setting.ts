@@ -31,6 +31,6 @@ export function useRootSetting() {
     getUseErrorHandle,
     getPageLoading,
     getPermissionMode,
-    getShowDarkModeToggle,
+    getShowDarkModeToggle
   };
 }

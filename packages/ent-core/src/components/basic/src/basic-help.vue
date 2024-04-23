@@ -41,7 +41,7 @@
      * @zh 文本列表
      * @en Help text list
      */
-    text: { type: [Array, String] as PropType<string[] | string> },
+    text: { type: [Array, String] as PropType<string[] | string> }
   };
 
   export default defineComponent({
@@ -52,7 +52,7 @@
       const { prefixCls } = useDesign('help');
 
       const getTooltipStyle = computed(
-        (): CSSProperties => ({ color: props.color, fontSize: props.fontSize }),
+        (): CSSProperties => ({ color: props.color, fontSize: props.fontSize })
       );
 
       const getOverlayStyle = computed((): CSSProperties => ({ maxWidth: props.maxWidth }));
@@ -96,11 +96,11 @@
               },
               default: () => {
                 return <div style={unref(getTooltipStyle)}>{renderTitle()}</div>;
-              },
+              }
             }}
           </NTooltip>
         );
       };
-    },
+    }
   });
 </script>

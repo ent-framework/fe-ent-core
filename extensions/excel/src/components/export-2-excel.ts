@@ -24,7 +24,7 @@ function setColumnWidth(data, worksheet, min = 3) {
   });
   Object.keys(obj).forEach((key) => {
     worksheet['!cols'].push({
-      wch: obj[key],
+      wch: obj[key]
     });
   });
 }
@@ -35,7 +35,7 @@ export function jsonToSheetXlsx<T = any>({
   filename = DEF_FILE_NAME,
   sheetName = DEF_SHEET_NAME,
   json2sheetOpts = {},
-  write2excelOpts = { bookType: 'xlsx' },
+  write2excelOpts = { bookType: 'xlsx' }
 }: JsonToSheet<T>) {
   const arrData = [...data];
   if (header) {
@@ -49,8 +49,8 @@ export function jsonToSheetXlsx<T = any>({
   const workbook: WorkBook = {
     SheetNames: [sheetName],
     Sheets: {
-      [sheetName]: worksheet,
-    },
+      [sheetName]: worksheet
+    }
   };
   /* output format determined by filename */
   writeFile(workbook, filename, write2excelOpts);
@@ -61,7 +61,7 @@ export function aoaToSheetXlsx<T = any>({
   data,
   header,
   filename = DEF_FILE_NAME,
-  write2excelOpts = { bookType: 'xlsx' },
+  write2excelOpts = { bookType: 'xlsx' }
 }: AoAToSheet<T>) {
   const arrData = [...data];
   if (header) {
@@ -74,8 +74,8 @@ export function aoaToSheetXlsx<T = any>({
   const workbook: WorkBook = {
     SheetNames: [filename],
     Sheets: {
-      [filename]: worksheet,
-    },
+      [filename]: worksheet
+    }
   };
   /* output format determined by filename */
   writeFile(workbook, filename, write2excelOpts);
@@ -91,11 +91,11 @@ export function aoaToSheetXlsx<T = any>({
 export function jsonToMultipleSheetXlsx<T = any>({
   sheetList,
   filename = DEF_FILE_NAME,
-  write2excelOpts = { bookType: 'xlsx' },
+  write2excelOpts = { bookType: 'xlsx' }
 }: JsonToMultipleSheet<T>) {
   const workbook: WorkBook = {
     SheetNames: [],
-    Sheets: {},
+    Sheets: {}
   };
   sheetList.forEach((p, index) => {
     const arrData = [...p.data];
@@ -124,11 +124,11 @@ export function jsonToMultipleSheetXlsx<T = any>({
 export function aoaToMultipleSheetXlsx<T = any>({
   sheetList,
   filename = DEF_FILE_NAME,
-  write2excelOpts = { bookType: 'xlsx' },
+  write2excelOpts = { bookType: 'xlsx' }
 }: AoaToMultipleSheet<T>) {
   const workbook: WorkBook = {
     SheetNames: [],
-    Sheets: {},
+    Sheets: {}
   };
   sheetList.forEach((p, index) => {
     const arrData = [...p.data];

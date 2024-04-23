@@ -23,19 +23,19 @@
     props: {
       // 日期时间格式。如果不提供或者提供空值，将返回原始Date对象
       dateFormat: {
-        type: String,
+        type: String
       },
       // 时区调整。实验性功能，仅为了解决读取日期时间值有偏差的问题。目前仅提供了+08:00时区的偏差修正值
       // https://github.com/SheetJS/sheetjs/issues/1470#issuecomment-501108554
       timeZone: {
         type: Number,
-        default: 8,
+        default: 8
       },
       // 是否直接返回选中文件
       isReturnFile: {
         type: Boolean,
-        default: false,
-      },
+        default: false
+      }
     },
     emits: ['success', 'error', 'cancel'],
     setup(props, { emit }) {
@@ -51,7 +51,7 @@
             v: str,
             r: '<t> </t><phoneticPr fontId="1" type="noConversion"/>',
             h: str,
-            w: str,
+            w: str
           };
         if (!sheet || !sheet['!ref']) return [];
         let c = 0,
@@ -70,7 +70,7 @@
             v: str,
             r: '<t> </t><phoneticPr fontId="1" type="noConversion"/>',
             h: str,
-            w: str,
+            w: str
           };
           c++;
           char++;
@@ -110,7 +110,7 @@
           const header: string[] = getHeaderRow(worksheet);
           let results = XLSX.utils.sheet_to_json(worksheet, {
             raw: true,
-            dateNF: dateFormat, //Not worked
+            dateNF: dateFormat //Not worked
           }) as object[];
           results = results.map((row: object) => {
             for (const field in row) {
@@ -130,8 +130,8 @@
             header,
             results,
             meta: {
-              sheetName,
-            },
+              sheetName
+            }
           });
         }
         return excelData;
@@ -219,6 +219,6 @@
       }
 
       return { handleUpload, handleInputClick, inputRef };
-    },
+    }
   });
 </script>

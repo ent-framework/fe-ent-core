@@ -21,13 +21,13 @@
     name: 'FullscreenCommandButton',
 
     components: {
-      CommandButton,
+      CommandButton
     },
     props: {
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
     setup() {
       const t = inject('t');
@@ -46,7 +46,7 @@
       },
       getIcon() {
         return this.isFullscreen ? compress : expand;
-      },
-    },
+      }
+    }
   });
 </script>

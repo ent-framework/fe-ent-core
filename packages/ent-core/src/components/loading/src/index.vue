@@ -22,41 +22,41 @@
        */
       tip: {
         type: String as PropType<string>,
-        default: '',
+        default: ''
       },
       /**
        * 大小
        */
       size: {
         type: [String, Number] as PropType<'small' | 'medium' | 'large' | number>,
-        default: 'medium',
+        default: 'medium'
       },
       /**
        * 绝对定位，为 false 时可以全屏
        */
       absolute: {
         type: Boolean as PropType<boolean>,
-        default: false,
+        default: false
       },
       /**
        * 当前加载状态
        */
       loading: {
         type: Boolean as PropType<boolean>,
-        default: false,
+        default: false
       },
       /**
        * 背景色
        */
       background: {
-        type: String as PropType<string>,
+        type: String as PropType<string>
       },
       /**
        * 背景色主题 ，当背景色不为空时使用背景色
        */
       theme: {
-        type: String as PropType<'dark' | 'light'> | any,
-      },
-    },
+        type: String as PropType<'dark' | 'light'> | any
+      }
+    }
   });
 </script>

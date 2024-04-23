@@ -23,13 +23,13 @@ const Blockquote = TiptapBlockquote.extend<CustomBlockquoteOptions>({
           disabled: false,
           isActive(editor: Editor) {
             return editor.isActive('blockquote');
-          },
-        },
+          }
+        }
       ],
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -44,12 +44,12 @@ const Blockquote = TiptapBlockquote.extend<CustomBlockquoteOptions>({
             buttonIcon: extension.options.buttonIcon,
             isActive: editor.isActive('blockquote'),
             icon: svg,
-            tooltip: t('editor.extensions.Blockquote.tooltip'),
-          },
+            tooltip: t('editor.extensions.Blockquote.tooltip')
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default Blockquote;

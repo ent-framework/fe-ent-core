@@ -13,10 +13,10 @@ export default function cssOnlyPlugin(): InputPluginOption {
             fs.mkdirSync(`${process.cwd()}/${outputOptions.dir}`);
           }
           fs.writeFileSync(`${process.cwd()}/${outputOptions.dir}/${filename}`, asset.source, {
-            flag: 'w',
+            flag: 'w'
           });
         }
       }
-    },
+    }
   };
 }

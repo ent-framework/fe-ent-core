@@ -34,7 +34,7 @@ const TextAlign = TiptapTextAlign.extend<CustomTextAlignOptions>({
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -54,13 +54,13 @@ const TextAlign = TiptapTextAlign.extend<CustomTextAlignOptions>({
               isActive: alignment === 'left' ? false : editor.isActive({ textAlign: alignment }),
               icon: getIcon(`${alignment}`),
               buttonIcon: extension.options.buttonIcon?.[acc.length],
-              tooltip: t(`editor.extensions.TextAlign.buttons.align_${alignment}.tooltip`),
-            },
+              tooltip: t(`editor.extensions.TextAlign.buttons.align_${alignment}.tooltip`)
+            }
           });
         }, []);
-      },
+      }
     };
-  },
+  }
 });
 
 export default TextAlign;

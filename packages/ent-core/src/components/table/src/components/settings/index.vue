@@ -27,13 +27,13 @@
       ColumnSetting,
       SizeSetting,
       RedoSetting,
-      FullScreenSetting,
+      FullScreenSetting
     },
     props: {
       setting: {
         type: Object as PropType<TableSetting>,
-        default: () => ({}),
-      },
+        default: () => ({})
+      }
     },
     emits: ['columns-change'],
     setup(props, { emit }) {
@@ -46,7 +46,7 @@
           size: true,
           setting: true,
           fullScreen: false,
-          ...props.setting,
+          ...props.setting
         };
       });
 
@@ -59,6 +59,6 @@
       }
 
       return { getSetting, t, handleColumnChange, getTableContainer, prefixCls };
-    },
+    }
   });
 </script>

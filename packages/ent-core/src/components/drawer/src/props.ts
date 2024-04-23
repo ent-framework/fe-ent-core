@@ -39,7 +39,7 @@ export const footerProps = {
   /**
    * 是否显示底部
    */
-  showFooter: { type: Boolean, default: true },
+  showFooter: { type: Boolean, default: true }
 };
 
 export const basicProps = {
@@ -75,7 +75,7 @@ export const basicProps = {
    */
   closeFunc: {
     type: [Function, Object] as PropType<any>,
-    default: null,
+    default: null
   },
   /**
    *
@@ -83,9 +83,9 @@ export const basicProps = {
   content: {
     type: Object as PropType<DrawerContentProps>,
     default: () => ({
-      closable: true,
-    }),
+      closable: true
+    })
   },
   //destroyOnClose: { type: Boolean },
-  ...footerProps,
+  ...footerProps
 };

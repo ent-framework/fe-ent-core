@@ -163,7 +163,7 @@ export function createSessionGuard(router: Router) {
       const { t } = useI18n();
       createMessage.info(t('sys.app.sessionLoadingError'), {
         type: 'loading',
-        duration: 2,
+        duration: 2
       });
       warn(`message guard error:${error}`);
       return false;

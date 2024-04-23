@@ -23,20 +23,20 @@
       const getIcon = computed(() =>
         unref(getIsUnFold)
           ? 'ant-design:fullscreen-outlined'
-          : 'ant-design:fullscreen-exit-outlined',
+          : 'ant-design:fullscreen-exit-outlined'
       );
 
       function handleFold() {
         const isUnFold = unref(getIsUnFold);
         setMenuSetting({
           show: isUnFold,
-          hidden: !isUnFold,
+          hidden: !isUnFold
         });
         setHeaderSetting({ show: isUnFold });
         triggerWindowResize();
       }
 
       return { prefixCls, getIcon, handleFold };
-    },
+    }
   });
 </script>

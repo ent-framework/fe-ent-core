@@ -11,17 +11,17 @@ async function run(config: ConfigEnv, port: number) {
     ...(command === 'serve' && {
       overrides: {
         server: {
-          port,
-        },
-      },
+          port
+        }
+      }
     }),
     ...(command === 'build' && {
       overrides: {
         build: {
-          outDir: `${root}/docs`,
-        },
-      },
-    }),
+          outDir: `${root}/docs`
+        }
+      }
+    })
   });
   //不重文件加载配置
   siteConfig.configFile = false;

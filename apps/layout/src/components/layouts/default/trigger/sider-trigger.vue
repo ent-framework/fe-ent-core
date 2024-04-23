@@ -16,6 +16,6 @@
       const { getCollapsed, toggleCollapsed } = useMenuSetting();
 
       return { getCollapsed, toggleCollapsed };
-    },
+    }
   });
 </script>

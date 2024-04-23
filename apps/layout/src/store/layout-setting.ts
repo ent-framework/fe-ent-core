@@ -2,12 +2,12 @@ import {
   MenuModeEnum,
   MenuTypeEnum,
   MixSidebarTriggerEnum,
-  TriggerEnum,
+  TriggerEnum
 } from 'fe-ent-core/es/logics/enums/menu-enum';
 import {
   ContentEnum,
   SettingButtonPositionEnum,
-  ThemeEnum,
+  ThemeEnum
 } from 'fe-ent-core/es/logics/enums/app-enum';
 import type { LayoutConfig } from '../types';
 
@@ -51,7 +51,7 @@ const setting: LayoutConfig = {
     // Whether to show the notification button
     showNotice: true,
     // Whether to display the menu search
-    showSearch: true,
+    showSearch: true
   },
 
   // Menu configuration
@@ -91,7 +91,7 @@ const setting: LayoutConfig = {
     mixSideTrigger: MixSidebarTriggerEnum.CLICK,
     // Fixed expanded menu
     mixSideFixed: false,
-    inverted: false,
+    inverted: false
   },
 
   // Multi-label
@@ -106,7 +106,7 @@ const setting: LayoutConfig = {
     // Whether to show the refresh button
     showRedo: true,
     // Whether to show the collapse button
-    showFold: true,
+    showFold: true
   },
 
   // Whether to enable KeepAlive cache is best to close during development, otherwise the cache needs to be cleared every time
@@ -125,7 +125,7 @@ const setting: LayoutConfig = {
   useOpenBackTop: true,
 
   //  Is it possible to embed iframe pages
-  canEmbedIFramePage: true,
+  canEmbedIFramePage: true
 };
 
 export { setting as defaultLayoutSetting };

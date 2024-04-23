@@ -54,8 +54,8 @@
                           `${prefixCls}__fixed-left`,
                           {
                             active: item.fixed === 'left',
-                            disabled: !checkedList.includes(item.value),
-                          },
+                            disabled: !checkedList.includes(item.value)
+                          }
                         ]"
                         @click="handleColumnFixed(item, 'left')"
                       />
@@ -71,8 +71,8 @@
                           `${prefixCls}__fixed-right`,
                           {
                             active: item.fixed === 'right',
-                            disabled: !checkedList.includes(item.value),
-                          },
+                            disabled: !checkedList.includes(item.value)
+                          }
                         ]"
                         @click="handleColumnFixed(item, 'right')"
                       />
@@ -98,7 +98,7 @@
     ref,
     toRefs,
     unref,
-    watchEffect,
+    watchEffect
   } from 'vue';
   import { NCheckbox, NCheckboxGroup, NDivider, NPopover, NSpace, NTooltip } from 'naive-ui';
   import { cloneDeep, omit } from 'lodash-es';
@@ -128,7 +128,7 @@
       NSpace,
       EntScrollContainer,
       NDivider,
-      EntIcon,
+      EntIcon
     },
     emits: ['columns-change'],
 
@@ -153,7 +153,7 @@
       const state = reactive<State>({
         checkAll: true,
         checkedList: [],
-        defaultCheckList: [],
+        defaultCheckList: []
       });
       /** 缓存初始化props */
       let cacheTableProps: Partial<BasicTableProps> = {};
@@ -235,7 +235,7 @@
         if (checked) {
           const checkList = plainSortOptions.value.map((item) => item.key);
           plainSortOptions.value.forEach(
-            (item) => ((item as BasicColumn).defaultHidden = !checked),
+            (item) => ((item as BasicColumn).defaultHidden = !checked)
           );
           state.checkedList = checkList;
           setColumns(checkList);
@@ -276,7 +276,7 @@
         checkSelect.value = !!cacheTableProps.rowSelection;
         table.setProps({
           showIndexColumn: checkIndex.value,
-          rowSelection: checkSelect.value ? defaultRowSelection : undefined,
+          rowSelection: checkSelect.value ? defaultRowSelection : undefined
         });
         sortable.sort(sortableOrder);
       }
@@ -315,7 +315,7 @@
 
               plainSortOptions.value = columns;
               setColumns(columns.filter((item) => state.checkedList.includes(item.key)));
-            },
+            }
           });
           // 记录原始order 序列
           sortableOrder = sortable.toArray();
@@ -328,7 +328,7 @@
         isSetPropsFromThis = true;
         isSetColumnsFromThis = true;
         table.setProps({
-          showIndexColumn: checked,
+          showIndexColumn: checked
         });
       }
 
@@ -337,7 +337,7 @@
         isSetPropsFromThis = true;
         isSetColumnsFromThis = true;
         table.setProps({
-          rowSelection: checked ? defaultRowSelection : undefined,
+          rowSelection: checked ? defaultRowSelection : undefined
         });
       }
 
@@ -345,7 +345,7 @@
         if (!state.checkedList.includes(item.key as string)) return;
 
         const columns = getColumns().filter((c: BasicColumn) =>
-          state.checkedList.includes(c.key as string),
+          state.checkedList.includes(c.key as string)
         ) as BasicColumn[];
         const isFixed = item.fixed === fixed ? false : fixed;
         const index = columns.findIndex((col) => col.key === item.key);
@@ -370,8 +370,7 @@
           const visible =
             columns.findIndex(
               (c: BasicColumn | DataTableRowKey) =>
-                c === col.key ||
-                ((typeof c !== 'string' || typeof c !== 'number') && c === col.key),
+                c === col.key || ((typeof c !== 'string' || typeof c !== 'number') && c === col.key)
             ) !== -1;
           return { key: col.key as string, fixed: col.fixed, visible };
         });
@@ -403,8 +402,8 @@
         handleIndexCheckChange,
         handleSelectCheckChange,
         defaultRowSelection,
-        handleColumnFixed,
+        handleColumnFixed
       };
-    },
+    }
   });
 </script>

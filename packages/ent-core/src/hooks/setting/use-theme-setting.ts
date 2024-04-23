@@ -28,6 +28,6 @@ export function useThemeSetting() {
     getThemeSetting,
     getGlobalTheme,
     setGlobalTheme,
-    getThemeName,
+    getThemeName
   };
 }

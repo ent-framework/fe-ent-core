@@ -6,7 +6,7 @@ import {
   RouterTransitionEnum,
   ThemeEnum,
   TopMenuAlignEnum,
-  TriggerEnum,
+  TriggerEnum
 } from 'fe-ent-core/es/logics';
 import { useI18n } from 'fe-ent-core/es/hooks';
 
@@ -55,7 +55,7 @@ export enum HandlerEnum {
   ROUTER_TRANSITION,
   OPEN_PROGRESS,
   OPEN_PAGE_LOADING,
-  OPEN_ROUTE_TRANSITION,
+  OPEN_ROUTE_TRANSITION
 }
 
 export const contentModeOptions = () => {
@@ -63,12 +63,12 @@ export const contentModeOptions = () => {
   return [
     {
       value: ContentEnum.FULL,
-      label: t('layout.setting.contentModeFull'),
+      label: t('layout.setting.contentModeFull')
     },
     {
       value: ContentEnum.FIXED,
-      label: t('layout.setting.contentModeFixed'),
-    },
+      label: t('layout.setting.contentModeFixed')
+    }
   ];
 };
 
@@ -77,16 +77,16 @@ export const topMenuAlignOptions = () => {
   return [
     {
       value: TopMenuAlignEnum.CENTER,
-      label: t('layout.setting.topMenuAlignRight'),
+      label: t('layout.setting.topMenuAlignRight')
     },
     {
       value: TopMenuAlignEnum.START,
-      label: t('layout.setting.topMenuAlignLeft'),
+      label: t('layout.setting.topMenuAlignLeft')
     },
     {
       value: TopMenuAlignEnum.END,
-      label: t('layout.setting.topMenuAlignCenter'),
-    },
+      label: t('layout.setting.topMenuAlignCenter')
+    }
   ];
 };
 
@@ -95,20 +95,20 @@ export const getMenuTriggerOptions = (hideTop: boolean) => {
   return [
     {
       value: TriggerEnum.NONE,
-      label: t('layout.setting.menuTriggerNone'),
+      label: t('layout.setting.menuTriggerNone')
     },
     {
       value: TriggerEnum.MENU_SIDE,
-      label: t('layout.setting.menuTriggerSide'),
+      label: t('layout.setting.menuTriggerSide')
     },
     ...(hideTop
       ? []
       : [
           {
             value: TriggerEnum.HEADER,
-            label: t('layout.setting.menuTriggerTop'),
-          },
-        ]),
+            label: t('layout.setting.menuTriggerTop')
+          }
+        ])
   ];
 };
 
@@ -118,11 +118,11 @@ export const routerTransitionOptions = [
   RouterTransitionEnum.ZOOM_OUT,
   RouterTransitionEnum.FADE_SIDE,
   RouterTransitionEnum.FADE_BOTTOM,
-  RouterTransitionEnum.FADE_SCALE,
+  RouterTransitionEnum.FADE_SCALE
 ].map((item) => {
   return {
     label: item,
-    value: item,
+    value: item
   };
 });
 
@@ -138,24 +138,24 @@ export const menuTypeList = (): MenuType[] => {
     {
       title: t('layout.setting.menuTypeSidebar'),
       mode: MenuModeEnum.INLINE,
-      type: MenuTypeEnum.SIDEBAR,
+      type: MenuTypeEnum.SIDEBAR
     },
     {
       title: t('layout.setting.menuTypeMix'),
       mode: MenuModeEnum.INLINE,
-      type: MenuTypeEnum.MIX,
+      type: MenuTypeEnum.MIX
     },
 
     {
       title: t('layout.setting.menuTypeTopMenu'),
       mode: MenuModeEnum.HORIZONTAL,
-      type: MenuTypeEnum.TOP_MENU,
+      type: MenuTypeEnum.TOP_MENU
     },
     {
       title: t('layout.setting.menuTypeMixSidebar'),
       mode: MenuModeEnum.INLINE,
-      type: MenuTypeEnum.MIX_SIDEBAR,
-    },
+      type: MenuTypeEnum.MIX_SIDEBAR
+    }
   ];
 };
 
@@ -164,12 +164,12 @@ export const mixSidebarTriggerOptions = () => {
   return [
     {
       value: MixSidebarTriggerEnum.HOVER,
-      label: t('layout.setting.triggerHover'),
+      label: t('layout.setting.triggerHover')
     },
     {
       value: MixSidebarTriggerEnum.CLICK,
-      label: t('layout.setting.triggerClick'),
-    },
+      label: t('layout.setting.triggerClick')
+    }
   ];
 };
 
@@ -178,15 +178,15 @@ export const getThemeOptions = () => {
   return [
     {
       value: ThemeEnum.LIGHT,
-      label: t('layout.setting.lightTheme'),
+      label: t('layout.setting.lightTheme')
     },
     {
       value: ThemeEnum.DARK,
-      label: t('layout.setting.darkTheme'),
+      label: t('layout.setting.darkTheme')
     },
     {
       value: 'none',
-      label: t('layout.setting.noneTheme'),
-    },
+      label: t('layout.setting.noneTheme')
+    }
   ];
 };

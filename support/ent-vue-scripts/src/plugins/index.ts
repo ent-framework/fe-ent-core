@@ -31,7 +31,7 @@ async function createPlugins({
   compress,
   enableAnalyze,
   enableInspect,
-  enableCert,
+  enableCert
 }: Options) {
   const vitePlugins: (PluginOption | PluginOption[])[] = [vue(), vueJsx()];
 
@@ -53,8 +53,8 @@ async function createPlugins({
     // rollup-plugin-gzip
     vitePlugins.push(
       configCompressPlugin({
-        compress,
-      }),
+        compress
+      })
     );
   }
 

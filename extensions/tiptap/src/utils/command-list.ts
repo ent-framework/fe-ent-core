@@ -14,7 +14,7 @@ const renderItems = () => {
     onStart: (props: { editor: any; clientRect: any }) => {
       component = new VueRenderer(CommandsList, {
         props,
-        editor: props.editor,
+        editor: props.editor
       });
 
       popup = tippy('body', {
@@ -25,14 +25,14 @@ const renderItems = () => {
         interactive: true,
         theme: 'command',
         trigger: 'manual',
-        placement: 'bottom-start',
+        placement: 'bottom-start'
       });
     },
     onUpdate(props: Record<string, any>) {
       component.updateProps(props);
 
       popup[0].setProps({
-        getReferenceClientRect: props.clientRect,
+        getReferenceClientRect: props.clientRect
       });
     },
     onKeyDown(props: { event: { key: string } }) {
@@ -45,7 +45,7 @@ const renderItems = () => {
     onExit() {
       popup[0].destroy();
       component.destroy();
-    },
+    }
   };
 };
 

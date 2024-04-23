@@ -8,8 +8,8 @@
               `${prefixCls}__item`,
               `${prefixCls}__item--${item.type}`,
               {
-                [`${prefixCls}__item--active`]: def === item.type,
-              },
+                [`${prefixCls}__item--active`]: def === item.type
+              }
             ]"
             @click="handler(item)"
           >
@@ -34,23 +34,23 @@
     props: {
       menuTypeList: {
         type: Array as PropType<MenuType[]>,
-        default: () => [],
+        default: () => []
       },
       handler: {
         type: Function as PropType<Fn>,
-        default: () => ({}),
+        default: () => ({})
       },
       def: {
         type: String,
-        default: '',
-      },
+        default: ''
+      }
     },
     setup() {
       const { prefixCls } = useDesign('setting-menu-type-picker');
 
       return {
-        prefixCls,
+        prefixCls
       };
-    },
+    }
   });
 </script>

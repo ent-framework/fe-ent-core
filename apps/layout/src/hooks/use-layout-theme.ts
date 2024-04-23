@@ -24,6 +24,6 @@ export function useLayoutTheme() {
 
   return {
     getActualHeaderTheme,
-    getActualMenuTheme,
+    getActualMenuTheme
   };
 }

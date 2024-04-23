@@ -28,14 +28,14 @@
       const getMergeProps = computed(() => {
         return {
           ...props,
-          ...(unref(propsRef) as Recordable),
+          ...(unref(propsRef) as Recordable)
         } as DescriptionProps;
       });
 
       const getProps = computed(() => {
         const opt = {
           ...unref(getMergeProps),
-          title: undefined,
+          title: undefined
         };
         return opt as DescriptionProps;
       });
@@ -52,7 +52,7 @@
         return {
           // Cannot be expanded by default
           canExpand: false,
-          ...unref(getProps).collapseOptions,
+          ...unref(getProps).collapseOptions
         };
       });
 
@@ -92,7 +92,7 @@
             return (
               <NDescriptionsItem key={field} {...descItemProps}>
                 {{
-                  default: () => getContent(),
+                  default: () => getContent()
                 }}
               </NDescriptionsItem>
             );
@@ -122,18 +122,18 @@
           <CollapseContainer title={title} canExpan={canExpand} helpMessage={helpMessage}>
             {{
               default: () => content,
-              action: () => getSlot(slots, 'action'),
+              action: () => getSlot(slots, 'action')
             }}
           </CollapseContainer>
         );
       };
 
       const methods: DescInstance = {
-        setDescProps,
+        setDescProps
       };
 
       emit('register', methods);
       return () => (unref(useWrapper) ? renderContainer() : renderDesc());
-    },
+    }
   });
 </script>

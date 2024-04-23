@@ -9,7 +9,7 @@ import type { UploadApiResult } from '../../logics/types/upload';
 export interface HttpFactory {
   unauthorized: () => Promise<any>;
   uploadApi: (
-    params: UploadFileParams,
+    params: UploadFileParams
   ) => Promise<import('axios').AxiosResponse<UploadApiResult, any>>;
   onUploadProgress: (progressEvent: AxiosProgressEvent) => void;
 }
@@ -24,9 +24,9 @@ export class HttpService implements HttpFactory {
     return defHttp.uploadFile<UploadApiResult>(
       {
         url: uploadUrl,
-        onUploadProgress: this.onUploadProgress,
+        onUploadProgress: this.onUploadProgress
       },
-      params,
+      params
     );
   };
   onUploadProgress = (progressEvent: AxiosProgressEvent) => {

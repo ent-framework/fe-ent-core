@@ -124,18 +124,18 @@
     components: {
       Popover,
       CommandButton,
-      CreateTablePopover,
+      CreateTablePopover
     },
 
     props: {
       editor: {
         type: Editor,
-        required: true,
+        required: true
       },
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup() {
@@ -163,7 +163,7 @@
 
       enableSplitCell() {
         return enableSplitCell(this.editor.state);
-      },
+      }
     },
 
     methods: {
@@ -171,11 +171,11 @@
         this.editor.commands.insertTable({
           rows: row,
           cols: col,
-          withHeaderRow: true,
+          withHeaderRow: true
         });
 
         this.hidePopover();
-      },
-    },
+      }
+    }
   });
 </script>

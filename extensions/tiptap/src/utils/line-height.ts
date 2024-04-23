@@ -90,7 +90,7 @@ export function setTextLineHeight(tr: Transaction, lineHeight: string | null): T
         tasks.push({
           node,
           pos,
-          nodeType,
+          nodeType
         });
       }
       return nodeType.name !== 'list_item' && nodeType.name !== 'todo_item';
@@ -106,7 +106,7 @@ export function setTextLineHeight(tr: Transaction, lineHeight: string | null): T
 
     attrs = {
       ...attrs,
-      lineHeight: lineHeightValue,
+      lineHeight: lineHeightValue
     };
 
     tr = tr.setNodeMarkup(pos, nodeType, attrs, node.marks);

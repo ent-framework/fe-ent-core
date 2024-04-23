@@ -48,7 +48,7 @@ export function getAppEnvConfig(): AppEnv {
   if (!/^[a-zA-Z_]*$/.test(VITE_GLOB_APP_SHORT_NAME)) {
     console &&
       console.warn(
-        `VITE_GLOB_APP_SHORT_NAME Variables can only be characters/underscores, please modify in the environment variables and re-running.`,
+        `VITE_GLOB_APP_SHORT_NAME Variables can only be characters/underscores, please modify in the environment variables and re-running.`
       );
   }
 
@@ -63,7 +63,7 @@ export function getAppEnvConfig(): AppEnv {
     VITE_GLOB_LAYOUT_NAME,
     VITE_GLOB_VERSION,
     VITE_HASH_ROUTER,
-    ...REST,
+    ...REST
   };
 }
 

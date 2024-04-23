@@ -28,11 +28,11 @@
     props: {
       items: Array,
       command: Function,
-      editor: Editor,
+      editor: Editor
     },
     data() {
       return {
-        selectedIndex: 0,
+        selectedIndex: 0
       };
     },
     watch: {
@@ -40,7 +40,7 @@
         if (newItems !== oldItems) {
           this.selectedIndex = 0;
         }
-      },
+      }
     },
     methods: {
       upHandler() {
@@ -72,7 +72,7 @@
           return true;
         }
         return false;
-      },
-    },
+      }
+    }
   };
 </script>

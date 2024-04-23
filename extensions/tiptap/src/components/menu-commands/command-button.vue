@@ -21,47 +21,47 @@
 
   export default defineComponent({
     components: {
-      Tooltip,
+      Tooltip
     },
     props: {
       icon: {
         type: [Object, String] as PropType<Component | string>,
-        required: true,
+        required: true
       },
 
       disabled: {
         type: Boolean,
-        default: false,
+        default: false
       },
 
       isActive: {
         type: Boolean,
-        default: false,
+        default: false
       },
 
       tooltip: {
         type: String,
-        required: true,
+        required: true
       },
 
       enableTooltip: {
         type: Boolean,
-        required: true,
+        required: true
       },
 
       command: {
         type: Function,
-        default: noop,
+        default: noop
       },
       buttonIcon: {
         type: String,
         required: false,
-        default: '',
+        default: ''
       },
       readonly: {
         type: Boolean,
-        default: false,
-      },
+        default: false
+      }
     },
     emits: ['cmdBtnClicked'],
     setup(props, { emit }) {
@@ -69,7 +69,7 @@
         return {
           'ent-tiptap-editor__command-button': true,
           'ent-tiptap-editor__command-button--active': props.isActive,
-          'ent-tiptap-editor__command-button--readonly': props.readonly || props.disabled,
+          'ent-tiptap-editor__command-button--readonly': props.readonly || props.disabled
         };
       });
 
@@ -79,6 +79,6 @@
       };
 
       return { commandButtonClass, onClick };
-    },
+    }
   });
 </script>

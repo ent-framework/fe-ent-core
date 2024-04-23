@@ -21,7 +21,7 @@ const Link = TiptapLink.extend<CustomLinkOptions>({
       editLinkPlaceholder: '',
       button({
         editor,
-        extension,
+        extension
       }: {
         editor: Editor;
         extension: any;
@@ -32,10 +32,10 @@ const Link = TiptapLink.extend<CustomLinkOptions>({
           componentProps: {
             editor,
             buttonIcon: extension.options.buttonIcon,
-            placeholder: extension.options.addLinkPlaceholder,
-          },
+            placeholder: extension.options.addLinkPlaceholder
+          }
         };
-      },
+      }
     };
   },
 
@@ -57,11 +57,11 @@ const Link = TiptapLink.extend<CustomLinkOptions>({
 
             view.dispatch(transaction);
             return true;
-          },
-        },
-      }),
+          }
+        }
+      })
     ];
-  },
+  }
 });
 
 export default Link;

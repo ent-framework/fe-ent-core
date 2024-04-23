@@ -39,6 +39,6 @@ export default {
     confirmPassword: 'Confirm Password',
     email: 'Email',
     smsCode: 'SMS code',
-    mobile: 'Mobile',
-  },
+    mobile: 'Mobile'
+  }
 };

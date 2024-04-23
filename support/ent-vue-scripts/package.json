@@ -21,7 +21,9 @@
     "build:lib": "tsc && node copy-template.js",
     "build:types": "tsc --emitDeclarationOnly --outDir dist",
     "lint-staged": "npx lint-staged",
-    "test": "vitest"
+    "test": "vitest",
+    "lint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix",
+    "prettier": "prettier --write  \"src/**/*.{tsx,ts,css,less,vue}\""
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [

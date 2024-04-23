@@ -11,8 +11,8 @@ const input = excludeFiles(
   glob.sync('**/*.{ts,tsx,vue}', {
     cwd: `${process.cwd()}/src`,
     absolute: false,
-    onlyFiles: true,
-  }),
+    onlyFiles: true
+  })
 ).map((file) => `${process.cwd()}/src/${file}`);
 const config: InlineConfig = {
   mode: 'production',
@@ -35,32 +35,32 @@ const config: InlineConfig = {
           entryFileNames: '[name].mjs',
           preserveModules: true,
           exports: 'named',
-          preserveModulesRoot: `${process.cwd()}/src/`,
-        },
-      ],
+          preserveModulesRoot: `${process.cwd()}/src/`
+        }
+      ]
     },
     // 开启lib模式，但不使用下面配置
     lib: {
-      entry: '',
-    },
+      entry: ''
+    }
   },
   css: {
     preprocessorOptions: {
       less: {
         modifyVars: generateModifyVars(),
-        javascriptEnabled: true,
-      },
-    },
+        javascriptEnabled: true
+      }
+    }
   },
   // @ts-ignore vite内部类型错误
   plugins: [
     external(),
     vue({
-      isProduction: true,
+      isProduction: true
     }),
     vueJsx(),
-    vueExportHelper(),
-  ],
+    vueExportHelper()
+  ]
 };
 
 export default config;

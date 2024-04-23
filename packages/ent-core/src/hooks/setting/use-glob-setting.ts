@@ -17,12 +17,12 @@ export const useGlobSetting = (): Readonly<GlobConfig> => {
     VITE_GLOB_LOGIN_URL,
     VITE_GLOB_HOME_PATH,
     VITE_GLOB_ERROR_PATH,
-    VITE_GLOB_ERROR_LOG_PATH,
+    VITE_GLOB_ERROR_LOG_PATH
   } = getAppEnvConfig();
 
   if (!/[a-zA-Z_]*/.test(VITE_GLOB_APP_SHORT_NAME)) {
     warn(
-      `VITE_GLOB_APP_SHORT_NAME Variables can only be characters/underscores, please modify in the environment variables and re-running.`,
+      `VITE_GLOB_APP_SHORT_NAME Variables can only be characters/underscores, please modify in the environment variables and re-running.`
     );
   }
 
@@ -41,7 +41,7 @@ export const useGlobSetting = (): Readonly<GlobConfig> => {
     loginUrl: VITE_GLOB_LOGIN_URL || '/login',
     homePath: VITE_GLOB_HOME_PATH || '/welcome',
     errorPath: VITE_GLOB_ERROR_PATH || '/exception',
-    errorLogPath: VITE_GLOB_ERROR_LOG_PATH || '/error-log/list',
+    errorLogPath: VITE_GLOB_ERROR_LOG_PATH || '/error-log/list'
   };
   return glob as Readonly<GlobConfig>;
 };

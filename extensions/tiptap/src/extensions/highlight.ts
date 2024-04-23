@@ -17,7 +17,7 @@ const Highlight = TiptapHighlight.extend<CustomHighlightOptions>({
       colors: COLOR_SET,
       button({
         editor,
-        extension,
+        extension
       }: {
         editor: Editor;
         extension: any;
@@ -27,12 +27,12 @@ const Highlight = TiptapHighlight.extend<CustomHighlightOptions>({
           component: HighlightPopover,
           componentProps: {
             editor,
-            buttonIcon: extension.options.buttonIcon,
-          },
+            buttonIcon: extension.options.buttonIcon
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default Highlight;

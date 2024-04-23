@@ -80,7 +80,7 @@ function hasChildren(route: AppRouteRecordRaw) {
 
 function existInFilter(
   filters?: AppRouteRecordRaw[],
-  target?: AppRouteRecordRaw,
+  target?: AppRouteRecordRaw
 ): AppRouteRecordRaw | undefined {
   if (!filters || !target) {
     return undefined;

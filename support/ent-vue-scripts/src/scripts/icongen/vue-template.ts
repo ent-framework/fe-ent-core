@@ -1,7 +1,7 @@
 export const getIconVue = ({
   name,
   componentName,
-  svgHtml,
+  svgHtml
 }: {
   name: string;
   componentName: string;
@@ -85,7 +85,7 @@ export const getIconVue = ({
 
 export const getComponentIndex = ({
   name,
-  componentName,
+  componentName
 }: {
   name: string;
   componentName: string;
@@ -108,7 +108,7 @@ export default ${componentName};
 
 export const getArcoVueIcon = ({
   imports,
-  components,
+  components
 }: {
   imports: string[];
   components: string[];

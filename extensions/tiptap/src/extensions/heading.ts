@@ -29,15 +29,15 @@ const Heading = TiptapHeading.extend<CustomHeadingOptions>({
             isActive(editor: Editor) {
               return level > 0
                 ? editor.isActive('heading', {
-                    level,
+                    level
                   })
                 : editor.isActive('paragraph');
-            },
+            }
           };
         }),
       button({
         editor,
-        extension,
+        extension
       }: {
         editor: Editor;
         extension: Extension;
@@ -48,12 +48,12 @@ const Heading = TiptapHeading.extend<CustomHeadingOptions>({
           componentProps: {
             levels: (extension.options as HeadingOptions).levels,
             editor,
-            buttonIcon: extension.options.buttonIcon,
-          },
+            buttonIcon: extension.options.buttonIcon
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default Heading;

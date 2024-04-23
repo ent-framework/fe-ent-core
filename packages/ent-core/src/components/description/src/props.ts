@@ -13,18 +13,18 @@ export const basicDescriptionsProps = {
    */
   collapseOptions: {
     type: Object as PropType<CollapseContainerOptions>,
-    default: null,
+    default: null
   },
   /**
    * 详情项配置，见下方 DescItem 配置
    */
   schema: {
     type: Array as PropType<DescItem[]>,
-    default: () => [],
+    default: () => []
   },
   /**
    * 数据源
    */
   data: { type: Object },
-  ...descriptionsProps,
+  ...descriptionsProps
 };

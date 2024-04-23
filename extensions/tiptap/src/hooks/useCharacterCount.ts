@@ -8,6 +8,6 @@ export default function useCharacterCount(editor: ShallowRef<Editor | undefined>
   });
 
   return {
-    characters,
+    characters
   };
 }

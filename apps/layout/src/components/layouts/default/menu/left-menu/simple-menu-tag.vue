@@ -14,10 +14,10 @@
     props: {
       item: {
         type: Object as PropType<Menu>,
-        default: () => ({}),
+        default: () => ({})
       },
       dot: propTypes.bool,
-      collapseParent: propTypes.bool,
+      collapseParent: propTypes.bool
     },
     setup(props) {
       const { prefixCls } = useDesign('simple-menu');
@@ -54,15 +54,15 @@
           [`${tagCls}--${type}`],
           {
             [`${tagCls}--collapse`]: collapseParent,
-            [`${tagCls}--dot`]: dot || props.dot,
-          },
+            [`${tagCls}--dot`]: dot || props.dot
+          }
         ];
       });
       return {
         getTagClass,
         getShowTag,
-        getContent,
+        getContent
       };
-    },
+    }
   });
 </script>

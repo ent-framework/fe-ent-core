@@ -15,20 +15,26 @@ export async function extendsExtHandler(
   documentation: Documentation,
   componentDefinition: NodePath,
   astPath: bt.File,
-  opt: ParseOptions,
+  opt: ParseOptions
 ) {
   const componentDoc = documentation.toObject();
   const extendsTags = componentDoc.tags['extends'];
   if (extendsTags && extendsTags.length == 1) {
     const extendsVariableName = `${(extendsTags[0] as ParamTag).description}`;
     const extendsFilePath = resolveRequired(astPath, [extendsVariableName]);
-    await documentRequiredComponents(documentation, extendsFilePath, 'extends', opt);
+    await documentRequiredComponents(
+      documentation,
+      extendsFilePath,
+      'extends',
+      opt,
+      extendsVariableName
+    );
     return;
   }
 
   if (!(typeof componentDefinition.get === 'function')) {
     consola.error(
-      `NodePath.get is not a function, maybe it is setup vue component : \n ${opt.filePath}`,
+      `NodePath.get is not a function, maybe it is setup vue component : \n ${opt.filePath}`
     );
     return;
   }
@@ -48,16 +54,22 @@ export async function extendsExtHandler(
       astPath,
       {
         ...opt,
-        nameFilter: [extendsVariableName],
+        nameFilter: [extendsVariableName]
       },
-      documentation,
+      documentation
     );
   } else {
     // get all require / import statements
     const extendsFilePath = resolveRequired(astPath, [extendsVariableName]);
 
     // get each doc for each mixin using parse
-    await documentRequiredComponents(documentation, extendsFilePath, 'extends', opt);
+    await documentRequiredComponents(
+      documentation,
+      extendsFilePath,
+      'extends',
+      opt,
+      extendsVariableName
+    );
   }
 }
 
@@ -87,7 +99,7 @@ function getExtendsVariableNameFromCompDef(compDef: NodePath): NodePath | undefi
   const compDefProperties = compDef.get('properties');
   const pathExtends = compDefProperties.value
     ? compDefProperties.filter(
-        (p: NodePath<bt.Property>) => bt.isIdentifier(p.node.key) && p.node.key.name === 'extends',
+        (p: NodePath<bt.Property>) => bt.isIdentifier(p.node.key) && p.node.key.name === 'extends'
       )
     : [];
   return pathExtends.length ? pathExtends[0] : undefined;
@@ -98,6 +110,7 @@ async function documentRequiredComponents(
   varToFilePath: ImportedVariableSet,
   originObject: 'extends' | 'mixin' | undefined,
   opt: ParseOptions,
+  extendsVariableName: string
 ): Promise<void> {
   const originalDirName = path.dirname(opt.filePath);
   const resolvedPaths = path.resolve(process.cwd(), originalDirName);
@@ -107,20 +120,21 @@ async function documentRequiredComponents(
       const content = fs.readFileSync(
         `${rootPath}/node_modules/${varToFilePath[Object.keys(varToFilePath)[0]].filePath[0]}/web-types.json`,
         {
-          encoding: 'utf-8',
-        },
+          encoding: 'utf-8'
+        }
       );
       const webType = JSON.parse(content) as WebType;
       const component = webType.contributions.html['vue-components'].find(
-        (component) => component.name == Object.keys(varToFilePath)[0],
+        (component) => component.name == Object.keys(varToFilePath)[0]
       );
       if (component) {
         component.props.forEach((prop) => {
           const propDescriptor = documentation?.getPropDescriptor(prop.name);
           if (propDescriptor) {
             propDescriptor.type = {
-              name: prop.type as string,
+              name: prop.type as string
             };
+            propDescriptor.extends = { name: extendsVariableName, path: extendsVariableName };
             propDescriptor.description = prop.description;
           }
         });

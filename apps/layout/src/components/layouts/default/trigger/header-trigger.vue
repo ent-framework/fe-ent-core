@@ -15,12 +15,12 @@
     name: 'HeaderTrigger',
     components: { EntIcon },
     props: {
-      theme: propTypes.oneOf(['light', 'dark']),
+      theme: propTypes.oneOf(['light', 'dark'])
     },
     setup() {
       const { getCollapsed, toggleCollapsed } = useMenuSetting();
       const { prefixCls } = useDesign('layout-header-trigger');
       return { getCollapsed, toggleCollapsed, prefixCls };
-    },
+    }
   });
 </script>

@@ -16,7 +16,7 @@ export function useIntersectionObserver({
   root,
   onIntersect,
   rootMargin = '0px',
-  threshold = 0.1,
+  threshold = 0.1
 }: IntersectionObserverProps) {
   let cleanup = noop;
   const observer: Ref<Nullable<IntersectionObserver>> = ref(null);
@@ -26,7 +26,7 @@ export function useIntersectionObserver({
     observer.value = new IntersectionObserver(onIntersect, {
       root: root ? root.value : null,
       rootMargin,
-      threshold,
+      threshold
     });
 
     const current = target.value;
@@ -46,6 +46,6 @@ export function useIntersectionObserver({
     stop: () => {
       cleanup();
       stopEffect();
-    },
+    }
   };
 }

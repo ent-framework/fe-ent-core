@@ -32,7 +32,7 @@
     props: {
       value: propTypes.string,
       showInput: propTypes.bool.def(true),
-      disabled: propTypes.bool,
+      disabled: propTypes.bool
     },
     emits: ['score-change', 'change'],
     setup(props, { emit }) {
@@ -64,15 +64,15 @@
         () => unref(innerValueRef),
         (val) => {
           emit('change', val);
-        },
+        }
       );
 
       return {
         getPasswordStrength,
         handleChange,
         prefixCls,
-        innerValueRef,
+        innerValueRef
       };
-    },
+    }
   });
 </script>

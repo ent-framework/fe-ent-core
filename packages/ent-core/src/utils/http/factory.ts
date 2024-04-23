@@ -122,7 +122,7 @@ const transform: AxiosTransform = {
         if (joinParamsToUrl) {
           config.url = setObjToUrlParams(
             config.url as string,
-            Object.assign({}, config.params, config.data),
+            Object.assign({}, config.params, config.data)
           );
         }
       } else {
@@ -194,7 +194,7 @@ const transform: AxiosTransform = {
     }
     checkStatus(error?.response?.status || 200, msg, errorMessageMode);
     return Promise.reject(new Error(msg));
-  },
+  }
 };
 
 export function createAxios(opt?: Partial<CreateAxiosOptions>) {
@@ -239,10 +239,10 @@ export function createAxios(opt?: Partial<CreateAxiosOptions>) {
           // 忽略重复请求
           ignoreCancelToken: true,
           // 是否携带token
-          withToken: true,
-        },
+          withToken: true
+        }
       },
-      opt || {},
-    ),
+      opt || {}
+    )
   );
 }

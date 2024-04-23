@@ -17,8 +17,8 @@
        */
       value: {
         type: [String, Array] as PropType<string | string[]>,
-        default: '',
-      },
+        default: ''
+      }
     },
     setup(props, { slots }) {
       const { hasPermission } = usePermission();
@@ -38,6 +38,6 @@
         // Role-based value control
         return renderAuth();
       };
-    },
+    }
   });
 </script>

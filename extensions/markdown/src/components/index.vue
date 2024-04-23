@@ -10,7 +10,7 @@
     onDeactivated,
     ref,
     unref,
-    watch,
+    watch
   } from 'vue';
   import Vditor from 'vditor';
   import { onMountedOrActivated, useRootSetting } from 'fe-ent-core/es/hooks';
@@ -26,7 +26,7 @@
     inheritAttrs: false,
     props: {
       height: { type: Number, default: 360 },
-      value: { type: String, default: '' },
+      value: { type: String, default: '' }
     },
     emits: ['change', 'get', 'update:value'],
     setup(props, { attrs, emit }) {
@@ -51,8 +51,8 @@
         },
         {
           immediate: true,
-          flush: 'post',
-        },
+          flush: 'post'
+        }
       );
 
       watch(
@@ -62,7 +62,7 @@
             instance.getVditor()?.setValue(v);
           }
           valueRef.value = v;
-        },
+        }
       );
 
       const getCurrentLang = computed((): 'zh_CN' | 'en_US' | 'ja_JP' | 'ko_KR' => {
@@ -85,10 +85,10 @@
           lang: unref(getCurrentLang),
           mode: 'sv',
           fullscreen: {
-            index: 520,
+            index: 520
           },
           preview: {
-            actions: [],
+            actions: []
           },
           input: (v) => {
             valueRef.value = v;
@@ -109,13 +109,13 @@
           },
           ...bindValue,
           cache: {
-            enable: false,
-          },
+            enable: false
+          }
         });
       }
 
       const instance = {
-        getVditor: (): Vditor => vditorRef.value!,
+        getVditor: (): Vditor => vditorRef.value!
       };
 
       function destroy() {
@@ -134,8 +134,8 @@
       onDeactivated(destroy);
       return {
         wrapRef,
-        ...instance,
+        ...instance
       };
-    },
+    }
   });
 </script>

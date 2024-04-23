@@ -68,13 +68,13 @@
       ...basicProps,
       previewFileList: {
         type: Array as PropType<string[]>,
-        default: () => [],
-      },
+        default: () => []
+      }
     },
     emits: ['change', 'register', 'delete'],
     setup(props, { emit }) {
       const state = reactive<{ fileList: FileItem[] }>({
-        fileList: [],
+        fileList: []
       });
 
       //   是否正在上传
@@ -89,7 +89,7 @@
         acceptRef: accept,
         helpTextRef: helpText,
         maxNumberRef: maxNumber,
-        maxSizeRef: maxSize,
+        maxSizeRef: maxSize
       });
 
       const { createMessage } = useMessage();
@@ -103,16 +103,16 @@
 
       const getOkButtonProps = computed(() => {
         const someSuccess = fileListRef.value.some(
-          (item) => item.status === UploadResultStatus.SUCCESS,
+          (item) => item.status === UploadResultStatus.SUCCESS
         );
         return {
-          disabled: isUploadingRef.value || fileListRef.value.length === 0 || !someSuccess,
+          disabled: isUploadingRef.value || fileListRef.value.length === 0 || !someSuccess
         };
       });
 
       const getUploadBtnText = computed(() => {
         const someError = fileListRef.value.some(
-          (item) => item.status === UploadResultStatus.ERROR,
+          (item) => item.status === UploadResultStatus.ERROR
         );
         return isUploadingRef.value
           ? t('component.upload.uploading')
@@ -143,7 +143,7 @@
           size,
           name,
           percent: 0,
-          type: name.split('.').pop(),
+          type: name.split('.').pop()
         };
         // 生成图片缩略图
         if (checkImgType(file)) {
@@ -154,8 +154,8 @@
               ...unref(fileListRef),
               {
                 thumbUrl,
-                ...commonItem,
-              },
+                ...commonItem
+              }
             ];
           });
         } else {
@@ -189,28 +189,28 @@
           const { data } = await api?.(
             {
               data: {
-                ...(props.uploadParams || {}),
+                ...(props.uploadParams || {})
               },
               file: item.file,
               name: props.name,
-              filename: props.filename,
+              filename: props.filename
             },
             (progressEvent: ProgressEvent) => {
               const complete = Math.trunc((progressEvent.loaded / progressEvent.total) * 100);
               item.percent = complete;
-            },
+            }
           );
           item.status = UploadResultStatus.SUCCESS;
           item.responseData = data; // response data
           return {
             success: true,
-            error: null,
+            error: null
           };
         } catch (e) {
           item.status = UploadResultStatus.ERROR;
           return {
             success: false,
-            error: e,
+            error: e
           };
         }
       }
@@ -229,7 +229,7 @@
           const data = await Promise.all(
             uploadFileList.map((item) => {
               return uploadApiByItem(item);
-            }),
+            })
           );
           isUploadingRef.value = false;
           // 生产环境:抛出错误
@@ -297,8 +297,8 @@
         handleCloseFunc,
         getIsSelectFile,
         getUploadBtnText,
-        t,
+        t
       };
-    },
+    }
   });
 </script>

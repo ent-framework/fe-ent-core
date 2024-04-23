@@ -4,7 +4,7 @@ import type { EditorView } from 'prosemirror-view';
 function printHtml(dom: Element) {
   const style: string = Array.from(document.querySelectorAll('style, link')).reduce(
     (str, style) => str + style.outerHTML,
-    '',
+    ''
   );
 
   const content: string = style + dom.outerHTML;

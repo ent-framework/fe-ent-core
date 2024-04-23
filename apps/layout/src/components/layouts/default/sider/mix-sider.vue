@@ -8,8 +8,8 @@
       getComputedMenuTheme,
       {
         open: openMenu,
-        mini: getCollapsed,
-      },
+        mini: getCollapsed
+      }
     ]"
     v-bind="getMenuEvents"
   >
@@ -26,8 +26,8 @@
           :class="[
             `${prefixCls}-module__item `,
             {
-              [`${prefixCls}-module__item--active`]: item.path === activePath,
-            },
+              [`${prefixCls}-module__item--active`]: item.path === activePath
+            }
           ]"
         >
           <EntSimpleMenuTag :item="item" collapse-parent dot />
@@ -49,8 +49,8 @@
         :class="[
           `${prefixCls}-menu-list__title`,
           {
-            show: openMenu,
-          },
+            show: openMenu
+          }
         ]"
       >
         <NText class="text"> {{ title }}</NText>
@@ -102,10 +102,10 @@
       EntIcon,
       LayoutTrigger,
       EntSimpleMenuTag,
-      NText,
+      NText
     },
     directives: {
-      ClickOutside: vClickOutside,
+      ClickOutside: vClickOutside
     },
     setup() {
       const menuModules = ref<Menu[]>([]);
@@ -130,7 +130,7 @@
         mixSideHasChildren,
         setMenuSetting,
         getIsMixSidebar,
-        getCollapsed,
+        getCollapsed
       } = useMenuSetting();
 
       const { getGlobalTheme } = useThemeSetting();
@@ -148,7 +148,7 @@
       const getMenuStyle = computed((): CSSProperties => {
         return {
           width: unref(openMenu) ? `${unref(getMenuWidth)}px` : 0,
-          left: `${unref(getMixSideWidth)}px`,
+          left: `${unref(getMixSideWidth)}px`
         };
       });
 
@@ -184,7 +184,7 @@
               onMouseleave: () => {
                 setActive(true);
                 closeMenu();
-              },
+              }
             }
           : {};
       });
@@ -208,7 +208,7 @@
         (route) => {
           listenerRouteChange(route);
         },
-        { immediate: true, deep: true },
+        { immediate: true, deep: true }
       );
 
       // Menu changes
@@ -219,8 +219,8 @@
         },
         {
           immediate: true,
-          deep: true,
-        },
+          deep: true
+        }
       );
 
       function getWrapCommonStyle(width: string): CSSProperties {
@@ -228,7 +228,7 @@
           width,
           maxWidth: width,
           minWidth: width,
-          flex: `0 0 ${width}`,
+          flex: `0 0 ${width}`
         };
       }
 
@@ -305,17 +305,17 @@
             onClick: async () => {
               const children = await getChildrenMenus(item.path);
               if (item.path && (!children || children.length === 0)) go(item.path);
-            },
+            }
           };
         }
         return {
-          onClick: () => handleModuleClick(item.path),
+          onClick: () => handleModuleClick(item.path)
         };
       }
 
       function handleFixedMenu() {
         setMenuSetting({
-          mixSideFixed: !unref(getIsFixed),
+          mixSideFixed: !unref(getIsFixed)
         });
       }
 
@@ -348,8 +348,8 @@
         handleFixedMenu,
         getMixSideFixed,
         getWrapStyle,
-        getCollapsed,
+        getCollapsed
       };
-    },
+    }
   });
 </script>

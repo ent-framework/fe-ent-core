@@ -20,7 +20,7 @@ export const useSessionStore = defineStore('app-session', {
     rememberMeExpiresIn: 0,
     // Last fetch time
     lastUpdateTime: 0,
-    storedToken: undefined,
+    storedToken: undefined
   }),
   getters: {
     getLastUpdateTime(): number {
@@ -37,7 +37,7 @@ export const useSessionStore = defineStore('app-session', {
     },
     getStoredToken(): LoginResultModel | undefined {
       return this.storedToken || undefined;
-    },
+    }
   },
   actions: {
     setSession(session: Session) {
@@ -77,16 +77,16 @@ export const useSessionStore = defineStore('app-session', {
       } catch (error) {
         return Promise.reject(error);
       }
-    },
+    }
   },
   persist: [
     {
       paths: ['rememberMeJwt', 'rememberMeExpiresIn'],
-      storage: localStorage,
+      storage: localStorage
     },
     {
       paths: ['session', 'lastUpdateTime', 'storedToken'],
-      storage: sessionStorage,
-    },
-  ],
+      storage: sessionStorage
+    }
+  ]
 });

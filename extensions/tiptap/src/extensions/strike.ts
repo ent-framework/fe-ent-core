@@ -22,13 +22,13 @@ const Strike = TiptapStrike.extend<CustomStrikeOptions>({
           disabled: false,
           isActive(editor: Editor) {
             return editor.isActive('strike');
-          },
-        },
+          }
+        }
       ],
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -43,12 +43,12 @@ const Strike = TiptapStrike.extend<CustomStrikeOptions>({
             buttonIcon: extension.options.buttonIcon,
             isActive: editor.isActive('strike'),
             icon: svg,
-            tooltip: t('editor.extensions.Strike.tooltip'),
-          },
+            tooltip: t('editor.extensions.Strike.tooltip')
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default Strike;

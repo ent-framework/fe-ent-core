@@ -34,7 +34,7 @@
     toRef,
     unref,
     watch,
-    watchEffect,
+    watchEffect
   } from 'vue';
   import { omit } from 'lodash-es';
   import { NModal } from 'naive-ui';
@@ -69,7 +69,7 @@
               (unref(modalWrapperRef) as any).setModalHeight();
             }
           });
-        },
+        }
       };
 
       const instance = getCurrentInstance();
@@ -81,14 +81,14 @@
       const getMergeProps = computed((): Recordable => {
         return {
           ...props,
-          ...(unref(propsRef) as any),
+          ...(unref(propsRef) as any)
         };
       });
 
       const { handleFullScreen, getWrapClassName, fullScreenRef } = useFullScreen({
         modalWrapperRef,
         extHeightRef,
-        wrapClassName: toRef(getMergeProps.value, 'wrapClassName'),
+        wrapClassName: toRef(getMergeProps.value, 'wrapClassName')
       });
 
       // modal component does not need title and origin buttons
@@ -98,11 +98,11 @@
           show: unref(openRef),
           okButtonProps: undefined,
           cancelButtonProps: undefined,
-          title: undefined,
+          title: undefined
         };
         return {
           ...opt,
-          wrapClassName: unref(getWrapClassName),
+          wrapClassName: unref(getWrapClassName)
         };
       });
 
@@ -113,7 +113,7 @@
           ...unref(getMergeProps),
           show: unref(openRef),
           wrapClassName: unref(getWrapClassName),
-          preset: 'card',
+          preset: 'card'
         };
         if (unref(fullScreenRef)) {
           return omit(attr, ['height', 'title', 'onOk']);
@@ -144,8 +144,8 @@
           });
         },
         {
-          immediate: false,
-        },
+          immediate: false
+        }
       );
 
       // 取消事件
@@ -205,8 +205,8 @@
         handleHeightChange,
         handleTitleDbClick,
         getWrapperHeight,
-        onUpdateShow,
+        onUpdateShow
       };
-    },
+    }
   });
 </script>

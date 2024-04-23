@@ -24,6 +24,6 @@
         return 120;
       });
       return { prefixCls, getCalcContentWidth };
-    },
+    }
   });
 </script>

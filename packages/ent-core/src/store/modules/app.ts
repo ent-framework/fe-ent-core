@@ -8,7 +8,7 @@ import type {
   BeforeMiniState,
   ProjectConfig,
   ThemeSetting,
-  TransitionSetting,
+  TransitionSetting
 } from '../../store/types';
 import type { DeepPartial, TimeoutHandle } from '../../types';
 
@@ -29,15 +29,15 @@ export const useAppStore = defineStore('app', {
         ...defaultProjectSetting,
         themeSetting: {
           ...defaultThemeSetting,
-          theme: ThemeEnum.LIGHT,
-        },
+          theme: ThemeEnum.LIGHT
+        }
       },
-      {},
+      {}
     );
     return {
       pageLoading: false,
       projectConfig: projCfg,
-      beforeMiniInfo: {},
+      beforeMiniInfo: {}
     };
   },
   getters: {
@@ -55,7 +55,7 @@ export const useAppStore = defineStore('app', {
     },
     getTransitionSetting(): TransitionSetting {
       return this.getProjectConfig.transitionSetting;
-    },
+    }
   },
   actions: {
     setPageLoading(loading: boolean): void {
@@ -85,7 +85,7 @@ export const useAppStore = defineStore('app', {
         this.setPageLoading(loading);
         clearTimeout(timeId);
       }
-    },
+    }
   },
-  persist: true,
+  persist: true
 });

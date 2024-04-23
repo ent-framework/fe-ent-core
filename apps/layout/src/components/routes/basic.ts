@@ -14,7 +14,7 @@ export function getPageNotFoundRoute(): AppRouteRecordRaw {
     meta: {
       title: 'ErrorPage',
       hideBreadcrumb: true,
-      hideMenu: true,
+      hideMenu: true
     },
     children: [
       {
@@ -24,10 +24,10 @@ export function getPageNotFoundRoute(): AppRouteRecordRaw {
         meta: {
           title: 'ErrorPage',
           hideBreadcrumb: true,
-          hideMenu: true,
-        },
-      },
-    ],
+          hideMenu: true
+        }
+      }
+    ]
   };
 }
 
@@ -39,7 +39,7 @@ export function getRedirectRoute(): AppRouteRecordRaw {
     meta: {
       title: REDIRECT_NAME,
       hideBreadcrumb: true,
-      hideMenu: true,
+      hideMenu: true
     },
     children: [
       {
@@ -48,10 +48,10 @@ export function getRedirectRoute(): AppRouteRecordRaw {
         component: redirect,
         meta: {
           title: REDIRECT_NAME,
-          hideBreadcrumb: true,
-        },
-      },
-    ],
+          hideBreadcrumb: true
+        }
+      }
+    ]
   };
 }
 
@@ -64,7 +64,7 @@ export function getErrorLogRoute(): AppRouteRecordRaw {
     meta: {
       title: 'ErrorLog',
       hideBreadcrumb: true,
-      hideChildrenInMenu: true,
+      hideChildrenInMenu: true
     },
     children: [
       {
@@ -74,10 +74,10 @@ export function getErrorLogRoute(): AppRouteRecordRaw {
         meta: {
           title: t('routes.basic.errorLogList'),
           hideBreadcrumb: true,
-          currentActiveMenu: '/error-log',
-        },
-      },
-    ],
+          currentActiveMenu: '/error-log'
+        }
+      }
+    ]
   };
 }
 
@@ -89,7 +89,7 @@ export function getRootRoute(): AppRouteRecordRaw {
     name: 'Root',
     redirect: `${homePath || '/dashboard'}`,
     meta: {
-      title: 'Root',
-    },
+      title: 'Root'
+    }
   };
 }

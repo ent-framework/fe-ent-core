@@ -7,7 +7,7 @@ import type {
   FetchSetting,
   SorterResult,
   TableRowSelection,
-  TableSetting,
+  TableSetting
 } from './types/table';
 import type { FormProps } from '../../form/src/types/form';
 import type { Fn, Recordable } from '../../../types';
@@ -18,13 +18,13 @@ export const tableHeaderProps = {
    */
   title: {
     type: [String, Function] as PropType<string | ((data: Recordable) => string)>,
-    default: null,
+    default: null
   },
   /**
    * 表格标题右侧温馨提醒
    */
   titleHelpMessage: {
-    type: [String, Array] as PropType<string | string[]>,
+    type: [String, Array] as PropType<string | string[]>
   },
   /**
    * 显示表格设置工具
@@ -36,8 +36,8 @@ export const tableHeaderProps = {
    * @type {object}
    */
   tableSetting: {
-    type: Object as PropType<Partial<TableSetting>>,
-  },
+    type: Object as PropType<Partial<TableSetting>>
+  }
 };
 
 export const basicProps = {
@@ -50,10 +50,10 @@ export const basicProps = {
    */
   clickToRowSelect: {
     type: Boolean,
-    default: true,
+    default: true
   },
   rowSelection: {
-    type: Object as PropType<TableRowSelection>,
+    type: Object as PropType<TableRowSelection>
   },
 
   /**
@@ -63,14 +63,14 @@ export const basicProps = {
    */
   isTreeTable: {
     type: Boolean,
-    default: false,
+    default: false
   },
   /**
    * 取消表格的默认 padding
    * @type {boolean}
    */
   inset: {
-    type: Boolean,
+    type: Boolean
   },
   /**
    * 自定义排序方法。见下方全局配置说明
@@ -78,7 +78,7 @@ export const basicProps = {
    */
   sortFn: {
     type: Function as PropType<(sortInfo: SorterResult) => any>,
-    default: DEFAULT_SORT_FN,
+    default: DEFAULT_SORT_FN
   },
   /**
    * 自定义过滤方法。见下方全局配置说明
@@ -86,7 +86,7 @@ export const basicProps = {
    */
   filterFn: {
     type: Function as PropType<(data: Partial<Recordable<string[]>>) => any>,
-    default: DEFAULT_FILTER_FN,
+    default: DEFAULT_FILTER_FN
   },
 
   // /**
@@ -107,7 +107,7 @@ export const basicProps = {
    */
   api: {
     type: Function as PropType<(...arg: any[]) => Promise<any>>,
-    default: null,
+    default: null
   },
   /**
    * 请求之前对参数进行处理
@@ -115,7 +115,7 @@ export const basicProps = {
    */
   beforeFetch: {
     type: Function as PropType<Fn>,
-    default: null,
+    default: null
   },
   /**
    * 请求之后对返回值进行处理
@@ -123,7 +123,7 @@ export const basicProps = {
    */
   afterFetch: {
     type: Function as PropType<Fn>,
-    default: null,
+    default: null
   },
   /**
    * 开启表单后，在请求之前处理搜索条件参数
@@ -131,7 +131,7 @@ export const basicProps = {
    */
   handleSearchInfoFn: {
     type: Function as PropType<Fn>,
-    default: null,
+    default: null
   },
   /**
    * 接口请求配置，可以配置请求的字段和响应的字段名，见下方全局配置说明
@@ -139,7 +139,7 @@ export const basicProps = {
    */
   fetchSetting: {
     type: Object as PropType<Partial<FetchSetting>>,
-    default: () => FETCH_SETTING,
+    default: () => FETCH_SETTING
   },
   /**
    * 组件加载后是否立即请求接口，在 api 有传的情况下，如果为 false，需要自行使用 reload 加载表格数据
@@ -153,7 +153,7 @@ export const basicProps = {
    */
   searchInfo: {
     type: Object as PropType<Recordable>,
-    default: null,
+    default: null
   },
   /**
    * 默认的排序参数
@@ -161,7 +161,7 @@ export const basicProps = {
    */
   defSort: {
     type: Object as PropType<Recordable>,
-    default: null,
+    default: null
   },
   /**
    * 使用搜索表单
@@ -174,7 +174,7 @@ export const basicProps = {
    */
   formConfig: {
     type: Object as PropType<Partial<FormProps>>,
-    default: null,
+    default: null
   },
   /**
    * 显示行号
@@ -190,9 +190,9 @@ export const basicProps = {
     type: Object as PropType<BasicColumn>,
     default: () => {
       return {
-        width: 50,
+        width: 50
       };
-    },
+    }
   },
   /**
    * 表格右侧操作列配置 BasicColumn
@@ -200,20 +200,20 @@ export const basicProps = {
    */
   actionColumn: {
     type: Object as PropType<BasicColumn>,
-    default: null,
+    default: null
   },
 
   /**
    * 选择行的配置
    */
   selectionColumn: {
-    type: Object as PropType<Partial<DataTableSelectionColumn>>,
+    type: Object as PropType<Partial<DataTableSelectionColumn>>
   },
   /**
    * 展开行的配置
    */
   expandColumn: {
-    type: Object as PropType<Partial<DataTableExpandColumn>>,
+    type: Object as PropType<Partial<DataTableExpandColumn>>
   },
   /**
    * 文本超过宽度是否显示..., 全局设置，可以被column上的ellipsis属性覆盖
@@ -231,5 +231,5 @@ export const basicProps = {
    * 切换页码是否重置勾选状态
    * @type {boolean}
    */
-  clearSelectOnPageChange: propTypes.bool,
+  clearSelectOnPageChange: propTypes.bool
 };

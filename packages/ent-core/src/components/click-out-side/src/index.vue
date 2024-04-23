@@ -18,7 +18,7 @@
       /**
        * 鼠标在元素外点击时触发
        */
-      'clickOutside',
+      'clickOutside'
     ],
     /**
      * @zh 默认
@@ -34,6 +34,6 @@
         emit('mounted');
       });
       return { wrap };
-    },
+    }
   });
 </script>

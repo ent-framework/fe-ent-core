@@ -52,19 +52,19 @@
     props: {
       actions: {
         type: Array as PropType<TableActionItem[]>,
-        default: () => [],
+        default: () => []
       },
       dropDownActions: {
         type: Array as PropType<TableActionItem[]>,
-        default: () => [],
+        default: () => []
       },
       divider: propTypes.bool.def(true),
       outside: propTypes.bool,
       stopButtonPropagation: propTypes.bool.def(false),
       buttonSize: {
         type: String as PropType<Size>,
-        default: () => 'small',
-      },
+        default: () => 'small'
+      }
     },
     setup(props) {
       const { prefixCls } = useDesign('basic-table-action');
@@ -110,7 +110,7 @@
             }
             return null;
           },
-          ...others,
+          ...others
         } as PopButtonProps;
       }
 
@@ -136,7 +136,7 @@
             tooltip,
             tooltipProps,
             key: `dropdown-${label}-${index}`,
-            appendDivider: action.appendDivider,
+            appendDivider: action.appendDivider
           };
         });
       });
@@ -167,7 +167,7 @@
         return {
           //to: unref((table as any)?.wrapRef) || document.body,
           placement: 'bottom',
-          ...(isString(data) ? { title: data } : data),
+          ...(isString(data) ? { title: data } : data)
         };
       }
 
@@ -188,8 +188,8 @@
         onCellClick,
         getTooltip,
         getPopButton,
-        getButtonSize,
+        getButtonSize
       };
-    },
+    }
   });
 </script>

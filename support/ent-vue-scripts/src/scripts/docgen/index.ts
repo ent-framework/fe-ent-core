@@ -55,7 +55,7 @@ const getApiTmpl = (componentDoc: ComponentDocType, type: ApiType, lang: string)
 
     const propsTmpl = getTmpl(
       'Props',
-      templates.props(props || [], { isInterface: type === 'interface' }, lang),
+      templates.props(props || [], { isInterface: type === 'interface' }, lang)
     );
     const eventsTmpl = getTmpl('Events', templates.events(events || [], lang));
     const methodsTmpl = getTmpl('Methods', templates.methods(methods || [], lang));
@@ -79,7 +79,7 @@ const replacePlaceholderToDoc = async ({
   placeholderMatchers,
   parser,
   type,
-  lang,
+  lang
 }: {
   dir: string;
   template: string;
@@ -95,7 +95,7 @@ const replacePlaceholderToDoc = async ({
       // @ts-ignore
       // eslint-disable-next-line eslint-comments/no-unlimited-disable
       const componentDoc = await parser(path.resolve(dir, item[1]), {
-        addScriptHandlers: [propExtHandler, slotTagHandler, extendsExtHandler],
+        addScriptHandlers: [propExtHandler, slotTagHandler, extendsExtHandler]
       });
       result = result.replace(item[0], getApiTmpl(componentDoc, type, lang));
     } catch (err) {
@@ -147,7 +147,7 @@ const docgen = async ({ input, components }: { input?: string; components?: stri
       placeholderMatchers: /%%API\((.+?)\)%%/g,
       parser: parseComponent,
       type: 'component',
-      lang: 'zh',
+      lang: 'zh'
     });
 
     enResult = await replacePlaceholderToDoc({
@@ -156,7 +156,7 @@ const docgen = async ({ input, components }: { input?: string; components?: stri
       placeholderMatchers: /%%API\((.+?)\)%%/g,
       parser: parseComponent,
       type: 'component',
-      lang: 'en',
+      lang: 'en'
     });
 
     // INTERFACE占位符替换
@@ -166,7 +166,7 @@ const docgen = async ({ input, components }: { input?: string; components?: stri
       placeholderMatchers: /%%INTERFACE\((.+?)\)%%/g,
       parser: parseInterface,
       type: 'interface',
-      lang: 'zh',
+      lang: 'zh'
     });
 
     enResult = await replacePlaceholderToDoc({
@@ -175,12 +175,12 @@ const docgen = async ({ input, components }: { input?: string; components?: stri
       placeholderMatchers: /%%INTERFACE\((.+?)\)%%/g,
       parser: parseInterface,
       type: 'interface',
-      lang: 'en',
+      lang: 'en'
     });
 
     enResult = enResult.replace(
       /```yaml\n.+?```\n/s,
-      (match) => `${match}\n*Auto translate by google.*\n`,
+      (match) => `${match}\n*Auto translate by google.*\n`
     );
     try {
       const outputPath = input

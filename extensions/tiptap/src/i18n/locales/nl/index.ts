@@ -2,29 +2,29 @@ export default {
   editor: {
     extensions: {
       Bold: {
-        tooltip: 'Vet',
+        tooltip: 'Vet'
       },
       Underline: {
-        tooltip: 'Onderstrepen',
+        tooltip: 'Onderstrepen'
       },
       Italic: {
-        tooltip: 'Cursief',
+        tooltip: 'Cursief'
       },
       Strike: {
-        tooltip: 'Doorhalen',
+        tooltip: 'Doorhalen'
       },
       Heading: {
         tooltip: 'Hoofdstuk',
         buttons: {
           paragraph: 'Paragraaf',
-          heading: 'Hoofdstuk',
-        },
+          heading: 'Hoofdstuk'
+        }
       },
       Blockquote: {
-        tooltip: 'Citaat blokkeren',
+        tooltip: 'Citaat blokkeren'
       },
       CodeBlock: {
-        tooltip: 'Codeblok',
+        tooltip: 'Codeblok'
       },
       Link: {
         add: {
@@ -34,8 +34,8 @@ export default {
             href: 'Link',
             open_in_new_tab: 'Openen in nieuw tabblad',
             confirm: 'Toepassen',
-            cancel: 'Annuleren',
-          },
+            cancel: 'Annuleren'
+          }
         },
         edit: {
           tooltip: 'Link bewerken',
@@ -44,36 +44,36 @@ export default {
             href: 'Link',
             open_in_new_tab: 'Openen in nieuw tabblad',
             confirm: 'Bijwerken',
-            cancel: 'Annuleren',
-          },
+            cancel: 'Annuleren'
+          }
         },
         unlink: {
-          tooltip: 'Link verwijderen',
+          tooltip: 'Link verwijderen'
         },
         open: {
-          tooltip: 'Link openen',
-        },
+          tooltip: 'Link openen'
+        }
       },
       Image: {
         buttons: {
           insert_image: {
             tooltip: 'Afbeelding invoegen',
             external: 'Afbeelding invoegen via URL',
-            upload: 'Afbeelding uploaden',
+            upload: 'Afbeelding uploaden'
           },
           remove_image: {
-            tooltip: 'Verwijderen',
+            tooltip: 'Verwijderen'
           },
           image_options: {
-            tooltip: 'Afbeeldingsopties',
+            tooltip: 'Afbeeldingsopties'
           },
           display: {
             tooltip: 'Weergeven',
             inline: 'In tekstregel',
             block: 'Tekst afbreken',
             left: 'Links uitlijnen',
-            right: 'Rechts uitlijnen',
-          },
+            right: 'Rechts uitlijnen'
+          }
         },
         control: {
           insert_by_url: {
@@ -81,11 +81,11 @@ export default {
             placeholder: 'URL van afbeelding',
             confirm: 'Invoegen',
             cancel: 'Annuleren',
-            invalid_url: 'Vul een geldige URL in',
+            invalid_url: 'Vul een geldige URL in'
           },
           upload_image: {
             title: 'Afbeelding uploaden',
-            button: 'Kies een afbeelding of sleep het hier',
+            button: 'Kies een afbeelding of sleep het hier'
           },
           edit_image: {
             title: 'Afbeelding bewerken',
@@ -95,10 +95,10 @@ export default {
               src: 'Afbeelding URL',
               alt: 'Alternatieve tekst',
               width: 'Breedte',
-              height: 'Hoogte',
-            },
-          },
-        },
+              height: 'Hoogte'
+            }
+          }
+        }
       },
       Iframe: {
         tooltip: 'Video invoegen',
@@ -106,49 +106,49 @@ export default {
           title: 'Video invoegen',
           placeholder: 'Link',
           confirm: 'Invoegen',
-          cancel: 'Annuleren',
-        },
+          cancel: 'Annuleren'
+        }
       },
       BulletList: {
-        tooltip: 'Opsommingslijst',
+        tooltip: 'Opsommingslijst'
       },
       OrderedList: {
-        tooltip: 'Genummerde lijst',
+        tooltip: 'Genummerde lijst'
       },
       TodoList: {
-        tooltip: 'Takenlijst',
+        tooltip: 'Takenlijst'
       },
       TextAlign: {
         buttons: {
           align_left: {
-            tooltip: 'Links uitlijnen',
+            tooltip: 'Links uitlijnen'
           },
           align_center: {
-            tooltip: 'Centreren',
+            tooltip: 'Centreren'
           },
           align_right: {
-            tooltip: 'Rechts uitlijnen',
+            tooltip: 'Rechts uitlijnen'
           },
           align_justify: {
-            tooltip: 'Tekst uitvullen',
-          },
-        },
+            tooltip: 'Tekst uitvullen'
+          }
+        }
       },
       FontType: {
-        tooltip: 'Lettertype',
+        tooltip: 'Lettertype'
       },
       FontSize: {
         tooltip: 'Tekengrootte',
-        default: 'Standaard',
+        default: 'Standaard'
       },
       TextColor: {
-        tooltip: 'Tekstkleur',
+        tooltip: 'Tekstkleur'
       },
       TextHighlight: {
-        tooltip: 'Tekst markeren',
+        tooltip: 'Tekst markeren'
       },
       LineHeight: {
-        tooltip: 'Regelafstand',
+        tooltip: 'Regelafstand'
       },
       Table: {
         tooltip: 'Tabel',
@@ -162,53 +162,53 @@ export default {
           delete_row: 'Rij verwijderen',
           merge_cells: 'Cellen samenvoegen',
           split_cell: 'Cellen splitsen',
-          delete_table: 'Cellen verwijderen',
-        },
+          delete_table: 'Cellen verwijderen'
+        }
       },
       Indent: {
         buttons: {
           indent: {
-            tooltip: 'Inspringen',
+            tooltip: 'Inspringen'
           },
           outdent: {
-            tooltip: 'Uitspringen',
-          },
-        },
+            tooltip: 'Uitspringen'
+          }
+        }
       },
       FormatClear: {
-        tooltip: 'Opmaak wissen',
+        tooltip: 'Opmaak wissen'
       },
       HorizontalRule: {
-        tooltip: 'Horizontale regel',
+        tooltip: 'Horizontale regel'
       },
       History: {
         tooltip: {
           undo: 'Ongedaan maken',
-          redo: 'Herhalen',
-        },
+          redo: 'Herhalen'
+        }
       },
       Fullscreen: {
         tooltip: {
           fullscreen: 'Volledig scherm',
-          exit_fullscreen: 'Volledig scherm sluiten',
-        },
+          exit_fullscreen: 'Volledig scherm sluiten'
+        }
       },
       Print: {
-        tooltip: 'Afdrukken',
+        tooltip: 'Afdrukken'
       },
       Preview: {
         tooltip: 'Voorbeeld',
         dialog: {
-          title: 'Voorbeeld',
-        },
+          title: 'Voorbeeld'
+        }
       },
       SelectAll: {
-        tooltip: 'Selecteer alles',
+        tooltip: 'Selecteer alles'
       },
       CodeView: {
-        tooltip: 'Codeweergave',
-      },
+        tooltip: 'Codeweergave'
+      }
     },
-    characters: 'Karakters',
-  },
+    characters: 'Karakters'
+  }
 };

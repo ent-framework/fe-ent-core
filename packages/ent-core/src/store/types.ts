@@ -6,7 +6,7 @@ import type {
   PermissionModeEnum,
   RouterTransitionEnum,
   SessionTimeoutProcessingEnum,
-  ThemeEnum,
+  ThemeEnum
 } from '../logics';
 
 import type { Nullable, Recordable } from '../types';

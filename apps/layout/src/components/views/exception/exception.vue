@@ -24,23 +24,23 @@
       // 状态码
       status: {
         type: Number as PropType<number>,
-        default: ExceptionEnum.PAGE_NOT_FOUND,
+        default: ExceptionEnum.PAGE_NOT_FOUND
       },
 
       title: {
         type: String as PropType<string>,
-        default: '',
+        default: ''
       },
 
       subTitle: {
         type: String as PropType<string>,
-        default: '',
+        default: ''
       },
 
       full: {
         type: Boolean as PropType<boolean>,
-        default: false,
-      },
+        default: false
+      }
     },
     setup(props) {
       const statusMapRef = ref(new Map<string | number, MapValue>());
@@ -69,7 +69,7 @@
         status: `${ExceptionEnum.PAGE_NOT_ACCESS}`,
         subTitle: t('sys.exception.subTitle403'),
         btnText: props.full ? backLoginI18n : backHomeI18n,
-        handler: () => (props.full ? go(globSetting.logoUrl) : go()),
+        handler: () => (props.full ? go(globSetting.logoUrl) : go())
       });
 
       unref(statusMapRef).set(ExceptionEnum.PAGE_NOT_FOUND, {
@@ -77,7 +77,7 @@
         status: `${ExceptionEnum.PAGE_NOT_FOUND}`,
         subTitle: t('sys.exception.subTitle404'),
         btnText: props.full ? backLoginI18n : backHomeI18n,
-        handler: () => (props.full ? go(globSetting.logoUrl) : go()),
+        handler: () => (props.full ? go(globSetting.logoUrl) : go())
       });
 
       unref(statusMapRef).set(ExceptionEnum.ERROR, {
@@ -85,7 +85,7 @@
         status: `${ExceptionEnum.ERROR}`,
         subTitle: t('sys.exception.subTitle500'),
         btnText: backHomeI18n,
-        handler: () => go(),
+        handler: () => go()
       });
 
       unref(statusMapRef).set(ExceptionEnum.PAGE_NOT_DATA, {
@@ -93,7 +93,7 @@
         subTitle: '',
         btnText: t('common.redo'),
         handler: () => redo(),
-        icon: notDataSvg,
+        icon: notDataSvg
       });
 
       unref(statusMapRef).set(ExceptionEnum.NET_WORK_ERROR, {
@@ -101,7 +101,7 @@
         subTitle: t('sys.exception.networkErrorSubTitle'),
         btnText: t('common.redo'),
         handler: () => redo(),
-        icon: netWorkSvg,
+        icon: netWorkSvg
       });
 
       return () => {
@@ -120,11 +120,11 @@
                     {() => btnText}
                   </NButton>
                 ),
-              icon: () => (icon ? <img src={icon} /> : null),
+              icon: () => (icon ? <img src={icon} /> : null)
             }}
           </NResult>
         );
       };
-    },
+    }
   });
 </script>

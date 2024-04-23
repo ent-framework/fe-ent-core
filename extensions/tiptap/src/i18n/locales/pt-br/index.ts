@@ -2,29 +2,29 @@ export default {
   editor: {
     extensions: {
       Bold: {
-        tooltip: 'Negrito',
+        tooltip: 'Negrito'
       },
       Underline: {
-        tooltip: 'Sublinhado',
+        tooltip: 'Sublinhado'
       },
       Italic: {
-        tooltip: 'Itálico',
+        tooltip: 'Itálico'
       },
       Strike: {
-        tooltip: 'Riscado',
+        tooltip: 'Riscado'
       },
       Heading: {
         tooltip: 'Cabeçalho',
         buttons: {
           paragraph: 'Parágrafo',
-          heading: 'Cabeçalho',
-        },
+          heading: 'Cabeçalho'
+        }
       },
       Blockquote: {
-        tooltip: 'Bloco de citação',
+        tooltip: 'Bloco de citação'
       },
       CodeBlock: {
-        tooltip: 'Bloco de código',
+        tooltip: 'Bloco de código'
       },
       Link: {
         add: {
@@ -34,8 +34,8 @@ export default {
             href: 'Link de Referência',
             open_in_new_tab: 'Abrir em nova aba',
             confirm: 'Inserir',
-            cancel: 'Cancelar',
-          },
+            cancel: 'Cancelar'
+          }
         },
         edit: {
           tooltip: 'Editar link',
@@ -44,36 +44,36 @@ export default {
             href: 'Link de Referência',
             open_in_new_tab: 'Abrir em nova aba',
             confirm: 'Alterar',
-            cancel: 'Cancelar',
-          },
+            cancel: 'Cancelar'
+          }
         },
         unlink: {
-          tooltip: 'Excluir',
+          tooltip: 'Excluir'
         },
         open: {
-          tooltip: 'Abrir link',
-        },
+          tooltip: 'Abrir link'
+        }
       },
       Image: {
         buttons: {
           insert_image: {
             tooltip: 'Inserir imagem',
             external: 'Inserir Imagem com Url',
-            upload: 'Enviar Imagem',
+            upload: 'Enviar Imagem'
           },
           remove_image: {
-            tooltip: 'Remover',
+            tooltip: 'Remover'
           },
           image_options: {
-            tooltip: 'Opções da Imagem',
+            tooltip: 'Opções da Imagem'
           },
           display: {
             tooltip: 'Visualização',
             inline: 'Em Linha',
             block: 'Quebra de Texto',
             left: 'Para esquerda',
-            right: 'Para direita',
-          },
+            right: 'Para direita'
+          }
         },
         control: {
           insert_by_url: {
@@ -81,11 +81,11 @@ export default {
             placeholder: 'Url da imagem',
             confirm: 'Inserir',
             cancel: 'Cancelar',
-            invalid_url: 'Por favor, entre com o link correto',
+            invalid_url: 'Por favor, entre com o link correto'
           },
           upload_image: {
             title: 'Enviar imagem',
-            button: 'Escolha uma imagem ou arraste para cá',
+            button: 'Escolha uma imagem ou arraste para cá'
           },
           edit_image: {
             title: 'Editar imagem',
@@ -95,10 +95,10 @@ export default {
               src: 'Imagem Url',
               alt: 'Texto alternativo',
               width: 'Largura',
-              height: 'Altura',
-            },
-          },
-        },
+              height: 'Altura'
+            }
+          }
+        }
       },
       Iframe: {
         tooltip: 'Inserir vídeo',
@@ -106,49 +106,49 @@ export default {
           title: 'Inserir vídeo',
           placeholder: 'Link de Referência',
           confirm: 'Inserir',
-          cancel: 'Cancelar',
-        },
+          cancel: 'Cancelar'
+        }
       },
       BulletList: {
-        tooltip: 'Lista de Marcadores',
+        tooltip: 'Lista de Marcadores'
       },
       OrderedList: {
-        tooltip: 'Lista Enumerada',
+        tooltip: 'Lista Enumerada'
       },
       TodoList: {
-        tooltip: 'Lista de afazeres',
+        tooltip: 'Lista de afazeres'
       },
       TextAlign: {
         buttons: {
           align_left: {
-            tooltip: 'Alinhar a esquerda',
+            tooltip: 'Alinhar a esquerda'
           },
           align_center: {
-            tooltip: 'Alinhar ao centro',
+            tooltip: 'Alinhar ao centro'
           },
           align_right: {
-            tooltip: 'Alinhar a direita',
+            tooltip: 'Alinhar a direita'
           },
           align_justify: {
-            tooltip: 'Alinhamento justificado',
-          },
-        },
+            tooltip: 'Alinhamento justificado'
+          }
+        }
       },
       FontType: {
-        tooltip: 'Fonte',
+        tooltip: 'Fonte'
       },
       FontSize: {
         tooltip: 'Tamnaho da Fonte',
-        default: 'padrão',
+        default: 'padrão'
       },
       TextColor: {
-        tooltip: 'Cor do Texto',
+        tooltip: 'Cor do Texto'
       },
       TextHighlight: {
-        tooltip: 'Cor de destaque',
+        tooltip: 'Cor de destaque'
       },
       LineHeight: {
-        tooltip: 'Altura da Linha',
+        tooltip: 'Altura da Linha'
       },
       Table: {
         tooltip: 'Tabela',
@@ -162,53 +162,53 @@ export default {
           delete_row: 'Deletar linha',
           merge_cells: 'Mesclar células',
           split_cell: 'Dividir célula',
-          delete_table: 'Deletar tabela',
-        },
+          delete_table: 'Deletar tabela'
+        }
       },
       Indent: {
         buttons: {
           indent: {
-            tooltip: 'Aumentar Recuo',
+            tooltip: 'Aumentar Recuo'
           },
           outdent: {
-            tooltip: 'Diminuir Recuo',
-          },
-        },
+            tooltip: 'Diminuir Recuo'
+          }
+        }
       },
       FormatClear: {
-        tooltip: 'Limpar formatação',
+        tooltip: 'Limpar formatação'
       },
       HorizontalRule: {
-        tooltip: 'Linha horizontal',
+        tooltip: 'Linha horizontal'
       },
       History: {
         tooltip: {
           undo: 'Desafazer',
-          redo: 'Refazer',
-        },
+          redo: 'Refazer'
+        }
       },
       Fullscreen: {
         tooltip: {
           fullscreen: 'Tela cheia',
-          exit_fullscreen: 'Fechar tela cheia',
-        },
+          exit_fullscreen: 'Fechar tela cheia'
+        }
       },
       Print: {
-        tooltip: 'Imprimir',
+        tooltip: 'Imprimir'
       },
       Preview: {
         tooltip: 'Pre visualizar',
         dialog: {
-          title: 'Pre visualizar',
-        },
+          title: 'Pre visualizar'
+        }
       },
       SelectAll: {
-        tooltip: 'Selecionar Todos',
+        tooltip: 'Selecionar Todos'
       },
       CodeView: {
-        tooltip: 'Visualização de Código',
-      },
+        tooltip: 'Visualização de Código'
+      }
     },
-    characters: 'Caracteres',
-  },
+    characters: 'Caracteres'
+  }
 };

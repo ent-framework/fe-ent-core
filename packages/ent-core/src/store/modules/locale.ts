@@ -9,7 +9,7 @@ export interface LocaleState {
 
 export const useLocaleStore = defineStore('app-locale', {
   state: (): LocaleState => ({
-    localInfo: localeSetting,
+    localInfo: localeSetting
   }),
   getters: {
     getShowPicker(): boolean {
@@ -17,7 +17,7 @@ export const useLocaleStore = defineStore('app-locale', {
     },
     getLocale(): LocaleType {
       return this.localInfo?.locale ?? 'zh_CN';
-    },
+    }
   },
   actions: {
     /**
@@ -29,7 +29,7 @@ export const useLocaleStore = defineStore('app-locale', {
     },
     setShowPicker(show: boolean) {
       this.localInfo = { ...this.localInfo, showPicker: show };
-    },
+    }
   },
-  persist: true,
+  persist: true
 });

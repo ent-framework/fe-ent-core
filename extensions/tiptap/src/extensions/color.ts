@@ -16,7 +16,7 @@ const Color = TiptapColor.extend<CustomColorOptions>({
       colors: COLOR_SET,
       button({
         editor,
-        extension,
+        extension
       }: {
         editor: Editor;
         extension: any;
@@ -26,12 +26,12 @@ const Color = TiptapColor.extend<CustomColorOptions>({
           component: ColorPopover,
           componentProps: {
             editor,
-            buttonIcon: extension.options.buttonIcon,
-          },
+            buttonIcon: extension.options.buttonIcon
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default Color;

@@ -36,7 +36,7 @@ function genType() {
 export function setComponentRuleType(
   rule: FormItemRule,
   component: ComponentType,
-  valueFormat: string,
+  valueFormat: string
 ) {
   if (['DatePicker', 'MonthPicker', 'WeekPicker', 'TimePicker'].includes(component)) {
     rule.type = valueFormat ? 'string' : 'object';
@@ -72,5 +72,5 @@ export const NO_AUTO_LINK_COMPONENTS: ComponentType[] = [
   'ApiRadioGroup',
   'ApiCascader',
   'AutoComplete',
-  'RadioButtonGroup',
+  'RadioButtonGroup'
 ];

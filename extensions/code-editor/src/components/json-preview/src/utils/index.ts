@@ -33,14 +33,14 @@ export function jsonFlatten(
   data: JSONDataType,
   path = 'root',
   level = 0,
-  options?: JSONFlattenOptions,
+  options?: JSONFlattenOptions
 ): JSONFlattenReturnType[] {
   const {
     key,
     index,
     type = 'content',
     showComma = false,
-    length = 1,
+    length = 1
   } = options || ({} as JSONFlattenOptions);
   const dataType = getDataType(data);
 
@@ -51,8 +51,8 @@ export function jsonFlatten(
           index: idx,
           showComma: idx !== arr.length - 1,
           length,
-          type,
-        }),
+          type
+        })
       )
       // No flat, for compatibility.
       .reduce((acc, val) => acc.concat(val), []);
@@ -61,15 +61,15 @@ export function jsonFlatten(
         showComma: false,
         key,
         length: (data as unknown[]).length,
-        type: 'arrayStart',
-      })[0],
+        type: 'arrayStart'
+      })[0]
     ].concat(
       inner,
       jsonFlatten(']', path, level, {
         showComma,
         length: (data as unknown[]).length,
-        type: 'arrayEnd',
-      })[0],
+        type: 'arrayEnd'
+      })[0]
     );
   } else if (dataType === 'object') {
     const keys = Object.keys(data as Record<string, JSONDataType>);
@@ -83,9 +83,9 @@ export function jsonFlatten(
             key: objKey,
             showComma: idx !== arr.length - 1,
             length,
-            type,
-          },
-        ),
+            type
+          }
+        )
       )
       // No flat, for compatibility.
       .reduce((acc, val) => acc.concat(val), []);
@@ -95,11 +95,11 @@ export function jsonFlatten(
         key,
         index,
         length: keys.length,
-        type: 'objectStart',
-      })[0],
+        type: 'objectStart'
+      })[0]
     ].concat(
       inner,
-      jsonFlatten('}', path, level, { showComma, length: keys.length, type: 'objectEnd' })[0],
+      jsonFlatten('}', path, level, { showComma, length: keys.length, type: 'objectEnd' })[0]
     );
   }
 
@@ -111,12 +111,12 @@ export function jsonFlatten(
     path,
     showComma,
     length,
-    type,
+    type
   }).reduce((acc, [key, value]) => {
     if (value !== undefined) {
       return {
         ...acc,
-        [key]: value,
+        [key]: value
       };
     }
     return acc;

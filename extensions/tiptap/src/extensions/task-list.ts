@@ -25,13 +25,13 @@ const TaskList = TiptapTaskList.extend<CustomTaskListOptions>({
           disabled: false,
           isActive(editor: Editor) {
             return editor.isActive('taskList');
-          },
-        },
+          }
+        }
       ],
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -46,16 +46,16 @@ const TaskList = TiptapTaskList.extend<CustomTaskListOptions>({
             isActive: editor.isActive('taskList'),
             buttonIcon: extension.options.buttonIcon,
             icon: svg,
-            tooltip: t('editor.extensions.TodoList.tooltip'),
-          },
+            tooltip: t('editor.extensions.TodoList.tooltip')
+          }
         };
-      },
+      }
     };
   },
 
   addExtensions() {
     return [TaskItem];
-  },
+  }
 });
 
 export default TaskList;

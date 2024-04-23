@@ -31,7 +31,7 @@
     /**
      * 是否有背景色
      */
-    noBackground: { type: Boolean, default: false },
+    noBackground: { type: Boolean, default: false }
   };
 
   export default defineComponent({
@@ -52,7 +52,7 @@
       const getWrapStyle = computed((): CSSProperties => {
         if (!props.noBackground) {
           return {
-            backgroundColor: 'var(--n-body-color)',
+            backgroundColor: 'var(--n-body-color)'
           };
         }
 
@@ -70,8 +70,8 @@
         getAppLogoClass,
         getTitleClass,
         getWrapStyle,
-        logoImageURL,
+        logoImageURL
       };
-    },
+    }
   });
 </script>

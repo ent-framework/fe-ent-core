@@ -74,7 +74,7 @@ const ClickOutside: ObjectDirective = {
 
     nodeList.get(el)!.push({
       documentHandler: createDocumentHandler(el, binding),
-      bindingFn: binding.value,
+      bindingFn: binding.value
     });
   },
   updated(el: HTMLElement, binding: DirectiveBinding) {
@@ -86,7 +86,7 @@ const ClickOutside: ObjectDirective = {
     const oldHandlerIndex = handlers.findIndex((item) => item.bindingFn === binding.oldValue);
     const newHandler = {
       documentHandler: createDocumentHandler(el, binding),
-      bindingFn: binding.value,
+      bindingFn: binding.value
     };
 
     if (oldHandlerIndex >= 0) {
@@ -99,7 +99,7 @@ const ClickOutside: ObjectDirective = {
   unmounted(el: HTMLElement) {
     // remove all listeners when a component unmounted
     nodeList.delete(el);
-  },
+  }
 };
 
 export default ClickOutside;

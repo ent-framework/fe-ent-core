@@ -52,154 +52,154 @@ export type ComponentType =
 export const componentsRegistry = {
   Input: {
     // Input组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   InputGroup: {
     // Select组件的props定义
-    props: inputGroupProps,
+    props: inputGroupProps
   },
   InputPassword: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   InputSearch: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   InputTextArea: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   InputNumber: {
     // InputGroup组件的props定义
-    props: inputNumberProps,
+    props: inputNumberProps
   },
   InputCountDown: {
     // InputGroup组件的props定义
-    props: countDownInputProps,
+    props: countDownInputProps
   },
   Select: {
     // InputGroup组件的props定义
-    props: selectProps,
+    props: selectProps
   },
   ApiSelect: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   TreeSelect: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   ApiTree: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   ApiTreeSelect: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   ApiRadioGroup: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   Radio: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   RadioButtonGroup: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   RadioGroup: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   Checkbox: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   CheckboxGroup: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   AutoComplete: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   ApiCascader: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   Cascader: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   DatePicker: {
     // InputGroup组件的props定义
-    props: inputProps,
+    props: inputProps
   },
   RangePicker: {
-    props: inputProps,
+    props: inputProps
   },
   DateTimePicker: {
-    props: inputProps,
+    props: inputProps
   },
   DateTimeRangePicker: {
-    props: inputProps,
+    props: inputProps
   },
   MonthPicker: {
-    props: inputProps,
+    props: inputProps
   },
   MonthRangePicker: {
-    props: inputProps,
+    props: inputProps
   },
   QuarterPicker: {
-    props: inputProps,
+    props: inputProps
   },
   QuarterRangePicker: {
-    props: inputProps,
+    props: inputProps
   },
   YearPicker: {
-    props: inputProps,
+    props: inputProps
   },
   YearRangePicker: {
-    props: inputProps,
+    props: inputProps
   },
   WeekPicker: {
-    props: inputProps,
+    props: inputProps
   },
   TimePicker: {
-    props: inputProps,
+    props: inputProps
   },
   Switch: {
-    props: inputProps,
+    props: inputProps
   },
   StrengthMeter: {
-    props: inputProps,
+    props: inputProps
   },
   Upload: {
-    props: inputProps,
+    props: inputProps
   },
   IconPicker: {
-    props: inputProps,
+    props: inputProps
   },
   Render: {
-    props: inputProps,
+    props: inputProps
   },
   Slider: {
-    props: inputProps,
+    props: inputProps
   },
   Rate: {
-    props: inputProps,
+    props: inputProps
   },
   Divider: {
-    props: dividerProps,
+    props: dividerProps
   },
   Transfer: {
-    props: inputProps,
+    props: inputProps
   },
   ApiTransfer: {
-    props: inputProps,
-  },
+    props: inputProps
+  }
   // ...其他组件
 };

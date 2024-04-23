@@ -10,7 +10,7 @@ const propTypes = createTypes({
   number: undefined,
   object: undefined,
   integer: undefined,
-  array: undefined,
+  array: undefined
 });
 
 propTypes.extend([
@@ -18,19 +18,19 @@ propTypes.extend([
     name: 'looseBool',
     getter: true,
     type: Boolean,
-    default: undefined,
+    default: undefined
   },
   {
     name: 'style',
     getter: true,
     type: [String, Object],
-    default: undefined,
+    default: undefined
   },
   {
     name: 'VNodeChild',
     getter: true,
-    type: undefined,
-  },
+    type: undefined
+  }
 ]);
 export { propTypes };
 

@@ -25,7 +25,7 @@
     name: 'LayoutBreadcrumb',
     components: { EntIcon, NBreadcrumb, NBreadcrumbItem, NDropdown },
     props: {
-      theme: propTypes.oneOf(['dark', 'light']),
+      theme: propTypes.oneOf(['dark', 'light'])
     },
     setup() {
       const routes = ref<RouteLocationMatched[]>([]);
@@ -54,7 +54,7 @@
         if (currentRoute.value.meta?.currentActiveMenu) {
           breadcrumbList.push({
             ...currentRoute.value,
-            name: currentRoute.value.meta?.title || currentRoute.value.name,
+            name: currentRoute.value.meta?.title || currentRoute.value.name
           } as unknown as RouteLocationMatched);
         }
         routes.value = breadcrumbList;
@@ -66,7 +66,7 @@
           if (parent.includes(item.path)) {
             matched.push({
               ...item,
-              name: (item.meta?.title || item.name) as string,
+              name: (item.meta?.title || item.name) as string
             });
           }
           if (item.children?.length) {
@@ -127,6 +127,6 @@
       }
 
       return { routes, t, prefixCls, getIcon, getShowBreadCrumbIcon, handleClick, hasRedirect };
-    },
+    }
   });
 </script>

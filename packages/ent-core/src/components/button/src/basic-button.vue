@@ -27,7 +27,7 @@
           return {
             renderIcon: () => {
               return h(Icon, { icon, size: props.iconSize });
-            },
+            }
           };
         }
         return {};
@@ -36,12 +36,12 @@
         return {
           ...pick(props, Object.keys(buttonProps)),
           ...unref(attrs),
-          ...unref(getRenderIcon),
+          ...unref(getRenderIcon)
         };
       });
       return {
-        getBindValue,
+        getBindValue
       };
-    },
+    }
   });
 </script>

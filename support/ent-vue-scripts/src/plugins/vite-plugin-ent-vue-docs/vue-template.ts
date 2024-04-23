@@ -8,7 +8,7 @@ export const getMainVue = ({
   html,
   imports,
   components,
-  data,
+  data
 }: {
   html: string;
   imports: string[];
@@ -52,7 +52,7 @@ export const getDemoVue = ({
   virtualPath,
   title,
   description,
-  code,
+  code
 }: {
   id: string;
   virtualPath: string;
@@ -61,7 +61,7 @@ export const getDemoVue = ({
   code: string;
 }) => `<template>
   <code-block id="${id}" :title="getMessage(${getTemplateString(
-    title['zh-CN'],
+    title['zh-CN']
   )}, ${getTemplateString(title['en-US'])})">
     <template v-if="locale === 'zh_CN'" #description>
       ${description['zh-CN'] ?? ''}

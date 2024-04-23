@@ -18,13 +18,13 @@ const CodeBlock = TiptapCodeBlock.extend({
           disabled: false,
           isActive(editor: Editor) {
             return editor.isActive('codeBlock');
-          },
-        },
+          }
+        }
       ],
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -39,12 +39,12 @@ const CodeBlock = TiptapCodeBlock.extend({
             buttonIcon: extension.options.buttonIcon,
             isActive: editor.isActive('codeBlock'),
             icon: svg,
-            tooltip: t('editor.extensions.CodeBlock.tooltip'),
-          },
+            tooltip: t('editor.extensions.CodeBlock.tooltip')
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default CodeBlock;

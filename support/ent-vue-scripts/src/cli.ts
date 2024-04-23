@@ -27,7 +27,7 @@ program.version(packageData.version).name('ent-vue-scripts').usage('command [opt
 program
   .command('docgen')
   .description(
-    'generate document of component. e.g. arco-scripts-vue docgen --components menu,affix,button',
+    'generate document of component. e.g. arco-scripts-vue docgen --components menu,affix,button'
   )
   .option('-i, --input <filename>', 'specified input file')
   .option('-c, --components <names>', 'component name(s) joined by comma(,)')

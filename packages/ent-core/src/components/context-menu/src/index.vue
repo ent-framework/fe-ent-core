@@ -5,7 +5,7 @@
   import type {
     DropdownDividerOption,
     DropdownMixedOption,
-    DropdownOption,
+    DropdownOption
   } from 'naive-ui/es/dropdown/src/interface';
   import type { CSSProperties, PropType } from 'vue';
   import type { Axis, ContextMenuItem } from './typing';
@@ -22,15 +22,15 @@
       type: Object as PropType<Axis>,
       default() {
         return { x: 0, y: 0 };
-      },
+      }
     },
     items: {
       // The most important list, if not, will not be displayed
       type: Array as PropType<ContextMenuItem[]>,
       default() {
         return [];
-      },
-    },
+      }
+    }
   };
 
   export default defineComponent({
@@ -55,7 +55,7 @@
           width: `${width}px`,
           left: `${left + 1}px`,
           top: `${top + 1}px`,
-          zIndex: 9999,
+          zIndex: 9999
         };
       });
 
@@ -81,7 +81,7 @@
               if (divider) {
                 menuOptions.push({
                   type: 'divider',
-                  key: `d-${label}`,
+                  key: `d-${label}`
                 } as DropdownDividerOption);
               } else {
                 menuOptions.push({
@@ -92,7 +92,7 @@
                     if (item.icon) {
                       return h(EntIcon, { icon: item.icon });
                     }
-                  },
+                  }
                 } as DropdownOption);
               }
             }
@@ -104,6 +104,6 @@
           </div>
         );
       };
-    },
+    }
   });
 </script>

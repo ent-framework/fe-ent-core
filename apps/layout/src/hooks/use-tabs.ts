@@ -12,7 +12,7 @@ enum TableActionEnum {
   CLOSE_RIGHT,
   CLOSE_OTHER,
   CLOSE_CURRENT,
-  CLOSE,
+  CLOSE
 }
 
 export function useTabs(_router?: Router) {
@@ -97,6 +97,6 @@ export function useTabs(_router?: Router) {
     closeCurrent: () => handleTabAction(TableActionEnum.CLOSE_CURRENT),
     close: (tab?: RouteLocationNormalized) => handleTabAction(TableActionEnum.CLOSE, tab),
     setTitle: (title: string, tab?: RouteLocationNormalized) => updateTabTitle(title, tab),
-    updatePath: (fullPath: string, tab?: RouteLocationNormalized) => updateTabPath(fullPath, tab),
+    updatePath: (fullPath: string, tab?: RouteLocationNormalized) => updateTabPath(fullPath, tab)
   };
 }

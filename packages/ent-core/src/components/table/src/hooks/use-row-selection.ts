@@ -9,11 +9,11 @@ import type { DataTableRowKey } from 'naive-ui';
 export function useRowSelection(
   propsRef: ComputedRef<BasicTableProps>,
   tableData: Ref<Recordable[]>,
-  emit: EmitType,
+  emit: EmitType
 ) {
   const checkState = reactive<{ keys: DataTableRowKey[]; rows: Recordable[] }>({
     keys: [],
-    rows: [],
+    rows: []
   });
 
   const getRowSelectionRef = computed((): TableRowSelection | null => {
@@ -24,7 +24,7 @@ export function useRowSelection(
 
     return {
       selectedRowKeys: checkState.keys,
-      ...omit(rowSelection, ['onChange']),
+      ...omit(rowSelection, ['onChange'])
     };
   });
 
@@ -32,7 +32,7 @@ export function useRowSelection(
     () => unref(propsRef).rowSelection?.selectedRowKeys,
     (v: DataTableRowKey[]) => {
       checkState.keys = v;
-    },
+    }
   );
 
   function setSelectedRowKeys(
@@ -41,7 +41,7 @@ export function useRowSelection(
     meta: {
       row: InternalRowData | undefined;
       action: 'check' | 'uncheck' | 'checkAll' | 'uncheckAll';
-    },
+    }
   ) {
     const { rowSelection } = unref(propsRef);
     const actualRows: InternalRowData[] = [];
@@ -95,6 +95,6 @@ export function useRowSelection(
     getSelectRowKeys,
     setSelectedRowKeys,
     clearSelectedRowKeys,
-    setSelectedRows,
+    setSelectedRows
   };
 }

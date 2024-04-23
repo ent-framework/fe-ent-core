@@ -9,8 +9,8 @@ const theme = {
     md: '768px',
     lg: '992px',
     xl: '1200px',
-    '2xl': '1600px',
-  },
+    '2xl': '1600px'
+  }
 };
 
 export function configUnoCSSPlugin(isLib: boolean) {
@@ -20,13 +20,13 @@ export function configUnoCSSPlugin(isLib: boolean) {
       presets: [presetUno({ preflight: false }), presetTypography()],
       transformers: [transformerDirectives()],
       postcss: true,
-      theme,
+      theme
     });
   } else {
     return UnoCSS<Theme>({
       presets: [presetUno({ preflight: false }), presetTypography()],
       transformers: [transformerDirectives()],
-      theme,
+      theme
     });
   }
 }

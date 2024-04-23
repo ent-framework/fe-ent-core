@@ -9,9 +9,9 @@ export const useSlider = (min = 6, max = 12) => {
     for (let i = min; i < max + 1; i++) {
       l[i] = {
         style: {
-          color: '#fff',
+          color: '#fff'
         },
-        label: i,
+        label: i
       };
     }
     return l;
@@ -20,6 +20,6 @@ export const useSlider = (min = 6, max = 12) => {
     min,
     max,
     marks: getMarks(),
-    step: 1,
+    step: 1
   };
 };

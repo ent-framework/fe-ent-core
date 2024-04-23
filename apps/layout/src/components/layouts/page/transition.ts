@@ -12,7 +12,7 @@ export function getTransitionName({
   openCache,
   cacheTabs,
   enableTransition,
-  def,
+  def
 }: Pick<DefaultContext, 'route'> & {
   enableTransition: boolean;
   openCache: boolean;

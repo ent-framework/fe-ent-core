@@ -49,12 +49,12 @@ const FontFamily = Extension.create<FontFamilyOptions>({
           disabled: false,
           isActive(editor: Editor) {
             return key === getMarkAttributes(editor.state, 'textStyle').fontFamily || '';
-          },
+          }
         };
       }),
       button({
         editor,
-        extension,
+        extension
       }: {
         editor: Editor;
         extension: any;
@@ -65,10 +65,10 @@ const FontFamily = Extension.create<FontFamilyOptions>({
           componentProps: {
             editor,
             icon: svg,
-            buttonIcon: extension.options.buttonIcon,
-          },
+            buttonIcon: extension.options.buttonIcon
+          }
         };
-      },
+      }
     };
   },
 
@@ -86,12 +86,12 @@ const FontFamily = Extension.create<FontFamilyOptions>({
               }
 
               return {
-                style: `font-family: ${attributes.fontFamily}`,
+                style: `font-family: ${attributes.fontFamily}`
               };
-            },
-          },
-        },
-      },
+            }
+          }
+        }
+      }
     ];
   },
 
@@ -107,10 +107,10 @@ const FontFamily = Extension.create<FontFamilyOptions>({
         () =>
         ({ chain }) => {
           return chain().setMark('textStyle', { fontFamily: null }).removeEmptyTextStyle().run();
-        },
+        }
     };
   },
-  nessesaryExtensions: [TextStyle],
+  nessesaryExtensions: [TextStyle]
 }).extend({});
 
 export default FontFamily;

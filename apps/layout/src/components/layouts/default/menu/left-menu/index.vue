@@ -29,7 +29,7 @@
   export default defineComponent({
     name: 'EntLeftMenu',
     components: {
-      NMenu,
+      NMenu
     },
     inheritAttrs: false,
     props: basicProps,
@@ -41,7 +41,7 @@
       const menuState = reactive<SimpleMenuState>({
         defaultSelectedKeys: [],
         openKeys: [],
-        selectedKey: '',
+        selectedKey: ''
       });
 
       const { currentRoute } = useRouter();
@@ -53,7 +53,7 @@
         items,
         accordion,
         mixSider as any,
-        collapsed as any,
+        collapsed as any
       );
 
       const getBindValues = computed(() => ({ ...attrs, ...props }));
@@ -75,7 +75,7 @@
         (route) => {
           listenerRouteChange(route);
         },
-        { immediate: true, deep: true },
+        { immediate: true, deep: true }
       );
 
       watch(
@@ -87,7 +87,7 @@
             setOpenKeys(currentRoute.value.path);
           }
         },
-        { immediate: true },
+        { immediate: true }
       );
 
       watch(
@@ -98,7 +98,7 @@
           }
           setOpenKeys(currentRoute.value.path);
         },
-        { flush: 'post' },
+        { flush: 'post' }
       );
 
       async function handleMenuChange(route?: RouteLocationNormalizedLoaded) {
@@ -152,10 +152,10 @@
             RouterLink,
             {
               to: {
-                path: option.path as string,
-              },
+                path: option.path as string
+              }
             },
-            { default: () => option.label },
+            { default: () => option.label }
           );
         }
         return option.label as string;
@@ -188,8 +188,8 @@
         getOpenKeys,
         handleOpenChange,
         getCollapsedWidth,
-        ...toRefs(menuState),
+        ...toRefs(menuState)
       };
-    },
+    }
   });
 </script>

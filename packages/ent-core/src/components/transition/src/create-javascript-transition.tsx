@@ -7,15 +7,15 @@ import type { Mode } from './type';
 export function createJavascriptTransition(
   name: string,
   functions: Recordable,
-  mode: Mode = 'in-out',
+  mode: Mode = 'in-out'
 ) {
   return defineComponent({
     name,
     props: {
       mode: {
         type: String as PropType<Mode>,
-        default: mode,
-      },
+        default: mode
+      }
     },
     setup(props, { attrs, slots }) {
       return () => {
@@ -34,6 +34,6 @@ export function createJavascriptTransition(
           </Transition>
         );
       };
-    },
+    }
   });
 }

@@ -32,7 +32,7 @@ export {
   isTypedArray,
   isUndefined,
   isWeakMap,
-  isWeakSet,
+  isWeakSet
 } from 'lodash-es';
 
 const toString = Object.prototype.toString;

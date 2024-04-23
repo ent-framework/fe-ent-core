@@ -16,7 +16,7 @@ export function extendCodemirror(CodeMirror) {
         !inline &&
         ((type === 'tag' && content.endsWith('>') && state.context) || textAfter.startsWith('<'))
       );
-    },
+    }
   });
 
   CodeMirror.defineExtension('autoFormatRange', function (from, to) {
@@ -54,7 +54,7 @@ export function extendCodemirror(CodeMirror) {
             style,
             cur,
             stream.string.slice(stream.pos) || text[i + 1] || '',
-            inner.state,
+            inner.state
           )
         ) {
           newline();

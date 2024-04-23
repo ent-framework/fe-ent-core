@@ -34,7 +34,7 @@
           const { start } = useScrollTo({
             el: wrap,
             to,
-            duration,
+            duration
           });
           start();
         });
@@ -72,7 +72,7 @@
           const scrollHeight = wrap.scrollHeight as number;
           const { start } = useScrollTo({
             el: wrap,
-            to: scrollHeight,
+            to: scrollHeight
           });
           start();
         });
@@ -83,8 +83,8 @@
         scrollTo,
         scrollBottom,
         getScrollWrap,
-        getContentStyle,
+        getContentStyle
       };
-    },
+    }
   });
 </script>

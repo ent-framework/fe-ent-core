@@ -41,7 +41,7 @@
      */
     viewport: {
       type: (typeof window !== 'undefined' ? window.HTMLElement : Object) as PropType<HTMLElement>,
-      default: () => null,
+      default: () => null
     },
     /**
      * @zh 预加载阈值, css 单位
@@ -55,7 +55,7 @@
     direction: {
       type: String,
       default: 'vertical',
-      validator: (v) => ['vertical', 'horizontal'].includes(v),
+      validator: (v) => ['vertical', 'horizontal'].includes(v)
     },
     /**
      * @zh 包裹组件的外层容器的标签名
@@ -67,7 +67,7 @@
      * @zh transition 动画 name
      * @en transition name
      */
-    transitionName: { type: String, default: 'lazy-container' },
+    transitionName: { type: String, default: 'lazy-container' }
   };
 
   export default defineComponent({
@@ -81,7 +81,7 @@
       const state = reactive<State>({
         isInit: false,
         loading: false,
-        intersectionObserverInstance: null,
+        intersectionObserverInstance: null
       });
 
       onMounted(() => {
@@ -135,7 +135,7 @@
                 }
               }
             },
-            root: toRef(props, 'viewport'),
+            root: toRef(props, 'viewport')
           });
         } catch {
           init();
@@ -143,8 +143,8 @@
       }
       return {
         elRef,
-        ...toRefs(state),
+        ...toRefs(state)
       };
-    },
+    }
   });
 </script>

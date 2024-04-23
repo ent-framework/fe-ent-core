@@ -9,6 +9,6 @@ export function configVisualizerConfig() {
     filename: './node_modules/.cache/visualizer/stats.html',
     open: true,
     gzipSize: true,
-    brotliSize: true,
+    brotliSize: true
   }) as PluginOption;
 }

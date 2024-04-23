@@ -40,7 +40,7 @@
     modal: true,
     guides: true,
     movable: true,
-    rotatable: true,
+    rotatable: true
   };
 
   const props = {
@@ -69,7 +69,7 @@
      */
     crossorigin: {
       type: String as PropType<'' | 'anonymous' | 'use-credentials' | undefined>,
-      default: undefined,
+      default: undefined
     },
     /**
      * 图片样式
@@ -78,7 +78,7 @@
     /**
      * corpperjs 配置项
      */
-    options: { type: Object as PropType<Options>, default: () => ({}) },
+    options: { type: Object as PropType<Options>, default: () => ({}) }
   };
 
   export default defineComponent({
@@ -97,7 +97,7 @@
         return {
           height: props.height,
           maxWidth: '100%',
-          ...props.imageStyle,
+          ...props.imageStyle
         };
       });
 
@@ -106,8 +106,8 @@
           prefixCls,
           attrs.class,
           {
-            [`${prefixCls}--circled`]: props.circled,
-          },
+            [`${prefixCls}--circled`]: props.circled
+          }
         ];
       });
 
@@ -142,7 +142,7 @@
           cropmove() {
             debounceRealTimeCroppered();
           },
-          ...props.options,
+          ...props.options
         });
       }
 
@@ -167,7 +167,7 @@
           fileReader.onloadend = (e) => {
             emit('cropend', {
               imgBase64: e.target?.result ?? '',
-              imgInfo,
+              imgInfo
             });
           };
           fileReader.onerror = () => {
@@ -195,6 +195,6 @@
       }
 
       return { getClass, imgElRef, getWrapperStyle, getImageStyle, isReady, croppered };
-    },
+    }
   });
 </script>

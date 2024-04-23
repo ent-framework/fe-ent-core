@@ -12,12 +12,12 @@ const Fullscreen = Extension.create({
         return {
           component: FullscreenCommandButton,
           componentProps: {
-            buttonIcon: extension.options.buttonIcon,
-          },
+            buttonIcon: extension.options.buttonIcon
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default Fullscreen;

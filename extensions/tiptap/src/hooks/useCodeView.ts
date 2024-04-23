@@ -16,7 +16,7 @@ export default function useCodeView(editor: ShallowRef<Editor | undefined>) {
     cm.execCommand('selectAll');
     const selectedRange = {
       from: cm.getCursor(true),
-      to: cm.getCursor(false),
+      to: cm.getCursor(false)
     };
     cm.autoFormatRange(selectedRange.from, selectedRange.to);
     cm.setCursor(0);
@@ -24,7 +24,7 @@ export default function useCodeView(editor: ShallowRef<Editor | undefined>) {
 
   const initCodemirror = () => {
     const codeViewExtension = unref(editor)!.extensionManager.extensions.find(
-      (e) => e.name === 'codeView',
+      (e) => e.name === 'codeView'
     );
     if (codeViewExtension) {
       const { codemirror, codemirrorOptions } = codeViewExtension.options;
@@ -33,7 +33,7 @@ export default function useCodeView(editor: ShallowRef<Editor | undefined>) {
         const cmOptions = {
           ...codemirrorOptions,
           readOnly: false,
-          spellcheck: false,
+          spellcheck: false
           // readOnly: this.readonly,
           // spellcheck: this.spellcheckEnabled,
         };
@@ -72,6 +72,6 @@ export default function useCodeView(editor: ShallowRef<Editor | undefined>) {
 
   return {
     cmTextAreaRef,
-    isCodeViewMode,
+    isCodeViewMode
   };
 }

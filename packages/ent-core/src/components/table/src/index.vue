@@ -49,7 +49,7 @@
     shallowRef,
     toRaw,
     unref,
-    watchEffect,
+    watchEffect
   } from 'vue';
   import { NDataTable } from 'naive-ui';
   import { omit, pick } from 'lodash-es';
@@ -75,7 +75,7 @@
     components: {
       NDataTable,
       EntForm,
-      TableHeader,
+      TableHeader
     },
     extends: NDataTable,
     props: basicProps,
@@ -96,7 +96,7 @@
       'expanded-rows-change',
       'change',
       'columns-change',
-      'update:checked-row-keys',
+      'update:checked-row-keys'
     ],
     setup(props, { attrs, emit, slots, expose }) {
       const tableElRef = ref(null);
@@ -118,7 +118,7 @@
         unref(isFixedHeightPage) &&
           props.canResize &&
           warn(
-            "'canResize' of BasicTable may not work in PageWrapper with 'fixedHeight' (especially in hot updates)",
+            "'canResize' of BasicTable may not work in PageWrapper with 'fixedHeight' (especially in hot updates)"
           );
       });
 
@@ -128,7 +128,7 @@
         getPagination,
         setPagination,
         setShowPagination,
-        getShowPagination,
+        getShowPagination
       } = usePagination(getProps);
 
       const {
@@ -138,7 +138,7 @@
         clearSelectedRowKeys,
         getSelectRowKeys,
         setSelectedRowKeys,
-        getRowSelection,
+        getRowSelection
       } = useRowSelection(getProps, tableData, emit);
 
       const {
@@ -153,7 +153,7 @@
         findTableDataRecord,
         fetch,
         reload,
-        updateTableData,
+        updateTableData
       } = useDataSource(
         getProps,
         {
@@ -162,9 +162,9 @@
           setLoading,
           setPagination,
           getFieldsValue: formActions.getFieldsValue,
-          clearSelectedRowKeys,
+          clearSelectedRowKeys
         },
-        emit,
+        emit
       );
 
       const {
@@ -173,7 +173,7 @@
         setCacheColumnsByField,
         setCacheColumns,
         setColumns,
-        getCacheColumns,
+        getCacheColumns
       } = useColumns(getProps, getPaginationInfo);
 
       const { customRow } = useCustomRow(getProps, {
@@ -181,7 +181,7 @@
         getSelectRows,
         getSelectRowKeys,
         clearSelectedRowKeys,
-        emit,
+        emit
       });
 
       const { getFormProps, replaceFormSlotKey, getFormSlotKeys, handleSearchInfoChange } =
@@ -203,7 +203,7 @@
           columns: toRaw(unref(getViewColumns)),
           pagination: toRaw(unref(getPaginationInfo)),
           data: dataSource,
-          remote: !!api,
+          remote: !!api
         };
         propsData = omit(propsData, ['class', 'onChange']);
         return propsData;
@@ -216,8 +216,8 @@
           //attrs.class, maybe bug here, will duplicate class
           {
             [`${prefixCls}-form-container`]: values.useSearchForm,
-            [`${prefixCls}--inset`]: values.inset,
-          },
+            [`${prefixCls}--inset`]: values.inset
+          }
         ];
       });
 
@@ -262,7 +262,7 @@
         getSize: () => {
           return unref(getBindValues).size as SizeType;
         },
-        setCacheColumns,
+        setCacheColumns
       };
       createTableContext({ ...tableAction, wrapRef, getBindValues });
 
@@ -288,8 +288,8 @@
         getWrapperClass,
         columns: getViewColumns,
         handlePageChange,
-        handlePageSizeChange,
+        handlePageSizeChange
       };
-    },
+    }
   });
 </script>

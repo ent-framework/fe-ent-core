@@ -25,18 +25,18 @@ function getSVGData(): IconData[] {
   const iconData: IconData = {
     title: '通用类图标',
     type: 'general',
-    list: [],
+    list: []
   };
   const files = glob.sync(`**/*.svg`, {
     cwd: paths.iconSvgs,
-    absolute: true,
+    absolute: true
   });
   for (const filePath of files) {
     const name = `icon-${path.basename(filePath, '.svg')}`;
     iconData.list.push({
       name,
       componentName: `${toPascalCase(name)}`,
-      path: filePath,
+      path: filePath
     });
   }
   data.push(iconData);
@@ -52,7 +52,7 @@ async function buildIconComponent(data: IconData[]) {
 
       const optimizedSvg = optimize(svgFile, {
         path: item.path,
-        ...svgoConfig,
+        ...svgoConfig
       });
       if ('data' in optimizedSvg) {
         const { data } = optimizedSvg;
@@ -63,7 +63,7 @@ async function buildIconComponent(data: IconData[]) {
             getIconVue({
               name: item.name,
               componentName: item.componentName,
-              svgHtml: svgElement.outerHTML,
+              svgHtml: svgElement.outerHTML
             }),
             (err) => {
               if (err) {
@@ -71,7 +71,7 @@ async function buildIconComponent(data: IconData[]) {
               } else {
                 console.log(`Build ${item.componentName} Success!`);
               }
-            },
+            }
           );
         }
       }
@@ -84,7 +84,7 @@ function buildType(data: IconData[]) {
   for (const iconData of data) {
     for (const item of iconData.list) {
       exports.push(
-        `${item.componentName}: typeof import('@arco-design/web-vue/es/icon')['${item.componentName}'];`,
+        `${item.componentName}: typeof import('@arco-design/web-vue/es/icon')['${item.componentName}'];`
       );
     }
   }

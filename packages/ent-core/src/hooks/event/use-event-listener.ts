@@ -19,7 +19,7 @@ export function useEventListener({
   options,
   autoRemove = true,
   isDebounce = true,
-  wait = 80,
+  wait = 80
 }: UseEventParams): { removeEvent: RemoveEventFn } {
   let remove: RemoveEventFn = () => undefined;
   const isAddRef = ref(false);
@@ -45,7 +45,7 @@ export function useEventListener({
           });
         }
       },
-      { immediate: true },
+      { immediate: true }
     );
 
     remove = () => {

@@ -12,7 +12,7 @@
     components: { NImage },
     props: {
       fileUrl: propTypes.string.def(''),
-      fileName: propTypes.string.def(''),
-    },
+      fileName: propTypes.string.def('')
+    }
   });
 </script>

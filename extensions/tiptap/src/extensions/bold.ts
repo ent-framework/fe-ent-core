@@ -20,13 +20,13 @@ const Bold = TiptapBold.extend<CustomBoldOptions>({
           disabled: false,
           isActive(editor: Editor) {
             return editor.isActive('bold');
-          },
-        },
+          }
+        }
       ],
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -41,12 +41,12 @@ const Bold = TiptapBold.extend<CustomBoldOptions>({
             buttonIcon: extension.options.buttonIcon,
             isActive: editor.isActive('bold'),
             icon: svg,
-            tooltip: t('editor.extensions.Bold.tooltip'),
-          },
+            tooltip: t('editor.extensions.Bold.tooltip')
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default Bold;

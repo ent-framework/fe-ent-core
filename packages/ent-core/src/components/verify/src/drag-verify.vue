@@ -19,7 +19,7 @@
         moveDistance: 0,
         toLeft: false,
         startTime: 0,
-        endTime: 0,
+        endTime: 0
       });
       const { t } = useI18n();
       const wrapElRef = ref<HTMLDivElement | null>(null);
@@ -34,7 +34,7 @@
           if (state.isMoving) {
             resume();
           }
-        },
+        }
       });
 
       const getActionStyleRef = computed(() => {
@@ -44,7 +44,7 @@
           left: 0,
           width: h,
           height: h,
-          ...actionStyle,
+          ...actionStyle
         };
       });
 
@@ -57,7 +57,7 @@
           height: `${h}px`,
           lineHeight: `${h}px`,
           borderRadius: circle ? `${h / 2}px` : 0,
-          ...wrapStyle,
+          ...wrapStyle
         };
       });
 
@@ -67,7 +67,7 @@
         return {
           height: `${h}px`,
           borderRadius: circle ? `${h / 2}px 0 0 ${h / 2}px` : 0,
-          ...barStyle,
+          ...barStyle
         };
       });
 
@@ -79,7 +79,7 @@
         return {
           height: h,
           width: w,
-          ...contentStyle,
+          ...contentStyle
         };
       });
 
@@ -93,7 +93,7 @@
             emit('update:value', isPassing);
             emit('change', isPassing);
           }
-        },
+        }
       );
 
       watchEffect(() => {
@@ -137,7 +137,7 @@
           emit('move', {
             event: e,
             moveDistance,
-            moveX,
+            moveX
           });
           if (moveX > 0 && moveX <= offset) {
             actionEl.style.left = `${moveX}px`;
@@ -217,7 +217,7 @@
       }
 
       expose({
-        resume,
+        resume
       });
 
       return () => {
@@ -290,6 +290,6 @@
           </div>
         );
       };
-    },
+    }
   });
 </script>

@@ -13,7 +13,7 @@ const SelectAll = Extension.create({
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -28,12 +28,12 @@ const SelectAll = Extension.create({
             },
             buttonIcon: extension.options.buttonIcon,
             icon: svg,
-            tooltip: t('editor.extensions.SelectAll.tooltip'),
-          },
+            tooltip: t('editor.extensions.SelectAll.tooltip')
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default SelectAll;

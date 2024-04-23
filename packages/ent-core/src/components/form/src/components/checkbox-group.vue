@@ -19,8 +19,8 @@
   const CheckboxGroupProps = {
     ...checkboxGroupProps,
     options: {
-      type: Array as PropType<OptionsItem[]>,
-    },
+      type: Array as PropType<OptionsItem[]>
+    }
   };
 
   export default defineComponent({
@@ -28,19 +28,19 @@
     components: {
       NSpace,
       NCheckbox,
-      NCheckboxGroup,
+      NCheckboxGroup
     },
     inheritAttrs: false,
     props: CheckboxGroupProps,
     setup(props, { attrs }) {
       const getBindValue = computed(() => ({
         ...props,
-        ...attrs,
+        ...attrs
       }));
 
       return {
-        getBindValue,
+        getBindValue
       };
-    },
+    }
   });
 </script>

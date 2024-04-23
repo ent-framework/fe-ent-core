@@ -10,7 +10,7 @@ export default function externalPlugin(fromSource = false): Plugin {
       }
       const result = await this.resolve(source, importer, {
         skipSelf: true,
-        custom: { 'node-resolve': {} },
+        custom: { 'node-resolve': {} }
       });
 
       if (result && /node_modules/.test(result.id)) {
@@ -18,6 +18,6 @@ export default function externalPlugin(fromSource = false): Plugin {
       }
 
       return null;
-    },
+    }
   };
 }

@@ -48,6 +48,6 @@ export function useTheme() {
     theme: appTheme,
     themeOverrides,
     getTheme,
-    updateGrayMode,
+    updateGrayMode
   };
 }

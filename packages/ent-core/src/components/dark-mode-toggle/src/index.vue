@@ -29,8 +29,8 @@
       const getClass = computed(() => [
         prefixCls,
         {
-          [`${prefixCls}--dark`]: unref(isDark),
-        },
+          [`${prefixCls}--dark`]: unref(isDark)
+        }
       ]);
 
       function toggleDarkMode() {
@@ -42,8 +42,8 @@
         prefixCls,
         getShowDarkModeToggle,
         getClass,
-        toggleDarkMode,
+        toggleDarkMode
       };
-    },
+    }
   });
 </script>

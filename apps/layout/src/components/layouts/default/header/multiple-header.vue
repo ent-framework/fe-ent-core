@@ -14,7 +14,7 @@
     useHeaderSetting,
     useLayoutTheme,
     useMenuSetting,
-    useMultipleTabSetting,
+    useMultipleTabSetting
   } from '../../../../hooks';
   import MultipleTabs from '../tabs/index.vue';
   import LayoutHeader from './index.vue';
@@ -78,7 +78,7 @@
         }
         setHeaderHeight(height);
         return {
-          height: `${height}px`,
+          height: `${height}px`
         };
       });
 
@@ -86,7 +86,7 @@
         return [
           prefixCls,
           `${prefixCls}--${unref(getActualHeaderTheme)}`,
-          { [`${prefixCls}--fixed`]: unref(getIsFixed) },
+          { [`${prefixCls}--fixed`]: unref(getIsFixed) }
         ];
       });
 
@@ -98,8 +98,8 @@
         getWrapStyle,
         getIsShowPlaceholderDom,
         getShowTabs,
-        getShowInsetHeaderRef,
+        getShowInsetHeaderRef
       };
-    },
+    }
   });
 </script>

@@ -21,7 +21,7 @@
       api: { type: Function as PropType<(arg?: Recordable<any>) => Promise<Recordable<any>>> },
       params: { type: Object },
       immediate: { type: Boolean, default: true },
-      resultField: propTypes.string.def(''),
+      resultField: propTypes.string.def('')
     },
     emits: ['options-change', 'change'],
     setup(props, { attrs, emit }) {
@@ -31,7 +31,7 @@
       const getAttrs = computed(() => {
         return {
           ...(props.api ? { options: unref(treeData) } : {}),
-          ...attrs,
+          ...attrs
         };
       });
 
@@ -44,14 +44,14 @@
         () => {
           !unref(isFirstLoaded) && fetch();
         },
-        { deep: true },
+        { deep: true }
       );
 
       watch(
         () => props.immediate,
         (v) => {
           v && !isFirstLoaded.value && fetch();
-        },
+        }
       );
 
       onMounted(() => {
@@ -79,6 +79,6 @@
         emit('options-change', treeData.value);
       }
       return { getAttrs, loading, handleChange };
-    },
+    }
   });
 </script>

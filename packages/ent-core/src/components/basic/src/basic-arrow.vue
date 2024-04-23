@@ -28,7 +28,7 @@
      * @zh 取消 padding/margin，用于内嵌
      * @en Cancel padding/margin for inline
      */
-    inset: { type: Boolean },
+    inset: { type: Boolean }
   };
 
   export default defineComponent({
@@ -47,14 +47,14 @@
             [`${prefixCls}--active`]: expand,
             up,
             inset,
-            down,
-          },
+            down
+          }
         ];
       });
       return {
         prefixCls,
-        getClass,
+        getClass
       };
-    },
+    }
   });
 </script>

@@ -28,21 +28,21 @@
     props: {
       flowOptions: {
         type: Object as PropType<Definition>,
-        default: () => ({}),
+        default: () => ({})
       },
 
       data: {
         type: Object as PropType<any>,
-        default: () => ({}),
+        default: () => ({})
       },
 
       toolbar: {
         type: Boolean,
-        default: true,
+        default: true
       },
       patternItems: {
-        type: Array,
-      },
+        type: Array
+      }
     },
     setup(props) {
       const lfElRef = ref(null);
@@ -54,7 +54,7 @@
       const appStore = useAppStore();
       const [register, { openModal }] = useModal();
       createFlowChartContext({
-        logicFlow: lfInstance as unknown as LogicFlow,
+        logicFlow: lfInstance as unknown as LogicFlow
       });
 
       const getFlowOptions = computed(() => {
@@ -63,12 +63,12 @@
         const defaultOptions: Partial<Definition> = {
           grid: true,
           background: {
-            color: appStore.getThemeSetting.theme === 'light' ? '#f7f9ff' : '#151515',
+            color: appStore.getThemeSetting.theme === 'light' ? '#f7f9ff' : '#151515'
           },
           keyboard: {
-            enabled: true,
+            enabled: true
           },
-          ...flowOptions,
+          ...flowOptions
         };
         return defaultOptions as Definition;
       });
@@ -77,7 +77,7 @@
         () => props.data,
         () => {
           onRender();
-        },
+        }
       );
 
       // TODO
@@ -92,7 +92,7 @@
         () => unref(getFlowOptions),
         (options) => {
           unref(lfInstance)?.updateEditConfig(options);
-        },
+        }
       );
 
       // init logicFlow
@@ -115,7 +115,7 @@
 
         lfInstance.value = new LogicFlow({
           ...unref(getFlowOptions),
-          container: lfEl,
+          container: lfEl
         });
         const lf = unref(lfInstance)!;
         lf?.setDefaultEdgeType('line');
@@ -149,8 +149,8 @@
         prefixCls,
         lfElRef,
         handlePreview,
-        graphData,
+        graphData
       };
-    },
+    }
   });
 </script>

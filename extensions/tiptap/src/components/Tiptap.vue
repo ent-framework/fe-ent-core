@@ -6,9 +6,9 @@
       {
         'ent-tiptap-editor': true,
         'ent-tiptap-editor--fullscreen': isFullscreen,
-        'ent-tiptap-editor--with-footer': showFooter,
+        'ent-tiptap-editor--with-footer': showFooter
       },
-      editorClass,
+      editorClass
     ]"
   >
     <div>
@@ -21,7 +21,7 @@
       v-if="isCodeViewMode"
       :class="{
         'ent-tiptap-editor__codemirror': true,
-        'border-bottom-radius': isCodeViewMode,
+        'border-bottom-radius': isCodeViewMode
       }"
     >
       <textarea ref="cmTextAreaRef" />
@@ -31,9 +31,9 @@
       :editor="editor"
       :class="[
         {
-          'ent-tiptap-editor__content': true,
+          'ent-tiptap-editor__content': true
         },
-        editorContentClass,
+        editorContentClass
       ]"
     />
 
@@ -41,9 +41,9 @@
       v-if="showFooter"
       :class="[
         {
-          'ent-tiptap-editor__footer': true,
+          'ent-tiptap-editor__footer': true
         },
-        editorFooterClass,
+        editorFooterClass
       ]"
     >
       <span class="ent-tiptap-editor__characters">
@@ -72,86 +72,86 @@
     components: {
       EditorContent,
       MenuBar,
-      MenuBubble,
+      MenuBubble
     },
 
     props: {
       content: {
         validator: (prop) => typeof prop === 'object' || typeof prop === 'string',
-        default: '',
+        default: ''
       },
       extensions: {
         type: Array as PropType<Extension[]>,
-        default: () => [],
+        default: () => []
       },
       placeholder: {
         type: String,
-        default: '',
+        default: ''
       },
       lang: {
         type: String,
-        default: 'en',
+        default: 'en'
       },
       width: {
         type: [String, Number],
-        default: undefined,
+        default: undefined
       },
       height: {
         type: [String, Number],
-        default: undefined,
+        default: undefined
       },
       output: {
         type: String,
         default: 'html',
         validator(output: string): boolean {
           return ['html', 'json'].includes(output);
-        },
+        }
       },
       spellcheck: {
         type: Boolean,
-        default: false,
+        default: false
       },
       readonly: {
         type: Boolean,
-        default: false,
+        default: false
       },
       tooltip: {
         type: Boolean,
-        default: true,
+        default: true
       },
       enableCharCount: {
         type: Boolean,
-        default: true,
+        default: true
       },
       editorProps: {
         type: Object as PropType<EditorProps>,
-        default: () => {},
+        default: () => {}
       },
       charCountMax: {
         type: Number,
-        default: undefined,
+        default: undefined
       },
       // ----- Editor Class -----
       editorClass: {
         type: [String, Array, Object],
-        default: undefined,
+        default: undefined
       },
       editorContentClass: {
         type: [String, Array, Object],
-        default: undefined,
+        default: undefined
       },
       editorMenubarClass: {
         type: [String, Array, Object],
-        default: undefined,
+        default: undefined
       },
       editorBubbleMenuClass: {
         type: [String, Array, Object],
-        default: undefined,
+        default: undefined
       },
       editorFooterClass: {
         type: [String, Array, Object],
-        default: undefined,
-      },
+        default: undefined
+      }
     },
     setup(props, { emit }) {
       const extensions = props.extensions.concat([
@@ -161,15 +161,15 @@
           showOnlyCurrent: false,
           placeholder: () => {
             return props.placeholder;
-          },
-        }),
+          }
+        })
       ]);
       if (props.enableCharCount) {
         extensions.push(
           CharacterCount.configure({
             limit: props.charCountMax,
-            mode: 'textSize',
-          }),
+            mode: 'textSize'
+          })
         );
       }
 
@@ -194,7 +194,7 @@
           additionalExtensions = [
             ...additionalExtensions,
             ...(extension?.parent?.config?.nessesaryExtensions ||
-              extension?.config?.nessesaryExtensions),
+              extension?.config?.nessesaryExtensions)
           ];
         }
       });
@@ -235,18 +235,18 @@
         onDestroy: (options) => {
           emit('onDestroy', options);
         },
-        onUpdate,
+        onUpdate
       });
 
       watchEffect(() => {
         unref(editor)?.setOptions({
           editorProps: {
             attributes: {
-              spellcheck: String(props.spellcheck),
+              spellcheck: String(props.spellcheck)
             },
-            ...props.editorProps,
+            ...props.editorProps
           },
-          editable: !props.readonly,
+          editable: !props.readonly
         });
       });
 
@@ -282,7 +282,7 @@
       }
       const editorStyle = useEditorStyle({
         width: props.width,
-        height: props.height,
+        height: props.height
       });
 
       provide('t', t);
@@ -297,9 +297,9 @@
         isCodeViewMode,
         cmTextAreaRef,
         editorStyle,
-        setContent,
+        setContent
       };
-    },
+    }
   });
 </script>
 

@@ -7,7 +7,7 @@ import type {
   FormActionType,
   FormButtonOptions,
   FormProps,
-  FormSchema,
+  FormSchema
 } from './types/form';
 import type { TableActionType } from '../../table/src/types/table';
 import type { GridItemProps, GridProps } from 'naive-ui/es/grid';
@@ -20,11 +20,11 @@ export const formActionProps = {
    */
   showActionButtonGroup: {
     type: Boolean,
-    default: true,
+    default: true
   },
   actionButtonGroupPosition: {
     type: String as PropType<'right' | 'left' | 'center'>,
-    default: 'right',
+    default: 'right'
   },
   /**
    * 显示重置按钮
@@ -33,7 +33,7 @@ export const formActionProps = {
    */
   showResetButton: {
     type: Boolean,
-    default: true,
+    default: true
   },
   /**
    * 是否显示确认按钮
@@ -42,7 +42,7 @@ export const formActionProps = {
    */
   showSubmitButton: {
     type: Boolean,
-    default: true,
+    default: true
   },
   /**
    * 是否显示收起展开按钮
@@ -50,32 +50,32 @@ export const formActionProps = {
    */
   showAdvancedButton: {
     type: Boolean,
-    default: false,
+    default: false
   },
   /**
    * 重置按钮配置见下方 ActionButtonOption
    */
   resetButtonOptions: {
     type: Object as PropType<FormButtonOptions>,
-    default: () => ({}),
+    default: () => ({})
   },
   /**
    * 确认按钮配置
    */
   submitButtonOptions: {
     type: Object as PropType<FormButtonOptions>,
-    default: () => ({}),
+    default: () => ({})
   },
   /**
    * 操作按钮外层 Col 组件配置，如果开启 showAdvancedButton，则不用设置，具体见下方 actionColOptions
    */
   actionColOptions: {
     type: Object as PropType<Partial<GridItemProps>>,
-    default: () => ({}),
+    default: () => ({})
   },
   actionSpan: propTypes.number.def(6),
   isAdvanced: propTypes.bool,
-  hideAdvanceBtn: propTypes.bool,
+  hideAdvanceBtn: propTypes.bool
 };
 
 export const basicProps = {
@@ -85,27 +85,27 @@ export const basicProps = {
    */
   fieldMapToTime: {
     type: Array as PropType<FieldMapToTime>,
-    default: () => [],
+    default: () => []
   },
   /**
    * 表单配置
    */
   schemas: {
     type: Array as PropType<FormSchema[]>,
-    default: () => [],
+    default: () => []
   },
   /**
    * 额外传递到子组件的参数 values
    */
   mergeDynamicData: {
     type: Object as PropType<Recordable>,
-    default: null,
+    default: null
   },
   /**
    * 配置所有 Grid 的 style 样式
    */
   baseGridStyle: {
-    type: Object as PropType<CSSProperties>,
+    type: Object as PropType<CSSProperties>
   },
   /**
    * 配置所有 Grid 的 props 配置
@@ -114,8 +114,8 @@ export const basicProps = {
     type: Object as PropType<GridProps>,
     default: () => ({
       cols: 24,
-      xGap: 10,
-    }),
+      xGap: 10
+    })
   },
   /**
    * 配置所有选子项的 GridItemProps，不需要逐个配置，子项也可单独配置优先与全局
@@ -123,8 +123,8 @@ export const basicProps = {
   baseGridItemProps: {
     type: Object as PropType<Partial<GridItemProps>>,
     default: () => ({
-      span: 6,
-    }),
+      span: 6
+    })
   },
   /**
    * 配置所有 FormItem 的 props 配置，schema中可以通过 formItemProps 覆盖
@@ -133,8 +133,8 @@ export const basicProps = {
     type: Object as PropType<Partial<FormItemProps>>,
     default: () => ({
       labelPlacement: 'left',
-      labelWidth: 'auto',
-    }),
+      labelWidth: 'auto'
+    })
   },
 
   /**
@@ -166,14 +166,14 @@ export const basicProps = {
    */
   emptySpan: {
     type: [Number, Object] as PropType<number | Recordable>,
-    default: 0,
+    default: 0
   },
   /**
    * 转化时间格式
    */
   transformDateFunc: {
     type: Function as PropType<Fn>,
-    default: (date: any) => date?.format?.('YYYY-MM-DD HH:mm:ss') ?? date,
+    default: (date: any) => date?.format?.('YYYY-MM-DD HH:mm:ss') ?? date
   },
   /**
    * 校验信息是否加入 label
@@ -200,7 +200,7 @@ export const basicProps = {
   autoFocusFirstItem: propTypes.bool.def(true),
 
   tableAction: {
-    type: Object as PropType<TableActionType>,
+    type: Object as PropType<TableActionType>
   },
   /**
    * 自定义重置按钮逻辑
@@ -211,39 +211,39 @@ export const basicProps = {
    */
   submitFunc: Function as PropType<() => Promise<void>>,
 
-  ...formActionProps,
+  ...formActionProps
 };
 
 export const formItemProps = {
   schema: {
     type: Object as PropType<FormSchema>,
-    default: () => ({}),
+    default: () => ({})
   },
   formProps: {
     type: Object as PropType<FormProps>,
-    default: () => ({}),
+    default: () => ({})
   },
   allDefaultValues: {
     type: Object as PropType<Recordable<any>>,
-    default: () => ({}),
+    default: () => ({})
   },
   formModel: {
     type: Object as PropType<Recordable<any>>,
-    default: () => ({}),
+    default: () => ({})
   },
   setFormModel: {
     type: Function as PropType<(key: string, value: any, schema: FormSchema) => void>,
-    default: null,
+    default: null
   },
   tableAction: {
-    type: Object as PropType<TableActionType>,
+    type: Object as PropType<TableActionType>
   },
   formActionType: {
-    type: Object as PropType<FormActionType>,
+    type: Object as PropType<FormActionType>
   },
   isAdvanced: {
-    type: Boolean,
-  },
+    type: Boolean
+  }
 };
 
 export type OptionsItem = { label: string; value: string | number | boolean; disabled?: boolean };

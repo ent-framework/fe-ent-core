@@ -2,7 +2,7 @@ import { computed, ref, unref } from 'vue';
 
 import {
   SIDE_BAR_MINI_WIDTH,
-  SIDE_BAR_SHOW_TIT_MINI_WIDTH,
+  SIDE_BAR_SHOW_TIT_MINI_WIDTH
 } from 'fe-ent-core/es/logics/enums/app-enum';
 import { MenuModeEnum, MenuTypeEnum, TriggerEnum } from 'fe-ent-core/es/logics/enums/menu-enum';
 import { useLayoutStore } from '../store/layout';
@@ -55,7 +55,7 @@ export function useMenuSetting() {
   const getTopMenuAlign = computed(() => layoutStore.getMenuSetting.topMenuAlign);
 
   const getCloseMixSidebarOnChange = computed(
-    () => layoutStore.getMenuSetting.closeMixSidebarOnChange,
+    () => layoutStore.getMenuSetting.closeMixSidebarOnChange
   );
 
   const getIsSidebarType = computed(() => unref(getMenuType) === MenuTypeEnum.SIDEBAR);
@@ -125,7 +125,7 @@ export function useMenuSetting() {
 
   function toggleCollapsed() {
     setMenuSetting({
-      collapsed: !unref(getCollapsed),
+      collapsed: !unref(getCollapsed)
     });
   }
   return {
@@ -161,6 +161,6 @@ export function useMenuSetting() {
     getCloseMixSidebarOnChange,
     getMixSideTrigger,
     getMixSideFixed,
-    mixSideHasChildren,
+    mixSideHasChildren
   };
 }

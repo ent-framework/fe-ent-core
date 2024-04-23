@@ -15,7 +15,7 @@
           key="default"
           :command="defaultSize"
           :class="{
-            'ent-tiptap-dropdown-menu__item--active': activeFontSize === defaultSize,
+            'ent-tiptap-dropdown-menu__item--active': activeFontSize === defaultSize
           }"
           class="ent-tiptap-dropdown-menu__item"
         >
@@ -27,7 +27,7 @@
           :key="fs"
           :command="fs"
           :class="{
-            'ent-tiptap-dropdown-menu__item--active': fs === activeFontSize,
+            'ent-tiptap-dropdown-menu__item--active': fs === activeFontSize
           }"
           class="ent-tiptap-dropdown-menu__item"
         >
@@ -54,18 +54,18 @@
       Dropdown,
       Menu,
       MenuItem,
-      CommandButton,
+      CommandButton
     },
 
     props: {
       editor: {
         type: Editor,
-        required: true,
+        required: true
       },
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup(props) {
@@ -75,7 +75,7 @@
 
       const fontSizes = computed(() => {
         const fontSizeOptions = props.editor.extensionManager.extensions.find(
-          (e) => e.name === 'fontSize',
+          (e) => e.name === 'fontSize'
         )!.options;
         return fontSizeOptions.fontSizes;
       });
@@ -100,8 +100,8 @@
         fontSize,
         fontSizes,
         activeFontSize,
-        toggleFontSize,
+        toggleFontSize
       };
-    },
+    }
   });
 </script>

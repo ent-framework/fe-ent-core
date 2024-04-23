@@ -7,7 +7,7 @@ import type { Ref } from 'vue';
 const domSymbol = Symbol('watermark-dom');
 
 export function useWatermark(
-  appendEl: Ref<HTMLElement | null> = ref(document.body) as Ref<HTMLElement>,
+  appendEl: Ref<HTMLElement | null> = ref(document.body) as Ref<HTMLElement>
 ) {
   const func = useRafThrottle(() => {
     const el = unref(appendEl);
@@ -50,7 +50,7 @@ export function useWatermark(
       width?: number;
       height?: number;
       str?: string;
-    } = {},
+    } = {}
   ) {
     const el = unref(watermarkEl);
     if (!el) return;

@@ -22,8 +22,8 @@
     props: {
       editor: {
         type: Editor,
-        required: true,
-      },
+        required: true
+      }
     },
 
     setup() {
@@ -43,7 +43,7 @@
             const menuBtnComponentSpec = button({
               editor: this.editor,
               t: this.t,
-              extension,
+              extension
             });
 
             if (Array.isArray(menuBtnComponentSpec)) {
@@ -51,14 +51,14 @@
                 ...acc,
                 ...menuBtnComponentSpec.map((item) => {
                   return { ...item, priority: extension.options.priority };
-                }),
+                })
               ];
             }
 
             return [...acc, { ...menuBtnComponentSpec, priority: extension.options.priority }];
           }, [])
           ?.sort((a: any, b: any) => b.priority - a.priority);
-      },
-    },
+      }
+    }
   });
 </script>

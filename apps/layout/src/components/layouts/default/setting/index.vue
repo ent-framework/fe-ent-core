@@ -19,8 +19,8 @@
 
       return {
         register,
-        openDrawer,
+        openDrawer
       };
-    },
+    }
   });
 </script>

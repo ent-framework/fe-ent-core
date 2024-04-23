@@ -50,7 +50,7 @@
     components: {
       NFormItem,
       EntButton,
-      EntArrow,
+      EntArrow
     },
     props: formActionProps,
     emits: ['toggle-advanced'],
@@ -60,18 +60,18 @@
       const getResetBtnOptions = computed((): FormButtonOptions => {
         return Object.assign(
           {
-            btnContent: t('common.resetText'),
+            btnContent: t('common.resetText')
           },
-          props.resetButtonOptions,
+          props.resetButtonOptions
         );
       });
 
       const getSubmitBtnOptions = computed(() => {
         return Object.assign(
           {
-            btnContent: t('common.queryText'),
+            btnContent: t('common.queryText')
           },
-          props.submitButtonOptions,
+          props.submitButtonOptions
         );
       });
 
@@ -84,8 +84,8 @@
         getResetBtnOptions,
         getSubmitBtnOptions,
         toggleAdvanced,
-        ...useFormContext(),
+        ...useFormContext()
       };
-    },
+    }
   });
 </script>

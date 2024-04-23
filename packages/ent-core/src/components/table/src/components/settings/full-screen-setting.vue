@@ -23,7 +23,7 @@
     name: 'FullScreenSetting',
     components: {
       NTooltip,
-      EntIcon,
+      EntIcon
     },
 
     setup() {
@@ -34,8 +34,8 @@
       return {
         toggle,
         isFullscreen,
-        t,
+        t
       };
-    },
+    }
   });
 </script>

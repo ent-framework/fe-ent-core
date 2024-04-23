@@ -12,9 +12,9 @@ const TaskItem = TiptapTaskItem.extend({
         keepOnSplit: false,
         parseHTML: (element) => element.getAttribute('data-done') === 'true',
         renderHTML: (attributes) => ({
-          'data-done': attributes.done,
-        }),
-      },
+          'data-done': attributes.done
+        })
+      }
     };
   },
 
@@ -23,34 +23,34 @@ const TaskItem = TiptapTaskItem.extend({
     return [
       'li',
       mergeAttributes(this.options.HTMLAttributes, element.HTMLAttributes, {
-        'data-type': this.name,
+        'data-type': this.name
       }),
       // el-checkbox dom
       [
         'span',
         {
-          contenteditable: 'false',
+          contenteditable: 'false'
         },
         [
           'span',
           {
             class: `el-checkbox ${done ? 'is-checked' : ''}`,
-            style: 'pointer-events: none;',
+            style: 'pointer-events: none;'
           },
           [
             'span',
             { class: `el-checkbox__input ${done ? 'is-checked' : ''}` },
-            ['span', { class: 'el-checkbox__inner' }],
-          ],
-        ],
+            ['span', { class: 'el-checkbox__inner' }]
+          ]
+        ]
       ],
-      ['div', { class: 'todo-content' }, 0],
+      ['div', { class: 'todo-content' }, 0]
     ];
   },
 
   addNodeView() {
     return VueNodeViewRenderer(TaskItemView);
-  },
+  }
 });
 
 export default TaskItem;

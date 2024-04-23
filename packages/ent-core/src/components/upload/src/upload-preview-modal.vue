@@ -41,11 +41,11 @@
               return {
                 url: item,
                 type: item.split('.').pop() || '',
-                name: item.split('/').pop() || '',
+                name: item.split('/').pop() || ''
               };
             });
         },
-        { immediate: true },
+        { immediate: true }
       );
 
       // 删除
@@ -56,7 +56,7 @@
           emit('delete', removed[0].url);
           emit(
             'list-change',
-            fileListRef.value.map((item) => item.url),
+            fileListRef.value.map((item) => item.url)
           );
         }
       }
@@ -81,8 +81,8 @@
         closeModal,
         fileListRef,
         columns: createPreviewColumns() as any[],
-        actionColumn: createPreviewActionColumn({ handleRemove, handleDownload }) as any,
+        actionColumn: createPreviewActionColumn({ handleRemove, handleDownload }) as any
       };
-    },
+    }
   });
 </script>

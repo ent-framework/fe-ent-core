@@ -65,7 +65,7 @@
     /**
      * 图片上传接口
      */
-    uploadApi: { type: Function as PropType<(params: apiFunParams) => Promise<void>> },
+    uploadApi: { type: Function as PropType<(params: apiFunParams) => Promise<void>> }
   };
 
   export default defineComponent({
@@ -85,13 +85,13 @@
       const getWidth = computed(() => `${`${props.width}`.replace(/px/, '')}px`);
 
       const getIconWidth = computed(
-        () => `${Number.parseInt(`${props.width}`.replace(/px/, '')) / 2}px`,
+        () => `${Number.parseInt(`${props.width}`.replace(/px/, '')) / 2}px`
       );
 
       const getStyle = computed((): CSSProperties => ({ width: unref(getWidth) }));
 
       const getImageWrapperStyle = computed(
-        (): CSSProperties => ({ width: unref(getWidth), height: unref(getWidth) }),
+        (): CSSProperties => ({ width: unref(getWidth), height: unref(getWidth) })
       );
 
       watchEffect(() => {
@@ -102,7 +102,7 @@
         () => sourceValue.value,
         (v: string) => {
           emit('update:value', v);
-        },
+        }
       );
 
       function handleUploadSuccess({ source }) {
@@ -123,8 +123,8 @@
         getClass,
         getImageWrapperStyle,
         getStyle,
-        handleUploadSuccess,
+        handleUploadSuccess
       };
-    },
+    }
   });
 </script>

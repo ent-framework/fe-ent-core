@@ -7,5 +7,5 @@ export default {
   props,
   events,
   methods,
-  slots,
+  slots
 };

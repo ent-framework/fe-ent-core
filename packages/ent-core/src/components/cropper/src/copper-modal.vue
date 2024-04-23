@@ -153,8 +153,8 @@
   const props = {
     circled: { type: Boolean, default: true },
     uploadApi: {
-      type: Function as PropType<(params: apiFunParams) => Promise<any>>,
-    },
+      type: Function as PropType<(params: apiFunParams) => Promise<any>>
+    }
   };
 
   export default defineComponent({
@@ -217,7 +217,7 @@
             result = await Factory.getHttpFactory().uploadApi({
               name: 'file',
               file: blob,
-              filename,
+              filename
             });
           }
           emit('uploadSuccess', { source: previewSource.value, data: result.data });
@@ -237,8 +237,8 @@
         handleCropend,
         handleReady,
         handlerToolbar,
-        handleOk,
+        handleOk
       };
-    },
+    }
   });
 </script>

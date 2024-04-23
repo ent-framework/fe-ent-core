@@ -34,7 +34,7 @@ export default function resolveVar(ast: bt.File): Map<string, PropsValuePath> {
       }
       nodePaths.set(varID.name, variablePath.get('declarations', 0).get('init'));
       return false;
-    },
+    }
   });
   return nodePaths;
 }

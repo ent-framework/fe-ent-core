@@ -6,7 +6,7 @@ export function useUploadType({
   acceptRef,
   helpTextRef,
   maxNumberRef,
-  maxSizeRef,
+  maxSizeRef
 }: {
   acceptRef: Ref<string[]>;
   helpTextRef: Ref<string>;

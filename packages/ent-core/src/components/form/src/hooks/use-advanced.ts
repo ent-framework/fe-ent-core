@@ -25,7 +25,7 @@ export default function ({
   getProps,
   getSchema,
   formModel,
-  defaultValueRef,
+  defaultValueRef
 }: UseAdvancedContext) {
   const vm = getCurrentInstance();
 
@@ -61,7 +61,7 @@ export default function ({
         debounceUpdateAdvanced();
       }
     },
-    { immediate: true },
+    { immediate: true }
   );
 
   function getAdvanced(itemCol: Partial<GridItemProps>, itemColSum = 0, isLastAction = false) {
@@ -135,15 +135,15 @@ export default function ({
           field: schema.field,
           values: {
             ...unref(defaultValueRef),
-            ...formModel,
-          },
+            ...formModel
+          }
         });
       }
 
       if (isShow && (gridItemProps || baseGridItemProps)) {
         const { itemColSum: sum, isAdvanced } = getAdvanced(
           { ...baseGridItemProps, ...gridItemProps },
-          itemColSum,
+          itemColSum
         );
 
         itemColSum = sum || 0;

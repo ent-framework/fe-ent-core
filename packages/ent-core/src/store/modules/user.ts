@@ -27,7 +27,7 @@ export const useUserStore = defineStore('app-user', {
     // Whether the login expired
     sessionTimeout: false,
     // Last fetch time
-    lastUpdateTime: 0,
+    lastUpdateTime: 0
   }),
   getters: {
     getUserInfo(): Nullable<UserInfoModel> {
@@ -41,7 +41,7 @@ export const useUserStore = defineStore('app-user', {
     },
     getLastUpdateTime(): number {
       return this.lastUpdateTime;
-    },
+    }
   },
   actions: {
     setRoleList(roleList: string[]) {
@@ -65,7 +65,7 @@ export const useUserStore = defineStore('app-user', {
     async login(
       params: LoginParams & {
         mode?: ErrorMessageMode;
-      },
+      }
     ) {
       try {
         const session = useSessionStore();
@@ -158,8 +158,8 @@ export const useUserStore = defineStore('app-user', {
         content: () => h('span', t('sys.app.logoutMessage')),
         onPositiveClick: async () => {
           await this.logout(true);
-        },
+        }
       });
-    },
-  },
+    }
+  }
 });

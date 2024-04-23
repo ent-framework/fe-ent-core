@@ -20,7 +20,7 @@
               :key="'c' + col"
               :class="{
                 'table-grid-size-editor__cell--selected':
-                  col <= selectedTableGridSize.col && row <= selectedTableGridSize.row,
+                  col <= selectedTableGridSize.col && row <= selectedTableGridSize.row
               }"
               class="table-grid-size-editor__cell"
               @mouseover="selectTableGridSize(row, col)"
@@ -53,7 +53,7 @@
     name: 'CreateTablePopover',
 
     components: {
-      Popover,
+      Popover
     },
 
     setup(_, { emit }) {
@@ -72,12 +72,12 @@
       return {
         tableGridSize: {
           row: INIT_GRID_SIZE,
-          col: INIT_GRID_SIZE,
+          col: INIT_GRID_SIZE
         },
         selectedTableGridSize: {
           row: DEFAULT_SELECTED_GRID_SIZE,
-          col: DEFAULT_SELECTED_GRID_SIZE,
-        },
+          col: DEFAULT_SELECTED_GRID_SIZE
+        }
       };
     },
 
@@ -99,15 +99,15 @@
         if (!visible) {
           this.tableGridSize = {
             row: INIT_GRID_SIZE,
-            col: INIT_GRID_SIZE,
+            col: INIT_GRID_SIZE
           };
 
           this.selectedTableGridSize = {
             row: DEFAULT_SELECTED_GRID_SIZE,
-            col: DEFAULT_SELECTED_GRID_SIZE,
+            col: DEFAULT_SELECTED_GRID_SIZE
           };
         }
-      },
-    },
+      }
+    }
   });
 </script>

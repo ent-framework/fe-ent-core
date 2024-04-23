@@ -4,7 +4,7 @@ import {
   useBreakpoint,
   useEventListener,
   useThemeSetting,
-  useTimeoutFn,
+  useTimeoutFn
 } from 'fe-ent-core/es/hooks';
 import echarts from '../lib/echarts';
 import type { Ref } from 'vue';
@@ -13,7 +13,7 @@ import type { Fn } from 'fe-ent-core/es/types';
 
 export function useEcharts(
   elRef: Ref<HTMLDivElement>,
-  theme: 'light' | 'dark' | 'default' = 'default',
+  theme: 'light' | 'dark' | 'default' = 'default'
 ) {
   const { getGlobalTheme } = useThemeSetting();
   const getCollapsed = computed(() => false);
@@ -35,7 +35,7 @@ export function useEcharts(
     }
     return {
       backgroundColor: 'transparent',
-      ...cacheOptions.value,
+      ...cacheOptions.value
     } as EChartsOption;
   });
 
@@ -49,7 +49,7 @@ export function useEcharts(
     const { removeEvent } = useEventListener({
       el: window,
       name: 'resize',
-      listener: resizeFn,
+      listener: resizeFn
     });
     removeResizeFn = removeEvent;
     const { widthRef, screenEnum } = useBreakpoint();
@@ -89,8 +89,8 @@ export function useEcharts(
     chartInstance?.resize({
       animation: {
         duration: 300,
-        easing: 'quadraticIn',
-      },
+        easing: 'quadraticIn'
+      }
     });
   }
 
@@ -102,7 +102,7 @@ export function useEcharts(
         initCharts(theme as 'default');
         setOptions(cacheOptions.value);
       }
-    },
+    }
   );
 
   watch(getCollapsed, () => {
@@ -129,6 +129,6 @@ export function useEcharts(
     setOptions,
     resize,
     echarts,
-    getInstance,
+    getInstance
   };
 }

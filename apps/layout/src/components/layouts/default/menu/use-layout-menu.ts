@@ -6,7 +6,7 @@ import {
   getChildrenMenus,
   getCurrentParentPath,
   getMenus,
-  getShallowMenus,
+  getShallowMenus
 } from 'fe-ent-core/es/router';
 import { usePermissionStore } from 'fe-ent-core/es/store';
 import { useThrottleFn } from '@vueuse/core';
@@ -25,11 +25,11 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
   const throttleHandleSplitLeftMenu = useThrottleFn(handleSplitLeftMenu, 50);
 
   const splitNotLeft = computed(
-    () => unref(splitType) !== MenuSplitTyeEnum.LEFT && !unref(getIsHorizontal),
+    () => unref(splitType) !== MenuSplitTyeEnum.LEFT && !unref(getIsHorizontal)
   );
 
   const getSplitLeft = computed(
-    () => !unref(getSplit) || unref(splitType) !== MenuSplitTyeEnum.LEFT,
+    () => !unref(getSplit) || unref(splitType) !== MenuSplitTyeEnum.LEFT
   );
 
   const getSpiltTop = computed(() => unref(splitType) === MenuSplitTyeEnum.TOP);
@@ -54,8 +54,8 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
       }
     },
     {
-      immediate: true,
-    },
+      immediate: true
+    }
   );
 
   // Menu changes
@@ -66,8 +66,8 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
     },
     {
       immediate: true,
-      deep: true,
-    },
+      deep: true
+    }
   );
 
   // split Menu changes
@@ -76,7 +76,7 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
     () => {
       if (unref(splitNotLeft)) return;
       genMenus();
-    },
+    }
   );
 
   // Handle left menu split

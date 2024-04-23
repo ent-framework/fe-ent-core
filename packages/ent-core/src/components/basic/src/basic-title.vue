@@ -17,7 +17,7 @@
      */
     helpMessage: {
       type: [String, Array] as PropType<string | string[]>,
-      default: '',
+      default: ''
     },
     /**
      * @zh 是否显示标题左侧蓝色色块
@@ -30,7 +30,7 @@
      * @en Whether to default the text, that is, not bold
      * @default: false
      */
-    normal: { type: Boolean },
+    normal: { type: Boolean }
   };
 
   export default defineComponent({
@@ -43,13 +43,13 @@
       const getClass = computed(() => [
         prefixCls,
         { [`${prefixCls}-show-span`]: props.span && slots.default },
-        { [`${prefixCls}-normal`]: props.normal },
+        { [`${prefixCls}-normal`]: props.normal }
       ]);
       return {
         prefixCls,
-        getClass,
+        getClass
         //getContentStyle,
       };
-    },
+    }
   });
 </script>

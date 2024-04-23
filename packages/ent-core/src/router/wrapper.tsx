@@ -13,7 +13,7 @@ export const wrapperRoute = (componentName: string) => {
 const RouteWrapperComponent = defineComponent({
   name: 'RouteWrapperComponent',
   props: {
-    name: { type: String },
+    name: { type: String }
   },
   setup(props) {
     const instance = getCurrentInstance();
@@ -35,5 +35,5 @@ const RouteWrapperComponent = defineComponent({
         return <NEmpty description={description} />;
       };
     }
-  },
+  }
 });

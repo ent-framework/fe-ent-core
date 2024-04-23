@@ -19,7 +19,7 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
     VITE_BUILD_COMPRESS,
     VITE_BUILD_ENABLE_ANALYZE,
     VITE_BUILD_ENABLE_INSPECT,
-    VITE_BUILD_ENABLE_CERT,
+    VITE_BUILD_ENABLE_CERT
   } = env;
   const viteEnv = wrapperEnv(env, mode);
   const defineData = await createDefineData(root, viteEnv);
@@ -31,7 +31,7 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
     enableMock: VITE_BUILD_USE_MOCK === 'true',
     enableInspect: VITE_BUILD_ENABLE_INSPECT === 'true',
     enableCert: VITE_BUILD_ENABLE_CERT === 'true',
-    compress: VITE_BUILD_COMPRESS,
+    compress: VITE_BUILD_COMPRESS
   });
   const pathResolve = (pathname: string) => resolve(root, '.', pathname);
 
@@ -40,19 +40,19 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
     ...[
       {
         find: /\/@\//,
-        replacement: `${pathResolve('src')}/`,
+        replacement: `${pathResolve('src')}/`
       },
       // @/xxxx => src/xxxx
       {
         find: /@\//,
-        replacement: `${pathResolve('src')}/`,
-      },
-    ],
+        replacement: `${pathResolve('src')}/`
+      }
+    ]
   );
   const hashed = defineOptions.options?.hash ?? true;
   const applicationConfig: UserConfig = {
     resolve: {
-      alias,
+      alias
     },
     define: defineData,
     build: {
@@ -66,20 +66,20 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
           manualChunks: {
             vue: ['vue', 'pinia', 'vue-router'],
             naive: ['naive-ui'],
-            icons: ['@vicons/ionicons5', '@vicons/antd'],
-          },
-        },
-      },
+            icons: ['@vicons/ionicons5', '@vicons/antd']
+          }
+        }
+      }
     },
     css: {
       preprocessorOptions: {
         less: {
           modifyVars: generateModifyVars(defineOptions.options?.cssModify),
-          javascriptEnabled: true,
-        },
-      },
+          javascriptEnabled: true
+        }
+      }
     },
-    plugins,
+    plugins
   };
 
   const mergedConfig = mergeConfig(commonConfig({ command, mode }), applicationConfig);
@@ -90,7 +90,7 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
 async function createDefineData(root: string, viteEnv: ViteEnv) {
   try {
     return {
-      'process.env': viteEnv,
+      'process.env': viteEnv
     };
   } catch {
     return {};

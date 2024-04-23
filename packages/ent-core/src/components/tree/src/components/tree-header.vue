@@ -37,36 +37,36 @@
   const props = defineProps({
     helpMessage: {
       type: [String, Array] as PropType<string | string[]>,
-      default: '',
+      default: ''
     },
     title: {
       type: String,
-      default: '',
+      default: ''
     },
     toolbar: {
       type: Boolean,
-      default: false,
+      default: false
     },
     checkable: {
       type: Boolean,
-      default: false,
+      default: false
     },
     search: {
       type: Boolean,
-      default: false,
+      default: false
     },
     searchText: {
       type: String,
-      default: '',
+      default: ''
     },
     checkAll: {
       type: Function,
-      default: undefined,
+      default: undefined
     },
     expandAll: {
       type: Function,
-      default: undefined,
-    },
+      default: undefined
+    }
   } as const);
   const emit = defineEmits(['change', 'search']);
 
@@ -79,8 +79,8 @@
       'mr-1',
       'w-full',
       {
-        ['ml-5']: titleExists,
-      },
+        ['ml-5']: titleExists
+      }
     ];
   });
 
@@ -91,8 +91,8 @@
       {
         label: t('component.tree.unExpandAll'),
         key: ToolbarEnum.UN_EXPAND_ALL,
-        divider: checkable,
-      },
+        divider: checkable
+      }
     ];
 
     return checkable
@@ -101,9 +101,9 @@
           {
             label: t('component.tree.unSelectAll'),
             key: ToolbarEnum.UN_SELECT_ALL,
-            divider: checkable,
+            divider: checkable
           },
-          ...defaultToolbarList,
+          ...defaultToolbarList
         ]
       : defaultToolbarList;
   });
@@ -142,7 +142,7 @@
     () => searchValue.value,
     (v) => {
       debounceEmitChange(v);
-    },
+    }
   );
 
   watch(
@@ -151,6 +151,6 @@
       if (v !== searchValue.value) {
         searchValue.value = v;
       }
-    },
+    }
   );
 </script>

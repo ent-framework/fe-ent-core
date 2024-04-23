@@ -22,7 +22,7 @@
           :key="lineHeight"
           :command="lineHeight"
           :class="{
-            'ent-tiptap-dropdown-menu__item--active': isLineHeightActive(lineHeight),
+            'ent-tiptap-dropdown-menu__item--active': isLineHeightActive(lineHeight)
           }"
           class="ent-tiptap-dropdown-menu__item"
         >
@@ -48,18 +48,18 @@
       Dropdown,
       Menu,
       MenuItem,
-      CommandButton,
+      CommandButton
     },
 
     props: {
       editor: {
         type: Editor,
-        required: true,
+        required: true
       },
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup() {
@@ -73,16 +73,16 @@
     computed: {
       lineHeights() {
         const lineHeightOptions = this.editor.extensionManager.extensions.find(
-          (e) => e.name === 'lineHeight',
+          (e) => e.name === 'lineHeight'
         )!.options;
         return lineHeightOptions.lineHeights;
-      },
+      }
     },
 
     methods: {
       isLineHeightActive(lineHeight: string) {
         return isLineHeightActive(this.editor.state, lineHeight);
-      },
-    },
+      }
+    }
   });
 </script>

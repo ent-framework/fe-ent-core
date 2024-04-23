@@ -36,10 +36,10 @@
     components: {
       NDropdown,
       LockAction,
-      NText,
+      NText
     },
     props: {
-      theme: propTypes.oneOf(['dark', 'light']),
+      theme: propTypes.oneOf(['dark', 'light'])
     },
     setup() {
       const { prefixCls } = useDesign('header-user-dropdown');
@@ -81,13 +81,13 @@
           options.push({
             label: () => t('layout.header.tooltipLock'),
             icon: () => h(EntIcon, { icon: 'ion:lock-closed-outline' }),
-            key: 'lock',
+            key: 'lock'
           });
         }
         options.push({
           label: () => t('layout.header.dropdownItemLoginOut'),
           icon: () => h(EntIcon, { icon: 'ion:power-outline' }),
-          key: 'logout',
+          key: 'logout'
         });
         return options;
       });
@@ -99,8 +99,8 @@
         getUserInfo,
         handleSelect,
         register,
-        getUseLockPage,
+        getUseLockPage
       };
-    },
+    }
   });
 </script>

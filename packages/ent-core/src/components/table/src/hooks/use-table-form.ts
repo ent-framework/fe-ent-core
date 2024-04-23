@@ -8,7 +8,7 @@ export function useTableForm(
   propsRef: ComputedRef<BasicTableProps>,
   slots: Slots,
   fetch: (opt?: FetchParams) => Promise<Recordable[] | undefined>,
-  getLoading: ComputedRef<boolean | undefined>,
+  getLoading: ComputedRef<boolean | undefined>
 ) {
   const getFormProps = computed((): Partial<FormProps> => {
     const { formConfig } = unref(propsRef);
@@ -17,7 +17,7 @@ export function useTableForm(
       showAdvancedButton: true,
       ...formConfig,
       showFeedback: false,
-      submitButtonOptions: { loading: unref(getLoading), ...submitButtonOptions },
+      submitButtonOptions: { loading: unref(getLoading), ...submitButtonOptions }
     };
   });
 
@@ -45,6 +45,6 @@ export function useTableForm(
     getFormProps,
     replaceFormSlotKey,
     getFormSlotKeys,
-    handleSearchInfoChange,
+    handleSearchInfoChange
   };
 }

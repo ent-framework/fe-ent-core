@@ -6,9 +6,9 @@ const options: Config = {
       name: 'preset-default',
       params: {
         overrides: {
-          removeViewBox: false,
-        },
-      },
+          removeViewBox: false
+        }
+      }
     },
     'removeStyleElement',
     'removeScriptElement',
@@ -16,8 +16,8 @@ const options: Config = {
     {
       name: 'removeAttrs',
       params: {
-        attrs: ['class', 'style', 'stroke-width', 'stroke-linecap', 'stroke-linejoin'],
-      },
+        attrs: ['class', 'style', 'stroke-width', 'stroke-linecap', 'stroke-linejoin']
+      }
     },
     {
       name: 'addAttributesToSVGElement',
@@ -29,11 +29,11 @@ const options: Config = {
           { ':stroke-width': 'strokeWidth' },
           { ':stroke-linecap': 'strokeLinecap' },
           { ':stroke-linejoin': 'strokeLinejoin' },
-          { '@click': 'onClick' },
-        ],
-      },
-    },
-  ],
+          { '@click': 'onClick' }
+        ]
+      }
+    }
+  ]
 };
 
 export default options;

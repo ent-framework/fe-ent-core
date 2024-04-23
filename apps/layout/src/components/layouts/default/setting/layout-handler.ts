@@ -24,8 +24,8 @@ function handler(event: HandlerEnum, value: any): DeepPartial<LayoutConfig> {
           collapsed: false,
           show: true,
           hidden: false,
-          ...splitOpt,
-        },
+          ...splitOpt
+        }
       };
     }
     case HandlerEnum.CHANGE_THEME:

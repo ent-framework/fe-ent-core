@@ -1,5 +1,5 @@
 import sys from './sys';
 const modules = {
-  sys,
+  sys
 };
 export default modules;

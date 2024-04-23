@@ -5,7 +5,7 @@
         v-for="display in displayCollection"
         :key="display"
         :class="{
-          'ent-tiptap-popper__menu__item--active': display === currDisplay,
+          'ent-tiptap-popper__menu__item--active': display === currDisplay
         }"
         class="ent-tiptap-popper__menu__item"
         @mousedown="hidePopover"
@@ -40,15 +40,15 @@
 
     components: {
       Popover,
-      CommandButton,
+      CommandButton
     },
     props: {
       node: nodeViewProps['node'],
       updateAttrs: nodeViewProps['updateAttributes'],
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup() {
@@ -64,21 +64,21 @@
           ImageDisplay.INLINE,
           ImageDisplay.BREAK_TEXT,
           ImageDisplay.FLOAT_LEFT,
-          ImageDisplay.FLOAT_RIGHT,
-        ],
+          ImageDisplay.FLOAT_RIGHT
+        ]
       };
     },
 
     computed: {
       currDisplay() {
         return this.node!.attrs.display;
-      },
+      }
     },
 
     methods: {
       hidePopover() {
         this.$refs.popoverRef?.hide();
-      },
-    },
+      }
+    }
   });
 </script>

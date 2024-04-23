@@ -19,15 +19,15 @@
     name: 'RemoveImageCommandButton',
 
     components: {
-      CommandButton,
+      CommandButton
     },
 
     props: {
       editor: nodeViewProps['editor'],
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup() {
@@ -40,7 +40,7 @@
     methods: {
       removeImage() {
         const a = this.editor?.commands.deleteSelection();
-      },
-    },
+      }
+    }
   });
 </script>

@@ -8,7 +8,7 @@ export interface DocumentOptions {
 const Document = TiptapDocument.extend<DocumentOptions>({
   addOptions() {
     return {
-      title: false,
+      title: false
     };
   },
 
@@ -21,7 +21,7 @@ const Document = TiptapDocument.extend<DocumentOptions>({
       return [Title];
     }
     return [];
-  },
+  }
 });
 
 export default Document;

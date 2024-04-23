@@ -14,12 +14,12 @@
       const getBindValue = computed(() => ({
         ...props,
         ...attrs,
-        type: 'textarea',
+        type: 'textarea'
       }));
 
       return {
-        getBindValue,
+        getBindValue
       };
-    },
+    }
   });
 </script>

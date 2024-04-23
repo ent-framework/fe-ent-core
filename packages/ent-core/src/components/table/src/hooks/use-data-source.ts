@@ -29,13 +29,13 @@ export function useDataSource(
     setLoading,
     getFieldsValue,
     clearSelectedRowKeys,
-    tableData,
+    tableData
   }: ActionType,
-  emit: EmitType,
+  emit: EmitType
 ) {
   const searchState = reactive<SearchState>({
     sortInfo: {},
-    filterInfo: {},
+    filterInfo: {}
   });
   const dataSourceRef = ref<Recordable[]>([]);
   const rawDataSourceRef = ref<Recordable>({});
@@ -51,14 +51,14 @@ export function useDataSource(
       !api && data && (dataSourceRef.value = data);
     },
     {
-      immediate: true,
-    },
+      immediate: true
+    }
   );
 
   function handleTableChange(
     pagination: PaginationProps,
     filters?: Partial<Recordable<string[]>>,
-    sorter?: SorterResult,
+    sorter?: SorterResult
   ) {
     const { clearSelectOnPageChange, sortFn, filterFn } = unref(propsRef);
     if (clearSelectOnPageChange) {
@@ -99,7 +99,7 @@ export function useDataSource(
 
   function updateTableDataRecord(
     rowKey: string | number,
-    record: Recordable,
+    record: Recordable
   ): Recordable | undefined {
     const row = findTableDataRecord(rowKey);
 
@@ -153,13 +153,13 @@ export function useDataSource(
       deleteRow(unref(propsRef).data, key);
     }
     setPagination({
-      itemCount: unref(propsRef).data?.length,
+      itemCount: unref(propsRef).data?.length
     });
   }
 
   function insertTableDataRecord(
     record: Recordable | Recordable[],
-    index: number,
+    index: number
   ): Recordable[] | undefined {
     // if (!dataSourceRef.value || dataSourceRef.value.length == 0) return;
     index = index ?? dataSourceRef.value?.length;
@@ -213,7 +213,7 @@ export function useDataSource(
       beforeFetch,
       afterFetch,
       useSearchForm,
-      pagination,
+      pagination
     } = unref(propsRef);
     if (!api || !isFunction(api)) return;
     try {
@@ -221,7 +221,7 @@ export function useDataSource(
       const { pageField, sizeField, listField, totalField } = Object.assign(
         {},
         FETCH_SETTING,
-        fetchSetting,
+        fetchSetting
       );
       let pageParams: Recordable = {};
 
@@ -245,7 +245,7 @@ export function useDataSource(
         sortInfo,
         filterInfo,
         opt?.sortInfo ?? {},
-        opt?.filterInfo ?? {},
+        opt?.filterInfo ?? {}
       );
       if (beforeFetch && isFunction(beforeFetch)) {
         params = (await beforeFetch(params)) || params;
@@ -264,7 +264,7 @@ export function useDataSource(
         const currentTotalPage = Math.ceil(resultTotal / pageSize);
         if (page > currentTotalPage) {
           setPagination({
-            page: currentTotalPage,
+            page: currentTotalPage
           });
           return await fetch(opt);
         }
@@ -275,23 +275,23 @@ export function useDataSource(
       }
       dataSourceRef.value = resultItems;
       setPagination({
-        itemCount: resultTotal || 0,
+        itemCount: resultTotal || 0
       });
       if (opt && opt.page) {
         setPagination({
-          page: opt.page || 1,
+          page: opt.page || 1
         });
       }
       emit('fetch-success', {
         items: unref(resultItems),
-        total: resultTotal,
+        total: resultTotal
       });
       return resultItems;
     } catch (error) {
       emit('fetch-error', error);
       dataSourceRef.value = [];
       setPagination({
-        itemCount: 0,
+        itemCount: 0
       });
     } finally {
       setLoading(false);
@@ -332,6 +332,6 @@ export function useDataSource(
     deleteTableDataRecord,
     insertTableDataRecord,
     findTableDataRecord,
-    handleTableChange,
+    handleTableChange
   };
 }

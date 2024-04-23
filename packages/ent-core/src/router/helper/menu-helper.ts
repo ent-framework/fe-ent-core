@@ -49,9 +49,9 @@ export function transformRouteToMenu(routeModList: AppRouteRecordRaw[], routerMa
         label: title ? t(title) : node.name,
         hideMenu,
         path: node.path,
-        ...(node.redirect ? { redirect: node.redirect } : {}),
+        ...(node.redirect ? { redirect: node.redirect } : {})
       };
-    },
+    }
   });
   return cloneDeep(list);
 }

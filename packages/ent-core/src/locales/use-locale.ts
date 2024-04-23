@@ -43,13 +43,13 @@ export function useLocale() {
       return {
         locale: localeType,
         nLocale: zhCN,
-        nDateLocale: dateZhCN,
+        nDateLocale: dateZhCN
       };
     } else {
       return {
         locale: localeType,
         nLocale: enUS,
-        nDateLocale: dateEnUS,
+        nDateLocale: dateEnUS
       };
     }
   });
@@ -83,6 +83,6 @@ export function useLocale() {
     getShowLocalePicker,
     changeLocale,
     setLocalePicker,
-    addMessages,
+    addMessages
   };
 }

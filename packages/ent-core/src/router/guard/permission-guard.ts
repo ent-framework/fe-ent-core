@@ -70,18 +70,18 @@ export function createPermissionGuard(router: Router) {
         // redirect login page
         const redirectData: { path: string; replace: boolean; query?: Recordable<string> } = {
           path: loginPath,
-          replace: true,
+          replace: true
         };
         if (to.path) {
           if (redirect) {
             redirectData.query = {
               ...redirectData.query,
-              redirect: `${encodeURIComponent(redirect)}`,
+              redirect: `${encodeURIComponent(redirect)}`
             };
           } else {
             redirectData.query = {
               ...redirectData.query,
-              redirect: to.path,
+              redirect: to.path
             };
           }
         }

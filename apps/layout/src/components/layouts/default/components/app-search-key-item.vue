@@ -6,6 +6,6 @@
 <script lang="ts" setup>
   import { EntIcon } from 'fe-ent-core';
   defineProps({
-    icon: String,
+    icon: String
   });
 </script>

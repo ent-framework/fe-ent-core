@@ -11,7 +11,7 @@ const withDefaults = <T>(
         : T[K] extends { type: PropType<infer U> }
           ? U
           : any;
-  },
+  }
 ): T => {
   const propTypes: T = { ...types };
   Object.keys(defaultProps).forEach((k) => {

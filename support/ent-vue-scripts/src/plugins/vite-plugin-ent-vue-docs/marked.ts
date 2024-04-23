@@ -24,7 +24,7 @@ const frontMatter = {
         type: 'frontMatter',
         raw: match[0],
         text,
-        attributes,
+        attributes
       };
     }
     return undefined;
@@ -32,7 +32,7 @@ const frontMatter = {
   renderer() {
     // frontMatter不返回内用
     return '';
-  },
+  }
 };
 
 const fileImport = {
@@ -49,14 +49,14 @@ const fileImport = {
         type: 'fileImport',
         raw: match[0],
         filename,
-        basename,
+        basename
       };
     }
     return undefined;
   },
   renderer(token: FileImportToken) {
     return `<demo-${token.basename} />\n`;
-  },
+  }
 };
 
 const i18nDescription = {
@@ -74,21 +74,21 @@ const i18nDescription = {
         raw: match[0],
         text,
         locale: match[1],
-        content,
+        content
       };
     }
     return undefined;
   },
   renderer(token: I18nDescriptionToken) {
     return token.content;
-  },
+  }
 };
 
 marked.setOptions({
   highlight(
     code: string,
     lang: string,
-    callback?: (error: any, code?: string) => void,
+    callback?: (error: any, code?: string) => void
   ): string | void {
     if (lang === 'vue') {
       const { descriptor } = parse(code);
@@ -125,7 +125,7 @@ marked.setOptions({
       return Prism.highlight(code, Prism.languages[lang], lang);
     }
     return code;
-  },
+  }
 });
 
 marked.use({
@@ -199,10 +199,10 @@ marked.use({
         return `<th class="ant-table-cell">${content}</th>`;
       }
       return `<td class="ant-table-cell">${content}</td>`;
-    },
+    }
   },
   // @ts-ignore @types/marked版本过低导致
-  extensions: [i18nDescription, fileImport, frontMatter],
+  extensions: [i18nDescription, fileImport, frontMatter]
 });
 
 export default marked;

@@ -8,7 +8,7 @@ export const DEFAULT_CODEMIRROR_OPTIONS = {
   lineWrapping: true,
   tabSize: 2,
   tabMode: 'indent',
-  mode: 'text/html',
+  mode: 'text/html'
 };
 
 export interface CodeViewOptions {
@@ -29,7 +29,7 @@ const CodeView = Extension.create<CodeViewOptions>({
     extendCodemirror(this.options.codemirror);
     this.options.codemirrorOptions = {
       ...DEFAULT_CODEMIRROR_OPTIONS,
-      ...this.options.codemirrorOptions,
+      ...this.options.codemirrorOptions
     };
   },
 
@@ -41,12 +41,12 @@ const CodeView = Extension.create<CodeViewOptions>({
         return {
           component: CodeViewCommandButton,
           componentProps: {
-            buttonIcon: extension.options.buttonIcon,
-          },
+            buttonIcon: extension.options.buttonIcon
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default CodeView;

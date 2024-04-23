@@ -5,10 +5,10 @@ export default defineComponent({
   props: {
     checked: {
       type: Boolean,
-      default: false,
+      default: false
     },
     isMultiple: Boolean,
-    onChange: Function as PropType<(state: boolean) => void>,
+    onChange: Function as PropType<(state: boolean) => void>
   },
   emits: ['change', 'update:modelValue'],
 
@@ -17,12 +17,12 @@ export default defineComponent({
 
     const model = computed({
       get: (): boolean => props.checked,
-      set: (val) => emit('update:modelValue', val),
+      set: (val) => emit('update:modelValue', val)
     });
 
     return {
       uiType,
-      model,
+      model
     };
   },
 
@@ -43,5 +43,5 @@ export default defineComponent({
         />
       </label>
     );
-  },
+  }
 });

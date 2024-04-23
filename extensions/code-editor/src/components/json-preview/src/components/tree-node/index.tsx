@@ -14,12 +14,12 @@ export const treeNodePropsPass = {
   // Whether to display the length of (array|object).
   showLength: {
     type: Boolean,
-    default: false,
+    default: false
   },
   // Whether the key name uses double quotes.
   showDoubleQuotes: {
     type: Boolean,
-    default: true,
+    default: true
   },
   // Custom formatter for values.
   customValueFormatter: Function as PropType<
@@ -30,33 +30,33 @@ export const treeNodePropsPass = {
   // Whether to display the selection control.
   showSelectController: {
     type: Boolean,
-    default: false,
+    default: false
   },
   // Whether to display the data level connection.
   showLine: {
     type: Boolean,
-    default: true,
+    default: true
   },
   // Whether to trigger selection when clicking on the node.
   selectOnClickNode: {
     type: Boolean,
-    default: true,
+    default: true
   },
   // Collapsed control.
   collapsedOnClickBrackets: {
     type: Boolean,
-    default: true,
+    default: true
   },
   // When using the selectableType, define whether current path/content is enabled.
   pathSelectable: {
     type: Function as PropType<(path: string, content: string) => boolean>,
-    default: (): boolean => true,
+    default: (): boolean => true
   },
   // Highlight current node when selected.
   highlightSelectedNode: {
     type: Boolean,
-    default: true,
-  },
+    default: true
+  }
 };
 
 export default defineComponent({
@@ -66,21 +66,21 @@ export default defineComponent({
     // Current node data.
     node: {
       type: Object as PropType<NodeDataType>,
-      required: true,
+      required: true
     },
     // Whether the current node is collapsed.
     collapsed: Boolean,
     // Whether the current node is checked(When using the selection function).
     checked: Boolean,
     onTreeNodeClick: {
-      type: Function as PropType<(node: NodeDataType) => void>,
+      type: Function as PropType<(node: NodeDataType) => void>
     },
     onBracketsClick: {
-      type: Function as PropType<(collapsed: boolean, path: string) => void>,
+      type: Function as PropType<(collapsed: boolean, path: string) => void>
     },
     onSelectedChange: {
-      type: Function as PropType<(node: NodeDataType) => void>,
-    },
+      type: Function as PropType<(node: NodeDataType) => void>
+    }
   },
   emits: ['brackets-click', 'selected-change', 'tree-node-click'],
   setup(props, { emit }) {
@@ -89,7 +89,7 @@ export default defineComponent({
     const valueClass = computed(() => `vjs-value vjs-value__${dataType.value}`);
 
     const prettyKey = computed(() =>
-      props.showDoubleQuotes ? `"${props.node.key}"` : props.node.key,
+      props.showDoubleQuotes ? `"${props.node.key}"` : props.node.key
     );
 
     const isMultiple = computed(() => props.selectableType === 'multiple');
@@ -100,7 +100,7 @@ export default defineComponent({
     const selectable = computed(
       () =>
         props.pathSelectable(props.node.path, props.node.content) &&
-        (isMultiple.value || isSingle.value),
+        (isMultiple.value || isSingle.value)
     );
 
     const defaultFormatter = (data: string) => {
@@ -136,7 +136,7 @@ export default defineComponent({
       valueClass,
       prettyKey,
       isMultiple,
-      selectable,
+      selectable
     });
 
     return {
@@ -145,7 +145,7 @@ export default defineComponent({
       customFormatter,
       onBracketsClickHandler,
       onCheckedChange,
-      onNodeClick,
+      onNodeClick
     };
   },
 
@@ -158,7 +158,7 @@ export default defineComponent({
       checked,
       showLength,
       collapsed,
-      showLine,
+      showLine
     } = this;
 
     const {
@@ -167,7 +167,7 @@ export default defineComponent({
       customFormatter,
       onNodeClick,
       onCheckedChange,
-      onBracketsClickHandler,
+      onBracketsClickHandler
     } = this;
 
     return (
@@ -175,7 +175,7 @@ export default defineComponent({
         class={{
           'vjs-tree__node': true,
           'has-selector': showSelectController,
-          'is-highlight': highlightSelectedNode && checked,
+          'is-highlight': highlightSelectedNode && checked
         }}
         onClick={onNodeClick}
       >
@@ -195,7 +195,7 @@ export default defineComponent({
             key={index}
             class={{
               'vjs-tree__indent': true,
-              'has-line': showLine,
+              'has-line': showLine
             }}
           />
         ))}
@@ -217,5 +217,5 @@ export default defineComponent({
         </span>
       </div>
     );
-  },
+  }
 });

@@ -7,7 +7,7 @@ import type {
   MessageProviderInst,
   ModalOptions,
   NotificationOptions,
-  NotificationProviderInst,
+  NotificationProviderInst
 } from 'naive-ui';
 import type { MessageSetupProps } from 'naive-ui/es/message/src/message-props';
 import type { ConfigProps } from 'ant-design-vue/es/notification';
@@ -52,14 +52,14 @@ function createConfirm(options: DialogOptions & { iconType: IconType }) {
     },
     positiveText: t('common.okText'),
     negativeText: t('common.cancelText'),
-    ...options,
+    ...options
   };
   window.$dialog?.create(opt);
 }
 
 const getBaseOptions = (): ModalOptions => {
   return {
-    closable: true,
+    closable: true
   };
 };
 
@@ -83,7 +83,7 @@ function createModalOptions(setupOptions: ModalOptions, iconType: string): Modal
       }
     },
     to: to ?? document.body,
-    preset: 'dialog',
+    preset: 'dialog'
   };
 }
 
@@ -114,6 +114,6 @@ export function useMessage() {
     createSuccessModal,
     createErrorModal,
     createInfoModal,
-    createWarningModal,
+    createWarningModal
   };
 }

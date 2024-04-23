@@ -20,16 +20,16 @@
 
   const props = {
     event: {
-      type: Number as PropType<HandlerEnum>,
+      type: Number as PropType<HandlerEnum>
     },
     handler: {
       type: Function as PropType<Fn>,
-      default: () => ({}),
+      default: () => ({})
     },
     title: {
-      type: String,
+      type: String
     },
-    ...inputNumberProps,
+    ...inputNumberProps
   };
 
   export default defineComponent({
@@ -45,8 +45,8 @@
       }
       return {
         prefixCls,
-        handleChange,
+        handleChange
       };
-    },
+    }
   });
 </script>

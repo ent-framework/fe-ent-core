@@ -15,7 +15,7 @@ export type EntRippleEventType = Event | MouseEvent | TouchEvent;
 
 const options: RippleOptions = {
   event: 'mousedown',
-  transition: 400,
+  transition: 400
 };
 
 const RippleDirective: Directive & RippleProto = {
@@ -33,7 +33,7 @@ const RippleDirective: Directive & RippleProto = {
         event,
         el,
         background,
-        zIndex,
+        zIndex
       });
     });
   },
@@ -44,7 +44,7 @@ const RippleDirective: Directive & RippleProto = {
     }
     const bg = el.getAttribute('ripple-background');
     el?.setBackground?.(bg);
-  },
+  }
 };
 
 function isTouchEvent(e: EntRippleEventType): e is TouchEvent {
@@ -55,7 +55,7 @@ function rippler({
   event,
   el,
   zIndex,
-  background,
+  background
 }: { event: EntRippleEventType; el: HTMLElement } & RippleProto) {
   const targetBorder = Number.parseInt(getComputedStyle(el).borderWidth.replace('px', ''));
   const target = isTouchEvent(event)
@@ -92,7 +92,7 @@ function rippler({
     pointerEvents: 'none',
     position: 'relative',
     zIndex: zIndex ?? '9999',
-    backgroundColor: background ?? 'rgba(0, 0, 0, 0.12)',
+    backgroundColor: background ?? 'rgba(0, 0, 0, 0.12)'
   });
 
   // Styles for rippleContainer
@@ -104,7 +104,7 @@ function rippler({
     height: '0',
     width: '0',
     pointerEvents: 'none',
-    overflow: 'hidden',
+    overflow: 'hidden'
   });
 
   const storedTargetPosition =
@@ -119,14 +119,14 @@ function rippler({
 
   Object.assign(ripple.style, {
     marginTop: `${dy}px`,
-    marginLeft: `${dx}px`,
+    marginLeft: `${dx}px`
   });
 
   const {
     borderTopLeftRadius,
     borderTopRightRadius,
     borderBottomLeftRadius,
-    borderBottomRightRadius,
+    borderBottomRightRadius
   } = style;
   Object.assign(rippleContainer.style, {
     width: `${width}px`,
@@ -135,7 +135,7 @@ function rippler({
     borderTopLeftRadius,
     borderTopRightRadius,
     borderBottomLeftRadius,
-    borderBottomRightRadius,
+    borderBottomRightRadius
   });
 
   setTimeout(() => {
@@ -144,7 +144,7 @@ function rippler({
       width: wh,
       height: wh,
       marginLeft: `${dx - radius}px`,
-      marginTop: `${dy - radius}px`,
+      marginTop: `${dy - radius}px`
     });
   }, 0);
 

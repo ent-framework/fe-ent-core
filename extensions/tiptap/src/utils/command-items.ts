@@ -7,7 +7,7 @@ const getSuggestionItems = ({ editor, query }: { editor: any; query: string }) =
     })
     .filter(
       (item: { title: string; disabled: boolean }) =>
-        item?.title?.toLowerCase()?.startsWith(query?.toLowerCase()) && item?.disabled === false,
+        item?.title?.toLowerCase()?.startsWith(query?.toLowerCase()) && item?.disabled === false
     )
     .slice(0, 7);
 };

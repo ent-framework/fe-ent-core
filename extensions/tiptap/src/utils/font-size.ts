@@ -11,7 +11,7 @@ export const DEFAULT_FONT_SIZES = [
   '36',
   '48',
   '60',
-  '72',
+  '72'
 ];
 
 export const DEFAULT_FONT_SIZE = 'default';

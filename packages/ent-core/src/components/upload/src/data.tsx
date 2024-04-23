@@ -5,7 +5,7 @@ import ThumbUrl from './thumb-url.vue';
 import { UploadResultStatus } from './typing';
 import {
   // checkImgType,
-  isImgTypeByName,
+  isImgTypeByName
 } from './helper';
 import type { AnyFunction, Fn } from '../../../types';
 import type { FileItem, PreviewFileItem } from './typing';
@@ -22,7 +22,7 @@ export function createTableColumns(): BasicColumn[] {
       render: (record) => {
         const { thumbUrl } = (record as FileItem) || {};
         return thumbUrl && <ThumbUrl fileUrl={thumbUrl} />;
-      },
+      }
     },
     {
       key: 'name',
@@ -47,7 +47,7 @@ export function createTableColumns(): BasicColumn[] {
             <NProgress percentage={percent} status={status} />
           </span>
         );
-      },
+      }
     },
     {
       key: 'size',
@@ -55,7 +55,7 @@ export function createTableColumns(): BasicColumn[] {
       width: 100,
       render: ({ text = 0 }) => {
         return text && `${(text / 1024).toFixed(2)}KB`;
-      },
+      }
     },
     // {
     //   dataIndex: 'type',
@@ -76,8 +76,8 @@ export function createTableColumns(): BasicColumn[] {
         }
 
         return text;
-      },
-    },
+      }
+    }
   ];
 }
 export function createActionColumn(handleRemove: AnyFunction): BasicColumn {
@@ -91,8 +91,8 @@ export function createActionColumn(handleRemove: AnyFunction): BasicColumn {
         {
           label: t('component.upload.del'),
           color: 'error',
-          onClick: handleRemove.bind(null, record),
-        },
+          onClick: handleRemove.bind(null, record)
+        }
       ];
       // if (checkImgType(record)) {
       //   actions.unshift({
@@ -101,7 +101,7 @@ export function createActionColumn(handleRemove: AnyFunction): BasicColumn {
       //   });
       // }
       return <TableAction actions={actions} outside={true} />;
-    },
+    }
   };
 }
 // 文件预览列表
@@ -115,19 +115,19 @@ export function createPreviewColumns(): BasicColumn[] {
       render: ({ record }) => {
         const { url } = (record as PreviewFileItem) || {};
         return isImgTypeByName(url) && <ThumbUrl fileUrl={url} />;
-      },
+      }
     },
     {
       key: 'name',
       title: t('component.upload.fileName'),
-      align: 'left',
-    },
+      align: 'left'
+    }
   ];
 }
 
 export function createPreviewActionColumn({
   handleRemove,
-  handleDownload,
+  handleDownload
 }: {
   handleRemove: Fn;
   handleDownload: Fn;
@@ -142,15 +142,15 @@ export function createPreviewActionColumn({
         {
           label: t('component.upload.del'),
           color: 'error',
-          onClick: handleRemove.bind(null, record),
+          onClick: handleRemove.bind(null, record)
         },
         {
           label: t('component.upload.download'),
-          onClick: handleDownload.bind(null, record),
-        },
+          onClick: handleDownload.bind(null, record)
+        }
       ];
 
       return <TableAction actions={actions} outside={true} />;
-    },
+    }
   };
 }

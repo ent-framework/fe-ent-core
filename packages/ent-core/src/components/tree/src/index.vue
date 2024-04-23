@@ -31,7 +31,7 @@
         cascade: props.cascade,
         expandedKeys: props.expandedKeys || [],
         selectedKeys: props.selectedKeys || [],
-        checkedKeys: props.checkedKeys || [],
+        checkedKeys: props.checkedKeys || []
       });
 
       const showDropdownRef = ref(false);
@@ -41,7 +41,7 @@
       const searchState = reactive({
         startSearch: false,
         searchText: '',
-        searchData: [] as TreeItem[],
+        searchData: [] as TreeItem[]
       });
 
       const treeDataRef = ref<TreeItem[]>([]);
@@ -54,7 +54,7 @@
           children: childrenField,
           label: labelField,
           key: keyField,
-          disabled: disabledField,
+          disabled: disabledField
         };
       });
 
@@ -71,7 +71,7 @@
           'onUpdate:expandedKeys': (
             value: KeyType[],
             option: Array<TreeItem | null>,
-            meta: { node: TreeItem | null; action: 'expand' | 'collapse' | 'filter' },
+            meta: { node: TreeItem | null; action: 'expand' | 'collapse' | 'filter' }
           ) => {
             state.expandedKeys = value;
             emit('update:expandedKeys', value, option, meta);
@@ -82,7 +82,7 @@
             meta: {
               node: TreeItem | null;
               action: 'check' | 'uncheck';
-            },
+            }
           ) => {
             state.checkedKeys = value;
             emit('update:checkedKeys', value, option, meta);
@@ -93,18 +93,18 @@
             meta: {
               node: TreeItem | null;
               action: 'select' | 'unselect';
-            },
+            }
           ) => {
             state.selectedKeys = value;
             emit('update:selectedKeys', value, option, meta);
           },
-          onRightClick: handleRightClick,
+          onRightClick: handleRightClick
         };
         return omit(propsData, 'data', 'class');
       });
 
       const getTreeData = computed((): TreeItem[] =>
-        searchState.startSearch ? searchState.searchData : unref(treeDataRef),
+        searchState.startSearch ? searchState.searchData : unref(treeDataRef)
       );
       const {
         deleteNodeByKey,
@@ -115,7 +115,7 @@
         getAllKeys,
         // getChildrenKeys,
         getEnabledKeys,
-        getSelectedNode,
+        getSelectedNode
       } = useTree(treeDataRef, getFieldNames);
 
       // function getIcon(params: Recordable, icon?: string) {
@@ -190,8 +190,8 @@
           }
         },
         {
-          immediate: true,
-        },
+          immediate: true
+        }
       );
 
       // watch(
@@ -289,7 +289,7 @@
           const v = toRaw(state.checkedKeys);
           emit('update:value', v);
           emit('change', v);
-        },
+        }
       );
 
       watchEffect(() => {
@@ -318,7 +318,7 @@
         },
         getSearchValue: () => {
           return searchState.searchText;
-        },
+        }
       };
 
       const treeData = computed((): TreeItem[] => {
@@ -381,7 +381,7 @@
                 e.preventDefault();
                 optionsRef.value = info.option;
               },
-              ...result,
+              ...result
             };
           }
           return result;
@@ -433,6 +433,6 @@
           </div>
         );
       };
-    },
+    }
   });
 </script>

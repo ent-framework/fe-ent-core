@@ -19,7 +19,7 @@ export default {
     lockScreen: '锁定屏幕',
     lockScreenBtn: '锁定',
 
-    home: '首页',
+    home: '首页'
   },
   multipleTab: {
     reload: '重新加载',
@@ -27,7 +27,7 @@ export default {
     closeLeft: '关闭左侧标签页',
     closeRight: '关闭右侧标签页',
     closeOther: '关闭其它标签页',
-    closeAll: '关闭全部标签页',
+    closeAll: '关闭全部标签页'
   },
   setting: {
     // content mode
@@ -116,6 +116,6 @@ export default {
 
     darkTheme: '暗黑',
     lightTheme: '明亮',
-    noneTheme: '使用系统主题',
-  },
+    noneTheme: '使用系统主题'
+  }
 };

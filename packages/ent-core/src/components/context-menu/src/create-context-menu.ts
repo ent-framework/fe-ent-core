@@ -9,7 +9,7 @@ const menuManager: {
   resolve: Fn;
 } = {
   domList: [],
-  resolve: () => undefined,
+  resolve: () => undefined
 };
 
 export const createContextMenu = function (options: CreateContextOptions) {

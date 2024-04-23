@@ -28,6 +28,6 @@
       const [state] = useRuleFormItem(props);
 
       return { prefixCls, state };
-    },
+    }
   });
 </script>

@@ -21,13 +21,13 @@ export default TiptapCodeBlockLowlight.extend({
           disabled: false,
           isActive(editor: Editor) {
             return editor.isActive('codeBlockLowlight');
-          },
-        },
+          }
+        }
       ],
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -42,10 +42,10 @@ export default TiptapCodeBlockLowlight.extend({
             buttonIcon: extension.options.buttonIcon,
             isActive: editor.isActive('codeBlockLowlight'),
             icon: svg,
-            tooltip: t('editor.extensions.CodeBlock.tooltip'),
-          },
+            tooltip: t('editor.extensions.CodeBlock.tooltip')
+          }
         };
-      },
+      }
     };
-  },
+  }
 });

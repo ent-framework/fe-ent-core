@@ -23,5 +23,5 @@ export default {
   iconComponents,
   components,
   directives,
-  theme,
+  theme
 };

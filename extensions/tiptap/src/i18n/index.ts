@@ -26,7 +26,7 @@ const dictionary = {
   fr,
   pt_br,
   nl,
-  he,
+  he
 };
 
 export const Trans = {
@@ -50,7 +50,7 @@ export const Trans = {
 
     if (!this.isLangSupported(lang)) {
       Logger.warn(
-        `Can't find the current language "${lang}", Using language "${DEFAULT_LANGUAGE}" by default. Welcome contribution to https://github.com/Leecason/element-tiptap`,
+        `Can't find the current language "${lang}", Using language "${DEFAULT_LANGUAGE}" by default. Welcome contribution to https://github.com/Leecason/element-tiptap`
       );
       l = DEFAULT_LANGUAGE;
     } else {
@@ -67,5 +67,5 @@ export const Trans = {
 
       return target as string;
     };
-  },
+  }
 };

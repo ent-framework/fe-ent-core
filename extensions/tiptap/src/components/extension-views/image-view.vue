@@ -4,7 +4,7 @@
       :class="{
         'image-view__body--focused': selected && editor?.isEditable && !isDragging,
         'image-view__body--resizing': resizing && editor?.isEditable && !isDragging,
-        'image-view__body': editor?.isEditable,
+        'image-view__body': editor?.isEditable
       }"
     >
       <img
@@ -76,7 +76,7 @@
     TOP_LEFT = 'tl',
     TOP_RIGHT = 'tr',
     BOTTOM_LEFT = 'bl',
-    BOTTOM_RIGHT = 'br',
+    BOTTOM_RIGHT = 'br'
   }
 
   const MIN_SIZE = 20;
@@ -88,7 +88,7 @@
     components: {
       Popover,
       NodeViewWrapper,
-      ImageBubbleMenu,
+      ImageBubbleMenu
     },
 
     props: nodeViewProps,
@@ -97,20 +97,20 @@
       return {
         maxSize: {
           width: MAX_SIZE,
-          height: MAX_SIZE,
+          height: MAX_SIZE
         },
         isDragging: false,
 
         originalSize: {
           width: 0,
-          height: 0,
+          height: 0
         },
 
         resizeDirections: [
           ResizeDirection.TOP_LEFT,
           ResizeDirection.TOP_RIGHT,
           ResizeDirection.BOTTOM_LEFT,
-          ResizeDirection.BOTTOM_RIGHT,
+          ResizeDirection.BOTTOM_RIGHT
         ],
 
         resizing: false,
@@ -120,8 +120,8 @@
           y: 0,
           w: 0,
           h: 0,
-          dir: '',
-        },
+          dir: ''
+        }
       };
     },
 
@@ -144,7 +144,7 @@
 
       imageViewClass() {
         return ['image-view', `image-view--${this.display}`];
-      },
+      }
     },
 
     async created() {
@@ -157,7 +157,7 @@
 
       this.originalSize = {
         width: result.width,
-        height: result.height,
+        height: result.height
       };
     },
 
@@ -242,7 +242,7 @@
 
         this.updateAttributes?.({
           width: clamp(w + dx, MIN_SIZE, this.maxSize.width),
-          height: Math.max(h + dy, MIN_SIZE),
+          height: Math.max(h + dy, MIN_SIZE)
         });
       },
 
@@ -258,7 +258,7 @@
           y: 0,
           w: 0,
           h: 0,
-          dir: '',
+          dir: ''
         };
 
         this.offEvents();
@@ -273,7 +273,7 @@
       offEvents(): void {
         document.removeEventListener('mousemove', this.onMouseMove, true);
         document.removeEventListener('mouseup', this.onMouseUp, true);
-      },
-    },
+      }
+    }
   });
 </script>

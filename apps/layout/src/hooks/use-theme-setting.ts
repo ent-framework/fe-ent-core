@@ -9,7 +9,7 @@ export function useLayoutThemeSetting() {
   const getOpenKeepAlive = computed(() => layoutStore.getLayoutConfig.openKeepAlive);
 
   const getSettingButtonPosition = computed(
-    () => layoutStore.getLayoutConfig.settingButtonPosition,
+    () => layoutStore.getLayoutConfig.settingButtonPosition
   );
 
   const getCanEmbedIFramePage = computed(() => layoutStore.getLayoutConfig.canEmbedIFramePage);
@@ -37,7 +37,7 @@ export function useLayoutThemeSetting() {
   const getLayoutContentMode = computed(() =>
     layoutStore.getLayoutConfig.contentMode === ContentEnum.FULL
       ? ContentEnum.FULL
-      : ContentEnum.FIXED,
+      : ContentEnum.FIXED
   );
 
   return {
@@ -54,6 +54,6 @@ export function useLayoutThemeSetting() {
     getShowSettingButton,
     getShowFooter,
     getContentMode,
-    getLockTime,
+    getLockTime
   };
 }

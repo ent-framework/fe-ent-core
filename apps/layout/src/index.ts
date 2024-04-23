@@ -2,7 +2,7 @@ import { withInstall } from 'fe-ent-core/es/utils';
 import {
   COMPONENT_EXCEPTION_NAME,
   COMPONENT_IFRAME_NAME,
-  COMPONENT_LAYOUT_NAME,
+  COMPONENT_LAYOUT_NAME
 } from 'fe-ent-core/es/router';
 import { useGlobSetting } from 'fe-ent-core/es/hooks';
 import { useLocale } from 'fe-ent-core/es/locales';
@@ -16,7 +16,7 @@ import {
   getErrorLogRoute,
   getPageNotFoundRoute,
   getRedirectRoute,
-  getRootRoute,
+  getRootRoute
 } from './components/routes/basic';
 import localeEn from './locales/en';
 import localeZh from './locales/zh-CN';

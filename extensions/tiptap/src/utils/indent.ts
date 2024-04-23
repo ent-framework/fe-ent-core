@@ -9,14 +9,14 @@ export const enum IndentProps {
   min = 0,
 
   more = 1,
-  less = -1,
+  less = -1
 }
 
 function updateIndentLevel(
   tr: Transaction,
   delta: number,
   types: string[],
-  editor: Editor,
+  editor: Editor
 ): Transaction {
   const { doc, selection } = tr;
 
@@ -58,7 +58,7 @@ function setNodeIndentMarkup(tr: Transaction, pos: number, delta: number): Trans
 
   const nodeAttrs = {
     ...node.attrs,
-    indent,
+    indent
   };
 
   return tr.setNodeMarkup(pos, node.type, nodeAttrs, node.marks);

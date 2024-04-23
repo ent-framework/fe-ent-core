@@ -21,7 +21,7 @@ export {
   ApiSelect,
   ApiTransfer,
   ApiRadioGroup,
-  RadioButtonGroup,
+  RadioButtonGroup
 } from './form';
 export { EntIcon, EntIconPicker } from './icon';
 export { EntLoading } from './loading';

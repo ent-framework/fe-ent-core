@@ -20,14 +20,14 @@
     name: 'CodeViewCommandButton',
 
     components: {
-      CommandButton,
+      CommandButton
     },
 
     props: {
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
     setup() {
       const t = inject('t');
@@ -36,6 +36,6 @@
       const toggleIsCodeViewMode = inject('toggleIsCodeViewMode');
 
       return { t, enableTooltip, isCodeViewMode, svg, toggleIsCodeViewMode };
-    },
+    }
   });
 </script>

@@ -21,7 +21,7 @@ async function defineUmdLibraryConfig(source: boolean) {
     root,
     enableAnalyze: false,
     enableMock: false,
-    compress: 'none',
+    compress: 'none'
   });
   const { dependencies = {}, peerDependencies = {} } = await readPackageJSON(root);
   const deps = [...Object.keys(dependencies), ...Object.keys(peerDependencies)];
@@ -41,39 +41,39 @@ async function defineUmdLibraryConfig(source: boolean) {
             format: 'umd',
             entryFileNames: `index.full.js`,
             exports: 'named',
-            name,
+            name
           },
           {
             format: 'umd',
             entryFileNames: `index.full.min.js`,
             exports: 'named',
             name,
-            plugins: [terser() as OutputPlugin],
-          },
+            plugins: [terser() as OutputPlugin]
+          }
         ],
-        external: [...deps],
+        external: [...deps]
       },
       lib: {
         entry: 'src/index.ts',
         formats: ['umd'],
         fileName: (format: ModuleFormat, entryName: string) => {
           return `${entryName}.${format === 'cjs' ? 'js' : 'mjs'}`;
-        },
-      },
+        }
+      }
     },
     css: {
       preprocessorOptions: {
         less: {
           modifyVars: generateModifyVars(),
-          javascriptEnabled: true,
-        },
-      },
+          javascriptEnabled: true
+        }
+      }
     },
-    plugins: [external(source), ...plugins],
+    plugins: [external(source), ...plugins]
   };
   const mergedConfig = mergeConfig(
     commonConfig({ command: 'build', mode: 'production' }),
-    packageConfig,
+    packageConfig
   );
 
   return mergedConfig as InlineConfig;

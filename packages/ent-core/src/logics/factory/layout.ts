@@ -10,9 +10,9 @@ const defaultThemeSetting: ThemeSetting = {
       successColor: '#52c41a',
       warningColor: '#faad14',
       errorColor: '#ff4d4f',
-      infoColor: '#1677ff',
-    },
-  },
+      infoColor: '#1677ff'
+    }
+  }
 };
 
 export interface LayoutFactory {
@@ -36,9 +36,9 @@ export class LayoutService implements LayoutFactory {
             successColor: '#58a732',
             warningColor: '#f0a818',
             errorColor: '#e55c5c',
-            infoColor: '#d9d9d9',
-          },
-        },
+            infoColor: '#d9d9d9'
+          }
+        }
       },
       {
         theme: ThemeEnum.LIGHT,
@@ -49,9 +49,9 @@ export class LayoutService implements LayoutFactory {
             successColor: '#58508d',
             warningColor: '#bc5090',
             errorColor: '#ff6361',
-            infoColor: '#ffa600',
-          },
-        },
+            infoColor: '#ffa600'
+          }
+        }
       },
       {
         theme: ThemeEnum.LIGHT,
@@ -62,10 +62,10 @@ export class LayoutService implements LayoutFactory {
             successColor: '#95b8d1',
             warningColor: '#b8e0d4',
             errorColor: '#eac4d5',
-            infoColor: '#d6eadf',
-          },
-        },
-      },
+            infoColor: '#d6eadf'
+          }
+        }
+      }
     ];
   };
 }

@@ -1,5 +1,20 @@
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 448 512" :class="cls" :style="innerStyle" :stroke-width="strokeWidth" :stroke-linecap="strokeLinecap" :stroke-linejoin="strokeLinejoin" @click="onClick"><path fill="currentColor" d="M32 64h32v160c0 88.22 71.78 160 160 160s160-71.78 160-160V64h32a16 16 0 0 0 16-16V16a16 16 0 0 0-16-16H272a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h32v160a80 80 0 0 1-160 0V64h32a16 16 0 0 0 16-16V16a16 16 0 0 0-16-16H32a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16m400 384H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16"></path></svg>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    viewBox="0 0 448 512"
+    :class="cls"
+    :style="innerStyle"
+    :stroke-width="strokeWidth"
+    :stroke-linecap="strokeLinecap"
+    :stroke-linejoin="strokeLinejoin"
+    @click="onClick"
+  >
+    <path
+      fill="currentColor"
+      d="M32 64h32v160c0 88.22 71.78 160 160 160s160-71.78 160-160V64h32a16 16 0 0 0 16-16V16a16 16 0 0 0-16-16H272a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h32v160a80 80 0 0 1-160 0V64h32a16 16 0 0 0 16-16V16a16 16 0 0 0-16-16H32a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16m400 384H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16"
+    ></path>
+  </svg>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
@@ -12,42 +27,42 @@
     name: 'IconUnderline',
     props: {
       size: {
-        type: [Number, String],
+        type: [Number, String]
       },
       strokeWidth: {
         type: Number,
-        default: 4,
+        default: 4
       },
       strokeLinecap: {
         type: String,
         default: 'butt',
         validator: (value: any) => {
           return ['butt', 'round', 'square'].includes(value);
-        },
+        }
       },
       strokeLinejoin: {
         type: String,
         default: 'miter',
         validator: (value: any) => {
           return ['arcs', 'bevel', 'miter', 'miter-clip', 'round'].includes(value);
-        },
+        }
       },
       rotate: Number,
       spin: Boolean,
       prefixCls: {
         type: String,
-        default: 'icon',
-      },
+        default: 'icon'
+      }
     },
     emits: {
-      click: (ev: MouseEvent) => true,
+      click: (ev: MouseEvent) => true
     },
     setup(props, { emit }) {
       const cls = computed(() => [
         props.prefixCls,
-         `${props.prefixCls}-underline`,
-          { [`${props.prefixCls}-spin`]: props.spin }]
-        );
+        `${props.prefixCls}-underline`,
+        { [`${props.prefixCls}-spin`]: props.spin }
+      ]);
       const innerStyle = computed(() => {
         const styles: CSSProperties = {};
         if (props.size) {
@@ -65,8 +80,8 @@
       return {
         cls,
         innerStyle,
-        onClick,
+        onClick
       };
-    },
+    }
   });
 </script>

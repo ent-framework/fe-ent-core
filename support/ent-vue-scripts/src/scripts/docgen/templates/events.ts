@@ -20,7 +20,7 @@ const propertiesTmpl = (properties: EventDescriptor['properties']): string => {
 const tmpl = (events: EventDescriptor[], lang: string) => {
   const displayableEvents = events.filter((event) => event.description || event.tags?.length);
   const hasVersion = displayableEvents.some((event) =>
-    event?.tags?.some((tag) => tag.title === 'version'),
+    event?.tags?.some((tag) => tag.title === 'version')
   );
   const content = displayableEvents
     .map((event) => {
@@ -52,7 +52,7 @@ const tmpl = (events: EventDescriptor[], lang: string) => {
     .join('\n');
   return {
     content,
-    hasVersion,
+    hasVersion
   };
 };
 

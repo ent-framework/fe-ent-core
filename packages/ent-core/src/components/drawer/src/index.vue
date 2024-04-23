@@ -38,7 +38,7 @@
     ref,
     toRaw,
     unref,
-    watch,
+    watch
   } from 'vue';
   import { NDrawer, NDrawerContent } from 'naive-ui';
   import { useAttrs, useDesign, useI18n } from '../../../hooks';
@@ -68,7 +68,7 @@
 
       const drawerInstance: DrawerInstance = {
         setDrawerProps,
-        emitVisible: undefined,
+        emitVisible: undefined
       };
 
       const instance = getCurrentInstance();
@@ -84,7 +84,7 @@
           placement: 'right',
           ...unref(attrs),
           ...unref(getMergeProps),
-          show: unref(openRef),
+          show: unref(openRef)
         };
         opt.title = undefined;
         const { isDetail, width } = opt;
@@ -105,7 +105,7 @@
       const getBindValues = computed((): DrawerProps => {
         return {
           ...attrs,
-          ...unref(getProps),
+          ...unref(getProps)
         };
       });
 
@@ -118,7 +118,7 @@
         (newVal, oldVal) => {
           if (newVal !== oldVal) openRef.value = !!newVal;
         },
-        { deep: true },
+        { deep: true }
       );
 
       watch(
@@ -128,7 +128,7 @@
             emit('visible-change', visible);
             instance && drawerInstance.emitVisible?.(visible, instance.uid);
           });
-        },
+        }
       );
 
       // Cancel event
@@ -174,8 +174,8 @@
         getLoading,
         getBindValues,
         handleOk,
-        onUpdateShow,
+        onUpdateShow
       };
-    },
+    }
   });
 </script>

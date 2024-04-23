@@ -10,7 +10,7 @@ interface CustomRowContext {
   setSelectedRowKeys: (
     keys: DataTableRowKey[],
     rows: Recordable[],
-    meta: { row: Recordable | undefined; action: 'check' | 'uncheck' | 'checkAll' | 'uncheckAll' },
+    meta: { row: Recordable | undefined; action: 'check' | 'uncheck' | 'checkAll' | 'uncheckAll' }
   ) => void;
   getSelectRows: () => Recordable[];
   getSelectRowKeys: () => DataTableRowKey[];
@@ -35,8 +35,8 @@ export function useCustomRow(
     getSelectRows,
     getSelectRowKeys,
     clearSelectedRowKeys,
-    emit,
-  }: CustomRowContext,
+    emit
+  }: CustomRowContext
 ) {
   const customRow = (record: Recordable, index: number): HTMLAttributes => {
     return {
@@ -60,7 +60,7 @@ export function useCustomRow(
             .composedPath?.()
             .find(
               (dom: HTMLElement) =>
-                dom.tagName === 'TD' && dom.className.includes('n-data-table-td--selection'),
+                dom.tagName === 'TD' && dom.className.includes('n-data-table-td--selection')
             ) as HTMLElement;
           // 点击的是选择框，跳过事件处理
           if (self) {
@@ -73,7 +73,7 @@ export function useCustomRow(
               (dom: HTMLElement) =>
                 dom.tagName === 'DIV' &&
                 (dom.className.includes('ent-basic-table-action') ||
-                  dom.className.includes('n-data-table-expand-trigger')),
+                  dom.className.includes('n-data-table-expand-trigger'))
             ) as HTMLElement;
           // 点击了操作列,展开列不触发
           if (actionOrExpandColumn) {
@@ -83,7 +83,7 @@ export function useCustomRow(
           const switchColumn = (e as MouseEvent)
             .composedPath?.()
             .find(
-              (dom: HTMLElement) => dom.tagName === 'DIV' && dom.className.includes('n-switch'),
+              (dom: HTMLElement) => dom.tagName === 'DIV' && dom.className.includes('n-switch')
             ) as HTMLElement;
           // switch 操作列，待补充，不触发
           if (switchColumn) {
@@ -93,7 +93,7 @@ export function useCustomRow(
           const isCheckbox = rowSelection.type === 'checkbox';
           if (isCheckbox) {
             const disabled = tr.querySelector(
-              'td.n-data-table-td--selection .n-checkbox--disabled',
+              'td.n-data-table-td--selection .n-checkbox--disabled'
             );
             if (disabled) {
               return;
@@ -101,7 +101,7 @@ export function useCustomRow(
             if (!keys.includes(key)) {
               setSelectedRowKeys([...keys, key], [...rows, record], {
                 row: record,
-                action: 'check',
+                action: 'check'
               });
               return;
             }
@@ -111,7 +111,7 @@ export function useCustomRow(
             rows.splice(rowIndex, 1);
             setSelectedRowKeys(keys, rows, {
               row: record,
-              action: 'uncheck',
+              action: 'uncheck'
             });
             return;
           }
@@ -147,11 +147,11 @@ export function useCustomRow(
       },
       onMouseleave: (event: Event) => {
         emit('row-mouseleave', record, index, event);
-      },
+      }
     };
   };
 
   return {
-    customRow,
+    customRow
   };
 }

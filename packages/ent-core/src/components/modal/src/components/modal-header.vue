@@ -13,10 +13,10 @@
     components: { BasicTitle },
     props: {
       helpMessage: {
-        type: [String, Array] as PropType<string | string[]>,
+        type: [String, Array] as PropType<string | string[]>
       },
-      title: { type: String },
+      title: { type: String }
     },
-    emits: ['dblclick'],
+    emits: ['dblclick']
   });
 </script>

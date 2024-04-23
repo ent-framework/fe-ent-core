@@ -57,23 +57,23 @@
       Input,
       Checkbox,
       Button,
-      CommandButton,
+      CommandButton
     },
 
     props: {
       editor: {
         type: Editor,
-        required: true,
+        required: true
       },
 
       initLinkAttrs: {
         type: Object,
-        required: true,
+        required: true
       },
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup() {
@@ -86,14 +86,14 @@
     data() {
       return {
         linkAttrs: this.initLinkAttrs,
-        editLinkDialogVisible: false,
+        editLinkDialogVisible: false
       };
     },
     computed: {
       placeholder() {
         return this.editor.extensionManager.extensions.find((item) => item.name === 'link')?.options
           ?.editLinkPlaceholder;
-      },
+      }
     },
     methods: {
       updateLinkAttrs() {
@@ -108,7 +108,7 @@
 
       closeEditLinkDialog() {
         this.editLinkDialogVisible = false;
-      },
-    },
+      }
+    }
   });
 </script>

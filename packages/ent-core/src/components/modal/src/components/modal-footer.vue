@@ -25,7 +25,7 @@
   export default defineComponent({
     name: 'BasicModalFooter',
     components: {
-      NFlex,
+      NFlex
     },
     props: basicProps,
     emits: ['ok', 'cancel'],
@@ -45,6 +45,6 @@
       }
 
       return { handleOk, handleCancel, cancelText, okText };
-    },
+    }
   });
 </script>

@@ -13,8 +13,8 @@ const formatterTags = (jsDocsTags: JSDocTag[]) => {
     tags[tagName] = [
       {
         title: tagName,
-        description: tag.getCommentText(),
-      },
+        description: tag.getCommentText()
+      }
     ];
   });
 
@@ -30,19 +30,19 @@ const formatterProps = (properties: PropertySignature[]) => {
       props.push({
         name: p.getName(),
         type: {
-          name: p.getTypeNode()?.getText() || '',
+          name: p.getTypeNode()?.getText() || ''
         },
         description: p.getName(),
-        tags: {},
+        tags: {}
       });
     } else {
       props.push({
         name: p.getName(),
         type: {
-          name: p.getTypeNode()?.getText() || '',
+          name: p.getTypeNode()?.getText() || ''
         },
         description: jsDocs.getDescription(),
-        tags: formatterTags(jsDocs.getTags()),
+        tags: formatterTags(jsDocs.getTags())
       });
     }
   });
@@ -87,7 +87,7 @@ export default (filePath: string) => {
             exportName: interfaceDeclaration.getName(),
             description,
             props: formatterProps(properties),
-            tags: {},
+            tags: {}
           };
           if (componentDoc.props.length) {
             componentDocList.push(componentDoc);

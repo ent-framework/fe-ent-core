@@ -12,11 +12,11 @@
     name: 'LayoutTrigger',
     components: {
       SiderTrigger,
-      HeaderTrigger,
+      HeaderTrigger
     },
     props: {
       sider: propTypes.bool.def(true),
-      theme: propTypes.oneOf(['light', 'dark']),
-    },
+      theme: propTypes.oneOf(['light', 'dark'])
+    }
   });
 </script>

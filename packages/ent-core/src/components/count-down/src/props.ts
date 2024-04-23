@@ -11,7 +11,7 @@ export const countDownInputProps = {
    */
   size: {
     type: String as PropType<Size>,
-    default: 'medium',
+    default: 'medium'
   },
   /**
    * 倒计时时间(秒)
@@ -22,6 +22,6 @@ export const countDownInputProps = {
    */
   sendCodeApi: {
     type: Function as PropType<() => Promise<boolean>>,
-    default: null,
-  },
+    default: null
+  }
 };

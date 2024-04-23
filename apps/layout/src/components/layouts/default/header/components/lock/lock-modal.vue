@@ -58,10 +58,10 @@
             component: 'InputPassword',
             required: true,
             gridItemProps: {
-              span: 24,
-            },
-          },
-        ],
+              span: 24
+            }
+          }
+        ]
       });
 
       async function handleLock() {
@@ -71,7 +71,7 @@
 
         lockStore.setLockInfo({
           isLock: true,
-          pwd: password,
+          pwd: password
         });
         await resetFields();
       }
@@ -88,8 +88,8 @@
         register,
         registerForm,
         handleLock,
-        avatar,
+        avatar
       };
-    },
+    }
   });
 </script>

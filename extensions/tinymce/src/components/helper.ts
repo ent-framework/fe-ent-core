@@ -60,7 +60,7 @@ const validEvents = [
   'onShow',
   'onSubmit',
   'onUndo',
-  'onVisualAid',
+  'onVisualAid'
 ];
 
 const isValidKey = (key: string) => validEvents.includes(key);

@@ -100,7 +100,7 @@ export interface TableActionType {
   setSelectedRowKeys: (
     keys: DataTableRowKey[],
     rows: Recordable[],
-    meta: { row: Recordable | undefined; action: 'check' | 'uncheck' | 'checkAll' | 'uncheckAll' },
+    meta: { row: Recordable | undefined; action: 'check' | 'uncheck' | 'checkAll' | 'uncheckAll' }
   ) => void;
   getPaginationRef: () => PaginationProps | boolean;
   getSize: () => SizeType;

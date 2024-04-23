@@ -5,7 +5,7 @@ import type { Module } from 'vue-inbrowser-compiler-independent-utils';
 export default async function (
   location: string,
   documentation: Documentation,
-  module: Module,
+  module: Module
 ): Promise<ComponentDoc | undefined> {
   const content = fs.readFileSync(location);
   const mkdown = marked.Lexer.lex(content.toString());
@@ -29,18 +29,18 @@ export default async function (
   }
   if (mkdown.length == 0) return undefined;
 
-  let doc: ComponentDoc = { displayName: '', exportName: '', tags: {} };
+  const doc: ComponentDoc = { displayName: '', exportName: '', tags: {} };
   let loop = 0;
 
   function getProps(cells: marked.Tokens.TableCell[][]) {
     cells.forEach((val) => {
       const propDescriptor = documentation.getPropDescriptor(val[0].text);
       propDescriptor.type = {
-        name: val[2].text,
+        name: val[2].text
       };
       propDescriptor.description = val[1].text;
       propDescriptor.defaultValue = {
-        value: val[3].text,
+        value: val[3].text
       };
       if (val.length > 4) {
         propDescriptor.tags = { version: [{ title: val[4].text, description: val[4].text }] };

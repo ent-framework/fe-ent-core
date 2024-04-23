@@ -9,6 +9,6 @@
     name: 'MonthRangePicker',
     components: { NDatePicker },
     extends: NDatePicker,
-    inheritAttrs: false,
+    inheritAttrs: false
   });
 </script>

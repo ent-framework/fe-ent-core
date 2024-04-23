@@ -54,7 +54,7 @@
      */
     helpMessage: {
       type: [Array, String] as PropType<string[] | string>,
-      default: '',
+      default: ''
     },
     /**
      * @zh 展开收缩的时候是否触发 window.resize
@@ -65,7 +65,7 @@
      * @zh 延迟加载时间
      * @en Delayed loading time
      */
-    lazyTime: { type: Number, default: 0 },
+    lazyTime: { type: Number, default: 0 }
   };
 
   export default defineComponent({
@@ -89,8 +89,8 @@
       return {
         prefixCls,
         handleExpand,
-        show,
+        show
       };
-    },
+    }
   });
 </script>

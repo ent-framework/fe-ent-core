@@ -9,16 +9,16 @@ export function createSimpleTransition(name: string, origin = 'top center 0', mo
     props: {
       group: {
         type: Boolean as PropType<boolean>,
-        default: false,
+        default: false
       },
       mode: {
         type: String as PropType<Mode>,
-        default: mode,
+        default: mode
       },
       origin: {
         type: String as PropType<string>,
-        default: origin,
-      },
+        default: origin
+      }
     },
     setup(props, { slots, attrs }) {
       const onBeforeEnter = (el: HTMLElement) => {
@@ -33,6 +33,6 @@ export function createSimpleTransition(name: string, origin = 'top center 0', mo
           </Tag>
         );
       };
-    },
+    }
   });
 }

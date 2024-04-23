@@ -32,7 +32,7 @@
     /**
      * Whether to refresh the interface when changing
      */
-    reload: { type: Boolean },
+    reload: { type: Boolean }
   };
 
   export default defineComponent({
@@ -72,8 +72,8 @@
         getLocaleText,
         localeList,
         handleMenuEvent,
-        selectedKeys,
+        selectedKeys
       };
-    },
+    }
   });
 </script>

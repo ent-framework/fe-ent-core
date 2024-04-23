@@ -6,10 +6,10 @@ export const enum Alignment {
   left = 'left',
   center = 'center',
   right = 'right',
-  justify = 'justify',
+  justify = 'justify'
 }
 export const ALIGN_PATTERN = new RegExp(
-  `(${Alignment.left}|${Alignment.center}|${Alignment.right}|${Alignment.justify})`,
+  `(${Alignment.left}|${Alignment.center}|${Alignment.right}|${Alignment.justify})`
 );
 
 export const DEFAULT_IMAGE_URL_REGEX =
@@ -27,7 +27,7 @@ export const enum EVENTS {
   BLUR = 'blur',
   PASTE = 'paste',
   DROP = 'drop',
-  UPDATE = 'update',
+  UPDATE = 'update'
 }
 
 export const PREVIEW_WINDOW_WIDTH = '80vw';

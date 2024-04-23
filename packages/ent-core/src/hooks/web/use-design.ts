@@ -5,7 +5,7 @@ export function useDesign(scope: string) {
   return {
     // prefixCls: computed(() => `${values.prefixCls}-${scope}`),
     prefixCls: `${prefixCls}-${scope}`,
-    prefixVar: prefixCls,
+    prefixVar: prefixCls
     // style,
   };
 }

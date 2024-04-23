@@ -73,7 +73,7 @@ const resolveComponent = (doc: ComponentDoc): ComponentData => {
           if (descriptor.description) {
             description = {
               zh: descriptor.description,
-              en: descriptor.description,
+              en: descriptor.description
             };
           } else {
             description = Object.values(descriptor.tags ?? {}).reduce(
@@ -85,7 +85,7 @@ const resolveComponent = (doc: ComponentDoc): ComponentData => {
                 });
                 return pre;
               },
-              { zh: '', en: '' },
+              { zh: '', en: '' }
             );
           }
 
@@ -93,7 +93,7 @@ const resolveComponent = (doc: ComponentDoc): ComponentData => {
             name: toKebabCase(descriptor.name),
             type: descriptor.type?.name,
             defaultValue: descriptor.defaultValue?.value ?? descriptor.defaultValue?.value ?? '',
-            description,
+            description
           };
         })
         .filter((item) => Boolean(item.description.en)) ?? [],
@@ -107,7 +107,7 @@ const resolveComponent = (doc: ComponentDoc): ComponentData => {
           if (descriptor.description) {
             description = {
               zh: descriptor.description,
-              en: descriptor.description,
+              en: descriptor.description
             };
           } else {
             description = (descriptor.tags ?? []).reduce(
@@ -118,13 +118,13 @@ const resolveComponent = (doc: ComponentDoc): ComponentData => {
                 }
                 return pre;
               },
-              { zh: '', en: '' },
+              { zh: '', en: '' }
             );
           }
 
           return {
             name: toKebabCase(descriptor.name),
-            description,
+            description
           };
         })
         .filter((item) => Boolean(item.description.en) && !item.name.startsWith('update:')) ?? [],
@@ -138,7 +138,7 @@ const resolveComponent = (doc: ComponentDoc): ComponentData => {
           if (descriptor.description) {
             description = {
               zh: descriptor.description,
-              en: descriptor.description,
+              en: descriptor.description
             };
           } else {
             description = Object.values(descriptor.tags ?? {}).reduce(
@@ -150,16 +150,16 @@ const resolveComponent = (doc: ComponentDoc): ComponentData => {
                 }
                 return pre;
               },
-              { zh: '', en: '' },
+              { zh: '', en: '' }
             );
           }
 
           return {
             name: toKebabCase(descriptor.name),
-            description,
+            description
           };
         })
-        .filter((item) => Boolean(item.description.en)) ?? [],
+        .filter((item) => Boolean(item.description.en)) ?? []
   };
 };
 
@@ -182,7 +182,7 @@ const transformToVetur = (components: ComponentData[]) => {
     for (const item of component.events ?? []) {
       attrs.push(item.name);
       attributes[`${component.name}/${item.name}`] = {
-        description: item.description.en,
+        description: item.description.en
       };
     }
     for (const item of component.props ?? []) {
@@ -191,24 +191,24 @@ const transformToVetur = (components: ComponentData[]) => {
         attrs.push(attrName);
         attributes[`${component.name}/${attrName}`] = {
           description: item.description.en,
-          type: isValidType(item.type || '') ? item.type : undefined,
+          type: isValidType(item.type || '') ? item.type : undefined
         };
       }
     }
     tags[component.name] = {
-      attributes: attrs,
+      attributes: attrs
     };
   }
 
   return {
     tags,
-    attributes,
+    attributes
   };
 };
 
 const transformToWebTypes = (
   components: ComponentData[],
-  { name, version }: { name: string; version: string },
+  { name, version }: { name: string; version: string }
 ) => {
   const json = {
     $schema: 'https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json',
@@ -218,9 +218,9 @@ const transformToWebTypes = (
     version,
     contributions: {
       html: {
-        'vue-components': [],
-      },
-    },
+        'vue-components': []
+      }
+    }
   };
 
   for (const component of components) {
@@ -228,26 +228,26 @@ const transformToWebTypes = (
       name: component.name,
       description: component.description,
       source: {
-        symbol: component.name,
+        symbol: component.name
       },
       // @ts-ignore
       slots: component.slots?.map((item) => ({
         name: item.name,
-        description: item.description.zh || item.description.en,
+        description: item.description.zh || item.description.en
       })),
       attributes: [],
       props: component.props?.map((item) => ({
         name: item.name,
         description: item.description.zh || item.description.en,
         type: item.type,
-        default: item.defaultValue,
+        default: item.defaultValue
       })),
       js: {
         events: component.events?.map((item) => ({
           name: item.name,
-          description: item.description.zh || item.description.en,
-        })),
-      },
+          description: item.description.zh || item.description.en
+        }))
+      }
     };
 
     // @ts-ignore
@@ -267,7 +267,7 @@ const jsongen = async () => {
   let datePickerBase;
   for (const item of components) {
     const componentDoc = await parseComponent(item, {
-      addScriptHandlers: [propExtHandler, slotTagHandler, extendsExtHandler],
+      addScriptHandlers: [propExtHandler, slotTagHandler, extendsExtHandler]
     });
     const doc = resolveComponent(componentDoc);
     if (/date-picker\/picker/.test(item)) {
@@ -300,12 +300,12 @@ const jsongen = async () => {
   await fs.writeFile(
     path.resolve(process.cwd(), 'json/vetur-tags.json'),
     JSON.stringify(tags, null, 2),
-    { encoding: 'utf8', flag: 'w' },
+    { encoding: 'utf8', flag: 'w' }
   );
   await fs.writeFile(
     path.resolve(process.cwd(), 'json/vetur-attributes.json'),
     JSON.stringify(attributes, null, 2),
-    { encoding: 'utf8', flag: 'w' },
+    { encoding: 'utf8', flag: 'w' }
   );
 
   // @ts-ignore
@@ -314,7 +314,7 @@ const jsongen = async () => {
   await fs.writeFile(
     path.resolve(process.cwd(), 'json/web-types.json'),
     JSON.stringify(web, null, 2),
-    { encoding: 'utf8', flag: 'w' },
+    { encoding: 'utf8', flag: 'w' }
   );
 };
 

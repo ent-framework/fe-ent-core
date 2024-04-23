@@ -69,7 +69,7 @@ export function darken(color: string, amount: number) {
   amount = Math.trunc((255 * amount) / 100);
   return `#${subtractLight(color.slice(0, 2), amount)}${subtractLight(
     color.slice(2, 4),
-    amount,
+    amount
   )}${subtractLight(color.slice(4, 6), amount)}`;
 }
 
@@ -84,7 +84,7 @@ export function lighten(color: string, amount: number) {
   amount = Math.trunc((255 * amount) / 100);
   return `#${addLight(color.slice(0, 2), amount)}${addLight(color.slice(2, 4), amount)}${addLight(
     color.slice(4, 6),
-    amount,
+    amount
   )}`;
 }
 
@@ -125,7 +125,7 @@ function contrast(rgb1: string[], rgb2: number[]) {
     (luminanace(
       Math.trunc(Number.parseInt(rgb1[0])),
       Math.trunc(Number.parseInt(rgb1[1])),
-      Math.trunc(Number.parseInt(rgb1[2])),
+      Math.trunc(Number.parseInt(rgb1[2]))
     ) +
       0.05) /
     (luminanace(rgb2[0], rgb2[1], rgb2[2]) + 0.05)

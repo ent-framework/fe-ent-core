@@ -13,7 +13,7 @@ export function useOpenKeys(
   menus: Ref<MenuOption[]>,
   accordion: Ref<boolean>,
   mixSider: Ref<boolean>,
-  collapse: Ref<boolean>,
+  collapse: Ref<boolean>
 ) {
   const debounceSetOpenKeys = useDebounceFn(setOpenKeys, 50);
   async function setOpenKeys(path: string) {

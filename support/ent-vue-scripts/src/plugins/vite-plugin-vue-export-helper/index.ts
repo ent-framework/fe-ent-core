@@ -25,6 +25,6 @@ export default function virtualPlugin(): Plugin {
         return helperCode;
       }
       return null;
-    },
+    }
   };
 }

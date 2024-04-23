@@ -9,7 +9,7 @@ export interface LayoutState {
 }
 export const useLayoutStore = defineStore('app-layout', {
   state: () => ({
-    layoutConfig: { ...defaultLayoutSetting } as LayoutConfig,
+    layoutConfig: { ...defaultLayoutSetting } as LayoutConfig
   }),
   getters: {
     getLayoutConfig(state): LayoutConfig {
@@ -23,11 +23,11 @@ export const useLayoutStore = defineStore('app-layout', {
     },
     getMenuSetting(): MenuSetting {
       return this.getLayoutConfig.menuSetting;
-    },
+    }
   },
   actions: {
     setLayoutConfig(config: DeepPartial<LayoutConfig>) {
       this.layoutConfig = deepMerge(this.layoutConfig || {}, config);
-    },
-  },
+    }
+  }
 });

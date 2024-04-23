@@ -48,14 +48,14 @@
             actions: [
               {
                 label: t('sys.errorLog.tableActionDesc'),
-                onClick: handleDetail.bind(null, record),
-              },
-            ],
+                onClick: handleDetail.bind(null, record)
+              }
+            ]
           },
-          { default: () => '' },
+          { default: () => '' }
         );
-      },
-    },
+      }
+    }
   });
   const [registerModal, { openModal }] = useModal();
 
@@ -67,8 +67,8 @@
       });
     },
     {
-      immediate: true,
-    },
+      immediate: true
+    }
   );
   const { createMessage } = useMessage();
   if (isDevMode()) {

@@ -15,16 +15,16 @@
     width: [Number, String] as NumberOrNumberString,
     bench: {
       type: [Number, String] as NumberOrNumberString,
-      default: 0,
+      default: 0
     },
     itemHeight: {
       type: [Number, String] as NumberOrNumberString,
-      required: true,
+      required: true
     },
     items: {
       type: Array as PropType<any[]>,
-      default: () => [],
-    },
+      default: () => []
+    }
   };
 
   const prefixCls = 'virtual-scroll';
@@ -47,7 +47,7 @@
       const state = reactive({
         first: 0,
         last: 0,
-        scrollTop: 0,
+        scrollTop: 0
       });
 
       const getBenchRef = computed(() => {
@@ -68,7 +68,7 @@
 
       const getContainerStyleRef = computed((): CSSProperties => {
         return {
-          height: convertToUnit((props.items || []).length * unref(getItemHeightRef)),
+          height: convertToUnit((props.items || []).length * unref(getItemHeightRef))
         };
       });
 
@@ -144,7 +144,7 @@
             el: wrapEl,
             name: 'scroll',
             listener: onScroll,
-            wait: 0,
+            wait: 0
           });
         });
       });
@@ -156,6 +156,6 @@
           </div>
         </div>
       );
-    },
+    }
   });
 </script>

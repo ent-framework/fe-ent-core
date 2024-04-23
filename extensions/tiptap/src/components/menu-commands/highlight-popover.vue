@@ -5,7 +5,7 @@
         <div v-for="color in colorSet" :key="color" class="color__wrapper">
           <div
             :style="{
-              'background-color': color,
+              'background-color': color
             }"
             :class="{ 'color--selected': selectedColor === color }"
             class="color"
@@ -44,18 +44,18 @@
 
     components: {
       Popover,
-      CommandButton,
+      CommandButton
     },
 
     props: {
       editor: {
         type: Editor,
-        required: true,
+        required: true
       },
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup(props) {
@@ -84,17 +84,17 @@
         selectedColor,
         popoverVisible,
         confirmColor,
-        highlight,
+        highlight
       };
     },
 
     computed: {
       colorSet(): string[] {
         const colorOptions = this.editor.extensionManager.extensions.find(
-          (e) => e.name === 'highlight',
+          (e) => e.name === 'highlight'
         )!.options;
         return colorOptions.colors;
-      },
-    },
+      }
+    }
   });
 </script>

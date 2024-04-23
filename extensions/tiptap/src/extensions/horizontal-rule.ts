@@ -23,13 +23,13 @@ const HorizontalRule = TiptapHorizontalRule.extend<CustomHorizontalRuleOptions>(
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           isActive(editor: Editor) {
             return false;
-          },
-        },
+          }
+        }
       ],
       button({
         editor,
         extension,
-        t,
+        t
       }: {
         editor: Editor;
         extension: any;
@@ -43,12 +43,12 @@ const HorizontalRule = TiptapHorizontalRule.extend<CustomHorizontalRuleOptions>(
             },
             buttonIcon: extension.options.buttonIcon,
             icon: svg,
-            tooltip: t('editor.extensions.HorizontalRule.tooltip'),
-          },
+            tooltip: t('editor.extensions.HorizontalRule.tooltip')
+          }
         };
-      },
+      }
     };
-  },
+  }
 });
 
 export default HorizontalRule;

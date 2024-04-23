@@ -22,17 +22,17 @@ description: 对 antv 的 modal 组件进行封装，扩展拖拽，全屏，自
 |loading-tip|loading 文本|`string`|`-`|`-`|
 |show-cancel-btn|显示关闭按钮|`boolean`|`true`|`-`|
 |show-ok-btn|显示确认按钮|`boolean`|`true`|`-`|
-|show|Whether to show modal.|`boolean`|`false`|`-`|
-|mask-closable|Whether to emit `hide` event when click mask.|`boolean`|`false`|`-`|
-|preset|The preset of `n-modal`.|`'dialog' \| 'card'`|`-`|`-`|
-|to|Container node of the modal content.|`string \| HTMLElement`|`-`|`-`|
-|display-directive|Use which directive to control the rendering of modal body.|`'if' \| 'show'`|`-`|`-`|
-|transform-origin|The transform origin of the modal's display animation.|`'mouse' \| 'center'`|`-`|`-`|
-|z-index|Z index of the modal.|`number`|`-`|`-`|
-|auto-focus|Whether to focus the first focusable element inside modal.|`boolean`|`false`|`-`|
-|trap-focus|Whether to trap focus inside modal.|`boolean`|`false`|`-`|
-|close-on-esc|Whether to close modal on Esc is pressed.|`boolean`|`false`|`-`|
-|block-scroll|Whether to disabled body scrolling when it's active.|`boolean`|`false`|`-`|
+|show|Whether to show modal.|`boolean`|`false`|`NModal`|
+|mask-closable|Whether to emit `hide` event when click mask.|`boolean`|`false`|`NModal`|
+|preset|The preset of `n-modal`.|`'dialog' \| 'card'`|`-`|`NModal`|
+|to|Container node of the modal content.|`string \| HTMLElement`|`-`|`NModal`|
+|display-directive|Use which directive to control the rendering of modal body.|`'if' \| 'show'`|`-`|`NModal`|
+|transform-origin|The transform origin of the modal's display animation.|`'mouse' \| 'center'`|`-`|`NModal`|
+|z-index|Z index of the modal.|`number`|`-`|`NModal`|
+|auto-focus|Whether to focus the first focusable element inside modal.|`boolean`|`false`|`NModal`|
+|trap-focus|Whether to trap focus inside modal.|`boolean`|`false`|`NModal`|
+|close-on-esc|Whether to close modal on Esc is pressed.|`boolean`|`false`|`NModal`|
+|block-scroll|Whether to disabled body scrolling when it's active.|`boolean`|`false`|`NModal`|
 
 
 

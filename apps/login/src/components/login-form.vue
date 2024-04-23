@@ -143,14 +143,14 @@
     NGridItem,
     NInput,
     NInputGroup,
-    NInputGroupLabel,
+    NInputGroupLabel
   } from 'naive-ui';
   import {
     AlipayCircleFilled,
     GithubFilled,
     GoogleCircleFilled,
     TwitterCircleFilled,
-    WechatFilled,
+    WechatFilled
   } from '@ant-design/icons-vue';
 
   import { useDesign, useGlobSetting, useI18n, useMessage } from 'fe-ent-core/es/hooks';
@@ -163,16 +163,16 @@
   defineProps({
     mobileLoginEnable: {
       type: Boolean,
-      default: true,
+      default: true
     },
     qrLoginEnable: {
       type: Boolean,
-      default: true,
+      default: true
     },
     registerEnable: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   });
   const { t } = useI18n();
   const { notification, createErrorModal } = useMessage();
@@ -197,13 +197,13 @@
     tenantCode: '',
     account: '',
     password: '',
-    captcha: '',
+    captcha: ''
   });
 
   const { validForm } = useFormValid(formRef);
   const getShowCaptcha = computed(
     () =>
-      sessionStore.getSession.captcha && sessionStore.getSession.captcha.toUpperCase() !== 'NONE',
+      sessionStore.getSession.captcha && sessionStore.getSession.captcha.toUpperCase() !== 'NONE'
   );
   const getShowTenantCode = computed(() => {
     return sessionStore.getSession.inst === undefined;
@@ -217,8 +217,8 @@
         url: `${globSetting.userApiPrefix}/captcha`,
         params: {
           state: sessionStore.getSession.state,
-          captcha: 'text',
-        },
+          captcha: 'text'
+        }
       })
       .then((data) => {
         captchaUrl.value = data;
@@ -249,14 +249,14 @@
         captcha: formData.value.captcha,
         tenantCode: formData.value.tenantCode,
         rememberMe: rememberMe.value,
-        mode: 'none', //不要默认的错误提示
+        mode: 'none' //不要默认的错误提示
       });
       const userInfo = await userStore.getUserInfoAction();
       if (userInfo) {
         notification.success({
           title: t('sys.login.loginSuccessTitle'),
           content: `${t('sys.login.loginSuccessDesc')}: ${userInfo.displayName}`,
-          duration: 3,
+          duration: 3
         });
       }
       await userStore.afterLoginAction(true, redirect);
@@ -266,7 +266,7 @@
       }
       createErrorModal({
         title: t('sys.api.errorTip'),
-        content: (error as unknown as Error).message || t('sys.api.apiRequestFailed'),
+        content: (error as unknown as Error).message || t('sys.api.apiRequestFailed')
       });
     } finally {
       loading.value = false;

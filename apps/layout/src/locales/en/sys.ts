@@ -4,7 +4,7 @@ export default {
     logoutMessage: 'Confirm to exit the system?',
     menuLoading: 'Menu loading...',
     themeLoading: 'Theme loading...',
-    sessionLoadingError: 'Can not get session, please check with system administrator',
+    sessionLoadingError: 'Can not get session, please check with system administrator'
   },
   errorLog: {
     tableTitle: 'Error log list',
@@ -22,7 +22,7 @@ export default {
     fireResourceError: 'Fire resource error',
     fireAjaxError: 'Fire ajax error',
 
-    enableMessage: 'Only effective when useErrorHandle=true in `/src/settings/projectSetting.ts`.',
+    enableMessage: 'Only effective when useErrorHandle=true in `/src/settings/projectSetting.ts`.'
   },
   exception: {
     backLogin: 'Back Login',
@@ -33,13 +33,13 @@ export default {
     noDataTitle: 'No data on the current page.',
     networkErrorTitle: 'Network Error',
     networkErrorSubTitle:
-      'Sorry，Your network connection has been disconnected, please check your network!',
+      'Sorry，Your network connection has been disconnected, please check your network!'
   },
   lock: {
     unlock: 'Click to unlock',
     alert: 'Lock screen password error',
     backToLogin: 'Back to login',
     entry: 'Enter the system',
-    placeholder: 'Please enter the lock screen password or user password',
-  },
+    placeholder: 'Please enter the lock screen password or user password'
+  }
 };

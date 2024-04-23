@@ -27,13 +27,13 @@
     name: 'EntImagePreview',
     components: {
       NImage,
-      NImageGroup,
+      NImageGroup
     },
     props: {
       functional: propTypes.bool,
       imageList: {
-        type: Array as PropType<ImageItem[]>,
-      },
+        type: Array as PropType<ImageItem[]>
+      }
     },
     setup(props) {
       const { prefixCls } = useDesign('image-preview');
@@ -47,7 +47,7 @@
           if (isString(item)) {
             return {
               src: item,
-              placeholder: false,
+              placeholder: false
             };
           }
           return item;
@@ -56,8 +56,8 @@
 
       return {
         prefixCls,
-        getImageList,
+        getImageList
       };
-    },
+    }
   });
 </script>

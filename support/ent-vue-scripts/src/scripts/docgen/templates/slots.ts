@@ -43,7 +43,7 @@ const tmpl = (slots: SlotDescriptor[], lang: string) => {
 
   return {
     hasVersion,
-    content,
+    content
   };
 };
 

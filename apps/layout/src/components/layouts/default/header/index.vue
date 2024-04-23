@@ -67,7 +67,7 @@
     useHeaderSetting,
     useLayoutTheme,
     useLayoutThemeSetting,
-    useMenuSetting,
+    useMenuSetting
   } from '../../../../hooks';
 
   import AppSearch from '../components/app-search.vue';
@@ -91,10 +91,10 @@
       AppSearch,
       ErrorAction,
       SettingDrawer,
-      EntDarkModeToggle,
+      EntDarkModeToggle
     },
     props: {
-      fixed: propTypes.bool,
+      fixed: propTypes.bool
     },
     setup(props) {
       const { prefixCls } = useDesign('layout-header');
@@ -106,7 +106,7 @@
         getMenuWidth,
         getIsMixSidebar,
         getCollapsedShowTitle,
-        getCollapsed,
+        getCollapsed
       } = useMenuSetting();
       const { getShowDarkModeToggle, getUseErrorHandle } = useRootSetting();
 
@@ -119,7 +119,7 @@
         getShowBread,
         getShowHeaderLogo,
         getShowHeader,
-        getShowSearch,
+        getShowSearch
       } = useHeaderSetting();
 
       const { getActualHeaderTheme } = useLayoutTheme();
@@ -135,8 +135,8 @@
           {
             [`${prefixCls}--fixed`]: props.fixed,
             [`${prefixCls}--mobile`]: unref(getIsMobile),
-            [`${prefixCls}--${theme}`]: theme,
-          },
+            [`${prefixCls}--${theme}`]: theme
+          }
         ];
       });
 
@@ -201,8 +201,8 @@
         getShowSearch,
         isLogined,
         getCollapsedShowTitle,
-        getShowTitle,
+        getShowTitle
       };
-    },
+    }
   });
 </script>

@@ -81,13 +81,13 @@
       NInput,
       NPopover,
       NPagination,
-      NFlex,
+      NFlex
     },
     props: {
       value: propTypes.string,
       width: propTypes.string.def('100%'),
       pageSize: propTypes.number.def(40),
-      copy: propTypes.bool.def(false),
+      copy: propTypes.bool.def(false)
     },
     emits: ['change', 'update:value'],
     setup(props, { emit }) {
@@ -105,7 +105,7 @@
 
       const { getPaginationList, getTotal, setCurrentPage } = usePagination(
         currentList,
-        props.pageSize,
+        props.pageSize
       );
 
       watchEffect(() => {
@@ -117,7 +117,7 @@
         (v) => {
           emit('update:value', v);
           return emit('change', v);
-        },
+        }
       );
 
       function handlePageChange(page: number) {
@@ -152,8 +152,8 @@
         getTotal,
         handleClick,
         handlePageChange,
-        t,
+        t
       };
-    },
+    }
   });
 </script>

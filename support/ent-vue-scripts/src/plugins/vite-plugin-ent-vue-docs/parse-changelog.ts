@@ -48,7 +48,7 @@ export const parseChangelog = (tokens: marked.Token[]) => {
       const content = {
         type: getType(item.text),
         typeText: item.text,
-        list: [],
+        list: []
       };
       for (let j = i + 1; j < tokens.length; j++) {
         if (tokens[j].type === 'list') {

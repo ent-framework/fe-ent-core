@@ -7,7 +7,7 @@ import {
   useHeaderSetting,
   useLayoutThemeSetting,
   useMenuSetting,
-  useMultipleTabSetting,
+  useMultipleTabSetting
 } from '../../../../hooks';
 import { globalHandler } from './global-handler';
 import { layoutHandler } from './layout-handler';
@@ -17,7 +17,7 @@ import {
   SettingFooter,
   SwitchItem,
   ThemeColorPicker,
-  TypePicker,
+  TypePicker
 } from './components';
 
 import {
@@ -28,7 +28,7 @@ import {
   menuTypeList,
   mixSidebarTriggerOptions,
   routerTransitionOptions,
-  topMenuAlignOptions,
+  topMenuAlignOptions
 } from './enum';
 
 export default defineComponent({
@@ -42,7 +42,7 @@ export default defineComponent({
       getShowLogo,
       getFullContent,
       getGrayMode,
-      getLockTime,
+      getLockTime
     } = useLayoutThemeSetting();
 
     const { getOpenPageLoading, getBasicTransition, getEnableTransition, getOpenNProgress } =
@@ -67,14 +67,14 @@ export default defineComponent({
       getMixSideTrigger,
       getMixSideFixed,
       getMenuTheme,
-      getInverted,
+      getInverted
     } = useMenuSetting();
 
     const {
       getShowHeader,
       getFixed: getHeaderFixed,
       getShowSearch,
-      getHeaderTheme,
+      getHeaderTheme
     } = useHeaderSetting();
 
     const { getThemeName } = useThemeSetting();
@@ -96,7 +96,7 @@ export default defineComponent({
               layoutHandler(HandlerEnum.CHANGE_LAYOUT, {
                 mode: item.mode,
                 type: item.type,
-                split: unref(getIsHorizontal) ? false : undefined,
+                split: unref(getIsHorizontal) ? false : undefined
               });
             }}
             def={unref(getMenuType)}
@@ -438,5 +438,5 @@ export default defineComponent({
         <SettingFooter />
       </EntDrawer>
     );
-  },
+  }
 });

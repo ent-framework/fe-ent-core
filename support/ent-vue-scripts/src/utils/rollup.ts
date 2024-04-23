@@ -7,7 +7,7 @@ import type { OutputOptions, RollupBuild, RollupOutput } from 'rollup';
  */
 export const outputBundle = async (
   output?: OutputOptions | OutputOptions[],
-  bundle?: RollupBuild,
+  bundle?: RollupBuild
 ) => {
   if (!output || !bundle) {
     return false;

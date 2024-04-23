@@ -2,29 +2,29 @@ export default {
   editor: {
     extensions: {
       Bold: {
-        tooltip: 'Bold',
+        tooltip: 'Bold'
       },
       Underline: {
-        tooltip: 'Underline',
+        tooltip: 'Underline'
       },
       Italic: {
-        tooltip: 'Italic',
+        tooltip: 'Italic'
       },
       Strike: {
-        tooltip: 'Strike through',
+        tooltip: 'Strike through'
       },
       Heading: {
         tooltip: 'Heading',
         buttons: {
           paragraph: 'Paragraph',
-          heading: 'Heading',
-        },
+          heading: 'Heading'
+        }
       },
       Blockquote: {
-        tooltip: 'Block quote',
+        tooltip: 'Block quote'
       },
       CodeBlock: {
-        tooltip: 'Code block',
+        tooltip: 'Code block'
       },
       Link: {
         add: {
@@ -34,8 +34,8 @@ export default {
             href: 'Href',
             open_in_new_tab: 'Open in new tab',
             confirm: 'Apply',
-            cancel: 'Cancel',
-          },
+            cancel: 'Cancel'
+          }
         },
         edit: {
           tooltip: 'Edit link',
@@ -44,36 +44,36 @@ export default {
             href: 'Href',
             open_in_new_tab: 'Open in new tab',
             confirm: 'Update',
-            cancel: 'Cancel',
-          },
+            cancel: 'Cancel'
+          }
         },
         unlink: {
-          tooltip: 'Unlink',
+          tooltip: 'Unlink'
         },
         open: {
-          tooltip: 'Open link',
-        },
+          tooltip: 'Open link'
+        }
       },
       Image: {
         buttons: {
           insert_image: {
             tooltip: 'Insert image',
             external: 'Insert Image By Url',
-            upload: 'Upload Image',
+            upload: 'Upload Image'
           },
           remove_image: {
-            tooltip: 'Remove',
+            tooltip: 'Remove'
           },
           image_options: {
-            tooltip: 'Image options',
+            tooltip: 'Image options'
           },
           display: {
             tooltip: 'Display',
             inline: 'Inline',
             block: 'Break Text',
             left: 'Float Left',
-            right: 'Float Right',
-          },
+            right: 'Float Right'
+          }
         },
         control: {
           insert_by_url: {
@@ -81,11 +81,11 @@ export default {
             placeholder: 'Url of image',
             confirm: 'Insert',
             cancel: 'Cancel',
-            invalid_url: 'Please enter the correct url',
+            invalid_url: 'Please enter the correct url'
           },
           upload_image: {
             title: 'Upload image',
-            button: 'Choose an image file or drag it here',
+            button: 'Choose an image file or drag it here'
           },
           edit_image: {
             title: 'Edit image',
@@ -95,10 +95,10 @@ export default {
               src: 'Image Url',
               alt: 'Alternative Text',
               width: 'Width',
-              height: 'Height',
-            },
-          },
-        },
+              height: 'Height'
+            }
+          }
+        }
       },
       Iframe: {
         tooltip: 'Insert video',
@@ -106,49 +106,49 @@ export default {
           title: 'Insert video',
           placeholder: 'Href',
           confirm: 'Insert',
-          cancel: 'Cancel',
-        },
+          cancel: 'Cancel'
+        }
       },
       BulletList: {
-        tooltip: 'Bullet list',
+        tooltip: 'Bullet list'
       },
       OrderedList: {
-        tooltip: 'Ordered list',
+        tooltip: 'Ordered list'
       },
       TodoList: {
-        tooltip: 'Todo list',
+        tooltip: 'Todo list'
       },
       TextAlign: {
         buttons: {
           align_left: {
-            tooltip: 'Align left',
+            tooltip: 'Align left'
           },
           align_center: {
-            tooltip: 'Align center',
+            tooltip: 'Align center'
           },
           align_right: {
-            tooltip: 'Align right',
+            tooltip: 'Align right'
           },
           align_justify: {
-            tooltip: 'Align justify',
-          },
-        },
+            tooltip: 'Align justify'
+          }
+        }
       },
       FontType: {
-        tooltip: 'Font family',
+        tooltip: 'Font family'
       },
       FontSize: {
         tooltip: 'Font size',
-        default: 'default',
+        default: 'default'
       },
       TextColor: {
-        tooltip: 'Text color',
+        tooltip: 'Text color'
       },
       TextHighlight: {
-        tooltip: 'Text highlight',
+        tooltip: 'Text highlight'
       },
       LineHeight: {
-        tooltip: 'Line height',
+        tooltip: 'Line height'
       },
       Table: {
         tooltip: 'Table',
@@ -162,53 +162,53 @@ export default {
           delete_row: 'Delete Row',
           merge_cells: 'Merge Cells',
           split_cell: 'Split Cell',
-          delete_table: 'Delete Table',
-        },
+          delete_table: 'Delete Table'
+        }
       },
       Indent: {
         buttons: {
           indent: {
-            tooltip: 'Indent',
+            tooltip: 'Indent'
           },
           outdent: {
-            tooltip: 'Outdent',
-          },
-        },
+            tooltip: 'Outdent'
+          }
+        }
       },
       FormatClear: {
-        tooltip: 'Clear format',
+        tooltip: 'Clear format'
       },
       HorizontalRule: {
-        tooltip: 'Horizontal rule',
+        tooltip: 'Horizontal rule'
       },
       History: {
         tooltip: {
           undo: 'Undo',
-          redo: 'Redo',
-        },
+          redo: 'Redo'
+        }
       },
       Fullscreen: {
         tooltip: {
           fullscreen: 'Full screen',
-          exit_fullscreen: 'Exit full screen',
-        },
+          exit_fullscreen: 'Exit full screen'
+        }
       },
       Print: {
-        tooltip: 'Print',
+        tooltip: 'Print'
       },
       Preview: {
         tooltip: 'Preview',
         dialog: {
-          title: 'Preview',
-        },
+          title: 'Preview'
+        }
       },
       SelectAll: {
-        tooltip: 'Select all',
+        tooltip: 'Select all'
       },
       CodeView: {
-        tooltip: 'Code view',
-      },
+        tooltip: 'Code view'
+      }
     },
-    characters: 'Characters',
-  },
+    characters: 'Characters'
+  }
 };

@@ -47,7 +47,7 @@ export function useTrigger(getIsMobile: Ref<boolean>) {
       return {};
     }
     return {
-      trigger: null,
+      trigger: null
     };
   });
 

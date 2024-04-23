@@ -61,22 +61,22 @@
       Input,
       Checkbox,
       AButton,
-      CommandButton,
+      CommandButton
     },
 
     props: {
       editor: {
         type: Editor,
-        required: true,
+        required: true
       },
       buttonIcon: {
         default: '',
-        type: String,
+        type: String
       },
       placeholder: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup() {
@@ -91,16 +91,16 @@
       return {
         linkAttrs: {
           href: '',
-          openInNewTab: true,
+          openInNewTab: true
         },
-        addLinkDialogVisible: false,
+        addLinkDialogVisible: false
       };
     },
 
     watch: {
       addLinkDialogVisible() {
         this.linkAttrs = { href: '', openInNewTab: true };
-      },
+      }
     },
 
     methods: {
@@ -116,14 +116,14 @@
         if (this.linkAttrs.openInNewTab) {
           this.editor.commands.setLink({
             href: this.linkAttrs.href,
-            target: '_blank',
+            target: '_blank'
           });
         } else {
           this.editor.commands.setLink({ href: this.linkAttrs.href });
         }
 
         this.closeAddLinkDialog();
-      },
-    },
+      }
+    }
   });
 </script>

@@ -1,31 +1,30 @@
+@layout-footer-prefix-cls: ~'@{ent-prefix}-layout-footer';
 
-  @layout-footer-prefix-cls: ~'@{ent-prefix}-layout-footer';
+@normal-color: rgba(0, 0, 0, 0.45);
 
-  @normal-color: rgba(0, 0, 0, 0.45);
+@hover-color: rgba(0, 0, 0, 0.85);
 
-  @hover-color: rgba(0, 0, 0, 0.85);
+.@{layout-footer-prefix-cls} {
+  color: @normal-color;
+  text-align: center;
 
-  .@{layout-footer-prefix-cls} {
-    color: @normal-color;
-    text-align: center;
+  &__links {
+    margin-bottom: 8px;
 
-    &__links {
-      margin-bottom: 8px;
-
-      a {
-        color: @normal-color;
-
-        &:hover {
-          color: @hover-color;
-        }
-      }
-    }
-
-    &__github {
-      margin: 0 30px;
+    a {
+      color: @normal-color;
 
       &:hover {
         color: @hover-color;
       }
     }
   }
+
+  &__github {
+    margin: 0 30px;
+
+    &:hover {
+      color: @hover-color;
+    }
+  }
+}

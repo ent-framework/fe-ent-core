@@ -33,9 +33,9 @@ const Image = TiptapImage.extend<CustomImageOptions>({
         },
         renderHTML: (attributes) => {
           return {
-            width: attributes.width,
+            width: attributes.width
           };
-        },
+        }
       },
       height: {
         default: null,
@@ -45,9 +45,9 @@ const Image = TiptapImage.extend<CustomImageOptions>({
         },
         renderHTML: (attributes) => {
           return {
-            height: attributes.height,
+            height: attributes.height
           };
-        },
+        }
       },
       display: {
         default: DEFAULT_IMAGE_DISPLAY,
@@ -70,13 +70,13 @@ const Image = TiptapImage.extend<CustomImageOptions>({
         },
         renderHTML: (attributes) => {
           return {
-            'data-display': attributes.display,
+            'data-display': attributes.display
           };
-        },
+        }
       },
       draggable: {
-        default: this.options.draggable,
-      },
+        default: this.options.draggable
+      }
     };
   },
 
@@ -91,7 +91,7 @@ const Image = TiptapImage.extend<CustomImageOptions>({
       draggable: false,
       button({
         editor,
-        extension,
+        extension
       }: {
         editor: Editor;
         extension: any;
@@ -101,10 +101,10 @@ const Image = TiptapImage.extend<CustomImageOptions>({
           component: InsertImageCommandButton,
           componentProps: {
             editor,
-            buttonIcon: extension.options.buttonIcon,
-          },
+            buttonIcon: extension.options.buttonIcon
+          }
         };
-      },
+      }
     };
   },
 
@@ -115,10 +115,10 @@ const Image = TiptapImage.extend<CustomImageOptions>({
   parseHTML() {
     return [
       {
-        tag: 'img[src]',
-      },
+        tag: 'img[src]'
+      }
     ];
-  },
+  }
 });
 
 export default Image;

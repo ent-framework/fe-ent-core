@@ -39,7 +39,7 @@ export const transformDemo = (tokens: any[], filename: string, frontMatter?: any
     title: frontMatter?.title ?? '',
     description: {} as I18nData,
     virtualPath,
-    code: '',
+    code: ''
   };
 
   for (const token of tokens) {

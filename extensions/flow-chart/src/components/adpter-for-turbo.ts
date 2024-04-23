@@ -4,7 +4,7 @@ const TurboType = {
   END_EVENT: 3,
   USER_TASK: 4,
   SERVICE_TASK: 5,
-  EXCLUSIVE_GATEWAY: 6,
+  EXCLUSIVE_GATEWAY: 6
 };
 
 function convertFlowElementToEdge(element) {
@@ -19,7 +19,7 @@ function convertFlowElementToEdge(element) {
     startPoint,
     endPoint,
     pointsList,
-    properties: {},
+    properties: {}
   };
   const excludeProperties = ['startPoint', 'endPoint', 'pointsList', 'text', 'logicFlowType'];
   Object.keys(element.properties).forEach((property) => {
@@ -39,7 +39,7 @@ function convertFlowElementToNode(element) {
     x,
     y,
     text,
-    properties: {},
+    properties: {}
   };
   const excludeProperties = ['x', 'y', 'text', 'logicFlowType'];
   Object.keys(element.properties).forEach((property) => {
@@ -57,7 +57,7 @@ export function toLogicFlowData(data) {
     edges: any[];
   } = {
     nodes: [],
-    edges: [],
+    edges: []
   };
   const list = data.flowElementList;
   list &&

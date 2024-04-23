@@ -9,7 +9,7 @@ export enum LoginStateEnum {
   REGISTER,
   RESET_PASSWORD,
   MOBILE,
-  QR_CODE,
+  QR_CODE
 }
 
 const currentState = ref<LoginStateEnum>(LoginStateEnum.LOGIN);
@@ -75,7 +75,7 @@ export function useFormRules(formData?: Recordable) {
 
     const mobileRule = {
       sms: smsFormRule,
-      mobile: mobileFormRule,
+      mobile: mobileFormRule
     };
 
     const loginStateEnum = unref(currentState);
@@ -84,22 +84,22 @@ export function useFormRules(formData?: Recordable) {
         account: accountFormRule,
         password: passwordFormRule,
         confirmPassword: [
-          { validator: validateConfirmPassword(formData?.password), trigger: 'change' },
+          { validator: validateConfirmPassword(formData?.password), trigger: 'change' }
         ],
         policy: [{ validator: validatePolicy, trigger: 'change' }],
-        ...mobileRule,
+        ...mobileRule
       };
     } else if (loginStateEnum === LoginStateEnum.RESET_PASSWORD) {
       return {
         account: accountFormRule,
-        ...mobileRule,
+        ...mobileRule
       };
     } else if (loginStateEnum === LoginStateEnum.MOBILE) {
       return mobileRule;
     } else {
       const rules: FormRules = {
         account: accountFormRule,
-        password: passwordFormRule,
+        password: passwordFormRule
       };
       if (
         sessionStore.getSession.captcha &&
@@ -121,7 +121,7 @@ function createRule(message: string): FormItemRule[] {
     {
       required: true,
       message,
-      trigger: 'change',
-    },
+      trigger: 'change'
+    }
   ];
 }

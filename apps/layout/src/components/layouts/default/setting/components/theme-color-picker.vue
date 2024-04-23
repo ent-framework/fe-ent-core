@@ -5,8 +5,8 @@
         :class="[
           `${prefixCls}__item`,
           {
-            [`${prefixCls}__item--active`]: def === theme.name,
-          },
+            [`${prefixCls}__item--active`]: def === theme.name
+          }
         ]"
         :style="{ background: theme.themeOverrides.common?.primaryColor }"
         @click="handleClick(theme)"
@@ -32,15 +32,15 @@
     components: { EntIcon },
     props: {
       event: {
-        type: Number as PropType<HandlerEnum>,
+        type: Number as PropType<HandlerEnum>
       },
       handler: {
         type: Function as PropType<Fn>,
-        default: () => ({}),
+        default: () => ({})
       },
       def: {
-        type: String,
-      },
+        type: String
+      }
     },
     setup(props) {
       const { prefixCls } = useDesign('setting-theme-picker');
@@ -54,8 +54,8 @@
       return {
         prefixCls,
         handleClick,
-        themeSettings,
+        themeSettings
       };
-    },
+    }
   });
 </script>

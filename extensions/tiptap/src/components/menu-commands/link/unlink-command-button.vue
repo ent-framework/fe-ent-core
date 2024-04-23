@@ -18,18 +18,18 @@
     name: 'UnlinkCommandButton',
 
     components: {
-      CommandButton,
+      CommandButton
     },
 
     props: {
       editor: {
         type: Editor,
-        required: true,
+        required: true
       },
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup() {
@@ -37,6 +37,6 @@
       const enableTooltip = inject('enableTooltip', true);
 
       return { t, enableTooltip, unlink };
-    },
+    }
   });
 </script>

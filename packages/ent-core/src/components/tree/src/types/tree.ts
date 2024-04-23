@@ -10,7 +10,7 @@ export enum ToolbarEnum {
   EXPAND_ALL,
   UN_EXPAND_ALL,
   CHECK_STRICTLY,
-  CHECK_UN_STRICTLY,
+  CHECK_UN_STRICTLY
 }
 
 export const treeEmits = [
@@ -20,7 +20,7 @@ export const treeEmits = [
   'change',
   'check',
   'update:searchValue',
-  'check-all',
+  'check-all'
 ];
 
 export interface TreeState {
@@ -58,48 +58,48 @@ export const basicTreeProps = {
 
   helpMessage: {
     type: [String, Array] as PropType<string | string[]>,
-    default: '',
+    default: ''
   },
 
   title: {
     type: String,
-    default: '',
+    default: ''
   },
   /**
    * 是否显示工具栏
    */
   toolbar: {
     type: Boolean,
-    default: false,
+    default: false
   },
   /**
    * 显示搜索框
    */
   search: {
     type: Boolean,
-    default: false,
+    default: false
   },
 
   beforeRightClick: {
     type: Function as PropType<(...arg: any) => ContextMenuItem[]>,
-    default: undefined,
+    default: undefined
   },
 
   rightMenuList: {
-    type: Array as PropType<ContextMenuItem[]>,
+    type: Array as PropType<ContextMenuItem[]>
   },
   // 自定义数据过滤判断方法(注: 不是整个过滤方法，而是内置过滤的判断方法，用于增强原本仅能通过title进行过滤的方式)
   filterFn: {
     type: Function as PropType<
       (searchValue: any, node: TreeItem, fieldNames: FieldNames) => boolean
     >,
-    default: undefined,
+    default: undefined
   },
   loading: {
     type: Boolean,
-    default: false,
+    default: false
   },
-  treeWrapperClassName: String,
+  treeWrapperClassName: String
 };
 
 export type TreeProps = ExtractPropTypes<typeof treeProps>;
@@ -139,6 +139,6 @@ export interface TreeActionType {
   getSelectedNode: (
     key: KeyType,
     treeList?: TreeItem[],
-    selectNode?: TreeItem | null,
+    selectNode?: TreeItem | null
   ) => TreeItem | null | undefined;
 }

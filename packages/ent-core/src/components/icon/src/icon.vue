@@ -22,7 +22,7 @@
        * 图标名
        * @type {string}
        */
-      icon: propTypes.string,
+      icon: propTypes.string
     },
     setup(props, { attrs }) {
       const { getIconData } = useIconData();
@@ -31,7 +31,7 @@
         const { icon, ...others } = props;
         const propValue = {
           ...others,
-          ...attrs,
+          ...attrs
         };
         if (icon) {
           const iconData = getIconData();
@@ -42,6 +42,6 @@
         return propValue;
       });
       return { getBindValue };
-    },
+    }
   });
 </script>

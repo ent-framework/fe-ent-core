@@ -33,10 +33,10 @@ const build = async (base: string, tsconfig: string) => {
       skipLibCheck: true,
       preserveSymlinks: true,
       noImplicitAny: false,
-      removeComments: false,
+      removeComments: false
     },
     tsConfigFilePath: TSCONFIG_PATH,
-    skipAddingFilesFromTsConfig: true,
+    skipAddingFilesFromTsConfig: true
     // skipFileDependencyResolution: true,
   });
 
@@ -77,8 +77,8 @@ async function addSourceFiles(project: Project, cwd: string, base: string) {
     await glob(['**/*.{tsx,ts,vue}'], {
       cwd: base,
       absolute: true,
-      onlyFiles: true,
-    }),
+      onlyFiles: true
+    })
   );
 
   const sourceFiles: SourceFile[] = [];
@@ -95,7 +95,7 @@ async function addSourceFiles(project: Project, cwd: string, base: string) {
           let isTSX = false;
           if (scriptSetup) {
             const compiled = vueCompiler.compileScript(sfc.descriptor, {
-              id: 'xxx',
+              id: 'xxx'
             });
             content += compiled.content;
             if (scriptSetup.lang === 'ts') isTS = true;
@@ -110,7 +110,7 @@ async function addSourceFiles(project: Project, cwd: string, base: string) {
           } else {
             const sourceFile = project.createSourceFile(
               path.relative(cwd, file).replace('.vue', isTS ? '.ts' : isTSX ? '.tsx' : '.js'),
-              content,
+              content
             );
             if (sourceFile) {
               removeVueSpecifier(sourceFile);
@@ -120,14 +120,14 @@ async function addSourceFiles(project: Project, cwd: string, base: string) {
         }
       } else {
         const sourceFile = project.createSourceFile(file, content, {
-          overwrite: true,
+          overwrite: true
         });
         if (sourceFile) {
           removeVueSpecifier(sourceFile);
           sourceFiles.push(sourceFile);
         }
       }
-    }),
+    })
   ]);
   return sourceFiles;
 }

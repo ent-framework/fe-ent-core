@@ -30,11 +30,11 @@
       const { setMenuSetting, getCollapsed, getMenuWidth, getIsMixSidebar } = useMenuSetting();
       function handleClose() {
         setMenuSetting({
-          collapsed: true,
+          collapsed: true
         });
       }
 
       return { prefixCls, getIsMobile, getCollapsed, handleClose, getMenuWidth, getIsMixSidebar };
-    },
+    }
   });
 </script>

@@ -12,7 +12,7 @@ const Table = TiptapTable.extend({
       buttonIcon: '',
       button({
         editor,
-        extension,
+        extension
       }: {
         editor: Editor;
         extension: any;
@@ -22,16 +22,16 @@ const Table = TiptapTable.extend({
           component: TablePopover,
           componentProps: {
             editor,
-            buttonIcon: extension.options.buttonIcon,
-          },
+            buttonIcon: extension.options.buttonIcon
+          }
         };
-      },
+      }
     };
   },
 
   addExtensions() {
     return [TableRow, TableHeader, TableCell];
-  },
+  }
 });
 
 export default Table;

@@ -7,11 +7,11 @@ import sys from './zh-CN/sys';
 const modules = {
   component,
   common,
-  sys,
+  sys
 };
 export default {
   message: {
     ...modules,
-    antdLocale,
-  },
+    antdLocale
+  }
 };

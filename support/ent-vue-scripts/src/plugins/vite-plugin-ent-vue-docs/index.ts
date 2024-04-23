@@ -96,7 +96,7 @@ export default function vueMdPlugin(): Plugin {
             timestamp,
             modules: [...mods],
             server,
-            read: () => getDescriptor(virtualPath),
+            read: () => getDescriptor(virtualPath)
           });
 
           updated.push(...(ret || []));
@@ -109,11 +109,11 @@ export default function vueMdPlugin(): Plugin {
         timestamp,
         modules,
         server,
-        read: () => component,
+        read: () => component
       });
 
       return [...updated, ...(ret || [])];
-    },
+    }
   } as Plugin;
   return docPlugin;
 }

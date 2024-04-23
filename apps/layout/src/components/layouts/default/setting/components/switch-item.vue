@@ -24,21 +24,21 @@
     components: { NSwitch, NText },
     props: {
       event: {
-        type: Number as PropType<HandlerEnum>,
+        type: Number as PropType<HandlerEnum>
       },
       handler: {
         type: Function as PropType<Fn>,
-        default: () => ({}),
+        default: () => ({})
       },
       disabled: {
-        type: Boolean,
+        type: Boolean
       },
       title: {
-        type: String,
+        type: String
       },
       def: {
-        type: Boolean,
-      },
+        type: Boolean
+      }
     },
     setup(props) {
       const { prefixCls } = useDesign('setting-switch-item');
@@ -54,8 +54,8 @@
         prefixCls,
         t,
         handleChange,
-        getBindValue,
+        getBindValue
       };
-    },
+    }
   });
 </script>

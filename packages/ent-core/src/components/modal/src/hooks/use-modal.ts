@@ -7,7 +7,7 @@ import {
   ref,
   toRaw,
   unref,
-  watchEffect,
+  watchEffect
 } from 'vue';
 import { isEqual } from 'lodash-es';
 import { tryOnUnmounted } from '@vueuse/core';
@@ -19,7 +19,7 @@ import type {
   ModalProps,
   ReturnModalMethods,
   UseModalInnerReturnType,
-  UseModalReturnType,
+  UseModalReturnType
 } from '../typing';
 
 const dataTransfer = reactive<any>({});
@@ -76,7 +76,7 @@ export function useModal(): UseModalReturnType {
 
     openModal: <T = any>(show = true, data?: T, openOnSet = true): void => {
       getInstance()?.setModalProps({
-        show,
+        show
       });
 
       if (!data) return;
@@ -94,7 +94,7 @@ export function useModal(): UseModalReturnType {
 
     closeModal: () => {
       getInstance()?.setModalProps({ show: false });
-    },
+    }
   };
   return [register, methods];
 }
@@ -155,7 +155,7 @@ export const useModalInner = (callbackFn?: Fn): UseModalInnerReturnType => {
       redoModalHeight: () => {
         const callRedo = getInstance()?.redoModalHeight;
         callRedo && callRedo();
-      },
-    },
+      }
+    }
   ];
 };

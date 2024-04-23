@@ -7,7 +7,7 @@ import type { MenuOption } from 'naive-ui/es/menu';
 export const basicProps = {
   items: {
     type: Array as PropType<MenuOption[]>,
-    default: () => [],
+    default: () => []
   },
   collapsedShowTitle: propTypes.bool,
   // 最好是4 倍数
@@ -15,16 +15,16 @@ export const basicProps = {
   // 菜单组件的mode属性
   mode: {
     type: String as PropType<'horizontal' | 'vertical'>,
-    default: 'horizontal',
+    default: 'horizontal'
   },
   collapse: propTypes.bool,
   type: {
     type: String as PropType<MenuTypeEnum>,
-    default: MenuTypeEnum.MIX,
+    default: MenuTypeEnum.MIX
   },
   theme: {
     type: String as PropType<ThemeEnum>,
-    default: ThemeEnum.DARK,
+    default: ThemeEnum.DARK
   },
   inlineCollapsed: propTypes.bool,
   mixSider: propTypes.bool,
@@ -32,27 +32,27 @@ export const basicProps = {
   isHorizontal: propTypes.bool,
   accordion: propTypes.bool.def(true),
   beforeClickFn: {
-    type: Function as PropType<(key: string) => Promise<boolean>>,
-  },
+    type: Function as PropType<(key: string) => Promise<boolean>>
+  }
 };
 
 export const itemProps = {
   item: {
     type: Object as PropType<Menu>,
-    default: {},
+    default: {}
   },
   level: propTypes.number,
   theme: propTypes.oneOf(['dark', 'light']),
   showTitle: propTypes.bool,
-  isHorizontal: propTypes.bool,
+  isHorizontal: propTypes.bool
 };
 
 export const contentProps = {
   item: {
     type: Object as PropType<Menu>,
-    default: null,
+    default: null
   },
   showTitle: propTypes.bool.def(true),
   level: propTypes.number.def(0),
-  isHorizontal: propTypes.bool.def(true),
+  isHorizontal: propTypes.bool.def(true)
 };

@@ -9,7 +9,7 @@ const DEFAULT_FONT_FAMILY_NAMES = [
   'Courier New',
   'Lucida Console',
   'Monaco',
-  'monospace',
+  'monospace'
 ];
 
 export const DEFAULT_FONT_FAMILY_MAP = DEFAULT_FONT_FAMILY_NAMES.reduce(
@@ -17,5 +17,5 @@ export const DEFAULT_FONT_FAMILY_MAP = DEFAULT_FONT_FAMILY_NAMES.reduce(
     obj[type] = type;
     return obj;
   },
-  {},
+  {}
 );

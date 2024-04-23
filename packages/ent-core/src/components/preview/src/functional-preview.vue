@@ -11,7 +11,7 @@
   enum StatueEnum {
     LOADING,
     DONE,
-    FAIL,
+    FAIL
   }
   interface ImgState {
     currentUrl: string;
@@ -28,28 +28,28 @@
   const props = {
     show: {
       type: Boolean as PropType<boolean>,
-      default: false,
+      default: false
     },
     imageList: {
       type: [Array] as PropType<string[]>,
-      default: null,
+      default: null
     },
     index: {
       type: Number as PropType<number>,
-      default: 0,
+      default: 0
     },
     scaleStep: {
-      type: Number as PropType<number>,
+      type: Number as PropType<number>
     },
     defaultWidth: {
-      type: Number as PropType<number>,
+      type: Number as PropType<number>
     },
     maskClosable: {
-      type: Boolean as PropType<boolean>,
+      type: Boolean as PropType<boolean>
     },
     rememberState: {
-      type: Boolean as PropType<boolean>,
-    },
+      type: Boolean as PropType<boolean>
+    }
   };
 
   const prefixCls = 'img-preview';
@@ -75,7 +75,7 @@
         currentIndex: 0,
         moveX: 0,
         moveY: 0,
-        show: props.show,
+        show: props.show
       });
 
       const wrapElRef = ref<HTMLDivElement | null>(null);
@@ -172,7 +172,7 @@
                 scale: imgState.imgScale,
                 top: imgState.imgTop,
                 left: imgState.imgLeft,
-                rotate: imgState.imgRotate,
+                rotate: imgState.imgRotate
               });
               // 如果之前已存储缩放信息，就应用
               const stateInfo = stateMap.get(url);
@@ -197,7 +197,7 @@
               emit('img-load', {
                 index: imgState.currentIndex,
                 dom: ele[0] as HTMLImageElement,
-                url,
+                url
               });
           }
           imgState.currentUrl = url;
@@ -209,7 +209,7 @@
             emit('img-error', {
               index: imgState.currentIndex,
               dom: ele[0] as HTMLImageElement,
-              url,
+              url
             });
           imgState.status = StatueEnum.FAIL;
         };
@@ -244,7 +244,7 @@
         },
         setRotate: (rotate: number) => {
           imgState.imgRotate = rotate;
-        },
+        }
       });
 
       // 上一页下一页
@@ -294,7 +294,7 @@
           transform: `scale(${imgScale}) rotate(${imgRotate}deg)`,
           marginTop: `${imgTop}px`,
           marginLeft: `${imgLeft}px`,
-          maxWidth: props.defaultWidth ? 'unset' : '100%',
+          maxWidth: props.defaultWidth ? 'unset' : '100%'
         };
       });
 
@@ -400,7 +400,7 @@
                   style={unref(getImageStyle)}
                   class={[
                     `${prefixCls}-image`,
-                    imgState.status === StatueEnum.DONE ? '' : 'hidden',
+                    imgState.status === StatueEnum.DONE ? '' : 'hidden'
                   ]}
                   ref={imgElRef}
                   src={imgState.currentUrl}
@@ -416,6 +416,6 @@
           )
         );
       };
-    },
+    }
   });
 </script>

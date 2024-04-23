@@ -25,11 +25,11 @@
                 'ent-tiptap-dropdown-menu__item--active':
                   level > 0
                     ? editor.isActive('heading', {
-                        level,
+                        level
                       })
-                    : editor.isActive('paragraph'),
+                    : editor.isActive('paragraph')
               },
-              'ent-tiptap-dropdown-menu__item',
+              'ent-tiptap-dropdown-menu__item'
             ]"
           >
             <template v-if="level > 0">
@@ -60,23 +60,23 @@
       Dropdown,
       Menu,
       MenuItem,
-      CommandButton,
+      CommandButton
     },
 
     props: {
       editor: {
         type: Editor,
-        required: true,
+        required: true
       },
 
       levels: {
         type: Array,
-        required: true,
+        required: true
       },
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup() {
@@ -94,7 +94,7 @@
         } else {
           this.editor.commands.setParagraph();
         }
-      },
-    },
+      }
+    }
   });
 </script>

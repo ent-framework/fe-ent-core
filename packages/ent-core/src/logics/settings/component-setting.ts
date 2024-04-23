@@ -15,7 +15,7 @@ export default {
       // Field name of the form data returned by the interface
       listField: 'items',
       // Total number of tables returned by the interface field name
-      totalField: 'totalRows',
+      totalField: 'totalRows'
     },
     // Number of pages that can be selected
     pageSizeOptions: [10, 50, 80, 100],
@@ -31,7 +31,7 @@ export default {
           // The sort field passed to the backend you
           field,
           // Sorting method passed to the background asc/desc
-          order,
+          order
         };
       } else {
         return {};
@@ -40,12 +40,12 @@ export default {
     // Custom general filter function
     defaultFilterFn: (data: Partial<Recordable<string[]>>) => {
       return data;
-    },
+    }
   },
   // scrollbar setting
   scrollbar: {
     // Whether to use native scroll bar
     // After opening, the menu, modal, drawer will change the pop-up scroll bar to native
-    native: false,
-  },
+    native: false
+  }
 };

@@ -26,41 +26,41 @@ export default (): InlineConfig => {
             format: 'umd',
             entryFileNames: `index.full.js`,
             globals: {
-              vue: 'Vue',
+              vue: 'Vue'
             },
             name: 'Ent',
-            exports: 'named',
+            exports: 'named'
           },
           {
             format: 'umd',
             entryFileNames: `index.full.min.js`,
             globals: {
-              vue: 'Vue',
+              vue: 'Vue'
             },
             name: 'Ent',
             exports: 'named',
-            plugins: [terser() as OutputPlugin],
-          },
-        ],
+            plugins: [terser() as OutputPlugin]
+          }
+        ]
       },
       // 开启lib模式
       lib: {
         entry,
-        name: 'Ent',
-      },
+        name: 'Ent'
+      }
     },
     css: {
       preprocessorOptions: {
         less: {
           modifyVars: generateModifyVars(),
-          javascriptEnabled: true,
-        },
-      },
+          javascriptEnabled: true
+        }
+      }
     },
     // define: {
     //   'process.env': JSON.stringify({ NODE_ENV: 'production' }),
     // },
     // @ts-ignore vite内部类型错误
-    plugins: [vue(), vueJsx()],
+    plugins: [vue(), vueJsx()]
   };
 };

@@ -21,7 +21,7 @@
     components: {
       NodeViewWrapper,
       NodeViewContent,
-      Checkbox,
+      Checkbox
     },
 
     props: nodeViewProps,
@@ -32,10 +32,10 @@
         },
         set(done: boolean) {
           this.updateAttributes?.({
-            done,
+            done
           });
-        },
-      },
-    },
+        }
+      }
+    }
   });
 </script>

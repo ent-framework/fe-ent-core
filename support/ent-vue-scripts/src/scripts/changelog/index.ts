@@ -9,7 +9,7 @@ import { compareVersion, isValidComponent } from './utils';
 const nunjucksEnv = configure(__dirname, {
   autoescape: false,
   trimBlocks: true,
-  lstripBlocks: true,
+  lstripBlocks: true
 });
 
 interface Changelog {
@@ -34,7 +34,7 @@ const typeMap: Record<string, string> = {
   'Test cases': 'test',
   'Continuous integration': 'ci',
   'Typescript definition change': 'typescript',
-  'Breaking change': 'attention',
+  'Breaking change': 'attention'
 };
 
 const getRecords = (mr: any) => {
@@ -56,7 +56,7 @@ const getRecords = (mr: any) => {
       // Alignment info
       '\\s*\\|(?:[-: ]+[-| :]*)\\|\\s*\\n' +
       // Table content
-      '((?:\\s*\\|.*\\|\\s*(?:\\n|$))*)',
+      '((?:\\s*\\|.*\\|\\s*(?:\\n|$))*)'
   );
 
   const matchResult = content.match(rule);
@@ -97,8 +97,8 @@ const getRecords = (mr: any) => {
           {
             mrId: mr.number,
             mrURL: mr.html_url,
-            type,
-          } as Record<string, any>,
+            type
+          } as Record<string, any>
         );
         records.push(data);
       }
@@ -147,7 +147,7 @@ const getEmitsFromChangelog = async (changelog: Changelog): Promise<EmitInfo[]> 
         message: `The component name '${item.component}' is invalid, please input the new name.[${item.mrId}]`,
         validate(input: any) {
           return isValidComponent(input);
-        },
+        }
       });
       item.component = answer.component;
     }
@@ -157,7 +157,7 @@ const getEmitsFromChangelog = async (changelog: Changelog): Promise<EmitInfo[]> 
         type: 'list',
         name: 'type',
         choices: ['feature', 'bugfix', 'enhancement', 'style', 'typescript', 'attention'],
-        message: `Please select the type for '${item.component}'.[${item.mrId}]`,
+        message: `Please select the type for '${item.component}'.[${item.mrId}]`
       });
       item.type = answer.type;
     }
@@ -174,13 +174,13 @@ const getEmitsFromChangelog = async (changelog: Changelog): Promise<EmitInfo[]> 
     {
       filename: 'CHANGELOG.zh-CN.md',
       template: 'template/main.zh-CN.njk',
-      data: { version: changelog.version, date: changelog.date, ...allCN },
+      data: { version: changelog.version, date: changelog.date, ...allCN }
     },
     {
       filename: 'CHANGELOG.md',
       template: 'template/main.en-US.njk',
-      data: { version: changelog.version, date: changelog.date, ...addEN },
-    },
+      data: { version: changelog.version, date: changelog.date, ...addEN }
+    }
   ];
 
   for (const component of Object.keys(componentCN)) {
@@ -195,8 +195,8 @@ const getEmitsFromChangelog = async (changelog: Changelog): Promise<EmitInfo[]> 
       data: {
         version: changelog.version,
         date: changelog.date,
-        ...componentCN[component],
-      },
+        ...componentCN[component]
+      }
     });
   }
   for (const component of Object.keys(componentEN)) {
@@ -211,8 +211,8 @@ const getEmitsFromChangelog = async (changelog: Changelog): Promise<EmitInfo[]> 
       data: {
         version: changelog.version,
         date: changelog.date,
-        ...componentEN[component],
-      },
+        ...componentEN[component]
+      }
     });
   }
 
@@ -263,7 +263,7 @@ const run = async () => {
     default: version,
     validate(input: any) {
       return /\d+\.\d+\.\d+(-beta\.\d+)?/.test(input);
-    },
+    }
   });
 
   version = answer.version;
@@ -278,13 +278,13 @@ const run = async () => {
       message: `This version is already existed or lower than last version, please reenter`,
       validate(input: any) {
         return /\d+\.\d+\.\d+(-beta\.\d+)?/.test(input) && input !== lastVersion;
-      },
+      }
     });
     version = answer.version;
   }
 
   const res = await axios.get(
-    `https://api.github.com/search/issues?accept=application/vnd.github.v3+json&q=repo:ent-framework/fe-ent-core+is:pr+is:merged+milestone:${version}`,
+    `https://api.github.com/search/issues?accept=application/vnd.github.v3+json&q=repo:ent-framework/fe-ent-core+is:pr+is:merged+milestone:${version}`
   );
 
   if (res.status === 200) {
@@ -292,7 +292,7 @@ const run = async () => {
     const changelog: Changelog = {
       version,
       date: moment().format('YYYY-MM-DD'),
-      list: [] as Record<string, any>[],
+      list: [] as Record<string, any>[]
     };
 
     for (const item of data?.items ?? []) {

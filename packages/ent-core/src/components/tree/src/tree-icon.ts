@@ -5,8 +5,8 @@ import Icon from '../../../components/icon/src/icon.vue';
 export const TreeIcon = defineComponent({
   props: {
     icon: {
-      type: String,
-    },
+      type: String
+    }
   },
   setup(props) {
     return () => {
@@ -16,5 +16,5 @@ export const TreeIcon = defineComponent({
       }
       return Icon;
     };
-  },
+  }
 });

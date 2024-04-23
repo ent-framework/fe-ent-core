@@ -10,7 +10,7 @@ const escapeReplacements: Record<string, string> = {
   '<': '&lt;',
   '>': '&gt;',
   '"': '&quot;',
-  "'": '&#39;',
+  "'": '&#39;'
 };
 const getEscapeReplacement = (ch: string) => escapeReplacements[ch];
 export function escape(html: string, encode: string) {

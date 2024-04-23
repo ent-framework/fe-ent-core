@@ -24,13 +24,13 @@ const serializer: Serializer = {
   deserialize: (value: string) => {
     const decVal = enableStorageEncryption ? encryption.decryptByAES(value) : value;
     return JSON.parse(decVal);
-  },
+  }
 };
 
 export function persistGlobalConfig(keyPrefix: string): PersistedStateFactoryOptions {
   return {
     storage: sessionStorage,
     key: (id) => `${keyPrefix}__${id}`,
-    serializer,
+    serializer
   };
 }

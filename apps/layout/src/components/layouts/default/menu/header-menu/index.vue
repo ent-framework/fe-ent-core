@@ -29,7 +29,7 @@
   export default defineComponent({
     name: 'EntHeaderMenu',
     components: {
-      NMenu,
+      NMenu
     },
     props: basicProps,
     emits: ['menuClick'],
@@ -41,7 +41,7 @@
         defaultSelectedKeys: [],
         openKeys: [],
         selectedKeys: [],
-        collapsedOpenKeys: [],
+        collapsedOpenKeys: []
       });
 
       const { prefixCls } = useDesign('basic-menu');
@@ -55,7 +55,7 @@
         menuState,
         items,
         mode as any,
-        accordion,
+        accordion
       );
 
       const getIsTopMenu = computed(() => {
@@ -74,8 +74,8 @@
           `justify-${align}`,
           {
             [`${prefixCls}__second`]: !props.isHorizontal && unref(getSplit),
-            [`${prefixCls}__sidebar-hor`]: unref(getIsTopMenu),
-          },
+            [`${prefixCls}__sidebar-hor`]: unref(getIsTopMenu)
+          }
         ];
       });
 
@@ -95,7 +95,7 @@
         (route) => {
           listenerRouteChange(route);
         },
-        { immediate: true, deep: true },
+        { immediate: true, deep: true }
       );
 
       !props.mixSider &&
@@ -103,7 +103,7 @@
           () => props.items,
           () => {
             handleMenuChange();
-          },
+          }
         );
 
       async function handleUpdateValue({ key }: { key: string; keyPath: string[] }) {
@@ -157,10 +157,10 @@
             RouterLink,
             {
               to: {
-                path: option.path as string,
-              },
+                path: option.path as string
+              }
             },
-            { default: () => option.label },
+            { default: () => option.label }
           );
         }
         return option.label as string;
@@ -172,8 +172,8 @@
         getMenuClass,
         handleOpenChange,
         getOpenKeys,
-        ...toRefs(menuState),
+        ...toRefs(menuState)
       };
-    },
+    }
   });
 </script>

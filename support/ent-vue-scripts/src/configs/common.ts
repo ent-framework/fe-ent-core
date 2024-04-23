@@ -7,30 +7,30 @@ export const theme = {
     md: '768px',
     lg: '992px',
     xl: '1200px',
-    '2xl': '1600px',
-  },
+    '2xl': '1600px'
+  }
 };
 
 function commonConfig({ command }: ConfigEnv): UserConfig {
   const userConfig = {
     server: {
-      host: true,
+      host: true
     },
     build: {
       reportCompressedSize: false,
       chunkSizeWarningLimit: 1500,
       rollupOptions: {
         // TODO: Prevent memory overflow
-        maxParallelFileOps: 3,
-      },
-    },
+        maxParallelFileOps: 3
+      }
+    }
   };
 
   if (command === 'build') {
     return mergeConfig(userConfig, {
       esbuild: {
-        drop: ['console', 'debugger'],
-      },
+        drop: ['console', 'debugger']
+      }
     });
   }
 

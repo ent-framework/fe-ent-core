@@ -15,6 +15,6 @@
     setup(_, { slots }) {
       registerNaiveTools();
       return () => slots.default?.();
-    },
+    }
   });
 </script>

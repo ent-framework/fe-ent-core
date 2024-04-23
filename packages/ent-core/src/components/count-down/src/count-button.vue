@@ -25,8 +25,8 @@
      */
     beforeStartFunc: {
       type: Function as PropType<() => Promise<boolean>>,
-      default: null,
-    },
+      default: null
+    }
   };
 
   export default defineComponent({
@@ -67,6 +67,6 @@
         }
       }
       return { handleStart, currentCount, loading, getButtonText, isStart };
-    },
+    }
   });
 </script>

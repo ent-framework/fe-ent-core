@@ -8,7 +8,7 @@ import type { ErrorMessageMode } from '../../logics/types/axios';
 export function checkStatus(
   status: number,
   msg: string,
-  errorMessageMode: ErrorMessageMode = 'message',
+  errorMessageMode: ErrorMessageMode = 'message'
 ): void {
   const { t } = useI18n();
   const { createMessage, createErrorModal } = useMessage();

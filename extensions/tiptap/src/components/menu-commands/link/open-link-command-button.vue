@@ -18,23 +18,23 @@
     name: 'OpenLinkCommandButton',
 
     components: {
-      CommandButton,
+      CommandButton
     },
 
     props: {
       editor: {
         type: Editor,
-        required: true,
+        required: true
       },
 
       url: {
         type: String,
-        required: true,
+        required: true
       },
       buttonIcon: {
         default: '',
-        type: String,
-      },
+        type: String
+      }
     },
 
     setup() {
@@ -54,7 +54,7 @@
             newTab.location.href = this.url;
           }
         }
-      },
-    },
+      }
+    }
   });
 </script>

@@ -20,7 +20,7 @@ export const COLOR_SET: string[] = [
   '#ffc107',
   '#ff9800',
   '#ff5722',
-  '#000000',
+  '#000000'
 ];
 
 export function isHexColor(color: string): boolean {

@@ -19,12 +19,12 @@
     components: {
       ImageDisplayCommandButton,
       EditImageCommandButton,
-      RemoveImageCommandButton,
+      RemoveImageCommandButton
     },
     props: {
       editor: nodeViewProps['editor'],
       node: nodeViewProps['node'],
-      updateAttrs: nodeViewProps['updateAttributes'],
-    },
+      updateAttrs: nodeViewProps['updateAttributes']
+    }
   });
 </script>

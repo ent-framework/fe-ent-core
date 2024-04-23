@@ -23,7 +23,7 @@ const getToTarget = (tabItem: RouteLocationNormalized) => {
   return {
     params: params || {},
     path,
-    query: query || {},
+    query: query || {}
   };
 };
 
@@ -37,7 +37,7 @@ export const useMultipleTabStore = defineStore({
     // multiple tab list
     tabList: [] as RouteLocationNormalized[],
     // Index of the last moved tab
-    lastDragEndIndex: 0,
+    lastDragEndIndex: 0
   }),
   getters: {
     getTabList(): RouteLocationNormalized[] {
@@ -48,7 +48,7 @@ export const useMultipleTabStore = defineStore({
     },
     getLastDragEndIndex(): number {
       return this.lastDragEndIndex;
-    },
+    }
   },
   actions: {
     /**
@@ -342,6 +342,6 @@ export const useMultipleTabStore = defineStore({
         findTab.path = fullPath;
         await this.updateCacheTab();
       }
-    },
-  },
+    }
+  }
 });

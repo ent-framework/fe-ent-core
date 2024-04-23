@@ -57,8 +57,8 @@
         listData,
         count,
         onNoticeClick,
-        numberStyle: {},
+        numberStyle: {}
       };
-    },
+    }
   });
 </script>

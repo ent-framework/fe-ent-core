@@ -3,6 +3,6 @@ import layout from './layout';
 
 const modules = {
   sys,
-  layout,
+  layout
 };
 export default modules;

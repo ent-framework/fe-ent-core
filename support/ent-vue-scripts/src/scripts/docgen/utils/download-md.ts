@@ -5,7 +5,7 @@ import consola from 'consola';
 export default async function download(location: string, filePath: string, variableName: string) {
   try {
     const response = await axios.get(location, {
-      timeout: 2000,
+      timeout: 2000
     });
 
     if (response.status === 200) {

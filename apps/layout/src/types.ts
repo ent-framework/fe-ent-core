@@ -2,12 +2,12 @@ import type {
   MenuModeEnum,
   MenuTypeEnum,
   MixSidebarTriggerEnum,
-  TriggerEnum,
+  TriggerEnum
 } from 'fe-ent-core/es/logics/enums/menu-enum';
 import type {
   ContentEnum,
   SettingButtonPositionEnum,
-  ThemeEnum,
+  ThemeEnum
 } from 'fe-ent-core/es/logics/enums/app-enum';
 
 /**

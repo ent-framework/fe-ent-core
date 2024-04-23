@@ -28,7 +28,7 @@ export interface FormActionType extends FormInst {
   appendSchemaByField: (
     schema: FormSchema | FormSchema[],
     prefixField: string | undefined,
-    first?: boolean | undefined,
+    first?: boolean | undefined
   ) => Promise<void>;
 }
 

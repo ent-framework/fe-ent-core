@@ -13,9 +13,9 @@ const loadingDirective: Directive = {
         background,
         size: size || 'large',
         loading: !!binding.value,
-        absolute: !fullscreen,
+        absolute: !fullscreen
       },
-      fullscreen ? document.body : el,
+      fullscreen ? document.body : el
     );
     el.instance = instance;
   },
@@ -31,7 +31,7 @@ const loadingDirective: Directive = {
   },
   unmounted(el) {
     el?.instance?.close();
-  },
+  }
 };
 
 export function setupLoadingDirective(app: App) {

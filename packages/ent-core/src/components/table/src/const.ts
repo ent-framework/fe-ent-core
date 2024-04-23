@@ -8,7 +8,7 @@ const {
   fetchSetting,
   defaultSize,
   defaultSortFn,
-  defaultFilterFn,
+  defaultFilterFn
 } = table;
 
 export const ROW_KEY = 'key';

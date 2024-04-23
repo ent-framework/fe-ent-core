@@ -21,20 +21,20 @@
     components: {
       OpenLinkCommandButton,
       EditLinkCommandButton,
-      UnlinkCommandButton,
+      UnlinkCommandButton
     },
 
     props: {
       editor: {
         type: Editor,
-        required: true,
-      },
+        required: true
+      }
     },
     computed: {
       linkAttrs() {
         return this.editor.getAttributes('link');
-      },
-    },
+      }
+    }
   });
 </script>
 

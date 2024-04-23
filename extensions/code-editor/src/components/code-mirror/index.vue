@@ -38,12 +38,12 @@
 
   const props = withDefaults(defineProps<CodeMirrorProps>(), {
     mode: MODE.JSON,
-    autoFormat: true,
+    autoFormat: true
   });
 
   defineComponent({
     name: 'EntCodeEditor',
-    components: { CodeMirrorEditor },
+    components: { CodeMirrorEditor }
   });
 
   const emit = defineEmits(['change', 'update:value', 'format-error']);

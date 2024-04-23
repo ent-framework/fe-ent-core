@@ -14,7 +14,7 @@ import type { Nullable } from 'fe-ent-core/es/types';
 export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: ComputedRef<boolean>) {
   const state = reactive({
     current: null as Nullable<RouteLocationNormalized>,
-    currentIndex: 0,
+    currentIndex: 0
   });
 
   const { t } = useI18n();
@@ -56,40 +56,40 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
         icon: () => h(EntIcon, { icon: 'ant-design:redo-outlined' }),
         key: MenuEventEnum.REFRESH_PAGE,
         label: t('layout.multipleTab.reload'),
-        disabled: refreshDisabled,
+        disabled: refreshDisabled
       },
       {
         icon: () => h(EntIcon, { icon: 'ion:close-outline' }),
         key: MenuEventEnum.CLOSE_CURRENT,
         label: t('layout.multipleTab.close'),
         disabled: !!meta?.affix || disabled,
-        appendDivider: true,
+        appendDivider: true
       },
       {
         icon: () => h(EntIcon, { icon: 'ant-design:vertical-right-outlined' }),
         key: MenuEventEnum.CLOSE_LEFT,
         label: t('layout.multipleTab.closeLeft'),
-        disabled: closeLeftDisabled,
+        disabled: closeLeftDisabled
       },
       {
         icon: () => h(EntIcon, { icon: 'ant-design:vertical-left-outlined' }),
         key: MenuEventEnum.CLOSE_RIGHT,
         label: t('layout.multipleTab.closeRight'),
         disabled: closeRightDisabled,
-        appendDivider: true,
+        appendDivider: true
       },
       {
         icon: () => h(EntIcon, { icon: 'ant-design:align-center-outlined' }),
         key: MenuEventEnum.CLOSE_OTHER,
         label: t('layout.multipleTab.closeOther'),
-        disabled: disabled || !isCurItem,
+        disabled: disabled || !isCurItem
       },
       {
         icon: () => h(EntIcon, { icon: 'ant-design:minus-outlined' }),
         key: MenuEventEnum.CLOSE_ALL,
         label: t('layout.multipleTab.closeAll'),
-        disabled,
-      },
+        disabled
+      }
     ];
 
     return dropMenuList;

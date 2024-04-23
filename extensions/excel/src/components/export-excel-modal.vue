@@ -29,8 +29,8 @@
         label: t('component.excel.fileName'),
         rules: [{ required: true }],
         gridItemProps: {
-          span: 24,
-        },
+          span: 24
+        }
       },
       {
         field: 'bookType',
@@ -39,33 +39,33 @@
         defaultValue: 'xlsx',
         rules: [{ required: true }],
         gridItemProps: {
-          span: 24,
+          span: 24
         },
         componentProps: {
           options: [
             {
               label: 'xlsx',
               value: 'xlsx',
-              key: 'xlsx',
+              key: 'xlsx'
             },
             {
               label: 'html',
               value: 'html',
-              key: 'html',
+              key: 'html'
             },
             {
               label: 'csv',
               value: 'csv',
-              key: 'csv',
+              key: 'csv'
             },
             {
               label: 'txt',
               value: 'txt',
-              key: 'txt',
-            },
-          ],
-        },
-      },
+              key: 'txt'
+            }
+          ]
+        }
+      }
     ];
     return schemas;
   }
@@ -88,7 +88,7 @@
         const { filename, bookType } = getFieldsValue();
         emit('success', {
           filename: `${filename.split('.').shift()}.${bookType}`,
-          bookType,
+          bookType
         });
         closeModal();
       }
@@ -98,8 +98,8 @@
         handleOk,
         registerForm,
         registerModal,
-        t,
+        t
       };
-    },
+    }
   });
 </script>

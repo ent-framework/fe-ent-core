@@ -30,9 +30,9 @@
           values: {
             ...mergeDynamicData,
             ...allDefaultValues,
-            ...formModel,
+            ...formModel
           } as Recordable<any>,
-          schema,
+          schema
         };
       });
 
@@ -94,7 +94,7 @@
           rulesMessageJoinLabel,
           label,
           dynamicRules,
-          required,
+          required
         } = props.schema;
 
         if (typeof dynamicRules === 'function') {
@@ -155,7 +155,7 @@
         }
 
         const requiredRuleIndex: number = rules.findIndex(
-          (rule) => Reflect.has(rule, 'required') && !Reflect.has(rule, 'validator'),
+          (rule) => Reflect.has(rule, 'required') && !Reflect.has(rule, 'validator')
         );
 
         if (requiredRuleIndex !== -1) {
@@ -195,14 +195,14 @@
           component,
           field,
           changeEvent = 'update:value',
-          valueField = 'value',
+          valueField = 'value'
         } = props.schema;
 
         const isCheck = component && ['Switch', 'Checkbox'].includes(component);
         const isDate =
           component &&
           ['DatePicker', 'RangePicker', 'DateTimePicker', 'DateTimeRangePicker'].includes(
-            component,
+            component
           );
 
         const componentProps = unref(getComponentsProps);
@@ -231,7 +231,7 @@
               onChange(value, props.schema);
             }
             unref(formItemRef)?.validate();
-          },
+          }
         };
 
         const Comp = componentMap.get(component) as ReturnType<typeof defineComponent>;
@@ -242,7 +242,7 @@
           clearable: true,
           size,
           ...others,
-          disabled: unref(getDisable),
+          disabled: unref(getDisable)
         };
 
         //如果是日期格式， 添加默认的format, value format
@@ -250,13 +250,13 @@
           if (['DateTimePicker', 'DateTimeRangePicker'].includes(component)) {
             Object.assign(propsData, {
               format: 'yyyy-MM-dd HH:mm:ss',
-              valueFormat: 'yyyy-MM-dd HH:mm:ss',
+              valueFormat: 'yyyy-MM-dd HH:mm:ss'
             });
           }
           if (['DatePicker', 'RangePicker'].includes(component)) {
             Object.assign(propsData, {
               format: 'yyyy-MM-dd',
-              valueFormat: 'yyyy-MM-dd',
+              valueFormat: 'yyyy-MM-dd'
             });
           }
         }
@@ -271,13 +271,13 @@
         propsData.formValues = unref(getValues);
 
         const bindValue: Recordable<any> = {
-          [actualValueField]: props.formModel[field],
+          [actualValueField]: props.formModel[field]
         };
 
         const compAttr: Recordable<any> = {
           ...propsData,
           ...on,
-          ...bindValue,
+          ...bindValue
         };
 
         if (!renderComponentContent) {
@@ -287,7 +287,7 @@
           typeof renderComponentContent === 'function'
             ? { ...renderComponentContent(unref(getValues)) }
             : {
-                default: () => renderComponentContent,
+                default: () => renderComponentContent
               };
         return <Comp {...compAttr}>{compSlot}</Comp>;
       }
@@ -347,7 +347,7 @@
             rule={handleRules()}
             v-model:value={props.formModel[field]}
             v-slots={{
-              label: () => renderLabelHelpMessage(),
+              label: () => renderLabelHelpMessage()
             }}
           >
             {getContent()}
@@ -381,6 +381,6 @@
         //   )
         // );
       };
-    },
+    }
   });
 </script>

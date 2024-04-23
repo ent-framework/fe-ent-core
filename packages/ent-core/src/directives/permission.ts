@@ -21,7 +21,7 @@ const mounted = (el: Element, binding: DirectiveBinding<any>) => {
 };
 
 const authDirective: Directive = {
-  mounted,
+  mounted
 };
 
 export function setupPermissionDirective(app: App) {

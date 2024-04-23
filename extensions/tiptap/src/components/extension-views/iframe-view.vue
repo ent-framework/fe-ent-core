@@ -12,9 +12,9 @@
     name: 'IframeView',
 
     components: {
-      NodeViewWrapper,
+      NodeViewWrapper
     },
 
-    props: nodeViewProps,
+    props: nodeViewProps
   });
 </script>

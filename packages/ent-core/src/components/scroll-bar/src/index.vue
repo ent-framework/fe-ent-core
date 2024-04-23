@@ -25,7 +25,7 @@
     onMounted,
     provide,
     ref,
-    unref,
+    unref
   } from 'vue';
   import { addResizeListener, removeResizeListener } from '../../../utils/event';
   import componentSetting from '../../../logics/settings/component-setting';
@@ -40,29 +40,29 @@
     props: {
       native: {
         type: Boolean,
-        default: scrollbar?.native ?? false,
+        default: scrollbar?.native ?? false
       },
       wrapStyle: {
         type: [String, Array],
-        default: '',
+        default: ''
       },
       wrapClass: {
         type: [String, Array],
-        default: '',
+        default: ''
       },
       viewClass: {
         type: [String, Array],
-        default: '',
+        default: ''
       },
       viewStyle: {
         type: [String, Array],
-        default: '',
+        default: ''
       },
       noresize: Boolean, // 如果 container 尺寸不会发生变化，最好设置它可以优化性能
       tag: {
         type: String,
-        default: 'div',
-      },
+        default: 'div'
+      }
     },
     setup(props) {
       const sizeWidth = ref('0');
@@ -126,8 +126,8 @@
         wrap,
         resize,
         update,
-        handleScroll,
+        handleScroll
       };
-    },
+    }
   });
 </script>
