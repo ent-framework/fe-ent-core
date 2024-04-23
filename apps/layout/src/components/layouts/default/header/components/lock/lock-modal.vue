@@ -1,6 +1,5 @@
 <template>
   <EntModal
-    :footer="null"
     :title="t('layout.header.lockScreen')"
     v-bind="$attrs"
     :class="prefixCls"
@@ -22,6 +21,7 @@
         </ent-button>
       </div>
     </div>
+    <template #action />
   </EntModal>
 </template>
 <script lang="ts">

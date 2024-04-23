@@ -323,7 +323,8 @@ export function useFormEvents({
     const formEl = unref(formElRef);
     if (!formEl) return;
     try {
-      const values = await validate();
+      await validate();
+      const values = getFieldsValue();
       const res = handleFormValues(values);
       emit('submit', res);
     } catch (error: any) {

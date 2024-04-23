@@ -43,7 +43,7 @@ export interface FormProps extends ExtractPublicPropTypes<typeof basicProps> {}
 export interface FormSchema extends DynamicComponentProps<ComponentType> {
   // Field name
   field: string;
-  // Event name triggered by internal value change, default change
+  // Event name triggered by internal value change, default update
   changeEvent?: string;
   // Variable name bound to v-model Default value
   valueField?: string;

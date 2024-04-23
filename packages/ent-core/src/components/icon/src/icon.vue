@@ -8,9 +8,13 @@
   import { propTypes } from '../../../utils';
   import { useIconData } from './use-icon-data';
 
+  /**
+   * Icon，不能extend，加标记处理
+   * @extends NIcon
+   */
   export default defineComponent({
     name: 'EntIcon',
-    extends: NIcon,
+    components: { NIcon },
     inheritAttrs: false,
     props: {
       ...iconProps,

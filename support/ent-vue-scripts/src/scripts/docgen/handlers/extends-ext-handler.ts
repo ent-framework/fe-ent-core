@@ -9,6 +9,7 @@ import type { WebType } from '../../../utils/web-types';
 import type { ImportedVariableSet } from 'vue-docgen-api/dist/utils/resolveRequired';
 import type { NodePath } from 'ast-types/lib/node-path';
 import type { Documentation, ParseOptions } from 'vue-docgen-api';
+import type { ParamTag } from 'vue-inbrowser-compiler-independent-utils';
 
 export async function extendsExtHandler(
   documentation: Documentation,
@@ -16,6 +17,15 @@ export async function extendsExtHandler(
   astPath: bt.File,
   opt: ParseOptions,
 ) {
+  const componentDoc = documentation.toObject();
+  const extendsTags = componentDoc.tags['extends'];
+  if (extendsTags && extendsTags.length == 1) {
+    const extendsVariableName = `${(extendsTags[0] as ParamTag).description}`;
+    const extendsFilePath = resolveRequired(astPath, [extendsVariableName]);
+    await documentRequiredComponents(documentation, extendsFilePath, 'extends', opt);
+    return;
+  }
+
   if (!(typeof componentDefinition.get === 'function')) {
     consola.error(
       `NodePath.get is not a function, maybe it is setup vue component : \n ${opt.filePath}`,

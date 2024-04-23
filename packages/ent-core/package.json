@@ -33,7 +33,7 @@
     "jsongen": "ent-vue-scripts jsongen",
     "changelog": "ent-vue-scripts changelog",
     "lint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix",
-    "prettier": "prettier --write  \"src/**/*.{ts,json,tsx,css,less,vue}\""
+    "prettier": "prettier --write  \"src/**/*.{tsx,ts,css,less,vue}\""
   },
   "dependencies": {
     "@vicons/ionicons5": "^0.12.0",

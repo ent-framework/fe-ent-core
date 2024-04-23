@@ -4,6 +4,7 @@ import type { ColumnProps } from 'ant-design-vue/es/table';
 import type { EmitType, ExtractPublicPropTypes, Recordable } from '../../../../types';
 import type { FixedType } from 'ant-design-vue/es/vc-table/interface';
 import type { DataTableBaseColumn, DataTableRowKey } from 'naive-ui/es/data-table';
+import type { OnUpdateCheckedRowKeys } from 'naive-ui/es/data-table/src/interface';
 
 export declare type SortOrder = 'ascend' | 'descend';
 
@@ -12,12 +13,12 @@ export interface TableCurrentDataSource<T = Recordable> {
 }
 
 export type RowSelectionType = 'checkbox' | 'radio';
+
 export interface TableRowSelection {
   type?: RowSelectionType;
   selectedRowKeys?: DataTableRowKey[];
-  defaultSelectedRowKeys?: DataTableRowKey[];
   selectedRows?: Recordable[];
-  defaultSelectedRows?: Recordable[];
+  onChange?: OnUpdateCheckedRowKeys;
 }
 
 export interface ExpandedRowRenderRecord<T> extends TableCustomRecord<T> {

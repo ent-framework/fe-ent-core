@@ -16,8 +16,8 @@ export enum MenuTypeEnum {
 export enum TriggerEnum {
   // 不显示
   NONE = 'NONE',
-  // 菜单底部
-  FOOTER = 'FOOTER',
+  // 菜单右侧
+  MENU_SIDE = 'MENU_SIDE',
   // 头部
   HEADER = 'HEADER',
 }

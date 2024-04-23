@@ -1,27 +1,28 @@
 <template>
   <div :class="[prefixCls, { fullscreen }]">
-    <Upload
+    <NUpload
       name="file"
       multiple
       :action="uploadUrl"
       :show-upload-list="false"
       accept=".jpg,.jpeg,.gif,.png,.webp"
-      @change="handleChange"
+      @finish="handleChange"
     >
       <ent-button type="primary" v-bind="{ ...getButtonProps }">
         {{ t('component.upload.imgUpload') }}
       </ent-button>
-    </Upload>
+    </NUpload>
   </div>
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { Upload } from 'ant-design-vue';
+  import { NUpload } from 'naive-ui';
   import { useDesign, useGlobSetting, useI18n } from 'fe-ent-core/es/hooks';
   import type { Recordable } from 'fe-ent-core/es/types';
+  import type { UploadSettledFileInfo } from 'naive-ui';
   export default defineComponent({
     name: 'TinymceImageUpload',
-    components: { Upload },
+    components: { NUpload },
     props: {
       fullscreen: {
         type: Boolean,
@@ -46,8 +47,7 @@
         };
       });
 
-      function handleChange(info: Recordable) {
-        const file = info.file;
+      function handleChange({ file }: { file: UploadSettledFileInfo }) {
         const status = file?.status;
         const url = file?.response?.url;
         const name = file?.name;

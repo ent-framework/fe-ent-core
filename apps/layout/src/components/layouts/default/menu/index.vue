@@ -141,11 +141,13 @@
           icon: () => {
             return renderMenuIcon(menu);
           },
-          children: menu.children ? menu.children.map((m) => convertToItem(m)) : undefined,
+          children:
+            menu.children && menu.children.length
+              ? menu.children.map((m) => convertToItem(m))
+              : undefined,
           name: menu.name,
           path: menu.path,
         };
-
         return m;
       }
 

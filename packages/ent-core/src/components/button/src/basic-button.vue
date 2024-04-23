@@ -7,12 +7,15 @@
 <script lang="ts">
   import { computed, defineComponent, h, unref } from 'vue';
   import { NButton } from 'naive-ui';
+  import { pick } from 'lodash-es';
+  import { buttonProps } from 'naive-ui/es/button';
   import Icon from '../../../components/icon/src/icon.vue';
   import { useAttrs } from '../../../hooks';
   import { btnProps } from './props';
 
   export default defineComponent({
     name: 'EntButton',
+    components: { NButton },
     extends: NButton,
     inheritAttrs: false,
     props: btnProps,
@@ -29,7 +32,13 @@
         }
         return {};
       });
-      const getBindValue = computed(() => ({ ...unref(attrs), ...props, ...unref(getRenderIcon) }));
+      const getBindValue = computed(() => {
+        return {
+          ...pick(props, Object.keys(buttonProps)),
+          ...unref(attrs),
+          ...unref(getRenderIcon),
+        };
+      });
       return {
         getBindValue,
       };

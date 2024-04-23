@@ -9,12 +9,12 @@
     <NGrid v-bind="getGrid">
       <slot name="formHeader" />
       <template v-for="schema in getSchema" :key="schema.field">
-        <NGridItem v-if="schema.component === 'Divider'" :span="24">
+        <NGridItem v-if="schema.component === 'Divider'" :key="schema.field" :span="24">
           <NDivider v-bind="schema.componentProps">
             {{ schema.label }}
           </NDivider>
         </NGridItem>
-        <NGridItem v-else v-bind="schema.gridItemProps">
+        <NGridItem v-else v-bind="schema.gridItemProps" :key="schema.field">
           <FormItem
             :is-advanced="fieldsIsAdvancedMap[schema.field]"
             :table-action="tableAction"
@@ -123,10 +123,14 @@
       });
 
       const getFormClass = computed(() => {
+        const { showFeedback } = unref(getProps);
         return [
           prefixCls,
           {
             [`${prefixCls}--inline`]: unref(isInline),
+          },
+          {
+            [`${prefixCls}--show-feed-back`]: showFeedback,
           },
         ];
       });

@@ -9,6 +9,7 @@
   import { popConfirmBtnProps } from './props';
   export default defineComponent({
     name: 'EntPopButton',
+    components: { NButton },
     extends: NButton,
     inheritAttrs: false,
     props: popConfirmBtnProps,

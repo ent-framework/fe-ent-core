@@ -20,12 +20,20 @@ export default defineConfig(({ command, mode }) => {
         alias: [
           // 别名，转发 fe-ent-core 文件请求
           {
+            find: /^fe-ent-core\/CHANGELOG.md$/,
+            replacement: `${root}/packages/ent-core/CHANGELOG.md`,
+          },
+          {
+            find: /^fe-ent-core\/CHANGELOG.zh-CN.md$/,
+            replacement: `${root}/packages/ent-core/CHANGELOG.zh-CN.md`,
+          },
+          {
             find: /^fe-ent-core$/,
-            replacement: `${root}/src/index.ts`,
+            replacement: `${root}/packages/ent-core/src/index.ts`,
           },
           {
             find: /^fe-ent-core\/es\/(.*)$/,
-            replacement: `${root}/src/$1`,
+            replacement: `${root}/packages/ent-core/src/$1`,
           },
           {
             find: /^fe-ent-layout$/,

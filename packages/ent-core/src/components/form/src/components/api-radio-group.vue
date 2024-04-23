@@ -23,10 +23,8 @@
   import { NRadio, NRadioButton, NRadioGroup } from 'naive-ui';
   import { get, omit } from 'lodash-es';
   import { isFunction } from '../../../../utils/is';
-  import { useRuleFormItem } from '../../../../hooks/component/use-form-item';
-  import { useAttrs } from '../../../../hooks/core/use-attrs';
-  import { propTypes } from '../../../../utils/prop-types';
-  import { useI18n } from '../../../../hooks/web/use-i18n';
+  import { useAttrs, useI18n, useRuleFormItem } from '../../../../hooks';
+  import { propTypes } from '../../../../utils';
 
   type OptionsItem = { label: string; value: string | number | boolean; disabled?: boolean };
 

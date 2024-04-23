@@ -24,7 +24,8 @@
     "build:library": "ent-vue-scripts build:library -u -s",
     "jsongen": "ent-vue-scripts jsongen",
     "dtsgen": "ent-vue-scripts dtsgen",
-    "lint": "eslint --max-warnings 0  \"components/**/*.{vue,ts,tsx}\" --fix"
+    "lint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix",
+    "prettier": "prettier --write  \"src/**/*.{tsx,ts,css,less,vue}\""
   },
   "peerDependencies": {
     "fe-ent-core": "^3.0.0"

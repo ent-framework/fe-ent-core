@@ -123,7 +123,7 @@ export default defineComponent({
       const triggerOptions = getMenuTriggerOptions(unref(getSplit));
       const some = triggerOptions.some((item) => item.value === triggerDef);
       if (!some) {
-        triggerDef = TriggerEnum.FOOTER;
+        triggerDef = TriggerEnum.MENU_SIDE;
       }
 
       return (

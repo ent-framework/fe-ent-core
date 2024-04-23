@@ -24,7 +24,7 @@
       field: 'field1',
       component: 'Input',
       label: '字段1',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       required: true,
@@ -33,7 +33,7 @@
       field: 'field2',
       component: 'Input',
       label: '字段2',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       required: true,
@@ -50,7 +50,7 @@
       field: 'field3',
       component: 'DatePicker',
       label: '字段3',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       required: true,
@@ -59,11 +59,12 @@
       field: 'field33',
       component: 'DatePicker',
       label: '字段33',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
-        valueFormat: 'YYYY-MM-DD',
+        format: 'yyyy-MM-dd',
+        valueFormat: 'yyyy-MM-dd',
       },
       rules: [{ required: true, type: 'string' }],
     },
@@ -71,7 +72,7 @@
       field: 'field44',
       component: 'InputCountDown',
       label: '验证码',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       required: true,
@@ -80,7 +81,7 @@
       field: 'field4',
       component: 'Select',
       label: '字段4',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -136,7 +137,7 @@
       field: 'field5',
       component: 'CheckboxGroup',
       label: '字段5',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -157,7 +158,7 @@
       field: 'field7',
       component: 'RadioGroup',
       label: '字段7',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -178,7 +179,7 @@
       field: 'field8',
       component: 'Input',
       label: '后端异步验证',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       helpMessage: ['本字段演示异步验证', '本地规则：必须填写', '后端规则：不能包含admin'],

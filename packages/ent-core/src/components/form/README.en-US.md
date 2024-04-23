@@ -16,17 +16,9 @@
 |schemas|表单配置|`FormSchema[]`|`[]`|`-`|
 |merge-dynamic-data|额外传递到子组件的参数 values|`Recordable`|`null`|`-`|
 |base-grid-style|配置所有 Grid 的 style 样式|`CSSProperties`|`-`|`-`|
-|grid-props|配置所有 Grid 的 props 配置|`GridProps`|`() => ({
-  cols: 24,
-  xGap: 10,
-})`|`-`|
-|base-grid-item-props|配置所有选子项的 GridItemProps，不需要逐个配置，子项也可单独配置优先与全局|`Partial<GridItemProps>`|`() => ({
-  span: 6,
-})`|`-`|
-|base-form-item-props|配置所有 FormItem 的 props 配置，schema中可以通过 formItemProps 覆盖|`Partial<FormItemProps>`|`() => ({
-  labelPlacement: 'left',
-  labelWidth: 'auto',
-})`|`-`|
+|grid-props|配置所有 Grid 的 props 配置|`GridProps`|`() => ({  cols: 24,  xGap: 10,})`|`-`|
+|base-grid-item-props|配置所有选子项的 GridItemProps，不需要逐个配置，子项也可单独配置优先与全局|`Partial<GridItemProps>`|`() => ({  span: 6,})`|`-`|
+|base-form-item-props|配置所有 FormItem 的 props 配置，schema中可以通过 formItemProps 覆盖|`Partial<FormItemProps>`|`() => ({  labelPlacement: 'left',  labelWidth: 'auto',})`|`-`|
 |auto-set-place-holder|自动设置表单内组件的 placeholder，自定义组件需自行实现|`boolean`|`true`|`-`|
 |auto-submit-on-enter|在input中输入时按回车自动提交|`boolean`|`false`|`-`|
 |submit-on-reset|重置时是否提交表单|`boolean`|`true`|`-`|

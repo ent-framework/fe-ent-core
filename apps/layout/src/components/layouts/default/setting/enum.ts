@@ -98,8 +98,8 @@ export const getMenuTriggerOptions = (hideTop: boolean) => {
       label: t('layout.setting.menuTriggerNone'),
     },
     {
-      value: TriggerEnum.FOOTER,
-      label: t('layout.setting.menuTriggerBottom'),
+      value: TriggerEnum.MENU_SIDE,
+      label: t('layout.setting.menuTriggerSide'),
     },
     ...(hideTop
       ? []

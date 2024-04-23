@@ -7,6 +7,7 @@
 
   export default defineComponent({
     name: 'DateTimeRangePicker',
+    components: { NDatePicker },
     extends: NDatePicker,
     inheritAttrs: false,
     setup(props, { attrs }) {

@@ -1,5 +1,6 @@
 import { computed, reactive, unref, watch } from 'vue';
 import { omit } from 'lodash-es';
+import type { InternalRowData } from 'naive-ui/es/data-table/src/interface';
 import type { ComputedRef, Ref } from 'vue';
 import type { BasicTableProps, TableRowSelection } from '../types/table';
 import type { EmitType, Recordable } from '../../../../types';
@@ -34,31 +35,34 @@ export function useRowSelection(
     },
   );
 
-  // watch(
-  //   () => unref(selectedRowKeysRef),
-  //   () => {
-  //     nextTick(() => {
-  //       const { rowSelection } = unref(propsRef);
-  //       if (rowSelection) {
-  //         const { onChange } = rowSelection;
-  //         if (onChange && isFunction(onChange)) onChange(getSelectRowKeys(), getSelectRows());
-  //       }
-  //       emit('selection-change', {
-  //         keys: getSelectRowKeys(),
-  //         rows: getSelectRows(),
-  //       });
-  //     });
-  //   },
-  //   { deep: true },
-  // );
   function setSelectedRowKeys(
     keys: DataTableRowKey[],
-    rows?: Recordable[],
-    meta?: { row: Recordable | undefined; action: 'check' | 'uncheck' | 'checkAll' | 'uncheckAll' },
+    rows: InternalRowData[],
+    meta: {
+      row: InternalRowData | undefined;
+      action: 'check' | 'uncheck' | 'checkAll' | 'uncheckAll';
+    },
   ) {
-    checkState.keys = keys;
-    checkState.rows = rows || [];
-    emit('update:checked-row-keys', keys, rows, meta);
+    const { rowSelection } = unref(propsRef);
+    const actualRows: InternalRowData[] = [];
+    if (rows.length != keys.length) {
+      const { rowKey } = unref(propsRef);
+      if (rowKey) {
+        unref(tableData).forEach((data) => {
+          const keyValue = rowKey(data);
+          if (keyValue && keys.includes(keyValue)) {
+            actualRows.push(data);
+          }
+        });
+      }
+    } else if (rows.length > 0) {
+      actualRows.push(...rows);
+    }
+    checkState.rows = actualRows;
+    if (rowSelection?.onChange) {
+      rowSelection.onChange(keys, actualRows, meta);
+    }
+    emit('update:checked-row-keys', keys, actualRows, meta);
   }
 
   function setSelectedRows(rows: Recordable[]) {

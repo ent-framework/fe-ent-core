@@ -14,8 +14,7 @@
   import { computed, defineComponent, ref } from 'vue';
   import { NRadioButton, NRadioGroup } from 'naive-ui';
   import { isString } from '../../../../utils/is';
-  import { useRuleFormItem } from '../../../../hooks/component/use-form-item';
-  import { useAttrs } from '../../../../hooks/core/use-attrs';
+  import { useAttrs, useRuleFormItem } from '../../../../hooks';
   import type { PropType } from 'vue';
 
   type OptionsItem = { label: string; value: string | number | boolean; disabled?: boolean };

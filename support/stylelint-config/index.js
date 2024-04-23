@@ -8,14 +8,14 @@ module.exports = {
     'selector-pseudo-class-no-unknown': [
       true,
       {
-        ignorePseudoClasses: ['global'],
-      },
+        ignorePseudoClasses: ['global']
+      }
     ],
     'selector-pseudo-element-no-unknown': [
       true,
       {
-        ignorePseudoElements: ['v-deep'],
-      },
+        ignorePseudoElements: ['v-deep']
+      }
     ],
     'at-rule-no-unknown': [
       true,
@@ -30,9 +30,9 @@ module.exports = {
           'if',
           'each',
           'include',
-          'mixin',
-        ],
-      },
+          'mixin'
+        ]
+      }
     ],
     'no-empty-source': null,
     'named-grid-areas-no-invalid': null,
@@ -45,8 +45,8 @@ module.exports = {
     'rule-empty-line-before': [
       'always',
       {
-        ignore: ['after-comment', 'first-nested'],
-      },
+        ignore: ['after-comment', 'first-nested']
+      }
     ],
     'unit-no-unknown': [true, { ignoreUnits: ['rpx'] }],
     'order/order': [
@@ -57,16 +57,16 @@ module.exports = {
         'declarations',
         {
           type: 'at-rule',
-          name: 'supports',
+          name: 'supports'
         },
         {
           type: 'at-rule',
-          name: 'media',
+          name: 'media'
         },
-        'rules',
+        'rules'
       ],
-      { severity: 'warning' },
-    ],
+      { severity: 'warning' }
+    ]
   },
   ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts'],
   overrides: [
@@ -78,20 +78,20 @@ module.exports = {
         'selector-pseudo-class-no-unknown': [
           true,
           {
-            ignorePseudoClasses: ['deep', 'global'],
-          },
+            ignorePseudoClasses: ['deep', 'global']
+          }
         ],
         'selector-pseudo-element-no-unknown': [
           true,
           {
-            ignorePseudoElements: ['v-deep', 'v-global', 'v-slotted'],
-          },
-        ],
-      },
+            ignorePseudoElements: ['v-deep', 'v-global', 'v-slotted']
+          }
+        ]
+      }
     },
     {
       files: ['*.less'],
-      extends: ['stylelint-config-recommended', 'stylelint-config-recommended-less'],
-    },
-  ],
+      extends: ['stylelint-config-recommended', 'stylelint-config-recommended-less']
+    }
+  ]
 };

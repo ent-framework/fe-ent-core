@@ -7,6 +7,7 @@
 
   export default defineComponent({
     name: 'MonthRangePicker',
+    components: { NDatePicker },
     extends: NDatePicker,
     inheritAttrs: false,
   });

@@ -1,22 +1,24 @@
 <template>
   <div :class="`${prefixCls}-toolbar`" class="flex items-center px-2 py-1">
     <template v-for="item in toolbarItemList" :key="item.type">
-      <Tooltip placement="bottom" v-bind="item.disabled ? { visible: false } : {}">
-        <template #title>{{ item.tooltip }}</template>
-        <span v-if="item.icon" :class="`${prefixCls}-toolbar__icon`" @click="onControl(item)">
-          <EntIcon
-            :icon="item.icon"
-            :class="item.disabled ? 'cursor-not-allowed disabled' : 'cursor-pointer'"
-          />
-        </span>
-      </Tooltip>
-      <Divider v-if="item.separate" type="vertical" />
+      <NTooltip placement="bottom" v-bind="item.disabled ? { visible: false } : {}">
+        <template #trigger>
+          <span v-if="item.icon" :class="`${prefixCls}-toolbar__icon`" @click="onControl(item)">
+            <EntIcon
+              :icon="item.icon"
+              :class="item.disabled ? 'cursor-not-allowed disabled' : 'cursor-pointer'"
+            />
+          </span>
+        </template>
+        {{ item.tooltip }}
+      </NTooltip>
+      <NDivider v-if="item.separate" type="vertical" />
     </template>
   </div>
 </template>
 <script lang="ts">
   import { defineComponent, nextTick, onUnmounted, ref, unref, watchEffect } from 'vue';
-  import { Divider, Tooltip } from 'ant-design-vue';
+  import { NDivider, NTooltip } from 'naive-ui';
   import { EntIcon } from 'fe-ent-core';
 
   import { useFlowChartContext } from './use-flow-context';
@@ -25,7 +27,7 @@
 
   export default defineComponent({
     name: 'FlowChartToolbar',
-    components: { EntIcon, Divider, Tooltip },
+    components: { EntIcon, NTooltip, NDivider },
     props: {
       prefixCls: String,
     },

@@ -1,11 +1,9 @@
 import { unref } from 'vue';
-import { useAppStore } from '../../store/modules/app';
-import { useSessionStore } from '../../store/modules/session';
-import { useTransitionSetting } from '../../hooks/setting/use-transition-setting';
+import { useAppStore, useSessionStore } from '../../store';
+import { useI18n, useMessage, useTransitionSetting } from '../../hooks';
 import { AxiosCanceler } from '../../utils/http/axios-cancel';
 import { warn } from '../../utils/log';
 import { defaultProjectSetting } from '../../logics/settings/project-setting';
-import { useI18n, useMessage } from '../../hooks';
 import { createPermissionGuard } from './permission-guard';
 import { createStateGuard } from './state-guard';
 import { createParamMenuGuard } from './param-menu-guard';
@@ -22,6 +20,17 @@ export function setupRouterGuard(router: Router) {
   createProgressGuard(router);
   createSessionGuard(router);
   createPermissionGuard(router);
+  createParamMenuGuard(router); // must after createPermissionGuard (menu has been built.)
+  createStateGuard(router);
+}
+
+export function setCommonRouterGuard(router: Router) {
+  createPageGuard(router);
+  createPageLoadingGuard(router);
+  createHttpGuard(router);
+  createScrollGuard(router);
+  createMessageGuard(router);
+  createProgressGuard(router);
   createParamMenuGuard(router); // must after createPermissionGuard (menu has been built.)
   createStateGuard(router);
 }
@@ -51,10 +60,6 @@ export function createPageLoadingGuard(router: Router) {
   const appStore = useAppStore();
   const { getOpenPageLoading } = useTransitionSetting();
   router.beforeEach(async (to) => {
-    const sessionStore = useSessionStore();
-    if (!sessionStore.getToken) {
-      return true;
-    }
     if (to.meta.loaded) {
       return true;
     }

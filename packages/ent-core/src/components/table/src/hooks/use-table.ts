@@ -1,10 +1,10 @@
 import { ref, shallowRef, toRaw, unref, watch } from 'vue';
 import { tryOnUnmounted } from '@vueuse/core';
-import { getDynamicProps } from '../../../../utils/base';
+import { getDynamicProps } from '../../../../utils';
 import { error } from '../../../../utils/log';
 import type { BasicColumn, BasicTableProps, FetchParams, TableActionType } from '../types/table';
 import type { PaginationProps } from 'naive-ui';
-import type { FormActionType } from '../../../../components/form/interface';
+import type { FormActionType } from '../../../form/src/types/form';
 import type { WatchStopHandle } from 'vue';
 import type { Nullable, Recordable } from '../../../../types';
 import type { DataTableRowKey } from 'naive-ui/es/data-table';

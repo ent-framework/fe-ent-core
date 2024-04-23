@@ -4,7 +4,7 @@
     <EntButton
       v-if="showResetButton"
       type="default"
-      class="mr-2"
+      class="ml-2"
       v-bind="getResetBtnOptions"
       @click="resetAction"
     >
@@ -15,7 +15,7 @@
     <EntButton
       v-if="showSubmitButton"
       type="primary"
-      class="mr-2"
+      class="ml-2"
       v-bind="getSubmitBtnOptions"
       @click="submitAction"
     >
@@ -38,9 +38,9 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { NFormItem } from 'naive-ui';
-  import { EntButton } from '../../../../components/button';
-  import { EntArrow } from '../../../../components/basic';
-  import { useI18n } from '../../../../hooks/web/use-i18n';
+  import { EntButton } from '../../../button';
+  import { EntArrow } from '../../../basic';
+  import { useI18n } from '../../../../hooks';
   import { useFormContext } from '../hooks/use-form-context';
   import { formActionProps } from '../props';
   import type { FormButtonOptions } from '../types/form';

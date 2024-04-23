@@ -1,9 +1,7 @@
-import { usePermissionStore } from '../../store/modules/permission';
-import { useSessionStore } from '../../store/modules/session';
-import { useUserStore } from '../../store/modules/user';
-import { useGlobSetting } from '../../hooks/setting/use-glob-setting';
-import { PAGE_NOT_FOUND_NAME } from '../../router/constant';
-import { entRouter } from '../../router/base';
+import { usePermissionStore, useSessionStore, useUserStore } from '../../store';
+import { useGlobSetting } from '../../hooks';
+import { PAGE_NOT_FOUND_NAME } from '../constant';
+import { entRouter } from '../base';
 import type { RouteRecordRaw, Router } from 'vue-router';
 import type { Recordable } from '../../types';
 

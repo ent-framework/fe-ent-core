@@ -9,6 +9,8 @@ import { useLocale } from 'fe-ent-core/es/locales';
 import { default as DefaultLayout } from './components/layouts/default/index.vue';
 import { default as IFRAME } from './components/views/iframe/frame-blank.vue';
 import { default as ExceptionPage } from './components/views/exception/exception.vue';
+import { default as LayoutFeature } from './components/layouts/default/feature/index.vue';
+import { default as LayoutHeader } from './components/layouts/default/header/index.vue';
 import { useMultipleTabStore } from './store/multiple-tab';
 import {
   getErrorLogRoute,
@@ -52,4 +54,4 @@ const initLayout = function (app: App, entRouter?: EntRouter) {
   }
 };
 
-export { initLayout, useLayoutStore };
+export { initLayout, useLayoutStore, LayoutHeader, LayoutFeature };

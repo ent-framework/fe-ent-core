@@ -1,10 +1,10 @@
-import { CacheTypeEnum } from '../../logics/enums/cache-enum';
 import {
+  CacheTypeEnum,
   PermissionModeEnum,
   RouterTransitionEnum,
   SessionTimeoutProcessingEnum,
   ThemeEnum,
-} from '../../logics/enums/app-enum';
+} from '../enums';
 import type { ProjectConfig } from '../../store/types';
 import type { DeepPartial } from '../../types';
 

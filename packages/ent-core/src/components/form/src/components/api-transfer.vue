@@ -16,8 +16,8 @@
   import { NTransfer } from 'naive-ui';
   import { get, omit } from 'lodash-es';
   import { isFunction } from '../../../../utils/is';
-  import { propTypes } from '../../../../utils/prop-types';
-  import { useI18n } from '../../../../hooks/web/use-i18n';
+  import { propTypes } from '../../../../utils';
+  import { useI18n } from '../../../../hooks';
   import type { PropType } from 'vue';
   import type { TransferDirection, TransferItem } from 'ant-design-vue/es/transfer';
 

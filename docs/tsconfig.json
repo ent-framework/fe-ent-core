@@ -8,9 +8,9 @@
     "paths": {
       "vue-types": ["../node_modules/vue-types"],
       "fe-ent-layout": ["../../apps/layout/index.ts"],
-      "fe-ent-core": ["../src/index.ts"],
-      "fe-ent-core/es/*": ["../src/*"],
-      "fe-ent-core/*": ["../src/*"]
+      "fe-ent-core": ["../packages/ent-core/src/index.ts"],
+      "fe-ent-core/es/*": ["../packages/ent-core/src/*"],
+      "fe-ent-core/*": ["../packages/ent-core/src/*"]
     }
   },
   "include": ["src/", "global.d.ts", "../src/"]

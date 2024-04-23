@@ -20,7 +20,7 @@
 
   export default defineComponent({
     name: 'EntTree',
-    components: { EntScrollContainer, TreeIcon },
+    components: { NTree, EntScrollContainer, TreeIcon },
     extends: NTree,
     inheritAttrs: false,
     props: basicTreeProps,

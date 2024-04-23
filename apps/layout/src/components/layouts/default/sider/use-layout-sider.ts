@@ -38,7 +38,7 @@ export function useTrigger(getIsMobile: Ref<boolean>) {
     return (
       trigger !== TriggerEnum.NONE &&
       !unref(getIsMobile) &&
-      (trigger === TriggerEnum.FOOTER || unref(getSplit))
+      (trigger === TriggerEnum.MENU_SIDE || unref(getSplit))
     );
   });
 

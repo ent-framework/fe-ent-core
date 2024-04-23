@@ -1,7 +1,7 @@
 <script lang="tsx">
   import { computed, defineComponent, ref, unref } from 'vue';
   import { NFormItem } from 'naive-ui';
-  import { cloneDeep, upperFirst } from 'lodash-es';
+  import { cloneDeep, has } from 'lodash-es';
   import { EntHelp } from '../../../basic';
   import { isBoolean, isFunction, isNull } from '../../../../utils/is';
   import { getSlot } from '../../../../utils';
@@ -195,14 +195,29 @@
           component,
           field,
           changeEvent = 'update:value',
-          valueField,
+          valueField = 'value',
         } = props.schema;
 
         const isCheck = component && ['Switch', 'Checkbox'].includes(component);
-        const componentProps = unref(getComponentsProps);
-        const { onChange, ...others } = componentProps;
-        const eventKey = `on${upperFirst(changeEvent)}`;
+        const isDate =
+          component &&
+          ['DatePicker', 'RangePicker', 'DateTimePicker', 'DateTimeRangePicker'].includes(
+            component,
+          );
 
+        const componentProps = unref(getComponentsProps);
+
+        let actualEvent = changeEvent;
+        let actualValueField = valueField;
+        if (isCheck) {
+          actualEvent = 'update:checked';
+          actualValueField = 'checked';
+        } else if (isDate) {
+          actualEvent = 'update:formatted-value';
+          actualValueField = 'formattedValue';
+        }
+        const eventKey = `on-${actualEvent}`;
+        const { onChange, ...others } = componentProps;
         const on = {
           [eventKey]: (...args: Nullable<Recordable<any>>[]) => {
             const [e] = args;
@@ -225,11 +240,26 @@
 
         const propsData: Recordable<any> = {
           clearable: true,
-          getPopupContainer: (trigger: Element) => trigger.parentNode,
           size,
           ...others,
           disabled: unref(getDisable),
         };
+
+        //如果是日期格式， 添加默认的format, value format
+        if (isDate && !has(componentProps, 'format') && !has(componentProps, 'valueFormat')) {
+          if (['DateTimePicker', 'DateTimeRangePicker'].includes(component)) {
+            Object.assign(propsData, {
+              format: 'yyyy-MM-dd HH:mm:ss',
+              valueFormat: 'yyyy-MM-dd HH:mm:ss',
+            });
+          }
+          if (['DatePicker', 'RangePicker'].includes(component)) {
+            Object.assign(propsData, {
+              format: 'yyyy-MM-dd',
+              valueFormat: 'yyyy-MM-dd',
+            });
+          }
+        }
 
         const isCreatePlaceholder = !propsData.disabled && autoSetPlaceHolder;
         // RangePicker place is an array
@@ -241,7 +271,7 @@
         propsData.formValues = unref(getValues);
 
         const bindValue: Recordable<any> = {
-          [valueField || (isCheck ? 'checked' : 'value')]: props.formModel[field],
+          [actualValueField]: props.formModel[field],
         };
 
         const compAttr: Recordable<any> = {

@@ -7,6 +7,7 @@
 
   export default defineComponent({
     name: 'InputTextArea',
+    components: { NInput },
     extends: NInput,
     inheritAttrs: false,
     setup(props, { attrs }) {

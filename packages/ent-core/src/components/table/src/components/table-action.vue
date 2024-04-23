@@ -1,7 +1,14 @@
 <template>
-  <NFlex :class="[prefixCls, getAlign]" @click="onCellClick">
+  <NFlex :class="[prefixCls, getAlign]" :size="[4, 4]" @click="onCellClick">
     <template v-for="(action, index) in getActions" :key="`${index}-${action.label}`">
-      <EntPopButton v-bind="getPopButton(action)" />
+      <EntPopButton v-bind="getPopButton(action)">
+        <template v-if="action.tooltip" #tooltip>
+          {{ action.tooltip }}
+        </template>
+        <template v-if="action.confirm" #confirm>
+          {{ action.confirm }}
+        </template>
+      </EntPopButton>
     </template>
     <EntDropdown
       v-if="dropDownActions && getDropdownList.length > 0"
@@ -21,7 +28,7 @@
   </NFlex>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, h, toRaw } from 'vue';
+  import { computed, defineComponent, h, toRaw, unref } from 'vue';
   import { NFlex } from 'naive-ui';
   import Icon from '../../../../components/icon';
   import { EntPopButton } from '../../../button';
@@ -91,10 +98,10 @@
       });
 
       function getPopButton(action: TableActionItem): PopButtonProps {
-        const { popConfirmProps, label, icon, disabled, ...others } = action;
+        const { label, icon, disabled, ...others } = action;
+        const buttonSize = unref(getButtonSize);
         return {
-          //to: unref((table as any)?.wrapRef) || document.body,
-          size: 'small',
+          size: buttonSize,
           btnLabel: label,
           disabled,
           renderIcon: () => {
@@ -104,7 +111,6 @@
             return null;
           },
           ...others,
-          popConfirmProps,
         } as PopButtonProps;
       }
 

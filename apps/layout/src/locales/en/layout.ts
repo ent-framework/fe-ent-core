@@ -38,7 +38,7 @@ export default {
     topMenuAlignCenter: 'Right',
     // menu trigger
     menuTriggerNone: 'Not Show',
-    menuTriggerBottom: 'Bottom',
+    menuTriggerSide: 'Side',
     menuTriggerTop: 'Top',
     // menu type
     menuTypeSidebar: 'Left menu mode',

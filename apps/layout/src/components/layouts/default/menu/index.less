@@ -2,8 +2,9 @@
 @menu-logo-prefix-cls: ~'@{ent-prefix}-app-logo';
 
 .@{layout-menu-prefix-cls} {
-  &-logo {
+  &-logo.@{menu-logo-prefix-cls} {
     height: @header-height;
+    justify-content: center;
 
     img {
       width: @logo-width;

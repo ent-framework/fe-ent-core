@@ -8,7 +8,7 @@ import { Button, PageHeader, Table, Tooltip } from 'ant-design-vue';
 import { initLayout } from 'fe-ent-layout';
 import { setupErrorHandle } from 'fe-ent-core/es/logics/error-handle';
 import { entRouter, transformRouteToMenu } from 'fe-ent-core/es/router';
-import { setupRouterGuard } from 'fe-ent-core/es/router/guard';
+import { setCommonRouterGuard } from 'fe-ent-core/es/router/guard';
 import { setupStore } from 'fe-ent-core/es/store';
 import { setupGlobDirectives } from 'fe-ent-core/es/directives';
 import { setupI18n } from 'fe-ent-core/es/locales/setup-i18n';
@@ -42,14 +42,13 @@ async function bootstrap() {
   // Register ant global components
   registerAntGlobComp(app);
 
+  app.use(EntCore);
   initLayout(app, entRouter);
 
   const { getLocale, addMessages, setLocalePicker } = useLocale();
   setLocalePicker(false);
   addMessages('en', locales.en);
   addMessages('zh_CN', locales.zh_CN);
-
-  app.use(EntCore);
 
   app.component(CodeBlock.name, CodeBlock);
   app.component(CellDemo.name, CellDemo);
@@ -70,7 +69,7 @@ async function bootstrap() {
   app.use(entRouter);
 
   // router-guard
-  setupRouterGuard(entRouter);
+  setCommonRouterGuard(entRouter);
 
   // Register global directive
   setupGlobDirectives(app);

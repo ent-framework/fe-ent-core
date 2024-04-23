@@ -1,19 +1,7 @@
 import { modalProps } from 'naive-ui/es/modal';
 import type { PropType } from 'vue';
 import type { ModalWrapperProps } from './typing';
-import type { ButtonProps } from '../../../components/button/interface';
-
-// export const modalProps = {
-//   open: { type: Boolean },
-//   scrollTop: { type: Boolean, default: true },
-//   height: { type: Number },
-//   minHeight: { type: Number },
-//   /**
-//    * Modal是否可关闭，因为增加full screen 按钮，默认为false
-//    */
-//   closable: { type: Boolean, default: true },
-//   closeFunc: Function as PropType<() => Promise<boolean>>,
-// };
+import type { ButtonProps } from '../../button/interface';
 
 export const footerProps = {
   okType: { type: String },

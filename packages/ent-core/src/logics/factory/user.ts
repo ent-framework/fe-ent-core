@@ -1,12 +1,12 @@
-import { defHttp } from '../../utils/http';
+import { defHttp } from '../../utils';
 import { useGlobSetting } from '../../hooks';
-import type { ErrorMessageMode } from '../../logics/types/axios';
 import type {
+  ErrorMessageMode,
   LoginParams,
   LoginResultModel,
   Session,
   UserInfoModel,
-} from '../../logics/types/user';
+} from '../types';
 import type { AppRouteRecordRaw } from '../../router';
 
 enum Api {

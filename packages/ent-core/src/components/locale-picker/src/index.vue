@@ -18,9 +18,9 @@
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watchEffect } from 'vue';
   import { NPopselect } from 'naive-ui';
-  import { EntIcon } from '../../../components/icon';
-  import { useLocale } from '../../../locales/use-locale';
-  import { localeList } from '../../../logics/settings/locale-setting';
+  import { EntIcon } from '../../icon';
+  import { useLocale } from '../../../locales';
+  import { localeList } from '../../../logics';
   import type { LocaleType } from '../../../store/types';
   import type { DropdownOption } from 'naive-ui';
 

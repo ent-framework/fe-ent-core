@@ -22,7 +22,7 @@ export const getMainVue = ({
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useLocale } from '@ent-core/locales';
+import { useLocale } from 'fe-ent-core/es/locales';
 ${imports.join('\n')};
 
 export default defineComponent({
@@ -61,8 +61,8 @@ export const getDemoVue = ({
   code: string;
 }) => `<template>
   <code-block id="${id}" :title="getMessage(${getTemplateString(
-  title['zh-CN'],
-)}, ${getTemplateString(title['en-US'])})">
+    title['zh-CN'],
+  )}, ${getTemplateString(title['en-US'])})">
     <template v-if="locale === 'zh_CN'" #description>
       ${description['zh-CN'] ?? ''}
     </template>
@@ -79,7 +79,7 @@ export const getDemoVue = ({
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useLocale } from '@ent-core/locales';
+import { useLocale } from 'fe-ent-core/es/locales';
 import VirtualDemo from '${virtualPath}';
 
 export default defineComponent({

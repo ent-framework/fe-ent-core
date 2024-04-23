@@ -5,7 +5,7 @@
       <LayoutHeader fixed />
     </NConfigProvider>
     <NLayout :has-sider="getShowSidebar || getIsMobile" collapse-mode="width">
-      <NConfigProvider :abstract="true">
+      <NConfigProvider :abstract="true" :theme="getComputedMenuTheme">
         <LayoutSideBar v-if="getShowSidebar || getIsMobile" />
       </NConfigProvider>
       <NLayout :class="`${prefixCls}-main`">

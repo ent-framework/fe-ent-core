@@ -1,23 +1,18 @@
 import { toRaw } from 'vue';
 import { defineStore } from 'pinia';
-import { useI18n } from '../../hooks/web/use-i18n';
+import { useGlobSetting, useI18n, useMessage } from '../../hooks';
 import {
   backendRouteFilter,
   flatMultiLevelRoutes,
   routeWrapper,
 } from '../../router/helper/route-helper';
-import { transformRouteToMenu } from '../../router/helper/menu-helper';
-import { useGlobSetting } from '../../hooks/setting/use-glob-setting';
+import { entRouter, transformRouteToMenu } from '../../router';
 import { defaultProjectSetting } from '../../logics/settings/project-setting';
-import { PermissionModeEnum } from '../../logics/enums/app-enum';
-import { filter } from '../../utils/helper/tree-helper';
-import { Factory } from '../../logics/factory';
-import { useMessage } from '../../hooks/web/use-message';
-import { entRouter } from '../../router/base';
-import { isArray } from '../../utils/is';
+import { Factory, PermissionModeEnum } from '../../logics';
+import { filter, isArray } from '../../utils';
 import { useAppStore } from './app';
 import { useUserStore } from './user';
-import type { AppRouteRecordRaw, Menu } from '../../router/types';
+import type { AppRouteRecordRaw, Menu } from '../../router';
 
 export interface PermissionState {
   // Permission code list

@@ -22,11 +22,10 @@
   import { defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { NCascader } from 'naive-ui';
   import { get, omit } from 'lodash-es';
-  import { EntIcon } from '../../../../components/icon';
+  import { EntIcon } from '../../../icon';
   import { isFunction } from '../../../../utils/is';
-  import { propTypes } from '../../../../utils/prop-types';
-  import { useRuleFormItem } from '../../../../hooks/component/use-form-item';
-  import { useI18n } from '../../../../hooks/web/use-i18n';
+  import { propTypes } from '../../../../utils';
+  import { useI18n, useRuleFormItem } from '../../../../hooks';
   import { type Recordable } from '../../../../types';
   import type { PropType } from 'vue';
   interface Option {

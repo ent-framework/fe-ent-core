@@ -53,7 +53,7 @@
 
   export default defineComponent({
     name: 'EntDrawer',
-    components: { NDrawerContent, DrawerFooter, DrawerHeader },
+    components: { NDrawer, NDrawerContent, DrawerFooter, DrawerHeader },
     extends: NDrawer,
     inheritAttrs: false,
     props: basicProps,

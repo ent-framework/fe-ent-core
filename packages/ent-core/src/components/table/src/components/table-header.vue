@@ -13,7 +13,7 @@
         </template>
         <NAlert v-else-if="getSelectedKey.length > 0" type="info" :show-icon="false">
           <span>已选中{{ getSelectedKey.length }}条记录(可跨页)</span>
-          <ent-button type="link" size="tiny" @click="clearSelected">清空</ent-button>
+          <ent-button size="tiny" @click="clearSelected">清空</ent-button>
         </NAlert>
       </div>
       <div :class="`${prefixCls}__toolbar`">

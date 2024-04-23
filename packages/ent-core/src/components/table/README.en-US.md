@@ -28,11 +28,7 @@
 |use-search-form|使用搜索表单|`boolean`|`false`|`-`|
 |form-config|搜索表单配置|`object`|`null`|`-`|
 |show-index-column|显示行号|`boolean`|`true`|`-`|
-|index-column-props|序号列属性|`BasicColumn`|`() => {
-  return {
-    width: 50,
-  };
-}`|`-`|
+|index-column-props|序号列属性|`BasicColumn`|`() => {  return {    width: 50,  };}`|`-`|
 |action-column|表格右侧操作列配置 BasicColumn|`BasicColumn`|`null`|`-`|
 |selection-column|选择行的配置|`Partial<DataTableSelectionColumn>`|`-`|`-`|
 |expand-column|展开行的配置|`Partial<DataTableExpandColumn>`|`-`|`-`|
@@ -97,9 +93,8 @@
 |---|---|---|:---:|---|
 |type|type|`RowSelectionType`|`-`|`-`|
 |selectedRowKeys|selectedRowKeys|`DataTableRowKey[]`|`-`|`-`|
-|defaultSelectedRowKeys|defaultSelectedRowKeys|`DataTableRowKey[]`|`-`|`-`|
 |selectedRows|selectedRows|`Recordable[]`|`-`|`-`|
-|defaultSelectedRows|defaultSelectedRows|`Recordable[]`|`-`|`-`|
+|onChange|onChange|`OnUpdateCheckedRowKeys`|`-`|`-`|
 
 
 

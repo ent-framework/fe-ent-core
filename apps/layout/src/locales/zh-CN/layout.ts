@@ -39,7 +39,7 @@ export default {
     topMenuAlignCenter: '居右',
     // menu trigger
     menuTriggerNone: '不显示',
-    menuTriggerBottom: '底部',
+    menuTriggerSide: '侧边',
     menuTriggerTop: '顶部',
     // menu type
     menuTypeSidebar: '左侧菜单模式',

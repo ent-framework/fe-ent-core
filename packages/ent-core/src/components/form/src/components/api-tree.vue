@@ -13,9 +13,9 @@
   import { type PropType, computed, defineComponent, onMounted, ref, unref, watch } from 'vue';
   import { NTree } from 'naive-ui';
   import { get } from 'lodash-es';
-  import { EntIcon } from '../../../../components/icon';
+  import { EntIcon } from '../../../icon';
   import { isArray, isFunction } from '../../../../utils/is';
-  import { propTypes } from '../../../../utils/prop-types';
+  import { propTypes } from '../../../../utils';
   import type { AnyFunction, Recordable } from '../../../../types';
   export default defineComponent({
     name: 'ApiTree',

@@ -46,7 +46,6 @@
           </span>
           <div :class="`${prefixCls}-entry__footer enter-x`">
             <ent-button
-              type="link"
               size="small"
               class="mt-2 mr-2 enter-x"
               :disabled="loading"
@@ -54,13 +53,7 @@
             >
               {{ t('common.back') }}
             </ent-button>
-            <ent-button
-              type="link"
-              size="small"
-              class="mt-2 mr-2 enter-x"
-              :disabled="loading"
-              @click="goLogin"
-            >
+            <ent-button size="small" class="mt-2 mr-2 enter-x" :disabled="loading" @click="goLogin">
               {{ t('sys.lock.backToLogin') }}
             </ent-button>
             <ent-button class="mt-2" type="link" size="small" :loading="loading" @click="unLock()">

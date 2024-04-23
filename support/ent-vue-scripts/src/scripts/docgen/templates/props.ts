@@ -56,7 +56,8 @@ const tmpl = (
       const getDefaultValue = () => {
         if (tags?.defaultValue) {
           // @ts-ignore-next-line
-          return tags.defaultValue[0]?.description;
+          const description = tags.defaultValue[0]?.description || '';
+          return description.replaceAll(/\n/g, '').replaceAll(/\t/g, '');
         }
 
         if (defaultValue?.value === 'undefined') {
@@ -78,7 +79,7 @@ const tmpl = (
           return cleanStr(defaultValue?.value || 'false');
         }
 
-        return defaultValue?.value || '-';
+        return defaultValue?.value.replaceAll(/\n/g, '').replaceAll(/\t/g, '') || '-';
       };
 
       const getModule = () => {

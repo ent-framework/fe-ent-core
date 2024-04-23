@@ -22,12 +22,10 @@
   import { computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
   import { NSelect } from 'naive-ui';
   import { get, omit } from 'lodash-es';
-  import { EntIcon } from '../../../../components/icon';
+  import { EntIcon } from '../../../icon';
   import { isFunction } from '../../../../utils/is';
-  import { useRuleFormItem } from '../../../../hooks/component/use-form-item';
-  import { useAttrs } from '../../../../hooks/core/use-attrs';
-  import { useI18n } from '../../../../hooks/web/use-i18n';
-  import { propTypes } from '../../../../utils/prop-types';
+  import { useAttrs, useI18n, useRuleFormItem } from '../../../../hooks';
+  import { propTypes } from '../../../../utils';
   import type { PropType } from 'vue';
 
   type OptionsItem = { label: string; value: string; disabled?: boolean };

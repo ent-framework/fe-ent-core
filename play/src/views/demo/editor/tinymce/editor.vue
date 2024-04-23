@@ -29,6 +29,9 @@
       component: 'Input',
       label: 'tinymce',
       defaultValue: 'defaultValue',
+      gridItemProps: {
+        span: 12,
+      },
       rules: [{ required: true }],
       render: ({ model, field }) => {
         return h(Tinymce, {

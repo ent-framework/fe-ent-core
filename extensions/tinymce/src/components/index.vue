@@ -134,7 +134,7 @@
       });
 
       const skinName = computed(() => {
-        return appStore.getDarkMode === 'light' ? 'oxide' : 'oxide-dark';
+        return appStore.getThemeSetting.theme === 'light' ? 'oxide' : 'oxide-dark';
       });
 
       const langName = computed(() => {

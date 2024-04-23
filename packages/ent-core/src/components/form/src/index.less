@@ -1,17 +1,22 @@
 @basic-form-prefix-cls: ~'@{ent-prefix}-form';
 
 .@{basic-form-prefix-cls} {
+
+  &--show-feed-back.n-form {
+    .n-form-item {
+      margin-bottom: 0;
+    }
+  }
+
   .n-form-item {
+    margin-bottom: 20px;
+
     &-label label::after {
       margin: 0 6px 0 2px;
     }
 
     &-with-help {
       margin-bottom: 0;
-    }
-
-    &:not(.ant-form-item-with-help) {
-      margin-bottom: 20px;
     }
 
     &.suffix-item {

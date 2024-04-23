@@ -1,4 +1,4 @@
-import { createContext, useContext } from '../../../../hooks/core/use-context';
+import { createContext, useContext } from '../../../../hooks';
 import type { InjectionKey } from 'vue';
 
 export interface FormContextProps {
