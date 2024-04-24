@@ -31,6 +31,13 @@
 |auto-focus-first-item|是否聚焦第一个输入框，只在第一个表单项为input的时候作用|`boolean`|`false`|`-`|
 |reset-func|自定义重置按钮逻辑|`() => Promise<void>`|`-`|`-`|
 |submit-func|自定义提交按钮逻辑|`() => Promise<void>`|`-`|`-`|
+|show-action-button-group|是否显示操作按钮|`boolean`|`true`|`-`|
+|show-reset-button|显示重置按钮|`boolean`|`true`|`-`|
+|show-submit-button|是否显示确认按钮|`boolean`|`true`|`-`|
+|show-advanced-button|是否显示收起展开按钮|`boolean`|`false`|`-`|
+|reset-button-options|重置按钮配置见下方 ActionButtonOption|`FormButtonOptions`|`() => ({})`|`-`|
+|submit-button-options|确认按钮配置|`FormButtonOptions`|`() => ({})`|`-`|
+|action-col-options|操作按钮外层 Col 组件配置，如果开启 showAdvancedButton，则不用设置，具体见下方 actionColOptions|`Partial<GridItemProps>`|`() => ({})`|`-`|
 |inline|Whether to display as an inline form.|`boolean`|`false`|`NForm`|
 |label-width|The width of label. Particularly useful when `label-placement` is set to `'left'`,`'auto'` means label width will be auto adjusted.|`number \| string \| 'auto'`|`-`|`NForm`|
 |label-align|Label text alignment.|`'left' \| 'right'`|`-`|`NForm`|

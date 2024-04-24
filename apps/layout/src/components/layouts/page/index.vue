@@ -44,6 +44,7 @@
 
       const { getBasicTransition, getEnableTransition } = useTransitionSetting();
 
+      // 是否开启 Keep Alive
       const openCache = computed(() => unref(getOpenKeepAlive) && unref(getShowMultipleTab));
 
       const getCaches = computed((): string[] => {

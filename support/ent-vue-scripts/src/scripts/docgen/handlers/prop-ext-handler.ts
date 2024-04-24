@@ -1,14 +1,13 @@
-import * as nodePath from 'path';
 import * as bt from '@babel/types';
-import resolvePathFrom from 'vue-docgen-api/dist/utils/resolvePathFrom';
 import getMemberFilter from 'vue-docgen-api/dist/utils/getPropsFilter';
-import { describePropsFromValue } from '../utils/describe-props-from-value';
+import {
+  describeImportPropsFromValue,
+  describePropsFromValue
+} from '../utils/describe-props-from-value';
 import resolveVar from '../utils/resolve-var';
-import readFile from '../utils/read-file';
 import { parseType } from '../utils/parse-type';
 import type { Documentation, ParseOptions } from 'vue-docgen-api';
 import type { NodePath } from 'ast-types/lib/node-path';
-import type { PropsValuePath } from '../types';
 
 /**
  * Extract props information form an object-style VueJs component
@@ -46,40 +45,22 @@ export async function propExtHandler(
           const n = val as bt.VariableDeclarator;
           return (n.id as bt.Identifier).name === varName;
         });
-
+      const cwd = process.cwd();
       if (varDesc && varDesc.init && varDesc.init.type === 'ObjectExpression') {
         const vals = resolveVar(ast);
         const varDescPath = vals.get(varName);
         // @ts-ignore
-        await describePropsFromValue(documentation, varDescPath, ast, opt, modelPropertyName);
+        await describePropsFromValue(documentation, varDescPath, ast, opt, cwd, modelPropertyName);
       } else {
         //从import中查找定义的props
-        const importDesc = ast.program.body
-          .filter((n) => n.type === 'ImportDeclaration')
-          .find((val) => {
-            const n = val as bt.ImportDeclaration;
-            return n.specifiers.map((m) => m.local.name).includes(varName);
-          }) as bt.ImportDeclaration;
-        if (importDesc) {
-          const importFileLocation = nodePath.resolve(process.cwd(), opt.filePath);
-          const cwd = nodePath.dirname(importFileLocation);
-          const importFile = resolvePathFrom(importDesc.source.value, [cwd]);
-          if (importFile) {
-            const nodePaths = resolveVar(readFile(importFile));
-            if (nodePaths.has(varName)) {
-              const p = nodePaths.get(varName) as PropsValuePath;
-              // @ts-ignore
-              await describePropsFromValue(
-                documentation,
-                // @ts-ignore
-                p,
-                ast,
-                opt,
-                modelPropertyName
-              );
-            }
-          }
-        }
+        await describeImportPropsFromValue(
+          documentation,
+          ast,
+          opt,
+          cwd,
+          varName,
+          modelPropertyName
+        );
       }
     } else if (bt.isObjectExpression(propsValuePath.node)) {
       // 增强部分, 增加对propTypes的解析

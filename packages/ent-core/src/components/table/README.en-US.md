@@ -12,6 +12,10 @@
 
 |Attribute|Description|Type|Default|Module|
 |---|---|---|:---:|---|
+|title|标题|`string \| ((data: Recordable) => string)`|`null`|`-`|
+|title-help-message|表格标题右侧温馨提醒|`string \| string[]`|`-`|`-`|
+|show-table-setting|显示表格设置工具|`boolean`|`false`|`-`|
+|table-setting|表格设置工具配置, 见下方 TableSetting|`object`|`-`|`-`|
 |click-to-row-select|点击行是否选中 checkbox 或者 radio。需要开启|`boolean`|`true`|`-`|
 |is-tree-table|是否树表|`boolean`|`false`|`-`|
 |inset|取消表格的默认 padding|`boolean`|`false`|`-`|

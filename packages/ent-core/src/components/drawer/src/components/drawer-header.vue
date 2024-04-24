@@ -19,12 +19,10 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { EntTitle } from '../../../../components/basic';
-  import { EntIcon } from '../../../../components/icon';
-
-  import { useDesign } from '../../../../hooks/web/use-design';
-
-  import { propTypes } from '../../../../utils/prop-types';
+  import { EntTitle } from '../../../basic';
+  import { EntIcon } from '../../../icon';
+  import { useDesign } from '../../../../hooks';
+  import { propTypes } from '../../../../utils';
   export default defineComponent({
     name: 'EntDrawerHeader',
     components: { EntTitle, EntIcon },

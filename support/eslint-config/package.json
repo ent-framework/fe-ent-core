@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-ent",
-  "version": "3.0.9",
+  "version": "3.0.10",
   "description": "ESLint Config",
   "files": [
     "index.js"

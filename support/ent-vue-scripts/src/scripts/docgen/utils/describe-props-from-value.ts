@@ -1,3 +1,4 @@
+import * as nodePath from 'path';
 import * as bt from '@babel/types';
 import { print, visit } from 'recast';
 import getDocblock from 'vue-docgen-api/dist/utils/getDocblock';
@@ -5,8 +6,12 @@ import getDoclets from 'vue-docgen-api/dist/utils/getDoclets';
 import transformTagsIntoObject from 'vue-docgen-api/dist/utils/transformTagsIntoObject';
 import getTemplateExpressionAST from 'vue-docgen-api/dist/utils/getTemplateExpressionAST';
 import parseValidatorForValues from 'vue-docgen-api/dist/script-handlers/utils/parseValidator';
+import resolvePathFrom from 'vue-docgen-api/dist/utils/resolvePathFrom';
 import getMemberFilter from './member-filter';
 import { parseType } from './parse-type';
+import readFile from './read-file';
+import resolveVar from './resolve-var';
+import type { Expression, SpreadElement } from '@babel/types';
 import type Documentation from 'vue-docgen-api/dist/Documentation';
 import type {
   BlockTag,
@@ -17,6 +22,7 @@ import type {
 } from 'vue-docgen-api/dist/Documentation';
 import type { NodePath } from 'ast-types/lib/node-path';
 import type { ParseOptions } from 'vue-docgen-api/dist/parse';
+import type { PropsValuePath } from '../types';
 
 type ValueLitteral = bt.StringLiteral | bt.BooleanLiteral | bt.NumericLiteral;
 
@@ -33,112 +39,72 @@ export function getRawValueParsedFromFunctionsBlockStatementNode(
   return ret.argument ? print(ret.argument).code : null;
 }
 
+export async function describeImportPropsFromValue(
+  documentation: Documentation,
+  ast: bt.File,
+  opt: ParseOptions,
+  cwd: string,
+  varName: string,
+  modelPropertyName: string | null
+) {
+  const importDesc = ast.program.body
+    .filter((n) => n.type === 'ImportDeclaration')
+    .find((val) => {
+      const n = val as bt.ImportDeclaration;
+      return n.specifiers.map((m) => m.local.name).includes(varName);
+    }) as bt.ImportDeclaration;
+  if (importDesc) {
+    const importFileLocation = nodePath.resolve(cwd, opt.filePath);
+    const currentDir = nodePath.dirname(importFileLocation);
+    const importFile = resolvePathFrom(importDesc.source.value, [currentDir]);
+    if (importFile) {
+      const importAst = readFile(importFile);
+      const nodePaths = resolveVar(importAst);
+      if (nodePaths.has(varName)) {
+        const p = nodePaths.get(varName) as PropsValuePath;
+        // @ts-ignore
+        await describePropsFromValue(
+          documentation,
+          // @ts-ignore
+          p,
+          importAst,
+          { ...opt, filePath: importFile },
+          cwd,
+          modelPropertyName
+        );
+      }
+    }
+  }
+}
+
 export async function describePropsFromValue(
   documentation: Documentation,
   propsValuePath: NodePath<bt.ObjectExpression, any> | NodePath<bt.ArrayExpression, any>,
   ast: bt.File,
   opt: ParseOptions,
-  modelPropertyName: string | null = null
+  cwd: string,
+  modelPropertyName: string | null
 ) {
   if (bt.isObjectExpression(propsValuePath.node)) {
-    const objProp = propsValuePath.get('properties');
+    const objProp: NodePath<bt.Property>[] = propsValuePath.get('properties');
 
-    // filter non object properties
-    const objPropFiltered = objProp.filter((p: NodePath) =>
-      bt.isProperty(p.node)
-    ) as NodePath<bt.Property>[];
     await Promise.all(
-      objPropFiltered.map(async (prop) => {
-        const propNode = prop.node;
-
-        // description
-        const docBlock = getDocblock(prop);
-        const jsDoc: DocBlockTags = docBlock ? getDoclets(docBlock) : { description: '', tags: [] };
-        const jsDocTags: BlockTag[] = jsDoc.tags ? jsDoc.tags : [];
-
-        // if it's the v-model describe it only as such
-        const propertyName = bt.isIdentifier(propNode.key)
-          ? propNode.key.name
-          : bt.isStringLiteral(propNode.key)
-            ? propNode.key.value
-            : null;
-
-        if (!propertyName) {
-          return;
+      objProp.map(async (prop) => {
+        if (bt.isProperty(prop.node)) {
+          await describeObjectPropsFromValue(prop, documentation, ast, opt, modelPropertyName);
         }
-        const isPropertyModel =
-          jsDocTags.some((t) => t.title === 'model') || propertyName === modelPropertyName;
-        const propName = isPropertyModel ? 'v-model' : propertyName;
-
-        const propDescriptor = documentation.getPropDescriptor(propName);
-
-        const propValuePath = prop.get('value');
-
-        if (jsDoc.description) {
-          propDescriptor.description = jsDoc.description;
-        }
-
-        if (jsDocTags.length) {
-          propDescriptor.tags = transformTagsIntoObject(jsDocTags);
-        }
-
-        extractValuesFromTags(propDescriptor);
-
-        if (bt.isArrayExpression(propValuePath.node) || bt.isIdentifier(propValuePath.node)) {
-          // if it's an immediately typed property, resolve its type immediately
-          propDescriptor.type = getTypeFromTypePath(propValuePath);
-        } else if (bt.isObjectExpression(propValuePath.node)) {
-          // standard default + type + required
-          const propPropertiesPath = propValuePath
-            .get('properties')
-            .filter(
-              (p: NodePath) => bt.isObjectProperty(p.node) || bt.isObjectMethod(p.node)
-            ) as NodePath<bt.ObjectProperty | bt.ObjectMethod>[];
-
-          // type
-          const literalType = describeType(propPropertiesPath, propDescriptor);
-
-          // required
-          describeRequired(propPropertiesPath, propDescriptor);
-
-          // default
-          describeDefault(propPropertiesPath, propDescriptor, literalType || '');
-
-          // validator => values
-          await describeValues(propPropertiesPath, propDescriptor, ast, opt);
-        } else if (bt.isTSAsExpression(propValuePath.node)) {
-          const propValuePathExpression = propValuePath.get('expression');
-
-          if (bt.isObjectExpression(propValuePathExpression.node)) {
-            // standard default + type + required with TS as annotation
-            const propPropertiesPath = propValuePathExpression
-              .get('properties')
-              .filter((p: NodePath) =>
-                bt.isObjectProperty(p.node)
-              ) as NodePath<bt.ObjectProperty>[];
-
-            // type and values
-            describeTypeAndValuesFromPath(propValuePath, propDescriptor);
-
-            // required
-            describeRequired(propPropertiesPath, propDescriptor);
-
-            // default
-            describeDefault(
-              propPropertiesPath,
-              propDescriptor,
-              (propDescriptor.type && propDescriptor.type.name) || ''
-            );
-          } else if (bt.isIdentifier(propValuePathExpression.node)) {
-            describeTypeAndValuesFromPath(propValuePath, propDescriptor);
-          }
-        } else {
-          // in any other case, just display the code for the typing
-          propDescriptor.type = {
-            name: print(prop.get('value')).code,
-            func: true
-          };
-          parseType(propDescriptor, prop);
+        // 内嵌元素
+        if (bt.isSpreadElement(prop.node)) {
+          const importFileLocation = nodePath.resolve(cwd, opt.filePath);
+          const currentDir = nodePath.dirname(importFileLocation);
+          await describeSpreadPropsFromValue(
+            (prop.node as SpreadElement).argument,
+            documentation,
+            ast,
+            opt,
+            currentDir,
+            modelPropertyName
+          );
         }
       })
     );
@@ -150,6 +116,158 @@ export async function describePropsFromValue(
         const propDescriptor = documentation.getPropDescriptor(e.node.value);
         propDescriptor.type = { name: 'undefined' };
       });
+  }
+}
+
+async function describeObjectPropsFromValue(
+  prop: NodePath<bt.Property>,
+  documentation: Documentation,
+  ast: bt.File,
+  opt: ParseOptions,
+  modelPropertyName: string | null
+) {
+  const propNode = prop.node;
+
+  // description
+  const docBlock = getDocblock(prop);
+  const jsDoc: DocBlockTags = docBlock ? getDoclets(docBlock) : { description: '', tags: [] };
+  const jsDocTags: BlockTag[] = jsDoc.tags ? jsDoc.tags : [];
+
+  // if it's the v-model describe it only as such
+  const propertyName = bt.isIdentifier(propNode.key)
+    ? propNode.key.name
+    : bt.isStringLiteral(propNode.key)
+      ? propNode.key.value
+      : null;
+
+  if (!propertyName) {
+    return;
+  }
+  const isPropertyModel =
+    jsDocTags.some((t) => t.title === 'model') || propertyName === modelPropertyName;
+  const propName = isPropertyModel ? 'v-model' : propertyName;
+
+  const propDescriptor = documentation.getPropDescriptor(propName);
+
+  const propValuePath = prop.get('value');
+
+  if (jsDoc.description) {
+    propDescriptor.description = jsDoc.description;
+  }
+
+  if (jsDocTags.length) {
+    propDescriptor.tags = transformTagsIntoObject(jsDocTags);
+  }
+
+  extractValuesFromTags(propDescriptor);
+
+  if (bt.isArrayExpression(propValuePath.node) || bt.isIdentifier(propValuePath.node)) {
+    // if it's an immediately typed property, resolve its type immediately
+    propDescriptor.type = getTypeFromTypePath(propValuePath);
+  } else if (bt.isObjectExpression(propValuePath.node)) {
+    // standard default + type + required
+    const propPropertiesPath = propValuePath
+      .get('properties')
+      .filter(
+        (p: NodePath) => bt.isObjectProperty(p.node) || bt.isObjectMethod(p.node)
+      ) as NodePath<bt.ObjectProperty | bt.ObjectMethod>[];
+
+    // type
+    const literalType = describeType(propPropertiesPath, propDescriptor);
+
+    // required
+    describeRequired(propPropertiesPath, propDescriptor);
+
+    // default
+    describeDefault(propPropertiesPath, propDescriptor, literalType || '');
+
+    // validator => values
+    await describeValues(propPropertiesPath, propDescriptor, ast, opt);
+  } else if (bt.isTSAsExpression(propValuePath.node)) {
+    const propValuePathExpression = propValuePath.get('expression');
+
+    if (bt.isObjectExpression(propValuePathExpression.node)) {
+      // standard default + type + required with TS as annotation
+      const propPropertiesPath = propValuePathExpression
+        .get('properties')
+        .filter((p: NodePath) => bt.isObjectProperty(p.node)) as NodePath<bt.ObjectProperty>[];
+
+      // type and values
+      describeTypeAndValuesFromPath(propValuePath, propDescriptor);
+
+      // required
+      describeRequired(propPropertiesPath, propDescriptor);
+
+      // default
+      describeDefault(
+        propPropertiesPath,
+        propDescriptor,
+        (propDescriptor.type && propDescriptor.type.name) || ''
+      );
+    } else if (bt.isIdentifier(propValuePathExpression.node)) {
+      describeTypeAndValuesFromPath(propValuePath, propDescriptor);
+    }
+  } else {
+    // in any other case, just display the code for the typing
+    propDescriptor.type = {
+      name: print(prop.get('value')).code,
+      func: true
+    };
+    parseType(propDescriptor, prop);
+  }
+}
+
+async function describeSpreadPropsFromValue(
+  prop: Expression,
+  documentation: Documentation,
+  ast: bt.File,
+  opt: ParseOptions,
+  cwd: string,
+  modelPropertyName: string | null
+) {
+  if (bt.isIdentifier(prop)) {
+    // 先找找是否有变量声明 比如 const xx = {} 形式
+    let varDesc = ast.program.body
+      .filter((n) => n.type === 'VariableDeclaration')
+      .flatMap((val) => {
+        const n = val as bt.VariableDeclaration;
+        return n.declarations;
+      })
+      .find((val) => {
+        const n = val as bt.VariableDeclarator;
+        return (n.id as bt.Identifier).name === prop.name;
+      });
+
+    //找不到再找找是否声明成export 形式了 比如 export const xx = {}
+    if (!varDesc) {
+      varDesc = ast.program.body
+        .filter((n) => n.type === 'ExportNamedDeclaration')
+        .filter((val) => bt.isVariableDeclaration((val as bt.ExportNamedDeclaration).declaration))
+        .flatMap((val) => {
+          const n = val as bt.ExportNamedDeclaration;
+          return (n.declaration as bt.VariableDeclaration).declarations;
+        })
+        .find((val) => {
+          const n = val as bt.VariableDeclarator;
+          return (n.id as bt.Identifier).name === prop.name;
+        });
+    }
+    if (varDesc && varDesc.init && varDesc.init.type === 'ObjectExpression') {
+      const vals = resolveVar(ast);
+      const varDescPath = vals.get(prop.name);
+      // @ts-ignore
+      await describePropsFromValue(documentation, varDescPath, ast, opt, modelPropertyName);
+    } else {
+      //从import中查找定义的props
+      await describeImportPropsFromValue(
+        documentation,
+        ast,
+        opt,
+        cwd,
+        prop.name,
+        modelPropertyName
+      );
+    }
   }
 }
 

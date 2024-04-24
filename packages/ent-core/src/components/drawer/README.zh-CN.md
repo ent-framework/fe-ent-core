@@ -20,6 +20,14 @@ description: 对 antdv 的 drawer 组件进行封装，扩展拖拽，全屏，�
 |show-detail-back|是否显示退回按钮|`boolean`|`true`|`-`|
 |loading|是否正在装载|`boolean`|`false`|`-`|
 |close-func|关闭后回调函数|`any`|`null`|`-`|
+|show-cancel-btn|是否显示取消按钮|`boolean`|`true`|`-`|
+|cancel-button-props|取消按钮绑定的属性|`Recordable`|`-`|`-`|
+|cancel-text|取消按钮文本|`string`|`-`|`-`|
+|show-ok-btn|是否显示确认按钮|`boolean`|`true`|`-`|
+|ok-button-props|确认按钮属性|`Recordable`|`-`|`-`|
+|ok-text|确认按文本|`string`|`-`|`-`|
+|ok-type|确认按钮类型|`string`|`'primary'`|`-`|
+|show-footer|是否显示底部|`boolean`|`true`|`-`|
 |show|Whether to show drawer.|`boolean`|`false`|`NDrawer`|
 |width|Works when placement is `left` and `right`.|`number \| string`|`-`|`NDrawer`|
 |height|Works when placement is `top` and `bottom`.|`number \| string`|`-`|`NDrawer`|
