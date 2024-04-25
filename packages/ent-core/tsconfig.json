@@ -5,7 +5,8 @@
     "baseUrl": ".",
     "types": ["vite/client", "node", "./shims-vue"],
     "paths": {
-      "treemate": ["./node_modules/treemate"]
+      "treemate": ["./node_modules/treemate"],
+      "vueuc": ["./node_modules/vueuc"]
     }
   },
   "include": [

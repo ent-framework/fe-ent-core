@@ -5,10 +5,10 @@ module.exports = {
       '@babel/preset-typescript',
       {
         allExtensions: true,
-        isTSX: true,
-      },
-    ],
-  ],
+        isTSX: true
+      }
+    ]
+  ]
   // plugins: [
   //   '@babel/plugin-transform-runtime',
   //   '@babel/plugin-transform-modules-commonjs',

@@ -1,25 +1,27 @@
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import terser from '@rollup/plugin-terser';
+import { mergeConfig } from 'vite';
 import { generateModifyVars } from '../utils/modify-vars';
-import type { InlineConfig } from 'vite';
+import { configUnoCSSPlugin } from '../plugins/unocss';
+import { commonConfig } from './common';
+import type { InlineConfig, UserConfig } from 'vite';
 import type { OutputPlugin } from 'rollup';
 
 export default (): InlineConfig => {
-  const entry = `${process.cwd()}/src/index.ts`;
-
-  return {
+  const entry = `src/index.ts`;
+  console.log(111111111);
+  const packageConfig: UserConfig = {
     mode: 'production',
     build: {
       target: 'modules',
       outDir: 'dist',
       emptyOutDir: false,
-      sourcemap: false,
+      sourcemap: true,
       minify: false,
       cssMinify: true,
-      //brotliSize: false,
       rollupOptions: {
-        //external: 'vue',
+        input: entry,
         treeshake: 'smallest',
         output: [
           {
@@ -46,6 +48,7 @@ export default (): InlineConfig => {
       // 开启lib模式
       lib: {
         entry,
+        formats: ['umd'],
         name: 'Ent'
       }
     },
@@ -57,10 +60,12 @@ export default (): InlineConfig => {
         }
       }
     },
-    // define: {
-    //   'process.env': JSON.stringify({ NODE_ENV: 'production' }),
-    // },
-    // @ts-ignore vite内部类型错误
     plugins: [vue(), vueJsx()]
   };
+  const mergedConfig = mergeConfig(
+    commonConfig({ command: 'build', mode: 'production' }),
+    packageConfig
+  );
+
+  return mergedConfig as InlineConfig;
 };

@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-vue-scripts",
-  "version": "3.0.11",
+  "version": "3.0.13",
   "description": "Ent Vue Scripts",
   "main": "dist/index.js",
   "bin": {
@@ -89,7 +89,6 @@
     "vite-plugin-inspect": "^0.7.42",
     "vite-plugin-mkcert": "^1.17.1",
     "vite-plugin-mock": "^2.9.6",
-    "vite-plugin-purge-icons": "^0.10.0",
     "vite-plugin-vue-devtools": "^7.0.20",
     "vue": "^3.3.7",
     "vue-docgen-api": "4.56.4"

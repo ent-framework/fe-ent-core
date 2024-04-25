@@ -5,7 +5,7 @@
         placement="bottom-start"
         trigger="click"
         class="`${prefixCls}__column-list`"
-        @open-change="handleVisibleChange"
+        @update:show="handleVisibleChange"
       >
         <template #trigger>
           <EntIcon icon="ant-design:setting-outlined" />
@@ -36,12 +36,12 @@
           </ent-button>
         </div>
         <EntScrollContainer>
-          <NCheckboxGroup ref="columnListRef" v-model:value="checkedList" @change="onChange">
+          <NCheckboxGroup ref="columnListRef" v-model:value="checkedList" @update:value="onChange">
             <template v-for="item in plainOptions" :key="item.value">
               <div v-if="!('ifShow' in item && !item.ifShow)" :class="`${prefixCls}__check-item`">
                 <NSpace justify="space-between">
                   <EntIcon icon="ant-design:drag-outlined" class="table-column-drag-icon" />
-                  <NCheckbox :value="item.value">
+                  <NCheckbox :value="item.key">
                     {{ item.title }}
                   </NCheckbox>
                 </NSpace>
@@ -49,12 +49,12 @@
                   <NTooltip placement="bottom-start" :mouse-leave-delay="0.4">
                     <template #trigger>
                       <EntIcon
-                        icon="ant-design-vue:vertical_right_outlined"
+                        icon="ant-design:vertical-right-outlined"
                         :class="[
                           `${prefixCls}__fixed-left`,
                           {
                             active: item.fixed === 'left',
-                            disabled: !checkedList.includes(item.value)
+                            disabled: !checkedList.includes(item.key)
                           }
                         ]"
                         @click="handleColumnFixed(item, 'left')"
@@ -66,12 +66,12 @@
                   <NTooltip placement="bottom-start" :mouse-leave-delay="0.4">
                     <template #trigger>
                       <EntIcon
-                        icon="ant-design-vue:vertical_left_outlined"
+                        icon="ant-design:vertical-left-outlined"
                         :class="[
                           `${prefixCls}__fixed-right`,
                           {
                             active: item.fixed === 'right',
-                            disabled: !checkedList.includes(item.value)
+                            disabled: !checkedList.includes(item.key)
                           }
                         ]"
                         @click="handleColumnFixed(item, 'right')"
@@ -254,6 +254,7 @@
 
       // Trigger when check/uncheck a column
       function onChange(checkedList: DataTableRowKey[]) {
+        console.log(checkedList);
         const len = plainSortOptions.value.length;
         state.checkAll = checkedList.length === len;
         const sortList = unref(plainSortOptions).map((item) => item.key);

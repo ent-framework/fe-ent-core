@@ -52,7 +52,7 @@
     unref,
     watchEffect
   } from 'vue';
-  import { NDataTable } from 'naive-ui';
+  import { NDataTable, dataTableProps } from 'naive-ui';
   import { omit, pick } from 'lodash-es';
   import { EntForm, useForm } from '../../form';
   import { PageWrapperFixedHeightKey } from '../../page';
@@ -201,7 +201,7 @@
         const { api } = _props;
         let propsData: BasicTableProps = {
           ...attrs,
-          ..._props,
+          ...pick(_props, Object.keys(dataTableProps)),
           loading: unref(getLoading),
           rowProps: customRow,
           columns: toRaw(unref(getViewColumns)),

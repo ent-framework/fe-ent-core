@@ -7,6 +7,9 @@ import { excludeFiles } from '../utils/exclude-files';
 import { generateModifyVars } from '../utils/modify-vars';
 import type { InlineConfig } from 'vite';
 
+/**
+ * 构建组件库 ent-core 生成es, lib
+ */
 const input = excludeFiles(
   glob.sync('**/*.{ts,tsx,vue}', {
     cwd: `${process.cwd()}/src`,
@@ -16,7 +19,6 @@ const input = excludeFiles(
 ).map((file) => `${process.cwd()}/src/${file}`);
 const config: InlineConfig = {
   mode: 'production',
-  //base: `${process.cwd()}/src`,
   build: {
     target: 'modules',
     outDir: 'es',
@@ -36,6 +38,15 @@ const config: InlineConfig = {
           preserveModules: true,
           exports: 'named',
           preserveModulesRoot: `${process.cwd()}/src/`
+        },
+        {
+          interop: 'auto',
+          format: 'commonjs',
+          dir: 'lib',
+          entryFileNames: '[name].js',
+          preserveModules: true,
+          exports: 'named',
+          preserveModulesRoot: `${process.cwd()}/src/`
         }
       ]
     },
@@ -52,7 +63,6 @@ const config: InlineConfig = {
       }
     }
   },
-  // @ts-ignore vite内部类型错误
   plugins: [
     external(),
     vue({

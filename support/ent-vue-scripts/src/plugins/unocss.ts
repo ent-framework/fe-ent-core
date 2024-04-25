@@ -17,9 +17,13 @@ export function configUnoCSSPlugin(isLib: boolean) {
   if (isLib) {
     return UnoCSS<Theme>({
       mode: 'dist-chunk',
+      inspector: true,
+      postcss: true,
+      content: {
+        filesystem: ['**/*.{vue,js,ts,jsx,tsx}', '**/*.{scss,less,styl,stylus,css,sass,scss}']
+      },
       presets: [presetUno({ preflight: false }), presetTypography()],
       transformers: [transformerDirectives()],
-      postcss: true,
       theme
     });
   } else {

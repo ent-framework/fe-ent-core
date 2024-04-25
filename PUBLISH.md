@@ -32,12 +32,6 @@ pnpm build:all
  pnpm remote
 ```
 
-- 项目使用，在项目根目录新增.npmrc文件，并在文件添加
-```
-shamefully-hoist=true
-registry=http://npm.36cpc.com/repository/npm-public/
-```
-
 清理pnpm 缓存
 ``` 
 rm -rf node_modules/.pnpm

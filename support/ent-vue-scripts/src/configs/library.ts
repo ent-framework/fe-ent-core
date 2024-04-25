@@ -39,7 +39,7 @@ async function defineLibraryConfig(source: boolean) {
       outDir: 'es',
       emptyOutDir: false,
       minify: false,
-      sourcemap: true,
+      sourcemap: false,
       lib: {
         entry: `${base}/index.ts`
       },
@@ -57,9 +57,6 @@ async function defineLibraryConfig(source: boolean) {
           }
         ],
         external: [...deps]
-        // output: {
-        //   exports: 'named',
-        // },
       }
     },
     css: {

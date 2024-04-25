@@ -13,9 +13,9 @@
   import TreeHeader from './components/tree-header.vue';
   import { basicTreeProps, treeEmits } from './types/tree';
   import type { ContextMenuItem, CreateContextOptions } from '../../context-menu/src/typing';
-  import type { FieldNames, KeyType, TreeActionType, TreeItem, TreeState } from './types/tree';
+  import type { FieldNames, TreeActionType, TreeItem, TreeState } from './types/tree';
   import type { DropdownOption, TreeOption, TreeProps } from 'naive-ui';
-  import type { Recordable } from '../../../types';
+  import type { Recordable, ValueAtom } from '../../../types';
   import type { CSSProperties } from 'vue';
 
   export default defineComponent({
@@ -69,7 +69,7 @@
           cascade: state.cascade,
           pattern: searchState.searchText,
           'onUpdate:expandedKeys': (
-            value: KeyType[],
+            value: ValueAtom[],
             option: Array<TreeItem | null>,
             meta: { node: TreeItem | null; action: 'expand' | 'collapse' | 'filter' }
           ) => {
@@ -77,7 +77,7 @@
             emit('update:expandedKeys', value, option, meta);
           },
           'on-update:checked-keys': (
-            value: KeyType[],
+            value: ValueAtom[],
             option: Array<TreeItem | null>,
             meta: {
               node: TreeItem | null;
@@ -88,7 +88,7 @@
             emit('update:checkedKeys', value, option, meta);
           },
           'onUpdate:selectedKeys': (
-            value: KeyType[],
+            value: ValueAtom[],
             option: Array<TreeItem | null>,
             meta: {
               node: TreeItem | null;
@@ -146,14 +146,14 @@
         createContextMenu(contextMenuOptions);
       }
 
-      function setExpandedKeys(keys: KeyType[]) {
+      function setExpandedKeys(keys: ValueAtom[]) {
         state.expandedKeys = keys;
       }
 
       function getExpandedKeys() {
         return state.expandedKeys || [];
       }
-      function setSelectedKeys(keys: KeyType[]) {
+      function setSelectedKeys(keys: ValueAtom[]) {
         state.selectedKeys = keys;
       }
 
@@ -161,7 +161,7 @@
         return state.selectedKeys || [];
       }
 
-      function setCheckedKeys(keys: KeyType[]) {
+      function setCheckedKeys(keys: ValueAtom[]) {
         state.checkedKeys = keys;
       }
 
@@ -170,12 +170,12 @@
       }
 
       function checkAll(checkAll: boolean) {
-        state.checkedKeys = checkAll ? getEnabledKeys() : ([] as KeyType[]);
+        state.checkedKeys = checkAll ? getEnabledKeys() : ([] as ValueAtom[]);
         emit('check-all', state.checkedKeys);
       }
 
       function expandAll(expandAll: boolean) {
-        state.expandedKeys = expandAll ? getAllKeys() : ([] as KeyType[]);
+        state.expandedKeys = expandAll ? getAllKeys() : ([] as ValueAtom[]);
       }
 
       function onStrictlyChange(strictly: boolean) {

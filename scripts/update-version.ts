@@ -8,8 +8,8 @@ const tagVersion = process.env.TAG_VERSION;
 if (!tagVersion) {
   consola.log(
     chalk.red(
-      'No tag version or git head were found, make sure that you set the environment variable $TAG_VERSION \n',
-    ),
+      'No tag version or git head were found, make sure that you set the environment variable $TAG_VERSION \n'
+    )
   );
   process.exit(1);
 }
@@ -23,24 +23,24 @@ consola.log(chalk.cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n')));
       const core = await glob('packages/*/package.json', {
         cwd: projRoot,
         absolute: true,
-        onlyFiles: true,
+        onlyFiles: true
       });
 
       const extensions = await glob('extensions/*/package.json', {
         cwd: projRoot,
         absolute: true,
-        onlyFiles: true,
+        onlyFiles: true
       });
 
       const apps = await glob('apps/*/package.json', {
         cwd: projRoot,
         absolute: true,
-        onlyFiles: true,
+        onlyFiles: true
       });
       const support = await glob('support/*/package.json', {
         cwd: projRoot,
         absolute: true,
-        onlyFiles: true,
+        onlyFiles: true
       });
 
       const allPackages = [...core, ...extensions, ...apps, ...support];
@@ -52,7 +52,7 @@ consola.log(chalk.cyan(['NOTICE:', `$TAG_VERSION: ${tagVersion}`].join('\n')));
         } else {
           json.version = tagVersion;
           await fs.promises.writeFile(pkg, JSON.stringify(json, null, 2), {
-            encoding: 'utf-8',
+            encoding: 'utf-8'
           });
           consola.log(chalk.yellow(`Updating ${pkg} version to ${tagVersion}`));
         }

@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-echarts",
-  "version": "3.0.11",
+  "version": "3.0.13",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -28,13 +28,13 @@
     "prettier": "prettier --write  \"src/**/*.{tsx,ts,css,less,vue}\""
   },
   "peerDependencies": {
-    "fe-ent-core": "^3.0.0"
+    "fe-ent-core": "workspace:*"
   },
   "dependencies": {
     "echarts": "^5.4.2"
   },
   "devDependencies": {
-    "fe-ent-vue-scripts": "^3.0.0",
+    "fe-ent-vue-scripts": "workspace:*",
     "rimraf": "^5.0.0",
     "@types/tinycolor2": "^1.4.2"
   },

@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-flow-chart",
-  "version": "3.0.11",
+  "version": "3.0.13",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -28,15 +28,15 @@
     "prettier": "prettier --write  \"src/**/*.{tsx,ts,css,less,vue}\""
   },
   "peerDependencies": {
-    "fe-ent-core": "^3.0.0",
-    "fe-ent-code-editor": "^3.0.0"
+    "fe-ent-core": "workspace:*",
+    "fe-ent-code-editor": "workspace:*"
   },
   "dependencies": {
     "@logicflow/core": "^1.2.1",
     "@logicflow/extension": "^1.2.1"
   },
   "devDependencies": {
-    "fe-ent-vue-scripts": "^3.0.0",
+    "fe-ent-vue-scripts": "workspace:*",
     "rimraf": "^5.0.0",
     "@types/tinycolor2": "^1.4.2"
   },

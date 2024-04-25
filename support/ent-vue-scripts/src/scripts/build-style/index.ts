@@ -3,7 +3,7 @@ import consola from 'consola';
 import glob from 'glob';
 import { build } from 'vite';
 import paths from '../../utils/paths';
-import config from '../../configs/vite.prod.style';
+import config from '../../configs/component.style';
 
 const run = async () => {
   const cwd = process.cwd();

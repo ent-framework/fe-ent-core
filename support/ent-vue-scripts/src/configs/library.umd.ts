@@ -6,7 +6,7 @@ import { generateModifyVars } from '../utils/modify-vars';
 import external from '../plugins/vite-plugin-external';
 import { commonConfig } from './common';
 import type { InlineConfig, UserConfig } from 'vite';
-import type { ModuleFormat, OutputPlugin } from 'rollup';
+import type { OutputPlugin } from 'rollup';
 
 /***
  * Library 模式
@@ -55,10 +55,7 @@ async function defineUmdLibraryConfig(source: boolean) {
       },
       lib: {
         entry: 'src/index.ts',
-        formats: ['umd'],
-        fileName: (format: ModuleFormat, entryName: string) => {
-          return `${entryName}.${format === 'cjs' ? 'js' : 'mjs'}`;
-        }
+        formats: ['umd']
       }
     },
     css: {

@@ -18,7 +18,7 @@
         />
       </div>
       <NDropdown v-if="toolbar" :options="toolbarList" @select="handleMenuClick">
-        <EntIcon icon="ion:ellipsis-vertical" />
+        <EntIcon icon="ion:ellipsis-vertical-outline" />
       </NDropdown>
     </div>
   </div>
@@ -27,9 +27,9 @@
   import { type PropType, computed, ref, useSlots, watch } from 'vue';
   import { NDropdown, NInput } from 'naive-ui';
   import { useDebounceFn } from '@vueuse/core';
-  import { EntIcon } from '../../../../components/icon';
-  import { EntTitle } from '../../../../components/basic';
-  import { useI18n } from '../../../..//hooks/web/use-i18n';
+  import { EntIcon } from '../../../icon';
+  import { EntTitle } from '../../../basic';
+  import { useI18n } from '../../../../hooks';
   import { ToolbarEnum } from '../types/tree';
 
   const searchValue = ref('');

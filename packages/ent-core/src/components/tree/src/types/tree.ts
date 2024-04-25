@@ -1,7 +1,7 @@
 import { treeProps } from 'naive-ui/es/tree';
 import type { ContextMenuItem } from '../../../context-menu/src/typing';
 import type { ExtractPropTypes, PropType } from 'vue';
-import type { Recordable } from '../../../../types';
+import type { Recordable, ValueAtom } from '../../../../types';
 import type { TreeOption } from 'naive-ui/es/tree/src/interface';
 
 export enum ToolbarEnum {
@@ -24,9 +24,9 @@ export const treeEmits = [
 ];
 
 export interface TreeState {
-  expandedKeys?: KeyType[];
-  selectedKeys?: KeyType[];
-  checkedKeys?: KeyType[];
+  expandedKeys?: ValueAtom[];
+  selectedKeys?: ValueAtom[];
+  checkedKeys?: ValueAtom[];
   cascade?: boolean;
 }
 
@@ -37,11 +37,7 @@ export interface FieldNames {
   disabled?: string;
 }
 
-export type KeyType = string | number;
-
-export type CheckKeys =
-  | KeyType[]
-  | { checked: string[] | number[]; halfChecked: string[] | number[] };
+export type CheckKeys = { checked: ValueAtom[]; halfChecked: ValueAtom[] };
 
 /**
  * 包装类型
@@ -50,7 +46,7 @@ export interface TreeNodeCheckedEvent {
   event: 'check';
   checked: boolean;
   nativeEvent: MouseEvent;
-  halfCheckedKeys?: KeyType[];
+  halfCheckedKeys?: ValueAtom[];
 }
 
 export const basicTreeProps = {
@@ -123,12 +119,12 @@ export interface InsertNodeParams {
 export interface TreeActionType {
   checkAll: (checkAll: boolean) => void;
   expandAll: (expandAll: boolean) => void;
-  setExpandedKeys: (keys: KeyType[]) => void;
-  getExpandedKeys: () => KeyType[];
-  setSelectedKeys: (keys: KeyType[]) => void;
-  getSelectedKeys: () => KeyType[];
-  setCheckedKeys: (keys: KeyType[]) => void;
-  getCheckedKeys: () => KeyType[];
+  setExpandedKeys: (keys: ValueAtom[]) => void;
+  getExpandedKeys: () => ValueAtom[];
+  setSelectedKeys: (keys: ValueAtom[]) => void;
+  getSelectedKeys: () => ValueAtom[];
+  setCheckedKeys: (keys: ValueAtom[]) => void;
+  getCheckedKeys: () => ValueAtom[];
   filterByLevel: (level: number) => void;
   insertNodeByKey: (opt: InsertNodeParams) => void;
   insertNodesByKey: (opt: InsertNodeParams) => void;
@@ -137,7 +133,7 @@ export interface TreeActionType {
   setSearchValue: (value: string) => void;
   getSearchValue: () => string;
   getSelectedNode: (
-    key: KeyType,
+    key: ValueAtom,
     treeList?: TreeItem[],
     selectNode?: TreeItem | null
   ) => TreeItem | null | undefined;

@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "3.0.11",
+  "version": "3.0.13",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
@@ -59,19 +59,19 @@
     "sortablejs": "^1.15.0",
     "treemate": "^0.3.11",
     "vue": "^3.4.8",
+    "vueuc": "^0.4.58",
     "vue-i18n": "^9.11.1",
     "vue-router": "^4.3.0",
     "vue-types": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.18.13",
-    "@purge-icons/generated": "^0.9.0",
     "@types/nprogress": "^0.2.0",
     "@types/qs": "^6.9.7",
     "@types/sortablejs": "^1.15.1",
     "@types/tinycolor2": "^1.4.2",
     "cross-env": "^7.0.3",
-    "fe-ent-vue-scripts": "^3.0.0",
+    "fe-ent-vue-scripts": "workspace:*",
     "rimraf": "^5.0.0",
     "vite": "^5.2.3"
   },
@@ -88,8 +88,5 @@
   "bugs": {
     "url": "https://github.com/ent-framework/fe-ent-core/issues"
   },
-  "homepage": "https://github.com/ent-framework/fe-ent-core",
-  "engines": {
-    "node": "^18.0.0 || >=20.0.0"
-  }
+  "homepage": "https://github.com/ent-framework/fe-ent-core"
 }

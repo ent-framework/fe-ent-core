@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-tiptap",
-  "version": "3.0.11",
+  "version": "3.0.13",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -29,7 +29,7 @@
     "prettier": "prettier --write  \"src/**/*.{tsx,ts,css,less,vue}\""
   },
   "peerDependencies": {
-    "fe-ent-core": "^3.0.0"
+    "fe-ent-core": "workspace:*"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
@@ -82,7 +82,7 @@
     "codemirror": "^5.54.0"
   },
   "devDependencies": {
-    "fe-ent-vue-scripts": "^3.0.0",
+    "fe-ent-vue-scripts": "workspace:*",
     "rimraf": "^5.0.0",
     "@types/codemirror": "^5.60.5"
   },

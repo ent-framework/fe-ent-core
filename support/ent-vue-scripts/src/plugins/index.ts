@@ -1,7 +1,6 @@
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { type PluginOption } from 'vite';
-import purgeIcons from 'vite-plugin-purge-icons';
 import Inspect from 'vite-plugin-inspect';
 import mkcert from 'vite-plugin-mkcert';
 import consola from 'consola';
@@ -45,8 +44,7 @@ async function createPlugins({
     vitePlugins.push(configHtmlPlugin({ isBuild }));
   }
 
-  // vite-plugin-svg-icons
-  vitePlugins.push(purgeIcons(), configUnoCSSPlugin(mode === 'lib'));
+  vitePlugins.push(configUnoCSSPlugin(mode === 'lib'));
 
   // The following plugins only work in the production environment
   if (isBuild) {

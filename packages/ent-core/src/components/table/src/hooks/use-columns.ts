@@ -1,5 +1,5 @@
 import { computed, ref, toRaw, unref, watch } from 'vue';
-import { cloneDeep, get, isEqual } from 'lodash-es';
+import { cloneDeep, get, has, isEqual } from 'lodash-es';
 import { useI18n, usePermission } from '../../../../hooks';
 import { isArray, isBoolean, isString } from '../../../../utils/is';
 import { ACTION_COLUMN_FLAG, DEFAULT_ALIGN, INDEX_COLUMN_FLAG, PAGE_SIZE } from '../const';
@@ -266,6 +266,9 @@ export function useColumns(
   function getColumns(opt?: GetColumnsParams): BasicColumn[] {
     const { ignoreIndex, ignoreAction, sort } = opt || {};
     let columns = toRaw(unref(getColumnsRef));
+    columns = columns.filter((item) => {
+      return !has(item, 'type');
+    });
     if (ignoreIndex) {
       columns = columns.filter((item) => {
         if (isBaseColumn(item)) {

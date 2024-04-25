@@ -1,12 +1,13 @@
-import terser from '@rollup/plugin-terser';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 import { generateModifyVars } from '../utils/modify-vars';
 import cssOnlyPlugin from '../plugins/rollup-plugin-css-only';
 import { configUnoCSSPlugin } from '../plugins/unocss';
 import type { InlineConfig } from 'vite';
-import type { OutputPlugin } from 'rollup';
 
 const config: InlineConfig = {
   mode: 'production',
+  logLevel: 'info',
   build: {
     target: 'modules',
     outDir: 'dist',
@@ -16,21 +17,12 @@ const config: InlineConfig = {
     write: false,
     //brotliSize: false,
     rollupOptions: {
-      input: 'src/style.ts',
-      output: [
-        {
-          format: 'es',
-          dir: 'dist',
-          exports: 'named',
-          entryFileNames: '[name].js',
-          plugins: [terser() as OutputPlugin]
-        }
-      ],
+      treeshake: false,
       plugins: [cssOnlyPlugin()]
     },
     // 开启lib模式，但不使用下面配置
     lib: {
-      entry: '',
+      entry: ['src/style.ts', 'src/index.ts'],
       formats: ['es']
     }
   },
@@ -42,7 +34,7 @@ const config: InlineConfig = {
       }
     }
   },
-  plugins: [configUnoCSSPlugin(true)]
+  plugins: [vue(), vueJsx(), configUnoCSSPlugin(true)]
 };
 
 export default config;
