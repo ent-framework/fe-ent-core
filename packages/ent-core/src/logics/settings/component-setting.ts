@@ -1,6 +1,4 @@
-// Used to configure the general configuration of some components without modifying the components
-
-import type { SorterResult } from '../../components/table/interface';
+import type { DataTableSortState } from 'naive-ui';
 import type { Recordable } from '../../types';
 export default {
   // basic-table setting
@@ -24,18 +22,19 @@ export default {
     // Default Size
     defaultSize: 'middle',
     // Custom general sort function
-    defaultSortFn: (sortInfo: SorterResult) => {
-      const { field, order } = sortInfo;
-      if (field && order) {
-        return {
-          // The sort field passed to the backend you
-          field,
-          // Sorting method passed to the background asc/desc
-          order
-        };
-      } else {
-        return {};
+    defaultSortFn: (sortInfo?: DataTableSortState) => {
+      if (sortInfo) {
+        const { columnKey, order } = sortInfo;
+        if (columnKey && order) {
+          return {
+            // The sort field passed to the backend you
+            orderBy: columnKey,
+            // Sorting method passed to the background asc/desc
+            sortBy: order === 'ascend' ? 'asc' : 'desc'
+          };
+        }
       }
+      return {};
     },
     // Custom general filter function
     defaultFilterFn: (data: Partial<Recordable<string[]>>) => {

@@ -1,10 +1,11 @@
 import type { basicProps } from '../props';
-import type { PaginationProps } from 'naive-ui';
-import type { ColumnProps } from 'ant-design-vue/es/table';
+import type { DataTableFilterState, DataTableSortState, PaginationProps } from 'naive-ui';
 import type { EmitType, ExtractPublicPropTypes, Recordable } from '../../../../types';
-import type { FixedType } from 'ant-design-vue/es/vc-table/interface';
 import type { DataTableBaseColumn, DataTableRowKey } from 'naive-ui/es/data-table';
 import type { OnUpdateCheckedRowKeys } from 'naive-ui/es/data-table/src/interface';
+
+export type FixedType = 'left' | 'right';
+export type SizeType = 'small' | 'medium' | 'large';
 
 export declare type SortOrder = 'ascend' | 'descend';
 
@@ -21,45 +22,43 @@ export interface TableRowSelection {
   onChange?: OnUpdateCheckedRowKeys;
 }
 
-export interface ExpandedRowRenderRecord<T> extends TableCustomRecord<T> {
-  indent?: number;
-  expanded?: boolean;
-}
-export interface ColumnFilterItem {
-  text?: string;
-  value?: string;
-  children?: any;
-}
-
-export interface TableCustomRecord<T = Recordable> {
-  record?: T;
-  index?: number;
-}
-
-export interface SorterResult {
-  column: ColumnProps;
-  order: SortOrder;
-  field: string;
-  columnKey: string;
+export interface FilterInfo {
+  filter: DataTableFilterState;
+  column: DataTableBaseColumn;
 }
 
 export interface FetchParams {
   /**
-   * Search queries
-   */
-  searchInfo?: Recordable;
-  /**
    * Page size
    */
-  page?: number;
+  pagination: PaginationProps;
   /**
    * Sort settings
    */
-  sortInfo?: Recordable;
+  sorter?: DataTableSortState;
   /**
    * filter info, additional params for filter data.
    */
-  filterInfo?: Recordable;
+  filterInfo?: FilterInfo;
+}
+
+export interface FetchRequestParams {
+  /**
+   * Page size
+   */
+  pagination: Recordable;
+  /**
+   * Search form values
+   */
+  searchForm?: Recordable;
+  /**
+   * Sort settings
+   */
+  sorter?: DataTableSortState;
+  /**
+   * filter info, additional params for filter data.
+   */
+  filterInfo?: FilterInfo;
 }
 
 export interface GetColumnsParams {
@@ -76,8 +75,6 @@ export interface GetColumnsParams {
    */
   sort?: boolean;
 }
-
-export type SizeType = 'small' | 'medium' | 'large';
 
 export interface TableActionType {
   reload: (opt?: FetchParams) => Promise<Recordable[] | undefined>;

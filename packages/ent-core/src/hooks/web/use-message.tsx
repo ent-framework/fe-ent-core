@@ -1,35 +1,15 @@
 import { h } from 'vue';
-import { CheckCircleFilled, CloseCircleFilled, InfoCircleFilled } from '@ant-design/icons-vue';
+import { CheckCircleFilled, CloseCircleFilled, InfoCircleFilled } from '@vicons/antd';
 import { useI18n } from './use-i18n';
 import type {
   DialogOptions,
-  MessageOptions,
   MessageProviderInst,
   ModalOptions,
-  NotificationOptions,
   NotificationProviderInst
 } from 'naive-ui';
-import type { MessageSetupProps } from 'naive-ui/es/message/src/message-props';
-import type { ConfigProps } from 'ant-design-vue/es/notification';
 
-export interface NotifyApi {
-  info(config: NotificationOptions): void;
-  success(config: NotificationOptions): void;
-  error(config: NotificationOptions): void;
-  warn(config: NotificationOptions): void;
-  warning(config: NotificationOptions): void;
-  open(args: NotificationOptions): void;
-  close(key: string): void;
-  config(options: ConfigProps): void;
-  destroy(): void;
-}
-
-export declare type NotificationPlacement = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
 export declare type IconType = 'default' | 'error' | 'info' | 'success' | 'warning';
 
-export interface ModalOptionsEx extends Omit<MessageSetupProps, 'type'> {}
-
-export type ModalOptionsPartial = Partial<MessageOptions>;
 /**
  * @description: Create confirmation box
  */

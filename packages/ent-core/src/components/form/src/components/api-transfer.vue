@@ -7,31 +7,33 @@
     :selected-keys="selectedKeys"
     :target-keys="getTargetKeys"
     :show-search="showSearch"
-    @change="handleChange"
+    @update:value="handleChange"
   />
 </template>
 
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
-  import { NTransfer } from 'naive-ui';
+  import { NTransfer, transferProps } from 'naive-ui';
   import { get, omit } from 'lodash-es';
   import { isFunction } from '../../../../utils/is';
   import { propTypes } from '../../../../utils';
   import { useI18n } from '../../../../hooks';
   import type { PropType } from 'vue';
-  import type { TransferDirection, TransferItem } from 'ant-design-vue/es/transfer';
+  import type { ValueAtom } from '../../../../types';
+  import type { TransferOption } from 'naive-ui';
 
   export default defineComponent({
     name: 'ApiTransfer',
     components: { NTransfer },
     props: {
-      value: { type: Array as PropType<Array<string>> },
+      ...transferProps,
+      value: { type: Array as PropType<Array<ValueAtom>> },
       api: {
-        type: Function as PropType<(arg) => Promise<TransferItem[]>>,
+        type: Function as PropType<(arg) => Promise<TransferOption[]>>,
         default: null
       },
       params: { type: Object },
-      dataSource: { type: Array as PropType<Array<TransferItem>> },
+      dataSource: { type: Array as PropType<Array<TransferOption>> },
       immediate: propTypes.bool.def(true),
       alwaysLoad: propTypes.bool.def(false),
       afterFetch: { type: Function },
@@ -41,7 +43,7 @@
       showSearch: { type: Boolean, default: false },
       disabled: { type: Boolean, default: false },
       filterOption: {
-        type: Function as PropType<(inputValue: string, item: TransferItem) => boolean>
+        type: Function as PropType<(inputValue: string, item: TransferOption) => boolean>
       },
       selectedKeys: { type: Array as PropType<Array<string>> },
       showSelectAll: { type: Boolean, default: false },
@@ -49,8 +51,8 @@
     },
     emits: ['options-change', 'change'],
     setup(props, { attrs, emit }) {
-      const _dataSource = ref<TransferItem[]>([]);
-      const _targetKeys = ref<string[]>([]);
+      const _dataSource = ref<TransferOption[]>([]);
+      const _targetKeys = ref<ValueAtom[]>([]);
       const { t } = useI18n();
 
       const getAttrs = computed(() => {
@@ -66,14 +68,14 @@
           if (next) {
             prev.push({
               ...omit(next, [labelField, valueField]),
-              title: next[labelField],
-              key: next[valueField]
+              label: next[labelField],
+              value: next[valueField]
             });
           }
           return prev;
-        }, [] as TransferItem[]);
+        }, [] as TransferOption[]);
       });
-      const getTargetKeys = computed<string[]>(() => {
+      const getTargetKeys = computed<ValueAtom[]>(() => {
         if (unref(_targetKeys).length > 0) {
           return unref(_targetKeys);
         }
@@ -86,7 +88,7 @@
         return [];
       });
 
-      function handleChange(keys: string[], direction: TransferDirection, moveKeys: string[]) {
+      function handleChange(keys: ValueAtom[]) {
         _targetKeys.value = keys;
         emit('change', keys);
       }

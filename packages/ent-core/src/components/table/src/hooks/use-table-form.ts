@@ -1,8 +1,7 @@
 import { computed, unref } from 'vue';
-import { isFunction } from '../../../../utils/is';
 import type { ComputedRef, Slots } from 'vue';
 import type { BasicTableProps, FetchParams } from '../types/table';
-import type { FormProps } from '../../../../components/form/interface';
+import type { FormProps } from '../../../form/src/types/form';
 import type { Recordable } from '../../../../types';
 export function useTableForm(
   propsRef: ComputedRef<BasicTableProps>,
@@ -34,11 +33,8 @@ export function useTableForm(
   }
 
   function handleSearchInfoChange(info: Recordable) {
-    const { handleSearchInfoFn } = unref(propsRef);
-    if (handleSearchInfoFn && isFunction(handleSearchInfoFn)) {
-      info = handleSearchInfoFn(info) || info;
-    }
-    fetch({ searchInfo: info, page: 1 });
+    // info 是 table的值，fetch 方法每次都会获取form的value，所以这里可以不用处理
+    fetch({ pagination: { page: 1 } });
   }
 
   return {

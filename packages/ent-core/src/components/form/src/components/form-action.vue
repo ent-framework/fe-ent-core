@@ -23,12 +23,7 @@
     </EntButton>
 
     <slot name="advanceBefore" />
-    <EntButton
-      v-if="showAdvancedButton && !hideAdvanceBtn"
-      type="link"
-      size="small"
-      @click="toggleAdvanced"
-    >
+    <EntButton v-if="showAdvancedButton && !hideAdvanceBtn" size="small" @click="toggleAdvanced">
       {{ isAdvanced ? t('component.form.putAway') : t('component.form.unfold') }}
       <EntArrow class="ml-1" :expand="!isAdvanced" up />
     </EntButton>

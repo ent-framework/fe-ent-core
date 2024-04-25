@@ -1,15 +1,11 @@
 <template>
   <NSelect
-    v-bind="$attrs"
-    v-model:value="state"
-    :options="getOptions"
+    v-bind="getBindValue"
     :loading="loading"
+    :remote="true"
+    :options="getOptions"
     @update:show="handleFetch"
-    @update:value="handleChange"
   >
-    <template v-for="item in Object.keys($slots)" #[item]="data">
-      <slot :name="item" v-bind="data || {}" />
-    </template>
     <template v-if="loading" #empty>
       <span>
         <EntIcon icon="ant-design:loading-outlined" />
@@ -20,11 +16,11 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, ref, unref, watch, watchEffect } from 'vue';
-  import { NSelect } from 'naive-ui';
-  import { get, omit } from 'lodash-es';
+  import { NSelect, selectProps } from 'naive-ui';
+  import { get, omit, pick } from 'lodash-es';
   import { EntIcon } from '../../../icon';
   import { isFunction } from '../../../../utils/is';
-  import { useAttrs, useI18n, useRuleFormItem } from '../../../../hooks';
+  import { useI18n } from '../../../../hooks';
   import { propTypes } from '../../../../utils';
   import type { PropType } from 'vue';
 
@@ -38,7 +34,7 @@
     },
     inheritAttrs: false,
     props: {
-      value: [Array, Object, String, Number],
+      ...selectProps,
       numberToString: propTypes.bool,
       api: {
         type: Function as PropType<(arg?: any) => Promise<OptionsItem[]>>,
@@ -48,49 +44,32 @@
       params: propTypes.any.def({}),
       // support xxx.xxx.xx
       resultField: propTypes.string.def(''),
-      labelField: propTypes.string.def('label'),
-      valueField: propTypes.string.def('value'),
       immediate: propTypes.bool.def(true),
       alwaysLoad: propTypes.bool.def(false)
     },
     emits: ['options-change', 'change', 'update:value'],
-    setup(props, { emit }) {
+    setup(props, { emit, attrs }) {
       const options = ref<OptionsItem[]>([]);
       const loading = ref(false);
       const isFirstLoad = ref(true);
-      const emitData = ref<any[]>([]);
-      const attrs = useAttrs();
       const { t } = useI18n();
 
-      // Embedded in the form, just use the hook binding to perform form verification
-      const [state] = useRuleFormItem(props, 'value', 'change', emitData);
+      const getBindValue = computed(() => {
+        const propsBind = omit(props, ['options', 'loading', 'onUpdate:show']);
+        const propsSelect = pick(propsBind, Object.keys(selectProps));
+        return {
+          ...propsSelect,
+          ...attrs
+        };
+      });
 
       const getOptions = computed(() => {
-        const { labelField, valueField, numberToString } = props;
-
-        return unref(options).reduce((prev, next: any) => {
-          if (next) {
-            const value = get(next, valueField);
-            prev.push({
-              ...omit(next, [labelField, valueField]),
-              label: get(next, labelField),
-              value: numberToString ? `${value}` : value
-            });
-          }
-          return prev;
-        }, [] as OptionsItem[]);
+        return unref(options);
       });
 
       watchEffect(() => {
         props.immediate && !props.alwaysLoad && fetch();
       });
-
-      watch(
-        () => state.value,
-        (v) => {
-          emit('update:value', v);
-        }
-      );
 
       watch(
         () => props.params,
@@ -138,12 +117,7 @@
       function emitChange() {
         emit('options-change', unref(getOptions));
       }
-
-      function handleChange(_, ...args) {
-        emitData.value = args;
-      }
-
-      return { state, attrs, getOptions, loading, t, handleFetch, handleChange };
+      return { getBindValue, getOptions, loading, t, handleFetch };
     }
   });
 </script>

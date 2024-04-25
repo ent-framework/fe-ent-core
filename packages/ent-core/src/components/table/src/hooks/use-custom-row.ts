@@ -69,24 +69,16 @@ export function useCustomRow(
 
           const actionOrExpandColumn = (e as MouseEvent)
             .composedPath?.()
-            .find(
-              (dom: HTMLElement) =>
-                dom.tagName === 'DIV' &&
-                (dom.className.includes('ent-basic-table-action') ||
-                  dom.className.includes('n-data-table-expand-trigger'))
-            ) as HTMLElement;
+            .find((dom: HTMLElement) => {
+              return (
+                (dom.tagName === 'DIV' &&
+                  (dom.className.includes('ent-basic-table-action') ||
+                    dom.className.includes('n-data-table-expand-trigger'))) ||
+                (dom.tagName === 'TD' && dom.className.includes('ent-table-edit-cell'))
+              );
+            }) as HTMLElement;
           // 点击了操作列,展开列不触发
           if (actionOrExpandColumn) {
-            return;
-          }
-
-          const switchColumn = (e as MouseEvent)
-            .composedPath?.()
-            .find(
-              (dom: HTMLElement) => dom.tagName === 'DIV' && dom.className.includes('n-switch')
-            ) as HTMLElement;
-          // switch 操作列，待补充，不触发
-          if (switchColumn) {
             return;
           }
 

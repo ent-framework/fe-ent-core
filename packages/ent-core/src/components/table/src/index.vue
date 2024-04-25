@@ -33,6 +33,7 @@
       @update:checked-row-keys="setSelectedRowKeys"
       @update:page="handlePageChange"
       @update:page-size="handlePageSizeChange"
+      @update:sorter="handleSortChange"
     >
       <template v-for="item in Object.keys($slots)" #[item]="data" :key="item">
         <slot :name="item" v-bind="data || {}" />
@@ -57,6 +58,7 @@
   import { PageWrapperFixedHeightKey } from '../../page';
   import { useDesign } from '../../../hooks';
   import { warn } from '../../../utils/log';
+  import { isArray } from '../../../utils';
   import TableHeader from './components/table-header.vue';
   import { usePagination } from './hooks/use-pagination';
   import { useColumns } from './hooks/use-columns';
@@ -68,6 +70,7 @@
   import { useTableForm } from './hooks/use-table-form';
 
   import { basicProps, tableHeaderProps } from './props';
+  import type { DataTableSortState } from 'naive-ui';
   import type { BasicTableProps, SizeType, TableActionType } from './types/table';
 
   export default defineComponent({
@@ -106,6 +109,7 @@
       const formRef = ref(null);
       const innerPropsRef = ref<Partial<BasicTableProps>>();
 
+      const sortStates = ref<DataTableSortState>();
       const { prefixCls } = useDesign('basic-table');
       const [registerForm, formActions] = useForm();
 
@@ -225,12 +229,32 @@
         innerPropsRef.value = { ...unref(innerPropsRef), ...props };
       }
 
+      //页面操作时间处理
       function handlePageChange(currentPage) {
-        handleTableChange({ ...getPagination(), page: currentPage });
+        handleTableChange({
+          pagination: { ...getPagination(), page: currentPage },
+          sorter: unref(sortStates)
+        });
       }
       function handlePageSizeChange(pageSize) {
-        handleTableChange({ ...getPagination(), pageSize });
+        handleTableChange({
+          pagination: { ...getPagination(), pageSize },
+          sorter: unref(sortStates)
+        });
       }
+      function handleSortChange(options: DataTableSortState | DataTableSortState[] | null) {
+        if (options) {
+          if (isArray(options) && options.length) {
+            sortStates.value = options[0];
+          } else {
+            sortStates.value = options as DataTableSortState;
+          }
+        } else {
+          sortStates.value = undefined;
+        }
+        handleTableChange({ pagination: { ...getPagination() }, sorter: unref(sortStates) });
+      }
+      //页面操作时间处理 - end
 
       const tableAction: TableActionType = {
         reload,
@@ -288,7 +312,8 @@
         getWrapperClass,
         columns: getViewColumns,
         handlePageChange,
-        handlePageSizeChange
+        handlePageSizeChange,
+        handleSortChange
       };
     }
   });

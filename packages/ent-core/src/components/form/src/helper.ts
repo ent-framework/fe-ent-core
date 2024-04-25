@@ -1,4 +1,4 @@
-import { useI18n } from '../../../hooks/web/use-i18n';
+import { useI18n } from '../../../hooks';
 import { isNumber } from '../../../utils/is';
 import type { ComponentType } from './types';
 import type { FormItemRule } from 'naive-ui/es/form';

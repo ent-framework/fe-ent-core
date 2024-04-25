@@ -1,6 +1,9 @@
+import type { VNode } from 'vue';
+
 export type { ExtractPublicPropTypes } from 'naive-ui/es/_utils';
 
-export type { VueNode } from 'ant-design-vue/es/_util/type';
+declare type VNodeChildAtom = VNode | string | number | boolean | null | undefined | void;
+export type VueNode = VNodeChildAtom | VNodeChildAtom[] | VNode;
 
 export type Nullable<T> = T | null;
 
@@ -60,3 +63,6 @@ export interface ViteEnv {
   VITE_BUILD_COMPRESS: 'gzip' | 'brotli' | 'none';
   VITE_BUILD_USE_IMAGEMIN: boolean;
 }
+// 通用的数据类型，标识Key的Value形式
+export type ValueAtom = string | number;
+export type Value = ValueAtom | string[] | number[] | ValueAtom[];

@@ -1,5 +1,5 @@
 import { nextTick, toRaw, unref } from 'vue';
-import { cloneDeep, get, set, uniqBy } from 'lodash-es';
+import { cloneDeep, get, has, set, uniqBy } from 'lodash-es';
 import {
   isArray,
   isDef,
@@ -77,6 +77,7 @@ export function useFormEvents({
   schemaRef,
   handleFormValues
 }: UseFormActionContext) {
+  //重置Form的值
   async function resetFields(): Promise<void> {
     const { resetFunc, submitOnReset } = unref(getProps);
     resetFunc && isFunction(resetFunc) && (await resetFunc());
@@ -86,7 +87,11 @@ export function useFormEvents({
     Object.keys(formModel).forEach((key) => {
       const schema = unref(getSchema).find((item) => item.field === key);
       const isInput = schema?.component && defaultValueComponents.includes(schema.component);
-      const defaultValue = cloneDeep(defaultValueRef.value[key]);
+      //naive ui 重置value时，接收值为 null, 否则页面不触发更新
+      let defaultValue = null;
+      if (has(defaultValueRef.value, key)) {
+        defaultValue = cloneDeep(defaultValueRef.value[key]);
+      }
       formModel[key] = isInput ? defaultValue || '' : defaultValue;
     });
     await nextTick(() => restoreValidation());
@@ -164,7 +169,7 @@ export function useFormEvents({
       fieldList = [fields];
     }
     for (const field of fieldList) {
-      _removeSchemaByFeild(field, schemaList);
+      _removeSchemaByField(field, schemaList);
     }
     schemaRef.value = schemaList;
   }
@@ -172,7 +177,7 @@ export function useFormEvents({
   /**
    * @description: Delete based on field name
    */
-  function _removeSchemaByFeild(field: string, schemaList: FormSchema[]): void {
+  function _removeSchemaByField(field: string, schemaList: FormSchema[]): void {
     if (isString(field)) {
       const index = schemaList.findIndex((schema) => schema.field === field);
       if (index !== -1) {

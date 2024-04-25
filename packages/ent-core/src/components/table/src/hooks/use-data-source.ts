@@ -1,11 +1,11 @@
-import { computed, onMounted, reactive, ref, unref, watch, watchEffect } from 'vue';
+import { computed, onMounted, ref, unref, watch, watchEffect } from 'vue';
 import { get, merge } from 'lodash-es';
 import { useTimeoutFn } from '../../../../hooks/core/use-timeout';
 import { isBoolean, isFunction, isObject } from '../../../../utils/is';
 import { FETCH_SETTING, PAGE_SIZE } from '../const';
 import type { ComputedRef, Ref } from 'vue';
-import type { DataTableRowKey, PaginationProps } from 'naive-ui';
-import type { BasicTableProps, FetchParams, SorterResult } from '../types/table';
+import type { DataTableRowKey, DataTableSortState, PaginationProps } from 'naive-ui';
+import type { BasicTableProps, FetchParams, FetchRequestParams } from '../types/table';
 import type { EmitType, Recordable } from '../../../../types';
 
 interface ActionType {
@@ -17,10 +17,6 @@ interface ActionType {
   tableData: Ref<Recordable[]>;
 }
 
-interface SearchState {
-  sortInfo: Recordable;
-  filterInfo: Record<string, string[]>;
-}
 export function useDataSource(
   propsRef: ComputedRef<BasicTableProps>,
   {
@@ -33,10 +29,6 @@ export function useDataSource(
   }: ActionType,
   emit: EmitType
 ) {
-  const searchState = reactive<SearchState>({
-    sortInfo: {},
-    filterInfo: {}
-  });
   const dataSourceRef = ref<Recordable[]>([]);
   const rawDataSourceRef = ref<Recordable>({});
 
@@ -55,28 +47,20 @@ export function useDataSource(
     }
   );
 
-  function handleTableChange(
-    pagination: PaginationProps,
-    filters?: Partial<Recordable<string[]>>,
-    sorter?: SorterResult
-  ) {
+  function handleTableChange({ pagination, filterInfo, sorter }: FetchParams) {
     const { clearSelectOnPageChange, sortFn, filterFn } = unref(propsRef);
     if (clearSelectOnPageChange) {
       clearSelectedRowKeys();
     }
     setPagination(pagination);
 
-    const params: Recordable = {};
+    const params: FetchParams = { pagination, filterInfo, sorter };
     if (sorter && typeof sortFn === 'function') {
-      const sortInfo = sortFn(sorter);
-      searchState.sortInfo = sortInfo;
-      params.sortInfo = sortInfo;
+      params.sorter = sortFn(sorter);
     }
 
-    if (filters && typeof filterFn === 'function') {
-      const filterInfo = filterFn(filters);
-      searchState.filterInfo = filterInfo;
-      params.filterInfo = filterInfo;
+    if (filterInfo && typeof filterFn === 'function') {
+      params.filterInfo = filterFn(filterInfo);
     }
     fetch(params);
   }
@@ -213,7 +197,8 @@ export function useDataSource(
       beforeFetch,
       afterFetch,
       useSearchForm,
-      pagination
+      pagination,
+      handleSearchInfoFn
     } = unref(propsRef);
     if (!api || !isFunction(api)) return;
     try {
@@ -223,6 +208,7 @@ export function useDataSource(
         FETCH_SETTING,
         fetchSetting
       );
+      // 后端对分页参数的要求不一样，从配置中读取，重新组装pagination 参数
       let pageParams: Recordable = {};
 
       const { page = 1, pageSize = PAGE_SIZE } = unref(getPaginationInfo) as PaginationProps;
@@ -230,25 +216,31 @@ export function useDataSource(
       if ((isBoolean(pagination) && !pagination) || isBoolean(getPaginationInfo)) {
         pageParams = {};
       } else {
-        pageParams[pageField] = (opt && opt.page) || page;
+        pageParams[pageField] = (opt && opt.pagination.page) || page;
         pageParams[sizeField] = pageSize;
       }
 
-      const { sortInfo = {}, filterInfo } = searchState;
+      let searchForm = useSearchForm ? getFieldsValue() : {};
+      if (useSearchForm && handleSearchInfoFn && isFunction(handleSearchInfoFn)) {
+        searchForm = handleSearchInfoFn(searchForm) || searchForm;
+      }
+      const fetchRequestParams: FetchRequestParams = {
+        pagination: pageParams,
+        searchForm,
+        sorter: { ...defSort, ...(opt?.sorter ?? {}) } as DataTableSortState,
+        filterInfo: opt?.filterInfo
+      };
 
-      let params: Recordable = merge(
-        pageParams,
-        useSearchForm ? getFieldsValue() : {},
-        searchInfo,
-        opt?.searchInfo ?? {},
-        defSort,
-        sortInfo,
-        filterInfo,
-        opt?.sortInfo ?? {},
-        opt?.filterInfo ?? {}
-      );
+      let params: Recordable = {};
       if (beforeFetch && isFunction(beforeFetch)) {
-        params = (await beforeFetch(params)) || params;
+        params = (await beforeFetch(fetchRequestParams)) || {};
+      } else {
+        params = merge(
+          fetchRequestParams.pagination,
+          fetchRequestParams.searchForm,
+          searchInfo,
+          fetchRequestParams.filterInfo
+        );
       }
 
       const res = await api(params);
@@ -277,9 +269,9 @@ export function useDataSource(
       setPagination({
         itemCount: resultTotal || 0
       });
-      if (opt && opt.page) {
+      if (opt && opt.pagination.page) {
         setPagination({
-          page: opt.page || 1
+          page: opt.pagination.page || 1
         });
       }
       emit('fetch-success', {

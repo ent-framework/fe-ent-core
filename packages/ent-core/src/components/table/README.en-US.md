@@ -27,7 +27,7 @@
 |handle-search-info-fn|开启表单后，在请求之前处理搜索条件参数|`Function`|`null`|`-`|
 |fetch-setting|接口请求配置，可以配置请求的字段和响应的字段名，见下方全局配置说明|`object`|`() => FETCH_SETTING`|`-`|
 |immediate|组件加载后是否立即请求接口，在 api 有传的情况下，如果为 false，需要自行使用 reload 加载表格数据|`boolean`|`true`|`-`|
-|search-info|额外的请求参数|`object`|`null`|`-`|
+|search-info|额外的请求参数，每次请求都会加上|`object`|`null`|`-`|
 |def-sort|默认的排序参数|`object`|`null`|`-`|
 |use-search-form|使用搜索表单|`boolean`|`false`|`-`|
 |form-config|搜索表单配置|`object`|`null`|`-`|
@@ -102,42 +102,12 @@
 
 
 
-### ExpandedRowRenderRecord
+### FilterInfo
 
 |Name|Description|Type|Default|Module|
 |---|---|---|:---:|---|
-|indent|indent|`number`|`-`|`-`|
-|expanded|expanded|`boolean`|`false`|`-`|
-
-
-
-### ColumnFilterItem
-
-|Name|Description|Type|Default|Module|
-|---|---|---|:---:|---|
-|text|text|`string`|`-`|`-`|
-|value|value|`string`|`-`|`-`|
-|children|children|`any`|`-`|`-`|
-
-
-
-### TableCustomRecord
-
-|Name|Description|Type|Default|Module|
-|---|---|---|:---:|---|
-|record|record|`T`|`-`|`-`|
-|index|index|`number`|`-`|`-`|
-
-
-
-### SorterResult
-
-|Name|Description|Type|Default|Module|
-|---|---|---|:---:|---|
-|column|column|`ColumnProps`|`-`|`-`|
-|order|order|`SortOrder`|`-`|`-`|
-|field|field|`string`|`-`|`-`|
-|columnKey|columnKey|`string`|`-`|`-`|
+|filter|filter|`DataTableFilterState`|`-`|`-`|
+|column|column|`DataTableBaseColumn`|`-`|`-`|
 
 
 
@@ -145,10 +115,20 @@
 
 |Name|Description|Type|Default|Module|
 |---|---|---|:---:|---|
-|searchInfo|Search queries|`Recordable`|`-`|`-`|
-|page|Page size|`number`|`-`|`-`|
-|sortInfo|Sort settings|`Recordable`|`-`|`-`|
-|filterInfo|filter info, additional params for filter data.|`Recordable`|`-`|`-`|
+|pagination|Page size|`PaginationProps`|`-`|`-`|
+|sorter|Sort settings|`DataTableSortState`|`-`|`-`|
+|filterInfo|filter info, additional params for filter data.|`FilterInfo`|`-`|`-`|
+
+
+
+### FetchRequestParams
+
+|Name|Description|Type|Default|Module|
+|---|---|---|:---:|---|
+|pagination|Page size|`Recordable`|`-`|`-`|
+|searchForm|Search form values|`Recordable`|`-`|`-`|
+|sorter|Sort settings|`DataTableSortState`|`-`|`-`|
+|filterInfo|filter info, additional params for filter data.|`FilterInfo`|`-`|`-`|
 
 
 

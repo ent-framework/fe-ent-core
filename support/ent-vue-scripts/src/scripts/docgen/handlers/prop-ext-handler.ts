@@ -46,6 +46,7 @@ export async function propExtHandler(
           return (n.id as bt.Identifier).name === varName;
         });
       const cwd = process.cwd();
+      //直接定义在vue文件中的props
       if (varDesc && varDesc.init && varDesc.init.type === 'ObjectExpression') {
         const vals = resolveVar(ast);
         const varDescPath = vals.get(varName);

@@ -8,6 +8,8 @@
       "vue-types": ["../../node_modules/vue-types"],
       "axios": ["../../node_modules/axios"],
       "pinia": ["../../node_modules/pinia"],
+      "async-validator": ["../../node_modules/async-validator"],
+      "naive-ui": ["../../node_modules/naive-ui"],
       "naive-ui/es/*": ["../../node_modules/naive-ui/es/*"],
       "@types/qrcode": ["../../node_modules/@types/qrcode"],
       "fe-ent-core": ["../../packages/ent-core/es"],

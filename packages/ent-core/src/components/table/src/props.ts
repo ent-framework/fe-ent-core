@@ -1,17 +1,19 @@
 import { dataTableProps } from 'naive-ui/es/data-table';
 import { propTypes } from '../../../utils';
 import { DEFAULT_FILTER_FN, DEFAULT_SORT_FN, FETCH_SETTING } from './const';
-import type { PropType } from 'vue';
 import type {
   BasicColumn,
+  FetchRequestParams,
   FetchSetting,
-  SorterResult,
+  FilterInfo,
   TableRowSelection,
   TableSetting
 } from './types/table';
+import type { PropType } from 'vue';
 import type { FormProps } from '../../form/src/types/form';
 import type { Fn, Recordable } from '../../../types';
-import type { DataTableExpandColumn, DataTableSelectionColumn } from 'naive-ui';
+import type { DataTableExpandColumn, DataTableSelectionColumn, DataTableSortState } from 'naive-ui';
+
 export const tableHeaderProps = {
   /**
    * 标题
@@ -77,7 +79,7 @@ export const basicProps = {
    * @type {Function}
    */
   sortFn: {
-    type: Function as PropType<(sortInfo: SorterResult) => any>,
+    type: Function as PropType<(sortInfo?: DataTableSortState) => DataTableSortState | undefined>,
     default: DEFAULT_SORT_FN
   },
   /**
@@ -85,22 +87,10 @@ export const basicProps = {
    * @type {Function}
    */
   filterFn: {
-    type: Function as PropType<(data: Partial<Recordable<string[]>>) => any>,
+    type: Function as PropType<(filter?: FilterInfo) => FilterInfo | undefined>,
     default: DEFAULT_FILTER_FN
   },
 
-  // /**
-  //  * 缩进值
-  //  * @type {number}
-  //  * @default 24
-  //  */
-  // indentSize: propTypes.number.def(24),
-  // /**
-  //  * 列能否拖动
-  //  * @type {boolean}
-  //  * @default true
-  //  */
-  // canColDrag: propTypes.bool.def(true),
   /**
    * 请求接口，可以直接将src/api内的函数直接传入
    * @type {Function}
@@ -114,7 +104,7 @@ export const basicProps = {
    * @type {Function}
    */
   beforeFetch: {
-    type: Function as PropType<Fn>,
+    type: Function as PropType<(params: FetchRequestParams) => any>,
     default: null
   },
   /**
@@ -146,9 +136,13 @@ export const basicProps = {
    * @type {boolean}
    * @default true
    */
-  immediate: propTypes.bool.def(true),
+  immediate: {
+    type: Boolean,
+    default: true
+  },
+
   /**
-   * 额外的请求参数
+   * 额外的请求参数，每次请求都会加上
    * @type {object}
    */
   searchInfo: {
@@ -160,7 +154,7 @@ export const basicProps = {
    * @type {object}
    */
   defSort: {
-    type: Object as PropType<Recordable>,
+    type: Object as PropType<DataTableSortState>,
     default: null
   },
   /**
