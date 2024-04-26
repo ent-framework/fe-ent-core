@@ -30,22 +30,22 @@ async function defineUmdLibraryConfig(source: boolean) {
       target: 'modules',
       outDir: 'dist',
       emptyOutDir: false,
-      sourcemap: true,
+      sourcemap: false,
       minify: false,
       cssMinify: true,
       rollupOptions: {
         input: ['src/index.ts'],
         treeshake: 'smallest',
         output: [
+          // {
+          //   format: 'umd',
+          //   entryFileNames: `index.full.js`,
+          //   exports: 'named',
+          //   name
+          // },
           {
             format: 'umd',
-            entryFileNames: `index.full.js`,
-            exports: 'named',
-            name
-          },
-          {
-            format: 'umd',
-            entryFileNames: `index.full.min.js`,
+            entryFileNames: `index.min.js`,
             exports: 'named',
             name,
             plugins: [terser() as OutputPlugin]
@@ -66,7 +66,7 @@ async function defineUmdLibraryConfig(source: boolean) {
         }
       }
     },
-    plugins: [external(source), ...plugins]
+    plugins: [external(deps), ...plugins]
   };
   const mergedConfig = mergeConfig(
     commonConfig({ command: 'build', mode: 'production' }),

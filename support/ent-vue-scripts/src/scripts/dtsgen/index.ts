@@ -57,11 +57,13 @@ const build = async (base: string, tsconfig: string) => {
     }
 
     const subTasks = emitFiles.map(async (outputFile) => {
-      const filePath = outputFile.getFilePath();
-      const relativePath = path.relative(outDir, filePath);
-      const targetPath = `${basePathPrefix && basePathPrefix.length > 0 ? `${outDir}/${relativePath.replace(`${basePathPrefix}/`, '')}` : filePath}`;
-      await fs.ensureDir(path.dirname(targetPath));
-      fs.writeFileSync(targetPath, outputFile.getText(), 'utf8');
+      ['lib', 'es'].forEach((d) => {
+        const filePath = outputFile.getFilePath();
+        const relativePath = path.relative(outDir, filePath);
+        const targetPath = `${basePathPrefix && basePathPrefix.length > 0 ? `${cwd}/${d}/${relativePath.replace(`${basePathPrefix}/`, '')}` : `${cwd}/${d}/${relativePath}`}`;
+        fs.ensureDirSync(path.dirname(targetPath));
+        fs.writeFileSync(targetPath, outputFile.getText(), 'utf8');
+      });
     });
 
     await Promise.all(subTasks);

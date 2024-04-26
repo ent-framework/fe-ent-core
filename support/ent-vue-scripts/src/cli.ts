@@ -7,7 +7,6 @@ import icongen from './scripts/icongen';
 import lessgen from './scripts/lessgen';
 import docgen from './scripts/docgen';
 import dtsgen from './scripts/dtsgen';
-import devComponent from './scripts/dev-component';
 import viteSite from './scripts/site';
 import viteProject from './scripts/build-project';
 import viteApp from './scripts/build-app';
@@ -56,13 +55,6 @@ program
   .description('emit .d.ts files for vue files.')
   .action(({ base = 'src', tsconfig = 'tsconfig.json' }) => {
     dtsgen(base, tsconfig);
-  });
-
-program
-  .command('dev:component')
-  .description('build components with watch mode.')
-  .action(async () => {
-    await devComponent();
   });
 
 program

@@ -12,18 +12,12 @@ async function run({ umd = false, source = false }) {
   await fs.emptyDir(path.resolve(cwd, 'dist'));
   await build(await defineLibraryConfig(source));
   consola.success(`build library successfully in path ${cwd}`);
-  // 拷贝less文件到目标文件，index.less编译生成index.css
-  const files = glob.sync('**/*.less', {
-    cwd: `${cwd}/src`,
-    absolute: false,
-    ignore: ['node_modules/**']
-  });
-
-  for (const filename of files) {
-    const absolute = path.resolve(`${cwd}/src`, `${filename}`);
-    fs.copySync(absolute, path.resolve(cwd, `es/${filename}`));
+  if (fs.existsSync(path.resolve(process.cwd(), 'lib/style.css'))) {
+    fs.removeSync(path.resolve(process.cwd(), 'lib/style.css'));
   }
-
+  if (fs.existsSync(path.resolve(process.cwd(), 'es/style.css'))) {
+    fs.removeSync(path.resolve(process.cwd(), 'es/style.css'));
+  }
   if (umd) {
     consola.info(`start build library umd in path ${cwd}`);
     await build(await defineUmdLibraryConfig(source));

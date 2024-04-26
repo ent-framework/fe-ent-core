@@ -28,7 +28,7 @@
     </TableHeader>
     <NDataTable
       ref="tableElRef"
-      v-bind="getBindValues"
+      v-bind="getTableProps"
       v-model:checked-row-keys="checkState.keys"
       @update:checked-row-keys="setSelectedRowKeys"
       @update:page="handlePageChange"
@@ -201,7 +201,7 @@
         const { api } = _props;
         let propsData: BasicTableProps = {
           ...attrs,
-          ...pick(_props, Object.keys(dataTableProps)),
+          ..._props,
           loading: unref(getLoading),
           rowProps: customRow,
           columns: toRaw(unref(getViewColumns)),
@@ -211,6 +211,11 @@
         };
         propsData = omit(propsData, ['class', 'onChange']);
         return propsData;
+      });
+
+      const getTableProps = computed(() => {
+        const _props = unref(getBindValues);
+        return pick(_props, Object.keys(dataTableProps));
       });
 
       const getWrapperClass = computed(() => {
@@ -305,6 +310,7 @@
         wrapRef,
         tableAction,
         getFormProps: getFormProps as any,
+        getTableProps,
         replaceFormSlotKey,
         getFormSlotKeys,
         checkState,

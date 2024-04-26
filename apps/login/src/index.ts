@@ -1,10 +1,10 @@
 import { useLocale } from 'fe-ent-core/es/locales';
 import Login from './components/login.vue';
-import './components/index.less';
 import localeEn from './locales/en';
 import localeZh from './locales/zh-CN';
-import type { App } from 'vue/dist/vue';
+import type { App } from 'vue';
 import type { AppRouteRecordRaw, EntRouter } from 'fe-ent-core/es/router';
+import './index.less';
 
 const LoginRoute: AppRouteRecordRaw = {
   path: '/login',

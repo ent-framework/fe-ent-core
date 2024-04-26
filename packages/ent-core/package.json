@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "3.0.13",
+  "version": "3.0.14",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
@@ -13,6 +13,7 @@
     "json",
     "volar.d.ts"
   ],
+  "main": "lib/index.js",
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
   "unpkg": "dist/index.full.min.js",
@@ -22,16 +23,15 @@
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
-    "docgen": "ent-vue-scripts docgen",
+    "docgen": "ent-cli docgen",
     "build": "pnpm run icongen && pnpm run build-all",
-    "build-all": "npm-run-all --parallel build:component build:style docgen jsongen dtsgen",
-    "gen:doc": "ent-vue-scripts docgen",
-    "build:component": "ent-vue-scripts build:component -u",
-    "build:style": "cross-env DEBUG=true ent-vue-scripts build:style",
-    "icongen": "ent-vue-scripts icongen",
-    "dtsgen": "ent-vue-scripts dtsgen",
-    "jsongen": "ent-vue-scripts jsongen",
-    "changelog": "ent-vue-scripts changelog",
+    "build-all": "npm-run-all --parallel build:component docgen jsongen dtsgen",
+    "gen:doc": "ent-cli docgen",
+    "build:component": "ent-cli build:component -u",
+    "icongen": "ent-cli icongen",
+    "dtsgen": "ent-cli dtsgen",
+    "jsongen": "ent-cli jsongen",
+    "changelog": "ent-cli changelog",
     "lint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix",
     "prettier": "prettier --write  \"src/**/*.{tsx,ts,css,less,vue}\""
   },

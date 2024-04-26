@@ -25,7 +25,7 @@ import { useLayoutStore } from './store/layout';
 import type { App } from 'vue';
 import type { AppRouteRecordRaw, EntRouter } from 'fe-ent-core/es/router';
 
-import './components/index.less';
+import './index.less';
 
 // 导入基础路由，与业务无关
 function getPublicRoutes(): AppRouteRecordRaw[] {

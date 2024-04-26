@@ -44,7 +44,9 @@ async function createPlugins({
     vitePlugins.push(configHtmlPlugin({ isBuild }));
   }
 
-  vitePlugins.push(configUnoCSSPlugin(mode === 'lib'));
+  if (mode !== 'lib') {
+    vitePlugins.push(configUnoCSSPlugin(false));
+  }
 
   // The following plugins only work in the production environment
   if (isBuild) {

@@ -19,9 +19,6 @@ export function configUnoCSSPlugin(isLib: boolean) {
       mode: 'dist-chunk',
       inspector: true,
       postcss: true,
-      content: {
-        filesystem: ['**/*.{vue,js,ts,jsx,tsx}', '**/*.{scss,less,styl,stylus,css,sass,scss}']
-      },
       presets: [presetUno({ preflight: false }), presetTypography()],
       transformers: [transformerDirectives()],
       theme

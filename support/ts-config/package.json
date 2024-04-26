@@ -1,6 +1,6 @@
 {
   "name": "ts-config-ent",
-  "version": "3.0.13",
+  "version": "3.0.14",
   "files": [
     "base.json",
     "node.json",

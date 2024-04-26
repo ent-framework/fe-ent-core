@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-code-editor",
-  "version": "3.0.13",
+  "version": "3.0.14",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -11,19 +11,20 @@
     "lib",
     "json"
   ],
+  "main": "lib/index.js",
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
-  "unpkg": "dist/index.full.min.js",
+  "unpkg": "dist/index.min.js",
   "sideEffects": [
     "dist/*"
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
     "build": "npm-run-all --parallel build:library docgen jsongen dtsgen",
-    "docgen": "ent-vue-scripts docgen",
-    "build:library": "ent-vue-scripts build:library -u -s",
-    "jsongen": "ent-vue-scripts jsongen",
-    "dtsgen": "ent-vue-scripts dtsgen",
+    "docgen": "ent-cli docgen",
+    "build:library": "ent-cli build:library -u -s",
+    "jsongen": "ent-cli jsongen",
+    "dtsgen": "ent-cli dtsgen",
     "lint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix",
     "prettier": "prettier --write  \"src/**/*.{tsx,ts,css,less,vue}\""
   },

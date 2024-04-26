@@ -1,10 +1,10 @@
 {
-  "name": "fe-ent-vue-scripts",
-  "version": "3.0.13",
+  "name": "fe-ent-cli",
+  "version": "3.0.14",
   "description": "Ent Vue Scripts",
   "main": "dist/index.js",
   "bin": {
-    "ent-vue-scripts": "/dist/cli.js"
+    "ent-cli": "/dist/cli.js"
   },
   "files": [
     "dist"

@@ -10,32 +10,31 @@ import type { OutputPlugin } from 'rollup';
 
 export default (): InlineConfig => {
   const entry = `src/index.ts`;
-  console.log(111111111);
   const packageConfig: UserConfig = {
     mode: 'production',
     build: {
       target: 'modules',
       outDir: 'dist',
       emptyOutDir: false,
-      sourcemap: true,
+      sourcemap: false,
       minify: false,
       cssMinify: true,
       rollupOptions: {
         input: entry,
         treeshake: 'smallest',
         output: [
+          // {
+          //   format: 'umd',
+          //   entryFileNames: `index.full.js`,
+          //   globals: {
+          //     vue: 'Vue'
+          //   },
+          //   name: 'Ent',
+          //   exports: 'named'
+          // },
           {
             format: 'umd',
-            entryFileNames: `index.full.js`,
-            globals: {
-              vue: 'Vue'
-            },
-            name: 'Ent',
-            exports: 'named'
-          },
-          {
-            format: 'umd',
-            entryFileNames: `index.full.min.js`,
+            entryFileNames: `index.min.js`,
             globals: {
               vue: 'Vue'
             },
@@ -60,7 +59,7 @@ export default (): InlineConfig => {
         }
       }
     },
-    plugins: [vue(), vueJsx()]
+    plugins: [vue(), vueJsx(), configUnoCSSPlugin(true)]
   };
   const mergedConfig = mergeConfig(
     commonConfig({ command: 'build', mode: 'production' }),

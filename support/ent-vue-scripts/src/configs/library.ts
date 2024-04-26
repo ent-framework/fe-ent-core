@@ -53,7 +53,16 @@ async function defineLibraryConfig(source: boolean) {
             entryFileNames: '[name].mjs',
             preserveModules: true,
             exports: 'named',
-            preserveModulesRoot: 'src'
+            preserveModulesRoot: `${process.cwd()}/src/`
+          },
+          {
+            interop: 'auto',
+            format: 'commonjs',
+            dir: 'lib',
+            entryFileNames: '[name].js',
+            preserveModules: true,
+            exports: 'named',
+            preserveModulesRoot: `${process.cwd()}/src/`
           }
         ],
         external: [...deps]
@@ -67,7 +76,7 @@ async function defineLibraryConfig(source: boolean) {
         }
       }
     },
-    plugins: [external(source), ...plugins, vueExportHelper()]
+    plugins: [external(deps), ...plugins, vueExportHelper()]
   };
   const mergedConfig = mergeConfig(
     commonConfig({ command: 'build', mode: 'production' }),
