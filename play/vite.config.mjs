@@ -1,4 +1,4 @@
-import { defineProjectConfig } from 'fe-ent-vue-scripts';
+import { defineProjectConfig } from 'fe-ent-cli';
 import { defineConfig, searchForWorkspaceRoot } from 'vite';
 const workspace = searchForWorkspaceRoot(process.cwd());
 

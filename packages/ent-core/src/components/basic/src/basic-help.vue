@@ -3,8 +3,8 @@
   import { NTooltip } from 'naive-ui';
   import EntIcon from '../../../components/icon/src/icon.vue';
   import { isArray, isString } from '../../../utils/is';
-  import { getSlot } from '../../../utils/helper/tsx-helper';
-  import { useDesign } from '../../../hooks/web/use-design';
+  import { getSlot } from '../../../utils';
+  import { useDesign } from '../../../hooks';
   import type { CSSProperties, PropType } from 'vue';
 
   const props = {

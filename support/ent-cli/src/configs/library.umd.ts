@@ -11,7 +11,7 @@ import type { OutputPlugin } from 'rollup';
 /***
  * Library 模式
  */
-async function defineUmdLibraryConfig(source: boolean) {
+async function defineUmdLibraryConfig() {
   const root = process.cwd();
   const packageJson = await readPackageJSON(root);
   const { name } = packageJson;
@@ -37,12 +37,6 @@ async function defineUmdLibraryConfig(source: boolean) {
         input: ['src/index.ts'],
         treeshake: 'smallest',
         output: [
-          // {
-          //   format: 'umd',
-          //   entryFileNames: `index.full.js`,
-          //   exports: 'named',
-          //   name
-          // },
           {
             format: 'umd',
             entryFileNames: `index.min.js`,

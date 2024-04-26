@@ -23,15 +23,6 @@ export default (): InlineConfig => {
         input: entry,
         treeshake: 'smallest',
         output: [
-          // {
-          //   format: 'umd',
-          //   entryFileNames: `index.full.js`,
-          //   globals: {
-          //     vue: 'Vue'
-          //   },
-          //   name: 'Ent',
-          //   exports: 'named'
-          // },
           {
             format: 'umd',
             entryFileNames: `index.min.js`,

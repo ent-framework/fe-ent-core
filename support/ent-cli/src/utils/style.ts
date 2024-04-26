@@ -2,12 +2,18 @@ import path from 'path';
 import fs from 'fs-extra';
 import consola from 'consola';
 import glob from 'glob';
-import { build } from 'vite';
-import paths from '../../utils/paths';
-import styleConfig from '../../configs/component.style';
+import paths from './paths';
 
-const run = async () => {
-  // 拷贝less文件到目标文件，index.less编译生成index.css
+export const cleanTempStyles = () => {
+  if (fs.existsSync(path.resolve(process.cwd(), 'lib/style.css'))) {
+    fs.removeSync(path.resolve(process.cwd(), 'lib/style.css'));
+  }
+  if (fs.existsSync(path.resolve(process.cwd(), 'es/style.css'))) {
+    fs.removeSync(path.resolve(process.cwd(), 'es/style.css'));
+  }
+};
+
+export const copyLessFiles = () => {
   consola.info(`copy less to es & lib`);
   const cwd = process.cwd();
   // 拷贝less文件到目标文件，index.less编译生成index.css
@@ -25,11 +31,4 @@ const run = async () => {
     const absolute = paths.resolvePath(`src/${filename}`);
     fs.copySync(absolute, paths.resolvePath(`lib/${filename}`));
   }
-  // 拷贝并编译less入口文件
-  consola.log('build target css');
-
-  await build(await styleConfig());
-  consola.success(`target build success`);
 };
-
-export default run;

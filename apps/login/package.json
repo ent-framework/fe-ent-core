@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-login",
-  "version": "3.0.15",
+  "version": "3.0.20",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -14,7 +14,7 @@
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
-  "unpkg": "dist/index.full.min.js",
+  "unpkg": "dist/index.min.js",
   "sideEffects": [
     "dist/*"
   ],

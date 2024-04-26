@@ -1,6 +1,6 @@
 import { NProgress, NTag } from 'naive-ui';
 import TableAction from '../../../components/table/src/components/table-action.vue';
-import { useI18n } from '../../../hooks/web/use-i18n';
+import { useI18n } from '../../../hooks';
 import ThumbUrl from './thumb-url.vue';
 import { UploadResultStatus } from './typing';
 import {
