@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-code-editor",
-  "version": "3.0.14",
+  "version": "3.0.15",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -35,7 +35,7 @@
     "codemirror": "^5.65.12"
   },
   "devDependencies": {
-    "fe-ent-vue-scripts": "workspace:*",
+    "fe-ent-cli": "workspace:*",
     "@types/codemirror": "^5.60.5",
     "rimraf": "^5.0.0"
   },

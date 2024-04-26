@@ -19,7 +19,7 @@
     "fe-ent-layout": "workspace:*"
   },
   "devDependencies": {
-    "fe-ent-vue-scripts": "workspace:*"
+    "fe-ent-cli": "workspace:*"
   },
   "repository": {
     "type": "git",

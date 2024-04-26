@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "3.0.14",
+  "version": "3.0.15",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com",
@@ -16,7 +16,7 @@
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
-  "unpkg": "dist/index.full.min.js",
+  "unpkg": "dist/index.min.js",
   "sideEffects": [
     "dist/*",
     "*.less"
@@ -71,7 +71,7 @@
     "@types/sortablejs": "^1.15.1",
     "@types/tinycolor2": "^1.4.2",
     "cross-env": "^7.0.3",
-    "fe-ent-vue-scripts": "workspace:*",
+    "fe-ent-cli": "workspace:*",
     "rimraf": "^5.0.0",
     "vite": "^5.2.3"
   },

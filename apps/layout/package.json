@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-layout",
-  "version": "3.0.14",
+  "version": "3.0.15",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -35,7 +35,7 @@
   "devDependencies": {
     "@types/lodash": "^4.14.198",
     "@types/lodash-es": "^4.17.9",
-    "fe-ent-vue-scripts": "workspace:*",
+    "fe-ent-cli": "workspace:*",
     "naive-ui": "^2.38.1",
     "vue": "^3.4.8",
     "rimraf": "^5.0.0"

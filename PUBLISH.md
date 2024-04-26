@@ -23,7 +23,7 @@ npm login
 ```bash
 TAG_VERSION=3.0.1 pnpm update:version
 ```
-- 构建新版本
+- 构建新版本[package.json](packages%2Fent-core%2Fpackage.json)
 ```bash
 pnpm build:all
 ```

@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-excel",
-  "version": "3.0.14",
+  "version": "3.0.15",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -36,7 +36,7 @@
     "date-fns": "^2.30.0"
   },
   "devDependencies": {
-    "fe-ent-vue-scripts": "workspace:*",
+    "fe-ent-cli": "workspace:*",
     "rimraf": "^5.0.0"
   },
   "repository": {
