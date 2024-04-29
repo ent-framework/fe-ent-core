@@ -31,6 +31,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - run: npm install -g pnpm
+      - run: pnpm install
+      - run: pnpm build:support
+      - run: pnpm build:docs
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
