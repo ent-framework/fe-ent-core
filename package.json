@@ -26,7 +26,7 @@
     "build:extensions": "pnpm --filter './extensions/**' --stream build",
     "build:apps": "pnpm --filter './apps/**' --stream build",
     "build:internal": "pnpm run -r --parallel stub",
-    "build:docs": "pnpm run lib:icongen && pnpm run -C docs --stream build",
+    "build:docs": "pnpm run -C packages/ent-core icongen && pnpm run -C docs --stream build",
     "changelog": "pnpm run -C packages/fe-ent-core --stream changelog",
     "build:play": "pnpm -C play --stream build",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
