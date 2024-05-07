@@ -87,7 +87,7 @@ export function getRootRoute(): AppRouteRecordRaw {
   return {
     path: '/',
     name: 'Root',
-    redirect: `${homePath || '/dashboard'}`,
+    redirect: `${homePath || '/welcome'}`,
     meta: {
       title: 'Root'
     }

@@ -29,7 +29,7 @@ pnpm build:all
 ```
 - 推送
 ```bash
- pnpm remote
+ pnpm -r publish
 ```
 
 清理pnpm 缓存

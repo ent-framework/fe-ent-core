@@ -39,13 +39,13 @@ export function usePagination(refProps: ComputedRef<BasicTableProps>) {
       showQuickJumper: true,
       ...(isBoolean(pagination) ? {} : pagination),
       ...unref(configRef)
-    };
+    } as PaginationProps;
   });
 
   function setPagination(info: Partial<PaginationProps>) {
     const paginationInfo = unref(getPaginationInfo);
     configRef.value = {
-      ...(!isBoolean(paginationInfo) ? paginationInfo : {}),
+      ...(!isBoolean(paginationInfo) && paginationInfo ? paginationInfo : {}),
       ...info
     };
   }

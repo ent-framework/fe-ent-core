@@ -18,7 +18,7 @@ description: 页面包装
 |schemas|表单配置|`FormSchema[]`|`[]`|`-`|
 |merge-dynamic-data|额外传递到子组件的参数 values|`Recordable`|`null`|`-`|
 |base-grid-style|配置所有 Grid 的 style 样式|`CSSProperties`|`-`|`-`|
-|grid-props|配置所有 Grid 的 props 配置|`GridProps`|`() => ({  cols: 24,  xGap: 10})`|`-`|
+|grid-props|配置所有 Grid 的 props 配置|`Partial<GridProps>`|`() => ({  cols: 24,  xGap: 10})`|`-`|
 |base-grid-item-props|配置所有选子项的 GridItemProps，不需要逐个配置，子项也可单独配置优先与全局|`Partial<GridItemProps>`|`() => ({  span: 6})`|`-`|
 |base-form-item-props|配置所有 FormItem 的 props 配置，schema中可以通过 formItemProps 覆盖|`Partial<FormItemProps>`|`() => ({  labelPlacement: 'left',  labelWidth: 'auto'})`|`-`|
 |auto-set-place-holder|自动设置表单内组件的 placeholder，自定义组件需自行实现|`boolean`|`true`|`-`|
@@ -26,11 +26,11 @@ description: 页面包装
 |submit-on-reset|重置时是否提交表单|`boolean`|`true`|`-`|
 |submit-on-change|FormItem发生变化时是否提交表单|`boolean`|`false`|`-`|
 |empty-span|空白行格,可以是数值或者 col 对象 数|`number \| Recordable`|`0`|`-`|
-|transform-date-func|转化时间格式|`Fn`|`(date: any) => date?.format?.('YYYY-MM-DD HH:mm:ss') ?? date`|`-`|
+|transform-date-func|转化时间格式|`Fn`|`(date: any) => date?.format?.('yyyy-MM-dd HH:mm:ss') ?? date`|`-`|
 |rules-message-join-label|校验信息是否加入 label|`boolean`|`true`|`-`|
 |auto-advanced-line|如果 showAdvancedButton 为 true，超过指定行数行默认折叠|`number`|`3`|`-`|
 |always-show-lines|折叠时始终保持显示的行数|`number`|`1`|`-`|
-|auto-focus-first-item|是否聚焦第一个输入框，只在第一个表单项为input的时候作用|`boolean`|`false`|`-`|
+|auto-focus-first-item|是否聚焦第一个输入框，只在第一个表单项为input的时候作用|`boolean`|`true`|`-`|
 |reset-func|自定义重置按钮逻辑|`() => Promise<void>`|`-`|`-`|
 |submit-func|自定义提交按钮逻辑|`() => Promise<void>`|`-`|`-`|
 |show-action-button-group|是否显示操作按钮|`boolean`|`true`|`-`|

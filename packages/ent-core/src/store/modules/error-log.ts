@@ -3,9 +3,9 @@ import { defineStore } from 'pinia';
 import { format } from 'date-fns';
 import { defaultProjectSetting } from '../../logics/settings/project-setting';
 
-import { ErrorTypeEnum } from '../../logics/enums/exception-enum';
+import { ErrorTypeEnum } from '../../logics';
 import type { AxiosError } from 'axios';
-import type { ErrorLogInfo } from '../../store/types';
+import type { ErrorLogInfo } from '../types';
 import type { Nullable } from '../../types';
 
 export interface ErrorLogState {
@@ -31,7 +31,7 @@ export const useErrorLogStore = defineStore({
     addErrorLogInfo(info: ErrorLogInfo) {
       const item = {
         ...info,
-        time: format(new Date(), 'YYYY-MM-DD HH:mm:ss')
+        time: format(new Date(), 'yyyy-MM-dd HH:mm:ss')
       };
       this.errorLogInfoList = [item, ...(this.errorLogInfoList || [])];
       this.errorLogListCount += 1;

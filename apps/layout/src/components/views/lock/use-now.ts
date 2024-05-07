@@ -1,11 +1,9 @@
 import { reactive, toRefs } from 'vue';
-import dayjs from 'dayjs';
-import weekday from 'dayjs/plugin/weekday';
+import { format } from 'date-fns';
 import { tryOnMounted, tryOnUnmounted } from '@vueuse/core';
 import type { IntervalHandle } from 'fe-ent-core/es/types';
 
 export function useNow(immediate = true) {
-  dayjs.extend(weekday);
   let timer: IntervalHandle;
 
   const state = reactive({
@@ -15,23 +13,25 @@ export function useNow(immediate = true) {
     day: 0,
     hour: '',
     minute: '',
-    second: 0,
+    second: '',
     meridiem: ''
   });
 
   const update = () => {
-    const now = dayjs();
+    const now = new Date();
 
-    const h = now.format('HH');
-    const m = now.format('mm');
+    const d = format(now, 'dd');
+    const h = format(now, 'HH');
+    const m = format(now, 'mm');
+    const s = format(now, 'ss');
 
-    state.year = now.year();
-    state.month = now.month() + 1;
+    state.year = now.getFullYear();
+    state.month = now.getMonth() + 1;
     state.week = '';
-    state.day = now.date();
+    state.day = Number.parseInt(d);
     state.hour = h;
     state.minute = m;
-    state.second = now.second();
+    state.second = s;
 
     //state.meridiem = localData.meridiem(Number(h), Number(h), true);
   };

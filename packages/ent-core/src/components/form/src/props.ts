@@ -111,7 +111,7 @@ export const basicProps = {
    * 配置所有 Grid 的 props 配置
    */
   gridProps: {
-    type: Object as PropType<GridProps>,
+    type: Object as PropType<Partial<GridProps>>,
     default: () => ({
       cols: 24,
       xGap: 10
@@ -142,24 +142,36 @@ export const basicProps = {
    * @type {boolean}
    * @default true
    */
-  autoSetPlaceHolder: propTypes.bool.def(true),
+  autoSetPlaceHolder: {
+    type: Boolean,
+    default: true
+  },
   /**
    * 在input中输入时按回车自动提交
    * @type {boolean}
    * @default false
    */
-  autoSubmitOnEnter: propTypes.bool.def(false),
+  autoSubmitOnEnter: {
+    type: Boolean,
+    default: false
+  },
   /**
    * 重置时是否提交表单
    * @type {boolean}
    * @default true
    */
-  submitOnReset: propTypes.bool,
+  submitOnReset: {
+    type: Boolean,
+    default: true
+  },
   /**
    * FormItem发生变化时是否提交表单
    * @type {boolean}
    */
-  submitOnChange: propTypes.bool,
+  submitOnChange: {
+    type: Boolean,
+    default: false
+  },
 
   /**
    * 空白行格,可以是数值或者 col 对象 数
@@ -173,14 +185,17 @@ export const basicProps = {
    */
   transformDateFunc: {
     type: Function as PropType<Fn>,
-    default: (date: any) => date?.format?.('YYYY-MM-DD HH:mm:ss') ?? date
+    default: (date: any) => date?.format?.('yyyy-MM-dd HH:mm:ss') ?? date
   },
   /**
    * 校验信息是否加入 label
    * @type {boolean}
    * @default true
    */
-  rulesMessageJoinLabel: propTypes.bool.def(true),
+  rulesMessageJoinLabel: {
+    type: Boolean,
+    default: true
+  },
   /**
    * 如果 showAdvancedButton 为 true，超过指定行数行默认折叠
    * @type {number}
@@ -197,7 +212,10 @@ export const basicProps = {
    * 是否聚焦第一个输入框，只在第一个表单项为input的时候作用
    * @type {boolean}
    */
-  autoFocusFirstItem: propTypes.bool.def(true),
+  autoFocusFirstItem: {
+    type: Boolean,
+    default: true
+  },
 
   tableAction: {
     type: Object as PropType<TableActionType>

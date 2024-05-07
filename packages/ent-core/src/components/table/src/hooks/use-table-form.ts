@@ -32,9 +32,9 @@ export function useTableForm(
     return key?.replace?.(/form-/, '') ?? '';
   }
 
-  function handleSearchInfoChange(info: Recordable) {
+  async function handleSearchInfoChange(info: Recordable) {
     // info 是 table的值，fetch 方法每次都会获取form的value，所以这里可以不用处理
-    fetch({ pagination: { page: 1 } });
+    await fetch({ pagination: { page: 1 } });
   }
 
   return {

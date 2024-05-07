@@ -1,23 +1,17 @@
 // axios配置  可自行根据项目进行更改，只需更改该文件即可，其他文件可以不动
 // The axios configuration can be changed according to the project, just change the file, other files can be left unchanged
-import { useGlobSetting } from '../../hooks/setting/use-glob-setting';
-import { useMessage } from '../../hooks/web/use-message';
-import { ContentTypeEnum, RequestEnum, ResultEnum } from '../../logics/enums/http-enum';
+import { useGlobSetting, useI18n, useMessage } from '../../hooks';
+import { ContentTypeEnum, RequestEnum, ResultEnum } from '../../logics';
 import { isFunction, isString } from '../../utils/is';
-import { deepMerge, setObjToUrlParams } from '../../utils/base';
-import { useErrorLogStore } from '../../store/modules/error-log';
-import { useI18n } from '../../hooks/web/use-i18n';
-import { useUserStore } from '../../store/modules/user';
-import { useSessionStore } from '../../store/modules/session';
+import { deepMerge, setObjToUrlParams } from '../base';
+import { useErrorLogStore, useSessionStore, useUserStore } from '../../store';
 import { formatRequestDate, joinTimestamp } from './helper';
 import { checkStatus } from './check-status';
 import { VAxios } from './axios';
 import type { AxiosTransform, CreateAxiosOptions } from './axios-transform';
-import type { RequestOptions, Result } from '../../logics/types/axios';
+import type { RequestOptions, Result } from '../../logics';
 import type { AxiosResponse } from 'axios';
 import type { Recordable } from '../../types';
-
-const { createMessage, createErrorModal } = useMessage();
 
 /**
  * @description: 数据处理，方便区分多种处理方式
@@ -27,6 +21,7 @@ const transform: AxiosTransform = {
    * @description: 处理请求数据。如果数据不是预期格式，可直接抛出错误
    */
   transformRequestHook: (res: AxiosResponse<Result>, options: RequestOptions) => {
+    const { createMessage, createErrorModal } = useMessage();
     const { t } = useI18n();
     const { isTransformResponse, isReturnNativeResponse, transformResponse } = options;
     // 是否返回原生响应头 比如：需要获取响应头时使用该属性
@@ -161,6 +156,7 @@ const transform: AxiosTransform = {
    * @description: 响应错误处理
    */
   responseInterceptorsCatch: (error: any) => {
+    const { createMessage, createErrorModal } = useMessage();
     const { t } = useI18n();
     const errorLogStore = useErrorLogStore();
     errorLogStore.addAjaxErrorInfo(error);

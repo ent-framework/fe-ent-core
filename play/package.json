@@ -13,10 +13,8 @@
     "clean": "rimraf dist",
     "dtsgen": "ent-cli dtsgen --tsconfig=tsconfig.es"
   },
-  "peerDependencies": {
-    "fe-ent-core": "^3.0.0"
-  },
   "dependencies": {
+    "fe-ent-core": "workspace:*",
     "intro.js": "^4.3.0",
     "print-js": "^1.6.0",
     "vue": "^3.4.0",
