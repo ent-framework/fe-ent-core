@@ -39,7 +39,7 @@ jobs:
           regex: false
           include: ".npmrc"
       - run: npm install -g pnpm
-      - run: pnpm install
+      - run: pnpm install --no-frozen-lockfile
       - run: pnpm build:support
       - run: pnpm build:docs
       - name: Setup Pages
