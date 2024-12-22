@@ -15,7 +15,6 @@
   import { get } from 'lodash-es';
   import { EntIcon } from '../../../icon';
   import { isArray, isFunction } from '../../../../utils/is';
-  import { propTypes } from '../../../../utils';
   import type { AnyFunction, Recordable } from '../../../../types';
   export default defineComponent({
     name: 'ApiTree',
@@ -24,7 +23,10 @@
       api: { type: Function as PropType<(arg?: Recordable<any>) => Promise<Recordable<any>>> },
       params: { type: Object },
       immediate: { type: Boolean, default: true },
-      resultField: propTypes.string.def(''),
+      resultField: {
+        type: String,
+        default: ''
+      },
       afterFetch: { type: Function as PropType<AnyFunction> }
     },
     emits: ['options-change', 'change'],

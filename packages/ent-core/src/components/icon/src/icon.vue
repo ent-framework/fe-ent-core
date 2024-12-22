@@ -5,7 +5,6 @@
   import { computed, defineComponent } from 'vue';
   import { NIcon } from 'naive-ui';
   import { iconProps } from 'naive-ui/es/icon';
-  import { propTypes } from '../../../utils';
   import { useIconData } from './use-icon-data';
 
   /**
@@ -22,7 +21,9 @@
        * 图标名
        * @type {string}
        */
-      icon: propTypes.string
+      icon: {
+        type: String
+      }
     },
     setup(props, { attrs }) {
       const { getIconData } = useIconData();

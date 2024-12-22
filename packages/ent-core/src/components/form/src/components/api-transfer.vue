@@ -16,7 +16,6 @@
   import { NTransfer, transferProps } from 'naive-ui';
   import { get, omit } from 'lodash-es';
   import { isFunction } from '../../../../utils/is';
-  import { propTypes } from '../../../../utils';
   import { useI18n } from '../../../../hooks';
   import type { PropType } from 'vue';
   import type { ValueAtom } from '../../../../types';
@@ -34,12 +33,27 @@
       },
       params: { type: Object },
       dataSource: { type: Array as PropType<Array<TransferOption>> },
-      immediate: propTypes.bool.def(true),
-      alwaysLoad: propTypes.bool.def(false),
+      immediate: {
+        type: Boolean,
+        default: true
+      },
+      alwaysLoad: {
+        type: Boolean,
+        default: false
+      },
       afterFetch: { type: Function },
-      resultField: propTypes.string.def(''),
-      labelField: propTypes.string.def('title'),
-      valueField: propTypes.string.def('key'),
+      resultField: {
+        type: String,
+        default: ''
+      },
+      labelField: {
+        type: String,
+        default: 'title'
+      },
+      valueField: {
+        type: String,
+        default: 'key'
+      },
       showSearch: { type: Boolean, default: false },
       disabled: { type: Boolean, default: false },
       filterOption: {

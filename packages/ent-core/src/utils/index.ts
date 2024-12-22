@@ -4,7 +4,6 @@ export * from './color';
 export * from './dom-utils';
 export * from './env';
 export * from './is';
-export * from './prop-types';
 export * from './uuid';
 export * from './event';
 export * from './file';

@@ -1,5 +1,4 @@
 import { type FormItemProps, formProps } from 'naive-ui/es/form';
-import { propTypes } from '../../../utils';
 import type { CSSProperties, PropType } from 'vue';
 import type { Fn, Recordable } from '../../../types';
 import type {
@@ -73,9 +72,18 @@ export const formActionProps = {
     type: Object as PropType<Partial<GridItemProps>>,
     default: () => ({})
   },
-  actionSpan: propTypes.number.def(6),
-  isAdvanced: propTypes.bool,
-  hideAdvanceBtn: propTypes.bool
+  actionSpan: {
+    type: Number,
+    default: 6
+  },
+  isAdvanced: {
+    type: Boolean,
+    default: false
+  },
+  hideAdvanceBtn: {
+    type: Boolean,
+    default: false
+  }
 };
 
 export const basicProps = {
@@ -201,13 +209,19 @@ export const basicProps = {
    * @type {number}
    * @default 3
    */
-  autoAdvancedLine: propTypes.number.def(3),
+  autoAdvancedLine: {
+    type: Number,
+    default: 3
+  },
   /**
    * 折叠时始终保持显示的行数
    * @type {number}
    * @default 1
    */
-  alwaysShowLines: propTypes.number.def(1),
+  alwaysShowLines: {
+    type: Number,
+    default: 1
+  },
   /**
    * 是否聚焦第一个输入框，只在第一个表单项为input的时候作用
    * @type {boolean}

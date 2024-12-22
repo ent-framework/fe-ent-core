@@ -20,7 +20,7 @@
 |column|Total columns.|`number`|`-`|`NDescriptions`|
 |label-placement|Label placement.|`'top' \| 'left'`|`-`|`NDescriptions`|
 |label-align|Label align.|`'center' \| 'left' \| 'right'`|`-`|`NDescriptions`|
-|separator|Separator, only work when `label-placement` is `left` and 　`bordered` is `false`.|`string`|`-`|`NDescriptions`|
+|separator|Separator, only work when `label-placement` is `left` and `bordered` is `false`.|`string`|`-`|`NDescriptions`|
 |size|Size of the description.|`'small' \| 'medium' \| 'large'`|`-`|`NDescriptions`|
 |bordered|Whether to display border.|`boolean`|`false`|`NDescriptions`|
 |label-class|Class of the item label.|`string`|`-`|`NDescriptions`|

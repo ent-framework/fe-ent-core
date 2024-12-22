@@ -18,7 +18,6 @@
   import { computed, defineComponent } from 'vue';
   import { NImage, NImageGroup } from 'naive-ui';
   import { useDesign } from '../../../hooks';
-  import { propTypes } from '../../../utils';
   import { isString } from '../../../utils/is';
   import type { PropType } from 'vue';
   import type { ImageItem } from './typing';
@@ -30,7 +29,10 @@
       NImageGroup
     },
     props: {
-      functional: propTypes.bool,
+      functional: {
+        type: Boolean,
+        default: false
+      },
       imageList: {
         type: Array as PropType<ImageItem[]>
       }

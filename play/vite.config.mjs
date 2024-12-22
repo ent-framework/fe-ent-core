@@ -9,61 +9,61 @@ export default defineConfig(({ command, mode }) => {
     overrides: {
       build: {
         minify: false,
-        cssCodeSplit: true,
+        cssCodeSplit: true
       },
       resolve: {
         alias: [
           // 别名，转发 fe-ent-core 文件请求
           {
             find: /^fe-ent-core$/,
-            replacement: `${workspace}/packages/ent-core/src/index.ts`,
+            replacement: `${workspace}/packages/ent-core/src/index.ts`
           },
           {
             find: /^fe-ent-core\/es\/(.*)$/,
-            replacement: `${workspace}/packages/ent-core/src/$1`,
+            replacement: `${workspace}/packages/ent-core/src/$1`
           },
           // 别名，转发 fe-ent-extension 文件请求
           {
             find: /^fe-ent-code-editor$/,
-            replacement: `${workspace}/extensions/code-editor/src/index.ts`,
+            replacement: `${workspace}/extensions/code-editor/src/index.ts`
           },
           {
             find: /^fe-ent-echarts$/,
-            replacement: `${workspace}/extensions/echarts/src/index.ts`,
+            replacement: `${workspace}/extensions/echarts/src/index.ts`
           },
           {
             find: /^fe-ent-flow-chart$/,
-            replacement: `${workspace}/extensions/flow-chart/src/index.ts`,
+            replacement: `${workspace}/extensions/flow-chart/src/index.ts`
           },
           {
             find: /^fe-ent-markdown$/,
-            replacement: `${workspace}/extensions/markdown/src/index.ts`,
+            replacement: `${workspace}/extensions/markdown/src/index.ts`
           },
           {
             find: /^fe-ent-tinymce$/,
-            replacement: `${workspace}/extensions/tinymce/src/index.ts`,
+            replacement: `${workspace}/extensions/tinymce/src/index.ts`
           },
           {
             find: /^fe-ent-excel$/,
-            replacement: `${workspace}/extensions/excel/src/index.ts`,
+            replacement: `${workspace}/extensions/excel/src/index.ts`
           },
           {
             find: /^fe-ent-tiptap$/,
-            replacement: `${workspace}/extensions/tiptap/src/index.ts`,
+            replacement: `${workspace}/extensions/tiptap/src/index.ts`
           },
           {
             find: /^fe-ent-login$/,
-            replacement: `${workspace}/apps/login/src/index.ts`,
+            replacement: `${workspace}/apps/login/src/index.ts`
           },
           {
             find: /^fe-ent-layout$/,
-            replacement: `${workspace}/apps/layout/src/index.ts`,
+            replacement: `${workspace}/apps/layout/src/index.ts`
           },
           {
             find: /^fe-ent-layout\/es\/(.*)$/,
-            replacement: `${workspace}/apps/layout/src/$1`,
-          },
-        ],
+            replacement: `${workspace}/apps/layout/src/$1`
+          }
+        ]
       },
       server: {
         port: 3000,
@@ -84,13 +84,13 @@ export default defineConfig(({ command, mode }) => {
             target: 'https://aitag.kaytune.com',
             changeOrigin: true,
             ws: true,
-            timeout: 20000,
+            timeout: 20000
             //rewrite: (path) => path.replace(new RegExp(`^/api`), ''),
             // only https
             // secure: false
-          },
-        },
-      },
-    },
+          }
+        }
+      }
+    }
   });
 });

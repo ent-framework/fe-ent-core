@@ -21,7 +21,6 @@
   import { EntIcon } from '../../../icon';
   import { isFunction } from '../../../../utils/is';
   import { useI18n } from '../../../../hooks';
-  import { propTypes } from '../../../../utils';
   import type { PropType } from 'vue';
 
   type OptionsItem = { label: string; value: string; disabled?: boolean };
@@ -35,17 +34,32 @@
     inheritAttrs: false,
     props: {
       ...selectProps,
-      numberToString: propTypes.bool,
+      numberToString: {
+        type: Boolean,
+        default: false
+      },
       api: {
         type: Function as PropType<(arg?: any) => Promise<OptionsItem[]>>,
         default: null
       },
       // api params
-      params: propTypes.any.def({}),
+      params: {
+        type: Object,
+        default: () => {}
+      },
       // support xxx.xxx.xx
-      resultField: propTypes.string.def(''),
-      immediate: propTypes.bool.def(true),
-      alwaysLoad: propTypes.bool.def(false)
+      resultField: {
+        type: String,
+        default: ''
+      },
+      immediate: {
+        type: Boolean,
+        default: true
+      },
+      alwaysLoad: {
+        type: Boolean,
+        default: false
+      }
     },
     emits: ['options-change', 'change', 'update:value'],
     setup(props, { emit, attrs }) {

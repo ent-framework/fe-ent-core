@@ -47,7 +47,7 @@ description: 页面包装
 |max-height|The max-height of the table content. Can be a CSS value.|`number \| string`|`-`|`NDataTable`|
 |columns|Columns to display.|`Array<DataTableColumn>`|`-`|`NDataTable`|
 |row-class-name|Class name of each row.|`string \| (rowData: object, rowIndex : number) => string`|`-`|`NDataTable`|
-|row-props|Customize row attributes.|`(rowData: object, rowIndex : number) => object`|`-`|`NDataTable`|
+|row-props|Customize row attributes.|`(rowData: object, rowIndex : number) => HTMLAttributes`|`-`|`NDataTable`|
 |row-key|Generate the key of the row by row data (if you don't want to set the key).|`(rowData: object) => (number \| string)`|`-`|`NDataTable`|
 |summary|Data of table summary row. For types, see <n-a href="#DataTableCreateSummary-Type">DataTableCreateSummary Type</n-a>.|`DataTableCreateSummary`|`-`|`NDataTable`|
 |data|Data to display.|`Array<object>`|`-`|`NDataTable`|
@@ -66,7 +66,12 @@ description: 页面包装
 |default-expand-all|Whether to expand all expandable rows. Can't be used with async expanding data.|`boolean`|`false`|`NDataTable`|
 |expanded-row-keys|Expanded row keys.|`Array<string \| number>`|`-`|`NDataTable`|
 |sticky-expanded-rows|Expanded row content remains sticky.|`boolean`|`false`|`NDataTable`|
-|virtual-scroll|Whether to use virtual scroll to deal with large data. Make sure `max-height` is set before using it. When `virtual-scroll` is `true`, `rowSpan` will not take effect.|`boolean`|`false`|`NDataTable`|
+|virtual-scroll|Whether to use virtual scrolling to deal with large data. Make sure `max-height` is set before using it. When `virtual-scroll` is `true`, `rowSpan` will not take effect.|`boolean`|`false`|`NDataTable`|
+|virtual-scroll-x|Whether to use horizontal virtual scrolling in table body. If there are too many columns, you can enable the prop. Enabling the prop will disable body cells that cross columns & rows. If the prop is enabled, every column should have `width` prop configured and `virtual-scroll`, `scroll-x`, `min-row-height`, `height-for-row`, `virtual-scroll-header` (optional), `header-height` (optional) props should be configured at the same time. You can refer to <n-a href="#virtual-x.vue">the example</n-a>.|`boolean`|`false`|`NDataTable`|
+|virtual-scroll-header|Whether to use virtual scrolling in table header. If there are too many columns, you can enable the prop. You must configure `header-height` at the same time. Enabling the prop will disable header cells that cross columns & rows.|`boolean`|`false`|`NDataTable`|
+|header-height|Header height value when `virtual-scroll-header` is enabled.|`number`|`-`|`NDataTable`|
+|height-for-row|Height configuration function for each row of the table. It must be used with `virtual-scroll-x`. If it's not configured, each rows height would be set to `min-row-height`.|`(rowData: object, index: number) => number`|`-`|`NDataTable`|
+|min-row-height|Min row height of the table when `virtual-scroll` or `virtual-scroll-x` is enabled. Each row's height must be larger than its value.|`number`|`-`|`NDataTable`|
 |table-layout|Style `table-layout` of the table. When `ellipsis` or `max-height` or `flex-height` are set, it will always be `'fixed'` regardless of what you set.|`'auto' \| 'fixed'`|`-`|`NDataTable`|
 |allow-checking-not-loaded|Whether to allow cascade checking on not loaded nodes. If you want to use this, you should know the `check-row-keys` may be incomplete.|`boolean`|`false`|`NDataTable`|
 |cascade|Whether to do cascade checking when using tree data.|`boolean`|`false`|`NDataTable`|
@@ -75,10 +80,13 @@ description: 页面包装
 |flex-height|Whether to make table body's height auto fit table area height. Make it enabled will make `table-layout` always set to `'fixed'`.|`boolean`|`false`|`NDataTable`|
 |summary-placement|Summary rows placement.|`'top' \| 'bottom'`|`-`|`NDataTable`|
 |pagination-behavior-on-filter|The behavior of pagination after filter state is changed. `'first'` means returning to first page on filter, `'current'` means keep at current page on filter.|`'first' \| 'current'`|`-`|`NDataTable`|
-|scrollbar-props|See [Scrollbar props](scrollbar#Scrollbar-Props), the `on-scroll` attribute already exists in the `DataTable`, the `on-scroll` attribute does not take effect here.|`object`|`-`|`NDataTable`|
+|filter-icon-popover-props|Filter icon's Popover attribute of the button, See [Popover props](popover#Popover-Props)|`PopoverProps`|`-`|`NDataTable`|
+|scrollbar-props|See [Scrollbar props](scrollbar#Scrollbar-Props), the `on-scroll` attribute already exists in the `DataTable`, the `on-scroll` attribute does not take effect here.|`ScrollbarProps`|`-`|`NDataTable`|
 |render-cell|Render function of cell, it will be overwritten by columns' `render`.|`(value: any, rowData: object, column: DataTableBaseColumn) => VNodeChild`|`-`|`NDataTable`|
-|render-expand-icon|Render function of expand icon.|`({ expanded }: { expanded: boolean }) => VNodeChild`|`-`|`NDataTable`|
+|render-expand-icon|Render function of expand icon.|`({ expanded, rowData }: { expanded: boolean, rowData: object }) => VNodeChild`|`-`|`NDataTable`|
 |spin-props|Table spin's props.|`{ strokeWidth?: number, stroke?: string }`|`-`|`NDataTable`|
+|get-csv-cell|Get CSV's cell content.|`(value: any, row: object, col: DataTableBaseColumn) => string`|`-`|`NDataTable`|
+|get-csv-header|Get CSV's header content.|`(cols: Array<DataTableColumn>) => string`|`-`|`NDataTable`|
 
 
 

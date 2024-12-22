@@ -37,7 +37,7 @@ description: 对 antv 的 tree 组件进行封装
 |pattern|What to search by default.|`string`|`-`|`NTree`|
 |cascade|Whether to cascade checkboxes.|`boolean`|`false`|`NTree`|
 |selectable|Whether the node can be selected.|`boolean`|`false`|`NTree`|
-|scrollbar-props|See [Scrollbar props](scrollbar#Scrollbar-Props)|`object`|`-`|`NTree`|
+|scrollbar-props|See [Scrollbar props](scrollbar#Scrollbar-Props)|`ScrollbarProps`|`-`|`NTree`|
 |allow-drop|Whether to allow dropping.|`(info: { dropPosition: DropPosition, node: TreeOption, phase: 'drag' \| 'drop' }) => boolean`|`-`|`NTree`|
 |animated|Whether to show expand animation.|`boolean`|`false`|`NTree`|
 |checkbox-placement|Checkbox's placement.|`'left' \| 'right'`|`-`|`NTree`|

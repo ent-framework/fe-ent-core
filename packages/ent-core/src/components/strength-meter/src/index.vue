@@ -24,15 +24,22 @@
   import { NInput } from 'naive-ui';
   import { zxcvbn, ZxcvbnResult } from '@zxcvbn-ts/core';
   import { useDesign } from '../../../hooks/web/use-design';
-  import { propTypes } from '../../../utils/prop-types';
 
   export default defineComponent({
     name: 'EntStrengthMeter',
     components: { NInput },
     props: {
-      value: propTypes.string,
-      showInput: propTypes.bool.def(true),
-      disabled: propTypes.bool
+      value: {
+        type: String,
+      },
+      showInput: {
+        type: Boolean,
+        default: true
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      }
     },
     emits: ['score-change', 'change'],
     setup(props, { emit }) {

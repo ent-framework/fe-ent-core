@@ -2,6 +2,7 @@ import glob from 'fast-glob';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { readPackageJSON } from 'pkg-types';
+import dts from 'vite-plugin-dts';
 import external from '../plugins/vite-plugin-external';
 import vueExportHelper from '../plugins/vite-plugin-vue-export-helper';
 import { excludeFiles } from '../utils/exclude-files';
@@ -69,6 +70,7 @@ export default async function defineComponentConfig() {
     },
     plugins: [
       external(deps),
+      dts(),
       vue({
         isProduction: true
       }),

@@ -7,7 +7,6 @@ declare module '@vue/runtime-core' {
     EntArrow: (typeof import('fe-ent-core'))['EntArrow'];
     EntAuthority: (typeof import('fe-ent-core'))['EntAuthority'];
     EntButton: (typeof import('fe-ent-core'))['EntButton'];
-    EntCardList: (typeof import('fe-ent-core'))['EntCardList'];
     EntClickOutSide: (typeof import('fe-ent-core'))['EntClickOutSide'];
     EntCollapseContainer: (typeof import('fe-ent-core'))['EntCollapseContainer'];
     EntCountButton: (typeof import('fe-ent-core'))['EntCountButton'];

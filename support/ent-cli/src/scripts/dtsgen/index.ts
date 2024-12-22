@@ -21,19 +21,21 @@ const build = async (base: string, tsconfig: string) => {
   consola.log(`Run in dir: ${process.cwd()}, base: ${base}`);
   const project = new Project({
     compilerOptions: {
-      allowJs: true,
-      declaration: true,
-      emitDeclarationOnly: true,
+      // allowJs: true,
       // declaration: true,
+      // emitDeclarationOnly: true,
+      // strict: true,
       outDir,
       baseUrl: `${cwd}`,
       rootDir: `${cwd}`,
-      target: ScriptTarget.ES2015,
-      moduleResolution: ModuleResolutionKind.NodeJs,
-      skipLibCheck: true,
-      preserveSymlinks: true,
-      noImplicitAny: false,
-      removeComments: false
+      // target: ScriptTarget.ES2015,
+      // moduleResolution: ModuleResolutionKind.Node10,
+      // isolatedModules: true,
+      // esModuleInterop: true,
+      // skipLibCheck: true,
+      preserveSymlinks: true
+      // noImplicitAny: false,
+      // removeComments: false
     },
     tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true
@@ -84,6 +86,8 @@ async function addSourceFiles(project: Project, cwd: string, base: string) {
   );
 
   const sourceFiles: SourceFile[] = [];
+  fs.removeSync(`${cwd}/build`);
+  fs.ensureDirSync(`${cwd}/build`);
   await Promise.all([
     ...filePaths.map(async (file) => {
       const content = await fs.promises.readFile(file, 'utf8');
@@ -93,29 +97,32 @@ async function addSourceFiles(project: Project, cwd: string, base: string) {
         const { script, scriptSetup } = sfc.descriptor;
         if (script || scriptSetup) {
           let content = '';
-          let isTS = false;
           let isTSX = false;
           if (scriptSetup) {
             const compiled = vueCompiler.compileScript(sfc.descriptor, {
               id: 'xxx'
             });
             content += compiled.content;
-            if (scriptSetup.lang === 'ts') isTS = true;
             if (scriptSetup.lang === 'tsx') isTSX = true;
           } else if (script && script.content) {
-            content += script.content;
-            if (script.lang === 'ts') isTS = true;
+            const compiled = vueCompiler.compileScript(sfc.descriptor, {
+              id: 'xxx'
+            });
+            content += compiled.content;
             if (script.lang === 'tsx') isTSX = true;
           }
           if (content.length == 0) {
             consola.error(`Error Get Content : ${chalk.bold(file)}`);
           } else {
             const sourceFile = project.createSourceFile(
-              path.relative(cwd, file).replace('.vue', isTS ? '.ts' : isTSX ? '.tsx' : '.js'),
+              path.relative(cwd, file).replace('.vue', isTSX ? '.tsx' : '.ts'),
               content
             );
             if (sourceFile) {
               removeVueSpecifier(sourceFile);
+              const fileName = `${cwd}/build/${sourceFile.getFilePath().replace(base, '')}`;
+              fs.mkdirpSync(fileName.slice(0, Math.max(0, fileName.lastIndexOf('/'))));
+              fs.writeFileSync(fileName, sourceFile.getFullText(), { flag: 'w' });
               sourceFiles.push(sourceFile);
             }
           }

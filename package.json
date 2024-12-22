@@ -27,7 +27,7 @@
     "build:apps": "pnpm --filter './apps/**' --stream build",
     "build:internal": "pnpm run -r --parallel stub",
     "build:docs": "pnpm run -C packages/ent-core icongen && pnpm run -C docs --stream build",
-    "changelog": "pnpm run -C packages/fe-ent-core --stream changelog",
+    "changelog": "pnpm run -C packages/ent-core --stream changelog",
     "build:play": "pnpm -C play --stream build",
     "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
     "build:lib": "pnpm run -C packages/ent-core build",
@@ -99,14 +99,14 @@
     "ts-morph": "13.0.3",
     "tslib": "^2.3.1",
     "tsx": "^4.7.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.2.3"
+    "typescript": "5.5.4",
+    "vite": "^6.0.1"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china",
     "ant-design-vue": "4.1.2",
-    "vue": "3.4.8",
-    "vite": "5.2.3",
+    "vue": "3.5.13",
+    "vite": "6.0.1",
     "gifsicle": "5.2.0"
   },
   "repository": {
@@ -121,5 +121,15 @@
   "engines": {
     "node": "^18.0.0 || >=20.0.0",
     "pnpm": ">=9"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@babel/core",
+        "postcss",
+        "rollup",
+        "webpack"
+      ]
+    }
   }
 }

@@ -35,7 +35,6 @@
   import { EntDropdown } from '../../../dropdown';
   import { useDesign, usePermission } from '../../../../hooks';
   import { isBoolean, isString } from '../../../../utils/is';
-  import { propTypes } from '../../../../utils';
   import { useTableContext } from '../hooks/use-table-context';
   import { ACTION_COLUMN_FLAG } from '../const';
   import type { RetInstance } from '../hooks/use-table-context';
@@ -58,9 +57,18 @@
         type: Array as PropType<TableActionItem[]>,
         default: () => []
       },
-      divider: propTypes.bool.def(true),
-      outside: propTypes.bool,
-      stopButtonPropagation: propTypes.bool.def(false),
+      divider: {
+        type: Boolean,
+        default: true
+      },
+      outside: {
+        type: Boolean,
+        default: false
+      },
+      stopButtonPropagation: {
+        type: Boolean,
+        default: false
+      },
       buttonSize: {
         type: String as PropType<Size>,
         default: () => 'small'

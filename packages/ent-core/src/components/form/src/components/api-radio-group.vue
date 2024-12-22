@@ -24,7 +24,6 @@
   import { get, omit } from 'lodash-es';
   import { isFunction } from '../../../../utils/is';
   import { useAttrs, useI18n, useRuleFormItem } from '../../../../hooks';
-  import { propTypes } from '../../../../utils';
 
   type OptionsItem = { label: string; value: string | number | boolean; disabled?: boolean };
 
@@ -51,11 +50,26 @@
         type: [Boolean] as PropType<boolean>,
         default: false
       },
-      numberToString: propTypes.bool,
-      resultField: propTypes.string.def(''),
-      labelField: propTypes.string.def('label'),
-      valueField: propTypes.string.def('value'),
-      immediate: propTypes.bool.def(true)
+      numberToString: {
+        type: Boolean,
+        default: false
+      },
+      resultField: {
+        type: String,
+        default: ''
+      },
+      labelField: {
+        type: String,
+        default: 'label'
+      },
+      valueField: {
+        type: String,
+        default: 'value'
+      },
+      immediate: {
+        type: Boolean,
+        default: true
+      }
     },
     emits: ['options-change', 'change'],
     setup(props, { emit }) {

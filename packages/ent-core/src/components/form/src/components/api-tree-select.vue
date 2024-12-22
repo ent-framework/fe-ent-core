@@ -11,7 +11,6 @@
   import { NTreeSelect } from 'naive-ui';
   import { get } from 'lodash-es';
   import { isArray, isFunction } from '../../../../utils/is';
-  import { propTypes } from '../../../../utils/prop-types';
   import { type Recordable } from '../../../../types';
   import type { PropType } from 'vue';
   export default defineComponent({
@@ -21,7 +20,10 @@
       api: { type: Function as PropType<(arg?: Recordable<any>) => Promise<Recordable<any>>> },
       params: { type: Object },
       immediate: { type: Boolean, default: true },
-      resultField: propTypes.string.def('')
+      resultField: {
+        type: String,
+        default: ''
+      }
     },
     emits: ['options-change', 'change'],
     setup(props, { attrs, emit }) {

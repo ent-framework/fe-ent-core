@@ -67,8 +67,8 @@
     props,
     emits: ['onStarted', 'onFinished'],
     setup(props, { emit }) {
-      const source = ref(props.startVal);
-      const disabled = ref(false);
+      const source = ref<number>(props.startVal);
+      const disabled = ref<boolean>(false);
       let outputValue = useTransition(source);
 
       const value = computed(() => formatNumber(unref(outputValue)));

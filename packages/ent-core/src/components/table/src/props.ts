@@ -1,5 +1,4 @@
 import { dataTableProps } from 'naive-ui/es/data-table';
-import { propTypes } from '../../../utils';
 import { DEFAULT_FILTER_FN, DEFAULT_SORT_FN, FETCH_SETTING } from './const';
 import type {
   BasicColumn,
@@ -32,7 +31,10 @@ export const tableHeaderProps = {
    * 显示表格设置工具
    * @type {boolean}
    */
-  showTableSetting: propTypes.bool,
+  showTableSetting: {
+    type: Boolean,
+    default: false
+  },
   /**
    * 表格设置工具配置, 见下方 TableSetting
    * @type {object}
@@ -161,7 +163,10 @@ export const basicProps = {
    * 使用搜索表单
    * @type {boolean}
    */
-  useSearchForm: propTypes.bool,
+  useSearchForm: {
+    type: Boolean,
+    default: false
+  },
   /**
    * 搜索表单配置
    * @type {object}
@@ -175,7 +180,10 @@ export const basicProps = {
    * @type {boolean}
    * @default true
    */
-  showIndexColumn: propTypes.bool.def(true),
+  showIndexColumn: {
+    type: Boolean,
+    default: true
+  },
   /**
    * 序号列属性
    * @type {BasicColumn}
@@ -214,16 +222,25 @@ export const basicProps = {
    * @type {boolean}
    * @default true
    */
-  ellipsis: propTypes.bool.def(true),
+  ellipsis: {
+    type: Boolean,
+    default: true
+  },
   /**
    * 是否可以自适应高度(如果置于PageWrapper组件内，请勿启用PageWrapper的fixedHeight属性，二者不可同时使用)
    * @type {boolean}
    * @default true
    */
-  canResize: propTypes.bool.def(true),
+  canResize: {
+    type: Boolean,
+    default: true
+  },
   /**
    * 切换页码是否重置勾选状态
    * @type {boolean}
    */
-  clearSelectOnPageChange: propTypes.bool
+  clearSelectOnPageChange: {
+    type: Boolean,
+    default: false
+  }
 };

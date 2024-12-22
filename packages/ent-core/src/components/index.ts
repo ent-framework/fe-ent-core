@@ -3,7 +3,6 @@ export { EntAppProvider } from './app-provider';
 export { EntAuthority } from './authority';
 export { EntArrow, EntHelp, EntTitle } from './basic';
 export { EntButton, EntPopButton } from './button';
-export { EntCardList } from './card-list';
 export { EntClickOutSide } from './click-out-side';
 export { EntCollapseContainer, EntScrollContainer, EntLazyContainer } from './container';
 export { EntCountButton, EntCountDownInput } from './count-down';

@@ -36,8 +36,8 @@
     "@types/lodash": "^4.14.198",
     "@types/lodash-es": "^4.17.9",
     "fe-ent-cli": "workspace:*",
-    "naive-ui": "^2.38.1",
-    "vue": "^3.4.8",
+    "vite": "^2.40.3",
+    "vue": "^3.5.13",
     "rimraf": "^5.0.0"
   },
   "repository": {

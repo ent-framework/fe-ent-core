@@ -37,7 +37,6 @@
   import { omit } from 'lodash-es';
   import { NPageHeader } from 'naive-ui';
   import { useDesign } from '../../../hooks/web/use-design';
-  import { propTypes } from '../../../utils/prop-types';
   import { useContentHeight } from '../../../hooks/web/use-content-height';
   import { PageWrapperFixedHeightKey } from '../constant';
   import PageFooter from './page-footer.vue';
@@ -48,18 +47,21 @@
     components: { PageFooter, NPageHeader },
     inheritAttrs: false,
     props: {
-      title: propTypes.string,
-      dense: propTypes.bool,
-      ghost: propTypes.bool,
-      content: propTypes.string,
+      title: { type: String },
+      dense: { type: Boolean },
+      ghost: { type: Boolean },
+      content: { type: String },
       contentStyle: {
         type: Object as PropType<CSSProperties>
       },
-      contentBackground: propTypes.bool,
-      contentFullHeight: propTypes.bool,
-      contentClass: propTypes.string,
-      fixedHeight: propTypes.bool,
-      upwardSpace: propTypes.oneOfType([propTypes.number, propTypes.string]).def(0)
+      contentBackground: { type: Boolean },
+      contentFullHeight: { type: Boolean },
+      contentClass: { type: String },
+      fixedHeight: { type: Boolean },
+      upwardSpace: {
+        type: [String, Number] as PropType<string | number>,
+        default: 0
+      }
     },
     setup(props, { slots, attrs }) {
       const wrapperRef = ref(null);

@@ -18,6 +18,10 @@
     prefixCls: { type: String, default: 'ent' }
   };
 
+  interface AppProviderProps {
+    prefixCls: string;
+  }
+
   export default defineComponent({
     name: 'EntAppProvider',
     components: {
@@ -30,7 +34,7 @@
     },
     inheritAttrs: false,
     props,
-    setup(props, { slots }) {
+    setup(props: AppProviderProps, { slots }) {
       const isMobile = ref(false);
 
       // Monitor screen breakpoint information changes

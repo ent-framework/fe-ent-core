@@ -24,7 +24,6 @@
   import { get, omit } from 'lodash-es';
   import { EntIcon } from '../../../icon';
   import { isFunction } from '../../../../utils/is';
-  import { propTypes } from '../../../../utils';
   import { useI18n, useRuleFormItem } from '../../../../hooks';
   import { type Recordable } from '../../../../types';
   import type { PropType } from 'vue';
@@ -49,13 +48,34 @@
         type: Function as PropType<(arg?: Recordable<any>) => Promise<Option[]>>,
         default: null
       },
-      numberToString: propTypes.bool,
-      resultField: propTypes.string.def(''),
-      labelField: propTypes.string.def('label'),
-      valueField: propTypes.string.def('value'),
-      childrenField: propTypes.string.def('children'),
-      asyncFetchParamKey: propTypes.string.def('parentCode'),
-      immediate: propTypes.bool.def(true),
+      numberToString: {
+        type: Boolean,
+        default: false
+      },
+      resultField: {
+        type: String,
+        default: ''
+      },
+      labelField: {
+        type: String,
+        default: 'label'
+      },
+      valueField: {
+        type: String,
+        default: 'value'
+      },
+      childrenField: {
+        type: String,
+        default: 'children'
+      },
+      asyncFetchParamKey: {
+        type: String,
+        default: 'parentCode'
+      },
+      immediate: {
+        type: Boolean,
+        default: true
+      },
       // init fetch params
       initFetchParams: {
         type: Object as PropType<Recordable<any>>,

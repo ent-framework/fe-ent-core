@@ -64,7 +64,6 @@
   import { useDesign } from '../../../hooks/web/use-design';
   import { EntScrollContainer } from '../../../components/container';
 
-  import { propTypes } from '../../../utils/prop-types';
   import { usePagination } from '../../../hooks/web/use-pagination';
   import { useI18n } from '../../../hooks/web/use-i18n';
   import { useCopyToClipboard } from '../../../hooks/web/use-copy-to-clipboard';
@@ -84,10 +83,21 @@
       NFlex
     },
     props: {
-      value: propTypes.string,
-      width: propTypes.string.def('100%'),
-      pageSize: propTypes.number.def(40),
-      copy: propTypes.bool.def(false)
+      value: {
+        type: String
+      },
+      width: {
+        type: String,
+        default: '100%'
+      },
+      pageSize: {
+        type: Number,
+        default: 40
+      },
+      copy: {
+        type: Boolean,
+        default: false
+      }
     },
     emits: ['change', 'update:value'],
     setup(props, { emit }) {

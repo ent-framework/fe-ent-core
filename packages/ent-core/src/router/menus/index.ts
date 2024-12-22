@@ -98,16 +98,16 @@ function basicFilter(routes: RouteRecordNormalized[]) {
   return (menu: Menu) => {
     const matchRoute = routes.find((route) => {
       if (isUrl(menu.path)) return true;
-
+      const { regexp } = pathToRegexp(route.path);
       if (route.meta?.carryParam) {
-        return pathToRegexp(route.path).test(menu.path);
+        return regexp.test(menu.path);
       }
       const isSame = route.path === menu.path;
       if (!isSame) return false;
 
       if (route.meta?.ignoreAuth) return true;
 
-      return isSame || pathToRegexp(route.path).test(menu.path);
+      return isSame || regexp.test(menu.path);
     });
 
     if (!matchRoute) return false;
