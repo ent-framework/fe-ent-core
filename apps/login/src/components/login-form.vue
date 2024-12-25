@@ -122,11 +122,11 @@
       class="flex justify-evenly enter-x hidden"
       :class="`${prefixCls}-sign-in-way`"
     >
-      <GithubFilled />
-      <WechatFilled />
-      <AlipayCircleFilled />
-      <GoogleCircleFilled />
-      <TwitterCircleFilled />
+<!--      <GithubFilled />-->
+<!--      <WechatFilled />-->
+<!--      <AlipayCircleFilled />-->
+<!--      <GoogleCircleFilled />-->
+<!--      <TwitterCircleFilled />-->
     </div>
   </NForm>
 </template>
@@ -145,13 +145,13 @@
     NInputGroup,
     NInputGroupLabel
   } from 'naive-ui';
-  import {
-    AlipayCircleFilled,
-    GithubFilled,
-    GoogleCircleFilled,
-    TwitterCircleFilled,
-    WechatFilled
-  } from '@ant-design/icons-vue';
+  // import {
+  //   AlipayCircleFilled,
+  //   GithubFilled,
+  //   GoogleCircleFilled,
+  //   TwitterCircleFilled,
+  //   WechatFilled
+  // } from '@ant-design/icons-vue';
 
   import { useDesign, useGlobSetting, useI18n, useMessage } from 'fe-ent-core/es/hooks';
   import { useSessionStore, useUserStore } from 'fe-ent-core/es/store';

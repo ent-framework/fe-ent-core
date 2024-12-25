@@ -1,7 +1,7 @@
 import { computed, h, reactive, unref } from 'vue';
 import { useI18n } from 'fe-ent-core/es/hooks';
 import { useRouter } from 'vue-router';
-import EntIcon from 'fe-ent-core/es/components/icon';
+import { EntIcon } from 'fe-ent-core/es/components/icon';
 import { useMultipleTabStore } from '../../../../store/multiple-tab';
 import { useTabs } from '../../../../hooks';
 import { MenuEventEnum } from './types';

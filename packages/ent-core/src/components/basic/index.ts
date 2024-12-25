@@ -1,10 +1,3 @@
-import { withInstall } from '../../utils';
-import BasicArrow from './src/basic-arrow.vue';
-import BasicTitle from './src/basic-title.vue';
-import BasicHelp from './src/basic-help.vue';
-
-export const EntArrow = withInstall(BasicArrow);
-export const EntTitle = withInstall(BasicTitle);
-export const EntHelp = withInstall(BasicHelp);
-
-export { BasicArrow, BasicHelp, BasicTitle };
+export { default as EntArrow } from './src/basic-arrow.vue';
+export { default as EntTitle } from './src/basic-title.vue';
+export { default as EntHelp } from './src/basic-help.vue';

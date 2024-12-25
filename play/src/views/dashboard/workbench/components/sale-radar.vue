@@ -1,24 +1,24 @@
 <template>
-  <Card title="销售统计" :loading="loading">
+  <NCard title="销售统计" :loading="loading">
     <div ref="chartRef" :style="{ width, height }" />
-  </Card>
+  </NCard>
 </template>
 <script lang="ts" setup>
-  import type { Ref} from 'vue';
-import { type PropType, ref, watch } from 'vue';
-  import { Card } from 'ant-design-vue';
+  import { ref, watch } from 'vue';
+  import { NCard } from 'naive-ui';
   import { useEcharts } from 'fe-ent-echarts';
+  import type { PropType, Ref } from 'vue';
 
   const props = defineProps({
     loading: Boolean,
     width: {
       type: String as PropType<string>,
-      default: '100%',
+      default: '100%'
     },
     height: {
       type: String as PropType<string>,
-      default: '400px',
-    },
+      default: '400px'
+    }
   });
 
   const chartRef = ref<HTMLDivElement | null>(null);
@@ -32,7 +32,7 @@ import { type PropType, ref, watch } from 'vue';
       setOptions({
         legend: {
           bottom: 0,
-          data: ['Visits', 'Sales'],
+          data: ['Visits', 'Sales']
         },
         tooltip: {},
         radar: {
@@ -41,29 +41,29 @@ import { type PropType, ref, watch } from 'vue';
           indicator: [
             {
               text: '2017',
-              max: 100,
+              max: 100
             },
             {
               text: '2017',
-              max: 100,
+              max: 100
             },
             {
               text: '2018',
-              max: 100,
+              max: 100
             },
             {
               text: '2019',
-              max: 100,
+              max: 100
             },
             {
               text: '2020',
-              max: 100,
+              max: 100
             },
             {
               text: '2021',
-              max: 100,
-            },
-          ],
+              max: 100
+            }
+          ]
         },
         series: [
           {
@@ -74,28 +74,28 @@ import { type PropType, ref, watch } from 'vue';
               shadowColor: 'rgba(0,0,0,.2)',
               shadowOffsetX: 0,
               shadowOffsetY: 10,
-              opacity: 1,
+              opacity: 1
             },
             data: [
               {
                 value: [90, 50, 86, 40, 50, 20],
                 name: 'Visits',
                 itemStyle: {
-                  color: '#b6a2de',
-                },
+                  color: '#b6a2de'
+                }
               },
               {
                 value: [70, 75, 70, 76, 20, 85],
                 name: 'Sales',
                 itemStyle: {
-                  color: '#67e0e3',
-                },
-              },
-            ],
-          },
-        ],
+                  color: '#67e0e3'
+                }
+              }
+            ]
+          }
+        ]
       });
     },
-    { immediate: true },
+    { immediate: true }
   );
 </script>

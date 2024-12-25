@@ -13,9 +13,10 @@
         v-if="
           (getShowContent && getShowHeaderTrigger && !getSplit && !getIsMixSidebar) || getIsMobile
         "
+        :theme="getActualHeaderTheme"
         :sider="false"
       />
-      <LayoutBreadcrumb v-if="getShowContent && getShowBread" />
+      <LayoutBreadcrumb v-if="getShowContent && getShowBread" :theme="getActualHeaderTheme" />
     </div>
     <!-- left end -->
 
@@ -47,7 +48,7 @@
         :class="`${prefixCls}-action__item mx-auto`"
       />
 
-      <UserDropDown v-if="isLogined" />
+      <UserDropDown v-if="isLogined" :theme="getActualHeaderTheme" />
 
       <SettingDrawer v-if="getShowSetting" :class="`${prefixCls}-action__item`" />
     </div>
@@ -58,7 +59,6 @@
   import { useAppInject, useDesign, useRootSetting } from 'fe-ent-core/es/hooks';
   import { EntAppLogo, EntDarkModeToggle, EntLocalePicker } from 'fe-ent-core';
   import { MenuModeEnum, MenuSplitTyeEnum, SettingButtonPositionEnum } from 'fe-ent-core/es/logics';
-  import { propTypes } from 'fe-ent-core/es/utils';
   import { useLocale } from 'fe-ent-core/es/locales';
   import { useUserStore } from 'fe-ent-core/es/store';
   import { NLayoutHeader } from 'naive-ui';
@@ -94,7 +94,10 @@
       EntDarkModeToggle
     },
     props: {
-      fixed: propTypes.bool
+      fixed: {
+        type: Boolean,
+        default: false
+      }
     },
     setup(props) {
       const { prefixCls } = useDesign('layout-header');
@@ -183,6 +186,7 @@
         getShowHeaderLogo,
         getShowHeaderTrigger,
         getShowDarkModeToggle,
+        getActualHeaderTheme,
         getIsMobile,
         getShowBread,
         getShowContent,

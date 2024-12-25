@@ -29,8 +29,8 @@
   } from 'vue';
   import { addResizeListener, removeResizeListener } from '../../../utils/event';
   import componentSetting from '../../../logics/settings/component-setting';
-  import { toObject } from './util';
   import Bar from './bar';
+
   const { scrollbar } = componentSetting;
 
   export default defineComponent({
@@ -75,10 +75,7 @@
       provide('scroll-bar-wrap', wrap);
 
       const style = computed(() => {
-        if (Array.isArray(props.wrapStyle)) {
-          return toObject(props.wrapStyle);
-        }
-        return props.wrapStyle;
+        return [props.wrapStyle];
       });
 
       const handleScroll = () => {

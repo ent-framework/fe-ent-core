@@ -1,16 +1,16 @@
 <template>
-  <BasicTitle :help-message="helpMessage">
+  <EntTitle :help-message="helpMessage">
     {{ title }}
-  </BasicTitle>
+  </EntTitle>
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTitle } from '../../../basic';
+  import EntTitle from '../../../basic/src/basic-title.vue';
   import type { PropType } from 'vue';
 
   export default defineComponent({
     name: 'EntModalHeader',
-    components: { BasicTitle },
+    components: { EntTitle },
     props: {
       helpMessage: {
         type: [String, Array] as PropType<string | string[]>

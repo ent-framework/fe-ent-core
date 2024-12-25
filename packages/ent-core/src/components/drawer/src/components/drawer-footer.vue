@@ -29,8 +29,10 @@
   import { useDesign } from '../../../../hooks/web/use-design';
   import { useI18n } from '../../../../hooks/web/use-i18n';
   import { footerProps } from '../props';
+  import { EntButton } from '../../../../components/button';
   export default defineComponent({
     name: 'EntDrawerFooter',
+    components: { EntButton },
     props: {
       ...footerProps
     },

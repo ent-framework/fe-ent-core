@@ -40,7 +40,7 @@
         default: () => []
       },
       pageSize: {
-        type: [Boolean, Number] as PropType<boolean | number>,
+        type: Number,
         default: 5
       },
       currentPage: {
@@ -65,7 +65,6 @@
       const current = ref(props.currentPage || 1);
       const getData = computed(() => {
         const { pageSize, list } = props;
-        if (pageSize === false) return [];
         const size = isNumber(pageSize) ? pageSize : 5;
         return list.slice(size * (unref(current) - 1), size * unref(current));
       });
@@ -84,7 +83,7 @@
             pageSize,
             //size: 'small',
             current: unref(current),
-            onChange(page) {
+            onChange(page: number) {
               current.value = page;
               emit('update:currentPage', page);
             }

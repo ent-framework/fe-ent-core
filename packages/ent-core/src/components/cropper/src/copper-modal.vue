@@ -141,6 +141,7 @@
   import { isFunction } from '../../../utils/is';
   import { useDesign } from '../../../hooks/web/use-design';
   import { EntModal, useModalInner } from '../../../components/modal';
+  import { EntButton } from '../../../components/button';
   import { Factory } from '../../../logics/factory';
   import { dataURLtoBlob } from '../../../utils/file/base64-convert';
   import { useI18n } from '../../../hooks/web/use-i18n';
@@ -159,7 +160,7 @@
 
   export default defineComponent({
     name: 'CropperModal',
-    components: { EntModal, NSpace, CropperImage, NUpload, NAvatar, NTooltip },
+    components: { EntButton, EntModal, NSpace, CropperImage, NUpload, NAvatar, NTooltip },
     props,
     emits: ['uploadSuccess', 'register'],
     setup(props, { emit }) {

@@ -1,10 +1,4 @@
-import { withInstall } from '../../utils';
-import BasicTable from './src/index.vue';
-import TableAction from './src/components/table-action.vue';
-import TableImg from './src/components/table-img.vue';
+export { default as EntTable } from './src/index.vue';
+export { default as EntTableAction } from './src/components/table-action.vue';
+export { default as EntTableImg } from './src/components/table-img.vue';
 export { useTable } from './src/hooks/use-table';
-export const EntTable = withInstall(BasicTable);
-export const EntTableAction = withInstall(TableAction);
-export const EntTableImg = withInstall(TableImg);
-export default BasicTable;
-export { TableAction, TableImg };

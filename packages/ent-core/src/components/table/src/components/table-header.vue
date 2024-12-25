@@ -34,6 +34,7 @@
   import { useDesign } from '../../../../hooks';
   import { tableHeaderProps } from '../props';
   import { useTableContext } from '../hooks/use-table-context';
+  import { EntButton } from '../../../../components/button';
   import TableSettingComponent from './settings/index.vue';
   import TableTitle from './table-title.vue';
   import type { ColumnChangeParam } from '../types/table';
@@ -44,7 +45,8 @@
       NDivider,
       NAlert,
       TableTitle,
-      TableSetting: TableSettingComponent
+      TableSetting: TableSettingComponent,
+      EntButton
     },
     props: tableHeaderProps,
     emits: ['columns-change'],

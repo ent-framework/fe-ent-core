@@ -104,6 +104,7 @@
   import { cloneDeep, omit } from 'lodash-es';
   import sortablejs from 'sortablejs';
   import { EntIcon } from '../../../../icon';
+  import { EntButton } from '../../../../../components/button';
   import { EntScrollContainer } from '../../../../container';
   import { useDesign, useI18n } from '../../../../../hooks';
   import { isNullAndUnDef } from '../../../../../utils';
@@ -128,7 +129,8 @@
       NSpace,
       EntScrollContainer,
       NDivider,
-      EntIcon
+      EntIcon,
+      EntButton
     },
     emits: ['columns-change'],
 

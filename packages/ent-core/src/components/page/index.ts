@@ -1,6 +1,2 @@
-import { withInstall } from '../../utils';
-
-import pageWrapper from './src/page-wrapper.vue';
-export const EntPageWrapper = withInstall(pageWrapper);
-export default pageWrapper;
+export { default as EntPageWrapper } from './src/page-wrapper.vue';
 export { PageWrapperFixedHeightKey } from './constant';

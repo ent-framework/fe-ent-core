@@ -1,12 +1,12 @@
 <script lang="ts">
   import { defineComponent, ref, toRefs } from 'vue';
   import {
-    NDialogProvider,
     NLoadingBarProvider,
     NMessageProvider,
     NModalProvider,
     NNotificationProvider
   } from 'naive-ui';
+  import { NDialogProvider } from 'naive-ui/es/dialog';
   import { createBreakpointListen } from '../../../hooks/event/use-breakpoint';
   import { createAppProviderContext } from './use-app-context';
   import EntAppProviderWrapper from './wrapper.vue';
@@ -17,10 +17,6 @@
      */
     prefixCls: { type: String, default: 'ent' }
   };
-
-  interface AppProviderProps {
-    prefixCls: string;
-  }
 
   export default defineComponent({
     name: 'EntAppProvider',
@@ -34,7 +30,7 @@
     },
     inheritAttrs: false,
     props,
-    setup(props: AppProviderProps, { slots }) {
+    setup(props) {
       const isMobile = ref(false);
 
       // Monitor screen breakpoint information changes

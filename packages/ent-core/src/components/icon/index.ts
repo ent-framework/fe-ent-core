@@ -1,9 +1,2 @@
-import { withInstall } from '../../utils';
-import Icon from './src/icon.vue';
-import IconPicker from './src/icon-picker.vue';
-
-export const EntIcon = withInstall(Icon);
-export const EntIconPicker = withInstall(IconPicker);
-
-export default Icon;
-export { IconPicker };
+export { default as EntIcon } from './src/icon.vue';
+export { default as EntIconPicker } from './src/icon-picker.vue';

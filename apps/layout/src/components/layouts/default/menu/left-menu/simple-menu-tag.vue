@@ -5,7 +5,6 @@
   import { computed, defineComponent } from 'vue';
 
   import { useDesign } from 'fe-ent-core/es/hooks/web/use-design';
-  import { propTypes } from 'fe-ent-core/es/utils/prop-types';
   import type { PropType } from 'vue';
   import type { Menu } from 'fe-ent-core/es/router/types';
 
@@ -16,8 +15,12 @@
         type: Object as PropType<Menu>,
         default: () => ({})
       },
-      dot: propTypes.bool,
-      collapseParent: propTypes.bool
+      dot: {
+        type: Boolean
+      },
+      collapseParent: {
+        type: Boolean
+      }
     },
     setup(props) {
       const { prefixCls } = useDesign('simple-menu');

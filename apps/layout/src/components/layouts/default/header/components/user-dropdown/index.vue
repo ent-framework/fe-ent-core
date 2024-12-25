@@ -20,9 +20,8 @@
   // components
 
   import { computed, defineComponent, h, unref } from 'vue';
-  import EntIcon from 'fe-ent-core/es/components/icon';
+  import { EntIcon } from 'fe-ent-core/es/components/icon';
   import { NDropdown, NText } from 'naive-ui';
-  import { propTypes } from 'fe-ent-core/es/utils';
   import { useDesign, useI18n } from 'fe-ent-core/es/hooks';
   import { useModal } from 'fe-ent-core/es/components/modal';
   import { useUserStore } from 'fe-ent-core/es/store';
@@ -39,7 +38,16 @@
       NText
     },
     props: {
-      theme: propTypes.oneOf(['dark', 'light'])
+      theme: {
+        type: String,
+        required: true,
+        validator: (value: string) => {
+          // 定义允许的值
+          const validThemes = ['dark', 'light'];
+          // 检查传入的值是否有效
+          return validThemes.includes(value);
+        }
+      }
     },
     setup() {
       const { prefixCls } = useDesign('header-user-dropdown');

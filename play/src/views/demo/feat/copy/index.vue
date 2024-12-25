@@ -2,8 +2,8 @@
   <ent-page-wrapper title="文本复制示例">
     <ent-collapse-container class="w-full h-32 rounded-md" title="Copy Example">
       <div class="flex justify-center">
-        <a-input v-model:value="value" placeholder="请输入" />
-        <ent-button type="primary" @click="handleCopy"> Copy </ent-button>
+        <n-input v-model:value="value" placeholder="请输入" />
+        <ent-button type="primary" class="ml-2" @click="handleCopy"> Copy </ent-button>
       </div>
     </ent-collapse-container>
   </ent-page-wrapper>
@@ -11,9 +11,13 @@
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
   import { useCopyToClipboard, useMessage } from 'fe-ent-core/es/hooks';
+  import { NInput } from 'naive-ui';
 
   export default defineComponent({
     name: 'Copy',
+    components: {
+      NInput
+    },
     setup() {
       const valueRef = ref('');
       const { createMessage } = useMessage();
@@ -31,6 +35,6 @@
         }
       }
       return { handleCopy, value: valueRef };
-    },
+    }
   });
 </script>

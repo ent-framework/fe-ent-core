@@ -119,7 +119,7 @@
       );
 
       watchEffect(() => {
-        currentSelect.value = props.value;
+        currentSelect.value = props.value || '';
       });
 
       watch(

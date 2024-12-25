@@ -22,10 +22,12 @@
   import { NFlex } from 'naive-ui';
   import { useI18n } from '../../../../hooks';
   import { basicProps } from '../props';
+  import { EntButton } from '../../../../components/button';
   export default defineComponent({
     name: 'BasicModalFooter',
     components: {
-      NFlex
+      NFlex,
+      EntButton
     },
     props: basicProps,
     emits: ['ok', 'cancel'],

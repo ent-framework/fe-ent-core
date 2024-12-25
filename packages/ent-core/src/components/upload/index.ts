@@ -1,5 +1,1 @@
-import { withInstall } from '../../utils';
-import basicUpload from './src/index.vue';
-
-export const EntUpload = withInstall(basicUpload);
-export default basicUpload;
+export { default as EntUpload } from './src/index.vue';

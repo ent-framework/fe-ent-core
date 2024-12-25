@@ -11,10 +11,10 @@
 <script lang="ts">
   import { defineComponent, ref, watchEffect } from 'vue';
   import { useRouter } from 'vue-router';
-  import { NBreadcrumb, NBreadcrumbItem, NDropdown } from 'naive-ui';
+  import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui';
   import { EntIcon } from 'fe-ent-core';
   import { useDesign, useGo, useI18n } from 'fe-ent-core/es/hooks';
-  import { filter, isString, propTypes } from 'fe-ent-core/es/utils';
+  import { filter, isString } from 'fe-ent-core/es/utils';
   import { REDIRECT_NAME, getAllParentPath, getMenus } from 'fe-ent-core/es/router';
   import { useLayoutThemeSetting } from '../../../../../hooks';
   import type { Menu } from 'fe-ent-core/es/router';
@@ -23,9 +23,18 @@
 
   export default defineComponent({
     name: 'LayoutBreadcrumb',
-    components: { EntIcon, NBreadcrumb, NBreadcrumbItem, NDropdown },
+    components: { EntIcon, NBreadcrumb, NBreadcrumbItem },
     props: {
-      theme: propTypes.oneOf(['dark', 'light'])
+      theme: {
+        type: String,
+        required: true,
+        validator: (value: string) => {
+          // 定义允许的值
+          const validThemes = ['dark', 'light'];
+          // 检查传入的值是否有效
+          return validThemes.includes(value);
+        }
+      }
     },
     setup() {
       const routes = ref<RouteLocationMatched[]>([]);

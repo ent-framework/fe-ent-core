@@ -7,7 +7,6 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { EntIcon } from 'fe-ent-core';
-  import { propTypes } from 'fe-ent-core/es/utils';
   import { useDesign } from 'fe-ent-core/es/hooks';
   import { useMenuSetting } from '../../../../hooks';
 
@@ -15,7 +14,16 @@
     name: 'HeaderTrigger',
     components: { EntIcon },
     props: {
-      theme: propTypes.oneOf(['light', 'dark'])
+      theme: {
+        type: String,
+        required: true,
+        validator: (value: string) => {
+          // 定义允许的值
+          const validThemes = ['dark', 'light'];
+          // 检查传入的值是否有效
+          return validThemes.includes(value);
+        }
+      }
     },
     setup() {
       const { getCollapsed, toggleCollapsed } = useMenuSetting();

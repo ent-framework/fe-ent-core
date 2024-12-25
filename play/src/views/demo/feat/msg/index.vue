@@ -2,40 +2,37 @@
   <ent-page-wrapper title="消息示例">
     <ent-collapse-container class="w-full h-32 rounded-md" title="Message">
       <ent-button class="mr-2" @click="infoMsg('Info message')"> Info </ent-button>
-      <ent-button class="mr-2" color="success" @click="successMsg('Success message')">
+      <ent-button class="mr-2" type="success" @click="successMsg('Success message')">
         Success
       </ent-button>
-      <ent-button class="mr-2" color="dangerous" @click="warningMsg('Warning message')">
+      <ent-button class="mr-2" type="warning" @click="warningMsg('Warning message')">
         Warning
       </ent-button>
-      <ent-button class="mr-2" color="error" @click="errorMsg('Error message')"> Error </ent-button>
+      <ent-button class="mr-2" type="error" @click="errorMsg('Error message')"> Error </ent-button>
       <ent-button class="mr-2" type="primary" @click="handleLoading"> Loading </ent-button>
     </ent-collapse-container>
 
     <ent-collapse-container class="w-full h-32 mt-5 rounded-md" title="Comfirm">
       <ent-button class="mr-2" @click="handleConfirm('info')"> Info </ent-button>
-      <ent-button color="warning" class="mr-2" @click="handleConfirm('warning')">
+      <ent-button type="warning" class="mr-2" @click="handleConfirm('warning')">
         Warning
       </ent-button>
-      <ent-button color="success" class="mr-2" @click="handleConfirm('success')">
+      <ent-button type="success" class="mr-2" @click="handleConfirm('success')">
         Success
       </ent-button>
-      <ent-button color="error" class="mr-2" @click="handleConfirm('error')"> Error </ent-button>
+      <ent-button type="error" class="mr-2" @click="handleConfirm('error')"> Error </ent-button>
     </ent-collapse-container>
 
     <ent-collapse-container class="w-full h-32 mt-5 rounded-md" title="Modal">
       <ent-button class="mr-2" @click="handleInfoModal"> Info </ent-button>
-      <ent-button color="success" class="mr-2" @click="handleSuccessModal"> Success </ent-button>
-      <ent-button color="error" class="mr-2" @click="handleErrorModal"> Error </ent-button>
-      <ent-button color="warning" class="mr-2" @click="handleWarningModal"> Warning </ent-button>
-      <ent-button color="warning" class="mr-2" @click="handleAjax"> test ajax error </ent-button>
+      <ent-button type="success" class="mr-2" @click="handleSuccessModal"> Success </ent-button>
+      <ent-button type="error" class="mr-2" @click="handleErrorModal"> Error </ent-button>
+      <ent-button type="warning" class="mr-2" @click="handleWarningModal"> Warning </ent-button>
+      <ent-button type="warning" class="mr-2" @click="handleAjax"> test ajax error </ent-button>
     </ent-collapse-container>
 
-    <ent-collapse-container
-      class="w-full h-32 mt-5 rounded-md"
-      title="Notification 用法与上面一致"
-    >
-      <ent-button color="success" class="mr-2" @click="handleNotify"> Success </ent-button>
+    <ent-collapse-container class="w-full h-32 mt-5 rounded-md" title="Notification 用法与上面一致">
+      <ent-button type="success" class="mr-2" @click="handleNotify"> Success </ent-button>
     </ent-collapse-container>
   </ent-page-wrapper>
 </template>
@@ -53,7 +50,7 @@
         createInfoModal,
         createErrorModal,
         createWarningModal,
-        notification,
+        notification
       } = useMessage();
       const { info, success, warning, error } = createMessage;
 
@@ -64,7 +61,7 @@
         createConfirm({
           iconType: type,
           title: 'Tip',
-          content: 'content message...',
+          content: 'content message...'
         });
       }
       function handleSuccessModal() {
@@ -88,14 +85,14 @@
             orgSort: 1,
             statusFlag: 1,
             orgRemark: 'a',
-            orgId: -1,
-          },
+            orgId: -1
+          }
         });
       }
       function handleNotify() {
         notification.success({
           message: 'Tip',
-          description: 'content message...',
+          description: 'content message...'
         });
       }
       return {
@@ -110,8 +107,8 @@
         handleWarningModal,
         handleInfoModal,
         handleNotify,
-        handleAjax,
+        handleAjax
       };
-    },
+    }
   });
 </script>

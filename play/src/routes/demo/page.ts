@@ -11,7 +11,7 @@ const page: AppRouteRecordRaw = {
   meta: {
     orderNo: 20,
     icon: 'ion:aperture-outline',
-    title: t('routes.demo.page.page'),
+    title: t('routes.demo.page.page')
   },
   children: [
     // =============================form start=============================
@@ -21,7 +21,7 @@ const page: AppRouteRecordRaw = {
       redirect: '/page-demo/form/basic',
       component: getParentLayout('FormPage'),
       meta: {
-        title: t('routes.demo.page.form'),
+        title: t('routes.demo.page.form')
       },
       children: [
         {
@@ -29,26 +29,26 @@ const page: AppRouteRecordRaw = {
           name: 'FormBasicPage',
           component: () => import('/@/views/demo/page/form/basic/index.vue'),
           meta: {
-            title: t('routes.demo.page.formBasic'),
-          },
+            title: t('routes.demo.page.formBasic')
+          }
         },
         {
           path: 'step',
           name: 'FormStepPage',
           component: () => import('/@/views/demo/page/form/step/index.vue'),
           meta: {
-            title: t('routes.demo.page.formStep'),
-          },
+            title: t('routes.demo.page.formStep')
+          }
         },
         {
           path: 'high',
           name: 'FormHightPage',
           component: () => import('/@/views/demo/page/form/high/index.vue'),
           meta: {
-            title: t('routes.demo.page.formHigh'),
-          },
-        },
-      ],
+            title: t('routes.demo.page.formHigh')
+          }
+        }
+      ]
     },
     // =============================form end=============================
     // =============================desc start=============================
@@ -58,7 +58,7 @@ const page: AppRouteRecordRaw = {
       component: getParentLayout('DescPage'),
       redirect: '/page-demo/desc/basic',
       meta: {
-        title: t('routes.demo.page.desc'),
+        title: t('routes.demo.page.desc')
       },
       children: [
         {
@@ -66,18 +66,18 @@ const page: AppRouteRecordRaw = {
           name: 'DescBasicPage',
           component: () => import('/@/views/demo/page/desc/basic/index.vue'),
           meta: {
-            title: t('routes.demo.page.descBasic'),
-          },
+            title: t('routes.demo.page.descBasic')
+          }
         },
         {
           path: 'high',
           name: 'DescHighPage',
           component: () => import('/@/views/demo/page/desc/high/index.vue'),
           meta: {
-            title: t('routes.demo.page.descHigh'),
-          },
-        },
-      ],
+            title: t('routes.demo.page.descHigh')
+          }
+        }
+      ]
     },
     // =============================desc end=============================
 
@@ -89,7 +89,7 @@ const page: AppRouteRecordRaw = {
       component: getParentLayout('ResultPage'),
 
       meta: {
-        title: t('routes.demo.page.result'),
+        title: t('routes.demo.page.result')
       },
       children: [
         {
@@ -97,18 +97,18 @@ const page: AppRouteRecordRaw = {
           name: 'ResultSuccessPage',
           component: () => import('/@/views/demo/page/result/success/index.vue'),
           meta: {
-            title: t('routes.demo.page.resultSuccess'),
-          },
+            title: t('routes.demo.page.resultSuccess')
+          }
         },
         {
           path: 'fail',
           name: 'ResultFailPage',
           component: () => import('/@/views/demo/page/result/fail/index.vue'),
           meta: {
-            title: t('routes.demo.page.resultFail'),
-          },
-        },
-      ],
+            title: t('routes.demo.page.resultFail')
+          }
+        }
+      ]
     },
     // =============================result end=============================
 
@@ -119,7 +119,7 @@ const page: AppRouteRecordRaw = {
       component: getParentLayout('AccountPage'),
       redirect: '/page-demo/account/setting',
       meta: {
-        title: t('routes.demo.page.account'),
+        title: t('routes.demo.page.account')
       },
       children: [
         {
@@ -127,18 +127,18 @@ const page: AppRouteRecordRaw = {
           name: 'AccountCenterPage',
           component: () => import('/@/views/demo/page/account/center/index.vue'),
           meta: {
-            title: t('routes.demo.page.accountCenter'),
-          },
+            title: t('routes.demo.page.accountCenter')
+          }
         },
         {
           path: 'setting',
           name: 'AccountSettingPage',
           component: () => import('/@/views/demo/page/account/setting/index.vue'),
           meta: {
-            title: t('routes.demo.page.accountSetting'),
-          },
-        },
-      ],
+            title: t('routes.demo.page.accountSetting')
+          }
+        }
+      ]
     },
     // =============================account end=============================
     // =============================exception start=============================
@@ -148,7 +148,7 @@ const page: AppRouteRecordRaw = {
       component: getParentLayout('ExceptionPage'),
       redirect: '/page-demo/exception/404',
       meta: {
-        title: t('routes.demo.page.exception'),
+        title: t('routes.demo.page.exception')
       },
       children: [
         {
@@ -156,57 +156,57 @@ const page: AppRouteRecordRaw = {
           name: 'PageNotAccess',
           component: 'ExceptionPage',
           props: {
-            status: ExceptionEnum.PAGE_NOT_ACCESS,
+            status: ExceptionEnum.PAGE_NOT_ACCESS
           },
           meta: {
-            title: '403',
-          },
+            title: '403'
+          }
         },
-        {
-          path: '404',
-          name: 'PageNotFound',
-          component: 'ExceptionPage',
-          props: {
-            status: ExceptionEnum.PAGE_NOT_FOUND,
-          },
-          meta: {
-            title: '404',
-          },
-        },
+        // {
+        //   path: '404',
+        //   name: 'PageNotFound',
+        //   component: 'ExceptionPage',
+        //   props: {
+        //     status: ExceptionEnum.PAGE_NOT_FOUND,
+        //   },
+        //   meta: {
+        //     title: '404',
+        //   },
+        // },
         {
           path: '500',
           name: 'ServiceError',
           component: 'ExceptionPage',
           props: {
-            status: ExceptionEnum.ERROR,
+            status: ExceptionEnum.ERROR
           },
           meta: {
-            title: '500',
-          },
+            title: '500'
+          }
         },
         {
           path: 'net-work-error',
           name: 'NetWorkError',
           component: 'ExceptionPage',
           props: {
-            status: ExceptionEnum.NET_WORK_ERROR,
+            status: ExceptionEnum.NET_WORK_ERROR
           },
           meta: {
-            title: t('routes.demo.page.netWorkError'),
-          },
+            title: t('routes.demo.page.netWorkError')
+          }
         },
         {
           path: 'not-data',
           name: 'NotData',
           component: 'ExceptionPage',
           props: {
-            status: ExceptionEnum.PAGE_NOT_DATA,
+            status: ExceptionEnum.PAGE_NOT_DATA
           },
           meta: {
-            title: t('routes.demo.page.notData'),
-          },
-        },
-      ],
+            title: t('routes.demo.page.notData')
+          }
+        }
+      ]
     },
     // =============================exception end=============================
     // =============================list start=============================
@@ -216,7 +216,7 @@ const page: AppRouteRecordRaw = {
       component: getParentLayout('ListPage'),
       redirect: '/page-demo/list/card',
       meta: {
-        title: t('routes.demo.page.list'),
+        title: t('routes.demo.page.list')
       },
       children: [
         {
@@ -224,29 +224,29 @@ const page: AppRouteRecordRaw = {
           name: 'ListBasicPage',
           component: () => import('/@/views/demo/page/list/basic/index.vue'),
           meta: {
-            title: t('routes.demo.page.listBasic'),
-          },
+            title: t('routes.demo.page.listBasic')
+          }
         },
         {
           path: 'card',
           name: 'ListCardPage',
           component: () => import('/@/views/demo/page/list/card/index.vue'),
           meta: {
-            title: t('routes.demo.page.listCard'),
-          },
+            title: t('routes.demo.page.listCard')
+          }
         },
         {
           path: 'search',
           name: 'ListSearchPage',
           component: () => import('/@/views/demo/page/list/search/index.vue'),
           meta: {
-            title: t('routes.demo.page.listSearch'),
-          },
-        },
-      ],
-    },
+            title: t('routes.demo.page.listSearch')
+          }
+        }
+      ]
+    }
     // =============================list end=============================
-  ],
+  ]
 };
 
 export default page;

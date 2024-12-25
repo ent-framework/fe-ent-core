@@ -1,9 +1,2 @@
-import { withInstall } from '../../utils';
-import BasicButton from './src/basic-button.vue';
-import PopConfirmButton from './src/pop-confirm-button.vue';
-
-export const EntButton = withInstall(BasicButton);
-export const EntPopButton = withInstall(PopConfirmButton);
-
-export default BasicButton;
-export { PopConfirmButton };
+export { default as EntButton } from './src/basic-button.vue';
+export { default as EntPopButton } from './src/pop-confirm-button.vue';

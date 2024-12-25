@@ -4,7 +4,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "fe-ent-code-editor": ["../code-editor/es"]
+      "fe-ent-code-editor": ["../code-editor/es"],
+      "fe-ent-core": ["../../packages/ent-core/es"],
+      "fe-ent-core/es/*": ["../../packages/ent-core/es/*"]
     }
   },
   "include": ["src"],

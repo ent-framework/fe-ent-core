@@ -1,5 +1,5 @@
 <template>
-  <Card title="快捷导航" v-bind="$attrs">
+  <NCard title="快捷导航" v-bind="$attrs">
     <template v-for="item in navItems" :key="item">
       <CardGrid>
         <span class="flex flex-col items-center">
@@ -8,10 +8,10 @@
         </span>
       </CardGrid>
     </template>
-  </Card>
+  </NCard>
 </template>
 <script lang="ts" setup>
-  import { Card } from 'ant-design-vue';
+  import { NCard } from 'naive-ui';
   import { navItems } from './data';
 
   const CardGrid = Card.Grid;

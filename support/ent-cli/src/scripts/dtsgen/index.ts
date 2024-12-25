@@ -28,11 +28,11 @@ const build = async (base: string, tsconfig: string) => {
       outDir,
       baseUrl: `${cwd}`,
       rootDir: `${cwd}`,
-      // target: ScriptTarget.ES2015,
-      // moduleResolution: ModuleResolutionKind.Node10,
+      target: ScriptTarget.ES2015,
+      moduleResolution: ModuleResolutionKind.Node10,
       // isolatedModules: true,
       // esModuleInterop: true,
-      // skipLibCheck: true,
+      skipLibCheck: true,
       preserveSymlinks: true
       // noImplicitAny: false,
       // removeComments: false
@@ -87,7 +87,7 @@ async function addSourceFiles(project: Project, cwd: string, base: string) {
 
   const sourceFiles: SourceFile[] = [];
   fs.removeSync(`${cwd}/build`);
-  fs.ensureDirSync(`${cwd}/build`);
+  // fs.ensureDirSync(`${cwd}/build`);
   await Promise.all([
     ...filePaths.map(async (file) => {
       const content = await fs.promises.readFile(file, 'utf8');
@@ -120,9 +120,9 @@ async function addSourceFiles(project: Project, cwd: string, base: string) {
             );
             if (sourceFile) {
               removeVueSpecifier(sourceFile);
-              const fileName = `${cwd}/build/${sourceFile.getFilePath().replace(base, '')}`;
-              fs.mkdirpSync(fileName.slice(0, Math.max(0, fileName.lastIndexOf('/'))));
-              fs.writeFileSync(fileName, sourceFile.getFullText(), { flag: 'w' });
+              // const fileName = `${cwd}/build/${sourceFile.getFilePath().replace(base, '')}`;
+              // fs.mkdirpSync(fileName.slice(0, Math.max(0, fileName.lastIndexOf('/'))));
+              // fs.writeFileSync(fileName, sourceFile.getFullText(), { flag: 'w' });
               sourceFiles.push(sourceFile);
             }
           }
@@ -144,14 +144,8 @@ async function addSourceFiles(project: Project, cwd: string, base: string) {
 function typeCheck(project: Project) {
   const diagnostics = project.getPreEmitDiagnostics();
   if (diagnostics.length > 0) {
-    // diagnostics.forEach((diagnostic) => {
-    //   consola.error(diagnostic.getCode());
-    //   consola.error(diagnostic.getSourceFile()?.getText(false));
-    // });
     consola.error(project.formatDiagnosticsWithColorAndContext(diagnostics));
-    // const err = new Error('Failed to generate dts.');
-    // consola.error(err);
-    // throw err;
+    consola.error(`total errors: ${chalk.bold(diagnostics.length)}`);
   }
 }
 

@@ -1,10 +1,10 @@
 <template>
   <ent-page-wrapper title="标签页操作示例">
     <ent-collapse-container title="在下面输入框输入文本,切换后回来内容会保存">
-      <a-alert banner message="该操作不会影响页面标题，仅修改Tab标题" />
+      <n-alert type="info"> 该操作不会影响页面标题，仅修改Tab标题 </n-alert>
       <div class="mt-2 flex flex-grow-0">
+        <n-input v-model:value="title" placeholder="请输入" class="mr-4 w-6" />
         <ent-button class="mr-2" type="primary" @click="setTabTitle"> 设置Tab标题 </ent-button>
-        <a-input v-model:value="title" placeholder="请输入" class="mr-4 w-12" />
       </div>
     </ent-collapse-container>
 
@@ -28,13 +28,13 @@
   import { defineComponent, ref } from 'vue';
   import { useGo, useMessage } from 'fe-ent-core/es/hooks';
   import { useTabs } from 'fe-ent-layout/es/hooks';
-  import { Alert, Input } from 'ant-design-vue';
+  import { NAlert, NInput } from 'naive-ui';
 
   export default defineComponent({
     name: 'TabsDemo',
     components: {
-      [Input.name]: Input,
-      [Alert.name]: Alert,
+      NInput,
+      NAlert
     },
     setup() {
       const go = useGo();
@@ -62,8 +62,8 @@
         toDetail,
         refreshPage,
         setTabTitle,
-        title,
+        title
       };
-    },
+    }
   });
 </script>

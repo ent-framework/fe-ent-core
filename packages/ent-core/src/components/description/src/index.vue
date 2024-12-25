@@ -3,7 +3,7 @@
   import { get, omit } from 'lodash-es';
   import { NDescriptions, NDescriptionsItem } from 'naive-ui';
   import { isFunction } from '../../../utils/is';
-  import CollapseContainer from '../../../components/container';
+  import EntCollapseContainer from '../../../components/container/src/collapse/collapse-container.vue';
   import { useAttrs, useDesign } from '../../../hooks';
   import { getSlot } from '../../../utils';
   import { type Recordable } from '../../../types';
@@ -86,7 +86,7 @@
               const getField = get(_data, field);
               return render !== undefined && isFunction(render)
                 ? render(getField, _data)
-                : getField ?? '';
+                : (getField ?? '');
             };
 
             return (
@@ -119,12 +119,12 @@
         const { title } = unref(getMergeProps);
 
         return (
-          <CollapseContainer title={title} canExpan={canExpand} helpMessage={helpMessage}>
+          <EntCollapseContainer title={title} canExpan={canExpand} helpMessage={helpMessage}>
             {{
               default: () => content,
               action: () => getSlot(slots, 'action')
             }}
-          </CollapseContainer>
+          </EntCollapseContainer>
         );
       };
 

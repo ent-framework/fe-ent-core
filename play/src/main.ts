@@ -3,7 +3,7 @@ import 'uno.css';
 //import 'virtual:svg-icons-register';
 
 import { createApp } from 'vue';
-import EntCore, { registerAntGlobComp } from 'fe-ent-core';
+import EntCore from 'fe-ent-core';
 import { setupErrorHandle } from 'fe-ent-core/es/logics';
 import { setupGlobDirectives } from 'fe-ent-core/es/directives';
 import { setupStore } from 'fe-ent-core/es/store';
@@ -28,9 +28,6 @@ async function bootstrap() {
   await setupI18n(app);
   //初始化全局变量
   await initApplication();
-
-  // Register ant global components
-  registerAntGlobComp(app);
 
   app.use(EntCore);
 

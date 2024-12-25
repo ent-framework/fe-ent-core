@@ -31,11 +31,11 @@
       </ent-authority>
 
       <ent-authority :value="'2000'">
-        <ent-button color="success" class="mx-4"> 拥有code ['2000']权限可见 </ent-button>
+        <ent-button type="success" class="mx-4"> 拥有code ['2000']权限可见 </ent-button>
       </ent-authority>
 
       <ent-authority :value="['1000', '2000']">
-        <ent-button color="error" class="mx-4"> 拥有code ['1000','2000']角色权限可见 </ent-button>
+        <ent-button type="error" class="mx-4"> 拥有code ['1000','2000']角色权限可见 </ent-button>
       </ent-authority>
 
       <Divider>函数方式方式判断权限</Divider>
@@ -43,11 +43,11 @@
         拥有code ['1000']权限可见
       </ent-button>
 
-      <ent-button v-if="hasPermission('2000')" color="success" class="mx-4">
+      <ent-button v-if="hasPermission('2000')" type="success" class="mx-4">
         拥有code ['2000']权限可见
       </ent-button>
 
-      <ent-button v-if="hasPermission(['1000', '2000'])" color="error" class="mx-4">
+      <ent-button v-if="hasPermission(['1000', '2000'])" type="error" class="mx-4">
         拥有code ['1000','2000']角色权限可见
       </ent-button>
 
@@ -56,7 +56,7 @@
         拥有code ['1000']权限可见
       </ent-button>
 
-      <ent-button v-auth="'2000'" color="success" class="mx-4">
+      <ent-button v-auth="'2000'" type="success" class="mx-4">
         拥有code ['2000']权限可见
       </ent-button>
 
@@ -83,7 +83,7 @@
       const userStore = useUserStore();
 
       const isBackPremissionMode = computed(
-        () => appStore.getProjectConfig.permissionMode === PermissionModeEnum.BACK,
+        () => appStore.getProjectConfig.permissionMode === PermissionModeEnum.BACK
       );
 
       async function switchToken(userId: number) {
@@ -100,8 +100,8 @@
         hasPermission,
         permissionStore,
         switchToken,
-        isBackPremissionMode,
+        isBackPremissionMode
       };
-    },
+    }
   });
 </script>

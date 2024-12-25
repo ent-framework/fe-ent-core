@@ -30,8 +30,8 @@
 <script lang="ts">
   import { computed, defineComponent, h, toRaw, unref } from 'vue';
   import { NFlex } from 'naive-ui';
-  import Icon from '../../../../components/icon';
-  import { EntPopButton } from '../../../button';
+  import { EntIcon } from '../../../../components/icon';
+  import { EntButton, EntPopButton } from '../../../../components/button';
   import { EntDropdown } from '../../../dropdown';
   import { useDesign, usePermission } from '../../../../hooks';
   import { isBoolean, isString } from '../../../../utils/is';
@@ -47,7 +47,7 @@
 
   export default defineComponent({
     name: 'EntTableAction',
-    components: { EntPopButton, NFlex, EntDropdown },
+    components: { EntPopButton, NFlex, EntDropdown, EntButton },
     props: {
       actions: {
         type: Array as PropType<TableActionItem[]>,
@@ -114,7 +114,7 @@
           disabled,
           renderIcon: () => {
             if (icon) {
-              return h(Icon, { icon: action.icon });
+              return h(EntIcon, { icon: action.icon });
             }
             return null;
           },
@@ -134,7 +134,7 @@
           return {
             icon: () => {
               if (action.icon) {
-                return h(Icon, { icon: action.icon });
+                return h(EntIcon, { icon: action.icon });
               }
               return null;
             },

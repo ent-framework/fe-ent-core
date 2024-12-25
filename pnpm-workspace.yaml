@@ -7,3 +7,5 @@ packages:
   - play
   - 'support/**'
   - 'internal/**'
+hoistPattern:
+  - '!naive-ui'

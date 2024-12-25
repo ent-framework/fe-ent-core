@@ -2,9 +2,9 @@
   import { computed, defineComponent, h, toRef, unref } from 'vue';
   import { EntAppLogo, EntScrollContainer } from 'fe-ent-core';
   import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/es/logics';
-  import { isUrl, openWindow, propTypes } from 'fe-ent-core/es/utils';
+  import { isUrl, openWindow } from 'fe-ent-core/es/utils';
   import { useAppInject, useDesign, useGo } from 'fe-ent-core/es/hooks';
-  import EntIcon from 'fe-ent-core/es/components/icon';
+  import { EntIcon } from 'fe-ent-core/es/components/icon';
   import { useI18n } from 'fe-ent-core/es/hooks/web/use-i18n';
   import { useLayoutTheme, useLayoutThemeSetting, useMenuSetting } from '../../../../hooks';
   import EntHeaderMenu from './header-menu/index.vue';
@@ -24,7 +24,10 @@
         default: MenuSplitTyeEnum.NONE
       },
 
-      isHorizontal: propTypes.bool,
+      isHorizontal: {
+        type: Boolean,
+        default: false
+      },
       // menu Mode
       menuMode: {
         type: [String] as PropType<Nullable<MenuModeEnum>>,

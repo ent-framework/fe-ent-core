@@ -46,6 +46,7 @@
   import { NAlert, NUpload } from 'naive-ui';
   import { isFunction } from '../../../utils/is';
   import { EntModal, useModalInner } from '../../../components/modal';
+  import { EntButton } from '../../../components/button';
   // hooks
   import { useMessage } from '../../../hooks/web/use-message';
   //   types
@@ -63,7 +64,7 @@
   import type { PropType } from 'vue';
 
   export default defineComponent({
-    components: { EntModal, NUpload, NAlert, FileList },
+    components: { EntModal, NUpload, NAlert, FileList, EntButton },
     props: {
       ...basicProps,
       previewFileList: {

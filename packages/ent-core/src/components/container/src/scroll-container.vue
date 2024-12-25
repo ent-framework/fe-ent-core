@@ -1,12 +1,17 @@
 <template>
-  <Scrollbar ref="scrollbarRef" class="scroll-container" :style="getContentStyle" v-bind="$attrs">
+  <EntScrollbar
+    ref="scrollbarRef"
+    class="scroll-container"
+    :style="getContentStyle"
+    v-bind="$attrs"
+  >
     <slot />
-  </Scrollbar>
+  </EntScrollbar>
 </template>
 
 <script lang="ts">
   import { computed, defineComponent, nextTick, ref, unref } from 'vue';
-  import Scrollbar from '../../../components/scroll-bar';
+  import EntScrollbar from '../../../components/scroll-bar/src/index.vue';
   import { useScrollTo } from '../../../hooks/event/use-scroll-to';
   import type { ScrollbarType } from '../../../components/scroll-bar/interface';
   import type { Nullable } from '../../../types';
@@ -14,7 +19,7 @@
 
   export default defineComponent({
     name: 'EntScrollContainer',
-    components: { Scrollbar },
+    components: { EntScrollbar },
     setup() {
       const scrollbarRef = ref<Nullable<ScrollbarType>>(null);
 

@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
-  import { EntTitle } from '../../../../components/basic';
+  import EntTitle from '../../../../components/basic/src/basic-title.vue';
   import { useDesign } from '../../../../hooks/web/use-design';
   import type { PropType } from 'vue';
   import type { Recordable } from '../../../../types';

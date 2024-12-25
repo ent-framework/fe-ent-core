@@ -4,8 +4,8 @@
       <ent-button type="primary" class="mr-2" @click="setWatermark('WaterMark Info')">
         Create
       </ent-button>
-      <ent-button color="error" class="mr-2" @click="clear"> Clear </ent-button>
-      <ent-button color="warning" class="mr-2" @click="setWatermark('WaterMark Info New')">
+      <ent-button type="error" class="mr-2" @click="clear"> Clear </ent-button>
+      <ent-button type="warning" class="mr-2" @click="setWatermark('WaterMark Info New')">
         Reset
       </ent-button>
     </ent-collapse-container>
@@ -23,8 +23,8 @@
       return {
         setWatermark,
         clear,
-        areaRef,
+        areaRef
       };
-    },
+    }
   });
 </script>

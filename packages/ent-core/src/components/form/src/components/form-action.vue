@@ -33,8 +33,8 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import { NFormItem } from 'naive-ui';
-  import { EntButton } from '../../../button';
-  import { EntArrow } from '../../../basic';
+  import EntButton from '../../../button/src/basic-button.vue';
+  import EntArrow from '../../../basic/src/basic-arrow.vue';
   import { useI18n } from '../../../../hooks';
   import { useFormContext } from '../hooks/use-form-context';
   import { formActionProps } from '../props';

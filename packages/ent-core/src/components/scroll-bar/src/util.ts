@@ -1,5 +1,17 @@
 import type { BarMap } from './types';
-import type { Recordable } from '../../../types';
+import type { CSSProperties, ExtractPropTypes } from 'vue';
+export const thumbProps = {
+  vertical: Boolean,
+  size: String,
+  move: Number,
+  ratio: {
+    type: Number,
+    required: true
+  },
+  always: Boolean
+};
+
+export type ThumbProps = ExtractPropTypes<typeof thumbProps>;
 
 export const BAR_MAP: BarMap = {
   vertical: {
@@ -24,29 +36,13 @@ export const BAR_MAP: BarMap = {
   }
 };
 
-// @ts-ignore
-export function renderThumbStyle({ move, size, bar }) {
-  const style = {} as any;
-  const translate = `translate${bar.axis}(${move}%)`;
-
-  style[bar.size] = size;
-  style.transform = translate;
-  style.msTransform = translate;
-  style.webkitTransform = translate;
-
-  return style;
-}
-
-function extend<T, K>(to: T, _from: K): T & K {
-  return Object.assign(to, _from);
-}
-
-export function toObject<T>(arr: Array<T>): Recordable<T> {
-  const res = {};
-  for (const element of arr) {
-    if (element) {
-      extend(res, element);
-    }
-  }
-  return res;
-}
+export const renderThumbStyle = ({
+  move,
+  size,
+  bar
+}: Pick<ThumbProps, 'move' | 'size'> & {
+  bar: (typeof BAR_MAP)[keyof typeof BAR_MAP];
+}): CSSProperties => ({
+  [bar.size]: size,
+  transform: `translate${bar.axis}(${move}%)`
+});

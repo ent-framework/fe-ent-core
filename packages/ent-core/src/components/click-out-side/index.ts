@@ -1,5 +1,1 @@
-import { withInstall } from '../../utils';
-import clickOutSide from './src/index.vue';
-
-export const EntClickOutSide = withInstall(clickOutSide);
-export default clickOutSide;
+export { default as EntClickOutSide } from './src/index.vue';

@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-code-editor",
-  "version": "3.0.22",
+  "version": "3.0.25",
   "author": {
     "name": "jeff qian",
     "email": "qbaojian@163.com"
@@ -37,7 +37,7 @@
   "devDependencies": {
     "fe-ent-cli": "workspace:*",
     "@types/codemirror": "^5.60.5",
-    "rimraf": "^5.0.0"
+    "rimraf": "^6.0.1"
   },
   "repository": {
     "type": "git",

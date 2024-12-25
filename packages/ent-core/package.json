@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "3.0.22",
+  "version": "3.0.25",
   "homepage": "https://github.com/ent-framework/fe-ent-core",
   "bugs": {
     "url": "https://github.com/ent-framework/fe-ent-core/issues"
@@ -79,7 +79,7 @@
     "@types/tinycolor2": "^1.4.2",
     "cross-env": "^7.0.3",
     "fe-ent-cli": "workspace:*",
-    "rimraf": "^5.0.0",
+    "rimraf": "^6.0.1",
     "vite": "^6.0.1"
   },
   "vetur": {

@@ -34,7 +34,8 @@
   import { useModal } from '../../../components/modal';
   import { useMessage } from '../../../hooks/web/use-message';
   import { useI18n } from '../../../hooks/web/use-i18n';
-  import Icon from '../../../components/icon';
+  import { EntIcon } from '../../../components/icon';
+  import { EntButton } from '../../../components/button';
   import CopperModal from './copper-modal.vue';
   import type { ButtonProps } from '../../../components/button/interface';
   import type { CSSProperties, PropType } from 'vue';
@@ -70,7 +71,7 @@
 
   export default defineComponent({
     name: 'EntCropperAvatar',
-    components: { CopperModal, Icon },
+    components: { CopperModal, EntButton, Icon: EntIcon },
     props,
     emits: ['update:value', 'change'],
     setup(props, { emit, expose }) {

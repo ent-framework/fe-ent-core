@@ -9,7 +9,7 @@ import type { AppRouteRecordRaw } from 'fe-ent-core/es/router';
 export function getPageNotFoundRoute(): AppRouteRecordRaw {
   return {
     path: '/:path(.*)*',
-    name: PAGE_NOT_FOUND_NAME,
+    name: `${PAGE_NOT_FOUND_NAME}ROOT`,
     component: COMPONENT_LAYOUT_NAME,
     meta: {
       title: 'ErrorPage',

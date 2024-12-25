@@ -17,7 +17,8 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { NElement } from 'naive-ui';
-  import { EntArrow, EntTitle } from '../../../basic';
+  import EntArrow from '../../../basic/src/basic-arrow.vue';
+  import EntTitle from '../../../basic/src/basic-title.vue';
   import type { PropType } from 'vue';
 
   const props = {

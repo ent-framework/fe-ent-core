@@ -9,11 +9,13 @@
   import { computed, ref, unref } from 'vue';
   import { NSpin } from 'naive-ui';
   import { useDesign, useLayoutHeight, useWindowSizeFn } from 'fe-ent-core/es/hooks';
-  import { propTypes } from 'fe-ent-core/es/utils';
   import type { CSSProperties } from 'vue';
 
   defineProps({
-    frameSrc: propTypes.string.def('')
+    frameSrc: {
+      type: String,
+      default: ''
+    }
   });
 
   const loading = ref(true);

@@ -29,11 +29,11 @@
     </ent-authority>
 
     <ent-authority value="test">
-      <ent-button color="success" class="mx-4"> 拥有test角色权限可见 </ent-button>
+      <ent-button type="success" class="mx-4"> 拥有test角色权限可见 </ent-button>
     </ent-authority>
 
     <ent-authority :value="['test', 'super']">
-      <ent-button color="error" class="mx-4"> 拥有[test,super]角色权限可见 </ent-button>
+      <ent-button type="error" class="mx-4"> 拥有[test,super]角色权限可见 </ent-button>
     </ent-authority>
 
     <Divider>函数方式方式判断权限(适用于函数内部过滤)</Divider>
@@ -41,7 +41,7 @@
       拥有super角色权限可见
     </ent-button>
 
-    <ent-button v-if="hasPermission('test')" color="success" class="mx-4">
+    <ent-button v-if="hasPermission('test')" type="success" class="mx-4">
       拥有test角色权限可见
     </ent-button>
 
@@ -52,7 +52,7 @@
     <Divider>指令方式方式判断权限(该方式不能动态修改权限.)</Divider>
     <ent-button v-auth="'super'" type="primary" class="mx-4"> 拥有super角色权限可见 </ent-button>
 
-    <ent-button v-auth="'test'" color="success" class="mx-4"> 拥有test角色权限可见 </ent-button>
+    <ent-button v-auth="'test'" type="success" class="mx-4"> 拥有test角色权限可见 </ent-button>
 
     <ent-button v-auth="['test', 'super']" color="error" class="mx-4">
       拥有[test,super]角色权限可见
@@ -79,8 +79,8 @@
         isSuper: computed(() => userStore.getRoleList.includes('super')),
         isTest: computed(() => userStore.getRoleList.includes('test')),
         handleLoginOut,
-        hasPermission,
+        hasPermission
       };
-    },
+    }
   });
 </script>
