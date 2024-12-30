@@ -70,8 +70,9 @@
   import { useTableForm } from './hooks/use-table-form';
 
   import { basicProps, tableHeaderProps } from './props';
-  import type { DataTableSortState } from 'naive-ui';
+  import type { DataTableSortState, DataTableInst } from 'naive-ui/es/data-table';
   import type { BasicTableProps, SizeType, TableActionType } from './types/table';
+  import type { Nullable } from './../../../types';
 
   export default defineComponent({
     name: 'EntTable',
@@ -102,7 +103,7 @@
       'update:checked-row-keys'
     ],
     setup(props, { attrs, emit, slots, expose }) {
-      const tableElRef = ref(null);
+      const tableElRef = ref<Nullable<DataTableInst>>(null);
       const tableData = shallowRef([]);
 
       const wrapRef = ref(null);
@@ -110,7 +111,7 @@
       const innerPropsRef = ref<Partial<BasicTableProps>>();
 
       const sortStates = ref<DataTableSortState>();
-      const { prefixCls } = useDesign('basic-table');
+      const { prefixCls } = useDesign('ent-table');
       const [registerForm, formActions] = useForm();
 
       const getProps = computed(() => {
@@ -130,7 +131,9 @@
       const {
         getPaginationInfo,
         getPagination,
-        setPagination,
+        setPage,
+        setPageSize,
+        setTotalRows,
         setShowPagination,
         getShowPagination
       } = usePagination(getProps);
@@ -164,7 +167,9 @@
           tableData,
           getPaginationInfo,
           setLoading,
-          setPagination,
+          setPage,
+          setPageSize,
+          setTotalRows,
           getFieldsValue: formActions.getFieldsValue,
           clearSelectedRowKeys
         },
@@ -235,15 +240,17 @@
       }
 
       //页面操作时间处理
-      function handlePageChange(currentPage) {
+      function handlePageChange(currentPage: number) {
         handleTableChange({
           pagination: { ...getPagination(), page: currentPage },
           sorter: unref(sortStates)
         });
       }
-      function handlePageSizeChange(pageSize) {
+      function handlePageSizeChange(pageSize: number) {
+        console.log('handlePageSizeChanged', pageSize);
+        setPageSize(pageSize);
         handleTableChange({
-          pagination: { ...getPagination(), pageSize },
+          pagination: { ...getPagination(), page: 1, pageSize },
           sorter: unref(sortStates)
         });
       }
@@ -259,7 +266,6 @@
         }
         handleTableChange({ pagination: { ...getPagination() }, sorter: unref(sortStates) });
       }
-      //页面操作时间处理 - end
 
       const tableAction: TableActionType = {
         reload,
@@ -267,7 +273,9 @@
         setSelectedRows,
         clearSelectedRowKeys,
         getSelectRowKeys,
-        setPagination,
+        setPage,
+        setPageSize,
+        setTotalRows,
         setTableData,
         updateTableDataRecord,
         deleteTableDataRecord,

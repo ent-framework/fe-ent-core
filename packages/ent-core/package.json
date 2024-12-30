@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-core",
-  "version": "3.0.25",
+  "version": "3.0.27",
   "homepage": "https://github.com/ent-framework/fe-ent-core",
   "bugs": {
     "url": "https://github.com/ent-framework/fe-ent-core/issues"
@@ -60,13 +60,16 @@
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "naive-ui": "2.40.4",
+    "treemate": "^0.3.11",
+    "vdirs": "^0.1.8",
+    "vooks": "^0.2.12",
+    "vueuc": "^0.4.63",
     "path-to-regexp": "^8.0.0",
     "pinia": "^2.1.6",
     "pinia-plugin-persistedstate": "^3.2.0",
     "qs": "^6.12.0",
     "resize-observer-polyfill": "^1.5.1",
     "sortablejs": "^1.15.0",
-    "treemate": "^0.3.11",
     "vue": "^3.5.13",
     "vue-i18n": "^9.11.1",
     "vue-router": "^4.3.0"

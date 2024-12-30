@@ -4,7 +4,7 @@
       <ent-button class="mr-2" @click="setProps({ labelWidth: 150 })"> 更改labelWidth </ent-button>
       <ent-button class="mr-2" @click="setProps({ labelWidth: 120 })"> 还原labelWidth </ent-button>
       <ent-button class="mr-2" @click="setProps({ size: 'large' })"> 更改Size </ent-button>
-      <ent-button class="mr-2" @click="setProps({ size: 'default' })"> 还原Size </ent-button>
+      <ent-button class="mr-2" @click="setProps({ size: 'medium' })"> 还原Size </ent-button>
       <ent-button class="mr-2" @click="setProps({ disabled: true })"> 禁用表单 </ent-button>
       <ent-button class="mr-2" @click="setProps({ disabled: false })"> 解除禁用 </ent-button>
       <ent-button class="mr-2" @click="setProps({ compact: true })"> 紧凑表单 </ent-button>
@@ -38,7 +38,7 @@
           setProps({
             resetButtonOptions: {
               disabled: true,
-              text: '重置New',
+              btnContent: '重置New',
             },
           })
         "
@@ -77,7 +77,7 @@
       field: 'field1',
       component: 'Input',
       label: '字段1',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -91,7 +91,7 @@
       field: 'field2',
       component: 'Input',
       label: '字段2',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
     },
@@ -99,7 +99,7 @@
       field: 'field3',
       component: 'DatePicker',
       label: '字段3',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
     },
@@ -107,7 +107,7 @@
       field: 'fieldTime',
       component: 'RangePicker',
       label: '时间字段',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
     },
@@ -115,7 +115,7 @@
       field: 'field4',
       component: 'Select',
       label: '字段4',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -137,7 +137,7 @@
       field: 'field5',
       component: 'CheckboxGroup',
       label: '字段5',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -157,7 +157,7 @@
       field: 'field7',
       component: 'RadioGroup',
       label: '字段7',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -177,7 +177,7 @@
       field: 'field8',
       component: 'ApiCascader',
       label: '联动',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {
@@ -198,7 +198,7 @@
       field: 'field9',
       component: 'ApiCascader',
       label: '联动回显',
-      colProps: {
+      gridItemProps: {
         span: 8,
       },
       componentProps: {

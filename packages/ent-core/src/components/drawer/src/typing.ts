@@ -2,6 +2,13 @@ import type { basicProps, footerProps } from './props';
 import type { ComputedRef } from 'vue';
 import type { ExtractPublicPropTypes } from '../../../types';
 
+export interface DrawerActionType {
+  setDrawerProps: (props: Partial<DrawerProps>) => void;
+  open: (show: boolean) => void;
+  changeLoading: (loading: boolean) => void;
+  getOpen?: ComputedRef<boolean>;
+}
+
 export interface DrawerInstance {
   setDrawerProps: (props: Partial<DrawerProps>) => void;
   emitVisible?: (visible: boolean, uid: number) => void;
@@ -29,9 +36,3 @@ export type UseDrawerInnerReturnType = [RegisterDrawerFn, ReturnDrawerInnerMetho
 export interface DrawerFooterProps extends ExtractPublicPropTypes<typeof footerProps> {}
 
 export interface DrawerProps extends ExtractPublicPropTypes<typeof basicProps> {}
-
-export interface DrawerActionType {
-  scrollBottom: () => void;
-  scrollTo: (to: number) => void;
-  getScrollWrap: () => Element | null;
-}

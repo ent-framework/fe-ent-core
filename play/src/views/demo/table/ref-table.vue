@@ -23,6 +23,8 @@
       title-help-message="使用Ref调用表格内方法"
       :api="api"
       :columns="columns"
+      :fetch-setting="{ totalField: 'total' }"
+      :pagination="true"
       :row-key="(record) => record.id"
       :row-selection="{ type: 'checkbox' }"
     />
@@ -60,7 +62,7 @@
         getTableAction().setColumns(getBasicColumns());
 
         getTableAction().reload({
-          page: 1,
+          pagination: { page: 1 }
         });
       }
       function getColumn() {
@@ -83,10 +85,8 @@
       }
 
       function setPaginationInfo() {
-        getTableAction().setPagination({
-          page: 2,
-        });
-        getTableAction().reload();
+        getTableAction().setPage(2);
+        //getTableAction().reload();
       }
       function getSelectRowList() {
         createMessage.info('请在控制台查看！');
@@ -118,8 +118,8 @@
         getSelectRowList,
         getSelectRowKeyList,
         setSelectedRowKeyList,
-        clearSelect,
+        clearSelect
       };
-    },
+    }
   });
 </script>

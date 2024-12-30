@@ -86,6 +86,7 @@ export interface FormSchema extends DynamicComponentProps<ComponentType> {
 
   /**
    * col configuration outside formModelItem
+   * default : span -> 24
    */
   gridItemProps?: Partial<GridItemProps>;
 

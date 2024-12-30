@@ -97,7 +97,7 @@
     inheritAttrs: false,
     props: basicProps,
     emits: ['advanced-change', 'reset', 'submit', 'register', 'field-value-change'],
-    setup(props, { emit, attrs }) {
+    setup(props, { emit, attrs, expose }) {
       const formModel = reactive({});
       const modalFn = useModalContext();
 
@@ -173,7 +173,7 @@
             const { baseGridItemProps } = props_;
             schema.gridItemProps = {
               ...baseGridItemProps,
-              ...schema.gridItemProps
+              ...(schema.gridItemProps || { span: 24 })
             };
           }
         }
@@ -321,6 +321,8 @@
         initDefault();
         emit('register', formActionType);
       });
+
+      expose(formActionType);
 
       const getFormActionBindProps = computed(() => {
         return pick({ ...getProps.value, ...advanceState }, Object.keys(formActionProps));

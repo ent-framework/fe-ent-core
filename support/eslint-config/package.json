@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-ent",
-  "version": "3.0.25",
+  "version": "3.0.27",
   "description": "ESLint Config",
   "files": [
     "index.js"
@@ -18,9 +18,9 @@
     "eslint-plugin-markdown": "^5.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-unicorn": "^56.0.1",
-    "eslint-plugin-vue": "^9.21.1",
+    "eslint-plugin-vue": "^9.32.0",
     "jsonc-eslint-parser": "^2.1.0",
-    "prettier": "^3.2.5",
+    "prettier": "^3.4.2",
     "yaml-eslint-parser": "^1.0.1"
   }
 }

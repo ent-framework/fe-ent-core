@@ -5,7 +5,7 @@
     :load-data="loadData"
     change-on-select
     :display-render="handleRenderDisplay"
-    @change="handleChange"
+    @update:value="handleChange"
   >
     <template v-if="loading" #suffixIcon>
       <EntIcon icon="ant-design:loading-outlined" />
@@ -19,15 +19,16 @@
   </NCascader>
 </template>
 <script lang="ts">
-  import { defineComponent, ref, unref, watch, watchEffect } from 'vue';
-  import { NCascader } from 'naive-ui';
-  import { get, omit } from 'lodash-es';
-  import { EntIcon } from '../../../icon';
-  import { isFunction } from '../../../../utils/is';
-  import { useI18n, useRuleFormItem } from '../../../../hooks';
-  import { type Recordable } from '../../../../types';
-  import type { PropType } from 'vue';
-  interface Option {
+import type {PropType} from 'vue';
+import {defineComponent, ref, unref, watch, watchEffect} from 'vue';
+import {NCascader} from 'naive-ui';
+import {get, omit} from 'lodash-es';
+import {EntIcon} from '../../../icon';
+import {isFunction} from '../../../../utils/is';
+import {useI18n, useRuleFormItem} from '../../../../hooks';
+import {type Recordable} from '../../../../types';
+
+interface Option {
     value: string;
     label: string;
     loading?: boolean;
@@ -163,13 +164,11 @@
             [props.asyncFetchParamKey]: Reflect.get(targetOption, 'value')
           });
           if (Array.isArray(res)) {
-            const children = generatorOptions(res);
-            targetOption.children = children;
+            targetOption.children = generatorOptions(res);
             return;
           }
           if (props.resultField) {
-            const children = generatorOptions(get(res, props.resultField) || []);
-            targetOption.children = children;
+            targetOption.children = generatorOptions(get(res, props.resultField) || []);
           }
         } catch (e) {
           console.error(e);

@@ -3,71 +3,143 @@
     title="可展开表格"
     content="不可与scroll共用。TableAction组件可配置stopButtonPropagation来阻止操作按钮的点击事件冒泡，以便配合Table组件的expandRowByClick"
   >
-    <ent-table @register="registerTable">
-      <template #expandedRowRender="{ record }">
-        <span>No: {{ record.no }} </span>
-      </template>
-      <template #bodyCell="{ column, record }">
-        <template v-if="column.key === 'action'">
-          <ent-table-action
-            stop-button-propagation
-            :actions="[
-              {
-                label: '删除',
-                icon: 'ic:outline-delete-outline',
-                onClick: handleDelete.bind(null, record),
-              },
-            ]"
-            :drop-down-actions="[
-              {
-                label: '启用',
-                popConfirm: {
-                  title: '是否启用？',
-                  confirm: handleOpen.bind(null, record),
-                },
-              },
-            ]"
-          />
-        </template>
-      </template>
-    </ent-table>
+      <ent-table
+        :columns="columns"
+        :data="data"
+        :pagination="pagination"
+        default-expand-all
+      />
   </ent-page-wrapper>
 </template>
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { useTable } from 'fe-ent-core/es/components/table';
-  import { getBasicColumns } from './table-data';
 
-  import { demoListApi } from '/@/api/table';
+  import type { DataTableColumns } from 'naive-ui'
+  import { NButton, NTag, useMessage } from 'naive-ui'
+  import { defineComponent, h } from 'vue'
+
+  interface RowData {
+    key: number
+    name: string
+    age: number
+    address: string
+    tags: string[]
+  }
+
+  function createColumns({
+                           sendMail
+                         }: {
+    sendMail: (rowData: RowData) => void
+  }): DataTableColumns<RowData> {
+    return [
+      {
+        type: 'selection'
+      },
+      {
+        type: 'expand',
+        expandable: rowData => rowData.name !== 'Jim Green',
+        renderExpand: (rowData) => {
+          return `${rowData.name} is a good guy.`
+        }
+      },
+      {
+        title: '#',
+        key: 'key',
+        render: (_, index) => {
+          return `${index + 1}`
+        }
+      },
+      {
+        title: 'Name',
+        key: 'name'
+      },
+      {
+        title: 'Age',
+        key: 'age'
+      },
+      {
+        title: 'Address',
+        key: 'address'
+      },
+      {
+        title: 'Tags',
+        key: 'tags',
+        render(row) {
+          const tags = row.tags.map((tagKey) => {
+            return h(
+              NTag,
+              {
+                style: {
+                  marginRight: '6px'
+                },
+                type: 'info',
+                bordered: false
+              },
+              {
+                default: () => tagKey
+              }
+            )
+          })
+          return tags
+        }
+      },
+      {
+        title: 'Action',
+        key: 'actions',
+        render(row) {
+          return h(
+            NButton,
+            {
+              size: 'small',
+              onClick: () => sendMail(row)
+            },
+            { default: () => 'Send Email' }
+          )
+        }
+      }
+    ]
+  }
+
+  function createData(): RowData[] {
+    return [
+      {
+        key: 0,
+        name: 'John Brown',
+        age: 32,
+        address: 'New York No. 1 Lake Park',
+        tags: ['nice', 'developer']
+      },
+      {
+        key: 1,
+        name: 'Jim Green',
+        age: 42,
+        address: 'London No. 1 Lake Park',
+        tags: ['wow']
+      },
+      {
+        key: 2,
+        name: 'Joe Black',
+        age: 32,
+        address: 'Sidney No. 1 Lake Park',
+        tags: ['cool', 'teacher']
+      }
+    ]
+  }
+
 
   export default defineComponent({
     setup() {
-      const [registerTable] = useTable({
-        api: demoListApi,
-        title: '可展开表格演示',
-        titleHelpMessage: ['已启用expandRowByClick', '已启用stopButtonPropagation'],
-        columns: getBasicColumns(),
-        rowKey: 'id',
-        canResize: false,
-        expandRowByClick: true,
-        actionColumn: {
-          width: 160,
-          title: 'Action',
-          key: 'action',
-        },
-      });
-      function handleDelete(record: Recordable) {
-        console.log('点击了删除', record);
-      }
-      function handleOpen(record: Recordable) {
-        console.log('点击了启用', record);
-      }
-
+      const message = useMessage()
       return {
-        registerTable,
-        handleDelete,
-        handleOpen,
-      };
+        data: createData(),
+        columns: createColumns({
+          sendMail(rowData) {
+            message.info(`send mail to ${rowData.name}`)
+          }
+        }),
+        pagination: {
+          pageSize: 10
+        }
+      }
     },
   });
 </script>

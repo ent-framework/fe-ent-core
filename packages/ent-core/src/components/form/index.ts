@@ -8,3 +8,4 @@ export { default as ApiTree } from './src/components/api-tree.vue';
 export { default as ApiRadioGroup } from './src/components/api-radio-group.vue';
 export { default as ApiCascader } from './src/components/api-cascader.vue';
 export { default as ApiTransfer } from './src/components/api-transfer.vue';
+export * from './interface';

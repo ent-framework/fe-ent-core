@@ -8,8 +8,8 @@
     "preserveSymlinks": true,
     "types": ["vite/client", "node", "./shims-vue"],
     "paths": {
-      //"treemate": ["./node_modules/treemate"],
-      //"vueuc": ["./node_modules/vueuc"],
+      "treemate": ["./node_modules/treemate"],
+      "vueuc": ["./node_modules/vueuc"]
       //"naive-ui": ["../../node_modules/naive-ui"]
     }
   },

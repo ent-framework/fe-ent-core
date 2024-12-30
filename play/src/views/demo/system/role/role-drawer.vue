@@ -4,10 +4,10 @@
     show-footer
     :title="getTitle"
     width="500px"
-    @register="registerDrawer"
     @ok="handleSubmit"
+    ref="drawerRef"
   >
-    <ent-form @register="registerForm">
+    <ent-form v-bind="formProps" ref="formRef">
       <template #menu="{ model, field }">
         <ent-tree
           v-model:value="model[field]"
@@ -22,41 +22,34 @@
   </ent-drawer>
 </template>
 <script lang="ts">
-  import { computed, defineComponent, ref, unref } from 'vue';
+  import { computed, defineComponent, onMounted, ref, unref } from 'vue';
   import type { TreeItem } from 'fe-ent-core/es/components/tree/interface';
-  import { useDrawerInner } from 'fe-ent-core/es/components/drawer';
-  import { useForm } from 'fe-ent-core/es/components/form';
+  import type { DrawerActionType } from 'fe-ent-core/es/components/drawer';
+  import type { FormActionType } from 'fe-ent-core/es/components/form';
   import { formSchema } from './role-data';
-
+  import type { Nullable } from 'fe-ent-core/es/types';
   import { getMenuList } from '/@/api/system';
 
   export default defineComponent({
     name: 'RoleDrawer',
     emits: ['success', 'register'],
-    setup(_, { emit }) {
+    setup(_, { emit, expose }) {
+      const drawerRef = ref<Nullable<DrawerActionType>>(null);
+      const formRef = ref<Nullable<FormActionType>>(null);
       const isUpdate = ref(true);
       const treeData = ref<TreeItem[]>([]);
 
-      const [registerForm, { resetFields, setFieldsValue, validate }] = useForm({
+      const formProps = ref({
         labelWidth: 90,
-        baseColProps: { span: 24 },
+        gridItemProps: { span: 24 },
         schemas: formSchema,
-        showActionButtonGroup: false,
+        showActionButtonGroup: false
       });
 
-      const [registerDrawer, { setDrawerProps, closeDrawer }] = useDrawerInner(async (data) => {
-        resetFields();
-        setDrawerProps({ confirmLoading: false });
+      onMounted(async () => {
         // 需要在setFieldsValue之前先填充treeData，否则Tree组件可能会报key not exist警告
         if (unref(treeData).length === 0) {
           treeData.value = (await getMenuList()) as any as TreeItem[];
-        }
-        isUpdate.value = !!data?.isUpdate;
-
-        if (unref(isUpdate)) {
-          setFieldsValue({
-            ...data.record,
-          });
         }
       });
 
@@ -64,24 +57,39 @@
 
       async function handleSubmit() {
         try {
-          const values = await validate();
-          setDrawerProps({ confirmLoading: true });
+          await formRef.value?.validate();
+          const values = await formRef.value?.getFieldsValue();
+          drawerRef.value?.setDrawerProps({ confirmLoading: true });
           // TODO custom api
           console.log(values);
-          closeDrawer();
+          drawerRef.value?.open(false);
           emit('success');
         } finally {
-          setDrawerProps({ confirmLoading: false });
+          drawerRef.value?.setDrawerProps({ confirmLoading: false });
         }
       }
 
+      const open = async (show = true, data?: { isUpdate: boolean; record: any }): void => {
+        drawerRef.value?.open(show);
+        if (!data) return;
+        isUpdate.value = !!data?.isUpdate;
+        if (unref(isUpdate)) {
+          console.log(data.record);
+          await formRef.value?.resetFields();
+          await formRef.value?.setFieldsValue({ ...data.record });
+        }
+      };
+
+      expose({ open });
+
       return {
-        registerDrawer,
-        registerForm,
+        drawerRef,
+        formRef,
+        formProps,
         getTitle,
         handleSubmit,
-        treeData,
+        treeData
       };
-    },
+    }
   });
 </script>

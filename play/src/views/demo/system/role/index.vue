@@ -1,57 +1,34 @@
 <template>
   <div>
-    <ent-table @register="registerTable">
+    <ent-table v-bind="tableProps">
       <template #toolbar>
         <ent-button type="primary" @click="handleCreate"> 新增角色 </ent-button>
       </template>
-      <template #bodyCell="{ column, record }">
-        <template v-if="column.key === 'action'">
-          <ent-table-action
-            :actions="[
-              {
-                icon: 'clarity:note-edit-line',
-                onClick: handleEdit.bind(null, record),
-              },
-              {
-                icon: 'ant-design:delete-outlined',
-                color: 'error',
-                popConfirm: {
-                  title: '是否确认删除',
-                  placement: 'left',
-                  confirm: handleDelete.bind(null, record),
-                },
-              },
-            ]"
-          />
-        </template>
-      </template>
     </ent-table>
-    <RoleDrawer @register="registerDrawer" @success="handleSuccess" />
+    <RoleDrawer ref="roleDrawerRef" />
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, h } from 'vue';
-
-  import { useDrawer } from 'fe-ent-core/es/components/drawer';
-  import { EntTableAction, useTable } from 'fe-ent-core/es/components/table';
+  import { defineComponent, h, ref } from 'vue';
+  import { EntTableAction } from 'fe-ent-core/es/components/table';
   import { getRoleListByPage } from '/@/api/system';
-
   import RoleDrawer from './role-drawer.vue';
-
   import { columns, searchFormSchema } from './role-data';
+  import type { Recordable } from 'fe-ent-core/es/types';
 
   export default defineComponent({
     name: 'RoleManagement',
     components: { RoleDrawer },
     setup() {
-      const [registerDrawer, { openDrawer }] = useDrawer();
-      const [registerTable, { reload }] = useTable({
+      const roleDrawerRef = ref();
+
+      const tableProps = ref({
         title: '角色列表',
         api: getRoleListByPage,
         columns,
         formConfig: {
           labelWidth: 120,
-          schemas: searchFormSchema,
+          schemas: searchFormSchema
         },
         useSearchForm: true,
         showTableSetting: true,
@@ -70,32 +47,32 @@
                 actions: [
                   {
                     icon: 'clarity:note-edit-line',
-                    onClick: handleEdit.bind(null, record),
+                    onClick: handleEdit.bind(null, record)
                   },
                   {
                     icon: 'ant-design:delete-outlined',
                     confirm: '是否确认删除',
                     placement: 'left',
-                    onClick: handleDelete.bind(null, record),
-                  },
-                ],
+                    onClick: handleDelete.bind(null, record)
+                  }
+                ]
               },
-              { default: () => '' },
+              { default: () => '' }
             );
-          },
-        },
+          }
+        }
       });
 
       function handleCreate() {
-        openDrawer(true, {
-          isUpdate: false,
+        roleDrawerRef.value?.open(true, {
+          isUpdate: false
         });
       }
 
       function handleEdit(record: Recordable) {
-        openDrawer(true, {
+        roleDrawerRef.value?.open(true, {
           record,
-          isUpdate: true,
+          isUpdate: true
         });
       }
 
@@ -104,17 +81,17 @@
       }
 
       function handleSuccess() {
-        reload();
+        //reload();
       }
 
       return {
-        registerTable,
-        registerDrawer,
+        tableProps,
+        roleDrawerRef,
         handleCreate,
         handleEdit,
         handleDelete,
-        handleSuccess,
+        handleSuccess
       };
-    },
+    }
   });
 </script>

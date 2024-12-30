@@ -5,6 +5,7 @@
     "baseUrl": ".",
     "rootDir": "../../",
     "types": ["vite/client"],
+    "preserveSymlinks": true,
     "paths": {
       "fe-ent-core": ["../packages/ent-core/src/index.ts"],
       "fe-ent-core/es/*": ["../packages/ent-core/src/*"],
@@ -24,6 +25,7 @@
       "fe-ent-layout/es/*": ["../apps/layout/src/*"],
       "axios": ["../node_modules/axios"],
       "pinia": ["../node_modules/pinia"],
+      "naive-ui": ["../node_modules/naive-ui"],
       "@vueuse/shared": ["../node_modules/@vueuse/shared"]
     }
   },

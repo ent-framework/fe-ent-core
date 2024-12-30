@@ -30,16 +30,7 @@
   </NDrawer>
 </template>
 <script lang="ts">
-  import {
-    computed,
-    defineComponent,
-    getCurrentInstance,
-    nextTick,
-    ref,
-    toRaw,
-    unref,
-    watch
-  } from 'vue';
+  import { computed, defineComponent, nextTick, ref, toRaw, unref, watch } from 'vue';
   import { NDrawer, NDrawerContent } from 'naive-ui';
   import { useAttrs, useDesign, useI18n } from '../../../hooks';
   import { isFunction } from '../../../utils/is';
@@ -48,7 +39,7 @@
   import DrawerHeader from './components/drawer-header.vue';
   import DrawerFooter from './components/drawer-footer.vue';
   import type { Nullable } from '../../../types';
-  import type { DrawerInstance, DrawerProps } from './typing';
+  import { DrawerProps, DrawerActionType } from './typing';
   import type { DrawerContentProps } from 'naive-ui/es/drawer';
 
   export default defineComponent({
@@ -57,23 +48,14 @@
     extends: NDrawer,
     inheritAttrs: false,
     props: basicProps,
-    emits: ['visible-change', 'ok', 'close', 'register'],
-    setup(props, { emit }) {
+    emits: ['visible-change', 'ok', 'close'],
+    setup(props, { emit, expose }) {
       const openRef = ref(false);
       const attrs = useAttrs();
       const propsRef = ref<Partial<Nullable<DrawerProps>>>(null);
 
       const { t } = useI18n();
       const { prefixCls } = useDesign('basic-drawer');
-
-      const drawerInstance: DrawerInstance = {
-        setDrawerProps,
-        emitVisible: undefined
-      };
-
-      const instance = getCurrentInstance();
-
-      instance && emit('register', drawerInstance, instance.uid);
 
       const getMergeProps = computed((): DrawerProps => {
         return deepMerge(toRaw(props), unref(propsRef));
@@ -126,7 +108,6 @@
         (visible) => {
           nextTick(() => {
             emit('visible-change', visible);
-            instance && drawerInstance.emitVisible?.(visible, instance.uid);
           });
         }
       );
@@ -158,10 +139,34 @@
           openRef.value = !!props.show;
         }
       }
-
       function handleOk() {
         emit('ok');
       }
+
+      const open = (show: boolean): void => {
+        setDrawerProps({
+          show
+        });
+      };
+
+      const changeLoading = (loading: boolean): void => {
+        setDrawerProps({
+          loading
+        });
+      };
+
+      const getOpen = computed((): boolean => {
+        return unref(propsRef)?.show || false;
+      });
+
+      const drawerAction: DrawerActionType = {
+        setDrawerProps,
+        open,
+        changeLoading,
+        getOpen
+      };
+
+      expose(drawerAction);
 
       return {
         onClose,

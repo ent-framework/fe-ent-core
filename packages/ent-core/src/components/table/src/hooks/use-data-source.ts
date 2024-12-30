@@ -10,7 +10,9 @@ import type { EmitType, Recordable } from '../../../../types';
 
 interface ActionType {
   getPaginationInfo: ComputedRef<boolean | PaginationProps>;
-  setPagination: (info: Partial<PaginationProps>) => void;
+  setPage: (page: number) => void;
+  setPageSize: (pageSize: number) => void;
+  setTotalRows: (total: number) => void;
   setLoading: (loading: boolean) => void;
   getFieldsValue: () => Recordable;
   clearSelectedRowKeys: () => void;
@@ -21,7 +23,9 @@ export function useDataSource(
   propsRef: ComputedRef<BasicTableProps>,
   {
     getPaginationInfo,
-    setPagination,
+    setPage,
+    setPageSize,
+    setTotalRows,
     setLoading,
     getFieldsValue,
     clearSelectedRowKeys,
@@ -47,12 +51,15 @@ export function useDataSource(
     }
   );
 
+  /**
+   * 监控表单行为导致的数据表格变化
+   */
   function handleTableChange({ pagination, filterInfo, sorter }: FetchParams) {
     const { clearSelectOnPageChange, sortFn, filterFn } = unref(propsRef);
     if (clearSelectOnPageChange) {
       clearSelectedRowKeys();
     }
-    setPagination(pagination);
+    // setPagination(pagination);
 
     const params: FetchParams = { pagination, filterInfo, sorter };
     if (sorter && typeof sortFn === 'function') {
@@ -136,9 +143,7 @@ export function useDataSource(
       deleteRow(dataSourceRef.value, key);
       deleteRow(unref(propsRef).data, key);
     }
-    setPagination({
-      itemCount: unref(propsRef).data?.length
-    });
+    setTotalRows(unref(propsRef).data?.length || 0);
   }
 
   function insertTableDataRecord(
@@ -255,9 +260,7 @@ export function useDataSource(
       if (Number(resultTotal)) {
         const currentTotalPage = Math.ceil(resultTotal / pageSize);
         if (page > currentTotalPage) {
-          setPagination({
-            page: currentTotalPage
-          });
+          setPage(currentTotalPage);
           return await fetch(opt);
         }
       }
@@ -266,13 +269,9 @@ export function useDataSource(
         resultItems = (await afterFetch(resultItems)) || resultItems;
       }
       dataSourceRef.value = resultItems;
-      setPagination({
-        itemCount: resultTotal || 0
-      });
+      setTotalRows(resultTotal || 0);
       if (opt && opt.pagination.page) {
-        setPagination({
-          page: opt.pagination.page || 1
-        });
+        setPage(opt.pagination.page || 1);
       }
       emit('fetch-success', {
         items: unref(resultItems),
@@ -282,9 +281,7 @@ export function useDataSource(
     } catch (error) {
       emit('fetch-error', error);
       dataSourceRef.value = [];
-      setPagination({
-        itemCount: 0
-      });
+      setTotalRows(0);
     } finally {
       setLoading(false);
     }

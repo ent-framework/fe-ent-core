@@ -97,7 +97,6 @@ export function getMultipleHeaderColumns(): BasicColumn[] {
             { text: 'Female', value: 'female', children: [] },
           ],
         },
-
         {
           title: '开始时间',
           key: 'beginTime',
@@ -167,7 +166,7 @@ export function getMergeHeaderColumns(): BasicColumn[] {
       title: 'ID',
       key: 'id',
       width: 300,
-      customCell: (_, index) => ({
+      render: (_, index) => ({
         colSpan: index === 9 ? 6 : 1,
       }),
     },
@@ -175,15 +174,14 @@ export function getMergeHeaderColumns(): BasicColumn[] {
       title: '姓名',
       key: 'name',
       width: 300,
-      customCell: cellContent,
+      render: cellContent,
     },
     {
       title: '地址',
       key: 'address',
-      colSpan: 2,
       width: 120,
       sorter: true,
-      customCell: (_, index) => ({
+      render: (_, index) => ({
         rowSpan: index === 2 ? 2 : 1,
         colSpan: index === 3 || index === 9 ? 0 : 1,
       }),
@@ -191,7 +189,6 @@ export function getMergeHeaderColumns(): BasicColumn[] {
     {
       title: '编号',
       key: 'no',
-      colSpan: 0,
       filters: [
         { text: 'Male', value: 'male', children: [] },
         { text: 'Female', value: 'female', children: [] },
@@ -202,13 +199,13 @@ export function getMergeHeaderColumns(): BasicColumn[] {
       title: '开始时间',
       key: 'beginTime',
       width: 200,
-      customCell: cellContent,
+      render: cellContent,
     },
     {
       title: '结束时间',
       key: 'endTime',
       width: 200,
-      customCell: cellContent,
+      render: cellContent,
     },
   ];
 }

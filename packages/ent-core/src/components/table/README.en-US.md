@@ -159,7 +159,9 @@
 |getSelectRows|getSelectRows|`() => Recordable[]`|`-`|`-`|
 |clearSelectedRowKeys|clearSelectedRowKeys|`() => void`|`-`|`-`|
 |getSelectRowKeys|getSelectRowKeys|`() => DataTableRowKey[]`|`-`|`-`|
-|setPagination|setPagination|`(info: Partial<PaginationProps>) => void`|`-`|`-`|
+|setPage|setPage|`(page: number) => void`|`-`|`-`|
+|setPageSize|setPageSize|`(pageSize: number) => void`|`-`|`-`|
+|setTotalRows|setTotalRows|`(total: number) => void`|`-`|`-`|
 |setTableData|setTableData|`<T = Recordable>(values: T[]) => void`|`-`|`-`|
 |updateTableDataRecord|updateTableDataRecord|`(rowKey: string \| number, record: Recordable) => Recordable \| void`|`-`|`-`|
 |deleteTableDataRecord|deleteTableDataRecord|`(rowKey: string \| number \| string[] \| number[]) => void`|`-`|`-`|

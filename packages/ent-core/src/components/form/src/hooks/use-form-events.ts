@@ -28,7 +28,7 @@ interface UseFormActionContext {
 }
 
 function tryConstructArray(field: string, values: Recordable = {}): any[] | undefined {
-  const pattern = /^\[(.+)\]$/;
+  const pattern = /^\[(.+)]$/;
   if (pattern.test(field)) {
     const match = field.match(pattern);
     if (match && match[1]) {
@@ -48,7 +48,7 @@ function tryConstructArray(field: string, values: Recordable = {}): any[] | unde
 }
 
 function tryConstructObject(field: string, values: Recordable = {}): Recordable | undefined {
-  const pattern = /^\{(.+)\}$/;
+  const pattern = /^\{(.+)}$/;
   if (pattern.test(field)) {
     const match = field.match(pattern);
     if (match && match[1]) {
@@ -311,8 +311,8 @@ export function useFormEvents({
     return unref(formElRef)?.validate();
   }
 
-  async function restoreValidation() {
-    await unref(formElRef)?.restoreValidation();
+  function restoreValidation() {
+    unref(formElRef)?.restoreValidation();
   }
 
   /**

@@ -3,7 +3,6 @@ import { tryOnUnmounted } from '@vueuse/core';
 import { getDynamicProps } from '../../../../utils';
 import { error } from '../../../../utils/log';
 import type { BasicColumn, BasicTableProps, FetchParams, TableActionType } from '../types/table';
-import type { PaginationProps } from 'naive-ui';
 import type { FormActionType } from '../../../form/src/types/form';
 import type { WatchStopHandle } from 'vue';
 import type { Nullable, Recordable } from '../../../../types';
@@ -95,9 +94,6 @@ export function useTable(tableProps?: Props): [
     setTableData: (values: any[]) => {
       return getTableInstance().setTableData(values);
     },
-    setPagination: (info: Partial<PaginationProps>) => {
-      return getTableInstance().setPagination(info);
-    },
     getSelectRowKeys: () => {
       return toRaw(getTableInstance().getSelectRowKeys());
     },
@@ -152,6 +148,15 @@ export function useTable(tableProps?: Props): [
     },
     getShowPagination: () => {
       return toRaw(getTableInstance().getShowPagination());
+    },
+    setPage: (index: number) => {
+      return getTableInstance().setPage(index);
+    },
+    setPageSize: (index: number) => {
+      return getTableInstance().setPageSize(index);
+    },
+    setTotalRows: (index: number) => {
+      return getTableInstance().setTotalRows(index);
     }
   };
 

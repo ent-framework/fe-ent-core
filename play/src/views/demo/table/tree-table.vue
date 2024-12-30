@@ -1,10 +1,6 @@
 <template>
   <div class="p-4">
     <ent-table @register="register">
-      <template #toolbar>
-        <ent-button type="primary" @click="expandAll">展开全部</ent-button>
-        <ent-button type="primary" @click="collapseAll">折叠全部</ent-button>
-      </template>
     </ent-table>
   </div>
 </template>
@@ -16,7 +12,7 @@
 
   export default defineComponent({
     setup() {
-      const [register, { expandAll, collapseAll }] = useTable({
+      const [register] = useTable({
         title: '树形表格',
         isTreeTable: true,
         rowSelection: {
@@ -29,7 +25,7 @@
           return row.id;
         },
       });
-      return { register, expandAll, collapseAll };
+      return { register };
     },
   });
 </script>

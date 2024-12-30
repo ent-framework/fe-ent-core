@@ -82,7 +82,9 @@ export interface TableActionType {
   getSelectRows: () => Recordable[];
   clearSelectedRowKeys: () => void;
   getSelectRowKeys: () => DataTableRowKey[];
-  setPagination: (info: Partial<PaginationProps>) => void;
+  setPage: (page: number) => void;
+  setPageSize: (pageSize: number) => void;
+  setTotalRows: (total: number) => void;
   setTableData: <T = Recordable>(values: T[]) => void;
   updateTableDataRecord: (rowKey: string | number, record: Recordable) => Recordable | void;
   deleteTableDataRecord: (rowKey: string | number | string[] | number[]) => void;

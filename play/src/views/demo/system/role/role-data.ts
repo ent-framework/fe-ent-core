@@ -9,23 +9,23 @@ export const columns: BasicColumn[] = [
   {
     title: '角色名称',
     key: 'roleName',
-    width: 200,
+    width: 200
   },
   {
     title: '角色值',
     key: 'roleValue',
-    width: 180,
+    width: 180
   },
   {
     title: '排序',
     key: 'orderNo',
-    width: 50,
+    width: 50
   },
   {
     title: '状态',
     key: 'status',
     width: 120,
-    customRender: ({ record }) => {
+    render: (record) => {
       if (!Reflect.has(record, 'pendingStatus')) {
         record.pendingStatus = false;
       }
@@ -49,19 +49,19 @@ export const columns: BasicColumn[] = [
             .finally(() => {
               record.pendingStatus = false;
             });
-        },
+        }
       });
-    },
+    }
   },
   {
     title: '创建时间',
     key: 'createTime',
-    width: 180,
+    width: 180
   },
   {
     title: '备注',
-    key: 'remark',
-  },
+    key: 'remark'
+  }
 ];
 
 export const searchFormSchema: FormSchema[] = [
@@ -69,7 +69,7 @@ export const searchFormSchema: FormSchema[] = [
     field: 'roleNme',
     label: '角色名称',
     component: 'Input',
-    colProps: { span: 8 },
+    gridItemProps: { span: 8 }
   },
   {
     field: 'status',
@@ -78,11 +78,11 @@ export const searchFormSchema: FormSchema[] = [
     componentProps: {
       options: [
         { label: '启用', value: '0' },
-        { label: '停用', value: '1' },
-      ],
+        { label: '停用', value: '1' }
+      ]
     },
-    colProps: { span: 8 },
-  },
+    gridItemProps: { span: 8 }
+  }
 ];
 
 export const formSchema: FormSchema[] = [
@@ -90,13 +90,13 @@ export const formSchema: FormSchema[] = [
     field: 'roleName',
     label: '角色名称',
     required: true,
-    component: 'Input',
+    component: 'Input'
   },
   {
     field: 'roleValue',
     label: '角色值',
     required: true,
-    component: 'Input',
+    component: 'Input'
   },
   {
     field: 'status',
@@ -106,19 +106,19 @@ export const formSchema: FormSchema[] = [
     componentProps: {
       options: [
         { label: '启用', value: '0' },
-        { label: '停用', value: '1' },
-      ],
-    },
+        { label: '停用', value: '1' }
+      ]
+    }
   },
   {
     label: '备注',
     field: 'remark',
-    component: 'InputTextArea',
+    component: 'InputTextArea'
   },
   {
     label: ' ',
     field: 'menu',
     slot: 'menu',
-    component: 'Input',
-  },
+    component: 'Input'
+  }
 ];
