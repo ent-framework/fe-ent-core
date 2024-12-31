@@ -5,24 +5,25 @@
         <ent-button type="primary" @click="handleCreate"> 新增角色 </ent-button>
       </template>
     </ent-table>
-    <RoleDrawer ref="roleDrawerRef" />
+    <!--    <RoleDrawer ref="roleDrawerRef" />-->
   </div>
 </template>
 <script lang="ts">
   import { defineComponent, h, ref } from 'vue';
-  import { EntTableAction } from 'fe-ent-core/es/components/table';
+  import { EntTableAction, EntTable } from 'fe-ent-core/es/components/table';
   import { getRoleListByPage } from '/@/api/system';
-  import RoleDrawer from './role-drawer.vue';
+  //import RoleDrawer from './role-drawer.vue';
   import { columns, searchFormSchema } from './role-data';
   import type { Recordable } from 'fe-ent-core/es/types';
+  import type { BasicTableProps } from 'fe-ent-core/es/components/table';
 
   export default defineComponent({
     name: 'RoleManagement',
-    components: { RoleDrawer },
+    components: { EntTable },
     setup() {
-      const roleDrawerRef = ref();
+      const roleDrawerRef = ref(null);
 
-      const tableProps = ref({
+      const tableProps = ref<BasicTableProps>({
         title: '角色列表',
         api: getRoleListByPage,
         columns,

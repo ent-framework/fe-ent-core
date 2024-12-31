@@ -93,14 +93,6 @@ description: 页面包装
 ## Type
 
 
-### TableCurrentDataSource
-
-|参数名|描述|类型|默认值|模块|
-|---|---|---|:---:|---|
-|currentDataSource|currentDataSource|`T[]`|`-`|`-`|
-
-
-
 ### TableRowSelection
 
 |参数名|描述|类型|默认值|模块|

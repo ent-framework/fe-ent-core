@@ -96,7 +96,7 @@
     "ts-jest": "^29.1.0",
     "tslib": "^2.3.1",
     "tsx": "^4.7.0",
-    "typescript": "5.5.4",
+    "typescript": "5.7.2",
     "vite": "^6.0.1"
   },
   "resolutions": {
@@ -116,7 +116,7 @@
   },
   "homepage": "https://github.com/ent-framework/fe-ent-core",
   "engines": {
-    "node": "^18.0.0 || >=20.0.0",
+    "node": ">=20.0.0",
     "pnpm": ">=9"
   },
   "pnpm": {

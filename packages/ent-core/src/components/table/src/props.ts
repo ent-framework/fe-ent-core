@@ -114,7 +114,7 @@ export const basicProps = {
    * @type {Function}
    */
   afterFetch: {
-    type: Function as PropType<Fn>,
+    type: Function as PropType<(results: Recordable[]) => Promise<Recordable[]>>,
     default: null
   },
   /**

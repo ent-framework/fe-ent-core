@@ -1,6 +1,12 @@
 <template>
   <div class="p-4">
-    <ent-table @register="registerTable">
+    <ent-table
+      title="定高/头部自定义"
+      :api="demoListApi"
+      :columns="columns"
+      :can-resize="false"
+      :row-key="(record) => record.id"
+    >
       <template #name>
         <span>
           姓名
@@ -15,27 +21,28 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { useTable } from 'fe-ent-core/es/components/table';
+  import { defineComponent, ref } from 'vue';
   import { getCustomHeaderColumns } from './table-data';
   import { FormOutlined } from '@ant-design/icons-vue';
   import { demoListApi } from '/@/api/table';
+  import type { BasicTableProps } from 'fe-ent-core/es/components/table';
 
   export default defineComponent({
     components: { FormOutlined },
     setup() {
-      const [registerTable] = useTable({
-        title: '定高/头部自定义',
-        api: demoListApi,
-        columns: getCustomHeaderColumns(),
-        canResize: false,
-        rowKey: (record) => record.id,
-        scroll: { y: 100 },
-      });
+      // const tableProps = ref<BasicTableProps>({
+      //   title: '定高/头部自定义',
+      //   api: demoListApi,
+      //   columns: getCustomHeaderColumns(),
+      //   canResize: false,
+      //   rowKey: (record) => record.id
+      //   // scroll: { y: 100 },
+      // });
 
       return {
-        registerTable,
+        demoListApi,
+        columns: getCustomHeaderColumns()
       };
-    },
+    }
   });
 </script>

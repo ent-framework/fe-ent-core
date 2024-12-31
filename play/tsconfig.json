@@ -3,15 +3,13 @@
   "extends": "ts-config-ent/web.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "rootDir": "../../",
+    "rootDir": ".",
     "types": ["vite/client"],
-    "preserveSymlinks": true,
     "paths": {
-      "fe-ent-core": ["../packages/ent-core/src/index.ts"],
-      "fe-ent-core/es/*": ["../packages/ent-core/src/*"],
-      "/@/*": [
-        "src/*"
-      ],
+      "naive-ui/es": ["../node_modules/naive-ui/es"],
+      // "fe-ent-core": ["../packages/ent-core/src/index.ts"],
+      // "fe-ent-core/es/*": ["../packages/ent-core/src/*"],
+      "/@/*": ["src/*"],
       "fe-ent-code-editor": ["../extensions/code-editor/src/index.ts"],
       "fe-ent-echarts": ["../extensions/echarts/src/index.ts"],
       "fe-ent-flow-chart": ["../extensions/flow-chart/src/index.ts"],
@@ -25,7 +23,7 @@
       "fe-ent-layout/es/*": ["../apps/layout/src/*"],
       "axios": ["../node_modules/axios"],
       "pinia": ["../node_modules/pinia"],
-      "naive-ui": ["../node_modules/naive-ui"],
+      "csstype": ["../node_modules/csstype"],
       "@vueuse/shared": ["../node_modules/@vueuse/shared"]
     }
   },

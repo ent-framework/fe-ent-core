@@ -25,7 +25,7 @@
   import { computed, defineComponent, onMounted, ref, unref } from 'vue';
   import type { TreeItem } from 'fe-ent-core/es/components/tree/interface';
   import type { DrawerActionType } from 'fe-ent-core/es/components/drawer';
-  import type { FormActionType } from 'fe-ent-core/es/components/form';
+  import type { FormActionType, FormProps } from 'fe-ent-core/es/components/form';
   import { formSchema } from './role-data';
   import type { Nullable } from 'fe-ent-core/es/types';
   import { getMenuList } from '/@/api/system';
@@ -39,9 +39,9 @@
       const isUpdate = ref(true);
       const treeData = ref<TreeItem[]>([]);
 
-      const formProps = ref({
+      const formProps = ref<FormProps>({
         labelWidth: 90,
-        gridItemProps: { span: 24 },
+        //gridItemProps: { span: 24 },
         schemas: formSchema,
         showActionButtonGroup: false
       });
@@ -69,7 +69,10 @@
         }
       }
 
-      const open = async (show = true, data?: { isUpdate: boolean; record: any }): void => {
+      const open = async (
+        show = true,
+        data?: { isUpdate: boolean; record: any }
+      ): Promise<void> => {
         drawerRef.value?.open(show);
         if (!data) return;
         isUpdate.value = !!data?.isUpdate;

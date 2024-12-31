@@ -4,7 +4,7 @@
       <ent-button class="mr-2" @click="setProps({ labelWidth: 150 })"> 更改labelWidth </ent-button>
       <ent-button class="mr-2" @click="setProps({ labelWidth: 120 })"> 还原labelWidth </ent-button>
       <ent-button class="mr-2" @click="setProps({ size: 'large' })"> 更改Size </ent-button>
-      <ent-button class="mr-2" @click="setProps({ size: 'default' })"> 还原Size </ent-button>
+      <ent-button class="mr-2" @click="setProps({ size: 'small' })"> 还原Size </ent-button>
       <ent-button class="mr-2" @click="setProps({ disabled: true })"> 禁用表单 </ent-button>
       <ent-button class="mr-2" @click="setProps({ disabled: false })"> 解除禁用 </ent-button>
       <ent-button class="mr-2" @click="setProps({ compact: true })"> 紧凑表单 </ent-button>
@@ -38,8 +38,8 @@
           setProps({
             resetButtonOptions: {
               disabled: true,
-              text: '重置New',
-            },
+              btnContent: '重置New'
+            }
           })
         "
       >
@@ -51,8 +51,8 @@
           setProps({
             submitButtonOptions: {
               disabled: true,
-              loading: true,
-            },
+              loading: true
+            }
           })
         "
       >
@@ -76,7 +76,7 @@
   import type {
     FormActionType,
     FormProps,
-    FormSchema,
+    FormSchema
   } from 'fe-ent-core/es/components/form/interface';
   import type { Nullable } from 'fe-ent-core/es/types';
 
@@ -85,94 +85,94 @@
       field: 'field1',
       component: 'Input',
       label: '字段1',
-      colProps: {
-        span: 8,
+      gridItemProps: {
+        span: 8
       },
       componentProps: {
         placeholder: '自定义placeholder',
         onChange: (e: any) => {
           console.log(e);
-        },
-      },
+        }
+      }
     },
     {
       field: 'field2',
       component: 'Input',
       label: '字段2',
-      colProps: {
-        span: 8,
-      },
+      gridItemProps: {
+        span: 8
+      }
     },
     {
       field: 'field3',
       component: 'DatePicker',
       label: '字段3',
-      colProps: {
-        span: 8,
-      },
+      gridItemProps: {
+        span: 8
+      }
     },
     {
       field: 'field4',
       component: 'Select',
       label: '字段4',
-      colProps: {
-        span: 8,
+      gridItemProps: {
+        span: 8
       },
       componentProps: {
         options: [
           {
             label: '选项1',
             value: '1',
-            key: '1',
+            key: '1'
           },
           {
             label: '选项2',
             value: '2',
-            key: '2',
-          },
-        ],
-      },
+            key: '2'
+          }
+        ]
+      }
     },
     {
       field: 'field5',
       component: 'CheckboxGroup',
       label: '字段5',
-      colProps: {
-        span: 8,
+      gridItemProps: {
+        span: 8
       },
       componentProps: {
         options: [
           {
             label: '选项1',
-            value: '1',
+            value: '1'
           },
           {
             label: '选项2',
-            value: '2',
-          },
-        ],
-      },
+            value: '2'
+          }
+        ]
+      }
     },
     {
       field: 'field7',
       component: 'RadioGroup',
       label: '字段7',
-      colProps: {
-        span: 8,
+      gridItemProps: {
+        span: 8
       },
       componentProps: {
         options: [
           {
             label: '选项1',
-            value: '1',
+            value: '1'
           },
           {
             label: '选项2',
-            value: '2',
-          },
-        ],
-      },
-    },
+            value: '2'
+          }
+        ]
+      }
+    }
   ];
 
   export default defineComponent({
@@ -189,8 +189,8 @@
           const formEl = formElRef.value;
           if (!formEl) return;
           formEl.setProps(props);
-        },
+        }
       };
-    },
+    }
   });
 </script>

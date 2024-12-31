@@ -35,4 +35,4 @@ export type UseDrawerInnerReturnType = [RegisterDrawerFn, ReturnDrawerInnerMetho
 
 export interface DrawerFooterProps extends ExtractPublicPropTypes<typeof footerProps> {}
 
-export interface DrawerProps extends ExtractPublicPropTypes<typeof basicProps> {}
+export type DrawerProps = ExtractPublicPropTypes<typeof basicProps>;

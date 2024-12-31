@@ -91,14 +91,6 @@
 ## Type
 
 
-### TableCurrentDataSource
-
-|Name|Description|Type|Default|Module|
-|---|---|---|:---:|---|
-|currentDataSource|currentDataSource|`T[]`|`-`|`-`|
-
-
-
 ### TableRowSelection
 
 |Name|Description|Type|Default|Module|

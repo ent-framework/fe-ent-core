@@ -8,7 +8,6 @@ module.exports = defineConfig({
   },
   ignorePatterns: ['**/lib/**/*.js', '**/lib/**/*.d.ts', '**/es/**/*.mjs', '**/es/**/*.d.ts'],
   globals: { defineOptions: 'writable' },
-  plugins: ['@typescript-eslint', 'prettier', 'unicorn'],
   extends: [
     'eslint:recommended',
     'plugin:import/recommended',
@@ -16,8 +15,7 @@ module.exports = defineConfig({
     'plugin:jsonc/recommended-with-jsonc',
     'plugin:markdown/recommended',
     'plugin:vue/vue3-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier'
+    'plugin:@typescript-eslint/recommended'
   ],
   settings: {
     'import/resolver': {

@@ -5,13 +5,10 @@ import type { DataTableBaseColumn, DataTableRowKey } from 'naive-ui/es/data-tabl
 import type { OnUpdateCheckedRowKeys } from 'naive-ui/es/data-table/src/interface';
 
 export type FixedType = 'left' | 'right';
+
 export type SizeType = 'small' | 'medium' | 'large';
 
 export declare type SortOrder = 'ascend' | 'descend';
-
-export interface TableCurrentDataSource<T = Recordable> {
-  currentDataSource: T[];
-}
 
 export type RowSelectionType = 'checkbox' | 'radio';
 
@@ -131,7 +128,7 @@ export interface TableSetting {
   fullScreen?: boolean;
 }
 
-export interface BasicTableProps extends ExtractPublicPropTypes<typeof basicProps> {}
+export type BasicTableProps = ExtractPublicPropTypes<typeof basicProps>;
 
 export type CellFormat =
   | string

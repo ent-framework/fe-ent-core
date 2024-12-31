@@ -38,7 +38,7 @@ export type UseFormReturnType = [FormRegisterFn, FormActionType];
 
 export type FormButtonOptions = Partial<ButtonProps> & { btnContent?: string };
 
-export interface FormProps extends ExtractPublicPropTypes<typeof basicProps> {}
+export type FormProps = ExtractPublicPropTypes<typeof basicProps>;
 
 export interface FormSchema extends DynamicComponentProps<ComponentType> {
   // Field name
