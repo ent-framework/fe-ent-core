@@ -1,11 +1,23 @@
 {
   "name": "eslint-config-ent",
-  "version": "3.0.28",
+  "version": "3.0.30",
   "description": "ESLint Config",
   "files": [
-    "index.js"
+    "dist"
   ],
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "dev": "tsc --watch",
+    "stub": "pnpm run build",
+    "build": "pnpm run clean && pnpm run build:lib && pnpm run build:types",
+    "build:lib": "tsc",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "lint-staged": "npx lint-staged",
+    "test": "vitest",
+    "lint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix",
+    "prettier": "prettier --write  \"src/**/*.{tsx,ts,css,less,vue}\""
+  },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^8.18.2",
     "@typescript-eslint/parser": "^8.18.2",

@@ -1,6 +1,6 @@
 {
   "name": "fe-ent-cli",
-  "version": "3.0.28",
+  "version": "3.0.30",
   "description": "Ent Vue Scripts",
   "main": "dist/index.js",
   "bin": {

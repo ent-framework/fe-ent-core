@@ -1,6 +1,6 @@
-const { defineConfig } = require('eslint-define-config');
+import { defineConfig } from 'eslint-define-config';
 
-module.exports = defineConfig({
+const config = defineConfig({
   env: {
     es6: true,
     browser: true,
@@ -292,3 +292,5 @@ module.exports = defineConfig({
     'unicorn/throw-new-error': 'error'
   }
 });
+
+export { config as defineConfig };
