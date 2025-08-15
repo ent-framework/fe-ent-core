@@ -2,10 +2,10 @@ import glob from 'fast-glob';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { readPackageJSON } from 'pkg-types';
-import external from '../plugins/vite-plugin-external';
-import vueExportHelper from '../plugins/vite-plugin-vue-export-helper';
-import { excludeFiles } from '../utils/exclude-files';
-import { generateModifyVars } from '../utils/modify-vars';
+import external from '../plugins/vite-plugin-external/index.js';
+import vueExportHelper from '../plugins/vite-plugin-vue-export-helper/index.js';
+import { excludeFiles } from '../utils/exclude-files.js';
+import { generateModifyVars } from '../utils/modify-vars.js';
 import type { UserConfig } from 'vite';
 /**
  * 构建组件库 ent-core 生成es, lib

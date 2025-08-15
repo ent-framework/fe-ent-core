@@ -1,6 +1,6 @@
 import { build } from 'vite';
-import { defineAppConfig } from '../../configs/app';
-import { defineAppUmdConfig } from '../../configs/app.umd';
+import { defineAppConfig } from '../../configs/app.js';
+import { defineAppUmdConfig } from '../../configs/app.umd.js';
 
 async function run() {
   const appConfig = await defineAppConfig({

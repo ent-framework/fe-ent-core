@@ -1,6 +1,6 @@
 import path from 'path';
 import type { marked } from 'marked';
-import type { FileImportToken, I18nDescriptionToken } from './interface';
+import type { FileImportToken, I18nDescriptionToken } from './interface.js';
 
 export function isParagraph(token: marked.Token): token is marked.Tokens.Paragraph {
   return (token as marked.Tokens.Paragraph).type === 'paragraph';

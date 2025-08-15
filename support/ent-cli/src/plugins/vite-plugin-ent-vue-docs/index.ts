@@ -1,13 +1,13 @@
-import { transformChangelog, transformDemo, transformMain } from './markdown';
-import { getDescriptor } from './descriptor';
-import { getFrontMatter, getVueId, isDemoMarkdown, isVirtualModule } from './utils';
-import marked from './marked';
+import { transformChangelog, transformDemo, transformMain } from './markdown.js';
+import { getDescriptor } from './descriptor.js';
+import { getFrontMatter, getVueId, isDemoMarkdown, isVirtualModule } from './utils.js';
+import marked from './marked.js';
 import type { ModuleNode, Plugin } from 'vite';
 
 export default function vueMdPlugin(): Plugin {
   let vuePlugin: Plugin | undefined;
 
-  const docPlugin = {
+  return {
     name: 'vite:ent-vue-docs',
     enforce: 'pre',
     configResolved(resolvedConfig) {
@@ -74,46 +74,18 @@ export default function vueMdPlugin(): Plugin {
         return modules;
       }
 
-      const updated: ModuleNode[] = [];
-
       const isDemo = isDemoMarkdown(file);
 
       const component = isDemo
         ? transformDemo(tokens, file, frontMatter)
         : transformMain(tokens, file, frontMatter);
 
-      const handleHotUpdate =
-        'handler' in vuePlugin.handleHotUpdate!
-          ? vuePlugin.handleHotUpdate!.handler
-          : vuePlugin.handleHotUpdate!;
-      if (isDemo) {
-        const virtualPath = `/@virtual${file}`;
-
-        const mods = moduleGraph.getModulesByFile(virtualPath);
-        if (mods) {
-          const ret = await handleHotUpdate!({
-            file: getVueId(virtualPath),
-            timestamp,
-            modules: [...mods],
-            server,
-            read: () => getDescriptor(virtualPath)
-          });
-
-          updated.push(...(ret || []));
-        }
+      // 3. 让 Vite 继续对生成的 .vue 做 HMR
+      const vueModule = server.moduleGraph.getModuleById(getVueId(file))
+      if (vueModule) {
+        vueModule.transformResult = null     // 强制重新 transform
+        return [vueModule]
       }
-
-      // reload the content component
-      const ret = await handleHotUpdate!({
-        file: getVueId(file),
-        timestamp,
-        modules,
-        server,
-        read: () => component
-      });
-
-      return [...updated, ...(ret || [])];
     }
-  } as Plugin;
-  return docPlugin;
+  };
 }

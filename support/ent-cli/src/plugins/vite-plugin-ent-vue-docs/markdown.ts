@@ -1,11 +1,11 @@
 import path from 'path';
 import fs from 'fs-extra';
-import { isCode, isFileImport, isI18nDescription, toPascalCase } from './utils';
-import marked from './marked';
-import { getDemoVue, getMainVue } from './vue-template';
-import { createDescriptor } from './descriptor';
-import { parseChangelog } from './parse-changelog';
-import type { I18nData } from './interface';
+import { isCode, isFileImport, isI18nDescription, toPascalCase } from './utils.js';
+import marked from './marked.js';
+import { getDemoVue, getMainVue } from './vue-template.js';
+import { createDescriptor } from './descriptor.js';
+import { parseChangelog } from './parse-changelog.js';
+import type { I18nData } from './interface.js';
 
 export const transformMain = (tokens: any[], filename: string, frontMatter: any) => {
   const imports: string[] = [];

@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-
-const fs = require('fs-extra');
+import fs from 'fs-extra';
 
 fs.copySync('src/scripts/changelog/template', 'dist/scripts/changelog/template', {
   overwrite: true,

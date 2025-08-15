@@ -4,10 +4,10 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import fs from 'fs-extra';
 import consola from 'consola';
 import { readPackageJSON } from 'pkg-types';
-import { generateModifyVars } from '../utils/modify-vars';
-import cssOnlyPlugin from '../plugins/rollup-plugin-css-only';
-import { configUnoCSSPlugin } from '../plugins/unocss';
-import external from '../plugins/vite-plugin-external';
+import { generateModifyVars } from '../utils/modify-vars.js';
+import cssOnlyPlugin from '../plugins/rollup-plugin-css-only/index.js';
+import { configUnoCSSPlugin } from '../plugins/unocss.js';
+import external from '../plugins/vite-plugin-external/index.js';
 import type { UserConfig } from 'vite';
 
 export default async function defineStyleConfig() {

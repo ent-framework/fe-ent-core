@@ -2,8 +2,8 @@ import consola from 'consola';
 import { readPackageJSON } from 'pkg-types';
 import { type PluginOption } from 'vite';
 
-import { getEnvConfig, wrapperEnv } from '../../utils/env';
-import { createContentHash } from '../../utils/hash';
+import { getEnvConfig, wrapperEnv } from '../../utils/env.js';
+import { createContentHash } from '../../utils/hash.js';
 
 const GLOBAL_CONFIG_FILE_NAME = '_app.config.js';
 const PLUGIN_NAME = 'app-config';

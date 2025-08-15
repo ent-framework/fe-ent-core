@@ -1,5 +1,5 @@
 import type { ConfigEnv, UserConfig } from 'vite';
-import type { ModifyVarOptions } from '../utils/modify-vars';
+import type { ModifyVarOptions } from '../utils/modify-vars.js';
 
 export type DefineOptions = {
   overrides?: UserConfig;

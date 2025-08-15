@@ -3,9 +3,9 @@ import { parse } from '@vue/compiler-sfc';
 import { marked } from 'marked';
 import yaml from 'js-yaml';
 import Prism from 'prismjs';
-import loadLanguages from 'prismjs/components/index';
-import { cleanUrl, escape } from './helper';
-import type { FileImportToken, I18nDescriptionToken } from './interface';
+import loadLanguages from 'prismjs/components/index.js';
+import { cleanUrl, escape } from './helper.js';
+import type { FileImportToken, I18nDescriptionToken } from './interface.js';
 
 const languages = ['shell', 'js', 'ts', 'jsx', 'tsx', 'less', 'diff'];
 loadLanguages(languages);

@@ -2,9 +2,9 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import terser from '@rollup/plugin-terser';
 import { mergeConfig } from 'vite';
-import { generateModifyVars } from '../utils/modify-vars';
-import { configUnoCSSPlugin } from '../plugins/unocss';
-import { commonConfig } from './common';
+import { generateModifyVars } from '../utils/modify-vars.js';
+import { configUnoCSSPlugin } from '../plugins/unocss.js';
+import { commonConfig } from './common.js';
 import type { InlineConfig, UserConfig } from 'vite';
 import type { OutputPlugin } from 'rollup';
 

@@ -4,12 +4,12 @@ import { type PluginOption } from 'vite';
 import Inspect from 'vite-plugin-inspect';
 import mkcert from 'vite-plugin-mkcert';
 import consola from 'consola';
-import { createAppConfigPlugin } from './vite-plugin-app-config';
-import { configCompressPlugin } from './compress';
-import { configHtmlPlugin } from './html';
-import { configMockPlugin } from './mock';
-import { configVisualizerConfig } from './visualizer';
-import { configUnoCSSPlugin } from './unocss';
+import { createAppConfigPlugin } from './vite-plugin-app-config/index.js';
+import { configCompressPlugin } from './compress.js';
+import { configHtmlPlugin } from './html.js';
+import { configMockPlugin } from './mock.js';
+import { configVisualizerConfig } from './visualizer.js';
+import { configUnoCSSPlugin } from './unocss.js';
 
 interface Options {
   isBuild: boolean;

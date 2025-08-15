@@ -1,12 +1,12 @@
 import { readPackageJSON } from 'pkg-types';
 import { mergeConfig } from 'vite';
 import glob from 'fast-glob';
-import { createPlugins } from '../plugins';
-import { generateModifyVars } from '../utils/modify-vars';
-import vueExportHelper from '../plugins/vite-plugin-vue-export-helper';
-import external from '../plugins/vite-plugin-external';
-import { excludeFiles } from '../utils/exclude-files';
-import { commonConfig } from './common';
+import { createPlugins } from '../plugins/index.js';
+import { generateModifyVars } from '../utils/modify-vars.js';
+import vueExportHelper from '../plugins/vite-plugin-vue-export-helper/index.js';
+import external from '../plugins/vite-plugin-external/index.js';
+import { excludeFiles } from '../utils/exclude-files.js';
+import { commonConfig } from './common.js';
 import type { InlineConfig, UserConfig } from 'vite';
 
 /***

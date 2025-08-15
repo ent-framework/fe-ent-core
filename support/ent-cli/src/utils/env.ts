@@ -1,7 +1,7 @@
 import { join } from 'node:path';
 
 import dotenv from 'dotenv';
-import { readFile } from 'fs-extra';
+import fs from 'fs-extra';
 
 /**
  * 获取当前环境下生效的配置文件名
@@ -27,7 +27,7 @@ export async function getEnvConfig(match = 'VITE_', confFiles = getConfFiles()) 
 
   for (const confFile of confFiles) {
     try {
-      const envPath = await readFile(join(process.cwd(), confFile), { encoding: 'utf8' });
+      const envPath = await fs.readFile(join(process.cwd(), confFile), { encoding: 'utf8' });
       const env = dotenv.parse(envPath);
       envConfig = { ...envConfig, ...env };
     } catch (e) {

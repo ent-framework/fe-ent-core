@@ -1,12 +1,12 @@
 import { resolve } from 'node:path';
 import { loadEnv, mergeConfig } from 'vite';
-import { createPlugins } from '../plugins';
-import { generateModifyVars } from '../utils/modify-vars';
-import { wrapperEnv } from '../utils/env';
-import { commonConfig } from './common';
+import { createPlugins } from '../plugins/index.js';
+import { generateModifyVars } from '../utils/modify-vars.js';
+import { wrapperEnv } from '../utils/env.js';
+import { commonConfig } from './common.js';
 import type { Alias, InlineConfig, UserConfig } from 'vite';
-import type { ViteEnv } from '../utils/env';
-import type { DefineOptions } from './type';
+import type { ViteEnv } from '../utils/env.js';
+import type { DefineOptions } from './type.js';
 
 async function defineProjectConfig(defineOptions: DefineOptions) {
   const { overrides = {} } = defineOptions;

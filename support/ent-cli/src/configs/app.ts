@@ -1,9 +1,9 @@
 import { readPackageJSON } from 'pkg-types';
 import { type UserConfig, mergeConfig } from 'vite';
-import { createPlugins } from '../plugins';
-import { generateModifyVars } from '../utils/modify-vars';
-import { commonConfig } from './common';
-import type { DefineOptions } from './type';
+import { createPlugins } from '../plugins/index.js';
+import { generateModifyVars } from '../utils/modify-vars.js';
+import { commonConfig } from './common.js';
+import type { DefineOptions } from './type.js';
 import type { ModuleFormat } from 'rollup';
 
 /***

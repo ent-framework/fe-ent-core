@@ -1,10 +1,10 @@
 import { readPackageJSON } from 'pkg-types';
 import { mergeConfig } from 'vite';
 import terser from '@rollup/plugin-terser';
-import { createPlugins } from '../plugins';
-import { generateModifyVars } from '../utils/modify-vars';
-import external from '../plugins/vite-plugin-external';
-import { commonConfig } from './common';
+import { createPlugins } from '../plugins/index.js';
+import { generateModifyVars } from '../utils/modify-vars.js';
+import external from '../plugins/vite-plugin-external/index.js';
+import { commonConfig } from './common.js';
 import type { InlineConfig, UserConfig } from 'vite';
 import type { OutputPlugin } from 'rollup';
 
