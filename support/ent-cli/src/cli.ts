@@ -1,20 +1,25 @@
 #!/usr/bin/env node
 
-import path from 'path';
+import path from 'node:path';
 import fs from 'fs-extra';
 import { Command } from 'commander';
-import icongen from './scripts/icongen';
-import lessgen from './scripts/lessgen';
-import docgen from './scripts/docgen';
-import dtsgen from './scripts/dtsgen';
-import viteSite from './scripts/site';
-import viteProject from './scripts/build-project';
-import viteApp from './scripts/build-app';
-import buildComponent from './scripts/build-component';
-import buildStyle from './scripts/build-style';
-import buildLibrary from './scripts/build-library';
-import changelog from './scripts/changelog';
-import jsongen from './scripts/jsongen';
+import icongen from './scripts/icongen/index.js';
+import lessgen from './scripts/lessgen/index.js';
+import docgen from './scripts/docgen/index.js';
+import dtsgen from './scripts/dtsgen/index.js';
+import viteSite from './scripts/site/index.js';
+import viteProject from './scripts/build-project/index.js';
+import viteApp from './scripts/build-app/index.js';
+import buildComponent from './scripts/build-component/index.js';
+import buildStyle from './scripts/build-style/index.js';
+import buildLibrary from './scripts/build-library/index.js';
+import changelog from './scripts/changelog/index.js';
+import jsongen from './scripts/jsongen/index.js';
+
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname  = path.dirname(__filename);
 
 const program = new Command();
 

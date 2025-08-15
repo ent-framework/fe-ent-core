@@ -1,12 +1,12 @@
 import * as path from 'path';
 import fs from 'fs';
 import * as bt from '@babel/types';
-import resolveLocal from 'vue-docgen-api/dist/utils/resolveLocal';
-import resolveRequired from 'vue-docgen-api/dist/utils/resolveRequired';
-import { addDefaultAndExecuteHandlers } from 'vue-docgen-api/dist/parse-script';
+import resolveLocal from 'vue-docgen-api/dist/utils/resolveLocal.js';
+import resolveRequired from 'vue-docgen-api/dist/utils/resolveRequired.js';
+import { addDefaultAndExecuteHandlers } from 'vue-docgen-api/dist/parse-script.js';
 import consola from 'consola';
-import type { WebType } from '../../../utils/web-types';
-import type { ImportedVariableSet } from 'vue-docgen-api/dist/utils/resolveRequired';
+import type { WebType } from '../../../utils/web-types.js';
+import type { ImportedVariableSet } from 'vue-docgen-api/dist/utils/resolveRequired.js';
 import type { NodePath } from 'ast-types/lib/node-path';
 import type { Documentation, ParseOptions } from 'vue-docgen-api';
 import type { ParamTag } from 'vue-inbrowser-compiler-independent-utils';

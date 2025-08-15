@@ -8,11 +8,4 @@
 ## API
 
 ### 应用配置
-
-### `<ent-app-provider>` Props
-
-|Attribute|Description|Type|Default|Module|
-|---|---|---|:---:|---|
-|prefix-cls|class style prefix|`string`|`'ent'`|`-`|
-
-
+%%API(src/index.vue)%%

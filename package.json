@@ -97,13 +97,13 @@
     "tslib": "^2.3.1",
     "tsx": "^4.7.0",
     "typescript": "5.7.2",
-    "vite": "^6.0.1"
+    "vite": "^7.1.0"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china",
     "ant-design-vue": "4.1.2",
     "vue": "3.5.13",
-    "vite": "6.0.5",
+    "vite": "7.1.2",
     "gifsicle": "5.2.0"
   },
   "repository": {

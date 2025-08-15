@@ -2,9 +2,9 @@ import path from 'path';
 import fs from 'fs-extra';
 import consola from 'consola';
 import { build } from 'vite';
-import { defineLibraryConfig } from '../../configs/library';
-import { defineUmdLibraryConfig } from '../../configs/library.umd';
-import { cleanTempStyles, copyLessFiles } from '../../utils/style';
+import { defineLibraryConfig } from '../../configs/library.js';
+import { defineUmdLibraryConfig } from '../../configs/library.umd.js';
+import { cleanTempStyles, copyLessFiles } from '../../utils/style.js';
 
 async function run({ umd = false, source = false }) {
   consola.info(`building library... with umd ${umd}, source: ${source}`);

@@ -1,12 +1,5 @@
 <script lang="ts">
   import { defineComponent, ref, toRefs } from 'vue';
-  import {
-    NLoadingBarProvider,
-    NMessageProvider,
-    NModalProvider,
-    NNotificationProvider
-  } from 'naive-ui';
-  import { NDialogProvider } from 'naive-ui/es/dialog';
   import { createBreakpointListen } from '../../../hooks/event/use-breakpoint';
   import { createAppProviderContext } from './use-app-context';
   import EntAppProviderWrapper from './wrapper.vue';
@@ -21,11 +14,6 @@
   export default defineComponent({
     name: 'EntAppProvider',
     components: {
-      NLoadingBarProvider,
-      NDialogProvider,
-      NNotificationProvider,
-      NMessageProvider,
-      NModalProvider,
       EntAppProviderWrapper
     },
     inheritAttrs: false,
@@ -49,19 +37,8 @@
     }
   });
 </script>
-
 <template>
-  <NLoadingBarProvider>
-    <NDialogProvider>
-      <NNotificationProvider>
-        <NMessageProvider>
-          <NModalProvider>
-            <EntAppProviderWrapper>
-              <slot />
-            </EntAppProviderWrapper>
-          </NModalProvider>
-        </NMessageProvider>
-      </NNotificationProvider>
-    </NDialogProvider>
-  </NLoadingBarProvider>
+    <EntAppProviderWrapper>
+      <slot />
+    </EntAppProviderWrapper>
 </template>

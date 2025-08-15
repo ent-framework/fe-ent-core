@@ -68,11 +68,11 @@ export default defineConfig(({ command, mode }) => {
       server: {
         port: 3000,
         proxy: {
-          // '/api': {
-          //   target: 'http://localhost:3000',
-          //   changeOrigin: true,
-          //   ws: true
-          // }
+          '/api': {
+            target: 'http://localhost:3000',
+            changeOrigin: true,
+            ws: true
+          }
           // 配合 Ent-framework 测试
           // '/api': {
           //   target: 'http://127.0.0.1:8000',
@@ -80,15 +80,15 @@ export default defineConfig(({ command, mode }) => {
           //   ws: true,
           //   rewrite: (path) => path.replace(new RegExp(`^/api`), ''),
           // },
-          '/api': {
-            target: 'http://101.231.95.199:8000/',
-            changeOrigin: true,
-            ws: true,
-            timeout: 20000,
-            rewrite: (path) => path.replace(new RegExp(`^/api`), '')
-            // only https
-            // secure: false
-          }
+          // '/api': {
+          //   target: 'http://101.231.95.199:8000/',
+          //   changeOrigin: true,
+          //   ws: true,
+          //   timeout: 20000,
+          //   rewrite: (path) => path.replace(new RegExp(`^/api`), '')
+          //   // only https
+          //   // secure: false
+          // }
         }
       }
     }

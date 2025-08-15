@@ -1,5 +1,5 @@
-import getDocblock from 'vue-docgen-api/dist/utils/getDocblock';
-import getDoclets from 'vue-docgen-api/dist/utils/getDoclets';
+import getDocblock from 'vue-docgen-api/dist/utils/getDocblock.js';
+import getDoclets from 'vue-docgen-api/dist/utils/getDoclets.js';
 import type { DocBlockTags } from 'vue-docgen-api/dist/Documentation';
 import type { PropDescriptor, Tag } from 'vue-docgen-api';
 import type { NodePath } from 'ast-types/lib/node-path';

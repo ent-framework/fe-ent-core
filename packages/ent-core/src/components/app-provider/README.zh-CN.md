@@ -10,11 +10,4 @@ description: 应用配置
 ## API
 
 ### 应用配置
-
-### `<ent-app-provider>` Props
-
-|参数名|描述|类型|默认值|模块|
-|---|---|---|:---:|---|
-|prefix-cls|class style prefix|`string`|`'ent'`|`-`|
-
-
+%%API(src/index.vue)%%

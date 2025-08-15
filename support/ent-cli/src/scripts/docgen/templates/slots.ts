@@ -1,4 +1,4 @@
-import { escapeCharacter, toKebabCase } from '../utils';
+import { escapeCharacter, toKebabCase } from '../utils/index.js';
 import type { SlotDescriptor } from 'vue-docgen-api';
 
 const bindingsTmpl = (bindings: SlotDescriptor['bindings']): string => {

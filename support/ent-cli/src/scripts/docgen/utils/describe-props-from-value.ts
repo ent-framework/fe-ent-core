@@ -1,16 +1,16 @@
 import * as nodePath from 'path';
 import * as bt from '@babel/types';
 import { print, visit } from 'recast';
-import getDocblock from 'vue-docgen-api/dist/utils/getDocblock';
-import getDoclets from 'vue-docgen-api/dist/utils/getDoclets';
-import transformTagsIntoObject from 'vue-docgen-api/dist/utils/transformTagsIntoObject';
-import getTemplateExpressionAST from 'vue-docgen-api/dist/utils/getTemplateExpressionAST';
-import parseValidatorForValues from 'vue-docgen-api/dist/script-handlers/utils/parseValidator';
-import resolvePathFrom from 'vue-docgen-api/dist/utils/resolvePathFrom';
-import getMemberFilter from './member-filter';
-import { parseType } from './parse-type';
-import readFile from './read-file';
-import resolveVar from './resolve-var';
+import getDocblock from 'vue-docgen-api/dist/utils/getDocblock.js';
+import getDoclets from 'vue-docgen-api/dist/utils/getDoclets.js';
+import transformTagsIntoObject from 'vue-docgen-api/dist/utils/transformTagsIntoObject.js';
+import getTemplateExpressionAST from 'vue-docgen-api/dist/utils/getTemplateExpressionAST.js';
+import parseValidatorForValues from 'vue-docgen-api/dist/script-handlers/utils/parseValidator.js';
+import resolvePathFrom from 'vue-docgen-api/dist/utils/resolvePathFrom.js';
+import getMemberFilter from './member-filter.js';
+import { parseType } from './parse-type.js';
+import readFile from './read-file.js';
+import resolveVar from './resolve-var.js';
 import type { Expression, SpreadElement } from '@babel/types';
 import type Documentation from 'vue-docgen-api/dist/Documentation';
 import type {

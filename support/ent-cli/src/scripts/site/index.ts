@@ -1,5 +1,5 @@
 import { build, createServer, searchForWorkspaceRoot } from 'vite';
-import getSiteDevConfig from '../../configs/vite.site';
+import getSiteDevConfig from '../../configs/vite.site.js';
 import type { ConfigEnv } from 'vite';
 
 async function run(config: ConfigEnv, port: number) {

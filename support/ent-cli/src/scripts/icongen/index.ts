@@ -3,10 +3,10 @@ import fs from 'fs-extra';
 import glob from 'glob';
 import { optimize } from 'svgo';
 import { JSDOM } from 'jsdom';
-import paths from '../../utils/paths';
-import { toPascalCase } from '../../utils/convert-case';
-import svgoConfig from './svgo.config';
-import { getIconVue } from './vue-template';
+import paths from '../../utils/paths.js';
+import { toPascalCase } from '../../utils/convert-case.js';
+import svgoConfig from './svgo.config.js';
+import { getIconVue } from './vue-template.js';
 
 interface IconData {
   title: string;

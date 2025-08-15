@@ -7,11 +7,4 @@
 
 ## API
 
-
-### `<ent-authority>` Props
-
-|Attribute|Description|Type|Default|Module|
-|---|---|---|:---:|---|
-|value|Specified role /permission code|`string \| string[]`|`''`|`-`|
-
-
+%%API(src/index.vue)%%

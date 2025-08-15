@@ -1,7 +1,7 @@
 import * as bt from '@babel/types';
-import getDoclets from 'vue-docgen-api/dist/utils/getDoclets';
-import getProperties from 'vue-docgen-api/dist/script-handlers/utils/getProperties';
-import getDocblock from 'vue-docgen-api/dist/utils/getDocblock';
+import getDoclets from 'vue-docgen-api/dist/utils/getDoclets.js';
+import getProperties from 'vue-docgen-api/dist/script-handlers/utils/getProperties.js';
+import getDocblock from 'vue-docgen-api/dist/utils/getDocblock.js';
 import type { Documentation } from 'vue-docgen-api';
 
 export function slotTagHandler(documentation: Documentation, path: any) {

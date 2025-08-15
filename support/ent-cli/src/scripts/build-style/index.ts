@@ -3,8 +3,8 @@ import fs from 'fs-extra';
 import consola from 'consola';
 import glob from 'glob';
 import { build } from 'vite';
-import paths from '../../utils/paths';
-import styleConfig from '../../configs/component.style';
+import paths from '../../utils/paths.js';
+import styleConfig from '../../configs/component.style.js';
 
 const run = async () => {
   // 拷贝less文件到目标文件，index.less编译生成index.css

@@ -5,7 +5,7 @@ import { ModuleResolutionKind, Project, ScriptTarget } from 'ts-morph';
 import glob from 'fast-glob';
 import fs from 'fs-extra';
 import chalk from 'chalk';
-import { excludeFiles } from '../../utils/exclude-files';
+import { excludeFiles } from '../../utils/exclude-files.js';
 import type { SourceFile } from 'ts-morph';
 
 const cwd = process.cwd();

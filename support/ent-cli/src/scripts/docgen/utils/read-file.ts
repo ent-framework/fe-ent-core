@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { parse } from 'recast';
-import buildParser from 'vue-docgen-api/dist/babel-parser';
+import buildParser from 'vue-docgen-api/dist/babel-parser.js';
 import type * as bt from '@babel/types';
 import type { ParserPlugin } from '@babel/parser';
 

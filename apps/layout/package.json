@@ -36,7 +36,6 @@
     "@types/lodash": "^4.14.198",
     "@types/lodash-es": "^4.17.9",
     "fe-ent-cli": "workspace:*",
-    "vite": "^6.0.1",
     "vue": "^3.5.13",
     "rimraf": "^6.0.1"
   },

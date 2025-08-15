@@ -1,7 +1,7 @@
-import props from './props';
-import events from './events';
-import methods from './methods';
-import slots from './slots';
+import props from './props.js';
+import events from './events.js';
+import methods from './methods.js';
+import slots from './slots.js';
 
 export default {
   props,

@@ -10,7 +10,5 @@ description: 页面包装
 ## API
 
 ### 皮肤选择(暗黑模式切换)
-
-
-
+%%API(src/page-wrapper.vue)%%
 

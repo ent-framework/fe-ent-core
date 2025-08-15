@@ -9,16 +9,5 @@ description: 页面包装
 
 ## API
 
-
-### `<ent-icon>` Props
-
-|参数名|描述|类型|默认值|模块|
-|---|---|---|:---:|---|
-|icon|图标名|`string`|`-`|`-`|
-|depth|Icon depth.|`1 \| 2 \| 3 \| 4 \| 5`|`-`|`NIcon`|
-|size|Icon size (when the unit is not specified the default unit is `px`).|`number \| string`|`-`|`NIcon`|
-|color|Icon color.|`string`|`-`|`NIcon`|
-|component|Icon component to display.|`Component`|`-`|`NIcon`|
-
-
+%%API(src/icon.vue)%%
 

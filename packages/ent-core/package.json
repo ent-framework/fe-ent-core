@@ -34,7 +34,7 @@
     "clean": "rimraf dist && rimraf es && rimraf lib && rimraf json",
     "docgen": "ent-cli docgen",
     "build": "pnpm run icongen && pnpm run build-all",
-    "build-all": "pnpm run build:component && pnpm run docgen && pnpm run jsongen && pnpm run dtsgen",
+    "build-all": "pnpm run build:component && pnpm run dtsgen",
     "gen:doc": "ent-cli docgen",
     "build:component": "ent-cli build:component -u",
     "icongen": "ent-cli icongen",
@@ -59,11 +59,10 @@
     "date-fns": "^2.30.0",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
-    "naive-ui": "2.40.4",
+    "naive-ui": "2.42.0",
     "treemate": "^0.3.11",
     "vdirs": "^0.1.8",
     "vooks": "^0.2.12",
-    "vueuc": "^0.4.63",
     "path-to-regexp": "^8.0.0",
     "pinia": "^2.1.6",
     "pinia-plugin-persistedstate": "^3.2.0",
@@ -82,8 +81,7 @@
     "@types/tinycolor2": "^1.4.2",
     "cross-env": "^7.0.3",
     "fe-ent-cli": "workspace:*",
-    "rimraf": "^6.0.1",
-    "vite": "^6.0.1"
+    "rimraf": "^6.0.1"
   },
   "vetur": {
     "tags": "./json/vetur-tags.json",

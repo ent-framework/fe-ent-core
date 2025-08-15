@@ -2,11 +2,11 @@ import path from 'path';
 import fs from 'fs-extra';
 import fg from 'fast-glob';
 import { parse as parseComponent } from 'vue-docgen-api';
-import { toKebabCase } from '../../utils/convert-case';
-import { slotTagHandler } from '../docgen/handlers/slot-tag-handler';
-import { propExtHandler } from '../docgen/handlers/prop-ext-handler';
-import { extendsExtHandler } from '../docgen/handlers/extends-ext-handler';
-import { getPackage } from '../../utils/get-package';
+import { toKebabCase } from '../../utils/convert-case.js';
+import { slotTagHandler } from '../docgen/handlers/slot-tag-handler.js';
+import { propExtHandler } from '../docgen/handlers/prop-ext-handler.js';
+import { extendsExtHandler } from '../docgen/handlers/extends-ext-handler.js';
+import { getPackage } from '../../utils/get-package.js';
 import type { ComponentDoc, ParamTag } from 'vue-docgen-api';
 
 const getComponentsFromTemplates = async () => {

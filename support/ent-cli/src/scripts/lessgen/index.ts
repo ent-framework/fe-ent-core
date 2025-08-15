@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs-extra';
 import glob from 'glob';
-import paths from '../../utils/paths';
+import paths from '../../utils/paths.js';
 
 const lessgen = () => {
   let lessContent = `@import './style/index.less';\n@import './trigger/style/index.less';\n`;

@@ -1,11 +1,11 @@
 import * as bt from '@babel/types';
-import getMemberFilter from 'vue-docgen-api/dist/utils/getPropsFilter';
+import getMemberFilter from 'vue-docgen-api/dist/utils/getPropsFilter.js';
 import {
   describeImportPropsFromValue,
   describePropsFromValue
-} from '../utils/describe-props-from-value';
-import resolveVar from '../utils/resolve-var';
-import { parseType } from '../utils/parse-type';
+} from '../utils/describe-props-from-value.js';
+import resolveVar from '../utils/resolve-var.js';
+import { parseType } from '../utils/parse-type.js';
 import type { Documentation, ParseOptions } from 'vue-docgen-api';
 import type { NodePath } from 'ast-types/lib/node-path';
 

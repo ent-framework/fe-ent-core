@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs-extra';
 import consola from 'consola';
 import glob from 'glob';
-import paths from './paths';
+import paths from './paths.js';
 
 export const cleanTempStyles = () => {
   if (fs.existsSync(path.resolve(process.cwd(), 'lib/style.css'))) {

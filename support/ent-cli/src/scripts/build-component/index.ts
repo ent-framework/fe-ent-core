@@ -2,9 +2,9 @@ import path from 'path';
 import fs from 'fs-extra';
 import { build } from 'vite';
 import consola from 'consola';
-import defineComponentConfig from '../../configs/component';
-import getUmdConfig from '../../configs/component.umd';
-import { cleanTempStyles, copyLessFiles } from '../../utils/style';
+import defineComponentConfig from '../../configs/component.js';
+import getUmdConfig from '../../configs/component.umd.js';
+import { cleanTempStyles, copyLessFiles } from '../../utils/style.js';
 
 async function run({ umd = false }) {
   consola.info(`building component... with umd ${umd}`);

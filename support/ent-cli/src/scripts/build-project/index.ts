@@ -1,5 +1,5 @@
 import { build, createServer } from 'vite';
-import { defineProjectConfig } from '../../configs/project';
+import { defineProjectConfig } from '../../configs/project.js';
 import type { ConfigEnv } from 'vite';
 
 async function run(config: ConfigEnv, port: number) {

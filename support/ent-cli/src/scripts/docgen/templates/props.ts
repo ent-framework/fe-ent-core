@@ -1,4 +1,4 @@
-import { cleanStr, escapeCharacter, toKebabCase, trimStr, unquote } from '../utils';
+import { cleanStr, escapeCharacter, toKebabCase, trimStr, unquote } from '../utils/index.js';
 import type { ParamTag, PropDescriptor } from 'vue-docgen-api';
 
 const tmpl = (
