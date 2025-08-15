@@ -56,7 +56,7 @@ async function defineProjectConfig(defineOptions: DefineOptions) {
     },
     define: defineData,
     build: {
-      target: 'es2015',
+      target: ['es2015', 'edge88', 'firefox78', 'chrome61', 'safari11'],
       cssTarget: 'chrome80',
       rollupOptions: {
         output: {

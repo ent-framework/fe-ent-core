@@ -8,10 +8,6 @@ export function useLayoutThemeSetting() {
 
   const getOpenKeepAlive = computed(() => layoutStore.getLayoutConfig.openKeepAlive);
 
-  const getSettingButtonPosition = computed(
-    () => layoutStore.getLayoutConfig.settingButtonPosition
-  );
-
   const getCanEmbedIFramePage = computed(() => layoutStore.getLayoutConfig.canEmbedIFramePage);
 
   const getShowLogo = computed(() => layoutStore.getLayoutConfig.showLogo);
@@ -19,8 +15,6 @@ export function useLayoutThemeSetting() {
   const getContentMode = computed(() => layoutStore.getLayoutConfig.contentMode);
 
   const getUseOpenBackTop = computed(() => layoutStore.getLayoutConfig.useOpenBackTop);
-
-  const getShowSettingButton = computed(() => layoutStore.getLayoutConfig.showSettingButton);
 
   const getShowFooter = computed(() => layoutStore.getLayoutConfig.showFooter);
 
@@ -41,7 +35,6 @@ export function useLayoutThemeSetting() {
   );
 
   return {
-    getSettingButtonPosition,
     getFullContent,
     getGrayMode,
     getLayoutContentMode,
@@ -51,7 +44,6 @@ export function useLayoutThemeSetting() {
     getShowBreadCrumb,
     getShowBreadCrumbIcon,
     getUseOpenBackTop,
-    getShowSettingButton,
     getShowFooter,
     getContentMode,
     getLockTime

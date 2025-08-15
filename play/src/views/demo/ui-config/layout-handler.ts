@@ -1,8 +1,8 @@
 import { useThemeSetting } from 'fe-ent-core/es/hooks';
-import { useLayoutStore } from '../../../../store/layout';
+import { useLayoutStore } from 'fe-ent-layout/es/store/layout';
 import { HandlerEnum } from './enum';
 import type { DeepPartial } from 'fe-ent-core/es/types';
-import type { LayoutConfig } from '../../../../types';
+import type { LayoutConfig } from 'fe-ent-layout/es/types';
 
 export function layoutHandler(event: HandlerEnum, value: any) {
   const layoutStore = useLayoutStore();

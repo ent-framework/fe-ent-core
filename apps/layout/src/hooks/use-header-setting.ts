@@ -53,8 +53,6 @@ export function useHeaderSetting() {
 
   const getShowSearch = computed(() => layoutStore.getHeaderSetting.showSearch);
 
-  const getUseLockPage = computed(() => layoutStore.getHeaderSetting.useLockPage);
-
   const getShowFullScreen = computed(() => layoutStore.getHeaderSetting.showFullScreen);
 
   const getShowNotice = computed(() => layoutStore.getHeaderSetting.showNotice);
@@ -81,7 +79,6 @@ export function useHeaderSetting() {
     setHeaderSetting,
     getShowSearch,
     getHeaderTheme,
-    getUseLockPage,
     getShowFullScreen,
     getShowNotice,
     getShowBread,

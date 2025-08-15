@@ -6,6 +6,7 @@
     "paths": {
       "vue": ["../../node_modules/vue"],
       "vue-i18n": ["../../node_modules/vue-i18n"],
+      "@intlify/core-base": ["../../node_modules/@intlify/core-base"],
       "vue-types": ["../../node_modules/vue-types"],
       "axios": ["../../node_modules/axios"],
       "treemate": ["../../node_modules/treemate"],

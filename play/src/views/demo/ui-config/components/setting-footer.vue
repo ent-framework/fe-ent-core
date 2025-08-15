@@ -5,12 +5,12 @@
       {{ t('layout.setting.copyBtn') }}
     </ent-button>
 
-    <ent-button color="warning" block class="my-3" @click="handleResetSetting">
+    <ent-button type="warning" block class="my-3" @click="handleResetSetting">
       <EntIcon icon="ant-design:redo-outlined" class="mr-2" />
       {{ t('common.resetText') }}
     </ent-button>
 
-    <ent-button color="error" block @click="handleClearAndRedo">
+    <ent-button type="error" block @click="handleClearAndRedo">
       <EntIcon icon="ant-design:redo-outlined" class="mr-2" />
       {{ t('layout.setting.clearBtn') }}
     </ent-button>
@@ -22,7 +22,7 @@
   import { EntIcon } from 'fe-ent-core';
   import { useAppStore, usePermissionStore, useUserStore } from 'fe-ent-core/es/store';
   import { useDesign, useI18n, useMessage } from 'fe-ent-core/es/hooks';
-  import { useMultipleTabStore } from '../../../../../store/multiple-tab';
+  import { useMultipleTabStore } from 'fe-ent-layout/es/store/multiple-tab';
 
   export default defineComponent({
     name: 'SettingFooter',

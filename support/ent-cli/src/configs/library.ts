@@ -35,7 +35,7 @@ async function defineLibraryConfig(source: boolean) {
   ).map((file) => `${base}/${file}`);
   const packageConfig: UserConfig = {
     build: {
-      target: 'modules',
+      target: ['es2015', 'edge88', 'firefox78', 'chrome61', 'safari11'],
       outDir: 'es',
       emptyOutDir: false,
       minify: false,

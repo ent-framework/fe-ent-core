@@ -1,34 +1,4 @@
 export default {
-  footer: { onlinePreview: '在线预览', onlineDocument: '在线文档' },
-  notFound: '在Vue Components中未发现{0}',
-  header: {
-    // user dropdown
-    dropdownItemDoc: '文档',
-    dropdownItemLoginOut: '退出系统',
-
-    // tooltip
-    tooltipErrorLog: '错误日志',
-    tooltipLock: '锁定屏幕',
-    tooltipNotify: '消息通知',
-
-    tooltipEntryFull: '全屏',
-    tooltipExitFull: '退出全屏',
-
-    // lock
-    lockScreenPassword: '锁屏密码',
-    lockScreen: '锁定屏幕',
-    lockScreenBtn: '锁定',
-
-    home: '首页',
-  },
-  multipleTab: {
-    reload: '重新加载',
-    close: '关闭标签页',
-    closeLeft: '关闭左侧标签页',
-    closeRight: '关闭右侧标签页',
-    closeOther: '关闭其它标签页',
-    closeAll: '关闭全部标签页',
-  },
   setting: {
     // content mode
     contentModeFull: '流式',
@@ -39,7 +9,7 @@ export default {
     topMenuAlignCenter: '居右',
     // menu trigger
     menuTriggerNone: '不显示',
-    menuTriggerBottom: '底部',
+    menuTriggerSide: '侧边',
     menuTriggerTop: '顶部',
     // menu type
     menuTypeSidebar: '左侧菜单模式',
@@ -90,6 +60,7 @@ export default {
     tabsRedoBtn: '标签页刷新按钮',
     tabsFoldBtn: '标签页折叠按钮',
     sidebar: '左侧菜单',
+    sidebarInverted: '左侧菜单背景翻转',
     header: '顶栏',
     footer: '页脚',
     fullContent: '全屏内容',
@@ -115,6 +86,6 @@ export default {
 
     darkTheme: '暗黑',
     lightTheme: '明亮',
-    noneTheme: '使用系统主题',
+    noneTheme: '使用系统主题'
   },
 };

@@ -6,19 +6,12 @@ import {
 } from 'fe-ent-core/es/logics/enums/menu-enum';
 import {
   ContentEnum,
-  SettingButtonPositionEnum,
   ThemeEnum
 } from 'fe-ent-core/es/logics/enums/app-enum';
 import type { LayoutConfig } from '../types';
 
 // ! You need to clear the browser cache after the change
 const setting: LayoutConfig = {
-  // Whether to show the configuration button
-  showSettingButton: true,
-
-  // `Settings` button position
-  settingButtonPosition: SettingButtonPositionEnum.AUTO,
-
   // Website gray mode, open for possible mourning dates
   grayMode: false,
 
@@ -42,8 +35,6 @@ const setting: LayoutConfig = {
     show: true,
     // theme
     theme: ThemeEnum.LIGHT,
-    // Whether to enable the lock screen function
-    useLockPage: true,
     // Whether to show the full screen button
     showFullScreen: true,
     // Whether to show the document button

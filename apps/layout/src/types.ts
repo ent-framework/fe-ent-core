@@ -6,7 +6,6 @@ import type {
 } from 'fe-ent-core/es/logics/enums/menu-enum';
 import type {
   ContentEnum,
-  SettingButtonPositionEnum,
   ThemeEnum
 } from 'fe-ent-core/es/logics/enums/app-enum';
 
@@ -49,8 +48,6 @@ export interface HeaderSetting {
   theme: ThemeEnum | 'none';
   // Turn on full screen
   showFullScreen: boolean;
-  // Whether to show the lock screen
-  useLockPage: boolean;
   // Show message center button
   showNotice: boolean;
   // Show document button
@@ -77,12 +74,6 @@ export interface LayoutConfig {
   useOpenBackTop: boolean;
   // Is it possible to embed iframe pages
   canEmbedIFramePage: boolean;
-
-  // Whether to show the configuration button
-  showSettingButton: boolean;
-
-  // Configure where the button is displayed
-  settingButtonPosition: SettingButtonPositionEnum;
   // Website gray mode, open for possible mourning dates
   grayMode: boolean;
   // The main interface is displayed in full screen, the menu is not displayed, and the top

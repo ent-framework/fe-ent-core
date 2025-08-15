@@ -14,27 +14,23 @@
       </span>
     </span>
   </NDropdown>
-  <LockAction @register="register" />
 </template>
 <script lang="ts">
   // components
 
-  import { computed, defineComponent, h, unref } from 'vue';
+  import { computed, defineComponent, h } from 'vue';
   import { EntIcon } from 'fe-ent-core/es/components/icon';
   import { NDropdown, NText } from 'naive-ui';
   import { useDesign, useI18n } from 'fe-ent-core/es/hooks';
   import { useModal } from 'fe-ent-core/es/components/modal';
   import { useUserStore } from 'fe-ent-core/es/store';
-  import { useHeaderSetting } from '../../../../../../hooks';
   import headerImg from '../../../../../../assets/header.jpg';
-  import LockAction from '../lock/lock-modal.vue';
   import type { DropdownMixedOption } from 'naive-ui/es/dropdown/src/interface';
 
   export default defineComponent({
     name: 'UserDropdown',
     components: {
       NDropdown,
-      LockAction,
       NText
     },
     props: {
@@ -52,7 +48,6 @@
     setup() {
       const { prefixCls } = useDesign('header-user-dropdown');
       const { t } = useI18n();
-      const { getUseLockPage } = useHeaderSetting();
       const userStore = useUserStore();
 
       const getUserInfo = computed(() => {
@@ -83,15 +78,7 @@
       }
 
       const getOptions = computed((): DropdownMixedOption[] => {
-        const isLockEnable = unref(getUseLockPage);
         const options: DropdownMixedOption[] = [];
-        if (isLockEnable) {
-          options.push({
-            label: () => t('layout.header.tooltipLock'),
-            icon: () => h(EntIcon, { icon: 'ion:lock-closed-outline' }),
-            key: 'lock'
-          });
-        }
         options.push({
           label: () => t('layout.header.dropdownItemLoginOut'),
           icon: () => h(EntIcon, { icon: 'ion:power-outline' }),
@@ -107,7 +94,6 @@
         getUserInfo,
         handleSelect,
         register,
-        getUseLockPage
       };
     }
   });

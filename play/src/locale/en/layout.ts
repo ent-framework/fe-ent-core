@@ -1,33 +1,4 @@
 export default {
-  footer: { onlinePreview: 'Preview', onlineDocument: 'Document' },
-  notFound: '{0} is not found in vue components',
-  header: {
-    // user dropdown
-    dropdownItemDoc: 'Document',
-    dropdownItemLoginOut: 'Login Out',
-
-    tooltipErrorLog: 'Error log',
-    tooltipLock: 'Lock screen',
-    tooltipNotify: 'Notification',
-
-    tooltipEntryFull: 'Full Screen',
-    tooltipExitFull: 'Exit Full Screen',
-
-    // lock
-    lockScreenPassword: 'Lock screen password',
-    lockScreen: 'Lock screen',
-    lockScreenBtn: 'Locking',
-
-    home: 'Home',
-  },
-  multipleTab: {
-    reload: 'Refresh current',
-    close: 'Close current',
-    closeLeft: 'Close Left',
-    closeRight: 'Close Right',
-    closeOther: 'Close Other',
-    closeAll: 'Close All',
-  },
   setting: {
     // content mode
     contentModeFull: 'Full',
@@ -38,7 +9,7 @@ export default {
     topMenuAlignCenter: 'Right',
     // menu trigger
     menuTriggerNone: 'Not Show',
-    menuTriggerBottom: 'Bottom',
+    menuTriggerSide: 'Side',
     menuTriggerTop: 'Top',
     // menu type
     menuTypeSidebar: 'Left menu mode',
@@ -90,6 +61,7 @@ export default {
     tabsRedoBtn: 'Tabs redo button',
     tabsFoldBtn: 'Tabs flod button',
     sidebar: 'Sidebar',
+    sidebarInverted: 'Sidebar background inverted',
     header: 'Header',
     footer: 'Footer',
     fullContent: 'Full content',
@@ -115,6 +87,6 @@ export default {
 
     darkTheme: 'Dark',
     lightTheme: 'Light',
-    noneTheme: 'Using System',
+    noneTheme: 'Using System'
   },
 };

@@ -27,7 +27,7 @@ async function defineUmdLibraryConfig() {
   const deps = [...Object.keys(dependencies), ...Object.keys(peerDependencies)];
   const packageConfig: UserConfig = {
     build: {
-      target: 'modules',
+      target: ['es2015', 'edge88', 'firefox78', 'chrome61', 'safari11'],
       outDir: 'dist',
       emptyOutDir: false,
       sourcemap: false,

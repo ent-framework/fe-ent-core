@@ -160,6 +160,9 @@ export default {
   setup: {
     page: '引导页',
   },
+  ui_config: {
+    page: 'UI配置',
+  },
   system: {
     moduleName: '系统管理',
     account: '账号管理',

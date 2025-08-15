@@ -1,4 +1,4 @@
-import { computed, defineComponent, unref } from 'vue';
+import {computed, defineComponent, ref, unref} from 'vue';
 import { EntDrawer } from 'fe-ent-core';
 import { MenuTypeEnum, TriggerEnum } from 'fe-ent-core/es/logics';
 import { useI18n, useThemeSetting, useTransitionSetting } from 'fe-ent-core/es/hooks';
@@ -8,7 +8,7 @@ import {
   useLayoutThemeSetting,
   useMenuSetting,
   useMultipleTabSetting
-} from '../../../../hooks';
+} from 'fe-ent-layout/es/hooks';
 import { globalHandler } from './global-handler';
 import { layoutHandler } from './layout-handler';
 import {
@@ -30,10 +30,12 @@ import {
   routerTransitionOptions,
   topMenuAlignOptions
 } from './enum';
+import type {Nullable} from "fe-ent-core/es/types";
+import type {DrawerActionType} from "fe-ent-core/es/components/drawer";
 
 export default defineComponent({
   name: 'SettingDrawer',
-  setup(_, { attrs }) {
+  setup(_, { attrs, expose }) {
     const {
       getContentMode,
       getShowFooter,
@@ -44,6 +46,8 @@ export default defineComponent({
       getGrayMode,
       getLockTime
     } = useLayoutThemeSetting();
+
+    const drawerElRef = ref<Nullable<DrawerActionType>>(null);
 
     const { getOpenPageLoading, getBasicTransition, getEnableTransition, getOpenNProgress } =
       useTransitionSetting();
@@ -89,7 +93,6 @@ export default defineComponent({
     function renderSidebar() {
       const menuTypes = menuTypeList();
       return (
-        <>
           <TypePicker
             menuTypeList={menuTypes}
             handler={(item: (typeof menuTypes)[0]) => {
@@ -101,7 +104,6 @@ export default defineComponent({
             }}
             def={unref(getMenuType)}
           />
-        </>
       );
     }
 
@@ -127,7 +129,7 @@ export default defineComponent({
       }
 
       return (
-        <>
+        <div>
           <SwitchItem
             title={t('layout.setting.splitMenu')}
             event={HandlerEnum.MENU_SPLIT}
@@ -260,13 +262,13 @@ export default defineComponent({
             handler={layoutHandler}
             format={(value: number) => `${value}px`}
           />
-        </>
+        </div>
       );
     }
 
     function renderContent() {
       return (
-        <>
+        <div>
           <SwitchItem
             title={t('layout.setting.breadcrumb')}
             event={HandlerEnum.SHOW_BREADCRUMB}
@@ -378,13 +380,13 @@ export default defineComponent({
             def={unref(getGrayMode)}
             handler={layoutHandler}
           />
-        </>
+        </div>
       );
     }
 
     function renderTransition() {
       return (
-        <>
+        <div>
           <SwitchItem
             title={t('layout.setting.progress')}
             event={HandlerEnum.OPEN_PROGRESS}
@@ -413,9 +415,13 @@ export default defineComponent({
             disabled={!unref(getEnableTransition)}
             handler={globalHandler}
           />
-        </>
+        </div>
       );
     }
+
+    expose({
+      open: (open: boolean) => drawerElRef.value?.open(open)
+    })
 
     return () => (
       <EntDrawer
@@ -423,6 +429,7 @@ export default defineComponent({
         title={t('layout.setting.drawerTitle')}
         width={330}
         class="setting-drawer"
+        ref={drawerElRef}
       >
         <NDivider>{() => t('layout.setting.navMode')}</NDivider>
         {renderSidebar()}

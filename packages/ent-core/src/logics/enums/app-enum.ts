@@ -14,12 +14,6 @@ export enum ThemeEnum {
   LIGHT = 'light'
 }
 
-export enum SettingButtonPositionEnum {
-  AUTO = 'auto',
-  HEADER = 'header',
-  FIXED = 'fixed'
-}
-
 export enum SessionTimeoutProcessingEnum {
   ROUTE_JUMP,
   PAGE_COVERAGE

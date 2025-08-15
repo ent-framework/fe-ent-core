@@ -1,5 +1,5 @@
 <template>
-  <NLayout :class="prefixCls" v-bind="lockEvents">
+  <NLayout :class="prefixCls">
     <LayoutFeatures />
     <NConfigProvider v-if="getShowFullHeaderRef" :abstract="true" :theme="getComputedHeaderTheme">
       <LayoutHeader fixed />
@@ -23,12 +23,10 @@
   import { computed, defineComponent, ref, unref } from 'vue';
   import { NConfigProvider, NLayout } from 'naive-ui';
 
-  import { useAppInject, useDesign, useTheme, useThemeSetting } from 'fe-ent-core/es/hooks';
-
+  import { useAppInject, useDesign, useTheme, useThemeSetting, createBreakpointListen } from 'fe-ent-core/es/hooks';
   import { MenuModeEnum, MenuTypeEnum } from 'fe-ent-core/es/logics';
-  import { createBreakpointListen } from 'fe-ent-core/es/hooks/event/use-breakpoint';
   import { useAppStore } from 'fe-ent-core/es/store';
-  import { useHeaderSetting, useLayoutTheme, useLockPage, useMenuSetting } from '../../../hooks';
+  import { useHeaderSetting, useLayoutTheme, useMenuSetting } from '../../../hooks';
   import { useLayoutStore } from '../../../store/layout';
   import LayoutMultipleHeader from './header/multiple-header.vue';
   import LayoutSideBar from './sider/index.vue';
@@ -74,10 +72,6 @@
       const getBodyTheme = computed(() => {
         return getTheme(unref(getGlobalTheme));
       });
-
-      // Create a lock screen monitor
-      const lockEvents = useLockPage();
-
       // Monitor screen breakpoint information changes
       createBreakpointListen(({ screenMap, sizeEnum, width }) => {
         const lgWidth = screenMap.get(sizeEnum.LG);
@@ -135,7 +129,6 @@
         prefixCls,
         getIsMobile,
         getIsMixSidebar,
-        lockEvents,
         getComputedHeaderTheme,
         getComputedMenuTheme,
         getBodyTheme

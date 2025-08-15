@@ -50,7 +50,6 @@
 
       <UserDropDown v-if="isLogined" :theme="getActualHeaderTheme" />
 
-      <SettingDrawer v-if="getShowSetting" :class="`${prefixCls}-action__item`" />
     </div>
   </NLayoutHeader>
 </template>
@@ -58,7 +57,7 @@
   import { computed, defineComponent, unref } from 'vue';
   import { useAppInject, useDesign, useRootSetting } from 'fe-ent-core/es/hooks';
   import { EntAppLogo, EntDarkModeToggle, EntLocalePicker } from 'fe-ent-core';
-  import { MenuModeEnum, MenuSplitTyeEnum, SettingButtonPositionEnum } from 'fe-ent-core/es/logics';
+  import { MenuModeEnum, MenuSplitTyeEnum } from 'fe-ent-core/es/logics';
   import { useLocale } from 'fe-ent-core/es/locales';
   import { useUserStore } from 'fe-ent-core/es/store';
   import { NLayoutHeader } from 'naive-ui';
@@ -66,14 +65,12 @@
   import {
     useHeaderSetting,
     useLayoutTheme,
-    useLayoutThemeSetting,
     useMenuSetting
   } from '../../../../hooks';
 
   import AppSearch from '../components/app-search.vue';
   import LayoutTrigger from '../trigger/index.vue';
   import LayoutMenu from '../menu/index.vue';
-  import SettingDrawer from '../setting/index.vue';
   import { ErrorAction, FullScreen, LayoutBreadcrumb, Notify, UserDropDown } from './components';
 
   export default defineComponent({
@@ -90,7 +87,6 @@
       Notify,
       AppSearch,
       ErrorAction,
-      SettingDrawer,
       EntDarkModeToggle
     },
     props: {
@@ -113,15 +109,12 @@
       } = useMenuSetting();
       const { getShowDarkModeToggle, getUseErrorHandle } = useRootSetting();
 
-      const { getShowSettingButton, getSettingButtonPosition } = useLayoutThemeSetting();
-
       const {
         getShowFullScreen,
         getShowNotice,
         getShowContent,
         getShowBread,
         getShowHeaderLogo,
-        getShowHeader,
         getShowSearch
       } = useHeaderSetting();
 
@@ -141,18 +134,6 @@
             [`${prefixCls}--${theme}`]: theme
           }
         ];
-      });
-
-      const getShowSetting = computed(() => {
-        if (!unref(getShowSettingButton)) {
-          return false;
-        }
-        const settingButtonPosition = unref(getSettingButtonPosition);
-
-        if (settingButtonPosition === SettingButtonPositionEnum.AUTO) {
-          return unref(getShowHeader);
-        }
-        return settingButtonPosition === SettingButtonPositionEnum.HEADER;
       });
 
       const getLogoWidth = computed(() => {
@@ -200,8 +181,6 @@
         getUseErrorHandle,
         getLogoWidth,
         getIsMixSidebar,
-        getShowSettingButton,
-        getShowSetting,
         getShowSearch,
         isLogined,
         getCollapsedShowTitle,
